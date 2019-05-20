@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 540f14ad2b290d276436033a94d4c815888e5a95
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: 8b95f63c0e06a2b7d1d66064def192f91b8ffbb4
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65536004"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874958"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -20,7 +20,7 @@ By [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/r
 
 Une <xref:System.Net.Http.IHttpClientFactory> peut être inscrite et utilisée pour configurer et créer des instances de <xref:System.Net.Http.HttpClient> dans une application. Elle offre les avantages suivants :
 
-* Fournit un emplacement central pour le nommage et la configuration d’instance de `HttpClient` logiques. Par exemple, un client *github* peut être inscrit et configuré pour accéder à GitHub. Un client par défaut peut être inscrit à d’autres fins.
+* Fournit un emplacement central pour le nommage et la configuration d’instance de `HttpClient` logiques. Par exemple, un client *github* peut être inscrit et configuré pour accéder à [GitHub](https://github.com/). Un client par défaut peut être inscrit à d’autres fins.
 * Codifie le concept de middleware (intergiciel) sortant via la délégation de gestionnaires dans `HttpClient` et fournit des extensions permettant au middleware Polly d’en tirer parti.
 * Gère le regroupement et la durée de vie des instances de `HttpClientMessageHandler` sous-jacentes pour éviter les problèmes DNS courants qui se produisent lors de la gestion manuelle des durées de vie de `HttpClient`.
 * Ajoute une expérience de journalisation configurable (via `ILogger`) pour toutes les requêtes envoyées via des clients créés par la fabrique.

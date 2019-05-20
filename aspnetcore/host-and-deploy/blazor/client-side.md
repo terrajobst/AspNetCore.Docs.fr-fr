@@ -5,24 +5,22 @@ description: Découvrez comment héberger et déployer une application Blazor av
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 05/13/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: 01a612029f415f583908c3bf2adc2e6d35167acb
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: ea8ece266809913e32ac212bc55cb3c2499c234f
+ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614662"
+ms.lasthandoff: 05/19/2019
+ms.locfileid: "65874971"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>Héberger et déployer Blazor côté client
 
 Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) et [Daniel Roth](https://github.com/danroth27)
 
-[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
-
 ## <a name="host-configuration-values"></a>Valeurs de configuration de l’hôte
 
-Les applications Blazor qui utilisent le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side-hosting-model) peuvent accepter les valeurs de configuration d’hôte suivantes en tant qu’arguments de ligne de commande au moment de l’exécution dans l’environnement de développement.
+Les applications Blazor qui utilisent le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) peuvent accepter les valeurs de configuration d’hôte suivantes en tant qu’arguments de ligne de commande au moment de l’exécution dans l’environnement de développement.
 
 ### <a name="content-root"></a>Racine de contenu
 
@@ -95,7 +93,7 @@ L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec 
 
 ## <a name="deployment"></a>Déploiement
 
-Avec le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side-hosting-model) :
+Avec le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) :
 
 * L’application Blazor, ses dépendances et le runtime .NET sont téléchargés sur le navigateur.
 * L’application est exécutée directement sur le thread d’interface utilisateur du navigateur. Les stratégies suivantes sont prises en charge :
@@ -110,15 +108,15 @@ Blazor effectue la liaison de langage intermédiaire (IL) lors de chaque génér
 
 Le routage des requêtes pour les composants de la page dans une application côté client n’est pas aussi simple que le routage des requêtes vers une application hébergée côté serveur. Considérez une application côté client avec deux pages :
 
-* **_Main.cshtml_** &ndash; Se charge à la racine de l’application et contient un lien vers la page À propos de (`href="About"`).
-* **_About.cshtml_** &ndash; Page À propos de.
+* **_Main.razor** &ndash; Se charge à la racine de l’application et contient un lien vers la page À propos de (`href="About"`).
+* **_About.razor** &ndash; Page À propos de.
 
 Quand le document par défaut de l’application est demandé à l’aide de la barre d’adresses du navigateur (par exemple, `https://www.contoso.com/`) :
 
 1. Le navigateur effectue une requête.
 1. La page par défaut est retournée, généralement *index.html*.
 1. *index.HTML* amorce l’application.
-1. Le routeur de Blazor se charge et la page Main Razor (*Main.cshtml*) s’affiche.
+1. Le routeur de Blazor se charge et la page Main Razor (*Main.razor*) s’affiche.
 
 Dans la page principale, le fait de sélectionner le lien vers la page À propos de charge cette dernière. La sélection du lien vers la page À propos de fonctionne sur le client, car le routeur Blazor empêche le navigateur d’effectuer une requête sur Internet à `www.contoso.com` pour `About` et fournit lui-même la page À propos de. Toutes les requêtes pour des pages internes *au sein de l’application côté client* fonctionnent de manière identique : Les requêtes ne déclenchent pas de requêtes basées sur le navigateur pour des ressources hébergées par le serveur sur Internet. Le routeur gère les requêtes en interne.
 
@@ -128,13 +126,19 @@ Si une requête pour `www.contoso.com/About` est effectuée à l’aide de la ba
 
 ## <a name="app-base-path"></a>Chemin de base de l’application
 
-Le *chemin de base de l’application* est le chemin racine d’application virtuel sur le serveur. Par exemple, une application qui réside sur le serveur Contoso dans un dossier virtuel à `/CoolApp/` est accessible à `https://www.contoso.com/CoolApp` et son chemin de base virtuel est `/CoolApp/`. Le fait d’affecter `CoolApp/` comme chemin de base de l’application lui permet de connaître l’endroit où elle réside virtuellement sur le serveur. L’application peut utiliser le chemin de base de l’application pour construire des URL relatives à la racine d’application à partir d’un composant qui ne se trouve pas dans le répertoire racine. Cela permet aux composants qui existent à différents niveaux de la structure de répertoires de générer des liens vers d’autres ressources à des emplacements dans toute l’application. Le chemin de base de l’application sert également à intercepter les clics sur les liens hypertextes où la cible `href` du lien se trouve dans l’espace d’URI du chemin de base de l’application (le routeur Blazor gère la navigation interne).
+Le *chemin de base de l’application* est le chemin racine d’application virtuel sur le serveur. Par exemple, une application qui réside sur le serveur Contoso dans un dossier virtuel à `/CoolApp/` est accessible à `https://www.contoso.com/CoolApp` et son chemin de base virtuel est `/CoolApp/`. Le fait d’affecter `<base href="/CoolApp/">` comme chemin de base de l’application au chemin virtuel lui permet de connaître l’endroit où elle réside virtuellement sur le serveur. L’application peut utiliser le chemin de base de l’application pour construire des URL relatives à la racine d’application à partir d’un composant qui ne se trouve pas dans le répertoire racine. Cela permet aux composants qui existent à différents niveaux de la structure de répertoires de générer des liens vers d’autres ressources à des emplacements dans toute l’application. Le chemin de base de l’application sert également à intercepter les clics sur les liens hypertextes où la cible `href` du lien se trouve dans l’espace d’URI du chemin de base de l’application (le routeur Blazor gère la navigation interne).
 
-Dans de nombreux scénarios d’hébergement, le chemin virtuel du serveur vers l’application est la racine de l’application. Dans ce cas, le chemin de base de l’application est une barre oblique (`<base href="/" />`), ce qui correspond à la configuration par défaut pour une application. Dans d’autres scénarios d’hébergement, tels que GitHub Pages et les sous-applications ou répertoires virtuels IIS, vous devez affecter le chemin virtuel du serveur vers l’application comme chemin de base de l’application. Pour définir le chemin de base de l’application, ajoutez ou mettez à jour la balise `<base>` dans *index.html* qui se trouve entre les éléments de balise `<head>`. Affectez la valeur `virtual-path/` à l’attribut `href` (la barre oblique de fin est obligatoire), où `virtual-path/` est le chemin racine d’application virtuel complet sur le serveur pour l’application. Dans l’exemple précédent, le chemin virtuel est défini sur `CoolApp/` : `<base href="CoolApp/">`.
+Dans de nombreux scénarios d’hébergement, le chemin virtuel du serveur vers l’application est la racine de l’application. Dans ce cas, le chemin de base de l’application est une barre oblique (`<base href="/" />`), ce qui correspond à la configuration par défaut pour une application. Dans d’autres scénarios d’hébergement, tels que GitHub Pages et les sous-applications ou répertoires virtuels IIS, vous devez affecter le chemin virtuel du serveur vers l’application comme chemin de base de l’application. Pour définir le chemin de base de l’application, mettez à jour la balise `<base>` dans les éléments de balise `<head>` du fichier *wwwroot/index.html*. Affectez la valeur `/virtual-path/` à l’attribut `href` (la barre oblique de fin est obligatoire), où `/virtual-path/` est le chemin racine d’application virtuel complet sur le serveur pour l’application. Dans l’exemple précédent, le chemin virtuel est défini sur `/CoolApp/` : `<base href="/CoolApp/">`.
 
-Pour une application avec un chemin virtuel non racine configuré (par exemple `<base href="CoolApp/">`), l’application ne parvient pas à trouver ses ressources *quand elle est exécutée localement*. Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution.
+Pour une application avec un chemin virtuel non racine configuré (par exemple `<base href="/CoolApp/">`), l’application ne parvient pas à trouver ses ressources *quand elle est exécutée localement*. Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution.
 
-Pour passer l’argument de base de chemin avec le chemin racine (`/`) quand vous exécutez l’application localement, exécutez la commande suivante à partir du répertoire de l’application :
+Pour passer l’argument de base de chemin avec le chemin racine (`/`) quand vous exécutez l’application localement, exécutez la commande `dotnet run` à partir du répertoire de l’application avec l’option `--pathbase` :
+
+```console
+dotnet run --pathbase=/{Virtual Path (no trailing slash)}
+```
+
+Pour une application avec un chemin virtuel de base de `/CoolApp/` (`<base href="/CoolApp/">`), la commande est :
 
 ```console
 dotnet run --pathbase=/CoolApp
@@ -144,7 +148,7 @@ L’application répond localement à `http://localhost:port/CoolApp`.
 
 Pour plus d’informations, voir la section [Valeur de configuration d’hôte de base du chemin](#path-base).
 
-Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side-hosting-model) (basé sur le modèle de projet **Blazor**) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il convient de désactiver le gestionnaire de module ASP.NET Core hérité ou de s’assurer que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
+Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) (basé sur le modèle de projet **Blazor** ; le modèle `blazor` quand la commande [dotnet new](/dotnet/core/tools/dotnet-new) est utilisée) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il est important de désactiver le gestionnaire de module ASP.NET Core hérité ou de s’assurer que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
 
 Supprimez le gestionnaire dans le fichier *web.config* publié de l’application en ajoutant une section `<handlers>` au fichier :
 

@@ -1,4 +1,4 @@
-Le tableau suivant détaille les paramètres du générateur de code ASP.NET Core :
+<a name="codegenerator"></a> Le tableau suivant détaille les paramètres du générateur de code ASP.NET Core :
 
 | Paramètre               | Description|
 | ----------------- | ------------ |
