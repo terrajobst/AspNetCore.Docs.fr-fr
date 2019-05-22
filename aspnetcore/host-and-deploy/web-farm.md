@@ -2,16 +2,17 @@
 title: Héberger ASP.NET Core dans une batterie de serveurs web
 author: guardrex
 description: Découvrez comment héberger plusieurs instances d’une application ASP.NET Core avec des ressources partagées dans un environnement de batterie de serveurs web.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 05/12/2019
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 4873665e6174a6acf885e1ebb41fb005d646bd1f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: df1be8cc76a5017923f26636a241b69881dfcc81
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884154"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65970107"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Héberger ASP.NET Core dans une batterie de serveurs web
 

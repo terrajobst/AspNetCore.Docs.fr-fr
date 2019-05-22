@@ -2,26 +2,21 @@
 title: Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 author: rick-anderson
 description: Découvrez comment créer des profils de publication dans Visual Studio et les utiliser pour gérer les déploiements d’applications ASP.NET Core sur différentes cibles.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 05/12/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: e1e8f99be18d6f395a146bda805f71c46cd0346d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: be5d1a79b7f4437d04586ae4ce24df94547d8a3c
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889454"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969976"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 
 De [Sayed Ibrahim Hashimi](https://github.com/sayedihashimi) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-::: moniker range="<= aspnetcore-1.1"
-
-Pour obtenir la version 1.1 de cette rubrique, téléchargez les [profils de publication Visual Studio pour un déploiement d’application ASP.NET Core (version 1.1, PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/VS_Publish_Profiles_1.1.pdf).
-
-::: moniker-end
 
 Ce document est axé sur l’utilisation de Visual Studio 2017 ou d’une version ultérieure pour créer et utiliser des profils de publication. Les profils de publication créés avec Visual Studio peuvent être exécutés à partir de MSBuild et Visual Studio. Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions de publication sur Azure.
 
@@ -128,11 +123,11 @@ C:\Webs\Web1>dotnet publish
 Microsoft (R) Build Engine version 15.3.409.57025 for .NET Core
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\Web1.dll
-  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp2.0\publish\
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp{X.Y}\Web1.dll
+  Web1 -> C:\Webs\Web1\bin\Debug\netcoreapp{X.Y}\publish\
 ```
 
-Le dossier de publication par défaut est `bin\$(Configuration)\netcoreapp<version>\publish`. La valeur par défaut de `$(Configuration)` est *Debug*. Dans l’exemple précédent, `<TargetFramework>` a pour valeur `netcoreapp2.0`.
+Le dossier de publication par défaut est `bin\$(Configuration)\netcoreapp<version>\publish`. La valeur par défaut de `$(Configuration)` est *Debug*. Dans l’exemple précédent, `<TargetFramework>` a pour valeur `netcoreapp{X.Y}`.
 
 `dotnet publish -h` affiche des informations d’aide relatives à la publication.
 

@@ -2,16 +2,17 @@
 title: Module ASP.NET Core
 author: guardrex
 description: Découvrez comment configurer le module ASP.NET Core pour héberger des applications ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/26/2019
+ms.date: 05/12/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: a33606bce6c78a19e3d380f7440e5892778806c3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ff0b4c01f5ac661236b739e89559142d89b3b5dc
+ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889394"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65970077"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -272,7 +273,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.1"
+::: moniker range="< aspnetcore-2.2"
 
 | Attribut | Description | Par défaut |
 | --------- | ----------- | :-----: |
@@ -285,24 +286,6 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 | `requestTimeout` | <p>Attribut timespan facultatif.</p><p>Spécifie la durée pendant laquelle le module ASP.NET Core attend une réponse de la part du processus à l’écoute sur %ASPNETCORE_PORT%.</p><p>Dans les versions du module ASP.NET Core fournies avec ASP.NET Core 2.1 ou version ultérieure, la valeur `requestTimeout` est spécifiée en heures, minutes et secondes.</p> | Par défaut : `00:02:00`<br>Min : `00:00:00`<br>Max : `360:00:00` |
 | `shutdownTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que l’exécutable s’arrête normalement lorsque le fichier *app_offline.htm* est détecté.</p> | Par défaut : `10`<br>Min : `0`<br>Max : `600` |
 | `startupTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que le fichier exécutable démarre un processus à l’écoute sur le port. Si cette limite de temps est dépassée, le module met fin au processus. Le module tente de relancer le processus lorsqu’il reçoit une nouvelle requête, puis continue d’essayer de redémarrer le processus pour les requêtes entrantes suivantes, sauf si l’application ne démarre pas **rapidFailsPerMinute** un certain nombre de fois au cours de la dernière minute.</p><p>La valeur 0 (zéro) n’est **pas** considérée comme un délai infini.</p> | Par défaut : `120`<br>Min : `0`<br>Max : `3600` |
-| `stdoutLogEnabled` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, les attributs **stdout** et **stderr** du processus spécifié dans **processPath** sont redirigés vers le fichier spécifié dans **stdoutLogFile**.</p> | `false` |
-| `stdoutLogFile` | <p>Attribut de chaîne facultatif.</p><p>Spécifie le chemin d’accès relatif ou absolu pour lequel les attributs **stdout** et **stderr** du processus spécifié dans **processPath** sont consignés. Les chemins d’accès relatifs sont relatifs par rapport à la racine du site. Tout chemin d’accès commençant par `.` est relatif par rapport à la racine du site et tous les autres chemins d’accès sont traités comme des chemins d’accès absolus. Tous les dossiers spécifiés dans le chemin d’accès doivent exister pour permettre au module de créer le fichier journal. Si vous utilisez des délimiteurs de trait de soulignement, un horodatage, un ID de processus et une extension de fichier (*.log*) sont ajoutés au dernier segment du chemin d'accès **stdoutLogFile**. Si `.\logs\stdout` est fourni en tant que valeur, un exemple de journal stdout est enregistré en tant que *stdout_20180205194132_1934.log* dans le dossier *journaux* avec un enregistrement effectué le 05/02/2018 à 19:41:32 et un ID de processus de 1934.</p> | `aspnetcore-stdout` |
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-| Attribut | Description | Par défaut |
-| --------- | ----------- | :-----: |
-| `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p>| |
-| `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
-| `forwardWindowsAuthToken` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, le jeton est transmis au processus enfant qui écoute sur %ASPNETCORE_PORT% sous la forme d’un en-tête 'MS-ASPNETCORE-WINAUTHTOKEN' par demande. Il incombe à ce processus d’appeler CloseHandle sur ce jeton par demande.</p> | `true` |
-| `processesPerApplication` | <p>Attribut entier facultatif.</p><p>Spécifie le nombre d’instances du processus indiqué dans le paramètre **processPath** qui peuvent être lancées par application.</p><p>Il est déconseillé de définir `processesPerApplication`. Cet attribut sera supprimé dans une version ultérieure.</p> | Par défaut : `1`<br>Min : `1`<br>Max : `100` |
-| `processPath` | <p>Attribut de chaîne requis.</p><p>Chemin d’accès au fichier exécutable lançant un processus d’écoute des requêtes HTTP. Les chemins d’accès relatifs sont pris en charge. Si le chemin d’accès commence par `.`, il est considéré comme étant relatif par rapport à la racine du site.</p> | |
-| `rapidFailsPerMinute` | <p>Attribut entier facultatif.</p><p>Indique le nombre de fois où le processus spécifié dans **processPath** est autorisé à se bloquer par minute. Si cette limite est dépassée, le module arrête le lancement du processus pour le reste de la minute.</p> | Par défaut : `10`<br>Min : `0`<br>Max : `100` |
-| `requestTimeout` | <p>Attribut timespan facultatif.</p><p>Spécifie la durée pendant laquelle le module ASP.NET Core attend une réponse de la part du processus à l’écoute sur %ASPNETCORE_PORT%.</p><p>Dans les versions du module ASP.NET Core fournies avec ASP.NET Core 2.0 ou version antérieure, la durée `requestTimeout` doit être spécifiée en minutes entières, sinon la valeur par défaut est de 2 minutes.</p> | Par défaut : `00:02:00`<br>Min : `00:00:00`<br>Max : `360:00:00` |
-| `shutdownTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que l’exécutable s’arrête normalement lorsque le fichier *app_offline.htm* est détecté.</p> | Par défaut : `10`<br>Min : `0`<br>Max : `600` |
-| `startupTimeLimit` | <p>Attribut entier facultatif.</p><p>Durée en secondes pendant laquelle le module attend que le fichier exécutable démarre un processus à l’écoute sur le port. Si cette limite de temps est dépassée, le module met fin au processus. Le module tente de relancer le processus lorsqu’il reçoit une nouvelle requête, puis continue d’essayer de redémarrer le processus pour les requêtes entrantes suivantes, sauf si l’application ne démarre pas **rapidFailsPerMinute** un certain nombre de fois au cours de la dernière minute.</p> | Par défaut : `120`<br>Min : `0`<br>Max : `3600` |
 | `stdoutLogEnabled` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, les attributs **stdout** et **stderr** du processus spécifié dans **processPath** sont redirigés vers le fichier spécifié dans **stdoutLogFile**.</p> | `false` |
 | `stdoutLogFile` | <p>Attribut de chaîne facultatif.</p><p>Spécifie le chemin d’accès relatif ou absolu pour lequel les attributs **stdout** et **stderr** du processus spécifié dans **processPath** sont consignés. Les chemins d’accès relatifs sont relatifs par rapport à la racine du site. Tout chemin d’accès commençant par `.` est relatif par rapport à la racine du site et tous les autres chemins d’accès sont traités comme des chemins d’accès absolus. Tous les dossiers spécifiés dans le chemin d’accès doivent exister pour permettre au module de créer le fichier journal. Si vous utilisez des délimiteurs de trait de soulignement, un horodatage, un ID de processus et une extension de fichier (*.log*) sont ajoutés au dernier segment du chemin d'accès **stdoutLogFile**. Si `.\logs\stdout` est fourni en tant que valeur, un exemple de journal stdout est enregistré en tant que *stdout_20180205194132_1934.log* dans le dossier *journaux* avec un enregistrement effectué le 05/02/2018 à 19:41:32 et un ID de processus de 1934.</p> | `aspnetcore-stdout` |
 
@@ -542,32 +525,6 @@ Lorsque vous utilisez une configuration partagée IIS, procédez comme suit :
 1. Exécutez le programme d’installation.
 1. Exportez le fichier *applicationHost.config* mis à jour vers le partage.
 1. Réactivez la configuration partagée IIS.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.2"
-
-## <a name="application-initialization"></a>Initialisation d’application
-
-[L’Initialisation d’application IIS](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) est une fonctionnalité IIS qui envoie une requête HTTP à l’application lorsque le pool d’applications démarre ou est recyclé. La requête déclenche le démarrage de l’application. L’Initialisation de l’application peut être utilisée à la fois par le [modèle d’hébergement in-process](xref:fundamentals/servers/index#in-process-hosting-model) et ke [modèle d’hébergement out-of-process](xref:fundamentals/servers/index#out-of-process-hosting-model) avec le module ASP.NET Core version 2.
-
-Pour activer l’Initialisation d’application :
-
-1. Vérifiez que la fonctionnalité de rôle Initialisation d’application IIS est activée :
-   * Sur Windows 7 ou version ultérieure : Accédez à **Panneau de configuration** > **Programmes** > **Programmes et fonctionnalités** > **Activer ou désactiver des fonctionnalités Windows** (à gauche de l’écran). Ouvrez **Internet Information Services** > **Services World Wide Web** > **Fonctionnalités de développement d’applications**. Cochez la case **Initialisation d’application**.
-   * Sur Windows Server 2008 R2 ou version ultérieure, ouvrez **l’assistant Ajouter des rôles et des fonctionnalités**. Lorsque vous atteignez le panneau **Sélectionner des services de rôle**, ouvrez le nœud **Développement d’applications** et cochez la case **Initialisation d’application**.
-1. Dans IIS Manager, sélectionnez **Pools d’applications** dans le volet **Connexions**.
-1. Sélectionnez le pool d’applications de l’application dans la liste.
-1. Sélectionnez **Paramètres avancés** sous **Modifier le pool d’applications** dans le volet **Actions**.
-1. Définissez **Mode de démarrage** sur **AlwaysRunning**.
-1. Ouvrez le nœud **Sites** dans le panneau **Connexions**.
-1. Sélectionnez l’application.
-1. Sélectionnez **Paramètres avancés** sous **Gérer le site web** dans le volet **Actions**.
-1. Définissez **Préchargement activé** sur **True**.
-
-Pour plus d’informations, consultez [Initialisation d’application IIS 8.0](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization).
-
-Les applications qui utilisent le [modèle d’hébergement out-of-process](xref:fundamentals/servers/index#out-of-process-hosting-model) doivent utiliser un service externe pour effectuer régulièrement un test ping de l’application afin de garantir son fonctionnement.
 
 ::: moniker-end
 
