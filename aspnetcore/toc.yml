@@ -277,6 +277,8 @@
       items:
         - name: Vue d'ensemble
           uid: blazor/index
+        - name: Plateformes prises en charge
+          uid: blazor/supported-platforms
         - name: Prise en main
           uid: blazor/get-started
         - name: Modèles d'hébergement
