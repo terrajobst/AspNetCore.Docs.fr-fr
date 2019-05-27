@@ -5,14 +5,14 @@ description: Découvrez comment héberger des applications ASP.NET Core sur Wind
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2019
+ms.date: 05/24/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 6ba4da913ef712ef897a4c8418263e3060ea85ac
-ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
+ms.openlocfilehash: f0efe6c0edc71c5e2c45aeaa175c8a5643ef0fde
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004978"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223144"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -282,7 +282,7 @@ Pour obtenir une version antérieure du programme d’installation :
 
 ## <a name="install-web-deploy-when-publishing-with-visual-studio"></a>Installer Web Deploy lors de la publication avec Visual Studio
 
-Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy), installez la dernière version de Web Deploy sur le serveur. Pour installer Web Deploy, utilisez [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) ou obtenez un programme d’installation directement à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=43717). La méthode recommandée est d’utiliser WebPI. WebPI offre une installation autonome et une configuration pour les fournisseurs d’hébergement.
+Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/install/installing-publishing-technologies/installing-and-configuring-web-deploy-on-iis-80-or-later), installez la dernière version de Web Deploy sur le serveur. Pour installer Web Deploy, utilisez [Web Platform Installer (WebPI)](https://www.microsoft.com/web/downloads/platform.aspx) ou obtenez un programme d’installation directement à partir du [Centre de téléchargement Microsoft](https://www.microsoft.com/download/details.aspx?id=43717). La méthode recommandée est d’utiliser WebPI. WebPI offre une installation autonome et une configuration pour les fournisseurs d’hébergement.
 
 ## <a name="create-the-iis-site"></a>Créer le site IIS
 
