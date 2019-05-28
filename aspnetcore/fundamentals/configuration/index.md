@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/11/2019
+ms.date: 05/24/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 63a876c09f952537d790f2a5df4b8672df49d015
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: 3f7588f9ba18e300f5947e8bb0daf2e72d580a94
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517018"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223166"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -28,11 +28,15 @@ La configuration d’application dans ASP.NET Core est basée sur des paires cl�
 * Objets .NET en mémoire
 * Fichiers de paramètres
 
+Les packages de configuration pour les scénarios communs de fournisseur de configurations sont inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Les exemples de code qui suivent et dans l’échantillon d’application utilisent l’espace de noms <xref:Microsoft.Extensions.Configuration> :
+
+```csharp
+using Microsoft.Extensions.Configuration;
+```
+
 Le *modèle d’options* est une extension des concepts de configuration décrits dans cette rubrique. Le modèle d’options utilise des classes pour représenter les groupes de paramètres associés. Pour plus d’informations sur l’utilisation du modèle d’options, consultez <xref:fundamentals/configuration/options>.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
-
-Ces trois packages sont inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ## <a name="host-vs-app-configuration"></a>Configuration de l’hôte ou configuration de l’application
 
@@ -103,8 +107,6 @@ Les fournisseurs de configuration qui implémentent la détection des modificati
 <xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application. <xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une Razor Page <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> pour obtenir la configuration de la classe :
 
 ```csharp
-// using Microsoft.Extensions.Configuration;
-
 public class IndexModel : PageModel
 {
     private readonly IConfiguration _config;
@@ -169,7 +171,7 @@ Cette séquence de fournisseurs est mise en place lorsque vous initialisez un no
 
 Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> quand vous créez l’hôte pour spécifier les fournisseurs de configuration de l’application en plus de ceux ajoutés automatiquement par <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> :
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=20)]
 
 La configuration fournie à l’application dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> est disponible lors du démarrage de l’application, notamment `Startup.ConfigureServices`. Pour plus d’informations, consultez la section [Accéder à la configuration lors du démarrage](#access-configuration-during-startup).
 
@@ -357,8 +359,9 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 // Call additional providers here as needed.
-                // Call AddEnvironmentVariables last if you need to allow environment
-                // variables to override values from other providers.
+                // Call AddEnvironmentVariables last if you need to allow
+                // environment variables to override values from other 
+                // providers.
                 config.AddEnvironmentVariables(prefix: "PREFIX_");
             })
             .UseStartup<Startup>();
@@ -476,7 +479,8 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddIniFile("config.ini", optional: true, reloadOnChange: true);
+                config.AddIniFile(
+                    "config.ini", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -567,7 +571,8 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddJsonFile("config.json", optional: true, reloadOnChange: true);
+                config.AddJsonFile(
+                    "config.json", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -634,7 +639,8 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true);
+                config.AddXmlFile(
+                    "config.xml", optional: true, reloadOnChange: true);
             })
             .UseStartup<Startup>();
 }
@@ -749,7 +755,8 @@ public class Program
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 config.SetBasePath(Directory.GetCurrentDirectory());
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "path/to/files");
                 config.AddKeyPerFile(directoryPath: path, optional: true);
             })
             .UseStartup<Startup>();
@@ -837,8 +844,6 @@ L’exemple suivant :
 * Stocke la valeur dans la propriété `NumberConfig` pour une utilisation par la page.
 
 ```csharp
-// using Microsoft.Extensions.Configuration;
-
 public class IndexModel : PageModel
 {
     public IndexModel(IConfiguration config)
@@ -1018,7 +1023,7 @@ Observez les valeurs et les clés de configuration indiquées dans le tableau su
 
 Ces clés et valeurs sont chargées dans l’exemple d’application à l’aide du Fournisseur de configuration de mémoire :
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=3-10,22)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
 
 Le tableau ignore une valeur pour l’index &num;3. Le binder de configuration n’est pas capable de lier des valeurs null ou de créer des entrées null dans les objets liés, ce qui deviendra clair dans un moment lorsque le résultat de liaison de ce tableau à un objet est illustré.
 
@@ -1153,7 +1158,7 @@ Une méthode d’extension `AddEFConfiguration` permet d’ajouter la source de 
 
 Le code suivant montre comment utiliser le `EFConfigurationProvider` personnalisé dans *Program.cs* :
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=26)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
 
 ## <a name="access-configuration-during-startup"></a>Accéder à la configuration lors du démarrage
 
