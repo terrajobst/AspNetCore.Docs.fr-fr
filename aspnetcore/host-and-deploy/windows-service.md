@@ -5,62 +5,96 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/04/2019
+ms.date: 05/21/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ec3a37fd859df7592fa0d6d9cc0109942a570e7a
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ab36bc1b2827c80bb1e7b9e8cee558b346a991f8
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086990"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251426"
 ---
-# <a name="host-aspnet-core-in-a-windows-service"></a><span data-ttu-id="e9bfb-103">Héberger ASP.NET Core dans un service Windows</span><span class="sxs-lookup"><span data-stu-id="e9bfb-103">Host ASP.NET Core in a Windows Service</span></span>
+# <a name="host-aspnet-core-in-a-windows-service"></a><span data-ttu-id="140f6-103">Héberger ASP.NET Core dans un service Windows</span><span class="sxs-lookup"><span data-stu-id="140f6-103">Host ASP.NET Core in a Windows Service</span></span>
 
-<span data-ttu-id="e9bfb-104">Par [Luke Latham](https://github.com/guardrex) et [Tom Dykstra](https://github.com/tdykstra)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-104">By [Luke Latham](https://github.com/guardrex) and [Tom Dykstra](https://github.com/tdykstra)</span></span>
+<span data-ttu-id="140f6-104">Par [Luke Latham](https://github.com/guardrex) et [Tom Dykstra](https://github.com/tdykstra)</span><span class="sxs-lookup"><span data-stu-id="140f6-104">By [Luke Latham](https://github.com/guardrex) and [Tom Dykstra](https://github.com/tdykstra)</span></span>
 
-<span data-ttu-id="e9bfb-105">Une application ASP.NET Core peut être hébergée sur Windows en tant que [service Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) sans utiliser IIS.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-105">An ASP.NET Core app can be hosted on Windows as a [Windows Service](/dotnet/framework/windows-services/introduction-to-windows-service-applications) without using IIS.</span></span> <span data-ttu-id="e9bfb-106">Lorsqu’elle est hébergée en tant que service Windows, l’application démarre automatiquement après le redémarrage.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-106">When hosted as a Windows Service, the app automatically starts after reboots.</span></span>
+<span data-ttu-id="140f6-105">Une application ASP.NET Core peut être hébergée sur Windows en tant que [service Windows](/dotnet/framework/windows-services/introduction-to-windows-service-applications) sans utiliser IIS.</span><span class="sxs-lookup"><span data-stu-id="140f6-105">An ASP.NET Core app can be hosted on Windows as a [Windows Service](/dotnet/framework/windows-services/introduction-to-windows-service-applications) without using IIS.</span></span> <span data-ttu-id="140f6-106">Lorsqu’elle est hébergée en tant que service Windows, l’application se lance automatiquement après le redémarrage du serveur.</span><span class="sxs-lookup"><span data-stu-id="140f6-106">When hosted as a Windows Service, the app automatically starts after server reboots.</span></span>
 
-<span data-ttu-id="e9bfb-107">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="e9bfb-107">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="140f6-107">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="140f6-107">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="e9bfb-108">Prérequis</span><span class="sxs-lookup"><span data-stu-id="e9bfb-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="140f6-108">Prérequis</span><span class="sxs-lookup"><span data-stu-id="140f6-108">Prerequisites</span></span>
 
-* [<span data-ttu-id="e9bfb-109">PowerShell version 6.2 ou ultérieure</span><span class="sxs-lookup"><span data-stu-id="e9bfb-109">PowerShell 6.2 or later</span></span>](https://github.com/PowerShell/PowerShell)
+* [<span data-ttu-id="140f6-109">Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus</span><span class="sxs-lookup"><span data-stu-id="140f6-109">ASP.NET Core SDK 2.1 or later</span></span>](https://dotnet.microsoft.com/download)
+* [<span data-ttu-id="140f6-110">PowerShell version 6.2 ou ultérieure</span><span class="sxs-lookup"><span data-stu-id="140f6-110">PowerShell 6.2 or later</span></span>](https://github.com/PowerShell/PowerShell)
 
-> [!NOTE]
-> <span data-ttu-id="e9bfb-110">Pour une version du système d’exploitation Windows antérieure à la Mise à jour d’octobre 2018 de Windows 10 (version 1809/build 10.0.17763), le module [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) doit être importé avec le module [WindowsCompatibility](https://github.com/PowerShell/WindowsCompatibility) pour permettre l’accès à la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) utilisée dans la section [Créer un compte d’utilisateur](#create-a-user-account) :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-110">For Windows OS earlier than the Windows 10 October 2018 Update (version 1809/build 10.0.17763), the [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) module must be imported with the [WindowsCompatibility module](https://github.com/PowerShell/WindowsCompatibility) to gain access to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet used in the [Create a user account](#create-a-user-account) section:</span></span>
->
-> ```powershell
-> Install-Module WindowsCompatibility -Scope CurrentUser
-> Import-WinModule Microsoft.PowerShell.LocalAccounts
-> ```
+## <a name="app-configuration"></a><span data-ttu-id="140f6-111">Configuration de l’application</span><span class="sxs-lookup"><span data-stu-id="140f6-111">App configuration</span></span>
 
-## <a name="deployment-type"></a><span data-ttu-id="e9bfb-111">Type de déploiement</span><span class="sxs-lookup"><span data-stu-id="e9bfb-111">Deployment type</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="e9bfb-112">Vous pouvez créer un déploiement Windows Service dépendant du framework ou autonome.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-112">You can create either a framework-dependent or self-contained Windows Service deployment.</span></span> <span data-ttu-id="e9bfb-113">Pour des informations et des conseils sur les scénarios de déploiement, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-113">For information and advice on deployment scenarios, see [.NET Core application deployment](/dotnet/core/deploying/).</span></span>
+<span data-ttu-id="140f6-112">L’élément `IHostBuilder.UseWindowsService`, fourni par le package [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices), est appelé lors de la création de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="140f6-112">`IHostBuilder.UseWindowsService`, provided by the [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices) package, is called when building the host.</span></span> <span data-ttu-id="140f6-113">Si l’application s’exécute comme un service Windows, la méthode :</span><span class="sxs-lookup"><span data-stu-id="140f6-113">If the app is running as a Windows Service, the method:</span></span>
 
-### <a name="framework-dependent-deployment"></a><span data-ttu-id="e9bfb-114">Déploiement dépendant du framework</span><span class="sxs-lookup"><span data-stu-id="e9bfb-114">Framework-dependent deployment</span></span>
+* <span data-ttu-id="140f6-114">définit la durée de vie de l’hôte sur `WindowsServiceLifetime` ;</span><span class="sxs-lookup"><span data-stu-id="140f6-114">Sets the host lifetime to `WindowsServiceLifetime`.</span></span>
+* <span data-ttu-id="140f6-115">définit la racine du contenu.</span><span class="sxs-lookup"><span data-stu-id="140f6-115">Sets the content root.</span></span>
+* <span data-ttu-id="140f6-116">Permet la journalisation dans le journal d’événements en utilisant le nom d’application en tant que nom de source par défaut.</span><span class="sxs-lookup"><span data-stu-id="140f6-116">Enables logging to the event log with the application name as the default source name.</span></span>
+  * <span data-ttu-id="140f6-117">Vous pouvez configurer le niveau de journalisation à l’aide de la clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="140f6-117">The log level can be configured using the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span>
+  * <span data-ttu-id="140f6-118">Seuls les administrateurs peuvent créer des sources d’événement.</span><span class="sxs-lookup"><span data-stu-id="140f6-118">Only administrators can create new event sources.</span></span> <span data-ttu-id="140f6-119">Si une source d’événement ne peut pas être créée en utilisant le nom de l’application, un avertissement est consigné dans la source *Application* source et les journaux d’événements sont désactivés.</span><span class="sxs-lookup"><span data-stu-id="140f6-119">When an event source can't be created using the application name, a warning is logged to the *Application* source and event logs are disabled.</span></span>
 
-<span data-ttu-id="e9bfb-115">Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-115">Framework-dependent deployment (FDD) relies on the presence of a shared system-wide version of .NET Core on the target system.</span></span> <span data-ttu-id="e9bfb-116">Lorsque le scénario de déploiement dépendant du framework est utilisé avec une application de service Windows ASP.NET Core, le Kit de développement logiciel (SDK) génère un fichier exécutable (*\*.exe*), appelé *exécutable dépendant du framework*.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-116">When the FDD scenario is used with an ASP.NET Core Windows Service app, the SDK produces an executable (*\*.exe*), called a *framework-dependent executable*.</span></span>
+[!code-csharp[](windows-service/samples/3.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-### <a name="self-contained-deployment"></a><span data-ttu-id="e9bfb-117">Déploiement autonome</span><span class="sxs-lookup"><span data-stu-id="e9bfb-117">Self-contained deployment</span></span>
+::: moniker-end
 
-<span data-ttu-id="e9bfb-118">Un déploiement autonome ne s’appuie sur la présence d’aucun composant partagé sur le système cible.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-118">Self-contained deployment (SCD) doesn't rely on the presence of shared components on the target system.</span></span> <span data-ttu-id="e9bfb-119">Le runtime et les dépendances de l’application sont déployés avec l’application sur le système d’hébergement.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-119">The runtime and the app's dependencies are deployed with the app to the hosting system.</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-## <a name="convert-a-project-into-a-windows-service"></a><span data-ttu-id="e9bfb-120">Convertir un projet en service Windows</span><span class="sxs-lookup"><span data-stu-id="e9bfb-120">Convert a project into a Windows Service</span></span>
+<span data-ttu-id="140f6-120">L’application nécessite des références de package pour [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) et [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span><span class="sxs-lookup"><span data-stu-id="140f6-120">The app requires package references for [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) and [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span></span>
 
-<span data-ttu-id="e9bfb-121">Apportez les modifications suivantes à un projet ASP.NET Core existant pour exécuter l’application en tant que service :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-121">Make the following changes to an existing ASP.NET Core project to run the app as a service:</span></span>
+<span data-ttu-id="140f6-121">Pour effectuer des tests et un débogage lors de l’exécution en dehors d’un service, ajoutez un code pour déterminer si l’application s’exécute comme un service ou comme une application console.</span><span class="sxs-lookup"><span data-stu-id="140f6-121">To test and debug when running outside of a service, add code to determine if the app is running as a service or a console app.</span></span> <span data-ttu-id="140f6-122">Vérifiez si le débogueur est attaché ou si un switch `--console` est présent.</span><span class="sxs-lookup"><span data-stu-id="140f6-122">Inspect if the debugger is attached or a `--console` switch is present.</span></span> <span data-ttu-id="140f6-123">Si l’une de ces deux conditions est remplie (l’application n’est pas exécutée en tant que service), appelez <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>.</span><span class="sxs-lookup"><span data-stu-id="140f6-123">If either condition is true (the app isn't run as a service), call <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*>.</span></span> <span data-ttu-id="140f6-124">Si les conditions ne sont pas remplies (l’application est exécutée en tant que service) :</span><span class="sxs-lookup"><span data-stu-id="140f6-124">If the conditions are false (the app is run as a service):</span></span>
 
-### <a name="project-file-updates"></a><span data-ttu-id="e9bfb-122">Mises à jour du fichier projet</span><span class="sxs-lookup"><span data-stu-id="e9bfb-122">Project file updates</span></span>
+* <span data-ttu-id="140f6-125">Appelez <xref:System.IO.Directory.SetCurrentDirectory*> et utilisez un chemin vers l’emplacement publié de l’application.</span><span class="sxs-lookup"><span data-stu-id="140f6-125">Call <xref:System.IO.Directory.SetCurrentDirectory*> and use a path to the app's published location.</span></span> <span data-ttu-id="140f6-126">N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque <xref:System.IO.Directory.GetCurrentDirectory*> est appelée.</span><span class="sxs-lookup"><span data-stu-id="140f6-126">Don't call <xref:System.IO.Directory.GetCurrentDirectory*> to obtain the path because a Windows Service app returns the *C:\\WINDOWS\\system32* folder when <xref:System.IO.Directory.GetCurrentDirectory*> is called.</span></span> <span data-ttu-id="140f6-127">Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).</span><span class="sxs-lookup"><span data-stu-id="140f6-127">For more information, see the [Current directory and content root](#current-directory-and-content-root) section.</span></span> <span data-ttu-id="140f6-128">Cette étape est effectuée avant la configuration de l’application dans `CreateWebHostBuilder`.</span><span class="sxs-lookup"><span data-stu-id="140f6-128">This step is performed before the app is configured in `CreateWebHostBuilder`.</span></span>
+* <span data-ttu-id="140f6-129">Appelez <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> pour exécuter l’application en tant que service.</span><span class="sxs-lookup"><span data-stu-id="140f6-129">Call <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> to run the app as a service.</span></span>
 
-<span data-ttu-id="e9bfb-123">Selon le [type de déploiement](#deployment-type) que vous avez choisi, mettez à jour le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-123">Based on your choice of [deployment type](#deployment-type), update the project file:</span></span>
+<span data-ttu-id="140f6-130">Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le switch `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.</span><span class="sxs-lookup"><span data-stu-id="140f6-130">Because the [Command-line Configuration Provider](xref:fundamentals/configuration/index#command-line-configuration-provider) requires name-value pairs for command-line arguments, the `--console` switch is removed from the arguments before <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> receives the arguments.</span></span>
 
-#### <a name="framework-dependent-deployment-fdd"></a><span data-ttu-id="e9bfb-124">Déploiement dépendant du framework</span><span class="sxs-lookup"><span data-stu-id="e9bfb-124">Framework-dependent Deployment (FDD)</span></span>
+<span data-ttu-id="140f6-131">Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span><span class="sxs-lookup"><span data-stu-id="140f6-131">To write to the Windows Event Log, add the EventLog provider to <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span></span> <span data-ttu-id="140f6-132">Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="140f6-132">Set the logging level with the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span>
 
-<span data-ttu-id="e9bfb-125">Ajoutez un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows au `<PropertyGroup>` qui contient la version cible du .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-125">Add a Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) to the `<PropertyGroup>` that contains the target framework.</span></span> <span data-ttu-id="e9bfb-126">Dans l’exemple suivant, le RID est défini sur `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-126">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="e9bfb-127">Ajoutez la propriété `<SelfContained>` définie sur `false`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-127">Add the `<SelfContained>` property set to `false`.</span></span> <span data-ttu-id="e9bfb-128">Ces propriétés demandent au Kit SDK de générer un fichier exécutable (*.exe*) pour Windows.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-128">These properties instruct the SDK to generate an executable (*.exe*) file for Windows.</span></span>
+<span data-ttu-id="140f6-133">Dans l’exemple suivant, qui provient de l’exemple d’application, l’élément `RunAsCustomService` est appelé à la place de l’élément <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> afin de gérer les événements de durée de vie au sein de l’application.</span><span class="sxs-lookup"><span data-stu-id="140f6-133">In the following example from the sample app, `RunAsCustomService` is called instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in order to handle lifetime events within the app.</span></span> <span data-ttu-id="140f6-134">Pour plus d’informations, consultez la section [Gérer les événements de démarrage et d’arrêt](#handle-starting-and-stopping-events).</span><span class="sxs-lookup"><span data-stu-id="140f6-134">For more information, see the [Handle starting and stopping events](#handle-starting-and-stopping-events) section.</span></span>
 
-<span data-ttu-id="e9bfb-129">Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-129">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="e9bfb-130">Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-130">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker-end
+
+## <a name="deployment-type"></a><span data-ttu-id="140f6-135">Type de déploiement</span><span class="sxs-lookup"><span data-stu-id="140f6-135">Deployment type</span></span>
+
+<span data-ttu-id="140f6-136">Pour des informations et des conseils sur les scénarios de déploiement, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).</span><span class="sxs-lookup"><span data-stu-id="140f6-136">For information and advice on deployment scenarios, see [.NET Core application deployment](/dotnet/core/deploying/).</span></span>
+
+### <a name="framework-dependent-deployment-fdd"></a><span data-ttu-id="140f6-137">Déploiement dépendant du framework</span><span class="sxs-lookup"><span data-stu-id="140f6-137">Framework-dependent deployment (FDD)</span></span>
+
+<span data-ttu-id="140f6-138">Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible.</span><span class="sxs-lookup"><span data-stu-id="140f6-138">Framework-dependent deployment (FDD) relies on the presence of a shared system-wide version of .NET Core on the target system.</span></span> <span data-ttu-id="140f6-139">Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable (*.exe*), appelé *fichier exécutable dépendant du framework*.</span><span class="sxs-lookup"><span data-stu-id="140f6-139">When the FDD scenario is adopted following the guidance in this article, the SDK produces an executable (*.exe*), called a *framework-dependent executable*.</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+<span data-ttu-id="140f6-140">Ajoutez les éléments de propriété suivants au fichier projet :</span><span class="sxs-lookup"><span data-stu-id="140f6-140">Add the following property elements to the project file:</span></span>
+
+* <span data-ttu-id="140f6-141">`<OutputType>` &ndash; Le type de sortie de l’application (`Exe` pour le fichier exécutable)</span><span class="sxs-lookup"><span data-stu-id="140f6-141">`<OutputType>` &ndash; The app's output type (`Exe` for executable).</span></span>
+* <span data-ttu-id="140f6-142">`<LangVersion>` &ndash; La version du langage C# (`latest` ou `preview`)</span><span class="sxs-lookup"><span data-stu-id="140f6-142">`<LangVersion>` &ndash; The C# language version (`latest` or `preview`).</span></span>
+
+<span data-ttu-id="140f6-143">Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services.</span><span class="sxs-lookup"><span data-stu-id="140f6-143">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="140f6-144">Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="140f6-144">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.0</TargetFramework>
+  <OutputType>Exe</OutputType>
+  <LangVersion>preview</LangVersion>
+  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+<span data-ttu-id="140f6-145">[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework.</span><span class="sxs-lookup"><span data-stu-id="140f6-145">The Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contains the target framework.</span></span> <span data-ttu-id="140f6-146">Dans l’exemple suivant, le RID est défini sur `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="140f6-146">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="140f6-147">La propriété `<SelfContained>` a la valeur `false`.</span><span class="sxs-lookup"><span data-stu-id="140f6-147">The `<SelfContained>` property is set to `false`.</span></span> <span data-ttu-id="140f6-148">Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.</span><span class="sxs-lookup"><span data-stu-id="140f6-148">These properties instruct the SDK to generate an executable (*.exe*) file for Windows and an app that depends on the shared .NET Core framework.</span></span>
+
+<span data-ttu-id="140f6-149">Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services.</span><span class="sxs-lookup"><span data-stu-id="140f6-149">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="140f6-150">Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="140f6-150">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
 
 ```xml
 <PropertyGroup>
@@ -75,7 +109,11 @@ ms.locfileid: "65086990"
 
 ::: moniker range="= aspnetcore-2.1"
 
-<span data-ttu-id="e9bfb-131">Ajoutez la propriété `<UseAppHost>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-131">Add the `<UseAppHost>` property set to `true`.</span></span> <span data-ttu-id="e9bfb-132">Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe*) pour un déploiement dépendant du framework (FDD).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-132">This property provides the service with an activation path (an executable, *.exe*) for an FDD.</span></span>
+<span data-ttu-id="140f6-151">[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework.</span><span class="sxs-lookup"><span data-stu-id="140f6-151">The Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contains the target framework.</span></span> <span data-ttu-id="140f6-152">Dans l’exemple suivant, le RID est défini sur `win7-x64`.</span><span class="sxs-lookup"><span data-stu-id="140f6-152">In the following example, the RID is set to `win7-x64`.</span></span> <span data-ttu-id="140f6-153">La propriété `<SelfContained>` a la valeur `false`.</span><span class="sxs-lookup"><span data-stu-id="140f6-153">The `<SelfContained>` property is set to `false`.</span></span> <span data-ttu-id="140f6-154">Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.</span><span class="sxs-lookup"><span data-stu-id="140f6-154">These properties instruct the SDK to generate an executable (*.exe*) file for Windows and an app that depends on the shared .NET Core framework.</span></span>
+
+<span data-ttu-id="140f6-155">La propriété `<UseAppHost>` a la valeur `true`.</span><span class="sxs-lookup"><span data-stu-id="140f6-155">The `<UseAppHost>` property is set to `true`.</span></span> <span data-ttu-id="140f6-156">Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe*) pour un déploiement dépendant du framework (FDD).</span><span class="sxs-lookup"><span data-stu-id="140f6-156">This property provides the service with an activation path (an executable, *.exe*) for an FDD.</span></span>
+
+<span data-ttu-id="140f6-157">Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services.</span><span class="sxs-lookup"><span data-stu-id="140f6-157">A *web.config* file, which is normally produced when publishing an ASP.NET Core app, is unnecessary for a Windows Services app.</span></span> <span data-ttu-id="140f6-158">Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="140f6-158">To disable the creation of the *web.config* file, add the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
 
 ```xml
 <PropertyGroup>
@@ -89,250 +127,191 @@ ms.locfileid: "65086990"
 
 ::: moniker-end
 
-#### <a name="self-contained-deployment-scd"></a><span data-ttu-id="e9bfb-133">Déploiement autonome</span><span class="sxs-lookup"><span data-stu-id="e9bfb-133">Self-contained Deployment (SCD)</span></span>
+### <a name="self-contained-deployment-scd"></a><span data-ttu-id="140f6-159">Déploiement autonome</span><span class="sxs-lookup"><span data-stu-id="140f6-159">Self-contained deployment (SCD)</span></span>
 
-<span data-ttu-id="e9bfb-134">Vérifiez la présence d’un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows ou ajoutez-le au `<PropertyGroup>` qui contient la version cible du .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-134">Confirm the presence of a Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) or add a RID to the `<PropertyGroup>` that contains the target framework.</span></span> <span data-ttu-id="e9bfb-135">Désactivez la création d’un fichier *web.config* en ajoutant la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-135">Disable the creation of a *web.config* file by adding the `<IsTransformWebConfigDisabled>` property set to `true`.</span></span>
+<span data-ttu-id="140f6-160">Un déploiement autonome ne s’appuie sur la présence d’aucune infrastructure partagée sur le système hôte.</span><span class="sxs-lookup"><span data-stu-id="140f6-160">Self-contained deployment (SCD) doesn't rely on the presence of a shared framework on the host system.</span></span> <span data-ttu-id="140f6-161">Le runtime et les dépendances de l’application sont déployés avec l’application.</span><span class="sxs-lookup"><span data-stu-id="140f6-161">The runtime and the app's dependencies are deployed with the app.</span></span>
+
+<span data-ttu-id="140f6-162">Un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows est inclus dans l’élément `<PropertyGroup>` qui contient la version cible de .NET Framework :</span><span class="sxs-lookup"><span data-stu-id="140f6-162">A Windows [Runtime Identifier (RID)](/dotnet/core/rid-catalog) is included in the `<PropertyGroup>` that contains the target framework:</span></span>
 
 ```xml
-<PropertyGroup>
-  <TargetFramework>netcoreapp2.2</TargetFramework>
-  <RuntimeIdentifier>win7-x64</RuntimeIdentifier>
-  <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
-</PropertyGroup>
+<RuntimeIdentifier>win7-x64</RuntimeIdentifier>
 ```
 
-<span data-ttu-id="e9bfb-136">Pour publier pour plusieurs RID :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-136">To publish for multiple RIDs:</span></span>
+<span data-ttu-id="140f6-163">Pour publier pour plusieurs RID :</span><span class="sxs-lookup"><span data-stu-id="140f6-163">To publish for multiple RIDs:</span></span>
 
-* <span data-ttu-id="e9bfb-137">Fournissez les RID dans une liste séparée par des points-virgules.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-137">Provide the RIDs in a semicolon-delimited list.</span></span>
-* <span data-ttu-id="e9bfb-138">Utilisez le nom de la propriété `<RuntimeIdentifiers>` (pluriel).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-138">Use the property name `<RuntimeIdentifiers>` (plural).</span></span>
+* <span data-ttu-id="140f6-164">Fournissez les RID dans une liste séparée par des points-virgules.</span><span class="sxs-lookup"><span data-stu-id="140f6-164">Provide the RIDs in a semicolon-delimited list.</span></span>
+* <span data-ttu-id="140f6-165">Utilisez le nom de propriété [\<RuntimeIdentifiers >](/dotnet/core/tools/csproj#runtimeidentifiers) (au pluriel).</span><span class="sxs-lookup"><span data-stu-id="140f6-165">Use the property name [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) (plural).</span></span>
 
-  <span data-ttu-id="e9bfb-139">Pour plus d’informations, consultez le [Catalogue RID .NET Core](/dotnet/core/rid-catalog).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-139">For more information, see [.NET Core RID Catalog](/dotnet/core/rid-catalog).</span></span>
+<span data-ttu-id="140f6-166">Pour plus d’informations, consultez le [Catalogue RID .NET Core](/dotnet/core/rid-catalog).</span><span class="sxs-lookup"><span data-stu-id="140f6-166">For more information, see [.NET Core RID Catalog](/dotnet/core/rid-catalog).</span></span>
 
-<span data-ttu-id="e9bfb-140">Ajoutez une référence de package pour [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-140">Add a package reference for [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices).</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="e9bfb-141">Pour activer l’enregistrement du journal des événements Windows, ajoutez une référence de package pour [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-141">To enable Windows Event Log logging, add a package reference for [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog).</span></span>
+<span data-ttu-id="140f6-167">Une propriété `<SelfContained>` est définie sur `true` :</span><span class="sxs-lookup"><span data-stu-id="140f6-167">A `<SelfContained>` property is set to `true`:</span></span>
 
-<span data-ttu-id="e9bfb-142">Pour plus d’informations, consultez la section [Gérer les événements de démarrage et d’arrêt](#handle-starting-and-stopping-events).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-142">For more information, see the [Handle starting and stopping events](#handle-starting-and-stopping-events) section.</span></span>
-
-### <a name="programmain-updates"></a><span data-ttu-id="e9bfb-143">Mises à jour Program.Main</span><span class="sxs-lookup"><span data-stu-id="e9bfb-143">Program.Main updates</span></span>
-
-<span data-ttu-id="e9bfb-144">Dans `Program.Main`, effectuez les changements suivants :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-144">Make the following changes in `Program.Main`:</span></span>
-
-* <span data-ttu-id="e9bfb-145">Pour effectuer des tests et un débogage lors de l’exécution en dehors d’un service, ajoutez un code pour déterminer si l’application s’exécute comme un service ou comme une application console.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-145">To test and debug when running outside of a service, add code to determine if the app is running as a service or a console app.</span></span> <span data-ttu-id="e9bfb-146">Vérifiez si le débogueur est attaché ou si un argument de ligne de commande `--console` est présent.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-146">Inspect if the debugger is attached or a `--console` command-line argument is present.</span></span>
-
-  <span data-ttu-id="e9bfb-147">Si l’une de ces deux conditions est remplie (l’application n’est pas exécutée en tant que service), appelez <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> sur l’hôte web.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-147">If either condition is true (the app isn't run as a service), call <xref:Microsoft.AspNetCore.Hosting.WebHostExtensions.Run*> on the Web Host.</span></span>
-
-  <span data-ttu-id="e9bfb-148">Si les conditions ne sont pas remplies (l’application est exécutée en tant que service) :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-148">If the conditions are false (the app is run as a service):</span></span>
-
-  * <span data-ttu-id="e9bfb-149">Appelez <xref:System.IO.Directory.SetCurrentDirectory*> et utilisez un chemin vers l’emplacement publié de l’application.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-149">Call <xref:System.IO.Directory.SetCurrentDirectory*> and use a path to the app's published location.</span></span> <span data-ttu-id="e9bfb-150">N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque <xref:System.IO.Directory.GetCurrentDirectory*> est appelée.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-150">Don't call <xref:System.IO.Directory.GetCurrentDirectory*> to obtain the path because a Windows Service app returns the *C:\\WINDOWS\\system32* folder when <xref:System.IO.Directory.GetCurrentDirectory*> is called.</span></span> <span data-ttu-id="e9bfb-151">Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-151">For more information, see the [Current directory and content root](#current-directory-and-content-root) section.</span></span>
-  * <span data-ttu-id="e9bfb-152">Appelez <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> pour exécuter l’application en tant que service.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-152">Call <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> to run the app as a service.</span></span>
-
-  <span data-ttu-id="e9bfb-153">Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le commutateur `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-153">Because the [Command-line Configuration Provider](xref:fundamentals/configuration/index#command-line-configuration-provider) requires name-value pairs for command-line arguments, the `--console` switch is removed from the arguments before <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> receives them.</span></span>
-
-* <span data-ttu-id="e9bfb-154">Pour consigner des informations dans le journal des événements Windows, ajoutez le fournisseur EventLog à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-154">To write to the Windows Event Log, add the EventLog provider to <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureLogging*>.</span></span> <span data-ttu-id="e9bfb-155">Définissez le niveau de journalisation à l’aide de clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-155">Set the logging level with the `Logging:LogLevel:Default` key in the *appsettings.Production.json* file.</span></span> <span data-ttu-id="e9bfb-156">À des fins de démonstration et de test, le fichier des paramètres de l’exemple d’application Production définit le niveau de journalisation sur `Information`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-156">For demonstration and testing purposes, the sample app's Production settings file sets the logging level to `Information`.</span></span> <span data-ttu-id="e9bfb-157">En production, la valeur est généralement définie sur `Error`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-157">In production, the value is typically set to `Error`.</span></span> <span data-ttu-id="e9bfb-158">Pour plus d'informations, consultez <xref:fundamentals/logging/index#windows-eventlog-provider>.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-158">For more information, see <xref:fundamentals/logging/index#windows-eventlog-provider>.</span></span>
-
-[!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=snippet_Program)]
-
-## <a name="publish-the-app"></a><span data-ttu-id="e9bfb-159">Publier l'application</span><span class="sxs-lookup"><span data-stu-id="e9bfb-159">Publish the app</span></span>
-
-<span data-ttu-id="e9bfb-160">Publiez l’application avec [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), un [profil de publication Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) ou Visual Studio Code.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-160">Publish the app using [dotnet publish](/dotnet/articles/core/tools/dotnet-publish), a [Visual Studio publish profile](xref:host-and-deploy/visual-studio-publish-profiles), or Visual Studio Code.</span></span> <span data-ttu-id="e9bfb-161">Si vous utilisez Visual Studio, sélectionnez **FolderProfile** et configurez **Emplacement cible** avant de sélectionner le bouton **Publier**.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-161">When using Visual Studio, select the **FolderProfile** and configure the **Target Location** before selecting the **Publish** button.</span></span>
-
-<span data-ttu-id="e9bfb-162">Pour publier l’exemple d’application avec des outils d’interface de ligne de commande (CLI), exécutez la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) dans une interface de commande Windows à partir du dossier du projet, en passant la configuration de mise en production (Release) à l’option [-c|--configuration](/dotnet/core/tools/dotnet-publish#options).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-162">To publish the sample app using command-line interface (CLI) tools, run the [dotnet publish](/dotnet/core/tools/dotnet-publish) command in a Windows command shell from the project folder with a Release configuration passed to the [-c|--configuration](/dotnet/core/tools/dotnet-publish#options) option.</span></span> <span data-ttu-id="e9bfb-163">Utilisez l’option [-o|--output](/dotnet/core/tools/dotnet-publish#options) avec un chemin d'accès pour publier dans un dossier à l’extérieur de l’application.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-163">Use the [-o|--output](/dotnet/core/tools/dotnet-publish#options) option with a path to publish to a folder outside of the app.</span></span>
-
-### <a name="publish-a-framework-dependent-deployment-fdd"></a><span data-ttu-id="e9bfb-164">Publier un déploiement dépendant du framework</span><span class="sxs-lookup"><span data-stu-id="e9bfb-164">Publish a Framework-dependent Deployment (FDD)</span></span>
-
-<span data-ttu-id="e9bfb-165">Dans l’exemple suivant, l’application est publiée dans le dossier *c:\\svc* :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-165">In the following example, the app is published to the *c:\\svc* folder:</span></span>
-
-```console
-dotnet publish --configuration Release --output c:\svc
+```xml
+<SelfContained>true</SelfContained>
 ```
 
-### <a name="publish-a-self-contained-deployment-scd"></a><span data-ttu-id="e9bfb-166">Publier un déploiement autonome</span><span class="sxs-lookup"><span data-stu-id="e9bfb-166">Publish a Self-contained Deployment (SCD)</span></span>
+::: moniker-end
 
-<span data-ttu-id="e9bfb-167">Le RID doit être spécifié dans la propriété `<RuntimeIdenfifier>` (ou `<RuntimeIdentifiers>`) du fichier projet.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-167">The RID must be specified in the `<RuntimeIdenfifier>` (or `<RuntimeIdentifiers>`) property of the project file.</span></span> <span data-ttu-id="e9bfb-168">Fournissez le runtime à l’option [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) de la commande `dotnet publish`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-168">Supply the runtime to the [-r|--runtime](/dotnet/core/tools/dotnet-publish#options) option of the `dotnet publish` command.</span></span>
+## <a name="service-user-account"></a><span data-ttu-id="140f6-168">Compte d’utilisateur du service</span><span class="sxs-lookup"><span data-stu-id="140f6-168">Service user account</span></span>
 
-<span data-ttu-id="e9bfb-169">Dans l’exemple suivant, l’application est publiée pour le runtime `win7-x64` dans le dossier *c:\\svc* :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-169">In the following example, the app is published for the `win7-x64` runtime to the *c:\\svc* folder:</span></span>
+<span data-ttu-id="140f6-169">Pour créer un compte d’utilisateur du service, utilisez la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) depuis un interpréteur de commandes d’administration PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="140f6-169">To create a user account for a service, use the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet from an administrative PowerShell 6 command shell.</span></span>
 
-```console
-dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
-```
+<span data-ttu-id="140f6-170">Dans la Mise à jour de Windows 10 d’octobre 2018 (version 1809/build 10.0.17763) ou plus :</span><span class="sxs-lookup"><span data-stu-id="140f6-170">On Windows 10 October 2018 Update (version 1809/build 10.0.17763) or later:</span></span>
 
-## <a name="create-a-user-account"></a><span data-ttu-id="e9bfb-170">Créer un compte d’utilisateur</span><span class="sxs-lookup"><span data-stu-id="e9bfb-170">Create a user account</span></span>
-
-<span data-ttu-id="e9bfb-171">Créez un compte d’utilisateur pour le service avec la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) dans une interface de commande d’administration PowerShell 6 :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-171">Create a user account for the service using the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet from an administrative PowerShell 6 command shell:</span></span>
-
-```powershell
+```PowerShell
 New-LocalUser -Name {NAME}
 ```
 
-<span data-ttu-id="e9bfb-172">Fournissez un [mot de passe fort](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) à l’invite.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-172">Provide a [strong password](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) when prompted.</span></span>
+<span data-ttu-id="140f6-171">Dans un système d’exploitation Windows antérieur à la Mise à jour de Windows 10 d’octobre 2018 (version 1809/build 10.0.17763) :</span><span class="sxs-lookup"><span data-stu-id="140f6-171">On Windows OS earlier than the Windows 10 October 2018 Update (version 1809/build 10.0.17763):</span></span>
 
-<span data-ttu-id="e9bfb-173">Pour l’exemple d’application, créez un compte d’utilisateur portant le nom `ServiceUser`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-173">For the sample app, create a user account with the name `ServiceUser`.</span></span>
-
-```powershell
-New-LocalUser -Name ServiceUser
+```console
+powershell -Command "New-LocalUser -Name {NAME}"
 ```
 
-<span data-ttu-id="e9bfb-174">Le compte n’expire pas, sauf si le paramètre `-AccountExpires` est fourni à la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) avec un <xref:System.DateTime> d’expiration.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-174">Unless the `-AccountExpires` parameter is supplied to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet with an expiration <xref:System.DateTime>, the account doesn't expire.</span></span>
+<span data-ttu-id="140f6-172">Fournissez un [mot de passe fort](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) à l’invite.</span><span class="sxs-lookup"><span data-stu-id="140f6-172">Provide a [strong password](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) when prompted.</span></span>
 
-<span data-ttu-id="e9bfb-175">Pour plus d’informations, voir [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) et [Comptes d’utilisateurs de service](/windows/desktop/services/service-user-accounts).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-175">For more information, see [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) and [Service User Accounts](/windows/desktop/services/service-user-accounts).</span></span>
+<span data-ttu-id="140f6-173">Le compte n’expire pas, sauf si le paramètre `-AccountExpires` est fourni à la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) avec un <xref:System.DateTime> d’expiration.</span><span class="sxs-lookup"><span data-stu-id="140f6-173">Unless the `-AccountExpires` parameter is supplied to the [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) cmdlet with an expiration <xref:System.DateTime>, the account doesn't expire.</span></span>
 
-<span data-ttu-id="e9bfb-176">Une approche alternative à la gestion des utilisateurs lors de l’utilisation d’Active Directory consiste à utiliser des Comptes de service administrés.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-176">An alternative approach to managing users when using Active Directory is to use Managed Service Accounts.</span></span> <span data-ttu-id="e9bfb-177">Pour plus d’informations, consultez [Vue d’ensemble des comptes de service administrés de groupe](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-177">For more information, see [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span></span>
+<span data-ttu-id="140f6-174">Pour plus d’informations, voir [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) et [Comptes d’utilisateurs de service](/windows/desktop/services/service-user-accounts).</span><span class="sxs-lookup"><span data-stu-id="140f6-174">For more information, see [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts/) and [Service User Accounts](/windows/desktop/services/service-user-accounts).</span></span>
 
-## <a name="set-permission-log-on-as-a-service"></a><span data-ttu-id="e9bfb-178">Définir l’autorisation : Ouvrir une session en tant que service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-178">Set permission: Log on as a service</span></span>
+<span data-ttu-id="140f6-175">Une approche alternative à la gestion des utilisateurs lors de l’utilisation d’Active Directory consiste à utiliser des Comptes de service administrés.</span><span class="sxs-lookup"><span data-stu-id="140f6-175">An alternative approach to managing users when using Active Directory is to use Managed Service Accounts.</span></span> <span data-ttu-id="140f6-176">Pour plus d’informations, consultez [Vue d’ensemble des comptes de service administrés de groupe](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span><span class="sxs-lookup"><span data-stu-id="140f6-176">For more information, see [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).</span></span>
 
-<span data-ttu-id="e9bfb-179">Accordez l’accès en écriture/lecture/exécution au dossier de l’application avec la commande [icacls](/windows-server/administration/windows-commands/icacls) dans une interface de commande d’administration PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-179">Grant write/read/execute access to the app's folder using the [icacls](/windows-server/administration/windows-commands/icacls) command an administrative PowerShell 6 command shell.</span></span>
+## <a name="log-on-as-a-service-rights"></a><span data-ttu-id="140f6-177">Droits d’ouverture de session en tant que service</span><span class="sxs-lookup"><span data-stu-id="140f6-177">Log on as a service rights</span></span>
 
-```powershell
-icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
-```
+<span data-ttu-id="140f6-178">Pour établir des droits *d’ouverture de session en tant que service* pour un compte d’utilisateur de service, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="140f6-178">To establish *Log on as a service* rights for a service user account:</span></span>
 
-* <span data-ttu-id="e9bfb-180">`{PATH}` &ndash; Chemin au dossier de l’application.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-180">`{PATH}` &ndash; Path to the app's folder.</span></span>
-* <span data-ttu-id="e9bfb-181">`{USER ACCOUNT}` &ndash; Compte d’utilisateur (SID).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-181">`{USER ACCOUNT}` &ndash; The user account (SID).</span></span>
-* <span data-ttu-id="e9bfb-182">`(OI)` &ndash; L’indicateur Object Inherit propage les autorisations aux fichiers subordonnés.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-182">`(OI)` &ndash; The Object Inherit flag propagates permissions to subordinate files.</span></span>
-* <span data-ttu-id="e9bfb-183">`(CI)` &ndash; L’indicateur Container Inherit propage les autorisations aux dossiers subordonnés.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-183">`(CI)` &ndash; The Container Inherit flag propagates permissions to subordinate folders.</span></span>
-* <span data-ttu-id="e9bfb-184">`{PERMISSION FLAGS}` &ndash; Définit les autorisations d’accès de l’application.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-184">`{PERMISSION FLAGS}` &ndash; Sets the app's access permissions.</span></span>
-  * <span data-ttu-id="e9bfb-185">Écriture (`W`)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-185">Write (`W`)</span></span>
-  * <span data-ttu-id="e9bfb-186">Lecture (`R`)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-186">Read (`R`)</span></span>
-  * <span data-ttu-id="e9bfb-187">Exécution (`X`)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-187">Execute (`X`)</span></span>
-  * <span data-ttu-id="e9bfb-188">Complet (`F`)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-188">Full (`F`)</span></span>
-  * <span data-ttu-id="e9bfb-189">Modification (`M`)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-189">Modify (`M`)</span></span>
-* <span data-ttu-id="e9bfb-190">`/t` &ndash; Appliquer de manière récursive aux dossiers et fichiers subordonnés existants.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-190">`/t` &ndash; Apply recursively to existing subordinate folders and files.</span></span>
+1. <span data-ttu-id="140f6-179">Ouvrez l’éditeur de stratégie de sécurité locale en exécutant le fichier *secpool.msc*.</span><span class="sxs-lookup"><span data-stu-id="140f6-179">Open the Local Security Policy editor by running *secpool.msc*.</span></span>
+1. <span data-ttu-id="140f6-180">Développez le nœud **Stratégies locales** et sélectionnez **Attribution des droits utilisateur**.</span><span class="sxs-lookup"><span data-stu-id="140f6-180">Expand the **Local Policies** node and select **User Rights Assignment**.</span></span>
+1. <span data-ttu-id="140f6-181">Ouvrez la stratégie **Ouvrir une session en tant que service**.</span><span class="sxs-lookup"><span data-stu-id="140f6-181">Open the **Log on as a service** policy.</span></span>
+1. <span data-ttu-id="140f6-182">Sélectionnez **Ajouter un utilisateur ou un groupe**.</span><span class="sxs-lookup"><span data-stu-id="140f6-182">Select **Add User or Group**.</span></span>
+1. <span data-ttu-id="140f6-183">Fournissez le nom d’objet (compte d’utilisateur) avec l’une des approches suivantes :</span><span class="sxs-lookup"><span data-stu-id="140f6-183">Provide the object name (user account) using either of the following approaches:</span></span>
+   1. <span data-ttu-id="140f6-184">Tapez le compte d’utilisateur (`{DOMAIN OR COMPUTER NAME\USER}`) dans le champ du nom d’objet et sélectionnez **OK** pour ajouter l’utilisateur à la stratégie.</span><span class="sxs-lookup"><span data-stu-id="140f6-184">Type the user account (`{DOMAIN OR COMPUTER NAME\USER}`) in the object name field and select **OK** to add the user to the policy.</span></span>
+   1. <span data-ttu-id="140f6-185">Sélectionnez **Avancé**.</span><span class="sxs-lookup"><span data-stu-id="140f6-185">Select **Advanced**.</span></span> <span data-ttu-id="140f6-186">Sélectionnez **Rechercher maintenant**.</span><span class="sxs-lookup"><span data-stu-id="140f6-186">Select **Find Now**.</span></span> <span data-ttu-id="140f6-187">Sélectionnez le compte d’utilisateur dans la liste.</span><span class="sxs-lookup"><span data-stu-id="140f6-187">Select the user account from the list.</span></span> <span data-ttu-id="140f6-188">Sélectionnez **OK**.</span><span class="sxs-lookup"><span data-stu-id="140f6-188">Select **OK**.</span></span> <span data-ttu-id="140f6-189">Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.</span><span class="sxs-lookup"><span data-stu-id="140f6-189">Select **OK** again to add the user to the policy.</span></span>
+1. <span data-ttu-id="140f6-190">Sélectionnez **OK** ou **Appliquer** pour accepter les modifications.</span><span class="sxs-lookup"><span data-stu-id="140f6-190">Select **OK** or **Apply** to accept the changes.</span></span>
 
-<span data-ttu-id="e9bfb-191">Pour l’exemple d’application publiée dans le dossier *c:\\svc* et le compte `ServiceUser` avec des autorisations en écriture/lecture/exécution, utilisez la commande suivante dans une interface de commande d’administration PowerShell 6.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-191">For the sample app published to the *c:\\svc* folder and the `ServiceUser` account with write/read/execute permissions, use the following command an administrative PowerShell 6 command shell.</span></span>
+## <a name="create-and-manage-the-windows-service"></a><span data-ttu-id="140f6-191">Créer et gérer le service Windows</span><span class="sxs-lookup"><span data-stu-id="140f6-191">Create and manage the Windows Service</span></span>
 
-```powershell
-icacls "c:\svc" /grant "ServiceUser:(OI)(CI)WRX" /t
-```
+### <a name="create-a-service"></a><span data-ttu-id="140f6-192">Créer un service</span><span class="sxs-lookup"><span data-stu-id="140f6-192">Create a service</span></span>
 
-<span data-ttu-id="e9bfb-192">Pour plus d’informations, consultez [icacls](/windows-server/administration/windows-commands/icacls).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-192">For more information, see [icacls](/windows-server/administration/windows-commands/icacls).</span></span>
-
-## <a name="create-the-service"></a><span data-ttu-id="e9bfb-193">Créer le service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-193">Create the service</span></span>
-
-<span data-ttu-id="e9bfb-194">Utilisez le script PowerShell [RegisterService.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) pour inscrire le service.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-194">Use the [RegisterService.ps1](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/scripts) PowerShell script to register the service.</span></span> <span data-ttu-id="e9bfb-195">Dans une interface de commande d’administration PowerShell 6, exécutez le script avec la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-195">From an administrative PowerShell 6 command shell, execute the script with the following command:</span></span>
+<span data-ttu-id="140f6-193">Utilisez les commandes PowerShell pour enregistrer un service.</span><span class="sxs-lookup"><span data-stu-id="140f6-193">Use PowerShell commands to register a service.</span></span> <span data-ttu-id="140f6-194">À partir d’un interpréteur de commandes d’administration PowerShell 6, exécutez les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="140f6-194">From an administrative PowerShell 6 command shell, execute the following commands:</span></span>
 
 ```powershell
-.\RegisterService.ps1 
-    -Name {NAME} 
-    -DisplayName "{DISPLAY NAME}" 
-    -Description "{DESCRIPTION}" 
-    -Exe "{PATH TO EXE}\{ASSEMBLY NAME}.exe" 
-    -User {DOMAIN\USER}
+$acl = Get-Acl "{EXE PATH}"
+$aclRuleArgs = {DOMAIN OR COMPUTER NAME\USER}, "Read,Write,ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow"
+$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($aclRuleArgs)
+$acl.SetAccessRule($accessRule)
+$acl | Set-Acl "{EXE PATH}"
+
+New-Service -Name {NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-<span data-ttu-id="e9bfb-196">Dans l’exemple suivant pour l’exemple d’application :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-196">In the following example for the sample app:</span></span>
+* <span data-ttu-id="140f6-195">`{EXE PATH}` &ndash; Chemin d’accès au dossier de l’application sur l’hôte (par exemple, `d:\myservice`).</span><span class="sxs-lookup"><span data-stu-id="140f6-195">`{EXE PATH}` &ndash; Path to the app's folder on the host (for example, `d:\myservice`).</span></span> <span data-ttu-id="140f6-196">N’incluez pas le fichier exécutable de l’application dans le chemin.</span><span class="sxs-lookup"><span data-stu-id="140f6-196">Don't include the app's executable in the path.</span></span> <span data-ttu-id="140f6-197">Aucune barre oblique de fin n’est nécessaire.</span><span class="sxs-lookup"><span data-stu-id="140f6-197">A trailing slash isn't required.</span></span>
+* <span data-ttu-id="140f6-198">`{DOMAIN OR COMPUTER NAME\USER}` &ndash; Compte d’utilisateur du service (par exemple, `Contoso\ServiceUser`).</span><span class="sxs-lookup"><span data-stu-id="140f6-198">`{DOMAIN OR COMPUTER NAME\USER}` &ndash; Service user account (for example, `Contoso\ServiceUser`).</span></span>
+* <span data-ttu-id="140f6-199">`{NAME}` &ndash; Nom du service (par exemple, `MyService`).</span><span class="sxs-lookup"><span data-stu-id="140f6-199">`{NAME}` &ndash; Service name (for example, `MyService`).</span></span>
+* <span data-ttu-id="140f6-200">`{EXE FILE PATH}` &ndash; Chemin du fichier exécutable de l’application (par exemple, `d:\myservice\myservice.exe`).</span><span class="sxs-lookup"><span data-stu-id="140f6-200">`{EXE FILE PATH}` &ndash; The app's executable path (for example, `d:\myservice\myservice.exe`).</span></span> <span data-ttu-id="140f6-201">Incluez le nom de fichier de l’exécutable avec l’extension.</span><span class="sxs-lookup"><span data-stu-id="140f6-201">Include the executable's file name with extension.</span></span>
+* <span data-ttu-id="140f6-202">`{DESCRIPTION}` &ndash; Description du service (par exemple, `My sample service`).</span><span class="sxs-lookup"><span data-stu-id="140f6-202">`{DESCRIPTION}` &ndash; Service description (for example, `My sample service`).</span></span>
+* <span data-ttu-id="140f6-203">`{DISPLAY NAME}` &ndash; Nom d’affichage du service (par exemple, `My Service`).</span><span class="sxs-lookup"><span data-stu-id="140f6-203">`{DISPLAY NAME}` &ndash; Service display name (for example, `My Service`).</span></span>
 
-* <span data-ttu-id="e9bfb-197">Le service s’appelle **MyService**.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-197">The service is named **MyService**.</span></span>
-* <span data-ttu-id="e9bfb-198">Le service publié réside dans le dossier *c:\\svc*.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-198">The published service resides in the *c:\\svc* folder.</span></span> <span data-ttu-id="e9bfb-199">L’application exécutable s’appelle *SampleApp.exe*.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-199">The app executable is named *SampleApp.exe*.</span></span>
-* <span data-ttu-id="e9bfb-200">Le service s’exécute sous le compte `ServiceUser`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-200">The service runs under the `ServiceUser` account.</span></span> <span data-ttu-id="e9bfb-201">Dans l’exemple de commande suivant, le nom de l’ordinateur local est `Desktop-PC`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-201">In the following example command, the local machine name is `Desktop-PC`.</span></span> <span data-ttu-id="e9bfb-202">Remplacez `Desktop-PC` par le nom de l’ordinateur ou le domaine de votre système.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-202">Replace `Desktop-PC` with the computer name or domain for your system.</span></span>
+### <a name="start-a-service"></a><span data-ttu-id="140f6-204">Démarrer un service</span><span class="sxs-lookup"><span data-stu-id="140f6-204">Start a service</span></span>
+
+<span data-ttu-id="140f6-205">Démarrez un service avec la commande PowerShell 6 suivante :</span><span class="sxs-lookup"><span data-stu-id="140f6-205">Start a service with the following PowerShell 6 command:</span></span>
 
 ```powershell
-.\RegisterService.ps1 
-    -Name MyService 
-    -DisplayName "My Cool Service" 
-    -Description "This is the Sample App service." 
-    -Exe "c:\svc\SampleApp.exe" 
-    -User Desktop-PC\ServiceUser
+Start-Service -Name {NAME}
 ```
 
-## <a name="manage-the-service"></a><span data-ttu-id="e9bfb-203">Gérer le service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-203">Manage the service</span></span>
+<span data-ttu-id="140f6-206">La commande prend quelques secondes pour démarrer le service.</span><span class="sxs-lookup"><span data-stu-id="140f6-206">The command takes a few seconds to start the service.</span></span>
 
-### <a name="start-the-service"></a><span data-ttu-id="e9bfb-204">Démarrer le service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-204">Start the service</span></span>
+### <a name="determine-a-services-status"></a><span data-ttu-id="140f6-207">Déterminer l’état d’un service</span><span class="sxs-lookup"><span data-stu-id="140f6-207">Determine a service's status</span></span>
 
-<span data-ttu-id="e9bfb-205">Démarrez le service avec la commande PowerShell 6 `Start-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-205">Start the service with the `Start-Service -Name {NAME}` PowerShell 6 command.</span></span>
-
-<span data-ttu-id="e9bfb-206">Pour démarrer l’exemple de service d’application, utilisez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-206">To start the sample app service, use the following command:</span></span>
+<span data-ttu-id="140f6-208">Pour vérifier l’état d’un service, utilisez la commande PowerShell 6 suivante :</span><span class="sxs-lookup"><span data-stu-id="140f6-208">To check the status of a service, use the following PowerShell 6 command:</span></span>
 
 ```powershell
-Start-Service -Name MyService
+Get-Service -Name {NAME}
 ```
 
-<span data-ttu-id="e9bfb-207">La commande prend quelques secondes pour démarrer le service.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-207">The command takes a few seconds to start the service.</span></span>
-
-### <a name="determine-the-service-status"></a><span data-ttu-id="e9bfb-208">Déterminer l’état du service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-208">Determine the service status</span></span>
-
-<span data-ttu-id="e9bfb-209">Pour vérifier l’état du service, utilisez la commande PowerShell 6 `Get-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-209">To check the status of the service, use the `Get-Service -Name {NAME}` PowerShell 6 command.</span></span> <span data-ttu-id="e9bfb-210">L’état est signalé comme étant l’une des valeurs suivantes :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-210">The status is reported as one of the following values:</span></span>
+<span data-ttu-id="140f6-209">L’état est signalé comme étant l’une des valeurs suivantes :</span><span class="sxs-lookup"><span data-stu-id="140f6-209">The status is reported as one of the following values:</span></span>
 
 * `Starting`
 * `Running`
 * `Stopping`
 * `Stopped`
 
-<span data-ttu-id="e9bfb-211">Utilisez la commande suivante pour vérifier l’état de l’exemple de service d’application :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-211">Use the following command to check the status of the sample app service:</span></span>
+### <a name="stop-a-service"></a><span data-ttu-id="140f6-210">Arrêter un service</span><span class="sxs-lookup"><span data-stu-id="140f6-210">Stop a service</span></span>
+
+<span data-ttu-id="140f6-211">Arrêtez un service avec la commande Powershell 6 suivante :</span><span class="sxs-lookup"><span data-stu-id="140f6-211">Stop a service with the following Powershell 6 command:</span></span>
 
 ```powershell
-Get-Service -Name MyService
+Stop-Service -Name {NAME}
 ```
 
-### <a name="browse-a-web-app-service"></a><span data-ttu-id="e9bfb-212">Parcourir un service d’application web</span><span class="sxs-lookup"><span data-stu-id="e9bfb-212">Browse a web app service</span></span>
+### <a name="remove-a-service"></a><span data-ttu-id="140f6-212">Supprimer un service</span><span class="sxs-lookup"><span data-stu-id="140f6-212">Remove a service</span></span>
 
-<span data-ttu-id="e9bfb-213">Quand le service est une application web et que son état est `RUNNING`, accédez au chemin de l'application (par défaut, `http://localhost:5000`, qui redirige vers `https://localhost:5001` si le [middleware (intergiciel) de redirection HTTPS](xref:security/enforcing-ssl) est utilisé).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-213">When the service is in the `RUNNING` state and if the service is a web app, browse the app at its path (by default, `http://localhost:5000`, which redirects to `https://localhost:5001` when using [HTTPS Redirection Middleware](xref:security/enforcing-ssl)).</span></span>
-
-<span data-ttu-id="e9bfb-214">Pour l’exemple de service d’application, accédez au chemin de l'application sur `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-214">For the sample app service, browse the app at `http://localhost:5000`.</span></span>
-
-### <a name="stop-the-service"></a><span data-ttu-id="e9bfb-215">Arrêter le service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-215">Stop the service</span></span>
-
-<span data-ttu-id="e9bfb-216">Arrêtez le service avec la commande PowerShell 6 `Stop-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-216">Stop the service with the `Stop-Service -Name {NAME}` Powershell 6 command.</span></span>
-
-<span data-ttu-id="e9bfb-217">La commande suivante arrête l’exemple de service d’application :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-217">The following command stops the sample app service:</span></span>
+<span data-ttu-id="140f6-213">Après un court délai pour arrêter un service, supprimez-le avec la commande PowerShell 6 suivante :</span><span class="sxs-lookup"><span data-stu-id="140f6-213">After a short delay to stop a service, remove a service with the following Powershell 6 command:</span></span>
 
 ```powershell
-Stop-Service -Name MyService
+Remove-Service -Name {NAME}
 ```
 
-### <a name="remove-the-service"></a><span data-ttu-id="e9bfb-218">Supprimer le service</span><span class="sxs-lookup"><span data-stu-id="e9bfb-218">Remove the service</span></span>
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="e9bfb-219">Après un court délai pour arrêter un service, supprimez le service avec la commande PowerShell 6 `Remove-Service -Name {NAME}`.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-219">After a short delay to stop a service, remove the service with the `Remove-Service -Name {NAME}` Powershell 6 command.</span></span>
+## <a name="handle-starting-and-stopping-events"></a><span data-ttu-id="140f6-214">Gérer les événements de démarrage et d’arrêt</span><span class="sxs-lookup"><span data-stu-id="140f6-214">Handle starting and stopping events</span></span>
 
-<span data-ttu-id="e9bfb-220">La commande suivante supprime l’exemple de service d’application :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-220">The following command removes the sample app service:</span></span>
+<span data-ttu-id="140f6-215">Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> et <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*>, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="140f6-215">To handle <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*>, and <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> events:</span></span>
 
-```powershell
-Remove-Service -Name MyService
-```
-
-## <a name="handle-starting-and-stopping-events"></a><span data-ttu-id="e9bfb-221">Gérer les événements de démarrage et d’arrêt</span><span class="sxs-lookup"><span data-stu-id="e9bfb-221">Handle starting and stopping events</span></span>
-
-<span data-ttu-id="e9bfb-222">Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*> et <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*>, apportez les modifications supplémentaires suivantes :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-222">To handle <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarting*>, <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStarted*>, and <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService.OnStopping*> events, perform the following additional changes:</span></span>
-
-1. <span data-ttu-id="e9bfb-223">Créez une classe qui dérive de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> à l’aide des méthodes `OnStarting`, `OnStarted` et `OnStopping` :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-223">Create a class that derives from <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> with the `OnStarting`, `OnStarted`, and `OnStopping` methods:</span></span>
+1. <span data-ttu-id="140f6-216">Créez une classe qui dérive de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> à l’aide des méthodes `OnStarting`, `OnStarted` et `OnStopping` :</span><span class="sxs-lookup"><span data-stu-id="140f6-216">Create a class that derives from <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostService> with the `OnStarting`, `OnStarted`, and `OnStopping` methods:</span></span>
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/CustomWebHostService.cs?name=snippet_CustomWebHostService)]
 
-2. <span data-ttu-id="e9bfb-224">Créez une méthode d’extension pour <xref:Microsoft.AspNetCore.Hosting.IWebHost> qui transmet `CustomWebHostService` à <xref:System.ServiceProcess.ServiceBase.Run*> :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-224">Create an extension method for <xref:Microsoft.AspNetCore.Hosting.IWebHost> that passes the `CustomWebHostService` to <xref:System.ServiceProcess.ServiceBase.Run*>:</span></span>
+2. <span data-ttu-id="140f6-217">Créez une méthode d’extension pour <xref:Microsoft.AspNetCore.Hosting.IWebHost> qui transmet `CustomWebHostService` à <xref:System.ServiceProcess.ServiceBase.Run*> :</span><span class="sxs-lookup"><span data-stu-id="140f6-217">Create an extension method for <xref:Microsoft.AspNetCore.Hosting.IWebHost> that passes the `CustomWebHostService` to <xref:System.ServiceProcess.ServiceBase.Run*>:</span></span>
 
    [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/WebHostServiceExtensions.cs?name=ExtensionsClass)]
 
-3. <span data-ttu-id="e9bfb-225">Dans `Program.Main`, appelez la méthode d’extension `RunAsCustomService` au lieu de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-225">In `Program.Main`, call the `RunAsCustomService` extension method instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span></span>
+3. <span data-ttu-id="140f6-218">Dans `Program.Main`, appelez la méthode d’extension `RunAsCustomService` au lieu de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> :</span><span class="sxs-lookup"><span data-stu-id="140f6-218">In `Program.Main`, call the `RunAsCustomService` extension method instead of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*>:</span></span>
 
    ```csharp
    host.RunAsCustomService();
    ```
 
-   <span data-ttu-id="e9bfb-226">Pour afficher l’emplacement de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> dans `Program.Main`, reportez-vous à l’exemple de code indiqué dans la section [Convertir un projet en service Windows](#convert-a-project-into-a-windows-service).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-226">To see the location of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in `Program.Main`, refer to the code sample shown in the [Convert a project into a Windows Service](#convert-a-project-into-a-windows-service) section.</span></span>
+   <span data-ttu-id="140f6-219">Pour afficher l’emplacement de <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> dans `Program.Main`, reportez-vous à l’exemple de code indiqué dans la section [Type de déploiement](#deployment-type).</span><span class="sxs-lookup"><span data-stu-id="140f6-219">To see the location of <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> in `Program.Main`, refer to the code sample shown in the [Deployment type](#deployment-type) section.</span></span>
 
-## <a name="proxy-server-and-load-balancer-scenarios"></a><span data-ttu-id="e9bfb-227">Scénarios avec un serveur proxy et un équilibreur de charge</span><span class="sxs-lookup"><span data-stu-id="e9bfb-227">Proxy server and load balancer scenarios</span></span>
+::: moniker-end
 
-<span data-ttu-id="e9bfb-228">Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-228">Services that interact with requests from the Internet or a corporate network and are behind a proxy or load balancer might require additional configuration.</span></span> <span data-ttu-id="e9bfb-229">Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-229">For more information, see <xref:host-and-deploy/proxy-load-balancer>.</span></span>
+## <a name="proxy-server-and-load-balancer-scenarios"></a><span data-ttu-id="140f6-220">Scénarios avec un serveur proxy et un équilibreur de charge</span><span class="sxs-lookup"><span data-stu-id="140f6-220">Proxy server and load balancer scenarios</span></span>
 
-## <a name="configure-https"></a><span data-ttu-id="e9bfb-230">Configurer HTTPS</span><span class="sxs-lookup"><span data-stu-id="e9bfb-230">Configure HTTPS</span></span>
+<span data-ttu-id="140f6-221">Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire.</span><span class="sxs-lookup"><span data-stu-id="140f6-221">Services that interact with requests from the Internet or a corporate network and are behind a proxy or load balancer might require additional configuration.</span></span> <span data-ttu-id="140f6-222">Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.</span><span class="sxs-lookup"><span data-stu-id="140f6-222">For more information, see <xref:host-and-deploy/proxy-load-balancer>.</span></span>
 
-<span data-ttu-id="e9bfb-231">Pour configurer le service avec un point de terminaison sécurisé :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-231">To configure the service with a secure endpoint:</span></span>
+## <a name="configure-https"></a><span data-ttu-id="140f6-223">Configurer HTTPS</span><span class="sxs-lookup"><span data-stu-id="140f6-223">Configure HTTPS</span></span>
 
-1. <span data-ttu-id="e9bfb-232">Créez un certificat X.509 pour le système d’hébergement à l’aide des mécanismes d’acquisition et de déploiement de certificat de votre plateforme.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-232">Create an X.509 certificate for the hosting system using your platform's certificate acquisition and deployment mechanisms.</span></span>
+<span data-ttu-id="140f6-224">Pour configurer le service avec un point de terminaison sécurisé, procédez comme suit :</span><span class="sxs-lookup"><span data-stu-id="140f6-224">To configure a service with a secure endpoint:</span></span>
 
-1. <span data-ttu-id="e9bfb-233">Spécifiez la [configuration de point de terminaison HTTPS d’un serveur Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) pour utiliser le certificat.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-233">Specify a [Kestrel server HTTPS endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) to use the certificate.</span></span>
+1. <span data-ttu-id="140f6-225">Créez un certificat X.509 pour le système d’hébergement à l’aide des mécanismes d’acquisition et de déploiement de certificat de votre plateforme.</span><span class="sxs-lookup"><span data-stu-id="140f6-225">Create an X.509 certificate for the hosting system using your platform's certificate acquisition and deployment mechanisms.</span></span>
 
-<span data-ttu-id="e9bfb-234">L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-234">Use of the ASP.NET Core HTTPS development certificate to secure a service endpoint isn't supported.</span></span>
+1. <span data-ttu-id="140f6-226">Spécifiez la [configuration de point de terminaison HTTPS d’un serveur Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) pour utiliser le certificat.</span><span class="sxs-lookup"><span data-stu-id="140f6-226">Specify a [Kestrel server HTTPS endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) to use the certificate.</span></span>
 
-## <a name="current-directory-and-content-root"></a><span data-ttu-id="e9bfb-235">Répertoire actif et racine du contenu</span><span class="sxs-lookup"><span data-stu-id="e9bfb-235">Current directory and content root</span></span>
+<span data-ttu-id="140f6-227">L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.</span><span class="sxs-lookup"><span data-stu-id="140f6-227">Use of the ASP.NET Core HTTPS development certificate to secure a service endpoint isn't supported.</span></span>
 
-<span data-ttu-id="e9bfb-236">Le répertoire de travail actif retourné par l’appel à <xref:System.IO.Directory.GetCurrentDirectory*> pour un service Windows est le dossier *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-236">The current working directory returned by calling <xref:System.IO.Directory.GetCurrentDirectory*> for a Windows Service is the *C:\\WINDOWS\\system32* folder.</span></span> <span data-ttu-id="e9bfb-237">Le dossier *system32* n’est pas un emplacement approprié pour stocker les fichiers d’un service (tels que les fichiers de paramètres).</span><span class="sxs-lookup"><span data-stu-id="e9bfb-237">The *system32* folder isn't a suitable location to store a service's files (for example, settings files).</span></span> <span data-ttu-id="e9bfb-238">Utilisez une des approches suivantes pour gérer les ressources ainsi que les fichiers de paramètres d’un service, et y accéder.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-238">Use one of the following approaches to maintain and access a service's assets and settings files.</span></span>
+## <a name="current-directory-and-content-root"></a><span data-ttu-id="140f6-228">Répertoire actif et racine du contenu</span><span class="sxs-lookup"><span data-stu-id="140f6-228">Current directory and content root</span></span>
 
-### <a name="set-the-content-root-path-to-the-apps-folder"></a><span data-ttu-id="e9bfb-239">Définir le dossier de l’application comme chemin d’accès racine du contenu</span><span class="sxs-lookup"><span data-stu-id="e9bfb-239">Set the content root path to the app's folder</span></span>
+<span data-ttu-id="140f6-229">Le répertoire de travail actif retourné par l’appel à <xref:System.IO.Directory.GetCurrentDirectory*> pour un service Windows est le dossier *C:\\WINDOWS\\system32*.</span><span class="sxs-lookup"><span data-stu-id="140f6-229">The current working directory returned by calling <xref:System.IO.Directory.GetCurrentDirectory*> for a Windows Service is the *C:\\WINDOWS\\system32* folder.</span></span> <span data-ttu-id="140f6-230">Le dossier *system32* n’est pas un emplacement approprié pour stocker les fichiers d’un service (tels que les fichiers de paramètres).</span><span class="sxs-lookup"><span data-stu-id="140f6-230">The *system32* folder isn't a suitable location to store a service's files (for example, settings files).</span></span> <span data-ttu-id="140f6-231">Utilisez une des approches suivantes pour gérer les ressources ainsi que les fichiers de paramètres d’un service, et y accéder.</span><span class="sxs-lookup"><span data-stu-id="140f6-231">Use one of the following approaches to maintain and access a service's assets and settings files.</span></span>
 
-<span data-ttu-id="e9bfb-240"><xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> est le même chemin que celui fourni à l’argument `binPath` quand le service est créé.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-240">The <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> is the same path provided to the `binPath` argument when the service is created.</span></span> <span data-ttu-id="e9bfb-241">Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:System.IO.Directory.SetCurrentDirectory*> en utilisant le chemin d’accès à la racine du contenu de l’application.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-241">Instead of calling `GetCurrentDirectory` to create paths to settings files, call <xref:System.IO.Directory.SetCurrentDirectory*> with the path to the app's content root.</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="e9bfb-242">Dans `Program.Main`, définissez le chemin d’accès au dossier du fichier exécutable du service ainsi que le chemin d’accès pour établir la racine du contenu de l’application :</span><span class="sxs-lookup"><span data-stu-id="e9bfb-242">In `Program.Main`, determine the path to the folder of the service's executable and use the path to establish the app's content root:</span></span>
+### <a name="use-contentrootpath-or-contentrootfileprovider"></a><span data-ttu-id="140f6-232">Utiliser ContentRootPath ou ContentRootFileProvider</span><span class="sxs-lookup"><span data-stu-id="140f6-232">Use ContentRootPath or ContentRootFileProvider</span></span>
+
+<span data-ttu-id="140f6-233">Utilisez les éléments [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) ou <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> pour localiser les ressources d’une application.</span><span class="sxs-lookup"><span data-stu-id="140f6-233">Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) or <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> to locate an app's resources.</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+### <a name="set-the-content-root-path-to-the-apps-folder"></a><span data-ttu-id="140f6-234">Définir le dossier de l’application comme chemin d’accès racine du contenu</span><span class="sxs-lookup"><span data-stu-id="140f6-234">Set the content root path to the app's folder</span></span>
+
+<span data-ttu-id="140f6-235">La chaîne <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> correspond au même chemin que celui fourni à l’argument `binPath` lorsqu’un service est créé.</span><span class="sxs-lookup"><span data-stu-id="140f6-235">The <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> is the same path provided to the `binPath` argument when a service is created.</span></span> <span data-ttu-id="140f6-236">Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:System.IO.Directory.SetCurrentDirectory*> en utilisant le chemin d’accès à la racine du contenu de l’application.</span><span class="sxs-lookup"><span data-stu-id="140f6-236">Instead of calling `GetCurrentDirectory` to create paths to settings files, call <xref:System.IO.Directory.SetCurrentDirectory*> with the path to the app's content root.</span></span>
+
+<span data-ttu-id="140f6-237">Dans `Program.Main`, définissez le chemin d’accès au dossier du fichier exécutable du service ainsi que le chemin d’accès pour établir la racine du contenu de l’application :</span><span class="sxs-lookup"><span data-stu-id="140f6-237">In `Program.Main`, determine the path to the folder of the service's executable and use the path to establish the app's content root:</span></span>
 
 ```csharp
 var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
@@ -344,12 +323,26 @@ CreateWebHostBuilder(args)
     .RunAsService();
 ```
 
-### <a name="store-the-services-files-in-a-suitable-location-on-disk"></a><span data-ttu-id="e9bfb-243">Stocker les fichiers du service dans un emplacement approprié sur le disque</span><span class="sxs-lookup"><span data-stu-id="e9bfb-243">Store the service's files in a suitable location on disk</span></span>
+::: moniker-end
 
-<span data-ttu-id="e9bfb-244">Spécifiez un chemin absolu avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>, si vous utilisez <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, vers le dossier contenant les fichiers.</span><span class="sxs-lookup"><span data-stu-id="e9bfb-244">Specify an absolute path with <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> when using an <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> to the folder containing the files.</span></span>
+### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a><span data-ttu-id="140f6-238">Stocker les fichiers d’un service dans un emplacement approprié sur le disque</span><span class="sxs-lookup"><span data-stu-id="140f6-238">Store a service's files in a suitable location on disk</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="e9bfb-245">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="e9bfb-245">Additional resources</span></span>
+<span data-ttu-id="140f6-239">Spécifiez un chemin absolu avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>, si vous utilisez <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, vers le dossier contenant les fichiers.</span><span class="sxs-lookup"><span data-stu-id="140f6-239">Specify an absolute path with <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> when using an <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> to the folder containing the files.</span></span>
 
-* <span data-ttu-id="e9bfb-246">[Configuration de point de terminaison Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (inclut la configuration de HTTPS et la prise en charge de SNI)</span><span class="sxs-lookup"><span data-stu-id="e9bfb-246">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="140f6-240">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="140f6-240">Additional resources</span></span>
+
+::: moniker range=">= aspnetcore-3.0"
+
+* <span data-ttu-id="140f6-241">[Configuration de point de terminaison Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (inclut la configuration de HTTPS et la prise en charge de SNI)</span><span class="sxs-lookup"><span data-stu-id="140f6-241">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
+* <xref:fundamentals/host/generic-host>
+* <xref:test/troubleshoot>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* <span data-ttu-id="140f6-242">[Configuration de point de terminaison Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (inclut la configuration de HTTPS et la prise en charge de SNI)</span><span class="sxs-lookup"><span data-stu-id="140f6-242">[Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration) (includes HTTPS configuration and SNI support)</span></span>
 * <xref:fundamentals/host/web-host>
 * <xref:test/troubleshoot>
+
+::: moniker-end
