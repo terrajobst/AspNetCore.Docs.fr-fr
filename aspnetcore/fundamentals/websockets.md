@@ -5,14 +5,14 @@ description: Découvrez comment commencer à utiliser les WebSockets dans ASP.NE
 monikerRange: '>= aspnetcore-1.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: 1b62dc91453437518e4b8f6f8dd0915977130766
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bba9cf051deaf57efdd82ca2fb1318fce79bd6cc
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888244"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223219"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -122,6 +122,15 @@ L’exemple suivant est extrait d’une partie ultérieure de la méthode `Confi
 ::: moniker-end
 
 Une requête WebSocket peut figurer sur toute URL, mais cet exemple de code accepte uniquement les requêtes pour `/ws`.
+
+Lorsque vous utilisez un WebSocket, vous **devez** conserver le pipeline de l’intergiciel en cours d’exécution pendant la durée de la connexion. Si vous tentez d’envoyer ou de recevoir un message WebSocket une fois que le pipeline de l’intergiciel se termine, vous pouvez obtenir une exception comme suit :
+
+```
+System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed the WebSocket connection without completing the close handshake. ---> System.ObjectDisposedException: Cannot write to the response body, the response has completed.
+Object name: 'HttpResponseStream'.
+```
+
+Si vous utilisez un service en arrière-plan pour écrire des données dans un WebSocket, assurez-vous que vous conservez le pipeline de l’intergiciel en cours d’exécution. Pour ce faire, utilisez un <xref:System.Threading.Tasks.TaskCompletionSource%601>. Passez le `TaskCompletionSource` à l’arrière-plan de votre service et faites appeler <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A> lorsque vous avez terminé avec le WebSocket. Puis `await` la propriété <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> lors de la demande.
 
 ### <a name="send-and-receive-messages"></a>Envoyer et recevoir des messages
 

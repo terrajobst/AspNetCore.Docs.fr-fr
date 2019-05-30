@@ -2,26 +2,21 @@
 title: Implémentation du serveur web Kestrel dans ASP.NET Core
 author: guardrex
 description: Découvrez plus d’informations sur Kestrel, serveur web multiplateforme pour ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 05/17/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: b5b05dbd553124cecac2ec7ddb55c939cb91c8ad
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 6f9eee1ed46f02232bed977f8f60a3d77db48784
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450990"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223153"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) et [Stephen Halter](https://twitter.com/halter73)
-
-::: moniker range="<= aspnetcore-1.1"
-
-Pour obtenir la version 1.1 de cette rubrique, téléchargez [Kestrel web server implementation in ASP.NET Core (version 1.1, PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Kestrel_1.1.pdf).
-
-::: moniker-end
 
 Kestrel est un [serveur web multiplateforme pour ASP.NET Core](xref:fundamentals/servers/index). Kestrel est le serveur web inclus par défaut dans les modèles de projets ASP.NET Core.
 
@@ -166,6 +161,32 @@ Le serveur web Kestrel a des options de configuration de contrainte qui sont par
 
 Définissez des contraintes sur la propriété <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> de la classe <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions>. La propriété `Limits` conserve une instance de la classe <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits>.
 
+### <a name="keep-alive-timeout"></a>Délai d’expiration toujours actif
+
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.KeepAliveTimeout>
+
+Obtient ou définit le [délai d’expiration toujours actif](https://tools.ietf.org/html/rfc7230#section-6.5). La valeur par défaut est de 2 minutes.
+
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=15)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .UseKestrel(options =>
+        {
+            options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2);
+        });
+```
+
+::: moniker-end
+
 ### <a name="maximum-client-connections"></a>Nombre maximale de connexions client
 
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MaxConcurrentConnections>  
@@ -258,6 +279,8 @@ Vous pouvez remplacer le paramètre sur une demande spécifique dans l’intergi
 
 Une exception est levée vous tentez de configurer la limite sur une requête une fois que l’application a commencé à la lire. Il existe une propriété `IsReadOnly` qui indique si la propriété `MaxRequestBodySize` est en lecture seule ; si tel est le cas, il est trop tard pour configurer la limite.
 
+Quand une application est exécutée [hors processus](xref:fundamentals/servers/index#out-of-process-hosting-model) derrière le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), la limite de taille du corps de demande de Kestrel est désactivée, car IIS définit déjà la limite.
+
 ### <a name="minimum-request-body-data-rate"></a>Débit données minimal du corps de la requête
 
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.MinRequestBodyDataRate>  
@@ -301,6 +324,32 @@ Vous pouvez remplacer les limites de débit minimal par requête dans l’interg
 ::: moniker range=">= aspnetcore-2.2"
 
 Aucune des fonctionnalités de débit référencées dans l’exemple précédent n’est présente dans `HttpContext.Features` pour les requêtes HTTP/2, car la modification des limites de débit par requête n’est pas prise en charge pour HTTP/2 (le protocole prend en charge le multiplexage de requête). Les limites de débit à l’échelle du serveur configurées par le biais de `KestrelServerOptions.Limits` s’appliquent encore aux connexions HTTP/1.x et HTTP/2.
+
+::: moniker-end
+
+### <a name="request-headers-timeout"></a>Délai d’expiration des en-têtes de requête
+
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits.RequestHeadersTimeout>
+
+Obtient ou définit le temps maximal passé par le serveur à recevoir des en-têtes de requête. La valeur par défaut est de 30 secondes.
+
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_Limits&highlight=16)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .UseKestrel(options =>
+        {
+            options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(1);
+        });
+```
 
 ::: moniker-end
 
@@ -424,7 +473,7 @@ Spécifiez les URL avec :
 * La clé de configuration d’hôte `urls`.
 * La méthode d’extension `UseUrls`.
 
-La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000; http://localhost:8001"`).
+La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000;http://localhost:8001"`).
 
 Pour plus d’informations sur ces approches, voir [URL de serveur](xref:fundamentals/host/web-host#server-urls) et [Remplacer la configuration](xref:fundamentals/host/web-host#override-configuration).
 

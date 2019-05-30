@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/24/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: f0efe6c0edc71c5e2c45aeaa175c8a5643ef0fde
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 12aa1b86e0b9078566f1c64cb4b83c4dddef09f7
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223144"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251356"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -57,7 +57,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 **Modèle d’hébergement in-process**
 
-`CreateDefaultBuilder` appelle la méthode `UseIIS` pour démarrer le [CoreCLR](/dotnet/standard/glossary#coreclr) et héberger l’application à l’intérieur du processus Worker (*w3wp.exe* ou *iisexpress.exe*). Les tests de performance indiquent que l’hébergement d’une application.NET Core in-process fournit un débit de requêtes beaucoup plus élevé que l’hébergement de l’application out-of-process et la redirection par le biais d’un proxy des requêtes vers le serveur [Kestrel](xref:fundamentals/servers/kestrel).
+`CreateDefaultBuilder` appelle une instance <xref:Microsoft.AspNetCore.Hosting.Server.IServer> en appelant la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> pour démarrer [CoreCLR](/dotnet/standard/glossary#coreclr) et héberger l’application dans le processus Worker IIS (*w3wp.exe* ou *iisexpress.exe*). Les tests de performance indiquent que l’hébergement d’une application.NET Core in-process fournit un débit de requêtes beaucoup plus élevé que l’hébergement de l’application out-of-process et la redirection par le biais d’un proxy des requêtes vers le serveur [Kestrel](xref:fundamentals/servers/kestrel).
 
 Le modèle d’hébergement in-process n’est pas pris en charge pour les applications ASP.NET Core qui ciblent le .NET Framework.
 
@@ -65,7 +65,7 @@ Le modèle d’hébergement in-process n’est pas pris en charge pour les appli
 
 Pour l’hébergement out-of-process avec IIS, `CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et permet l’intégration IIS en configurant le chemin de base et le port du [module ASP.NET Core ](xref:host-and-deploy/aspnet-core-module).
 
-Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` ajoute le middleware d’intégration IIS et le [middleware des en-têtes transférés](xref:host-and-deploy/proxy-load-balancer) en appelant la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
 
 * `UseUrls`
 * [API d’écoute Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
@@ -149,13 +149,13 @@ services.Configure<IISOptions>(options =>
 
 | Option                         | Par défaut | Paramètre |
 | ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | Si `true`, l’Intergiciel (Middleware) d’intégration IIS définit le `HttpContext.User` authentifié par [Authentification Windows](xref:security/authentication/windowsauth). Si `false`, l’intergiciel (middleware) fournit uniquement une identité pour `HttpContext.User` et répond aux questions explicitement posées par `AuthenticationScheme`. L’authentification Windows doit être activée dans IIS pour que `AutomaticAuthentication` fonctionne. Pour plus d'informations, consultez la rubrique [Authentification Windows](xref:security/authentication/windowsauth). |
+| `AutomaticAuthentication`      | `true`  | Si la valeur est `true`, le [middleware d’intégration IIS](#enable-the-iisintegration-components) définit l’élément `HttpContext.User` authentifié par [Windows Authentication](xref:security/authentication/windowsauth). Si `false`, l’intergiciel (middleware) fournit uniquement une identité pour `HttpContext.User` et répond aux questions explicitement posées par `AuthenticationScheme`. L’authentification Windows doit être activée dans IIS pour que `AutomaticAuthentication` fonctionne. Pour plus d'informations, consultez la rubrique [Authentification Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Définit le nom d’affichage montré aux utilisateurs sur les pages de connexion. |
 | `ForwardClientCertificate`     | `true`  | Si la valeur est `true` et que l’en-tête de requête `MS-ASPNETCORE-CLIENTCERT` est présent, `HttpContext.Connection.ClientCertificate` est renseigné. |
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-L’intergiciel (middleware) d’intégration IIS, qui configure l’intergiciel des en-têtes transférés, et le module ASP.NET Core, sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
+Le [middleware d’intégration IIS](#enable-the-iisintegration-components), qui configure le middleware des en-têtes transférés, et le module ASP.NET Core sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
 
 ### <a name="webconfig-file"></a>fichier web.config
 
@@ -199,7 +199,7 @@ Si vous devez transformer *web.config* lors de la publication (par exemple, déf
 
 Activez le rôle serveur **Serveur Web (IIS)** et établissez des services de rôle.
 
-1. Utilisez l’Assistant **Ajouter des rôles et des fonctionnalités** par le biais du menu **Gérer** ou du lien dans **Gestionnaire de serveur**. À l’étape **Rôles de serveurs**, cochez la case **Serveur Web (IIS)** .
+1. Utilisez l’Assistant **Ajouter des rôles et des fonctionnalités** par le biais du menu **Gérer** ou du lien dans **Gestionnaire de serveur**. À l’étape **Rôles de serveurs**, cochez la case **Serveur Web (IIS)**.
 
    ![Le rôle Serveur Web IIS est sélectionné à l’étape Sélectionner des rôles de serveurs.](index/_static/server-roles-ws2016.png)
 
@@ -213,7 +213,7 @@ Activez le rôle serveur **Serveur Web (IIS)** et établissez des services de r�
    **WebSockets (facultatif)**  
    WebSockets est pris en charge avec ASP.NET Core 1.1 ou version ultérieure. Pour activer WebSockets, développez les nœuds suivants : **Serveur web** > **Développement d’applications**. Sélectionnez la fonctionnalité **Protocole WebSocket**. Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
 
-1. Validez l’étape de **Confirmation** pour installer les services et le rôle de serveur web. Un redémarrage du serveur/d’IIS n’est pas nécessaire après l’installation du rôle **Serveur Web (IIS)** .
+1. Validez l’étape de **Confirmation** pour installer les services et le rôle de serveur web. Un redémarrage du serveur/d’IIS n’est pas nécessaire après l’installation du rôle **Serveur Web (IIS)**.
 
 **Systèmes d’exploitation Windows Desktop**
 

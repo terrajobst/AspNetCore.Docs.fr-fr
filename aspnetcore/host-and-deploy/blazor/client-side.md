@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application Blazor av
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/13/2019
+ms.date: 05/21/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: ea8ece266809913e32ac212bc55cb3c2499c234f
-ms.sourcegitcommit: ccbb84ae307a5bc527441d3d509c20b5c1edde05
+ms.openlocfilehash: b572067e688d7e7f7c654a7a25703009c1a7e855
+ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/19/2019
-ms.locfileid: "65874971"
+ms.lasthandoff: 05/25/2019
+ms.locfileid: "66223188"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>Héberger et déployer Blazor côté client
 
@@ -232,6 +232,17 @@ Affectez le dossier de l’application comme **chemin physique** du site web. Le
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Quand le module n’est pas installé, le fichier *web.config* ne peut pas être analysé par IIS. Cela empêche le Gestionnaire IIS de charger la configuration du site web et empêche le site web de fournir les fichiers statiques Blazor.
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:host-and-deploy/iis/troubleshoot>.
+
+### <a name="azure-storage"></a>Azure Storage
+
+L’hébergement d’un fichier statique de stockage Azure permet l’hébergement d’applications serverless Blazor. Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
+
+Lorsque le service blob est activé pour l’hébergement de site Web statique sur un compte de stockage :
+
+* Définissez le **nom du document d’index** sur `index.html`.
+* Définissez le **chemin d’accès au document d’erreur** sur `index.html`. Les composants de Razor et autres points de terminaison non-fichier ne se trouvent sur les chemins d’accès physiques dans le contenu statique stocké par le service blob. Lors de la réception d’une requête pour l’une de ces ressources que le routeur Blazor doit gérer, l’erreur *404 - introuvable* générée par le service blob achemine la requête vers le **chemin d’accès au document d’erreur**. Le blob *index.html* est retourné et le routeur Blazor charge et traite le chemin d’accès.
+
+Pour plus d’informations, consultez [Hébergement de site Web statique dans le stockage Azure](/azure/storage/blobs/storage-blob-static-website).
 
 ### <a name="nginx"></a>Nginx
 
