@@ -92,7 +92,7 @@
     - name: Applications d’appel de procédure distante
       items:
         - name: Bien démarrer avec le service gRPC dans ASP.NET Core
-          uid: tutorials/grpc/grpc-client
+          uid: tutorials/grpc/grpc-start
     - name: Accès aux données
       items:
         - name: EF Core avec Razor Pages
@@ -530,8 +530,6 @@
       uid: grpc/migration
     - name: Comparaison des services gRPC avec les API HTTP
       uid: grpc/comparison
-    - name: Créer un client et un serveur gRPC
-      uid: tutorials/grpc/grpc-client
 - name: 'Tester, déboguer et dépanner'
   items:
     - name: Test unitaire
