@@ -4,14 +4,14 @@ author: ardalis
 description: Découvrez comment mettre en forme les données des réponses dans l’API web ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 05/21/2019
+ms.date: 05/29/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: bd86015773068b6f75f64a0599d710281f7d4d60
-ms.sourcegitcommit: e67356f5e643a5d43f6d567c5c998ce6002bdeb4
+ms.openlocfilehash: 7628565d8646c0a057e28aa54dc9ce9198750c15
+ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66004965"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66415679"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -133,13 +133,17 @@ Certaines fonctionnalités peuvent ne pas fonctionnent correctement avec des for
 
 ### <a name="add-xml-format-support"></a>Ajouter la prise en charge du format XML
 
-Pour ajouter la prise en charge du format XML, installez le package NuGet [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/).
+::: moniker range="<= aspnetcore-2.2"
 
-Les formateurs XML implémentés avec `System.Xml.Serialization.XmlSerializer` peuvent être configurés dans `Startup.ConfigureServices` comme suit :
+Pour ajouter la prise en charge du format XML dans ASP.NET Core 2.2 ou une version antérieure, installez le package NuGet [Microsoft.AspNetCore.Mvc.Formatters.Xml](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Formatters.Xml/).
+
+::: moniker-end
+
+Les formateurs XML implémentés avec `System.Xml.Serialization.XmlSerializer` peuvent être configurés en appelant <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlSerializerFormatters*>dans `Startup.ConfigureServices` :
 
 [!code-csharp[](./formatting/sample/Startup.cs?name=snippet1&highlight=2)]
 
-De même, les formateurs XML implémentés avec `System.Runtime.Serialization.DataContractSerializer` peuvent être configurés dans `Startup.ConfigureServices` comme suit :
+De même, les formateurs XML implémentés avec `System.Runtime.Serialization.DataContractSerializer` peuvent être configurés en appelant <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcBuilderExtensions.AddXmlDataContractSerializerFormatters*> dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddMvc()

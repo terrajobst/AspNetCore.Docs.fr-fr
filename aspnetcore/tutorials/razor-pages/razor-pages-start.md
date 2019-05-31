@@ -3,14 +3,14 @@ title: 'Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core'
 author: rick-anderson
 description: Cette série de tutoriels montre comment utiliser Razor Pages dans ASP.NET Core. Découvrez comment créer un modèle, générer du code pour Razor Pages, utiliser Entity Framework Core et SQL Server pour l’accès aux données, ajouter des fonctionnalités de recherche, ajouter la validation d’entrée et mettre à jour le modèle à l’aide de migrations.
 ms.author: riande
-ms.date: 05/09/2019
+ms.date: 05/30/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 9307291756baf1bef714d6dae2f8d25d3aa6f922
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: e9f11f68aa138ab74a0ffbbd0e32067bc984606d
+ms.sourcegitcommit: 9ae1fd11f39b0a72b2ae42f0b450345e6e306bc0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517106"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66415659"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Ceci est le premier didacticiel d’une série. [Cette série](xref:tutorials/ra
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
-Dans ce didacticiel, vous allez effectuer les actions suivantes :
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer une application web Razor Pages.
@@ -71,9 +71,9 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
   * La commande `dotnet new` crée un nouveau projet Razor Pages dans le dossier *RazorPagesMovie*.
   * La commande `code` ouvre le dossier *RazorPagesMovie* dans l’instance actuelle de Visual Studio Code.
 
-  Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « RazorPagesMovie ». Faut-il les ajouter ?**
+* Après que l’icône en forme de flamme de la barre d’état d’OmniSharp devient verte, une boîte de dialogue indique **Les ressources requises pour créer et déboguer sont manquantes dans « RazorPagesMovie ». Faut-il les ajouter ?** Sélectionnez **Oui**.
 
-* Sélectionnez **Oui**.
+  Un répertoire *.vscode* contenant des fichiers *launch.json* et *tasks.json* est ajouté au répertoire racine du projet.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
