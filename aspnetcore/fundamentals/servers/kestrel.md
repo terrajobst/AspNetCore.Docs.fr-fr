@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/17/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 6f9eee1ed46f02232bed977f8f60a3d77db48784
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 37274873f2bd4127f8743399d95d3cf7fef435c5
+ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223153"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66251334"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -160,6 +160,12 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 Le serveur web Kestrel a des options de configuration de contrainte qui sont particulièrement utiles dans les déploiements exposés à Internet.
 
 Définissez des contraintes sur la propriété <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Limits> de la classe <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions>. La propriété `Limits` conserve une instance de la classe <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits>.
+
+Les exemples suivants utilisent l’espace de noms <xref:Microsoft.AspNetCore.Server.Kestrel.Core> :
+
+```csharp
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+```
 
 ### <a name="keep-alive-timeout"></a>Délai d’expiration toujours actif
 
@@ -473,7 +479,7 @@ Spécifiez les URL avec :
 * La clé de configuration d’hôte `urls`.
 * La méthode d’extension `UseUrls`.
 
-La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000;http://localhost:8001"`).
+La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000; http://localhost:8001"`).
 
 Pour plus d’informations sur ces approches, voir [URL de serveur](xref:fundamentals/host/web-host#server-urls) et [Remplacer la configuration](xref:fundamentals/host/web-host#override-configuration).
 
@@ -650,7 +656,7 @@ Dans l’exemple de fichier *appsettings.json* suivant :
       "Url": "https://localhost:5002",
       "Certificate": {
         "Subject": "<subject; required>",
-        "Store": "<certificate store; defaults to My>",
+        "Store": "<certificate store; required>",
         "Location": "<location; defaults to CurrentUser>",
         "AllowInvalid": "<true or false; defaults to false>"
       }
@@ -683,7 +689,7 @@ Une alternative à l’utilisation de **Chemin** et de **Mot de passe** pour un 
 ```json
 "Default": {
   "Subject": "<subject; required>",
-  "Store": "<cert store; defaults to My>",
+  "Store": "<cert store; required>",
   "Location": "<location; defaults to CurrentUser>",
   "AllowInvalid": "<true or false; defaults to false>"
 }
