@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 4498bd88e7188ea6c0063aeec054bc20e13ed5f1
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: a32e0e2dbd7fab95562a562cb88767d4c1e8049d
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086442"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458485"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Falsification de requête intersites (également appelé XSRF ou CSRF, prononcé *et navigation voir*) est une attaque contre les applications hébergées sur le web par lequel une application web malveillant peut influencer l’interaction entre un navigateur client et une application web qui fait confiance à qui Navigateur. Ces attaques sont possibles, car les navigateurs web envoient certains types de jetons d’authentification automatiquement avec chaque demande à un site Web. Cette forme de code malveillant est également appelé un *clic attaque* ou *par vol de session* , car l’attaque tire parti de l’utilisateur d’authentifié précédemment session.
+Falsification de requête intersites (également appelé XSRF ou CSRF) est une attaque contre les applications web hébergées par laquelle une application web malveillant peut influencer l’interaction entre un navigateur client et une application web qui fait confiance à ce navigateur. Ces attaques sont possibles, car les navigateurs web envoient certains types de jetons d’authentification automatiquement avec chaque demande à un site Web. Cette forme de code malveillant est également appelé un *clic attaque* ou *par vol de session* , car l’attaque tire parti de l’utilisateur d’authentifié précédemment session.
 
 Un exemple d’une attaque CSRF :
 
