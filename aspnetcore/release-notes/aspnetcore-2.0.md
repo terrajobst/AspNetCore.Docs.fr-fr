@@ -3,14 +3,15 @@ title: Nouveautés d’ASP.NET Core 2.0
 author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.0.
 ms.author: riande
-ms.date: 07/10/2017
+ms.custom: mvc
+ms.date: 05/28/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: 07e490fd844f0f9044afce37651ef680ed0c894d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5cf7b9aa7ccf86f1a89e6145cfc185c5ef803e66
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883094"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376413"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -75,7 +76,7 @@ Pour plus d’informations sur les modifications apportées à l’authentificat
 
 ## <a name="spa-templates"></a>Modèles SPA
 
-Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knockout.js, React.js et React.js avec Redux sont disponibles. Le modèle Angular a été mis à jour vers Angular 4. Les modèles Angular et React sont disponibles par défaut. Pour plus d’informations sur l’obtention des autres modèles, consultez [Créer un projet SPA](xref:client-side/spa-services#creating-a-new-project). Pour plus d’informations sur la génération d’un projet SPA dans ASP.NET Core, consultez [Utiliser JavaScriptServices pour créer des applications web monopages](xref:client-side/spa-services).
+Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knockout.js, React.js et React.js avec Redux sont disponibles. Le modèle Angular a été mis à jour vers Angular 4. Les modèles Angular et React sont disponibles par défaut. Pour plus d’informations sur l’obtention des autres modèles, consultez [Créer un projet SPA](xref:client-side/spa-services#create-a-new-project). Pour plus d’informations sur la création d’une application monopage dans ASP.NET Core, consultez <xref:client-side/spa-services>.
 
 ## <a name="kestrel-improvements"></a>Améliorations apportées à Kestrel
 

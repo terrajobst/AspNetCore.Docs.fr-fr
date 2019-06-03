@@ -91,7 +91,7 @@
           uid: tutorials/signalr-typescript-webpack
     - name: Applications d’appel de procédure distante
       items:
-        - name: Bien démarrer avec le service gRPC dans ASP.NET Core
+        - name: Bien démarrer avec le service gRPC
           uid: tutorials/grpc/grpc-start
     - name: Accès aux données
       items:

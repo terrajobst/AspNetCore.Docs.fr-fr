@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/21/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: b572067e688d7e7f7c654a7a25703009c1a7e855
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: b50516b4dce28a6b105b2ab8b9386060d5392983
+ms.sourcegitcommit: 4d05e30567279072f1b070618afe58ae1bcefd5a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223188"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66376391"
 ---
 # <a name="host-and-deploy-blazor-client-side"></a>Héberger et déployer Blazor côté client
 
@@ -188,7 +188,9 @@ Pour plus d’informations concernant le déploiement sur Azure App Service, con
 
 ## <a name="standalone-deployment"></a>Déploiement autonome
 
-Un *déploiement autonome* fournit l’application Blazor côté client sous la forme d’un ensemble de fichiers statiques qui sont demandés directement par les clients. Aucun serveur web n’est utilisé pour fournir l’application Blazor.
+Un *déploiement autonome* fournit l’application Blazor côté client sous la forme d’un ensemble de fichiers statiques qui sont demandés directement par les clients. N’importe quel serveur de fichiers statiques est capable de servir l’application Blazor.
+
+Les ressources d’un déploiement autonome sont publiées dans le dossier *bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist*.
 
 ### <a name="iis"></a>IIS
 
@@ -210,8 +212,8 @@ Quand un projet Blazor est publié, un fichier *web.config* est créé avec la c
   * `application/octet-stream`
   * `application/wasm`
 * Des règles du module de réécriture d’URL sont établies :
-  * Servir le sous-répertoire où résident les ressources statiques de l’application (*{NOM ASSEMBLY}/dist/{CHEMIN DEMANDÉ}*).
-  * Créer un routage de secours SPA afin que les demandes de ressources autres que des fichiers soient redirigées vers le document par défaut de l’application dans son dossier de ressources statiques (*{NOM ASSEMBLY}/dist/index.html*).
+  * Servir le sous-répertoire où résident les ressources statiques de l’application ( *{NOM ASSEMBLY}/dist/{CHEMIN DEMANDÉ}* ).
+  * Créer un routage de secours SPA afin que les demandes de ressources autres que des fichiers soient redirigées vers le document par défaut de l’application dans son dossier de ressources statiques ( *{NOM ASSEMBLY}/dist/index.html*).
 
 #### <a name="install-the-url-rewrite-module"></a>Installer le module de réécriture d’URL
 
