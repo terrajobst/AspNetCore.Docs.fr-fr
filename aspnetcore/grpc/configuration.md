@@ -5,14 +5,14 @@ description: Découvrez comment configurer gRPC pour les applications ASP.NET Co
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 04/09/2019
+ms.date: 5/30/2019
 uid: grpc/configuration
-ms.openlocfilehash: 851c9ca1f7d62f6f368df66bb38eb4bbaf64bf32
-ms.sourcegitcommit: 5d384db2fa9373a93b5d15e985fb34430e49ad7a
+ms.openlocfilehash: 1f8250dc9aa8b82da384ee28287011baa19dc11f
+ms.sourcegitcommit: a1364109d11d414121a6337b611bee61d6e489e9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66041895"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66491236"
 ---
 # <a name="grpc-for-aspnet-core-configuration"></a>gRPC pour la configuration d’ASP.NET Core
 
@@ -24,31 +24,24 @@ Le tableau suivant décrit les options de configuration des services de gRPC :
 | ------ | ------------- | ----------- |
 | `SendMaxMessageSize` | `null` | La taille maximale en octets qui peuvent être envoyés à partir du serveur. Essayez d’envoyer un message qui dépasse les résultats de la taille maximale de message dans une exception. |
 | `ReceiveMaxMessageSize` | 4 MB | La taille maximale en octets qui peuvent être reçus par le serveur. Si le serveur reçoit un message qui dépasse cette limite, elle lève une exception. Augmentation de cette valeur permet au serveur recevoir des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
-| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de service. La valeur par défaut est `false`. Définir cette valeur sur `true` peut entraîner une fuite des informations sensibles. |
+| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de service. La valeur par défaut est `false`. Paramètre `EnableDetailedErrors` à `true` peut entraîner une fuite des informations sensibles. |
 | `CompressionProviders` | gzip | Une collection de fournisseurs de compression utilisé pour compresser et décompresser des messages. Fournisseurs de compression personnalisé peuvent être créés et ajoutés à la collection. La valeur par défaut configuré le fournisseur prend en charge **gzip** la compression. |
-| `ResponseCompressionAlgorithm` | `null` | L’algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur de la compression dans `CompressionProviders`. Pour l’algorthm compresser une réponse le client doit indiquer qu’il prend en charge l’algorithme en lui envoyant le **grpc-encodage** en-tête. |
+| `ResponseCompressionAlgorithm` | `null` | L’algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur de la compression dans `CompressionProviders`. Pour l’algorithme compresser une réponse, le client doit indiquer qu’il prend en charge l’algorithme en lui envoyant le **grpc-encodage** en-tête. |
 | `ResponseCompressionLevel` | `null` | Le niveau de compression utilisé pour compresser les messages envoyés à partir du serveur. |
 
-Options peuvent être configurées pour tous les services en fournissant un délégué d’options pour le `AddGrpc` appeler dans `Startup.ConfigureServices`.
+Options peuvent être configurées pour tous les services en fournissant un délégué d’options pour le `AddGrpc` appeler dans `Startup.ConfigureServices`:
 
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddGrpc(options =>
-    {
-        options.EnableDetailedErrors = true;
-    });
-}
-```
+[!code-csharp[](~/grpc/configuration/sample/GrcpService/Startup.cs?name=snippet)]
 
 Options pour un seul service remplacent les options globales fournies dans `AddGrpc` et peuvent être configurés à l’aide de `AddServiceOptions<TService>`:
 
-```csharp
-services.AddGrpc().AddServiceOptions<MyService>(options =>
-{
-    options.ReceiveMaxMessageSize = 10 * 1024 * 1024; // 10 megabytes
-});
-```
+[!code-csharp[](~/grpc/configuration/sample/GrcpService/Startup2.cs?name=snippet)]
+
+## <a name="configure-client-options"></a>Configurer les options du client
+
+Le code suivant définit l’envoi maximal du client et la taille de message de réception :
+
+[!code-csharp[](~/grpc/configuration/sample/Program.cs?name=snippet&highlight=3-6)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
