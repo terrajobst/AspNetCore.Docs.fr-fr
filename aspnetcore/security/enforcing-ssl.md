@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: e27e0c31b128cbd7d71bf7b83a2d33cc89ea3ab1
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 8d48877153d6d75348e29299c669125904236de8
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610429"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692594"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -144,7 +144,7 @@ Lors de la redirection vers HTTPS sans la nécessité pour les règles de redire
 
 ::: moniker range="< aspnetcore-2.1"
 
-Le [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger s-HTTP. `[RequireHttpsAttribute]` peut décorer contrôleurs ou méthodes, ou peuvent être appliquées globalement. Pour appliquer l’attribut global, ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Startup`: 
+Le [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger s-HTTP. `[RequireHttpsAttribute]` peut décorer contrôleurs ou méthodes, ou peuvent être appliquées globalement. Pour appliquer l’attribut global, ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Startup`:
 
 [!code-csharp[](~/security/authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
@@ -225,6 +225,8 @@ dotnet new webapp --no-https
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
+<a name="trust"></a>
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>Approuver le certificat de développement ASP.NET Core HTTPS sur Windows et Mac OS
 
