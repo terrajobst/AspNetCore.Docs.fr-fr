@@ -5,14 +5,14 @@ description: Découvrez comment accéder aux points d’extension RGPD dans une 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 06/05/2019
 uid: security/gdpr
-ms.openlocfilehash: c5c13dbd1006d10aba0f54b0b9d72b527ee98945
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 967f3246836c93a1af56f7109edb056220606b58
+ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894106"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716350"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’Union européenne général Protection des données règlement (RGPD) dans ASP.NET Core
 
@@ -30,13 +30,13 @@ Le [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/live
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Prise en charge d’ASP.NET Core RGPD dans le code du modèle généré
+## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>ASP.NET Core RGPD prennent en charge dans le code généré par le modèle
 
 Les Pages Razor et MVC projets créés avec les modèles de projet incluent la prise en charge de RGPD suivante :
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définies `Startup`.
-* Le *_CookieConsentPartial.cshtml* [vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).
-* Le *Pages/Privacy.cshtml* page ou *Views/Home/Privacy.cshtml* vue fournit une page qui décrit en détail la politique de confidentialité de votre site. Le *_CookieConsentPartial.cshtml* fichier génère un lien vers la page de la confidentialité.
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définies le `Startup` classe.
+* Le  *\_CookieConsentPartial.cshtml* [vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). Un **Accept** bouton est inclus dans ce fichier. Lorsque l’utilisateur clique sur le **Accept** bouton, de donner son consentement pour stocker des cookies est fourni.
+* Le *Pages/Privacy.cshtml* page ou *Views/Home/Privacy.cshtml* vue fournit une page qui décrit en détail la politique de confidentialité de votre site. Le  *\_CookieConsentPartial.cshtml* fichier génère un lien vers la page de la confidentialité.
 * Pour les applications créées avec des comptes d’utilisateur individuels, la page de gestion fournit des liens pour télécharger et supprimer des [données personnelles utilisateur](#pd).
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions et UseCookiePolicy
@@ -49,29 +49,29 @@ Les Pages Razor et MVC projets créés avec les modèles de projet incluent la p
 
 [!code-csharp[](gdpr/sample/Startup.cs?name=snippet1&highlight=51)]
 
-### <a name="cookieconsentpartialcshtml-partial-view"></a>Vue partielle _CookieConsentPartial.cshtml
+### <a name="cookieconsentpartialcshtml-partial-view"></a>\_Vue partielle CookieConsentPartial.cshtml
 
-Le *_CookieConsentPartial.cshtml* vue partielle :
+Le  *\_CookieConsentPartial.cshtml* vue partielle :
 
 [!code-html[](gdpr/sample/RP/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Partielle :
 
-* Obtient l’état de suivi pour l’utilisateur. Si l’application est configurée pour demander le consentement, l’utilisateur doit donner son consentement avant que les cookies peuvent être suivis. Si un consentement est requis, le panneau de consentement de cookie est résolu en haut de la barre de navigation créée par le *_Layout.cshtml* fichier.
+* Obtient l’état de suivi pour l’utilisateur. Si l’application est configurée pour demander le consentement, l’utilisateur doit donner son consentement avant que les cookies peuvent être suivis. Si un consentement est requis, le panneau de consentement de cookie est résolu en haut de la barre de navigation créée par le  *\_Layout.cshtml* fichier.
 * Fournit un élément HTML `<p>` élément permet de synthétiser votre confidentialité et le cookie utiliser la stratégie.
 * Fournit un lien vers la page de la confidentialité ou la vue dans laquelle vous pouvez décrit en détail la politique de confidentialité de votre site.
 
 ## <a name="essential-cookies"></a>Cookies essentielles
 
-Si le consentement n’a pas été donné, uniquement les cookies marqués essentielles sont envoyés au navigateur. Le code suivant fait un cookie essentielles :
+Si donner son consentement pour stocker des cookies n’a pas été fourni, uniquement les cookies marqués essentielles sont envoyés au navigateur. Le code suivant fait un cookie essentielles :
 
 [!code-csharp[Main](gdpr/sample/RP/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
-## <a name="tempdata-provider-and-session-state-cookies-are-not-essential"></a>Cookies d’état de session et le fournisseur TempData ne sont pas essentielles
+### <a name="tempdata-provider-and-session-state-cookies-arent-essential"></a>Cookies d’état de session et le fournisseur TempData ne sont pas essentiels
 
-Le [fournisseur Tempdata](xref:fundamentals/app-state#tempdata) cookie n’est pas indispensable. Si le suivi est désactivé, le fournisseur de Tempdata n’est pas fonctionnel. Pour activer le fournisseur Tempdata lorsque le suivi est désactivé, marquer le cookie de TempData comme essentielle dans `Startup.ConfigureServices`:
+Le [fournisseur TempData](xref:fundamentals/app-state#tempdata) cookie n’est pas indispensable. Si le suivi est désactivé, le fournisseur de TempData n’est pas fonctionnel. Pour activer le fournisseur TempData lorsque le suivi est désactivé, marquer le cookie de TempData comme essentielle dans `Startup.ConfigureServices`:
 
 [!code-csharp[Main](gdpr/sample/RP/Startup.cs?name=snippet1)]
 
