@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/12/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 80994cb84e9e0658ee90198b6bf992e5b374bf3c
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: e4c93459f2030c7c0a55ea90e0cc8c8d30b76c51
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970032"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470463"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -56,7 +56,7 @@ La page d’erreur d’un *échec de processus 502.5* est retournée quand une e
 
 ![Fenêtre de navigateur affichant la page d’échec de processus 502.5](troubleshoot/_static/process-failure-page.png)
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
 ### <a name="50030-in-process-startup-failure"></a>500.30 - Échec du démarrage in-process
 
@@ -83,6 +83,93 @@ Le module ASP.NET Core ne peut pas trouver le gestionnaire de requêtes d’héb
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 - Échec de la recherche de dépendances natives par ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente de démarrer le runtime .NET Core in-process, mais sans succès. La cause la plus courante de cet échec de démarrage est liée à la non-installation du runtime `Microsoft.NETCore.App` ou `Microsoft.AspNetCore.App`. Si l’application est déployée pour cibler ASP.NET Core 3.0, et si cette version n’existe pas sur la machine, cette erreur se produit. Voici un exemple de message d’erreur :
+
+```
+The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
+  - The following frameworks were found:
+      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+```
+
+Le message d’erreur liste toutes les versions installées de .NET Core ainsi que la version demandée par l’application. Pour corriger cette erreur, vous avez le choix entre plusieurs possibilités :
+
+* Installez la version appropriée de .NET Core sur la machine.
+* Changez l’application pour cibler une version de .NET Core présente sur la machine.
+* Publiez l’application sous forme de [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd).
+
+Durant l’exécution en phase de développement (la variable d’environnement `ASPNETCORE_ENVIRONMENT` a la valeur `Development`), l’erreur spécifique est écrite dans la réponse HTTP. La cause d’un échec de démarrage du processus se trouve également dans le [Journal des événements de l’application](#application-event-log).
+
+### <a name="50032-ancm-failed-to-load-dll"></a>500.32 - Échec du chargement de la dll par ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le plus souvent, cette erreur provient du fait que l’application est publiée pour une architecture de processeur incompatible. Si le processus de travail s’exécute en tant qu’application 32 bits et si l’application a été publiée pour cibler une architecture 64 bits, cette erreur se produit.
+
+Pour corriger cette erreur, vous avez le choix entre plusieurs possibilités :
+
+* Republiez l’application pour la même architecture de processeur que celle du processus de travail.
+* Publiez l’application sous forme de [déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-executables-fde).
+
+### <a name="50033-ancm-request-handler-load-failure"></a>500.33 - Échec du chargement du gestionnaire de requêtes ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+L’application n’a pas référencé le framework `Microsoft.AspNetCore.App`. Seules les applications ciblant le framework `Microsoft.AspNetCore.App` peuvent être hébergées par le module ASP.NET Core.
+
+Pour corriger cette erreur, vérifiez que l’application cible le framework `Microsoft.AspNetCore.App`. Examinez le fichier `.runtimeconfig.json` pour vérifier le framework ciblé par l’application.
+
+### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 - Modèles d’hébergement mixtes ANCM non pris en charge
+
+Le processus de travail ne peut pas exécuter à la fois une application in-process et une application out-of-process dans le même processus.
+
+Pour corriger cette erreur, exécutez les applications dans des pools d’applications IIS distincts.
+
+### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 - Applications in-process multiples dans le même processus ANCM
+
+Le processus de travail ne peut pas exécuter à la fois une application in-process et une application out-of-process dans le même processus.
+
+Pour corriger cette erreur, exécutez les applications dans des pools d’applications IIS distincts.
+
+### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 - Échec de chargement du gestionnaire out-of-process ANCM
+
+Le gestionnaire de requêtes out-of-process, *aspnetcorev2_outofprocess.dll*, ne se trouve pas aux côtés du fichier *aspnetcorev2.dll*. Cela indique une installation endommagée du module ASP.NET Core.
+
+Pour corriger cette erreur, réparez l’installation du [bundle d’hébergement .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (pour IIS) ou Visual Studio (pour IIS Express).
+
+### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 - Échec du démarrage d’ANCM dans le délai imparti
+
+ANCM n’a pas pu démarrer dans le délai imparti spécifié. Par défaut, le délai d’expiration est de 120 secondes.
+
+Cette erreur peut se produire quand un grand nombre d’applications démarrent sur la même machine. Recherchez les pics d’utilisation du processeur/de la mémoire sur le serveur durant le démarrage. Vous devrez peut-être décaler le processus de démarrage de plusieurs applications.
+
+### <a name="50030-in-process-startup-failure"></a>500.30 - Échec du démarrage in-process
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente de démarrer le runtime .NET Core in-process, mais sans succès. Vous pouvez généralement déterminer la cause d’un échec de démarrage de processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
+
+### <a name="5000-in-process-handler-load-failure"></a>500.0 - Échec de chargement du gestionnaire in-process
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Une erreur inconnue s’est produite durant le chargement des composants du module ASP.NET Core. Effectuez l’une des actions suivantes :
+
+* Contactez le [Support Microsoft](https://support.microsoft.com/oas/default.aspx?prid=15832) (sélectionnez **Outils de développement**, puis **ASP.NET Core**).
+* Posez une question sur Stack Overflow.
+* Signalez un problème sur notre [dépôt GitHub](https://github.com/aspnet/AspNetCore).
+
+::: moniker-end
+
 ### <a name="500-internal-server-error"></a>Erreur de serveur interne 500
 
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
@@ -97,7 +184,7 @@ Source: IIS AspNetCore Module V2
 Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 ```
 
-L’application n’a pas pu démarrer, car l’assembly de l’application (*.dll*) n’a pas pu être chargé.
+L’application n’a pas pu démarrer, car l’assembly de l’application ( *.dll*) n’a pas pu être chargé.
 
 Cette erreur se produit lorsqu’il existe une incompatibilité au niveau du nombre de bits entre l’application publiée et le processus w3wp/iisexpress.
 

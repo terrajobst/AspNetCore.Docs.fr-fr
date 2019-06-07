@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/03/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: 36cd9fdac0b9159900e82327705a73d561e7ce6b
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 6b92cb6b68b1c70d67f42284d548729e598f9a8b
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086958"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458435"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -53,7 +53,7 @@ Dans l’exemple suivant, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExt
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_DevPageAndHandlerPage&highlight=5-9)]
 
-Le modèle d’application Razor Pages fournit une page d’erreur (*.cshtml*) et une classe <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) dans le dossier *Pages*. Pour une application MVC, le modèle de projet comprend une méthode d’action d’erreur et un affichage correspondant. Voici la méthode d’action :
+Le modèle d’application Razor Pages fournit une page d’erreur ( *.cshtml*) et une classe <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> (`ErrorModel`) dans le dossier *Pages*. Pour une application MVC, le modèle de projet comprend une méthode d’action d’erreur et un affichage correspondant. Voici la méthode d’action :
 
 ```csharp
 [AllowAnonymous]
@@ -166,7 +166,9 @@ Le point de terminaison qui traite l’erreur peut récupérer l’URL d’origi
 
 ## <a name="disable-status-code-pages"></a>Désactiver les pages de codes d’état
 
-Les pages de codes d’état peuvent être désactivées pour des requêtes spécifiques dans une méthode de gestionnaire de Pages Razor ou dans un contrôleur MVC. Pour désactiver les pages de codes d’état, utilisez <xref:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature> :
+Pour désactiver les pages de codes d’état d’un contrôleur MVC ou d’une méthode d’action, utilisez l’attribut [[SkipStatusCodePages]](xref:Microsoft.AspNetCore.Mvc.SkipStatusCodePagesAttribute).
+
+Pour désactiver les pages de codes d’état de requêtes spécifiques dans une méthode de gestionnaire Razor Pages ou dans un contrôleur MVC, utilisez <xref:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature> :
 
 ```csharp
 var statusCodePagesFeature = HttpContext.Features.Get<IStatusCodePagesFeature>();

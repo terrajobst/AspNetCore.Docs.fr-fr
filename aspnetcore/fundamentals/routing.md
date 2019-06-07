@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 0c2df3ec63f393b961754f496830cccb26f1cb76
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 2a7a942f43de94326e84977f09dc9a2e24dd00f0
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884564"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692575"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -165,7 +165,9 @@ Une correspondance qui appelle <xref:Microsoft.AspNetCore.Routing.IRouter.RouteA
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers) est une liste des routes qui ont participé à la mise en correspondance correcte de la requête. Les routes peuvent être imbriquées les unes dans les autres. La propriété <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> reflète le chemin à travers l’arborescence logique des routes qui ont généré une correspondance. En général le premier élément de <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> est la collection de routes et il doit être utilisé pour la génération d’URL. Le dernier élément de <xref:Microsoft.AspNetCore.Routing.RouteData.Routers> est le gestionnaire de routage avec lequel la correspondance a été établie.
 
-### <a name="url-generation"></a>Génération d’URL
+<a name="lg"></a>
+
+### <a name="url-generation-with-linkgenerator"></a>Génération d’URL avec LinkGenerator
 
 ::: moniker range=">= aspnetcore-2.2"
 

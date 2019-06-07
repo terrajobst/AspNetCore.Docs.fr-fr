@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: bba9cf051deaf57efdd82ca2fb1318fce79bd6cc
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 4c49a5349c0718e5c59f30e6d51caf7a43fa0454
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223219"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458445"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -20,7 +20,13 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Andrew Stanton-Nurse](https:/
 
 Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [WebSocket](https://wikipedia.org/wiki/WebSocket) ([RFC 6455](https://tools.ietf.org/html/rfc6455)) est un protocole qui autorise des canaux de communication persistants bidirectionnels sur les connexions TCP. Il est utilisé dans les applications qui bénéficient de communications rapides et en temps réel, comme les applications de conversation, de tableau de bord et de jeu.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). Pour plus d’informations, consultez la section [Étapes suivantes](#next-steps).
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). [Comment exécuter](#sample-app).
+
+## <a name="signalr"></a>SignalR
+
+[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
+
+Pour la plupart des applications, nous recommandons SignalR sur des WebSockets bruts. SignalR fournit un transport de secours pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. De plus, dans la plupart des scénarios, SignalR ne présente aucun inconvénient majeur concernant le niveau de performance par rapport à l’utilisation de WebSockets bruts.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -43,34 +49,20 @@ Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [W
 
 * Pour les navigateurs pris en charge, consultez https://caniuse.com/#feat=websockets.
 
-## <a name="when-to-use-websockets"></a>Quand utiliser WebSocket
+::: moniker range="< aspnetcore-2.1"
 
-Utilisez WebSocket pour travailler directement avec une connexion de socket. Par exemple, utilisez WebSocket de façon à obtenir les meilleures performances possibles pour un jeu en temps réel.
+## <a name="nuget-package"></a>Package NuGet
 
-[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
+Installez le package [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/).
 
-## <a name="how-to-use-websockets"></a>Comment utiliser des WebSockets ?
+::: moniker-end
 
-* Installez le package [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/).
-* Configurez l’intergiciel (middleware).
-* Acceptez les requêtes WebSocket.
-* Envoyez et recevez des messages.
+## <a name="configure-the-middleware"></a>Configurer l’intergiciel (middleware)
 
-### <a name="configure-the-middleware"></a>Configurer l’intergiciel (middleware)
 
 Ajoutez le middleware WebSocket dans la méthode `Configure` de la classe `Startup` :
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](websockets/samples/1.x/WebSocketsSample/Startup.cs?name=UseWebSockets)]
-
-::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
@@ -91,35 +83,15 @@ Les paramètres suivants peuvent être configurés :
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptions)]
 
-::: moniker-end
+## <a name="accept-websocket-requests"></a>Accepter les requêtes WebSocket
 
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](websockets/samples/1.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptions)]
-
-::: moniker-end
-
-### <a name="accept-websocket-requests"></a>Accepter les requêtes WebSocket
-
-Ultérieurement dans le cycle de vie de la requête (plus loin dans la méthode `Configure` ou dans une action MVC, par exemple), vérifiez s’il s’agit d’une requête WebSocket et acceptez-la.
+Un peu plus tard dans le cycle de vie de la requête (plus loin dans la méthode `Configure` ou dans une méthode action, par exemple), vérifiez s’il s’agit d’une requête WebSocket, puis acceptez-la.
 
 L’exemple suivant est extrait d’une partie ultérieure de la méthode `Configure` :
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=AcceptWebSocket&highlight=7)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](websockets/samples/1.x/WebSocketsSample/Startup.cs?name=AcceptWebSocket&highlight=7)]
-
-::: moniker-end
 
 Une requête WebSocket peut figurer sur toute URL, mais cet exemple de code accepte uniquement les requêtes pour `/ws`.
 
@@ -130,37 +102,41 @@ System.Net.WebSockets.WebSocketException (0x80004005): The remote party closed t
 Object name: 'HttpResponseStream'.
 ```
 
-Si vous utilisez un service en arrière-plan pour écrire des données dans un WebSocket, assurez-vous que vous conservez le pipeline de l’intergiciel en cours d’exécution. Pour ce faire, utilisez un <xref:System.Threading.Tasks.TaskCompletionSource%601>. Passez le `TaskCompletionSource` à l’arrière-plan de votre service et faites appeler <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A> lorsque vous avez terminé avec le WebSocket. Puis `await` la propriété <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> lors de la demande.
+Si vous utilisez un service en arrière-plan pour écrire des données dans un WebSocket, assurez-vous que vous conservez le pipeline de l’intergiciel en cours d’exécution. Pour ce faire, utilisez un <xref:System.Threading.Tasks.TaskCompletionSource%601>. Passez le `TaskCompletionSource` à l’arrière-plan de votre service et faites appeler <xref:System.Threading.Tasks.TaskCompletionSource%601.TrySetResult%2A> lorsque vous avez terminé avec le WebSocket. Utilisez ensuite `await` sur la propriété <xref:System.Threading.Tasks.TaskCompletionSource%601.Task> durant l’envoi de la requête, comme indiqué dans l’exemple suivant :
 
-### <a name="send-and-receive-messages"></a>Envoyer et recevoir des messages
+```csharp
+app.Use(async (context, next) => {
+    var socket = await context.WebSockets.AcceptWebSocketAsync();
+    var socketFinishedTcs = new TaskCompletionSource<object>();
+
+    BackgroundSocketProcessor.AddSocket(socket, socketFinishedTcs); 
+
+    await socketFinishedTcs.Task;
+});
+```
+L’exception relative à la fermeture de WebSocket peut également se produire si vous effectuez un retour trop tôt à partir d’une méthode d’action. Si vous acceptez un socket dans une méthode d’action, attendez que le code qui l’utilise soit entièrement exécuté, avant d’effectuer un retour à partir de la méthode d’action.
+
+N’utilisez jamais `Task.Wait()`, `Task.Result` ou des appels de blocage similaires pour attendre la fin de l’exécution du socket, car cela peut entraîner de graves problèmes de thread. Utilisez toujours `await`.
+
+## <a name="send-and-receive-messages"></a>Envoyer et recevoir des messages
 
 La méthode `AcceptWebSocketAsync` met à niveau la connexion TCP vers une connexion WebSocket et fournit un objet [WebSocket](/dotnet/core/api/system.net.websockets.websocket). Utilisez l’objet `WebSocket` pour envoyer et recevoir des messages.
 
 Le code montré précédemment qui accepte la requête WebSocket passe l’objet `WebSocket` à une méthode `Echo`. Le code reçoit un message et renvoie immédiatement le même message. Les messages sont envoyés et reçus dans une boucle jusqu’à ce que le client ferme la connexion :
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=Echo)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](websockets/samples/1.x/WebSocketsSample/Startup.cs?name=Echo)]
-
-::: moniker-end
 
 Quand vous acceptez le WebSocket avant de commencer cette boucle, le pipeline de middlewares se termine. À la fermeture du socket, le pipeline se déroule. Autrement dit, la requête cesse d’avancer dans le pipeline quand le WebSocket est accepté. Quand la boucle est terminée et que le socket est fermé, la requête recule dans le pipeline.
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="handle-client-disconnects"></a>Gérer la déconnexion du client
+## <a name="handle-client-disconnects"></a>Gérer la déconnexion du client
 
 Le serveur n’est pas automatiquement informé lorsque le client se déconnecte en raison d’une perte de connectivité. Le serveur reçoit un message de déconnexion uniquement si le client l’envoie, ce qui n’est pas possible si la connexion Internet est perdue. Si vous souhaitez prendre des mesures quand cela se produit, définissez un délai d’attente lorsque rien n’est reçu du client dans un certain laps de temps.
 
 Si le client n’envoie toujours pas de messages et si vous ne souhaitez pas appliquer le délai d’attente uniquement parce que la connexion devient inactive, demandez au client d’utiliser un minuteur pour envoyer un message ping toutes les X secondes. Sur le serveur, si un message n’arrive pas dans un délai de 2\*X secondes après le précédent, mettez fin à la connexion et signalez que le client s’est déconnecté. Attendez deux fois la durée de l’intervalle de temps attendu pour autoriser les délais réseau qui peuvent retarder le message ping.
 
-### <a name="websocket-origin-restriction"></a>Restriction d’origine WebSocket
+## <a name="websocket-origin-restriction"></a>Restriction d’origine WebSocket
 
 Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Les navigateurs **:**
 
@@ -220,7 +196,7 @@ Si vous utilisez la prise en charge de WebSocket dans [socket.io](https://socket
 </system.webServer>
 ```
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="sample-app"></a>Exemple d’application
 
 [L’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) qui accompagne cet article est une application d’écho. Elle comporte une page web qui établit des connexions WebSocket, et le serveur renvoie au client les messages qu’il reçoit. Exécutez l’application à partir d’une invite de commandes (elle n’est pas configurée pour s’exécuter à partir de Visual Studio avec IIS Express) et accédez à http://localhost:5000. La page web affiche l’état de la connexion en haut à gauche :
 
@@ -229,3 +205,4 @@ Si vous utilisez la prise en charge de WebSocket dans [socket.io](https://socket
 Sélectionnez **Connect** (Connexion) pour envoyer une requête WebSocket à l’URL affichée. Entrez un message de test, puis sélectionnez **Send** (Envoyer). Quand vous avez terminé, sélectionnez **Close Socket** (Fermer le socket). La section **Communication Log** (Journal des communications) signale chaque action d’ouverture, d’envoi et de fermeture en temps réel.
 
 ![État initial de la page web](websockets/_static/end.png)
+

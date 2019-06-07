@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 04/06/2019
 monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
-ms.openlocfilehash: acb0ae989f6e82a5bc80935a8acfc96e51073d2f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9737e45729b4e5abd9a33824c4d6610ca21681c0
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883174"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458471"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -122,7 +122,9 @@ Pour implémenter la validation à distance
 1. Dans la classe de modèle, annotez la propriété avec un attribut `[Remote]` qui pointe vers la méthode d’action de validation, comme indiqué dans l’exemple suivant :
 
    [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserEmailProperty)]
-
+ 
+   L’attribut `[Remote]` se trouve dans l’espace de noms `Microsoft.AspNetCore.Mvc`. Installez le package NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), si vous n’utilisez pas le métapaquet `Microsoft.AspNetCore.App` ou `Microsoft.AspNetCore.All`.
+   
 ### <a name="additional-fields"></a>Champs supplémentaires
 
 La propriété `AdditionalFields` de l’attribut `[Remote]` vous permet de valider des combinaisons de champs relativement à des données présentes sur le serveur. Par exemple, si le modèle `User` a des propriétés `FirstName` et `LastName`, vous pouvez vérifier qu’aucun utilisateur existant n’a déjà cette paire de noms. L'exemple suivant montre comment utiliser `AdditionalFields` :

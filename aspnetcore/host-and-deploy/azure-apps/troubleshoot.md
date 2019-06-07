@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 36c2bdfa585a0fd54ca93bf4c0edb4cf6f7d934a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7a0bb7df27ebbea0eac79771452295846fad563a
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886904"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470443"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -37,6 +37,99 @@ L’application démarre, mais une erreur empêche le serveur de répondre à la
 
 Cette erreur se produit dans le code de l’application pendant le démarrage ou durant la création d’une réponse. La réponse peut être dépourvue de contenu ou apparaître sous la forme d’une *erreur de serveur interne 500* dans le navigateur. Le Journal des événements de l’application indique généralement qu’elle a démarré normalement. Du point de vue du serveur, c’est exact. L’application a démarré, mais elle ne parvient pas à générer une réponse valide. [Exécutez l’application dans la console Kudu](#run-the-app-in-the-kudu-console) ou [activez le journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log) pour résoudre le problème.
 
+::: moniker range="= aspnetcore-2.2"
+
+### <a name="50030-in-process-startup-failure"></a>500.30 - Échec du démarrage in-process
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente, en vain, de démarrer le CLR .NET Core in-process. Vous pouvez généralement déterminer la cause d’un échec de démarrage de processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 - Échec de la recherche de dépendances natives par ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente de démarrer le runtime .NET Core in-process, mais sans succès. La cause la plus courante de cet échec de démarrage est liée à la non-installation du runtime `Microsoft.NETCore.App` ou `Microsoft.AspNetCore.App`. Si l’application est déployée pour cibler ASP.NET Core 3.0, et si cette version n’existe pas sur la machine, cette erreur se produit. Voici un exemple de message d’erreur :
+
+```
+The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
+  - The following frameworks were found:
+      2.2.1 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview5-27626-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27713-13 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27714-15 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+      3.0.0-preview6-27723-08 at [C:\Program Files\dotnet\x64\shared\Microsoft.NETCore.App]
+```
+
+Le message d’erreur liste toutes les versions installées de .NET Core ainsi que la version demandée par l’application. Pour corriger cette erreur, vous avez le choix entre plusieurs possibilités :
+
+* Installez la version appropriée de .NET Core sur la machine.
+* Changez l’application pour cibler une version de .NET Core présente sur la machine.
+* Publiez l’application sous forme de [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd).
+
+Durant l’exécution en phase de développement (la variable d’environnement `ASPNETCORE_ENVIRONMENT` a la valeur `Development`), l’erreur spécifique est écrite dans la réponse HTTP. La cause d’un échec de démarrage du processus se trouve également dans le [Journal des événements de l’application](#application-event-log).
+
+### <a name="50032-ancm-failed-to-load-dll"></a>500.32 - Échec du chargement de la dll par ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le plus souvent, cette erreur provient du fait que l’application est publiée pour une architecture de processeur incompatible. Si le processus de travail s’exécute en tant qu’application 32 bits et si l’application a été publiée pour cibler une architecture 64 bits, cette erreur se produit.
+
+Pour corriger cette erreur, vous avez le choix entre plusieurs possibilités :
+
+* Republiez l’application pour la même architecture de processeur que celle du processus de travail.
+* Publiez l’application sous forme de [déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-executables-fde).
+
+### <a name="50033-ancm-request-handler-load-failure"></a>500.33 - Échec du chargement du gestionnaire de requêtes ANCM
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+L’application n’a pas référencé le framework `Microsoft.AspNetCore.App`. Seules les applications ciblant le framework `Microsoft.AspNetCore.App` peuvent être hébergées par le module ASP.NET Core.
+
+Pour corriger cette erreur, vérifiez que l’application cible le framework `Microsoft.AspNetCore.App`. Examinez le fichier `.runtimeconfig.json` pour vérifier le framework ciblé par l’application.
+
+### <a name="50034-ancm-mixed-hosting-models-not-supported"></a>500.34 - Modèles d’hébergement mixtes ANCM non pris en charge
+
+Le processus de travail ne peut pas exécuter à la fois une application in-process et une application out-of-process dans le même processus.
+
+Pour corriger cette erreur, exécutez les applications dans des pools d’applications IIS distincts.
+
+### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 - Applications in-process multiples dans le même processus ANCM
+
+Le processus de travail ne peut pas exécuter à la fois une application in-process et une application out-of-process dans le même processus.
+
+Pour corriger cette erreur, exécutez les applications dans des pools d’applications IIS distincts.
+
+### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 - Échec de chargement du gestionnaire out-of-process ANCM
+
+Le gestionnaire de requêtes out-of-process, *aspnetcorev2_outofprocess.dll*, ne se trouve pas aux côtés du fichier *aspnetcorev2.dll*. Cela indique une installation endommagée du module ASP.NET Core.
+
+Pour corriger cette erreur, réparez l’installation du [bundle d’hébergement .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (pour IIS) ou Visual Studio (pour IIS Express).
+
+### <a name="50037-ancm-failed-to-start-within-startup-time-limit"></a>500.37 - Échec du démarrage d’ANCM dans le délai imparti
+
+ANCM n’a pas pu démarrer dans le délai imparti spécifié. Par défaut, le délai d’expiration est de 120 secondes.
+
+Cette erreur peut se produire quand un grand nombre d’applications démarrent sur la même machine. Recherchez les pics d’utilisation du processeur/de la mémoire sur le serveur durant le démarrage. Vous devrez peut-être décaler le processus de démarrage de plusieurs applications.
+
+### <a name="50030-in-process-startup-failure"></a>500.30 - Échec du démarrage in-process
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente de démarrer le runtime .NET Core in-process, mais sans succès. Vous pouvez généralement déterminer la cause d’un échec de démarrage de processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
+
+### <a name="5000-in-process-handler-load-failure"></a>500.0 - Échec de chargement du gestionnaire in-process
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+La cause d’un échec de démarrage du processus se trouve également dans le [Journal des événements de l’application](#application-event-log).
+
+::: moniker-end
+
 **Réinitialisation de la connexion**
 
 Si une erreur se produit après l’envoi des en-têtes, il est trop tard pour que le serveur puisse envoyer une **erreur de serveur interne 500**. C’est souvent le cas quand une erreur se produit pendant la sérialisation des objets complexes d’une réponse. Ce type d’erreur apparaît en tant qu’erreur de *réinitialisation de la connexion* sur le client. La [journalisation des applications](xref:fundamentals/logging/index) peut aider à le résoudre.
@@ -59,7 +152,7 @@ Pour accéder au Journal des événements de l’application, utilisez le pannea
 
 En dehors de la solution consistant à utiliser le panneau **Diagnostiquer et résoudre les problèmes**, vous pouvez examiner directement le fichier Journal des événements de l’application avec [Kudu](https://github.com/projectkudu/kudu/wiki) :
 
-1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Ouvrez le dossier **LogFiles**.
 1. Sélectionnez l’icône en forme de crayon à côté du fichier *eventlog.xml*.
@@ -69,7 +162,7 @@ En dehors de la solution consistant à utiliser le panneau **Diagnostiquer et r�
 
 De nombreuses erreurs de démarrage ne produisent pas d’informations utiles dans le Journal des événements de l’application. Vous pouvez exécuter l’application dans la console d’exécution à distance [Kudu](https://github.com/projectkudu/kudu/wiki) pour détecter l’erreur :
 
-1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 
 #### <a name="test-a-32-bit-x86-app"></a>Tester une application 32 bits (x86)
@@ -135,7 +228,7 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 1. Définissez **stdoutLogEnabled** sur `true` et remplacez le chemin **stdoutLogFile** par : `\\?\%home%\LogFiles\stdout`.
 1. Sélectionnez **Enregistrer** pour enregistrer le fichier *web.config* mis à jour.
 1. Adressez une demande à l’application.
-1. Revenez sur le Portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Revenez sur le Portail Azure. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Sélectionnez le dossier **LogFiles**.
 1. Inspectez la colonne **Modifié** et sélectionnez l’icône en forme de crayon pour modifier le journal stdout avec la date de dernière modification.
@@ -161,10 +254,10 @@ Le journal de débogage du module ASP.NET Core fournit une journalisation suppl�
 1. Pour activer le journal de diagnostic amélioré, effectuez l’une des opérations suivantes :
    * Suivez les instructions indiquées dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) afin de configurer l’application pour une journalisation des diagnostics améliorée. Redéployez l’application.
    * Ajoutez le `<handlerSettings>` présenté dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) au fichier *web.config* de l’application en production à l’aide de la console Kudu :
-     1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+     1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
      1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
      1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot**. Modifiez le fichier *web.config* en sélectionnant le bouton représentant un crayon. Ajoutez la section `<handlerSettings>` comme indiqué dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Sélectionnez le bouton **Enregistrer**.
-1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot**. Si vous n’avez pas indiqué de chemin pour le fichier *aspnetcore-debug.log*, le fichier apparaît dans la liste. Si vous avez indiqué un chemin, accédez à l’emplacement du fichier journal.
 1. Ouvrez le fichier journal à l’aide du bouton représentant un crayon à côté du nom de fichier.
@@ -220,7 +313,7 @@ Vérifiez que les extensions ASP.NET Core sont installées. Si ce n’est pas le
 
 Si la journalisation stdout n’est pas activée, suivez les étapes ci-dessous :
 
-1. Sur le Portail Azure, sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Sur le Portail Azure, sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;** . La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot** et faites défiler la page jusqu’à révéler le fichier *web.config* en bas de la liste.
 1. Cliquez sur l’icône en forme de crayon à côté du fichier *web.config*.

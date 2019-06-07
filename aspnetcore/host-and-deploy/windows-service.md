@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: ab36bc1b2827c80bb1e7b9e8cee558b346a991f8
-ms.sourcegitcommit: b8ed594ab9f47fa32510574f3e1b210cff000967
+ms.openlocfilehash: 4cfca4b38543ff073bb98dc09b483d96096928ae
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66251426"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692571"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -26,6 +26,35 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell version 6.2 ou ultérieure](https://github.com/PowerShell/PowerShell)
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="worker-service-template"></a>Modèle Service Worker
+
+Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écriture d’applications de service durables. Pour utiliser le modèle en tant que base d’une application de service Windows :
+
+1. Créez une application Service Worker à partir du modèle .NET Core.
+1. Suivez l’aide fournie dans la section [Configuration d’application](#app-configuration) pour mettre à jour l’application Service Worker afin qu’elle puisse s’exécuter en tant que service Windows.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. Créer un nouveau projet.
+1. Sélectionnez **Nouvelle application web ASP.NET Core**. Sélectionnez **Suivant**.
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Sélectionnez **Créer**.
+1. Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés.
+1. Sélectionnez le modèle **Service Worker**. Sélectionnez **Créer**.
+
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+Utilisez le modèle Service Worker (`worker`) avec la commande [dotnet new](/dotnet/core/tools/dotnet-new) à partir d’un interpréteur de commandes. Dans l’exemple suivant, une application Service Worker est créée et se nomme `ContosoWorkerService`. Un dossier pour l’application `ContosoWorkerService` est créé automatiquement durant l’exécution de la commande.
+
+```console
+dotnet new worker -o ContosoWorkerService
+```
+
+---
+
+::: moniker-end
 
 ## <a name="app-configuration"></a>Configuration de l’application
 
@@ -68,7 +97,7 @@ Pour des informations et des conseils sur les scénarios de déploiement, consul
 
 ### <a name="framework-dependent-deployment-fdd"></a>Déploiement dépendant du framework
 
-Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable (*.exe*), appelé *fichier exécutable dépendant du framework*.
+Un déploiement dépendant du framework s’appuie sur la présence d’une version partagée à l’échelle du système de .NET Core sur le système cible. Lorsque vous effectuez le scénario de déploiement dépendant du framework en suivant les conseils du présent article, le Kit de développement logiciel (SDK) produit un fichier exécutable ( *.exe*), appelé *fichier exécutable dépendant du framework*.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -92,7 +121,7 @@ Un fichier *web.config*, qui est normalement produit lors de la publication d’
 
 ::: moniker range="= aspnetcore-2.2"
 
-[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
+[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable ( *.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
 
 Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
 
@@ -109,7 +138,7 @@ Un fichier *web.config*, qui est normalement produit lors de la publication d’
 
 ::: moniker range="= aspnetcore-2.1"
 
-[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable (*.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
+[L’identificateur relatif (RID)](/dotnet/core/rid-catalog) Windows ([\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)) contient la version cible de .Net Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. La propriété `<SelfContained>` a la valeur `false`. Ces propriétés demandent au Kit de développement logiciel (SDK) de générer un fichier exécutable ( *.exe*) pour Windows et une application qui dépend du framework .NET Core partagé.
 
 La propriété `<UseAppHost>` a la valeur `true`. Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe*) pour un déploiement dépendant du framework (FDD).
 

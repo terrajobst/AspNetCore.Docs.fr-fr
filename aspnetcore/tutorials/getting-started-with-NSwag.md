@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/30/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 566d402fbbb71f6b2cc46fc401cdf915a29cccda
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 787f51629b044e638d2790b3dda8723c2644c2d8
+ms.sourcegitcommit: a04eb20e81243930ec829a9db5dd5de49f669450
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087444"
+ms.lasthandoff: 06/03/2019
+ms.locfileid: "66470432"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
@@ -117,11 +117,12 @@ Vous pouvez tirer parti des fonctionnalités de génération de code de NSwag en
 * Les packages NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) ou [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) pour générer du code dans votre projet.
 * NSwag à partir de la [ligne de commande](https://github.com/NSwag/NSwag/wiki/CommandLine).
 * Le package NuGet [NSwag.MSBuild](https://github.com/NSwag/NSwag/wiki/MSBuild).
+* [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; est un service connecté Visual Studio qui permet de générer du code client d’API en C# ou TypeScript. Génère également des contrôleurs C# pour les services OpenAPI avec NSwag.
 
 ### <a name="generate-code-with-nswagstudio"></a>Générer du code avec NSwagStudio
 
 * Installez NSwagStudio en suivant les instructions fournies dans le [référentiel GitHub de NSwagStudio](https://github.com/RSuter/NSwag/wiki/NSwagStudio).
-* Lancez NSwagStudio et entrez l’URL du fichier *swagger.json* dans la zone de texte **Swagger Specification URL** (URL de spécification Swagger). Par exemple, *http://localhost:44354/swagger/v1/swagger.json*.
+* Lancez NSwagStudio et entrez l’URL du fichier *swagger.json* dans la zone de texte **Swagger Specification URL** (URL de spécification Swagger). Par exemple, *http://localhost:44354/swagger/v1/swagger.json* .
 * Cliquez sur le bouton **Créer une copie locale** pour générer la représentation JSON de votre spécification Swagger.
 
   ![Créer une copie locale de la spécification Swagger](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)

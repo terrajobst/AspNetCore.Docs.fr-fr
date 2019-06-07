@@ -5,14 +5,14 @@ description: Découvrez comment implémenter des tâches d’arrière-plan avec 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 06/03/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 613227cdead1d0b62a0dead2fca9fab68fd534cc
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 2dbb1a84a380ab06a4be7ecf628799a070afc9e3
+ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889004"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692515"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -30,6 +30,32 @@ Cet exemple d’application est fourni en deux versions :
 
 * Hôte web &ndash; L’hôte web est utile pour l’hébergement d’applications web. L’exemple de code présenté dans cette rubrique provient de la version de l’hôte web de l’exemple. Pour plus d’informations, consultez la rubrique [Hôte web](xref:fundamentals/host/web-host).
 * Hôte générique &ndash; L’hôte générique est une nouveauté d’ASP.NET Core 2.1. Pour plus d’informations, consultez la rubrique [Hôte générique](xref:fundamentals/host/generic-host).
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="worker-service-template"></a>Modèle Service Worker
+
+Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écriture d’applications de service durables. Pour utiliser le modèle en tant que base d’une application de services hébergés :
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. Créer un nouveau projet.
+1. Sélectionnez **Nouvelle application web ASP.NET Core**. Sélectionnez **Suivant**.
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Sélectionnez **Créer**.
+1. Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés.
+1. Sélectionnez le modèle **Service Worker**. Sélectionnez **Créer**.
+
+# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+Utilisez le modèle Service Worker (`worker`) avec la commande [dotnet new](/dotnet/core/tools/dotnet-new) à partir d’un interpréteur de commandes. Dans l’exemple suivant, une application Service Worker est créée et se nomme `ContosoWorkerService`. Un dossier pour l’application `ContosoWorkerService` est créé automatiquement durant l’exécution de la commande.
+
+```console
+dotnet new worker -o ContosoWorkerService
+```
+
+---
+
+::: moniker-end
 
 ## <a name="package"></a>Package
 

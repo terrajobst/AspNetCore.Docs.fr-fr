@@ -4,14 +4,14 @@ author: rick-anderson
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/07/2018
+ms.date: 05/31/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 17ce0c111daabe2c7bbf4795b658856568c85158
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8430f8e720870a7b541655ea8bcfe2f67c942bb3
+ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886174"
+ms.lasthandoff: 06/02/2019
+ms.locfileid: "66458431"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -189,7 +189,7 @@ Le balisage suivant montre la page mise à jour :
 
 ### <a name="update-the-edit-page-model"></a>Mettre à jour le modèle de page de modification
 
-Mettez à jour *pages\departments\edit.cshtml.cs* avec le code suivant :
+Mettez à jour *Pages\Departments\Edit.cshtml.cs* à l’aide du code suivant :
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
