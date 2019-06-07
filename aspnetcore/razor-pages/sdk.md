@@ -5,14 +5,14 @@ description: Découvrez comment les pages Razor dans ASP.NET Core permettent de 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 10/25/2018
+ms.date: 06/05/2019
 uid: razor-pages/sdk
-ms.openlocfilehash: de51c9443e639cd64c234b6975cf7252bb7a2b9a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 8c4e882af93b043afaa0bcf86fd1583405f84be9
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895296"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750178"
 ---
 # <a name="aspnet-core-razor-sdk"></a>SDK Razor ASP.NET Core
 
@@ -72,7 +72,7 @@ Les propriétés et les éléments dans le tableau suivant sont utilisés pour c
 | Éléments | Description |
 | ----- | ----------- |
 | `RazorGenerate` | Composants d’élément (fichiers *.cshtml*) fournis en entrée aux cibles de génération de code. |
-| `RazorCompile` | Des éléments Item (*.cs* fichiers) qui sont des entrées aux cibles de compilation Razor. Utilisez ItemGroup pour spécifier d’autres fichiers à compiler dans l’assembly Razor. |
+| `RazorCompile` | Des éléments Item ( *.cs* fichiers) qui sont des entrées aux cibles de compilation Razor. Utilisez ItemGroup pour spécifier d’autres fichiers à compiler dans l’assembly Razor. |
 | `RazorTargetAssemblyAttribute` | Composants d’élément utilisés pour générer le code d’attributs pour l’assembly Razor. Exemple :  <br>`RazorAssemblyAttribute`<br>`Include="System.Reflection.AssemblyMetadataAttribute"`<br>`_Parameter1="BuildSource" _Parameter2="https://docs.microsoft.com/">` |
 | `RazorEmbeddedResource` | Éléments ajoutés en tant que ressources incorporées à l’assembly généré de Razor. |
 
@@ -85,10 +85,10 @@ Les propriétés et les éléments dans le tableau suivant sont utilisés pour c
 | `EnableDefaultRazorGenerateItems` | Si la valeur est `true`, inclut les fichiers *.cshtml* des éléments `Content` dans les éléments `RazorGenerate`. |
 | `GenerateRazorTargetAssemblyInfo` | Lorsque `true`, génère un *.cs* fichier contenant les attributs spécifiés par `RazorAssemblyAttribute` et inclut le fichier dans la sortie de la compilation. |
 | `EnableDefaultRazorTargetAssemblyInfoAttributes` | Si la valeur est `true`, ajoute un ensemble par défaut d’attributs d’assembly à `RazorAssemblyAttribute`. |
-| `CopyRazorGenerateFilesToPublishDirectory` | Lorsque `true`, copies `RazorGenerate` éléments (*.cshtml*) fichiers au répertoire de publication. En règle générale, les fichiers Razor ne sont pas nécessaires pour une application publiée si elles participent compilation au moment de la génération ou au moment de publier. La valeur par défaut est `false`. |
+| `CopyRazorGenerateFilesToPublishDirectory` | Lorsque `true`, copies `RazorGenerate` éléments ( *.cshtml*) fichiers au répertoire de publication. En règle générale, les fichiers Razor ne sont pas nécessaires pour une application publiée si elles participent compilation au moment de la génération ou au moment de publier. La valeur par défaut est `false`. |
 | `CopyRefAssembliesToPublishDirectory` | Si la valeur est `true`, copie les éléments d’assembly de référence dans le répertoire de publication. En règle générale, les assemblys de référence ne sont pas nécessaires pour une application publiée si compilation Razor se produit au moment de la génération ou au moment de publier. La valeur `true` si votre application publiée nécessite une compilation de runtime. Par exemple, la valeur est la valeur `true` si l’application modifie *.cshtml* lors de l’exécution de fichiers ou utilise des vues incorporés. La valeur par défaut est `false`. |
-| `IncludeRazorContentInPack` | Lorsque `true`, tous les éléments de contenu Razor (*.cshtml* fichiers) sont marqués pour inclusion dans le package NuGet généré. La valeur par défaut est `false`. |
-| `EmbedRazorGenerateSources` | Si la valeur est `true`, ajoute des éléments RazorGenerate (*.cshtml*) comme fichiers incorporés à l’assembly Razor généré. La valeur par défaut est `false`. |
+| `IncludeRazorContentInPack` | Lorsque `true`, tous les éléments de contenu Razor ( *.cshtml* fichiers) sont marqués pour inclusion dans le package NuGet généré. La valeur par défaut est `false`. |
+| `EmbedRazorGenerateSources` | Si la valeur est `true`, ajoute des éléments RazorGenerate ( *.cshtml*) comme fichiers incorporés à l’assembly Razor généré. La valeur par défaut est `false`. |
 | `UseRazorBuildServer` | Si la valeur est `true`, utilise un processus de serveur de build persistant pour décharger le travail de génération de code. Utilise par défaut la valeur de `UseSharedCompilation`. |
 
 Pour plus d’informations sur les propriétés, voir [Propriétés MSBuild](/visualstudio/msbuild/msbuild-properties).
@@ -105,3 +105,13 @@ Le SDK Razor définit deux cibles principales :
 * Par défaut, le SDK Razor ne publie pas les assemblys de référence nécessaires à l’exécution de la compilation au moment du runtime. Cela entraîne des échecs de compilation quand le modèle d’application s’appuie sur la compilation au moment du runtime&mdash;par exemple, l’application utilise des vues incorporées ou change les vues une fois l’application publiée. Définissez `CopyRefAssembliesToPublishDirectory` sur `true` pour continuer à publier les assemblys de référence.
 
 * Pour une application web, vérifiez que votre application cible le `Microsoft.NET.Sdk.Web` SDK.
+
+## <a name="razor-language-version"></a>Version de langage Razor
+
+Lorsque vous ciblez le `Microsoft.NET.Sdk.Web` SDK, la version de langage Razor est déduite à partir de la version du framework cible de l’application. Pour les projets ciblant le `Microsoft.NET.Sdk.Razor` SDK ou dans les rares cas que l’application requiert une autre version de langage Razor à la valeur déduite, une version peut être configurée en définissant le `<RazorLangVersion>` propriété dans le fichier de projet application :
+
+```xml
+<PropertyGroup>
+  <RazorLangVersion>{VERSION}</RazorLangVersion>
+</PropertyGroup>
+```
