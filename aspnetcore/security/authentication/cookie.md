@@ -5,12 +5,12 @@ description: Une explication de l’authentification par cookie sans ASP.NET Cor
 ms.author: riande
 ms.date: 02/25/2019
 uid: security/authentication/cookie
-ms.openlocfilehash: 2bc3e16b1b32816b14ad5bb4ca905ae5ed51ab87
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f3e02b357a83cf5fc4b9fcdc79b2fbe80da98507
+ms.sourcegitcommit: 9691b742134563b662948b0ed63f54ef7186801e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897746"
+ms.lasthandoff: 06/10/2019
+ms.locfileid: "66824755"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification par cookie sans ASP.NET Core Identity
 
@@ -195,7 +195,7 @@ await HttpContext.Authentication.SignInAsync(
 
 `SignInAsync` Crée un cookie chiffré et l’ajoute à la réponse actuelle. Si vous ne spécifiez pas un `AuthenticationScheme`, le schéma par défaut est utilisé.
 
-En coulisses, du chiffrement utilisé est d’ASP.NET Core [Protection des données](xref:security/data-protection/using-data-protection#security-data-protection-getting-started) système. Si vous hébergez une application sur plusieurs ordinateurs, l’équilibrage de charge entre les applications ou à l’aide d’une batterie de serveurs web, vous devez [configurer la protection des données](xref:security/data-protection/configuration/overview) à utiliser le même porte-clés et l’identificateur de l’application.
+En coulisses, du chiffrement utilisé est d’ASP.NET Core [Protection des données](xref:security/data-protection/using-data-protection) système. Si vous hébergez une application sur plusieurs ordinateurs, l’équilibrage de charge entre les applications ou à l’aide d’une batterie de serveurs web, vous devez [configurer la protection des données](xref:security/data-protection/configuration/overview) à utiliser le même porte-clés et l’identificateur de l’application.
 
 ## <a name="sign-out"></a>Déconnexion
 
