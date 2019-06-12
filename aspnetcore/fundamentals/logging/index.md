@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/01/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: ee7d4b2ae04b5f6c262acc5da0f86f90ab50585f
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 435f06b85af4a1a5a78a870c2add3e15ff1ffe89
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085667"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837275"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -823,9 +823,10 @@ Pour configurer les paramètres du fournisseur, utilisez <xref:Microsoft.Extensi
 
 ::: moniker-end
 
-En cas de déploiement sur une application App Service, celle-ci applique les paramètres définis dans la section [Journaux de diagnostic](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag) de la page **App Service** du Portail Azure. Lorsque ces paramètres sont mis à jour, les changements prennent effet immédiatement sans avoir besoin de redémarrer ou redéployer l’application.
+En cas de déploiement sur une application App Service, celle-ci applique les paramètres définis dans la section [Journaux App Service](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag) de la page **App Service** du portail Azure. Quand les paramètres suivants sont mis à jour, les changements prennent effet immédiatement sans avoir besoin de redémarrer ou redéployer l’application.
 
-![Paramètres de journalisation Azure](index/_static/azure-logging-settings.png)
+* **Journalisation des applications (système de fichiers)**
+* **Journalisation des applications (objet blob)**
 
 L’emplacement par défaut des fichiers journaux est le dossier *D:\\racine\\LogFiles\\Application*, et le nom de fichier par défaut est *diagnostics-aaaammjj.txt*. La limite de taille de fichier par défaut est de 10 Mo, et le nombre maximal de fichiers conservés par défaut est de 2. Le nom par défaut du blob est *{app-name}{timestamp}/aaaa/mm/jj/hh/{guid}-applicationLog.txt*.
 
@@ -841,14 +842,11 @@ La diffusion en continu des journaux Azure permet d’afficher l’activité de 
 
 Pour configurer le streaming des journaux Azure :
 
-* Accédez à la page **Journaux de diagnostic** sur le portail de votre application.
+* Accédez à la page **Journaux App Service** dans le portail de votre application.
 * Définissez **Journalisation des applications (Système de fichiers)** sur **Activé**.
+* Choisissez le **niveau** du journal.
 
-![Page Journaux de diagnostic du portail Azure](index/_static/azure-diagnostic-logs.png)
-
-Accédez à la page **Diffusion en continu des journaux** pour voir les messages d’application. Ils sont consignés par application par le biais de l’interface `ILogger`.
-
-![Streaming des journaux d’application dans le portail Azure](index/_static/azure-log-streaming.png)
+Accédez à la page **Streaming des journaux** pour voir les messages d’application. Ils sont consignés par application par le biais de l’interface `ILogger`.
 
 ::: moniker range=">= aspnetcore-1.1"
 

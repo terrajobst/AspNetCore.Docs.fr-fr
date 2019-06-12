@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/05/2019
 uid: security/authorization/policies
-ms.openlocfilehash: ea9d687d3810c104d5b3fa39033849c21569709b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 67337c847ba71df3fe61250996ec944632ad5d57
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891826"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837356"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
@@ -22,6 +22,87 @@ Une stratégie d’autorisation se compose d’une ou plusieurs exigences. Il es
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,66)]
 
 Dans l’exemple précédent, une stratégie de « AtLeast21 » est créée. Il a une seule exigence&mdash;celle d’un minimum d’ancienneté, qui est fourni en tant que paramètre à cette exigence.
+
+## <a name="iauthorizationservice"></a>IAuthorizationService 
+
+Le service principal qui détermine si l’autorisation est accordée est <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>:
+
+[!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
+
+Le code précédent met en évidence les deux méthodes de la [IAuthorizationService](https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs).
+
+<xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement> est un service de marqueur avec aucune méthode et le mécanisme de suivi si l’autorisation est accordée.
+
+Chaque <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> est chargé de vérifier si les conditions sont remplies :
+<!--The following code is a copy/paste from 
+https://github.com/aspnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
+
+```csharp
+/// <summary>
+/// Classes implementing this interface are able to make a decision if authorization
+/// is allowed.
+/// </summary>
+public interface IAuthorizationHandler
+{
+    /// <summary>
+    /// Makes a decision if authorization is allowed.
+    /// </summary>
+    /// <param name="context">The authorization information.</param>
+    Task HandleAsync(AuthorizationHandlerContext context);
+}
+```
+
+Le <xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext> classe est utilisée par le gestionnaire à marquer si les conditions sont remplies :
+
+```csharp
+ context.Succeed(requirement)
+```
+
+Le code suivant montre le simplifiée (et annoté avec des commentaires) implémentation du service d’autorisation par défaut :
+
+```csharp
+public async Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user, 
+             object resource, IEnumerable<IAuthorizationRequirement> requirements)
+{
+    // Create a tracking context from the authorization inputs.
+    var authContext = _contextFactory.CreateContext(requirements, user, resource);
+
+    // By default this returns an IEnumerable<IAuthorizationHandlers> from DI.
+    var handlers = await _handlers.GetHandlersAsync(authContext);
+
+    // Invoke all handlers.
+    foreach (var handler in handlers)
+    {
+        await handler.HandleAsync(authContext);
+    }
+
+    // Check the context, by default success is when all requirements have been met.
+    return _evaluator.Evaluate(authContext);
+}
+```
+
+Le code suivant présente un standard `ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add all of your handlers to DI.
+    services.AddSingleton<IAuthorizationHandler, MyHandler1>();
+    // MyHandler2, ...
+
+    services.AddSingleton<IAuthorizationHandler, MyHandlerN>();
+
+    // Configure your policies
+    services.AddAuthorization(options =>
+          options.AddPolicy("Something",
+          policy => policy.RequireClaim("Permission", "CanViewPage", "CanViewAnything")));
+
+
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+}
+```
+
+Utilisez <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> ou `[Authorize(Policy = "Something"]` pour l’autorisation.
 
 ## <a name="applying-policies-to-mvc-controllers"></a>Appliquer des stratégies à des contrôleurs MVC
 

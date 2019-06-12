@@ -3,14 +3,14 @@ title: Vue d’ensemble des API de consommateur pour ASP.NET Core
 author: rick-anderson
 description: Recevoir une vue d’ensemble du consommateur diverses API disponibles dans la bibliothèque de protection de données ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 06/11/2019
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: b0d11d097ee2d448b6781f6fa84445f6400fbc76
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: ff9badb55813cae0aa72d3a95dc53792332f109b
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087539"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837378"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>Vue d’ensemble des API de consommateur pour ASP.NET Core
 
@@ -32,7 +32,7 @@ Le concept de même et différents `IDataProtector` ties sauvegarder sur le conc
 
 ## <a name="consuming-these-interfaces"></a>Utilisation de ces interfaces.
 
-Pour un composant prenant en charge l’injection de dépendances, l’utilisation prévue est que le composant un `IDataProtectionProvider` paramètre dans son constructeur et que le système d’injection de dépendance fournit automatiquement ce service lorsque le composant est instancié.
+Pour un composant prenant en charge l’injection de dépendances, l’utilisation prévue est que le composant utilise un `IDataProtectionProvider` paramètre dans son constructeur et que le système d’injection de dépendance fournit automatiquement ce service lorsque le composant est instancié.
 
 > [!NOTE]
 > Certaines applications (telles que les applications de console ou les applications ASP.NET 4.x) ne peuvent pas être conscients de l’injection de dépendances ne pouvez pas utiliser le mécanisme décrit ici. Pour ces scénarios, consultez le [des scénarios compatibles avec l’injection de dépendances Non](xref:security/data-protection/configuration/non-di-scenarios) document pour plus d’informations sur l’obtention d’une instance d’un `IDataProtection` fournisseur sans passer par l’injection de dépendances.

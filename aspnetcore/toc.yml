@@ -832,6 +832,8 @@
           href: /azure/app-service/overview-authentication-authorization?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: Comptes d'utilisateur individuels
           uid: security/authentication/individual
+        - name: Configurer l’authentification par certificat
+          uid: security/authentication/certauth
     - name: Autorisation
       items:
         - name: Vue d'ensemble
