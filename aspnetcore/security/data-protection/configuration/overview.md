@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: ee43427fa1e82a365d49df50567b4ca7afb5a5d3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 65a927b6288ca6cc41ee1bedd1080e52ffe0d3e1
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897296"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034923"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurer la Protection des données ASP.NET Core
 
@@ -23,7 +23,7 @@ Lorsque le système de Protection des données est initialisé, il s’applique 
 Pour ces scénarios, le système de Protection des données offre une API de configuration riche.
 
 > [!WARNING]
-> Comme pour les fichiers de configuration, le key ring de protection de données doivent être protégé à l’aide des autorisations appropriées. Vous pouvez choisir de chiffrer les clés au repos, mais cela n’empêche pas les pirates de créer de nouvelles clés. Par conséquent, la sécurité de votre application est affectée. L’emplacement de stockage configuré avec la Protection des données doit avoir son accès limité à l’application elle-même, similaire à la façon dont vous protégera les fichiers de configuration. Par exemple, si vous choisissez de stocker votre porte-clés sur le disque, utilisez des autorisations de système de fichiers. Vérifiez seulement l’identité sous laquelle s’exécute votre application web a lire, écrire et créer l’accès à ce répertoire. Si vous utilisez le stockage Table Azure, seule l’application web doit avoir la possibilité de lire, écrire ou créer de nouvelles entrées dans le magasin de tables, etc.
+> Comme pour les fichiers de configuration, le key ring de protection de données doivent être protégé à l’aide des autorisations appropriées. Vous pouvez choisir de chiffrer les clés au repos, mais cela n’empêche pas les pirates de créer de nouvelles clés. Par conséquent, la sécurité de votre application est affectée. L’emplacement de stockage configuré avec la Protection des données doit avoir son accès limité à l’application elle-même, similaire à la façon dont vous protégera les fichiers de configuration. Par exemple, si vous choisissez de stocker votre porte-clés sur le disque, utilisez des autorisations de système de fichiers. Vérifiez seulement l’identité sous laquelle s’exécute votre application web a lire, écrire et créer l’accès à ce répertoire. Si vous utilisez le stockage Blob Azure, seule l’application web doit avoir la possibilité de lire, écrire ou créer de nouvelles entrées dans le magasin d’objets blob, etc.
 >
 > La méthode d’extension [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) retourne un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` expose des méthodes d’extension que vous pouvez chaîner des options pour configurer la Protection des données.
 
@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [fournisseurs de stockage de clés : Stockage Azure](xref:security/data-protection/implementation/key-storage-providers#azure-storage). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
 Le `keyIdentifier` est l’identificateur de clé de coffre de clés utilisée pour le chiffrement de clé. Par exemple, une clé créée dans le coffre de clés nommé `dataprotection` dans le `contosokeyvault` a l’identificateur de clé `https://contosokeyvault.vault.azure.net/keys/dataprotection/`. Fournir à l’application avec **Unwrap Key** et **Wrap Key** autorisations au coffre de clés.
 
@@ -170,7 +170,7 @@ Lorsque le système de Protection des données est fourni par un hôte ASP.NET C
 
 Le mécanisme d’isolation fonctionne en tenant compte de chaque application sur l’ordinateur local en tant qu’un locataire unique, donc le <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> rooté pour une application donnée inclut automatiquement l’ID d’application en tant que discriminateur. ID unique de l’application est le chemin d’accès physique de l’application :
 
-* Pour les applications hébergées dans [IIS](xref:fundamentals/servers/index#iis-http-server), l’ID unique est le chemin physique IIS de l’application. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur est stable, en supposant que les environnements d’IIS sont configurés de façon similaire sur tous les ordinateurs dans la batterie de serveurs web.
+* Pour les applications hébergées dans IIS, l’ID unique est le chemin physique IIS de l’application. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur est stable, en supposant que les environnements d’IIS sont configurés de façon similaire sur tous les ordinateurs dans la batterie de serveurs web.
 * Pour les applications auto-hébergé qui s’exécutent le [serveur Kestrel](xref:fundamentals/servers/index#kestrel), l’ID unique est le chemin d’accès physique à l’application sur le disque.
 
 L’identificateur unique est conçu pour résister aux réinitialisations&mdash;de l’application individuelle et de la machine elle-même.
