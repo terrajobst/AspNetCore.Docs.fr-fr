@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/11/2019
 uid: fundamentals/index
-ms.openlocfilehash: 9c7bc25d813ad17825ef03f5176882993cc2dd63
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 3cf311f8e6be4ed12c79ceecc15ccc1babfb0117
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610326"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034859"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -22,11 +22,12 @@ Cet article est une vue d’ensemble des sujets clés pour comprendre comment d�
 
 La classe `Startup` est l’endroit où :
 
-* Tous les services requis par l’application sont configurés.
+* Les services nécessaires à l’application sont configurés.
 * Le pipeline de traitement des requêtes est défini.
 
-* Le code pour configurer (ou *enregistrer*) des services est ajouté à la méthode `Startup.ConfigureServices`. Les *services* sont des composants utilisés par l’application. Par exemple, un objet de contexte Entity Framework Core est un service.
-* Le code pour configurer le pipeline de traitement des requêtes est ajouté à la méthode `Startup.Configure`. Le pipeline est composé comme une série de composants d’*intergiciel (middleware)*. Par exemple, un intergiciel (middleware) peut gérer les demandes de fichiers statiques ou rediriger les requêtes HTTP vers HTTPS. Chaque intergiciel (middleware) effectue des opérations asynchrones sur `HttpContext`, puis appelle l’intergiciel (middleware) suivant dans le pipeline ou met fin à la requête.
+Les *services* sont des composants utilisés par l’application. Par exemple, un composant de journalisation est un service. Le code pour configurer (ou *enregistrer*) des services est ajouté à la méthode `Startup.ConfigureServices`.
+
+Le pipeline de traitement des requêtes est composé d’une série de composants d’*intergiciel (middleware)* . Par exemple, un intergiciel (middleware) peut gérer les demandes de fichiers statiques ou rediriger les requêtes HTTP vers HTTPS. Chaque intergiciel (middleware) effectue des opérations asynchrones sur `HttpContext`, puis appelle l’intergiciel (middleware) suivant dans le pipeline ou met fin à la requête. Le code pour configurer le pipeline de traitement des requêtes est ajouté à la méthode `Startup.Configure`.
 
 Voici un exemple de classe `Startup` :
 
@@ -60,9 +61,7 @@ ASP.NET Core inclut un ensemble complet de middlewares intégrés, et vous pouve
 
 Pour plus d'informations, consultez <xref:fundamentals/middleware/index>.
 
-<a id="host"/>
-
-## <a name="the-host"></a>L’hôte
+## <a name="host"></a>Hôte
 
 Une application ASP.NET Core génère un *hôte* au démarrage. L’hôte est un objet qui encapsule toutes les ressources de l’application, telles que :
 
@@ -74,61 +73,45 @@ Une application ASP.NET Core génère un *hôte* au démarrage. L’hôte est un
 
 La principale raison d’inclure toutes les ressources interdépendantes de l’application dans un objet est la gestion de la durée de vie : contrôler le démarrage de l’application et l’arrêt approprié.
 
-Le code pour créer un hôte se trouve dans `Program.Main` et suit le [modèle de conception](https://wikipedia.org/wiki/Builder_pattern). Les méthodes sont appelées pour configurer chaque ressource faisant partie de l’hôte. Une méthode de générateur est appelée pour tout rassembler et instancier l’objet hôte.
-
 ::: moniker range=">= aspnetcore-3.0"
 
-`CreateHostBuilder` est un nom spécial qui identifie la méthode de générateur auprès des composants externes, par exemple [Entity Framework](/ef/core/).
+Deux hôtes sont disponibles : l’hôte générique et l’hôte web. L’hôte générique est recommandé. L’hôte web est disponible uniquement pour des raisons de compatibilité descendante.
 
-Dans ASP.NET Core 3.0 ou version ultérieure, un hôte générique (classe `Host`) ou un hôte web (classe `WebHost`) peut être utilisé dans une application web. L’hôte générique est recommandée, et l’hôte web est disponible pour la compatibilité descendante.
+Le code permettant de créer un hôte se trouve dans `Program.Main` :
 
-Le framework fournit les méthodes `CreateDefaultBuilder` et `ConfigureWebHostDefaults` pour définir un hôte avec des options fréquemment utilisées, telles que :
+[!code-csharp[](index/snapshots/3.x/Program1.cs)]
+
+Les méthodes `CreateDefaultBuilder` et `ConfigureWebHostDefaults` permettent de configurer un hôte avec les options fréquemment utilisées, notamment :
 
 * Utilisez [Kestrel](#servers) en tant que serveur web et activez l’intégration IIS.
 * Chargez la configuration à partir de *appsettings.json*, *appsettings.{Environment Name}.json*, des variables d’environnement, des arguments de ligne de commande et d’autres sources de configuration.
 * Envoyez la sortie de journalisation aux fournisseurs Console et Debug.
 
-Voici l’exemple de code qui génère un hôte. Les méthodes qui configurent l’hôte avec les options fréquemment utilisées sont mises en surbrillance :
-
-[!code-csharp[](index/snapshots/3.x/Program1.cs?highlight=9-10)]
-
-Pour plus d’informations, consultez <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/web-host>.
+Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-`CreateWebHostBuilder` est un nom spécial qui identifie la méthode de générateur auprès des composants externes, par exemple [Entity Framework](/ef/core/).
+Deux hôtes sont disponibles : l’hôte web et l’hôte générique. En ASP.NET Core 2.x, l’hôte générique est destiné uniquement aux scénarios non basés sur le web.
 
-ASP.NET Core 2.x utilise l’hôte web (classe `WebHost`) pour les applications web. Le framework fournit `CreateDefaultBuilder` pour définir un hôte avec des options fréquemment utilisées, telles que :
+Le code permettant de créer un hôte se trouve dans `Program.Main` :
+
+[!code-csharp[](index/snapshots/2.x/Program1.cs)]
+
+La méthode `CreateDefaultBuilder` permet de configurer un hôte avec les options fréquemment utilisées, notamment :
 
 * Utilisez [Kestrel](#servers) en tant que serveur web et activez l’intégration IIS.
 * Chargez la configuration à partir de *appsettings.json*, *appsettings.{Environment Name}.json*, des variables d’environnement, des arguments de ligne de commande et d’autres sources de configuration.
 * Envoyez la sortie de journalisation aux fournisseurs Console et Debug.
-
-Voici l’exemple de code qui génère un hôte :
-
-[!code-csharp[](index/snapshots/2.x/Program1.cs?highlight=9)]
 
 Pour plus d'informations, consultez <xref:fundamentals/host/web-host>.
 
 ::: moniker-end
 
-### <a name="advanced-host-scenarios"></a>Scénarios d’hôte avancés
+### <a name="non-web-scenarios"></a>Scénarios non basés sur le web
 
-::: moniker range=">= aspnetcore-3.0"
-
-L’hôte générique est disponible pour une utilisation par toutes les applications .NET Core&mdash;pas uniquement les applications ASP.NET Core. L’hôte générique (classe `Host`) permet à d’autres types d’applications d’utiliser des extensions de framework composites telles que la journalisation, l’injection de dépendances, la configuration et la gestion de la durée de vie d’application. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-L’hôte web est conçu pour inclure une implémentation de serveur HTTP, ce qui n’est pas nécessaire pour d’autres types d’applications .NET. À compter de la version ASP.NET Core 2.1, l’hôte générique (classe `Host`) est disponible pour une utilisation par toutes les applications .NET Core&mdash;pas uniquement les applications ASP.NET Core. L’hôte générique permet à d’autres types d’applications d’utiliser des extensions de framework composites telles que la journalisation, l’injection de dépendances, la configuration et la gestion de la durée de vie d’application. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
-
-::: moniker-end
-
-Vous pouvez également utiliser l’hôte pour exécuter des tâches en arrière-plan. Pour plus d'informations, consultez <xref:fundamentals/host/hosted-services>.
+L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
 
 ## <a name="servers"></a>Serveurs
 
@@ -287,6 +270,6 @@ Pour plus d’informations, consultez [Racine de contenu](xref:fundamentals/host
 
 La racine web (également appelée *webroot*) est le chemin d’accès de base aux ressources statiques publiques, telles que les fichiers CSS, JavaScript et image. Par défaut, l’intergiciel (middleware) des fichiers statiques traite uniquement les fichiers provenant du répertoire racine web (et des sous-répertoires). Le chemin d’accès par défaut de la racine web est *{Content Root}/wwwroot*, mais un autre emplacement peut être spécifié lors de la [création de l’hôte](#host).
 
-Dans les fichiers Razor (*.cshtml*), la barre oblique tilde `~/` pointe vers la racine web. Les chemins commençant par `~/` sont appelés chemins virtuels.
+Dans les fichiers Razor ( *.cshtml*), la barre oblique tilde `~/` pointe vers la racine web. Les chemins commençant par `~/` sont appelés chemins virtuels.
 
 Pour plus d'informations, consultez <xref:fundamentals/static-files>.

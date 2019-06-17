@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 61669dca24b552012ee057b89de28b7de1702c2b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 442570cdc79fe7c496392ffbcbc527cf841aefa9
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886164"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750081"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 
@@ -177,7 +177,7 @@ Remplacez la méthode d’action HttpPost Edit par le code suivant.
 
 Ces modifications implémentent une bonne pratique de sécurité pour empêcher la survalidation. Le générateur de modèles automatique a généré un attribut `Bind` et a ajouté l’entité créée par le classeur de modèles au jeu d’entités avec un indicateur `Modified`. Ce code n’est pas recommandé dans de nombreux scénarios, car l’attribut `Bind` efface toutes les données préexistantes dans les champs non répertoriés dans le paramètre `Include`.
 
-Le nouveau code lit l’entité existante et appelle `TryUpdateModel` pour mettre à jour les champs dans l’entité récupérée [en fonction de l’entrée d’utilisateur dans les données du formulaire envoyé](xref:mvc/models/model-binding#how-model-binding-works). Le suivi automatique des modifications d’Entity Framework définit l’indicateur `Modified` sur les champs qui sont modifiés via une entrée dans le formulaire. Quand la méthode `SaveChanges` est appelée, Entity Framework crée des instructions SQL pour mettre à jour la ligne de la base de données. Les conflits d’accès concurrentiel sont ignorés, et seules les colonnes de table qui ont été mises à jour par l’utilisateur sont mises à jour dans la base de données. (Un didacticiel suivant montre comment gérer les conflits d’accès concurrentiel.)
+Le nouveau code lit l’entité existante et appelle `TryUpdateModel` pour mettre à jour les champs dans l’entité récupérée [en fonction de l’entrée d’utilisateur dans les données du formulaire envoyé](xref:mvc/models/model-binding). Le suivi automatique des modifications d’Entity Framework définit l’indicateur `Modified` sur les champs qui sont modifiés via une entrée dans le formulaire. Quand la méthode `SaveChanges` est appelée, Entity Framework crée des instructions SQL pour mettre à jour la ligne de la base de données. Les conflits d’accès concurrentiel sont ignorés, et seules les colonnes de table qui ont été mises à jour par l’utilisateur sont mises à jour dans la base de données. (Un didacticiel suivant montre comment gérer les conflits d’accès concurrentiel.)
 
 Au titre de bonne pratique pour empêcher la survalidation, les champs dont vous voulez qu’ils puissent être mis à jour par la page **Edit** sont placés en liste verte dans les paramètres de `TryUpdateModel`. (La chaîne vide précédant la liste de champs dans la liste de paramètres est pour un préfixe à utiliser avec les noms des champs du formulaire.) Actuellement, vous ne protégez aucun champ supplémentaire, mais le fait de répertorier les champs que vous voulez que le classeur de modèles lie garantit que si vous ajoutez ultérieurement des champs au modèle de données, ils seront automatiquement protégés jusqu’à ce que vous les ajoutiez explicitement ici.
 

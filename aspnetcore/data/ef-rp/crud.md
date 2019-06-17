@@ -5,12 +5,12 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: 43d133c61c0387ebcb4bcb2d22c800588d8534c3
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: ec22c82b3b70399017b5b9aa61896440db647062
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516923"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750028"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -68,7 +68,7 @@ Exécutez l’application et sélectionnez un lien **Details**. L’URL est au f
 
 Mettez à jour les Pages Razor Edit, Details et Delete pour utiliser le modèle de route `"{id:int}"`. Remplacez la directive de chacune de ces pages (`@page`) par `@page "{id:int}"`.
 
-Une demande à la page avec le modèle de route «{id:int}» qui n'inclut **pas** une valeur de route avec un entier retourne une erreur HTTP 404 (not found).  Par exemple, `http://localhost:5000/Students/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
+Une demande à la page avec le modèle de route «{id:int}» qui n'inclut **pas** une valeur de route avec un entier retourne une erreur HTTP 404 (not found). Par exemple, `http://localhost:5000/Students/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
 
  ```cshtml
 @page "{id:int?}"
@@ -123,7 +123,7 @@ Dans le code précédent, `TryUpdateModelAsync<Student>` tente de mettre à jour
 Dans l’exemple précédent :
 
 * Le deuxième argument (`"student", // Prefix`) est le préfixe utilisé pour rechercher des valeurs. Il ne respecte pas la casse.
-* Les valeurs de formulaire publiées sont converties vers les types dans le modèle `Student` à l’aide de la [liaison de modèle](xref:mvc/models/model-binding#how-model-binding-works).
+* Les valeurs de formulaire publiées sont converties vers les types dans le modèle `Student` à l’aide de la [liaison de modèle](xref:mvc/models/model-binding).
 
 <a id="overpost"></a>
 

@@ -5,14 +5,14 @@ description: Créez une application Blazor étape par étape.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2019
+ms.date: 06/12/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d48b891127f4db929b631c0ddf199c07658e604c
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
+ms.openlocfilehash: df27dad17133f287b1c73dc308b4cc69426e0a63
+ms.sourcegitcommit: 739a3d7ca4fd2908ea0984940eca589a96359482
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65970122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67040711"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
@@ -36,7 +36,7 @@ Suivez les instructions de l’article <xref:blazor/get-started> afin de créer 
 
    L’interface utilisateur du composant Counter est définie à l’aide de HTML. La logique de rendu dynamique (par exemple, les boucles, conditions, expressions) est ajoutée à l’aide d’une syntaxe C# intégrée appelée [Razor](xref:mvc/views/razor). Le balisage HTML et la logique de rendu C# sont convertis en une classe de composants au moment de la génération. Le nom de la classe .NET générée correspond à celui du fichier.
 
-   Les membres de la classe de composants sont définis dans un bloc `@functions`. Dans le bloc `@functions`, l’état du composant (propriétés, champs) et les méthodes sont spécifiés pour la gestion des événements ou pour définir une autre logique de composant. Ces membres sont ensuite utilisés dans le cadre de la logique de rendu du composant et la gestion des événements.
+   Les membres de la classe de composants sont définis dans un bloc `@code`. Dans le bloc `@code`, l’état du composant (propriétés, champs) et les méthodes sont spécifiés pour la gestion des événements ou pour définir une autre logique de composant. Ces membres sont ensuite utilisés dans le cadre de la logique de rendu du composant et la gestion des événements.
 
    Lorsque le bouton **Click me** est sélectionné :
 
@@ -69,7 +69,7 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
 Les composants peuvent également avoir des paramètres. Les paramètres des composants sont définis à l’aide de propriétés non publiques sur la classe de composants décorée avec `[Parameter]`. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
 
-1. Mettez à jour le code C# `@functions` du composant :
+1. Mettez à jour le code C# `@code` du composant :
 
    * Ajoutez une propriété `IncrementAmount` décorée avec l’attribut `[Parameter]`.
    * Modifiez la méthode `IncrementCount` pour utiliser `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.
@@ -152,21 +152,13 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
 1. Régénérez et exécutez l’application. Consultez la nouvelle page Todo pour vérifier que le lien vers le composant Todo fonctionne.
 
-1. Si vous créez une application Blazor côté serveur, ajoutez l’espace de noms de l’application au fichier *\_Imports.razor*. L’énoncé `@using` suivant suppose que l’espace de noms de l’application est `WebApplication` :
-
-   ```cshtml
-   @using WebApplication
-   ```
-   
-   Les applications Blazor côté client incluent l’espace de noms de l’application par défaut dans le fichier *\_Imports.razor*.
-
 1. Ajoutez un fichier *TodoItem.cs* à la racine du projet pour contenir une classe qui représente un élément Todo. Utilisez le code C# suivant pour la classe `TodoItem` :
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/TodoItem.cs)]
 
 1. Revenez au composant Todo (*Pages/Todo.razorl*) :
 
-   * Ajoutez un champ pour les éléments Todo dans un bloc `@functions`. Le composant Todo utilise ce champ pour maintenir l’état de la liste de tâches.
+   * Ajoutez un champ pour les éléments Todo dans un bloc `@code`. Le composant Todo utilise ce champ pour maintenir l’état de la liste de tâches.
    * Ajoutez un balisage de liste non triée et une boucle `foreach` pour effectuer le rendu de chaque élément todo en tant qu’élément de liste.
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo4.razor?highlight=5-10,12-14)]
@@ -177,7 +169,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
 1. Régénérez et exécutez l’application. Lorsque le bouton **Add todo** est sélectionné, rien ne se produit car aucun gestionnaire d’événements n’est lié au bouton.
 
-1. Ajoutez une méthode `AddTodo` au composant Todo et enregistrez-la pour les clics sur le bouton à l’aide de l’attribut `onclick` :
+1. Ajoutez une méthode `AddTodo` au composant Todo et enregistrez-la pour les clics sur le bouton à l’aide de l’attribut `@onclick` :
 
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo6.razor?highlight=2,7-10)]
 
@@ -188,7 +180,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
    [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
    ```cshtml
-   <input placeholder="Something todo" bind="@newTodo" />
+   <input placeholder="Something todo" @bind="@newTodo" />
    ```
 
 1. Mettez à jour la méthode `AddTodo` pour ajouter `TodoItem` avec le titre spécifié à la liste. Supprimez la valeur du texte d’entrée en définissant `newTodo` sur une chaîne vide :
