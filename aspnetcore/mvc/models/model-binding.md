@@ -1,151 +1,428 @@
 ---
 title: Liaison de données dans ASP.NET Core
 author: tdykstra
-description: Découvrez comment la liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.
+description: Découvrez comment fonctionne la liaison de modèle avec ASP.NET Core, et comment personnaliser son comportement.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 11/13/2018
+ms.date: 05/31/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7d62ccecdacbd34a38a1fd8c58979a9b09cf86e8
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883144"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750199"
 ---
-# <a name="model-binding-in-aspnet-core"></a><span data-ttu-id="e6b7f-103">Liaison de données dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e6b7f-103">Model Binding in ASP.NET Core</span></span>
+# <a name="model-binding-in-aspnet-core"></a><span data-ttu-id="67fa1-103">Liaison de données dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="67fa1-103">Model Binding in ASP.NET Core</span></span>
 
-<span data-ttu-id="e6b7f-104">Par [Rachel Appel](https://github.com/rachelappel)</span><span class="sxs-lookup"><span data-stu-id="e6b7f-104">By [Rachel Appel](https://github.com/rachelappel)</span></span>
+<span data-ttu-id="67fa1-104">Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.</span><span class="sxs-lookup"><span data-stu-id="67fa1-104">This article explains what model binding is, how it works, and how to customize its behavior.</span></span>
 
-## <a name="introduction-to-model-binding"></a><span data-ttu-id="e6b7f-105">Introduction à la liaison de modèle</span><span class="sxs-lookup"><span data-stu-id="e6b7f-105">Introduction to model binding</span></span>
+<span data-ttu-id="67fa1-105">[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="67fa1-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="e6b7f-106">La liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-106">Model binding in ASP.NET Core MVC maps data from HTTP requests to action method parameters.</span></span> <span data-ttu-id="e6b7f-107">Les paramètres peuvent être des types simples, comme des chaînes, des entiers ou des nombres à virgule flottante, ou ils peuvent être des types complexes.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-107">The parameters may be simple types such as strings, integers, or floats, or they may be complex types.</span></span> <span data-ttu-id="e6b7f-108">Il s’agit d’une fonctionnalité intéressante de MVC, car le mappage des données entrantes à une contrepartie est un scénario souvent répété, quelle que soit la taille ou la complexité des données.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-108">This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data.</span></span> <span data-ttu-id="e6b7f-109">MVC résout ce problème en rendant la liaison transparente : les développeurs ne doivent pas continuer à réécrire une version légèrement différente de ce même code dans chaque application.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-109">MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app.</span></span> <span data-ttu-id="e6b7f-110">Écrire le code de votre propre convertisseur de texte en type est fastidieux et sujet à erreur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-110">Writing your own text to type converter code is tedious, and error prone.</span></span>
+## <a name="what-is-model-binding"></a><span data-ttu-id="67fa1-106">Description de la liaison de modèle</span><span class="sxs-lookup"><span data-stu-id="67fa1-106">What is Model binding</span></span>
 
-## <a name="how-model-binding-works"></a><span data-ttu-id="e6b7f-111">Fonctionnement de la liaison de modèle</span><span class="sxs-lookup"><span data-stu-id="e6b7f-111">How model binding works</span></span>
+<span data-ttu-id="67fa1-107">Les contrôleurs et Razor Pages utilisent des données provenant de requêtes HTTP.</span><span class="sxs-lookup"><span data-stu-id="67fa1-107">Controllers and Razor pages work with data that comes from HTTP requests.</span></span> <span data-ttu-id="67fa1-108">Par exemple, les données de routage peuvent fournir une clé d’enregistrement, et les champs de formulaire posté peuvent fournir des valeurs pour les propriétés du modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-108">For example, route data may provide a record key, and posted form fields may provide values for the properties of the model.</span></span> <span data-ttu-id="67fa1-109">L’écriture du code permettant de récupérer chacune de ces valeurs et de les convertir en types .NET à partir de chaînes est fastidieuse et source d’erreurs.</span><span class="sxs-lookup"><span data-stu-id="67fa1-109">Writing code to retrieve each of these values and convert them from strings to .NET types would be tedious and error-prone.</span></span> <span data-ttu-id="67fa1-110">La liaison de modèle automatise ce processus.</span><span class="sxs-lookup"><span data-stu-id="67fa1-110">Model binding automates this process.</span></span> <span data-ttu-id="67fa1-111">Le système de liaison de modèle :</span><span class="sxs-lookup"><span data-stu-id="67fa1-111">The model binding system:</span></span>
 
-<span data-ttu-id="e6b7f-112">Quand MVC reçoit une requête HTTP, il la route vers une méthode d’action spécifique d’un contrôleur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-112">When MVC receives an HTTP request, it routes it to a specific action method of a controller.</span></span> <span data-ttu-id="e6b7f-113">Il détermine la méthode d’action à exécuter en fonction de ce qui se trouve dans les données de la route, puis il lie les valeurs de la requête HTTP aux paramètres de cette méthode d’action.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-113">It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters.</span></span> <span data-ttu-id="e6b7f-114">Considérez par exemple l’URL suivante :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-114">For example, consider the following URL:</span></span>
+* <span data-ttu-id="67fa1-112">Récupère les données de diverses sources telles que les données de routage, les champs de formulaire et les chaînes de requête</span><span class="sxs-lookup"><span data-stu-id="67fa1-112">Retrieves data from various sources such as route data, form fields, and query strings.</span></span>
+* <span data-ttu-id="67fa1-113">Fournit les données aux contrôleurs et à Razor Pages dans les paramètres de méthode et les propriétés publiques</span><span class="sxs-lookup"><span data-stu-id="67fa1-113">Provides the data to controllers and Razor pages in method parameters and public properties.</span></span>
+* <span data-ttu-id="67fa1-114">Convertit les données de chaîne en types .NET</span><span class="sxs-lookup"><span data-stu-id="67fa1-114">Converts string data to .NET types.</span></span>
+* <span data-ttu-id="67fa1-115">Met à jour les propriétés des types complexes</span><span class="sxs-lookup"><span data-stu-id="67fa1-115">Updates properties of complex types.</span></span>
 
-`http://contoso.com/movies/edit/2`
+## <a name="example"></a><span data-ttu-id="67fa1-116">Exemple</span><span class="sxs-lookup"><span data-stu-id="67fa1-116">Example</span></span>
 
-<span data-ttu-id="e6b7f-115">Le modèle de route se présentant comme ceci, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` route vers le contrôleur `Movies` et sa méthode d’action `Edit`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-115">Since the route template looks like this, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` routes to the `Movies` controller, and its `Edit` action method.</span></span> <span data-ttu-id="e6b7f-116">Il accepte également un paramètre facultatif nommé `id`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-116">It also accepts an optional parameter called `id`.</span></span> <span data-ttu-id="e6b7f-117">Le code de la méthode d’action doit ressembler à ceci :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-117">The code for the action method should look something like this:</span></span>
+<span data-ttu-id="67fa1-117">Supposons que vous ayez la méthode d’action suivante :</span><span class="sxs-lookup"><span data-stu-id="67fa1-117">Suppose you have the following action method:</span></span>
 
-```csharp
-public IActionResult Edit(int? id)
-   ```
+[!code-csharp[](model-binding/samples/2.x/Controllers/PetsController.cs?name=snippet_DogsOnly)]
 
-<span data-ttu-id="e6b7f-118">Remarque : Les chaînes de l’itinéraire d’URL ne respectent pas la casse.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-118">Note: The strings in the URL route are not case sensitive.</span></span>
+<span data-ttu-id="67fa1-118">Et que l’application reçoive une requête avec l’URL suivante :</span><span class="sxs-lookup"><span data-stu-id="67fa1-118">And the app receives a request with this URL:</span></span>
 
-<span data-ttu-id="e6b7f-119">MVC tente de lier les données de la requête aux paramètres de l’action avec le nom.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-119">MVC will try to bind request data to the action parameters by name.</span></span> <span data-ttu-id="e6b7f-120">MVC recherche des valeurs pour chaque paramètre en utilisant le nom du paramètre et les noms de ses propriétés définissables publiques.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-120">MVC will look for values for each parameter using the parameter name and the names of its public settable properties.</span></span> <span data-ttu-id="e6b7f-121">Dans l’exemple ci-dessus, le seul paramètre d’action est nommé `id`, que MVC lie à la valeur portant le même nom dans les valeurs de la route.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-121">In the above example, the only action parameter is named `id`, which MVC binds to the value with the same name in the route values.</span></span> <span data-ttu-id="e6b7f-122">En plus des valeurs de la route, MVC lie les données des différentes parties de la requête, ceci selon un ordre défini.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-122">In addition to route values MVC will bind data from various parts of the request and it does so in a set order.</span></span> <span data-ttu-id="e6b7f-123">Voici une liste des sources de données dans l’ordre où la liaison de modèle les recherche :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-123">Below is a list of the data sources in the order that model binding looks through them:</span></span>
-
-1. <span data-ttu-id="e6b7f-124">`Form values`: il s’agit de valeurs de formulaire qui vont dans la requête HTTP avec la méthode POST.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-124">`Form values`: These are form values that go in the HTTP request using the POST method.</span></span> <span data-ttu-id="e6b7f-125">(notamment les requêtes POST jQuery).</span><span class="sxs-lookup"><span data-stu-id="e6b7f-125">(including jQuery POST requests).</span></span>
-
-2. <span data-ttu-id="e6b7f-126">`Route values`: l’ensemble des valeurs de l’itinéraire fournies par le [routage](xref:fundamentals/routing)</span><span class="sxs-lookup"><span data-stu-id="e6b7f-126">`Route values`: The set of route values provided by [Routing](xref:fundamentals/routing)</span></span>
-
-3. <span data-ttu-id="e6b7f-127">`Query strings`: la partie de chaîne de la requête de l’URI.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-127">`Query strings`: The query string part of the URI.</span></span>
-
-<!-- DocFX BUG
-The link works but generates an error when building with DocFX
-@fundamentals/routing
-[Routing](xref:fundamentals/routing)
--->
-
-<span data-ttu-id="e6b7f-128">Remarque : Les valeurs de formulaire, les données des itinéraires et les chaînes de requête sont toutes stockées sous la forme de paires nom-valeur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-128">Note: Form values, route data, and query strings are all stored as name-value pairs.</span></span>
-
-<span data-ttu-id="e6b7f-129">Comme la liaison de modèle a demandé une clé nommée `id` et qu’aucun élément n’est nommé `id` dans les valeurs de formulaire, il est passé aux valeurs de la route pour rechercher cette clé.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-129">Since model binding asked for a key named `id` and there's nothing named `id` in the form values, it moved on to the route values looking for that key.</span></span> <span data-ttu-id="e6b7f-130">Dans notre exemple, il trouve une correspondance.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-130">In our example, it's a match.</span></span> <span data-ttu-id="e6b7f-131">La liaison est effectuée et la valeur est convertie un entier dont la valeur est 2.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-131">Binding happens, and the value is converted to the integer 2.</span></span> <span data-ttu-id="e6b7f-132">La même requête qui utiliserait Edit(string id) convertirait en une chaîne « 2 ».</span><span class="sxs-lookup"><span data-stu-id="e6b7f-132">The same request using Edit(string id) would convert to the string "2".</span></span>
-
-<span data-ttu-id="e6b7f-133">Jusqu’à présent, l’exemple utilise des types simples.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-133">So far the example uses simple types.</span></span> <span data-ttu-id="e6b7f-134">Dans MVC, les types simples sont tous les types primitifs .NET ou les types avec un convertisseur de type chaîne.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-134">In MVC simple types are any .NET primitive type or type with a string type converter.</span></span> <span data-ttu-id="e6b7f-135">Si le paramètre de la méthode d’action était une classe comme le type `Movie`, qui contient à la fois des types simples et des comme complexes comme propriétés, la liaison de modèle de MVC pourrait le gérer correctement.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-135">If the action method's parameter were a class such as the `Movie` type, which contains both simple and complex types as properties, MVC's model binding will still handle it nicely.</span></span> <span data-ttu-id="e6b7f-136">Il utilise la réflexion et la récursivité pour parcourir les propriétés des types complexes en recherchant des correspondances.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-136">It uses reflection and recursion to traverse the properties of complex types looking for matches.</span></span> <span data-ttu-id="e6b7f-137">La liaison de modèle recherche le modèle *nom_paramètre.nom_propriété* pour lier des valeurs aux propriétés.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-137">Model binding looks for the pattern *parameter_name.property_name* to bind values to properties.</span></span> <span data-ttu-id="e6b7f-138">S’il ne trouve pas de valeurs correspondantes de ce formulaire, il tente de lier en utilisant seulement le nom de propriété.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-138">If it doesn't find matching values of this form, it will attempt to bind using just the property name.</span></span> <span data-ttu-id="e6b7f-139">Pour des types comme `Collection`, la liaison de modèle recherche des correspondances avec *nom_paramètre[index]* ou simplement avec *[index]*.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-139">For those types such as `Collection` types, model binding looks for matches to *parameter_name[index]* or just *[index]*.</span></span> <span data-ttu-id="e6b7f-140">La liaison de modèle traite les types `Dictionary` de la même façon, en demandant *nom_paramètre[clé]* ou simplement *[clé]*, à condition que les clés soient des types simples.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-140">Model binding treats  `Dictionary` types similarly, asking for *parameter_name[key]* or just *[key]*, as long as the keys are simple types.</span></span> <span data-ttu-id="e6b7f-141">Les clés qui sont prises en charge correspondent aux noms de champ HTML et aux helpers de balise générés pour le même type de modèle.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-141">Keys that are supported match the field names HTML and tag helpers generated for the same model type.</span></span> <span data-ttu-id="e6b7f-142">Ceci permet l’aller-retour des valeurs, de sorte que les champs de formulaire restent remplis avec l’entrée de l’utilisateur pour lui faciliter la tâche, par exemple quand les données liées à partir d’une création ou d’une modification n’ont pas été validées.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-142">This enables round-tripping values so that the form fields remain filled with the user's input for their convenience, for example, when bound data from a create or edit didn't pass validation.</span></span>
-
-<span data-ttu-id="e6b7f-143">Pour rendre possible la liaison de modèle, la classe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-143">To make model binding possible, the class must have a public default constructor and public writable properties to bind.</span></span> <span data-ttu-id="e6b7f-144">Quand la liaison de modèle se produit, la classe est instanciée avec le constructeur public par défaut, puis les propriétés peuvent être définies.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-144">When model binding occurs, the class is instantiated using the public default constructor, then the properties can be set.</span></span>
-
-<span data-ttu-id="e6b7f-145">Quand un paramètre est lié, la liaison de modèle cesse de rechercher des valeurs avec ce nom et elle passe à la liaison du paramètre suivant.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-145">When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter.</span></span> <span data-ttu-id="e6b7f-146">Sinon, le comportement de la liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-146">Otherwise, the default model binding behavior sets parameters to their default values depending on their type:</span></span>
-
-* <span data-ttu-id="e6b7f-147">`T[]`: à l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-147">`T[]`: With the exception of arrays of type `byte[]`, binding sets parameters of type `T[]` to `Array.Empty<T>()`.</span></span> <span data-ttu-id="e6b7f-148">Les tableaux de type `byte[]` ont la valeur `null`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-148">Arrays of type `byte[]` are set to `null`.</span></span>
-
-* <span data-ttu-id="e6b7f-149">Types références : la liaison crée une instance d’une classe avec le constructeur par défaut sans définir des propriétés.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-149">Reference Types: Binding creates an instance of a class with the default constructor without setting properties.</span></span> <span data-ttu-id="e6b7f-150">Cependant, la liaison de modèle définit les `string` sur `null`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-150">However, model binding sets `string` parameters to `null`.</span></span>
-
-* <span data-ttu-id="e6b7f-151">Types Nullable : les types Nullable sont définis sur `null`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-151">Nullable Types: Nullable types are set to `null`.</span></span> <span data-ttu-id="e6b7f-152">Dans l’exemple ci-dessus, la liaison de modèle définit `id` sur `null`, car il est de type `int?`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-152">In the above example, model binding sets `id` to `null` since it's of type `int?`.</span></span>
-
-* <span data-ttu-id="e6b7f-153">Types valeur : les types valeurs non Nullables de type `T` sont définis sur `default(T)`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-153">Value Types: Non-nullable value types of type `T` are set to `default(T)`.</span></span> <span data-ttu-id="e6b7f-154">Par exemple, la liaison de modèle définit un paramètre `int id` sur 0.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-154">For example, model binding will set a parameter `int id` to 0.</span></span> <span data-ttu-id="e6b7f-155">Envisagez d’utiliser la validation de modèle ou des types Nullables au lieu de travailler avec les valeurs par défaut.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-155">Consider using model validation or nullable types rather than relying on default values.</span></span>
-
-<span data-ttu-id="e6b7f-156">Si la liaison échoue, MVC ne génère pas d’erreur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-156">If binding fails, MVC doesn't throw an error.</span></span> <span data-ttu-id="e6b7f-157">Chaque action acceptant une entrée utilisateur doit vérifier la propriété `ModelState.IsValid`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-157">Every action which accepts user input should check the `ModelState.IsValid` property.</span></span>
-
-<span data-ttu-id="e6b7f-158">Remarque : Chaque entrée dans la propriété `ModelState` du contrôleur est une `ModelStateEntry` contenant une propriété `Errors`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-158">Note: Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors` property.</span></span> <span data-ttu-id="e6b7f-159">Il est rarement nécessaire interroger cette collection vous-même.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-159">It's rarely necessary to query this collection yourself.</span></span> <span data-ttu-id="e6b7f-160">Utilisez plutôt `ModelState.IsValid`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-160">Use `ModelState.IsValid` instead.</span></span>
-
-<span data-ttu-id="e6b7f-161">En outre, MVC doit prendre en compte certains types de données spéciaux lors de la liaison de modèle :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-161">Additionally, there are some special data types that MVC must consider when performing model binding:</span></span>
-
-* <span data-ttu-id="e6b7f-162">`IFormFile`, `IEnumerable<IFormFile>` : un ou plusieurs fichiers chargés qui font partie de la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-162">`IFormFile`, `IEnumerable<IFormFile>`: One or more uploaded files that are part of the HTTP request.</span></span>
-
-* <span data-ttu-id="e6b7f-163">`CancellationToken`: utilisé pour annuler l’activité dans les contrôleurs asynchrones.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-163">`CancellationToken`: Used to cancel activity in asynchronous controllers.</span></span>
-
-<span data-ttu-id="e6b7f-164">Ces types peuvent être liés à des paramètres d’action ou à des propriétés sur un type de classe.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-164">These types can be bound to action parameters or to properties on a class type.</span></span>
-
-<span data-ttu-id="e6b7f-165">Une fois que la liaison de modèle est terminée, la [validation](validation.md) se produit.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-165">Once model binding is complete, [Validation](validation.md) occurs.</span></span> <span data-ttu-id="e6b7f-166">La liaison de modèle par défaut fonctionne bien pour la grande majorité des scénarios de développement.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-166">Default model binding works great for the vast majority of development scenarios.</span></span> <span data-ttu-id="e6b7f-167">Elle est également extensible : si vous avez des besoins spécifiques, vous pouvez donc personnaliser le comportement intégré.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-167">It's also extensible so if you have unique needs you can customize the built-in behavior.</span></span>
-
-## <a name="customize-model-binding-behavior-with-attributes"></a><span data-ttu-id="e6b7f-168">Personnaliser le comportement de la liaison de modèle avec des attributs</span><span class="sxs-lookup"><span data-stu-id="e6b7f-168">Customize model binding behavior with attributes</span></span>
-
-<span data-ttu-id="e6b7f-169">MVC contient plusieurs attributs que vous pouvez utiliser pour spécifier son comportement de liaison de modèle par défaut vers une autre source.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-169">MVC contains several attributes that you can use to direct its default model binding behavior to a different source.</span></span> <span data-ttu-id="e6b7f-170">Par exemple, vous pouvez spécifier si la liaison est obligatoire pour une propriété, ou si elle ne doit jamais se produire, avec les attributs `[BindRequired]` ou `[BindNever]`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-170">For example, you can specify whether binding is required for a property, or if it should never happen at all by using the `[BindRequired]` or `[BindNever]` attributes.</span></span> <span data-ttu-id="e6b7f-171">Vous pouvez aussi remplacer la source de données par défaut et spécifier la source de données du classeur de modèles.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-171">Alternatively, you can override the default data source, and specify the model binder's data source.</span></span> <span data-ttu-id="e6b7f-172">Voici une liste des attributs de liaison de modèle :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-172">Below is a list of model binding attributes:</span></span>
-
-* <span data-ttu-id="e6b7f-173">`[BindRequired]`: cet attribut ajoute une erreur d’état de modèle si la liaison ne peut pas se produire.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-173">`[BindRequired]`: This attribute adds a model state error if binding cannot occur.</span></span>
-
-* <span data-ttu-id="e6b7f-174">`[BindNever]`: indique au classeur de modèles de ne jamais lier à ce paramètre.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-174">`[BindNever]`: Tells the model binder to never bind to this parameter.</span></span>
-
-* <span data-ttu-id="e6b7f-175">`[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]` : utilisez ces attributs pour spécifier la source de liaison exacte que vous voulez appliquer.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-175">`[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]`: Use these to specify the exact binding source you want to apply.</span></span>
-
-* <span data-ttu-id="e6b7f-176">`[FromServices]`: cet attribut utilise [l’injection de dépendances](../../fundamentals/dependency-injection.md) pour lier des paramètres de services.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-176">`[FromServices]`: This attribute uses [dependency injection](../../fundamentals/dependency-injection.md) to bind parameters from services.</span></span>
-
-* <span data-ttu-id="e6b7f-177">`[FromBody]`: utilisez les formateurs configurés pour lier des données du corps de la requête.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-177">`[FromBody]`: Use the configured formatters to bind data from the request body.</span></span> <span data-ttu-id="e6b7f-178">Le formateur est sélectionné en fonction du type de contenu de la requête.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-178">The formatter is selected based on content type of the request.</span></span>
-
-* <span data-ttu-id="e6b7f-179">`[ModelBinder]`: utilisé pour remplacer le classeur de modèles, la source de liaison et le nom par défaut.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-179">`[ModelBinder]`: Used to override the default model binder, binding source and name.</span></span>
-
-<span data-ttu-id="e6b7f-180">Les attributs sont très utiles quand vous devez remplacer le comportement par défaut de la liaison de modèle.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-180">Attributes are very helpful tools when you need to override the default behavior of model binding.</span></span>
-
-## <a name="customize-model-binding-and-validation-globally"></a><span data-ttu-id="e6b7f-181">Personnaliser la validation et la liaison de modèle de manière globale</span><span class="sxs-lookup"><span data-stu-id="e6b7f-181">Customize model binding and validation globally</span></span>
-
-<span data-ttu-id="e6b7f-182">Le comportement du système de validation et de liaison de modèle est régi par [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) qui décrit :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-182">The model binding and validation system's behavior is driven by [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) that describes:</span></span>
-
-* <span data-ttu-id="e6b7f-183">Comment un modèle doit être lié.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-183">How a model is to be bound.</span></span>
-* <span data-ttu-id="e6b7f-184">Comment a lieu la validation sur le type et ses propriétés.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-184">How validation occurs on the type and its properties.</span></span>
-
-<span data-ttu-id="e6b7f-185">Vous pouvez configurer les aspects du comportement du système de manière globale en ajoutant un fournisseur de détails à [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders).</span><span class="sxs-lookup"><span data-stu-id="e6b7f-185">Aspects of the system's behavior can be configured globally by adding a details provider to [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders).</span></span> <span data-ttu-id="e6b7f-186">MVC compte quelques fournisseurs de détails intégrés qui autorisent la configuration du comportement telle que la désactivation de la validation ou de la liaison de modèle pour certains types.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-186">MVC has a few built-in details providers that allow configuring behavior such as disabling model binding or validation for certain types.</span></span>
-
-<span data-ttu-id="e6b7f-187">Pour désactiver la liaison de modèle sur tous les modèles d’un certain type, ajoutez un [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-187">To disable model binding on all models of a certain type, add an [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="e6b7f-188">Par exemple, pour désactiver la liaison de modèle sur tous les modèles de type `System.Version` :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-188">For example, to disable model binding on all models of type `System.Version`:</span></span>
-
-```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-<span data-ttu-id="e6b7f-189">Pour désactiver la validation sur les propriétés d’un certain type, ajoutez un [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-189">To disable validation on properties of a certain type, add a [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="e6b7f-190">Par exemple, pour désactiver la validation sur les propriétés de type `System.Guid` :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-190">For example, to disable validation on properties of type `System.Guid`:</span></span>
+<span data-ttu-id="67fa1-119">La liaison de modèle suit les étapes ci-après une fois que le système de routage a sélectionné la méthode d’action :</span><span class="sxs-lookup"><span data-stu-id="67fa1-119">Model binding goes though the following steps after the routing system selects the action method:</span></span>
+
+* <span data-ttu-id="67fa1-120">Elle recherche le premier paramètre de `GetByID`, un entier nommé `id`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-120">Finds the first parameter of `GetByID`, an integer named `id`.</span></span>
+* <span data-ttu-id="67fa1-121">Elle parcourt les sources disponibles dans la requête HTTP et trouve `id` = « 2 » dans les données de routage.</span><span class="sxs-lookup"><span data-stu-id="67fa1-121">Looks through the available sources in the HTTP request and finds `id` = "2" in route data.</span></span>
+* <span data-ttu-id="67fa1-122">Elle convertit la chaîne « 2 » en entier 2.</span><span class="sxs-lookup"><span data-stu-id="67fa1-122">Converts the string "2" into integer 2.</span></span>
+* <span data-ttu-id="67fa1-123">Elle recherche le paramètre suivant de `GetByID`, un booléen nommé `dogsOnly`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-123">Finds the next parameter of `GetByID`, a boolean named `dogsOnly`.</span></span>
+* <span data-ttu-id="67fa1-124">Elle parcourt les sources et trouve « DogsOnly=true » dans la chaîne de requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-124">Looks through the sources and finds "DogsOnly=true" in the query string.</span></span> <span data-ttu-id="67fa1-125">La mise en correspondance des noms ne respecte pas la casse.</span><span class="sxs-lookup"><span data-stu-id="67fa1-125">Name matching is not case-sensitive.</span></span>
+* <span data-ttu-id="67fa1-126">Elle convertit la chaîne « true » en booléen `true`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-126">Converts the string "true" into boolean `true`.</span></span>
+
+<span data-ttu-id="67fa1-127">Le framework appelle ensuite la méthode `GetById`, en passant 2 pour le paramètre `id`, et `true` pour le paramètre `dogsOnly`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-127">The framework then calls the `GetById` method, passing in 2 for the `id` parameter, and `true` for the `dogsOnly` parameter.</span></span>
+
+<span data-ttu-id="67fa1-128">Dans l’exemple précédent, les cibles de liaison de modèle sont des paramètres de méthode qui sont des types simples.</span><span class="sxs-lookup"><span data-stu-id="67fa1-128">In the preceding example, the model binding targets are method parameters that are simple types.</span></span> <span data-ttu-id="67fa1-129">Les cibles peuvent être également les propriétés d’un type complexe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-129">Targets may also be the properties of a complex type.</span></span> <span data-ttu-id="67fa1-130">Une fois chaque propriété correctement liée, la [validation du modèle](xref:mvc/models/validation) est effectuée pour la propriété concernée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-130">After each property is successfully bound, [model validation](xref:mvc/models/validation) occurs for that property.</span></span> <span data-ttu-id="67fa1-131">L’enregistrement des données liées au modèle (ainsi que des erreurs de liaison ou de validation) est stocké dans [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) ou [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState).</span><span class="sxs-lookup"><span data-stu-id="67fa1-131">The record of what data is bound to the model, and any binding or validation errors, is stored in [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) or [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState).</span></span> <span data-ttu-id="67fa1-132">Pour savoir si ce processus a abouti, l’application vérifie l’indicateur [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).</span><span class="sxs-lookup"><span data-stu-id="67fa1-132">To find out if this process was successful, the app checks the [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid) flag.</span></span>
+
+## <a name="targets"></a><span data-ttu-id="67fa1-133">Cibles</span><span class="sxs-lookup"><span data-stu-id="67fa1-133">Targets</span></span>
+
+<span data-ttu-id="67fa1-134">La liaison de modèle tente de trouver des valeurs pour les genres de cible suivants :</span><span class="sxs-lookup"><span data-stu-id="67fa1-134">Model binding tries to find values for the following kinds of targets:</span></span>
+
+* <span data-ttu-id="67fa1-135">Paramètres de la méthode d’action de contrôleur vers laquelle une requête est routée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-135">Parameters of the controller action method that a request is routed to.</span></span>
+* <span data-ttu-id="67fa1-136">Paramètres de la méthode de gestionnaire Razor Pages vers laquelle une requête est routée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-136">Parameters of the Razor Pages handler method that a request is routed to.</span></span> 
+* <span data-ttu-id="67fa1-137">Propriétés publiques d’un contrôleur ou d’une classe `PageModel`, si elles sont spécifiées par des attributs.</span><span class="sxs-lookup"><span data-stu-id="67fa1-137">Public properties of a controller or `PageModel` class, if specified by attributes.</span></span>
+
+### <a name="bindproperty-attribute"></a><span data-ttu-id="67fa1-138">Attribut [BindProperty]</span><span class="sxs-lookup"><span data-stu-id="67fa1-138">[BindProperty] attribute</span></span>
+
+<span data-ttu-id="67fa1-139">Peut être appliqué à une propriété publique d’un contrôleur ou à une classe `PageModel` pour que la liaison de modèle cible cette propriété :</span><span class="sxs-lookup"><span data-stu-id="67fa1-139">Can be applied to a public property of a controller or `PageModel` class to cause model binding to target that property:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=7-8)]
+
+### <a name="bindpropertiesattribute"></a><span data-ttu-id="67fa1-140">Attribut [BindProperties]</span><span class="sxs-lookup"><span data-stu-id="67fa1-140">[BindProperties] attribute</span></span>
+
+<span data-ttu-id="67fa1-141">Disponible avec ASP.NET Core 2.1 et les versions ultérieures.</span><span class="sxs-lookup"><span data-stu-id="67fa1-141">Available in ASP.NET Core 2.1 and later.</span></span>  <span data-ttu-id="67fa1-142">Peut être appliqué à un contrôleur ou à une classe `PageModel` pour indiquer à la liaison de modèle de cibler toutes les propriétés publiques de la classe :</span><span class="sxs-lookup"><span data-stu-id="67fa1-142">Can be applied to a controller or `PageModel` class to tell model binding to target all public properties of the class:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
+
+### <a name="model-binding-for-http-get-requests"></a><span data-ttu-id="67fa1-143">Liaison de modèle pour les requêtes HTTP GET</span><span class="sxs-lookup"><span data-stu-id="67fa1-143">Model binding for HTTP GET requests</span></span>
+
+<span data-ttu-id="67fa1-144">Par défaut, les propriétés ne sont pas liées pour les requêtes HTTP GET.</span><span class="sxs-lookup"><span data-stu-id="67fa1-144">By default, properties are not bound for HTTP GET requests.</span></span> <span data-ttu-id="67fa1-145">En règle générale, le paramètre ID d’un enregistrement est tout ce dont vous avez besoin pour une requête GET.</span><span class="sxs-lookup"><span data-stu-id="67fa1-145">Typically, all you need for a GET request is a record ID parameter.</span></span> <span data-ttu-id="67fa1-146">L’ID d’enregistrement est utilisé pour rechercher l’élément dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="67fa1-146">The record ID is used to look up the item in the database.</span></span> <span data-ttu-id="67fa1-147">Il n’est donc pas nécessaire de lier une propriété qui contient une instance du modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-147">Therefore, there is no need to bind a property that holds an instance of the model.</span></span> <span data-ttu-id="67fa1-148">Pour les scénarios dans lesquels vous souhaitez que les propriétés soient liées aux données provenant de requêtes GET, affectez à la propriété `SupportsGet` la valeur `true` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-148">In scenarios where you do want properties bound to data from GET requests, set the `SupportsGet` property to `true`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
+
+## <a name="sources"></a><span data-ttu-id="67fa1-149">Sources</span><span class="sxs-lookup"><span data-stu-id="67fa1-149">Sources</span></span>
+
+<span data-ttu-id="67fa1-150">Par défaut, la liaison de modèle obtient des données sous la forme de paires clé-valeur à partir des sources suivantes dans une requête HTTP :</span><span class="sxs-lookup"><span data-stu-id="67fa1-150">By default, model binding gets data in the form of key-value pairs from the following sources in an HTTP request:</span></span>
+
+1. <span data-ttu-id="67fa1-151">Champs de formulaire</span><span class="sxs-lookup"><span data-stu-id="67fa1-151">Form fields</span></span> 
+1. <span data-ttu-id="67fa1-152">Corps de la requête (pour les [contrôleurs ayant l’attribut [ApiController]](xref:web-api/index#binding-source-parameter-inference).)</span><span class="sxs-lookup"><span data-stu-id="67fa1-152">The request body (For [controllers that have the [ApiController] attribute](xref:web-api/index#binding-source-parameter-inference).)</span></span>
+1. <span data-ttu-id="67fa1-153">Données de route</span><span class="sxs-lookup"><span data-stu-id="67fa1-153">Route data</span></span>
+1. <span data-ttu-id="67fa1-154">Paramètres de la chaîne de requête</span><span class="sxs-lookup"><span data-stu-id="67fa1-154">Query string parameters</span></span>
+1. <span data-ttu-id="67fa1-155">Fichiers chargés</span><span class="sxs-lookup"><span data-stu-id="67fa1-155">Uploaded files</span></span> 
+
+<span data-ttu-id="67fa1-156">Pour chaque paramètre ou propriété cible, les sources sont analysées dans l’ordre indiqué dans cette liste.</span><span class="sxs-lookup"><span data-stu-id="67fa1-156">For each target parameter or property, the sources are scanned in the order indicated in this list.</span></span> <span data-ttu-id="67fa1-157">Il existe quelques exceptions :</span><span class="sxs-lookup"><span data-stu-id="67fa1-157">There are a few exceptions:</span></span>
+
+* <span data-ttu-id="67fa1-158">Les données de routage et les valeurs de chaîne de requête sont utilisées uniquement pour les types simples.</span><span class="sxs-lookup"><span data-stu-id="67fa1-158">Route data and query string values are used only for simple types.</span></span>
+* <span data-ttu-id="67fa1-159">Les fichiers chargés sont liés uniquement aux types cibles qui implémentent `IFormFile` ou `IEnumerable<IFormFile>`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-159">Uploaded files are bound only to target types that implement `IFormFile` or `IEnumerable<IFormFile>`.</span></span>
+
+<span data-ttu-id="67fa1-160">Si le comportement par défaut ne donne pas les bons résultats, vous pouvez vous servir de l’un des attributs suivants pour spécifier la source à utiliser pour une cible donnée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-160">If the default behavior doesn't give the right results, you can use one of the following attributes to specify the source to use for any given target.</span></span> 
+
+* <span data-ttu-id="67fa1-161">[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Obtient les valeurs à partir de la chaîne de requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-161">[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Gets values from the query string.</span></span> 
+* <span data-ttu-id="67fa1-162">[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Obtient les valeurs à partir des données de routage.</span><span class="sxs-lookup"><span data-stu-id="67fa1-162">[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Gets values from route data.</span></span>
+* <span data-ttu-id="67fa1-163">[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - Obtient les valeurs à partir des champs de formulaire postés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-163">[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - Gets values from posted form fields.</span></span>
+* <span data-ttu-id="67fa1-164">[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - Obtient les valeurs à partir du corps de la requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-164">[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - Gets values from the request body.</span></span>
+* <span data-ttu-id="67fa1-165">[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - Obtient les valeurs à partir des en-têtes HTTP.</span><span class="sxs-lookup"><span data-stu-id="67fa1-165">[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - Gets values from HTTP headers.</span></span>
+
+<span data-ttu-id="67fa1-166">Ces attributs :</span><span class="sxs-lookup"><span data-stu-id="67fa1-166">These attributes:</span></span>
+
+* <span data-ttu-id="67fa1-167">Sont ajoutés aux propriétés du modèle individuellement (et non à la classe de modèle), comme dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="67fa1-167">Are added to model properties individually (not to the model class), as in the following example:</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
+
+* <span data-ttu-id="67fa1-168">Acceptent éventuellement une valeur de nom de modèle dans le constructeur.</span><span class="sxs-lookup"><span data-stu-id="67fa1-168">Optionally accept a model name value in the constructor.</span></span> <span data-ttu-id="67fa1-169">Cette option est fournie au cas où le nom de propriété ne correspondrait pas à la valeur de la requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-169">This option is provided in case the property name doesn't match the value in the request.</span></span> <span data-ttu-id="67fa1-170">Par exemple, la valeur de la requête peut être un en-tête avec un trait d’union dans son nom, comme dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="67fa1-170">For instance, the value in the request might be a header with a hyphen in its name, as in the following example:</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
+
+### <a name="frombody-attribute"></a><span data-ttu-id="67fa1-171">Attribut [FromBody]</span><span class="sxs-lookup"><span data-stu-id="67fa1-171">[FromBody] attribute</span></span>
+
+<span data-ttu-id="67fa1-172">Les données du corps de la requête sont analysées à l’aide de formateurs d’entrée spécifiques au type de contenu de la requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-172">The request body data is parsed by using input formatters specific to the content type of the request.</span></span> <span data-ttu-id="67fa1-173">Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="67fa1-173">Input formatters are explained [later in this article](#input-formatters).</span></span>
+
+<span data-ttu-id="67fa1-174">N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action.</span><span class="sxs-lookup"><span data-stu-id="67fa1-174">Don't apply `[FromBody]` to more than one parameter per action method.</span></span> <span data-ttu-id="67fa1-175">Le runtime ASP.NET Core délègue la responsabilité de la lecture du flux de requête au formateur d’entrée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-175">The ASP.NET Core runtime delegates the responsibility of reading the request stream to the input formatter.</span></span> <span data-ttu-id="67fa1-176">Une fois le flux de requête lu, il ne peut plus être relu pour lier d’autres paramètres `[FromBody]`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-176">Once the request stream is read, it's no longer available to be read again for binding other `[FromBody]` parameters.</span></span>
+
+### <a name="additional-sources"></a><span data-ttu-id="67fa1-177">Sources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="67fa1-177">Additional sources</span></span>
+
+<span data-ttu-id="67fa1-178">Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*.</span><span class="sxs-lookup"><span data-stu-id="67fa1-178">Source data is provided to the model binding system by *value providers*.</span></span> <span data-ttu-id="67fa1-179">Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources.</span><span class="sxs-lookup"><span data-stu-id="67fa1-179">You can write and register custom value providers that get data for model binding from other sources.</span></span> <span data-ttu-id="67fa1-180">Par exemple, vous pouvez obtenir des données provenant de cookies ou de l’état de session.</span><span class="sxs-lookup"><span data-stu-id="67fa1-180">For example, you might want data from cookies or session state.</span></span> <span data-ttu-id="67fa1-181">Pour obtenir des données provenant d’une nouvelle source :</span><span class="sxs-lookup"><span data-stu-id="67fa1-181">To get data from a new source:</span></span>
+
+* <span data-ttu-id="67fa1-182">Créez une classe qui implémente `IValueProvider`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-182">Create a class that implements `IValueProvider`.</span></span>
+* <span data-ttu-id="67fa1-183">Créez une classe qui implémente `IValueProviderFactory`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-183">Create a class that implements `IValueProviderFactory`.</span></span>
+* <span data-ttu-id="67fa1-184">Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-184">Register the factory class in `Startup.ConfigureServices`.</span></span>
+
+<span data-ttu-id="67fa1-185">L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProvider.cs) et de [fabrique](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies.</span><span class="sxs-lookup"><span data-stu-id="67fa1-185">The sample app includes a [value provider](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProvider.cs) and [factory](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProviderFactory.cs) example that gets values from cookies.</span></span> <span data-ttu-id="67fa1-186">Voici le code d’inscription dans `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-186">Here's the registration code in `Startup.ConfigureServices`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=3)]
+
+<span data-ttu-id="67fa1-187">Le code affiché place le fournisseur de valeurs personnalisé après tous les fournisseurs de valeurs intégrés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-187">The code shown puts the custom value provider after all the built-in value providers.</span></span>  <span data-ttu-id="67fa1-188">Pour en faire le premier fournisseur de la liste, appelez `Insert(0, new CookieValueProviderFactory())` à la place de `Add`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-188">To make it the first in the list, call `Insert(0, new CookieValueProviderFactory())` instead of `Add`.</span></span>
+
+## <a name="no-source-for-a-model-property"></a><span data-ttu-id="67fa1-189">Aucune source pour une propriété de modèle</span><span class="sxs-lookup"><span data-stu-id="67fa1-189">No source for a model property</span></span>
+
+<span data-ttu-id="67fa1-190">Par défaut, aucune erreur d’état de modèle n’est créée, s’il n’existe aucune valeur de propriété de modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-190">By default, a model state error isn't created if no value is found for a model property.</span></span> <span data-ttu-id="67fa1-191">La propriété a une valeur null ou une valeur par défaut :</span><span class="sxs-lookup"><span data-stu-id="67fa1-191">The property is set to null or a default value:</span></span>
+
+* <span data-ttu-id="67fa1-192">Les types simples Nullable ont une valeur `null`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-192">Nullable simple types are set to `null`.</span></span>
+* <span data-ttu-id="67fa1-193">Les types valeur non Nullable ont la valeur `default(T)`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-193">Non-nullable value types are set to `default(T)`.</span></span> <span data-ttu-id="67fa1-194">Par exemple, un paramètre `int id` a la valeur 0.</span><span class="sxs-lookup"><span data-stu-id="67fa1-194">For example, a parameter `int id` is set to 0.</span></span>
+* <span data-ttu-id="67fa1-195">Pour les types complexes, la liaison de modèle crée une instance à l’aide du constructeur par défaut, sans définir de propriétés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-195">For complex Types, model binding creates an instance by using the default constructor, without setting properties.</span></span>
+* <span data-ttu-id="67fa1-196">Les tableaux ont la valeur `Array.Empty<T>()`, sauf les tableaux `byte[]` qui ont une valeur `null`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-196">Arrays are set to `Array.Empty<T>()`, except that `byte[]` arrays are set to `null`.</span></span>
+
+<span data-ttu-id="67fa1-197">Si l’état de modèle doit être rendu non valide quand les champs de formulaire d’une propriété de modèle ne contiennent rien, utilisez l’attribut [[BindRequired]](#bindrequired-attribute).</span><span class="sxs-lookup"><span data-stu-id="67fa1-197">If model state should be invalidated when nothing is found in form fields for a model property, use the [[BindRequired] attribute](#bindrequired-attribute).</span></span>
+
+<span data-ttu-id="67fa1-198">Notez que ce comportement de `[BindRequired]` s’applique à la liaison de modèle des données de formulaire postées, et non aux données JSON ou XML d’un corps de requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-198">Note that this `[BindRequired]` behavior applies to model binding from posted form data, not to JSON or XML data in a request body.</span></span> <span data-ttu-id="67fa1-199">Les données du corps de requête sont prises en charge par les [formateurs d’entrée](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="67fa1-199">Request body data is handled by [input formatters](#input-formatters).</span></span>
+
+## <a name="type-conversion-errors"></a><span data-ttu-id="67fa1-200">Erreurs de conversion de type</span><span class="sxs-lookup"><span data-stu-id="67fa1-200">Type conversion errors</span></span>
+
+<span data-ttu-id="67fa1-201">Si une source est localisée mais qu’elle ne peut pas être convertie vers le type cible, l’état du modèle est marqué comme étant non valide.</span><span class="sxs-lookup"><span data-stu-id="67fa1-201">If a source is found but can't be converted into the target type, model state is flagged as invalid.</span></span> <span data-ttu-id="67fa1-202">Le paramètre ou la propriété cible a une valeur null ou une valeur par défaut, comme indiqué dans la section précédente.</span><span class="sxs-lookup"><span data-stu-id="67fa1-202">The target parameter or property is set to null or a default value, as noted in the previous section.</span></span>
+
+<span data-ttu-id="67fa1-203">Dans un contrôleur d’API ayant l’attribut `[ApiController]`, un état de modèle non valide entraîne une réponse HTTP 400 automatique.</span><span class="sxs-lookup"><span data-stu-id="67fa1-203">In an API controller that has the `[ApiController]` attribute, invalid model state results in an automatic HTTP 400 response.</span></span>
+
+<span data-ttu-id="67fa1-204">Dans une page Razor Pages, réaffichez la page avec un message d’erreur :</span><span class="sxs-lookup"><span data-stu-id="67fa1-204">In a Razor page, redisplay the page with an error message:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
+
+<span data-ttu-id="67fa1-205">La validation côté client intercepte la plupart des données incorrectes qui sont envoyées à un formulaire Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="67fa1-205">Client-side validation catches most bad data that would otherwise be submitted to a Razor Pages form.</span></span> <span data-ttu-id="67fa1-206">Cette validation rend difficile le déclenchement du code en surbrillance indiqué plus haut.</span><span class="sxs-lookup"><span data-stu-id="67fa1-206">This validation makes it hard to trigger the preceding highlighted code.</span></span> <span data-ttu-id="67fa1-207">L’exemple d’application comprend un bouton **Submit with Invalid Date** (Envoyer avec une date non valide), qui place les données incorrectes dans le champ **Hire Date** (Date d’embauche) et envoie le formulaire.</span><span class="sxs-lookup"><span data-stu-id="67fa1-207">The sample app includes a **Submit with Invalid Date** button that puts bad data in the **Hire Date** field and submits the form.</span></span> <span data-ttu-id="67fa1-208">Ce bouton montre comment fonctionne le code permettant de réafficher la page quand des erreurs de conversion de données se produisent.</span><span class="sxs-lookup"><span data-stu-id="67fa1-208">This button shows how the code for redisplaying the page works when data conversion errors occur.</span></span>
+
+<span data-ttu-id="67fa1-209">Quand la page est réaffichée par le code précédent, l’entrée non valide n’est pas visible dans le champ de formulaire.</span><span class="sxs-lookup"><span data-stu-id="67fa1-209">When the page is redisplayed by the preceding code, the invalid input is not shown in the form field.</span></span> <span data-ttu-id="67fa1-210">En effet, la propriété de modèle à une valeur null ou une valeur par défaut.</span><span class="sxs-lookup"><span data-stu-id="67fa1-210">This is because the model property has been set to null or a default value.</span></span> <span data-ttu-id="67fa1-211">L’entrée non valide apparaît dans un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="67fa1-211">The invalid input does appear in an error message.</span></span> <span data-ttu-id="67fa1-212">Toutefois, si vous souhaitez réafficher les données incorrectes dans le champ de formulaire, transformez la propriété de modèle en chaîne et procédez à la conversion des données manuellement.</span><span class="sxs-lookup"><span data-stu-id="67fa1-212">But if you want to redisplay the bad data in the form field, consider making the model property a string and doing the data conversion manually.</span></span>
+
+<span data-ttu-id="67fa1-213">La même stratégie est recommandée si vous ne souhaitez pas que les erreurs de conversion de type entraînent des erreurs d’état de modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-213">The same strategy is recommended if you don't want type conversion errors to result in model state errors.</span></span> <span data-ttu-id="67fa1-214">Dans ce cas, transformez la propriété de modèle en chaîne.</span><span class="sxs-lookup"><span data-stu-id="67fa1-214">In that case, make the model property a string.</span></span>
+
+## <a name="simple-types"></a><span data-ttu-id="67fa1-215">Types simples</span><span class="sxs-lookup"><span data-stu-id="67fa1-215">Simple types</span></span>
+
+<span data-ttu-id="67fa1-216">Les types simples que le lieur de modèle peut convertir en chaînes sources sont les suivants :</span><span class="sxs-lookup"><span data-stu-id="67fa1-216">The simple types that the model binder can convert source strings into include the following:</span></span>
+
+* [<span data-ttu-id="67fa1-217">Boolean</span><span class="sxs-lookup"><span data-stu-id="67fa1-217">Boolean</span></span>](xref:System.ComponentModel.BooleanConverter)
+* <span data-ttu-id="67fa1-218">[Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)</span><span class="sxs-lookup"><span data-stu-id="67fa1-218">[Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)</span></span>
+* [<span data-ttu-id="67fa1-219">Char</span><span class="sxs-lookup"><span data-stu-id="67fa1-219">Char</span></span>](xref:System.ComponentModel.CharConverter)
+* [<span data-ttu-id="67fa1-220">DateTime</span><span class="sxs-lookup"><span data-stu-id="67fa1-220">DateTime</span></span>](xref:System.ComponentModel.DateTimeConverter)
+* [<span data-ttu-id="67fa1-221">DateTimeOffset</span><span class="sxs-lookup"><span data-stu-id="67fa1-221">DateTimeOffset</span></span>](xref:System.ComponentModel.DateTimeOffsetConverter)
+* [<span data-ttu-id="67fa1-222">Decimal</span><span class="sxs-lookup"><span data-stu-id="67fa1-222">Decimal</span></span>](xref:System.ComponentModel.DecimalConverter)
+* [<span data-ttu-id="67fa1-223">Double</span><span class="sxs-lookup"><span data-stu-id="67fa1-223">Double</span></span>](xref:System.ComponentModel.DoubleConverter)
+* [<span data-ttu-id="67fa1-224">Enum</span><span class="sxs-lookup"><span data-stu-id="67fa1-224">Enum</span></span>](xref:System.ComponentModel.EnumConverter)
+* [<span data-ttu-id="67fa1-225">Guid</span><span class="sxs-lookup"><span data-stu-id="67fa1-225">Guid</span></span>](xref:System.ComponentModel.GuidConverter)
+* <span data-ttu-id="67fa1-226">[Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)</span><span class="sxs-lookup"><span data-stu-id="67fa1-226">[Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)</span></span>
+* [<span data-ttu-id="67fa1-227">Single</span><span class="sxs-lookup"><span data-stu-id="67fa1-227">Single</span></span>](xref:System.ComponentModel.SingleConverter)
+* [<span data-ttu-id="67fa1-228">TimeSpan</span><span class="sxs-lookup"><span data-stu-id="67fa1-228">TimeSpan</span></span>](xref:System.ComponentModel.TimeSpanConverter)
+* <span data-ttu-id="67fa1-229">[UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)</span><span class="sxs-lookup"><span data-stu-id="67fa1-229">[UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)</span></span>
+* [<span data-ttu-id="67fa1-230">Uri</span><span class="sxs-lookup"><span data-stu-id="67fa1-230">Uri</span></span>](xref:System.UriTypeConverter)
+* [<span data-ttu-id="67fa1-231">Version</span><span class="sxs-lookup"><span data-stu-id="67fa1-231">Version</span></span>](xref:System.ComponentModel.VersionConverter)
+
+## <a name="complex-types"></a><span data-ttu-id="67fa1-232">Types complexes</span><span class="sxs-lookup"><span data-stu-id="67fa1-232">Complex types</span></span>
+
+<span data-ttu-id="67fa1-233">Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier.</span><span class="sxs-lookup"><span data-stu-id="67fa1-233">A complex type must have a public default constructor and public writable properties to bind.</span></span> <span data-ttu-id="67fa1-234">Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut.</span><span class="sxs-lookup"><span data-stu-id="67fa1-234">When model binding occurs, the class is instantiated using the public default constructor.</span></span> 
+
+<span data-ttu-id="67fa1-235">Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*.</span><span class="sxs-lookup"><span data-stu-id="67fa1-235">For each property of the complex type, model binding looks through the sources for the name pattern *prefix.property_name*.</span></span> <span data-ttu-id="67fa1-236">Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-236">If nothing is found, it looks for just *property_name* without the prefix.</span></span>
+
+<span data-ttu-id="67fa1-237">Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre.</span><span class="sxs-lookup"><span data-stu-id="67fa1-237">For binding to a parameter, the prefix is the parameter name.</span></span> <span data-ttu-id="67fa1-238">Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique.</span><span class="sxs-lookup"><span data-stu-id="67fa1-238">For binding to a `PageModel` public property, the prefix is the public property name.</span></span> <span data-ttu-id="67fa1-239">Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.</span><span class="sxs-lookup"><span data-stu-id="67fa1-239">Some attributes have a `Prefix` property that lets you override the default usage of parameter or property name.</span></span>
+
+<span data-ttu-id="67fa1-240">Par exemple, supposons que le type complexe corresponde à la classe `Instructor` suivante :</span><span class="sxs-lookup"><span data-stu-id="67fa1-240">For example, suppose the complex type is the following `Instructor` class:</span></span>
+
+  ```csharp
+  public class Instructor
+  {
+      public int ID { get; set; }
+      public string LastName { get; set; }
+      public string FirstName { get; set; }
+  }
+  ```
+
+### <a name="prefix--parameter-name"></a><span data-ttu-id="67fa1-241">Préfixe = nom de paramètre</span><span class="sxs-lookup"><span data-stu-id="67fa1-241">Prefix = parameter name</span></span>
+
+<span data-ttu-id="67fa1-242">Si le modèle à lier est un paramètre nommé `instructorToUpdate` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-242">If the model to be bound is a parameter named `instructorToUpdate`:</span></span>
 
 ```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 ```
 
-## <a name="bind-formatted-data-from-the-request-body"></a><span data-ttu-id="e6b7f-191">Lier des données mises en forme du corps de la requête</span><span class="sxs-lookup"><span data-stu-id="e6b7f-191">Bind formatted data from the request body</span></span>
+<span data-ttu-id="67fa1-243">La liaison de modèle commence par rechercher dans les sources la clé `instructorToUpdate.ID`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-243">Model binding starts by looking through the sources for the key `instructorToUpdate.ID`.</span></span> <span data-ttu-id="67fa1-244">Si elle est introuvable, elle recherche `ID` sans préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-244">If that isn't found, it looks for `ID` without a prefix.</span></span>
 
-<span data-ttu-id="e6b7f-192">Les données des requêtes peuvent exister dans différents formats, notamment JSON, XML et beaucoup d’autres.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-192">Request data can come in a variety of formats including JSON, XML and many others.</span></span> <span data-ttu-id="e6b7f-193">Quand vous utilisez l’attribut [FromBody] pour indiquer que vous voulez lier un paramètre à des données du corps de la requête, MVC utilise un ensemble de formateurs configuré pour gérer les données de la requête en fonction du type de contenu.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-193">When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type.</span></span> <span data-ttu-id="e6b7f-194">Par défaut, MVC inclut une classe `JsonInputFormatter` pour la gestion des données JSON, mais vous pouvez ajouter des formateurs supplémentaires pour la gestion du format XML et d’autres formats personnalisés.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-194">By default MVC includes a `JsonInputFormatter` class for handling JSON data, but you can add additional formatters for handling XML and other custom formats.</span></span>
+### <a name="prefix--property-name"></a><span data-ttu-id="67fa1-245">Préfixe = nom de propriété</span><span class="sxs-lookup"><span data-stu-id="67fa1-245">Prefix = property name</span></span>
+
+<span data-ttu-id="67fa1-246">Si le modèle à lier est une propriété nommée `Instructor` du contrôleur ou de la classe `PageModel` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-246">If the model to be bound is a property named `Instructor` of the controller or `PageModel` class:</span></span>
+
+```csharp
+[BindProperty]
+public Instructor Instructor { get; set; }
+```
+
+<span data-ttu-id="67fa1-247">La liaison de modèle commence par rechercher dans les sources la clé `Instructor.ID`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-247">Model binding starts by looking through the sources for the key `Instructor.ID`.</span></span> <span data-ttu-id="67fa1-248">Si elle est introuvable, elle recherche `ID` sans préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-248">If that isn't found, it looks for `ID` without a prefix.</span></span>
+
+### <a name="custom-prefix"></a><span data-ttu-id="67fa1-249">Préfixe personnalisé</span><span class="sxs-lookup"><span data-stu-id="67fa1-249">Custom prefix</span></span>
+
+<span data-ttu-id="67fa1-250">Si le modèle à lier est un paramètre nommé `instructorToUpdate` et si un attribut `Bind` spécifie `Instructor` en tant que préfixe :</span><span class="sxs-lookup"><span data-stu-id="67fa1-250">If the model to be bound is a parameter named `instructorToUpdate` and a `Bind` attribute specifies `Instructor` as the prefix:</span></span>
+
+```csharp
+public IActionResult OnPost(
+    int? id, [Bind(Prefix = "Instructor")] Instructor instructorToUpdate)
+```
+
+<span data-ttu-id="67fa1-251">La liaison de modèle commence par rechercher dans les sources la clé `Instructor.ID`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-251">Model binding starts by looking through the sources for the key `Instructor.ID`.</span></span> <span data-ttu-id="67fa1-252">Si elle est introuvable, elle recherche `ID` sans préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-252">If that isn't found, it looks for `ID` without a prefix.</span></span>
+
+### <a name="attributes-for-complex-type-targets"></a><span data-ttu-id="67fa1-253">Attributs des cibles de type complexe</span><span class="sxs-lookup"><span data-stu-id="67fa1-253">Attributes for complex type targets</span></span>
+
+<span data-ttu-id="67fa1-254">Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de modèle des types complexes :</span><span class="sxs-lookup"><span data-stu-id="67fa1-254">Several built-in attributes are available for controlling model binding of complex types:</span></span>
+
+* `[BindRequired]`
+* `[BindNever]`
+* `[Bind]`
 
 > [!NOTE]
-> <span data-ttu-id="e6b7f-195">Il peut y avoir au plus un paramètre par action décorée avec `[FromBody]`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-195">There can be at most one parameter per action decorated with `[FromBody]`.</span></span> <span data-ttu-id="e6b7f-196">Le runtime d’ASP.NET Core MVC délègue la responsabilité de lire le flux de la requête au formateur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-196">The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter.</span></span> <span data-ttu-id="e6b7f-197">Une fois que le flux de la requête est lu pour un paramètre, il n’est généralement pas possible de relire le flux de la requête pour lier d’autres paramètres `[FromBody]`.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-197">Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other `[FromBody]` parameters.</span></span>
+> <span data-ttu-id="67fa1-255">Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs.</span><span class="sxs-lookup"><span data-stu-id="67fa1-255">These attributes affect model binding when posted form data is the source of values.</span></span> <span data-ttu-id="67fa1-256">Ils n’affectent pas les formateurs d’entrée, qui traitent les corps de requête JSON et XML postés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-256">They do not affect input formatters, which process posted JSON and XML request bodies.</span></span> <span data-ttu-id="67fa1-257">Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).</span><span class="sxs-lookup"><span data-stu-id="67fa1-257">Input formatters are explained [later in this article](#input-formatters).</span></span>
+>
+> <span data-ttu-id="67fa1-258">Consultez également la discussion sur l’attribut `[Required]` dans [Validation de modèle](xref:mvc/models/validation#required-attribute).</span><span class="sxs-lookup"><span data-stu-id="67fa1-258">See also the discussion of the `[Required]` attribute in [Model validation](xref:mvc/models/validation#required-attribute).</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="e6b7f-198">`JsonInputFormatter` est le formateur par défaut et est basé sur [Json.NET](https://www.newtonsoft.com/json).</span><span class="sxs-lookup"><span data-stu-id="e6b7f-198">The `JsonInputFormatter` is the default formatter and is based on [Json.NET](https://www.newtonsoft.com/json).</span></span>
+### <a name="bindrequired-attribute"></a><span data-ttu-id="67fa1-259">Attribut [BindRequired]</span><span class="sxs-lookup"><span data-stu-id="67fa1-259">[BindRequired] attribute</span></span>
 
-<span data-ttu-id="e6b7f-199">ASP.NET Core sélectionne les formateurs d’entrée en fonction de l’en-tête [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) et du type de paramètre, sauf si un attribut qui lui est appliqué spécifie un autre formateur.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-199">ASP.NET Core selects input formatters based on the [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) header and the type of the parameter, unless there's an attribute applied to it specifying otherwise.</span></span> <span data-ttu-id="e6b7f-200">Si vous voulez utiliser XML ou un autre format, vous devez le configurer dans le fichier *Startup.cs*, mais il peut être nécessaire d’obtenir d’abord une référence à `Microsoft.AspNetCore.Mvc.Formatters.Xml` en utilisant NuGet.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-200">If you'd like to use XML or another format you must configure it in the *Startup.cs* file, but you may first have to obtain a reference to `Microsoft.AspNetCore.Mvc.Formatters.Xml` using NuGet.</span></span> <span data-ttu-id="e6b7f-201">Votre code de démarrage doit ressembler à ceci :</span><span class="sxs-lookup"><span data-stu-id="e6b7f-201">Your startup code should look something like this:</span></span>
+<span data-ttu-id="67fa1-260">Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode.</span><span class="sxs-lookup"><span data-stu-id="67fa1-260">Can only be applied to model properties, not to method parameters.</span></span> <span data-ttu-id="67fa1-261">Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-261">Causes model binding to add a model state error if binding cannot occur for a model's property.</span></span> <span data-ttu-id="67fa1-262">Voici un exemple :</span><span class="sxs-lookup"><span data-stu-id="67fa1-262">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+
+### <a name="bindnever-attribute"></a><span data-ttu-id="67fa1-263">Attribut [BindNever]</span><span class="sxs-lookup"><span data-stu-id="67fa1-263">[BindNever] attribute</span></span>
+
+<span data-ttu-id="67fa1-264">Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode.</span><span class="sxs-lookup"><span data-stu-id="67fa1-264">Can only be applied to model properties, not to method parameters.</span></span> <span data-ttu-id="67fa1-265">Il empêche la liaison de modèle de définir la propriété d’un modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-265">Prevents model binding from setting a model's property.</span></span> <span data-ttu-id="67fa1-266">Voici un exemple :</span><span class="sxs-lookup"><span data-stu-id="67fa1-266">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+
+### <a name="bind-attribute"></a><span data-ttu-id="67fa1-267">Attribut [Bind]</span><span class="sxs-lookup"><span data-stu-id="67fa1-267">[Bind] attribute</span></span>
+
+<span data-ttu-id="67fa1-268">Il peut être appliqué à une classe ou à un paramètre de méthode.</span><span class="sxs-lookup"><span data-stu-id="67fa1-268">Can be applied to a class or a method parameter.</span></span> <span data-ttu-id="67fa1-269">Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-269">Specifies which properties of a model should be included in model binding.</span></span>
+
+<span data-ttu-id="67fa1-270">Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand une méthode de gestionnaire ou une méthode d’action est appelée :</span><span class="sxs-lookup"><span data-stu-id="67fa1-270">In the following example, only the specified properties of the `Instructor` model are bound when any handler or action method is called:</span></span>
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc()
-        .AddXmlSerializerFormatters();
-   }
+[Bind("LastName,FirstMidName,HireDate")]
+public class Instructor
 ```
 
-<span data-ttu-id="e6b7f-202">Le code du fichier *Startup.cs* contient une méthode `ConfigureServices` avec un argument `services`, que vous pouvez utiliser pour créer des services pour votre application ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-202">Code in the *Startup.cs* file contains a `ConfigureServices` method with a `services` argument you can use to build up services for your ASP.NET Core app.</span></span> <span data-ttu-id="e6b7f-203">Dans l’exemple, nous ajoutons un formateur XML en tant que service, que MVC fournira pour cette application.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-203">In the sample, we are adding an XML formatter as a service that MVC will provide for this app.</span></span> <span data-ttu-id="e6b7f-204">L’argument `options` passé dans la méthode `AddMvc` vous permet d’ajouter et de gérer des filtres, des formateurs et d’autres options du système depuis MVC dès le démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-204">The `options` argument passed into the `AddMvc` method allows you to add and manage filters, formatters, and other system options from MVC upon app startup.</span></span> <span data-ttu-id="e6b7f-205">Appliquez ensuite l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-205">Then apply the `Consumes` attribute to controller classes or action methods to work with the format you want.</span></span>
+<span data-ttu-id="67fa1-271">Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand la méthode `OnPost` est appelée :</span><span class="sxs-lookup"><span data-stu-id="67fa1-271">In the following example, only the specified properties of the `Instructor` model are bound when the `OnPost` method is called:</span></span>
 
-### <a name="custom-model-binding"></a><span data-ttu-id="e6b7f-206">Liaison de modèle personnalisée</span><span class="sxs-lookup"><span data-stu-id="e6b7f-206">Custom Model Binding</span></span>
+```csharp
+[HttpPost]
+public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
+```
 
-<span data-ttu-id="e6b7f-207">Vous pouvez étendre la liaison de modèle en écrivant vos propres classeurs de modèles personnalisés.</span><span class="sxs-lookup"><span data-stu-id="e6b7f-207">You can extend model binding by writing your own custom model binders.</span></span> <span data-ttu-id="e6b7f-208">Découvrez plus d’informations sur la [liaison de modèle personnalisée](../advanced/custom-model-binding.md).</span><span class="sxs-lookup"><span data-stu-id="e6b7f-208">Learn more about [custom model binding](../advanced/custom-model-binding.md).</span></span>
+<span data-ttu-id="67fa1-272">Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*.</span><span class="sxs-lookup"><span data-stu-id="67fa1-272">The `[Bind]` attribute can be used to protect against overposting in *create* scenarios.</span></span> <span data-ttu-id="67fa1-273">Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées.</span><span class="sxs-lookup"><span data-stu-id="67fa1-273">It doesn't work well in edit scenarios because excluded properties are set to null or a default value instead of being left unchanged.</span></span> <span data-ttu-id="67fa1-274">Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-274">For defense against overposting, view models are recommended rather than the `[Bind]` attribute.</span></span> <span data-ttu-id="67fa1-275">Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).</span><span class="sxs-lookup"><span data-stu-id="67fa1-275">For more information, see [Security note about overposting](xref:data/ef-mvc/crud#security-note-about-overposting).</span></span>
+
+## <a name="collections"></a><span data-ttu-id="67fa1-276">Collections</span><span class="sxs-lookup"><span data-stu-id="67fa1-276">Collections</span></span>
+
+<span data-ttu-id="67fa1-277">Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*.</span><span class="sxs-lookup"><span data-stu-id="67fa1-277">For targets that are collections of simple types, model binding looks for matches to *parameter_name* or *property_name*.</span></span> <span data-ttu-id="67fa1-278">Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-278">If no match is found, it looks for one of the supported formats without the prefix.</span></span> <span data-ttu-id="67fa1-279">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="67fa1-279">For example:</span></span>
+
+* <span data-ttu-id="67fa1-280">Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-280">Suppose the parameter to be bound is an array named `selectedCourses`:</span></span>
+
+  ```csharp
+  public IActionResult OnPost(int? id, int[] selectedCourses)
+  ```
+
+* <span data-ttu-id="67fa1-281">Les données de formulaire ou de chaîne de requête peuvent avoir l’un des formats suivants :</span><span class="sxs-lookup"><span data-stu-id="67fa1-281">Form or query string data can be in one of the following formats:</span></span>
+   
+  ```
+  selectedCourses=1050&selectedCourses=2000 
+  ```
+
+  ```
+  selectedCourses[0]=1050&selectedCourses[1]=2000
+  ```
+
+  ```
+  [0]=1050&[1]=2000
+  ```
+
+  ```
+  selectedCourses[a]=1050&selectedCourses[b]=2000&selectedCourses.index=a&selectedCourses.index=b
+  ```
+
+  ```
+  [a]=1050&[b]=2000&index=a&index=b
+  ```
+
+* <span data-ttu-id="67fa1-282">Le format suivant est pris en charge uniquement dans les données de formulaire :</span><span class="sxs-lookup"><span data-stu-id="67fa1-282">The following format is supported only in form data:</span></span>
+
+  ```
+  selectedCourses[]=1050&selectedCourses[]=2000
+  ```
+
+* <span data-ttu-id="67fa1-283">Pour tous les exemples de formats précédents, la liaison de modèle passe un tableau de deux éléments au paramètre `selectedCourses` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-283">For all of the preceding example formats, model binding passes an array of two items to the `selectedCourses` parameter:</span></span>
+
+  * <span data-ttu-id="67fa1-284">selectedCourses[0]=1050</span><span class="sxs-lookup"><span data-stu-id="67fa1-284">selectedCourses[0]=1050</span></span>
+  * <span data-ttu-id="67fa1-285">selectedCourses[1]=2000</span><span class="sxs-lookup"><span data-stu-id="67fa1-285">selectedCourses[1]=2000</span></span>
+
+  <span data-ttu-id="67fa1-286">Les formats de données qui utilisent des nombres en indice (... [0] ... [1] ...) doivent être impérativement numérotés de manière séquentielle à partir de zéro.</span><span class="sxs-lookup"><span data-stu-id="67fa1-286">Data formats that use subscript numbers (... [0] ... [1] ...) must ensure that they are numbered sequentially starting at zero.</span></span> <span data-ttu-id="67fa1-287">S’il existe des vides dans la numérotation en indice, tous les éléments suivants sont ignorés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-287">If there are any gaps in subscript numbering, all items after the gap are ignored.</span></span> <span data-ttu-id="67fa1-288">Par exemple, si les indices sont 0 et 2 au lieu de 0 et 1, le second élément est ignoré.</span><span class="sxs-lookup"><span data-stu-id="67fa1-288">For example, if the subscripts are 0 and 2 instead of 0 and 1, the second item is ignored.</span></span>
+
+## <a name="dictionaries"></a><span data-ttu-id="67fa1-289">Dictionnaires</span><span class="sxs-lookup"><span data-stu-id="67fa1-289">Dictionaries</span></span>
+
+<span data-ttu-id="67fa1-290">Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*.</span><span class="sxs-lookup"><span data-stu-id="67fa1-290">For `Dictionary` targets, model binding looks for matches to *parameter_name* or *property_name*.</span></span> <span data-ttu-id="67fa1-291">Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe.</span><span class="sxs-lookup"><span data-stu-id="67fa1-291">If no match is found, it looks for one of the supported formats without the prefix.</span></span> <span data-ttu-id="67fa1-292">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="67fa1-292">For example:</span></span>
+
+* <span data-ttu-id="67fa1-293">Supposons que le paramètre cible soit un `Dictionary<string, string>` nommé `selectedCourses` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-293">Suppose the target parameter is a `Dictionary<string, string>` named `selectedCourses`:</span></span>
+
+  ```csharp
+  public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
+  ```
+
+* <span data-ttu-id="67fa1-294">Les données de chaîne de requête ou de formulaire posté peuvent ressembler à l’un des exemples suivants :</span><span class="sxs-lookup"><span data-stu-id="67fa1-294">The posted form or query string data can look like one of the following examples:</span></span>
+
+  ```
+  selectedCourses[1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  [1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  selectedCourses[0].Key=1050&selectedCourses[0].Value=Chemistry&
+  selectedCourses[1].Key=2000&selectedCourses[1].Value=Economics
+  ```
+
+  ```
+  [0].Key=1050&[0].Value=Chemistry&[1].Key=2000&[1].Value=Economics
+  ```
+
+* <span data-ttu-id="67fa1-295">Pour tous les exemples de formats précédents, la liaison de modèle passe un dictionnaire de deux éléments au paramètre `selectedCourses` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-295">For all of the preceding example formats, model binding passes a dictionary of two items to the `selectedCourses` parameter:</span></span>
+
+  * <span data-ttu-id="67fa1-296">selectedCourses["1050"]="Chemistry"</span><span class="sxs-lookup"><span data-stu-id="67fa1-296">selectedCourses["1050"]="Chemistry"</span></span>
+  * <span data-ttu-id="67fa1-297">selectedCourses["2000"]="Economics"</span><span class="sxs-lookup"><span data-stu-id="67fa1-297">selectedCourses["2000"]="Economics"</span></span>
+
+## <a name="special-data-types"></a><span data-ttu-id="67fa1-298">Types de données spéciaux</span><span class="sxs-lookup"><span data-stu-id="67fa1-298">Special data types</span></span>
+
+<span data-ttu-id="67fa1-299">Certains types de données spéciaux peuvent être pris en charge par la liaison de modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-299">There are some special data types that model binding can handle.</span></span>
+
+### <a name="iformfile-and-iformfilecollection"></a><span data-ttu-id="67fa1-300">IFormFile et IFormFileCollection</span><span class="sxs-lookup"><span data-stu-id="67fa1-300">IFormFile and IFormFileCollection</span></span>
+
+<span data-ttu-id="67fa1-301">Fichier chargé inclus dans la requête HTTP.</span><span class="sxs-lookup"><span data-stu-id="67fa1-301">An uploaded file included in the HTTP request.</span></span>  <span data-ttu-id="67fa1-302">`IEnumerable<IFormFile>` est également pris en charge pour plusieurs fichiers.</span><span class="sxs-lookup"><span data-stu-id="67fa1-302">Also supported is `IEnumerable<IFormFile>` for multiple files.</span></span>
+
+### <a name="cancellationtoken"></a><span data-ttu-id="67fa1-303">CancellationToken</span><span class="sxs-lookup"><span data-stu-id="67fa1-303">CancellationToken</span></span>
+
+<span data-ttu-id="67fa1-304">utilisé pour annuler l’activité dans les contrôleurs asynchrones.</span><span class="sxs-lookup"><span data-stu-id="67fa1-304">Used to cancel activity in asynchronous controllers.</span></span>
+
+### <a name="formcollection"></a><span data-ttu-id="67fa1-305">FormCollection</span><span class="sxs-lookup"><span data-stu-id="67fa1-305">FormCollection</span></span>
+
+<span data-ttu-id="67fa1-306">Permet de récupérer toutes les valeurs des données de formulaire posté.</span><span class="sxs-lookup"><span data-stu-id="67fa1-306">Used to retrieve all the values from posted form data.</span></span>
+
+## <a name="input-formatters"></a><span data-ttu-id="67fa1-307">Formateurs d’entrée</span><span class="sxs-lookup"><span data-stu-id="67fa1-307">Input formatters</span></span>
+
+<span data-ttu-id="67fa1-308">Les données contenues dans le corps de la requête peuvent être au format JSON, XML ou tout autre format.</span><span class="sxs-lookup"><span data-stu-id="67fa1-308">Data in the request body can be in JSON, XML, or some other format.</span></span> <span data-ttu-id="67fa1-309">Pour analyser ces données, la liaison de modèle utilise un *formateur d’entrée* configuré pour prendre en charge un type de contenu particulier.</span><span class="sxs-lookup"><span data-stu-id="67fa1-309">To parse this data, model binding uses an *input formatter* that is configured to handle a particular content type.</span></span> <span data-ttu-id="67fa1-310">Par défaut, ASP.NET Core inclut des formateurs d’entrée basés sur le format JSON pour prendre en charge les données JSON.</span><span class="sxs-lookup"><span data-stu-id="67fa1-310">By default, ASP.NET Core includes JSON based input formatters for handling JSON data.</span></span> <span data-ttu-id="67fa1-311">Vous pouvez ajouter d’autres formateurs pour d’autres types de contenu.</span><span class="sxs-lookup"><span data-stu-id="67fa1-311">You can add other formatters for other content types.</span></span>
+
+<span data-ttu-id="67fa1-312">ASP.NET Core sélectionne les formateurs d’entrée en fonction de l’attribut [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute).</span><span class="sxs-lookup"><span data-stu-id="67fa1-312">ASP.NET Core selects input formatters based on the [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute) attribute.</span></span> <span data-ttu-id="67fa1-313">Si aucun attribut n’est présent, il utilise l’[en-tête Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html).</span><span class="sxs-lookup"><span data-stu-id="67fa1-313">If no attribute is present, it uses the [Content-Type header](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html).</span></span>
+
+<span data-ttu-id="67fa1-314">Pour utiliser les formateurs d’entrée XML intégrés :</span><span class="sxs-lookup"><span data-stu-id="67fa1-314">To use the built-in XML input formatters:</span></span>
+
+* <span data-ttu-id="67fa1-315">Installez le package NuGet `Microsoft.AspNetCore.Mvc.Formatters.Xml`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-315">Install the `Microsoft.AspNetCore.Mvc.Formatters.Xml` NuGet package.</span></span>
+
+* <span data-ttu-id="67fa1-316">Dans `Startup.ConfigureServices`, appelez <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> ou <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>.</span><span class="sxs-lookup"><span data-stu-id="67fa1-316">In `Startup.ConfigureServices`, call <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> or <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>.</span></span>
+
+  [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=9)]
+
+* <span data-ttu-id="67fa1-317">Appliquez l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action devant contenir des données XML dans le corps de la requête.</span><span class="sxs-lookup"><span data-stu-id="67fa1-317">Apply the `Consumes` attribute to controller classes or action methods that should expect XML in the request body.</span></span>
+
+  ```csharp
+  [HttpPost]
+  [Consumes("application/xml")]
+  public ActionResult<Pet> Create(Pet pet)
+  ```
+
+  <span data-ttu-id="67fa1-318">Pour plus d’informations, consultez [Introduction à la sérialisation XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).</span><span class="sxs-lookup"><span data-stu-id="67fa1-318">For more information, see [Introducing XML Serialization](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).</span></span>
+
+## <a name="exclude-specified-types-from-model-binding"></a><span data-ttu-id="67fa1-319">Exclure les types spécifiés de la liaison de modèle</span><span class="sxs-lookup"><span data-stu-id="67fa1-319">Exclude specified types from model binding</span></span>
+
+<span data-ttu-id="67fa1-320">Le comportement de la liaison de modèle et du système de validation est régi par [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata).</span><span class="sxs-lookup"><span data-stu-id="67fa1-320">The model binding and validation systems' behavior is driven by [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata).</span></span> <span data-ttu-id="67fa1-321">Vous pouvez personnaliser `ModelMetadata` en ajoutant un fournisseur de détails à [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders).</span><span class="sxs-lookup"><span data-stu-id="67fa1-321">You can customize `ModelMetadata` by adding a details provider to [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders).</span></span> <span data-ttu-id="67fa1-322">Des fournisseurs de détails intégrés sont disponibles pour désactiver la liaison de modèle ou la validation des types spécifiés.</span><span class="sxs-lookup"><span data-stu-id="67fa1-322">Built-in details providers are available for disabling model binding or validation for specified types.</span></span>
+
+<span data-ttu-id="67fa1-323">Pour désactiver la liaison de modèle sur tous les modèles d’un type spécifique, ajoutez <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-323">To disable model binding on all models of a specified type, add an <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="67fa1-324">Par exemple, pour désactiver la liaison de modèle sur tous les modèles de type `System.Version` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-324">For example, to disable model binding on all models of type `System.Version`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
+
+<span data-ttu-id="67fa1-325">Pour désactiver la validation des propriétés d’un type spécifique, ajoutez <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-325">To disable validation on properties of a specified type, add a <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="67fa1-326">Par exemple, pour désactiver la validation sur les propriétés de type `System.Guid` :</span><span class="sxs-lookup"><span data-stu-id="67fa1-326">For example, to disable validation on properties of type `System.Guid`:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
+
+## <a name="custom-model-binders"></a><span data-ttu-id="67fa1-327">Lieurs de modèles personnalisés</span><span class="sxs-lookup"><span data-stu-id="67fa1-327">Custom model binders</span></span>
+
+<span data-ttu-id="67fa1-328">Vous pouvez étendre la liaison de modèle en écrivant un lieur de modèle personnalisé et en utilisant l’attribut `[ModelBinder]` afin de le sélectionner pour une cible donnée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-328">You can extend model binding by writing a custom model binder and using the `[ModelBinder]` attribute to select it for a given target.</span></span> <span data-ttu-id="67fa1-329">Découvrez plus d’informations sur la [liaison de modèle personnalisée](xref:mvc/advanced/custom-model-binding).</span><span class="sxs-lookup"><span data-stu-id="67fa1-329">Learn more about [custom model binding](xref:mvc/advanced/custom-model-binding).</span></span>
+
+## <a name="manual-model-binding"></a><span data-ttu-id="67fa1-330">Liaison de modèle manuelle</span><span class="sxs-lookup"><span data-stu-id="67fa1-330">Manual model binding</span></span>
+
+<span data-ttu-id="67fa1-331">Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>.</span><span class="sxs-lookup"><span data-stu-id="67fa1-331">Model binding can be invoked manually by using the <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*> method.</span></span> <span data-ttu-id="67fa1-332">La méthode est définie sur les classes `ControllerBase` et `PageModel`.</span><span class="sxs-lookup"><span data-stu-id="67fa1-332">The method is defined on both `ControllerBase` and `PageModel` classes.</span></span> <span data-ttu-id="67fa1-333">Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser.</span><span class="sxs-lookup"><span data-stu-id="67fa1-333">Method overloads let you specify the prefix and value provider to use.</span></span> <span data-ttu-id="67fa1-334">La méthode retourne `false` en cas d’échec de la liaison de modèle.</span><span class="sxs-lookup"><span data-stu-id="67fa1-334">The method returns `false` if model binding fails.</span></span> <span data-ttu-id="67fa1-335">Voici un exemple :</span><span class="sxs-lookup"><span data-stu-id="67fa1-335">Here's an example:</span></span>
+
+[!code-csharp[](model-binding/samples/2.x/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
+
+## <a name="fromservices-attribute"></a><span data-ttu-id="67fa1-336">Attribut [FromServices]</span><span class="sxs-lookup"><span data-stu-id="67fa1-336">[FromServices] attribute</span></span>
+
+<span data-ttu-id="67fa1-337">Le nom de cet attribut suit le modèle des attributs de liaison de modèle qui spécifient une source de données.</span><span class="sxs-lookup"><span data-stu-id="67fa1-337">This attribute's name follows the pattern of model binding attributes that specify a data source.</span></span> <span data-ttu-id="67fa1-338">Toutefois, il ne permet pas de lier les données d’un fournisseur de valeurs.</span><span class="sxs-lookup"><span data-stu-id="67fa1-338">But it's not about binding data from a value provider.</span></span> <span data-ttu-id="67fa1-339">Il obtient une instance d’un type à partir du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="67fa1-339">It gets an instance of a type from the [dependency injection](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="67fa1-340">Son objectif est de fournir une alternative à l’injection de constructeurs quand vous avez besoin d’un service uniquement si une méthode particulière est appelée.</span><span class="sxs-lookup"><span data-stu-id="67fa1-340">Its purpose is to provide an alternative to constructor injection for when you need a service only if a particular method is called.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="67fa1-341">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="67fa1-341">Additional resources</span></span>
+
+* <xref:mvc/models/validation>
+* <xref:mvc/advanced/custom-model-binding>
