@@ -3,14 +3,14 @@ title: Informations de référence sur la syntaxe Razor pour ASP.NET Core
 author: rick-anderson
 description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer du code serveur dans des pages web.
 ms.author: riande
-ms.date: 10/26/2018
+ms.date: 06/12/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 7f97be651c067e94f29eef4956c10d87ec031bed
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 87c5b97a653c139b8b79f4270e0d9d0081815433
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887904"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034937"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -574,9 +574,39 @@ Le code s’affiche en HTML de la façon suivante :
 
 ::: moniker-end
 
+### <a name="attribute"></a>@attribute
+
+La directive `@attribute` permet d’ajouter l’attribut donné à la classe de la page ou de la vue générée. L’exemple suivant ajoute l’attribut `[Authorize]` :
+
+```cshtml
+@attribute [Authorize]
+```
+
+> [!WARNING]
+> Avec ASP.NET Core 3.0 Preview 6, il existe un problème connu : les directives `@attribute` ne fonctionnent pas dans les fichiers *\_Imports.razor* et *\_ViewImports.cshtml*. Ce problème sera traité dans la Preview 7.
+
+### <a name="namespace"></a>@namespace
+
+La directive `@namespace` définit l’espace de noms de la classe de la page ou de la vue générée :
+
+```cshtml
+@namespace Your.Namespace.Here
+```
+
+Si une page ou une vue importe l’API avec une directive `@namespace`, l’espace de noms du fichier d’origine est défini par rapport à cet espace de noms. 
+
+Si *MyApp/Pages/\_ViewImports.cshtml* contient `@namespace Hello.World`, l’espace de noms des pages ou des vues qui importent l’espace de noms `Hello.World` est défini comme indiqué dans le tableau suivant.
+
+| Page (ou vue)                     | Espace de noms               |
+| ---------------------------------- | ----------------------- |
+| *MyApp/Pages/Index.cshtml*         | `Hello.World`           |
+| *MyApp/Pages/MorePages/Bar.cshtml* | `Hello.World.MorePages` |
+
+Si plusieurs fichiers d’importation ont la directive `@namespace`, le fichier le plus proche de la page ou de la vue dans la chaîne de répertoires est utilisé.
+
 ### <a name="section"></a>@section
 
-La directive `@section` est utilisée conjointement avec une [disposition](xref:mvc/views/layout) pour permettre aux vues d’afficher le contenu dans différentes parties de la page HTML. Pour plus d’informations, consultez [Sections](xref:mvc/views/layout#layout-sections-label).
+La directive `@section` est utilisée conjointement avec la [disposition](xref:mvc/views/layout) pour permettre aux pages ou aux vues d’afficher le contenu dans différentes parties de la page HTML. Pour plus d’informations, consultez [Sections](xref:mvc/views/layout#layout-sections-label).
 
 ## <a name="templated-razor-delegates"></a>Délégués Razor basés sur des modèles
 

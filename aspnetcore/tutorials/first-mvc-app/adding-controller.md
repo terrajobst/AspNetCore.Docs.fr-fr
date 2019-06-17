@@ -5,12 +5,12 @@ description: Découvrez comment ajouter un contrôleur à une application ASP.NE
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: dad9262e544fc216ddc694b11b0dfb88b58db9cd
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9dbfb52109260dbfe0c6c094a7ac4edae47d24e7
+ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887284"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66837340"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -102,7 +102,7 @@ Modifiez le code pour passer des informations sur les paramètres de l’URL au 
 Le code précédent :
 
 * Utilise la fonctionnalité de paramètre facultatif de C# pour indiquer que le paramètre `numTimes` a 1 comme valeur par défaut si aucune valeur n’est passée pour ce paramètre. <!-- remove for simplified -->
-* Utilise `HtmlEncoder.Default.Encode` pour protéger l’application des entrées malveillantes (à savoir JavaScript).
+* Utilise `HtmlEncoder.Default.Encode` pour protéger l’application des entrées malveillantes (notamment en JavaScript).
 * Utilise des [chaînes interpolées](/dotnet/articles/csharp/language-reference/keywords/interpolated-strings) dans `$"Hello {name}, NumTimes is: {numTimes}"`. <!-- remove for simplified -->
 
 Exécutez l’application et accédez à :

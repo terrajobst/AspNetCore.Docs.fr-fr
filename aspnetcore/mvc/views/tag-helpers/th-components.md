@@ -4,14 +4,14 @@ author: scottaddie
 description: Découvrez ce que sont les Tag Helper Components et apprenez à les utiliser dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 777bbcca3d1c2f03f386fa62df2a2e0b00409318
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b5b3abea6492cfaa7d6acd0e54073a8db12eb2a5
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889734"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034752"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Tag Helper Components dans ASP.NET Core
 
@@ -62,9 +62,16 @@ Le code précédent lie un [widget tooltip amorçable](https://getbootstrap.com/
 
 Un Tag Helper Component doit être ajouté à la collection des Tag Helper Components de l’application. Cet ajout à la collection peut s’effectuer de trois façons :
 
-1. [Inscription par le biais d’un conteneur de services](#registration-via-services-container)
-1. [Inscription au moyen d’un fichier Razor](#registration-via-razor-file)
-1. [Inscription à l’aide d’un modèle de page ou d’un contrôleur](#registration-via-page-model-or-controller)
+* [Tag Helper Components en ASP.NET Core](#tag-helper-components-in-aspnet-core)
+  * [Cas d’usage](#use-cases)
+    * [Injecter dans l’élément HTML head](#inject-into-html-head-element)
+    * [Injecter dans l’élément HTML body](#inject-into-html-body-element)
+  * [Inscrire un Component](#register-a-component)
+    * [Inscription par le biais d’un conteneur de services](#registration-via-services-container)
+    * [Inscription au moyen d’un fichier Razor](#registration-via-razor-file)
+    * [Inscription à l’aide d’un modèle de page ou d’un contrôleur](#registration-via-page-model-or-controller)
+  * [Créer un Component](#create-a-component)
+  * [Ressources supplémentaires](#additional-resources)
 
 ### <a name="registration-via-services-container"></a>Inscription par le biais d’un conteneur de services
 

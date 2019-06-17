@@ -1,151 +1,428 @@
 ---
 title: Liaison de données dans ASP.NET Core
 author: tdykstra
-description: Découvrez comment la liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.
+description: Découvrez comment fonctionne la liaison de modèle avec ASP.NET Core, et comment personnaliser son comportement.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 11/13/2018
+ms.date: 05/31/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 7d62ccecdacbd34a38a1fd8c58979a9b09cf86e8
+ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883144"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66750199"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
-Par [Rachel Appel](https://github.com/rachelappel)
+Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.
 
-## <a name="introduction-to-model-binding"></a>Introduction à la liaison de modèle
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-La liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action. Les paramètres peuvent être des types simples, comme des chaînes, des entiers ou des nombres à virgule flottante, ou ils peuvent être des types complexes. Il s’agit d’une fonctionnalité intéressante de MVC, car le mappage des données entrantes à une contrepartie est un scénario souvent répété, quelle que soit la taille ou la complexité des données. MVC résout ce problème en rendant la liaison transparente : les développeurs ne doivent pas continuer à réécrire une version légèrement différente de ce même code dans chaque application. Écrire le code de votre propre convertisseur de texte en type est fastidieux et sujet à erreur.
+## <a name="what-is-model-binding"></a>Description de la liaison de modèle
 
-## <a name="how-model-binding-works"></a>Fonctionnement de la liaison de modèle
+Les contrôleurs et Razor Pages utilisent des données provenant de requêtes HTTP. Par exemple, les données de routage peuvent fournir une clé d’enregistrement, et les champs de formulaire posté peuvent fournir des valeurs pour les propriétés du modèle. L’écriture du code permettant de récupérer chacune de ces valeurs et de les convertir en types .NET à partir de chaînes est fastidieuse et source d’erreurs. La liaison de modèle automatise ce processus. Le système de liaison de modèle :
 
-Quand MVC reçoit une requête HTTP, il la route vers une méthode d’action spécifique d’un contrôleur. Il détermine la méthode d’action à exécuter en fonction de ce qui se trouve dans les données de la route, puis il lie les valeurs de la requête HTTP aux paramètres de cette méthode d’action. Considérez par exemple l’URL suivante :
+* Récupère les données de diverses sources telles que les données de routage, les champs de formulaire et les chaînes de requête
+* Fournit les données aux contrôleurs et à Razor Pages dans les paramètres de méthode et les propriétés publiques
+* Convertit les données de chaîne en types .NET
+* Met à jour les propriétés des types complexes
 
-`http://contoso.com/movies/edit/2`
+## <a name="example"></a>Exemple
 
-Le modèle de route se présentant comme ceci, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` route vers le contrôleur `Movies` et sa méthode d’action `Edit`. Il accepte également un paramètre facultatif nommé `id`. Le code de la méthode d’action doit ressembler à ceci :
+Supposons que vous ayez la méthode d’action suivante :
 
-```csharp
-public IActionResult Edit(int? id)
-   ```
+[!code-csharp[](model-binding/samples/2.x/Controllers/PetsController.cs?name=snippet_DogsOnly)]
 
-Remarque : Les chaînes de l’itinéraire d’URL ne respectent pas la casse.
+Et que l’application reçoive une requête avec l’URL suivante :
 
-MVC tente de lier les données de la requête aux paramètres de l’action avec le nom. MVC recherche des valeurs pour chaque paramètre en utilisant le nom du paramètre et les noms de ses propriétés définissables publiques. Dans l’exemple ci-dessus, le seul paramètre d’action est nommé `id`, que MVC lie à la valeur portant le même nom dans les valeurs de la route. En plus des valeurs de la route, MVC lie les données des différentes parties de la requête, ceci selon un ordre défini. Voici une liste des sources de données dans l’ordre où la liaison de modèle les recherche :
-
-1. `Form values`: il s’agit de valeurs de formulaire qui vont dans la requête HTTP avec la méthode POST. (notamment les requêtes POST jQuery).
-
-2. `Route values`: l’ensemble des valeurs de l’itinéraire fournies par le [routage](xref:fundamentals/routing)
-
-3. `Query strings`: la partie de chaîne de la requête de l’URI.
-
-<!-- DocFX BUG
-The link works but generates an error when building with DocFX
-@fundamentals/routing
-[Routing](xref:fundamentals/routing)
--->
-
-Remarque : Les valeurs de formulaire, les données des itinéraires et les chaînes de requête sont toutes stockées sous la forme de paires nom-valeur.
-
-Comme la liaison de modèle a demandé une clé nommée `id` et qu’aucun élément n’est nommé `id` dans les valeurs de formulaire, il est passé aux valeurs de la route pour rechercher cette clé. Dans notre exemple, il trouve une correspondance. La liaison est effectuée et la valeur est convertie un entier dont la valeur est 2. La même requête qui utiliserait Edit(string id) convertirait en une chaîne « 2 ».
-
-Jusqu’à présent, l’exemple utilise des types simples. Dans MVC, les types simples sont tous les types primitifs .NET ou les types avec un convertisseur de type chaîne. Si le paramètre de la méthode d’action était une classe comme le type `Movie`, qui contient à la fois des types simples et des comme complexes comme propriétés, la liaison de modèle de MVC pourrait le gérer correctement. Il utilise la réflexion et la récursivité pour parcourir les propriétés des types complexes en recherchant des correspondances. La liaison de modèle recherche le modèle *nom_paramètre.nom_propriété* pour lier des valeurs aux propriétés. S’il ne trouve pas de valeurs correspondantes de ce formulaire, il tente de lier en utilisant seulement le nom de propriété. Pour des types comme `Collection`, la liaison de modèle recherche des correspondances avec *nom_paramètre[index]* ou simplement avec *[index]*. La liaison de modèle traite les types `Dictionary` de la même façon, en demandant *nom_paramètre[clé]* ou simplement *[clé]*, à condition que les clés soient des types simples. Les clés qui sont prises en charge correspondent aux noms de champ HTML et aux helpers de balise générés pour le même type de modèle. Ceci permet l’aller-retour des valeurs, de sorte que les champs de formulaire restent remplis avec l’entrée de l’utilisateur pour lui faciliter la tâche, par exemple quand les données liées à partir d’une création ou d’une modification n’ont pas été validées.
-
-Pour rendre possible la liaison de modèle, la classe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée avec le constructeur public par défaut, puis les propriétés peuvent être définies.
-
-Quand un paramètre est lié, la liaison de modèle cesse de rechercher des valeurs avec ce nom et elle passe à la liaison du paramètre suivant. Sinon, le comportement de la liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :
-
-* `T[]`: à l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
-
-* Types références : la liaison crée une instance d’une classe avec le constructeur par défaut sans définir des propriétés. Cependant, la liaison de modèle définit les `string` sur `null`.
-
-* Types Nullable : les types Nullable sont définis sur `null`. Dans l’exemple ci-dessus, la liaison de modèle définit `id` sur `null`, car il est de type `int?`.
-
-* Types valeur : les types valeurs non Nullables de type `T` sont définis sur `default(T)`. Par exemple, la liaison de modèle définit un paramètre `int id` sur 0. Envisagez d’utiliser la validation de modèle ou des types Nullables au lieu de travailler avec les valeurs par défaut.
-
-Si la liaison échoue, MVC ne génère pas d’erreur. Chaque action acceptant une entrée utilisateur doit vérifier la propriété `ModelState.IsValid`.
-
-Remarque : Chaque entrée dans la propriété `ModelState` du contrôleur est une `ModelStateEntry` contenant une propriété `Errors`. Il est rarement nécessaire interroger cette collection vous-même. Utilisez plutôt `ModelState.IsValid`.
-
-En outre, MVC doit prendre en compte certains types de données spéciaux lors de la liaison de modèle :
-
-* `IFormFile`, `IEnumerable<IFormFile>` : un ou plusieurs fichiers chargés qui font partie de la requête HTTP.
-
-* `CancellationToken`: utilisé pour annuler l’activité dans les contrôleurs asynchrones.
-
-Ces types peuvent être liés à des paramètres d’action ou à des propriétés sur un type de classe.
-
-Une fois que la liaison de modèle est terminée, la [validation](validation.md) se produit. La liaison de modèle par défaut fonctionne bien pour la grande majorité des scénarios de développement. Elle est également extensible : si vous avez des besoins spécifiques, vous pouvez donc personnaliser le comportement intégré.
-
-## <a name="customize-model-binding-behavior-with-attributes"></a>Personnaliser le comportement de la liaison de modèle avec des attributs
-
-MVC contient plusieurs attributs que vous pouvez utiliser pour spécifier son comportement de liaison de modèle par défaut vers une autre source. Par exemple, vous pouvez spécifier si la liaison est obligatoire pour une propriété, ou si elle ne doit jamais se produire, avec les attributs `[BindRequired]` ou `[BindNever]`. Vous pouvez aussi remplacer la source de données par défaut et spécifier la source de données du classeur de modèles. Voici une liste des attributs de liaison de modèle :
-
-* `[BindRequired]`: cet attribut ajoute une erreur d’état de modèle si la liaison ne peut pas se produire.
-
-* `[BindNever]`: indique au classeur de modèles de ne jamais lier à ce paramètre.
-
-* `[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]` : utilisez ces attributs pour spécifier la source de liaison exacte que vous voulez appliquer.
-
-* `[FromServices]`: cet attribut utilise [l’injection de dépendances](../../fundamentals/dependency-injection.md) pour lier des paramètres de services.
-
-* `[FromBody]`: utilisez les formateurs configurés pour lier des données du corps de la requête. Le formateur est sélectionné en fonction du type de contenu de la requête.
-
-* `[ModelBinder]`: utilisé pour remplacer le classeur de modèles, la source de liaison et le nom par défaut.
-
-Les attributs sont très utiles quand vous devez remplacer le comportement par défaut de la liaison de modèle.
-
-## <a name="customize-model-binding-and-validation-globally"></a>Personnaliser la validation et la liaison de modèle de manière globale
-
-Le comportement du système de validation et de liaison de modèle est régi par [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) qui décrit :
-
-* Comment un modèle doit être lié.
-* Comment a lieu la validation sur le type et ses propriétés.
-
-Vous pouvez configurer les aspects du comportement du système de manière globale en ajoutant un fournisseur de détails à [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders). MVC compte quelques fournisseurs de détails intégrés qui autorisent la configuration du comportement telle que la désactivation de la validation ou de la liaison de modèle pour certains types.
-
-Pour désactiver la liaison de modèle sur tous les modèles d’un certain type, ajoutez un [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) dans `Startup.ConfigureServices`. Par exemple, pour désactiver la liaison de modèle sur tous les modèles de type `System.Version` :
-
-```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-Pour désactiver la validation sur les propriétés d’un certain type, ajoutez un [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) dans `Startup.ConfigureServices`. Par exemple, pour désactiver la validation sur les propriétés de type `System.Guid` :
+La liaison de modèle suit les étapes ci-après une fois que le système de routage a sélectionné la méthode d’action :
+
+* Elle recherche le premier paramètre de `GetByID`, un entier nommé `id`.
+* Elle parcourt les sources disponibles dans la requête HTTP et trouve `id` = « 2 » dans les données de routage.
+* Elle convertit la chaîne « 2 » en entier 2.
+* Elle recherche le paramètre suivant de `GetByID`, un booléen nommé `dogsOnly`.
+* Elle parcourt les sources et trouve « DogsOnly=true » dans la chaîne de requête. La mise en correspondance des noms ne respecte pas la casse.
+* Elle convertit la chaîne « true » en booléen `true`.
+
+Le framework appelle ensuite la méthode `GetById`, en passant 2 pour le paramètre `id`, et `true` pour le paramètre `dogsOnly`.
+
+Dans l’exemple précédent, les cibles de liaison de modèle sont des paramètres de méthode qui sont des types simples. Les cibles peuvent être également les propriétés d’un type complexe. Une fois chaque propriété correctement liée, la [validation du modèle](xref:mvc/models/validation) est effectuée pour la propriété concernée. L’enregistrement des données liées au modèle (ainsi que des erreurs de liaison ou de validation) est stocké dans [ControllerBase.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState) ou [PageModel.ModelState](xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState). Pour savoir si ce processus a abouti, l’application vérifie l’indicateur [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid).
+
+## <a name="targets"></a>Cibles
+
+La liaison de modèle tente de trouver des valeurs pour les genres de cible suivants :
+
+* Paramètres de la méthode d’action de contrôleur vers laquelle une requête est routée.
+* Paramètres de la méthode de gestionnaire Razor Pages vers laquelle une requête est routée. 
+* Propriétés publiques d’un contrôleur ou d’une classe `PageModel`, si elles sont spécifiées par des attributs.
+
+### <a name="bindproperty-attribute"></a>Attribut [BindProperty]
+
+Peut être appliqué à une propriété publique d’un contrôleur ou à une classe `PageModel` pour que la liaison de modèle cible cette propriété :
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Edit.cshtml.cs?name=snippet_BindProperty&highlight=7-8)]
+
+### <a name="bindpropertiesattribute"></a>Attribut [BindProperties]
+
+Disponible avec ASP.NET Core 2.1 et les versions ultérieures.  Peut être appliqué à un contrôleur ou à une classe `PageModel` pour indiquer à la liaison de modèle de cibler toutes les propriétés publiques de la classe :
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_BindProperties&highlight=1-2)]
+
+### <a name="model-binding-for-http-get-requests"></a>Liaison de modèle pour les requêtes HTTP GET
+
+Par défaut, les propriétés ne sont pas liées pour les requêtes HTTP GET. En règle générale, le paramètre ID d’un enregistrement est tout ce dont vous avez besoin pour une requête GET. L’ID d’enregistrement est utilisé pour rechercher l’élément dans la base de données. Il n’est donc pas nécessaire de lier une propriété qui contient une instance du modèle. Pour les scénarios dans lesquels vous souhaitez que les propriétés soient liées aux données provenant de requêtes GET, affectez à la propriété `SupportsGet` la valeur `true` :
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_SupportsGet)]
+
+## <a name="sources"></a>Sources
+
+Par défaut, la liaison de modèle obtient des données sous la forme de paires clé-valeur à partir des sources suivantes dans une requête HTTP :
+
+1. Champs de formulaire 
+1. Corps de la requête (pour les [contrôleurs ayant l’attribut [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
+1. Données de route
+1. Paramètres de la chaîne de requête
+1. Fichiers chargés 
+
+Pour chaque paramètre ou propriété cible, les sources sont analysées dans l’ordre indiqué dans cette liste. Il existe quelques exceptions :
+
+* Les données de routage et les valeurs de chaîne de requête sont utilisées uniquement pour les types simples.
+* Les fichiers chargés sont liés uniquement aux types cibles qui implémentent `IFormFile` ou `IEnumerable<IFormFile>`.
+
+Si le comportement par défaut ne donne pas les bons résultats, vous pouvez vous servir de l’un des attributs suivants pour spécifier la source à utiliser pour une cible donnée. 
+
+* [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Obtient les valeurs à partir de la chaîne de requête. 
+* [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Obtient les valeurs à partir des données de routage.
+* [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - Obtient les valeurs à partir des champs de formulaire postés.
+* [[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - Obtient les valeurs à partir du corps de la requête.
+* [[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - Obtient les valeurs à partir des en-têtes HTTP.
+
+Ces attributs :
+
+* Sont ajoutés aux propriétés du modèle individuellement (et non à la classe de modèle), comme dans l’exemple suivant :
+
+  [!code-csharp[](model-binding/samples/2.x/Models/Instructor.cs?name=snippet_FromQuery&highlight=5-6)]
+
+* Acceptent éventuellement une valeur de nom de modèle dans le constructeur. Cette option est fournie au cas où le nom de propriété ne correspondrait pas à la valeur de la requête. Par exemple, la valeur de la requête peut être un en-tête avec un trait d’union dans son nom, comme dans l’exemple suivant :
+
+  [!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Index.cshtml.cs?name=snippet_FromHeader)]
+
+### <a name="frombody-attribute"></a>Attribut [FromBody]
+
+Les données du corps de la requête sont analysées à l’aide de formateurs d’entrée spécifiques au type de contenu de la requête. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+
+N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action. Le runtime ASP.NET Core délègue la responsabilité de la lecture du flux de requête au formateur d’entrée. Une fois le flux de requête lu, il ne peut plus être relu pour lier d’autres paramètres `[FromBody]`.
+
+### <a name="additional-sources"></a>Sources supplémentaires
+
+Les données sources sont fournies au système de liaison de modèle par les *fournisseurs de valeurs*. Vous pouvez écrire et inscrire des fournisseurs de valeurs personnalisés qui obtiennent des données de liaison de modèle à partir d’autres sources. Par exemple, vous pouvez obtenir des données provenant de cookies ou de l’état de session. Pour obtenir des données provenant d’une nouvelle source :
+
+* Créez une classe qui implémente `IValueProvider`.
+* Créez une classe qui implémente `IValueProviderFactory`.
+* Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.
+
+L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProvider.cs) et de [fabrique](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies. Voici le code d’inscription dans `Startup.ConfigureServices` :
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=3)]
+
+Le code affiché place le fournisseur de valeurs personnalisé après tous les fournisseurs de valeurs intégrés.  Pour en faire le premier fournisseur de la liste, appelez `Insert(0, new CookieValueProviderFactory())` à la place de `Add`.
+
+## <a name="no-source-for-a-model-property"></a>Aucune source pour une propriété de modèle
+
+Par défaut, aucune erreur d’état de modèle n’est créée, s’il n’existe aucune valeur de propriété de modèle. La propriété a une valeur null ou une valeur par défaut :
+
+* Les types simples Nullable ont une valeur `null`.
+* Les types valeur non Nullable ont la valeur `default(T)`. Par exemple, un paramètre `int id` a la valeur 0.
+* Pour les types complexes, la liaison de modèle crée une instance à l’aide du constructeur par défaut, sans définir de propriétés.
+* Les tableaux ont la valeur `Array.Empty<T>()`, sauf les tableaux `byte[]` qui ont une valeur `null`.
+
+Si l’état de modèle doit être rendu non valide quand les champs de formulaire d’une propriété de modèle ne contiennent rien, utilisez l’attribut [[BindRequired]](#bindrequired-attribute).
+
+Notez que ce comportement de `[BindRequired]` s’applique à la liaison de modèle des données de formulaire postées, et non aux données JSON ou XML d’un corps de requête. Les données du corps de requête sont prises en charge par les [formateurs d’entrée](#input-formatters).
+
+## <a name="type-conversion-errors"></a>Erreurs de conversion de type
+
+Si une source est localisée mais qu’elle ne peut pas être convertie vers le type cible, l’état du modèle est marqué comme étant non valide. Le paramètre ou la propriété cible a une valeur null ou une valeur par défaut, comme indiqué dans la section précédente.
+
+Dans un contrôleur d’API ayant l’attribut `[ApiController]`, un état de modèle non valide entraîne une réponse HTTP 400 automatique.
+
+Dans une page Razor Pages, réaffichez la page avec un message d’erreur :
+
+[!code-csharp[](model-binding/samples/2.x/Pages/Instructors/Create.cshtml.cs?name=snippet_HandleMBError&highlight=3-6)]
+
+La validation côté client intercepte la plupart des données incorrectes qui sont envoyées à un formulaire Razor Pages. Cette validation rend difficile le déclenchement du code en surbrillance indiqué plus haut. L’exemple d’application comprend un bouton **Submit with Invalid Date** (Envoyer avec une date non valide), qui place les données incorrectes dans le champ **Hire Date** (Date d’embauche) et envoie le formulaire. Ce bouton montre comment fonctionne le code permettant de réafficher la page quand des erreurs de conversion de données se produisent.
+
+Quand la page est réaffichée par le code précédent, l’entrée non valide n’est pas visible dans le champ de formulaire. En effet, la propriété de modèle à une valeur null ou une valeur par défaut. L’entrée non valide apparaît dans un message d’erreur. Toutefois, si vous souhaitez réafficher les données incorrectes dans le champ de formulaire, transformez la propriété de modèle en chaîne et procédez à la conversion des données manuellement.
+
+La même stratégie est recommandée si vous ne souhaitez pas que les erreurs de conversion de type entraînent des erreurs d’état de modèle. Dans ce cas, transformez la propriété de modèle en chaîne.
+
+## <a name="simple-types"></a>Types simples
+
+Les types simples que le lieur de modèle peut convertir en chaînes sources sont les suivants :
+
+* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
+* [Char](xref:System.ComponentModel.CharConverter)
+* [DateTime](xref:System.ComponentModel.DateTimeConverter)
+* [DateTimeOffset](xref:System.ComponentModel.DateTimeOffsetConverter)
+* [Decimal](xref:System.ComponentModel.DecimalConverter)
+* [Double](xref:System.ComponentModel.DoubleConverter)
+* [Enum](xref:System.ComponentModel.EnumConverter)
+* [Guid](xref:System.ComponentModel.GuidConverter)
+* [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
+* [Single](xref:System.ComponentModel.SingleConverter)
+* [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
+* [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
+* [Uri](xref:System.UriTypeConverter)
+* [Version](xref:System.ComponentModel.VersionConverter)
+
+## <a name="complex-types"></a>Types complexes
+
+Un type complexe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée à l’aide du constructeur public par défaut. 
+
+Pour chaque propriété du type complexe, la liaison de modèle recherche dans les sources le modèle de nom *préfixe.nom_propriété*. Si rien n’est trouvé, elle recherche uniquement *nom_propriété* sans le préfixe.
+
+Dans le cas d’une liaison à un paramètre, le préfixe représente le nom du paramètre. Dans le cas d’une liaison à une propriété publique `PageModel`, le préfixe représente le nom de la propriété publique. Certains attributs ont une propriété `Prefix` qui vous permet de remplacer l’utilisation par défaut du nom de paramètre ou de propriété.
+
+Par exemple, supposons que le type complexe corresponde à la classe `Instructor` suivante :
+
+  ```csharp
+  public class Instructor
+  {
+      public int ID { get; set; }
+      public string LastName { get; set; }
+      public string FirstName { get; set; }
+  }
+  ```
+
+### <a name="prefix--parameter-name"></a>Préfixe = nom de paramètre
+
+Si le modèle à lier est un paramètre nommé `instructorToUpdate` :
 
 ```csharp
-services.AddMvc().AddMvcOptions(options =>
-    options.ModelMetadataDetailsProviders.Add(
-        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+public IActionResult OnPost(int? id, Instructor instructorToUpdate)
 ```
 
-## <a name="bind-formatted-data-from-the-request-body"></a>Lier des données mises en forme du corps de la requête
+La liaison de modèle commence par rechercher dans les sources la clé `instructorToUpdate.ID`. Si elle est introuvable, elle recherche `ID` sans préfixe.
 
-Les données des requêtes peuvent exister dans différents formats, notamment JSON, XML et beaucoup d’autres. Quand vous utilisez l’attribut [FromBody] pour indiquer que vous voulez lier un paramètre à des données du corps de la requête, MVC utilise un ensemble de formateurs configuré pour gérer les données de la requête en fonction du type de contenu. Par défaut, MVC inclut une classe `JsonInputFormatter` pour la gestion des données JSON, mais vous pouvez ajouter des formateurs supplémentaires pour la gestion du format XML et d’autres formats personnalisés.
+### <a name="prefix--property-name"></a>Préfixe = nom de propriété
+
+Si le modèle à lier est une propriété nommée `Instructor` du contrôleur ou de la classe `PageModel` :
+
+```csharp
+[BindProperty]
+public Instructor Instructor { get; set; }
+```
+
+La liaison de modèle commence par rechercher dans les sources la clé `Instructor.ID`. Si elle est introuvable, elle recherche `ID` sans préfixe.
+
+### <a name="custom-prefix"></a>Préfixe personnalisé
+
+Si le modèle à lier est un paramètre nommé `instructorToUpdate` et si un attribut `Bind` spécifie `Instructor` en tant que préfixe :
+
+```csharp
+public IActionResult OnPost(
+    int? id, [Bind(Prefix = "Instructor")] Instructor instructorToUpdate)
+```
+
+La liaison de modèle commence par rechercher dans les sources la clé `Instructor.ID`. Si elle est introuvable, elle recherche `ID` sans préfixe.
+
+### <a name="attributes-for-complex-type-targets"></a>Attributs des cibles de type complexe
+
+Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de modèle des types complexes :
+
+* `[BindRequired]`
+* `[BindNever]`
+* `[Bind]`
 
 > [!NOTE]
-> Il peut y avoir au plus un paramètre par action décorée avec `[FromBody]`. Le runtime d’ASP.NET Core MVC délègue la responsabilité de lire le flux de la requête au formateur. Une fois que le flux de la requête est lu pour un paramètre, il n’est généralement pas possible de relire le flux de la requête pour lier d’autres paramètres `[FromBody]`.
+> Ces attributs affectent la liaison de modèle quand les données de formulaire postées représentent la source des valeurs. Ils n’affectent pas les formateurs d’entrée, qui traitent les corps de requête JSON et XML postés. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+>
+> Consultez également la discussion sur l’attribut `[Required]` dans [Validation de modèle](xref:mvc/models/validation#required-attribute).
 
-> [!NOTE]
-> `JsonInputFormatter` est le formateur par défaut et est basé sur [Json.NET](https://www.newtonsoft.com/json).
+### <a name="bindrequired-attribute"></a>Attribut [BindRequired]
 
-ASP.NET Core sélectionne les formateurs d’entrée en fonction de l’en-tête [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) et du type de paramètre, sauf si un attribut qui lui est appliqué spécifie un autre formateur. Si vous voulez utiliser XML ou un autre format, vous devez le configurer dans le fichier *Startup.cs*, mais il peut être nécessaire d’obtenir d’abord une référence à `Microsoft.AspNetCore.Mvc.Formatters.Xml` en utilisant NuGet. Votre code de démarrage doit ressembler à ceci :
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
+
+### <a name="bindnever-attribute"></a>Attribut [BindNever]
+
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il empêche la liaison de modèle de définir la propriété d’un modèle. Voici un exemple :
+
+[!code-csharp[](model-binding/samples/2.x/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
+
+### <a name="bind-attribute"></a>Attribut [Bind]
+
+Il peut être appliqué à une classe ou à un paramètre de méthode. Il spécifie les propriétés d’un modèle à inclure dans la liaison de modèle.
+
+Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand une méthode de gestionnaire ou une méthode d’action est appelée :
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddMvc()
-        .AddXmlSerializerFormatters();
-   }
+[Bind("LastName,FirstMidName,HireDate")]
+public class Instructor
 ```
 
-Le code du fichier *Startup.cs* contient une méthode `ConfigureServices` avec un argument `services`, que vous pouvez utiliser pour créer des services pour votre application ASP.NET Core. Dans l’exemple, nous ajoutons un formateur XML en tant que service, que MVC fournira pour cette application. L’argument `options` passé dans la méthode `AddMvc` vous permet d’ajouter et de gérer des filtres, des formateurs et d’autres options du système depuis MVC dès le démarrage de l’application. Appliquez ensuite l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.
+Dans l’exemple suivant, seules les propriétés spécifiées du modèle `Instructor` sont liées quand la méthode `OnPost` est appelée :
 
-### <a name="custom-model-binding"></a>Liaison de modèle personnalisée
+```csharp
+[HttpPost]
+public IActionResult OnPost([Bind("LastName,FirstMidName,HireDate")] Instructor instructor)
+```
 
-Vous pouvez étendre la liaison de modèle en écrivant vos propres classeurs de modèles personnalisés. Découvrez plus d’informations sur la [liaison de modèle personnalisée](../advanced/custom-model-binding.md).
+Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les scénarios de *création*. Il ne fonctionne pas bien dans les scénarios de modification, car les propriétés exclues ont une valeur null ou une valeur par défaut au lieu de rester inchangées. Pour empêcher le surpostage, il est recommandé d’utiliser des modèles de vues à la place de l’attribut `[Bind]`. Pour plus d’informations, consultez [Remarque sur la sécurité concernant le surpostage](xref:data/ef-mvc/crud#security-note-about-overposting).
+
+## <a name="collections"></a>Collections
+
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+
+* Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
+
+  ```csharp
+  public IActionResult OnPost(int? id, int[] selectedCourses)
+  ```
+
+* Les données de formulaire ou de chaîne de requête peuvent avoir l’un des formats suivants :
+   
+  ```
+  selectedCourses=1050&selectedCourses=2000 
+  ```
+
+  ```
+  selectedCourses[0]=1050&selectedCourses[1]=2000
+  ```
+
+  ```
+  [0]=1050&[1]=2000
+  ```
+
+  ```
+  selectedCourses[a]=1050&selectedCourses[b]=2000&selectedCourses.index=a&selectedCourses.index=b
+  ```
+
+  ```
+  [a]=1050&[b]=2000&index=a&index=b
+  ```
+
+* Le format suivant est pris en charge uniquement dans les données de formulaire :
+
+  ```
+  selectedCourses[]=1050&selectedCourses[]=2000
+  ```
+
+* Pour tous les exemples de formats précédents, la liaison de modèle passe un tableau de deux éléments au paramètre `selectedCourses` :
+
+  * selectedCourses[0]=1050
+  * selectedCourses[1]=2000
+
+  Les formats de données qui utilisent des nombres en indice (... [0] ... [1] ...) doivent être impérativement numérotés de manière séquentielle à partir de zéro. S’il existe des vides dans la numérotation en indice, tous les éléments suivants sont ignorés. Par exemple, si les indices sont 0 et 2 au lieu de 0 et 1, le second élément est ignoré.
+
+## <a name="dictionaries"></a>Dictionnaires
+
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
+
+* Supposons que le paramètre cible soit un `Dictionary<string, string>` nommé `selectedCourses` :
+
+  ```csharp
+  public IActionResult OnPost(int? id, Dictionary<int, string> selectedCourses)
+  ```
+
+* Les données de chaîne de requête ou de formulaire posté peuvent ressembler à l’un des exemples suivants :
+
+  ```
+  selectedCourses[1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  [1050]=Chemistry&selectedCourses[2000]=Economics
+  ```
+
+  ```
+  selectedCourses[0].Key=1050&selectedCourses[0].Value=Chemistry&
+  selectedCourses[1].Key=2000&selectedCourses[1].Value=Economics
+  ```
+
+  ```
+  [0].Key=1050&[0].Value=Chemistry&[1].Key=2000&[1].Value=Economics
+  ```
+
+* Pour tous les exemples de formats précédents, la liaison de modèle passe un dictionnaire de deux éléments au paramètre `selectedCourses` :
+
+  * selectedCourses["1050"]="Chemistry"
+  * selectedCourses["2000"]="Economics"
+
+## <a name="special-data-types"></a>Types de données spéciaux
+
+Certains types de données spéciaux peuvent être pris en charge par la liaison de modèle.
+
+### <a name="iformfile-and-iformfilecollection"></a>IFormFile et IFormFileCollection
+
+Fichier chargé inclus dans la requête HTTP.  `IEnumerable<IFormFile>` est également pris en charge pour plusieurs fichiers.
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+utilisé pour annuler l’activité dans les contrôleurs asynchrones.
+
+### <a name="formcollection"></a>FormCollection
+
+Permet de récupérer toutes les valeurs des données de formulaire posté.
+
+## <a name="input-formatters"></a>Formateurs d’entrée
+
+Les données contenues dans le corps de la requête peuvent être au format JSON, XML ou tout autre format. Pour analyser ces données, la liaison de modèle utilise un *formateur d’entrée* configuré pour prendre en charge un type de contenu particulier. Par défaut, ASP.NET Core inclut des formateurs d’entrée basés sur le format JSON pour prendre en charge les données JSON. Vous pouvez ajouter d’autres formateurs pour d’autres types de contenu.
+
+ASP.NET Core sélectionne les formateurs d’entrée en fonction de l’attribut [Consumes](xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute). Si aucun attribut n’est présent, il utilise l’[en-tête Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html).
+
+Pour utiliser les formateurs d’entrée XML intégrés :
+
+* Installez le package NuGet `Microsoft.AspNetCore.Mvc.Formatters.Xml`.
+
+* Dans `Startup.ConfigureServices`, appelez <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlSerializerFormatters*> ou <xref:Microsoft.Extensions.DependencyInjection.MvcXmlMvcCoreBuilderExtensions.AddXmlDataContractSerializerFormatters*>.
+
+  [!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=9)]
+
+* Appliquez l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action devant contenir des données XML dans le corps de la requête.
+
+  ```csharp
+  [HttpPost]
+  [Consumes("application/xml")]
+  public ActionResult<Pet> Create(Pet pet)
+  ```
+
+  Pour plus d’informations, consultez [Introduction à la sérialisation XML](https://docs.microsoft.com/en-us/dotnet/standard/serialization/introducing-xml-serialization).
+
+## <a name="exclude-specified-types-from-model-binding"></a>Exclure les types spécifiés de la liaison de modèle
+
+Le comportement de la liaison de modèle et du système de validation est régi par [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata). Vous pouvez personnaliser `ModelMetadata` en ajoutant un fournisseur de détails à [MvcOptions.ModelMetadataDetailsProviders](xref:Microsoft.AspNetCore.Mvc.MvcOptions.ModelMetadataDetailsProviders). Des fournisseurs de détails intégrés sont disponibles pour désactiver la liaison de modèle ou la validation des types spécifiés.
+
+Pour désactiver la liaison de modèle sur tous les modèles d’un type spécifique, ajoutez <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.ExcludeBindingMetadataProvider> dans `Startup.ConfigureServices`. Par exemple, pour désactiver la liaison de modèle sur tous les modèles de type `System.Version` :
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=4-5)]
+
+Pour désactiver la validation des propriétés d’un type spécifique, ajoutez <xref:Microsoft.AspNetCore.Mvc.ModelBinding.SuppressChildValidationMetadataProvider> dans `Startup.ConfigureServices`. Par exemple, pour désactiver la validation sur les propriétés de type `System.Guid` :
+
+[!code-csharp[](model-binding/samples/2.x/Startup.cs?name=snippet_ValueProvider&highlight=6-7)]
+
+## <a name="custom-model-binders"></a>Lieurs de modèles personnalisés
+
+Vous pouvez étendre la liaison de modèle en écrivant un lieur de modèle personnalisé et en utilisant l’attribut `[ModelBinder]` afin de le sélectionner pour une cible donnée. Découvrez plus d’informations sur la [liaison de modèle personnalisée](xref:mvc/advanced/custom-model-binding).
+
+## <a name="manual-model-binding"></a>Liaison de modèle manuelle
+
+Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. La méthode est définie sur les classes `ControllerBase` et `PageModel`. Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser. La méthode retourne `false` en cas d’échec de la liaison de modèle. Voici un exemple :
+
+[!code-csharp[](model-binding/samples/2.x/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
+
+## <a name="fromservices-attribute"></a>Attribut [FromServices]
+
+Le nom de cet attribut suit le modèle des attributs de liaison de modèle qui spécifient une source de données. Toutefois, il ne permet pas de lier les données d’un fournisseur de valeurs. Il obtient une instance d’un type à partir du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection). Son objectif est de fournir une alternative à l’injection de constructeurs quand vous avez besoin d’un service uniquement si une méthode particulière est appelée.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* <xref:mvc/models/validation>
+* <xref:mvc/advanced/custom-model-binding>

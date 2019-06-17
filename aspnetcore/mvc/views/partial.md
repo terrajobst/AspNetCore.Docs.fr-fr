@@ -4,20 +4,20 @@ author: ardalis
 description: Découvrez comment utiliser les vues partielles pour découper des fichiers de balisage volumineux et réduire la duplication du balisage commun entre les différentes pages web dans les applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/06/2019
+ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: e13b2ea974697bb12c121d1a70fb5079d6aadb2d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 901fd52f89969141713e443890781a77308bd901
+ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887464"
+ms.lasthandoff: 06/12/2019
+ms.locfileid: "67034917"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/), [Luke Latham](https://github.com/guardrex), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
 
-Une vue partielle est un fichier de balisage [Razor](xref:mvc/views/razor) (*.cshtml*) qui effectue le rendu d’une sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
+Une vue partielle est un fichier de balisage [Razor](xref:mvc/views/razor) ( *.cshtml*) qui effectue le rendu d’une sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -48,7 +48,7 @@ N’utilisez pas une vue partielle quand du code ou une logique de rendu complex
 
 Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues* (MVC) ou le dossier *Pages* (Razor Pages).
 
-Dans ASP.NET Core MVC, le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Une fonctionnalité similaire est prévue pour Razor Pages dans ASP.NET Core 2.2. Dans Razor Pages, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> peut retourner un <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
+Dans ASP.NET Core MVC, le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Dans Razor Pages, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> peut retourner une vue partielle représentée en tant qu’objet <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
 
 Contrairement au rendu d’une vue MVC ou d’une page, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
 
@@ -60,7 +60,7 @@ Les noms de fichiers des vues partielles commencent souvent par un trait de soul
 
 Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues*.
 
-Le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle.
+Le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
 
 Contrairement au rendu d’une vue MVC, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
 
@@ -69,6 +69,33 @@ Les noms de fichiers des vues partielles commencent souvent par un trait de soul
 ::: moniker-end
 
 ## <a name="reference-a-partial-view"></a>Référencer une vue partielle
+
+::: moniker range=">= aspnetcore-2.0"
+
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>Utiliser une vue partielle dans un PageModel Razor Pages
+
+Avec ASP.NET Core 2.0 ou 2.1, la méthode de gestionnaire suivante affiche la vue partielle *\_AuthorPartialRP.cshtml* à la réponse :
+
+```csharp
+public IActionResult OnGetPartial() =>
+    new PartialViewResult
+    {
+        ViewName = "_AuthorPartialRP",
+        ViewData = ViewData,
+    };
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+Avec ASP.NET Core 2.2 ou version ultérieure, une méthode de gestionnaire peut également appeler la méthode <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageBase.Partial*> pour générer un objet `PartialViewResult` :
+
+[!code-csharp[](partial/sample/PartialViewsSample/Pages/DiscoveryRP.cshtml.cs?name=snippet_OnGetPartial)]
+
+::: moniker-end
+
+### <a name="use-a-partial-view-in-a-markup-file"></a>Utiliser une vue partielle dans un fichier de balises
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -263,7 +290,7 @@ Vous pouvez passer un modèle dans une vue partielle. Le modèle peut être un o
 
 Le balisage suivant dans l’exemple d’application est extrait de la page *Pages/ArticlesRP/ReadRP.cshtml*. La page contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-20)]
 
 *Pages/Shared/_AuthorPartialRP.cshtml* est la première vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
 
@@ -279,7 +306,7 @@ Le balisage suivant dans l’exemple d’application est extrait de la page *Pag
 
 Le balisage suivant dans l’exemple d’application illustre la vue *Views/Articles/Read.cshtml*. La vue contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-19)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
 *Views/Shared/_AuthorPartial.cshtml* est la première vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
 
