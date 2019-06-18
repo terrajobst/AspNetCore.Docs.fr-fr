@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/05/2019
 uid: security/gdpr
-ms.openlocfilehash: 967f3246836c93a1af56f7109edb056220606b58
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: 1580187afef56e8e2f5be7a4bae32912e6305c5a
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716350"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152863"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’Union européenne général Protection des données règlement (RGPD) dans ASP.NET Core
 
@@ -32,7 +32,17 @@ Le [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/live
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>ASP.NET Core RGPD prennent en charge dans le code généré par le modèle
 
+::: moniker range="< aspnetcore-2.2"
+
+Les Pages Razor et MVC les projets créés avec les modèles de projet n’ont aucune prise en charge de RGPD ou un cookie de consentement. Pour ajouter le RGPD, copiez le code généré dans les modèles ASP.NET Core 2.2.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
 Les Pages Razor et MVC projets créés avec les modèles de projet incluent la prise en charge de RGPD suivante :
+
+::: moniker-end
 
 * [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définies le `Startup` classe.
 * Le  *\_CookieConsentPartial.cshtml* [vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). Un **Accept** bouton est inclus dans ce fichier. Lorsque l’utilisateur clique sur le **Accept** bouton, de donner son consentement pour stocker des cookies est fourni.

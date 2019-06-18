@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 8d48877153d6d75348e29299c669125904236de8
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 08ce50775d1b5348cb0528a1724cec2e5c72dae2
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692594"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152897"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -24,11 +24,32 @@ Ce document montre comment :
 
 Aucune API ne peut empêcher un client d’envoyer des données sensibles à la première demande.
 
+::: moniker range="< aspnetcore-3.0"
+
 > [!WARNING]
+> ## <a name="api-projects"></a>Projets d’API
+>
 > Ne **pas** utiliser [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
 >
 > * Ne pas écouter sur HTTP.
 > * Fermer la connexion avec le code d’état 400 (demande incorrecte) et ne pas servir la demande.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+> [!WARNING]
+> ## <a name="api-projects"></a>Projets d’API
+>
+> Ne **pas** utiliser [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
+>
+> * Ne pas écouter sur HTTP.
+> * Fermer la connexion avec le code d’état 400 (demande incorrecte) et ne pas servir la demande.
+>
+> ## <a name="hsts-and-api-projects"></a>Projets HSTS et API
+>
+> Les projets d’API par défaut n’incluent pas [HSTS](#hsts) HSTS étant généralement une seule instruction de navigateur. Autres appelants, telles que le téléphone ou les applications de bureau, procédez comme **pas** respectent l’instruction. Même dans les navigateurs, un seul appel authentifié à une API via HTTP présente des risques sur les réseaux non sécurisés. L’approche sûre consiste à configurer des projets d’API pour écouter uniquement et y répondre via le protocole HTTPS.
+
+::: moniker-end
 
 ## <a name="require-https"></a>Exiger HTTPS
 
@@ -159,6 +180,8 @@ Exiger le protocole HTTPS globalement (`options.Filters.Add(new RequireHttpsAttr
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
+<a name="hsts"></a>
 
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Protocole de sécurité Strict Transport HTTP (HSTS)
 
