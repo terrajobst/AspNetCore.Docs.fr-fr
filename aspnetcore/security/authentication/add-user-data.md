@@ -3,15 +3,15 @@ title: Ajouter, télécharger et supprimer des données utilisateur à l’ident
 author: rick-anderson
 description: Découvrez comment ajouter des données utilisateur personnalisées à l’identité dans un projet ASP.NET Core. Supprimer des données par RGPD.
 ms.author: riande
-ms.date: 6/16/2018
+ms.date: 06/18/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: d704041f73a7d4773c3da9a23f120b07a03d64ac
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c219500b7595fd8d200e4e5e742b1e1fda836ba3
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086494"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207735"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 
@@ -20,11 +20,11 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 Cet article explique comment :
 
 * Ajouter des données utilisateur personnalisées pour une application web ASP.NET Core.
-* Décorez le modèle de données utilisateur personnalisée avec le [PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute?view=aspnetcore-2.1) par conséquent, il est automatiquement disponible pour téléchargement et la suppression d’attributs. Rendre les données peuvent être téléchargés et supprimés à mieux répondre à [RGPD](xref:security/gdpr) configuration requise.
+* Décorez le modèle de données utilisateur personnalisée avec le <xref:Microsoft.AspNetCore.Identity.PersonalDataAttribute> par conséquent, il est automatiquement disponible pour téléchargement et la suppression d’attributs. Rendre les données peuvent être téléchargés et supprimés à mieux répondre à [RGPD](xref:security/gdpr) configuration requise.
 
 L’exemple de projet est créé à partir d’une application web de Pages Razor, mais les instructions sont similaires pour une application web ASP.NET Core MVC.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -34,7 +34,7 @@ L’exemple de projet est créé à partir d’une application web de Pages Razo
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il correspond à l’espace de noms de la [télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data/sample) code.
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**. Nommez le projet **application Web 1** si vous souhaitez qu’il correspond à l’espace de noms de la [télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/authentication/add-user-data) code.
 * Sélectionnez **Application Web ASP.NET Core** > **OK**
 * Sélectionnez **ASP.NET Core 2.2** dans la liste déroulante
 * Sélectionnez **Application Web**  > **OK**
