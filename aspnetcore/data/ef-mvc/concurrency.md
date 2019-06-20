@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: d3954800f4f1358565a627768e34465215dc4f6e
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: bfe417a6153f74cf0ca2d9bcde4db1bba8453b3b
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886654"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152887"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core
 
@@ -154,7 +154,7 @@ Remplacez le code existant pour la méthode HttpPost `Edit` méthode par le code
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EditPost)]
 
-Le code commence par essayer de lire le département à mettre à jour. Si la méthode `SingleOrDefaultAsync` retourne null, c’est que le département a été supprimé par un autre utilisateur. Dans ce cas, le code utilise les valeurs du formulaire envoyé pour créer une entité Department de façon que la page Edit puisse être réaffichée avec un message d’erreur. Vous pouvez aussi ne pas recréer l’entité Department si vous affichez seulement un message d’erreur sans réafficher les champs du département.
+Le code commence par essayer de lire le département à mettre à jour. Si la méthode `FirstOrDefaultAsync` retourne null, c’est que le département a été supprimé par un autre utilisateur. Dans ce cas, le code utilise les valeurs du formulaire envoyé pour créer une entité Department de façon que la page Edit puisse être réaffichée avec un message d’erreur. Vous pouvez aussi ne pas recréer l’entité Department si vous affichez seulement un message d’erreur sans réafficher les champs du département.
 
 La vue stocke la valeur d’origine de `RowVersion` dans un champ masqué, et cette méthode reçoit cette valeur dans le paramètre `rowVersion`. Avant d’appeler `SaveChanges`, vous devez placer la valeur d’origine de la propriété `RowVersion` dans la collection `OriginalValues` pour l’entité.
 
