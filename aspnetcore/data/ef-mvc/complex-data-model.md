@@ -33,7 +33,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créer l’entité Department
 > * Modifier l’entité Enrollment
 > * Mettre à jour le contexte de base de données
-> * Peupler la base de données avec des données de test
+> * Remplir la base de données avec des données de test
 > * Ajouter une migration
 > * Changer la chaîne de connexion
 > * Mettre à jour la base de données
@@ -422,7 +422,7 @@ L’illustration suivante montre le diagramme que les outils Entity Framework Po
 
 Outre les lignes de relation un-à-plusieurs (1 à \*), vous pouvez voir ici la ligne de relation un-à-zéro-ou-un (1 à 0..1) entre les entités Instructor et OfficeAssignment et la ligne de relation zéro-ou-un-à-plusieurs (0..1 à *) entre les entités Instructor et Department.
 
-## <a name="seed-database-with-test-data"></a>Peupler la base de données avec des données de test
+## <a name="seed-database-with-test-data"></a>Remplir la base de données avec des données de test
 
 Remplacez le code dans le fichier *Data/DbInitializer.cs* par le code suivant afin de fournir des données initiales pour les nouvelles entités que vous avez créées.
 
@@ -501,7 +501,7 @@ Ouvrez la base de données dans SSOX comme vous l’avez fait précédemment, pu
 
 ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
-Exécutez l’application pour déclencher le code d’initialiseur qui peuple la base de données.
+Exécutez l’application pour déclencher le code d’initialiseur qui remplit la base de données.
 
 Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez **Afficher les données** pour vérifier qu’elle comporte des données.
 
@@ -516,18 +516,18 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Modèle de données personnalisé
-> * Modifications apportées à l’entité Student
-> * Entité Instructor créée
-> * Entité OfficeAssignment créée
-> * Entité Course modifiée
-> * Entité Department créée
-> * Entité Enrollment modifiée
-> * Contexte de base de données mis à jour
-> * Base de données peuplée avec des données de test
-> * Migration ajoutée
-> * Chaîne de connexion modifiée
-> * Base de données mise à jour
+> * Personnalisé le modèle de données
+> * Apporté des modifications à l’entité Student
+> * Créé une entité Instructor
+> * Créé une entité OfficeAssignment
+> * Modifié l’entité Course
+> * Créé l’entité Department
+> * Modifié l’entité Enrollment
+> * Mis à jour le contexte de base de données
+> * Rempli la base de données avec des données de test
+> * Ajouté une migration
+> * Changé la chaîne de connexion
+> * Mis à jour la base de données
 
 Passez au tutoriel suivant pour en savoir plus sur l’accès aux données associées.
 
