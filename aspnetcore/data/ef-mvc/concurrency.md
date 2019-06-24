@@ -299,15 +299,15 @@ Remplacez le code de *Views/Departments/Create.cshtml* pour ajouter une option d
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Conflits d’accès concurrentiel découverts
-> * Propriété de suivi ajoutée
-> * Contrôleur Departments et des vues créés
-> * Vue Index mise à jour
-> * Méthodes de modification mises à jour
-> * Vue Edit mise à jour
-> * Conflits d’accès concurrentiel testés
-> * Page Delete mise à jour
-> * Vues Details et Create mises à jour
+> * En savoir plus sur les conflits d’accès concurrentiel
+> * Ajouté une propriété de suivi
+> * Créé un contrôleur Departments et des vues
+> * Mis à jour la vue Index
+> * Mis à jour les méthodes de modification
+> * Mis à jour la vue Edit
+> * Testé les conflits d'accès concurrentiel
+> * Mis à jour la page Delete
+> * Mis à jour les vues Details et Create
 
 Passez au tutoriel suivant pour découvrir comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
 
