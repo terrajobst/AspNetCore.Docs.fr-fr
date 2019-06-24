@@ -96,7 +96,7 @@ Quand vous avez exécuté la commande `migrations add`, EF a généré le code q
 
 La fonctionnalité Migrations appelle la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour annuler la mise à jour, Migrations appelle la méthode `Down`.
 
-Ce code est celui de la migration initiale qui a été créé quand vous avez entré la commande `migrations add InitialCreate`. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier ; vous pouvez le choisir librement. Nous vous conseillons néanmoins de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure « AjouterTableDépartement ».
+Ce code est celui de la migration initiale qui a été créé quand vous avez entré la commande `migrations add InitialCreate`. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier ; vous pouvez le choisir librement. Nous vous conseillons néanmoins de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure « AddDepartmentTable ».
 
 Si vous avez créé la migration initiale alors que la base de données existait déjà, le code de création de la base de données est généré, mais il n’est pas nécessaire de l’exécuter, car la base de données correspond déjà au modèle de données. Quand vous déployez l’application sur un autre environnement où la base de données n’existe pas encore, ce code est exécuté pour créer votre base de données : il est donc judicieux de le tester au préalable. C’est la raison pour laquelle vous avez précédemment changé le nom de la base de données dans la chaîne de connexion : les migrations doivent pouvoir créer une base de données à partir de zéro.
 
@@ -176,15 +176,15 @@ Pour plus d’informations sur les commandes de la console du Gestionnaire de pa
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Migrations découvertes
-> * Packages NuGet de migration découverts
-> * Chaîne de connexion modifiée
-> * Migration initiale créée
-> * Méthodes Up et Down examinées
-> * Capture instantanée du modèle de données découverte
-> * Migration appliquée
+> * En savoir plus sur les migrations
+> * En savoir plus sur les Package Nuget de migrations
+> * Changer la chaîne de connexion
+> * Créer une migration initiale
+> * Examiner les méthodes Up et Down
+> * En savoir plus sur la capture instantanée du modèle de données
+> * Appliquer la migration
 
-Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cour de ce processus, vous allez créer et appliquer d’autres migrations.
+Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cours de ce processus, vous allez créer et appliquer d’autres migrations.
 
 > [!div class="nextstepaction"]
 > [Créer et appliquer d’autres migrations](complex-data-model.md)
