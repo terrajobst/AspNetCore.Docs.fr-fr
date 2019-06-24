@@ -3,14 +3,14 @@ title: Migrer d’authentification et identité vers ASP.NET Core 2.0
 author: scottaddie
 description: Cet article décrit les étapes les plus courantes pour migration ASP.NET Core 1.x l’authentification et identité vers ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 06/13/2019
+ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: 3e8bc75b87a85159c9668b52eea32bb7d700be6c
-ms.sourcegitcommit: 516f166c5f7cec54edf3d9c71e6e2ba53fb3b0e5
+ms.openlocfilehash: c83356e12fa5ae581b369265b9d857b08445ed51
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67196382"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313746"
 ---
 # <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Migrer d’authentification et identité vers ASP.NET Core 2.0
 
@@ -304,18 +304,31 @@ Dans les 2.0 projets, vous devez importer le `Microsoft.AspNetCore.Authenticatio
 ## <a name="windows-authentication-httpsys--iisintegration"></a>L’authentification Windows (HTTP.sys / IISIntegration)
 
 Il existe deux variantes de l’authentification Windows :
-1. L’hôte autorise uniquement les utilisateurs authentifiés
-2. L’hôte permet à la fois anonymes et les utilisateurs authentifiés
 
-La première variante décrite ci-dessus n’est pas affectée par les modifications de 2.0.
+* L’hôte autorise uniquement les utilisateurs authentifiés. Cette variation n’est pas affectée par les modifications de 2.0.
+* L’hôte permet à la fois anonymes et les utilisateurs authentifiés. Cette variation est affectée par les modifications de 2.0. Par exemple, l’application doit autoriser les utilisateurs anonymes à le [IIS](xref:host-and-deploy/iis/index) ou [HTTP.sys](xref:fundamentals/servers/httpsys) de couche, mais autoriser les utilisateurs au niveau du contrôleur. Dans ce scénario, définissez le schéma par défaut dans le `Startup.ConfigureServices` (méthode).
 
-La deuxième variante décrite ci-dessus est affectée par les modifications de 2.0. Par exemple, vous pouvez autoriser les utilisateurs anonymes dans votre application à IIS ou [HTTP.sys](xref:fundamentals/servers/httpsys) mais autorisant des utilisateurs au niveau du contrôleur de couche. Dans ce scénario, la valeur est le schéma par défaut `IISDefaults.AuthenticationScheme` dans le `Startup.ConfigureServices` méthode :
+  Pour [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), le schéma par défaut la valeur `IISDefaults.AuthenticationScheme`:
 
-```csharp
-services.AddAuthentication(IISDefaults.AuthenticationScheme);
-```
+  ```csharp
+  using Microsoft.AspNetCore.Server.IISIntegration;
 
-Impossible de définir le schéma par défaut empêche la demande authorize à issu du travail.
+  services.AddAuthentication(IISDefaults.AuthenticationScheme);
+  ```
+
+  Pour [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), le schéma par défaut la valeur `HttpSysDefaults.AuthenticationScheme`:
+
+  ```csharp
+  using Microsoft.AspNetCore.Server.HttpSys;
+
+  services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+  ```
+
+  Impossible de définir le schéma par défaut empêche la demande authorize (test) de fonctionner avec l’exception suivante :
+
+  > `System.InvalidOperationException`: Aucun authenticationScheme a été spécifié et il n’a aucun DefaultChallengeScheme trouvé.
+
+Pour plus d'informations, consultez <xref:security/authentication/windowsauth>.
 
 <a name="identity-cookie-options"></a>
 

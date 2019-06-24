@@ -4,14 +4,14 @@ author: rick-anderson
 description: Ce didacticiel montre l’intégration de l’authentification d’utilisateur de compte Google dans une application ASP.NET Core existante.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 1/11/2019
+ms.date: 06/19/2019
 uid: security/authentication/google-logins
-ms.openlocfilehash: 44c79b3279db7946b6d89a726bd3f5acfb5f51af
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b0edac411e73cd2eec7c4e212b99971577f59cfb
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895536"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316448"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Programme d’installation de la connexion externe Google dans ASP.NET Core
 
@@ -44,7 +44,9 @@ Vous pouvez gérer vos informations d’identification de l’API et l’utilisa
 
 ## <a name="configure-google-authentication"></a>Configurer l’authentification Google
 
-Ajouter le service Google `Startup.ConfigureServices`.
+Ajouter le service Google `Startup.ConfigureServices`:
+
+[!code-csharp[](~/security/authentication/social/social-code/StartupGoogle.cs?name=snippet_ConfigureServices&highlight=10-18)]
 
 [!INCLUDE [default settings configuration](includes/default-settings2-2.md)]
 
@@ -58,7 +60,7 @@ Ajouter le service Google `Startup.ConfigureServices`.
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-Consultez le [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) référence des API pour plus d’informations sur les options de configuration prises en charge par l’authentification Google. Cela peut être utilisé pour demander différentes informations sur l’utilisateur.
+Consultez le <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> référence des API pour plus d’informations sur les options de configuration prises en charge par l’authentification Google. Cela peut être utilisé pour demander différentes informations sur l’utilisateur.
 
 ## <a name="change-the-default-callback-uri"></a>Modifier l’URI de rappel par défaut
 
@@ -68,7 +70,7 @@ Le segment d’URI `/signin-google` est défini en tant que le rappel par défau
 
 * Si l’authentification dans ne fonctionne pas et vous ne recevez pas les erreurs, basculer en mode de développement pour rendre le problème plus facile à déboguer.
 * Si l’identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, la tentative d’authentifier les résultats dans *ArgumentException : L’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans ce didacticiel permet de s’assurer que cela est fait.
-* Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtenez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.
+* Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtenez *une opération de base de données a échoué lors du traitement de la demande* erreur. Sélectionnez **appliquer les Migrations** pour créer la base de données et actualisez la page pour passer à l’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

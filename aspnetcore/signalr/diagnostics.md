@@ -5,14 +5,14 @@ description: Découvrez comment recueillir des diagnostics à partir de votre ap
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: signalr
-ms.date: 02/27/2019
+ms.date: 06/19/2019
 uid: signalr/diagnostics
-ms.openlocfilehash: b6bd21314ed183488999bcff3553e53493537a11
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 69dbd057b3dcadeb3ca5d94ede1234530fb447db
+ms.sourcegitcommit: 9f11685382eb1f4dd0fb694dea797adacedf9e20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896886"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67313707"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>Journalisation et diagnostics dans ASP.NET Core SignalR
 
@@ -29,23 +29,23 @@ Cet article fournit des conseils pour la collecte des diagnostics à partir de v
 
 SignalR utilise deux catégories d’enregistreur d’événements :
 
-* `Microsoft.AspNetCore.SignalR` -pour les journaux liés aux protocoles de concentrateur, activation des Hubs, l’appel de méthodes et autres activités du Hub.
-* `Microsoft.AspNetCore.Http.Connections` -pour les journaux liés aux transports, tels que les WebSockets, d’interrogation longue et les événements et de bas niveau infrastructure SignalR.
+* `Microsoft.AspNetCore.SignalR` &ndash; pour les journaux liés aux protocoles de concentrateur, activation de concentrateurs, appel de méthodes et autres activités du Hub.
+* `Microsoft.AspNetCore.Http.Connections` &ndash; pour les journaux liés aux transports tels que les WebSockets, d’interrogation longue et les événements et de bas niveau infrastructure SignalR.
 
-Pour activer les journaux détaillés à partir de SignalR, configurez les deux préfixes précédents à la `Debug` niveau dans votre `appsettings.json` fichier en ajoutant les éléments suivants dans le `LogLevel` sous-section dans `Logging`:
+Pour activer les journaux détaillés à partir de SignalR, configurez les deux préfixes précédents à la `Debug` niveau dans votre *appsettings.json* fichier en ajoutant les éléments suivants dans le `LogLevel` sous-section dans `Logging`:
 
-[!code-json[Configuring logging](diagnostics/logging-config.json?highlight=7-8)]
+[!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
 Vous pouvez aussi configurer cela dans le code dans votre `CreateWebHostBuilder` méthode :
 
-[!code-csharp[Configuring logging in code](diagnostics/logging-config-code.cs?highlight=5-6)]
+[!code-csharp[](diagnostics/logging-config-code.cs?highlight=5-6)]
 
 Si vous n’utilisez pas configuration basée sur JSON, définissez les valeurs de configuration suivantes dans votre système de configuration :
 
 * `Logging:LogLevel:Microsoft.AspNetCore.SignalR` = `Debug`
 * `Logging:LogLevel:Microsoft.AspNetCore.Http.Connections` = `Debug`
 
-Consultez la documentation de votre système de configuration déterminer comment spécifier des valeurs de configuration imbriquée. Par exemple, lors de l’utilisation de variables d’environnement, deux `_` caractères sont utilisés à la place de la `:` (par exemple : `Logging__LogLevel__Microsoft.AspNetCore.SignalR`).
+Consultez la documentation de votre système de configuration déterminer comment spécifier des valeurs de configuration imbriquée. Par exemple, lors de l’utilisation de variables d’environnement, deux `_` caractères sont utilisés à la place de la `:` (par exemple, `Logging__LogLevel__Microsoft.AspNetCore.SignalR`).
 
 Nous vous recommandons d’utiliser le `Debug` niveau lors de la collecte plus de diagnostics pour votre application. Le `Trace` au niveau du produit les diagnostics de très bas niveau et est rarement nécessaire pour diagnostiquer les problèmes dans votre application.
 
@@ -63,11 +63,11 @@ Visual Studio affiche la sortie du journal dans le **sortie** fenêtre. Sélecti
 
 ### <a name="azure-app-service"></a>Azure App Service
 
-Activez l’option « Journal des applications (Filesystem) » dans la section « Journaux de Diagnostics » du portail Azure App Service et configurer le niveau de `Verbose`. Journaux doivent être disponibles à partir du service « Diffusion », ainsi que dans les journaux sur le système de fichiers de votre application de Service. Pour plus d’informations, consultez la documentation sur [streaming des journaux Azure](xref:fundamentals/logging/index#azure-log-streaming).
+Activer la **journal des applications (Filesystem)** option dans le **les journaux de diagnostic** section du portail Azure App Service et configurer le **niveau** à `Verbose`. Les journaux doivent être disponibles à partir de la **diffusion de journaux** service et dans les journaux sur le système de fichiers du Service d’application. Pour plus d’informations, consultez [streaming des journaux Azure](xref:fundamentals/logging/index#azure-log-streaming).
 
 ### <a name="other-environments"></a>Autres environnements
 
-Si vous exécutez dans un autre environnement (Docker, Kubernetes, Service de Windows, etc.), consultez la documentation complète sur [journalisation ASP.NET Core](xref:fundamentals/logging/index) pour plus d’informations sur la configuration des fournisseurs de journalisation adaptés à votre environnement.
+Si l’application est déployée sur un autre environnement (par exemple, Docker, Kubernetes ou Service de Windows), consultez <xref:fundamentals/logging/index> pour plus d’informations sur la configuration des fournisseurs de journalisation adaptés à l’environnement.
 
 ## <a name="javascript-client-logging"></a>Enregistrement du client JavaScript
 
@@ -76,7 +76,7 @@ Si vous exécutez dans un autre environnement (Docker, Kubernetes, Service de Wi
 
 Lorsque vous utilisez le client JavaScript, vous pouvez configurer les options de journalisation à l’aide de la `configureLogging` méthode sur `HubConnectionBuilder`:
 
-[!code-javascript[Configuring logging in the JavaScript client](diagnostics/logging-config-js.js?highlight=3)]
+[!code-javascript[](diagnostics/logging-config-js.js?highlight=3)]
 
 Pour désactiver entièrement la journalisation, spécifiez `signalR.LogLevel.None` dans la méthode `configureLogging`.
 
@@ -96,7 +96,7 @@ Une fois que vous avez configuré le niveau de détail, les journaux sont écrit
 
 Si vous souhaitez envoyer des journaux à un système de journalisation personnalisée, vous pouvez fournir un objet JavaScript qui implémente le `ILogger` interface. La seule méthode qui doit être implémentée est `log`, ce qui amène le niveau de l’événement et le message associé à l’événement. Exemple :
 
-[!code-typescript[Creating a custom logger](diagnostics/custom-logger.ts?highlight=3-7,13)]
+[!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
 ## <a name="net-client-logging"></a>Enregistrement du client .NET
 
@@ -109,19 +109,19 @@ Pour obtenir des journaux à partir du client .NET, vous pouvez utiliser la `Con
 
 Pour activer la journalisation de la Console, ajoutez le [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) package. Ensuite, utilisez le `AddConsole` méthode pour configurer le journal de console :
 
-[!code-csharp[Configuring console logging in .NET client](diagnostics/net-client-console-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-console-log.cs?highlight=6)]
 
 ### <a name="debug-output-window-logging"></a>La journalisation de fenêtre de sortie du débogage
 
 Vous pouvez également configurer les journaux pour accéder à la **sortie** fenêtre dans Visual Studio. Installer le [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) empaqueter et utiliser le `AddDebug` méthode :
 
-[!code-csharp[Configuring debug output window logging in .NET client](diagnostics/net-client-debug-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-debug-log.cs?highlight=6)]
 
 ### <a name="other-logging-providers"></a>Autres fournisseurs de journalisation
 
 SignalR prend en charge d’autres fournisseurs de journalisation comme Serilog, Seq, NLog ou tout autre système de journalisation qui s’intègre à `Microsoft.Extensions.Logging`. Si votre système de journalisation fournit une `ILoggerProvider`, vous pouvez l’inscrire avec `AddProvider`:
 
-[!code-csharp[Configuring a custom logging provider in .NET client](diagnostics/net-client-custom-log.cs?highlight=6)]
+[!code-csharp[](diagnostics/net-client-custom-log.cs?highlight=6)]
 
 ### <a name="control-verbosity"></a>Contrôle le niveau de détail
 
@@ -144,7 +144,7 @@ Fiddler est un outil très puissant pour la collecte des traces HTTP. Installez-
 
 Si vous vous connectez à l’aide de HTTPS, il existe quelques étapes supplémentaires pour vous assurer de que Fiddler peut déchiffrer le trafic HTTPS. Pour plus d’informations, consultez le [documentation Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
 
-Une fois que vous avez collecté la trace, vous pouvez exporter la trace en choisissant **fichier** > **enregistrer** > **toutes les Sessions en cours...**  à partir de la barre de menus.
+Une fois que vous avez collecté la trace, vous pouvez exporter la trace en choisissant **fichier** > **enregistrer** > **toutes les Sessions** à partir de la barre de menus.
 
 ![Exportation de toutes les sessions à partir de Fiddler](diagnostics/fiddler-export.png)
 
@@ -200,7 +200,7 @@ La plupart des outils de développement de navigateur ont un onglet « Network�
 Vous pouvez joindre des fichiers de diagnostic vers les problèmes GitHub en les renommant afin qu’ils aient un `.txt` extension puis en faisant glisser et en les déposant sur le problème.
 
 > [!NOTE]
-> Veuillez ne collez le contenu des fichiers journaux ou des traces réseau problème GitHub. Ces journaux et les traces peuvent être très volumineux et GitHub est généralement les tronquer.
+> Veuillez ne pas y coller le contenu de fichiers journaux ou des traces réseau dans un problème GitHub. Ces journaux et les traces peuvent être très volumineux et GitHub généralement les tronque.
 
 ![En faisant glisser des fichiers journaux à un problème GitHub](diagnostics/attaching-diagnostics-files.png)
 
