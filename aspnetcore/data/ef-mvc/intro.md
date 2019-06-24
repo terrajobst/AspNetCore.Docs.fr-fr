@@ -362,15 +362,15 @@ Pour plus d’informations sur la programmation asynchrone dans .NET, consultez 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Application web ASP.NET Core MVC créée
-> * Configurer le style du site
-> * Packages NuGet EF Core découverts
-> * Modèle de données créé
-> * Contexte de base de données créé
-> * SchoolContext inscrit
-> * Base de données initialisée avec des données de test
-> * Un contrôleur et des vues créés
-> * Base de données affichée
+> * Créé une application web ASP.NET Core MVC
+> * Configuré le style du site
+> * En savoir plus sur les packages NuGet EF Core
+> * Créé le modèle de données
+> * Créé le contexte de base de données
+> * Inscrit le contexte SchoolContext pour l’injection de dépendance
+> * Initialisé la base de données avec des données de test
+> * Créé un contrôleur et des vues
+> * Affiché la base de données
 
 Dans le prochain didacticiel, vous apprendrez à effectuer des opérations CRUD de base (créer, lire, mettre à jour, supprimer).
 
