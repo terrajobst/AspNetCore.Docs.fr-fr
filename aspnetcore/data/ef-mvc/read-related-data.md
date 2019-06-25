@@ -29,7 +29,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Découvrir comment charger les données associées
 > * Créer une page Courses
 > * Créer une page Instructors
-> * En savoir plus sur le chargement explicite
+> * Chargement explicite découvert
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -252,10 +252,10 @@ Exécutez l’application, accédez à la page d’index des formateurs et vous 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Découvert comment charger les données associées
-> * Créé une page Courses
-> * Créé une page Instructors
-> * En savoir plus sur le chargement explicite
+> * Chargement des données associées découvert
+> * Page Courses créée
+> * Page Instructors créée
+> * Chargement explicite découvert
 
 Passez au tutoriel suivant pour découvrir comment mettre à jour les données associées.
 
