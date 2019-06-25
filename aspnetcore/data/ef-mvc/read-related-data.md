@@ -15,7 +15,7 @@ ms.locfileid: "64886364"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
 
-Dans le didacticiel précédent, vous a élaboré le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
+Dans le didacticiel précédent, vous avez élaboré le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 
 Les illustrations suivantes montrent les pages que vous allez utiliser.
 
@@ -252,10 +252,10 @@ Exécutez l’application, accédez à la page d’index des formateurs et vous 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Chargement des données associées découvert
-> * Page Courses créée
-> * Page Instructors créée
-> * Chargement explicite découvert
+> * Découvert comment charger les données associées
+> * Créé une page Courses
+> * Créé une page Instructors
+> * En savoir plus sur le chargement explicite
 
 Passez au tutoriel suivant pour découvrir comment mettre à jour les données associées.
 
