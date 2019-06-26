@@ -26,7 +26,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > [!div class="checklist"]
 > * Ajouter des liens de tri de colonne
 > * Ajouter une zone Rechercher
-> * Ajouter la pagination aux Index des étudiants
+Ajouter la pagination aux index des étudiants
 > * Ajouter la pagination à la méthode Index
 > * Ajouter des liens de pagination
 > * Créer une page À propos
@@ -255,12 +255,12 @@ Exécutez l’application et accédez à la page About. Le nombre d’étudiants
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Liens de tri de colonne ajoutés
-> * Zone Rechercher ajoutée
-> * Pagination aux Index des étudiants ajoutée
-> * Pagination à la méthode Index ajoutée
-> * Liens de pagination ajoutés
-> * Page À propos créée
+Ajouter des liens de tri de colonne
+Ajouter une zone Rechercher
+Ajouter la pagination aux index des étudiants
+Ajouter la pagination à la méthode Index
+Ajouter des liens de pagination
+Créer une page À propos
 
 Passez au tutoriel suivant pour découvrir comment gérer les modifications du modèle de données à l’aide de migrations.
 
