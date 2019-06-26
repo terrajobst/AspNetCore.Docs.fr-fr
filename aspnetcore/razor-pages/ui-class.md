@@ -4,21 +4,21 @@ author: Rick-Anderson
 description: Explique comment créer l’interface utilisateur de Razor réutilisables à l’aide de vues partielles dans une bibliothèque de classes dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 09/07/2018
+ms.date: 06/24/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 7ec36cc8f4832fb1e1a50831dfcb88f3cafb5ca9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 96ef8fc055a6b92cd0808d02031d917b8446f305
+ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895286"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394747"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer l’interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Les vues, pages, contrôleurs, modèles de page, [composants de vue](xref:mvc/views/view-components) et modèles de données Razor peuvent être intégrés à une bibliothèque de classes Razor (RCL, Razor Class Library). La RCL peut être empaquetée et réutilisée. Les applications peuvent inclure la RCL et remplacer les vues et les pages qu’elle contient. Quand une vue, une vue partielle ou une page Razor est présente dans l’application web et la RCL, le balisage Razor (fichier *.cshtml*) dans l’application web est prioritaire.
+Les vues Razor, pages, contrôleurs, modèles de page, [composants de Razor](xref:blazor/class-libraries), [composants de vue](xref:mvc/views/view-components), et les modèles de données peuvent être intégrées dans une bibliothèque de classes Razor (RCL). La RCL peut être empaquetée et réutilisée. Les applications peuvent inclure la RCL et remplacer les vues et les pages qu’elle contient. Quand une vue, une vue partielle ou une page Razor est présente dans l’application web et la RCL, le balisage Razor (fichier *.cshtml*) dans l’application web est prioritaire.
 
 Cette fonctionnalité nécessite [!INCLUDE[](~/includes/2.1-SDK.md)]
 
@@ -34,7 +34,7 @@ Cette fonctionnalité nécessite [!INCLUDE[](~/includes/2.1-SDK.md)]
 * Vérifiez que **ASP.NET Core 2.1** ou ultérieur est sélectionné.
 * Sélectionnez **Razor Class Library** > **OK**.
 
-Une bibliothèque de classes Razor a le fichier projet suivant :
+Un RCL a le fichier projet suivant :
 
 [!code-xml[Main](ui-class/samples/cli/RazorUIClassLib/RazorUIClassLib.csproj)]
 
@@ -54,20 +54,20 @@ Ajoutez des fichiers Razor à la RCL.
 
 Les modèles ASP.NET Core supposent que le contenu RCL se trouve dans le *zones* dossier. Consultez [disposition des Pages de RCL](#afs) pour créer du contenu dans un RCL expose `~/Pages` plutôt que `~/Areas/Pages`.
 
-## <a name="referencing-razor-class-library-content"></a>Référencement de contenu RCL
+## <a name="referencing-rcl-content"></a>Référencement du contenu RCL
 
 La RCL peut être référencée par :
 
 * Un package NuGet. Consultez [Création de packages NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) et [Créer et publier un package NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * Un fichier *{NomProjet}.csproj*. Consultez [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Procédure pas à pas : Créez un projet de bibliothèque de classes Razor et utiliser à partir d’un projet de Pages Razor
+## <a name="walkthrough-create-an-rcl-project-and-use-from-a-razor-pages-project"></a>Procédure pas à pas : Créer un projet RCL et utiliser à partir d’un projet de Pages Razor
 
 Vous pouvez télécharger et tester le [projet complet](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) au lieu de le créer de toutes pièces. L’exemple proposé sous forme de téléchargement contient du code et des liens supplémentaires qui facilitent le test du projet. Si vous souhaitez commenter le mode d’obtention des exemples (téléchargement ou création au moyen d’instructions détaillées), entrez vos commentaires dans [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6098).
 
 ### <a name="test-the-download-app"></a>Tester l’application téléchargée
 
-Si vous n’avez pas téléchargé l’application complète et que vous souhaitez créer le projet pas à pas, passez à la [section suivante](#create-a-razor-class-library).
+Si vous n’avez pas téléchargé l’application complète et que vous souhaitez créer le projet pas à pas, passez à la [section suivante](#create-an-rcl).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -91,9 +91,9 @@ dotnet run
 
 Suivez les instructions contenues dans [Test WebApp1](#test)
 
-## <a name="create-a-razor-class-library"></a>Créer une RCL
+## <a name="create-an-rcl"></a>Créer un RCL
 
-Dans cette section, vous allez créer une RCL. Des fichiers Razor sont ajoutés à la RCL.
+Dans cette section, un RCL est créé. Des fichiers Razor sont ajoutés à la RCL.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -118,7 +118,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
 
 Les commandes précédentes :
 
-* Créent la RCL `RazorUIClassLib`.
+* Crée le `RazorUIClassLib` RCL.
 * Créent une page _Message Razor et l’ajoutent à la RCL. Le paramètre `-np` crée la page sans `PageModel`.
 * Crée un [_ViewStart.cshtml](xref:mvc/views/layout#running-code-before-each-view) de fichiers et l’ajoute à la RCL.
 
@@ -174,7 +174,7 @@ Exécuter l’application.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Créez une application web Razor Pages et un fichier de solution contenant l’application Razor Pages et la RCL :
+Créer une application web de Pages Razor et un fichier de solution qui contient l’application Pages Razor et le RCL :
 
 ```console
 dotnet new webapp -o WebApp1
@@ -197,13 +197,13 @@ dotnet run
 
 ### <a name="test-webapp1"></a>Tester WebApp1
 
-Vérifiez que la bibliothèque de classes de l’interface utilisateur Razor est utilisée.
+Vérifiez que la bibliothèque de classes de l’interface utilisateur de Razor est en cours d’utilisation :
 
 * Accédez à `/MyFeature/Page1`.
 
 ## <a name="override-views-partial-views-and-pages"></a>Substituer des vues, des vues partielles et des pages
 
-Quand une vue, une vue partielle ou une page Razor est présente dans l’application web et la RCL, le balisage Razor (fichier *.cshtml*) dans l’application web est prioritaire. Par exemple, ajoutez *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* à l’application Web 1, et Page1 dans l’application Web 1 ont priorité sur Page1 dans la bibliothèque de classes Razor.
+Quand une vue, une vue partielle ou une page Razor est présente dans l’application web et la RCL, le balisage Razor (fichier *.cshtml*) dans l’application web est prioritaire. Par exemple, ajoutez *WebApp1/Areas/MyFeature/Pages/Page1.cshtml* à l’application Web 1, et Page1 dans l’application Web 1 ont priorité sur le RCL Page1.
 
 Dans l’exemple proposé sous forme de téléchargement, renommez *WebApp1/Areas/MyFeature2* en *WebApp1/Areas/MyFeature* pour tester la priorité.
 
@@ -227,3 +227,30 @@ Supposons que *RazorUIClassLib/Pages/Shared* contient deux fichiers partielles 
   <partial name="_Footer">
 </body>
 ```
+
+## <a name="create-an-rcl-with-static-assets"></a>Créer un RCL avec des ressources statiques
+
+Un RCL peut nécessiter des ressources statiques accompagnement qui peuvent être référencés par l’application consommatrice du RCL. ASP.NET Core permet la création RCLs qui incluent des ressources statiques qui sont disponibles pour une application consommatrice.
+
+Pour inclure des ressources d’accompagnement dans le cadre d’un RCL, créer un *wwwroot* dossier dans la bibliothèque de classes et d’inclure tous les fichiers nécessaires dans ce dossier.
+
+Lors de la compression une RCL, tout le Guide des ressources dans le *wwwroot* dossier sont inclus automatiquement dans le package et sont rendus disponible pour les applications faisant référence à celui-ci.
+
+### <a name="consume-content-from-a-referenced-rcl"></a>Utiliser du contenu à partir d’un RCL référencé
+
+Les fichiers inclus dans le *wwwroot* dossier de la RCL sont exposés à l’application consommatrice sous le préfixe `_content/{LIBRARY NAME}/`. `{LIBRARY NAME}` est le nom de projet de bibliothèque converti en minuscules avec des périodes (`.`) supprimé. Par exemple, une bibliothèque nommée *Razor.Class.Lib* se traduit par un chemin d’accès de contenu statique sur `_content/razorclasslib/`.
+
+L’application consommatrice fait référence à des ressources statiques fournis par la bibliothèque avec `<script>`, `<style>`, `<img>`et d’autres balises HTML. L’application consommatrice doit avoir [prise en charge des fichiers statiques](xref:fundamentals/static-files) activé.
+
+### <a name="multi-project-development-flow"></a>Flux de développement de projets multiples
+
+Lorsque l’application consommateur s’exécute :
+
+* Les ressources dans le RCL restent dans leurs dossiers d’origine. Les ressources ne sont pas déplacés vers les applications qui l’utilisent.
+* Toute modification dans le RCL *wwwroot* dossier est reflété dans l’application consommatrice après le RCL est reconstruit et sans reconstruction de l’application consommatrice.
+
+Quand le RCL est généré, un manifeste est généré qui décrit les emplacements de la ressource web statique. L’application consommateur lit le manifeste lors de l’exécution pour consommer les ressources des packages et des projets référencés. Lorsqu’un nouvel élément multimédia est ajouté à un RCL, le RCL doit être reconstruite pour mettre à jour son manifeste qu’une application consommateur puisse accéder à la nouvelle ressource.
+
+### <a name="publish"></a>Publier
+
+Lorsque l’application est publiée, les ressources d’accompagnement à partir de tous les projets et référencés packages sont copiés dans le *wwwroot* dossier de l’application publiée sous `_content/{LIBRARY NAME}/`.
