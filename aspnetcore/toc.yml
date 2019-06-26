@@ -298,6 +298,8 @@
           uid: blazor/javascript-interop
         - name: Débogage
           uid: blazor/debug
+        - name: Appeler une API web
+          uid: blazor/call-web-api
         - name: Héberger et déployer
           items:
             - name: Vue d'ensemble
