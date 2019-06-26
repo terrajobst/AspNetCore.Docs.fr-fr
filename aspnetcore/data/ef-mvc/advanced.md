@@ -27,7 +27,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Appeler une requête de mise à jour
 > * Examiner les requêtes SQL
 > * Créer une couche d’abstraction
-> * En savoir plus sur la Détection automatique des modifications
+En savoir plus sur la détection automatique des modifications
 > * En savoir plus sur le code source et les plans de développement EF Core
 > * Apprendre à utiliser du code dynamique LINQ pour simplifier le code
 
@@ -266,14 +266,14 @@ Pour plus d’informations sur les autres rubriques associées à ASP.NET Core M
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Requêtes SQL brutes exécutées
-> * Requête pour retourner des entités appelée
-> * Requête pour retourner d’autres types appelée
-> * Requête de mise à jour appelée
-> * Requêtes SQL examinées
-> * Couche d’abstraction créée
-> * Détection automatique des modifications découverte
-> * Code source et plans de développement EF Core découverts
+Exécuter des requêtes SQL brutes
+Appeler une requête pour retourner des entités
+Appeler une requête pour retourner d’autres types
+Appeler une requête de mise à jour
+Examiner les requêtes SQL
+Créer une couche d’abstraction
+En savoir plus sur la détection automatique des modifications
+> * En savoir plus sur le code source et les plans de développement EF Core
 > * Utilisation du code dynamique LINQ pour simplifier le code découverte
 
 Cette étape termine cette série de tutoriels sur l’utilisation d’Entity Framework Core dans une application ASP.NET Core MVC. Cette série a fait appel à une nouvelle base de données ; une alternative consiste à rétroconcevoir un modèle à partir d’une base de données existante.
