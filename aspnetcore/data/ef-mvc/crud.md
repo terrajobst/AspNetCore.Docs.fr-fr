@@ -300,11 +300,11 @@ Pour plus d’informations, consultez [Suivi ou pas de suivi](/ef/core/querying/
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Page Details personnalisée
-> * Page Create mise à jour
-> * Page Edit mise à jour
-> * Page Delete mise à jour
-> * Connexions de base de données fermées
+Personnaliser la page Details
+Mettre à jour la page Create
+Mettre à jour la page Edit
+Mettre à jour la page Delete
+Fermer les connexions de base de données
 
 Passez au tutoriel suivant pour découvrir comment développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
 
