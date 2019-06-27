@@ -308,11 +308,11 @@ Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implément
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Pages de cours personnalisées
-> * Page de modification de formateur ajoutée
-> * Cours ajoutés à la page de modification
-> * Page Delete mise à jour
-> * Emplacements de bureau et cours ajoutés à la page Create
+> * Personnalisez les pages de cours
+> * Ajoutez une page de modification de formateur
+> * Ajoutez des cours à la page de modification
+> * Mettez à jour la page Delete
+> * Ajoutez des emplacements de bureau et des cours à la page Create
 
 Passez au tutoriel suivant pour découvrir comment gérer les conflits d’accès concurrentiel.
 
