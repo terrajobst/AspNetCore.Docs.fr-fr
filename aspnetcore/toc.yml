@@ -294,13 +294,15 @@
           uid: blazor/dependency-injection
         - name: Routage
           uid: blazor/routing
-        - name: Interopérabilité de JavaScript
+        - name: Interopérabilité JavaScript
           uid: blazor/javascript-interop
+        - name: Sécurité et identité
+          uid: security/blazor/index
         - name: Débogage
           uid: blazor/debug
         - name: Appeler une API web
           uid: blazor/call-web-api
-        - name: Héberger et déployer
+        - name: Hébergement et déploiement
           items:
             - name: Vue d'ensemble
               uid: host-and-deploy/blazor/index
@@ -456,9 +458,6 @@
         - name: Utilisateurs et groupes
           uid: signalr/groups
           displayName: signalr
-        - name: Publier sur Azure
-          uid: signalr/publish-to-azure-web-app
-          displayName: signalr
         - name: Considérations sur la conception d’API
           uid: signalr/api-design
           displayName: signalr
@@ -489,9 +488,9 @@
         - name: Vue d'ensemble
           displayName: signalr
           uid: signalr/scale
-        - name: Service Azure SignalR
+        - name: Azure App Service
+          uid: signalr/publish-to-azure-web-app
           displayName: signalr
-          href: /azure/azure-signalr/signalr-overview?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: Fond de panier Redis
           displayName: signalr
           uid: signalr/redis-backplane
@@ -962,6 +961,8 @@
       uid: security/ip-safelist
     - name: Sécurité des applications - OWASP
       href: 'https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md'
+    - name: Blazor
+      uid: security/blazor/index
 - name: Performances
   items:
     - name: Vue d'ensemble
