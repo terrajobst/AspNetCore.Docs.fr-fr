@@ -75,7 +75,7 @@ Les utilisateurs peuvent afficher et mettre à jour les informations relatives a
 
 * Patientez jusqu’à l’affichage de la boîte de dialogue **Nouvelle application web ASP.NET Core**.
 
-* Sélectionnez **.NET Core**, **ASP.NET Core 2.2** et le modèle **Application web (Model-View-Controller)**.
+* Sélectionnez **.NET Core**, **ASP.NET Core 2.2** et le modèle **Application web (Model-View-Controller)** .
 
 * Vérifiez que le paramètre **Authentification** a pour valeur **Aucune authentification**.
 
@@ -305,7 +305,7 @@ Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher 
 
 ![Table Student dans SSOX](intro/_static/ssox-student-table.png)
 
-Les fichiers de base de données *.mdf* et *.ldf* se trouvent dans le dossier *C:\Users\\\<votre_nom_utilisateur>*.
+Les fichiers de base de données *.mdf* et *.ldf* se trouvent dans le dossier *C:\Users\\\<votre_nom_utilisateur>* .
 
 Étant donné que vous appelez `EnsureCreated` dans la méthode d’initialiseur qui s’exécute au démarrage de l’application, vous pouvez maintenant apporter une modification à la classe `Student`, supprimer la base de données ou réexécuter l’application, et la base de données serait automatiquement recréée conformément à votre modification. Par exemple, si vous ajoutez une propriété `EmailAddress` à la classe `Student`, vous voyez une nouvelle colonne `EmailAddress` dans la table recréée.
 
@@ -319,7 +319,7 @@ La quantité de code que vous deviez écrire pour qu’Entity Framework puisse c
 
 * Les propriétés d’entité nommées ID ou classnameID sont reconnues comme propriétés de clé primaire.
 
-* Une propriété est interprétée comme propriété de clé étrangère si elle se nomme*\<nom de la propriété de navigation>\<nom de la propriété de clé primaire>* (par exemple `StudentID` pour la propriété de navigation `Student`, puisque la clé primaire de l’entité `Student` est `ID`). Les propriétés de clé étrangère peuvent également être nommées simplement *\<nom de la propriété de clé primaire>* (par exemple, `EnrollmentID`, puisque la clé primaire de l’entité `Enrollment` est `EnrollmentID`).
+* Une propriété est interprétée comme propriété de clé étrangère si elle se nomme *\<nom de la propriété de navigation>\<nom de la propriété de clé primaire>* (par exemple `StudentID` pour la propriété de navigation `Student`, puisque la clé primaire de l’entité `Student` est `ID`). Les propriétés de clé étrangère peuvent également être nommées simplement *\<nom de la propriété de clé primaire>* (par exemple, `EnrollmentID`, puisque la clé primaire de l’entité `Enrollment` est `EnrollmentID`).
 
 Le comportement conventionnel peut être remplacé. Par exemple, vous pouvez spécifier explicitement les noms de tables, comme vous l’avez vu précédemment dans ce didacticiel. De plus, vous pouvez définir des noms de colonne et définir une propriété quelconque en tant que clé primaire ou clé étrangère, comme vous le verrez dans un [didacticiel ultérieur](complex-data-model.md) dans cette série.
 
