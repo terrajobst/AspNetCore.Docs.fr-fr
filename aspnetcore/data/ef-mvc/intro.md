@@ -367,7 +367,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * En savoir plus sur les packages NuGet EF Core
 > * Créer le modèle de données
 > * Créer le contexte de base de données
-> * SchoolContext inscrit
+> * Inscrire le contexte SchoolContext
 > * Initialiser la base de données avec des données de test
 > * Créer un contrôleur et des vues
 > * Afficher la base de données
