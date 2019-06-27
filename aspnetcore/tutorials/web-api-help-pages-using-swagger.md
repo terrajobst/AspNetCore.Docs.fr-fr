@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/20/2018
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: d7a6ed158dcb464bb80c83773ed7d455b25ce44b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: fb65b84b781b5c19040b559f0d7635ceb00cf4a0
+ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887724"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67316563"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>Pages d’aide d’API web ASP.NET Core avec Swagger/OpenAPI
 
@@ -19,7 +19,7 @@ Par [Christoph Nienaber](https://twitter.com/zuckerthoben) et [Rico Suter](http:
 
 Les différentes méthodes qui permettent d’utiliser une API web ne sont pas toujours simples à comprendre pour les développeurs. [Swagger](https://swagger.io/), également appelé [OpenAPI](https://www.openapis.org/), résout le problème de la génération de pages d’aide et de documentation qu’utilisent les API web. Ses avantages sont, entre autres, la documentation interactive, la génération de SDK client et la découvrabilité des API.
 
-Cet article décrit les implémentations .NET Swagger [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) et [NSwag](https://github.com/RSuter/NSwag) :
+Cet article décrit les implémentations .NET Swagger [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) et [NSwag](https://github.com/RicoSuter/NSwag) :
 
 * **Swashbuckle.AspNetCore** est un projet open source pour la génération de documents Swagger pour des API web ASP.NET Core.
 
@@ -108,7 +108,7 @@ Au cœur du flux Swagger se trouve la spécification Swagger, document nommé pa
 
 ![Interface utilisateur de Swagger](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-Chaque méthode d’action publique dans vos contrôleurs peut être testée à partir de l’interface utilisateur. Cliquez sur un nom de méthode pour développer la section. Ajoutez tous les paramètres nécessaires, puis cliquez sur **Try it out!**.
+Chaque méthode d’action publique dans vos contrôleurs peut être testée à partir de l’interface utilisateur. Cliquez sur un nom de méthode pour développer la section. Ajoutez tous les paramètres nécessaires, puis cliquez sur **Try it out!** .
 
 ![Exemple de test GET Swagger](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 
