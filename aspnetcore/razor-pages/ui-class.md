@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: Explique comment créer l’interface utilisateur de Razor réutilisables à l’aide de vues partielles dans une bibliothèque de classes dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 06/24/2019
+ms.date: 06/28/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 96ef8fc055a6b92cd0808d02031d917b8446f305
-ms.sourcegitcommit: 763af2cbdab0da62d1f1cfef4bcf787f251dfb5c
+ms.openlocfilehash: d59f643a23b48ccbddf498ef534ee8432b010f40
+ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394747"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67463254"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer l’interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -228,6 +228,8 @@ Supposons que *RazorUIClassLib/Pages/Shared* contient deux fichiers partielles 
 </body>
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="create-an-rcl-with-static-assets"></a>Créer un RCL avec des ressources statiques
 
 Un RCL peut nécessiter des ressources statiques accompagnement qui peuvent être référencés par l’application consommatrice du RCL. ASP.NET Core permet la création RCLs qui incluent des ressources statiques qui sont disponibles pour une application consommatrice.
@@ -254,3 +256,5 @@ Quand le RCL est généré, un manifeste est généré qui décrit les emplaceme
 ### <a name="publish"></a>Publier
 
 Lorsque l’application est publiée, les ressources d’accompagnement à partir de tous les projets et référencés packages sont copiés dans le *wwwroot* dossier de l’application publiée sous `_content/{LIBRARY NAME}/`.
+
+::: moniker-end
