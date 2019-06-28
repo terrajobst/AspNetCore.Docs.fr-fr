@@ -143,7 +143,7 @@ Avant d’appliquer les deux premières migrations, les colonnes de nom étaient
 > [!Note]
 > Si vous essayez de compiler avant d’avoir fini de créer toutes les classes d’entité dans les sections suivantes, vous pouvez obtenir des erreurs de compilation.
 
-## <a name="changes-to-student-entity"></a>Modifications apportées à l’entité Student
+## <a name="changes-to-student-entity"></a>Apporter des modifications à l’entité Student
 
 ![Entité Student](complex-data-model/_static/student-entity.png)
 
@@ -516,18 +516,18 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Personnalisé le modèle de données
-> * Apporté des modifications à l’entité Student
-> * Créé une entité Instructor
-> * Créé une entité OfficeAssignment
-> * Modifié l’entité Course
-> * Créé l’entité Department
-> * Modifié l’entité Enrollment
-> * Mis à jour le contexte de base de données
-> * Rempli la base de données avec des données de test
-> * Ajouté une migration
-> * Changé la chaîne de connexion
-> * Mis à jour la base de données
+> * Personnaliser le modèle de données
+> * Apporter des modifications à l’entité Student
+> * Créer une entité Instructor
+> * Créer une entité OfficeAssignment
+> * Modifier l’entité Course
+> * Créer l’entité Department
+> * Modifier l’entité Enrollment
+> * Mettre à jour le contexte de base de données
+> * Remplir la base de données avec des données de test
+> * Ajouter une migration
+> * Changer la chaîne de connexion
+> * Mettre à jour la base de données
 
 Passez au tutoriel suivant pour en savoir plus sur l’accès aux données associées.
 

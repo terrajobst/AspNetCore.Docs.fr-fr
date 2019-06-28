@@ -26,7 +26,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > [!div class="checklist"]
 > * Ajouter des liens de tri de colonne
 > * Ajouter une zone Rechercher
-Ajouter la pagination aux index des étudiants
+> * Ajouter la pagination à l'index des étudiants
 > * Ajouter la pagination à la méthode Index
 > * Ajouter des liens de pagination
 > * Créer une page À propos
@@ -93,7 +93,7 @@ Vous avez ajouté un paramètre `searchString` à la méthode `Index`. La valeur
 > [!NOTE]
 > Ici, vous appelez la méthode `Where` sur un objet `IQueryable`, et le filtre sera traité sur le serveur. Dans certains scénarios, vous pouvez appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. (Par exemple, supposons que vous changez la référence à `_context.Students` de sorte qu’à la place d’un `DbSet` EF, elle fasse référence à une méthode de référentiel qui renvoie une collection `IEnumerable`.) Le résultat serait normalement le même, mais pourrait être différent dans certains cas.
 >
->Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour que le test ne respecte pas la casse de manière explicite :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous obtenez l’implémentation du .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous obtenez l’implémentation du fournisseur de base de données.) Toutefois, cette solution présente un coût en matière de performances. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
+>Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour que le test ne respecte pas la casse de manière explicite :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* . Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous obtenez l’implémentation du .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous obtenez l’implémentation du fournisseur de base de données.) Toutefois, cette solution présente un coût en matière de performances. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à la vue de l’index des étudiants
 
@@ -117,7 +117,7 @@ Si vous marquez cette page d’un signet, vous obtenez la liste filtrée lorsque
 
 À ce stade, si vous cliquez sur un lien de tri d’en-tête de colonne, vous perdez la valeur de filtre que vous avez entrée dans la zone **Rechercher**. Vous corrigerez cela dans la section suivante.
 
-## <a name="add-paging-to-students-index"></a>Ajouter la pagination aux Index des étudiants
+## <a name="add-paging-to-students-index"></a>Ajouter la pagination à l'index des étudiants
 
 Pour ajouter le changement de page à la page d’index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous apporterez des modifications supplémentaires dans la méthode `Index` et ajouterez des boutons de changement de page dans la vue `Index`. L’illustration suivante montre les boutons de changement de page.
 
@@ -255,12 +255,12 @@ Exécutez l’application et accédez à la page About. Le nombre d’étudiants
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-Ajouter des liens de tri de colonne
-Ajouter une zone Rechercher
-Ajouter la pagination aux index des étudiants
-Ajouter la pagination à la méthode Index
-Ajouter des liens de pagination
-Créer une page À propos
+> * Ajouter des liens de tri de colonne
+> * Ajouter une zone Rechercher
+> * Ajouter la pagination à l'index des étudiants
+> * Ajouter la pagination à la méthode Index
+> * Ajouter des liens de pagination
+> * Créer une page À propos
 
 Passez au tutoriel suivant pour découvrir comment gérer les modifications du modèle de données à l’aide de migrations.
 
