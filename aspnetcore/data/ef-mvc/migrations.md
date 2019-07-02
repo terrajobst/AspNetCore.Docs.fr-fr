@@ -176,7 +176,7 @@ Pour plus d’informations sur les commandes de la console du Gestionnaire de pa
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Migrations découvertes
+> * Découvert des informations sur les migrations"
 > * Découvert des informations sur les packages de migration NuGet
 > * Changer la chaîne de connexion
 > * Créer une migration initiale

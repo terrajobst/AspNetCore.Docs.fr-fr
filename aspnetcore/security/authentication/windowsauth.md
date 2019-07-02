@@ -5,14 +5,14 @@ description: Découvrez comment configurer l’authentification Windows dans ASP
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 06/12/2019
+ms.date: 07/01/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 93f833adff95f25d570947cd1a9035d652f522c2
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 30f1f554a29412ed6b84115d457d2da1aba91c17
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034954"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500499"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -145,7 +145,10 @@ Utilisez **soit** des approches suivantes :
  Le [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) package NuGet peut être utilisé avec [Kestrel](xref:fundamentals/servers/kestrel) pour prendre en charge l’authentification Windows à l’aide de Negotiate, Kerberos et NTLM sur Windows, Linux et macOS.
 
 > [!WARNING]
-> Informations d’identification peuvent être conservées dans les demandes sur une connexion. *Négocier l’authentification ne doit pas être utilisée avec les serveurs proxy, sauf si le serveur proxy gère une affinité de connexion de 1:1 (une connexion persistante) avec Kestrel.* Cela signifie que l’authentification par négociation ne doit pas être utilisée avec Kestrel derrière IIS [Module ASP.NET Core (ANCM) out-of-process](xref:host-and-deploy/iis/index#out-of-process-hosting-model).
+> Informations d’identification peuvent être conservées dans les demandes sur une connexion. *Négocier l’authentification ne doit pas être utilisée avec les serveurs proxy, sauf si le serveur proxy gère une affinité de connexion de 1:1 (une connexion persistante) avec Kestrel.*
+
+> [!NOTE]
+> Le gestionnaire à Negotiate détecte si le serveur sous-jacent prend en charge l’authentification Windows en mode natif et s’il est activé. Si le serveur prend en charge l’authentification Windows, mais il est désactivé, une erreur est générée pour vous demander d’activer l’implémentation du serveur. Lorsque l’authentification Windows est activée sur le serveur, le gestionnaire à Negotiate transfère en toute transparence à celui-ci.
 
  Ajoutez des services d’authentification en appelant <xref:Microsoft.Extensions.DependencyInjection.AuthenticationServiceCollectionExtensions.AddAuthentication*> (`Microsoft.AspNetCore.Authentication.Negotiate` espace de noms) et `AddNegotitate` (`Microsoft.AspNetCore.Authentication.Negotiate` espace de noms) dans `Startup.ConfigureServices`:
 
@@ -255,7 +258,17 @@ Bien que le [Microsoft.AspNetCore.Authentication.Negotiate](https://www.nuget.or
 
 ## <a name="claims-transformations"></a>Transformations de revendications
 
+::: moniker range=">= aspnetcore-3.0"
+
+Lors de l’hébergement avec IIS, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelée en interne pour initialiser un utilisateur. Par conséquent, une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Pour plus d’informations et un exemple de code qui active les transformations de revendications, consultez <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 Lorsque vous hébergez avec mode in-process IIS, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelée en interne pour initialiser un utilisateur. Par conséquent, une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Pour plus d’informations et un exemple de code qui active les transformations de revendications lors de l’hébergement intra-processus, consultez <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
