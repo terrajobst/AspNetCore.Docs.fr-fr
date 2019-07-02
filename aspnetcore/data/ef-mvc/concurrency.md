@@ -299,9 +299,9 @@ Remplacez le code de *Views/Departments/Create.cshtml* pour ajouter une option d
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Conflits d’accès concurrentiel découverts
+> * Découvrez les conflits d’accès concurrentiel
 > * Propriété de suivi ajoutée
-> * Contrôleur Departments et des vues créés
+> * Créez un contrôleur Departments et des vues
 > * Vue Index mise à jour
 > * Méthodes de modification mises à jour
 > * Vue Edit mise à jour

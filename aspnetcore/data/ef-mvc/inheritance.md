@@ -161,12 +161,12 @@ Pour plus d’informations sur l’héritage dans Entity Framework Core, consult
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
-> * Héritage mappé à la base de données
-> * Classe Person créée
-> * Student et Instructor mis à jour
+> * Mappez l’héritage à la base de données
+> * Créez la classe Person
+> * Mettez à jour Student et Instructor
 > * Classe Person ajoutée au modèle
 > * Migrations créées et mises à jour
-> * Implémentation testée
+> * Testez l’implémentation
 
 Passez au tutoriel suivant pour découvrir comment gérer divers scénarios Entity Framework relativement avancés.
 
