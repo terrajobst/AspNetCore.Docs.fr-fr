@@ -5,14 +5,14 @@ description: Explorez ASP.NET Core Blazor, un moyen de créer une interface util
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 05/01/2019
+ms.date: 07/01/2019
 uid: blazor/index
-ms.openlocfilehash: d58115b17536cad0b3927e6d32b7dbe8db8e4b0f
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: dbfadf9481cf16279e2a491bc04f51058e1d8a9c
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034426"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500423"
 ---
 # <a name="introduction-to-blazor"></a>Introduction à Blazor
 
@@ -23,7 +23,7 @@ Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.
 Blazor est une infrastructure pour la création d’interfaces utilisateur d’applications web interactives côté client avec .NET :
 
 * Créez des interfaces utilisateur interactives riches à l’aide de C# plutôt que JavaScript.
-* Partagez la logique d’application côté serveur et côté client écrite avec .NET.
+* Partagez la logique d’application côté serveur et côté client écrite dans .NET.
 * Affichez l’interface utilisateur en langage HTML et CSS pour une large prise en charge des navigateurs, y compris les navigateurs mobiles.
 
 L’utilisation de .NET dans le développement web côté client offre les avantages suivants :
@@ -37,11 +37,16 @@ L’utilisation de .NET dans le développement web côté client offre les avant
 
 ## <a name="components"></a>Composants
 
-Les applications Blazor sont basées sur des *composants*. Dans Blazor, un composant est un élément d’interface utilisateur, comme une page, une boîte de dialogue ou un formulaire de saisie de données. Les composants gèrent les événements de l’utilisateur et définissent une logique de rendu de l’interface utilisateur flexible. Les composants peuvent être imbriqués et réutilisés.
+Les applications Blazor sont basées sur des *composants*. Dans Blazor, un composant est un élément d’interface utilisateur, comme une page, une boîte de dialogue ou un formulaire de saisie de données.
 
-Les composants sont des classes .NET intégrées dans des assemblys .NET pouvant être partagées et distribuées comme [packages NuGet](/nuget/what-is-nuget). La classe de composant est généralement écrite sous la forme d’une page de balisage Razor avec une extension de fichier *.razor*.
+Les composants sont des classes .NET intégrées dans des assemblys .NET qui :
 
-Les composants dans Blazor sont parfois appelés *composants Razor*. [Razor](xref:mvc/views/razor) est une syntaxe pour la combinaison de balisage HTML et de code C# conçu pour la productivité des développeurs. Razor permet de basculer entre le balisage HTML et C# dans le même fichier avec le support d’[IntelliSense](/visualstudio/ide/using-intellisense). Razor Pages et MVC utilisent également Razor. Contrairement à Razor Pages et à MVC, qui reposent sur un modèle requête/réponse, les composants sont utilisés spécifiquement pour la logique et la composition de l’interface utilisateur côté client.
+* Définissent la logique de rendu de l’interface utilisateur flexible.
+* Gèrent les événements de l’utilisateur.
+* Peuvent être imbriqués et réutilisés.
+* Peuvent être partagés et distribués en tant que [bibliothèques de classes Razor](xref:razor-pages/ui-class) ou [packages NuGet](/nuget/what-is-nuget).
+
+La classe de composant est généralement écrite sous la forme d’une page de balisage [Razor](xref:mvc/views/razor) avec une extension de fichier *.razor*. Les composants dans Blazor sont appelés *composants Razor*. Razor est une syntaxe pour la combinaison de balisage HTML et de code C# conçu pour la productivité des développeurs. Razor permet de basculer entre le balisage HTML et C# dans le même fichier avec le support d’[IntelliSense](/visualstudio/ide/using-intellisense). Razor Pages et MVC utilisent également Razor. Contrairement à Razor Pages et à MVC, qui reposent sur un modèle requête/réponse, les composants sont utilisés spécifiquement pour la logique et la composition de l’interface utilisateur côté client.
 
 Le balisage Razor suivant montre un composant (*Dialog.razor*), qui peut être imbriqué dans un autre composant :
 
@@ -63,14 +68,18 @@ Le balisage Razor suivant montre un composant (*Dialog.razor*), qui peut être i
 
     private void OnYes()
     {
-        Console.WriteLine("Write to the console in C#!");
+        Console.WriteLine("Write to the console in C#! 'Yes' button was selected.");
     }
 }
 ```
 
 Le contenu du corps (`ChildContent`) et le titre (`Title`) de la boîte de dialogue sont fournis par le composant qui utilise ce composant dans son interface utilisateur. `OnYes` est une méthode C# déclenchée par l’événement `onclick` du bouton.
 
-Blazor utilise des balises HTML naturelles pour la composition de l’interface utilisateur. Les éléments HTML spécifient des composants et les attributs d’une balise passent les valeurs aux propriétés d’un composant. `ChildContent` et `Title` sont définis par le composant qui utilise le composant de la boîte de dialogue (*Index.razor*) :
+Blazor utilise des balises HTML naturelles pour la composition de l’interface utilisateur. Les éléments HTML spécifient des composants et les attributs d’une balise passent les valeurs aux propriétés d’un composant.
+
+Dans l’exemple suivant, le composant `Index` utilise le composant `Dialog`. `ChildContent` et `Title` sont définis par les attributs et le contenu de l’élément `<Dialog>`.
+
+*Index.razor* :
 
 ```cshtml
 @page "/"
@@ -90,15 +99,15 @@ La boîte de dialogue est affichée lorsque le parent (*Index.razor*) est access
 
 Quand ce composant est utilisé dans l’application, IntelliSense dans [Visual Studio](/visualstudio/ide/using-intellisense)et [Visual Studio Code](https://code.visualstudio.com/docs/editor/intellisense) accélère le développement avec l’achèvement de la syntaxe et des paramètres.
 
-Les composants s’affichent dans une représentation en mémoire du navigateur DOM appelée *arborescence d’affichage*. Elle est ensuite utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.
+Les composants s’affichent dans une représentation en mémoire du DOM (Document Object Model) du navigateur appelé *arborescence de rendu*, utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.
 
 ## <a name="blazor-client-side"></a>Blazor côté client
 
 Blazor côté client est un framework d’application monopage pour la création d’applications web interactives côté client avec .NET. Blazor côté client utilise les normes web ouvertes sans transpilation de plug-ins ou de codes et fonctionne dans tous les navigateurs web modernes, y compris les navigateurs mobiles.
 
-L’exécution de code .NET à l’intérieur des navigateurs web est rendue possible grâce à [WebAssembly](http://webassembly.org) (abrégé en *wasm*). WebAssembly est un standard web ouvert pris en charge dans les navigateurs web sans plug-in. WebAssembly est un format bytecode compact optimisé pour un téléchargement rapide et une vitesse d’exécution maximale.
+L’exécution de code .NET à l’intérieur des navigateurs web est rendue possible grâce à [WebAssembly](http://webassembly.org) (abrégé en *wasm*). WebAssembly est un format bytecode compact optimisé pour un téléchargement rapide et une vitesse d’exécution maximale. WebAssembly est un standard web ouvert pris en charge dans les navigateurs web sans plug-in.
 
-Le code WebAssembly peut accéder à toutes les fonctionnalités du navigateur via JavaScript, appelé *interopérabilité JavaScript* (ou *interop JavaScript*). Le code .NET exécutée via WebAssembly dans le navigateur s’exécute dans le même bac à sable approuvé que JavaScript, ce qui élimine pratiquement la possibilité pour une application d’effectuer des actions malveillantes sur l’ordinateur client.
+Le code WebAssembly peut accéder à toutes les fonctionnalités du navigateur via JavaScript, appelé *interopérabilité JavaScript* (ou *interop JavaScript*). Le code .NET exécuté via WebAssembly dans le navigateur s’exécute dans le bac à sable JavaScript du navigateur avec les protections offertes par le bac à sable contre les actions malveillantes sur l’ordinateur client.
 
 ![Blazor côté client exécute du code .NET dans le navigateur avec WebAssembly.](index/_static/blazor-client-side.png)
 
@@ -106,15 +115,13 @@ Quand une application Blazor côté client est créée et exécutée dans un nav
 
 * Les fichiers de code C# et les fichiers Razor sont compilés dans des assemblys .NET.
 * Les assemblys et le runtime .NET sont téléchargés dans le navigateur.
-* Blazor côté client amorce le runtime .NET et configure le runtime pour charger les assemblys de l’application. Le runtime Blazor côté client utilise l’interopérabilité de JavaScript pour traiter la manipulation DOM (Document Object Model) et les appels d’API du navigateur.
+* Blazor côté client amorce le runtime .NET et configure le runtime pour charger les assemblys de l’application. Le runtime Blazor côté client utilise l’interopérabilité de JavaScript pour traiter la manipulation DOM et les appels d’API du navigateur.
 
 La taille de l’application publiée, sa *taille de charge utile*, est un facteur de performance essentiel pour qu’une application soit facile à utiliser. Le téléchargement d’une application volumineuse dans un navigateur prend un certain temps, ce qui nuit à l’expérience utilisateur. Blazor côté client optimise la taille de la charge utile pour réduire les temps de téléchargement :
 
 * Du code inutilisé est extrait de l’application lorsqu’elle est publiée par l’[éditeur de liens de langage intermédiaire (IL)](xref:host-and-deploy/blazor/configure-linker).
 * Réponses HTTP compressées.
 * Le runtime .NET et les assemblys sont mis en cache dans le navigateur.
-
-Pour plus d’informations et de conseils sur le choix d’un modèle d’hébergement, consultez <xref:blazor/hosting-models>.
 
 ## <a name="blazor-server-side"></a>Blazor côté serveur
 
@@ -126,11 +133,9 @@ La connexion utilisée par Blazor côté serveur pour communiquer avec le naviga
 
 ![Blazor côté serveur exécute le code .NET sur le serveur et interagit avec le modèle DOM (Document Object Model) sur le client par le biais d’une connexion SignalR.](index/_static/blazor-server-side.png)
 
-Pour plus d’informations et de conseils sur le choix d’un modèle d’hébergement, consultez <xref:blazor/hosting-models>.
-
 ## <a name="javascript-interop"></a>Interopérabilité JavaScript
 
-Pour les applications qui nécessitent des bibliothèques JavaScript tierces et des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
+Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d’informations, consultez <xref:blazor/javascript-interop>.
 
 ## <a name="code-sharing-and-net-standard"></a>Partage de code et .NET Standard
 
@@ -141,6 +146,7 @@ Les API qui ne sont pas applicables à l’intérieur d’un navigateur web (par
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [WebAssembly](http://webassembly.org/)
+* <xref:blazor/hosting-models>
 * [Guide C#](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)
