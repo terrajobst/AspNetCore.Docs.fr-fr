@@ -3,15 +3,15 @@ title: Configurer l’authentification par certificat dans ASP.NET Core
 author: blowdart
 description: Découvrez comment configurer l’authentification par certificat dans ASP.NET Core pour IIS et HTTP.sys.
 monikerRange: '>= aspnetcore-3.0'
-ms.author: barry.dorrans
+ms.author: bdorrans
 ms.date: 06/11/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 37567128531187bfe7dd6c9f5aa990226e70f35f
-ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
+ms.openlocfilehash: 8609c58265340da1d618135795915d6c49e750a3
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837536"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538720"
 ---
 # <a name="overview"></a>Vue d'ensemble
 
@@ -27,7 +27,7 @@ Dans votre application web, ajoutez une référence à la `Microsoft.AspNetCore.
 
 Si l’authentification échoue, ce gestionnaire renvoie un `403 (Forbidden)` réponse plutôt un `401 (Unauthorized)`, comme vous pouvez l’imaginer. Le raisonnement est que l’authentification doit se produire pendant la connexion TLS initiale. Au moment où qu'il atteint le gestionnaire, il est trop tard. Il n’existe aucun moyen pour mettre à niveau de la connexion à partir d’une connexion anonyme à une avec un certificat.
 
-Ajoutez également `app.UseAuthentication();` dans le `Startup.Configure` (méthode). Sinon, le HttpContext.User ne sera pas définie `ClaimsPrincipal` créé à partir du certificat. Exemple :
+Ajoutez également `app.UseAuthentication();` dans le `Startup.Configure` (méthode). Sinon, le HttpContext.User ne sera pas définie `ClaimsPrincipal` créé à partir du certificat. Par exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -89,7 +89,7 @@ Le gestionnaire a deux événements :
 * `OnAuthenticationFailed` &ndash; Appelé si une exception se produit lors de l’authentification et vous permet de réagir.
 * `OnCertificateValidated` &ndash; Appelée une fois que le certificat a été validé, ont réussi la validation et un principal par défaut a été créé. Cet événement permet d’effectuer votre propre validation et d’augmenter ou de remplacer l’objet principal. Pour obtenir des exemples sont les suivantes :
   * Déterminer si le certificat est connu à vos services.
-  * Construction de votre propre objet principal. Prenons l’exemple suivant dans `Startup.ConfigureServices`:
+  * Construction de votre propre objet principal. Prenons l’exemple suivant dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddAuthentication(
@@ -125,7 +125,7 @@ services.AddAuthentication(
 
 Si vous trouvez le certificat entrant ne répond pas à votre validation supplémentaire, appelez `context.Fail("failure reason")` avec un motif de l’échec.
 
-Fonctionnalités de réel, vous voudrez probablement appeler un service inscrit dans l’injection de dépendances qui se connecte à une base de données ou un autre type de magasin de l’utilisateur. Accéder à votre service en utilisant le contexte passé dans votre délégué. Prenons l’exemple suivant dans `Startup.ConfigureServices`:
+Fonctionnalités de réel, vous voudrez probablement appeler un service inscrit dans l’injection de dépendances qui se connecte à une base de données ou un autre type de magasin de l’utilisateur. Accéder à votre service en utilisant le contexte passé dans votre délégué. Prenons l’exemple suivant dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddAuthentication(

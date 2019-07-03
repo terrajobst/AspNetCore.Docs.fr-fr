@@ -5,14 +5,14 @@ description: Découvrez comment configurer le module ASP.NET Core pour héberger
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/05/2019
+ms.date: 06/17/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: f287a9bad623c5ff5c41868c7c4408b572b39000
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: d5392ff6b15eeb3a4502df578665538b936aae6f
+ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716356"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67167068"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -451,11 +451,27 @@ Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic
     stdoutLogFile="\\?\%home%\LogFiles\stdout"
     hostingModel="InProcess">
   <handlerSettings>
-    <handlerSetting name="debugFile" value="aspnetcore-debug.log" />
+    <handlerSetting name="debugFile" value=".\logs\aspnetcore-debug.log" />
     <handlerSetting name="debugLevel" value="FILE,TRACE" />
   </handlerSettings>
 </aspNetCore>
 ```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+Tous les dossiers dans le chemin d’accès (*logs* dans l’exemple précédent) sont créés par le module lorsque le fichier journal est créé. Le pool d’applications doit avoir un accès en écriture à l’emplacement auquel les journaux sont écrits (utilisez `IIS AppPool\<app_pool_name>` pour fournir les autorisations d’écriture).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Les dossiers situés dans le chemin fourni pour la valeur `<handlerSetting>` (*logs* dans l’exemple précédent) ne sont pas créés automatiquement par le module. Ils doivent préexister dans le déploiement. Le pool d’applications doit avoir un accès en écriture à l’emplacement auquel les journaux sont écrits (utilisez `IIS AppPool\<app_pool_name>` pour fournir les autorisations d’écriture).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 Les valeurs du niveau de débogage (`debugLevel`) peuvent inclure à la fois le niveau et l’emplacement.
 

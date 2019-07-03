@@ -1,19 +1,19 @@
 ---
-title: 'Tutoriel : Créer une API web avec ASP.NET Core MVC'
+title: 'Tutoriel : Créer une API web avec ASP.NET Core'
 author: rick-anderson
-description: Générer une API web avec ASP.NET Core MVC
+description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/4/2019
+ms.date: 06/18/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
+ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087521"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67207780"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Tutoriel : Créer une API web avec ASP.NET Core MVC
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)
 
@@ -88,7 +88,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
-* Dans la boîte de dialogue **Configurer votre nouvelle API web ASP.NET Core**, acceptez la valeur par défaut **.NET Core 2.2* pour **Framework cible**.
+* Dans la boîte de dialogue **Configurer votre nouvelle API web ASP.NET Core**, acceptez la valeur par défaut * *.NET Core 2.2* pour **Framework cible**.
 
 * Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
@@ -276,7 +276,7 @@ Les types de retour `ActionResult` peuvent représenter une large plage de codes
 
 Ce tutoriel utilise Postman pour tester l’API web.
 
-* Installez [Postman](https://www.getpostman.com/apps).
+* Installez [Postman](https://www.getpostman.com/downloads/).
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
@@ -315,7 +315,7 @@ La méthode `CreatedAtAction` :
 * Dans Postman, définissez la méthode HTTP sur `POST`.
 * Sélectionnez l’onglet **Body** (Corps).
 * Sélectionnez la case d’option **raw** (données brutes).
-* Définissez le type sur **JSON (application/json)**.
+* Définissez le type sur **JSON (application/json)** .
 * Dans le corps de la demande, entrez la syntaxe JSON d’une tâche :
 
     ```json

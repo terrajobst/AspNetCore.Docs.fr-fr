@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment le routage ASP.NET Core est responsable du mappage des URI des requêtes aux sélecteurs de point de terminaison et de la distribution des requêtes entrantes entre les points de terminaison.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 06/17/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 2a7a942f43de94326e84977f09dc9a2e24dd00f0
-ms.sourcegitcommit: 5dd2ce9709c9e41142771e652d1a4bd0b5248cec
+ms.openlocfilehash: 71cb7215651a263e588531c9be644326c0b6eda6
+ms.sourcegitcommit: 28a2874765cefe9eaa068dceb989a978ba2096aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692575"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67167092"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -140,6 +140,21 @@ Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fund
 ::: moniker range=">= aspnetcore-2.2"
 
 La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *point de terminaison*. Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+Lorsqu’un intergiciel de routage s’exécute, il définit un point de terminaison (`Endpoint`) et achemine les valeurs à une fonctionnalité sur le <xref:Microsoft.AspNetCore.Http.HttpContext>. Pour la requête en cours :
+
+* L’appel à `HttpContext.GetEndpoint` permet d’obtenir le point de terminaison.
+* `HttpRequest.RouteValues` récupère la collection de valeurs d’itinéraire.
+
+L’intergiciel (middleware) qui s’exécute après l’intergiciel de routage peut voir le point de terminaison et prendre des mesures. Par exemple, un intergiciel d’autorisation peut interroger la collection de métadonnées du point de terminaison pour une stratégie d’autorisation. Une fois que tous les intergiciels dans le pipeline de traitement de requêtes sont exécutés, le délégué du point de terminaison sélectionné est appelé.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 Le système de routage dans le routage de point de terminaison est responsable de toutes les décisions de distribution. Comme le middleware applique des stratégies basées sur le point de terminaison sélectionné, il est important que les décisions susceptibles d’affecter la distribution ou l’application des stratégies de sécurité soient prises au sein du système de routage.
 
@@ -611,7 +626,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemples | Exemples de correspondances | Notes |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |

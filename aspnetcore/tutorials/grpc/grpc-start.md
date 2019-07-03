@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 919db3f31310342657c89100a6e25e8293648a9f
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 6aef56ecd61ad71e166c03c12b28b25b931cdd88
+ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034808"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67152930"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutoriel : Créer un serveur et un client gRPC dans ASP.NET Core
 
@@ -116,14 +116,15 @@ Fichiers projet *GrpcGreeter* :
 
 * *greet.proto* : le fichier *Protos/greet.proto* définit le service gRPC `Greeter` et est utilisé pour générer les ressources du serveur gRPC. Pour plus d’informations, consultez [Introduction à gRPC](xref:grpc/index).
 * Dossier *Services* : contient l’implémentation du service `Greeter`.
-* *appSettings.json* : contient des données de configuration, telles que le protocole utilisé par Kestrel. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
-* *Program.cs* : contient le point d’entrée du service gRPC. Pour plus d'informations, consultez <xref:fundamentals/host/web-host>.
+* *appSettings.json* : contient des données de configuration, telles que le protocole utilisé par Kestrel. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
+* *Program.cs* : contient le point d’entrée du service gRPC. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host>.
 * *Startup.cs* : contient le code qui configure le comportement de l’application. Pour plus d’informations, consultez [Démarrage des applications](xref:fundamentals/startup).
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>Créer le client gRPC dans une application console .NET
 
 ## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
+* Ouvrez une deuxième instance de Visual Studio.
 * Sélectionnez **Fichier** > **Nouveau** > **Projet** dans la barre de menus.
 * Dans la boîte de dialogue **Créer un projet**, sélectionnez **Application console (.NET Core)** .
 * Sélectionnez **Suivant**.
@@ -151,7 +152,7 @@ Suivez [ces instructions ](/dotnet/core/tutorials/using-on-mac-vs-full-solution)
 
 ### <a name="add-required-packages"></a>Ajouter les packages nécessaires
 
-Ajoutez les packages suivants au projet de client gRPC :
+Le projet client gRPC requiert les packages suivants :
 
 * [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client), qui contient le client .NET Core.
 * [Google.Protobuf](https://www.nuget.org/packages/Google.Protobuf/), qui contient des API de messages protobuf pour C#.
@@ -208,7 +209,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-  Cliquez avec le bouton droit sur le projet et sélectionnez **Modifier GrpcGreeterClient.csproj**.
+  Cliquez avec le bouton droit sur le projet et sélectionnez **Modifier le fichier de projet**.
 
   # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
@@ -220,7 +221,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   ---
 
-* Ajoutez le fichier **greet.proto** au groupe d’éléments `<Protobuf>` du fichier projet GrpcGreeterClient :
+* Ajoutez un groupe d’éléments avec un élément `<Protobuf>` qui fait référence au fichier **greet.proto** :
 
   ```XML
   <ItemGroup>
@@ -228,11 +229,9 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
   </ItemGroup>
   ```
 
-Générez le projet client pour déclencher la génération des ressources du client C#.
-
 ### <a name="create-the-greeter-client"></a>Créer le client Greeter
 
-Générez le projet pour créer les types dans l’espace de noms **Greeter**. Les types `Greeter` sont générés automatiquement par le processus de génération.
+Générez le projet pour créer les types dans l’espace de noms `GrpcGreeter`. Les types `GrpcGreeter` sont générés automatiquement par le processus de génération.
 
 Mettez à jour le fichier *Program.cs* du client gRPC par le code suivant :
 
