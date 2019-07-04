@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core implémente l’injection de dépen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/07/2019
+ms.date: 07/01/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: f4be1559c3b4c17cd09f1360d954c837d84d5058
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 815838e72bc51c70ca1d3d3c1fc6c196bd08ee70
+ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085612"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67500462"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -171,7 +171,7 @@ Des services à durée de vie temporaire (Transient) sont créés chaque fois qu
 Les services à durée de vie délimitée (Scoped) sont créés une seule fois par requête de client (connexion).
 
 > [!WARNING]
-> Si vous utilisez un service Scoped dans un middleware, injectez le service dans la méthode `Invoke` ou `InvokeAsync`. Ne faites pas l’injection via l’injection du constructeur, car elle force le service à se comporter comme un singleton. Pour plus d'informations, consultez <xref:fundamentals/middleware/index>.
+> Si vous utilisez un service Scoped dans un middleware, injectez le service dans la méthode `Invoke` ou `InvokeAsync`. Ne faites pas l’injection via l’injection du constructeur, car elle force le service à se comporter comme un singleton. Pour plus d’informations, consultez <xref:fundamentals/middleware/index>.
 
 **Singleton**
 
@@ -305,7 +305,7 @@ Le fournisseur de services racine est créé quand [BuildServiceProvider](/dotne
 
 Les services Scoped sont supprimés par le conteneur qui les a créés. Si un service Scoped est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté. La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.
 
-Pour plus d'informations, consultez <xref:fundamentals/host/web-host#scope-validation>.
+Pour plus d’informations, consultez <xref:fundamentals/host/web-host#scope-validation>.
 
 ## <a name="request-services"></a>Services de requête
 
@@ -468,6 +468,7 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * <xref:mvc/views/dependency-injection>
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
+* <xref:blazor/dependency-injection>
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)

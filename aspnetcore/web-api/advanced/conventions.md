@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 671e39ded50e50bbfe6d12879895bee74367f754
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ae409158defe15ffaa7454039b302cf3c6437e54
+ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890774"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67463281"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
@@ -50,7 +50,7 @@ Les conventions ne se combinent pas : chaque action peut être associée à une 
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     ```
 
-Pour plus d’informations sur `[ProducesDefaultResponseType]`, consultez [Réponse par défaut](https://swagger.io/docs/specification/describing-responses/#default).
+    Pour plus d’informations sur `[ProducesDefaultResponseType]`, consultez [Réponse par défaut](https://swagger.io/docs/specification/describing-responses/#default).
 
 1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un contrôleur &mdash; applique le type de convention spécifié à toutes les actions sur le contrôleur. Une méthode de convention est décorée avec des indicateurs qui déterminent les actions auxquelles la méthode de convention s’applique. Pour plus d’informations sur les indicateurs, consultez [Créer des conventions d’API web](#create-web-api-conventions)).
 

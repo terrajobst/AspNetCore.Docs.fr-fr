@@ -3,16 +3,16 @@ title: Utiliser les analyseurs d’API web
 author: pranavkm
 description: Découvrez plus d’informations sur les analyseurs d’API web dans Microsoft.AspNetCore.Mvc.Api.Analyzers.
 monikerRange: '>= aspnetcore-2.2'
-ms.author: pranavkm
+ms.author: prkrishn
 ms.custom: mvc
 ms.date: 12/14/2018
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: bcc89f856e0aeef80c46a44f76f86b4c09ac6746
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 2aaef738ab2a64f85cb85708f63d2375c04cacb5
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890824"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538568"
 ---
 # <a name="use-web-api-analyzers"></a>Utiliser les analyseurs d’API web
 
@@ -41,7 +41,7 @@ Vous pouvez ajouter `Microsoft.AspNetCore.Mvc.Api.Analyzers` en adoptant une des
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages...**.
+* Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages...** .
 * Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
 * Entrez « Microsoft.AspNetCore.Mvc.Api.Analyzers » dans la zone de recherche.
 * Sélectionnez le package « Microsoft.AspNetCore.Mvc.Api.Analyzers » dans le volet de résultats, puis cliquez sur **Ajouter un package**.

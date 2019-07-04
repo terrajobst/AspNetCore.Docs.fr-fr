@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 9a77460cfd8201ca357aad3415725d4b9a30b187
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9a4296550a17ac2c348f2406e9f5b39877b02b59
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64885044"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555928"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
@@ -30,7 +30,21 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 [Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-[!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a>Prérequis
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2017-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
@@ -63,7 +77,7 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 * Dans le menu, sélectionnez **Fichier > Nouvelle solution**.
 
-* Sélectionnez **.NET Core > Application > Application web ASP.NET Core** (ne sélectionnez pas **Application web ASP.NET Core (MVC)**).
+* Sélectionnez **.NET Core > Application > Application web ASP.NET Core** (ne sélectionnez pas **Application web ASP.NET Core (MVC)** ).
 
 * Sélectionnez **Suivant**.
 
@@ -87,7 +101,7 @@ La bibliothèque de serveur SignalR est incluse dans le métapackage `Microsoft.
 
 * Sélectionnez **Choisir des fichiers spécifiques**, développez le dossier *dist/browser*, puis sélectionnez *signalr.js* et *signalr.min.js*.
 
-* Définissez **Emplacement cible** sur *wwwroot/lib/signalr/*, puis sélectionnez **Installer**.
+* Définissez **Emplacement cible** sur *wwwroot/lib/signalr/* , puis sélectionnez **Installer**.
 
   ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner les fichiers et la destination](signalr/_static/libman2.png)
 

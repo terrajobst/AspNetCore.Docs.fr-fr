@@ -5,14 +5,14 @@ description: Découvrez comment contrôler l’éditeur de liens de langage inte
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 07/02/2019
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: bdddae16885f45df2c10e4d98b1c33eb11dfdf24
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 03be18e7ee6ca8103e1a666da9e693ff67267d83
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153207"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538629"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
 
@@ -27,7 +27,7 @@ Contrôlez la liaison d’assembly avec l’une des approches suivantes :
 
 ## <a name="disable-linking-with-a-msbuild-property"></a>Désactiver la liaison avec une propriété MSBuild
 
-La liaison est activée par défaut dans le mode de mise en production quand une application est générée, ce qui inclut la publication. Pour désactiver la liaison pour tous les assemblys, définissez la propriété MSBuild `<BlazorLinkOnBuild>` sur `false` dans le fichier projet :
+La liaison est activée par défaut dans le mode de mise en production quand une application est générée, ce qui inclut la publication. Pour désactiver la liaison pour tous les assemblys, définissez la propriété MSBuild `BlazorLinkOnBuild` sur `false` dans le fichier projet :
 
 ```xml
 <PropertyGroup>
