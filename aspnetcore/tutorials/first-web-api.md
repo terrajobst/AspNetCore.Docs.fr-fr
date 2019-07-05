@@ -4,14 +4,14 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/18/2019
+ms.date: 06/23/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 17e8ee08fca775b8fccc3f2e6cd6067caca9c79f
-ms.sourcegitcommit: a1283d486ac1dcedfc7ea302e1cc882833e2c515
+ms.openlocfilehash: a53f7019c1079296f073e743ddbf9d90fc5abad3
+ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207780"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67555875"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -49,17 +49,32 @@ Ce didacticiel crée l’API suivante :
 
 Le diagramme suivant illustre la conception de l’application.
 
-![Le client, représenté par une zone située à gauche, soumet une requête et reçoit une réponse de l’application, représentée par une zone dessinée sur la droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](first-web-api/_static/architecture.png)
+![Le client est représenté par une zone située à gauche. Il envoie une demande et reçoit une réponse de l’application, représentée par une zone dessinée à droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](first-web-api/_static/architecture.png)
 
-[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
+## <a name="prerequisites"></a>Prérequis
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+[!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
+
+---
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
-* Sélectionnez le modèle **Application web ASP.NET Core**. Nommez le projet *TodoApi*, puis cliquez sur **OK**.
-* Dans la boîte de dialogue **Nouvelle application web ASP.NET Core - TodoApi**, choisissez la version ASP.NET Core. Sélectionnez le modèle **API** et cliquez sur **OK**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
+* Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
+* Nommez le projet *TodoApi* et cliquez sur **Créer**.
+* Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 2.2** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs.png)
 
@@ -354,7 +369,7 @@ Si vous obtenez une erreur en appelant `PutTodoItem`, appelez `GET` pour vérifi
 
 ### <a name="test-the-puttodoitem-method"></a>Tester la méthode PutTodoItem
 
-Cet exemple utilise une base de données en mémoire qui doit être initialisée à chaque démarrage de l’application. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET afin de garantir qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
+Cet exemple utilise une base de données en mémoire qui doit être initialisée à chaque démarrage de l’application. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET pour vérifier qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
 Mettez à jour la tâche dont l’ID = 1 et nommez-la « feed fish » :
 
@@ -386,13 +401,13 @@ Utilisez Postman pour supprimer une tâche :
 * Définissez l’URI de l’objet à supprimer, par exemple `https://localhost:5001/api/todo/1`.
 * Sélectionnez **Send**.
 
-L’exemple d’application vous permet de supprimer tous les éléments, mais quand le dernier élément est supprimé, un nouveau est créé par le constructeur de classe de modèle au prochain appel de l’API.
+L’exemple d’application vous permet de supprimer tous les éléments. Toutefois, quand le dernier élément est supprimé, un autre est créé par le constructeur de classe de modèle au prochain appel de l’API.
 
 ## <a name="call-the-api-with-jquery"></a>Appeler l’API avec jQuery
 
 Dans cette section, une page HTML qui utilise jQuery pour appeler l’API web est ajoutée. jQuery lance la requête et met à jour la page avec les détails de la réponse de l’API.
 
-Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichier par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) :
+Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichier par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) en mettant à jour *Startup.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 

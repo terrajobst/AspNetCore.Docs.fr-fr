@@ -2,16 +2,17 @@
 title: Intergiciel (middleware) ASP.NET Core
 author: rick-anderson
 description: Découvrez le middleware ASP.NET Core et le pipeline de requête.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/17/2019
+ms.date: 07/03/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: bac121441d6856ca79affe1a3130e5cbc76debd9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: cdb4916f277c64e4f273b2a0b9a7a4074600f7b7
+ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882334"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561598"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -62,94 +63,42 @@ L’ordre dans lequel les composants de middleware sont ajoutés dans la méthod
 
 La méthode `Startup.Configure` suivante ajoute des composants middleware utiles pour les scénarios d’application courants :
 
-::: moniker range=">= aspnetcore-2.0"
-
 1. Gestion des erreurs/exceptions
-1. Protocole HSTS (HTTP Strict Transport Security)
-1. Redirection HTTPS
-1. Serveur de fichiers statiques
-1. Application d’une stratégie de cookies
-1. Authentification
-1. Session
-1. MVC
+   * Quand l’application s’exécute dans l’environnement de développement :
+     * Le middleware Page d’exceptions du développeur (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) signale des erreurs de runtime de l’application.
+     * Le middleware Page d’erreur de base de données (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) signale des erreurs de runtime de la base de données.
+   * Quand l’application s’exécute dans l’environnement de production :
+     * Le middleware Gestionnaire d'exceptions (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) intercepte des exceptions levées dans les middlewares suivants.
+     * Le middleware Protocole HSTS (HTTP Strict Transport Security) (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) ajoute l’en-tête `Strict-Transport-Security`.
+1. Le middleware Redirection HTTPS (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) redirige les requêtes HTTP vers HTTPS.
+1. Le middleware Fichier statique (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) retourne des fichiers statiques et court-circuite tout traitement supplémentaire de la requête.
+1. Le middleware Stratégie des cookies (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) met l’application en conformité avec les réglementation du RGPD (Règlement général sur la protection des données).
+1. Le middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) tente d’authentifier l’utilisateur avant qu’il ne soit autorisé à accéder aux ressources sécurisées.
+1. Le middleware Session (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) établit et maintient l’état de la session. Si l’application utilise l’état de session, appelez le middleware après le middleware Stratégie des cookies et avant le middleware MVC.
+1. MVC (<xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*>) pour ajouter MVC au pipeline de requête.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
     if (env.IsDevelopment())
     {
-        // When the app runs in the Development environment:
-        //   Use the Developer Exception Page to report app runtime errors.
-        //   Use the Database Error Page to report database runtime errors.
         app.UseDeveloperExceptionPage();
         app.UseDatabaseErrorPage();
     }
     else
     {
-        // When the app doesn't run in the Development environment:
-        //   Enable the Exception Handler Middleware to catch exceptions
-        //     thrown in the following middlewares.
-        //   Use the HTTP Strict Transport Security Protocol (HSTS)
-        //     Middleware.
         app.UseExceptionHandler("/Error");
         app.UseHsts();
     }
 
-    // Use HTTPS Redirection Middleware to redirect HTTP requests to HTTPS.
     app.UseHttpsRedirection();
-
-    // Return static files and end the pipeline.
     app.UseStaticFiles();
-
-    // Use Cookie Policy Middleware to conform to EU General Data 
-    // Protection Regulation (GDPR) regulations.
     app.UseCookiePolicy();
-
-    // Authenticate before the user accesses secure resources.
     app.UseAuthentication();
-
-    // If the app uses session state, call Session Middleware after Cookie 
-    // Policy Middleware and before MVC Middleware.
     app.UseSession();
-
-    // Add MVC to the request pipeline.
     app.UseMvc();
 }
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-1. Gestion des erreurs/exceptions
-1. Fichiers statiques
-1. Authentification
-1. Session
-1. MVC
-
-```csharp
-public void Configure(IApplicationBuilder app)
-{
-    // Enable the Exception Handler Middleware to catch exceptions
-    //   thrown in the following middlewares.
-    app.UseExceptionHandler("/Home/Error");
-
-    // Return static files and end the pipeline.
-    app.UseStaticFiles();
-
-    // Authenticate before you access secure resources.
-    app.UseIdentity();
-
-    // If the app uses session state, call UseSession before 
-    // MVC Middleware.
-    app.UseSession();
-
-    // Add MVC to the request pipeline.
-    app.UseMvcWithDefaultRoute();
-}
-```
-
-::: moniker-end
 
 Dans l’exemple de code précédent, chaque méthode d’extension d’intergiciel (middleware) est exposée sur <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> à travers l’espace de noms <xref:Microsoft.AspNetCore.Builder?displayProperty=fullName>.
 
@@ -157,17 +106,7 @@ Dans l’exemple de code précédent, chaque méthode d’extension d’intergic
 
 Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), qui effectue l’authentification. Le middleware Authentification ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné une page Razor/un contrôleur MVC et une action spécifiques.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Identité (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>), qui effectue l’authentification. L’intergiciel Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné un contrôleur et une action spécifiques.
-
-::: moniker-end
 
 L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware Fichier statique avant le middleware Compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. Les réponses MVC de <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> peuvent être compressées.
 
@@ -181,9 +120,9 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-### <a name="use-run-and-map"></a>Use, Run et Map
+## <a name="use-run-and-map"></a>Use, Run et Map
 
-Configurez le pipeline HTTP avec `Use`, `Run` et `Map`. La méthode `Use` peut court-circuiter le pipeline (autrement dit, si elle n’appelle pas un délégué de requête `next`). `Run` est une convention, et certains composants d’intergiciel peuvent exposer des méthodes `Run[Middleware]` qui s’exécutent à la fin du pipeline.
+Configurez le pipeline HTTP avec <xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*>, <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> et <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*>. La méthode `Use` peut court-circuiter le pipeline (autrement dit, si elle n’appelle pas un délégué de requête `next`). `Run` est une convention, et certains composants d’intergiciel peuvent exposer des méthodes `Run[Middleware]` qui s’exécutent à la fin du pipeline.
 
 Les extensions <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> sont utilisées comme convention pour créer une branche dans le pipeline. `Map*` crée une branche dans le pipeline de requête en fonction des correspondances du chemin de requête donné. Si le chemin de requête commence par le chemin donné, la branche est exécutée.
 
@@ -200,7 +139,7 @@ Le tableau suivant présente les requêtes et les réponses de `http://localhost
 
 Quand `Map` est utilisé, les segments de chemin mis en correspondance sont supprimés de `HttpRequest.Path` et ajoutés à `HttpRequest.PathBase` pour chaque requête.
 
-[MapWhen](/dotnet/api/microsoft.aspnetcore.builder.mapwhenextensions) crée une branche dans le pipeline de requête en fonction du résultat du prédicat donné. Un prédicat de type `Func<HttpContext, bool>` peut être utilisé pour mapper les requêtes à une nouvelle branche du pipeline. Dans l’exemple suivant, un prédicat est utilisé pour détecter la présence d’une variable de chaîne de requête `branch` :
+<xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> crée une branche dans le pipeline de requête en fonction du résultat du prédicat donné. Un prédicat de type `Func<HttpContext, bool>` peut être utilisé pour mapper les requêtes à une nouvelle branche du pipeline. Dans l’exemple suivant, un prédicat est utilisé pour détecter la présence d’une variable de chaîne de requête `branch` :
 
 [!code-csharp[](index/snapshot/Chain/StartupMapWhen.cs?name=snippet1)]
 
@@ -238,12 +177,12 @@ ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *O
 | [Stratégie de cookies](xref:security/gdpr) | Effectue le suivi de consentement des utilisateurs pour le stockage des informations personnelles et applique des normes minimales pour les champs de cookie, comme `secure` et `SameSite`. | Avant le middleware qui émet les cookies. Exemples : authentification, session, MVC (TempData). |
 | [CORS](xref:security/cors) | Configure le partage des ressources cross-origin (CORS). | Avant les composants qui utilisent CORS. |
 | [Gestion des exceptions](xref:fundamentals/error-handling) | Gère les exceptions. | Avant les composants qui génèrent des erreurs. |
-| [En-têtes transférés](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Transfère les en-têtes en proxy vers la requête actuelle. | Avant les composants qui consomment les champs mis à jour. Exemples : schéma, hôte, IP du client, méthode. |
+| [En-têtes transférés](xref:host-and-deploy/proxy-load-balancer) | Transfère les en-têtes en proxy vers la requête actuelle. | Avant les composants qui consomment les champs mis à jour. Exemples : schéma, hôte, IP du client, méthode. |
 | [Contrôle d’intégrité](xref:host-and-deploy/health-checks) | Contrôle l’intégrité d’une application ASP.NET Core et de ses dépendances, notamment la disponibilité de la base de données. | Terminal si une requête correspond à un point de terminaison de contrôle d’intégrité. |
-| [Remplacement de la méthode HTTP](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | Autorise une requête POST entrante à remplacer la méthode. | Avant les composants qui consomment la méthode mise à jour. |
-| [Redirection HTTPS](xref:security/enforcing-ssl#require-https) | Redirige toutes les requêtes HTTP vers HTTPS (ASP.NET Core 2.1 ou ultérieur). | Avant les composants qui consomment l’URL. |
-| [HSTS (HTTP Strict Transport Security)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | Middleware d’amélioration de la sécurité qui ajoute un en-tête de réponse spécial (ASP.NET Core 2.1 ou ultérieur). | Avant l’envoi des réponses et après les composants qui modifient les requêtes. Exemples : en-têtes transférés, réécriture d’URL. |
-| [MVC](xref:mvc/overview) | Traite les requêtes avec MVC/Razor Pages (ASP.NET Core 2.0 ou version ultérieure). | Terminal si une requête correspond à un itinéraire. |
+| [Remplacement de la méthode HTTP](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | Autorise une requête POST entrante à remplacer la méthode. | Avant les composants qui consomment la méthode mise à jour. |
+| [Redirection HTTPS](xref:security/enforcing-ssl#require-https) | Redirige toutes les requêtes HTTP vers HTTPS. | Avant les composants qui consomment l’URL. |
+| [HSTS (HTTP Strict Transport Security)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | Middleware d’amélioration de la sécurité qui ajoute un en-tête de réponse spécial. | Avant l’envoi des réponses et après les composants qui modifient les requêtes. Exemples : en-têtes transférés, réécriture d’URL. |
+| [MVC](xref:mvc/overview) | Traite les requêtes avec MVC/Razor Pages. | Terminal si une requête correspond à un itinéraire. |
 | [OWIN](xref:fundamentals/owin) | Interopérabilité avec le middleware, les serveurs et les applications OWIN. | Terminal si le middleware OWIN traite entièrement la requête. |
 | [Mise en cache des réponses](xref:performance/caching/middleware) | Prend en charge la mise en cache des réponses. | Avant les composants qui nécessitent la mise en cache. |
 | [Compression des réponses](xref:performance/response-compression) | Prend en charge la compression des réponses. | Avant les composants qui nécessitent la compression. |
