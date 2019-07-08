@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application Blazor av
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 07/02/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: 7567473ae8acd9e1072954907f0fe9c7beea29ad
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 46c99364098557557bff0c38cab5a91ee2d3979b
+ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153187"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538645"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>Héberger et déployer ASP.NET Core Blazor côté client
 
@@ -106,19 +106,19 @@ Blazor effectue la liaison de langage intermédiaire (IL) lors de chaque génér
 
 ## <a name="rewrite-urls-for-correct-routing"></a>Réécriture d’URL pour un routage correct
 
-Le routage des requêtes pour les composants de la page dans une application côté client n’est pas aussi simple que le routage des requêtes vers une application hébergée côté serveur. Considérez une application côté client avec deux pages :
+Le routage des requêtes pour les composants de la page dans une application côté client n’est pas aussi simple que le routage des requêtes vers une application hébergée côté serveur. Considérez une application côté client avec deux composants :
 
-* **_Main.razor** &ndash; Se charge à la racine de l’application et contient un lien vers la page À propos de (`href="About"`).
-* **_About.razor** &ndash; Page À propos de.
+* *Main.razor* &ndash; Se charge à la racine de l’application et contient un lien vers le composant `About` (`href="About"`).
+* Composant *About.Razor* &ndash; `About`.
 
 Quand le document par défaut de l’application est demandé à l’aide de la barre d’adresses du navigateur (par exemple, `https://www.contoso.com/`) :
 
 1. Le navigateur effectue une requête.
 1. La page par défaut est retournée, généralement *index.html*.
 1. *index.HTML* amorce l’application.
-1. Le routeur de Blazor se charge et la page Main Razor (*Main.razor*) s’affiche.
+1. Le routeur de Blazor se charge et le composant `Main` Razor est rendu.
 
-Dans la page principale, le fait de sélectionner le lien vers la page À propos de charge cette dernière. La sélection du lien vers la page À propos de fonctionne sur le client, car le routeur Blazor empêche le navigateur d’effectuer une requête sur Internet à `www.contoso.com` pour `About` et fournit lui-même la page À propos de. Toutes les requêtes pour des pages internes *au sein de l’application côté client* fonctionnent de manière identique : Les requêtes ne déclenchent pas de requêtes basées sur le navigateur pour des ressources hébergées par le serveur sur Internet. Le routeur gère les requêtes en interne.
+Dans la page principale, la sélection du composant `About` fonctionne sur le client, car le routeur Blazor empêche le navigateur d’effectuer une requête sur Internet à `www.contoso.com` pour `About` et fournit lui-même le composant `About` rendu. Toutes les requêtes pour des points de terminaison internes *au sein de l’application côté client* fonctionnent de manière identique : Les requêtes ne déclenchent pas de requêtes basées sur le navigateur pour des ressources hébergées par le serveur sur Internet. Le routeur gère les requêtes en interne.
 
 Si une requête pour `www.contoso.com/About` est effectuée à l’aide de la barre d’adresses du navigateur, elle échoue. Comme cette ressource n’existe pas sur l’hôte Internet de l’application, une réponse *404 – Non trouvé* est retournée.
 
@@ -148,7 +148,7 @@ L’application répond localement à `http://localhost:port/CoolApp`.
 
 Pour plus d’informations, voir la section [Valeur de configuration d’hôte de base du chemin](#path-base).
 
-Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) (basé sur le modèle de projet **Blazor** ; le modèle `blazor` quand la commande [dotnet new](/dotnet/core/tools/dotnet-new) est utilisée) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il est important de désactiver le gestionnaire de module ASP.NET Core hérité ou de s’assurer que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
+Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) (basé sur le modèle de projet **Blazor** (côté client) – le modèle `blazor` quand la commande [dotnet new](/dotnet/core/tools/dotnet-new) est utilisée) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il est important de désactiver le gestionnaire de module ASP.NET Core hérité ou de s’assurer que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
 
 Supprimez le gestionnaire dans le fichier *web.config* publié de l’application en ajoutant une section `<handlers>` au fichier :
 
@@ -178,7 +178,7 @@ La suppression du gestionnaire ou la désactivation de l’héritage est effectu
 
 ## <a name="hosted-deployment-with-aspnet-core"></a>Déploiement hébergé avec ASP.NET Core
 
-Un *déploiement hébergé* fournit l’application Blazor côté client aux navigateurs à partir d’une [application ASP.NET Core](xref:index) qui s’exécute sur un serveur.
+Un *déploiement hébergé* fournit l’application Blazor côté client aux navigateurs à partir d’une [application ASP.NET Core](xref:index) qui s’exécute sur un serveur web.
 
 L’application Blazor est incluse dans l’application ASP.NET Core dans la sortie publiée, afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio inclut le modèle de projet **Blazor (ASP.NET Core hébergé)** (modèle `blazorhosted` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
 

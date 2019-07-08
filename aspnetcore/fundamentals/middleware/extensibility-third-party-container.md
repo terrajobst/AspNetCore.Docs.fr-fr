@@ -2,24 +2,25 @@
 title: Activation d’un intergiciel (middleware) avec un conteneur tiers dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser un middleware fortement typé avec une activation basée sur une fabrique et un conteneur tiers dans ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/02/2018
+ms.date: 07/03/2019
 uid: fundamentals/middleware/extensibility-third-party-container
-ms.openlocfilehash: 9e4d4c6c0232ebc51ad08923e10164262b652280
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 4bc99b4c336aba611287c9fbe03d4252f8abee5b
+ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888074"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561646"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>Activation d’un intergiciel (middleware) avec un conteneur tiers dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Cet article montre comment utiliser [IMiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) et [IMiddleware](/dotnet/api/microsoft.aspnetcore.http.imiddleware) comme point d’extensibilité pour l’activation d’un[middleware](xref:fundamentals/middleware/index) avec un conteneur tiers. Pour une présentation de `IMiddlewareFactory` et de `IMiddleware`, consultez la rubrique [Activation d’un middleware basée sur une fabrique](xref:fundamentals/middleware/extensibility).
+Cet article montre comment utiliser <xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> et <xref:Microsoft.AspNetCore.Http.IMiddleware> comme point d’extensibilité pour l’activation d’un [middleware](xref:fundamentals/middleware/index) avec un conteneur tiers. Pour obtenir des informations sur `IMiddlewareFactory` et `IMiddleware`, consultez <xref:fundamentals/middleware/extensibility>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application montre l’activation d’un middleware par une implémentation de `IMiddlewareFactory`, `SimpleInjectorMiddlewareFactory`. L’exemple utilise le conteneur d’injection de dépendances [Simple Injector](https://simpleinjector.org).
 
@@ -30,35 +31,35 @@ L’implémentation du middleware de l’exemple enregistre la valeur fournie pa
 
 ## <a name="imiddlewarefactory"></a>IMiddlewareFactory
 
-[IMiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) fournit des méthodes pour créer un middleware.
+<xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> fournit des méthodes pour créer un middleware.
 
 Dans l’exemple d’application, une fabrique de middleware est implémentée pour créer une instance de `SimpleInjectorActivatedMiddleware`. La fabrique de middleware utilise le conteneur Simple Injector pour résoudre le middleware :
 
-[!code-csharp[](extensibility-third-party-container/sample/Middleware/SimpleInjectorMiddlewareFactory.cs?name=snippet1&highlight=5-8,12)]
+[!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/SimpleInjectorMiddlewareFactory.cs?name=snippet1&highlight=5-8,12)]
 
 ## <a name="imiddleware"></a>IMiddleware
 
-[IMiddleware](/dotnet/api/microsoft.aspnetcore.http.imiddleware) définit l’intergiciel pour le pipeline des requêtes de l’application.
+<xref:Microsoft.AspNetCore.Http.IMiddleware> définit le middleware pour le pipeline des requêtes de l’application.
 
 Middleware activé par une implémentation de `IMiddlewareFactory` (*Middleware/SimpleInjectorActivatedMiddleware.css*) :
 
-[!code-csharp[](extensibility-third-party-container/sample/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/SimpleInjectorActivatedMiddleware.cs?name=snippet1)]
 
 Une extension est créée pour le middleware (*Middleware/MiddlewareExtensions.cs*) :
 
-[!code-csharp[](extensibility-third-party-container/sample/Middleware/MiddlewareExtensions.cs?name=snippet1)]
+[!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
 `Startup.ConfigureServices` doit effectuer plusieurs tâches :
 
 * Configurer le conteneur Simple Injector.
 * Inscrire la fabrique et le middleware.
-* Rendez le contexte de base de données de l’application disponible depuis le conteneur Simple Injector pour une page Razor.
+* Rendez le contexte de base de données de l’application disponible depuis le conteneur Simple Injector.
 
-[!code-csharp[](extensibility-third-party-container/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
 Le middleware est inscrit dans le pipeline de traitement des requêtes, dans `Startup.Configure` :
 
-[!code-csharp[](extensibility-third-party-container/sample/Startup.cs?name=snippet2&highlight=13)]
+[!code-csharp[](extensibility-third-party-container/samples/2.x/SampleApp/Startup.cs?name=snippet2&highlight=13)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
