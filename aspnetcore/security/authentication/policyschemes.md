@@ -5,12 +5,12 @@ description: Modèles de stratégie d’authentification facilitent l’ont un s
 ms.author: riande
 ms.date: 2/28/2019
 uid: security/authentication/policyschemes
-ms.openlocfilehash: c310b61e14df2b7846e32a602bb75914a5850aff
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1a2d92e6fa54189b8154fc501b31c8a99d1f9081
+ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895196"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67649179"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>Jeux de stratégie dans ASP.NET Core
 
@@ -32,7 +32,7 @@ L’exemple suivant montre un schéma de niveau supérieur qui combine les sché
 
 [!code-csharp[sample](policyschemes/samples/Startup.cs?name=snippet1)]
 
-L’exemple suivant active la sélection dynamique de schémas de base de chaque demande. Autrement dit, comment combiner les cookies et l’authentification des API.
+L’exemple suivant active la sélection dynamique de schémas de base de chaque demande. Autrement dit, comment combiner les cookies et l’authentification d’API :
 
  <!-- REVIEW, missing If set in public Func<HttpContext, string> ForwardDefaultSelector -->
 
