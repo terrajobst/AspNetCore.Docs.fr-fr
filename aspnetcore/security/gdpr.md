@@ -2,23 +2,47 @@
 title: Règlement de Protection de données générales (RGPD) prend en charge dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment accéder aux points d’extension RGPD dans une application web ASP.NET Core.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/05/2019
+ms.date: 07/11/2019
 uid: security/gdpr
-ms.openlocfilehash: 1580187afef56e8e2f5be7a4bae32912e6305c5a
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 01d2f8943c0995c1400122b89c4ca7c459a85279
+ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152863"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724565"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’Union européenne général Protection des données règlement (RGPD) dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core fournit des API et des modèles pour répondre à certaines de la [règlement de Protection générale données (RGPD) d’Europe](https://www.eugdpr.org/) exigences :
+
+::: moniker range=">= aspnetcore-3.0"
+
+* Les modèles de projet incluent des points d’extension et de stub balisage que vous pouvez remplacer votre stratégie d’utilisation de cookies et de confidentialité.
+* Le *Pages/Privacy.cshtml* page ou *Views/Home/Privacy.cshtml* vue fournit une page qui décrit en détail la politique de confidentialité de votre site.
+
+Pour activer la fonctionnalité de consentement de cookie par défaut comme celui trouvé dans les modèles ASP.NET Core 2.2 dans une application de modèle générée d’ASP.NET Core 3.0 :
+
+* Ajouter [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) trop `Startup.ConfigureServices` et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) à `Startup.Configure`:
+
+  [!code-csharp[Main](gdpr/sample/RP3.0/Startup.cs?name=snippet1&highlight=12-19,38)]
+
+* Ajouter le partielle de consentement de cookie pour le *_Layout.cshtml* fichier :
+
+  [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_Layout.cshtml?name=snippet&highlight=4)]
+
+* Ajouter le  *\_CookieConsentPartial.cshtml* fichier au projet :
+
+  [!code-cshtml[Main](gdpr/sample/RP3.0/Pages/Shared/_CookieConsentPartial.cshtml)]
+
+* Sélectionnez la version d’ASP.NET Core 2.2 de cet article pour en savoir plus sur la fonctionnalité de consentement du cookie.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
 
 * Les modèles de projet incluent des points d’extension et de stub balisage que vous pouvez remplacer votre stratégie d’utilisation de cookies et de confidentialité.
 * Une fonctionnalité de consentement de cookie vous permet demandera (et le suivi) consentement à partir de vos utilisateurs pour le stockage des informations personnelles. Si un utilisateur n’a pas consenti à la collecte de données et de l’application a [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded) défini sur `true`, les cookies non essentielles ne sont pas envoyés au navigateur.
@@ -32,17 +56,7 @@ Le [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/live
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>ASP.NET Core RGPD prennent en charge dans le code généré par le modèle
 
-::: moniker range="< aspnetcore-2.2"
-
-Les Pages Razor et MVC les projets créés avec les modèles de projet n’ont aucune prise en charge de RGPD ou un cookie de consentement. Pour ajouter le RGPD, copiez le code généré dans les modèles ASP.NET Core 2.2.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.2"
-
 Les Pages Razor et MVC projets créés avec les modèles de projet incluent la prise en charge de RGPD suivante :
-
-::: moniker-end
 
 * [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définies le `Startup` classe.
 * Le  *\_CookieConsentPartial.cshtml* [vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). Un **Accept** bouton est inclus dans ce fichier. Lorsque l’utilisateur clique sur le **Accept** bouton, de donner son consentement pour stocker des cookies est fourni.
@@ -63,7 +77,7 @@ Les Pages Razor et MVC projets créés avec les modèles de projet incluent la p
 
 Le  *\_CookieConsentPartial.cshtml* vue partielle :
 
-[!code-html[](gdpr/sample/RP/Pages/Shared/_CookieConsentPartial.cshtml)]
+[!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 Partielle :
 
@@ -75,7 +89,7 @@ Partielle :
 
 Si donner son consentement pour stocker des cookies n’a pas été fourni, uniquement les cookies marqués essentielles sont envoyés au navigateur. Le code suivant fait un cookie essentielles :
 
-[!code-csharp[Main](gdpr/sample/RP/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
+[!code-csharp[Main](gdpr/sample/RP2.2/Pages/Cookie.cshtml.cs?name=snippet1&highlight=5)]
 
 <a name="tempdata"></a>
 
@@ -83,11 +97,11 @@ Si donner son consentement pour stocker des cookies n’a pas été fourni, uniq
 
 Le [fournisseur TempData](xref:fundamentals/app-state#tempdata) cookie n’est pas indispensable. Si le suivi est désactivé, le fournisseur de TempData n’est pas fonctionnel. Pour activer le fournisseur TempData lorsque le suivi est désactivé, marquer le cookie de TempData comme essentielle dans `Startup.ConfigureServices`:
 
-[!code-csharp[Main](gdpr/sample/RP/Startup.cs?name=snippet1)]
+[!code-csharp[Main](gdpr/sample/RP2.2/Startup.cs?name=snippet1)]
 
 [État de session](xref:fundamentals/app-state) les cookies ne sont pas indispensables. État de session n’est pas fonctionnel lorsque le suivi est désactivé. Le code suivant fait les cookies de session essentielles :
 
-[!code-csharp[](gdpr/sample/RP/Startup.cs?name=snippet2)]
+[!code-csharp[](gdpr/sample/RP2.2/Startup.cs?name=snippet2)]
 
 <a name="pd"></a>
 
@@ -106,6 +120,8 @@ Remarques :
 * Enregistré des jetons pour l’utilisateur qui sont stockées dans la table de base de données d’identité `AspNetUserTokens` sont supprimés lorsque l’utilisateur est supprimé via le comportement de suppression en cascade en raison du [clé étrangère](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).
 * [L’authentification du fournisseur externe](xref:security/authentication/social/index), tels que Facebook et Google, n’est pas disponible avant l’acceptation de la stratégie de cookie.
 
+::: moniker-end
+
 ## <a name="encryption-at-rest"></a>Chiffrement au repos
 
 Certaines bases de données et les mécanismes de stockage autorisent le chiffrement au repos. Chiffrement au repos :
@@ -115,13 +131,13 @@ Certaines bases de données et les mécanismes de stockage autorisent le chiffre
 * Option est la plus simple et plus sûre.
 * Permet de gérer les clés et chiffrement de la base de données.
 
-Exemple :
+Par exemple :
 
 * Microsoft SQL et SQL Azure fournissent [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).
 * [SQL Azure chiffre de la base de données par défaut](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [Objets BLOB, de fichiers, de Table et d’un stockage file d’attente Azure sont chiffrées par défaut](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
-Pour les bases de données qui ne fournissent pas un chiffrement intégré au repos, vous pourrez peut-être utiliser le chiffrement de disque pour fournir le même niveau de protection. Exemple :
+Pour les bases de données qui ne fournissent pas un chiffrement intégré au repos, vous pourrez peut-être utiliser le chiffrement de disque pour fournir le même niveau de protection. Par exemple :
 
 * [BitLocker pour Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux :
