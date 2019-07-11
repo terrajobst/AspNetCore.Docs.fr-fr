@@ -981,6 +981,8 @@
           uid: performance/caching/distributed
         - name: Intergiciel de mise en cache des réponses
           uid: performance/caching/middleware
+        - name: Réutilisation d’un objet avec ObjectPool
+          uid: performance/ObjectPool
     - name: Compression des réponses
       uid: performance/response-compression
     - name: Outils de diagnostic
