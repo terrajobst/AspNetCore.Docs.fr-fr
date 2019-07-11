@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 14d10424951e8ec3c7909d001c6f86e5fcb45d26
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085715"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815043"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Charger des fichiers dans une page Razor dans ASP.NET Core
 
@@ -64,7 +64,7 @@ La classe compte une propriété pour le titre de la planification et une propri
 
 ## <a name="add-a-helper-method-to-upload-files"></a>Ajouter une méthode d’assistance pour charger des fichiers
 
-Pour éviter la duplication de code dans le traitement des fichiers de planification chargés, ajoutez d’abord une méthode d’assistance statique. Créez un dossier *Utilities* dans l’application et ajoutez un fichier *FileHelpers.cs* avec le contenu suivant. La méthode d’assistance, `ProcessFormFile`, prend un [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) et un [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary), puis retourne une chaîne contenant la taille et le contenu du fichier. Le type de contenu et la longueur sont vérifiés. Si le fichier échoue à la vérification de validation, une erreur est ajoutée dans `ModelState`.
+Pour éviter la duplication de code dans le traitement des fichiers de planification chargés, ajoutez d’abord une méthode d’assistance statique. Créez un dossier *Utilities* dans l’application et ajoutez un fichier *FileHelpers.cs* avec le contenu suivant. La méthode d’assistance, `ProcessFormFile`, prend un [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) et un [ModelStateDictionary](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary), puis retourne une chaîne contenant la taille et le contenu du fichier. Le type de contenu et la longueur sont vérifiés. Si le fichier échoue à la vérification de validation, une erreur est ajoutée dans `ModelState`.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -117,7 +117,7 @@ Le processus Worker doit avoir des autorisations en écriture pour l’emplaceme
 
 ### <a name="save-the-file-to-azure-blob-storage"></a>Enregistrer le fichier dans le stockage Blob Azure
 
-Pour charger le contenu du fichier dans le stockage Blob Azure, consultez [Bien démarrer avec le stockage Blob Azure à l’aide de .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs). La rubrique montre comment utiliser [UploadFromStream](/dotnet/api/microsoft.windowsazure.storage.file.cloudfile.uploadfromstreamasync) pour enregistrer un [FileStream](/dotnet/api/system.io.filestream) dans le stockage Blob.
+Pour charger le contenu du fichier dans le stockage Blob Azure, consultez [Bien démarrer avec le stockage Blob Azure à l’aide de .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs). La rubrique montre comment utiliser [UploadFromStream](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync) pour enregistrer un [FileStream](/dotnet/api/system.io.filestream) dans le stockage Blob.
 
 ## <a name="add-the-schedule-class"></a>Ajouter la classe Schedule
 
@@ -343,6 +343,6 @@ Quand une ou plusieurs planifications sont chargées, la section **Planification
 
 L’utilisateur peut cliquer sur le lien **Supprimer** à partir d’ici pour accéder à la vue de confirmation de suppression, où il peut confirmer ou annuler l’opération de suppression.
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Résolution de problèmes
 
 Pour obtenir des informations avec `IFormFile` chargement, consultez [chargements de fichiers dans ASP.NET Core : Résolution des problèmes](xref:mvc/models/file-uploads#troubleshooting).

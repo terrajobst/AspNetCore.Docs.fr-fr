@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 4afc9ac0a3c54b452c6a1b23e4de31d7e2fc5284
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 302a5e10a70e40e75ab9fe4b3e5a98c4e847b822
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894146"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815216"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour les applications SPA
 
@@ -230,7 +230,7 @@ Pour déployer l’application en production, les ressources suivantes doivent �
   * Il peut être généré par le biais des outils standards tels que PowerShell ou OpenSSL.
   * Il peut être installé dans le magasin de certificats sur les ordinateurs cibles ou déployé comme un *.pfx* fichier avec un mot de passe fort.
 
-### <a name="example-deploy-to-azure-websites"></a>Exemple : Déployer des sites Web Azure
+### <a name="example-deploy-to-azure-websites"></a>Exemple : Déployer des sites Web Azure
 
 Cette section décrit le déploiement de l’application à des sites Web Azure à l’aide d’un certificat stocké dans le magasin de certificats. Pour modifier l’application pour charger un certificat du magasin de certificats, le plan App Service doit s’exécuter sur au moins le niveau Standard lorsque vous configurez dans une étape ultérieure. Dans l’application *appsettings.json* fichier, modifiez le `IdentityServer` section pour inclure les détails de la clé :
 
@@ -251,7 +251,7 @@ Cette section décrit le déploiement de l’application à des sites Web Azure 
 
 Pour déployer sur Azure Websites, déployez l’application en suivant les étapes décrites dans [déployer l’application sur Azure](xref:tutorials/publish-to-azure-webapp-using-vs#deploy-the-app-to-azure) pour créer les ressources Azure nécessaires et de déployer l’application en production.
 
-Après avoir suivi les instructions précédentes, l’application est déployée sur Azure, mais n’est pas encore fonctionnelle. Le certificat utilisé par l’application doit toujours être configuré. Localiser l’empreinte numérique du certificat à utiliser, puis suivez les étapes décrites dans [charger vos certificats](/azure/app-service/app-service-web-ssl-cert-load#load-your-certificates).
+Après avoir suivi les instructions précédentes, l’application est déployée sur Azure, mais n’est pas encore fonctionnelle. Le certificat utilisé par l’application doit toujours être configuré. Localiser l’empreinte numérique du certificat à utiliser, puis suivez les étapes décrites dans [charger vos certificats](/azure/app-service/app-service-web-ssl-cert-load#load-the-certificate-in-code).
 
 Bien que ces étapes mentionner SSL, il existe un **certificats privés** section du portail où vous pouvez télécharger le certificat configuré à utiliser avec l’application.
 

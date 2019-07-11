@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: be176ed612be0773c4a5b52607c023da3856ac14
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621014"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815326"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de Configuration d’Azure Key Vault dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Pour utiliser le fournisseur de Configuration de coffre de clés Azure, ajoutez 
 À adopter le [gérés d’identités pour les ressources Azure](/azure/active-directory/managed-identities-azure-resources/overview) scénario, ajoutez une référence de package à la [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) package.
 
 > [!NOTE]
-> Au moment de l’écriture, la dernière version stable de `Microsoft.Azure.Services.AppAuthentication`, version `1.0.3`, prend en charge [attribué par le système géré identités](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka). Prise en charge de *affectée à l’utilisateur géré identités* est disponible dans le `1.2.0-preview2` package. Cette rubrique illustre l’utilisation d’identités gérés par le système, et l’application exemple fourni utilise la version `1.0.3` de la `Microsoft.Azure.Services.AppAuthentication` package.
+> Au moment de l’écriture, la dernière version stable de `Microsoft.Azure.Services.AppAuthentication`, version `1.0.3`, prend en charge [attribué par le système géré identités](/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work). Prise en charge de *affectée à l’utilisateur géré identités* est disponible dans le `1.2.0-preview2` package. Cette rubrique illustre l’utilisation d’identités gérés par le système, et l’application exemple fourni utilise la version `1.0.3` de la `Microsoft.Azure.Services.AppAuthentication` package.
 
 ## <a name="sample-app"></a>Exemple d’application
 
@@ -120,11 +120,11 @@ Configurer Azure AD, Azure Key Vault et l’application à utiliser un ID d’Ap
 
 L’exemple d’application utilise un ID d’Application et de certificat X.509 quand le `#define` instruction en haut de la *Program.cs* fichier est défini sur `Certificate`.
 
-1. Créer une archive PKCS #12 (*.pfx*) certificat. Options de création de certificats incluent [MakeCert sur Windows](/windows/desktop/seccrypto/makecert) et [OpenSSL](https://www.openssl.org/).
+1. Créer une archive PKCS #12 ( *.pfx*) certificat. Options de création de certificats incluent [MakeCert sur Windows](/windows/desktop/seccrypto/makecert) et [OpenSSL](https://www.openssl.org/).
 1. Installez le certificat dans le magasin de certificats personnel de l’utilisateur actuel. Marquer la clé comme exportable est facultative. Notez l’empreinte du certificat, qui est utilisé plus loin dans ce processus.
-1. Exporter l’archive PKCS #12 (*.pfx*) certificat en tant qu’un certificat codé DER (*.cer*).
+1. Exporter l’archive PKCS #12 ( *.pfx*) certificat en tant qu’un certificat codé DER ( *.cer*).
 1. Inscrire l’application avec Azure AD (**inscriptions**).
-1. Télécharger le certificat codé DER (*.cer*) à Azure AD :
+1. Télécharger le certificat codé DER ( *.cer*) à Azure AD :
    1. Sélectionnez l’application dans Azure AD.
    1. Accédez à **certificats et clés secrètes**.
    1. Sélectionnez **télécharger un certificat** pour charger le certificat, qui contient la clé publique. Un *.cer*, *.pem*, ou *.crt* certificat est acceptable.
@@ -287,7 +287,7 @@ Examinez les éléments suivants [Serilog](https://serilog.net/) configuration d
 
 La configuration représentée dans le fichier JSON précédent est stockée dans Azure Key Vault à l’aide de double tiret (`--`) segments numériques et de notation :
 
-| Touche | Value |
+| Clé | Valeur |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -308,7 +308,7 @@ Configuration.Reload();
 
 Les secrets désactivés et expirés lèvent une exception `KeyVaultClientException`. Pour empêcher votre application de lever cette exception, remplacez votre application ou mettez à jour le secret désactivé/expiré.
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+## <a name="troubleshoot"></a>Résolution des problèmes
 
 Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrite à la [infrastructure de journalisation ASP.NET Core](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
 
@@ -328,4 +328,4 @@ Lorsque l’application ne parvient pas à charger la configuration de l’utili
 * [Pour générer et transférer protégée par HSM de clés pour Azure Key Vault](/azure/key-vault/key-vault-hsm-protected-keys)
 * [Classe de KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
 * [Démarrage rapide : Définir et récupérer un secret dans Azure Key Vault à l’aide d’une application web .NET](/azure/key-vault/quick-create-net)
-* [Tutoriel : Comment utiliser Azure Key Vault avec Azure Windows Virtual Machine dans .NET](/azure/key-vault/tutorial-net-windows-virtual-machine)
+* [Tutoriel : Comment utiliser Azure Key Vault avec Azure Windows Virtual Machine dans .NET](/azure/key-vault/tutorial-net-windows-virtual-machine)

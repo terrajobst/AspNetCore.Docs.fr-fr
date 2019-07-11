@@ -17,6 +17,6 @@ Lorsque la demande inclut le `Accept-Encoding` en-tête, l’exemple ajoute un `
 
 ## <a name="using-the-sample"></a>Utilisation de l'exemple
 
-1. Effectuer une demande à l’aide [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/) à l’application sans un `Accept-Encoding` en-tête et notez la charge utile de réponse, la taille de la réponse, et en-têtes de réponse.
+1. Effectuer une demande à l’aide [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/), ou [Postman](https://www.getpostman.com/) à l’application sans un `Accept-Encoding` en-tête et notez la charge utile de réponse, la taille de la réponse, et en-têtes de réponse.
 1. Ajouter un `Accept-Encoding: gzip` en-tête et notez la taille de la réponse compressée et les en-têtes de réponse. Vous voyez la taille de réponse pour supprimer et le `Content-Encoding: gzip` en-tête de réponse est inclus par l’exemple d’application. Lorsque vous examinez le corps de réponse pour le Lorem Ipsum ou **testfile1kb.txt** réponse, vous voyez que le texte est compressé et illisible.
 1. Ajouter un `Accept-Encoding: mycustomcompression` en-tête et notez les en-têtes de réponse. Le `CustomCompressionProvider` est une implémentation vide qui ne compresser réellement la réponse, mais vous pouvez créer un wrapper de flux de compression personnalisé pour le `CreateStream()` (méthode).

@@ -7,16 +7,16 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 05/28/2019
 uid: client-side/spa-services
-ms.openlocfilehash: c7cd35865c5bddf0e5efaa9e616832b6755d9227
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: 19710b58bca606d21feda9069ad00edd1e4f72e9
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750120"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813472"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utiliser les Services de JavaScript pour créer des Applications à Page unique dans ASP.NET Core
 
-Par [Scott Addie](https://github.com/scottaddie) et [Fiyaz Hasan](http://fiyazhasan.me/)
+Par [Scott Addie](https://github.com/scottaddie) et [Fiyaz Hasan](https://fiyazhasan.me/)
 
 Une Application à Page unique (SPA) est un type d’application web en raison de son expérience utilisateur riche inhérente. L’intégration de frameworks SPA côté client ou les bibliothèques, telles que [Angular](https://angular.io/) ou [réagir](https://facebook.github.io/react/), avec des infrastructures de côté serveur, telles que ASP.NET Core peut être difficile. Services de JavaScript a été développé pour réduire la friction lors du processus d’intégration. Il permet à une opération transparente entre les piles de technologie de serveur et de client.
 
@@ -96,7 +96,7 @@ Ces Tag Helpers clarifient les subtilités de communiquer directement avec les A
 
 ### <a name="asp-prerender-module-tag-helper"></a>module ASP-prerender Tag Helper
 
-Le `asp-prerender-module` Tag Helper, utilisée dans l’exemple de code précédent, exécute *ClientApp/dist/main-server.js* sur le serveur via Node.js. Par souci de clarté, *main-server.js* fichier est un artefact de la tâche de transpilation de TypeScript et JavaScript dans le [Webpack](http://webpack.github.io/) du processus de génération. Webpack définit un alias de point d’entrée de `main-server`; et commence le parcours du graphique de dépendance pour cet alias le *ClientApp/démarrage-server.ts* fichier :
+Le `asp-prerender-module` Tag Helper, utilisée dans l’exemple de code précédent, exécute *ClientApp/dist/main-server.js* sur le serveur via Node.js. Par souci de clarté, *main-server.js* fichier est un artefact de la tâche de transpilation de TypeScript et JavaScript dans le [Webpack](https://webpack.github.io/) du processus de génération. Webpack définit un alias de point d’entrée de `main-server`; et commence le parcours du graphique de dépendance pour cet alias le *ClientApp/démarrage-server.ts* fichier :
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 

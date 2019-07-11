@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/05/2019
 uid: test/loadtests
-ms.openlocfilehash: 3c21da6c799bc3080a1a16cb62ae4535b8890a1b
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 4b07dd1af7e0c1d3ce9baa167b69fd8f80df204a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724493"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815171"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>Le test de charge/contrainte ASP.NET Core
 
@@ -23,7 +23,7 @@ Test de charge et tests de contrainte sont importantes pour garantir qu'une appl
 
 Tests de contrainte déterminent si une application en situation de stress peut récupérer et normalement revenir au comportement attendu. En situation de stress, l’application n’est pas exécutée dans des conditions normales.
 
-Visual Studio 2019 est la dernière version de Visual Studio avec les fonctionnalités de test de charge. Pour les clients nécessitant à l’avenir des outils de test de charge, nous vous recommandons d’autres outils, tels que Apache JMeter, Akamai CloudTest et BlazeMeter. Pour plus d’informations, consultez le [Notes de publication de Visual Studio 2019](/visualstudio/releases/2019/release-notes#test-tools).
+Visual Studio 2019 est la dernière version de Visual Studio avec les fonctionnalités de test de charge. Pour les clients nécessitant à l’avenir des outils de test de charge, nous vous recommandons d’autres outils, tels que Apache JMeter, Akamai CloudTest et BlazeMeter. Pour plus d’informations, consultez le [Notes de publication de Visual Studio 2019](/visualstudio/releases/2019/release-notes-v16.0#test-tools).
 
 La tests de charge service dans Azure DevOps se termine dans 2020. Pour plus d’informations, consultez [nuage un test de charge principal de service de durée de vie](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/).
 
@@ -48,7 +48,7 @@ Le service prend en charge les formats de test suivants :
 * [Basé sur l’URL](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=vsts) &ndash; permet de spécifier des URL pour charger le test, les types de demandes, les en-têtes et les chaînes de requête. Exécuter la définition des paramètres tels que durée, modèle de charge et nombre d’utilisateurs peuvent être configurés.
 * [Apache JMeter](https://jmeter.apache.org/).
 
-## <a name="azure-portal"></a>portail Azure
+## <a name="azure-portal"></a>Portail Azure
 
 [Le portail Azure permet la configuration et l’exécution du test de charge des applications web](/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) directement à partir de la **performances** onglet d’App Service dans le portail Azure.
 
@@ -72,7 +72,7 @@ La liste suivante contient des outils de performances web tierces avec différen
 * [ApacheBench (ab)](https://httpd.apache.org/docs/2.4/programs/ab.html)
 * [Gatling](https://gatling.io/)
 * [Climats](https://locust.io/)
-* [Ouest du vent WebSurge](http://websurge.west-wind.com/)
+* [Ouest du vent WebSurge](https://websurge.west-wind.com/)
 * [Netling](https://github.com/hallatore/Netling)
 * [Vegeta](https://github.com/tsenart/vegeta)
 

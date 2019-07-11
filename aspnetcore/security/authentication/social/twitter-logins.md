@@ -4,14 +4,14 @@ author: rick-anderson
 description: Ce didacticiel montre l’intégration de l’authentification d’utilisateur de compte Twitter dans une application ASP.NET Core existante.
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/11/2019
+ms.date: 05/11/2019
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 486d58b600ca5326a0728de40bb386fbb9440f67
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: d816ed27898639b0af6896a51ac035d5526c5d29
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516881"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814069"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Twitter externe signe dans le programme d’installation avec ASP.NET Core
 
@@ -69,7 +69,7 @@ Vous êtes maintenant connecté à l’aide de vos informations d’identificati
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Résolution de problèmes
 
 * **ASP.NET Core 2.x uniquement :** Si l’identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, toute tentative authentifier entraîne *ArgumentException : L’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans cet exemple permet de s’assurer que cela est fait.
 * Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtiendrez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.

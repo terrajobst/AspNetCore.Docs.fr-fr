@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: fb6157205ab5280eb982a61e834eea5074864830
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: 056930f3c586153d13555bbb6036f46587e2352d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450954"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815088"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migrer d’ASP.NET Core 1.x vers la version 2.0
 
@@ -31,7 +31,7 @@ Consultez [Bien démarrer avec ASP.NET Core](xref:getting-started).
 
 ## <a name="update-target-framework-moniker-tfm"></a>Mettre à jour le Moniker du Framework cible
 
-Les projets ciblant .NET Core doivent utiliser le [Moniker du Framework cible](/dotnet/standard/frameworks#referring-to-frameworks) d’une version supérieure ou égale à .NET Core 2.0. Recherchez le nœud `<TargetFramework>` dans le fichier *.csproj* et remplacez son texte interne par `netcoreapp2.0` :
+Les projets ciblant .NET Core doivent utiliser le [Moniker du Framework cible](/dotnet/standard/frameworks) d’une version supérieure ou égale à .NET Core 2.0. Recherchez le nœud `<TargetFramework>` dans le fichier *.csproj* et remplacez son texte interne par `netcoreapp2.0` :
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
 

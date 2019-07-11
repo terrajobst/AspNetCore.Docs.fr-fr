@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d5d2da3dc0a8a452de97d98161d429389d2f7638
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893346"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815617"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
@@ -30,7 +30,7 @@ Utilisez l’intergiciel (middleware) de compression de réponse dans les cas su
 
 * Impossibilité d’utiliser les technologies de compression suivantes basées sur le serveur :
   * [Module de compression dynamique IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
-  * [Module Apache mod_deflate](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
+  * [Module Apache mod_deflate](https://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Décompression et compression Nginx](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Hébergement directement sur :
   * [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement appelé WebListener)
@@ -70,7 +70,7 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 
 ::: moniker-end
 
-Pour plus d’informations, consultez la [liste IANA officielle des encodages de contenu](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
+Pour plus d’informations, consultez la [liste IANA officielle des encodages de contenu](https://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
 L’intergiciel vous permet d’ajouter des fournisseurs de compression supplémentaires pour des valeurs d’en-tête `Accept-Encoding` personnalisées. Pour plus d’informations, consultez [Fournisseurs personnalisés](#custom-providers) ci-dessous.
 
@@ -146,7 +146,7 @@ public class Startup
 Remarques :
 
 * `app.UseResponseCompression` doit être appelé avant `app.UseMvc`.
-* Utiliser un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/) pour définir le `Accept-Encoding` en-tête de demande et d’étudier les en-têtes de réponse, la taille et le corps.
+* Utiliser un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/), ou [Postman](https://www.getpostman.com/) pour définir le `Accept-Encoding` en-tête de demande et d’étudier les en-têtes de réponse, la taille et le corps.
 
 Soumettez une requête à l’exemple d’application sans l’en-tête `Accept-Encoding` et observez que la réponse n’est pas compressée. Les en-têtes  `Content-Encoding` et `Vary` ne sont pas présents sur la réponse.
 
@@ -356,7 +356,7 @@ Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est sup
 
 Si vous avez une active IIS Compression Module dynamique configuré au niveau du serveur que vous souhaitez désactiver pour une application, désactiver le module avec un ajout à la *web.config* fichier. Pour plus d’informations, consultez [Désactivation de modules IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Résolution de problèmes
 
 Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/) ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes, la taille et le corps de la réponse. Par défaut, intergiciel de Compression des réponses compresse les réponses qui remplissent les conditions suivantes :
 
@@ -385,4 +385,4 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 * [Développeur de Mozilla réseau : Encodage](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
 * [RFC 7231 relative aux Section 3.1.2.1 : Contenu Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
 * [RFC 7230 Section 4.2.3 : Codage gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
-* [Version de spécification du format fichier GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)
+* [Version de spécification du format fichier GZIP 4.3](https://www.ietf.org/rfc/rfc1952.txt)

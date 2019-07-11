@@ -4,14 +4,14 @@ author: rick-anderson
 description: Conseils pour augmenter les performances dans les applications ASP.NET Core à l’aide du pool de threads.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 4/11/2019
+ms.date: 04/11/2019
 uid: performance/ObjectPool
-ms.openlocfilehash: 92106d5add7dbda36e451614429baa0db420f0e8
-ms.sourcegitcommit: bee530454ae2b3c25dc7ffebf93536f479a14460
+ms.openlocfilehash: 771f19e54a908b8b2cd85ff72f368f16e94a2310
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724833"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815521"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>Réutilisation d’un objet avec le pool de threads dans ASP.NET Core
 
@@ -42,7 +42,7 @@ Utiliser le pool d’objets uniquement après la collecte de données de perform
 
 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> -l’abstraction de pool d’objet de base. Utilisé pour obtenir et retourner des objets.
 
-<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601> -implémenter cela pour personnaliser la façon dont un objet est créé et comment il est *réinitialiser* lorsque retournée au pool. Cela peut être passé dans un pool d’objets que vous construisez directement... OU
+<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601> -implémenter cela pour personnaliser la façon dont un objet est créé et comment il est *réinitialiser* lorsque retournée au pool. Cela peut être passé dans un pool d’objets que vous construisez directement... Ou
 
 <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider.Create*> sert de fabrique pour la création de pools d’objet.
 <!-- REview, there is no ObjectPoolProvider<T> -->

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/05/2019
 uid: test/integration-tests
-ms.openlocfilehash: 3af2a1f7c6a65d7ff42597972ee151a50fc95fb6
-ms.sourcegitcommit: c716ea9155a6b404c1f3d3d34e2388454cd276d7
+ms.openlocfilehash: a4e22e53b4658a7c6da3c9e15671a355b212f559
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716366"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815369"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -184,7 +184,7 @@ Le `SendAsync` méthodes d’extension d’assistance (*Helpers/HttpClientExtens
   * Bouton d’envoi (`IHtmlElement`) et les valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
-> [AngleSharp](https://anglesharp.github.io/) est un tiers, l’analyse bibliothèque utilisé à des fins de démonstration dans cette rubrique et l’exemple d’application. AngleSharp n’est pas pris en charge ou requises pour les tests d’intégration des applications ASP.NET Core. Autres analyseurs peuvent être utilisées, telle que la [Html agilité Pack (HAP)](http://html-agility-pack.net/). Une autre approche consiste à écrire du code pour gérer la demande de jeton de vérification et le cookie anti-contrefaçon le système anti-contrefaçon directement.
+> [AngleSharp](https://anglesharp.github.io/) est un tiers, l’analyse bibliothèque utilisé à des fins de démonstration dans cette rubrique et l’exemple d’application. AngleSharp n’est pas pris en charge ou requises pour les tests d’intégration des applications ASP.NET Core. Autres analyseurs peuvent être utilisées, telle que la [Html agilité Pack (HAP)](https://html-agility-pack.net/). Une autre approche consiste à écrire du code pour gérer la demande de jeton de vérification et le cookie anti-contrefaçon le système anti-contrefaçon directement.
 
 ## <a name="customize-the-client-with-withwebhostbuilder"></a>Personnalisation du client avec WithWebHostBuilder
 
@@ -200,7 +200,7 @@ Car un autre test dans le `IndexPageTests` classe effectue une opération qui su
 
 Le tableau suivant présente la valeur par défaut [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) disponibles lors de la création `HttpClient` instances.
 
-| Option | Description | Par défaut |
+| Option | Description | Default |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit si `HttpClient` instances doivent suivre automatiquement les réponses de redirection. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Obtient ou définit l’adresse de base de `HttpClient` instances. | `http://localhost` |

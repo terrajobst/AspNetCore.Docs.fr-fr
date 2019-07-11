@@ -5,12 +5,12 @@ description: Découvrez les détails d’implémentation des en-têtes de contex
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 2b8fd594672bf623d38bfae90d05a984f92ce6a3
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 518423f5df93924d3df144994e4beb1755cd0bfc
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087564"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814015"
 ---
 # <a name="context-headers-in-aspnet-core"></a>En-têtes de contexte dans ASP.NET Core
 
@@ -48,11 +48,11 @@ L’en-tête de contexte se compose des éléments suivants :
 
 Dans l’idéal, nous pourrions passer des vecteurs de zéros pour K_E et K_H. Toutefois, nous souhaitons éviter les situations où l’algorithme sous-jacent vérifie l’existence de clés faibles avant d’effectuer des opérations (notamment DES et 3DES), ce qui empêche à l’aide d’un modèle simple ou répétable comme un vecteur de zéros.
 
-Au lieu de cela, nous utilisons NIST SP800-108 KDF en Mode de compteur (consultez [NIST SP800-108](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), s. 5.1) avec une clé de longueur nulle, étiquette, contexte et des HMACSHA512 comme le PRF sous-jacent. Nous dérivons | K_E | + | K_H | octets de sortie, puis décomposer le résultat K_E et K_H eux-mêmes. Point de vue mathématique, cela est représenté comme suit.
+Au lieu de cela, nous utilisons NIST SP800-108 KDF en Mode de compteur (consultez [NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf), s. 5.1) avec une clé de longueur nulle, étiquette, contexte et des HMACSHA512 comme le PRF sous-jacent. Nous dérivons | K_E | + | K_H | octets de sortie, puis décomposer le résultat K_E et K_H eux-mêmes. Point de vue mathématique, cela est représenté comme suit.
 
 (K_E || K_H) = SP800_108_CTR (prf = HMACSHA512, clé = « », étiquette = « », contexte = « »)
 
-### <a name="example-aes-192-cbc--hmacsha256"></a>Exemple : AES-192-CBC + HMACSHA256
+### <a name="example-aes-192-cbc--hmacsha256"></a>Exemple : AES-192-CBC + HMACSHA256
 
 Par exemple, prenons le cas où l’algorithme de chiffrement symétrique est AES-CBC-192 et l’algorithme de validation est HMACSHA256. Le système génère l’en-tête de contexte en procédant comme suit.
 
@@ -102,7 +102,7 @@ Cet en-tête de contexte est l’empreinte numérique de la paire d’algorithme
 > [!NOTE]
 > Le chiffrement en mode CBC + HMAC en-tête de contexte d’authentification est intégrée à la même façon, quel que soit l’indique si les implémentations d’algorithmes sont fournies par Windows CNG ou par des types managés de SymmetricAlgorithm et élément KeyedHashAlgorithm impossible. Ainsi, les applications qui s’exécutent sur différents systèmes d’exploitation générer de manière fiable le même en-tête de contexte même si les implémentations des algorithmes diffèrent entre les systèmes d’exploitation. (Dans la pratique, l’élément KeyedHashAlgorithm impossible ne doit être un code HMAC approprié. Il peut être n’importe quel type d’algorithme de hachage à clé.)
 
-### <a name="example-3des-192-cbc--hmacsha1"></a>Exemple : 3DES-192-CBC + HMACSHA1
+### <a name="example-3des-192-cbc--hmacsha1"></a>Exemple : 3DES-192-CBC + HMACSHA1
 
 Commençons (K_E || K_H) = SP800_108_CTR (prf = HMACSHA512, clé = « », étiquette = « », contexte = « »), où | K_E | = 192 bits et | K_H | = 160 bits par les algorithmes spécifiés. Cela conduit à K_E = A219... E2BB et K_H = DC4A... B464 dans l’exemple ci-dessous :
 
@@ -164,7 +164,7 @@ K_E est dérivée à l’aide du même mécanisme que dans le chiffrement CBC + 
 
 K_E = SP800_108_CTR (prf = HMACSHA512, clé = « », étiquette = « », contexte = « »)
 
-### <a name="example-aes-256-gcm"></a>Exemple : AES-256-GCM
+### <a name="example-aes-256-gcm"></a>Exemple : AES-256-GCM
 
 Tout d’abord, laisser K_E = SP800_108_CTR (prf = HMACSHA512, clé = « », étiquette = « », contexte = « »), où | K_E | = 256 bits.
 

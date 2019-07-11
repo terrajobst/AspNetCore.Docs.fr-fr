@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: 7f048f2f95f1a51a0b6ce3d36665420ff28ec26f
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: e9dffe8bce502e48a09af04ea0be9952a68aa46f
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208471"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815455"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migrer d’ASP.NET vers ASP.NET Core 2.0
 
@@ -60,7 +60,7 @@ ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une applic
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](http://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax*. Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
+Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](https://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax*. Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -72,7 +72,7 @@ ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour 
 
 `Startup` doit inclure une méthode `Configure`. Dans `Configure`, ajoutez l’intergiciel (middleware) nécessaire au pipeline. Dans l’exemple suivant (provenant du modèle de site web par défaut), plusieurs méthodes d’extension permettent de configurer le pipeline pour une prise en charge des éléments ci-dessous :
 
-* [BrowserLink](http://vswebessentials.com/features/browserlink)
+* [BrowserLink](https://vswebessentials.com/features/browserlink)
 * Pages d’erreur
 * Fichiers statiques
 * ASP.NET Core MVC
@@ -147,7 +147,7 @@ Une partie importante du développement web réside dans la capacité de traitem
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
 
-Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web » (*&lt;racine du contenu&gt;/wwwroot*), sauf si la configuration est différente. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
+Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web » ( *&lt;racine du contenu&gt;/wwwroot*), sauf si la configuration est différente. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 

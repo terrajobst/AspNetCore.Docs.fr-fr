@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: signalr/configuration
-ms.openlocfilehash: 662565e537fa0eb13ed80e558949740739a63558
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
+ms.openlocfilehash: 8c9fcaecb04555718f5da6a42a8e56c258e795af
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67500383"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813452"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
 
@@ -144,9 +144,9 @@ Le tableau suivant décrit les options de configuration des options de HTTP d’
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ApplicationMaxBufferSize` | 32 KO | Le nombre maximal d’octets reçus à partir du client qui les mémoires tampons de serveur. Augmentation de cette valeur permet au serveur recevoir des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
+| `ApplicationMaxBufferSize` | 32 Ko | Le nombre maximal d’octets reçus à partir du client qui les mémoires tampons de serveur. Augmentation de cette valeur permet au serveur recevoir des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
 | `AuthorizationData` | Données collectées à partir de la `Authorize` attributs appliqués à la classe de concentrateur. | Une liste de [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) objets utilisés pour déterminer si un client est autorisé à se connecter au concentrateur. |
-| `TransportMaxBufferSize` | 32 KO | Le nombre maximal d’octets envoyés par l’application que le serveur met en mémoire tampon. L'augmentation de cette valeur permet au serveur d’envoyer des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
+| `TransportMaxBufferSize` | 32 Ko | Le nombre maximal d’octets envoyés par l’application que le serveur met en mémoire tampon. L'augmentation de cette valeur permet au serveur d’envoyer des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
 | `Transports` | Tous les Transports sont activés. | Masque de bits de `HttpTransportType` valeurs qui restreignent les transports, un client peut utiliser pour se connecter. |
 | `LongPolling` | Voir ci-dessous. | Options supplémentaires spécifiques au transport d’interrogation longue. |
 | `WebSockets` | Voir ci-dessous. | Options supplémentaires spécifiques au transport WebSocket. |
@@ -168,7 +168,7 @@ Le transport WebSocket propose des options supplémentaires qui peuvent être co
 
 Options du client peuvent être configurées sur le `HubConnectionBuilder` type (disponible dans les clients .NET et JavaScript). Il est également disponible dans le client Java, mais le `HttpHubConnectionBuilder` sous-classe est ce que contient les options de configuration Générateur de rapports, ainsi que dans le `HubConnection` lui-même.
 
-### <a name="configure-logging"></a>Configurer la journalisation
+### <a name="configure-logging"></a>Configuration de la journalisation
 
 La journalisation est configurée dans le Client .NET à l’aide de la `ConfigureLogging` (méthode). Enregistrement des fournisseurs et les filtres peut être inscrits dans la même façon qu’ils se trouvent sur le serveur. Consultez le [journalisation dans ASP.NET Core](xref:fundamentals/logging/index) documentation pour plus d’informations.
 
@@ -313,7 +313,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une fabrique de jeton d’accès à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique\<chaîne >](http://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
+Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une fabrique de jeton d’accès à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique\<chaîne >](https://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")

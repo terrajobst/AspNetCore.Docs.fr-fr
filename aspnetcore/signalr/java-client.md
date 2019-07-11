@@ -7,12 +7,12 @@ ms.author: mimengis
 ms.custom: mvc
 ms.date: 06/27/2019
 uid: signalr/java-client
-ms.openlocfilehash: eea1dfb7d8afcd34c0dacd8315ad196d7235c9f7
-ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
+ms.openlocfilehash: ea0abbaee81222493ff02e1f3bba13ed1e494bf5
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463268"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814981"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>Client ASP.NET Core SignalR Java
 
@@ -86,7 +86,7 @@ En ce qui concerne la compatibilité du Kit Android SDK pour les fonctionnalité
 
 ## <a name="configure-bearer-token-authentication"></a>Configurer l’authentification du jeton du porteur
 
-Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une « fabrique jeton accès » à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique\<chaîne >](http://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
+Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une « fabrique jeton accès » à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique\<chaîne >](https://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
@@ -96,7 +96,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
     })).build();
 ```
 
-## <a name="known-limitations"></a>Limitations connues
+## <a name="known-limitations"></a>Limites connues
 
 ::: moniker range=">= aspnetcore-3.0"
 

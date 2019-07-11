@@ -5,12 +5,12 @@ description: En savoir plus sur Cross-Site Scripting (XSS) et les techniques pou
 ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1e9e988be68313cfd493832519c1be89335d6e48
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895346"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815209"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 
@@ -57,7 +57,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 ## <a name="javascript-encoding-using-razor"></a>Encodage de JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Pour insérer des valeurs, la plus sûre consiste à placer la valeur dans un attribut de données d’une balise et récupérez-la dans votre code JavaScript. Exemple :
+Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Pour insérer des valeurs, la plus sûre consiste à placer la valeur dans un attribut de données d’une balise et récupérez-la dans votre code JavaScript. Par exemple :
 
 ```cshtml
 @{
@@ -166,7 +166,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>Codage des paramètres d’URL
 
-Si vous souhaitez générer une chaîne de requête URL avec une entrée non approuvée en tant que valeur, utilisez la classe `UrlEncoder` pour encoder la valeur. Par exemple :
+Si vous souhaitez générer une chaîne de requête URL avec une entrée non approuvée en tant que valeur, utilisez la classe `UrlEncoder` pour encoder la valeur. Par exemple,
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";
@@ -214,7 +214,7 @@ Cet exemple étend la liste sécurisée pour inclure la plage Unicode CjkUnified
 <p>This link text is in Chinese: <a href="/">汉语/漢語</a></p>
    ```
 
-Plages de la liste verte sont spécifiés sous forme de graphiques de code Unicode, pas les langues. Le [norme Unicode](http://unicode.org/) possède une liste de [code graphiques](http://www.unicode.org/charts/index.html) vous pouvez utiliser pour rechercher le graphique contenant vos caractères. Chaque encodeur, Html, JavaScript et Url, doit être configuré séparément.
+Plages de la liste verte sont spécifiés sous forme de graphiques de code Unicode, pas les langues. Le [norme Unicode](https://unicode.org/) possède une liste de [code graphiques](https://www.unicode.org/charts/index.html) vous pouvez utiliser pour rechercher le graphique contenant vos caractères. Chaque encodeur, Html, JavaScript et Url, doit être configuré séparément.
 
 > [!NOTE]
 > La personnalisation de la liste n’affecte que les encodeurs provenant de DI. Si vous accédez directement à un encodeur via `System.Text.Encodings.Web.*Encoder.Default` ealors seule la liste fiable par défaut, Basic Latin sera utilisée.

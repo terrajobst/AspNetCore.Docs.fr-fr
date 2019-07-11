@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: c3ec67d9f5c2b8eb44b5ced911ccfd0fa40a52a7
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 6254a74fd0a11669706a2a89b156a3223e300d1c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152769"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813507"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et minimiser les ressources statiques dans ASP.NET Core
 
@@ -86,7 +86,7 @@ Le *bundleconfig.json* fichier définit les options pour chaque regroupement. Da
 Options de configuration sont les suivantes :
 
 * `outputFileName`: Le nom de fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **required**
-* `inputFiles`: Un tableau de fichiers à regrouper. Il s’agit des chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide résulte en un fichier de sortie vide. [utilisation des caractères génériques](http://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
+* `inputFiles`: Un tableau de fichiers à regrouper. Il s’agit des chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide résulte en un fichier de sortie vide. [utilisation des caractères génériques](https://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
 * `minify`: Les options de minimisation pour le type de sortie. **optional**, *default - `minify: { enabled: true }`*
   * Options de configuration sont disponibles par type de fichier de sortie.
     * [Minimisation CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)

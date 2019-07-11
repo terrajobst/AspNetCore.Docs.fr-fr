@@ -5,12 +5,12 @@ description: Recevoir des conseils de migration d’applications ASP.NET MVC ou 
 ms.author: scaddie
 ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 7b6aec621efa5e1400fcfd4396a2322733113ec1
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9c97b9c0f13a265ab5c90225dcd5a581a1272701
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882904"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815463"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migrer d’ASP.NET vers ASP.NET Core
 
@@ -54,7 +54,7 @@ ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une applic
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
-Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](http://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax*. Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
+Cette approche couple l’application au serveur sur lequel elle est déployée d’une manière qui interfère avec l’implémentation. Pour y remédier, [OWIN](https://owin.org/) a donc été introduit afin d’optimiser l’utilisation de plusieurs frameworks à la fois. OWIN fournit un pipeline qui permet d’ajouter uniquement les modules nécessaires. L’environnement d’hébergement utilise une fonction [Startup](xref:fundamentals/startup) pour configurer les services et le pipeline de requêtes de l’application. `Startup` inscrit un ensemble d’intergiciels (middleware) auprès de l’application. Pour chaque requête, l’application appelle chacun des composants intergiciels (middleware) à l’aide du pointeur d’en-tête d’une liste liée à un ensemble existant de gestionnaires. Chaque composant intergiciel (middleware) peut ajouter un ou plusieurs gestionnaires au pipeline de traitement des requêtes. Pour ce faire, une référence doit être retournée au gestionnaire qui représente le nouvel en-tête de la liste. Chaque gestionnaire doit mémoriser et appeler le prochain gestionnaire de la liste. Avec ASP.NET Core, comme le point d’entrée d’une application est `Startup`, vous n’avez plus de dépendance relative à *Global.asax*. Quand vous employez OWIN avec le .NET Framework, utilisez l’exemple de code suivant en tant que pipeline :
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
@@ -143,7 +143,7 @@ Une partie importante du développement web réside dans la capacité de traitem
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
 
-Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web » (*&lt;racine du contenu&gt;/wwwroot*), sauf si la configuration est différente. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
+Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web » ( *&lt;racine du contenu&gt;/wwwroot*), sauf si la configuration est différente. Les fichiers sont chargés dans le pipeline de requêtes via l’appel de la méthode d’extension `UseStaticFiles` à partir de `Startup.Configure` :
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 

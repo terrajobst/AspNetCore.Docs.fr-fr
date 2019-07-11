@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: d0494b96447ad2b256acbde7748209ff430ae7c1
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: ebfb405516d968bf5d5b8cff956a9892457027f2
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610186"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813458"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Utiliser LibMan avec ASP.NET Core dans Visual Studio
 
@@ -28,7 +28,7 @@ Visual Studio propose une prise en charge intégrée pour [LibMan](xref:client-s
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la **ASP.NET et développement web** charge de travail
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **ASP.NET et développement web**
 
 ## <a name="add-library-files"></a>Ajouter des fichiers de bibliothèque
 
@@ -69,7 +69,7 @@ Suivez ces étapes pour installer une bibliothèque côté client :
   |*Pages* dossier de projet                 |*Pages/jquery /*       |
 
 * Cliquez sur le **installer** bouton pour télécharger les fichiers, par la configuration dans *libman.json*.
-* Examinez le **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre pour les détails de l’installation. Exemple :
+* Examinez le **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre pour les détails de l’installation. Par exemple :
 
   ```console
   Restore operation started...
@@ -94,13 +94,13 @@ Pour ouvrir *libman.json* pour la modification, les options suivantes existent 
 
 **&#8224;** Si le *libman.json* fichier n’existe pas déjà dans la racine du projet, il sera créé avec le contenu de modèle d’élément par défaut.
 
-Visual Studio propose un riche JSON édition prise en charge telles que la colorisation, de mise en forme, IntelliSense et la validation de schéma. Schéma JSON du manifeste de LibMan se trouve à [ http://json.schemastore.org/libman ](http://json.schemastore.org/libman).
+Visual Studio propose un riche JSON édition prise en charge telles que la colorisation, de mise en forme, IntelliSense et la validation de schéma. Schéma JSON du manifeste de LibMan se trouve à [ https://json.schemastore.org/libman ](https://json.schemastore.org/libman).
 
 Le fichier de manifeste suivantes, LibMan récupère les fichiers par la configuration définie dans le `libraries` propriété. Une explication des littéraux d’objet défini dans `libraries` suit :
 
 * Un sous-ensemble de [jQuery](https://jquery.com/) version 3.3.1 est récupérée à partir du fournisseur CDNJS. Le sous-ensemble est défini dans le `files` propriété&mdash;*jquery.min.js*, *jquery.js*, et *jquery.min.map*. Les fichiers sont placés dans le projet *wwwroot/lib/jquery* dossier.
 * L’intégralité de [Bootstrap](https://getbootstrap.com/) version 4.1.3 est récupérée et placée dans un *wwwroot/lib/bootstrap* dossier. Le littéral d’objet `provider` substitutions de propriété le `defaultProvider` valeur de propriété. LibMan récupère les fichiers d’amorçage à partir du fournisseur unpkg.
-* Un sous-ensemble de [Lodash](https://lodash.com/) a été approuvée par un corps de la gouvernant au sein de l’organisation. Le *lodash.js* et *lodash.min.js* fichiers sont récupérés sur le système de fichiers local à *C:\\temp\\lodash\\*. Les fichiers sont copiés dans le projet *wwwroot/lib/lodash* dossier.
+* Un sous-ensemble de [Lodash](https://lodash.com/) a été approuvée par un corps de la gouvernant au sein de l’organisation. Le *lodash.js* et *lodash.min.js* fichiers sont récupérés sur le système de fichiers local à *C:\\temp\\lodash\\* . Les fichiers sont copiés dans le projet *wwwroot/lib/lodash* dossier.
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -160,7 +160,7 @@ Pour restaurer manuellement les fichiers de bibliothèque :
 Pendant l’exécution de l’opération de restauration :
 
 * L’icône d’état de tâche Center (TSC) sur la barre d’état Visual Studio sera animée et lira *démarrée l’opération de restauration*. En cliquant sur l’icône, une info-bulle indiquant les tâches en arrière-plan connus s’ouvre.
-* Messages seront envoyés à la barre d’état et la **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre. Exemple :
+* Messages seront envoyés à la barre d’état et la **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre. Par exemple :
 
   ```console
   Restore operation started...
@@ -185,7 +185,7 @@ Pour empêcher la suppression involontaire de fichiers non bibliothèque, l’op
 Pendant l’exécution de l’opération de nettoyage :
 
 * Sur la barre d’état Visual Studio, l’icône TSC sera animée et lira *Démarrer de l’opération de bibliothèques de Client*. En cliquant sur l’icône, une info-bulle indiquant les tâches en arrière-plan connus s’ouvre.
-* La barre d’état sont envoyés et le **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre. Exemple :
+* La barre d’état sont envoyés et le **Gestionnaire de bibliothèque** du flux de la **sortie** fenêtre. Par exemple :
 
 ```console
 Clean libraries operation started...
@@ -201,7 +201,7 @@ Pour désinstaller les fichiers de bibliothèque :
 
 * Ouvrez *libman.json*.
 * Positionner le signe insertion à l’intérieur de le correspondantes `libraries` littéral d’objet.
-* Cliquez sur l’icône d’ampoule qui apparaît dans la marge de gauche, puis sélectionnez **désinstallation \<library_name > @\<library_version >**:
+* Cliquez sur l’icône d’ampoule qui apparaît dans la marge de gauche, puis sélectionnez **désinstallation \<library_name > @\<library_version >** :
 
   ![Désinstaller l’option de menu contextuel de bibliothèque](_static/uninstall-menu-option.png)
 

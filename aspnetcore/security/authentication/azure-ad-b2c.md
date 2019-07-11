@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc
 ms.date: 02/27/2019
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 3cb878aff7bf0c6c8efe7f3f0c0f06c74acef477
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: 54117bf0dd45305d060eef5fecfb98ed45f8ecdb
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538731"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815304"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification cloud avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -43,7 +43,7 @@ Créer un locataire Azure Active Directory B2C [comme décrit dans la documentat
 
 ## <a name="register-the-app-in-azure-ad-b2c"></a>Inscrire l’application dans Azure AD B2C
 
-Dans le locataire Azure AD B2C nouvellement créé, inscrivez votre application en utilisant [les étapes décrites dans la documentation](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app) sous le **inscrire une application web** section. Arrêter à la **créer un secret de client d’application web** section. Une clé secrète client n’est pas nécessaire pour ce didacticiel. 
+Dans le locataire Azure AD B2C nouvellement créé, inscrivez votre application en utilisant [les étapes décrites dans la documentation](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application) sous le **inscrire une application web** section. Arrêter à la **créer un secret de client d’application web** section. Une clé secrète client n’est pas nécessaire pour ce didacticiel. 
 
 Utilisez les valeurs suivantes :
 
@@ -57,7 +57,7 @@ Utilisez les valeurs suivantes :
 | **Inclure le client natif**     | Non                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
-> Si la configuration d’une URL de réponse non localhost, vous devez connaître le [contraintes sur ce qui est autorisé dans la liste des URL de réponse](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url). 
+> Si la configuration d’une URL de réponse non localhost, vous devez connaître le [contraintes sur ce qui est autorisé dans la liste des URL de réponse](/azure/active-directory-b2c/tutorial-register-applications#register-a-web-application). 
 
 Une fois que l’application est inscrite, la liste des applications dans le client s’affiche. Sélectionnez l’application que vous venez d’inscrire. Sélectionnez le **copie** icône à droite de la **ID d’Application** champ pour le copier dans le Presse-papiers.
 
@@ -101,7 +101,7 @@ Revenez à la fenêtre de navigateur avec les propriétés de l’application B2
 
 ## <a name="configure-policies"></a>Configurer des stratégies
 
-Utilisez les étapes de la documentation d’Azure AD B2C pour [créer une stratégie d’inscription ou connexion](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy), puis [créer une stratégie de réinitialisation de mot de passe](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy). Utilisez les exemples de valeurs fournies dans la documentation pour **fournisseurs d’identité**, **attributs d’inscription**, et **des revendications d’Application**. À l’aide de la **exécuter maintenant** bouton pour tester les stratégies, comme décrit dans la documentation est facultatif.
+Utilisez les étapes de la documentation d’Azure AD B2C pour [créer une stratégie d’inscription ou connexion](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions), puis [créer une stratégie de réinitialisation de mot de passe](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions). Utilisez les exemples de valeurs fournies dans la documentation pour **fournisseurs d’identité**, **attributs d’inscription**, et **des revendications d’Application**. À l’aide de la **exécuter maintenant** bouton pour tester les stratégies, comme décrit dans la documentation est facultatif.
 
 > [!WARNING]
 > Vérifiez les noms de stratégie sont exactement comme décrit dans la documentation, car ces stratégies ont été utilisées dans le **modifier l’authentification** boîte de dialogue dans Visual Studio. Les noms de stratégie peuvent être vérifiés dans *appsettings.json*.
@@ -130,7 +130,7 @@ services.Configure<JwtBearerOptions>(
     });
 ```
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 Dans Visual Studio, appuyez sur **F5** pour générer et exécuter l’application. Une fois l’application web démarre, sélectionnez **Accept** à accepter l’utilisation de cookies (si vous y êtes invité), puis sélectionnez **connectez-vous**.
 
@@ -142,11 +142,11 @@ Le navigateur le redirige vers le locataire Azure AD B2C. Connectez-vous avec un
 
 Après vous être connecté avec succès, le navigateur le redirige vers l’application web.
 
-![Opération réussie](./azure-ad-b2c/_static/success.png)
+![Succès](./azure-ad-b2c/_static/success.png)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris à :
+Dans ce tutoriel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un locataire Azure Active Directory B2C
