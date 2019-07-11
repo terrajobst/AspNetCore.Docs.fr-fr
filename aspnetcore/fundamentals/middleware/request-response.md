@@ -7,12 +7,12 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 02/26/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: 0c321dad256e239b61907980c09d2c088c1407ff
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
+ms.openlocfilehash: c9f6509738ef6290666a58268fbb0584913db9d6
+ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538573"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67649229"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Opérations de demande et de réponse dans ASP.NET Core
 
@@ -26,7 +26,7 @@ Nous recommandons d’utiliser des pipelines plutôt que des flux. Les flux peuv
 
 - `FormReader`
 - `TextReader`
-- `TexWriter`
+- `TextWriter`
 - `HttpResponse.WriteAsync`
 
 Les flux ne sont pas amenée à disparaître. Ils continuent à être utilisés dans .NET et de nombreux types de flux n’ont d’équivalents en termes de canal, comme `FileStreams` et `ResponseCompression`.
