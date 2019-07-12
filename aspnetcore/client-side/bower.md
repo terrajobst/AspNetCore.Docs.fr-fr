@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 08e6daa537c6c6f92a1cf80d70745e8ef606f580
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1292b75bdfe1cea56d9c8bc282b0dd90fc945a33
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892996"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813529"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
@@ -20,11 +20,11 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://twitter
 > [!IMPORTANT]
 > Tandis que Bower est conservé, son chargés de maintenance vous recommandons d’utiliser une autre solution. [Gestionnaire de bibliothèque](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan en abrégé) est outil de Visual Studio nouvelle bibliothèque côté client acquisition (Visual Studio 15,8 ou version ultérieure). Pour plus d'informations, consultez <xref:client-side/libman/index>. Bower est pris en charge dans Visual Studio jusqu'à la version 15.5.
 >
->  L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
+> L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
 
-[Bower](https://bower.io/) se définit lui-même comme "Un gestionnaire de paquets pour le web". Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité d'inclure des fichiers de contenu statique avec NuGet. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme[jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours le gestionnaire de package [NuGet](https://www.nuget.org/)
+[Bower](https://bower.io/) se définit lui-même comme "Un gestionnaire de paquets pour le web". Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité d'inclure des fichiers de contenu statique avec NuGet. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme[jQuery](https://jquery.com/) et [Bootstrap](https://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours le gestionnaire de package [NuGet](https://www.nuget.org/)
 
-Les nouveaux projets créés avec les modèles de projet ASP.NET Core sont configurés avec la génération côté client. [jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/) sont installés, et Bower est pris en charge.
+Les nouveaux projets créés avec les modèles de projet ASP.NET Core sont configurés avec la génération côté client. [jQuery](https://jquery.com/) et [Bootstrap](https://getbootstrap.com/) sont installés, et Bower est pris en charge.
 
 Les packages côté client sont répertoriés dans le fichier *bower.json*. Les modèles de projet ASP.NET Core configurent *bower.json* avec jQuery, la validation jQuery et Bootstrap.
 
@@ -32,7 +32,7 @@ Dans ce didacticiel, nous allons ajouter la prise en charge de [Font Awesome](ht
 
 ### <a name="installation-via-manage-bower-packages-ui"></a>Installation par le biais de gérer les Packages Bower l’interface utilisateur
 
-* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez **Application Web** et **Aucune authentification**.
+* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)** . Sélectionnez **Application Web** et **Aucune authentification**.
 
 * Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **Gérer les packages Bower** (ou dans le menu principal, **Projet** > **Gérer les packages Bower**).
 
@@ -44,13 +44,13 @@ Dans ce didacticiel, nous allons ajouter la prise en charge de [Font Awesome](ht
 
 ### <a name="manual-installation-in-bowerjson"></a>Installation manuelle de bower.json
 
-Ouvrez le fichier *bower.json* et ajoutez "Font Awesome" aux dépendances.  IntelliSense affiche les packages disponibles.  Lorsqu’un package est sélectionné, les versions disponibles sont affichées.   Les images ci-dessous sont plus anciennes et ne correspondent pas à ce que vous voyez.
+Ouvrez le fichier *bower.json* et ajoutez "Font Awesome" aux dépendances. IntelliSense affiche les packages disponibles. Lorsqu’un package est sélectionné, les versions disponibles sont affichées. Les images ci-dessous sont plus anciennes et ne correspondent pas à ce que vous voyez.
 
 ![IntelliSense de l’Explorateur de package bower](bower/_static/add-package.png)
 
 ![version de bower IntelliSense](bower/_static/version-intelliSense.png)
 
-Bower utilise le [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances.  les dépendances.  Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole de signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
+Bower utilise le [contrôle de version sémantique](https://semver.org/) pour organiser les dépendances.  les dépendances. Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole de signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
 
 Enregistrez le fichier *bower.json*. Visual Studio surveille les modifications du fichier *bower.json*. Après l’enregistrement, la commande *bower install* est exécutée. Consultez la fenêtre de sortie et la vue**Bower/npm** pour la commande exacte exécutée.
 
@@ -89,7 +89,7 @@ Les étapes globales à utiliser pour le processus de génération côté client
 
 Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studio télécharge les paquets. L’exemple suivant utilise Bower pour charger jQuery et Bootstrap dans le dossier *wwwroot*.
 
-* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez le modèle de projet **vide** et cliquez sur **OK**.
+* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)** . Sélectionnez le modèle de projet **vide** et cliquez sur **OK**.
 
 * Dans l’Explorateur de solutions, cliquez sur le projet > **Ajouter un nouvel élément** et sélectionnez **Fichier de configuration Bower**. Remarque : Un *.bowerrc* fichier est également ajouté.
 
