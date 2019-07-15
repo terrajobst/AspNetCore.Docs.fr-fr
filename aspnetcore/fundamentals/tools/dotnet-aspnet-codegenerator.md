@@ -1,16 +1,17 @@
 ---
 title: commande dotnet aspnet-codegenerator
 author: rick-anderson
+description: La commande dotnet aspnet-codegenerator structure des projets ASP.NET Core.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-description: La commande dotnet aspnet-codegenerator structure des projets ASP.NET Core
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 55b592d9d203970777c84438e210519957abb35d
-ms.sourcegitcommit: f6e6730872a7d6f039f97d1df762f0d0bd5e34cf
+ms.openlocfilehash: c96362f320efd84c35dc07294a2968a2c687ee94
+ms.sourcegitcommit: b9e914ef274b5ec359582f299724af6234dce135
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561682"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67596139"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -18,20 +19,20 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 `dotnet aspnet-codegenerator` - Exécute le moteur de génération de modèles automatique ASP.NET Core. `dotnet aspnet-codegenerator` est uniquement requis pour générer automatiquement des modèles à partir de la ligne de commande, il n’est pas nécessaire d’utiliser la génération de modèles automatique avec Visual Studio.
 
-Cet article s’applique à : [SDK .NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2) et versions ultérieures.
+Cet article s’applique au [SDK .NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.1) et ultérieur.
 
 ## <a name="installing-aspnet-codegenerator"></a>Installation d’aspnet-codegenerator
 
-`aspnet-codegenerator` est un [outil global](/dotnet/core/tools/global-tools) qui doit être installé. La commande suivante installe la dernière version stable de l’outil `aspnet-codegenerator` :
+`dotnet-aspnet-codegenerator` est un [outil global](/dotnet/core/tools/global-tools) qui doit être installé. La commande suivante installe la dernière version stable de l’outil `dotnet-aspnet-codegenerator` :
 
 ```console
-dotnet tool install -g aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-La commande suivante met à jour `aspnet-codegenerator` vers la dernière version stable disponible à partir du SDK .NET Core installé :
+La commande suivante met à jour `dotnet-aspnet-codegenerator` vers la dernière version stable disponible à partir du SDK .NET Core installé :
 
 ```console
-dotnet tool update -g aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
 ## <a name="synopsis"></a>Résumé
@@ -43,7 +44,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ## <a name="description"></a>Description
 
-La commande globale `dotnet aspnet-codegenerator ` exécute le générateur de code ASP.NET Core et le moteur de génération de modèles automatique.
+La commande globale `dotnet aspnet-codegenerator` exécute le générateur de code ASP.NET Core et le moteur de génération de modèles automatique.
 
 ## <a name="arguments"></a>Arguments
 
