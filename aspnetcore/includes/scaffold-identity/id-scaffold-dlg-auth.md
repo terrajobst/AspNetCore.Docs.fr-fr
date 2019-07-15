@@ -44,7 +44,7 @@ Dans le dossier du projet, exécutez le Générateur de modèles automatique ide
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez PowerShell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Exemple :
+PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez PowerShell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Par exemple :
 
 ```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
