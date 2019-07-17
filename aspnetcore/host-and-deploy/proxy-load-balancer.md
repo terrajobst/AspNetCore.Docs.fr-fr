@@ -5,14 +5,14 @@ description: Découvrez la configuration des applications hébergées derrière 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/11/2019
+ms.date: 07/12/2019
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: ab48d80c9cb1c09b5164ed732e76a59687683e97
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: 4f04e6cae120ee88734855252542e2bfc2f194a0
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034733"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67856167"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
@@ -123,12 +123,12 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 | Option | Description |
 | ------ | ----------- |
-| AllowedHosts | Limite les hôtes par l’en-tête `X-Forwarded-Host` aux valeurs fournies.<ul><li>Les valeurs sont comparées à l’aide de l’option ordinal-ignore-case.</li><li>Les numéros de port doivent être exclus.</li><li>Si la liste est vide, tous les hôtes sont autorisés.</li><li>Un caractère générique de niveau supérieur `*` autorise tous les hôtes non vides.</li><li>Les caractères génériques de sous-domaine sont autorisés, mais ne correspondent pas au domaine racine. Par exemple, `*.contoso.com` correspond au sous-domaine `foo.contoso.com`, mais pas au domaine racine `contoso.com`.</li><li>Les noms d’hôte Unicode sont autorisés, mais sont convertis en [Punycode](https://tools.ietf.org/html/rfc3492) à des fins de correspondance.</li><li>Les [adresses IPv6](https://tools.ietf.org/html/rfc4291) doivent inclure des crochets de délimitation et adopter une [forme conventionnelle](https://tools.ietf.org/html/rfc4291#section-2.2) (par exemple, `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`). Les adresses IPv6 ne sont pas les seules à rechercher une égalité logique entre différents formats, et aucune canonicalisation n’est effectuée.</li><li>La non-restriction des hôtes autorisés peut permettre à un attaquant d’usurper les liens générés par le service.</li></ul>La valeur par défaut est un `IList<string>` vide. |
+| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> | Limite les hôtes par l’en-tête `X-Forwarded-Host` aux valeurs fournies.<ul><li>Les valeurs sont comparées à l’aide de l’option ordinal-ignore-case.</li><li>Les numéros de port doivent être exclus.</li><li>Si la liste est vide, tous les hôtes sont autorisés.</li><li>Un caractère générique de niveau supérieur `*` autorise tous les hôtes non vides.</li><li>Les caractères génériques de sous-domaine sont autorisés, mais ne correspondent pas au domaine racine. Par exemple, `*.contoso.com` correspond au sous-domaine `foo.contoso.com`, mais pas au domaine racine `contoso.com`.</li><li>Les noms d’hôte Unicode sont autorisés, mais sont convertis en [Punycode](https://tools.ietf.org/html/rfc3492) à des fins de correspondance.</li><li>Les [adresses IPv6](https://tools.ietf.org/html/rfc4291) doivent inclure des crochets de délimitation et adopter une [forme conventionnelle](https://tools.ietf.org/html/rfc4291#section-2.2) (par exemple, `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`). Les adresses IPv6 ne sont pas les seules à rechercher une égalité logique entre différents formats, et aucune canonicalisation n’est effectuée.</li><li>La non-restriction des hôtes autorisés peut permettre à un attaquant d’usurper les liens générés par le service.</li></ul>La valeur par défaut est un `IList<string>` vide. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedForHeaderName> | Utilisez l’en-tête spécifié par cette propriété à la place de celui spécifié par [ForwardedHeadersDefaults.XForwardedForHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedForHeaderName). Cette option est utilisée quand le proxy/redirecteur utilise un en-tête autre que l’en-tête `X-Forwarded-For` pour transférer les informations.<br><br>La valeur par défaut est `X-Forwarded-For`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedHeaders> | Identifie les redirecteurs à traiter. Consultez [l’énumération ForwardedHeaders](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders) pour obtenir la liste des champs qui s’appliquent. Les valeurs standard affectées à cette propriété sont « ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto ».<br><br>La valeur par défaut est [ForwardedHeaders.None](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders). |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedHostHeaderName> | Utilisez l’en-tête spécifié par cette propriété à la place de celui spécifié par [ForwardedHeadersDefaults.XForwardedHostHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedHostHeaderName). Cette option est utilisée quand le proxy/redirecteur utilise un en-tête autre que l’en-tête `X-Forwarded-Host` pour transférer les informations.<br><br>La valeur par défaut est `X-Forwarded-Host`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedProtoHeaderName> | Utilisez l’en-tête spécifié par cette propriété à la place de celui spécifié par [ForwardedHeadersDefaults.XForwardedProtoHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedProtoHeaderName). Cette option est utilisée quand le proxy/redirecteur utilise un en-tête autre que l’en-tête `X-Forwarded-Proto` pour transférer les informations.<br><br>La valeur par défaut est `X-Forwarded-Proto`. |
-| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardLimit> | Limite le nombre d’entrées dans les en-têtes qui sont traités. Définissez cette option sur `null` pour désactiver la limite, mais seulement si `KnownProxies` ou `KnownNetworks` sont configurés.<br><br>La valeur par défaut est 1. |
+| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardLimit> | Limite le nombre d’entrées dans les en-têtes qui sont traités. Définissez cette option sur `null` pour désactiver la limite, mais seulement si `KnownProxies` ou `KnownNetworks` sont configurés. Définir une valeur non `null` est une précaution (mais pas une garantie) pour vous prémunir contre les proxys mal configurés et les requêtes malveillantes provenant de canaux latéraux sur le réseau.<br><br>Le middleware des en-têtes transférés traite les en-têtes dans l’ordre inverse de droite à gauche. Si la valeur par défaut (`1`) est utilisée, seule la valeur la plus à droite dans les en-têtes est traitée, sauf si la valeur de `ForwardLimit` est augmentée.<br><br>La valeur par défaut est `1`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks> | Plages d’adresses des réseaux connus à partir desquels les en-têtes transférés peuvent être acceptés. Indiquez les plages d’adresses IP à l’aide de la notation CIDR (Classless Interdomain Routing).<br><br>Si le serveur utilise des sockets en mode double, les adresses IPv4 sont fournies dans un format IPv6 (par exemple, `10.0.0.1` dans IPv4 représentée dans IPv6 en tant que `::ffff:10.0.0.1`). Consultez [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Déterminez si ce format est nécessaire en examinant [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Pour plus d’informations, consultez la section [Configuration pour une adresse IPv4 représentée sous la forme d’une adresse IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>La valeur par défaut est une `IList`\<<xref:Microsoft.AspNetCore.HttpOverrides.IPNetwork>> contenant une seule entrée pour `IPAddress.Loopback`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies> | Adresses des proxy connus à partir desquels les en-têtes transférés peuvent être acceptés. Utilisez `KnownProxies` pour spécifier des correspondances d’adresse IP exactes.<br><br>Si le serveur utilise des sockets en mode double, les adresses IPv4 sont fournies dans un format IPv6 (par exemple, `10.0.0.1` dans IPv4 représentée dans IPv6 en tant que `::ffff:10.0.0.1`). Consultez [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Déterminez si ce format est nécessaire en examinant [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Pour plus d’informations, consultez la section [Configuration pour une adresse IPv4 représentée sous la forme d’une adresse IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>La valeur par défaut est une `IList`\<<xref:System.Net.IPAddress>> contenant une seule entrée pour `IPAddress.IPv6Loopback`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.OriginalForHeaderName> | Utilisez l’en-tête spécifié par cette propriété à la place de celui spécifié par [ForwardedHeadersDefaults.XOriginalForHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XOriginalForHeaderName).<br><br>La valeur par défaut est `X-Original-For`. |
@@ -226,11 +226,9 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
-
 ## <a name="forward-the-scheme-for-linux-and-non-iis-reverse-proxies"></a>Transférer le schéma pour les serveurs proxy inverses Linux et non IIS
 
-Les modèles .NET Core appellent <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> et <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>. Ces méthodes permettent de placer un site dans une boucle infinie, s’il est déployé sur Azure Linux App Service, une machine virtuelle Azure Linux ou derrière tout autre proxy inverse en dehors d’IIS. Le proxy inverse met fin à TLS, et Kestrel n’a pas connaissance du schéma de requête approprié. OAuth et OIDC sont également défaillants dans cette configuration, car ils génèrent des redirections incorrectes. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> ajoute et configure le middleware (intergiciel) des en-têtes transférés durant l’exécution avec IIS, mais il n’existe aucune configuration automatique correspondante pour Linux (intégration d’Apache ou de Nginx).
+Les applications qui appellent <xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*> et <xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*> permettent de placer un site dans une boucle infinie, s’il est déployé sur Azure Linux App Service, une machine virtuelle Azure Linux ou derrière tout autre proxy inverse en dehors d’IIS. Le proxy inverse met fin à TLS, et Kestrel n’a pas connaissance du schéma de requête approprié. OAuth et OIDC sont également défaillants dans cette configuration, car ils génèrent des redirections incorrectes. <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> ajoute et configure le middleware (intergiciel) des en-têtes transférés durant l’exécution avec IIS, mais il n’existe aucune configuration automatique correspondante pour Linux (intégration d’Apache ou de Nginx).
 
 Pour transférer le schéma à partir du proxy dans les scénarios non basés sur IIS, ajoutez et configurez le middleware des en-têtes transférés. Dans `Startup.ConfigureServices`, utilisez le code suivant :
 
@@ -253,10 +251,6 @@ if (string.Equals(
     });
 }
 ```
-
-En attendant que de nouvelles images conteneur soient fournies dans Azure, vous devez créer un paramètre d’application (variable d’environnement) pour `ASPNETCORE_FORWARDEDHEADERS_ENABLED` ayant la valeur `true`. Pour plus d’informations, consultez [Templates do not work in Antares Linux due to missing scheme forwarders (aspnet/AspNetCore #4135)](https://github.com/aspnet/AspNetCore/issues/4135).
-
-::: moniker-end
 
 ## <a name="troubleshoot"></a>Résoudre les problèmes
 
@@ -323,7 +317,7 @@ app.Use(async (context, next) =>
 });
 ```
 
-Lors du traitement, les valeurs `X-Forwarded-{For|Proto|Host}` sont déplacées vers `X-Original-{For|Proto|Host}`. S’il existe plusieurs valeurs dans un en-tête donné, notez que le middleware des en-têtes transférés traite les en-têtes dans l’ordre inverse de droite à gauche. La valeur par défaut de `ForwardLimit` est 1 (un) si bien que la valeur la plus à droite dans les en-têtes est traitée, sauf si la valeur de `ForwardLimit` est augmentée.
+Lors du traitement, les valeurs `X-Forwarded-{For|Proto|Host}` sont déplacées vers `X-Original-{For|Proto|Host}`. S’il existe plusieurs valeurs dans un en-tête donné, le middleware des en-têtes transférés traite les en-têtes dans l’ordre inverse de droite à gauche. La valeur par défaut de `ForwardLimit` est `1` si bien que seule la valeur la plus à droite dans les en-têtes est traitée, sauf si la valeur de `ForwardLimit` est augmentée.
 
 L’adresse IP distante d’origine de la requête doit correspondre à une entrée dans les listes `KnownProxies` ou `KnownNetworks` pour que les en-têtes transférés soient traités. L’usurpation des en-têtes s’en trouve limitée, car les redirecteurs émanant de proxys non approuvés ne sont pas acceptés. Lorsqu’un proxy inconnu est détecté, la journalisation indique l’adresse du proxy :
 

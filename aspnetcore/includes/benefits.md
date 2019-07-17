@@ -3,6 +3,7 @@ ASP.NET Core offre les avantages suivants :
 * Un scénario unifié pour créer une interface utilisateur web et des API web.
 * Architecturé pour la testabilité.
 * Les [Pages Razor](xref:razor-pages/index) permet de coder des scénarios orientés page de façon plus simple et plus productive.
+* [Blazor](xref:blazor/index) vous permet d’utiliser C# dans le navigateur en même temps que JavaScript. Partagez les logiques d’applications côté serveur et côté client écrites avec .NET.
 * Capacité à développer et à exécuter sur Windows, macOS et Linux.
 * Open source et [centré sur la communauté](https://live.asp.net/).
 * L’intégration de [frameworks modernes, côté client](xref:blazor/index) et des workflows de développement.
