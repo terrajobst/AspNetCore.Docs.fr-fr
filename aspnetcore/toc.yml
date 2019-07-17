@@ -431,6 +431,8 @@
       uid: web-api/advanced/analyzers
     - name: Conventions
       uid: web-api/advanced/conventions
+    - name: Tester les API avec HTTP REPL
+      uid: web-api/http-repl
 - name: Applications en temps réel
   displayName: signalr
   items:
