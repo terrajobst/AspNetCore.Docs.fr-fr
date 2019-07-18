@@ -5,12 +5,12 @@ description: Découvrez comment utiliser des méthodes et des vues de contrôleu
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 36c8141ba5827366572dabcfd0fdf9600c745706
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 6d960da5acecbb95893bd339b4391560bedffb3d
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889764"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815416"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Méthodes et vues de contrôleur dans ASP.NET Core
 
@@ -76,7 +76,7 @@ Le code suivant montre la méthode `HTTP POST Edit`, qui traite les valeurs de f
 
 ::: moniker-end
 
-L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une protection contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Vous devez inclure dans l’attribut `[Bind]` uniquement les propriétés que vous souhaitez modifier. Pour plus d’informations, consultez [Protéger votre contrôleur contre la sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). Les [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) fournissent une alternative pour empêcher la sur-publication.
+L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une protection contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Vous devez inclure dans l’attribut `[Bind]` uniquement les propriétés que vous souhaitez modifier. Pour plus d’informations, consultez [Protéger votre contrôleur contre la sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). Les [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) fournissent une alternative pour empêcher la sur-publication.
 
 Notez que la deuxième méthode d’action `Edit` est précédée de l’attribut `[HttpPost]`.
 
@@ -151,7 +151,7 @@ Toutes les méthodes `HttpGet` du contrôleur Movies suivent un modèle similair
 * [Créer des Tag Helpers](xref:mvc/views/tag-helpers/authoring)
 * [Protection contre la falsification de requête](xref:security/anti-request-forgery)
 * Protéger votre contrôleur contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
-* [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
+* [ViewModels](https://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Tag Helper Form](xref:mvc/views/working-with-forms)
 * [Tag Helper Input](xref:mvc/views/working-with-forms)
 * [Tag Helper Label](xref:mvc/views/working-with-forms)

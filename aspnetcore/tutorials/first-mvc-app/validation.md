@@ -5,12 +5,12 @@ description: Comment ajouter une validation à une application ASP.NET Core
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 6c59d0188f67872c7dd5599967551d7d390bfdcf
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
+ms.openlocfilehash: f94d1003732b8ff04ec8aba3005f8c95a876cd67
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "65875032"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815120"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Ajouter une validation à une application ASP.NET Core MVC
 
@@ -43,7 +43,7 @@ Notez que le formulaire a affiché automatiquement un message d’erreur de vali
 
 L’un des principaux avantages est que vous n’avez pas eu à changer une seule ligne de code dans la classe `MoviesController` ou dans la vue *Create.cshtml* pour activer cette interface utilisateur de validation. Le contrôleur et les vues créées précédemment dans ce didacticiel ont détecté les règles de validation que vous avez spécifiées à l’aide des attributs de validation sur les propriétés de la classe de modèle `Movie`. Testez la validation à l’aide de la méthode d’action `Edit`. La même validation est appliquée.
 
-Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des erreurs de validation côté client. Vous pouvez vérifier cela en plaçant un point d’arrêt dans la méthode `HTTP Post`, en utilisant l’[outil Fiddler](http://www.telerik.com/fiddler) ou à l’aide des [Outils de développement F12](/microsoft-edge/devtools-guide).
+Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des erreurs de validation côté client. Vous pouvez vérifier cela en plaçant un point d’arrêt dans la méthode `HTTP Post`, en utilisant l’[outil Fiddler](https://www.telerik.com/fiddler) ou à l’aide des [Outils de développement F12](/microsoft-edge/devtools-guide).
 
 ## <a name="how-validation-works"></a>Fonctionnement de la validation
 

@@ -1,19 +1,19 @@
-Exécutez le Générateur de modèles automatique identité :
+Exécutez l’échafaudage d’identité:
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.
-* Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.
-* Dans le **identité ADD** boîte de dialogue, sélectionnez les options souhaitées.
-  * Sélectionnez votre page de disposition existante, ou votre fichier de disposition est remplacée par balisage incorrect. Quand un existant  *\_Layout.cshtml* fichier est sélectionné, il est **pas** remplacé.
+* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **identité** > **Ajouter**.
+* Dans la boîte de dialogue **Ajouter une identité** , sélectionnez les options souhaitées.
+  * Sélectionnez votre page de disposition existante, ou votre fichier de disposition sera remplacé par un balisage incorrect. Lorsqu’un fichier  *\_Layout. cshtml* existant est sélectionné, il n’est **pas** remplacé.
 
- Par exemple `~/Pages/Shared/_Layout.cshtml` pour les Pages Razor `~/Views/Shared/_Layout.cshtml` pour les projets MVC
-* Pour utiliser votre contexte de données existant, sélectionnez au moins un fichier à remplacer. Vous devez sélectionner au moins un fichier pour ajouter votre contexte de données.
+ Par exemple: `~/Pages/Shared/_Layout.cshtml` for Razor pages `~/Views/Shared/_Layout.cshtml` pour les projets MVC
+* Pour utiliser le contexte de données existant, sélectionnez au moins un fichier à substituer. Vous devez sélectionner au moins un fichier pour ajouter votre contexte de données.
   * Sélectionnez votre classe de contexte de données.
-  * Sélectionnez **ajouter**.
-* Pour créer un nouveau contexte de l’utilisateur et éventuellement créer une classe d’utilisateur personnalisée pour l’identité :
+  * Sélectionnez **Ajouter**.
+* Pour créer un nouveau contexte utilisateur et éventuellement créer une classe d’utilisateur personnalisée pour l’identité:
   * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**.
-  * Sélectionnez **ajouter**.
+  * Sélectionnez **Ajouter**.
 
 Remarque : Si vous créez un nouveau contexte utilisateur, vous n’êtes pas obligé de sélectionner un fichier à remplacer.
 
@@ -25,7 +25,7 @@ Si vous n’avez pas encore installé le Générateur de modèles automatique AS
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-Ajouter une référence de package à [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) au projet (\*.csproj) fichier. Dans le répertoire du projet, exécutez la commande suivante :
+Ajoutez une référence de package à [Microsoft. VisualStudio. Web. CodeGeneration. Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) dans le fichier\*projet (. csproj). Dans le répertoire du projet, exécutez la commande suivante :
 
 ```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -38,18 +38,18 @@ Exécutez la commande suivante pour répertorier les options de génération de 
 dotnet aspnet-codegenerator identity -h
 ```
 
-Dans le dossier du projet, exécutez le Générateur de modèles automatique identité avec les options souhaitées. Par exemple, pour configurer l’identité avec l’interface utilisateur par défaut et le nombre minimal de fichiers, exécutez la commande suivante. Utilisez le nom qualifié complet correct pour votre contexte de base de données :
+Dans le dossier du projet, exécutez l’échafaudage d’identité avec les options souhaitées. Par exemple, pour configurer l’identité avec l’interface utilisateur par défaut et le nombre minimal de fichiers, exécutez la commande suivante. Utilisez le nom complet correct pour votre contexte de base de connaissances:
 
 ```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez PowerShell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Par exemple :
+PowerShell utilise un point-virgule comme séparateur de commande. Quand vous utilisez PowerShell, échapper les points-virgules dans la liste de fichiers ou placer la liste de fichiers entre guillemets doubles. Par exemple :
 
 ```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 
-Si vous exécutez le Générateur de modèles automatique identité sans spécifier le `--files` indicateur ou `--useDefaultUI` indicateur, toutes les pages de l’interface utilisateur de l’identité disponibles seront créées dans votre projet.
+Si vous exécutez l’échafaudage d’identité sans spécifier `--files` l’indicateur ou `--useDefaultUI` l’indicateur, toutes les pages d’interface utilisateur d’identité disponibles seront créées dans votre projet.
 
 ---

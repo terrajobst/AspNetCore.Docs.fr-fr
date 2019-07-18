@@ -5,12 +5,12 @@ description: ASP.NET Core MVC est une infrastructure riche pour la création d�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: eb636616ab952f506993ae5f4692e5e966bb20f4
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 819bc93a7580626bf586b984b0ce169306df56d9
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087317"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815357"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
 
@@ -179,7 +179,7 @@ En plus d’être une excellente plateforme pour la création de sites web, ASP.
 
 Le framework inclut la prise en charge de la négociation de contenu HTTP, ainsi que la prise en charge intégrée de la [mise en forme des données](xref:web-api/advanced/formatting) au format JSON ou XML. Écrivez des [formateurs personnalisés](xref:web-api/advanced/custom-formatters) pour ajouter la prise en charge de vos propres formats.
 
-Utilisez la génération de lien pour activer la prise en charge de liens hypermédia. Activez facilement la prise en charge du [partage de ressources cross-origin (CORS)](http://www.w3.org/TR/cors/) afin que vos APIs Web puissent être partagées entre plusieurs applications Web.
+Utilisez la génération de lien pour activer la prise en charge de liens hypermédia. Activez facilement la prise en charge du [partage de ressources cross-origin (CORS)](https://www.w3.org/TR/cors/) afin que vos APIs Web puissent être partagées entre plusieurs applications Web.
 
 ### <a name="testability"></a>Testabilité
 
@@ -252,4 +252,4 @@ Les [composants de vues](views/view-components.md) vous permettent de compresser
 
 La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
 
-Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
+Pour plus d’informations, consultez <xref:mvc/compatibility-version>.

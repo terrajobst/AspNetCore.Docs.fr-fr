@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: d2b2456c7ab6b72f2270b6edc17000695061cc2b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: f2d5dbbdc80eec035616ddea234ee5d3343eeae8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64887754"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815180"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -30,7 +30,7 @@ Cet article décrit la prise en charge de [Visual Studio](https://visualstudio.m
 ## <a name="enable-iis"></a>Activer IIS
 
 1. Dans Windows, accédez à **Panneau de configuration** > **Programmes** > **Programmes et fonctionnalités** > **Activer ou désactiver des fonctionnalités Windows** (à gauche de l’écran).
-1. Cochez la case **Services IIS (Internet Information Services)**. Sélectionnez **OK**.
+1. Cochez la case **Services IIS (Internet Information Services)** . Sélectionnez **OK**.
 
 L’installation d’IIS peut nécessiter un redémarrage du système.
 
@@ -58,7 +58,7 @@ IIS doit avoir un site web configuré avec les éléments suivants :
 
 Pour un nouveau projet qui exige le protocole HTTPS, cochez la case **Configurer pour HTTPS** dans la fenêtre **Créer une application web ASP.NET Core** afin d’ajouter [Redirection HTTPS et middleware HSTS](xref:security/enforcing-ssl) à l’application lors de sa création.
 
-Pour un projet existant qui exige le protocole HTTPS, utilisez Redirection HTTPS et middleware HSTS dans `Startup.Configure`. Pour plus d'informations, consultez <xref:security/enforcing-ssl>.
+Pour un projet existant qui exige le protocole HTTPS, utilisez Redirection HTTPS et middleware HSTS dans `Startup.Configure`. Pour plus d’informations, consultez <xref:security/enforcing-ssl>.
 
 Pour un projet qui utilise le protocole HTTP, [Redirection HTTPS et middleware HSTS](xref:security/enforcing-ssl) ne sont pas ajoutés à l’application. Aucune configuration de l’application n’est nécessaire.
 
@@ -108,7 +108,7 @@ Créez un profil de lancement pour ajouter la prise en charge d’IIS pendant le
 
 ::: moniker-end
 
-Si vous n’utilisez pas Visual Studio, ajoutez manuellement un profil de lancement au fichier [launchSettings.json](http://json.schemastore.org/launchsettings) dans le dossier *Propriétés*. L’exemple suivant configure le profil de façon à utiliser le protocole HTTPS :
+Si vous n’utilisez pas Visual Studio, ajoutez manuellement un profil de lancement au fichier [launchSettings.json](https://json.schemastore.org/launchsettings) dans le dossier *Propriétés*. L’exemple suivant configure le profil de façon à utiliser le protocole HTTPS :
 
 ```json
 {

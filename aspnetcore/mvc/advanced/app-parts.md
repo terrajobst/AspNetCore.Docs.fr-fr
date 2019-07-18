@@ -5,12 +5,12 @@ description: Apprenez à utiliser les composants d’application, c’est-à-dir
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 5d5e79d3afe0eee6d0b126d4642ccd5f61bff409
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9d0b4b5fadcc287172f23fa36c421f04ca2ade4a
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888134"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815479"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Composants d’application dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Un *composant d’application* est une abstraction des ressources d’une applic
 
 ## <a name="introducing-application-parts"></a>Présentation des composants d’application
 
-Les applications MVC chargent leurs fonctionnalités à partir des [composants d’application](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart). En l’occurrence, la classe [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart#Microsoft_AspNetCore_Mvc_ApplicationParts_AssemblyPart) représente un composant d’application qui s’appuie sur un assembly. Vous pouvez utiliser ces classes pour découvrir et charger des fonctionnalités MVC, par exemple les contrôleurs, les composants de vues, les Tag Helpers et les sources de compilation Razor. [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) est responsable du suivi des composants d’application et des fournisseurs de fonctionnalités accessibles à l’application MVC. Vous pouvez interagir avec `ApplicationPartManager` dans `Startup` quand vous configurez MVC :
+Les applications MVC chargent leurs fonctionnalités à partir des [composants d’application](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpart). En l’occurrence, la classe [AssemblyPart](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.assemblypart) représente un composant d’application qui s’appuie sur un assembly. Vous pouvez utiliser ces classes pour découvrir et charger des fonctionnalités MVC, par exemple les contrôleurs, les composants de vues, les Tag Helpers et les sources de compilation Razor. [ApplicationPartManager](/dotnet/api/microsoft.aspnetcore.mvc.applicationparts.applicationpartmanager) est responsable du suivi des composants d’application et des fournisseurs de fonctionnalités accessibles à l’application MVC. Vous pouvez interagir avec `ApplicationPartManager` dans `Startup` quand vous configurez MVC :
 
 ```csharp
 // create an assembly part from a class's assembly

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 72d5b2e902a95442ccffb7a149b917c50373775b
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 5be53baf4b9eb8774501fbf7f781370f7f687d0c
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889924"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67814954"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -205,7 +205,7 @@ La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une corresponda
 | `/my-cool-rewrite-rule/1234/5678` | Non    |
 | `/anotherrewrite-rule/1234/5678`  | Non    |
 
-À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)*. Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent*. Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
+À la suite de la partie `^rewrite-rule/` de l’expression se trouvent deux groupes de capture, `(\d+)/(\d+)`. `\d` signifie *établir une correspondance avec un chiffre (nombre)* . Le signe plus (`+`) signifie *établir une correspondance avec une ou plusieurs occurrences du caractère précédent*. Par conséquent, l’URL doit contenir un nombre suivi d’une barre oblique, elle-même suivie d’un autre nombre. Ces groupes sont injectés dans l’URL réécrite sous la forme `$1` et `$2`. La chaîne de remplacement de la règle de réécriture place les groupes capturés dans la chaîne de requête. Le chemin demandé `/rewrite-rule/1234/5678` est réécrit pour obtenir la ressource à l’emplacement `/rewritten?var1=1234&var2=5678`. Si une chaîne de requête est présente dans la requête d’origine, elle est conservée lors de la réécriture de l’URL.
 
 Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK*. Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
 
@@ -384,5 +384,5 @@ Requête d’origine : `/image.jpg`
 * [Informations de référence sur la configuration du module de réécriture d’URL](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference)
 * [Forum du module de réécriture d’URL IIS](https://forums.iis.net/1152.aspx)
 * [Maintenir une structure d’URL simple](https://support.google.com/webmasters/answer/76329?hl=en)
-* [10 conseils et astuces pour la réécriture d’URL](http://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)
+* [10 conseils et astuces pour la réécriture d’URL](https://ruslany.net/2009/04/10-url-rewriting-tips-and-tricks/)
 * [Mettre ou ne pas mettre une barre oblique](https://webmasters.googleblog.com/2010/04/to-slash-or-not-to-slash.html)

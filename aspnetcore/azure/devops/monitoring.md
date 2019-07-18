@@ -4,14 +4,14 @@ author: CamSoper
 description: Surveillance et le débogage de votre code en tant que partie d’une solution DevOps avec ASP.NET Core et Azure
 ms.author: casoper
 ms.custom: mvc, seodec18
-ms.date: 10/24/2018
+ms.date: 07/10/2019
 uid: azure/devops/monitor
-ms.openlocfilehash: 00489bd92dfff8fd80bd24c2e60193d32031d7c4
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 1d8ed99f4387dbc99929164c558cc2ce14bd9ea0
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893066"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68307956"
 ---
 # <a name="monitor-and-debug"></a>Surveiller et déboguer
 
@@ -37,11 +37,11 @@ Applications web App Service sont facilement surveillées en temps réel. Le por
 
     ![Panneau de vue d’ensemble de capture d’écran montrant](./media/monitoring/overview.png)
 
-    * **HTTP 5xx**: Nombre d’erreurs côté serveur, généralement des exceptions dans le code ASP.NET Core.
-    * **Données dans**: Entrée de données entrant dans votre application web.
-    * **Données sortantes**: Acheminement des données à partir de votre application web aux clients.
+    * **Http 5xx**: Nombre d’erreurs côté serveur, généralement les exceptions dans le code ASP.NET Core.
+    * **Données dans**: Entrée de données entrant dans votre application Web.
+    * **Données sortantes**: Sortie de données de votre application Web vers les clients.
     * **Demandes**: Nombre de requêtes HTTP.
-    * **Temps de réponse moyen**: Temps moyen de l’application web répondre aux demandes HTTP.
+    * **Temps de réponse moyen**: Temps moyen pour que l’application Web réponde aux requêtes HTTP.
 
     Plusieurs outils en libre-service pour le dépannage et l’optimisation figurent également sur cette page.
 
@@ -89,7 +89,7 @@ Les journaux de serveur et d’application Web sont désactivés par défaut dan
 
     ![Lien des journaux de diagnostic](./media/monitoring/logging.png)
 
-1. Activer **journalisation des applications (Filesystem)**. Si vous y êtes invité, cliquez sur la zone pour installer les extensions pour activer l’application de journalisation dans l’application web.
+1. Activer **journalisation des applications (Filesystem)** . Si vous y êtes invité, cliquez sur la zone pour installer les extensions pour activer l’application de journalisation dans l’application web.
 1. Définissez **journalisation du serveur Web** à **système de fichiers**.
 1. Entrez le **période de rétention** en jours. Par exemple, 30.
 1. Cliquez sur **Enregistrer**.
@@ -111,7 +111,7 @@ Journaux peuvent également être [transmis en continu via Azure CLI ou Azure Po
 
 Azure Monitor fournit également [alertes en temps réel](/azure/monitoring-and-diagnostics/insights-alerts-portal) selon des mesures, événements d’administration et d’autres critères.
 
-> *Remarque : Actuellement des alertes sur les métriques de l’application web sont uniquement disponible dans le service d’alertes (classique).*
+> *Remarque : Actuellement, les alertes sur les métriques de l’application Web sont uniquement disponibles dans le service alertes (Classic).*
 
 Le [alertes (classique) service](/azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal) se trouvent dans Azure Monitor ou sous le **surveillance** section des paramètres du Service d’application.
 
@@ -135,7 +135,7 @@ Dans cette section, vous effectué les tâches suivantes :
 
 ## <a name="additional-reading"></a>Lecture supplémentaire
 
-* <xref:host-and-deploy/azure-apps/troubleshoot>
+* <xref:test/troubleshoot-azure-iis>
 * <xref:host-and-deploy/azure-iis-errors-reference>
 * [Surveiller les performances d’application web Azure avec Application Insights](/azure/application-insights/app-insights-azure-web-apps)
 * [Activer la journalisation des diagnostics pour les applications web dans Azure App Service](/azure/app-service/web-sites-enable-diagnostic-log)

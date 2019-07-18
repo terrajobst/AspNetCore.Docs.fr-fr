@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: c64f6e69a19e294a18cc72c860af0a03ef70d444
-ms.sourcegitcommit: 357a7120632b20465801c093e4e5bd4a315496a8
+ms.openlocfilehash: 99b28407a249a5c0bc6a0cf3a285c04f1d6187a7
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67649192"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815644"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -294,7 +294,7 @@ Le contrôleur d’API web précédent :
 
 * Utilise la classe `BookService` pour effectuer des opérations CRUD.
 * Contient des méthodes d’action pour prendre en charge les requêtes HTTP GET, POST, PUT et DELETE.
-* Appelle <xref:System.Web.Http.ApiController.CreatedAtRoute*> dans la méthode d’action `Create` pour retourner une réponse [HTTP 201](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Le code d’état 201 est la réponse standard d’une méthode HTTP POST qui crée une ressource sur le serveur. `CreatedAtRoute` ajoute également un en-tête `Location` à la réponse. L’en-tête `Location` spécifie l’URI du livre qui vient d’être créé.
+* Appelle <xref:System.Web.Http.ApiController.CreatedAtRoute*> dans la méthode d’action `Create` pour retourner une réponse [HTTP 201](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Le code d’état 201 est la réponse standard d’une méthode HTTP POST qui crée une ressource sur le serveur. `CreatedAtRoute` ajoute également un en-tête `Location` à la réponse. L’en-tête `Location` spécifie l’URI du livre qui vient d’être créé.
 
 ## <a name="test-the-web-api"></a>Tester l’API web
 

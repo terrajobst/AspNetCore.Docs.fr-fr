@@ -5,12 +5,12 @@ description: Découvrez comment ajouter un contrôleur à une application ASP.NE
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 9dbfb52109260dbfe0c6c094a7ac4edae47d24e7
-ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
+ms.openlocfilehash: f28dc96b66fce736242d26a2584fea0a23375e23
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837340"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815194"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -68,7 +68,7 @@ Chaque méthode `public` d’un contrôleur peut être appelée en tant que poin
 
 Un point de terminaison HTTP est une URL qui peut être ciblée dans l’application web, comme `https://localhost:5001/HelloWorld`, et qui combine le protocole utilisé : `HTTPS`, l’emplacement réseau du serveur web (avec le port TCP) : `localhost:5001` et l’URI cible `HelloWorld`.
 
-Le premier commentaire indique qu’il s’agit d’une méthode [HTTP GET](https://www.w3schools.com/tags/ref_httpmethods.asp) qui est appelée en ajoutant `/HelloWorld/` à l’URL de base. Le deuxième commentaire indique une méthode [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) qui est appelée en ajoutant `/HelloWorld/Welcome/` à l’URL. Plus loin dans ce didacticiel, le moteur de génération de modèles automatique est utilisé pour générer des méthodes `HTTP POST` qui mettent à jour des données.
+Le premier commentaire indique qu’il s’agit d’une méthode [HTTP GET](https://www.w3schools.com/tags/ref_httpmethods.asp) qui est appelée en ajoutant `/HelloWorld/` à l’URL de base. Le deuxième commentaire indique une méthode [HTTP GET](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) qui est appelée en ajoutant `/HelloWorld/Welcome/` à l’URL. Plus loin dans ce didacticiel, le moteur de génération de modèles automatique est utilisé pour générer des méthodes `HTTP POST` qui mettent à jour des données.
 
 Exécutez l’application en mode de non-débogage et ajoutez « HelloWorld » au chemin dans la barre d’adresse. La méthode `Index` retourne une chaîne.
 

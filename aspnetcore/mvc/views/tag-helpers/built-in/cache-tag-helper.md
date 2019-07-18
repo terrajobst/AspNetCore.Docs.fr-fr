@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: fb69584f6e9d4756e175bbd6f3deb1f413b80fc5
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0273a9805dd5db5450f57dcf3fd4d952308df074
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890464"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856209"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 
-Par [Peter Kellner](http://peterkellner.net) et [Luke Latham](https://github.com/guardrex) 
+Par [Peter Kellner](https://peterkellner.net) et [Luke Latham](https://github.com/guardrex) 
 
 Le Tag Helper Cache permet d’améliorer les performances de votre application ASP.NET Core en mettant en cache son contenu dans le fournisseur de caches ASP.NET Core interne.
 
@@ -49,7 +49,7 @@ Exemple :
 
 ### <a name="expires-on"></a>expires-on
 
-| Type d’attribut   | Exemple                            |
+| Type d’attribut   | Exemples                            |
 | ---------------- | ---------------------------------- |
 | `DateTimeOffset` | `@new DateTime(2025,1,29,17,02,0)` |
 
@@ -65,7 +65,7 @@ L’exemple suivant met en cache le contenu du Tag Helper Cache jusqu’à 17:02
 
 ### <a name="expires-after"></a>expires-after
 
-| Type d’attribut | Exemple                      | Par défaut    |
+| Type d’attribut | Exemples                      | Par défaut    |
 | -------------- | ---------------------------- | ---------- |
 | `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | 20 minutes |
 
@@ -83,7 +83,7 @@ Le moteur de vue Razor définit la valeur par défaut `expires-after` sur vingt 
 
 ### <a name="expires-sliding"></a>expires-sliding
 
-| Type d’attribut | Exemple                     |
+| Type d’attribut | Exemples                     |
 | -------------- | --------------------------- |
 | `TimeSpan`     | `@TimeSpan.FromSeconds(60)` |
 
@@ -191,7 +191,7 @@ L’utilisation de cet attribut permet de conserver le contenu dans le cache lor
 
 ### <a name="vary-by"></a>vary-by
 
-| Type d’attribut | Exemple  |
+| Type d’attribut | Exemples  |
 | -------------- | -------- |
 | Chaîne         | `@Model` |
 

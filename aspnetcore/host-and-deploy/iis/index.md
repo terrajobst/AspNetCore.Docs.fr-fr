@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/16/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 644d84f9adba650b3ef10ba69cc75c22845be211
-ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
+ms.openlocfilehash: a3d8c87fdb1cbc3b8b11b15f797190d626edad59
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68239234"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308060"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -734,10 +734,10 @@ Découvrez la structure de répertoires des applications ASP.NET Core publiées.
 [Structure de répertoires](xref:host-and-deploy/directory-structure)
 
 Découvrez les modules IIS actifs et inactifs pour les applications ASP.NET Core et comment gérer les modules IIS.  
-[Modules IIS](xref:host-and-deploy/iis/troubleshoot)
+[Modules IIS](xref:host-and-deploy/iis/modules)
 
 Découvrez comment diagnostiquer les problèmes liés aux déploiements IIS d’applications ASP.NET Core.  
-[Résoudre les problèmes](xref:host-and-deploy/iis/troubleshoot)
+[Résoudre les problèmes](xref:test/troubleshoot-azure-iis)
 
 Repérer les erreurs courantes liées à l’hébergement d’applications ASP.NET Core sur IIS.  
 [Informations de référence sur les erreurs courantes pour Azure App Service et IIS](xref:host-and-deploy/azure-iis-errors-reference)

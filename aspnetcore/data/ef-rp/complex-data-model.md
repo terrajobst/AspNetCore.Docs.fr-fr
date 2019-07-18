@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
-ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
+ms.openlocfilehash: f995f3f74da4910de518af875eb89349a8457573
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65516900"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67813712"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -486,7 +486,7 @@ Le code précédent ajoute les nouvelles entités et configure la clé primaire 
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Alternative d’API Fluent aux attributs
 
-La méthode `OnModelCreating` du code précédent utilise l’*API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#methods-of-configuration) est un exemple de l’API Fluent :
+La méthode `OnModelCreating` du code précédent utilise l’*API Fluent* pour configurer le comportement d’EF Core. L’API est appelée « Fluent », car elle est souvent utilisée en enchaînant une série d’appels de méthode en une seule instruction. Le [code suivant](/ef/core/modeling/#use-fluent-api-to-configure-a-model) est un exemple de l’API Fluent :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -512,7 +512,7 @@ Certains des attributs utilisés dans ce didacticiel sont utilisés pour :
 * La configuration d’EF Core uniquement (par exemple, `HasKey`).
 * La validation et la configuration d’EF Core (par exemple, `[StringLength(50)]`).
 
-Pour plus d’informations sur les attributs et l’API Fluent, consultez [Méthodes de configuration](/ef/core/modeling/#methods-of-configuration).
+Pour plus d’informations sur les attributs et l’API Fluent, consultez [Méthodes de configuration](/ef/core/modeling/).
 
 ## <a name="entity-diagram-showing-relationships"></a>Diagramme des entités montrant les relations
 

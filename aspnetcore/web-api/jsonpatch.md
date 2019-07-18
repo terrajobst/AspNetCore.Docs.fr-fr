@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/24/2019
 uid: web-api/jsonpatch
-ms.openlocfilehash: 14710e6431a2a7ce60fa7f190bef184da85281a0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 97264903d85dbb397e85fdbf7b070e2aaae74bc8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888414"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815542"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch dans l’API web ASP.NET Core
 
@@ -71,7 +71,7 @@ Les modifications apportées en appliquant un document JSON Patch à une ressour
 
 ## <a name="path-syntax"></a>Syntaxe du chemin
 
-Les différents niveaux de la propriété [path](http://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple, `"/address/zipCode"`.
+Les différents niveaux de la propriété [path](https://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple, `"/address/zipCode"`.
 
 Les index de base zéro sont utilisés pour spécifier les éléments du tableau. Le premier élément du tableau `addresses` serait à `/addresses/0`. Pour `add` à la fin d’un tableau, utilisez un trait d’union (-) plutôt qu’un numéro d’index : `/addresses/-`.
 
@@ -221,6 +221,6 @@ Pour tester l’exemple, exécutez l’application et envoyez des demandes HTTP 
 
 * [Spécification de méthode PATCH IETF RFC 5789 PATCH](https://tools.ietf.org/html/rfc5789)
 * [Spécification JSON Patch IETF RFC 6902](https://tools.ietf.org/html/rfc6902)
-* [Spécification de format de chemin JSON Patch IETF RFC 6901](http://tools.ietf.org/html/rfc6901)
-* [Documentation JSON Patch](http://jsonpatch.com/). Inclut des liens vers des ressources pour la création de documents JSON Patch.
+* [Spécification de format de chemin JSON Patch IETF RFC 6901](https://tools.ietf.org/html/rfc6901)
+* [Documentation JSON Patch](https://jsonpatch.com/). Inclut des liens vers des ressources pour la création de documents JSON Patch.
 * [Code source ASP.NET Core JSON Patch](https://github.com/aspnet/AspNetCore/tree/master/src/Features/JsonPatch/src)

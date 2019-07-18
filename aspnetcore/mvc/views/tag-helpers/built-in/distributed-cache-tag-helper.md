@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: a5b33451a763c297c6d7885855a321c43435abb4
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 4e4d383bac67c73bad8b0a31b9ceb9452251761b
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890454"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856197"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>Tag Helper Cache distribué dans ASP.NET Core
 
-Par [Peter Kellner](http://peterkellner.net) et [Luke Latham](https://github.com/guardrex)
+Par [Peter Kellner](https://peterkellner.net) et [Luke Latham](https://github.com/guardrex)
 
 Le Tag Helper Cache distribué permet d’améliorer considérablement les performances de votre application ASP.NET Core en mettant en cache son contenu dans une source de cache distribué.
 
@@ -44,7 +44,7 @@ Le Tag Helper Cache distribué hérite de la même classe que le Tag Helper Cach
 
 ### <a name="name"></a>name
 
-| Type d’attribut | Exemple                               |
+| Type d’attribut | Exemples                               |
 | -------------- | ------------------------------------- |
 | Chaîne         | `my-distributed-cache-unique-key-101` |
 

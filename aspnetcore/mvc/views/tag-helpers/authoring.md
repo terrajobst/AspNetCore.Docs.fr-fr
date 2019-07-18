@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: d7a5656131189ffafb60a7b1db0b8d93a3787ae2
-ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
+ms.openlocfilehash: c13e63725298975fc882aa45c4e75de53e1d66a8
+ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65621047"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67815159"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -193,7 +193,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * Comme mentionné précédemment, les Tag Helpers convertissent les propriétés et noms de classe C# de casse Pascal en [casse kebab](http://wiki.c2.com/?KebabCase) (mots séparés par des tirets). Par conséquent, pour utiliser la classe `WebsiteInformationTagHelper` dans Razor, vous allez écrire `<website-information />`.
+   * Comme mentionné précédemment, les Tag Helpers convertissent les propriétés et noms de classe C# de casse Pascal en [casse kebab](https://wiki.c2.com/?KebabCase) (mots séparés par des tirets). Par conséquent, pour utiliser la classe `WebsiteInformationTagHelper` dans Razor, vous allez écrire `<website-information />`.
 
    * Comme vous n’identifiez pas de manière explicite l’élément cible avec l’attribut `[HtmlTargetElement]`, la valeur par défaut de `website-information` est ciblée. Si vous avez appliqué l’attribut suivant (notez que la casse n’est pas kebab, mais il correspond au nom de la classe) :
 
@@ -207,7 +207,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * Les éléments de fermeture automatique n’ont aucun contenu. Pour cet exemple, le balisage Razor utilise une balise de fermeture automatique, mais le Tag Helper crée un élément [section](http://www.w3.org/TR/html5/sections.html#the-section-element) (qui ne se ferme pas automatiquement et vous écrivez le contenu à l’intérieur de l’élément `section`). Par conséquent, vous devez affecter à `TagMode` la valeur `StartTagAndEndTag` pour écrire la sortie. Sinon, vous pouvez commenter le paramètre de ligne `TagMode` et écrire le balisage avec une balise de fermeture. (Un exemple de balisage est fourni plus loin dans ce didacticiel.)
+   * Les éléments de fermeture automatique n’ont aucun contenu. Pour cet exemple, le balisage Razor utilise une balise de fermeture automatique, mais le Tag Helper crée un élément [section](https://www.w3.org/TR/html5/sections.html#the-section-element) (qui ne se ferme pas automatiquement et vous écrivez le contenu à l’intérieur de l’élément `section`). Par conséquent, vous devez affecter à `TagMode` la valeur `StartTagAndEndTag` pour écrire la sortie. Sinon, vous pouvez commenter le paramètre de ligne `TagMode` et écrire le balisage avec une balise de fermeture. (Un exemple de balisage est fourni plus loin dans ce didacticiel.)
 
    * Le signe `$` (signe dollar) de la ligne suivante utilise une [chaîne interpolée](/dotnet/csharp/language-reference/keywords/interpolated-strings) :
 
