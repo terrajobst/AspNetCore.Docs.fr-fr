@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 51433cbf35e434300fbefae29f33594e765bcc7b
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: cdb5cad2302cc8ec02107021005b8590efce7533
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67855927"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308222"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -623,7 +623,7 @@ ASP.NET Core contient les fournisseurs suivants :
 * [AzureAppServicesBlob](#azure-app-service-provider)
 * [ApplicationInsights](#azure-application-insights-trace-logging)
 
-Pour plus d'informations sur la journalisation stdout, voir <xref:host-and-deploy/iis/troubleshoot#aspnet-core-module-stdout-log> et <xref:host-and-deploy/azure-apps/troubleshoot#aspnet-core-module-stdout-log>.
+Pour plus d’informations sur stdout et sur la journalisation du débogage avec le module ASP.NET Core, consultez <xref:test/troubleshoot-azure-iis> et <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
 
 ### <a name="console-provider"></a>Fournisseur Console
 

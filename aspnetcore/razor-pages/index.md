@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 04/06/2019
 uid: razor-pages/index
-ms.openlocfilehash: 419355d670536fef1a38fbcb8ce1fd880c0e9b0d
-ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
+ms.openlocfilehash: 406e89c96ea63493091d0287077e244faee5f730
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555737"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308005"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -169,7 +169,7 @@ La propriété `Customer` utilise l’attribut `[BindProperty]` pour accepter la
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
-Par défaut, les pages Razor lient les propriétés uniquement avec les verbes non-GET. La liaison aux propriétés peut réduire la quantité de code à écrire. Elle réduit la quantité de code en utilisant la même propriété pour afficher les champs de formulaire (`<input asp-for="Customer.Name">`) et accepter l’entrée.
+Par défaut, Razor Pages lie les propriétés seulement avec des verbes non-`GET`. La liaison aux propriétés peut réduire la quantité de code à écrire. Elle réduit la quantité de code en utilisant la même propriété pour afficher les champs de formulaire (`<input asp-for="Customer.Name">`) et accepter l’entrée.
 
 [!INCLUDE[](~/includes/bind-get.md)]
 
@@ -218,7 +218,7 @@ Voici un exemple de bouton Supprimer rendu avec un ID de contact client de `1`:
 
 Quand le bouton est sélectionné, une demande `POST` de formulaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
 
-Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini avec une autre valeur, telle que `remove`, une méthode de gestionnaire de page avec le nom `OnPostRemoveAsync` est sélectionnée.
+Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini sur une autre valeur, comme `remove`, une méthode de gestionnaire avec le nom `OnPostRemoveAsync` est sélectionnée.
 
 [!code-cs[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
 
@@ -239,11 +239,11 @@ Les propriétés définies sur `PageModel` peuvent être décorées avec l’att
 
 Pour plus d’informations, consultez [Validation de modèle](xref:mvc/models/validation).
 
-## <a name="manage-head-requests-with-the-onget-handler"></a>Gérer des demandes HEAD avec le gestionnaire OnGet
+## <a name="handle-head-requests-with-an-onget-handler-fallback"></a>Gérer les requêtes HEAD avec un gestionnaire OnGet de secours
 
-Les requêtes HEAD vous permettent de récupérer les en-têtes pour une ressource spécifique. Contrairement aux requêtes GET, les requêtes HEAD ne renvoient un corps de réponse.
+Les requêtes `HEAD` vous permettent de récupérer les en-têtes pour une ressource spécifique. Contrairement aux requêtes `GET`, les requêtes `HEAD` ne retournent pas un corps de réponse.
 
-En règle générale, un gestionnaire HEAD est créé et appelé pour des demandes HEAD : 
+En règle générale, un gestionnaire `OnHead` est créé et appelé pour les requêtes `HEAD` : 
 
 ```csharp
 public void OnHead()
@@ -252,18 +252,16 @@ public void OnHead()
 }
 ```
 
-si aucun gestionnaire HEAD (`OnHead`) n’est défini, les pages Razor reviennent à l’appel du gestionnaire de page GET (`OnGet`) dans ASP.NET Core 2.1 ou une version ultérieure. Dans ASP.NET Core 2.1 et 2.2, ce comportement se produit avec la version [SetCompatibilityVersion](xref:mvc/compatibility-version) dans `Startup.Configure` :
+Dans ASP.NET Core 2.1 ou ultérieur, Razor Pages se rabat sur un appel du gestionnaire `OnGet` si aucun gestionnaire `OnHead` n’est défini. Ce comportement est activé par l’appel à [SetCompatibilityVersion](xref:mvc/compatibility-version) dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddMvc()
-    .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 ```
 
-Les modèles par défaut génèrent l'appel `SetCompatibilityVersion` dans ASP.NET Core 2.1 et 2.2.
+Les modèles par défaut génèrent l'appel `SetCompatibilityVersion` dans ASP.NET Core 2.1 et 2.2. `SetCompatibilityVersion` définit efficacement l’option Pages Razor `AllowMappingHeadRequestsToGetHandler` sur `true`.
 
-`SetCompatibilityVersion` définit efficacement l’option Pages Razor `AllowMappingHeadRequestsToGetHandler` sur `true`.
-
-Au lieu d’adhérer à tous les comportements de la version 2.1 avec `SetCompatibilityVersion`, vous pouvez explicitement adhérer à des comportements spécifiques. Le code suivant adhère aux demandes HEAD de mappage avec le gestionnaire GET.
+Au lieu d’adhérer à tous les comportements avec `SetCompatibilityVersion`, vous pouvez adhérer explicitement à des comportements *spécifiques*. Le code suivant adhère à l’autorisation de mappage des requêtes `HEAD` au gestionnaire `OnGet` :
 
 ```csharp
 services.AddMvc()
@@ -487,7 +485,7 @@ Pour plus d’informations, consultez [TempData](xref:fundamentals/app-state#tem
 
 ## <a name="multiple-handlers-per-page"></a>Plusieurs gestionnaires par page
 
-La page suivante génère un balisage pour deux gestionnaires de page à l’aide du Tag Helper `asp-page-handler` :
+La page suivante génère un balisage pour deux gestionnaires en utilisant le Tag Helper `asp-page-handler` :
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
 
