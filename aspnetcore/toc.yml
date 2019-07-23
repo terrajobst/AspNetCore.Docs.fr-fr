@@ -192,7 +192,7 @@
       uid: fundamentals/http-requests
     - name: Fichiers statiques
       uid: fundamentals/static-files
-    - name: Générateur de code
+    - name: aspnet-codegenerator
       uid: fundamentals/tools/dotnet-aspnet-codegenerator
 - name: Applications web
   items:
