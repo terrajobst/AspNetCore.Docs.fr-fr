@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: cdb5cad2302cc8ec02107021005b8590efce7533
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 4fe677e69478284db2ccab655c35b5744b6f63f9
+ms.sourcegitcommit: 059ab380744fa3be3b69aa90d431b563c57092cf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308222"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68410908"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -865,14 +865,11 @@ N’utilisez pas le [package Microsoft.ApplicationInsights.Web](https://www.nuge
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * [Vue d'ensemble d'Application Insights](/azure/application-insights/app-insights-overview)
-* [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) : commencez ici si vous souhaitez implémenter la gamme complète des données de télémétrie d’Application Insights en même temps que la journalisation.
+* [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core) : commencez ici si vous souhaitez implémenter la gamme complète des données de télémétrie d’Application Insights en même temps que la journalisation.
 * [Journaux ApplicationInsightsLoggerProvider pour .NET Core ILogger](/azure/azure-monitor/app/ilogger) : commencez ici si vous souhaitez implémenter le fournisseur de journalisation sans le reste des données de télémétrie Application Insights.
-* [Adaptateurs de journalisation Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
+* [Adaptateurs de journalisation Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-trace-logs).
 * [Installer, configurer et initialiser le kit de développement logiciel (SDK) Application Insights](/learn/modules/instrument-web-app-code-with-application-insights) : tutoriel interactif sur le site Microsoft Learn.
 ::: moniker-end
-
-> [!NOTE]
-> Depuis le 1/5/2019, l’article intitulé [Application Insights pour ASP.NET Core](/azure/azure-monitor/app/asp-net-core) est obsolète et les étapes du tutoriel ne fonctionnent plus. Reportez-vous à [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) à la place. Nous sommes conscients du problème et travaillons à y remédier.
 
 ## <a name="third-party-logging-providers"></a>Fournisseurs de journalisation tiers
 
