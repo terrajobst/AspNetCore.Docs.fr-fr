@@ -4,14 +4,14 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/23/2019
+ms.date: 07/11/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: a53f7019c1079296f073e743ddbf9d90fc5abad3
-ms.sourcegitcommit: d6e51c60439f03a8992bda70cc982ddb15d3f100
+ms.openlocfilehash: 95410cef9753fbb0eda6136320b59682e0553ea7
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67555875"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67893210"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -99,7 +99,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Sélectionnez **Application .NET Core** > **API web ASP.NET Core** > **Suivant**.
+* Sélectionnez **.NET Core** > **Application** > **API** > **Suivant**.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
@@ -127,7 +127,7 @@ Appuyez sur Ctrl+F5 pour exécuter l’application. Dans un navigateur, accédez
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-Sélectionnez **Exécuter** > **Démarrer avec débogage** pour lancer l’application. Visual Studio pour Mac lance un navigateur et accède à `https://localhost:<port>`, où `<port>` est un numéro de port choisi de manière aléatoire. Une erreur HTTP 404 (introuvable) est retournée. Ajoutez `/api/values` à l’URL (définissez-la sur `https://localhost:<port>/api/values`).
+Sélectionnez **Exécuter** > **Démarrer le débogage** pour lancer l’application. Visual Studio pour Mac lance un navigateur et accède à `https://localhost:<port>`, où `<port>` est un numéro de port choisi de manière aléatoire. Une erreur HTTP 404 (introuvable) est retournée. Ajoutez `/api/values` à l’URL (définissez-la sur `https://localhost:<port>/api/values`).
 
 ---
 
@@ -245,6 +245,8 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 * `GET /api/todo`
 * `GET /api/todo/{id}`
+
+Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
 Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
 

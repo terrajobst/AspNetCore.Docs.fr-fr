@@ -1,19 +1,19 @@
 ---
-title: Visual Studio Tools pour Docker avec ASP.NET Core
+title: Outils de conteneur Visual Studio avec ASP.NET Core
 author: spboyer
-description: Découvrez comment utiliser les outils Visual Studio 2017 et Docker pour Windows pour mettre une application ASP.NET Core dans un conteneur.
+description: Découvrez comment utiliser les outils Visual Studio et Docker pour Windows pour mettre une application ASP.NET Core dans un conteneur.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: b0d884fe2fe56f267ad70c388a08cd3fe6256364
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 5faf0be19448d8272901bf018357da63bbe22d4b
+ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610379"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68308073"
 ---
-# <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Visual Studio Tools pour Docker avec ASP.NET Core
+# <a name="visual-studio-container-tools-with-aspnet-core"></a>Outils de conteneur Visual Studio avec ASP.NET Core
 
 Visual Studio 2017 et versions ultérieures prennent en charge la génération, le débogage et l’exécution d’applications ASP.NET Core conteneurisées ciblant .NET Core. Les conteneurs Windows et Linux sont pris en charge.
 
@@ -39,7 +39,7 @@ Il est nécessaire de configurer les **[lecteurs partagés](https://docs.docker.
 
 Pour mettre en conteneur un projet ASP.NET Core, le projet doit cibler .NET Core. Les conteneurs Linux et Windows sont pris en charge.
 
-Quand vous ajoutez la prise en charge de Docker à un projet, choisissez un conteneur Windows ou Linux. L’hôte Docker doit exécuter le même type de conteneur. Pour changer le type de conteneur dans l’instance de Docker en cours d’exécution, cliquez avec le bouton droit sur l’icône Docker de la zone de notification, puis choisissez **Basculer vers les conteneurs Windows...** ou **Basculer vers les conteneurs Linux...**.
+Quand vous ajoutez la prise en charge de Docker à un projet, choisissez un conteneur Windows ou Linux. L’hôte Docker doit exécuter le même type de conteneur. Pour changer le type de conteneur dans l’instance de Docker en cours d’exécution, cliquez avec le bouton droit sur l’icône Docker de la zone de notification, puis choisissez **Basculer vers les conteneurs Windows...** ou **Basculer vers les conteneurs Linux...** .
 
 ### <a name="new-app"></a>Nouvelle application
 
@@ -56,7 +56,7 @@ Pour les projets ASP.NET Core ciblant .NET Core, il existe deux options pour ajo
 * Sélectionnez **Prise en charge de Docker** dans le menu **Projet**.
 * Cliquez avec le bouton droit sur le projet dans l’**Explorateur de solutions**, puis sélectionnez **Ajouter** > **Prise en charge de Docker**.
 
-Visual Studio Tools pour Docker ne prend pas en charge l’ajout de Docker à un projet ASP.NET Core existant ciblant le .NET Framework.
+Les outils de conteneur Visual Studio ne prennent pas en charge l’ajout de Docker à un projet ASP.NET Core existant ciblant le .NET Framework.
 
 ## <a name="dockerfile-overview"></a>Vue d’ensemble du fichier Dockerfile
 
@@ -88,7 +88,7 @@ Visual Studio 2017 version 15.8 ou ultérieure ajoute une solution d’orchest
 
 ### <a name="docker-compose"></a>Docker Compose
 
-Visual Studio Tools pour Docker ajoute un projet *docker-compose* à la solution avec les fichiers suivants :
+Les outils de conteneur Visual Studio ajoutent un projet *docker-compose* à la solution avec les fichiers suivants :
 
 * *docker-.dcproj* &ndash; Fichier représentant le projet. Comprend un élément `<DockerTargetOS>` spécifiant le système d’exploitation à utiliser.
 * *.dockerignore* &ndash; Répertorie les modèles de fichiers et de répertoires à exclure pendant la génération d’un contexte de build.
@@ -116,7 +116,7 @@ En plus des [prérequis](#prerequisites) de base, la solution d’orchestration 
 
 Service Fabric ne prend pas en charge les conteneurs Linux s’exécutant dans le cluster de développement local sur Windows. Si le projet utilise déjà un conteneur Linux, Visual Studio vous invite à basculer vers des conteneurs Windows.
 
-Visual Studio Tools pour Docker effectue les tâches suivantes :
+Les outils de conteneur Visual Studio effectuent les tâches suivantes :
 
 * Ajoute un projet **Application Service Fabric** *&lt;Application&gt;nom_projet*.
 * Ajoute un fichier *Dockerfile* et un fichier *.dockerignore* au projet ASP.NET Core. S’il existe déjà un fichier *Dockerfile* dans le projet ASP.NET Core, il est renommé *Dockerfile.original*. Un nouveau fichier *Dockerfile*, semblable au suivant, est créé :
@@ -194,7 +194,7 @@ baf9a678c88d        hellodockertools:dev   "C:\\remote_debugge..."   10 minutes 
 
 ## <a name="publish-docker-images"></a>Publier des images Docker
 
-Une fois terminé le cycle de développement et de débogage de l’application, Visual Studio Tools pour Docker aide à créer l’image de production de l’application. Changez la liste déroulante de configuration en **Release** et générez l’application. Les outils obtiennent l’image de compilation/publication auprès de Docker Hub (si elle ne se trouve pas déjà dans le cache). Une image est produite avec la balise *latest*, qui peut être envoyée (push) au Registre privé ou à Docker Hub.
+Une fois terminé le cycle de développement et de débogage de l’application, les outils de conteneur Visual Studio aident à créer l’image de production de l’application. Changez la liste déroulante de configuration en **Release** et générez l’application. Les outils obtiennent l’image de compilation/publication auprès de Docker Hub (si elle ne se trouve pas déjà dans le cache). Une image est produite avec la balise *latest*, qui peut être envoyée (push) au Registre privé ou à Docker Hub.
 
 Exécutez la commande `docker images` dans la console du Gestionnaire de package pour afficher la liste des images. Une sortie similaire à la suivante s’affiche à l’écran :
 
@@ -234,5 +234,5 @@ Vous pourriez vous attendre à ce que l’image de production ou de publication 
 * [Développement de conteneurs avec Visual Studio](/visualstudio/containers)
 * [Azure Service Fabric : Préparer votre environnement de développement](/azure/service-fabric/service-fabric-get-started)
 * [Déployer une application .NET dans un conteneur Windows vers Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container)
-* [Résoudre les problèmes de développement dans Visual Studio 2017 avec Docker](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
-* [Visual Studio Tools pour référentiel Docker GitHub](https://github.com/Microsoft/DockerTools)
+* [Détecter un problème de développement Visual Studio avec Docker](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)
+* [Référentiel GitHub des outils de conteneur Visual Studio](https://github.com/Microsoft/DockerTools)

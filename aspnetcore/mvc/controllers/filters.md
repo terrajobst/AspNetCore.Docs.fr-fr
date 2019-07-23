@@ -4,14 +4,14 @@ author: ardalis
 description: Découvrez comment les filtres fonctionnent et comment les utiliser dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 5/08/2019
+ms.date: 05/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: cdf121b97396cb23103d49cd141b9ef19b8c0cc6
-ms.sourcegitcommit: e1623d8279b27ff83d8ad67a1e7ef439259decdf
+ms.openlocfilehash: 50b199744f32ad19335080da406db69665ec1ae9
+ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/25/2019
-ms.locfileid: "66223020"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67856160"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -190,7 +190,7 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété`Order`  | Méthode de filtre |
+| Séquence | Étendue de filtre | Propriété`Order` | Méthode de filtre |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
 | 2 | Contrôleur | 1  | `OnActionExecuting` |
@@ -259,7 +259,7 @@ Dans le code suivant, l’attribut `ServiceFilter` récupère une instance du fi
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/HomeController.cs?name=snippet_ServiceFilter&highlight=1)]
 
-[ServiceFilterAttribute.IsReusable](xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.IsReusable) :
+Lors de l’utilisation de `ServiceFilterAttribute`, définir [ServiceFilterAttribute. IsReusable](xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.IsReusable) :
 
 * Conseille que l’instance de filtre *peut* être réutilisée en dehors de l’étendue de la requête dans laquelle elle a été créée. Le runtime ASP.NET Core ne garantit pas :
 
@@ -279,7 +279,10 @@ Dans le code suivant, l’attribut `ServiceFilter` récupère une instance du fi
 * Les types qui sont référencés avec `TypeFilterAttribute` ne doivent pas d’abord être inscrits auprès du conteneur d’injection de dépendances.  Leurs dépendances ne sont pas remplies par le conteneur d’injection de dépendances.
 * `TypeFilterAttribute` peut éventuellement accepter des arguments de constructeur pour le type.
 
-Lorsque vous utilisez `TypeFilterAttribute`, la définition de `IsReusable` indique que l’instance de filtre *peut* être réutilisée en dehors de l’étendue de la requête dans laquelle il a été créé. Le runtime ASP.NET Core ne fournit aucune garantie qu’une seule instance du filtre sera créée. `IsReusable` ne doit pas être utilisé avec un filtre qui dépend de services avec une durée de vie autre que singleton.
+Lors de l’utilisation de `TypeFilterAttribute`, définir [TypeFilterAttribute.IsReusable](xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute.IsReusable) :
+* Indique que l’instance de filtre *peut* être réutilisée en dehors de l’étendue de la requête dans laquelle elle a été créée. Le runtime ASP.NET Core ne fournit aucune garantie qu’une seule instance du filtre sera créée.
+
+* Évitez de l’utiliser avec un filtre qui dépend de services avec une durée de vie autre que singleton.
 
 L’exemple suivant indique comment passer des arguments vers un type en utilisant `TypeFilterAttribute` :
 

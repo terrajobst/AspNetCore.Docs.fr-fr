@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/11/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 8b332c2fb439e9832d604ed26f972b266eed2507
-ms.sourcegitcommit: 9bb29f9ba6f0645ee8b9cabda07e3a5aa52cd659
+ms.openlocfilehash: 56a03ff583bf85497e2b3bacc70123845a046e3d
+ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67406118"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67892698"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>Héberger et déployer Blazor côté serveur
 
@@ -26,7 +26,7 @@ Les applications côté serveur qui utilisent le [modèle d’hébergement côt�
 
 Avec le [modèle d’hébergement côté serveur](xref:blazor/hosting-models#server-side), Blazor est exécuté sur le serveur à partir d’une application ASP.NET Core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés par le biais d’une connexion [SignalR](xref:signalr/introduction).
 
-Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Visual Studio inclut le modèle de projet **Blazor (côté serveur)** (modèle `blazorserverside` lorsque vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
+Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Visual Studio inclut le modèle de projet **Application serveur Blazor** (modèle `blazorserverside` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
 
 ## <a name="connection-scale-out"></a>Monter en charge la connexion
 

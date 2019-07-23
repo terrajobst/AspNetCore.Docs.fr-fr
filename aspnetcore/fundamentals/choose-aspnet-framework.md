@@ -4,14 +4,14 @@ author: rick-anderson
 description: Explique ASP.NET Core par rapport à ASP.NET 4.x, et comment choisir entre les deux.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 05/02/2019
+ms.date: 07/15/2019
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 97d65df8df1e27694d818098958288874e8ab92e
-ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
+ms.openlocfilehash: 9e093e83a1f6367cbb244076a8351644244f9874
+ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67399176"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68239206"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Choisir entre ASP.NET 4.x et ASP.NET Core
 
@@ -38,7 +38,7 @@ Le tableau suivant compare ASP.NET Core à ASP.NET 4.x.
 |Plusieurs versions par machine|Une seule version par machine|
 |Développer avec [Visual Studio](https://visualstudio.microsoft.com/vs/), [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) ou [Visual Studio Code](https://code.visualstudio.com/) en utilisant C# ou F#|Développer avec [Visual Studio](https://visualstudio.microsoft.com/vs/) en utilisant C#, VB ou F#|
 |Performances supérieures à celles d’ASP.NET 4.x|Bonnes performances|
-|[Choisir le runtime .NET Framework ou .NET Core](/dotnet/standard/choosing-core-framework-server)|Utiliser le runtime .NET Framework|
+|[Utiliser le runtime .NET Core](/dotnet/standard/choosing-core-framework-server)|Utiliser le runtime .NET Framework|
 
 Consultez [ASP.NET Core ciblant le .NET Framework](xref:index#target-framework) pour plus d’informations sur la prise en charge d’ASP.NET Core 2.x sur le .NET Framework.
 
