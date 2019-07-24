@@ -1,76 +1,78 @@
 ---
 title: Services gRPC avec C#
 author: juntaoluo
-description: Découvrez les concepts de base lors de l’écriture de services gRPC avec C#.
+description: Découvrez les concepts de base liés à l’écriture C#de services gRPC avec.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 03/31/2019
+ms.date: 07/03/2019
 uid: grpc/basics
-ms.openlocfilehash: 78d744d641396c449a142375c69730333f8183cd
-ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
+ms.openlocfilehash: 700fe9463317f9ee30dfe4ebf5201c7b9c0c5ad6
+ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68223882"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68412466"
 ---
-# <a name="grpc-services-with-c"></a>services de gRPC avec C\#
+# <a name="grpc-services-with-c"></a>services gRPC avec C\#
 
-Ce document décrit les concepts nécessaires à l’écriture [gRPC](https://grpc.io/docs/guides/) applications dans C#. Les sujets abordés ici s’appliquent aux deux [C-core](https://grpc.io/blog/grpc-stacks)-gRPC et ASP.NET Core-applications.
+Ce document décrit les concepts nécessaires pour écrire des applications [gRPC](https://grpc.io/docs/guides/) dans C#. Les rubriques traitées ici s’appliquent à la fois aux applications gRPC basées sur le [noyau C](https://grpc.io/blog/grpc-stacks)et à l’ASP.net core.
 
-## <a name="proto-file"></a>proto fichier
+## <a name="proto-file"></a>fichier proto
 
-gRPC utilise une approche contrat d’abord au développement d’API. Mémoires tampons de protocole (protobuf) sont utilisés en tant que la conception de langage IDL (Interface) par défaut. Le *.proto* fichier contient :
+gRPC utilise une approche contrat d’abord pour le développement d’API. Les mémoires tampons de protocole (protobuf) sont utilisées par défaut en tant que langage de conception d’interface (IDL). Le fichier *. proto* contient les éléments suivants:
 
-* La définition du service gRPC.
-* Les messages envoyés entre les clients et serveurs.
+* Définition du service gRPC.
+* Messages envoyés entre les clients et les serveurs.
 
-Pour plus d’informations sur la syntaxe des fichiers de protobuf, consultez le [documentation officielle (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3).
+Pour plus d’informations sur la syntaxe des fichiers protobuf, consultez la [documentation officielle (protobuf)](https://developers.google.com/protocol-buffers/docs/proto3).
 
-Par exemple, considérez le *greet.proto* fichier utilisé dans [prise en main gRPC service](xref:tutorials/grpc/grpc-start):
+Par exemple, considérez le fichier *Greeter. proto* utilisé dans [prise en main du service gRPC](xref:tutorials/grpc/grpc-start):
 
 * Définit un `Greeter` service.
-* Le `Greeter` service définit un `SayHello` appeler.
-* `SayHello` envoie un `HelloRequest` du message et reçoit un `HelloReply` message :
+* Le `Greeter` service définit un `SayHello` appel.
+* `SayHello`envoie un `HelloRequest` message et reçoit un `HelloReply` message:
 
-[!code-protobuf[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
+[!code-protobuf[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Protos/greet.proto)]
 
-## <a name="add-a-proto-file-to-a-c-app"></a>Ajouter un fichier .proto à un C\# application
+## <a name="add-a-proto-file-to-a-c-app"></a>Ajouter un fichier. proto à une application\# C
 
-Le *.proto* fichier est inclus dans un projet en l’ajoutant à la `<Protobuf>` groupe d’éléments :
+Le fichier *. proto* est inclus dans un projet en l' `<Protobuf>` ajoutant au groupe d’éléments:
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
-## <a name="c-tooling-support-for-proto-files"></a>C#Prise en charge pour les fichiers de .proto outils
+## <a name="c-tooling-support-for-proto-files"></a>C#Prise en charge des outils pour les fichiers. proto
 
-Le package d’outils [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) est requis pour générer le C# actifs à partir de *.proto* fichiers. Ressources générées (fichiers) :
+Le package d’outils [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) est requis pour générer les C# ressources à partir de fichiers *. proto* . Ressources générées (fichiers):
 
-* Sont générés chaque fois que le projet est généré sur une en fonction des besoins.
-* Ne sont pas ajoutés au projet ou archivé dans le contrôle de code source.
-* Sont un artefact de build contenu dans le *obj* directory.
+* Sont générés en fonction des besoins à chaque fois que le projet est généré.
+* Ne sont pas ajoutés au projet ou archivés dans le contrôle de code source.
+* Est un artefact de build contenu dans le répertoire *obj* .
 
-Ce package est requis par les projets client et serveur. `Grpc.Tools` peut être ajouté en utilisant le Gestionnaire de Package dans Visual Studio ou en ajoutant un `<PackageReference>` au fichier projet :
+Ce package est requis par les projets serveur et client. Le `Grpc.AspNetCore` repackage contient une référence à `Grpc.Tools`. Les projets serveur peuvent `Grpc.AspNetCore` être ajoutés à l’aide du gestionnaire de package dans Visual `<PackageReference>` Studio ou en ajoutant un au fichier projet:
 
-[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=15)]
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=1&range=12)]
 
-Le package d’outils n’est pas nécessaire lors de l’exécution. La dépendance est donc marquée avec `PrivateAssets="All"`.
+Les projets clients doivent `Grpc.Tools` référencer directement. Le package d’outils n’est pas requis lors de l’exécution, donc la `PrivateAssets="All"`dépendance est marquée avec:
 
-## <a name="generated-c-assets"></a>Généré C# actifs
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/GrpcGreeterClient.csproj?highlight=1&range=11)]
 
-Le package d’outils génère le C# types représentant les messages définis dans les éléments inclus *.proto* fichiers.
+## <a name="generated-c-assets"></a>Ressources C# générées
 
-Pour les ressources côté serveur, un type de base abstrait de service est généré. Le type de base contient les définitions de tous les appels de gRPC contenus dans le *.proto* fichier. Créer une implémentation concrète de service qui dérive de ce type de base et implémente la logique pour les appels de gRPC. Pour le `greet.proto`, l’exemple décrit précédemment, abstraite `GreeterBase` type qui contient une machine virtuelle `SayHello` méthode est générée. Une implémentation concrète `GreeterService` substitue la méthode et implémente la logique de gestion de l’appel de gRPC.
+Le package d’outils génère les C# types représentant les messages définis dans les fichiers *. proto* inclus.
 
-[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
+Pour les ressources côté serveur, un type de base de service abstrait est généré. Le type de base contient les définitions de tous les appels gRPC contenus dans le fichier *. proto* . Créez une implémentation de service concrète qui dérive de ce type de base et implémente la logique pour les appels gRPC. Pour le `greet.proto`, l’exemple décrit précédemment, un type `GreeterBase` abstrait qui contient une méthode `SayHello` virtuelle est généré. Une implémentation `GreeterService` concrète remplace la méthode et implémente la logique qui gère l’appel gRPC.
 
-Pour les ressources côté client, un type concret client est généré. Le gRPC appelle le *.proto* fichier sont converties en méthodes sur le type concret, ce qui peut être appelée. Pour le `greet.proto`, l’exemple décrit précédemment, un concret `GreeterClient` type est généré. Appelez `GreeterClient.SayHello` pour lancer un appel de gRPC sur le serveur.
+[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Services/GreeterService.cs?name=snippet)]
 
-[!code-csharp[](~/tutorials//grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=5-8&name=snippet)]
+Pour les ressources côté client, un type de client concret est généré. Les appels gRPC dans le fichier *. proto* sont traduits en méthodes sur le type concret, qui peuvent être appelées. Pour le `greet.proto`, l’exemple décrit précédemment, un type `GreeterClient` concret est généré. Appelez `GreeterClient.SayHello` pour lancer un appel gRPC sur le serveur.
 
-Par défaut, les ressources de serveur et client sont générés pour chacun *.proto* fichier inclus dans le `<Protobuf>` groupe d’éléments. Pour ne garantir que les composants de serveur sont générées dans un projet de serveur, le `GrpcServices` attribut a la valeur `Server`.
+[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?highlight=3-6&name=snippet)]
 
-[!code-xml[](~/tutorials//grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
+Par défaut, les ressources serveur et client sont générées pour chaque fichier *. proto* inclus `<Protobuf>` dans le groupe d’éléments. Pour garantir que seules les ressources du serveur sont générées dans un projet `GrpcServices` serveur, l’attribut `Server`a la valeur.
 
-De même, l’attribut est défini sur `Client` dans les projets de client.
+[!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
+
+De même, l’attribut a la valeur `Client` dans les projets clients.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
