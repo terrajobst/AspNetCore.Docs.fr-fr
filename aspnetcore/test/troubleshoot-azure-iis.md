@@ -5,14 +5,14 @@ description: Découvrez comment diagnostiquer les problèmes liés aux déploiem
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/17/2019
+ms.date: 07/18/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 46d4a11c594844e059fa8555255d7321f7b48631
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: deae568a6ba88c9a8365b9d7f2df629899bc64a1
+ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308792"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68483318"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Résoudre les problèmes de ASP.NET Core sur Azure App Service et IIS
 
@@ -48,6 +48,31 @@ Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Ex
 Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) pendant une opération de débogage. Un *échec de processus 502,5* qui se produit lorsque le débogage local peut être diagnostiqué à l’aide des conseils de cette rubrique.
 
 ::: moniker-end
+
+### <a name="40314-forbidden"></a>403,14 interdit
+
+L’application ne démarre pas. L’erreur suivante est enregistrée:
+
+```
+The Web server is configured to not list the contents of this directory.
+```
+
+L’erreur est généralement causée par un déploiement rompu sur le système d’hébergement, qui comprend l’un des scénarios suivants:
+
+* L’application est déployée dans le mauvais dossier sur le système d’hébergement.
+* Le processus de déploiement n’a pas réussi à déplacer tous les fichiers et dossiers de l’application vers le dossier de déploiement sur le système d’hébergement.
+* Le fichier *Web. config* est manquant dans le déploiement ou le contenu du fichier *Web. config* est incorrect.
+
+Procédez comme suit:
+
+1. Supprimez tous les fichiers et dossiers du dossier de déploiement sur le système d’hébergement.
+1. Redéployez le contenu du dossier de *publication* de l’application sur le système d’hébergement à l’aide de votre méthode de déploiement normale, telle que Visual Studio, PowerShell ou le déploiement manuel:
+   * Vérifiez que le fichier *Web. config* est présent dans le déploiement et que son contenu est correct.
+   * Lors de l’hébergement sur Azure App service, vérifiez que l’application est déployée dans le `D:\home\site\wwwroot` dossier.
+   * Lorsque l’application est hébergée par IIS, vérifiez que l’application est déployée sur le **chemin d’accès physique** IIS indiqué dans les **paramètres de base**du gestionnaire des **services Internet**.
+1. Confirmez que tous les fichiers et dossiers de l’application sont déployés en comparant le déploiement sur le système d’hébergement au contenu du dossier de *publication* du projet.
+
+Pour plus d’informations sur la disposition d’une application ASP.NET Core publiée, <xref:host-and-deploy/directory-structure>consultez. Pour plus d’informations sur le fichier *Web. config* , <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>consultez.
 
 ### <a name="500-internal-server-error"></a>Erreur de serveur interne 500
 
@@ -192,6 +217,8 @@ Vérifiez que le paramètre 32 bits du pool d’applications est correct :
 1. Définissez **Activer les applications 32 bits** :
    * Si vous déployez une application 32 bits (x86), définissez la valeur sur `True`.
    * Si vous déployez une application 64 bits (x64), définissez la valeur sur `False`.
+
+Confirmez qu’il n’existe pas de `<Platform>` conflit entre une propriété MSBuild dans le fichier projet et le nombre de bits publié de l’application.
 
 ### <a name="connection-reset"></a>Réinitialisation de la connexion
 
