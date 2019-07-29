@@ -5,14 +5,14 @@ description: Cet article contient des liens vers des ressources d’hébergement
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: bbdb3e92b6b8afb44d9c0c95c240002c7b7c17db
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 5035a31526e0290964e0fdee05753aeaf6cb3790
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308153"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602443"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -41,6 +41,9 @@ Configurez une build CI pour une application ASP.NET Core, puis créez une versi
 
 [Bac à sable Azure Web App](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 Découvrez les limitations d’exécution du runtime Azure App Service appliquées par la plateforme Azure Apps.
+
+<xref:test/troubleshoot>  
+Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NET Core.
 
 ## <a name="application-configuration"></a>Configuration d’application
 
