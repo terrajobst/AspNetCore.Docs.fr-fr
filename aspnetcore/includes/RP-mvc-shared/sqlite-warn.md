@@ -4,13 +4,14 @@
 >
 >Pour remédier aux limitations de SQLite, vous devez écrire le code de migrations manuellement pour regénérer le tableau lorsqu’un élément est modifié. La regénération d’un tableau implique :
 >
->* La modification du nom du tableau existant.
 >* La création d’un nouveau tableau.
 >* La copie de données de l’ancien tableau vers le nouveau.
 >* La suppression de l’ancien tableau.
+>* Renommer la nouvelle table.
 >
 >Pour plus d'informations, reportez-vous aux ressources suivantes :
 >
 > * [Limites d’un fournisseur de base de données EF Core SQLite](/ef/core/providers/sqlite/limitations)
 > * [Personnaliser le code de migration](/ef/core/managing-schemas/migrations/#customize-migration-code)
 > * [Amorçage des données](/ef/core/modeling/data-seeding)
+  * [Instruction SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)

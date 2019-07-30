@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment ajouter la validation à une page Razor dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2018
+ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 8495849c89ca3d6fd2b2006b61ce2ec75ff504a5
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: d6d45dc7154bf415c3b098299d066b6fb37cf64d
+ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815663"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68483265"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -56,9 +56,9 @@ Quand JavaScript est désactivé dans le navigateur, l’envoi du formulaire ave
 
 Facultatif : Testez la validation côté serveur :
 
-* Désactivez JavaScript dans le navigateur. Pour cela, utilisez les outils de développement de votre navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
+* Désactivez JavaScript dans le navigateur. Vous pouvez désactiver JavaScript à l’aide d’outils de développement du navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
 * Définissez un point d’arrêt dans la méthode `OnPostAsync` de la page Créer ou Modifier.
-* Envoyez un formulaire avec des erreurs de validation.
+* Envoyez un formulaire avec des données non valides.
 * Vérifiez que l’état de modèle n’est pas valide :
 
   ```csharp
@@ -68,7 +68,7 @@ Facultatif : Testez la validation côté serveur :
    }
   ```
 
-Le code suivant affiche la partie de la page *Create.cshtml* pour laquelle vous avez généré automatiquement des modèles précédemment dans le didacticiel. Elle est utilisée par les pages Créer et Modifier pour afficher le formulaire initial et le réafficher en cas d’erreur.
+Le code suivant affiche la partie de la page *Create.cshtml* générée automatiquement plus tôt dans le tutoriel. Elle est utilisée par les pages Créer et Modifier pour afficher le formulaire initial et le réafficher en cas d’erreur.
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
@@ -117,13 +117,72 @@ Il n’est généralement pas recommandé de compiler des dates en dur dans vos 
 
 Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
 La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data/ef-rp/intro) présente des opérations EF Core avancées avec Razor Pages.
 
+### <a name="apply-migrations"></a>Appliquer des migrations
+
+L’application de DataAnnotations à la classe modifie le schéma. Par exemple, DataAnnotations appliqué au champ `Title` :
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateRatingDA.cs?name=snippet11)]
+
+* limite les caractères à 60 ;
+* n’autorise pas de valeur `null`.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+La table `Movie` a actuellement le schéma suivant :
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (MAX)  NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (MAX)  NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (MAX)  NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+Les modifications précédentes du schéma n’entraînent pas la levée d’une exception par EF. Cependant, créez une migration pour que le schéma soit cohérent avec le modèle.
+
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+
+```powershell
+Add-Migration New_DataAnnotations
+Update-Database
+```
+
+`Update-Database` exécute les méthodes `Up` de la classe `New_DataAnnotations`. Examinez la méthode `Up` :
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Migrations/20190724163003_New_DataAnnotations.cs?name=snippet)]
+
+La table `Movie` mise à jour a le schéma suivant :
+
+``` sql
+CREATE TABLE [dbo].[Movie] (
+    [ID]          INT             IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (60)   NOT NULL,
+    [ReleaseDate] DATETIME2 (7)   NOT NULL,
+    [Genre]       NVARCHAR (30)   NOT NULL,
+    [Price]       DECIMAL (18, 2) NOT NULL,
+    [Rating]      NVARCHAR (5)    NOT NULL,
+    CONSTRAINT [PK_Movie] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+```
+
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+
+Des migrations ne sont pas requises pour SQLite.
+
+---
+
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Pour plus d’informations sur le déploiement vers Azure, consultez [Didacticiel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Ces instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
+Pour plus d’informations sur le déploiement vers Azure, consultez [Didacticiel : Créer une application ASP.NET Core dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 
 Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 

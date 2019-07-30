@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 033f2dda9942f91f23158cf2d986062157a3b69e
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: 0ffd437bbb48ef1c7a9159fbf3ac41441613f434
+ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316610"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372060"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -45,15 +45,17 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 * À partir de la boîte de dialogue **Gérer les packages NuGet** :
   * Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions** > **Gérer les packages NuGet**.
   * Affectez la valeur « nuget.org » à **Source du package**.
+  * Vérifiez que l’option « Inclure la version préliminaire » est activée
   * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
-  * Sélectionnez le package « Swashbuckle.AspNetCore » sous l’onglet **Parcourir** et cliquez sur **Installer**.
+  * Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent sous l’onglet **Parcourir** et cliquez sur **Installer**.
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages**.
 * Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
+* Vérifiez que l’option « Afficher les packages en version préliminaire » est activée.
 * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
-* Sélectionnez le package « Swashbuckle.AspNetCore » dans le volet de résultats, puis cliquez sur **Ajouter un package**.
+* Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent dans le volet de résultats, puis cliquez sur **Ajouter un package**.
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

@@ -5,14 +5,14 @@ description: Découvrez comment héberger des applications ASP.NET Core sur Wind
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2019
+ms.date: 07/28/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: a3d8c87fdb1cbc3b8b11b15f797190d626edad59
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: 7677173493e68f5a5656c18533e0ae13a7c5bece
+ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308060"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602471"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -30,6 +30,8 @@ Les systèmes d’exploitation suivants sont pris en charge :
 Le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement WebListener) ne fonctionne pas dans une configuration de proxy inverse avec IIS. Utilisez le [serveur Kestrel](xref:fundamentals/servers/kestrel).
 
 Pour plus d’informations sur l’hébergement dans Azure, consultez <xref:host-and-deploy/azure-apps/index>.
+
+Pour obtenir des conseils de dépannage, consultez <xref:test/troubleshoot>.
 
 ## <a name="supported-platforms"></a>Plateformes prises en charge
 
