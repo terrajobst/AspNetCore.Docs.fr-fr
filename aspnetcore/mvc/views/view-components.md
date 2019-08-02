@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: ff84abf9e0c682d22196a0a0f5f377990c80a6ae
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: e6990368519857a27b291d7d565c09072f23f1b0
+ms.sourcegitcommit: 7001657c00358b082734ba4273693b9b3ed35d2a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815276"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68670085"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -326,6 +326,14 @@ Utilisez le Tag Helper du composant de vue dans le fichier de balisage Razor :
 ::: moniker-end
 
 La signature de méthode de `PriorityList.Invoke` est synchrone, mais Razor trouve et appelle la méthode avec `Component.InvokeAsync` dans le fichier de balisage.
+
+## <a name="all-view-component-parameters-are-required"></a>Tous les paramètres du composant de vue sont requis.
+
+Chaque paramètre d’un composant de vue est un attribut requis. Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore/issues/5011). Si un paramètre est omis :
+
+* La signature de la méthode `InvokeAsync` ne correspond pas, et la méthode n’est pas exécutée.
+* ViewComponent n’affiche aucun balisage.
+* Aucune erreur n’est levée.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

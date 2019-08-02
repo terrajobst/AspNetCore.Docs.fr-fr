@@ -5,12 +5,12 @@ description: Montre comment ajouter une fonction de recherche à une application
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: fbec03d71e247c58fb5968290c4baf6b28120e1c
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: ed6c7a095143670b7d06e43db3a428dec9bf97ad
+ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815070"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707844"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Ajouter une fonction de recherche à une application ASP.NET Core MVC
 
@@ -18,7 +18,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Dans cette section, vous ajoutez une fonctionnalité de recherche à la méthode d’action `Index` qui vous permet de rechercher des films par *genre* ou par *nom*.
 
-Mettez à jour la méthode `Index` avec le code suivant :
+Mettez à jour la méthode `Index` trouvée dans *Controllers/MoviesController.cs* avec le code suivant :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_1stSearch)]
 
@@ -91,7 +91,7 @@ Cependant, même si vous ajoutez cette version `[HttpPost]` de la méthode `Inde
 
 Vous pouvez voir le paramètre de recherche et le jeton [XSRF](xref:security/anti-request-forgery) dans le corps de la demande. Notez que, comme indiqué dans le didacticiel précédent, le [Tag Helper de formulaire](xref:mvc/views/working-with-forms) génère un jeton [XSRF](xref:security/anti-request-forgery) anti-contrefaçon. Nous ne modifions pas les données : nous n’avons donc pas besoin de valider le jeton dans la méthode du contrôleur.
 
-Comme le paramètre de recherche se trouve dans le corps de la demande et pas dans l’URL, vous ne pouvez pas capturer ces informations de recherche pour les insérer dans un signet ou les partager avec d’autres personnes. Résolvez ce problème en spécifiant que la requête doit être `HTTP GET` :
+Comme le paramètre de recherche se trouve dans le corps de la demande et pas dans l’URL, vous ne pouvez pas capturer ces informations de recherche pour les insérer dans un signet ou les partager avec d’autres personnes. Corrigez ce problème en indiquant que la requête doit être `HTTP GET` trouvée dans le fichier *Views/Movies/Index.cshtml*.
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
@@ -132,7 +132,7 @@ Quand l’utilisateur recherche l’élément, la valeur de recherche est conser
 
 ## <a name="add-search-by-genre-to-the-index-view"></a>Ajouter la recherche par genre à la vue Index
 
-Mettez à jour `Index.cshtml` comme suit :
+Mettez à jour `Index.cshtml` trouvé dans *Views/Movies/* comme suit :
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 
