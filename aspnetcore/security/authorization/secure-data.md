@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 222ae1d6212b838e5c70f831960fa23a9924a0ae
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 4b94cc53777308deb26521a079d8a1c2742744db
+ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856143"
+ms.lasthandoff: 08/04/2019
+ms.locfileid: "68776744"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -37,13 +37,13 @@ Ce didacticiel montre comment créer une application web ASP.NET Core avec des d
 * **Gestionnaires de** peuvent approuver ou rejeter des données de contact. Seuls les contacts approuvés sont visibles aux utilisateurs.
 * **Les administrateurs** peut approuver/rejeter et modifier ou de supprimer toutes les données.
 
-Exactement les images dans ce document ne correspondent pas les derniers modèles.
+Les images contenues dans ce document ne correspondent pas exactement aux modèles les plus récents.
 
 Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est connecté. Rick peut uniquement afficher les contacts approuvés et **modifier**/**supprimer**/**créer un nouveau** liens pour ses contacts. Seul le dernier enregistrement créé par Rick, affiche **modifier** et **supprimer** des liens. Autres utilisateurs ne voient le dernier enregistrement jusqu'à ce qu’un gestionnaire ou un administrateur modifie le statut « Approved ».
 
 ![Capture d’écran montrant Rick connecté](secure-data/_static/rick.png)
 
-Dans l’image suivante, `manager@contoso.com` est signé dans et dans le rôle :
+Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable:
 
 ![Capture d’écran manager@contoso.com connecté](secure-data/_static/manager1.png)
 
@@ -53,7 +53,7 @@ L’illustration suivante montre les gestionnaires de vue des détails d’un co
 
 Le **approuver** et **rejeter** boutons sont affichés uniquement pour les responsables et les administrateurs.
 
-Dans l’image suivante, `admin@contoso.com` est signé dans et dans le rôle de l’administrateur :
+Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur:
 
 ![Capture d’écran admin@contoso.com connecté](secure-data/_static/admin.png)
 
@@ -65,9 +65,9 @@ L’application a été créée par [la structure](xref:tutorials/first-mvc-app/
 
 L’exemple contient les gestionnaires d’autorisation suivants :
 
-* `ContactIsOwnerAuthorizationHandler`: Garantit qu’un utilisateur peut modifier uniquement leurs données.
-* `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou rejeter des contacts.
-* `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou rejeter des contacts et à modifier/supprimer des contacts.
+* `ContactIsOwnerAuthorizationHandler`: Garantit qu’un utilisateur peut uniquement modifier ses données.
+* `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou de rejeter les contacts.
+* `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -122,7 +122,7 @@ Définir la stratégie d’authentification par défaut pour exiger l’authenti
 
  Vous pouvez refuser l’authentification au niveau de la méthode Page Razor, de contrôleur ou d’action avec la `[AllowAnonymous]` attribut. Définition de la stratégie d’authentification par défaut pour les utilisateurs doivent être authentifiés protège nouvellement ajouté les Pages Razor et les contrôleurs. Avec l’authentification requise par défaut est plus sécurisée que de s’appuyer sur de nouveaux contrôleurs et les Pages Razor pour inclure le `[Authorize]` attribut.
 
-Ajouter [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) vers les pages d’Index et de confidentialité pour les utilisateurs anonymes peuvent obtenir des informations sur le site avant ils s’inscrivent.
+Ajoutez [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowanonymousattribute) aux pages d’index et de confidentialité afin que les utilisateurs anonymes puissent obtenir des informations sur le site avant de s’inscrire.
 
 [!code-csharp[](secure-data/samples/final3/Pages/Index.cshtml.cs?highlight=1,7)]
 
@@ -159,7 +159,7 @@ Créer un `ContactIsOwnerAuthorizationHandler` classe dans le *autorisation* dos
 Le `ContactIsOwnerAuthorizationHandler` appels [contexte. Réussir](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) si l’utilisateur authentifié actuel est le propriétaire du contact. Les gestionnaires d’autorisation généralement :
 
 * Retourner `context.Succeed` lorsque les conditions sont remplies.
-* Retourner `Task.CompletedTask` lorsque les conditions ne sont pas remplies. `Task.CompletedTask` n’est pas le succès ou l’échec&mdash;permet d’autres gestionnaires d’autorisation Exécuter.
+* Retourner `Task.CompletedTask` lorsque les conditions ne sont pas remplies. `Task.CompletedTask`n’est pas un succès&mdash;ou un échec. il permet l’exécution d’autres gestionnaires d’autorisations.
 
 Si vous devez explicitement échouer, retourner [contexte. Échec](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
@@ -242,7 +242,7 @@ Mettre à jour le modèle de page delete pour utiliser le Gestionnaire d’autor
 
 Actuellement, le montre l’interface utilisateur modifie et supprime des liens pour les contacts de que l’utilisateur ne peut pas modifier.
 
-Injecter le service d’autorisation dans le *pages/_viewimports.cshtml* afin qu’il soit disponible pour toutes les vues de fichiers :
+Injecter le service d’autorisation dans le fichier *pages/_ViewImports. cshtml* afin qu’il soit disponible pour tous les affichages:
 
 [!code-cshtml[](secure-data/samples/final3/Pages/_ViewImports.cshtml?highlight=6-99)]
 
@@ -269,14 +269,14 @@ Mettre à jour le modèle de page de détails :
 
 Consultez [ce problème](https://github.com/aspnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
 
-* Suppression de privilèges à partir d’un utilisateur. Désactivation par exemple, un utilisateur dans une application de conversation.
+* Suppression de privilèges à partir d’un utilisateur. Par exemple, la désactivation d’un utilisateur dans une application de conversation.
 * Ajout des privilèges à un utilisateur.
 
 ## <a name="test-the-completed-app"></a>Tester l’application terminée
 
 Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
 
-* Choisissez un mot de passe fort : Utiliser huit ou plus de caractères et au moins un caractère majuscule, numéro et de symboles. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Choisir un mot de passe fort: Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
 * Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
 
   ```console
@@ -314,7 +314,7 @@ Créer un contact dans le navigateur de l’administrateur. Copiez l’URL pour 
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter *Models/Contact.cs*:
+* Ajouter des *modèles/contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -330,9 +330,9 @@ dotnet ef migrations add initial
 dotnet ef database update
   ```
 
-Si vous rencontrez un bogue avec le `dotnet aspnet-codegenerator razorpage` de commande, consultez [ce problème GitHub](https://github.com/aspnet/Scaffolding/issues/984).
+Si vous rencontrez un bogue avec `dotnet aspnet-codegenerator razorpage` la commande, consultez [ce problème GitHub](https://github.com/aspnet/Scaffolding/issues/984).
 
-* Mise à jour le **ContactManager** ancrer dans le *Pages/Shared/_Layout.cshtml* fichier :
+* Mettez à jour l’ancre **ContactManager** dans le fichier *pages/Shared/_ Layout. cshtml* :
 
  ```cshtml
 <a class="navbar-brand" asp-area="" asp-page="/Contacts/Index">ContactManager</a>
@@ -342,7 +342,7 @@ Si vous rencontrez un bogue avec le `dotnet aspnet-codegenerator razorpage` de c
 
 ### <a name="seed-the-database"></a>Amorcer la base de données
 
-Ajouter le [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) classe à la *données* dossier :
+Ajoutez la classe [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) au dossier *Data* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -366,7 +366,7 @@ Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est conne
 
 ![Capture d’écran montrant Rick connecté](secure-data/_static/rick.png)
 
-Dans l’image suivante, `manager@contoso.com` est signé dans et dans le rôle :
+Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable:
 
 ![Capture d’écran manager@contoso.com connecté](secure-data/_static/manager1.png)
 
@@ -376,7 +376,7 @@ L’illustration suivante montre les gestionnaires de vue des détails d’un co
 
 Le **approuver** et **rejeter** boutons sont affichés uniquement pour les responsables et les administrateurs.
 
-Dans l’image suivante, `admin@contoso.com` est signé dans et dans le rôle de l’administrateur :
+Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur:
 
 ![Capture d’écran admin@contoso.com connecté](secure-data/_static/admin.png)
 
@@ -388,9 +388,9 @@ L’application a été créée par [la structure](xref:tutorials/first-mvc-app/
 
 L’exemple contient les gestionnaires d’autorisation suivants :
 
-* `ContactIsOwnerAuthorizationHandler`: Garantit qu’un utilisateur peut modifier uniquement leurs données.
-* `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou rejeter des contacts.
-* `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou rejeter des contacts et à modifier/supprimer des contacts.
+* `ContactIsOwnerAuthorizationHandler`: Garantit qu’un utilisateur peut uniquement modifier ses données.
+* `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou de rejeter les contacts.
+* `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -482,7 +482,7 @@ Créer un `ContactIsOwnerAuthorizationHandler` classe dans le *autorisation* dos
 Le `ContactIsOwnerAuthorizationHandler` appels [contexte. Réussir](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.succeed#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_Succeed_Microsoft_AspNetCore_Authorization_IAuthorizationRequirement_) si l’utilisateur authentifié actuel est le propriétaire du contact. Les gestionnaires d’autorisation généralement :
 
 * Retourner `context.Succeed` lorsque les conditions sont remplies.
-* Retourner `Task.CompletedTask` lorsque les conditions ne sont pas remplies. `Task.CompletedTask` n’est pas le succès ou l’échec&mdash;permet d’autres gestionnaires d’autorisation Exécuter.
+* Retourner `Task.CompletedTask` lorsque les conditions ne sont pas remplies. `Task.CompletedTask`n’est pas un succès&mdash;ou un échec. il permet l’exécution d’autres gestionnaires d’autorisations.
 
 Si vous devez explicitement échouer, retourner [contexte. Échec](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.fail).
 
@@ -592,14 +592,14 @@ Mettre à jour le modèle de page de détails :
 
 Consultez [ce problème](https://github.com/aspnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
 
-* Suppression de privilèges à partir d’un utilisateur. Désactivation par exemple, un utilisateur dans une application de conversation.
+* Suppression de privilèges à partir d’un utilisateur. Par exemple, la désactivation d’un utilisateur dans une application de conversation.
 * Ajout des privilèges à un utilisateur.
 
 ## <a name="test-the-completed-app"></a>Tester l’application terminée
 
 Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
 
-* Choisissez un mot de passe fort : Utiliser huit ou plus de caractères et au moins un caractère majuscule, numéro et de symboles. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Choisir un mot de passe fort: Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
 * Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
 
   ```console
@@ -607,10 +607,11 @@ Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisa
   ```
 
 * Supprimer et mettre à jour la base de données
+
     ```console
      dotnet ef database drop -f
      dotnet ef database update  
-```
+     ```
 
 * Redémarrez l’application pour amorcer la base de données.
 
@@ -640,7 +641,7 @@ Créer un contact dans le navigateur de l’administrateur. Copiez l’URL pour 
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Ajouter *Models/Contact.cs*:
+* Ajouter des *modèles/contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
