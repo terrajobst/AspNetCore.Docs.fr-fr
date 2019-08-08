@@ -3,14 +3,14 @@ title: Ajouter une vue à une application ASP.NET Core MVC
 author: rick-anderson
 description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
-ms.date: 03/04/2017
+ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: b6a3b1e673b8b67530b82c7d850e810a6c11e555
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: 1c29b59f9306774316ff37eeb57cc441fe5c7370
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707869"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820084"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -66,7 +66,7 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
   * Tapez *Index.cshtml* dans la zone **Nom**.
   * Sélectionnez **Nouveau**.
 
-![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view.png)
+![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view_mac.png)
 
 ---
 
@@ -74,7 +74,7 @@ Remplacez le contenu du fichier vue Razor *Views/HelloWorld/Index.cshtml* par le
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-Accédez à `https://localhost:xxxx/HelloWorld`. La méthode `Index` dans `HelloWorldController` n’a pas accompli beaucoup d’actions. Elle a exécuté l’instruction `return View();`, laquelle spécifiait que la méthode doit utiliser un fichier de modèle de vue pour restituer une réponse au navigateur. Comme aucun nom de fichier de modèle de vue n’a été spécifié, MVC utilise le fichier d’affichage par défaut. Le fichier d’affichage par défaut a le même nom que la méthode (`Index`), donc */Views/HelloWorld/Index.cshtml* est utilisé. L’image ci-dessous montre la chaîne « Hello from our View Template! » codée en dur dans la vue.
+Accédez à `https://localhost:{PORT}/HelloWorld`. La méthode `Index` dans `HelloWorldController` n’a pas accompli beaucoup d’actions. Elle a exécuté l’instruction `return View();`, laquelle spécifiait que la méthode doit utiliser un fichier de modèle de vue pour restituer une réponse au navigateur. Comme aucun nom de fichier de modèle de vue n’a été spécifié, MVC utilise le fichier d’affichage par défaut. Le fichier d’affichage par défaut a le même nom que la méthode (`Index`), donc */Views/HelloWorld/Index.cshtml* est utilisé. L’image ci-dessous montre la chaîne « Hello from our View Template! » codée en dur dans la vue.
 
 ![Fenêtre du navigateur](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -127,7 +127,7 @@ Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la proprié
 <title>@ViewData["Title"] - Movie App</title>
    ```
 
-Enregistrez la modification et accédez à `https://localhost:xxxx/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
+Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
 
 Le contenu du modèle de vue *Index.cshtml* est fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml*. Une réponse HTML unique est envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages d’une application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
 
@@ -157,7 +157,7 @@ Vous allez créer une boucle dans le modèle de vue *Welcome.cshtml* qui affiche
 
 Enregistrez vos modifications et accédez à l’URL suivante :
 
-`https://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4`
+`https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
 Les données sont extraites de l’URL et passées au contrôleur à l’aide du [classeur de modèles MVC](xref:mvc/models/model-binding). Le contrôleur empaquette les données dans un dictionnaire `ViewData` et passe cet objet à la vue. La vue restitue ensuite les données au format HTML dans le navigateur.
 
@@ -231,7 +231,7 @@ Remplacez le contenu du fichier vue Razor *Views/HelloWorld/Index.cshtml* par le
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-Accédez à `https://localhost:xxxx/HelloWorld`. La méthode `Index` dans `HelloWorldController` n’a pas accompli beaucoup d’actions. Elle a exécuté l’instruction `return View();`, laquelle spécifiait que la méthode doit utiliser un fichier de modèle de vue pour restituer une réponse au navigateur. Comme aucun nom de fichier de modèle de vue n’a été spécifié, MVC utilise le fichier d’affichage par défaut. Le fichier d’affichage par défaut a le même nom que la méthode (`Index`), donc */Views/HelloWorld/Index.cshtml* est utilisé. L’image ci-dessous montre la chaîne « Hello from our View Template! » codée en dur dans la vue.
+Accédez à `https://localhost:{PORT}/HelloWorld`. La méthode `Index` dans `HelloWorldController` n’a pas accompli beaucoup d’actions. Elle a exécuté l’instruction `return View();`, laquelle spécifiait que la méthode doit utiliser un fichier de modèle de vue pour restituer une réponse au navigateur. Comme aucun nom de fichier de modèle de vue n’a été spécifié, MVC utilise le fichier d’affichage par défaut. Le fichier d’affichage par défaut a le même nom que la méthode (`Index`), donc */Views/HelloWorld/Index.cshtml* est utilisé. L’image ci-dessous montre la chaîne « Hello from our View Template! » codée en dur dans la vue.
 
 ![Fenêtre du navigateur](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -287,7 +287,7 @@ Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la proprié
 <title>@ViewData["Title"] - Movie App</title>
    ```
 
-Enregistrez la modification et accédez à `https://localhost:xxxx/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
+Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
 
 Notez également comment le contenu du modèle de vue *Index.cshtml* a été fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml* et qu’une seule réponse HTML a été envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages de votre application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
 
@@ -317,7 +317,7 @@ Vous allez créer une boucle dans le modèle de vue *Welcome.cshtml* qui affiche
 
 Enregistrez vos modifications et accédez à l’URL suivante :
 
-`https://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4`
+`https://localhost:{PORT}/HelloWorld/Welcome?name=Rick&numtimes=4`
 
 Les données sont extraites de l’URL et passées au contrôleur à l’aide du [classeur de modèles MVC](xref:mvc/models/model-binding). Le contrôleur empaquette les données dans un dictionnaire `ViewData` et passe cet objet à la vue. La vue restitue ensuite les données au format HTML dans le navigateur.
 

@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 07/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: b7f77cfa51f8d86504939e31eade0dfda8a6b1c9
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 6132f7b907014b4f57bb9ae0300e00b6ecb23f1a
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371913"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68820071"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -99,7 +99,7 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 * Installez l’outil de génération de modèles automatique :
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * **Pour Windows 10** : Exécutez la commande suivante :
@@ -122,7 +122,7 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 * Installez l’outil de génération de modèles automatique :
 
   ```console
-   dotnet tool install --global dotnet-aspnet-codegenerator
+   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
    ```
 
 * Exécutez la commande suivante :
@@ -166,7 +166,7 @@ Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Con
 Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 ```PMC
-Add-Migration Initial
+Add-Migration InitialCreate
 Update-Database
 ```
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: a07bb4f539c8bd38b08402c598924e14c748921d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 43a1c408ff1a03468989e5bb0839ca2cd245082b
+ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815238"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68739491"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Tag Helpers dans les formulaires dans ASP.NET Core
 
@@ -640,11 +640,13 @@ Modèle *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
 
 L’ajout d’éléments HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) ne se limite pas au cas *No selection*. Par exemple, la vue et la méthode d’action suivante génèrent du code HTML similaire au code ci-dessus :
 
-[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?name=snippetNone)]
 
 [!code-HTML[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 L’élément `<option>` approprié est sélectionné (il contient l’attribut `selected="selected"`) en fonction de la valeur actuelle de `Country`.
+
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 ```HTML
  <form method="post" action="/Home/IndexEmpty">
