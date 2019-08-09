@@ -301,6 +301,8 @@
           uid: blazor/javascript-interop
         - name: Sécurité et identité
           uid: security/blazor/index
+        - name: Gestion de l’état
+          uid: blazor/state-management
         - name: Gérer les erreurs
           uid: blazor/handle-errors
         - name: Débogage
