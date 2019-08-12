@@ -104,8 +104,6 @@
         - name: EF Core avec Razor Pages
           displayName: tutorial
           items:
-            - name: Vue d'ensemble
-              uid: data/ef-rp/index
             - name: Prise en main
               uid: data/ef-rp/intro
             - name: 'Créer, lire, mettre à jour et supprimer'
@@ -581,8 +579,6 @@
       items:
         - name: EF Core avec Razor Pages
           items:
-            - name: Vue d'ensemble
-              uid: data/ef-rp/index
             - name: Prise en main
               uid: data/ef-rp/intro
             - name: 'Créer, lire, mettre à jour et supprimer'
@@ -701,6 +697,8 @@
         - name: Vue d'ensemble
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/index
+        - name: Publier dans le tutoriel IIS
+          uid: tutorials/publish-to-iis
         - name: Module ASP.NET Core
           displayName: 'deploy, publish'
           uid: host-and-deploy/aspnet-core-module
