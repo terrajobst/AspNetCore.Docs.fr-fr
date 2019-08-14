@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 45506d071c90c91a61e6912ff51350b43e8ae136
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
+ms.openlocfilehash: f22a90dd7662bfb34e2f7adb87fa611012d78533
+ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034797"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68739580"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>Ajouter un nouveau champ à une application ASP.NET Core MVC
 
@@ -33,7 +33,21 @@ Ajouter une propriété `Rating` à *Models/Movie.cs* :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Models/MovieDateRating.cs?highlight=13&name=snippet)]
 
-Générez l’application (Ctrl+Maj+B).
+Générer l’application
+
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+ Ctrl+Maj+B
+
+### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+`dotnet build`
+
+### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+Commande ⌘ + B
+
+------
 
 Comme vous avez ajouté un nouveau champ à la classe `Movie`, vous devez mettre à jour la liste verte des liaisons pour y inclure cette nouvelle propriété. Dans *MoviesController.cs*, mettez à jour l’attribut `[Bind]` des méthodes d’action `Create` et `Edit` pour y inclure la propriété `Rating` :
 
@@ -60,6 +74,8 @@ Vous pouvez copier/coller le « groupe de formulaire » précédent et laisser I
 <!-- This tab intentionally left blank. -->
 
 ---
+
+Mettez à jour les modèles restants.
 
 Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la nouvelle colonne. Vous pouvez voir un exemple de modification ci-dessous, mais elle doit être appliquée à chaque `new Movie`.
 

@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 5b45ced4fe6ed220c9a63bc6480c8c8520b36ed4
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 20f801e23f3e75d7915bcb7c095060b68d9cb03f
+ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886364"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68819785"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
 
@@ -188,7 +188,7 @@ Vous avez apporté les modifications suivantes au code existant :
   }
   ```
 
-* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Consultez [Conversion de ligne explicite avec `@:`](xref:mvc/views/razor#explicit-line-transition-with-) pour en savoir plus sur cette syntaxe razor.
+* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Pour plus d’informations, consultez la section [Conversion de ligne explicite avec @ :](xref:mvc/views/razor#explicit-line-transition-with-) de l’article relatif à la syntaxe Razor.
 
 * Vous avez ajouté un code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
 

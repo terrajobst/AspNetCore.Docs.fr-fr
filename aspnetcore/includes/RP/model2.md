@@ -2,7 +2,7 @@
 
 ### <a name="add-a-database-context-class"></a>Ajouter une classe de contexte de base de données
 
-Ajoutez la classe `RazorPagesMovieContext` suivante au dossier *Data* :
+Dans le projet RazorPagesMovie, créez un nouveau dossier nommé *Data*. Ajoutez la classe `RazorPagesMovieContext` suivante au dossier *Data* :
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
@@ -18,18 +18,19 @@ Ajoutez une chaîne de connexion au fichier *appsettings.JSON* comme indiqué da
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/appsettings_SQLite.json?highlight=10-12)]
 
-### <a name="add-required-nuget-packages"></a>Ajouter les packages NuGet nécessaires
+### <a name="add-nuget-packages-and-ef-tools"></a>Ajouter des packages NuGet des outils EF
 
-Exécutez les commandes CLI .NET Core suivantes pour ajouter SQLite, Entity Framework Core et CodeGeneration.Design au projet :
+Ouvrez un terminal pour le projet RazorPagesMovie.  Cliquez avec le bouton droit sur le nom du projet dans la barre de création/mise en page et accédez à **Outils > Ouvrir** dans Terminal. Exécutez les commandes CLI .NET Core suivantes dans le terminal :
 
 ```console
+dotnet tool install --global dotnet-ef --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
 ```
 
-Le package `Microsoft.VisualStudio.Web.CodeGeneration.Design` est nécessaire à la génération de modèles automatique.
+Les commandes précédentes ajoutent des outils Entity Framework Core pour la CLI .NET et plusieurs packages au projet. Le package `Microsoft.VisualStudio.Web.CodeGeneration.Design` est nécessaire à la génération de modèles automatique.
 
 <a name="reg"></a>
 

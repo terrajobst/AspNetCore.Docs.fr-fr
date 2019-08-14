@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 06/12/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 3e90e3b17186757fe157fb6641888786bb7a0df2
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: 6a3a7446a488ef54d99d6c7605980c18890b9ad0
+ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68412524"
+ms.lasthandoff: 08/04/2019
+ms.locfileid: "68776643"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutoriel : Créer un serveur et un client gRPC dans ASP.NET Core
 
@@ -192,8 +192,8 @@ Install-Package Grpc.Tools
 
 * Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions** > **Gérer les packages NuGet**.
 * Sélectionnez l’onglet **Parcourir**.
-* Entrez **Grpc.Core** dans la zone de recherche.
-* Sélectionnez le package **Grpc.Core** sous l’onglet **Parcourir** et sélectionnez **Installer**.
+* Entrez **Grpc.Net.Client** dans la zone de recherche.
+* Sélectionnez le package **Grpc.Net.Client** sous l’onglet **Parcourir** et sélectionnez **Installer**.
 * Répétez ces étapes pour `Google.Protobuf` et `Grpc.Tools`.
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -269,7 +269,7 @@ Le client Greeter appelle la méthode `SayHello` asynchrone. Le résultat de l�
 ### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le service Greeter, appuyez sur `Ctrl+F5` pour démarrer le serveur sans le débogueur.
-* Dans le projet `GrpcGreeterClient`, appuyez sur `Ctrl+F5` pour démarrer le serveur sans le débogueur.
+* Dans le projet `GrpcGreeterClient`, appuyez sur `Ctrl+F5` pour démarrer le client sans le débogueur.
 
 ### <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
