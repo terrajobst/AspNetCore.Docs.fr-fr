@@ -5,12 +5,12 @@ description: Découvrez plus d’informations sur la méthode et la vue du contr
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/details
-ms.openlocfilehash: 056017ea4f4073fa0b1cd747d06775b2a33616cf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: d19e8cdb63da2bb9c66db1943dfcec183d432401
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889574"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862969"
 ---
 # <a name="examine-the-details-and-delete-methods-of-an-aspnet-core-app"></a>Examiner les méthodes Details et Delete d’une application ASP.NET Core
 
@@ -24,7 +24,7 @@ Le moteur de génération de modèles automatique MVC qui a créé cette méthod
 
 [!code-csharp[](start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
-EF facilite la recherche de données à l’aide de la méthode `FirstOrDefaultAsync`. Une fonctionnalité de sécurité importante intégrée à la méthode réside dans le fait que le code vérifie que la méthode de recherche a trouvé un film avant de tenter toute opération que ce soit avec lui. Par exemple, un pirate informatique pourrait induire des erreurs dans le site en modifiant l’URL créée par les liens, en remplaçant `http://localhost:xxxx/Movies/Details/1` par quelque chose comme `http://localhost:xxxx/Movies/Details/12345` (ou une autre valeur qui ne représente pas un film réel). Si vous avez recherché un film null, l’application lève une exception.
+EF facilite la recherche de données à l’aide de la méthode `FirstOrDefaultAsync`. Une fonctionnalité de sécurité importante intégrée à la méthode réside dans le fait que le code vérifie que la méthode de recherche a trouvé un film avant de tenter toute opération que ce soit avec lui. Par exemple, un pirate informatique pourrait induire des erreurs dans le site en modifiant l’URL créée par les liens, en remplaçant `http://localhost:{PORT}/Movies/Details/1` par quelque chose comme `http://localhost:{PORT}/Movies/Details/12345` (ou une autre valeur qui ne représente pas un film réel). Si vous avez recherché un film null, l’application lève une exception.
 
 Examinez les méthodes `Delete` et `DeleteConfirmed`.
 
@@ -51,7 +51,7 @@ Pour contourner le problème des méthodes qui ont des noms et des signatures id
 public async Task<IActionResult> Delete(int id, bool notUsed)
 ```
 
-### <a name="publish-to-azure"></a>Publier sur Azure
+### <a name="publish-to-azure"></a>Publication dans Azure
 
 Pour plus d’informations sur le déploiement vers Azure, consultez [Didacticiel : Créer une application web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/25/2019
 uid: web-api/http-repl
-ms.openlocfilehash: e719d599545810d723840b0800cd6a2b4f96b123
-ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
+ms.openlocfilehash: 0e80fcd76a4d3efcd35140c52e0f6f0ae0f27932
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493571"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862965"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -50,7 +50,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
 
 Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
 
-## <a name="usage"></a>Utilisation
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer la boucle REPL HTTP :
 
@@ -68,7 +68,7 @@ dotnet httprepl -h
 dotnet httprepl --help
 ```
 
-La sortie suivante s’affiche :
+Vous obtenez la sortie suivante :
 
 ```console
 Usage:
@@ -131,7 +131,7 @@ Connectez-vous à une API web en exécutant la commande suivante :
 dotnet httprepl <BASE URI>
 ```
 
-`<BASE URI>` est l’URI de base pour l’API web. Par exemple :
+`<BASE URI>` est l’URI de base pour l’API web. Par exemple :
 
 ```console
 dotnet httprepl https://localhost:5001
@@ -143,7 +143,7 @@ Vous pouvez également exécuter la commande suivante à tout moment pendant l�
 set base <BASE URI>
 ```
 
-Par exemple :
+Par exemple :
 
 ```console
 (Disconnected)~ set base https://localhost:5001
@@ -151,13 +151,13 @@ Par exemple :
 
 ## <a name="point-to-the-swagger-document-for-the-web-api"></a>Pointer sur le document Swagger pour l’API web
 
-Pour inspecter correctement l’API web, définissez l’URI relatif sur le document Swagger pour l’API web. Exécutez la commande suivante :
+Pour inspecter correctement l’API web, définissez l’URI relatif sur le document Swagger pour l’API web. Exécutez la commande suivante :
 
 ```console
 set swagger <RELATIVE URI>
 ```
 
-Par exemple :
+Par exemple :
 
 ```console
 https://localhost:5001/~ set swagger /swagger/v1/swagger.json
@@ -196,7 +196,7 @@ https://localhost:5001/fruits~ ls
 https://localhost:5001/fruits~
 ```
 
-Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Par exemple :
+Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Par exemple :
 
 ```console
 https://localhost:5001/~ ui
@@ -230,7 +230,7 @@ Les [couleurs](#set-color-preferences) de la boucle REPL HTTP peuvent être pers
 
 *%HOME%/.httpreplprefs*
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 *%USERPROFILE%\\.httpreplprefs*
 
@@ -240,7 +240,7 @@ Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne so
 
 ### <a name="view-the-settings"></a>Voir les paramètres
 
-Pour voir les paramètres disponibles, exécutez la commande `pref get`. Par exemple :
+Pour voir les paramètres disponibles, exécutez la commande `pref get`. Par exemple :
 
 ```console
 https://localhost:5001/~ pref get
@@ -278,7 +278,7 @@ Quand des clés d’une couleur spécifique ne sont pas définies, des clés plu
 
 ### <a name="set-indentation-size"></a>Définir la taille de la mise en retrait
 
-La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
+La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
 
 ```json
 [
@@ -324,7 +324,7 @@ Les réponses suivantes adoptent la valeur correspondant à quatre espaces :
 
 ### <a name="set-indentation-size"></a>Définir la taille de la mise en retrait
 
-La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
+La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
 
 ```json
 [
@@ -390,7 +390,7 @@ pref set editor.command.default "/usr/bin/code"
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -398,7 +398,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous voulez que la boucle REPL HTTP ouvre toujours Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante :
+Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous voulez que la boucle REPL HTTP ouvre toujours Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante :
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -518,7 +518,7 @@ Pour émettre une requête HTTP POST :
     https://localhost:5001/people~ post -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
 
     ```json
     {
@@ -532,12 +532,12 @@ Pour émettre une requête HTTP POST :
 
 1. Modifiez le modèle JSON pour répondre aux exigences de validation du modèle :
 
-  ```json
-  {
-    "id": 0,
-    "name": "Scott Addie"
-  }
-  ```
+    ```json
+    {
+      "id": 0,
+      "name": "Scott Addie"
+    }
+    ```
 
 1. Enregistrez le fichier *.tmp* et fermez l’éditeur de texte. La sortie suivante s’affiche dans l’interpréteur de commandes :
 
@@ -613,7 +613,7 @@ Pour émettre une requête HTTP PUT :
     https://localhost:5001/fruits~ put 2 -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
 
     ```json
     {
@@ -818,7 +818,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :
 
-1. Définir inline avec la requête HTTP. Par exemple :
+1. Définir inline avec la requête HTTP. Par exemple :
 
   ```console
   https://localhost:5001/people~ post -h Content-Type=application/json
@@ -826,13 +826,13 @@ Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes
 
   Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
 
-1. Définir avant l’envoi de la requête HTTP. Par exemple :
+1. Définir avant l’envoi de la requête HTTP. Par exemple :
 
   ```console
   https://localhost:5001/people~ set header Content-Type application/json
   ```
 
-  Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Par exemple :
+  Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Par exemple :
 
   ```console
   https://localhost:5001/people~ set header Content-Type
@@ -844,14 +844,14 @@ Par défaut, l’affichage de la requête HTTP envoyée est supprimé. Il est po
 
 ### <a name="enable-request-display"></a>Activer l’affichage des requêtes
 
-Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Par exemple :
+Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Par exemple :
 
 ```console
 https://localhost:5001/people~ echo on
 Request echoing is on
 ```
 
-Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Par exemple :
+Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Par exemple :
 
 ```console
 https://localhost:5001/people~ post
@@ -889,7 +889,7 @@ https://localhost:5001/people~
 
 ### <a name="disable-request-display"></a>Désactiver l’affichage des requêtes
 
-Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Par exemple :
+Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Par exemple :
 
 ```console
 https://localhost:5001/people~ echo off
@@ -898,7 +898,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Exécuter un script
 
-Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Par exemple :
+Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Par exemple :
 
 1. Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne. Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :
 
@@ -910,13 +910,13 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
     get 1
     ```
 
-1. Exécutez la commande `run`, en passant le chemin du fichier texte. Par exemple :
+1. Exécutez la commande `run`, en passant le chemin du fichier texte. Par exemple :
 
     ```console
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt
     ```
 
-    La sortie suivante apparaît :
+    Vous obtenez la sortie suivante :
 
     ```console
     https://localhost:5001/~ set base https://localhost:5001

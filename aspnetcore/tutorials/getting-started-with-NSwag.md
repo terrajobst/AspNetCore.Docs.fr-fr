@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: c5b2dc47328d6d3c271a87579fa8c300109bd734
-ms.sourcegitcommit: 06a455d63ff7d6b571ca832e8117f4ac9d646baf
+ms.openlocfilehash: af8e2a266e54364857f0b49cc78a54683dff9de4
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67316556"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68915092"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
@@ -70,14 +70,6 @@ Vous pouvez installer le package NuGet NSwag avec l’une des méthodes suivante
 * Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
 * Entrez « NSwag.AspNetCore » dans la zone de recherche.
 * Sélectionnez le package « NSwag.AspNetCore » dans le volet de résultats, puis cliquez sur **Ajouter un package**.
-
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-Exécutez la commande suivante à partir du **Terminal intégré** :
-
-```console
-dotnet add TodoApi.csproj package NSwag.AspNetCore
-```
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -237,7 +229,7 @@ Pour activer les commentaires XML, procédez comme suit :
 
 ::: moniker-end
 
-# <a name="visual-studio-code--net-core-clitabvisual-studio-codenetcore-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
