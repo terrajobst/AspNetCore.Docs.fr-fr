@@ -5,14 +5,14 @@ description: Découvrez comment appeler une API Web à partir d’une applicatio
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/25/2019
+ms.date: 08/13/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 1a13f9f1f9e660b39a1df584e49198c4bbb61533
-ms.sourcegitcommit: 47cc13ab90913af9a2887cef0896bb4e9aba4dd5
+ms.openlocfilehash: 60ebd01bc07da22cd1dcd0b16297ee54c97867fc
+ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "68948189"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030383"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core éblouissant
 
@@ -31,7 +31,7 @@ Pour obtenir des exemples côté client éblouissants, consultez les composants 
 
 ## <a name="httpclient-and-json-helpers"></a>Applications auxiliaires HttpClient et JSON
 
-Dans les applications côté client éblouissantes, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour effectuer des requêtes sur le serveur d’origine. `HttpClient`et les auxiliaires JSON sont également utilisés pour appeler des points de terminaison d’API Web tiers. `HttpClient`est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
+Dans les applications côté client éblouissantes, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour effectuer des requêtes sur le serveur d’origine. Pour utiliser `HttpClient` les applications auxiliaires JSON, ajoutez une référence `Microsoft.AspNetCore.Blazor.HttpClient`de package à. `HttpClient`et les auxiliaires JSON sont également utilisés pour appeler des points de terminaison d’API Web tiers. `HttpClient`est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
 
 L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injecter `HttpClient` une instance à `@inject` l’aide de la directive:
 
@@ -59,7 +59,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
 * `GetJsonAsync`&ndash; Envoie une requête http obtenir et analyse le corps de la réponse JSON pour créer un objet.
 
-  Dans le code suivant, les `_todoItems` sont affichés par le composant. La `GetTodoItems` méthode est déclenchée lorsque le rendu du composant est terminé ([OnInitAsync](xref:blazor/components#lifecycle-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, les `_todoItems` sont affichés par le composant. La `GetTodoItems` méthode est déclenchée lorsque le rendu du composant est terminé ([OnInitializedAsync](xref:blazor/components#lifecycle-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -68,7 +68,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
   @code {
       private TodoItem[] _todoItems;
 
-      protected override async Task OnInitAsync() => 
+      protected override async Task OnInitializedAsync() => 
           _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/todo");
   }
   ```
