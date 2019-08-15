@@ -1,34 +1,59 @@
 ---
 title: Exemples d’authentification pour ASP.NET Core
 author: rick-anderson
-description: Fournit des liens vers les exemples d’authentification dans le référentiel d’ASP.NET Core.
+description: Fournit des liens vers les exemples d’authentification dans le référentiel ASP.NET Core.
 ms.author: riande
 ms.date: 01/31/2019
 uid: security/authentication/samples
-ms.openlocfilehash: 7b3c911d60ad4737ebd12ce6f7628ad624b11658
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: efa177245faceddad4eb80de9e6f6d38e1a4261c
+ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897156"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69022413"
 ---
-# <a name="authentication-samples-for-aspnet-core"></a><span data-ttu-id="724d2-103">Exemples d’authentification pour ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="724d2-103">Authentication samples for ASP.NET Core</span></span>
+# <a name="authentication-samples-for-aspnet-core"></a><span data-ttu-id="e6f5b-103">Exemples d’authentification pour ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e6f5b-103">Authentication samples for ASP.NET Core</span></span>
 
-<span data-ttu-id="724d2-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="724d2-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="e6f5b-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="e6f5b-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="724d2-105">Le [référentiel d’ASP.NET Core](https://github.com/aspnet/AspNetCore) contient les exemples d’authentification suivants dans le *AspNetCore/src/sécurité/samples* dossier :</span><span class="sxs-lookup"><span data-stu-id="724d2-105">The [ASP.NET Core repository](https://github.com/aspnet/AspNetCore) contains the following authentication samples in the *AspNetCore/src/Security/samples* folder:</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-* [<span data-ttu-id="724d2-106">Transformation des revendications</span><span class="sxs-lookup"><span data-stu-id="724d2-106">Claims transformation</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/ClaimsTransformation)
-* [<span data-ttu-id="724d2-107">Authentification des cookies</span><span class="sxs-lookup"><span data-stu-id="724d2-107">Cookie authentication</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Cookies)
-* [<span data-ttu-id="724d2-108">Fournisseur de stratégie personnalisée - IAuthorizationPolicyProvider</span><span class="sxs-lookup"><span data-stu-id="724d2-108">Custom policy provider - IAuthorizationPolicyProvider</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)
-* [<span data-ttu-id="724d2-109">Options et les schémas d’authentification dynamique</span><span class="sxs-lookup"><span data-stu-id="724d2-109">Dynamic authentication schemes and options</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/DynamicSchemes)
-* [<span data-ttu-id="724d2-110">Revendications externes</span><span class="sxs-lookup"><span data-stu-id="724d2-110">External claims</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Identity.ExternalClaims)
-* [<span data-ttu-id="724d2-111">En sélectionnant entre cookie et un autre schéma d’authentification en fonction de la demande</span><span class="sxs-lookup"><span data-stu-id="724d2-111">Selecting between cookie and another authentication scheme based on the request</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/PathSchemeSelection)
-* [<span data-ttu-id="724d2-112">Restreint l’accès aux fichiers statiques</span><span class="sxs-lookup"><span data-stu-id="724d2-112">Restricts access to static files</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/StaticFilesAuth)
+<span data-ttu-id="e6f5b-105">Le [référentiel ASP.net Core](https://github.com/aspnet/AspNetCore) contient les exemples d’authentification suivants dans le dossier *AspNetCore/SRC/Security/Samples* :</span><span class="sxs-lookup"><span data-stu-id="e6f5b-105">The [ASP.NET Core repository](https://github.com/aspnet/AspNetCore) contains the following authentication samples in the *AspNetCore/src/Security/samples* folder:</span></span>
 
-## <a name="run-the-samples"></a><span data-ttu-id="724d2-113">Exécuter les exemples</span><span class="sxs-lookup"><span data-stu-id="724d2-113">Run the samples</span></span>
+* [<span data-ttu-id="e6f5b-106">Transformation des revendications</span><span class="sxs-lookup"><span data-stu-id="e6f5b-106">Claims transformation</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/ClaimsTransformation)
+* [<span data-ttu-id="e6f5b-107">Authentification par cookie</span><span class="sxs-lookup"><span data-stu-id="e6f5b-107">Cookie authentication</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Cookies)
+* [<span data-ttu-id="e6f5b-108">Fournisseur de stratégie personnalisée-IAuthorizationPolicyProvider</span><span class="sxs-lookup"><span data-stu-id="e6f5b-108">Custom policy provider - IAuthorizationPolicyProvider</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)
+* [<span data-ttu-id="e6f5b-109">Options et schémas d’authentification dynamique</span><span class="sxs-lookup"><span data-stu-id="e6f5b-109">Dynamic authentication schemes and options</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/DynamicSchemes)
+* [<span data-ttu-id="e6f5b-110">Revendications externes</span><span class="sxs-lookup"><span data-stu-id="e6f5b-110">External claims</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Identity.ExternalClaims)
+* [<span data-ttu-id="e6f5b-111">Sélection entre un cookie et un autre schéma d’authentification en fonction de la demande</span><span class="sxs-lookup"><span data-stu-id="e6f5b-111">Selecting between cookie and another authentication scheme based on the request</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/PathSchemeSelection)
+* [<span data-ttu-id="e6f5b-112">Restreint l’accès aux fichiers statiques</span><span class="sxs-lookup"><span data-stu-id="e6f5b-112">Restricts access to static files</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/StaticFilesAuth)
 
-* <span data-ttu-id="724d2-114">Sélectionnez un [branche](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="724d2-114">Select a [branch](https://github.com/aspnet/AspNetCore).</span></span> <span data-ttu-id="724d2-115">Par exemple, `release/2.2`.</span><span class="sxs-lookup"><span data-stu-id="724d2-115">For example, `release/2.2`</span></span>
-* <span data-ttu-id="724d2-116">Clonez ou téléchargez le [référentiel d’ASP.NET Core](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="724d2-116">Clone or download the [ASP.NET Core repository](https://github.com/aspnet/AspNetCore).</span></span>
-* <span data-ttu-id="724d2-117">Vérifiez que vous avez installé le [du SDK .NET Core](https://www.microsoft.com/net/download/all) version mise en correspondance le clone du référentiel ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="724d2-117">Verify you have installed the [.NET Core SDK](https://www.microsoft.com/net/download/all) version matching the clone of the ASP.NET Core repository.</span></span>
-* <span data-ttu-id="724d2-118">Accédez à un exemple dans *AspNetCore/src/sécurité/samples* et exécuter l’exemple avec `dotnet run`.</span><span class="sxs-lookup"><span data-stu-id="724d2-118">Navigate to a sample in *AspNetCore/src/Security/samples* and run the sample with `dotnet run`.</span></span>
+## <a name="run-the-samples"></a><span data-ttu-id="e6f5b-113">Exécuter les exemples</span><span class="sxs-lookup"><span data-stu-id="e6f5b-113">Run the samples</span></span>
+
+* <span data-ttu-id="e6f5b-114">Sélectionnez une [branche](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="e6f5b-114">Select a [branch](https://github.com/aspnet/AspNetCore).</span></span> <span data-ttu-id="e6f5b-115">Par exemple, `Tag:v3.0.0`.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-115">For example, `Tag:v3.0.0`</span></span>
+* <span data-ttu-id="e6f5b-116">Clonez ou téléchargez le [référentiel ASP.net Core](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="e6f5b-116">Clone or download the [ASP.NET Core repository](https://github.com/aspnet/AspNetCore).</span></span>
+* <span data-ttu-id="e6f5b-117">Vérifiez que vous avez installé la version de [Kit SDK .net Core](https://www.microsoft.com/net/download/all) qui correspond au clone du référentiel ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-117">Verify you have installed the [.NET Core SDK](https://www.microsoft.com/net/download/all) version matching the clone of the ASP.NET Core repository.</span></span>
+* <span data-ttu-id="e6f5b-118">Accédez à un exemple dans *AspNetCore/SRC/Security/Samples* et exécutez l’exemple `dotnet run`avec.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-118">Navigate to a sample in *AspNetCore/src/Security/samples* and run the sample with `dotnet run`.</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="e6f5b-119">Le [référentiel ASP.net Core](https://github.com/aspnet/AspNetCore) contient les exemples d’authentification suivants dans le dossier *AspNetCore/SRC/Security/Samples* :</span><span class="sxs-lookup"><span data-stu-id="e6f5b-119">The [ASP.NET Core repository](https://github.com/aspnet/AspNetCore) contains the following authentication samples in the *AspNetCore/src/Security/samples* folder:</span></span>
+
+* [<span data-ttu-id="e6f5b-120">Transformation des revendications</span><span class="sxs-lookup"><span data-stu-id="e6f5b-120">Claims transformation</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/ClaimsTransformation)
+* [<span data-ttu-id="e6f5b-121">Authentification par cookie</span><span class="sxs-lookup"><span data-stu-id="e6f5b-121">Cookie authentication</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Cookies)
+* [<span data-ttu-id="e6f5b-122">Fournisseur de stratégie personnalisée-IAuthorizationPolicyProvider</span><span class="sxs-lookup"><span data-stu-id="e6f5b-122">Custom policy provider - IAuthorizationPolicyProvider</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/CustomPolicyProvider)
+* [<span data-ttu-id="e6f5b-123">Options et schémas d’authentification dynamique</span><span class="sxs-lookup"><span data-stu-id="e6f5b-123">Dynamic authentication schemes and options</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/DynamicSchemes)
+* [<span data-ttu-id="e6f5b-124">Revendications externes</span><span class="sxs-lookup"><span data-stu-id="e6f5b-124">External claims</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/Identity.ExternalClaims)
+* [<span data-ttu-id="e6f5b-125">Sélection entre un cookie et un autre schéma d’authentification en fonction de la demande</span><span class="sxs-lookup"><span data-stu-id="e6f5b-125">Selecting between cookie and another authentication scheme based on the request</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/PathSchemeSelection)
+* [<span data-ttu-id="e6f5b-126">Restreint l’accès aux fichiers statiques</span><span class="sxs-lookup"><span data-stu-id="e6f5b-126">Restricts access to static files</span></span>](https://github.com/aspnet/AspNetCore/tree/release/2.2/src/Security/samples/StaticFilesAuth)
+
+## <a name="run-the-samples"></a><span data-ttu-id="e6f5b-127">Exécuter les exemples</span><span class="sxs-lookup"><span data-stu-id="e6f5b-127">Run the samples</span></span>
+
+* <span data-ttu-id="e6f5b-128">Sélectionnez une [branche](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="e6f5b-128">Select a [branch](https://github.com/aspnet/AspNetCore).</span></span> <span data-ttu-id="e6f5b-129">Par exemple, `release/2.2`.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-129">For example, `release/2.2`</span></span>
+* <span data-ttu-id="e6f5b-130">Clonez ou téléchargez le [référentiel ASP.net Core](https://github.com/aspnet/AspNetCore).</span><span class="sxs-lookup"><span data-stu-id="e6f5b-130">Clone or download the [ASP.NET Core repository](https://github.com/aspnet/AspNetCore).</span></span>
+* <span data-ttu-id="e6f5b-131">Vérifiez que vous avez installé la version de [Kit SDK .net Core](https://www.microsoft.com/net/download/all) qui correspond au clone du référentiel ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-131">Verify you have installed the [.NET Core SDK](https://www.microsoft.com/net/download/all) version matching the clone of the ASP.NET Core repository.</span></span>
+* <span data-ttu-id="e6f5b-132">Accédez à un exemple dans *AspNetCore/SRC/Security/Samples* et exécutez l’exemple `dotnet run`avec.</span><span class="sxs-lookup"><span data-stu-id="e6f5b-132">Navigate to a sample in *AspNetCore/src/Security/samples* and run the sample with `dotnet run`.</span></span>
+
+::: moniker-end
