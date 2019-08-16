@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: 6e93d48bbc684845952c3db8935ccc8b190044b7
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.openlocfilehash: b5857f2cf22bde801deeeaf227817fdf99862f4a
+ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030346"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69545772"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Bibliothèques de classes des composants Razor ASP.NET Core
 
@@ -60,16 +60,6 @@ Suivez les instructions de l' <xref:blazor/get-started> article pour configurer 
 
 ---
 
-## <a name="rcls-not-supported-for-client-side-apps"></a>RCLs non pris en charge pour les applications côté client
-
-Dans la version préliminaire actuelle ASP.NET Core 3,0, les bibliothèques de classes Razor ne sont pas compatibles avec les applications côté client éblouissantes. Pour les applications côté client éblouissantes, utilisez une bibliothèque de composants éblouissante créée par `blazorlib` le modèle dans une interface de commande:
-
-```console
-dotnet new blazorlib -o MyComponentLib1
-```
-
-Les bibliothèques de composants `blazorlib` qui utilisent le modèle peuvent inclure des fichiers statiques, tels que des images, du JavaScript et des feuilles de style. Au moment de la génération, les fichiers statiques sont incorporés dans le fichier d’assembly ( *. dll*) généré, ce qui permet la consommation des composants sans avoir à se soucier de l’inclusion de leurs ressources. Tous les fichiers inclus dans `content` le répertoire sont marqués comme ressource incorporée.
-
 ## <a name="consume-a-library-component"></a>Consommer un composant de bibliothèque
 
 Pour utiliser des composants définis dans une bibliothèque dans un autre projet, utilisez l’une des approches suivantes:
@@ -116,8 +106,6 @@ Téléchargez le package dans NuGet à l’aide de la commande [dotnet NuGet Pub
 ```console
 dotnet nuget publish
 ```
-
-Lorsque vous utilisez `blazorlib` le modèle, les ressources statiques sont incluses dans le package NuGet. Les consommateurs de bibliothèques reçoivent automatiquement des scripts et des feuilles de style, si bien que les consommateurs ne sont pas tenus d’installer manuellement les ressources.
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>Créer une bibliothèque de classes de composants Razor avec des ressources statiques
 
