@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/02/2019
+ms.date: 08/13/2019
 uid: blazor/components
-ms.openlocfilehash: 43457bffd748ebba68cc86d33fdeb98dc419704b
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 752f49f020acf26efcb304ed5e28e27c478dac83
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68948429"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69487593"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -26,7 +26,9 @@ Les applications éblouissantes sont créées à l’aide de *composants*. Un co
 
 Les composants sont implémentés dans les fichiers de composants [Razor](xref:mvc/views/razor) ( *. Razor*) C# à l’aide d’une combinaison de balises et html. Un composant de éblouissant est officiellement désigné sous le terme de *composant Razor*.
 
-Les composants peuvent être créés à l’aide de l’extension de fichier *. cshtml* . Utilisez la `_RazorComponentInclude` propriété MSBuild dans le fichier projet pour identifier les fichiers *. cshtml* du composant. Par exemple, une application qui spécifie que tous les fichiers *. cshtml* sous le dossier *pages* doivent être traités comme des fichiers de composants Razor:
+Le nom d’un composant doit commencer par un caractère majuscule. Par exemple, *MyCoolComponent. Razor* est valide et *MyCoolComponent. Razor* n’est pas valide.
+
+Les composants peuvent être créés à l’aide de l’extension de fichier *. cshtml* tant que les fichiers sont identifiés en tant que `_RazorComponentInclude` fichiers de composant Razor à l’aide de la propriété MSBuild. Par exemple, une application qui spécifie que tous les fichiers *. cshtml* sous le dossier *pages* doivent être traités comme des fichiers de composants Razor:
 
 ```xml
 <PropertyGroup>
@@ -36,7 +38,7 @@ Les composants peuvent être créés à l’aide de l’extension de fichier *. 
 
 L’interface utilisateur d’un composant est définie à l’aide de HTML. La logique de rendu dynamique (par exemple, les boucles, conditions, expressions) est ajoutée à l’aide d’une syntaxe C# intégrée appelée [Razor](xref:mvc/views/razor). Quand une application est compilée, le balisage C# html et la logique de rendu sont convertis en une classe de composant. Le nom de la classe générée correspond au nom du fichier.
 
-Les membres de la classe de composants sont définis dans un bloc `@code`. Dans le `@code` bloc, l’état du composant (propriétés, champs) est spécifié avec des méthodes pour la gestion des événements ou pour la définition d’une autre logique de composant. Plus d’un `@code` bloc est autorisé.
+Les membres de la classe de composants sont définis dans un bloc `@code`. Dans le `@code` bloc, l’état du composant (propriétés, champs) est spécifié avec des méthodes pour la gestion des événements ou pour la définition d’une autre logique de composant. Plus d’un bloc `@code` est autorisé.
 
 > [!NOTE]
 > Dans les préversions précédentes de ASP.net Core 3,0 `@functions` , les blocs étaient utilisés dans les mêmes `@code` buts que les blocs dans les composants Razor. `@functions`les blocs continuent de fonctionner dans les composants Razor, mais nous vous `@code` recommandons d’utiliser le bloc dans ASP.net Core 3,0 Preview 6 ou version ultérieure.
@@ -79,9 +81,11 @@ Alors que les pages et les vues peuvent utiliser des composants, la réciproque 
 
 Pour plus d’informations sur la façon dont les composants sont rendus et l’état des composants géré dans les applications côté <xref:blazor/hosting-models> serveur éblouissantes, consultez l’article.
 
-## <a name="using-components"></a>Utilisation des composants
+## <a name="use-components"></a>Utiliser des composants
 
 Les composants peuvent inclure d’autres composants en les déclarant à l’aide de la syntaxe d’élément HTML. Le balisage pour l’utilisation d’un composant ressemble à une balise HTML où le nom de la balise est le type du composant.
+
+La liaison d’attribut respecte la casse. Par exemple, `@bind` est valide et `@Bind` n’est pas valide.
 
 Le balisage suivant dans *index. Razor* rend une `HeadingComponent` instance de:
 
@@ -91,9 +95,11 @@ Le balisage suivant dans *index. Razor* rend une `HeadingComponent` instance de:
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/HeadingComponent.razor)]
 
+Si un composant contient un élément HTML avec une première lettre majuscule qui ne correspond pas à un nom de composant, un avertissement est émis pour indiquer que l’élément a un nom inattendu. L’ajout `@using` d’une instruction pour l’espace de noms du composant rend le composant disponible, ce qui supprime l’avertissement.
+
 ## <a name="component-parameters"></a>Paramètres de composant
 
-Les composants peuvent avoir des *paramètres de composant*, qui sont définis à l’aide de propriétés (généralement *non publiques*) sur `[Parameter]` la classe de composant avec l’attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
+Les composants peuvent avoir des *paramètres de composant*, qui sont définis à l’aide de propriétés publiques `[Parameter]` sur la classe de composant avec l’attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
 
 *Composants/ChildComponent. Razor*:
 
@@ -142,19 +148,19 @@ Dans l’exemple suivant, le premier `<input>` élément (`id="useIndividualPara
 
 @code {
     [Parameter]
-    private string Maxlength { get; set; } = "10";
+    public string Maxlength { get; set; } = "10";
 
     [Parameter]
-    private string Placeholder { get; set; } = "Input placeholder text";
+    public string Placeholder { get; set; } = "Input placeholder text";
 
     [Parameter]
-    private string Required { get; set; } = "required";
+    public string Required { get; set; } = "required";
 
     [Parameter]
-    private string Size { get; set; } = "50";
+    public string Size { get; set; } = "50";
 
     [Parameter]
-    private Dictionary<string, object> InputAttributes { get; set; } =
+    public Dictionary<string, object> InputAttributes { get; set; } =
         new Dictionary<string, object>()
         {
             { "maxlength", "10" },
@@ -187,8 +193,8 @@ Pour accepter des attributs arbitraires, définissez un paramètre de `[Paramete
 
 ```cshtml
 @code {
-    [Parameter(CaptureUnmatchedValues = true)]
-    private Dictionary<string, object> InputAttributes { get; set; }
+    [Parameter(CaptureUnmatchedAttributes = true)]
+    public Dictionary<string, object> InputAttributes { get; set; }
 }
 ```
 
@@ -224,6 +230,33 @@ En plus de gérer `onchange` les événements `@bind` avec la syntaxe, une propr
 
 Contrairement `onchange`à, qui se déclenche lorsque l’élément perd `oninput` le focus, se déclenche lorsque la valeur de la zone de texte change.
 
+**Globalisation**
+
+`@bind`les valeurs sont mises en forme pour être affichées et analysées à l’aide des règles de la culture actuelle.
+
+La culture actuelle est accessible à partir de <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName> la propriété.
+
+[CultureInfo. InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture) est utilisé pour les types de champ suivants`<input type="{TYPE}" />`():
+
+* `date`
+* `number`
+
+Les types de champ précédents:
+
+* Sont affichés à l’aide des règles de mise en forme appropriées basées sur le navigateur.
+* Ne peut pas contenir de texte de forme libre.
+* Fournir des caractéristiques d’interaction de l’utilisateur en fonction de l’implémentation du navigateur.
+
+Les types de champs suivants ont des exigences de mise en forme spécifiques et ne sont pas actuellement pris en charge par éblouissant, car ils ne sont pas pris en charge par tous les principaux navigateurs:
+
+* `datetime-local`
+* `month`
+* `week`
+
+`@bind`prend en `@bind:culture` charge le paramètre pour <xref:System.Globalization.CultureInfo?displayProperty=fullName> fournir un pour l’analyse et la mise en forme d’une valeur. La `date` spécification d’une culture n’est pas recommandée `number` lors de l’utilisation des types de champ et. `date`et `number` disposent d’une prise en charge intégrée de éblouissant qui fournit la culture requise.
+
+Pour plus d’informations sur la façon de définir la culture de l'utilisateur, consultez la section [localization](#localization).
+
 **Chaînes de format**
 
 La liaison de données <xref:System.DateTime> fonctionne avec les [@bind:format](xref:mvc/views/razor#bind)chaînes de format à l’aide de. D’autres expressions de mise en forme, telles que les formats de devise ou de nombre, ne sont pas disponibles pour l’instant.
@@ -233,11 +266,20 @@ La liaison de données <xref:System.DateTime> fonctionne avec les [@bind:format]
 
 @code {
     [Parameter]
-    private DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
+    public DateTime StartDate { get; set; } = new DateTime(2020, 1, 1);
 }
 ```
 
+Dans le code précédent, le `<input>` type de champ de l'`type`élément () est `text`défini par défaut sur. `@bind:format`est pris en charge pour la liaison des types .NET suivants:
+
+* <xref:System.DateTime?displayProperty=fullName>
+* <xref:System.DateTime?displayProperty=fullName>?
+* <xref:System.DateTimeOffset?displayProperty=fullName>
+* <xref:System.DateTimeOffset?displayProperty=fullName>?
+
 L' `@bind:format` attribut spécifie le format de date à appliquer `value` au de `<input>` l’élément. Le format est également utilisé pour analyser la valeur lorsqu’un `onchange` événement se produit.
+
+Il n’est pas recommandé `date` de spécifier un format pour le type de champ, car éblouissant offre une prise en charge intégrée de la mise en forme des dates.
 
 **Paramètres du composant**
 
@@ -252,10 +294,10 @@ Le composant enfant suivant (`ChildComponent`) a un `Year` paramètre de composa
 
 @code {
     [Parameter]
-    private int Year { get; set; }
+    public int Year { get; set; }
 
     [Parameter]
-    private EventCallback<int> YearChanged { get; set; }
+    public EventCallback<int> YearChanged { get; set; }
 }
 ```
 
@@ -278,7 +320,7 @@ Le composant parent suivant utilise `ChildComponent` et lie le `ParentYear` para
 
 @code {
     [Parameter]
-    private int ParentYear { get; set; } = 1978;
+    public int ParentYear { get; set; } = 1978;
 
     private void ChangeTheYear()
     {
@@ -477,10 +519,14 @@ Préférez le fortement typé `EventCallback<T>`. `EventCallback` `EventCallback
 
 ## <a name="capture-references-to-components"></a>Capturer des références à des composants
 
-Les références de composant offrent un moyen de référencer une instance de composant afin que vous puissiez émettre des commandes vers `Show` cette `Reset`instance, telles que ou. Pour capturer une référence de composant, ajoutez [@ref](xref:mvc/views/razor#ref) un attribut au composant enfant, puis définissez un champ avec le même nom et le même type que le composant enfant.
+Les références de composant offrent un moyen de référencer une instance de composant afin que vous puissiez émettre des commandes vers `Show` cette `Reset`instance, telles que ou. Pour capturer une référence de composant:
+
+* Ajoutez un [@ref](xref:mvc/views/razor#ref) attribut au composant enfant.
+* Définissez un champ avec le même type que le composant enfant.
+* Fournissez `@ref:suppressField` le paramètre, qui supprime la génération de champ de sauvegarde. Pour plus d’informations, consultez Suppression de la [prise en charge @ref du champ de stockage automatique pour dans 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 ```cshtml
-<MyLoginDialog @ref="loginDialog" ... />
+<MyLoginDialog @ref="loginDialog" @ref:suppressField ... />
 
 @code {
     private MyLoginDialog loginDialog;
@@ -496,6 +542,30 @@ Lors du rendu du composant, `loginDialog` le champ est rempli avec l’instance 
 
 > [!IMPORTANT]
 > La `loginDialog` variable est remplie uniquement après le rendu du composant et sa sortie comprend l' `MyLoginDialog` élément. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant `OnAfterRenderAsync` , `OnAfterRender` utilisez les méthodes ou.
+
+<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
+Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.
+
+The Razor compiler automatically generates a backing field for element and component references when using [@ref](xref:mvc/views/razor#ref). In the following example, there's no need to create a `myLoginDialog` field for the `LoginDialog` component:
+
+```cshtml
+<LoginDialog @ref="myLoginDialog" ... />
+
+@code {
+    private void OnSomething()
+    {
+        myLoginDialog.Show();
+    }
+}
+```
+
+When the component is rendered, the generated `myLoginDialog` field is populated with the `LoginDialog` component instance. You can then invoke .NET methods on the component instance.
+
+In some cases, a backing field is required. For example, declare a backing field when referencing generic components. To suppress backing field generation, specify the `@ref:suppressField` parameter.
+
+> [!IMPORTANT]
+> The generated `myLoginDialog` variable is only populated after the component is rendered and its output includes the `LoginDialog` element. Until that point, there's nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` methods.
+-->
 
 Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composant ne sont pas&mdash;transmises au code JavaScript et ne sont utilisées que dans le code .net.
 
@@ -516,7 +586,7 @@ Prenons l'exemple suivant :
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -532,7 +602,7 @@ Le processus de mappage peut être contrôlé à `@key` l’aide de l’attribut
 
 @code {
     [Parameter]
-    private IEnumerable<Person> People { get; set; }
+    public IEnumerable<Person> People { get; set; }
 }
 ```
 
@@ -574,23 +644,23 @@ En règle générale, il est logique de fournir l’un des types de valeur `@key
 * Instances d’objet de modèle (par exemple `Person` , une instance comme dans l’exemple précédent). Cela garantit la préservation en fonction de l’égalité des références d’objet.
 * Identificateurs uniques (par exemple, les valeurs de clé primaire `int`de `string`type, `Guid`ou).
 
-Évitez de fournir une valeur qui peut entrer en conflit de manière inattendue. Si `@key="@someObject.GetHashCode()"` est fourni, des conflits inattendus peuvent se produire parce que les codes de hachage des objets non liés peuvent être identiques. Si les `@key` valeurs en conflit sont demandées dans le même parent `@key` , les valeurs ne sont pas respectées.
+Vérifiez que les valeurs utilisées `@key` pour ne sont pas en conflit. Si les valeurs en conflit sont détectées dans le même élément parent, éblouissant lève une exception, car il ne peut pas mapper de manière déterministe les anciens éléments ou composants aux nouveaux éléments ou composants. Utilisez uniquement des valeurs distinctes, telles que des instances d’objets ou des valeurs de clé primaire.
 
 ## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
-`OnInitAsync`et `OnInit` exécuter le code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitAsync` et le `await` mot clé sur l’opération:
+`OnInitializedAsync`et `OnInitialized` exécuter le code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le `await` mot clé sur l’opération:
 
 ```csharp
-protected override async Task OnInitAsync()
+protected override async Task OnInitializedAsync()
 {
     await ...
 }
 ```
 
-Pour une opération synchrone, utilisez `OnInit`:
+Pour une opération synchrone, utilisez `OnInitialized`:
 
 ```csharp
-protected override void OnInit()
+protected override void OnInitialized()
 {
     ...
 }
@@ -632,7 +702,7 @@ protected override void OnAfterRender()
 
 Les actions asynchrones exécutées dans des événements de cycle de vie peuvent ne pas être terminées avant le rendu du composant. Les objets peuvent `null` être ou être remplis de façon incomplète avec des données pendant l’exécution de la méthode Lifecycle. Fournissez une logique de rendu pour confirmer que les objets sont initialisés. Affichez les éléments d’interface utilisateur d’espace réservé (par exemple, un `null`message de chargement) tandis que les objets sont.
 
-Dans le `FetchData` composant des modèles éblouissant, `OnInitAsync` est remplacé par asynchrone recevoir les données de prévision (`forecasts`). Lorsque `forecasts` a `null`la valeur, un message de chargement est affiché à l’utilisateur. Une fois `Task` la `OnInitAsync` retournée terminée, le composant est rerendu avec l’État mis à jour.
+Dans le `FetchData` composant des modèles éblouissant, `OnInitializedAsync` est remplacé par asynchrone recevoir les données de prévision (`forecasts`). Lorsque `forecasts` a `null`la valeur, un message de chargement est affiché à l’utilisateur. Une fois `Task` la `OnInitializedAsync` retournée terminée, le composant est rerendu avec l’État mis à jour.
 
 *Pages/FetchData.razor* :
 
@@ -643,7 +713,7 @@ Dans le `FetchData` composant des modèles éblouissant, `OnInitAsync` est rempl
 `SetParameters`peut être substitué pour exécuter du code avant que les paramètres soient définis:
 
 ```csharp
-public override void SetParameters(ParameterCollection parameters)
+public override void SetParameters(ParameterView parameters)
 {
     ...
 
@@ -765,7 +835,7 @@ Dans l’exemple suivant, `IsCompleted` détermine si `checked` est rendu dans l
 
 @code {
     [Parameter]
-    private bool IsCompleted { get; set; }
+    public bool IsCompleted { get; set; }
 }
 ```
 
@@ -1063,7 +1133,7 @@ Prenons le composant `PetDetails` suivant, qui peut être intégré manuellement
 @code
 {
     [Parameter]
-    private string PetDetailsQuote { get; set; }
+    public string PetDetailsQuote { get; set; }
 }
 ```
 
@@ -1191,3 +1261,123 @@ Il s’agit d’un exemple trivial. Dans des cas plus réalistes avec des struct
 * N’écrivez pas de longs blocs de logique `RenderTreeBuilder` implémentée manuellement. Préférer `.razor` les fichiers et permettre au compilateur de gérer les numéros de séquence.
 * Si les numéros de séquence sont codés en dur, l’algorithme diff exige uniquement que les numéros de séquence augmentent dans la valeur. La valeur initiale et les écarts ne sont pas pertinents. Une option légitime consiste à utiliser le numéro de ligne de code comme numéro de séquence, ou à commencer à partir de zéro et à augmenter par des ou des centaines (ou un intervalle de préférence). 
 * Éblouissant utilise des numéros de séquence, tandis que d’autres infrastructures d’interface utilisateur de comparaison d’arborescence ne les utilisent pas. La comparaison est beaucoup plus rapide lorsque les numéros de séquence sont utilisés, et éblouissant présente l’avantage d’une étape de compilation qui traite automatiquement les numéros séquentiels `.razor` pour les développeurs qui créent des fichiers.
+
+## <a name="localization"></a>Localisation
+
+Les applications côté serveur éblouissantes sont localisées à l’aide d’un [intergiciel (middleware](xref:fundamentals/localization#localization-middleware)) de localisation. L’intergiciel sélectionne la culture appropriée pour les utilisateurs qui demandent des ressources à partir de l’application.
+
+La culture peut être définie à l’aide de l’une des approches suivantes:
+
+* [Cookies](#cookies)
+* [Fournir l’interface utilisateur pour choisir la culture](#provide-ui-to-choose-the-culture)
+
+Pour plus d’informations et d’exemples, consultez <xref:fundamentals/localization>.
+
+### <a name="cookies"></a>Cookies
+
+Un cookie de culture de localisation peut conserver la culture de l’utilisateur. Le cookie est créé par la `OnGet` méthode de la page hôte de l’application (*pages/Host. cshtml. cs*). L’intergiciel (middleware) de localisation lit le cookie sur les demandes suivantes pour définir la culture de l’utilisateur. 
+
+L’utilisation d’un cookie garantit que la connexion WebSocket peut propager correctement la culture. Si les schémas de localisation sont basés sur le chemin d’URL ou la chaîne de requête, il est possible que le schéma ne soit pas en mesure de fonctionner avec les WebSockets, et donc de ne pas conserver la culture. Par conséquent, l’utilisation d’un cookie de culture de localisation est l’approche recommandée.
+
+Toute technique peut être utilisée pour assigner une culture si la culture est rendue persistante dans un cookie de localisation. Si l’application a déjà un schéma de localisation établi pour les ASP.NET Core côté serveur, continuez à utiliser l’infrastructure de localisation existante de l’application et à définir le cookie de la culture de localisation dans le schéma de l’application.
+
+L’exemple suivant montre comment définir la culture actuelle dans un cookie qui peut être lu par l’intergiciel (middleware) de localisation. Créez un fichier *pages/Host. cshtml. cs* avec le contenu suivant dans l’application côté serveur éblouissant:
+
+```csharp
+public class HostModel : PageModel
+{
+    public void OnGet()
+    {
+        HttpContext.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
+}
+```
+
+La localisation est gérée dans l’application:
+
+1. Le navigateur envoie une requête HTTP initiale à l’application.
+1. La culture est affectée par l’intergiciel (middleware) de localisation.
+1. La `OnGet` méthode dans *_Host. cshtml. cs* rend persistante la culture dans un cookie dans le cadre de la réponse.
+1. Le navigateur ouvre une connexion WebSocket pour créer une session du serveur éblouissante interactive.
+1. L’intergiciel de localisation lit le cookie et assigne la culture.
+1. La session éblouissante côté serveur commence par la culture correcte.
+
+## <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
+
+Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur* la redirection. Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à&mdash;une ressource sécurisée. l’utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
+
+L’application conserve la culture sélectionnée de l’utilisateur via une redirection vers un contrôleur. Le contrôleur définit la culture sélectionnée de l’utilisateur dans un cookie et redirige l’utilisateur vers l’URI d’origine.
+
+Établissez un point de terminaison HTTP sur le serveur pour définir la culture sélectionnée de l’utilisateur dans un cookie et effectuer la redirection vers l’URI d’origine:
+
+```csharp
+[Route("[controller]/[action]")]
+public class CultureController : Controller
+{
+    public IActionResult SetCulture(string culture, string redirectUri)
+    {
+        if (culture != null)
+        {
+            HttpContext.Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(
+                    new RequestCulture(culture)));
+        }
+
+        return LocalRedirect(redirectUri);
+    }
+}
+```
+
+> [!WARNING]
+> Utilisez le `LocalRedirect` résultat de l’action pour empêcher les attaques de redirection ouvertes. Pour plus d'informations, consultez <xref:security/preventing-open-redirects>.
+
+Le composant suivant montre un exemple d’exécution de la redirection initiale lorsque l’utilisateur sélectionne une culture:
+
+```cshtml
+@inject IUriHelper UriHelper
+
+<h3>Select your language</h3>
+
+<select @onchange="OnSelected">
+    <option>Select...</option>
+    <option value="en-US">English</option>
+    <option value="fr-FR">Français</option>
+</select>
+
+@code {
+    private double textNumber;
+
+    private void OnSelected(UIChangeEventArgs e)
+    {
+        var culture = (string)e.Value;
+        var uri = new Uri(UriHelper.GetAbsoluteUri())
+            .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        var query = $"?culture={Uri.EscapeDataString(culture)}&" +
+            $"redirectUri={Uri.EscapeDataString(uri)}";
+
+        UriHelper.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
+    }
+}
+```
+
+### <a name="use-net-localization-scenarios-in-blazor-apps"></a>Utiliser des scénarios de localisation .NET dans des applications éblouissantes
+
+Dans les applications éblouissantes, les scénarios de localisation et de globalisation .NET suivants sont disponibles:
+
+* . Système de ressources du réseau
+* Mise en forme des nombres et des dates spécifiques à la culture
+
+La fonctionnalité de `@bind` éblouissant effectue une globalisation basée sur la culture actuelle de l’utilisateur. Pour plus d’informations, consultez la section [liaison de données](#data-binding) .
+
+Un ensemble limité de scénarios de localisation de ASP.NET Core est actuellement pris en charge:
+
+* `IStringLocalizer<>`*est pris en charge* dans les applications éblouissantes.
+* `IHtmlLocalizer<>`la `IViewLocalizer<>`localisation des annotations de données, et est ASP.net Core les scénarios MVC et **non pris en charge** dans les applications éblouissantes.
+
+Pour plus d'informations, consultez <xref:fundamentals/localization>.

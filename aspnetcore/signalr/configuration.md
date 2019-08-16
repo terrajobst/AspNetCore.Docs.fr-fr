@@ -1,26 +1,26 @@
 ---
-title: Configuration d’ASP.NET Core SignalR
+title: Configuration de Signalr ASP.NET Core
 author: bradygaster
-description: Découvrez comment configurer des applications ASP.NET Core SignalR.
+description: Découvrez comment configurer des applications ASP.NET Core Signalr.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 06/03/2019
+ms.date: 08/05/2019
 uid: signalr/configuration
-ms.openlocfilehash: 8c9fcaecb04555718f5da6a42a8e56c258e795af
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 475d9664c588c06bfcd816959be8a425ee01c023
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813452"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68915082"
 ---
-# <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
+# <a name="aspnet-core-signalr-configuration"></a>Configuration de Signalr ASP.NET Core
 
-## <a name="jsonmessagepack-serialization-options"></a>Options de sérialisation de JSON/MessagePack
+## <a name="jsonmessagepack-serialization-options"></a>Options de sérialisation JSON/MessagePack
 
-ASP.NET Core SignalR prend en charge deux protocoles d’encodage de messages : [JSON](https://www.json.org/) et [MessagePack](https://msgpack.org/index.html). Chaque protocole a des options de configuration de sérialisation.
+ASP.NET Core Signalr prend en charge deux protocoles pour l’encodage des messages: [JSON](https://www.json.org/) et [MessagePack](https://msgpack.org/index.html). Chaque protocole possède des options de configuration de la sérialisation.
 
-Sérialisation JSON peut être configurée sur le serveur à l’aide de la [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) méthode d’extension, qui peut être ajoutée après [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans votre `Startup.ConfigureServices` (méthode). Le `AddJsonProtocol` méthode prend un délégué qui reçoit un `options` objet. Le [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) propriété sur cet objet est un JSON.NET `JsonSerializerSettings` objet qui peut être utilisé pour configurer la sérialisation d’arguments et valeurs de retour. Consultez le [Documentation JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) pour plus d’informations.
+La sérialisation JSON peut être configurée sur le serveur à l’aide de la méthode d’extension [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , qui peut être `Startup.ConfigureServices` ajoutée après [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans votre méthode. La `AddJsonProtocol` méthode prend un délégué qui reçoit un `options` objet. La propriété [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) sur cet objet est un objet `JsonSerializerSettings` JSON.net qui peut être utilisé pour configurer la sérialisation des arguments et les valeurs de retour. Pour plus d’informations, consultez la [documentation de JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm) .
 
 Par exemple, pour configurer le sérialiseur pour utiliser des noms de propriété « en casse Pascal », au lieu des noms « en casse mixte » par défaut, utilisez le code suivant :
 
@@ -32,7 +32,7 @@ services.AddSignalR()
     });
 ```
 
-Dans le client .NET, les mêmes `AddJsonProtocol` méthode d’extension existe sur [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder). Le `Microsoft.Extensions.DependencyInjection` espace de noms doit être importé pour résoudre la méthode d’extension :
+Dans le client .net, la même `AddJsonProtocol` méthode d’extension existe sur [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder). L' `Microsoft.Extensions.DependencyInjection` espace de noms doit être importé pour résoudre la méthode d’extension:
 
 ```csharp
 // At the top of the file:
@@ -52,25 +52,26 @@ var connection = new HubConnectionBuilder()
 
 ### <a name="messagepack-serialization-options"></a>Options de sérialisation MessagePack
 
-MessagePack sérialisation peut être configurée en fournissant un délégué à la [AddMessagePackProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.msgpackprotocoldependencyinjectionextensions.addmessagepackprotocol) appeler. Consultez [MessagePack dans SignalR](xref:signalr/messagepackhubprotocol) pour plus d’informations.
+La sérialisation MessagePack peut être configurée en fournissant un délégué à l’appel [AddMessagePackProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.msgpackprotocoldependencyinjectionextensions.addmessagepackprotocol) . Pour plus d’informations, consultez [MessagePack dans signalr](xref:signalr/messagepackhubprotocol) .
 
 > [!NOTE]
-> Il n’est pas possible de configurer la sérialisation de MessagePack dans le client JavaScript pour l’instant.
+> Il n’est pas possible de configurer la sérialisation MessagePack dans le client JavaScript pour l’instant.
 
 ## <a name="configure-server-options"></a>Configurer les options de serveur
 
-Le tableau suivant décrit les options de configuration de concentrateurs SignalR :
+Le tableau suivant décrit les options de configuration des hubs Signalr:
 
 ::: moniker range=">= aspnetcore-3.0"
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ClientTimeoutInterval` | 30 secondes | Le serveur considère le client déconnecté si elle n’a pas reçu un message (y compris keep-alive) dans cet intervalle. Il peut prendre plu de cet intervalle de délai d’attente à réellement être identifiée comme étant déconnectée, en raison de la façon dont ceci est implémenté par le client. La valeur recommandée est double la `KeepAliveInterval` valeur.|
-| `HandshakeTimeout` | 15 secondes | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `ClientTimeoutInterval` | 30 secondes | Le serveur considère que le client est déconnecté s’il n’a pas reçu de message (y compris Keep-Alive) dans cet intervalle. Cela peut prendre plus de temps que cet intervalle de délai d’attente pour que le client soit marqué comme déconnecté, en raison de la façon dont il est implémenté. La valeur recommandée est le double `KeepAliveInterval` de la valeur.|
+| `HandshakeTimeout` | 15 secondes | Si le client n’envoie pas de message d’établissement de liaison initial dans le cadre de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 | `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message dans cet intervalle, un message ping est envoyé automatiquement pour maintenir la connexion ouverte. Lorsque vous modifiez `KeepAliveInterval`, modifiez le paramètre `ServerTimeout` / `serverTimeoutInMilliseconds` sur le client. La valeur recommandée `ServerTimeout` / `serverTimeoutInMilliseconds` est le double de la valeur `KeepAliveInterval`.  |
 | `SupportedProtocols` | Tous les protocoles installés | Les protocoles pris en charge par ce hub. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais les protocoles peuvent être supprimés de cette liste pour désactiver des protocoles spécifiques pour certains hubs. |
-| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de concentrateur. La valeur par défaut est `false`, que ces messages d’exception peuvent contenir des informations sensibles. |
-| `StreamBufferCapacity` | `10` | Le nombre maximal d’éléments qui peuvent être mis en mémoire tampon pour le client les flux de téléchargement. Si cette limite est atteinte, le traitement des appels est bloqué jusqu'à ce que le serveur traite les éléments de flux de données.|
+| `EnableDetailedErrors` | `false` | Si `true`la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de concentrateur. La valeur par `false`défaut est, car ces messages d’exception peuvent contenir des informations sensibles. |
+| `StreamBufferCapacity` | `10` | Nombre maximal d’éléments pouvant être mis en mémoire tampon pour les flux de téléchargement du client. Si cette limite est atteinte, le traitement des appels est bloqué jusqu’à ce que le serveur traite les éléments de flux.|
+| `MaximumReceiveMessageSize` | 32 Ko | Taille maximale d’un seul message de concentrateur entrant. |
 
 ::: moniker-end
 
@@ -78,11 +79,11 @@ Le tableau suivant décrit les options de configuration de concentrateurs Signal
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ClientTimeoutInterval` | 30 secondes | Le serveur considère le client déconnecté si elle n’a pas reçu un message (y compris keep-alive) dans cet intervalle. Il peut prendre plu de cet intervalle de délai d’attente à réellement être identifiée comme étant déconnectée, en raison de la façon dont ceci est implémenté par le client. La valeur recommandée est double la `KeepAliveInterval` valeur.|
-| `HandshakeTimeout` | 15 secondes | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `ClientTimeoutInterval` | 30 secondes | Le serveur considère que le client est déconnecté s’il n’a pas reçu de message (y compris Keep-Alive) dans cet intervalle. Cela peut prendre plus de temps que cet intervalle de délai d’attente pour que le client soit marqué comme déconnecté, en raison de la façon dont il est implémenté. La valeur recommandée est le double `KeepAliveInterval` de la valeur.|
+| `HandshakeTimeout` | 15 secondes | Si le client n’envoie pas de message d’établissement de liaison initial dans le cadre de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 | `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message dans cet intervalle, un message ping est envoyé automatiquement pour maintenir la connexion ouverte. Lorsque vous modifiez `KeepAliveInterval`, modifiez le paramètre `ServerTimeout` / `serverTimeoutInMilliseconds` sur le client. La valeur recommandée `ServerTimeout` / `serverTimeoutInMilliseconds` est le double de la valeur `KeepAliveInterval`.  |
 | `SupportedProtocols` | Tous les protocoles installés | Les protocoles pris en charge par ce hub. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais les protocoles peuvent être supprimés de cette liste pour désactiver des protocoles spécifiques pour certains hubs. |
-| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de concentrateur. La valeur par défaut est `false`, que ces messages d’exception peuvent contenir des informations sensibles. |
+| `EnableDetailedErrors` | `false` | Si `true`la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de concentrateur. La valeur par `false`défaut est, car ces messages d’exception peuvent contenir des informations sensibles. |
 
 ::: moniker-end
 
@@ -90,10 +91,10 @@ Le tableau suivant décrit les options de configuration de concentrateurs Signal
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `HandshakeTimeout` | 15 secondes | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `HandshakeTimeout` | 15 secondes | Si le client n’envoie pas de message d’établissement de liaison initial dans le cadre de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 | `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message dans cet intervalle, un message ping est envoyé automatiquement pour maintenir la connexion ouverte. Lorsque vous modifiez `KeepAliveInterval`, modifiez le paramètre `ServerTimeout` / `serverTimeoutInMilliseconds` sur le client. La valeur recommandée `ServerTimeout` / `serverTimeoutInMilliseconds` est le double de la valeur `KeepAliveInterval`.  |
 | `SupportedProtocols` | Tous les protocoles installés | Les protocoles pris en charge par ce hub. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais les protocoles peuvent être supprimés de cette liste pour désactiver des protocoles spécifiques pour certains hubs. |
-| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de concentrateur. La valeur par défaut est `false`, que ces messages d’exception peuvent contenir des informations sensibles. |
+| `EnableDetailedErrors` | `false` | Si `true`la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de concentrateur. La valeur par `false`défaut est, car ces messages d’exception peuvent contenir des informations sensibles. |
 
 ::: moniker-end
 
@@ -110,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Options pour un seul hub remplacent les options globales fournies dans `AddSignalR` et peuvent être configurés à l’aide de <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>:
+Les options d’un seul Hub remplacent les options globales `AddSignalR` fournies dans et peuvent être <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>configurées à l’aide de:
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>
@@ -119,9 +120,9 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 });
 ```
 
-### <a name="advanced-http-configuration-options"></a>Options de configuration avancées HTTP
+### <a name="advanced-http-configuration-options"></a>Options de configuration HTTP avancées
 
-Utilisez `HttpConnectionDispatcherOptions` pour configurer les paramètres avancés liées aux transports et gestion de la mémoire tampon. Ces options sont configurées en passant un délégué à [MapHub\<T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub) dans `Startup.Configure`.
+Utilisez `HttpConnectionDispatcherOptions` pour configurer les paramètres avancés relatifs aux transports et à la gestion des tampons de mémoire. Ces options sont configurées en passant un délégué [à\<MapHub T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub) dans. `Startup.Configure`
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -140,40 +141,57 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Le tableau suivant décrit les options de configuration des options de HTTP d’ASP.NET Core SignalR avancées :
+Le tableau suivant décrit les options de configuration des options HTTP avancées de ASP.NET Core Signalr:
+
+::: moniker range=">= aspnetcore-3.0"
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ApplicationMaxBufferSize` | 32 Ko | Le nombre maximal d’octets reçus à partir du client qui les mémoires tampons de serveur. Augmentation de cette valeur permet au serveur recevoir des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
-| `AuthorizationData` | Données collectées à partir de la `Authorize` attributs appliqués à la classe de concentrateur. | Une liste de [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) objets utilisés pour déterminer si un client est autorisé à se connecter au concentrateur. |
-| `TransportMaxBufferSize` | 32 Ko | Le nombre maximal d’octets envoyés par l’application que le serveur met en mémoire tampon. L'augmentation de cette valeur permet au serveur d’envoyer des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
-| `Transports` | Tous les Transports sont activés. | Masque de bits de `HttpTransportType` valeurs qui restreignent les transports, un client peut utiliser pour se connecter. |
+| `ApplicationMaxBufferSize` | 32 Ko | Nombre maximal d’octets reçus du client que le serveur met en mémoire tampon avant d’appliquer la contre-pression. L’augmentation de cette valeur permet au serveur de recevoir plus rapidement des messages plus volumineux sans appliquer la contre-pression, mais peut augmenter la consommation de mémoire. |
+| `AuthorizationData` | Données collectées automatiquement à `Authorize` partir des attributs appliqués à la classe de concentrateur. | Liste d’objets [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) utilisés pour déterminer si un client est autorisé à se connecter au concentrateur. |
+| `TransportMaxBufferSize` | 32 Ko | Nombre maximal d’octets envoyés par l’application que le serveur met en mémoire tampon avant d’observer la contre-pression. L’augmentation de cette valeur permet au serveur de mettre plus rapidement en mémoire tampon des messages plus volumineux sans attendre la contre-pression, mais peut augmenter la consommation de mémoire. |
+| `Transports` | Tous les transports sont activés. | Énumération de bits indicateurs `HttpTransportType` des valeurs qui peuvent restreindre les transports qu’un client peut utiliser pour se connecter. |
 | `LongPolling` | Voir ci-dessous. | Options supplémentaires spécifiques au transport d’interrogation longue. |
-| `WebSockets` | Voir ci-dessous. | Options supplémentaires spécifiques au transport WebSocket. |
+| `WebSockets` | Voir ci-dessous. | Options supplémentaires spécifiques au transport WebSockets. |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+| Option | Valeur par défaut | Description |
+| ------ | ------------- | ----------- |
+| `ApplicationMaxBufferSize` | 32 Ko | Nombre maximal d’octets reçus du client que le serveur met en mémoire tampon. L’augmentation de cette valeur permet au serveur de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. |
+| `AuthorizationData` | Données collectées automatiquement à `Authorize` partir des attributs appliqués à la classe de concentrateur. | Liste d’objets [IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata) utilisés pour déterminer si un client est autorisé à se connecter au concentrateur. |
+| `TransportMaxBufferSize` | 32 Ko | Le nombre maximal d’octets envoyés par l’application que le serveur met en mémoire tampon. L'augmentation de cette valeur permet au serveur d’envoyer des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
+| `Transports` | Tous les transports sont activés. | Énumération de bits indicateurs `HttpTransportType` des valeurs qui peuvent restreindre les transports qu’un client peut utiliser pour se connecter. |
+| `LongPolling` | Voir ci-dessous. | Options supplémentaires spécifiques au transport d’interrogation longue. |
+| `WebSockets` | Voir ci-dessous. | Options supplémentaires spécifiques au transport WebSockets. |
+
+::: moniker-end
 
 Le transport d’interrogation longue propose des options supplémentaires qui peuvent être configurées à l’aide de la propriété `LongPolling` :
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `PollTimeout` | 90 secondes | La quantité maximale de temps le serveur attend un message à envoyer au client avant de mettre fin à une demande d’interrogation unique. Diminution de cette valeur entraîne le client d’émettre de nouvelles demandes d’interrogation plus fréquemment. |
+| `PollTimeout` | 90 secondes | Durée maximale pendant laquelle le serveur attend qu’un message soit envoyé au client avant de mettre fin à une requête d’interrogation unique. Si vous réduisez cette valeur, le client émet de nouvelles demandes d’interrogation plus fréquemment. |
 
 Le transport WebSocket propose des options supplémentaires qui peuvent être configurées à l’aide de la propriété `WebSockets` :
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `CloseTimeout` | 5 secondes | Une fois que le serveur ferme, si le client ne parvient pas à fermer au sein de cet intervalle de temps, la connexion est interrompue. |
+| `CloseTimeout` | 5 secondes | Une fois le serveur fermé, si le client ne parvient pas à se fermer dans cet intervalle de temps, la connexion est interrompue. |
 | `SubProtocolSelector` | `null` | Un délégué qui peut être utilisé pour définir l'en-tête `Sec-WebSocket-Protocol` sur une valeur personnalisée. Le délégué reçoit les valeurs demandées par le client en entrée et doit retourner la valeur souhaitée. |
 
 ## <a name="configure-client-options"></a>Configurer les options du client
 
-Options du client peuvent être configurées sur le `HubConnectionBuilder` type (disponible dans les clients .NET et JavaScript). Il est également disponible dans le client Java, mais le `HttpHubConnectionBuilder` sous-classe est ce que contient les options de configuration Générateur de rapports, ainsi que dans le `HubConnection` lui-même.
+Les options du client peuvent être configurées sur le `HubConnectionBuilder` type (disponible dans les clients .net et JavaScript). Il est également disponible dans le client Java, mais la `HttpHubConnectionBuilder` sous-classe est ce qui contient les options de configuration du générateur, ainsi `HubConnection` que sur le lui-même.
 
 ### <a name="configure-logging"></a>Configuration de la journalisation
 
-La journalisation est configurée dans le Client .NET à l’aide de la `ConfigureLogging` (méthode). Enregistrement des fournisseurs et les filtres peut être inscrits dans la même façon qu’ils se trouvent sur le serveur. Consultez le [journalisation dans ASP.NET Core](xref:fundamentals/logging/index) documentation pour plus d’informations.
+La journalisation est configurée dans le client `ConfigureLogging` .net à l’aide de la méthode. Les fournisseurs de journalisation et les filtres peuvent être enregistrés de la même façon que sur le serveur. Pour plus d’informations, consultez la documentation relative [à la journalisation dans ASP.net Core](xref:fundamentals/logging/index) .
 
 > [!NOTE]
-> Pour inscrire des fournisseurs de journalisation, vous devez installer les packages nécessaires. Consultez la section [fournisseurs de journalisation intégrés](xref:fundamentals/logging/index#built-in-logging-providers) de la documentation pour obtenir la liste complète.
+> Pour pouvoir inscrire des fournisseurs de journalisation, vous devez installer les packages nécessaires. Consultez la section [fournisseurs de journalisation intégrés](xref:fundamentals/logging/index#built-in-logging-providers) de la documentation pour obtenir la liste complète.
 
 Par exemple, pour activer la journalisation de la Console, installez le package NuGet `Microsoft.Extensions.Logging.Console`. Appelez la méthode d’extension `AddConsole` :
 
@@ -187,7 +205,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Dans le client JavaScript, un texte similaire `configureLogging` méthode existe. Fournir un `LogLevel` valeur indiquant le niveau minimal de messages du journal à produire. Journaux sont écrits dans la fenêtre de console du navigateur.
+Dans le client JavaScript, il existe `configureLogging` une méthode similaire. Indiquez une `LogLevel` valeur indiquant le niveau minimal de messages du journal à produire. Les journaux sont écrits dans la fenêtre de la console du navigateur.
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -198,7 +216,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Au lieu d’un `LogLevel` valeur, vous pouvez également fournir un `string` valeur représentant un nom de niveau de journal. Cela est utile lors de la configuration SignalR journalisation dans les environnements où vous n’avez pas accès à la `LogLevel` constantes.
+Au lieu d' `LogLevel` une valeur, vous pouvez également fournir `string` une valeur représentant un nom de niveau de journal. Cela est utile lors de la configuration de la journalisation signalr dans les `LogLevel` environnements où vous n’avez pas accès aux constantes.
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -207,32 +225,32 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-Le tableau suivant répertorie les niveaux de journal disponibles. La valeur que vous fournissez à `configureLogging` définit le **minimale** niveau qui est enregistré de journal. Les messages enregistrés à ce niveau, **ou les niveaux répertorié après lui dans la table**, seront enregistrés.
+Le tableau suivant répertorie les niveaux de journalisation disponibles. La valeur que vous fournissez pour `configureLogging` définir le niveau de journalisation **minimale** qui sera enregistré. Les messages enregistrés à ce niveau, **ou les niveaux indiqués après celui-ci dans la table**, sont enregistrés.
 
-| string | LogLevel |
-| - | - |
-| `"trace"` | `LogLevel.Trace` |
-| `"debug"` | `LogLevel.Debug` |
-| `"info"` **Ou** `"information"` | `LogLevel.Information` |
-| `"warn"` **Ou** `"warning"` | `LogLevel.Warning` |
-| `"error"` | `LogLevel.Error` |
-| `"critical"` | `LogLevel.Critical` |
-| `"none"` | `LogLevel.None` |
+| String                      | LogLevel               |
+| --------------------------- | ---------------------- |
+| `trace`                     | `LogLevel.Trace`       |
+| `debug`                     | `LogLevel.Debug`       |
+| `info`**ou**`information` | `LogLevel.Information` |
+| `warn`**ou**`warning`     | `LogLevel.Warning`     |
+| `error`                     | `LogLevel.Error`       |
+| `critical`                  | `LogLevel.Critical`    |
+| `none`                      | `LogLevel.None`        |
 
 ::: moniker-end
 
 > [!NOTE]
 > Pour désactiver entièrement la journalisation, spécifiez `signalR.LogLevel.None` dans la méthode `configureLogging`.
 
-Pour plus d’informations sur la journalisation, consultez le [SignalR Diagnostics documentation](xref:signalr/diagnostics).
+Pour plus d’informations sur la journalisation, consultez la [documentation relative](xref:signalr/diagnostics)aux diagnostics de signalr.
 
-Le client SignalR Java utilise le [SLF4J](https://www.slf4j.org/) bibliothèque pour la journalisation. C’est une API de haut niveau de journalisation qui permet aux utilisateurs de la bibliothèque de choisir leur propre implémentation de journalisation spécifiques en apportant une dépendance de journalisation spécifique. L’extrait de code suivant montre comment utiliser `java.util.logging` avec le client SignalR Java.
+Le client Java Signalr utilise la bibliothèque [SLF4J](https://www.slf4j.org/) pour la journalisation. Il s’agit d’une API de journalisation de haut niveau qui permet aux utilisateurs de la bibliothèque de choisir leur propre implémentation de journalisation spécifique en introduisant une dépendance de journalisation spécifique. L’extrait de code suivant montre comment utiliser `java.util.logging` avec le client Java signalr.
 
 ```gradle
 implementation 'org.slf4j:slf4j-jdk14:1.7.25'
 ```
 
-Si vous ne configurez pas la journalisation dans vos dépendances, SLF4J charge un enregistreur d’événements non opération par défaut avec le message d’avertissement suivant :
+Si vous ne configurez pas la journalisation dans vos dépendances, SLF4J charge un journal de non-opération par défaut avec le message d’avertissement suivant:
 
 ```
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -240,13 +258,13 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ```
 
-Cela peut être ignoré sans risque.
+Cela peut être ignoré en toute sécurité.
 
-### <a name="configure-allowed-transports"></a>Configurer les transports autorisées
+### <a name="configure-allowed-transports"></a>Configurer les transports autorisés
 
-Les transports utilisés par SignalR peuvent être configurés dans le `WithUrl` appeler (`withUrl` dans JavaScript). Une opération de bits OR des valeurs de `HttpTransportType` peut être utilisée pour restreindre le client pour utiliser uniquement les transports spécifiés. Tous les transports sont activées par défaut.
+Les transports utilisés par signalr peuvent être configurés dans l' `WithUrl` appel (`withUrl` en JavaScript). Une opération or au niveau du bit des `HttpTransportType` valeurs de peut être utilisée pour restreindre le client à utiliser uniquement les transports spécifiés. Tous les transports sont activés par défaut.
 
-Par exemple, pour désactiver le transport les événements, mais autoriser les connexions WebSocket et l’interrogation longue :
+Par exemple, pour désactiver le transport des événements envoyés par le serveur, mais autoriser les connexions WebSocket et d’interrogation longue:
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -254,7 +272,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Dans le client JavaScript, les transports sont configurés en définissant le `transport` champ sur l’objet d’options fourni pour `withUrl`:
+Dans le client JavaScript, les transports sont configurés en définissant le `transport` champ sur l’objet d’options fourni à: `withUrl`
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -264,13 +282,13 @@ let connection = new signalR.HubConnectionBuilder()
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Dans cette version de Java client WebSocket est le transport uniquement disponible.
+Dans cette version du client Java, WebSockets est le seul transport disponible.
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-3.0"
 
-Dans le client Java, le transport est sélectionné avec la `withTransport` méthode sur le `HttpHubConnectionBuilder`. Les valeurs par défaut du client Java pour l’utilisation du transport WebSocket.
+Dans le client Java, le transport est sélectionné à l' `withTransport` aide de la `HttpHubConnectionBuilder`méthode sur le. Le client Java utilise le transport WebSocket par défaut.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -279,13 +297,13 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 ```
 
 > [!NOTE]
-> Le client SignalR Java ne prend en charge encore transport de secours.
+> Le client Java Signalr ne prend pas encore en charge le transport de secours.
 
 ::: moniker-end
 
 ### <a name="configure-bearer-authentication"></a>Configurer l’authentification du porteur
 
-Pour fournir des données d’authentification, ainsi que les demandes de SignalR, utilisez le `AccessTokenProvider` option (`accessTokenFactory` dans JavaScript) pour spécifier une fonction qui retourne le jeton d’accès souhaité. Dans le Client .NET, ce jeton d’accès est transmis en tant que « Authentification du porteur » HTTP jeton (à l’aide du `Authorization` en-tête avec un type de `Bearer`). Dans le client JavaScript, le jeton d’accès est utilisé comme un jeton du porteur, **sauf** dans certains cas où le navigateur API restreindre la possibilité d’appliquer les en-têtes des (plus précisément, les événements et des WebSockets demandes). Dans ce cas, le jeton d’accès est fourni en tant que valeur de chaîne de requête `access_token`.
+Pour fournir des données d’authentification avec les demandes signalr, `AccessTokenProvider` utilisez l'`accessTokenFactory` option (en JavaScript) pour spécifier une fonction qui retourne le jeton d’accès souhaité. Dans le client .net, ce jeton d’accès est transmis en tant que jeton «authentification du porteur» http ( `Authorization` à l’aide de l' `Bearer`en-tête de type). Dans le client JavaScript, le jeton d’accès est utilisé comme jeton du porteur, **sauf** dans certains cas où les API de navigateur restreignent la possibilité d’appliquer des en-têtes (en particulier dans les demandes d’événements envoyés par le serveur et WebSocket). Dans ce cas, le jeton d’accès est fourni sous la forme d' `access_token`une valeur de chaîne de requête.
 
 Dans le client .NET, l'option `AccessTokenProvider` peut être spécifiée à l’aide du délégué d’options de `WithUrl`:
 
@@ -313,7 +331,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une fabrique de jeton d’accès à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique\<chaîne >](https://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
+Dans le client Java Signalr, vous pouvez configurer un jeton de porteur à utiliser pour l’authentification en fournissant une fabrique de jetons d’accès au [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir une [chaîne](https://github.com/ReactiveX/RxJava) [unique\<RxJava>](https://reactivex.io/documentation/single.html). Avec un appel à [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire une logique pour produire des jetons d’accès pour votre client.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
@@ -323,16 +341,20 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
     })).build();
 ```
 
-### <a name="configure-timeout-and-keep-alive-options"></a>Configurer le délai d’expiration et les options keep-alive
+### <a name="configure-timeout-and-keep-alive-options"></a>Configurer les options de délai d’attente et de conservation des connexions
 
 Des options supplémentaires pour configurer le comportement de conservation et de délai d’expiration sont disponibles sur l'objet `HubConnection` proprement dit :
+
+
+::: moniker range=">= aspnetcore-2.2"
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `Closed` événement (`onclose` dans JavaScript). Cette valeur doit être suffisamment grande pour un message ping à envoyer à partir du serveur **et** reçues par le client dans l’intervalle de délai d’attente. La valeur recommandée est un nombre au moins deux fois sur le serveur `KeepAliveInterval` valeur, de prévoir un délai pour les tests ping arrivée. |
-| `HandshakeTimeout` | 15 secondes | Délai d’attente pour la négociation initiale du serveur. Si le serveur n’envoie une réponse de négociation dans cet intervalle, le client annule le protocole de négociation et déclencheurs le `Closed` événement (`onclose` dans JavaScript). Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `ServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `Closed` et déclenche`onclose` l’événement (en JavaScript). Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur pour permettre l’arrivée des commandes ping. |
+| `HandshakeTimeout` | 15 secondes | Délai d’attente du protocole de transfert initial du serveur. Si le serveur n’envoie pas de réponse de négociation dans cet intervalle, le client annule le protocole de transfert et déclenche `Closed` l’événement`onclose` (en JavaScript). Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `KeepAliveInterval` | 15 secondes | Détermine l’intervalle auquel le client envoie des messages ping. L’envoi d’un message à partir du client réinitialise le minuteur au début de l’intervalle. Si le client n’a pas envoyé de message `ClientTimeoutInterval` dans le jeu sur le serveur, le serveur considère que le client est déconnecté. |
 
 Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant que valeurs `TimeSpan`.
 
@@ -340,55 +362,85 @@ Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `serverTimeoutInMilliseconds` | 30 secondes (30 000 millisecondes) | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `onclose` événement. Cette valeur doit être suffisamment grande pour un message ping à envoyer à partir du serveur **et** reçues par le client dans l’intervalle de délai d’attente. La valeur recommandée est un nombre au moins deux fois sur le serveur `KeepAliveInterval` valeur, de prévoir un délai pour les tests ping arrivée. |
+| `serverTimeoutInMilliseconds` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `onclose` et déclenche l’événement. Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur pour permettre l’arrivée des commandes ping. |
+| `keepAliveIntervalInMilliseconds` | 15 secondes (15 000 millisecondes) | Détermine l’intervalle auquel le client envoie des messages ping. L’envoi d’un message à partir du client réinitialise le minuteur au début de l’intervalle. Si le client n’a pas envoyé de message `ClientTimeoutInterval` dans le jeu sur le serveur, le serveur considère que le client est déconnecté. |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 | Option | Valeur par défaut | Description |
-| ----------- | ------------- | ----------- |
-|`getServerTimeout` `setServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `onClose` événement. Cette valeur doit être suffisamment grande pour un message ping à envoyer à partir du serveur **et** reçues par le client dans l’intervalle de délai d’attente. La valeur recommandée est un nombre au moins deux fois sur le serveur `KeepAliveInterval` valeur, de prévoir un délai pour les tests ping arrivée. |
-| `withHandshakeResponseTimeout` | 15 secondes | Délai d’attente pour la négociation initiale du serveur. Si le serveur n’envoie une réponse de négociation dans cet intervalle, le client annule le protocole de négociation et déclencheurs le `onClose` événement. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| ------ | ------------- | ----------- |
+| `getServerTimeout` / `setServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `onClose` et déclenche l’événement. Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur pour permettre l’arrivée des commandes ping. |
+| `withHandshakeResponseTimeout` | 15 secondes | Délai d’attente du protocole de transfert initial du serveur. Si le serveur n’envoie pas de réponse de négociation dans cet intervalle, le client annule le protocole de transfert et déclenche `onClose` l’événement. Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+| `getKeepAliveInterval` / `setKeepAliveInterval` | 15 secondes (15 000 millisecondes) | Détermine l’intervalle auquel le client envoie des messages ping. L’envoi d’un message à partir du client réinitialise le minuteur au début de l’intervalle. Si le client n’a pas envoyé de message `ClientTimeoutInterval` dans le jeu sur le serveur, le serveur considère que le client est déconnecté. |
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+| Option | Valeur par défaut | Description |
+| ------ | ------------- | ----------- |
+| `ServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `Closed` et déclenche`onclose` l’événement (en JavaScript). Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur pour permettre l’arrivée des commandes ping. |
+| `HandshakeTimeout` | 15 secondes | Délai d’attente du protocole de transfert initial du serveur. Si le serveur n’envoie pas de réponse de négociation dans cet intervalle, le client annule le protocole de transfert et déclenche `Closed` l’événement`onclose` (en JavaScript). Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+
+Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant que valeurs `TimeSpan`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+| Option | Valeur par défaut | Description |
+| ------ | ------------- | ----------- |
+| `serverTimeoutInMilliseconds` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `onclose` et déclenche l’événement. Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur pour permettre l’arrivée des commandes ping. |
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+| Option | Valeur par défaut | Description |
+| ------ | ------------- | ----------- |
+| `getServerTimeout` / `setServerTimeout` | 30 secondes (30 000 millisecondes) | Délai d’expiration de l’activité du serveur. Si le serveur n’a pas envoyé de message dans cet intervalle, le client considère que le serveur est déconnecté `onClose` et déclenche l’événement. Cette valeur doit être suffisamment grande pour qu’un message ping soit envoyé à partir du serveur **et** reçu par le client dans l’intervalle de délai d’expiration. La valeur recommandée est un nombre au moins double de la valeur `KeepAliveInterval` du serveur, pour permettre l’arrivée des commandes ping. |
+| `withHandshakeResponseTimeout` | 15 secondes | Délai d’attente du protocole de transfert initial du serveur. Si le serveur n’envoie pas de réponse de négociation dans cet intervalle, le client annule le protocole de transfert et déclenche `onClose` l’événement. Il s’agit d’un paramètre avancé qui ne doit être modifié que si des erreurs de dépassement de délai d’expiration de la liaison se produisent en raison d’une latence importante du réseau. Pour plus d’informations sur le processus d’établissement de liaison, consultez la [spécification du protocole signalr Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
+
+::: moniker-end
 
 ---
 
 ### <a name="configure-additional-options"></a>Configurer des options supplémentaires
 
-Options supplémentaires peuvent être configurées dans le `WithUrl` (`withUrl` dans JavaScript) méthode sur `HubConnectionBuilder` ou sur les API de configuration différents sur le `HttpHubConnectionBuilder` dans le client Java :
+Des options supplémentaires peuvent être configurées `WithUrl` dans`withUrl` la méthode (en JavaScript `HubConnectionBuilder` ) sur ou sur les différentes API de `HttpHubConnectionBuilder` configuration sur le dans le client Java:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-| Option de .NET |  Valeur par défaut | Description |
+| Option .NET |  Valeur par défaut | Description |
 | ----------- | -------------- | ----------- |
-| `AccessTokenProvider` | `null` | Une fonction qui retourne une chaîne qui est fournie comme un jeton d’authentification du porteur dans les requêtes HTTP. |
-| `SkipNegotiation` | `false` | Affectez la valeur `true` pour ignorer l’étape de négociation. **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
+| `AccessTokenProvider` | `null` | Fonction qui retourne une chaîne fournie en tant que jeton d’authentification du porteur dans les requêtes HTTP. |
+| `SkipNegotiation` | `false` | Affectez la valeur pour ignorer l’étape de négociation. `true` **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
 | `ClientCertificates` | Empty | Collection de certificats TLS à envoyer pour authentifier les demandes. |
-| `Cookies` | Empty | Une collection de cookies HTTP à envoyer avec chaque requête HTTP. |
+| `Cookies` | Empty | Collection de cookies HTTP à envoyer avec chaque requête HTTP. |
 | `Credentials` | Empty | Informations d’identification à envoyer avec chaque requête HTTP. |
-| `CloseTimeout` | 5 secondes | WebSockets. La quantité maximale de temps le client attend après la fermeture du serveur accuser réception de la demande de fermeture. Si le serveur n’accuse pas la fermeture dans ce délai, le client se déconnecte. |
-| `Headers` | Empty | Une carte d’en-têtes HTTP supplémentaires à envoyer avec chaque requête HTTP. |
-| `HttpMessageHandlerFactory` | `null` | Un délégué qui peut être utilisé pour configurer ou de remplacer le `HttpMessageHandler` utilisé pour envoyer des requêtes HTTP. Pas utilisé pour les connexions de WebSocket. Ce délégué doit retourner une valeur non null, et qu’il reçoit la valeur par défaut en tant que paramètre. Modifier les paramètres sur cette valeur par défaut et retourner ou retourner un nouveau `HttpMessageHandler` instance. **Lorsque vous en remplaçant le gestionnaire veillez à copier les paramètres que vous souhaitez empêcher le gestionnaire fourni, sinon, les options configurées (par exemple, les Cookies et les en-têtes) ne s’appliquent pas au nouveau gestionnaire.** |
-| `Proxy` | `null` | Un proxy HTTP à utiliser lors de l’envoi des requêtes HTTP. |
-| `UseDefaultCredentials` | `false` | Définissez cette valeur booléenne pour envoyer les informations d’identification par défaut pour les demandes HTTP et WebSockets. Cela permet d’utiliser l’authentification Windows. |
-| `WebSocketConfiguration` | `null` | Délégué qui peut être utilisé pour configurer des options supplémentaires de WebSocket. Reçoit une instance de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) qui peut être utilisée pour configurer les options. |
+| `CloseTimeout` | 5 secondes | WebSocket uniquement. Durée d’attente maximale du client après la fermeture du serveur pour accuser réception de la demande de fermeture. Si le serveur n’accuse pas réception de la fermeture dans ce délai, le client se déconnecte. |
+| `Headers` | Empty | Mappage d’en-têtes HTTP supplémentaires à envoyer avec chaque requête HTTP. |
+| `HttpMessageHandlerFactory` | `null` | Délégué qui peut être utilisé pour configurer ou remplacer le utilisé `HttpMessageHandler` pour envoyer des requêtes http. Non utilisé pour les connexions WebSocket. Ce délégué doit retourner une valeur non null et il reçoit la valeur par défaut en tant que paramètre. Modifiez les paramètres de cette valeur par défaut et renvoyez-la, ou `HttpMessageHandler` retournez une nouvelle instance. **Lors du remplacement du gestionnaire, veillez à copier les paramètres que vous souhaitez conserver à partir du gestionnaire fourni. dans le cas contraire, les options configurées (telles que les cookies et les en-têtes) ne s’appliqueront pas au nouveau gestionnaire.** |
+| `Proxy` | `null` | Proxy HTTP à utiliser lors de l’envoi de requêtes HTTP. |
+| `UseDefaultCredentials` | `false` | Définissez cette valeur booléenne pour envoyer les informations d’identification par défaut pour les requêtes HTTP et WebSocket. Cela permet l’utilisation de l’authentification Windows. |
+| `WebSocketConfiguration` | `null` | Délégué qui peut être utilisé pour configurer des options WebSocket supplémentaires. Reçoit une instance de [ClientWebSocketOptions](/dotnet/api/system.net.websockets.clientwebsocketoptions) qui peut être utilisée pour configurer les options. |
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-| Option de JavaScript | Valeur par défaut | Description |
+| Option JavaScript | Valeur par défaut | Description |
 | ----------------- | ------------- | ----------- |
-| `accessTokenFactory` | `null` | Une fonction qui retourne une chaîne qui est fournie comme un jeton d’authentification du porteur dans les requêtes HTTP. |
-| `skipNegotiation` | `false` | Affectez la valeur `true` pour ignorer l’étape de négociation. **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
+| `accessTokenFactory` | `null` | Fonction qui retourne une chaîne fournie en tant que jeton d’authentification du porteur dans les requêtes HTTP. |
+| `skipNegotiation` | `false` | Affectez la valeur pour ignorer l’étape de négociation. `true` **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-| Option de Java | Valeur par défaut | Description |
+| Option Java | Valeur par défaut | Description |
 | ----------- | ------------- | ----------- |
-| `withAccessTokenProvider` | `null` | Une fonction qui retourne une chaîne qui est fournie comme un jeton d’authentification du porteur dans les requêtes HTTP. |
-| `shouldSkipNegotiate` | `false` | Affectez la valeur `true` pour ignorer l’étape de négociation. **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
-| `withHeader` `withHeaders` | Empty | Une carte d’en-têtes HTTP supplémentaires à envoyer avec chaque requête HTTP. |
+| `withAccessTokenProvider` | `null` | Fonction qui retourne une chaîne fournie en tant que jeton d’authentification du porteur dans les requêtes HTTP. |
+| `shouldSkipNegotiate` | `false` | Affectez la valeur pour ignorer l’étape de négociation. `true` **Pris en charge uniquement lorsque le transport WebSocket est le seul transport activé**. Ce paramètre ne peut pas être activé en cas d’utilisation du Service Azure SignalR. |
+| `withHeader` `withHeaders` | Empty | Mappage d’en-têtes HTTP supplémentaires à envoyer avec chaque requête HTTP. |
 
 ---
 
-Dans le Client .NET, ces options peuvent être modifiées par l’options du délégué fourni `WithUrl`:
+Dans le client .NET, ces options peuvent être modifiées par le délégué d’options fourni `WithUrl`à:
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -400,7 +452,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Dans le JavaScript Client, ces options peuvent être fournies dans un objet JavaScript fourni à `withUrl`:
+Dans le client JavaScript, ces options peuvent être fournies dans un objet JavaScript fourni à `withUrl`:
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -411,7 +463,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-Dans le client Java, ces options peuvent être configurées avec les méthodes sur le `HttpHubConnectionBuilder` retourné à partir de la `HubConnectionBuilder.create("HUB URL")`
+Dans le client Java, ces options peuvent être configurées avec les méthodes sur `HttpHubConnectionBuilder` le retourné à partir de l’option`HubConnectionBuilder.create("HUB URL")`
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/myhub")
