@@ -8,7 +8,7 @@
       uid: fundamentals/choose-between-aspnet-and-aspnetcore
     - name: Comparer .NET Core avec le .NET Framework
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: Prise en main
+- name: Bien démarrer
   uid: getting-started
 - name: Nouveautés
   items:
@@ -20,7 +20,7 @@
       uid: aspnetcore-2.0
     - name: "Nouveautés de la version\_1.1"
       uid: aspnetcore-1.1
-- name: Didacticiels
+- name: Tutoriels
   items:
     - name: Applications web
       items:
@@ -199,7 +199,7 @@
       items:
         - name: Introduction
           uid: razor-pages/index
-        - name: Didacticiel
+        - name: Tutoriel
           items:
             - name: Vue d'ensemble
               uid: tutorials/razor-pages/index
@@ -231,7 +231,7 @@
       items:
         - name: Vue d'ensemble
           uid: mvc/overview
-        - name: Didacticiel
+        - name: Tutoriel
           items:
             - name: Vue d'ensemble
               uid: tutorials/first-mvc-app/index
@@ -412,7 +412,7 @@
   items:
     - name: Vue d'ensemble
       uid: web-api/index
-    - name: Didacticiels
+    - name: Tutoriels
       items:
         - name: Créer une API web
           uid: tutorials/first-web-api
@@ -446,7 +446,7 @@
     - name: Plateformes prises en charge
       uid: signalr/supported-platforms
       displayName: signalr
-    - name: Didacticiels
+    - name: Tutoriels
       items:
         - name: SignalR avec JavaScript
           uid: tutorials/signalr
@@ -577,7 +577,7 @@
       uid: host-and-deploy/azure-iis-errors-reference
 - name: Accès aux données
   items:
-    - name: Didacticiels
+    - name: Tutoriels
       items:
         - name: EF Core avec Razor Pages
           items:
@@ -966,6 +966,8 @@
           uid: security/key-vault-configuration
     - name: Appliquer HTTPS
       uid: security/enforcing-ssl
+    - name: Héberger Docker avec HTTPS
+      uid: security/docker-https
     - name: Prise en charge du règlement général sur la protection des données (RGPD) de l’Union Européenne
       uid: security/gdpr
     - name: Protection contre la falsification de requête
