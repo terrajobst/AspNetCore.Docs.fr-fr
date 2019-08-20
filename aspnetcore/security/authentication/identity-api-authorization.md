@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/05/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 6b8818cc89a87e66ecec445ff8071348aacde64a
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: cb51df0267a5eabd4a2694727e9c896d0554265e
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819924"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583594"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
@@ -93,9 +93,9 @@ Cette méthode d’assistance configure IdentityServer pour utiliser notre confi
 
 Cette méthode d’assistance configure un modèle de stratégie pour l’application en tant que gestionnaire d’authentification par défaut. La stratégie est configurée pour permettre à l’identité de traiter toutes les demandes routées vers n’importe quel sous-chemin dans l’espace d’URL d’identité «/Identity». Le `JwtBearerHandler` gère toutes les autres requêtes. En outre, cette méthode enregistre une `<<ApplicationName>>API` ressource API avec IdentityServer avec une `<<ApplicationName>>API` étendue par défaut et configure l’intergiciel de jeton de porteur JWT pour valider les jetons émis par IdentityServer pour l’application.
 
-### <a name="sampledatacontroller"></a>SampleDataController
+### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-Dans le fichier *Controllers\SampleDataController.cs* , notez l' `[Authorize]` attribut appliqué à la classe qui indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut doit être configurée pour utiliser le schéma d’authentification par défaut, qui `AddIdentityServerJwt` est configuré par le modèle de stratégie mentionné ci-dessus `JwtBearerHandler` , ce qui fait du configuré par une telle méthode d’assistance le gestionnaire par défaut pour demandes adressées à l’application.
+Dans le fichier *Controllers\WeatherForecastController.cs* , notez l' `[Authorize]` attribut appliqué à la classe qui indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut doit être configurée pour utiliser le schéma d’authentification par défaut, qui `AddIdentityServerJwt` est configuré par le modèle de stratégie mentionné ci-dessus `JwtBearerHandler` , ce qui fait du configuré par une telle méthode d’assistance le gestionnaire par défaut pour demandes adressées à l’application.
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 
