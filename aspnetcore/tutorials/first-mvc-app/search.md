@@ -5,12 +5,12 @@ description: Montre comment ajouter une fonction de recherche à une application
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: ed6c7a095143670b7d06e43db3a428dec9bf97ad
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: 97ee5f66c142780d54d28013c109da61241d967b
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707844"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862942"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Ajouter une fonction de recherche à une application ASP.NET Core MVC
 
@@ -85,7 +85,7 @@ Si vous ajoutez cette méthode, le demandeur de l’action correspondrait à la 
 
 ![Fenêtre de navigateur avec la réponse de l’application de « From HttpPost Index: » avec filtrage sur « ghost »](~/tutorials/first-mvc-app/search/_static/fo.png)
 
-Cependant, même si vous ajoutez cette version `[HttpPost]` de la méthode `Index`, il existe une limitation dans la façon dont tout ceci a été implémenté. Imaginez que vous voulez insérer un signet pour une recherche spécifique, ou que vous voulez envoyer un lien à vos amis sur lequel ils peuvent cliquer pour afficher la même liste filtrée de films. Notez que l’URL de la requête HTTP POST est identique à l’URL de la requête GET (localhost:xxxxx/Movies/Index) : il n’existe aucune information de recherche dans l’URL. Les informations de la chaîne de recherche sont envoyées au serveur en tant que [valeur d’un champ de formulaire](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data). Vous pouvez vérifier ceci avec les outils de développement du navigateur ou avec l’excellent [outil Fiddler](https://www.telerik.com/fiddler). L’illustration ci-dessous montre les outils de développement du navigateur Chrome :
+Cependant, même si vous ajoutez cette version `[HttpPost]` de la méthode `Index`, il existe une limitation dans la façon dont tout ceci a été implémenté. Imaginez que vous voulez insérer un signet pour une recherche spécifique, ou que vous voulez envoyer un lien à vos amis sur lequel ils peuvent cliquer pour afficher la même liste filtrée de films. Notez que l’URL de la requête HTTP POST est identique à l’URL de la requête GET (localhost:{PORT}/Movies/Index) : il n’existe aucune information de recherche dans l’URL. Les informations de la chaîne de recherche sont envoyées au serveur en tant que [valeur d’un champ de formulaire](https://developer.mozilla.org/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data). Vous pouvez vérifier ceci avec les outils de développement du navigateur ou avec l’excellent [outil Fiddler](https://www.telerik.com/fiddler). L’illustration ci-dessous montre les outils de développement du navigateur Chrome :
 
 ![Onglet Réseau des outils de développement dans Microsoft Edge montrant un corps de demande avec une valeur « ghost » pour searchString](~/tutorials/first-mvc-app/search/_static/f12_rb.png)
 

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 0ffd437bbb48ef1c7a9159fbf3ac41441613f434
-ms.sourcegitcommit: 849af69ee3c94cdb9fd8fa1f1bb8f5a5dda7b9eb
+ms.openlocfilehash: 606be317318eafa170d926aaace1f752d3a25510
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372060"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994288"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -115,6 +115,8 @@ Si vous utilisez des répertoires avec IIS ou un proxy inverse, définissez le p
 ## <a name="customize-and-extend"></a>Personnaliser et étendre
 
 Swagger fournit des options pour documenter le modèle objet et personnaliser l’interface utilisateur en fonction de votre thème.
+
+Dans la classe Startup, ajoutez les espaces de noms suivants : [!code-csharp[](~/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_PreReqNamespaces)]
 
 ### <a name="api-info-and-description"></a>Informations sur l’API et description
 
@@ -423,11 +425,11 @@ Créez un fichier *custom.css* dans *wwwroot/swagger/ui* avec le code CSS suivan
 
 [!code-css[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/wwwroot/swagger/ui/custom.css)]
 
-Référencez *custom.css* dans le fichier *index.html*, à la suite de n’importe quel autre fichier CSS :
+Référencez *custom.css* dans le fichier *index.html* situé à l’intérieur du dossier UI, à la suite de n’importe quel autre fichier CSS :
 
 [!code-html[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/wwwroot/swagger/ui/index.html?name=snippet_SwaggerUiCss&highlight=3)]
 
-Accédez à la page *index.html* à l’adresse `http://localhost:<port>/swagger/ui/index.html`. Entrez `http://localhost:<port>/swagger/v1/swagger.json` dans la zone de texte de l’en-tête, puis cliquez sur le bouton **Explorer**. La page résultante ressemble à ceci :
+Accédez à la page *index.html* à l’adresse `http://localhost:<port>/swagger/ui/index.html`. Entrez `https://localhost:<port>/swagger/v1/swagger.json` dans la zone de texte de l’en-tête, puis cliquez sur le bouton **Explorer**. La page résultante ressemble à ceci :
 
 ![Interface utilisateur de Swagger avec titre d’en-tête personnalisé](web-api-help-pages-using-swagger/_static/custom-header.png)
 

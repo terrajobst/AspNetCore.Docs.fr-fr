@@ -1,4 +1,57 @@
+::: moniker range=">= aspnetcore-3.0"
+
 <a name="dc"></a>
+
+Créez un dossier nommé *Data*.
+
+Ajoutez la classe `MvcMovieContext` suivante au dossier *Data* :  
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/zDocOnly/MvcMovieContext.cs?name=snippet)]
+
+Le code précédent crée une propriété `DbSet` pour le jeu d’entités. Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données, et une entité correspond à une ligne dans la table.
+
+<a name="cs"></a>
+
+### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
+
+Ajoutez une chaîne de connexion au fichier *appsettings.json* :
+
+[!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
+
+### <a name="add-nuget-packages-and-ef-tools"></a>Ajouter des packages NuGet des outils EF
+
+Exécutez les commandes CLI .NET Core suivantes :
+
+```console
+dotnet tool install --global dotnet-ef --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.SQLite --version 3.0.0-*
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.0.0-*
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.0.0-*
+```
+
+Les commandes précédentes ajoutent des outils Entity Framework Core pour la CLI .NET et plusieurs packages au projet. Le package `Microsoft.VisualStudio.Web.CodeGeneration.Design` est nécessaire à la génération de modèles automatique.
+
+<a name="reg"></a>
+
+### <a name="register-the-database-context"></a>Inscrire le contexte de base de données
+
+En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
+
+```csharp
+using MvcMovie.Data;
+using Microsoft.EntityFrameworkCore;
+```
+
+Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans `Startup.ConfigureServices`.
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_UseSqlite&highlight=6-7)]
+
+Générez le projet en tant que vérification des erreurs du compilateur.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 Ajoutez la classe `MvcMovieContext` suivante au dossier *Models* :  
 
@@ -41,3 +94,4 @@ Inscrivez le contexte de base de données auprès du conteneur d’[injection de
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
 
 Générez le projet en tant que vérification des erreurs.
+::: moniker-end

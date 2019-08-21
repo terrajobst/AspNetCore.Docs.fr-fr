@@ -5,7 +5,7 @@ Le tableau suivant détaille les paramètres du générateur de code ASP.NET Cor
 | -m  | Nom du modèle. |
 | -dc  | Contexte de données. |
 | -udl | Utiliser la disposition par défaut. |
-| --relativeFolderPath | Chemin du dossier de sortie relatif pour créer les vues. |
+| --relativeFolderPath | Chemin du dossier de sortie relatif pour créer les fichiers. |
 | --useDefaultLayout | La disposition par défaut doit être utilisée pour les vues. |
 | --referenceScriptLibraries | Ajoute `_ValidationScriptsPartial` aux pages Modifier et Créer. |
 
@@ -14,3 +14,5 @@ Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-cod
 ```console
 dotnet aspnet-codegenerator controller -h
 ```
+
+Pour plus d’informations, consultez [dotnet aspnet-codegenerator](xref:fundamentals/tools/dotnet-aspnet-codegenerator).

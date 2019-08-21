@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 author: rick-anderson
-description: Montre comment créer, lire, mettre à jour et supprimer avec EF Core
+description: Montre comment créer, lire, mettre à jour et supprimer avec EF Core.
 ms.author: riande
-ms.date: 06/30/2017
+ms.date: 07/22/2019
 uid: data/ef-rp/crud
-ms.openlocfilehash: 2e2aaa3c84759bde39ec3f46ff5ba8699f6c219b
-ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
+ms.openlocfilehash: 8dad964826fbf020d250eaec1dbf2845d356ae91
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68223840"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68914770"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -18,7 +18,172 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
-Dans ce didacticiel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
+::: moniker range=">= aspnetcore-3.0"
+
+Dans ce tutoriel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
+
+## <a name="no-repository"></a>Aucun référentiel
+
+Certains développeurs utilisent une couche de service ou un modèle de référentiel pour créer une couche d’abstraction entre l’interface utilisateur (Razor Pages) et la couche d’accès aux données. Ce n’est pas le cas de ce tutoriel. Pour que ce tutoriel soit moins complexe et traite exclusivement d’EF Core, le code EF Core est directement ajouté aux classes de modèle de page. 
+
+## <a name="update-the-details-page"></a>Mettre à jour la page Details
+
+Le code généré automatiquement pour les pages Students n’inclut pas les données d’inscription (« enrollment »). Dans cette section, vous allez ajouter des inscriptions à la page Details.
+
+### <a name="read-enrollments"></a>Lire les inscriptions
+
+Pour afficher les données d’inscription d’un étudiant dans la page, vous devez les lire. Le code généré automatiquement dans *Pages/Students/Details.cshtml.cs* lit uniquement les données d’étudiant, sans les données d’inscription :
+
+[!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/Details1.cshtml.cs?name=snippet_OnGetAsync&highlight=8)]
+
+Remplacez la méthode `OnGetAsync` par le code suivant pour lire les données d’inscription de l’étudiant sélectionné. Les modifications sont mises en surbrillance.
+
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Details.cshtml.cs?name=snippet_OnGetAsync&highlight=8-12)]
+
+Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le tutoriel [Lecture de données associées](xref:data/ef-rp/read-related-data).
+
+La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce tutoriel.
+
+### <a name="display-enrollments"></a>Afficher les inscriptions
+
+Remplacez le code dans *Pages/Students/Details.cshtml* par le code suivant pour afficher une liste d’inscriptions. Les modifications sont mises en surbrillance.
+
+[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Details.cshtml?highlight=32-53)]
+
+Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
+
+Exécutez l’application, sélectionnez l'onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
+
+### <a name="ways-to-read-one-entity"></a>Méthodes pour lire une entité
+
+Le code généré utilise [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_) pour lire une entité. Cette méthode retourne la valeur Null si rien n’est trouvé ; sinon, elle retourne la première ligne trouvée qui répond aux critères de filtre de requête. `FirstOrDefaultAsync` est généralement un meilleur choix que les autres solutions suivantes :
+
+* [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) – Lève une exception si plusieurs entités répondent au filtre de requête. Pour déterminer si plusieurs lignes peuvent être retournées par la requête, `SingleOrDefaultAsync` tente de récupérer plusieurs lignes. Ce travail supplémentaire est inutile si la requête ne peut retourner qu’une seule entité, comme quand elle effectue une recherche sur une clé unique.
+* [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#Microsoft_EntityFrameworkCore_DbContext_FindAsync_System_Type_System_Object___) – Recherche une entité avec la clé primaire. Si une entité avec la clé primaire est suivie par le contexte, elle est retournée sans qu’aucune requête soit envoyée à la base de données. Cette méthode est optimisée pour la recherche d’une seule entité, mais vous ne pouvez pas appeler `Include` avec `FindAsync`.  Par conséquent, si des données associées sont nécessaires, `FirstOrDefaultAsync` est le meilleur choix.
+
+### <a name="route-data-vs-query-string"></a>Données de route/chaîne de requête
+
+L’URL de la page Details est `https://localhost:<port>/Students/Details?id=1`. La valeur de clé primaire de l’entité se trouve dans la chaîne de requête. Certains développeurs préfèrent passer la valeur de clé dans des données de route : `https://localhost:<port>/Students/Details/1`. Pour plus d'informations, consultez [Mettre à jour le code généré](xref:tutorials/razor-pages/da1#update-the-generated-code).
+
+## <a name="update-the-create-page"></a>Mettre à jour la page Create
+
+Le code `OnPostAsync` généré automatiquement pour la page Create est vulnérable aux [sur-publications](#overposting). Remplacez la méthode `OnPostAsync` dans *Pages/Students/Create.cshtml.cs* par le code suivant.
+
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Create.cshtml.cs?name=snippet_OnPostAsync)]
+
+<a name="TryUpdateModelAsync"></a>
+
+### <a name="tryupdatemodelasync"></a>TryUpdateModelAsync
+
+Le code précédent crée un objet Student, puis utilise des champs de formulaire publiés pour mettre à jour les propriétés de l’objet Student. La méthode [TryUpdateModelAsync](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#Microsoft_AspNetCore_Mvc_ControllerBase_TryUpdateModelAsync_System_Object_System_Type_System_String_) :
+
+* Utilise les valeurs de formulaire publiées de la propriété [PageContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) de [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel).
+* Met à jour uniquement les propriétés listées (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`).
+* Recherche les champs de formulaire dotés d’un préfixe « Student ». Par exemple, `Student.FirstMidName`. Il ne respecte pas la casse.
+* Utilise le système de [liaison de modèles](xref:mvc/models/model-binding) pour convertir les valeurs de formulaire de chaînes en types dans le modèle `Student`. Par exemple, `EnrollmentDate` doit être converti en DateTime.
+
+Exécutez l’application, puis créez une entité Student pour tester la page Create.
+
+## <a name="overposting"></a>Sur-publication
+
+L’utilisation de `TryUpdateModel` pour mettre à jour des champs avec des valeurs publiées est une bonne pratique de sécurité, car cela empêche la sur-publication. Par exemple, supposez que l’entité Student comprend une propriété `Secret` que cette page web ne doit pas mettre à jour ou ajouter :
+
+[!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Models/StudentZsecret.cs?name=snippet_Intro&highlight=7)]
+
+Même si l’application n’a pas de champ `Secret` dans la page Razor de création ou de mise à jour, un pirate pourrait définir la valeur `Secret` par sur-publication. Un pirate pourrait utiliser un outil tel que Fiddler, ou écrire du JavaScript, pour publier une valeur de formulaire `Secret`. Le code d’origine ne limite pas les champs que le classeur de modèles utilise quand il crée une instance de Student.
+
+La valeur spécifiée par le pirate pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs du formulaire envoyé.
+
+![Fiddler ajoutant un champ Secret](../ef-mvc/crud/_static/fiddler.png)
+
+La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de la ligne insérée. Cela se produit même si le concepteur de l’application n’avait jamais prévu que la propriété `Secret` serait définie avec la page Create.
+
+### <a name="view-model"></a>Modèle de vue
+
+Les modèles de vue fournissent une alternative pour empêcher la sur-publication.
+
+Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle de vue contient uniquement les propriétés nécessaires à l’interface utilisateur pour laquelle il est utilisé (par exemple, la page Create).
+
+En plus du modèle de vue, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. 
+
+Considérez le modèle de vue `Student` suivant :
+
+[!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Models/StudentVM.cs)]
+
+Le code suivant utilise le modèle de vue `StudentVM` pour créer un étudiant :
+
+[!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
+
+La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle de vue ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
+
+L’utilisation de `StudentVM` exige que [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
+
+## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
+
+Dans *Pages/Students/Edit.cshtml.cs*, remplacez les méthodes `OnGetAsync` et `OnPostAsync` par le code suivant.
+
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Edit.cshtml.cs?name=snippet_OnGetPost)]
+
+Les modifications de code sont semblables à celles de la page Create, à quelques exceptions près :
+
+* `FirstOrDefaultAsync` a été remplacée par [FindAsync](/dotnet/api/microsoft.entityframeworkcore.dbset-1.findasync). Quand vous n’êtes pas tenu d’inclure des données associées, `FindAsync` est plus efficace.
+* `OnPostAsync` contient un paramètre `id`.
+* Plutôt que de créer un étudiant vide, l’étudiant actuel est récupéré à partir de la base de données.
+
+Exécutez l’application et testez-la en créant et modifiant un étudiant.
+
+## <a name="entity-states"></a>États des entités
+
+Le contexte de base de données effectue un suivi pour déterminer si les entités en mémoire sont synchronisées avec les lignes correspondantes de la base de données. Ces informations de suivi déterminent ce qui se passe quand [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) est appelé. Par exemple, quand une nouvelle entité est passée à la méthode [AddAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync), l’état de cette entité est défini sur [Added](/dotnet/api/microsoft.entityframeworkcore.entitystate#Microsoft_EntityFrameworkCore_EntityState_Added). Quand `SaveChangesAsync` est appelé, le contexte de base de données émet une commande SQL INSERT.
+
+Une entité peut être dans l’un des [états suivants](/dotnet/api/microsoft.entityframeworkcore.entitystate) :
+
+* `Added`: L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+
+* `Unchanged`: Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
+
+* `Modified`: Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+
+* `Deleted`: L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+
+* `Detached`: L’entité n’est pas suivie par le contexte de base de données.
+
+Dans une application de bureau, les changements d’état sont généralement définis automatiquement. Une entité est lue, des modifications sont apportées et l’état d’entité passe automatiquement à `Modified`. L’appel de `SaveChanges` génère une instruction SQL UPDATE qui met à jour uniquement les propriétés modifiées.
+
+Dans une application web, le `DbContext` qui lit une entité et affiche les données est supprimé après le rendu d’une page. Quand la méthode `OnPostAsync` d’une page est appelée, une nouvelle requête web est faite avec une nouvelle instance du `DbContext`. La relecture de l’entité dans ce nouveau contexte simule le traitement de bureau.
+
+## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
+
+Dans cette section, vous allez implémenter un message d’erreur personnalisé quand l’appel à `SaveChanges` échoue.
+
+Remplacez le code dans *Pages/Students/Delete.cshtml.cs* par le code suivant. Les modifications (autres que le nettoyage des instructions `using`) sont mises en surbrillance.
+
+[!code-csharp[Main](intro/samples/cu30/Pages/Students/Delete.cshtml.cs?name=snippet_All&highlight=20,22,30,38-41,53-71)]
+
+Le code précédent ajoute le paramètre facultatif `saveChangesError` à la signature de méthode `OnGetAsync`. `saveChangesError` indique si la méthode a été appelée après un échec de suppression de l’objet Student. L’opération de suppression peut échouer en raison de problèmes réseau temporaires. Vous avez plus de chances de rencontrer des erreurs réseau temporaires quand la base de données est dans le cloud. Le paramètre `saveChangesError` a la valeur false quand la méthode `OnGetAsync` de la page Delete est appelée à partir de l’interface utilisateur. Quand `OnGetAsync` est appelée par `OnPostAsync` (car l’opération de suppression a échoué), le paramètre `saveChangesError` a la valeur true.
+
+La méthode `OnPostAsync` récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Lorsque `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
+
+* L’exception de la base de données est interceptée.
+* La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
+
+Ajoutez un message d’erreur à la page Razor Delete (*Pages/Students/Delete.cshtml*) :
+
+[!code-cshtml[Main](intro/samples/cu30/Pages/Students/Delete.cshtml?highlight=10)]
+
+Exécutez l’application et supprimez un étudiant pour tester la page Delete.
+
+## <a name="next-steps"></a>Étapes suivantes
+
+> [!div class="step-by-step"]
+> [Tutoriel précédent](xref:data/ef-rp/intro)
+> [Tutoriel suivant](xref:data/ef-rp/sort-filter-page)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+Dans ce tutoriel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
 
 Pour que ces tutoriels soient moins complexes et traitent exclusivement d’EF Core, nous avons utilisé le code EF Core dans les modèles de page. Certains développeurs utilisent un modèle de référentiel ou de couche de service pour créer une couche d’abstraction entre l’interface utilisateur (Pages Razor) et la couche d’accès aux données.
 
@@ -90,7 +255,7 @@ Le méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la métho
 
 Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le tutoriel sur la lecture des données associées.
 
-La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce didacticiel.
+La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce tutoriel.
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>Afficher les inscriptions associées sur la page Details
 
@@ -143,23 +308,23 @@ La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de
 
 <a name="vm"></a>
 
-### <a name="view-model"></a>Modèle d’affichage
+### <a name="view-model"></a>Modèle de vue
 
-Un modèle d’affichage contient généralement un sous-ensemble des propriétés incluses dans le modèle utilisé par l’application. Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle d’affichage contient uniquement les propriétés nécessaires pour la couche d’interface utilisateur (par exemple, la page Create). En plus du modèle d’affichage, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. Considérez le modèle d’affichage `Student` suivant :
+Un modèle de vue contient généralement un sous-ensemble des propriétés incluses dans le modèle utilisé par l’application. Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle de vue contient uniquement les propriétés nécessaires pour la couche d’interface utilisateur (par exemple, la page Create). En plus du modèle de vue, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. Considérez le modèle de vue `Student` suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/StudentVM.cs)]
 
-Les modèles d’affichage fournissent une alternative pour empêcher la sur-publication. Le modèle d’affichage contient uniquement les propriétés à afficher ou à mettre à jour.
+Les modèles de vue fournissent une alternative pour empêcher la sur-publication. Le modèle de vue contient uniquement les propriétés à afficher ou à mettre à jour.
 
-Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étudiant :
+Le code suivant utilise le modèle de vue `StudentVM` pour créer un étudiant :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
 
-La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
+La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle de vue ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
 L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
-Dans les pages Razor, la classe dérivée `PageModel` est le modèle d’affichage.
+Dans les pages Razor, la classe dérivée `PageModel` est le modèle de vue.
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
@@ -251,3 +416,5 @@ Chaque page Razor doit inclure la directive `@page`.
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/intro)
 > [Suivant](xref:data/ef-rp/sort-filter-page)
+
+::: moniker-end

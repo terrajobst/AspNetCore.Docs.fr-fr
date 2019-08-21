@@ -1,0 +1,1 @@
+Pour plus d’informations sur les outils de la console du gestionnaire de package pour EF Core, consultez [Documentation de référence sur les outils EF Core - Console du gestionnaire de package dans Visual Studio](/ef/core/miscellaneous/cli/powershell).

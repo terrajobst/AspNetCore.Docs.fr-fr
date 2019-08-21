@@ -3,6 +3,8 @@
   ```console
   dotnet dev-certs https --trust
   ```
+  
+  La commande précédente ne fonctionne pas dans Linux. Consultez la documentation de votre distribution Linux concernant l’approbation des certificats.
 
   La commande précédente affiche la boîte de dialogue suivante :
 

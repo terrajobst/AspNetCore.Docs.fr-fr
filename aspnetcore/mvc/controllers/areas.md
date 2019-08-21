@@ -3,14 +3,14 @@ title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 ms.author: riande
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: f3a75bc307a206e43241b421f448b09011868d08
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: e44c726c47caa3dd0c8c92e3a2502a590bee82d1
+ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65535967"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68862797"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -49,19 +49,19 @@ Imaginez une application qui contient deux groupes logiques, *Produits* et *Serv
 * Nom du projet
   * Zones (Areas)
     * Produits
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
         * ManageController.cs
-      * Affichages
+      * Views
         * Accueil
           * Index.cshtml
-        * Gérer
+        * gérer
           * Index.cshtml
           * About.cshtml
     * Services
-      * Contrôleurs
+      * Controllers
         * HomeController.cs
-      * Affichages
+      * Views
         * Accueil
           * Index.cshtml
 
@@ -116,9 +116,13 @@ Quand la zone ou le contrôleur n’est pas spécifié, le routage dépend des v
 
 Pour plus d’informations, consultez [Routage vers des actions de contrôleur](xref:mvc/controllers/routing).
 
-### <a name="shared-layout-for-areas-using-the-viewstartcshtml-file"></a>Disposition partagée pour les zones en utilisant le fichier _ViewStart.cshtml
+### <a name="shared-layout-for-areas-using-the-_viewstartcshtml-file"></a>Disposition partagée pour les zones en utilisant le fichier _ViewStart.cshtml
 
 Pour partager une disposition commune pour l’ensemble de l’application, déplacez *_ViewStart.cshtml* dans le dossier racine de l’application.
+
+### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
+
+Dans son emplacement standard, */Views/_ViewImports.cshtml* ne s’applique pas aux zones. Pour utiliser des [Tag Helpers](xref:mvc/views/tag-helpers/intro) courants, `@using` ou `@inject` dans votre zone, vérifiez qu’un fichier *_ViewImports.cshtml* correct [s’applique à vos vues de zone](xref:mvc/views/layout#importing-shared-directives). Si vous souhaitez obtenir le même comportement dans toutes vos vues, déplacez */Views/_ViewImports.cshtml* vers la racine de l’application.
 
 <a name="rename"></a>
 
@@ -139,12 +143,12 @@ Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pag
     * Produits
       * Pages
         * _ViewImports
-        * À propos de
+        * À propos
         * Index
     * Services
       * Pages
-        * Gérer
-          * À propos de
+        * gérer
+          * À propos
           * Index
 
 ### <a name="link-generation-with-razor-pages-and-areas"></a>Génération de liens avec Razor Pages et des zones
@@ -167,7 +171,7 @@ Pour le code précédent :
 * Le lien généré à partir de `<a asp-page="/About">` est correct uniquement lorsque la dernière requête concernait une page dans `/Home`.
 * Le code est issu du [téléchargement de l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
-### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Importer l’espace de noms et les Tag Helpers avec le fichier _ViewImports
+### <a name="import-namespace-and-tag-helpers-with-_viewimports-file"></a>Importer l’espace de noms et les Tag Helpers avec le fichier _ViewImports
 
 Un fichier *_ViewImports.cshtml* peut être ajouté à chaque dossier *Pages* pour importer l’espace de noms et des Tag Helpers à chaque page Razor dans le dossier.
 

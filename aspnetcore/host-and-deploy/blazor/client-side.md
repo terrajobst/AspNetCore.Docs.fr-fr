@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: host-and-deploy/blazor/client-side
-ms.openlocfilehash: be6b6c245440cb085a1a6b115f4f087306f7cc83
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: e9a42bd4e8511d426761746047fed2d4f7dfc6dd
+ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308085"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68994090"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-client-side"></a>Héberger et déployer ASP.NET Core Blazor côté client
 
@@ -148,7 +148,7 @@ L’application répond localement à `http://localhost:port/CoolApp`.
 
 Pour plus d’informations, voir la section [Valeur de configuration d’hôte de base du chemin](#path-base).
 
-Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) (basé sur le modèle de projet **Blazor** (côté client) – le modèle `blazor` quand la commande [dotnet new](/dotnet/core/tools/dotnet-new) est utilisée) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il est important de désactiver le gestionnaire de module ASP.NET Core hérité ou de s’assurer que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
+Si une application utilise le [modèle d’hébergement côté client](xref:blazor/hosting-models#client-side) (basé sur le modèle de projet **Application Blazor WebAssembly** ou le modèle `blazorwasm` quand la commande [dotnet new](/dotnet/core/tools/dotnet-new) est utilisée) et est hébergée en tant que sous-application IIS dans une application ASP.NET Core, il est important de désactiver le gestionnaire de module ASP.NET Core hérité ou de vérifier que la section `<handlers>` de l’application racine (parente) dans le fichier *web.config* n’est pas héritée par la sous-application.
 
 Supprimez le gestionnaire dans le fichier *web.config* publié de l’application en ajoutant une section `<handlers>` au fichier :
 
@@ -180,7 +180,7 @@ La suppression du gestionnaire ou la désactivation de l’héritage est effectu
 
 Un *déploiement hébergé* fournit l’application Blazor côté client aux navigateurs à partir d’une [application ASP.NET Core](xref:index) qui s’exécute sur un serveur web.
 
-L’application Blazor est incluse dans l’application ASP.NET Core dans la sortie publiée, afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio inclut le modèle de projet **Blazor (ASP.NET Core hébergé)** (modèle `blazorhosted` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
+L’application Blazor est incluse dans l’application ASP.NET Core dans la sortie publiée, afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio inclut le modèle de projet **Application Blazor WebAssembly** (modèle `blazorwasm` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)) avec l’option **Hébergé** sélectionnée.
 
 Pour plus d’informations sur l’hébergement et le déploiement d’applications ASP.NET Core, consultez <xref:host-and-deploy/index>.
 
