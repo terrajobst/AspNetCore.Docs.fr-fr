@@ -1,115 +1,96 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 author: rick-anderson
-description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
+description: Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/31/2019
+ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 8430f8e720870a7b541655ea8bcfe2f67c942bb3
-ms.sourcegitcommit: c5339594101d30b189f61761275b7d310e80d18a
+ms.openlocfilehash: 4d1e8ef2f55910fa5456171e45311feacff16919
+ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/02/2019
-ms.locfileid: "66458431"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68914878"
 ---
-# <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a><span data-ttu-id="d3896-103">Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8</span><span class="sxs-lookup"><span data-stu-id="d3896-103">Razor Pages with EF Core in ASP.NET Core - Concurrency - 8 of 8</span></span>
+# <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a><span data-ttu-id="5b048-103">Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8</span><span class="sxs-lookup"><span data-stu-id="5b048-103">Razor Pages with EF Core in ASP.NET Core - Concurrency - 8 of 8</span></span>
 
-<span data-ttu-id="d3896-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) et [Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="d3896-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
+<span data-ttu-id="5b048-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) et [Jon P Smith](https://twitter.com/thereformedprog)</span><span class="sxs-lookup"><span data-stu-id="5b048-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), and [Jon P Smith](https://twitter.com/thereformedprog)</span></span>
 
 [!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-<span data-ttu-id="d3896-105">Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps.</span><span class="sxs-lookup"><span data-stu-id="d3896-105">This tutorial shows how to handle conflicts when multiple users update an entity concurrently (at the same time).</span></span> <span data-ttu-id="d3896-106">Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).</span><span class="sxs-lookup"><span data-stu-id="d3896-106">If you run into problems you can't solve, [download or view the completed app.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)</span></span> <span data-ttu-id="d3896-107">[Télécharger les instructions](xref:index#how-to-download-a-sample).</span><span class="sxs-lookup"><span data-stu-id="d3896-107">[Download instructions](xref:index#how-to-download-a-sample).</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-## <a name="concurrency-conflicts"></a><span data-ttu-id="d3896-108">Conflits d’accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="d3896-108">Concurrency conflicts</span></span>
+<span data-ttu-id="5b048-105">Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps.</span><span class="sxs-lookup"><span data-stu-id="5b048-105">This tutorial shows how to handle conflicts when multiple users update an entity concurrently (at the same time).</span></span>
 
-<span data-ttu-id="d3896-109">Un conflit d’accès concurrentiel se produit quand :</span><span class="sxs-lookup"><span data-stu-id="d3896-109">A concurrency conflict occurs when:</span></span>
+## <a name="concurrency-conflicts"></a><span data-ttu-id="5b048-106">Conflits d’accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="5b048-106">Concurrency conflicts</span></span>
 
-* <span data-ttu-id="d3896-110">Un utilisateur accède à la page de modification d’une entité.</span><span class="sxs-lookup"><span data-stu-id="d3896-110">A user navigates to the edit page for an entity.</span></span>
-* <span data-ttu-id="d3896-111">Un autre utilisateur met à jour la même entité avant que la modification du premier utilisateur soit écrite dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-111">Another user updates the same entity before the first user's change is written to the DB.</span></span>
+<span data-ttu-id="5b048-107">Un conflit d’accès concurrentiel se produit quand :</span><span class="sxs-lookup"><span data-stu-id="5b048-107">A concurrency conflict occurs when:</span></span>
 
-<span data-ttu-id="d3896-112">Si la détection d’accès concurrentiel n’est pas activée, quand des mises à jour simultanées se produisent :</span><span class="sxs-lookup"><span data-stu-id="d3896-112">If concurrency detection isn't enabled, when concurrent updates occur:</span></span>
+* <span data-ttu-id="5b048-108">Un utilisateur accède à la page de modification d’une entité.</span><span class="sxs-lookup"><span data-stu-id="5b048-108">A user navigates to the edit page for an entity.</span></span>
+* <span data-ttu-id="5b048-109">Un autre utilisateur met à jour la même entité avant que la modification du premier utilisateur soit écrite dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-109">Another user updates the same entity before the first user's change is written to the database.</span></span>
 
-* <span data-ttu-id="d3896-113">La dernière mise à jour est prioritaire.</span><span class="sxs-lookup"><span data-stu-id="d3896-113">The last update wins.</span></span> <span data-ttu-id="d3896-114">Autrement dit, les dernières valeurs mises à jour sont enregistrées dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-114">That is, the last update values are saved to the DB.</span></span>
-* <span data-ttu-id="d3896-115">La première des mises à jour en cours est perdue.</span><span class="sxs-lookup"><span data-stu-id="d3896-115">The first of the current updates are lost.</span></span>
+<span data-ttu-id="5b048-110">Si la détection de l’accès concurrentiel n’est pas activée, quiconque qui met à jour la base de données en dernier remplace les modifications de l’autre utilisateur.</span><span class="sxs-lookup"><span data-stu-id="5b048-110">If concurrency detection isn't enabled, whoever updates the database last overwrites the other user's changes.</span></span> <span data-ttu-id="5b048-111">Si ce risque est acceptable, le coût de programmation de l’accès concurrentiel peut l’emporter sur l’avantage.</span><span class="sxs-lookup"><span data-stu-id="5b048-111">If this risk is acceptable, the cost of programming for concurrency might outweigh the benefit.</span></span>
 
-### <a name="optimistic-concurrency"></a><span data-ttu-id="d3896-116">Accès concurrentiel optimiste</span><span class="sxs-lookup"><span data-stu-id="d3896-116">Optimistic concurrency</span></span>
+### <a name="pessimistic-concurrency-locking"></a><span data-ttu-id="5b048-112">Accès concurrentiel pessimiste (verrouillage)</span><span class="sxs-lookup"><span data-stu-id="5b048-112">Pessimistic concurrency (locking)</span></span>
 
-<span data-ttu-id="d3896-117">L’accès concurrentiel optimiste autorise la survenance des conflits d’accès concurrentiel, et réagit correctement quand ils surviennent.</span><span class="sxs-lookup"><span data-stu-id="d3896-117">Optimistic concurrency allows concurrency conflicts to happen, and then reacts appropriately when they do.</span></span> <span data-ttu-id="d3896-118">Par exemple, Jane consulte la page de modification de département et change le montant de « Budget » pour le département « English » en le faisant passer de 350 000,00 $ à 0,00 $.</span><span class="sxs-lookup"><span data-stu-id="d3896-118">For example, Jane visits the Department edit page and changes the budget for the English department from $350,000.00 to $0.00.</span></span>
+<span data-ttu-id="5b048-113">Une façon d’éviter les conflits d’accès concurrentiel consiste à utiliser des verrous de base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-113">One way to prevent concurrency conflicts is to use database locks.</span></span> <span data-ttu-id="5b048-114">Ceci est appelé « accès concurrentiel pessimiste ».</span><span class="sxs-lookup"><span data-stu-id="5b048-114">This is called pessimistic concurrency.</span></span> <span data-ttu-id="5b048-115">Avant de lire une ligne de base de données qu’elle entend mettre à jour, une application demande un verrou.</span><span class="sxs-lookup"><span data-stu-id="5b048-115">Before the app reads a database row that it intends to update, it requests a lock.</span></span> <span data-ttu-id="5b048-116">Dès lors qu’une ligne est verrouillée pour l’accès aux mises à jour, aucun autre utilisateur n’est autorisé à verrouiller la ligne tant que le premier verrou n’est pas libéré.</span><span class="sxs-lookup"><span data-stu-id="5b048-116">Once a row is locked for update access, no other users are allowed to lock the row until the first lock is released.</span></span>
 
-![Modification de la valeur de budget sur 0](concurrency/_static/change-budget.png)
+<span data-ttu-id="5b048-117">La gestion des verrous présente des inconvénients.</span><span class="sxs-lookup"><span data-stu-id="5b048-117">Managing locks has disadvantages.</span></span> <span data-ttu-id="5b048-118">Elle peut être difficile à programmer et peut occasionner des problèmes de performances à mesure que le nombre d’utilisateurs augmente.</span><span class="sxs-lookup"><span data-stu-id="5b048-118">It can be complex to program and can cause performance problems as the number of users increases.</span></span> <span data-ttu-id="5b048-119">Entity Framework Core n’assure pas de prise en charge intégrée pour celle-ci et ce tutoriel ne vous montre pas comment l’implémenter.</span><span class="sxs-lookup"><span data-stu-id="5b048-119">Entity Framework Core provides no built-in support for it, and this tutorial doesn't show how to implement it.</span></span>
 
-<span data-ttu-id="d3896-120">Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.</span><span class="sxs-lookup"><span data-stu-id="d3896-120">Before Jane clicks **Save**, John visits the same page and changes the Start Date field from 9/1/2007 to 9/1/2013.</span></span>
+### <a name="optimistic-concurrency"></a><span data-ttu-id="5b048-120">Accès concurrentiel optimiste</span><span class="sxs-lookup"><span data-stu-id="5b048-120">Optimistic concurrency</span></span>
 
-![Modification de la date de début sur 2013](concurrency/_static/change-date.png)
+<span data-ttu-id="5b048-121">L’accès concurrentiel optimiste autorise la survenance des conflits d’accès concurrentiel, et réagit correctement quand ils surviennent.</span><span class="sxs-lookup"><span data-stu-id="5b048-121">Optimistic concurrency allows concurrency conflicts to happen, and then reacts appropriately when they do.</span></span> <span data-ttu-id="5b048-122">Par exemple, Jane consulte la page de modification de département et change le montant de « Budget » pour le département « English » en le faisant passer de 350 000,00 $ à 0,00 $.</span><span class="sxs-lookup"><span data-stu-id="5b048-122">For example, Jane visits the Department edit page and changes the budget for the English department from $350,000.00 to $0.00.</span></span>
 
-<span data-ttu-id="d3896-122">Jane clique la première sur **Save** et voit sa modification quand le navigateur revient à la page Index.</span><span class="sxs-lookup"><span data-stu-id="d3896-122">Jane clicks **Save** first and sees her change when the browser displays the Index page.</span></span>
+![Modification de la valeur de budget sur 0](concurrency/_static/change-budget30.png)
 
-![Le budget est passé à zéro](concurrency/_static/budget-zero.png)
+<span data-ttu-id="5b048-124">Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.</span><span class="sxs-lookup"><span data-stu-id="5b048-124">Before Jane clicks **Save**, John visits the same page and changes the Start Date field from 9/1/2007 to 9/1/2013.</span></span>
 
-<span data-ttu-id="d3896-124">John clique sur **Save** dans une page Edit qui affiche toujours un budget de 350 000,00 $.</span><span class="sxs-lookup"><span data-stu-id="d3896-124">John clicks **Save** on an Edit page that still shows a budget of $350,000.00.</span></span> <span data-ttu-id="d3896-125">Ce qui se passe ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="d3896-125">What happens next is determined by how you handle concurrency conflicts.</span></span>
+![Modification de la date de début sur 2013](concurrency/_static/change-date30.png)
 
-<span data-ttu-id="d3896-126">L’accès concurrentiel optimiste comprend les options suivantes :</span><span class="sxs-lookup"><span data-stu-id="d3896-126">Optimistic concurrency includes the following options:</span></span>
+<span data-ttu-id="5b048-126">Jane clique d’abord sur **Save** et voit sa modification prendre effet, puisque le navigateur affiche la page d’index avec un montant de budget égal à zéro.</span><span class="sxs-lookup"><span data-stu-id="5b048-126">Jane clicks **Save** first and sees her change take effect, since the browser displays the Index page with zero as the Budget amount.</span></span>
 
-* <span data-ttu-id="d3896-127">Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-127">You can keep track of which property a user has modified and update only the corresponding columns in the DB.</span></span>
+<span data-ttu-id="5b048-127">John clique sur **Save** dans une page Edit qui affiche toujours un budget de 350 000,00 $.</span><span class="sxs-lookup"><span data-stu-id="5b048-127">John clicks **Save** on an Edit page that still shows a budget of $350,000.00.</span></span> <span data-ttu-id="5b048-128">Ce qui se passe ensuite dépend de la façon dont vous gérez les conflits d’accès concurrentiel :</span><span class="sxs-lookup"><span data-stu-id="5b048-128">What happens next is determined by how you handle concurrency conflicts:</span></span>
 
-  <span data-ttu-id="d3896-128">Dans le scénario, aucune donnée ne serait perdue.</span><span class="sxs-lookup"><span data-stu-id="d3896-128">In the scenario, no data would be lost.</span></span> <span data-ttu-id="d3896-129">Des propriétés différentes ont été mises à jour par les deux utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="d3896-129">Different properties were updated by the two users.</span></span> <span data-ttu-id="d3896-130">La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John.</span><span class="sxs-lookup"><span data-stu-id="d3896-130">The next time someone browses the English department, they will see both Jane's and John's changes.</span></span> <span data-ttu-id="d3896-131">Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-131">This method of updating can reduce the number of conflicts that could result in data loss.</span></span> <span data-ttu-id="d3896-132">Cette approche a les caractéristiques suivantes :</span><span class="sxs-lookup"><span data-stu-id="d3896-132">This approach:</span></span>
+* <span data-ttu-id="5b048-129">Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-129">You can keep track of which property a user has modified and update only the corresponding columns in the database.</span></span>
+
+  <span data-ttu-id="5b048-130">Dans le scénario, aucune donnée ne serait perdue.</span><span class="sxs-lookup"><span data-stu-id="5b048-130">In the scenario, no data would be lost.</span></span> <span data-ttu-id="5b048-131">Des propriétés différentes ont été mises à jour par les deux utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="5b048-131">Different properties were updated by the two users.</span></span> <span data-ttu-id="5b048-132">La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John.</span><span class="sxs-lookup"><span data-stu-id="5b048-132">The next time someone browses the English department, they will see both Jane's and John's changes.</span></span> <span data-ttu-id="5b048-133">Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-133">This method of updating can reduce the number of conflicts that could result in data loss.</span></span> <span data-ttu-id="5b048-134">Cette approche présente quelques inconvénients :</span><span class="sxs-lookup"><span data-stu-id="5b048-134">This approach has some disadvantages:</span></span>
  
-  * <span data-ttu-id="d3896-133">Elle ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.</span><span class="sxs-lookup"><span data-stu-id="d3896-133">Can't avoid data loss if competing changes are made to the same property.</span></span>
-  * <span data-ttu-id="d3896-134">Elle n’est généralement pas pratique dans une application web.</span><span class="sxs-lookup"><span data-stu-id="d3896-134">Is generally not practical in a web app.</span></span> <span data-ttu-id="d3896-135">Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs.</span><span class="sxs-lookup"><span data-stu-id="d3896-135">It requires maintaining significant state in order to keep track of all fetched values and new values.</span></span> <span data-ttu-id="d3896-136">La maintenance de grandes quantités d’état peut affecter les performances de l’application.</span><span class="sxs-lookup"><span data-stu-id="d3896-136">Maintaining large amounts of state can affect app performance.</span></span>
-  * <span data-ttu-id="d3896-137">Elle peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.</span><span class="sxs-lookup"><span data-stu-id="d3896-137">Can increase app complexity compared to concurrency detection on an entity.</span></span>
+  * <span data-ttu-id="5b048-135">Elle ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.</span><span class="sxs-lookup"><span data-stu-id="5b048-135">Can't avoid data loss if competing changes are made to the same property.</span></span>
+  * <span data-ttu-id="5b048-136">Elle n’est généralement pas pratique dans une application web.</span><span class="sxs-lookup"><span data-stu-id="5b048-136">Is generally not practical in a web app.</span></span> <span data-ttu-id="5b048-137">Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs.</span><span class="sxs-lookup"><span data-stu-id="5b048-137">It requires maintaining significant state in order to keep track of all fetched values and new values.</span></span> <span data-ttu-id="5b048-138">La maintenance de grandes quantités d’état peut affecter les performances de l’application.</span><span class="sxs-lookup"><span data-stu-id="5b048-138">Maintaining large amounts of state can affect app performance.</span></span>
+  * <span data-ttu-id="5b048-139">Elle peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.</span><span class="sxs-lookup"><span data-stu-id="5b048-139">Can increase app complexity compared to concurrency detection on an entity.</span></span>
 
-* <span data-ttu-id="d3896-138">Vous pouvez laisser les modifications de John remplacer les modifications de Jane.</span><span class="sxs-lookup"><span data-stu-id="d3896-138">You can let John's change overwrite Jane's change.</span></span>
+* <span data-ttu-id="5b048-140">Vous pouvez laisser les modifications de John remplacer les modifications de Jane.</span><span class="sxs-lookup"><span data-stu-id="5b048-140">You can let John's change overwrite Jane's change.</span></span>
 
-  <span data-ttu-id="d3896-139">La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-139">The next time someone browses the English department, they will see 9/1/2013 and the fetched $350,000.00 value.</span></span> <span data-ttu-id="d3896-140">Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*.</span><span class="sxs-lookup"><span data-stu-id="d3896-140">This approach is called a *Client Wins* or *Last in Wins* scenario.</span></span> <span data-ttu-id="d3896-141">(Toutes les valeurs du client sont prioritaires par rapport au contenu du magasin de données.) Si vous n’écrivez pas de code pour la gestion de l’accès concurrentiel, la Priorité au client est appliquée automatiquement.</span><span class="sxs-lookup"><span data-stu-id="d3896-141">(All values from the client take precedence over what's in the data store.) If you don't do any coding for concurrency handling, Client Wins happens automatically.</span></span>
+  <span data-ttu-id="5b048-141">La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-141">The next time someone browses the English department, they will see 9/1/2013 and the fetched $350,000.00 value.</span></span> <span data-ttu-id="5b048-142">Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*.</span><span class="sxs-lookup"><span data-stu-id="5b048-142">This approach is called a *Client Wins* or *Last in Wins* scenario.</span></span> <span data-ttu-id="5b048-143">(Toutes les valeurs du client sont prioritaires par rapport au contenu du magasin de données.) Si vous n’écrivez pas de code pour la gestion de l’accès concurrentiel, la Priorité au client est appliquée automatiquement.</span><span class="sxs-lookup"><span data-stu-id="5b048-143">(All values from the client take precedence over what's in the data store.) If you don't do any coding for concurrency handling, Client Wins happens automatically.</span></span>
 
-* <span data-ttu-id="d3896-142">Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-142">You can prevent John's change from being updated in the DB.</span></span> <span data-ttu-id="d3896-143">En règle générale, l’application :</span><span class="sxs-lookup"><span data-stu-id="d3896-143">Typically, the app would:</span></span>
+* <span data-ttu-id="5b048-144">Vous pouvez empêcher les modifications de John de faire l’objet d’une mise à jour dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-144">You can prevent John's change from being updated in the database.</span></span> <span data-ttu-id="5b048-145">En règle générale, l’application :</span><span class="sxs-lookup"><span data-stu-id="5b048-145">Typically, the app would:</span></span>
 
-  * <span data-ttu-id="d3896-144">affiche un message d’erreur ;</span><span class="sxs-lookup"><span data-stu-id="d3896-144">Display an error message.</span></span>
-  * <span data-ttu-id="d3896-145">indique l’état actuel des données ;</span><span class="sxs-lookup"><span data-stu-id="d3896-145">Show the current state of the data.</span></span>
-  * <span data-ttu-id="d3896-146">autorise l’utilisateur à réappliquer les modifications.</span><span class="sxs-lookup"><span data-stu-id="d3896-146">Allow the user to reapply the changes.</span></span>
+  * <span data-ttu-id="5b048-146">Affiche un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-146">Display an error message.</span></span>
+  * <span data-ttu-id="5b048-147">Indique l’état actuel des données.</span><span class="sxs-lookup"><span data-stu-id="5b048-147">Show the current state of the data.</span></span>
+  * <span data-ttu-id="5b048-148">Autorise l’utilisateur à réappliquer les modifications.</span><span class="sxs-lookup"><span data-stu-id="5b048-148">Allow the user to reapply the changes.</span></span>
 
-  <span data-ttu-id="d3896-147">Il s’agit alors d’un scénario *Priorité au magasin*.</span><span class="sxs-lookup"><span data-stu-id="d3896-147">This is called a *Store Wins* scenario.</span></span> <span data-ttu-id="d3896-148">(Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel.</span><span class="sxs-lookup"><span data-stu-id="d3896-148">(The data-store values take precedence over the values submitted by the client.) You implement the Store Wins scenario in this tutorial.</span></span> <span data-ttu-id="d3896-149">Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.</span><span class="sxs-lookup"><span data-stu-id="d3896-149">This method ensures that no changes are overwritten without a user being alerted.</span></span>
+  <span data-ttu-id="5b048-149">Il s’agit alors d’un scénario *Priorité au magasin*.</span><span class="sxs-lookup"><span data-stu-id="5b048-149">This is called a *Store Wins* scenario.</span></span> <span data-ttu-id="5b048-150">(Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce tutoriel.</span><span class="sxs-lookup"><span data-stu-id="5b048-150">(The data-store values take precedence over the values submitted by the client.) You implement the Store Wins scenario in this tutorial.</span></span> <span data-ttu-id="5b048-151">Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.</span><span class="sxs-lookup"><span data-stu-id="5b048-151">This method ensures that no changes are overwritten without a user being alerted.</span></span>
 
-## <a name="handling-concurrency"></a><span data-ttu-id="d3896-150">Gestion de l’accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="d3896-150">Handling concurrency</span></span> 
+## <a name="conflict-detection-in-ef-core"></a><span data-ttu-id="5b048-152">Détection de conflits dans EF Core</span><span class="sxs-lookup"><span data-stu-id="5b048-152">Conflict detection in EF Core</span></span>
 
-<span data-ttu-id="d3896-151">Quand une propriété est configurée en tant que [jeton d’accès concurrentiel](/ef/core/modeling/concurrency) :</span><span class="sxs-lookup"><span data-stu-id="d3896-151">When a property is configured as a [concurrency token](/ef/core/modeling/concurrency):</span></span>
+<span data-ttu-id="5b048-153">EF Core lève des exceptions `DbConcurrencyException` quand il détecte des conflits.</span><span class="sxs-lookup"><span data-stu-id="5b048-153">EF Core throws `DbConcurrencyException` exceptions when it detects conflicts.</span></span> <span data-ttu-id="5b048-154">Le modèle de données doit être configuré pour activer la détection de conflits.</span><span class="sxs-lookup"><span data-stu-id="5b048-154">The data model has to be configured to enable conflict detection.</span></span> <span data-ttu-id="5b048-155">Voici les options qui permettent d’activer la détection de conflits :</span><span class="sxs-lookup"><span data-stu-id="5b048-155">Options for enabling conflict detection include the following:</span></span>
 
-* <span data-ttu-id="d3896-152">EF Core vérifie que cette propriété n’a pas été modifiée après avoir été récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-152">EF Core verifies that property has not been modified after it was fetched.</span></span> <span data-ttu-id="d3896-153">La vérification a lieu quand [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) est appelée.</span><span class="sxs-lookup"><span data-stu-id="d3896-153">The check occurs when [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) or [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) is called.</span></span>
-* <span data-ttu-id="d3896-154">Si la propriété a été modifiée après avoir été récupérée, une [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) est levée.</span><span class="sxs-lookup"><span data-stu-id="d3896-154">If the property has been changed after it was fetched, a [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) is thrown.</span></span> 
+* <span data-ttu-id="5b048-156">Configurez EF Core de façon à inclure les valeurs d’origine des colonnes configurées en tant que [jetons d’accès concurrentiel](/ef/core/modeling/concurrency) dans la clause Where des commandes Update et Delete.</span><span class="sxs-lookup"><span data-stu-id="5b048-156">Configure EF Core to include the original values of columns configured as [concurrency tokens](/ef/core/modeling/concurrency) in the Where clause of Update and Delete commands.</span></span>
 
-<span data-ttu-id="d3896-155">Le modèle de données et de la base de données doivent être configurés pour prendre en charge la levée de `DbUpdateConcurrencyException`.</span><span class="sxs-lookup"><span data-stu-id="d3896-155">The DB and data model must be configured to support throwing `DbUpdateConcurrencyException`.</span></span>
+  <span data-ttu-id="5b048-157">Quand `SaveChanges` est appelé, la clause Where recherche les valeurs d’origine des propriétés annotées avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute).</span><span class="sxs-lookup"><span data-stu-id="5b048-157">When `SaveChanges` is called, the Where clause looks for the original values of any properties annotated with the [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute) attribute.</span></span> <span data-ttu-id="5b048-158">L’instruction update ne trouve pas de ligne à mettre à jour si aucune propriété de jeton d’accès concurrentiel n’a changé depuis la première lecture de la ligne.</span><span class="sxs-lookup"><span data-stu-id="5b048-158">The update statement won't find a row to update if any of the concurrency token properties changed since the row was first read.</span></span> <span data-ttu-id="5b048-159">EF Core interprète cela comme un conflit d’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="5b048-159">EF Core interprets that as a concurrency conflict.</span></span> <span data-ttu-id="5b048-160">Pour les tables de base de données qui comptent de nombreuses colonnes, cette approche peut aboutir à des clauses Where de très grande taille et peut nécessiter de grandes quantités d’états.</span><span class="sxs-lookup"><span data-stu-id="5b048-160">For database tables that have many columns, this approach can result in very large Where clauses, and can require large amounts of state.</span></span> <span data-ttu-id="5b048-161">Par conséquent, cette approche n’est généralement pas recommandée et n’est pas la méthode utilisée dans ce tutoriel.</span><span class="sxs-lookup"><span data-stu-id="5b048-161">Therefore this approach is generally not recommended, and it isn't the method used in this tutorial.</span></span>
 
-### <a name="detecting-concurrency-conflicts-on-a-property"></a><span data-ttu-id="d3896-156">Détection des conflits d’accès concurrentiel sur une propriété</span><span class="sxs-lookup"><span data-stu-id="d3896-156">Detecting concurrency conflicts on a property</span></span>
+* <span data-ttu-id="5b048-162">Dans la table de base de données, incluez une colonne de suivi qui peut être utilisée pour déterminer quand une ligne a été modifiée.</span><span class="sxs-lookup"><span data-stu-id="5b048-162">In the database table, include a tracking column that can be used to determine when a row has been changed.</span></span>
 
-<span data-ttu-id="d3896-157">Les conflits d’accès concurrentiel peuvent être détectés au niveau de la propriété avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0).</span><span class="sxs-lookup"><span data-stu-id="d3896-157">Concurrency conflicts can be detected at the property level with the [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0) attribute.</span></span> <span data-ttu-id="d3896-158">L’attribut peut être appliqué à plusieurs propriétés sur le modèle.</span><span class="sxs-lookup"><span data-stu-id="d3896-158">The attribute can be applied to multiple properties on the model.</span></span> <span data-ttu-id="d3896-159">Pour plus d’informations, consultez [Data Annotations-ConcurrencyCheck (Annotations de données-ConcurrencyCheck)](/ef/core/modeling/concurrency#data-annotations).</span><span class="sxs-lookup"><span data-stu-id="d3896-159">For more information, see [Data Annotations-ConcurrencyCheck](/ef/core/modeling/concurrency#data-annotations).</span></span>
+  <span data-ttu-id="5b048-163">Dans une base de données SQL Server, le type de données de la colonne de suivi est `rowversion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-163">In a SQL Server database, the data type of the tracking column is `rowversion`.</span></span> <span data-ttu-id="5b048-164">La valeur de `rowversion` est un nombre séquentiel qui est incrémenté chaque fois que la ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-164">The `rowversion` value is a sequential number that's incremented each time the row is updated.</span></span> <span data-ttu-id="5b048-165">Dans une commande Update ou Delete, la clause Where inclut la valeur d’origine de la colonne de suivi (le numéro de version de la ligne d’origine).</span><span class="sxs-lookup"><span data-stu-id="5b048-165">In an Update or Delete command, the Where clause includes the original value of the tracking column (the original row version number).</span></span> <span data-ttu-id="5b048-166">Si la ligne mise à jour a été modifiée par un autre utilisateur, la valeur de la colonne `rowversion` est différente de la valeur d’origine.</span><span class="sxs-lookup"><span data-stu-id="5b048-166">If the row being updated has been changed by another user, the value in the `rowversion` column is different than the original value.</span></span> <span data-ttu-id="5b048-167">Dans ce cas, l’instruction Update ou Delete ne peut pas trouver la ligne à mettre à jour en raison de la clause Where.</span><span class="sxs-lookup"><span data-stu-id="5b048-167">In that case, the Update or Delete statement can't find the row to update because of the Where clause.</span></span> <span data-ttu-id="5b048-168">EF Core lève une exception d’accès concurrentiel quand aucune ligne n’est affectée par une commande Update ou Delete.</span><span class="sxs-lookup"><span data-stu-id="5b048-168">EF Core throws a concurrency exception when no rows are affected by an Update or Delete command.</span></span>
 
-<span data-ttu-id="d3896-160">Nous n’utilisons pas l’attribut `[ConcurrencyCheck]` dans ce didacticiel.</span><span class="sxs-lookup"><span data-stu-id="d3896-160">The `[ConcurrencyCheck]` attribute isn't used in this tutorial.</span></span>
+## <a name="add-a-tracking-property"></a><span data-ttu-id="5b048-169">Ajouter une propriété de suivi</span><span class="sxs-lookup"><span data-stu-id="5b048-169">Add a tracking property</span></span>
 
-### <a name="detecting-concurrency-conflicts-on-a-row"></a><span data-ttu-id="d3896-161">Détection des conflits d’accès concurrentiel sur une ligne</span><span class="sxs-lookup"><span data-stu-id="d3896-161">Detecting concurrency conflicts on a row</span></span>
+<span data-ttu-id="5b048-170">Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :</span><span class="sxs-lookup"><span data-stu-id="5b048-170">In *Models/Department.cs*, add a tracking property named RowVersion:</span></span>
 
-<span data-ttu-id="d3896-162">Pour détecter les conflits d’accès concurrentiel, une colonne de suivi [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) est ajoutée au modèle.</span><span class="sxs-lookup"><span data-stu-id="d3896-162">To detect concurrency conflicts, a [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) tracking column is added to the model.</span></span>  <span data-ttu-id="d3896-163">`rowversion` :</span><span class="sxs-lookup"><span data-stu-id="d3896-163">`rowversion` :</span></span>
+[!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
-* <span data-ttu-id="d3896-164">est propre à SQL Server.</span><span class="sxs-lookup"><span data-stu-id="d3896-164">Is SQL Server specific.</span></span> <span data-ttu-id="d3896-165">D’autres bases de données peuvent ne pas fournir une fonctionnalité similaire.</span><span class="sxs-lookup"><span data-stu-id="d3896-165">Other databases may not provide a similar feature.</span></span>
-* <span data-ttu-id="d3896-166">Sert à déterminer qu’une entité n’a pas été modifiée depuis qu’elle a été récupérée à partir de la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-166">Is used to determine that an entity has not been changed since it was fetched from the DB.</span></span> 
-
-<span data-ttu-id="d3896-167">La base de données génère un numéro `rowversion` séquentiel qui est incrémenté chaque fois que la ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="d3896-167">The DB generates a sequential `rowversion` number that's incremented each time the row is updated.</span></span> <span data-ttu-id="d3896-168">Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur récupérée de `rowversion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-168">In an `Update` or `Delete` command, the `Where` clause includes the fetched value of `rowversion`.</span></span> <span data-ttu-id="d3896-169">Si la ligne mise à jour a changé :</span><span class="sxs-lookup"><span data-stu-id="d3896-169">If the row being updated has changed:</span></span>
-
-* <span data-ttu-id="d3896-170">`rowversion` ne correspond pas à la valeur récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-170">`rowversion` doesn't match the fetched value.</span></span>
-* <span data-ttu-id="d3896-171">Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` comprend la valeur `rowversion` récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-171">The `Update` or `Delete` commands don't find a row because the `Where` clause includes the fetched `rowversion`.</span></span>
-* <span data-ttu-id="d3896-172">Une `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="d3896-172">A `DbUpdateConcurrencyException` is thrown.</span></span>
-
-<span data-ttu-id="d3896-173">Dans EF Core, quand aucune ligne n’a été mise à jour par une commande `Update` ou `Delete`, une exception d’accès concurrentiel est levée.</span><span class="sxs-lookup"><span data-stu-id="d3896-173">In EF Core, when no rows have been updated by an `Update` or `Delete` command, a concurrency exception is thrown.</span></span>
-
-### <a name="add-a-tracking-property-to-the-department-entity"></a><span data-ttu-id="d3896-174">Ajouter une propriété de suivi à l’entité Department</span><span class="sxs-lookup"><span data-stu-id="d3896-174">Add a tracking property to the Department entity</span></span>
-
-<span data-ttu-id="d3896-175">Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :</span><span class="sxs-lookup"><span data-stu-id="d3896-175">In *Models/Department.cs*, add a tracking property named RowVersion:</span></span>
-
-[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
-
-<span data-ttu-id="d3896-176">L’attribut [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) spécifie que cette colonne est incluse dans la clause `Where` des commandes `Update` et `Delete`.</span><span class="sxs-lookup"><span data-stu-id="d3896-176">The [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) attribute specifies that this column is included in the `Where` clause of `Update` and `Delete` commands.</span></span> <span data-ttu-id="d3896-177">L’attribut se nomme `Timestamp`, car les versions précédentes de SQL Server utilisaient un type de données SQL `timestamp` avant son remplacement par le type SQL `rowversion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-177">The attribute is called `Timestamp` because previous versions of SQL Server used a SQL `timestamp` data type before the SQL `rowversion` type replaced it.</span></span>
-
-<span data-ttu-id="d3896-178">L’API Fluent peut également spécifier la propriété de suivi :</span><span class="sxs-lookup"><span data-stu-id="d3896-178">The fluent API can also specify the tracking property:</span></span>
+<span data-ttu-id="5b048-171">[Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) est l’attribut qui identifie la colonne en tant que colonne de suivi d’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="5b048-171">The [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) attribute is what identifies the column as a concurrency tracking column.</span></span> <span data-ttu-id="5b048-172">L’API Fluent est un autre moyen de spécifier la propriété de suivi :</span><span class="sxs-lookup"><span data-stu-id="5b048-172">The fluent API is an alternative way to specify the tracking property:</span></span>
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -117,51 +98,427 @@ modelBuilder.Entity<Department>()
   .IsRowVersion();
 ```
 
-<span data-ttu-id="d3896-179">Le code suivant montre une partie du T-SQL généré par EF Core quand le nom du département est mis à jour :</span><span class="sxs-lookup"><span data-stu-id="d3896-179">The following code shows a portion of the T-SQL generated by EF Core when the Department name is updated:</span></span>
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5b048-173">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b048-173">Visual Studio</span></span>](#tab/visual-studio)
 
-[!code-sql[](intro/samples/sql.txt?highlight=2-3)]
+<span data-ttu-id="5b048-174">Pour une base de données SQL Server, l’attribut `[Timestamp]` d’une propriété d’entité définie en tant que tableau d’octets :</span><span class="sxs-lookup"><span data-stu-id="5b048-174">For a SQL Server database, the `[Timestamp]` attribute on an entity property defined as byte array:</span></span>
 
-<span data-ttu-id="d3896-180">Le code en surbrillance ci-dessus montre la clause `WHERE` contenant `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-180">The preceding highlighted code shows the `WHERE` clause containing `RowVersion`.</span></span> <span data-ttu-id="d3896-181">Si la `RowVersion` de la base de données n’est pas égale au paramètre `RowVersion` (`@p2`), aucune ligne n’est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="d3896-181">If the DB `RowVersion` doesn't equal the `RowVersion` parameter (`@p2`), no rows are updated.</span></span>
+* <span data-ttu-id="5b048-175">Entraîne l’inclusion de la colonne dans les clauses Where des commandes DELETE et UPDATE.</span><span class="sxs-lookup"><span data-stu-id="5b048-175">Causes the column to be included in DELETE and UPDATE WHERE clauses.</span></span>
+* <span data-ttu-id="5b048-176">Définit le type de colonne dans la base de données sur [rowversion](/sql/t-sql/data-types/rowversion-transact-sql).</span><span class="sxs-lookup"><span data-stu-id="5b048-176">Sets the column type in the database to [rowversion](/sql/t-sql/data-types/rowversion-transact-sql).</span></span>
 
-<span data-ttu-id="d3896-182">Le code en surbrillance suivant montre le T-SQL qui vérifie qu’une seule ligne a été mise à jour :</span><span class="sxs-lookup"><span data-stu-id="d3896-182">The following highlighted code shows the T-SQL that verifies exactly one row was updated:</span></span>
+<span data-ttu-id="5b048-177">La base de données génère un numéro de version de ligne séquentiel qui est incrémenté chaque fois que la ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-177">The database generates a sequential row version number that's incremented each time the row is updated.</span></span> <span data-ttu-id="5b048-178">Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur de version de ligne récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-178">In an `Update` or `Delete` command, the `Where` clause includes the fetched row version value.</span></span> <span data-ttu-id="5b048-179">Si la ligne mise à jour a changé depuis sa récupération :</span><span class="sxs-lookup"><span data-stu-id="5b048-179">If the row being updated has changed since it was fetched:</span></span>
 
-[!code-sql[](intro/samples/sql.txt?highlight=4-6)]
+* <span data-ttu-id="5b048-180">La valeur de version de ligne actuelle ne correspond pas à la valeur récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-180">The current row version value doesn't match the fetched value.</span></span>
+* <span data-ttu-id="5b048-181">Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` recherche la valeur de version de ligne récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-181">The `Update` or `Delete` commands don't find a row because the `Where` clause looks for the fetched row version value.</span></span>
+* <span data-ttu-id="5b048-182">Une `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-182">A `DbUpdateConcurrencyException` is thrown.</span></span>
 
-<span data-ttu-id="d3896-183">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) retourne le nombre de lignes affectées par la dernière instruction.</span><span class="sxs-lookup"><span data-stu-id="d3896-183">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) returns the number of rows affected by the last statement.</span></span> <span data-ttu-id="d3896-184">Si aucune ligne n’est mise à jour, EF Core lève une `DbUpdateConcurrencyException`.</span><span class="sxs-lookup"><span data-stu-id="d3896-184">In no rows are updated, EF Core throws a `DbUpdateConcurrencyException`.</span></span>
+<span data-ttu-id="5b048-183">Le code suivant montre une partie du T-SQL généré par EF Core quand le nom du département est mis à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-183">The following code shows a portion of the T-SQL generated by EF Core when the Department name is updated:</span></span>
 
-<span data-ttu-id="d3896-185">Vous pouvez voir le T-SQL généré par EF Core dans la fenêtre Sortie de Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="d3896-185">You can see the T-SQL EF Core generates in the output window of Visual Studio.</span></span>
+[!code-sql[](intro/samples/cu30snapshots/8-concurrency/sql.txt?highlight=2-3)]
 
-### <a name="update-the-db"></a><span data-ttu-id="d3896-186">Mettre à jour la base de données</span><span class="sxs-lookup"><span data-stu-id="d3896-186">Update the DB</span></span>
+<span data-ttu-id="5b048-184">Le code en surbrillance ci-dessus montre la clause `WHERE` contenant `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-184">The preceding highlighted code shows the `WHERE` clause containing `RowVersion`.</span></span> <span data-ttu-id="5b048-185">Si la base de données `RowVersion` n’est pas égale au paramètre `RowVersion` (`@p2`), aucune ligne n’est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-185">If the database `RowVersion` doesn't equal the `RowVersion` parameter (`@p2`), no rows are updated.</span></span>
 
-<span data-ttu-id="d3896-187">L’ajout de la propriété `RowVersion` change le modèle de base de données, ce qui nécessite une migration.</span><span class="sxs-lookup"><span data-stu-id="d3896-187">Adding the `RowVersion` property changes the DB model, which requires a migration.</span></span>
+<span data-ttu-id="5b048-186">Le code en surbrillance suivant montre le T-SQL qui vérifie qu’une seule ligne a été mise à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-186">The following highlighted code shows the T-SQL that verifies exactly one row was updated:</span></span>
 
-<span data-ttu-id="d3896-188">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="d3896-188">Build the project.</span></span> <span data-ttu-id="d3896-189">Entrez ce qui suit dans une fenêtre de commande :</span><span class="sxs-lookup"><span data-stu-id="d3896-189">Enter the following in a command window:</span></span>
+[!code-sql[](intro/samples/cu30snapshots/8-concurrency/sql.txt?highlight=4-6)]
+
+<span data-ttu-id="5b048-187">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) retourne le nombre de lignes affectées par la dernière instruction.</span><span class="sxs-lookup"><span data-stu-id="5b048-187">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) returns the number of rows affected by the last statement.</span></span> <span data-ttu-id="5b048-188">Si aucune ligne n’est mise à jour, EF Core lève une exception `DbUpdateConcurrencyException`.</span><span class="sxs-lookup"><span data-stu-id="5b048-188">If no rows are updated, EF Core throws a `DbUpdateConcurrencyException`.</span></span>
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5b048-189">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5b048-189">Visual Studio Code</span></span>](#tab/visual-studio-code)
+
+<span data-ttu-id="5b048-190">Pour une base de données SQLite, l’attribut `[Timestamp]` d’une propriété d’entité définie en tant que tableau d’octets :</span><span class="sxs-lookup"><span data-stu-id="5b048-190">For a SQLite database, the `[Timestamp]` attribute on an entity property defined as byte array:</span></span>
+
+* <span data-ttu-id="5b048-191">Entraîne l’inclusion de la colonne dans les clauses Where des commandes DELETE et UPDATE.</span><span class="sxs-lookup"><span data-stu-id="5b048-191">Causes the column to be included in DELETE and UPDATE WHERE clauses.</span></span>
+* <span data-ttu-id="5b048-192">Mappe à un type de colonne BLOB.</span><span class="sxs-lookup"><span data-stu-id="5b048-192">Maps to a BLOB column type.</span></span>
+
+<span data-ttu-id="5b048-193">Les déclencheurs de base de données mettent à jour la colonne RowVersion avec un nouveau tableau d’octets aléatoire chaque fois qu’une ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-193">Database triggers update the RowVersion column with a new random byte array whenever a row is updated.</span></span> <span data-ttu-id="5b048-194">Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur récupérée de la colonne RowVersion.</span><span class="sxs-lookup"><span data-stu-id="5b048-194">In an `Update` or `Delete` command, the `Where` clause includes the fetched value of the RowVersion column.</span></span> <span data-ttu-id="5b048-195">Si la ligne mise à jour a changé depuis sa récupération :</span><span class="sxs-lookup"><span data-stu-id="5b048-195">If the row being updated has changed since it was fetched:</span></span>
+
+* <span data-ttu-id="5b048-196">La valeur de version de ligne actuelle ne correspond pas à la valeur récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-196">The current row version value doesn't match the fetched value.</span></span>
+* <span data-ttu-id="5b048-197">Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` recherche la valeur de version de ligne d’origine.</span><span class="sxs-lookup"><span data-stu-id="5b048-197">The `Update` or `Delete` command doesn't find a row because the `Where` clause looks for the original row version value.</span></span>
+* <span data-ttu-id="5b048-198">Une `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-198">A `DbUpdateConcurrencyException` is thrown.</span></span>
+
+---
+
+### <a name="update-the-database"></a><span data-ttu-id="5b048-199">Mettre à jour la base de données</span><span class="sxs-lookup"><span data-stu-id="5b048-199">Update the database</span></span>
+
+<span data-ttu-id="5b048-200">L’ajout de la propriété `RowVersion` change le modèle de données, ce qui nécessite une migration.</span><span class="sxs-lookup"><span data-stu-id="5b048-200">Adding the `RowVersion` property changes the data model, which requires a migration.</span></span>
+
+<span data-ttu-id="5b048-201">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="5b048-201">Build the project.</span></span> 
+
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5b048-202">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b048-202">Visual Studio</span></span>](#tab/visual-studio)
+
+* <span data-ttu-id="5b048-203">Exécutez la commande suivante dans PMC :</span><span class="sxs-lookup"><span data-stu-id="5b048-203">Run the following command in the PMC:</span></span>
+
+  ```powershell
+  Add-Migration RowVersion
+  ```
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5b048-204">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5b048-204">Visual Studio Code</span></span>](#tab/visual-studio-code)
+
+* <span data-ttu-id="5b048-205">Exécutez la commande suivante dans un terminal :</span><span class="sxs-lookup"><span data-stu-id="5b048-205">Run the following command in a terminal:</span></span>
+
+  ```console
+  dotnet ef migrations add RowVersion
+  ```
+
+---
+
+<span data-ttu-id="5b048-206">Cette commande :</span><span class="sxs-lookup"><span data-stu-id="5b048-206">This command:</span></span>
+
+* <span data-ttu-id="5b048-207">Crée le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.</span><span class="sxs-lookup"><span data-stu-id="5b048-207">Creates the *Migrations/{time stamp}_RowVersion.cs* migration file.</span></span>
+* <span data-ttu-id="5b048-208">Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*.</span><span class="sxs-lookup"><span data-stu-id="5b048-208">Updates the *Migrations/SchoolContextModelSnapshot.cs* file.</span></span> <span data-ttu-id="5b048-209">La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :</span><span class="sxs-lookup"><span data-stu-id="5b048-209">The update adds the following highlighted code to the `BuildModel` method:</span></span>
+
+  [!code-csharp[](intro/samples/cu30/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=15-17)]
+
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5b048-210">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b048-210">Visual Studio</span></span>](#tab/visual-studio)
+
+* <span data-ttu-id="5b048-211">Exécutez la commande suivante dans PMC :</span><span class="sxs-lookup"><span data-stu-id="5b048-211">Run the following command in the PMC:</span></span>
+
+  ```powershell
+  Update-Database
+  ```
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5b048-212">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5b048-212">Visual Studio Code</span></span>](#tab/visual-studio-code)
+
+* <span data-ttu-id="5b048-213">Ouvrez le fichier `Migrations/<timestamp>_RowVersion.cs` et ajoutez le code mis en surbrillance :</span><span class="sxs-lookup"><span data-stu-id="5b048-213">Open the `Migrations/<timestamp>_RowVersion.cs` file and add the highlighted code:</span></span>
+
+  [!code-csharp[](intro/samples/cu30/MigrationsSQLite/20190722151951_RowVersion.cs?highlight=16-42)]
+
+  <span data-ttu-id="5b048-214">Le code précédent :</span><span class="sxs-lookup"><span data-stu-id="5b048-214">The preceding code:</span></span>
+
+  * <span data-ttu-id="5b048-215">Met à jour les lignes existantes avec des valeurs d’objet blob aléatoires.</span><span class="sxs-lookup"><span data-stu-id="5b048-215">Updates existing rows with random blob values.</span></span>
+  * <span data-ttu-id="5b048-216">Ajoute des déclencheurs de base de données qui définissent la colonne RowVersion sur une valeur d’objet blob aléatoire chaque fois qu’une ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-216">Adds database triggers that set the RowVersion column to a random blob value whenever a row is updated.</span></span>
+
+* <span data-ttu-id="5b048-217">Exécutez la commande suivante dans un terminal :</span><span class="sxs-lookup"><span data-stu-id="5b048-217">Run the following command in a terminal:</span></span>
+
+  ```console
+  dotnet ef database update
+  ```
+
+---
+
+<a name="scaffold"></a>
+
+## <a name="scaffold-department-pages"></a><span data-ttu-id="5b048-218">Générer automatiquement des modèles de pages Department</span><span class="sxs-lookup"><span data-stu-id="5b048-218">Scaffold Department pages</span></span>
+
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5b048-219">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b048-219">Visual Studio</span></span>](#tab/visual-studio)
+
+* <span data-ttu-id="5b048-220">Suivez les instructions dans [Générer automatiquement des modèles de pages Student](xref:data/ef-rp/intro#scaffold-student-pages) avec les exceptions suivantes :</span><span class="sxs-lookup"><span data-stu-id="5b048-220">Follow the instructions in [Scaffold Student pages](xref:data/ef-rp/intro#scaffold-student-pages) with the following exceptions:</span></span>
+
+* <span data-ttu-id="5b048-221">Créez un dossier *Pages/Departments*.</span><span class="sxs-lookup"><span data-stu-id="5b048-221">Create a *Pages/Departments* folder.</span></span>  
+* <span data-ttu-id="5b048-222">Utilisez `Department` pour la classe de modèle.</span><span class="sxs-lookup"><span data-stu-id="5b048-222">Use `Department` for the model class.</span></span>
+  * <span data-ttu-id="5b048-223">Utilisez la classe de contexte existante au lieu d’en créer une nouvelle.</span><span class="sxs-lookup"><span data-stu-id="5b048-223">Use the existing context class instead of creating a new one.</span></span>
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5b048-224">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5b048-224">Visual Studio Code</span></span>](#tab/visual-studio-code)
+
+* <span data-ttu-id="5b048-225">Créez un dossier *Pages/Departments*.</span><span class="sxs-lookup"><span data-stu-id="5b048-225">Create a *Pages/Departments* folder.</span></span>
+
+* <span data-ttu-id="5b048-226">Exécutez la commande suivante pour générer automatiquement des modèles de pages Department.</span><span class="sxs-lookup"><span data-stu-id="5b048-226">Run the following command to scaffold the Department pages.</span></span>
+
+  <span data-ttu-id="5b048-227">**Sur Windows :**</span><span class="sxs-lookup"><span data-stu-id="5b048-227">**On Windows:**</span></span>
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
+  ```
+
+  <span data-ttu-id="5b048-228">**Sur Linux ou macOS :**</span><span class="sxs-lookup"><span data-stu-id="5b048-228">**On Linux or macOS:**</span></span>
+
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages/Departments --referenceScriptLibraries
+  ```
+
+---
+
+<span data-ttu-id="5b048-229">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="5b048-229">Build the project.</span></span>
+
+## <a name="update-the-index-page"></a><span data-ttu-id="5b048-230">Mettre à jour la page Index</span><span class="sxs-lookup"><span data-stu-id="5b048-230">Update the Index page</span></span>
+
+<span data-ttu-id="5b048-231">L’outil de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne s’affiche pas dans une application de production.</span><span class="sxs-lookup"><span data-stu-id="5b048-231">The scaffolding tool created a `RowVersion` column for the Index page, but that field wouldn't be displayed in a production app.</span></span> <span data-ttu-id="5b048-232">Dans ce tutoriel, le dernier octet de `RowVersion` est affiché pour montrer comment la gestion de l’accès concurrentiel fonctionne.</span><span class="sxs-lookup"><span data-stu-id="5b048-232">In this tutorial, the last byte of the `RowVersion` is displayed to help show how concurrency handling works.</span></span> <span data-ttu-id="5b048-233">Il n’est pas garanti que le dernier octet soit unique par lui-même.</span><span class="sxs-lookup"><span data-stu-id="5b048-233">The last byte isn't guaranteed to be unique by itself.</span></span>
+
+<span data-ttu-id="5b048-234">Mettez à jour la page Index :</span><span class="sxs-lookup"><span data-stu-id="5b048-234">Update the Index page:</span></span>
+
+* <span data-ttu-id="5b048-235">Remplacez Index par Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-235">Replace Index with Departments.</span></span>
+* <span data-ttu-id="5b048-236">Modifiez le code contenant `RowVersion` pour afficher uniquement le dernier octet du tableau d’octets.</span><span class="sxs-lookup"><span data-stu-id="5b048-236">Change the code containing `RowVersion` to show just the last byte of the byte array.</span></span>
+* <span data-ttu-id="5b048-237">Remplacez FirstMidName par FullName.</span><span class="sxs-lookup"><span data-stu-id="5b048-237">Replace FirstMidName with FullName.</span></span>
+
+<span data-ttu-id="5b048-238">Le code suivant affiche la page mise à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-238">The following code shows the updated page:</span></span>
+
+[!code-html[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
+
+## <a name="update-the-edit-page-model"></a><span data-ttu-id="5b048-239">Mettre à jour le modèle de page de modification</span><span class="sxs-lookup"><span data-stu-id="5b048-239">Update the Edit page model</span></span>
+
+<span data-ttu-id="5b048-240">Mettez à jour *Pages\Departments\Edit.cshtml.cs* à l’aide du code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-240">Update *Pages\Departments\Edit.cshtml.cs* with the following code:</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
+
+<span data-ttu-id="5b048-241">La valeur [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) est mise à jour avec la valeur `rowVersion` de l’entité au moment où elle a été récupérée dans la méthode `OnGet`.</span><span class="sxs-lookup"><span data-stu-id="5b048-241">The [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) is updated with the `rowVersion` value from the entity when it was fetched in the `OnGet` method.</span></span> <span data-ttu-id="5b048-242">EF Core génère une commande SQL UPDATE avec une clause WHERE contenant la valeur `RowVersion` d’origine.</span><span class="sxs-lookup"><span data-stu-id="5b048-242">EF Core generates a SQL UPDATE command with a WHERE clause containing the original `RowVersion` value.</span></span> <span data-ttu-id="5b048-243">Si aucune ligne n’est affectée par la commande UPDATE (aucune ligne ne contient la valeur `RowVersion` d’origine), une exception `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-243">If no rows are affected by the UPDATE command (no rows have the original `RowVersion` value), a `DbUpdateConcurrencyException` exception is thrown.</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_RowVersion&highlight=17-18)]
+
+<span data-ttu-id="5b048-244">Dans le code en surbrillance précédent :</span><span class="sxs-lookup"><span data-stu-id="5b048-244">In the preceding highlighted code:</span></span>
+
+* <span data-ttu-id="5b048-245">La valeur de `Department.RowVersion` est celle qui se trouvait dans l’entité au moment où elle a été initialement récupérée dans la requête Get pour la page Edit.</span><span class="sxs-lookup"><span data-stu-id="5b048-245">The value in `Department.RowVersion` is what was in the entity when it was originally fetched in the Get request for the Edit page.</span></span> <span data-ttu-id="5b048-246">La valeur est fournie à la méthode `OnPost` par un champ masqué de la page Razor qui affiche l’entité à modifier.</span><span class="sxs-lookup"><span data-stu-id="5b048-246">The value is provided to the `OnPost` method by a hidden field in the Razor page that displays the entity to be edited.</span></span> <span data-ttu-id="5b048-247">La valeur du champ masqué est copiée dans `Department.RowVersion` par le classeur de modèles.</span><span class="sxs-lookup"><span data-stu-id="5b048-247">The hidden field value is copied to `Department.RowVersion` by the model binder.</span></span>
+* <span data-ttu-id="5b048-248">`OriginalValue` est la valeur qu’utilisera EF Core dans la clause Where.</span><span class="sxs-lookup"><span data-stu-id="5b048-248">`OriginalValue` is what EF Core will use in the Where clause.</span></span> <span data-ttu-id="5b048-249">Avant l’exécution de la ligne de code en surbrillance, `OriginalValue` a la valeur qui se trouvait dans la base de données au moment où `FirstOrDefaultAsync` été appelé dans cette méthode, laquelle risque d’être différente de celle qui figurait dans la page Edit.</span><span class="sxs-lookup"><span data-stu-id="5b048-249">Before the highlighted line of code executes, `OriginalValue` has the value that was in the database when `FirstOrDefaultAsync` was called in this method, which might be different from what was displayed on the Edit page.</span></span>
+* <span data-ttu-id="5b048-250">Le code en surbrillance garantit qu’EF Core utilise la valeur `RowVersion` d’origine de l’entité `Department` affichée dans la clause Where de l’instruction SQL UPDATE.</span><span class="sxs-lookup"><span data-stu-id="5b048-250">The highlighted code makes sure that EF Core uses the original `RowVersion` value from the displayed `Department` entity in the SQL UPDATE statement's Where clause.</span></span>
+
+<span data-ttu-id="5b048-251">Quand une erreur d’accès concurrentiel se produit, le code en surbrillance suivant obtient les valeurs du client (valeurs publiées dans cette méthode) et les valeurs de la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-251">When a concurrency error happens, the following highlighted code gets the client values (the values posted to this method) and the database values.</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=14,23)]
+
+<span data-ttu-id="5b048-252">Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne dont les valeurs dans la base de données sont différentes de celles envoyées à `OnPostAsync` :</span><span class="sxs-lookup"><span data-stu-id="5b048-252">The following code adds a custom error message for each column that has database values different from what was posted to `OnPostAsync`:</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
+
+<span data-ttu-id="5b048-253">Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-253">The following highlighted code sets the `RowVersion` value to the new value retrieved from the database.</span></span> <span data-ttu-id="5b048-254">La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.</span><span class="sxs-lookup"><span data-stu-id="5b048-254">The next time the user clicks **Save**, only concurrency errors that happen since the last display of the Edit page will be caught.</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
+
+<span data-ttu-id="5b048-255">L’instruction `ModelState.Remove` est nécessaire car `ModelState` contient l’ancienne valeur `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-255">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="5b048-256">Dans la page Razor, la valeur `ModelState` d’un champ est prioritaire par rapport aux valeurs de propriétés du modèle quand les deux sont présentes.</span><span class="sxs-lookup"><span data-stu-id="5b048-256">In the Razor Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
+
+### <a name="update-the-razor-page"></a><span data-ttu-id="5b048-257">Mettre à jour la page Razor</span><span class="sxs-lookup"><span data-stu-id="5b048-257">Update the Razor page</span></span>
+
+<span data-ttu-id="5b048-258">Mettez à jour *Pages/Departments/Edit.cshtml* avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-258">Update *Pages/Departments/Edit.cshtml* with the following code:</span></span>
+
+[!code-html[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+
+<span data-ttu-id="5b048-259">Le code précédent :</span><span class="sxs-lookup"><span data-stu-id="5b048-259">The preceding code:</span></span>
+
+* <span data-ttu-id="5b048-260">Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="5b048-260">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
+* <span data-ttu-id="5b048-261">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="5b048-261">Adds a hidden row version.</span></span> <span data-ttu-id="5b048-262">`RowVersion` doit être ajouté afin que la publication lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="5b048-262">`RowVersion` must be added so post back binds the value.</span></span>
+* <span data-ttu-id="5b048-263">Affiche le dernier octet de `RowVersion` à des fins de débogage.</span><span class="sxs-lookup"><span data-stu-id="5b048-263">Displays the last byte of `RowVersion` for debugging purposes.</span></span>
+* <span data-ttu-id="5b048-264">Remplace `ViewData` par le `InstructorNameSL` fortement typé.</span><span class="sxs-lookup"><span data-stu-id="5b048-264">Replaces `ViewData` with the strongly-typed `InstructorNameSL`.</span></span>
+
+### <a name="test-concurrency-conflicts-with-the-edit-page"></a><span data-ttu-id="5b048-265">Tester les conflits d’accès concurrentiel avec la page Edit</span><span class="sxs-lookup"><span data-stu-id="5b048-265">Test concurrency conflicts with the Edit page</span></span>
+
+<span data-ttu-id="5b048-266">Ouvrez deux instances de navigateur de la page Edit sur le département English :</span><span class="sxs-lookup"><span data-stu-id="5b048-266">Open two browsers instances of Edit on the English department:</span></span>
+
+* <span data-ttu-id="5b048-267">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-267">Run the app and select Departments.</span></span>
+* <span data-ttu-id="5b048-268">Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="5b048-268">Right-click the **Edit** hyperlink for the English department and select **Open in new tab**.</span></span>
+* <span data-ttu-id="5b048-269">Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.</span><span class="sxs-lookup"><span data-stu-id="5b048-269">In the first tab, click the **Edit** hyperlink for the English department.</span></span>
+
+<span data-ttu-id="5b048-270">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="5b048-270">The two browser tabs display the same information.</span></span>
+
+<span data-ttu-id="5b048-271">Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-271">Change the name in the first browser tab and click **Save**.</span></span>
+
+![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-130.png)
+
+<span data-ttu-id="5b048-273">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-273">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="5b048-274">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="5b048-274">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
+
+<span data-ttu-id="5b048-275">Changez un champ différent sous le deuxième onglet du navigateur.</span><span class="sxs-lookup"><span data-stu-id="5b048-275">Change a different field in the second browser tab.</span></span>
+
+![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-230.png)
+
+<span data-ttu-id="5b048-277">Cliquez sur **Enregistrer**.</span><span class="sxs-lookup"><span data-stu-id="5b048-277">Click **Save**.</span></span> <span data-ttu-id="5b048-278">Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :</span><span class="sxs-lookup"><span data-stu-id="5b048-278">You see error messages for all fields that don't match the database values:</span></span>
+
+![Message d’erreur de page de modification de département](concurrency/_static/edit-error30.png)
+
+<span data-ttu-id="5b048-280">Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Name.</span><span class="sxs-lookup"><span data-stu-id="5b048-280">This browser window didn't intend to change the Name field.</span></span> <span data-ttu-id="5b048-281">Copiez et collez la valeur actuelle (Languages) dans le champ Name.</span><span class="sxs-lookup"><span data-stu-id="5b048-281">Copy and paste the current value (Languages) into the Name field.</span></span> <span data-ttu-id="5b048-282">Appuyez sur Tab. La validation côté client supprime le message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-282">Tab out. Client-side validation removes the error message.</span></span>
+
+<span data-ttu-id="5b048-283">Cliquez à nouveau sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-283">Click **Save** again.</span></span> <span data-ttu-id="5b048-284">La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée.</span><span class="sxs-lookup"><span data-stu-id="5b048-284">The value you entered in the second browser tab is saved.</span></span> <span data-ttu-id="5b048-285">Les valeurs enregistrées sont visibles dans la page Index.</span><span class="sxs-lookup"><span data-stu-id="5b048-285">You see the saved values in the Index page.</span></span>
+
+## <a name="update-the-delete-page"></a><span data-ttu-id="5b048-286">Mettre à jour la page Delete</span><span class="sxs-lookup"><span data-stu-id="5b048-286">Update the Delete page</span></span>
+
+<span data-ttu-id="5b048-287">Mettez à jour *Pages/Departments/Delete.cshtml.cs* avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-287">Update *Pages/Departments/Delete.cshtml.cs* with the following code:</span></span>
+
+[!code-csharp[](intro/samples/cu30/Pages/Departments/Delete.cshtml.cs)]
+
+<span data-ttu-id="5b048-288">La page Delete détecte les conflits d’accès concurrentiel quand l’entité a changé après avoir été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-288">The Delete page detects concurrency conflicts when the entity has changed after it was fetched.</span></span> <span data-ttu-id="5b048-289">`Department.RowVersion` est la version de ligne quand l’entité a été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-289">`Department.RowVersion` is the row version when the entity was fetched.</span></span> <span data-ttu-id="5b048-290">Quand EF Core crée la commande SQL DELETE, il inclut une clause WHERE avec `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-290">When EF Core creates the SQL DELETE command, it includes a WHERE clause with `RowVersion`.</span></span> <span data-ttu-id="5b048-291">Si après l’exécution de la commande SQL DELETE aucune ligne n’est affectée :</span><span class="sxs-lookup"><span data-stu-id="5b048-291">If the SQL DELETE command results in zero rows affected:</span></span>
+
+* <span data-ttu-id="5b048-292">La valeur de `RowVersion` dans la commande SQL DELETE ne correspond pas à `RowVersion` dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-292">The `RowVersion` in the SQL DELETE command doesn't match `RowVersion` in the database.</span></span>
+* <span data-ttu-id="5b048-293">Une exception DbUpdateConcurrencyException est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-293">A DbUpdateConcurrencyException exception is thrown.</span></span>
+* <span data-ttu-id="5b048-294">`OnGetAsync` est appelée avec `concurrencyError`.</span><span class="sxs-lookup"><span data-stu-id="5b048-294">`OnGetAsync` is called with the `concurrencyError`.</span></span>
+
+### <a name="update-the-delete-razor-page"></a><span data-ttu-id="5b048-295">Mettre à jour la page Razor Delete</span><span class="sxs-lookup"><span data-stu-id="5b048-295">Update the Delete Razor page</span></span>
+
+<span data-ttu-id="5b048-296">Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-296">Update *Pages/Departments/Delete.cshtml* with the following code:</span></span>
+
+[!code-html[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+
+<span data-ttu-id="5b048-297">Le code précédent apporte les modifications suivantes :</span><span class="sxs-lookup"><span data-stu-id="5b048-297">The preceding code makes the following changes:</span></span>
+
+* <span data-ttu-id="5b048-298">Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="5b048-298">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
+* <span data-ttu-id="5b048-299">Il ajoute un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-299">Adds an error message.</span></span>
+* <span data-ttu-id="5b048-300">Il remplace FirstMidName par FullName dans le champ **Administrator**.</span><span class="sxs-lookup"><span data-stu-id="5b048-300">Replaces FirstMidName with FullName in the **Administrator** field.</span></span>
+* <span data-ttu-id="5b048-301">Il change `RowVersion` pour afficher le dernier octet.</span><span class="sxs-lookup"><span data-stu-id="5b048-301">Changes `RowVersion` to display the last byte.</span></span>
+* <span data-ttu-id="5b048-302">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="5b048-302">Adds a hidden row version.</span></span> <span data-ttu-id="5b048-303">`RowVersion` doit être ajouté pour que postgit add back lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="5b048-303">`RowVersion` must be added so postgit add back binds the value.</span></span>
+
+### <a name="test-concurrency-conflicts"></a><span data-ttu-id="5b048-304">Tester les conflits d'accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="5b048-304">Test concurrency conflicts</span></span>
+
+<span data-ttu-id="5b048-305">Créez un département test.</span><span class="sxs-lookup"><span data-stu-id="5b048-305">Create a test department.</span></span>
+
+<span data-ttu-id="5b048-306">Ouvrez deux instances de navigateur de la page Delete sur le département test :</span><span class="sxs-lookup"><span data-stu-id="5b048-306">Open two browsers instances of Delete on the test department:</span></span>
+
+* <span data-ttu-id="5b048-307">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-307">Run the app and select Departments.</span></span>
+* <span data-ttu-id="5b048-308">Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="5b048-308">Right-click the **Delete** hyperlink for the test department and select **Open in new tab**.</span></span>
+* <span data-ttu-id="5b048-309">Cliquez sur le lien hypertexte **Edit** correspondant au département test.</span><span class="sxs-lookup"><span data-stu-id="5b048-309">Click the **Edit** hyperlink for the test department.</span></span>
+
+<span data-ttu-id="5b048-310">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="5b048-310">The two browser tabs display the same information.</span></span>
+
+<span data-ttu-id="5b048-311">Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-311">Change the budget in the first browser tab and click **Save**.</span></span>
+
+<span data-ttu-id="5b048-312">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-312">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="5b048-313">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="5b048-313">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
+
+<span data-ttu-id="5b048-314">Supprimez le département test du deuxième onglet. Une erreur d’accès concurrentiel s’affiche avec les valeurs présentes actuellement dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-314">Delete the test department from the second tab. A concurrency error is display with the current values from the database.</span></span> <span data-ttu-id="5b048-315">Un clic sur **Delete** supprime l’entité, sauf si `RowVersion` a été mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-315">Clicking **Delete** deletes the entity, unless `RowVersion` has been updated.department has been deleted.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="5b048-316">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="5b048-316">Additional resources</span></span>
+
+* [<span data-ttu-id="5b048-317">Concurrency Tokens in EF Core (Jetons d’accès concurrentiel dans EF Core)</span><span class="sxs-lookup"><span data-stu-id="5b048-317">Concurrency Tokens in EF Core</span></span>](/ef/core/modeling/concurrency)
+* [<span data-ttu-id="5b048-318">Gestion de l’accès concurrentiel dans EF Core</span><span class="sxs-lookup"><span data-stu-id="5b048-318">Handle concurrency in EF Core</span></span>](/ef/core/saving/concurrency)
+* [<span data-ttu-id="5b048-319">Débogage d’une source ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="5b048-319">Debugging ASP.NET Core 2.x source</span></span>](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
+
+## <a name="next-steps"></a><span data-ttu-id="5b048-320">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="5b048-320">Next steps</span></span>
+
+<span data-ttu-id="5b048-321">Ce tutoriel est le dernier de la série.</span><span class="sxs-lookup"><span data-stu-id="5b048-321">This is the last tutorial in the series.</span></span> <span data-ttu-id="5b048-322">Des rubriques supplémentaires sont abordées dans la [version MVC de cette série de tutoriels](xref:data/ef-mvc/index).</span><span class="sxs-lookup"><span data-stu-id="5b048-322">Additional topics are covered in the [MVC version of this tutorial series](xref:data/ef-mvc/index).</span></span>
+
+> [!div class="step-by-step"]
+> [<span data-ttu-id="5b048-323">Tutoriel précédent</span><span class="sxs-lookup"><span data-stu-id="5b048-323">Previous tutorial</span></span>](xref:data/ef-rp/update-related-data)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="5b048-324">Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps.</span><span class="sxs-lookup"><span data-stu-id="5b048-324">This tutorial shows how to handle conflicts when multiple users update an entity concurrently (at the same time).</span></span> <span data-ttu-id="5b048-325">Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).</span><span class="sxs-lookup"><span data-stu-id="5b048-325">If you run into problems you can't solve, [download or view the completed app.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples)</span></span> <span data-ttu-id="5b048-326">[Télécharger les instructions](xref:index#how-to-download-a-sample).</span><span class="sxs-lookup"><span data-stu-id="5b048-326">[Download instructions](xref:index#how-to-download-a-sample).</span></span>
+
+## <a name="concurrency-conflicts"></a><span data-ttu-id="5b048-327">Conflits d’accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="5b048-327">Concurrency conflicts</span></span>
+
+<span data-ttu-id="5b048-328">Un conflit d’accès concurrentiel se produit quand :</span><span class="sxs-lookup"><span data-stu-id="5b048-328">A concurrency conflict occurs when:</span></span>
+
+* <span data-ttu-id="5b048-329">Un utilisateur accède à la page de modification d’une entité.</span><span class="sxs-lookup"><span data-stu-id="5b048-329">A user navigates to the edit page for an entity.</span></span>
+* <span data-ttu-id="5b048-330">Un autre utilisateur met à jour la même entité avant que la modification du premier utilisateur soit écrite dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-330">Another user updates the same entity before the first user's change is written to the DB.</span></span>
+
+<span data-ttu-id="5b048-331">Si la détection d’accès concurrentiel n’est pas activée, quand des mises à jour simultanées se produisent :</span><span class="sxs-lookup"><span data-stu-id="5b048-331">If concurrency detection isn't enabled, when concurrent updates occur:</span></span>
+
+* <span data-ttu-id="5b048-332">La dernière mise à jour est prioritaire.</span><span class="sxs-lookup"><span data-stu-id="5b048-332">The last update wins.</span></span> <span data-ttu-id="5b048-333">Autrement dit, les dernières valeurs mises à jour sont enregistrées dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-333">That is, the last update values are saved to the DB.</span></span>
+* <span data-ttu-id="5b048-334">La première des mises à jour en cours est perdue.</span><span class="sxs-lookup"><span data-stu-id="5b048-334">The first of the current updates are lost.</span></span>
+
+### <a name="optimistic-concurrency"></a><span data-ttu-id="5b048-335">Accès concurrentiel optimiste</span><span class="sxs-lookup"><span data-stu-id="5b048-335">Optimistic concurrency</span></span>
+
+<span data-ttu-id="5b048-336">L’accès concurrentiel optimiste autorise la survenance des conflits d’accès concurrentiel, et réagit correctement quand ils surviennent.</span><span class="sxs-lookup"><span data-stu-id="5b048-336">Optimistic concurrency allows concurrency conflicts to happen, and then reacts appropriately when they do.</span></span> <span data-ttu-id="5b048-337">Par exemple, Jane consulte la page de modification de département et change le montant de « Budget » pour le département « English » en le faisant passer de 350 000,00 $ à 0,00 $.</span><span class="sxs-lookup"><span data-stu-id="5b048-337">For example, Jane visits the Department edit page and changes the budget for the English department from $350,000.00 to $0.00.</span></span>
+
+![Modification de la valeur de budget sur 0](concurrency/_static/change-budget.png)
+
+<span data-ttu-id="5b048-339">Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.</span><span class="sxs-lookup"><span data-stu-id="5b048-339">Before Jane clicks **Save**, John visits the same page and changes the Start Date field from 9/1/2007 to 9/1/2013.</span></span>
+
+![Modification de la date de début sur 2013](concurrency/_static/change-date.png)
+
+<span data-ttu-id="5b048-341">Jane clique la première sur **Save** et voit sa modification quand le navigateur revient à la page Index.</span><span class="sxs-lookup"><span data-stu-id="5b048-341">Jane clicks **Save** first and sees her change when the browser displays the Index page.</span></span>
+
+![Le budget est passé à zéro](concurrency/_static/budget-zero.png)
+
+<span data-ttu-id="5b048-343">John clique sur **Save** dans une page Edit qui affiche toujours un budget de 350 000,00 $.</span><span class="sxs-lookup"><span data-stu-id="5b048-343">John clicks **Save** on an Edit page that still shows a budget of $350,000.00.</span></span> <span data-ttu-id="5b048-344">Ce qui se passe ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="5b048-344">What happens next is determined by how you handle concurrency conflicts.</span></span>
+
+<span data-ttu-id="5b048-345">L’accès concurrentiel optimiste comprend les options suivantes :</span><span class="sxs-lookup"><span data-stu-id="5b048-345">Optimistic concurrency includes the following options:</span></span>
+
+* <span data-ttu-id="5b048-346">Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-346">You can keep track of which property a user has modified and update only the corresponding columns in the DB.</span></span>
+
+  <span data-ttu-id="5b048-347">Dans le scénario, aucune donnée ne serait perdue.</span><span class="sxs-lookup"><span data-stu-id="5b048-347">In the scenario, no data would be lost.</span></span> <span data-ttu-id="5b048-348">Des propriétés différentes ont été mises à jour par les deux utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="5b048-348">Different properties were updated by the two users.</span></span> <span data-ttu-id="5b048-349">La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John.</span><span class="sxs-lookup"><span data-stu-id="5b048-349">The next time someone browses the English department, they will see both Jane's and John's changes.</span></span> <span data-ttu-id="5b048-350">Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-350">This method of updating can reduce the number of conflicts that could result in data loss.</span></span> <span data-ttu-id="5b048-351">Cette approche a les caractéristiques suivantes :</span><span class="sxs-lookup"><span data-stu-id="5b048-351">This approach:</span></span>
+ 
+  * <span data-ttu-id="5b048-352">Elle ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.</span><span class="sxs-lookup"><span data-stu-id="5b048-352">Can't avoid data loss if competing changes are made to the same property.</span></span>
+  * <span data-ttu-id="5b048-353">Elle n’est généralement pas pratique dans une application web.</span><span class="sxs-lookup"><span data-stu-id="5b048-353">Is generally not practical in a web app.</span></span> <span data-ttu-id="5b048-354">Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs.</span><span class="sxs-lookup"><span data-stu-id="5b048-354">It requires maintaining significant state in order to keep track of all fetched values and new values.</span></span> <span data-ttu-id="5b048-355">La maintenance de grandes quantités d’état peut affecter les performances de l’application.</span><span class="sxs-lookup"><span data-stu-id="5b048-355">Maintaining large amounts of state can affect app performance.</span></span>
+  * <span data-ttu-id="5b048-356">Elle peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.</span><span class="sxs-lookup"><span data-stu-id="5b048-356">Can increase app complexity compared to concurrency detection on an entity.</span></span>
+
+* <span data-ttu-id="5b048-357">Vous pouvez laisser les modifications de John remplacer les modifications de Jane.</span><span class="sxs-lookup"><span data-stu-id="5b048-357">You can let John's change overwrite Jane's change.</span></span>
+
+  <span data-ttu-id="5b048-358">La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-358">The next time someone browses the English department, they will see 9/1/2013 and the fetched $350,000.00 value.</span></span> <span data-ttu-id="5b048-359">Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*.</span><span class="sxs-lookup"><span data-stu-id="5b048-359">This approach is called a *Client Wins* or *Last in Wins* scenario.</span></span> <span data-ttu-id="5b048-360">(Toutes les valeurs du client sont prioritaires par rapport au contenu du magasin de données.) Si vous n’écrivez pas de code pour la gestion de l’accès concurrentiel, la Priorité au client est appliquée automatiquement.</span><span class="sxs-lookup"><span data-stu-id="5b048-360">(All values from the client take precedence over what's in the data store.) If you don't do any coding for concurrency handling, Client Wins happens automatically.</span></span>
+
+* <span data-ttu-id="5b048-361">Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-361">You can prevent John's change from being updated in the DB.</span></span> <span data-ttu-id="5b048-362">En règle générale, l’application :</span><span class="sxs-lookup"><span data-stu-id="5b048-362">Typically, the app would:</span></span>
+
+  * <span data-ttu-id="5b048-363">Affiche un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-363">Display an error message.</span></span>
+  * <span data-ttu-id="5b048-364">Indique l’état actuel des données.</span><span class="sxs-lookup"><span data-stu-id="5b048-364">Show the current state of the data.</span></span>
+  * <span data-ttu-id="5b048-365">Autorise l’utilisateur à réappliquer les modifications.</span><span class="sxs-lookup"><span data-stu-id="5b048-365">Allow the user to reapply the changes.</span></span>
+
+  <span data-ttu-id="5b048-366">Il s’agit alors d’un scénario *Priorité au magasin*.</span><span class="sxs-lookup"><span data-stu-id="5b048-366">This is called a *Store Wins* scenario.</span></span> <span data-ttu-id="5b048-367">(Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel.</span><span class="sxs-lookup"><span data-stu-id="5b048-367">(The data-store values take precedence over the values submitted by the client.) You implement the Store Wins scenario in this tutorial.</span></span> <span data-ttu-id="5b048-368">Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.</span><span class="sxs-lookup"><span data-stu-id="5b048-368">This method ensures that no changes are overwritten without a user being alerted.</span></span>
+
+## <a name="handling-concurrency"></a><span data-ttu-id="5b048-369">Gestion de l’accès concurrentiel</span><span class="sxs-lookup"><span data-stu-id="5b048-369">Handling concurrency</span></span> 
+
+<span data-ttu-id="5b048-370">Quand une propriété est configurée en tant que [jeton d’accès concurrentiel](/ef/core/modeling/concurrency) :</span><span class="sxs-lookup"><span data-stu-id="5b048-370">When a property is configured as a [concurrency token](/ef/core/modeling/concurrency):</span></span>
+
+* <span data-ttu-id="5b048-371">EF Core vérifie que cette propriété n’a pas été modifiée après avoir été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-371">EF Core verifies that property has not been modified after it was fetched.</span></span> <span data-ttu-id="5b048-372">La vérification a lieu quand [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) est appelée.</span><span class="sxs-lookup"><span data-stu-id="5b048-372">The check occurs when [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) or [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) is called.</span></span>
+* <span data-ttu-id="5b048-373">Si la propriété a été modifiée après avoir été récupérée, une [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-373">If the property has been changed after it was fetched, a [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) is thrown.</span></span> 
+
+<span data-ttu-id="5b048-374">Le modèle de données et de la base de données doivent être configurés pour prendre en charge la levée de `DbUpdateConcurrencyException`.</span><span class="sxs-lookup"><span data-stu-id="5b048-374">The DB and data model must be configured to support throwing `DbUpdateConcurrencyException`.</span></span>
+
+### <a name="detecting-concurrency-conflicts-on-a-property"></a><span data-ttu-id="5b048-375">Détection des conflits d’accès concurrentiel sur une propriété</span><span class="sxs-lookup"><span data-stu-id="5b048-375">Detecting concurrency conflicts on a property</span></span>
+
+<span data-ttu-id="5b048-376">Les conflits d’accès concurrentiel peuvent être détectés au niveau de la propriété avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0).</span><span class="sxs-lookup"><span data-stu-id="5b048-376">Concurrency conflicts can be detected at the property level with the [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0) attribute.</span></span> <span data-ttu-id="5b048-377">L’attribut peut être appliqué à plusieurs propriétés sur le modèle.</span><span class="sxs-lookup"><span data-stu-id="5b048-377">The attribute can be applied to multiple properties on the model.</span></span> <span data-ttu-id="5b048-378">Pour plus d’informations, consultez [Data Annotations-ConcurrencyCheck (Annotations de données-ConcurrencyCheck)](/ef/core/modeling/concurrency#data-annotations).</span><span class="sxs-lookup"><span data-stu-id="5b048-378">For more information, see [Data Annotations-ConcurrencyCheck](/ef/core/modeling/concurrency#data-annotations).</span></span>
+
+<span data-ttu-id="5b048-379">Nous n’utilisons pas l’attribut `[ConcurrencyCheck]` dans ce tutoriel.</span><span class="sxs-lookup"><span data-stu-id="5b048-379">The `[ConcurrencyCheck]` attribute isn't used in this tutorial.</span></span>
+
+### <a name="detecting-concurrency-conflicts-on-a-row"></a><span data-ttu-id="5b048-380">Détection des conflits d’accès concurrentiel sur une ligne</span><span class="sxs-lookup"><span data-stu-id="5b048-380">Detecting concurrency conflicts on a row</span></span>
+
+<span data-ttu-id="5b048-381">Pour détecter les conflits d’accès concurrentiel, une colonne de suivi [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) est ajoutée au modèle.</span><span class="sxs-lookup"><span data-stu-id="5b048-381">To detect concurrency conflicts, a [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) tracking column is added to the model.</span></span>  <span data-ttu-id="5b048-382">`rowversion` :</span><span class="sxs-lookup"><span data-stu-id="5b048-382">`rowversion` :</span></span>
+
+* <span data-ttu-id="5b048-383">est propre à SQL Server.</span><span class="sxs-lookup"><span data-stu-id="5b048-383">Is SQL Server specific.</span></span> <span data-ttu-id="5b048-384">D’autres bases de données peuvent ne pas fournir une fonctionnalité similaire.</span><span class="sxs-lookup"><span data-stu-id="5b048-384">Other databases may not provide a similar feature.</span></span>
+* <span data-ttu-id="5b048-385">Sert à déterminer qu’une entité n’a pas été modifiée depuis qu’elle a été récupérée à partir de la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-385">Is used to determine that an entity has not been changed since it was fetched from the DB.</span></span> 
+
+<span data-ttu-id="5b048-386">La base de données génère un numéro `rowversion` séquentiel qui est incrémenté chaque fois que la ligne est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-386">The DB generates a sequential `rowversion` number that's incremented each time the row is updated.</span></span> <span data-ttu-id="5b048-387">Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur récupérée de `rowversion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-387">In an `Update` or `Delete` command, the `Where` clause includes the fetched value of `rowversion`.</span></span> <span data-ttu-id="5b048-388">Si la ligne mise à jour a changé :</span><span class="sxs-lookup"><span data-stu-id="5b048-388">If the row being updated has changed:</span></span>
+
+* <span data-ttu-id="5b048-389">`rowversion` ne correspond pas à la valeur récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-389">`rowversion` doesn't match the fetched value.</span></span>
+* <span data-ttu-id="5b048-390">Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` comprend la valeur `rowversion` récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-390">The `Update` or `Delete` commands don't find a row because the `Where` clause includes the fetched `rowversion`.</span></span>
+* <span data-ttu-id="5b048-391">Une `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-391">A `DbUpdateConcurrencyException` is thrown.</span></span>
+
+<span data-ttu-id="5b048-392">Dans EF Core, quand aucune ligne n’a été mise à jour par une commande `Update` ou `Delete`, une exception d’accès concurrentiel est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-392">In EF Core, when no rows have been updated by an `Update` or `Delete` command, a concurrency exception is thrown.</span></span>
+
+### <a name="add-a-tracking-property-to-the-department-entity"></a><span data-ttu-id="5b048-393">Ajouter une propriété de suivi à l’entité Department</span><span class="sxs-lookup"><span data-stu-id="5b048-393">Add a tracking property to the Department entity</span></span>
+
+<span data-ttu-id="5b048-394">Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :</span><span class="sxs-lookup"><span data-stu-id="5b048-394">In *Models/Department.cs*, add a tracking property named RowVersion:</span></span>
+
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
+
+<span data-ttu-id="5b048-395">L’attribut [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) spécifie que cette colonne est incluse dans la clause `Where` des commandes `Update` et `Delete`.</span><span class="sxs-lookup"><span data-stu-id="5b048-395">The [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) attribute specifies that this column is included in the `Where` clause of `Update` and `Delete` commands.</span></span> <span data-ttu-id="5b048-396">L’attribut se nomme `Timestamp`, car les versions précédentes de SQL Server utilisaient un type de données SQL `timestamp` avant son remplacement par le type SQL `rowversion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-396">The attribute is called `Timestamp` because previous versions of SQL Server used a SQL `timestamp` data type before the SQL `rowversion` type replaced it.</span></span>
+
+<span data-ttu-id="5b048-397">L’API Fluent peut également spécifier la propriété de suivi :</span><span class="sxs-lookup"><span data-stu-id="5b048-397">The fluent API can also specify the tracking property:</span></span>
+
+```csharp
+modelBuilder.Entity<Department>()
+  .Property<byte[]>("RowVersion")
+  .IsRowVersion();
+```
+
+<span data-ttu-id="5b048-398">Le code suivant montre une partie du T-SQL généré par EF Core quand le nom du département est mis à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-398">The following code shows a portion of the T-SQL generated by EF Core when the Department name is updated:</span></span>
+
+[!code-sql[](intro/samples/cu21snapshots/sql.txt?highlight=2-3)]
+
+<span data-ttu-id="5b048-399">Le code en surbrillance ci-dessus montre la clause `WHERE` contenant `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-399">The preceding highlighted code shows the `WHERE` clause containing `RowVersion`.</span></span> <span data-ttu-id="5b048-400">Si la `RowVersion` de la base de données n’est pas égale au paramètre `RowVersion` (`@p2`), aucune ligne n’est mise à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-400">If the DB `RowVersion` doesn't equal the `RowVersion` parameter (`@p2`), no rows are updated.</span></span>
+
+<span data-ttu-id="5b048-401">Le code en surbrillance suivant montre le T-SQL qui vérifie qu’une seule ligne a été mise à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-401">The following highlighted code shows the T-SQL that verifies exactly one row was updated:</span></span>
+
+[!code-sql[](intro/samples/cu21snapshots/sql.txt?highlight=4-6)]
+
+<span data-ttu-id="5b048-402">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) retourne le nombre de lignes affectées par la dernière instruction.</span><span class="sxs-lookup"><span data-stu-id="5b048-402">[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) returns the number of rows affected by the last statement.</span></span> <span data-ttu-id="5b048-403">Si aucune ligne n’est mise à jour, EF Core lève une `DbUpdateConcurrencyException`.</span><span class="sxs-lookup"><span data-stu-id="5b048-403">In no rows are updated, EF Core throws a `DbUpdateConcurrencyException`.</span></span>
+
+<span data-ttu-id="5b048-404">Vous pouvez voir le T-SQL généré par EF Core dans la fenêtre Sortie de Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5b048-404">You can see the T-SQL EF Core generates in the output window of Visual Studio.</span></span>
+
+### <a name="update-the-db"></a><span data-ttu-id="5b048-405">Mettre à jour la base de données</span><span class="sxs-lookup"><span data-stu-id="5b048-405">Update the DB</span></span>
+
+<span data-ttu-id="5b048-406">L’ajout de la propriété `RowVersion` change le modèle de base de données, ce qui nécessite une migration.</span><span class="sxs-lookup"><span data-stu-id="5b048-406">Adding the `RowVersion` property changes the DB model, which requires a migration.</span></span>
+
+<span data-ttu-id="5b048-407">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="5b048-407">Build the project.</span></span> <span data-ttu-id="5b048-408">Entrez ce qui suit dans une fenêtre de commande :</span><span class="sxs-lookup"><span data-stu-id="5b048-408">Enter the following in a command window:</span></span>
 
 ```console
 dotnet ef migrations add RowVersion
 dotnet ef database update
 ```
 
-<span data-ttu-id="d3896-190">Les commandes précédentes :</span><span class="sxs-lookup"><span data-stu-id="d3896-190">The preceding commands:</span></span>
+<span data-ttu-id="5b048-409">Les commandes précédentes :</span><span class="sxs-lookup"><span data-stu-id="5b048-409">The preceding commands:</span></span>
 
-* <span data-ttu-id="d3896-191">Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.</span><span class="sxs-lookup"><span data-stu-id="d3896-191">Adds the *Migrations/{time stamp}_RowVersion.cs* migration file.</span></span>
-* <span data-ttu-id="d3896-192">Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*.</span><span class="sxs-lookup"><span data-stu-id="d3896-192">Updates the *Migrations/SchoolContextModelSnapshot.cs* file.</span></span> <span data-ttu-id="d3896-193">La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :</span><span class="sxs-lookup"><span data-stu-id="d3896-193">The update adds the following highlighted code to the `BuildModel` method:</span></span>
+* <span data-ttu-id="5b048-410">Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.</span><span class="sxs-lookup"><span data-stu-id="5b048-410">Adds the *Migrations/{time stamp}_RowVersion.cs* migration file.</span></span>
+* <span data-ttu-id="5b048-411">Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*.</span><span class="sxs-lookup"><span data-stu-id="5b048-411">Updates the *Migrations/SchoolContextModelSnapshot.cs* file.</span></span> <span data-ttu-id="5b048-412">La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :</span><span class="sxs-lookup"><span data-stu-id="5b048-412">The update adds the following highlighted code to the `BuildModel` method:</span></span>
 
-  [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
+  [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=14-16)]
 
-* <span data-ttu-id="d3896-194">Exécutent des migrations pour mettre à jour la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-194">Runs migrations to update the DB.</span></span>
+* <span data-ttu-id="5b048-413">Exécutent des migrations pour mettre à jour la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-413">Runs migrations to update the DB.</span></span>
 
 <a name="scaffold"></a>
 
-## <a name="scaffold-the-departments-model"></a><span data-ttu-id="d3896-195">Générer automatiquement le modèle Departments</span><span class="sxs-lookup"><span data-stu-id="d3896-195">Scaffold the Departments model</span></span>
+## <a name="scaffold-the-departments-model"></a><span data-ttu-id="5b048-414">Générer automatiquement le modèle Departments</span><span class="sxs-lookup"><span data-stu-id="5b048-414">Scaffold the Departments model</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="d3896-196">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="d3896-196">Visual Studio</span></span>](#tab/visual-studio) 
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5b048-415">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b048-415">Visual Studio</span></span>](#tab/visual-studio) 
 
-<span data-ttu-id="d3896-197">Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Department` pour la classe de modèle.</span><span class="sxs-lookup"><span data-stu-id="d3896-197">Follow the instructions in [Scaffold the student model](xref:data/ef-rp/intro#scaffold-the-student-model) and use `Department` for the model class.</span></span>
+<span data-ttu-id="5b048-416">Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-student-pages) et utilisez `Department` pour la classe de modèle.</span><span class="sxs-lookup"><span data-stu-id="5b048-416">Follow the instructions in [Scaffold the student model](xref:data/ef-rp/intro#scaffold-student-pages) and use `Department` for the model class.</span></span>
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="d3896-198">CLI .NET Core</span><span class="sxs-lookup"><span data-stu-id="d3896-198">.NET Core CLI</span></span>](#tab/netcore-cli)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5b048-417">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5b048-417">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
- <span data-ttu-id="d3896-199">Exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="d3896-199">Run the following command:</span></span>
+ <span data-ttu-id="5b048-418">Exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="5b048-418">Run the following command:</span></span>
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
@@ -169,146 +526,149 @@ dotnet ef database update
 
 ---
 
-<span data-ttu-id="d3896-200">La commande précédente génère automatiquement le modèle `Department`.</span><span class="sxs-lookup"><span data-stu-id="d3896-200">The preceding command scaffolds the `Department` model.</span></span> <span data-ttu-id="d3896-201">Ouvrez le projet dans Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="d3896-201">Open the project in Visual Studio.</span></span>
+<span data-ttu-id="5b048-419">La commande précédente génère automatiquement le modèle `Department`.</span><span class="sxs-lookup"><span data-stu-id="5b048-419">The preceding command scaffolds the `Department` model.</span></span> <span data-ttu-id="5b048-420">Ouvrez le projet dans Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5b048-420">Open the project in Visual Studio.</span></span>
 
-<span data-ttu-id="d3896-202">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="d3896-202">Build the project.</span></span>
+<span data-ttu-id="5b048-421">Générez le projet.</span><span class="sxs-lookup"><span data-stu-id="5b048-421">Build the project.</span></span>
 
-### <a name="update-the-departments-index-page"></a><span data-ttu-id="d3896-203">Mettre à jour la page d’index des départements</span><span class="sxs-lookup"><span data-stu-id="d3896-203">Update the Departments Index page</span></span>
+### <a name="update-the-departments-index-page"></a><span data-ttu-id="5b048-422">Mettre à jour la page d’index des départements</span><span class="sxs-lookup"><span data-stu-id="5b048-422">Update the Departments Index page</span></span>
 
-<span data-ttu-id="d3896-204">Le moteur de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne doit pas être affiché.</span><span class="sxs-lookup"><span data-stu-id="d3896-204">The scaffolding engine created a `RowVersion` column for the Index page, but that field shouldn't be displayed.</span></span> <span data-ttu-id="d3896-205">Dans ce didacticiel, le dernier octet de `RowVersion` est affiché afin d’aider à mieux comprendre l’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="d3896-205">In this tutorial, the last byte of the `RowVersion` is displayed to help understand concurrency.</span></span> <span data-ttu-id="d3896-206">Il n’est pas garanti que le dernier octet soit unique.</span><span class="sxs-lookup"><span data-stu-id="d3896-206">The last byte isn't guaranteed to be unique.</span></span> <span data-ttu-id="d3896-207">Une application réelle n’afficherait pas `RowVersion` ou le dernier octet de `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-207">A real app wouldn't display `RowVersion` or the last byte of `RowVersion`.</span></span>
+<span data-ttu-id="5b048-423">Le moteur de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne doit pas être affiché.</span><span class="sxs-lookup"><span data-stu-id="5b048-423">The scaffolding engine created a `RowVersion` column for the Index page, but that field shouldn't be displayed.</span></span> <span data-ttu-id="5b048-424">Dans ce didacticiel, le dernier octet de `RowVersion` est affiché afin d’aider à mieux comprendre l’accès concurrentiel.</span><span class="sxs-lookup"><span data-stu-id="5b048-424">In this tutorial, the last byte of the `RowVersion` is displayed to help understand concurrency.</span></span> <span data-ttu-id="5b048-425">Il n’est pas garanti que le dernier octet soit unique.</span><span class="sxs-lookup"><span data-stu-id="5b048-425">The last byte isn't guaranteed to be unique.</span></span> <span data-ttu-id="5b048-426">Une application réelle n’afficherait pas `RowVersion` ou le dernier octet de `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-426">A real app wouldn't display `RowVersion` or the last byte of `RowVersion`.</span></span>
 
-<span data-ttu-id="d3896-208">Mettez à jour la page Index :</span><span class="sxs-lookup"><span data-stu-id="d3896-208">Update the Index page:</span></span>
+<span data-ttu-id="5b048-427">Mettez à jour la page Index :</span><span class="sxs-lookup"><span data-stu-id="5b048-427">Update the Index page:</span></span>
 
-* <span data-ttu-id="d3896-209">Remplacez Index par Departments.</span><span class="sxs-lookup"><span data-stu-id="d3896-209">Replace Index with Departments.</span></span>
-* <span data-ttu-id="d3896-210">Remplacez le balisage contenant `RowVersion` par le dernier octet de `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-210">Replace the markup containing `RowVersion` with the last byte of `RowVersion`.</span></span>
-* <span data-ttu-id="d3896-211">Remplacez FirstMidName par FullName.</span><span class="sxs-lookup"><span data-stu-id="d3896-211">Replace FirstMidName with FullName.</span></span>
+* <span data-ttu-id="5b048-428">Remplacez Index par Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-428">Replace Index with Departments.</span></span>
+* <span data-ttu-id="5b048-429">Remplacez le balisage contenant `RowVersion` par le dernier octet de `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-429">Replace the markup containing `RowVersion` with the last byte of `RowVersion`.</span></span>
+* <span data-ttu-id="5b048-430">Remplacez FirstMidName par FullName.</span><span class="sxs-lookup"><span data-stu-id="5b048-430">Replace FirstMidName with FullName.</span></span>
 
-<span data-ttu-id="d3896-212">Le balisage suivant montre la page mise à jour :</span><span class="sxs-lookup"><span data-stu-id="d3896-212">The following markup shows the updated page:</span></span>
+<span data-ttu-id="5b048-431">Le balisage suivant montre la page mise à jour :</span><span class="sxs-lookup"><span data-stu-id="5b048-431">The following markup shows the updated page:</span></span>
 
 [!code-html[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
 
-### <a name="update-the-edit-page-model"></a><span data-ttu-id="d3896-213">Mettre à jour le modèle de page de modification</span><span class="sxs-lookup"><span data-stu-id="d3896-213">Update the Edit page model</span></span>
+### <a name="update-the-edit-page-model"></a><span data-ttu-id="5b048-432">Mettre à jour le modèle de page de modification</span><span class="sxs-lookup"><span data-stu-id="5b048-432">Update the Edit page model</span></span>
 
-<span data-ttu-id="d3896-214">Mettez à jour *Pages\Departments\Edit.cshtml.cs* à l’aide du code suivant :</span><span class="sxs-lookup"><span data-stu-id="d3896-214">Update *Pages\Departments\Edit.cshtml.cs* with the following code:</span></span>
+<span data-ttu-id="5b048-433">Mettez à jour *Pages\Departments\Edit.cshtml.cs* à l’aide du code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-433">Update *Pages\Departments\Edit.cshtml.cs* with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="d3896-215">Pour détecter un problème d’accès concurrentiel, [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) est mise à jour avec la valeur `rowVersion` de l’entité récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-215">To detect a concurrency issue, the [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) is updated with the `rowVersion` value from the entity it was fetched.</span></span> <span data-ttu-id="d3896-216">EF Core génère une commande SQL UPDATE avec une clause WHERE contenant la valeur `RowVersion` d’origine.</span><span class="sxs-lookup"><span data-stu-id="d3896-216">EF Core generates a SQL UPDATE command with a WHERE clause containing the original `RowVersion` value.</span></span> <span data-ttu-id="d3896-217">Si aucune ligne n’est affectée par la commande UPDATE (aucune ligne ne contient la valeur `RowVersion` d’origine), une exception `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="d3896-217">If no rows are affected by the UPDATE command (no rows have the original `RowVersion` value), a `DbUpdateConcurrencyException` exception is thrown.</span></span>
+<span data-ttu-id="5b048-434">Pour détecter un problème d’accès concurrentiel, [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) est mise à jour avec la valeur `rowVersion` de l’entité récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-434">To detect a concurrency issue, the [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) is updated with the `rowVersion` value from the entity it was fetched.</span></span> <span data-ttu-id="5b048-435">EF Core génère une commande SQL UPDATE avec une clause WHERE contenant la valeur `RowVersion` d’origine.</span><span class="sxs-lookup"><span data-stu-id="5b048-435">EF Core generates a SQL UPDATE command with a WHERE clause containing the original `RowVersion` value.</span></span> <span data-ttu-id="5b048-436">Si aucune ligne n’est affectée par la commande UPDATE (aucune ligne ne contient la valeur `RowVersion` d’origine), une exception `DbUpdateConcurrencyException` est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-436">If no rows are affected by the UPDATE command (no rows have the original `RowVersion` value), a `DbUpdateConcurrencyException` exception is thrown.</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-999)]
 
-<span data-ttu-id="d3896-218">Dans le code précédent, `Department.RowVersion` est la valeur quand l’entité a été récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-218">In the preceding code, `Department.RowVersion` is the value when the entity was fetched.</span></span> <span data-ttu-id="d3896-219">`OriginalValue` est la valeur présente dans la base de données quand `FirstOrDefaultAsync` a été appelée dans cette méthode.</span><span class="sxs-lookup"><span data-stu-id="d3896-219">`OriginalValue` is the value in the DB when `FirstOrDefaultAsync` was called in this method.</span></span>
+<span data-ttu-id="5b048-437">Dans le code précédent, `Department.RowVersion` est la valeur quand l’entité a été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-437">In the preceding code, `Department.RowVersion` is the value when the entity was fetched.</span></span> <span data-ttu-id="5b048-438">`OriginalValue` est la valeur présente dans la base de données quand `FirstOrDefaultAsync` a été appelée dans cette méthode.</span><span class="sxs-lookup"><span data-stu-id="5b048-438">`OriginalValue` is the value in the DB when `FirstOrDefaultAsync` was called in this method.</span></span>
 
-<span data-ttu-id="d3896-220">Le code suivant obtient les valeurs du client (celles envoyées à cette méthode) et les valeurs de la base de données :</span><span class="sxs-lookup"><span data-stu-id="d3896-220">The following code gets the client values (the values posted to this method) and the DB values:</span></span>
+<span data-ttu-id="5b048-439">Le code suivant obtient les valeurs du client (celles envoyées à cette méthode) et les valeurs de la base de données :</span><span class="sxs-lookup"><span data-stu-id="5b048-439">The following code gets the client values (the values posted to this method) and the DB values:</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=9,18)]
 
-<span data-ttu-id="d3896-221">Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne dont les valeurs dans la base de données sont différentes de celles envoyées à `OnPostAsync` :</span><span class="sxs-lookup"><span data-stu-id="d3896-221">The following code adds a custom error message for each column that has DB values different from what was posted to `OnPostAsync`:</span></span>
+<span data-ttu-id="5b048-440">Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne dont les valeurs dans la base de données sont différentes de celles envoyées à `OnPostAsync` :</span><span class="sxs-lookup"><span data-stu-id="5b048-440">The following code adds a custom error message for each column that has DB values different from what was posted to `OnPostAsync`:</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-<span data-ttu-id="d3896-222">Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-222">The following highlighted code sets the `RowVersion` value to the new value retrieved from the DB.</span></span> <span data-ttu-id="d3896-223">La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.</span><span class="sxs-lookup"><span data-stu-id="d3896-223">The next time the user clicks **Save**, only concurrency errors that happen since the last display of the Edit page will be caught.</span></span>
+<span data-ttu-id="5b048-441">Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-441">The following highlighted code sets the `RowVersion` value to the new value retrieved from the DB.</span></span> <span data-ttu-id="5b048-442">La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.</span><span class="sxs-lookup"><span data-stu-id="5b048-442">The next time the user clicks **Save**, only concurrency errors that happen since the last display of the Edit page will be caught.</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
-<span data-ttu-id="d3896-224">L’instruction `ModelState.Remove` est nécessaire car `ModelState` contient l’ancienne valeur `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-224">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="d3896-225">Dans la page Razor, la valeur `ModelState` d’un champ est prioritaire par rapport aux valeurs de propriétés du modèle quand les deux sont présentes.</span><span class="sxs-lookup"><span data-stu-id="d3896-225">In the Razor Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
+<span data-ttu-id="5b048-443">L’instruction `ModelState.Remove` est nécessaire car `ModelState` contient l’ancienne valeur `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-443">The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value.</span></span> <span data-ttu-id="5b048-444">Dans la page Razor, la valeur `ModelState` d’un champ est prioritaire par rapport aux valeurs de propriétés du modèle quand les deux sont présentes.</span><span class="sxs-lookup"><span data-stu-id="5b048-444">In the Razor Page, the `ModelState` value for a field takes precedence over the model property values when both are present.</span></span>
 
-## <a name="update-the-edit-page"></a><span data-ttu-id="d3896-226">Mettre à jour la page Edit</span><span class="sxs-lookup"><span data-stu-id="d3896-226">Update the Edit page</span></span>
+## <a name="update-the-edit-page"></a><span data-ttu-id="5b048-445">Mettre à jour la page Edit</span><span class="sxs-lookup"><span data-stu-id="5b048-445">Update the Edit page</span></span>
 
-<span data-ttu-id="d3896-227">Mettez à jour *Pages/Departments/Edit.cshtml* avec le balisage suivant :</span><span class="sxs-lookup"><span data-stu-id="d3896-227">Update *Pages/Departments/Edit.cshtml* with the following markup:</span></span>
+<span data-ttu-id="5b048-446">Mettez à jour *Pages/Departments/Edit.cshtml* avec le balisage suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-446">Update *Pages/Departments/Edit.cshtml* with the following markup:</span></span>
 
 [!code-html[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
-<span data-ttu-id="d3896-228">Le balisage précédent :</span><span class="sxs-lookup"><span data-stu-id="d3896-228">The preceding markup:</span></span>
+<span data-ttu-id="5b048-447">Le balisage précédent :</span><span class="sxs-lookup"><span data-stu-id="5b048-447">The preceding markup:</span></span>
 
-* <span data-ttu-id="d3896-229">Met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="d3896-229">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
-* <span data-ttu-id="d3896-230">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="d3896-230">Adds a hidden row version.</span></span> <span data-ttu-id="d3896-231">`RowVersion` doit être ajouté afin que la publication lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="d3896-231">`RowVersion` must be added so post back binds the value.</span></span>
-* <span data-ttu-id="d3896-232">Affiche le dernier octet de `RowVersion` à des fins de débogage.</span><span class="sxs-lookup"><span data-stu-id="d3896-232">Displays the last byte of `RowVersion` for debugging purposes.</span></span>
-* <span data-ttu-id="d3896-233">Remplace `ViewData` par le `InstructorNameSL` fortement typé.</span><span class="sxs-lookup"><span data-stu-id="d3896-233">Replaces `ViewData` with the strongly-typed `InstructorNameSL`.</span></span>
+* <span data-ttu-id="5b048-448">Met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="5b048-448">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
+* <span data-ttu-id="5b048-449">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="5b048-449">Adds a hidden row version.</span></span> <span data-ttu-id="5b048-450">`RowVersion` doit être ajouté afin que la publication lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="5b048-450">`RowVersion` must be added so post back binds the value.</span></span>
+* <span data-ttu-id="5b048-451">Affiche le dernier octet de `RowVersion` à des fins de débogage.</span><span class="sxs-lookup"><span data-stu-id="5b048-451">Displays the last byte of `RowVersion` for debugging purposes.</span></span>
+* <span data-ttu-id="5b048-452">Remplace `ViewData` par le `InstructorNameSL` fortement typé.</span><span class="sxs-lookup"><span data-stu-id="5b048-452">Replaces `ViewData` with the strongly-typed `InstructorNameSL`.</span></span>
 
-## <a name="test-concurrency-conflicts-with-the-edit-page"></a><span data-ttu-id="d3896-234">Tester les conflits d’accès concurrentiel avec la page Edit</span><span class="sxs-lookup"><span data-stu-id="d3896-234">Test concurrency conflicts with the Edit page</span></span>
+## <a name="test-concurrency-conflicts-with-the-edit-page"></a><span data-ttu-id="5b048-453">Tester les conflits d’accès concurrentiel avec la page Edit</span><span class="sxs-lookup"><span data-stu-id="5b048-453">Test concurrency conflicts with the Edit page</span></span>
 
-<span data-ttu-id="d3896-235">Ouvrez deux instances de navigateur de la page Edit sur le département English :</span><span class="sxs-lookup"><span data-stu-id="d3896-235">Open two browsers instances of Edit on the English department:</span></span>
+<span data-ttu-id="5b048-454">Ouvrez deux instances de navigateur de la page Edit sur le département English :</span><span class="sxs-lookup"><span data-stu-id="5b048-454">Open two browsers instances of Edit on the English department:</span></span>
 
-* <span data-ttu-id="d3896-236">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="d3896-236">Run the app and select Departments.</span></span>
-* <span data-ttu-id="d3896-237">Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="d3896-237">Right-click the **Edit** hyperlink for the English department and select **Open in new tab**.</span></span>
-* <span data-ttu-id="d3896-238">Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.</span><span class="sxs-lookup"><span data-stu-id="d3896-238">In the first tab, click the **Edit** hyperlink for the English department.</span></span>
+* <span data-ttu-id="5b048-455">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-455">Run the app and select Departments.</span></span>
+* <span data-ttu-id="5b048-456">Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="5b048-456">Right-click the **Edit** hyperlink for the English department and select **Open in new tab**.</span></span>
+* <span data-ttu-id="5b048-457">Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.</span><span class="sxs-lookup"><span data-stu-id="5b048-457">In the first tab, click the **Edit** hyperlink for the English department.</span></span>
 
-<span data-ttu-id="d3896-239">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="d3896-239">The two browser tabs display the same information.</span></span>
+<span data-ttu-id="5b048-458">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="5b048-458">The two browser tabs display the same information.</span></span>
 
-<span data-ttu-id="d3896-240">Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="d3896-240">Change the name in the first browser tab and click **Save**.</span></span>
+<span data-ttu-id="5b048-459">Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-459">Change the name in the first browser tab and click **Save**.</span></span>
 
 ![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-1.png)
 
-<span data-ttu-id="d3896-242">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="d3896-242">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="d3896-243">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="d3896-243">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
+<span data-ttu-id="5b048-461">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-461">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="5b048-462">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="5b048-462">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
 
-<span data-ttu-id="d3896-244">Changez un champ différent sous le deuxième onglet du navigateur.</span><span class="sxs-lookup"><span data-stu-id="d3896-244">Change a different field in the second browser tab.</span></span>
+<span data-ttu-id="5b048-463">Changez un champ différent sous le deuxième onglet du navigateur.</span><span class="sxs-lookup"><span data-stu-id="5b048-463">Change a different field in the second browser tab.</span></span>
 
 ![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-2.png)
 
-<span data-ttu-id="d3896-246">Cliquez sur **Enregistrer**.</span><span class="sxs-lookup"><span data-stu-id="d3896-246">Click **Save**.</span></span> <span data-ttu-id="d3896-247">Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :</span><span class="sxs-lookup"><span data-stu-id="d3896-247">You see error messages for all fields that don't match the DB values:</span></span>
+<span data-ttu-id="5b048-465">Cliquez sur **Enregistrer**.</span><span class="sxs-lookup"><span data-stu-id="5b048-465">Click **Save**.</span></span> <span data-ttu-id="5b048-466">Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :</span><span class="sxs-lookup"><span data-stu-id="5b048-466">You see error messages for all fields that don't match the DB values:</span></span>
 
 ![Message d’erreur de page de modification de département](concurrency/_static/edit-error.png)
 
-<span data-ttu-id="d3896-249">Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Name.</span><span class="sxs-lookup"><span data-stu-id="d3896-249">This browser window didn't intend to change the Name field.</span></span> <span data-ttu-id="d3896-250">Copiez et collez la valeur actuelle (Languages) dans le champ Name.</span><span class="sxs-lookup"><span data-stu-id="d3896-250">Copy and paste the current value (Languages) into the Name field.</span></span> <span data-ttu-id="d3896-251">Appuyez sur Tab. La validation côté client supprime le message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="d3896-251">Tab out. Client-side validation removes the error message.</span></span>
+<span data-ttu-id="5b048-468">Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Name.</span><span class="sxs-lookup"><span data-stu-id="5b048-468">This browser window didn't intend to change the Name field.</span></span> <span data-ttu-id="5b048-469">Copiez et collez la valeur actuelle (Languages) dans le champ Name.</span><span class="sxs-lookup"><span data-stu-id="5b048-469">Copy and paste the current value (Languages) into the Name field.</span></span> <span data-ttu-id="5b048-470">Appuyez sur Tab. La validation côté client supprime le message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-470">Tab out. Client-side validation removes the error message.</span></span>
 
 ![Message d’erreur de page de modification de département](concurrency/_static/cv.png)
 
-<span data-ttu-id="d3896-253">Cliquez à nouveau sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="d3896-253">Click **Save** again.</span></span> <span data-ttu-id="d3896-254">La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée.</span><span class="sxs-lookup"><span data-stu-id="d3896-254">The value you entered in the second browser tab is saved.</span></span> <span data-ttu-id="d3896-255">Les valeurs enregistrées sont visibles dans la page Index.</span><span class="sxs-lookup"><span data-stu-id="d3896-255">You see the saved values in the Index page.</span></span>
+<span data-ttu-id="5b048-472">Cliquez à nouveau sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-472">Click **Save** again.</span></span> <span data-ttu-id="5b048-473">La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée.</span><span class="sxs-lookup"><span data-stu-id="5b048-473">The value you entered in the second browser tab is saved.</span></span> <span data-ttu-id="5b048-474">Les valeurs enregistrées sont visibles dans la page Index.</span><span class="sxs-lookup"><span data-stu-id="5b048-474">You see the saved values in the Index page.</span></span>
 
-## <a name="update-the-delete-page"></a><span data-ttu-id="d3896-256">Mettre à jour la page Delete</span><span class="sxs-lookup"><span data-stu-id="d3896-256">Update the Delete page</span></span>
+## <a name="update-the-delete-page"></a><span data-ttu-id="5b048-475">Mettre à jour la page Delete</span><span class="sxs-lookup"><span data-stu-id="5b048-475">Update the Delete page</span></span>
 
-<span data-ttu-id="d3896-257">Mettez à jour le modèle de page de suppression avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="d3896-257">Update the Delete page model with the following code:</span></span>
+<span data-ttu-id="5b048-476">Mettez à jour le modèle de page de suppression avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-476">Update the Delete page model with the following code:</span></span>
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Delete.cshtml.cs)]
 
-<span data-ttu-id="d3896-258">La page Delete détecte les conflits d’accès concurrentiel quand l’entité a changé après avoir été récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-258">The Delete page detects concurrency conflicts when the entity has changed after it was fetched.</span></span> <span data-ttu-id="d3896-259">`Department.RowVersion` est la version de ligne quand l’entité a été récupérée.</span><span class="sxs-lookup"><span data-stu-id="d3896-259">`Department.RowVersion` is the row version when the entity was fetched.</span></span> <span data-ttu-id="d3896-260">Quand EF Core crée la commande SQL DELETE, il inclut une clause WHERE avec `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="d3896-260">When EF Core creates the SQL DELETE command, it includes a WHERE clause with `RowVersion`.</span></span> <span data-ttu-id="d3896-261">Si après l’exécution de la commande SQL DELETE aucune ligne n’est affectée :</span><span class="sxs-lookup"><span data-stu-id="d3896-261">If the SQL DELETE command results in zero rows affected:</span></span>
+<span data-ttu-id="5b048-477">La page Delete détecte les conflits d’accès concurrentiel quand l’entité a changé après avoir été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-477">The Delete page detects concurrency conflicts when the entity has changed after it was fetched.</span></span> <span data-ttu-id="5b048-478">`Department.RowVersion` est la version de ligne quand l’entité a été récupérée.</span><span class="sxs-lookup"><span data-stu-id="5b048-478">`Department.RowVersion` is the row version when the entity was fetched.</span></span> <span data-ttu-id="5b048-479">Quand EF Core crée la commande SQL DELETE, il inclut une clause WHERE avec `RowVersion`.</span><span class="sxs-lookup"><span data-stu-id="5b048-479">When EF Core creates the SQL DELETE command, it includes a WHERE clause with `RowVersion`.</span></span> <span data-ttu-id="5b048-480">Si après l’exécution de la commande SQL DELETE aucune ligne n’est affectée :</span><span class="sxs-lookup"><span data-stu-id="5b048-480">If the SQL DELETE command results in zero rows affected:</span></span>
 
-* <span data-ttu-id="d3896-262">La valeur de `RowVersion` dans la commande SQL DELETE ne correspond pas à `RowVersion` dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-262">The `RowVersion` in the SQL DELETE command doesn't match `RowVersion` in the DB.</span></span>
-* <span data-ttu-id="d3896-263">Une exception DbUpdateConcurrencyException est levée.</span><span class="sxs-lookup"><span data-stu-id="d3896-263">A DbUpdateConcurrencyException exception is thrown.</span></span>
-* <span data-ttu-id="d3896-264">`OnGetAsync` est appelée avec `concurrencyError`.</span><span class="sxs-lookup"><span data-stu-id="d3896-264">`OnGetAsync` is called with the `concurrencyError`.</span></span>
+* <span data-ttu-id="5b048-481">La valeur de `RowVersion` dans la commande SQL DELETE ne correspond pas à `RowVersion` dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-481">The `RowVersion` in the SQL DELETE command doesn't match `RowVersion` in the DB.</span></span>
+* <span data-ttu-id="5b048-482">Une exception DbUpdateConcurrencyException est levée.</span><span class="sxs-lookup"><span data-stu-id="5b048-482">A DbUpdateConcurrencyException exception is thrown.</span></span>
+* <span data-ttu-id="5b048-483">`OnGetAsync` est appelée avec `concurrencyError`.</span><span class="sxs-lookup"><span data-stu-id="5b048-483">`OnGetAsync` is called with the `concurrencyError`.</span></span>
 
-### <a name="update-the-delete-page"></a><span data-ttu-id="d3896-265">Mettre à jour la page Delete</span><span class="sxs-lookup"><span data-stu-id="d3896-265">Update the Delete page</span></span>
+### <a name="update-the-delete-page"></a><span data-ttu-id="5b048-484">Mettre à jour la page Delete</span><span class="sxs-lookup"><span data-stu-id="5b048-484">Update the Delete page</span></span>
 
-<span data-ttu-id="d3896-266">Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="d3896-266">Update *Pages/Departments/Delete.cshtml* with the following code:</span></span>
+<span data-ttu-id="5b048-485">Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :</span><span class="sxs-lookup"><span data-stu-id="5b048-485">Update *Pages/Departments/Delete.cshtml* with the following code:</span></span>
 
 [!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
-<span data-ttu-id="d3896-267">Le balisage précédent apporte les modifications suivantes :</span><span class="sxs-lookup"><span data-stu-id="d3896-267">The preceding markup makes the following changes:</span></span>
+<span data-ttu-id="5b048-486">Le code précédent apporte les modifications suivantes :</span><span class="sxs-lookup"><span data-stu-id="5b048-486">The preceding code makes the following changes:</span></span>
 
-* <span data-ttu-id="d3896-268">Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="d3896-268">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
-* <span data-ttu-id="d3896-269">Il ajoute un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="d3896-269">Adds an error message.</span></span>
-* <span data-ttu-id="d3896-270">Il remplace FirstMidName par FullName dans le champ **Administrator**.</span><span class="sxs-lookup"><span data-stu-id="d3896-270">Replaces FirstMidName with FullName in the **Administrator** field.</span></span>
-* <span data-ttu-id="d3896-271">Il change `RowVersion` pour afficher le dernier octet.</span><span class="sxs-lookup"><span data-stu-id="d3896-271">Changes `RowVersion` to display the last byte.</span></span>
-* <span data-ttu-id="d3896-272">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="d3896-272">Adds a hidden row version.</span></span> <span data-ttu-id="d3896-273">`RowVersion` doit être ajouté afin que la publication lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="d3896-273">`RowVersion` must be added so post back binds the value.</span></span>
+* <span data-ttu-id="5b048-487">Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.</span><span class="sxs-lookup"><span data-stu-id="5b048-487">Updates the `page` directive from `@page` to `@page "{id:int}"`.</span></span>
+* <span data-ttu-id="5b048-488">Il ajoute un message d’erreur.</span><span class="sxs-lookup"><span data-stu-id="5b048-488">Adds an error message.</span></span>
+* <span data-ttu-id="5b048-489">Il remplace FirstMidName par FullName dans le champ **Administrator**.</span><span class="sxs-lookup"><span data-stu-id="5b048-489">Replaces FirstMidName with FullName in the **Administrator** field.</span></span>
+* <span data-ttu-id="5b048-490">Il change `RowVersion` pour afficher le dernier octet.</span><span class="sxs-lookup"><span data-stu-id="5b048-490">Changes `RowVersion` to display the last byte.</span></span>
+* <span data-ttu-id="5b048-491">Ajoute une version de ligne masquée.</span><span class="sxs-lookup"><span data-stu-id="5b048-491">Adds a hidden row version.</span></span> <span data-ttu-id="5b048-492">`RowVersion` doit être ajouté afin que la publication lie la valeur.</span><span class="sxs-lookup"><span data-stu-id="5b048-492">`RowVersion` must be added so post back binds the value.</span></span>
 
-### <a name="test-concurrency-conflicts-with-the-delete-page"></a><span data-ttu-id="d3896-274">Tester les conflits d’accès concurrentiel avec la page Delete</span><span class="sxs-lookup"><span data-stu-id="d3896-274">Test concurrency conflicts with the Delete page</span></span>
+### <a name="test-concurrency-conflicts-with-the-delete-page"></a><span data-ttu-id="5b048-493">Tester les conflits d’accès concurrentiel avec la page Delete</span><span class="sxs-lookup"><span data-stu-id="5b048-493">Test concurrency conflicts with the Delete page</span></span>
 
-<span data-ttu-id="d3896-275">Créez un département test.</span><span class="sxs-lookup"><span data-stu-id="d3896-275">Create a test department.</span></span>
+<span data-ttu-id="5b048-494">Créez un département test.</span><span class="sxs-lookup"><span data-stu-id="5b048-494">Create a test department.</span></span>
 
-<span data-ttu-id="d3896-276">Ouvrez deux instances de navigateur de la page Delete sur le département test :</span><span class="sxs-lookup"><span data-stu-id="d3896-276">Open two browsers instances of Delete on the test department:</span></span>
+<span data-ttu-id="5b048-495">Ouvrez deux instances de navigateur de la page Delete sur le département test :</span><span class="sxs-lookup"><span data-stu-id="5b048-495">Open two browsers instances of Delete on the test department:</span></span>
 
-* <span data-ttu-id="d3896-277">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="d3896-277">Run the app and select Departments.</span></span>
-* <span data-ttu-id="d3896-278">Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="d3896-278">Right-click the **Delete** hyperlink for the test department and select **Open in new tab**.</span></span>
-* <span data-ttu-id="d3896-279">Cliquez sur le lien hypertexte **Edit** correspondant au département test.</span><span class="sxs-lookup"><span data-stu-id="d3896-279">Click the **Edit** hyperlink for the test department.</span></span>
+* <span data-ttu-id="5b048-496">Exécutez l’application et sélectionnez Departments.</span><span class="sxs-lookup"><span data-stu-id="5b048-496">Run the app and select Departments.</span></span>
+* <span data-ttu-id="5b048-497">Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.</span><span class="sxs-lookup"><span data-stu-id="5b048-497">Right-click the **Delete** hyperlink for the test department and select **Open in new tab**.</span></span>
+* <span data-ttu-id="5b048-498">Cliquez sur le lien hypertexte **Edit** correspondant au département test.</span><span class="sxs-lookup"><span data-stu-id="5b048-498">Click the **Edit** hyperlink for the test department.</span></span>
 
-<span data-ttu-id="d3896-280">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="d3896-280">The two browser tabs display the same information.</span></span>
+<span data-ttu-id="5b048-499">Les deux onglets de navigateur affichent les mêmes informations.</span><span class="sxs-lookup"><span data-stu-id="5b048-499">The two browser tabs display the same information.</span></span>
 
-<span data-ttu-id="d3896-281">Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="d3896-281">Change the budget in the first browser tab and click **Save**.</span></span>
+<span data-ttu-id="5b048-500">Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.</span><span class="sxs-lookup"><span data-stu-id="5b048-500">Change the budget in the first browser tab and click **Save**.</span></span>
 
-<span data-ttu-id="d3896-282">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="d3896-282">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="d3896-283">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="d3896-283">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
+<span data-ttu-id="5b048-501">Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-501">The browser shows the Index page with the changed value and updated rowVersion indicator.</span></span> <span data-ttu-id="5b048-502">Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.</span><span class="sxs-lookup"><span data-stu-id="5b048-502">Note the updated rowVersion indicator, it's displayed on the second postback in the other tab.</span></span>
 
-<span data-ttu-id="d3896-284">Supprimez le département test du deuxième onglet. Une erreur d’accès concurrentiel s’affiche, avec les valeurs présentes actuellement dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="d3896-284">Delete the test department from the second tab. A concurrency error is display with the current values from the DB.</span></span> <span data-ttu-id="d3896-285">Un clic sur **Delete** supprime l’entité, sauf si `RowVersion` a été mis à jour.</span><span class="sxs-lookup"><span data-stu-id="d3896-285">Clicking **Delete** deletes the entity, unless `RowVersion` has been updated.department has been deleted.</span></span>
+<span data-ttu-id="5b048-503">Supprimez le département test du deuxième onglet. Une erreur d’accès concurrentiel s’affiche, avec les valeurs présentes actuellement dans la base de données.</span><span class="sxs-lookup"><span data-stu-id="5b048-503">Delete the test department from the second tab. A concurrency error is display with the current values from the DB.</span></span> <span data-ttu-id="5b048-504">Un clic sur **Delete** supprime l’entité, sauf si `RowVersion` a été mis à jour.</span><span class="sxs-lookup"><span data-stu-id="5b048-504">Clicking **Delete** deletes the entity, unless `RowVersion` has been updated.department has been deleted.</span></span>
 
-<span data-ttu-id="d3896-286">Pour découvrir comment hériter d’un modèle de données, consultez [Héritage](xref:data/ef-mvc/inheritance).</span><span class="sxs-lookup"><span data-stu-id="d3896-286">See [Inheritance](xref:data/ef-mvc/inheritance) on how to inherit a data model.</span></span>
+<span data-ttu-id="5b048-505">Pour découvrir comment hériter d’un modèle de données, consultez [Héritage](xref:data/ef-mvc/inheritance).</span><span class="sxs-lookup"><span data-stu-id="5b048-505">See [Inheritance](xref:data/ef-mvc/inheritance) on how to inherit a data model.</span></span>
 
-### <a name="additional-resources"></a><span data-ttu-id="d3896-287">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="d3896-287">Additional resources</span></span>
+### <a name="additional-resources"></a><span data-ttu-id="5b048-506">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="5b048-506">Additional resources</span></span>
 
-* [<span data-ttu-id="d3896-288">Concurrency Tokens in EF Core (Jetons d’accès concurrentiel dans EF Core)</span><span class="sxs-lookup"><span data-stu-id="d3896-288">Concurrency Tokens in EF Core</span></span>](/ef/core/modeling/concurrency)
-* [<span data-ttu-id="d3896-289">Gestion de l’accès concurrentiel dans EF Core</span><span class="sxs-lookup"><span data-stu-id="d3896-289">Handle concurrency in EF Core</span></span>](/ef/core/saving/concurrency)
-* [<span data-ttu-id="d3896-290">Version YouTube de ce tutoriel(gestion des conflits d’accès concurrentiel)</span><span class="sxs-lookup"><span data-stu-id="d3896-290">YouTube version of this tutorial(Handling Concurrency Conflicts)</span></span>](https://youtu.be/EosxHTFgYps)
-* [<span data-ttu-id="d3896-291">Version YouTube de ce tutoriel(Partie 2)</span><span class="sxs-lookup"><span data-stu-id="d3896-291">YouTube version of this tutorial(Part 2)</span></span>](https://www.youtube.com/watch?v=kcxERLnaGO0)
-* [<span data-ttu-id="d3896-292">Version YouTube de ce tutoriel(Partie 3)</span><span class="sxs-lookup"><span data-stu-id="d3896-292">YouTube version of this tutorial(Part 3)</span></span>](https://www.youtube.com/watch?v=d4RbpfvELRs)
+* [<span data-ttu-id="5b048-507">Concurrency Tokens in EF Core (Jetons d’accès concurrentiel dans EF Core)</span><span class="sxs-lookup"><span data-stu-id="5b048-507">Concurrency Tokens in EF Core</span></span>](/ef/core/modeling/concurrency)
+* [<span data-ttu-id="5b048-508">Gestion de l’accès concurrentiel dans EF Core</span><span class="sxs-lookup"><span data-stu-id="5b048-508">Handle concurrency in EF Core</span></span>](/ef/core/saving/concurrency)
+* [<span data-ttu-id="5b048-509">Version YouTube de ce tutoriel(gestion des conflits d’accès concurrentiel)</span><span class="sxs-lookup"><span data-stu-id="5b048-509">YouTube version of this tutorial(Handling Concurrency Conflicts)</span></span>](https://youtu.be/EosxHTFgYps)
+* [<span data-ttu-id="5b048-510">Version YouTube de ce tutoriel(Partie 2)</span><span class="sxs-lookup"><span data-stu-id="5b048-510">YouTube version of this tutorial(Part 2)</span></span>](https://www.youtube.com/watch?v=kcxERLnaGO0)
+* [<span data-ttu-id="5b048-511">Version YouTube de ce tutoriel(Partie 3)</span><span class="sxs-lookup"><span data-stu-id="5b048-511">YouTube version of this tutorial(Part 3)</span></span>](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="d3896-293">Précédent</span><span class="sxs-lookup"><span data-stu-id="d3896-293">Previous</span></span>](xref:data/ef-rp/update-related-data)
+> [<span data-ttu-id="5b048-512">Précédent</span><span class="sxs-lookup"><span data-stu-id="5b048-512">Previous</span></span>](xref:data/ef-rp/update-related-data)
+
+::: moniker-end
+
