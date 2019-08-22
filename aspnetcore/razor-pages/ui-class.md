@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: Explique comment créer l’interface utilisateur de Razor réutilisables à l’aide de vues partielles dans une bibliothèque de classes dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 06/28/2019
+ms.date: 08/20/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 77c7d4a318610fcd424da0485abd41d11e3fad6a
-ms.sourcegitcommit: fbc66827e319d28bebed678ea5fd42f582fe3c34
+ms.openlocfilehash: 468d961c291810ca4dfbe615acd972cfd6e7572a
+ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68493564"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69886404"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer une interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -236,13 +236,49 @@ Un RCL peut nécessiter des ressources statiques auxiliaires qui peuvent être r
 
 Pour inclure des ressources d’accompagnement dans le cadre d’un RCL, créez un dossier *wwwroot* dans la bibliothèque de classes et incluez tous les fichiers nécessaires dans ce dossier.
 
-Lors de la compression d’un RCL, toutes les ressources associées dans le dossier *wwwroot* sont automatiquement incluses dans le package et mises à la disposition des applications faisant référence au package.
+Lors de la compression d’un RCL, toutes les ressources associées dans le dossier *wwwroot* sont automatiquement incluses dans le package.
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Consommer du contenu à partir d’un RCL référencé
 
 Les fichiers inclus dans le dossier *wwwroot* du RCL sont exposés à l’application consommatrice sous le préfixe `_content/{LIBRARY NAME}/`. Par exemple, une bibliothèque nommée *Razor. class. lib* génère un chemin d’accès au contenu statique `_content/Razor.Class.Lib/`à l’emplacement.
 
-L’application consommatrice référence les ressources statiques fournies par la bibliothèque `<script>`avec `<style>` `<img>`,, et d’autres balises html. La [prise en charge des fichiers statiques](xref:fundamentals/static-files) doit être activée pour l’application consommatrice.
+L’application consommatrice référence les ressources statiques fournies par la bibliothèque `<script>`avec `<style>` `<img>`,, et d’autres balises html. L’application consommatrice doit avoir la [prise en charge](xref:fundamentals/static-files) des fichiers `Startup.Configure`statiques activée dans:
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    ...
+
+    app.UseStaticFiles();
+
+    ...
+}
+```
+
+Lors de l’exécution de l’application consommatrice à partir`dotnet run`de la sortie de génération (), les ressources Web statiques sont activées par défaut dans l’environnement de développement. Pour prendre en charge les ressources dans d’autres environnements lors de l' `UseStaticWebAssets` exécution à partir de la sortie de génération, appelez sur le générateur d’hôte dans *Program.cs*:
+
+```csharp
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStaticWebAssets();
+                webBuilder.UseStartup<Startup>();
+            });
+}
+```
+
+L' `UseStaticWebAssets` appel de n’est pas requis lors de l’exécution`dotnet publish`d’une application à partir de la sortie publiée ().
 
 ### <a name="multi-project-development-flow"></a>Déroulement du développement de projets multiples
 
