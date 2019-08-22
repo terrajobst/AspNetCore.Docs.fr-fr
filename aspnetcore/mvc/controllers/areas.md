@@ -3,14 +3,14 @@ title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 ms.author: riande
-ms.date: 08/07/2019
+ms.date: 08/16/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: e44c726c47caa3dd0c8c92e3a2502a590bee82d1
-ms.sourcegitcommit: 2719c70cd15a430479ab4007ff3e197fbf5dfee0
+ms.openlocfilehash: d0af3092776ee09469c879fffd3047c50b1a59b4
+ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68862797"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69545809"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -49,19 +49,19 @@ Imaginez une application qui contient deux groupes logiques, *Produits* et *Serv
 * Nom du projet
   * Zones (Areas)
     * Produits
-      * Controllers
+      * Contrôleurs
         * HomeController.cs
         * ManageController.cs
-      * Views
+      * Affichages
         * Accueil
           * Index.cshtml
-        * gérer
+        * Gérer
           * Index.cshtml
           * About.cshtml
     * Services
-      * Controllers
+      * Contrôleurs
         * HomeController.cs
-      * Views
+      * Affichages
         * Accueil
           * Index.cshtml
 
@@ -136,19 +136,19 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 
 ## <a name="areas-with-razor-pages"></a>Zones avec Razor Pages
 
-Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec le [téléchargement de l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)
+Les zones avec Razor Pages requièrent un dossier *Areas/<area name>/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) :
 
 * Nom du projet
   * Zones (Areas)
     * Produits
       * Pages
         * _ViewImports
-        * À propos
+        * À propos de
         * Index
     * Services
       * Pages
-        * gérer
-          * À propos
+        * Gérer
+          * À propos de
           * Index
 
 ### <a name="link-generation-with-razor-pages-and-areas"></a>Génération de liens avec Razor Pages et des zones
