@@ -1,18 +1,18 @@
 ---
 title: 'Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC'
 description: Ce document est le premier d’une série de didacticiels qui expliquent comment générer à partir de zéro l’exemple d’application Contoso University.
-author: rick-anderson
+author: tdykstra
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: a93d5af314f1ff679a8df636297a0d5849ebdb8d
-ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
+ms.openlocfilehash: 1b68c20ba206a5afe36f307525879f91d03d95d1
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65610212"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583346"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC
 

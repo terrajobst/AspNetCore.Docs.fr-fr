@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
-author: rick-anderson
+author: tdykstra
 description: Montre comment créer, lire, mettre à jour et supprimer avec EF Core.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/crud
-ms.openlocfilehash: 8dad964826fbf020d250eaec1dbf2845d356ae91
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 57c4a1789d54c29a28ba7e67a1d15815415a461c
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914770"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583115"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -20,7 +20,7 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans ce tutoriel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
+Dans ce didacticiel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
 
 ## <a name="no-repository"></a>Aucun référentiel
 
@@ -42,7 +42,7 @@ Remplacez la méthode `OnGetAsync` par le code suivant pour lire les données d�
 
 Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le tutoriel [Lecture de données associées](xref:data/ef-rp/read-related-data).
 
-La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce tutoriel.
+La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce didacticiel.
 
 ### <a name="display-enrollments"></a>Afficher les inscriptions
 
@@ -98,23 +98,23 @@ La valeur spécifiée par le pirate pour le champ de formulaire `Secret`, quelle
 
 La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de la ligne insérée. Cela se produit même si le concepteur de l’application n’avait jamais prévu que la propriété `Secret` serait définie avec la page Create.
 
-### <a name="view-model"></a>Modèle de vue
+### <a name="view-model"></a>Modèle d’affichage
 
-Les modèles de vue fournissent une alternative pour empêcher la sur-publication.
+Les modèles d’affichage fournissent une alternative pour empêcher la sur-publication.
 
 Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle de vue contient uniquement les propriétés nécessaires à l’interface utilisateur pour laquelle il est utilisé (par exemple, la page Create).
 
-En plus du modèle de vue, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. 
+En plus du modèle d’affichage, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. 
 
-Considérez le modèle de vue `Student` suivant :
+Considérez le modèle d’affichage `Student` suivant :
 
 [!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Models/StudentVM.cs)]
 
-Le code suivant utilise le modèle de vue `StudentVM` pour créer un étudiant :
+Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étudiant :
 
 [!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
 
-La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle de vue ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
+La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
 L’utilisation de `StudentVM` exige que [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
@@ -183,7 +183,7 @@ Exécutez l’application et supprimez un étudiant pour tester la page Delete.
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans ce tutoriel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
+Dans ce didacticiel, nous allons examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) généré automatiquement.
 
 Pour que ces tutoriels soient moins complexes et traitent exclusivement d’EF Core, nous avons utilisé le code EF Core dans les modèles de page. Certains développeurs utilisent un modèle de référentiel ou de couche de service pour créer une couche d’abstraction entre l’interface utilisateur (Pages Razor) et la couche d’accès aux données.
 
@@ -255,7 +255,7 @@ Le méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la métho
 
 Les méthodes [Include](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.include) et [ThenInclude](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.theninclude#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_ThenInclude__3_Microsoft_EntityFrameworkCore_Query_IIncludableQueryable___0_System_Collections_Generic_IEnumerable___1___System_Linq_Expressions_Expression_System_Func___1___2___) forcent le contexte à charger la propriété de navigation `Student.Enrollments` et, dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le tutoriel sur la lecture des données associées.
 
-La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce tutoriel.
+La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actuel. Le sujet `AsNoTracking` est abordé plus loin dans ce didacticiel.
 
 ### <a name="display-related-enrollments-on-the-details-page"></a>Afficher les inscriptions associées sur la page Details
 
@@ -308,23 +308,23 @@ La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de
 
 <a name="vm"></a>
 
-### <a name="view-model"></a>Modèle de vue
+### <a name="view-model"></a>Modèle d’affichage
 
-Un modèle de vue contient généralement un sous-ensemble des propriétés incluses dans le modèle utilisé par l’application. Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle de vue contient uniquement les propriétés nécessaires pour la couche d’interface utilisateur (par exemple, la page Create). En plus du modèle de vue, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. Considérez le modèle de vue `Student` suivant :
+Un modèle d’affichage contient généralement un sous-ensemble des propriétés incluses dans le modèle utilisé par l’application. Le modèle d’application est souvent appelé modèle de domaine. En règle générale, le modèle de domaine contient toutes les propriétés requises par l’entité correspondante dans la base de données. Le modèle d’affichage contient uniquement les propriétés nécessaires pour la couche d’interface utilisateur (par exemple, la page Create). En plus du modèle d’affichage, certaines applications utilisent un modèle de liaison ou d’entrée pour transmettre des données entre la classe de modèles de pages de Pages Razor et le navigateur. Considérez le modèle d’affichage `Student` suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/StudentVM.cs)]
 
-Les modèles de vue fournissent une alternative pour empêcher la sur-publication. Le modèle de vue contient uniquement les propriétés à afficher ou à mettre à jour.
+Les modèles d’affichage fournissent une alternative pour empêcher la sur-publication. Le modèle d’affichage contient uniquement les propriétés à afficher ou à mettre à jour.
 
-Le code suivant utilise le modèle de vue `StudentVM` pour créer un étudiant :
+Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étudiant :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/CreateVM.cshtml.cs?name=snippet_OnPostAsync)]
 
-La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle de vue ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
+La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
 L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
-Dans les pages Razor, la classe dérivée `PageModel` est le modèle de vue.
+Dans les pages Razor, la classe dérivée `PageModel` est le modèle d’affichage.
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 

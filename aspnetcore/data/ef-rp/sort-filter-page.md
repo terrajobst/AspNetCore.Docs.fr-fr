@@ -1,17 +1,17 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
-author: rick-anderson
+author: tdykstra
 description: Dans ce tutoriel, vous allez ajouter des fonctionnalités de tri, de filtrage et de pagination à une page Razor à l’aide d’ASP.NET Core et d’Entity Framework Core.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 70f4220674502265963410b928b9340aa20e0cea
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: b4cef98f3ad4973878c5fa65a47c0b86cdfc8686
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583521"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -110,7 +110,7 @@ Le code précédent :
 
 Le code appelle la méthode `Where` de l’objet `IQueryable`, et le filtre est traité sur le serveur. Dans certains scénarios, l’application peut appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. Par exemple, supposez que `_context.Students` passe de `DbSet` EF Core à une méthode de référentiel qui retourne une collection `IEnumerable`. Le résultat serait normalement le même, mais dans certains cas il peut être différent.
 
-Par exemple, l’implémentation .NET Framework de `Contains` effectue par défaut une comparaison respectant la casse. Dans SQL Server, le respect de la casse de `Contains` est déterminé par le paramètre de classement de l’instance de SQL Server. Par défaut, SQL Server n’est pas sensible à la casse. Par défaut, SQLite est sensible à la casse. `ToUpper` peut être appelée pour que le test ne respecte pas la casse de manière explicite :
+Par exemple, l’implémentation .NET Framework de `Contains` effectue par défaut une comparaison respectant la casse. Dans SQL Server, le respect de la casse de `Contains` est déterminé par le paramètre de classement de l’instance de SQL Server. Par défaut, SQL Server ne respecte pas la casse. Par défaut, SQLite est sensible à la casse. `ToUpper` peut être appelée pour que le test ne respecte pas la casse de manière explicite :
 
 ```csharp
 Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`

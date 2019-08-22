@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
-author: rick-anderson
-description: Dans ce tutoriel, vous allez commencer à utiliser la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC.
+author: tdykstra
+description: Dans ce didacticiel, vous allez commencer à utiliser la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 73624f515e8089b5852864b60ec66ad79c7475c3
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 110ffa8ecea1fe6e55a2f979a4ce851ed59e1807
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914053"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583511"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
 
@@ -32,7 +32,7 @@ Au lieu de supprimer et de recréer la base de données quand le modèle de donn
 
 ## <a name="drop-the-database"></a>Supprimer la base de données
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez l’**Explorateur d’objets SQL Server** (SSOX) pour supprimer la base de données ou exécutez la commande suivante dans la **console du Gestionnaire de package** (PMC) :
 
@@ -60,7 +60,7 @@ Drop-Database
 
 ## <a name="create-an-initial-migration"></a>Créer une migration initiale
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez les commandes suivantes dans PMC :
 
@@ -128,7 +128,7 @@ La migration de base de données doit être effectuée dans le cadre du déploie
 * L’utilisation de migrations pour créer des scripts SQL et l’utilisation de scripts SQL dans le déploiement
 * L’exécution de `dotnet ef database update` à partir d’un environnement contrôlé
 
-## <a name="troubleshooting"></a>Résolution de problèmes
+## <a name="troubleshooting"></a>Résolution des problèmes
 
 Si l’application utilise la Base de données locale SQL Server et affiche l’exception suivante :
 
@@ -176,7 +176,7 @@ Plutôt que de supprimer et de recréer la base de données quand le modèle de 
 
 Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande `database drop` :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -202,7 +202,7 @@ Entrez ce qui suit dans la fenêtre de commande :
 
 Générez le projet et créez la première migration.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```PMC
 Add-Migration InitialCreate
@@ -243,7 +243,7 @@ Les migrations créent un *instantané* du schéma de base de données actuel da
 
 Pour supprimer une migration, utilisez la commande suivante :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Remove-Migration
 
@@ -293,7 +293,7 @@ La migration de base de données doit être effectuée dans le cadre du déploie
 
 EF Core utilise la table `__MigrationsHistory` pour voir si des migrations doivent s’exécuter. Si la base de données est à jour, aucune migration n’est exécutée.
 
-## <a name="troubleshooting"></a>Résolution de problèmes
+## <a name="troubleshooting"></a>Résolution des problèmes
 
 Téléchargez [l’application terminée](
 https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21snapshots/cu-part4-migrations).
@@ -306,7 +306,7 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-Solution : Exécutez `dotnet ef database update`
+Solution : Exécutez `dotnet ef database update`.
 
 ### <a name="additional-resources"></a>Ressources supplémentaires
 

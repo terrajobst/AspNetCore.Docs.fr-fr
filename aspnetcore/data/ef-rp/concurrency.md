@@ -1,17 +1,17 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
-author: rick-anderson
-description: Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
+author: tdykstra
+description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 4d1e8ef2f55910fa5456171e45311feacff16919
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: df3cc9eb3d0c1748ca9cd194ee58e4614bba24d5
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914878"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583411"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -21,7 +21,7 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://githu
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps.
+Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps.
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
@@ -66,11 +66,11 @@ John clique sur **Save** dans une page Edit qui affiche toujours un budget de 35
 
 * Vous pouvez empêcher les modifications de John de faire l’objet d’une mise à jour dans la base de données. En règle générale, l’application :
 
-  * Affiche un message d’erreur.
-  * Indique l’état actuel des données.
-  * Autorise l’utilisateur à réappliquer les modifications.
+  * affiche un message d’erreur ;
+  * indique l’état actuel des données ;
+  * autorise l’utilisateur à réappliquer les modifications.
 
-  Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce tutoriel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
+  Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
 ## <a name="conflict-detection-in-ef-core"></a>Détection de conflits dans EF Core
 
@@ -78,7 +78,7 @@ EF Core lève des exceptions `DbConcurrencyException` quand il détecte des conf
 
 * Configurez EF Core de façon à inclure les valeurs d’origine des colonnes configurées en tant que [jetons d’accès concurrentiel](/ef/core/modeling/concurrency) dans la clause Where des commandes Update et Delete.
 
-  Quand `SaveChanges` est appelé, la clause Where recherche les valeurs d’origine des propriétés annotées avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute). L’instruction update ne trouve pas de ligne à mettre à jour si aucune propriété de jeton d’accès concurrentiel n’a changé depuis la première lecture de la ligne. EF Core interprète cela comme un conflit d’accès concurrentiel. Pour les tables de base de données qui comptent de nombreuses colonnes, cette approche peut aboutir à des clauses Where de très grande taille et peut nécessiter de grandes quantités d’états. Par conséquent, cette approche n’est généralement pas recommandée et n’est pas la méthode utilisée dans ce tutoriel.
+  Quand `SaveChanges` est appelé, la clause Where recherche les valeurs d’origine des propriétés annotées avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute). L’instruction update ne trouve pas de ligne à mettre à jour si aucune propriété de jeton d’accès concurrentiel n’a changé depuis la première lecture de la ligne. EF Core interprète cela comme un conflit d’accès concurrentiel. Pour les tables de base de données qui comptent de nombreuses colonnes, cette approche peut aboutir à des clauses Where de très grande taille et peut nécessiter de grandes quantités d’états. Par conséquent, cette approche n’est généralement pas recommandée et n’est pas la méthode utilisée dans ce didacticiel.
 
 * Dans la table de base de données, incluez une colonne de suivi qui peut être utilisée pour déterminer quand une ligne a été modifiée.
 
@@ -376,7 +376,7 @@ Ce tutoriel est le dernier de la série. Des rubriques supplémentaires sont abo
 
 ::: moniker range="< aspnetcore-3.0"
 
-Ce tutoriel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
+Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
@@ -422,9 +422,9 @@ L’accès concurrentiel optimiste comprend les options suivantes :
 
 * Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données. En règle générale, l’application :
 
-  * Affiche un message d’erreur.
-  * Indique l’état actuel des données.
-  * Autorise l’utilisateur à réappliquer les modifications.
+  * affiche un message d’erreur ;
+  * indique l’état actuel des données ;
+  * autorise l’utilisateur à réappliquer les modifications.
 
   Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
@@ -441,7 +441,7 @@ Le modèle de données et de la base de données doivent être configurés pour 
 
 Les conflits d’accès concurrentiel peuvent être détectés au niveau de la propriété avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0). L’attribut peut être appliqué à plusieurs propriétés sur le modèle. Pour plus d’informations, consultez [Data Annotations-ConcurrencyCheck (Annotations de données-ConcurrencyCheck)](/ef/core/modeling/concurrency#data-annotations).
 
-Nous n’utilisons pas l’attribut `[ConcurrencyCheck]` dans ce tutoriel.
+Nous n’utilisons pas l’attribut `[ConcurrencyCheck]` dans ce didacticiel.
 
 ### <a name="detecting-concurrency-conflicts-on-a-row"></a>Détection des conflits d’accès concurrentiel sur une ligne
 

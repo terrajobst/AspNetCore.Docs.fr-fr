@@ -1,17 +1,17 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
-author: rick-anderson
+author: tdykstra
 description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vous personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 96e4acf0d6c9c079ebee32fc2f9951fdd668931b
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 8a1c0759453b02f4ce1c45471a8f93da626f8261
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914962"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583287"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -21,7 +21,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitte
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans les tutoriels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce tutoriel :
+Dans les didacticiels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce didacticiel :
 
 * Nous allons ajouter d’autres entités et relations
 * Nous allons personnaliser le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données.
@@ -770,7 +770,7 @@ L’attribut `DisplayFormat` peut être utilisé seul. Il est généralement pr�
 
 Pour plus d’informations, consultez la [documentation relative au Tag Helper \<input>](xref:mvc/views/working-with-forms#the-input-tag-helper).
 
-Exécuter l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Toutes les vues qui utilisent le modèle `Student` affichent la date sans heure.
+Exécuter l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
 
 ![Page d’index des étudiants affichant les dates sans les heures](complex-data-model/_static/dates-no-times.png)
 

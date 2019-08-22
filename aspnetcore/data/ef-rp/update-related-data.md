@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
-author: rick-anderson
+author: tdykstra
 description: Dans ce tutoriel, vous allez mettre à jour des données associées en mettant à jour les propriétés de navigation et les champs de clé étrangère.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 4f41ad5fa17cd6ee56f14cd87fb62a47f3a4a9df
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: bc237cf928d852b92c5c1984527129404f88018d
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68993365"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583497"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
@@ -235,7 +235,7 @@ Exécutez l’application et testez la page de suppression.
 
 ::: moniker range="< aspnetcore-3.0"
 
-Ce tutoriel illustre la mise à jour de données associées. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
+Ce didacticiel illustre la mise à jour de données associées. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 Les illustrations suivantes montrent certaines des pages terminées.
 

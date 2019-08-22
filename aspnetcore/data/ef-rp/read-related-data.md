@@ -1,17 +1,17 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
-author: rick-anderson
-description: Dans ce tutoriel, nous allons lire et afficher des données associées, autrement dit des données chargées par Entity Framework dans des propriétés de navigation.
+author: tdykstra
+description: Dans ce didacticiel, nous allons lire et afficher des données associées, autrement dit des données chargées par Entity Framework dans des propriétés de navigation.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: a4864a749ed9c839c2a22f179759a3f28db525ee
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: c9da404b1bbd072d3e033f18a7366169082dac06
+ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68914210"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69583549"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -23,7 +23,7 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 
 Ce tutoriel montre comment lire et afficher des données associées. Les données associées sont des données qu’EF Core charge dans des propriétés de navigation.
 
-Les illustrations suivantes montrent les pages terminées pour ce tutoriel :
+Les illustrations suivantes montrent les pages terminées pour ce didacticiel :
 
 ![Page d’index des cours](read-related-data/_static/courses-index30.png)
 
@@ -221,7 +221,7 @@ Le code suivant s’exécute quand un formateur est sélectionné (`id != null`)
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_SelectInstructor)]
 
-Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle de vue. La propriété `Courses` du modèle de vue est chargée avec les entités `Course` de la propriété de navigation `CourseAssignments` de ce formateur.
+Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle d’affichage. La propriété `Courses` du modèle d’affichage est chargée avec les entités `Course` de la propriété de navigation `CourseAssignments` de ce formateur.
 
 La méthode `Where` retourne une collection. Mais dans ce cas, le filtre sélectionne une entité unique. La méthode `Single` est donc appelée pour convertir la collection en une seule entité `Instructor`. L’entité `Instructor` fournit l’accès à la propriété `CourseAssignments`. `CourseAssignments` fournit l’accès aux entités `Course` associées.
 
@@ -229,7 +229,7 @@ La méthode `Where` retourne une collection. Mais dans ce cas, le filtre sélect
 
 La méthode `Single` est utilisée sur une collection quand la collection ne compte qu’un seul élément. La méthode `Single` lève une exception si la collection est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui renvoie une valeur par défaut (Null dans ce cas) si la collection est vide.
 
-Le code suivant renseigne la propriété `Enrollments` du modèle de vue quand un cours est sélectionné :
+Le code suivant renseigne la propriété `Enrollments` du modèle d’affichage quand un cours est sélectionné :
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_SelectCourse)]
 
@@ -459,9 +459,9 @@ Cette page lit et affiche les données associées comme suit :
 * Quand l’utilisateur sélectionne un formateur (Harui dans l’image précédente), les entités `Course` associées sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Le chargement hâtif est utilisé pour les entités `Course` et leurs entités `Department` associées. Dans le cas présent, des requêtes distinctes peuvent être plus efficaces, car seuls les cours du formateur sélectionné sont nécessaires. Cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent dans des propriétés de navigation.
 * Quand l’utilisateur sélectionne un cours (Chemistry dans l’image précédente), les données associées de l’entité `Enrollments` sont affichées. Dans l’image précédente, le nom et la note de l’étudiant sont affichés. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`.
 
-### <a name="create-a-view-model-for-the-instructor-index-view"></a>Créer un modèle de vue pour la vue d’index des formateurs
+### <a name="create-a-view-model-for-the-instructor-index-view"></a>Créer un modèle d’affichage pour l’affichage d’index des formateurs
 
-La page sur les formateurs affiche les données de trois tables différentes. Nous allons créer un modèle de vue qui comprend les trois entités représentant les trois tables.
+La page sur les formateurs affiche les données de trois tables différentes. Nous allons créer un modèle d’affichage qui comprend les trois entités représentant les trois tables.
 
 Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* avec le code suivant :
 
@@ -498,7 +498,7 @@ Examinez la requête dans le fichier *Pages/Instructors/Index.cshtml.cs* :
 
 La requête comporte deux Include :
 
-* `OfficeAssignment`: Affiché dans la [vue Instructors](#IP).
+* `OfficeAssignment`: Affiché dans [l’affichage Instructors](#IP).
 * `CourseAssignments`: Qui affiche les cours dispensés.
 
 ### <a name="update-the-instructors-index-page"></a>Mettre à jour la page d’index des formateurs
@@ -566,7 +566,7 @@ Examinez la requête mise à jour :
 
 La requête précédente ajoute les entités `Department`.
 
-Le code suivant s’exécute quand un formateur est sélectionné (`id != null`). Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle de vue. La propriété `Courses` du modèle de vue est chargée avec les entités `Course` de la propriété de navigation `CourseAssignments` de ce formateur.
+Le code suivant s’exécute quand un formateur est sélectionné (`id != null`). Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle d’affichage. La propriété `Courses` du modèle d’affichage est chargée avec les entités `Course` de la propriété de navigation `CourseAssignments` de ce formateur.
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
 
@@ -579,7 +579,7 @@ La méthode `Single` est utilisée sur une collection quand la collection ne com
 * Génère une exception (à cause de la tentative de trouver une propriété `Courses` sur une référence Null).
 * Le message d’exception indique moins clairement la cause du problème.
 
-Le code suivant renseigne la propriété `Enrollments` du modèle de vue quand un cours est sélectionné :
+Le code suivant renseigne la propriété `Enrollments` du modèle d’affichage quand un cours est sélectionné :
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 

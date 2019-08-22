@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/30/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 93eb48d81a853061a874641e84b4875849690a93
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: b93b2df7fad7c173f43ad69aec865f09de6c9c34
+ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886614"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69487578"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -107,7 +107,7 @@ Dans l’exemple d’application, la classe `IndexModel` reçoit une instance `I
 
 Pour générer un manifeste des fichiers incorporés, définissez la propriété `<GenerateEmbeddedFilesManifest>` sur `true`. Spécifiez les fichiers à incorporer avec [ &lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) :
 
-[!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=5,13)]
+[!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=6,14)]
 
 Utilisez les [modèles glob](#glob-patterns) pour spécifier un ou plusieurs fichiers à incorporer dans l’assembly.
 
@@ -155,7 +155,7 @@ Certains systèmes de fichiers, comme les conteneurs Docker et les partages rés
 
 ## <a name="glob-patterns"></a>Modèles Glob
 
-Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)*. Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
+Les chemins de système de fichiers utilisent des modèles à caractères génériques appelés *modèles Glob (ou d’utilisation des caractères génériques)* . Spécifiez les groupes de fichiers avec ces modèles. Les deux caractères génériques sont `*` et `**` :
 
 **`*`**  
 Établit une correspondance avec n’importe quel élément au niveau de dossier actuel, avec n’importe quel nom de fichier ou avec n’importe quelle extension de fichier. Les correspondances sont terminées par des caractères `/` et `.` dans le chemin des fichiers.
