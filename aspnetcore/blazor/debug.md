@@ -5,14 +5,14 @@ description: Découvrez comment déboguer des applications éblouissantes.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/31/2019
+ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: 37c6009727a4f62b61793adca0d83cdd53be4b9a
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
+ms.openlocfilehash: c3188a1fe1b699b787f7a95630f3918d295d0f68
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68948369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69974907"
 ---
 # <a name="debug-aspnet-core-blazor"></a>ASP.NET Core éblouissant de débogage
 
@@ -51,6 +51,10 @@ Le débogage requiert l’un des navigateurs suivants:
 1. Accédez à l’application dans le navigateur.
 1. Placez le focus clavier sur l’application, et non sur le panneau Outils de développement. Le panneau Outils de développement peut être fermé lorsque le débogage est initié.
 1. Sélectionnez le raccourci clavier de éblouissant spécifique suivant:
+   * `Shift+Alt+D`sur Windows/Linux
+   * `Shift+Cmd+D`sur macOS
+1. Suivez les étapes indiquées à l’écran pour redémarrer le navigateur en activant le débogage à distance.
+1. Sélectionnez une nouvelle fois le raccourci clavier éblouissant suivant pour démarrer la session de débogage:
    * `Shift+Alt+D`sur Windows/Linux
    * `Shift+Cmd+D`sur macOS
 

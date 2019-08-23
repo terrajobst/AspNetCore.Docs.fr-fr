@@ -4,15 +4,15 @@ author: Rick-Anderson
 description: Explique comment créer l’interface utilisateur de Razor réutilisables à l’aide de vues partielles dans une bibliothèque de classes dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 468d961c291810ca4dfbe615acd972cfd6e7572a
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886404"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985376"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer une interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -237,6 +237,39 @@ Un RCL peut nécessiter des ressources statiques auxiliaires qui peuvent être r
 Pour inclure des ressources d’accompagnement dans le cadre d’un RCL, créez un dossier *wwwroot* dans la bibliothèque de classes et incluez tous les fichiers nécessaires dans ce dossier.
 
 Lors de la compression d’un RCL, toutes les ressources associées dans le dossier *wwwroot* sont automatiquement incluses dans le package.
+
+### <a name="exclude-static-assets"></a>Exclure des ressources statiques
+
+Pour exclure des ressources statiques, ajoutez le chemin d’exclusion `$(DefaultItemExcludes)` souhaité au groupe de propriétés dans le fichier projet. Séparez les entrées par un`;`point-virgule ().
+
+Dans l’exemple suivant, la feuille de style *lib. CSS* du dossier *wwwroot* n’est pas considérée comme une ressource statique et n’est pas incluse dans le RCL publié:
+
+```xml
+<PropertyGroup>
+  <DefaultItemExcludes>$(DefaultItemExcludes);wwwroot\lib.css</DefaultItemExcludes>
+</PropertyGroup>
+```
+
+### <a name="typescript-integration"></a>Intégration de la machine à écrire
+
+Pour inclure des fichiers de machine à écrire dans un RCL:
+
+1. Placez les fichiers de machine à écrire ( *. TS*) en dehors du dossier *wwwroot* . Par exemple, placez les fichiers dans un dossier *client* .
+
+1. Configurez la sortie de génération de machine à écrire pour le dossier *wwwroot* . Définissez la `TypescriptOutDir` propriété à l’intérieur `PropertyGroup` d’un dans le fichier projet:
+
+   ```xml
+   <TypescriptOutDir>wwwroot</TypescriptOutDir>
+   ```
+
+1. Incluez la cible de la machine à écrire `ResolveCurrentProjectStaticWebAssets` comme dépendance de la cible en ajoutant la cible `PropertyGroup` suivante à l’intérieur d’un dans le fichier projet:
+
+   ```xml
+   <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+     TypeScriptCompile;
+     $(ResolveCurrentProjectStaticWebAssetsInputs)
+   </ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
+   ```
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Consommer du contenu à partir d’un RCL référencé
 

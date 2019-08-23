@@ -2,16 +2,16 @@
 title: Client IP safelier pour ASP.NET Core
 author: damienbod
 description: Découvrez comment écrire des filtres d’intergiciel ou d’action pour valider des adresses IP distantes par rapport à une liste d’adresses IP approuvées.
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: ca05989efabea3a71c6912e98055a6746e0f5966
-ms.sourcegitcommit: 1bf80f4acd62151ff8cce517f03f6fa891136409
+ms.openlocfilehash: 02e44135ab1742d44691cfda8c4167f21d6efa4e
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68223936"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975645"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Client IP safelier pour ASP.NET Core
 
@@ -45,7 +45,7 @@ L’intergiciel analyse la chaîne dans un tableau et recherche l’adresse IP d
 
 ## <a name="action-filter"></a>Filtre d’action
 
-Si vous souhaitez un safelir uniquement pour des contrôleurs ou des méthodes d’action spécifiques, utilisez un filtre d’action. Voici un exemple : 
+Si vous souhaitez un safelir uniquement pour des contrôleurs ou des méthodes d’action spécifiques, utilisez un filtre d’action. Voici un exemple : 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIdCheckFilter.cs)]
 
@@ -61,7 +61,7 @@ Dans l’exemple d’application, le filtre est appliqué à `Get` la méthode. 
 
 ## <a name="razor-pages-filter"></a>Filtre de Razor Pages 
 
-Si vous souhaitez obtenir une application Razor Pages, utilisez un filtre Razor Pages. Voici un exemple : 
+Si vous souhaitez obtenir une application Razor Pages, utilisez un filtre Razor Pages. Voici un exemple : 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIdCheckPageFilter.cs)]
 
