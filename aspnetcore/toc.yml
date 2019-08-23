@@ -8,7 +8,7 @@
       uid: fundamentals/choose-between-aspnet-and-aspnetcore
     - name: Comparer .NET Core avec le .NET Framework
       href: /dotnet/standard/choosing-core-framework-server?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: Bien démarrer
+- name: Prise en main
   uid: getting-started
 - name: Nouveautés
   items:
@@ -22,7 +22,7 @@
       uid: aspnetcore-1.1
 - name: Tutoriels
   items:
-    - name: Applications web
+    - name: les applications web
       items:
         - name: Pages Razor
           displayName: tutorial
@@ -31,7 +31,7 @@
               uid: tutorials/razor-pages/index
             - name: Prise en main
               uid: tutorials/razor-pages/razor-pages-start
-            - name: Ajouter un modèle
+            - name: Ajout d'un modèle
               uid: tutorials/razor-pages/model
             - name: Génération de modèles automatique
               uid: tutorials/razor-pages/page
@@ -52,11 +52,11 @@
               uid: tutorials/first-mvc-app/index
             - name: Prise en main
               uid: tutorials/first-mvc-app/start-mvc
-            - name: Ajouter un contrôleur
+            - name: Ajout d'un contrôleur
               uid: tutorials/first-mvc-app/adding-controller
             - name: Ajouter une vue
               uid: tutorials/first-mvc-app/adding-view
-            - name: Ajouter un modèle
+            - name: Ajout d'un modèle
               uid: tutorials/first-mvc-app/adding-model
             - name: Utiliser une base de données
               uid: tutorials/first-mvc-app/working-with-sql
@@ -158,6 +158,9 @@
     - name: Accès aux données
       displayName: 'tutorial, ef, entity framework'
       href: /learn/modules/persist-data-ef-core/
+    - name: Sécurité des applications web
+      displayName: 'tutorial, identity'
+      href: /learn/modules/secure-aspnet-core-identity/
 - name: Notions de base
   items:
     - name: Vue d'ensemble
@@ -166,9 +169,9 @@
       uid: fundamentals/startup
     - name: Injection de dépendances (services)
       uid: fundamentals/dependency-injection
-    - name: Intergiciel (middleware)
+    - name: Middlewares
       uid: fundamentals/middleware/index
-    - name: Hôte
+    - name: Host
       items:
         - name: Hôte générique
           uid: fundamentals/host/generic-host
@@ -186,26 +189,26 @@
       uid: fundamentals/logging/index
     - name: Routage
       uid: fundamentals/routing
-    - name: Gérer les erreurs
+    - name: des erreurs
       uid: fundamentals/error-handling
     - name: Effectuer des requêtes HTTP
       displayName: 'httpclient, httpclientfactory'
       uid: fundamentals/http-requests
     - name: Fichiers statiques
       uid: fundamentals/static-files
-- name: Applications web
+- name: les applications web
   items:
     - name: Pages Razor
       items:
         - name: Introduction
           uid: razor-pages/index
-        - name: Tutoriel
+        - name: Didacticiel
           items:
             - name: Vue d'ensemble
               uid: tutorials/razor-pages/index
             - name: Prise en main
               uid: tutorials/razor-pages/razor-pages-start
-            - name: Ajouter un modèle
+            - name: Ajout d'un modèle
               uid: tutorials/razor-pages/model
             - name: Génération de modèles automatique
               uid: tutorials/razor-pages/page
@@ -231,17 +234,17 @@
       items:
         - name: Vue d'ensemble
           uid: mvc/overview
-        - name: Tutoriel
+        - name: Didacticiel
           items:
             - name: Vue d'ensemble
               uid: tutorials/first-mvc-app/index
             - name: Prise en main
               uid: tutorials/first-mvc-app/start-mvc
-            - name: Ajouter un contrôleur
+            - name: Ajout d'un contrôleur
               uid: tutorials/first-mvc-app/adding-controller
             - name: Ajouter une vue
               uid: tutorials/first-mvc-app/adding-view
-            - name: Ajouter un modèle
+            - name: Ajout d'un modèle
               uid: tutorials/first-mvc-app/adding-model
             - name: Utiliser une base de données
               uid: tutorials/first-mvc-app/working-with-sql
@@ -255,11 +258,11 @@
               uid: tutorials/first-mvc-app/validation
             - name: Examiner les méthodes Details et Delete
               uid: tutorials/first-mvc-app/details
-        - name: Affichages
+        - name: Views
           uid: mvc/views/overview
         - name: Vues partielles
           uid: mvc/views/partial
-        - name: Contrôleurs
+        - name: Controllers
           uid: mvc/controllers/actions
         - name: Routage
           uid: mvc/controllers/routing
@@ -289,7 +292,7 @@
           uid: blazor/forms-validation
         - name: Bibliothèques de composants
           uid: blazor/class-libraries
-        - name: Dispositions
+        - name: Mises en forme
           uid: blazor/layouts
         - name: Injection de dépendances
           uid: blazor/dependency-injection
@@ -299,11 +302,11 @@
           uid: blazor/javascript-interop
         - name: Sécurité et identité
           uid: security/blazor/index
-        - name: Gestion de l’état
+        - name: Gestion de l'état
           uid: blazor/state-management
-        - name: Gérer les erreurs
+        - name: des erreurs
           uid: blazor/handle-errors
-        - name: Débogage
+        - name: Déboguer
           uid: blazor/debug
         - name: Appeler une API web
           uid: blazor/call-web-api
@@ -319,7 +322,7 @@
               uid: host-and-deploy/blazor/configure-linker
     - name: Développement côté client
       items:
-        - name: Applications monopages
+        - name: Applications à page unique
           items:
             - name: Angular
               uid: spa/angular
@@ -347,7 +350,7 @@
           uid: client-side/using-browserlink
     - name: État de session et d’application
       uid: fundamentals/app-state
-    - name: Mise en page
+    - name: Disposition
       uid: mvc/views/layout
     - name: Syntaxe Razor
       uid: mvc/views/razor
@@ -368,23 +371,23 @@
           items:
             - name: Ancre
               uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-            - name: d'instance/de clé
+            - name: Cache
               uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
             - name: Cache distribué
               uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
             - name: Environnement
               uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-            - name: Formulaire
+            - name: Forme
               href: 'mvc/views/working-with-forms.md#the-form-tag-helper'
             - name: Image
               uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
             - name: Entrée
               href: 'mvc/views/working-with-forms.md#the-input-tag-helper'
-            - name: Etiquette
+            - name: Étiquette
               href: 'mvc/views/working-with-forms.md#the-label-tag-helper'
-            - name: Partial
+            - name: Partiel
               uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-            - name: Sélectionner
+            - name: Sélectionnez
               href: 'mvc/views/working-with-forms.md#the-select-tag-helper'
             - name: Textarea
               href: 'mvc/views/working-with-forms.md#the-textarea-tag-helper'
@@ -547,17 +550,17 @@
       uid: grpc/migration
     - name: Comparaison des services gRPC avec les API HTTP
       uid: grpc/comparison
-    - name: Résoudre les problèmes
+    - name: Résolution des problèmes
       uid: grpc/troubleshoot
 - name: 'Tester, déboguer et dépanner'
   items:
-    - name: Test unitaire
+    - name: Test des unités
       href: /dotnet/core/testing/unit-testing-with-dotnet-test?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: Tests unitaires Pages Razor
       uid: test/razor-pages-tests
     - name: Contrôleurs de test
       uid: mvc/controllers/testing
-    - name: Débogage distant
+    - name: Débogage à distance
       href: /visualstudio/debugger/remote-debugging-azure
     - name: Débogage d’instantané
       href: /azure/azure-monitor/app/snapshot-debugger?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
@@ -567,7 +570,7 @@
       uid: test/integration-tests
     - name: Tests de charge et de contrainte
       uid: test/loadtests
-    - name: Résoudre les problèmes
+    - name: Résolution des problèmes
       uid: test/troubleshoot
     - name: Journalisation
       uid: fundamentals/logging/index
@@ -577,7 +580,7 @@
       uid: host-and-deploy/azure-iis-errors-reference
 - name: Accès aux données
   items:
-    - name: Tutoriels
+    - name: Didacticiels
       items:
         - name: EF Core avec Razor Pages
           items:
@@ -667,7 +670,7 @@
         - name: Module ASP.NET Core
           displayName: 'azure, deploy, publish'
           uid: host-and-deploy/aspnet-core-module
-        - name: Résoudre les problèmes
+        - name: Résolution des problèmes
           displayName: 'azure, deploy, publish'
           uid: test/troubleshoot-azure-iis
         - name: Informations de référence sur les erreurs
@@ -710,7 +713,7 @@
         - name: Modules IIS
           displayName: 'deploy, publish'
           uid: host-and-deploy/iis/modules
-        - name: Résoudre les problèmes
+        - name: Résolution des problèmes
           displayName: 'deploy, publish'
           uid: test/troubleshoot-azure-iis
         - name: Informations de référence sur les erreurs
@@ -767,7 +770,7 @@
     - name: Structure de répertoires
       displayName: 'deploy, publish'
       uid: host-and-deploy/directory-structure
-    - name: Contrôles d’intégrité
+    - name: Contrôles d'intégrité
       uid: host-and-deploy/health-checks
       displayName: 'deploy, publish'
     - name: Blazor
@@ -785,7 +788,7 @@
   items:
     - name: Vue d'ensemble
       uid: security/index
-    - name: Authentification
+    - name: Authentication
       items:
         - name: Présentation d’Identity
           uid: security/authentication/identity
@@ -859,7 +862,7 @@
           uid: security/authentication/individual
         - name: Configurer l’authentification par certificat
           uid: security/authentication/certauth
-    - name: Autorisation
+    - name: Authorization
       items:
         - name: Vue d'ensemble
           uid: security/authorization/introduction
@@ -964,7 +967,7 @@
         - name: Fournisseur de configuration Azure Key Vault
           displayName: 'password, connection string, API key, secrets'
           uid: security/key-vault-configuration
-    - name: Appliquer HTTPS
+    - name: Appliquer le protocole HTTPS
       uid: security/enforcing-ssl
     - name: Héberger Docker avec HTTPS
       uid: security/docker-https
@@ -1017,7 +1020,7 @@
       uid: fundamentals/portable-object-localization
     - name: Extensibilité
       uid: fundamentals/localization-extensibility
-    - name: Résoudre les problèmes
+    - name: Résolution des problèmes
       uid: fundamentals/troubleshoot-aspnet-core-localization
 - name: Avancé
   items:
@@ -1087,7 +1090,7 @@
           uid: migration/proper-to-2x/index
         - name: MVC
           uid: migration/mvc
-        - name: API web
+        - name: API Web
           uid: migration/webapi
         - name: Configuration
           uid: migration/configuration
@@ -1102,7 +1105,7 @@
     - name: Journalisation (hors ASP.NET Core)
       displayName: 'migrate, migration'
       uid: migration/logging-nonaspnetcore
-- name: Informations de référence sur les API
+- name: Informations de référence sur l'API
   href: /dotnet/api/?view=aspnetcore-2.2
-- name: Collaboration
+- name: Participez
   href: 'https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md'
