@@ -1,17 +1,17 @@
 ---
 title: Vue d’ensemble de la sécurité ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Découvrez les concepts de base de l’authentification, de l’autorisation et de la sécurité dans ASP.NET Core.
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
-ms.openlocfilehash: 933501411169d89c4b24edda743c47591aa7a87a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0f8e96fb7d5246e746b95f8907745f849de60e24
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64881884"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975661"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Vue d’ensemble de la sécurité ASP.NET Core
 
@@ -21,7 +21,7 @@ ASP.NET Core permet aux développeurs de configurer et de gérer facilement la s
 
 ASP.NET Core offre un grand nombre d’outils et de bibliothèques pour sécuriser vos applications, notamment des fournisseurs d’identité intégrés. Cela dit, vous pouvez utiliser des services d’identité tiers tels que Facebook, Twitter ou LinkedIn. Avec ASP.NET Core, vous pouvez facilement gérer les secrets des applications, qui sont un moyen de stocker et d’utiliser des informations confidentielles sans avoir à les exposer dans le code.
 
-## <a name="authentication-vs-authorization"></a>Authentification et Autorisation
+## <a name="authentication-vs-authorization"></a>Authentification et Authorization
 
 L’authentification est un processus selon lequel un utilisateur fournit des informations d’identification qui sont ensuite comparées à celles stockées dans un système d’exploitation, une base de données, une application ou une ressource. Si elles correspondent, les utilisateurs sont authentifiés et peuvent alors effectuer les actions pour lesquelles ils disposent d’autorisations pendant un processus d’autorisation. L’autorisation désigne le processus qui détermine ce qu’un utilisateur est autorisé à faire.
 

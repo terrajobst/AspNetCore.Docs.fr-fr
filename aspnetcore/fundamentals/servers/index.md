@@ -3,16 +3,16 @@ title: Implémentations de serveurs web dans ASP.NET Core
 author: guardrex
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 06/01/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 10876a61d40679b1a022ce9c58329bf53c36c1bb
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 404fec18409a675981fc0c068ee9a99001e06c16
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67855980"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975548"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -40,7 +40,7 @@ Pour des conseils de configuration de Kestrel et des informations sur le moment 
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -80,7 +80,7 @@ ASP.NET Core est fourni avec le [serveur Kestrel](xref:fundamentals/servers/kest
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -158,14 +158,14 @@ Le serveur est lancé lorsque l’environnement de développement intégré (IDE
 
 Lors du lancement de l’application à partir d’une invite de commandes dans le dossier du projet, [dotnet run](/dotnet/core/tools/dotnet-run) lance l’application et le serveur (Kestrel et HTTP.sys uniquement). La configuration est spécifiée par l’option `-c|--configuration`, qui est définie sur `Debug` (par défaut) ou sur `Release`. Si les profils de lancement sont présents dans un fichier *launchSettings.json*, utilisez l’option `--launch-profile <NAME>` pour définir le profil de lancement (par exemple `Development` ou `Production`). Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
 
-## <a name="http2-support"></a>Prise en charge de HTTP/2
+## <a name="http2-support"></a>Assistance HTTP/2
 
 [HTTP/2](https://httpwg.org/specs/rfc7540.html) est pris en charge avec ASP.NET Core dans les scénarios de déploiement suivants :
 
 ::: moniker range=">= aspnetcore-2.2"
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
-  * Système d'exploitation
+  * Système d’exploitation
     * Windows Server 2016/Windows 10 ou version ultérieure&dagger;
     * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
