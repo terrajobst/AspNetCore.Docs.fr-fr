@@ -5,14 +5,14 @@ description: Découvrez comment les tests d’intégration garantissent le bon f
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/05/2019
+ms.date: 08/23/2019
 uid: test/integration-tests
-ms.openlocfilehash: a86bf2b183a81f0b903a12f9d1660fb32faa6c03
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
+ms.openlocfilehash: 195acd3e03f3de63ebd61767f2c86d1c0f38fca5
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819946"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017431"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -284,6 +284,16 @@ Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le 
 {
   "shadowCopy": false
 }
+```
+
+Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, `Content` ajoutez une cible au fichier projet de l’application de test:
+
+```xml
+<ItemGroup>
+  <Content Update="xunit.runner.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </Content>
+</ItemGroup>
 ```
 
 ## <a name="disposal-of-objects"></a>Suppression d’objets

@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 4b94cc53777308deb26521a079d8a1c2742744db
-ms.sourcegitcommit: 4fe3ae892f54dc540859bff78741a28c2daa9a38
+ms.openlocfilehash: 225d0e3aa51745253d03e614b1c8568b3a6ba731
+ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2019
-ms.locfileid: "68776744"
+ms.lasthandoff: 08/24/2019
+ms.locfileid: "70017495"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -37,7 +37,7 @@ Ce didacticiel montre comment créer une application web ASP.NET Core avec des d
 * **Gestionnaires de** peuvent approuver ou rejeter des données de contact. Seuls les contacts approuvés sont visibles aux utilisateurs.
 * **Les administrateurs** peut approuver/rejeter et modifier ou de supprimer toutes les données.
 
-Les images contenues dans ce document ne correspondent pas exactement aux modèles les plus récents.
+Les images de ce document ne correspondent pas exactement aux modèles les plus récents.
 
 Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est connecté. Rick peut uniquement afficher les contacts approuvés et **modifier**/**supprimer**/**créer un nouveau** liens pour ses contacts. Seul le dernier enregistrement créé par Rick, affiche **modifier** et **supprimer** des liens. Autres utilisateurs ne voient le dernier enregistrement jusqu'à ce qu’un gestionnaire ou un administrateur modifie le statut « Approved ».
 
