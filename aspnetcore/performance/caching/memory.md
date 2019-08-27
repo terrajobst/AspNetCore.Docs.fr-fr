@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 3005adec9ffe41859d05a3f61c7c45b8e7bfeefc
-ms.sourcegitcommit: bdaee0e8c657fe7546fd6b7990db9c03c2af04df
+ms.openlocfilehash: 1519abbca6430063f037372a4927f5818f160457
+ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908371"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70024787"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Mettre en cache en mémoire dans ASP.NET Core
 
@@ -85,15 +85,15 @@ Le code suivant obtient ou crée un élément mis en cache avec une expiration a
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet99)]
 
-Un ensemble d’éléments mis en cache avec expiration décalée est menacé pour devenir obsolète, car il n’y a aucune limite à son expiration. Utilisez une expiration absolue avec une expiration décalée pour garantir que l’élément mis en cache ne deviendra pas plus obsolète que l’expiration absolue. Lorsque l’expiration absolue est combinée avec le glissement, l’expiration absolue définit une limite supérieure à la durée pendant laquelle l’élément peut être mis en cache. Contrairement à l’heure d’expiration absolue uniquement, si l’élément n’est pas demandé dans le cache au cours de l’intervalle d’expiration décalé, l’élément est supprimé du cache. Lorsque l’expiration absolue et décalée est spécifiée, les expirations sont logiquement associées.
+Un ensemble d’éléments mis en cache avec une expiration décalée est à risque de devenir obsolète. Si l’accès est plus fréquent que l’intervalle d’expiration décalé, l’élément n’expire jamais. Combinez une expiration décalée avec une expiration absolue pour garantir que l’élément expire une fois que son heure d’expiration absolue s’est écoulée. L’expiration absolue définit une limite supérieure à la durée pendant laquelle l’élément peut être mis en cache tout en autorisant l’expiration antérieure de l’élément s’il n’est pas demandé dans l’intervalle d’expiration décalé. Lorsque les expirations absolues et décalées sont spécifiées, les expirations sont logiquement associées. Si l’intervalle d’expiration décalé *ou* le délai d’expiration absolu est écoulé, l’élément est supprimé du cache.
 
-Le code suivant obtient ou crée un élément mis en cache avec une expiration décalée et absolue:
+Le code suivant obtient ou crée un élément mis en cache avec l’expiration décalée *et* absolue:
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet9)]
 
 Le code précédent garantit que les données ne seront pas mises en cache plus longtemps que l’heure absolue.
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>et <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> sont des méthodes d’extension qui font partie de la classe qui étend la fonctionnalité de. Pour obtenir une description des autres méthodes de cache, consultez [méthodes IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache) et [méthodes CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions) .
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>, <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> et <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> sont des méthodes d’extension dans la classe. Ces méthodes étendent la capacité <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>de.
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 
