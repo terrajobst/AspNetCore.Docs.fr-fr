@@ -2,16 +2,16 @@
 title: Bien démarrer avec ASP.NET Core et Entity Framework 6
 author: rick-anderson
 description: Cet article montre comment utiliser Entity Framework 6 dans une application ASP.NET Core.
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: 50f51a72341cbad017872df581da214211b9920a
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ace937e72efa2343e50b11d52ebc0a2530505758
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886934"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975597"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Bien démarrer avec ASP.NET Core et Entity Framework 6
 
@@ -35,7 +35,7 @@ Votre projet ASP.NET Core doit référencer .NET Framework et EF6. Par exemple, 
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
-Quand vous créez un projet, utilisez le modèle **Application web ASP.NET Core (.NET Framework)**.
+Quand vous créez un projet, utilisez le modèle **Application web ASP.NET Core (.NET Framework)** .
 
 ## <a name="handle-connection-strings"></a>Gérer les chaînes de connexion
 

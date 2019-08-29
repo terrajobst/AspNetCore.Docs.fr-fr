@@ -3,16 +3,16 @@ title: Héberger ASP.NET Core dans un service Windows
 author: guardrex
 description: Découvrez comment héberger une application ASP.NET Core dans un service Windows.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 06/03/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 703edff19d82d10415bedb9b92d83709c275100f
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 308a8bd10371cc70c431b8858ef7d82c1bb624da
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68913916"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975415"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -36,10 +36,10 @@ Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écr
 1. Créez une application Service Worker à partir du modèle .NET Core.
 1. Suivez l’aide fournie dans la section [Configuration d’application](#app-configuration) pour mettre à jour l’application Service Worker afin qu’elle puisse s’exécuter en tant que service Windows.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Créer un projet
-1. Sélectionnez **Application web ASP.NET Core**. Sélectionnez **Suivant**.
+1. Créer un nouveau projet.
+1. Sélectionnez **Nouvelle application web ASP.NET Core**. Sélectionnez **Suivant**.
 1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Sélectionnez **Créer**.
 1. Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés.
 1. Sélectionnez le modèle **Service Worker**. Sélectionnez **Créer**.
@@ -56,7 +56,7 @@ dotnet new worker -o ContosoWorkerService
 
 ::: moniker-end
 
-## <a name="app-configuration"></a>la configuration d’une application ;
+## <a name="app-configuration"></a>Configuration de l’application
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -217,7 +217,7 @@ Pour établir des droits *d’ouverture de session en tant que service* pour un 
 1. Sélectionnez **Ajouter un utilisateur ou un groupe**.
 1. Fournissez le nom d’objet (compte d’utilisateur) avec l’une des approches suivantes :
    1. Tapez le compte d’utilisateur (`{DOMAIN OR COMPUTER NAME\USER}`) dans le champ du nom d’objet et sélectionnez **OK** pour ajouter l’utilisateur à la stratégie.
-   1. Sélectionnez **Advanced (Avancé)** . Sélectionnez **Rechercher maintenant**. Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK**. Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
+   1. Sélectionnez **Avancé**. Sélectionnez **Rechercher maintenant**. Sélectionnez le compte d’utilisateur dans la liste. Sélectionnez **OK**. Cliquez à nouveau sur **OK** pour ajouter l’utilisateur à la stratégie.
 1. Sélectionnez **OK** ou **Appliquer** pour accepter les modifications.
 
 ## <a name="create-and-manage-the-windows-service"></a>Créer et gérer le service Windows
@@ -312,7 +312,7 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="configure-https"></a>Configurer le protocole HTTPS
+## <a name="configure-https"></a>Configurer HTTPS
 
 Pour configurer le service avec un point de terminaison sécurisé, procédez comme suit :
 

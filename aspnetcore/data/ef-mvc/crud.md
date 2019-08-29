@@ -2,17 +2,17 @@
 title: 'Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 975738200f9ea621c38b395be123b1d05c78298e
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
+ms.openlocfilehash: 843ac3523f3ab4bd43f8970ff8e8e2f997fec4d2
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886302"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975079"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 

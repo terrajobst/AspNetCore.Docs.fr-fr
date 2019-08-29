@@ -5,12 +5,12 @@ description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pou
 ms.author: riande
 ms.date: 08/16/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: d0af3092776ee09469c879fffd3047c50b1a59b4
-ms.sourcegitcommit: 4cb0c7e74355f2e87c60e2a196f842b937247a99
+ms.openlocfilehash: 9065aa23a537add5a9376472e4f4478e9d4149bd
+ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69545809"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70024741"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -72,9 +72,7 @@ Si la disposition précédente est classique dans les cas où des zones sont uti
 /Areas/<Area-Name>/Views/Shared/<Action-Name>.cshtml
 /Views/Shared/<Action-Name>.cshtml
 /Pages/Shared/<Action-Name>.cshtml
-   ```
-
-L’emplacement des dossiers autres que Vues comme *Contrôleurs* et *Modèles* **n’a pas** d’importance. Par exemple, les dossiers *Contrôleurs* et *Modèles* ne sont pas nécessaires. Le contenu de *Contrôleurs* et *Modèles* est constitué de code qui est compilé dans un fichier .dll. Le contenu de *Vues* n’est pas compilée tant qu’aucune demande n’a été émise pour la vue en question.
+```
 
 <a name="attribute"></a>
 

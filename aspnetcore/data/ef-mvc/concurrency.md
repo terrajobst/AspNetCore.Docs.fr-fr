@@ -2,17 +2,17 @@
 title: 'Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core'
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: d4b83bd269b067ab6fa9e8666109bacc602589bd
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 0a42a8adbe485f47853fa05fb500f4480f06e3f5
+ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583251"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69975115"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core
 
