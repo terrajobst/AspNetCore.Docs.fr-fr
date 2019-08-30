@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 8a1c0759453b02f4ce1c45471a8f93da626f8261
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583287"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059120"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -134,13 +134,16 @@ Avec l’attribut `[Column]`, dans le modèle de données, `Student.FirstMidName
 
 L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types qui n’autorisent pas les valeurs Null comme les types valeur (par exemple, `DateTime`, `int` et `double`). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
 
-L’attribut `Required` peut être remplacé par un paramètre de longueur minimale dans l’attribut `StringLength` :
+L'attribut `Required` doit être utilisé avec `MinimumLength` pour appliquer `MinimumLength`.
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
+
+`MinimumLength` et `Required` autorisent un espace blanc pour satisfaire la validation. Utilisez l'attribut `RegularExpression` pour un contrôle total sur la chaîne.
 
 ### <a name="the-display-attribute"></a>Attribut Display
 
@@ -1353,7 +1356,7 @@ Mettez à jour la méthode `Up` de la classe `ComplexDataModel` :
 
 Ajoutez le code en surbrillance suivant. Le nouveau code va après le bloc `.CreateTable( name: "Department"` :
 
- [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+[!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 Avec les modifications précédentes, les lignes `Course` existantes seront toutes associées au département « Temp » après l’exécution de la méthode `Up` de `ComplexDataModel`.
 
@@ -1368,8 +1371,6 @@ Le didacticiel suivant traite des données associées.
 
 * [Version YouTube de ce tutoriel(Partie 1)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [Version YouTube de ce tutoriel(Partie 2)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
-
-
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/migrations)
