@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: df3cc9eb3d0c1748ca9cd194ee58e4614bba24d5
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: da57633c345ec087b1a4f24ddc7771e7a2d04720
+ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583411"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70059082"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -234,7 +234,7 @@ Générez le projet.
 
 L’outil de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne s’affiche pas dans une application de production. Dans ce tutoriel, le dernier octet de `RowVersion` est affiché pour montrer comment la gestion de l’accès concurrentiel fonctionne. Il n’est pas garanti que le dernier octet soit unique par lui-même.
 
-Mettez à jour la page Index :
+Mettre à jour la page *Pages\Departments\Index.cshtml* :
 
 * Remplacez Index par Departments.
 * Modifiez le code contenant `RowVersion` pour afficher uniquement le dernier octet du tableau d’octets.

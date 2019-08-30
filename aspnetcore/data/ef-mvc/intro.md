@@ -2,19 +2,27 @@
 title: 'Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC'
 description: Ce document est le premier d’une série de didacticiels qui expliquent comment générer à partir de zéro l’exemple d’application Contoso University.
 author: tdykstra
-ms.author: tdykstra
+ms.author: riande
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 1b68c20ba206a5afe36f307525879f91d03d95d1
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 3450ac5b46e2a03b5d58c8760b78a52065343992
+ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583346"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985375"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC
+
+::: moniker range=">= aspnetcore-3.0"
+
+Ce tutoriel n’a **pas** été mis à jour vers ASP.NET Core 3.0. La [version de Razor Pages](xref:data/ef-rp/intro) a été mise à jour. Pour plus d’informations sur le moment où cette mise à jour pourrait avoir lieu, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/13920).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc.md)]
 
@@ -378,3 +386,5 @@ Passez au tutoriel suivant pour découvrir comment effectuer des opérations CRU
 
 > [!div class="nextstepaction"]
 > [Implémenter la fonctionnalité CRUD de base](crud.md)
+
+::: moniker-end

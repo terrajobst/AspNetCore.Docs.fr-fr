@@ -4,14 +4,14 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 99985e9fb1134c2ba808434f8d24c4a768773268
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 25bfccb136d875b454034bd011828c9f3b6cd3d8
+ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022591"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113284"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -462,9 +462,9 @@ Utilisez Postman pour supprimer une tâche :
 * Définissez l’URI de l’objet à supprimer, par exemple `https://localhost:5001/api/TodoItems/1`.
 * Sélectionnez **Send**.
 
-## <a name="call-the-api-from-jquery"></a>Appeler l’API à partir de jQuery
+## <a name="call-the-web-api-with-javascript"></a>Appelez l’API web avec JavaScript
 
-Consultez le [tutoriel : Appeler une API web ASP.NET Core avec jQuery](xref:tutorials/web-api-jquery).
+Consultez le [tutoriel : Appeler une API web ASP.NET Core avec JavaScript](xref:tutorials/web-api-javascript).
 
 ::: moniker-end
 
@@ -480,9 +480,10 @@ Dans ce didacticiel, vous apprendrez à :
 > * Configurer le routage et les chemins d’URL
 > * Spécifier des valeurs de retour
 > * Appeler l’API web avec Postman
-> * Appeler l’API web avec jQuery.
+> * Appeler l’API web avec JavaScript.
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données relationnelle.
+
 ## <a name="overview"></a>Vue d'ensemble
 
 Ce didacticiel crée l’API suivante :
@@ -737,7 +738,6 @@ Les types de retour `ActionResult` peuvent représenter une large plage de codes
 * Si aucun élément ne correspond à l’ID demandé, la méthode retourne un code d’erreur 404 [introuvable](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound).
 * Sinon, la méthode retourne 200 avec un corps de réponse JSON. Le retour de `item` entraîne une réponse HTTP 200.
 
-
 ## <a name="test-the-gettodoitems-method"></a>Tester la méthode GetTodoItems
 
 Ce tutoriel utilise Postman pour tester l’API web.
@@ -863,9 +863,9 @@ Utilisez Postman pour supprimer une tâche :
 
 L’exemple d’application vous permet de supprimer tous les éléments. Toutefois, quand le dernier élément est supprimé, un autre est créé par le constructeur de classe de modèle au prochain appel de l’API.
 
-## <a name="call-the-api-with-jquery"></a>Appeler l’API avec jQuery
+## <a name="call-the-web-api-with-javascript"></a>Appelez l’API web avec JavaScript
 
-Dans cette section, une page HTML qui utilise jQuery pour appeler l’API web est ajoutée. jQuery lance la requête et met à jour la page avec les détails de la réponse de l’API.
+Dans cette section, une page HTML qui utilise JavaScript pour appeler l’API web est ajoutée. L’API Fetch lance la demande. JavaScript met à jour la page avec les détails de la réponse de l’API Web.
 
 Configurez l’application pour [traiter les fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [activer le mappage de fichier par défaut](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) en mettant à jour *Startup.cs* avec le code en surbrillance suivant :
 
@@ -886,19 +886,17 @@ Vous devrez peut-être changer les paramètres de lancement du projet ASP.NET Co
 * Ouvrez *Properties\launchSettings.json*.
 * Supprimez la propriété `launchUrl` pour forcer l’utilisation du fichier *index.html* (fichier par défaut du projet) à l’ouverture de l’application.
 
-Il existe plusieurs façons d’obtenir jQuery. Dans l’extrait précédent, la bibliothèque est chargée à partir d’un CDN.
-
-Cet exemple appelle toutes les méthodes CRUD de l’API. Les explications suivantes traitent des appels à l’API.
+Cet exemple appelle toutes les méthodes CRUD de l’API web. Les explications suivantes traitent des appels à l’API.
 
 ### <a name="get-a-list-of-to-do-items"></a>Obtenir une liste de tâches
 
-La fonction JQuery [ajax](https://api.jquery.com/jquery.ajax/) envoie une requête `GET` à l’API, qui retourne du code JSON représentant un tableau de tâches. La fonction de rappel `success` est appelée si la requête réussit. Dans le rappel, le DOM est mis à jour avec les informations des tâches.
+FETCH envoie une requête HTTP GET à l’API web, qui retourne du code JSON représentant un tableau de tâches. La fonction de rappel `success` est appelée si la requête réussit. Dans le rappel, le DOM est mis à jour avec les informations des tâches.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_GetData)]
 
 ### <a name="add-a-to-do-item"></a>Ajouter une tâche
 
-La fonction [ajax](https://api.jquery.com/jquery.ajax/) envoie une requête `POST` dont le corps indique la tâche. Les options `accepts` et `contentType` sont définies avec la valeur `application/json` pour spécifier le type de média qui est reçu et envoyé. La tâche est convertie au format JSON à l’aide de [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Quand l’API retourne un code d’état de réussite, la fonction `getData` est appelée pour mettre à jour la table HTML.
+Fetch envoie une requête HTTP POST dont le corps indique la tâche. Les options `accepts` et `contentType` sont définies avec la valeur `application/json` pour spécifier le type de média qui est reçu et envoyé. La tâche est convertie au format JSON à l’aide de [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Quand l’API retourne un code d’état de réussite, la fonction `getData` est appelée pour mettre à jour la table HTML.
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AddItem)]
 
