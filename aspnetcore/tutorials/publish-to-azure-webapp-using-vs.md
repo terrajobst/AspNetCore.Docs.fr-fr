@@ -6,18 +6,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: dbb8229a52c8c93da94406ad64d03eff9631afb4
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
-ms.translationtype: HT
+ms.openlocfilehash: 802d5c65423227e5fb7ccf39d692df2f0178ad34
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308332"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238189"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+::: moniker range=">= aspnetcore-3.0"
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
+
+::: moniker-end
+
 
 Consultez [Publier sur Azure à partir de Visual Studio pour Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) si vous utilisez macOS.
 
@@ -57,7 +61,7 @@ La boîte de dialogue **Modifier l’authentification** s’affiche.
 
 Visual Studio crée la solution.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 * Appuyez sur CTRL+F5 pour exécuter le projet.
 * Testez les liens **À propos de** et **Contact**.

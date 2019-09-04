@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 43b6c3b55170eaf3a989d0f2779edac5290df823
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: cc2ee50cd887a14fba2141bee13d65e777c16232
+ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67855908"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70145763"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
@@ -444,7 +444,7 @@ spec:
 
 L’exemple d’application montre un contrôle d’intégrité de mémoire avec un enregistreur de réponse personnalisé.
 
-`MemoryHealthCheck` signale un état détérioré si l’application utilise plus de mémoire que le seuil défini (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application (*MemoryHealthCheck.cs*) :
+`MemoryHealthCheck`signale un État non sain si l’application utilise plus d’un seuil de mémoire donné (1 Go dans l’exemple d’application). <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult> inclut des informations de récupérateur de mémoire pour l’application (*MemoryHealthCheck.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/MemoryHealthCheck.cs?name=snippet1)]
 
@@ -603,7 +603,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -700,4 +700,4 @@ app.MapWhen(
 app.UseMvc();
 ```
 
-Pour plus d’informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
+Pour plus d'informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.

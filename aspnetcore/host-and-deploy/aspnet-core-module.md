@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 07/01/2019
 uid: host-and-deploy/aspnet-core-module
 ms.openlocfilehash: 4a360023cc7fab2f066d490f7f368fc35815703a
-ms.sourcegitcommit: eb3e51d58dd713eefc242148f45bd9486be3a78a
-ms.translationtype: HT
+ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "67500451"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
@@ -279,7 +279,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ::: moniker range=">= aspnetcore-2.2"
 
-| Attribut | Description | Par défaut |
+| Attribut | Description | Default |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -298,7 +298,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ::: moniker range="< aspnetcore-2.2"
 
-| Attribut | Description | Par défaut |
+| Attribut | Description | Default |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -382,7 +382,7 @@ L’exemple suivant définit deux variables d'environnement. `ASPNETCORE_ENVIRON
 > [!WARNING]
 > Affectez uniquement `Development` à la variable d’environnement `ASPNETCORE_ENVIRONMENT` sur les serveurs de test et de préproduction non accessibles aux réseaux non approuvés, par exemple Internet.
 
-## <a name="appofflinehtm"></a>app_offline.htm
+## <a name="app_offlinehtm"></a>app_offline.htm
 
 Si un fichier portant le nom *app_offline.htm* est détecté dans le répertoire racine d’une application, le module ASP.NET Core tente d’arrêter normalement l’application, puis interrompt le traitement des requêtes entrantes. Si l’application est toujours active après le nombre de secondes défini dans `shutdownTimeLimit`, le module ASP.NET Core met fin au processus en cours d’exécution.
 
