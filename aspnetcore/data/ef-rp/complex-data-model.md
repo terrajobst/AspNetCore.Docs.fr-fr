@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 34b977f70f3e7e58e4ab6fcf3d8f69800896a65d
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
-ms.translationtype: HT
+ms.openlocfilehash: ab29cf687c80551d275cae69f28b7576016bfff6
+ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059120"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70238123"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -59,7 +59,7 @@ Le code précédent ajoute une propriété `FullName` et les attributs suivants 
 
 Pour les dates d’inscription des étudiants, toutes les pages affichent actuellement l’heure du jour avec la date, alors que seule la date présente un intérêt. Vous pouvez avoir recours aux attributs d’annotation de données pour apporter une modification au code, permettant de corriger le format d’affichage dans chaque page qui affiche ces données. 
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -349,7 +349,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="the-department-entity"></a>Entité Department
 
-![Entité Department](complex-data-model/_static/department-entity.png)
+![Entité de service](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -390,7 +390,7 @@ public ICollection<Course> Courses { get; set; }
 
 Par convention, EF Core autorise la suppression en cascade pour les clés étrangères non nullables et pour les relations plusieurs à plusieurs. Ce comportement par défaut peut engendrer des règles de suppression en cascade circulaires. Les règles de suppression en cascade circulaires provoquent une exception quand une migration est ajoutée.
 
-Par exemple, si la propriété `Department.InstructorID` a été définie comme n’acceptant pas les valeurs Null, EF Core configure une règle de suppression en cascade. Dans ce cas, le service est supprimé quand le formateur désigné comme étant son administrateur est supprimé. Dans ce scénario, une règle de restriction est plus logique. L’API Fluent suivante définit une règle de restriction et désactive la suppression en cascade.
+Par exemple, si la propriété `Department.InstructorID` a été définie comme n’acceptant pas les valeurs Null, EF Core configure une règle de suppression en cascade. Dans ce cas, le service est supprimé quand le formateur désigné comme étant son administrateur est supprimé. Dans ce scénario, une règle de restriction est plus logique. L' [API Fluent](#fluent-api-alternative-to-attributes) suivante définit une règle de restriction et désactive la suppression en cascade.
 
   ```csharp
   modelBuilder.Entity<Department>()
@@ -610,7 +610,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 * Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```console
   dotnet ef database drop --force
@@ -632,7 +632,7 @@ Exécuter l’application. L’exécution de l’application entraîne l’exéc
 Ouvrez la base de données dans SSOX :
 
 * Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
-* Développez le nœud **Tables**. Les tables créées sont affichées.
+* Développez le noeud **Tables**. Les tables créées sont affichées.
 
   ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
@@ -749,7 +749,7 @@ Mettez à jour *Models/Student.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -1091,7 +1091,7 @@ Par exemple, si la propriété `Department.InstructorID` ne doit pas accepter le
 
 * EF Core configure une règle de suppression en cascade pour supprimer le service lorsque l’instructeur est supprimé.
 * La suppression du service lorsque l’instructeur est supprimé n’est pas le comportement souhaité.
-* L’API Fluent suivante définit une règle de restriction au lieu d’une cascade.
+* L' [API Fluent](#fluent-api-alternative-to-attributes) suivante définit une règle de restriction au lieu de cascade.
 
    ```csharp
    modelBuilder.Entity<Department>()
@@ -1278,7 +1278,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 Disposant à présent d’une base de données, vous devez réfléchir à la façon dont vous y apporterez des modifications. Ce tutoriel montre deux approches :
 
 * [Supprimer et recréer la base de données](#drop)
-* [Appliquer la migration à la base de données](#applyexisting) Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque** : Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
+* [Appliquer la migration à la base de données](#applyexisting) Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque**: Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
 
 <a name="drop"></a>
 
@@ -1315,7 +1315,7 @@ Exécuter l’application. L’exécution de l’application entraîne l’exéc
 Ouvrez la base de données dans SSOX :
 
 * Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
-* Développez le nœud **Tables**. Les tables créées sont affichées.
+* Développez le noeud **Tables**. Les tables créées sont affichées.
 
 ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
