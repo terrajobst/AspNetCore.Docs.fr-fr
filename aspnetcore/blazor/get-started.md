@@ -7,28 +7,28 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2019
 uid: blazor/get-started
-ms.openlocfilehash: 1358a2e92af9d9104e565718692b1ca1940b9d9e
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: 030c289e072efad43d4f6cdd63cba07cc623a090
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68993403"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310432"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core éblouissante
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
-Prise en main de éblouissant:
+Prise en main de éblouissant :
 
 1. Installez la dernière version du [Kit de développement logiciel (SDK) .net Core 3,0 Preview](https://dotnet.microsoft.com/download/dotnet-core/3.0) .
 
-1. Installez les modèles éblouissants en exécutant la commande suivante dans une interface de commande:
+1. Installez les modèles éblouissants en exécutant la commande suivante dans une interface de commande :
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview8.19405.7
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19424.4
    ```
 
-1. Suivez les instructions de votre choix d’outils:
+1. Suivez les instructions de votre choix d’outils :
 
    # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -40,7 +40,7 @@ Prise en main de éblouissant:
 
    4 \. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Créer**.
 
-   5 \. Pour une expérience éblouissante côté client, choisissez le modèle **application éblouissant** webassembly. Pour une expérience côté serveur éblouissant, choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement éblouissants, côté serveur et côté client, <xref:blazor/hosting-models>consultez.
+   5 \. Pour une expérience éblouissante côté client, choisissez le modèle **application éblouissant Webassembly** . Pour une expérience côté serveur éblouissant, choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement éblouissants, côté serveur et côté client, <xref:blazor/hosting-models>consultez.
 
    6 \. Appuyez sur **F5** pour exécuter l'application.
 
@@ -53,13 +53,13 @@ Prise en main de éblouissant:
 
    2 \. Installez le dernier [ C# Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-   3 \. Pour une expérience éblouissante côté client, exécutez la commande suivante dans une interface de commande:
+   3 \. Pour une expérience éblouissante côté client, exécutez la commande suivante dans une interface de commande :
 
       ```console
       dotnet new blazorwasm -o WebApplication1
       ```
 
-      Pour une expérience côté serveur éblouissant, exécutez la commande suivante dans une interface de commande:
+      Pour une expérience côté serveur éblouissant, exécutez la commande suivante dans une interface de commande :
 
       ```console
       dotnet new blazorserver -o WebApplication1
@@ -97,7 +97,7 @@ Prise en main de éblouissant:
 
    # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 
-   Pour une expérience éblouissante côté client, exécutez les commandes suivantes dans un interpréteur de commandes:
+   Pour une expérience éblouissante côté client, exécutez les commandes suivantes dans un interpréteur de commandes :
 
    ```console
    dotnet new blazorwasm -o WebApplication1
@@ -105,7 +105,7 @@ Prise en main de éblouissant:
    dotnet run
    ```
 
-   Pour une expérience côté serveur éblouissant, exécutez les commandes suivantes dans une interface de commande:
+   Pour une expérience côté serveur éblouissant, exécutez les commandes suivantes dans une interface de commande :
 
    ```console
    dotnet new blazorserver -o WebApplication1
@@ -119,7 +119,7 @@ Prise en main de éblouissant:
 
    ---
 
-Plusieurs pages sont disponibles à partir des onglets de la barre latérale:
+Plusieurs pages sont disponibles à partir des onglets de la barre latérale :
 
 * Dossier de base
 * Compteur
@@ -133,7 +133,7 @@ Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le c
 
 Une demande de `/counter` dans le navigateur, comme spécifié par la `@page` directive en haut, fait en sorte `Counter` que le composant restitue son contenu. Les composants sont rendus dans une représentation en mémoire de l’arborescence de rendu qui peut ensuite être utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.
 
-Chaque fois que le bouton **Click Me** est sélectionné:
+Chaque fois que le bouton **Click Me** est sélectionné :
 
 * L' `onclick` événement est déclenché.
 * La méthode `IncrementCount` est appelée.
@@ -150,7 +150,7 @@ Ajoutez un composant à un autre composant à l’aide de la syntaxe HTML. Par e
 
 Exécuter l’application. La page d’accueil possède son propre compteur fourni `Counter` par le composant.
 
-Les paramètres de composant sont spécifiés à l’aide d’attributs ou de [contenu enfant](xref:blazor/components#child-content), ce qui vous permet de définir des propriétés sur le composant enfant. Pour ajouter un paramètre au `Counter` composant, mettez à jour le bloc du `@code` composant:
+Les paramètres de composant sont spécifiés à l’aide d’attributs ou de [contenu enfant](xref:blazor/components#child-content), ce qui vous permet de définir des propriétés sur le composant enfant. Pour ajouter un paramètre au `Counter` composant, mettez à jour le bloc du `@code` composant :
 
 * Ajoutez une propriété publique pour `IncrementAmount` avec un `[Parameter]` attribut.
 * Modifiez la méthode `IncrementCount` pour utiliser `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.

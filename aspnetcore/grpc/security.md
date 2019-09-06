@@ -7,12 +7,12 @@ ms.author: jamesnk
 ms.custom: mvc
 ms.date: 07/07/2019
 uid: grpc/security
-ms.openlocfilehash: 4a70cb16d8397dbc69a626435fb72a0512788b14
-ms.sourcegitcommit: b40613c603d6f0cc71f3232c16df61550907f550
+ms.openlocfilehash: f84bec0ef485b701b2be36384a2e49b9b28e473d
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68308752"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310375"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>Considérations sur la sécurité dans gRPC pour ASP.NET Core
 
@@ -22,7 +22,7 @@ Cet article fournit des informations sur la sécurisation de gRPC avec .NET Core
 
 ## <a name="transport-security"></a>Sécurité de transport
 
-les messages gRPC sont envoyés et reçus à l’aide de HTTP/2. Nous vous recommandons d’utiliser les éléments suivants:
+les messages gRPC sont envoyés et reçus à l’aide de HTTP/2. Nous vous recommandons d’utiliser les éléments suivants :
 
 * [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246) permet de sécuriser les messages dans les applications gRPC de production.
 * les services gRPC doivent uniquement écouter les ports sécurisés et y répondre.
@@ -39,15 +39,15 @@ Les messages entrants aux clients et services gRPC sont chargés en mémoire. Le
 
 gRPC utilise des limites de taille par message pour gérer les messages entrants et sortants. Par défaut, gRPC limite les messages entrants à 4 Mo. Il n’existe aucune limite pour les messages sortants.
 
-Sur le serveur, les limites de messages gRPC peuvent être configurées pour tous les services `AddGrpc`d’une application avec:
+Sur le serveur, les limites de messages gRPC peuvent être configurées pour tous les services `AddGrpc`d’une application avec :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddGrpc(options =>
     {
-        options.ReceiveMaxMessageSize = 1 * 1024 * 1024;  // 1 megabyte
-        options.SendMaxMessageSize = 1 * 1024 * 1024;     // 1 megabyte
+        options.MaxReceiveMessageSize = 1 * 1024 * 1024; // 1 MB
+        options.MaxSendMessageSize = 1 * 1024 * 1024; // 1 MB
     });
 }
 ```
@@ -58,7 +58,7 @@ Les limites peuvent également être configurées pour un service `AddServiceOpt
 
 Les [certificats clients](https://tools.ietf.org/html/rfc5246#section-7.4.4) sont initialement validés lorsque la connexion est établie. Par défaut, Kestrel n’effectue pas de validation supplémentaire du certificat client d’une connexion.
 
-Nous recommandons que les services gRPC sécurisés par les certificats clients utilisent le package [Microsoft. AspNetCore. Authentication. Certificate](xref:security/authentication/certauth) . ASP.NET Core l’authentification de certification effectue une validation supplémentaire sur un certificat client, notamment:
+Nous recommandons que les services gRPC sécurisés par les certificats clients utilisent le package [Microsoft. AspNetCore. Authentication. Certificate](xref:security/authentication/certauth) . ASP.NET Core l’authentification de certification effectue une validation supplémentaire sur un certificat client, notamment :
 
 * Le certificat a une utilisation avancée de la clé (EKU) valide
 * Est dans sa période de validité

@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/04/2019
 uid: blazor/components
-ms.openlocfilehash: 07e9153ccfdc78d1da57b815d33220f7fa597cc7
-ms.sourcegitcommit: 4b00e77f9984ce76356e829cfe7f75f0f61a7a8f
+ms.openlocfilehash: ce9da14bbe19cbee960d215f6167a0e760bd607a
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70145736"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310384"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -28,7 +28,7 @@ Les composants sont implémentés dans les fichiers de composants [Razor](xref:m
 
 Le nom d’un composant doit commencer par un caractère majuscule. Par exemple, *MyCoolComponent. Razor* est valide et *MyCoolComponent. Razor* n’est pas valide.
 
-Les composants peuvent être créés à l’aide de l’extension de fichier *. cshtml* tant que les fichiers sont identifiés en tant que `_RazorComponentInclude` fichiers de composant Razor à l’aide de la propriété MSBuild. Par exemple, une application qui spécifie que tous les fichiers *. cshtml* sous le dossier *pages* doivent être traités comme des fichiers de composants Razor:
+Les composants peuvent être créés à l’aide de l’extension de fichier *. cshtml* tant que les fichiers sont identifiés en tant que `_RazorComponentInclude` fichiers de composant Razor à l’aide de la propriété MSBuild. Par exemple, une application qui spécifie que tous les fichiers *. cshtml* sous le dossier *pages* doivent être traités comme des fichiers de composants Razor :
 
 ```xml
 <PropertyGroup>
@@ -43,7 +43,7 @@ Les membres de la classe de composants sont définis dans un bloc `@code`. Dans 
 > [!NOTE]
 > Dans les préversions précédentes de ASP.net Core 3,0 `@functions` , les blocs étaient utilisés dans les mêmes `@code` buts que les blocs dans les composants Razor. `@functions`les blocs continuent de fonctionner dans les composants Razor, mais nous vous `@code` recommandons d’utiliser le bloc dans ASP.net Core 3,0 Preview 6 ou version ultérieure.
 
-Les membres de composant peuvent être utilisés dans le cadre de la logique de C# rendu du composant à `@`l’aide d’expressions qui commencent par. Par exemple, un C# champ est rendu en préfixant `@` le nom du champ. L’exemple suivant évalue et affiche:
+Les membres de composant peuvent être utilisés dans le cadre de la logique de C# rendu du composant à `@`l’aide d’expressions qui commencent par. Par exemple, un C# champ est rendu en préfixant `@` le nom du champ. L’exemple suivant évalue et affiche :
 
 * `_headingFontStyle`à la valeur de propriété CSS `font-style`pour.
 * `_headingText`au contenu de l' `<h1>` élément.
@@ -59,7 +59,7 @@ Les membres de composant peuvent être utilisés dans le cadre de la logique de 
 
 Une fois le composant restitué initialement, le composant régénère son arborescence de rendu en réponse aux événements. Il compare ensuite la nouvelle arborescence de rendu à la précédente et applique toutes les modifications à la Document Object Model du navigateur (DOM).
 
-Les composants sont C# des classes ordinaires qui peuvent être placées n’importe où dans un projet. Les composants qui produisent des pages Web résident généralement dans le dossier *pages* . Les composants qui ne sont pas des pages sont souvent placés dans le dossier *partagé* ou dans un dossier personnalisé ajouté au projet. Pour utiliser un dossier personnalisé, ajoutez l’espace de noms du dossier personnalisé au composant parent ou au fichier *_Imports. Razor* de l’application. Par exemple, l’espace de noms suivant rend les composants dans un dossier de *composants* disponibles lorsque l’espace `WebApplication`de noms racine de l’application est:
+Les composants sont C# des classes ordinaires qui peuvent être placées n’importe où dans un projet. Les composants qui produisent des pages Web résident généralement dans le dossier *pages* . Les composants qui ne sont pas des pages sont souvent placés dans le dossier *partagé* ou dans un dossier personnalisé ajouté au projet. Pour utiliser un dossier personnalisé, ajoutez l’espace de noms du dossier personnalisé au composant parent ou au fichier *_Imports. Razor* de l’application. Par exemple, l’espace de noms suivant rend les composants dans un dossier de *composants* disponibles lorsque l’espace `WebApplication`de noms racine de l’application est :
 
 ```cshtml
 @using WebApplication.Components
@@ -69,11 +69,11 @@ Les composants sont C# des classes ordinaires qui peuvent être placées n’imp
 
 Utilisez des composants avec des applications Razor Pages et MVC existantes. Il n’est pas nécessaire de réécrire des pages ou des vues existantes pour utiliser des composants Razor. Lorsque la page ou la vue est restituée, les composants sont prérendus en même temps.
 
-Pour afficher un composant à partir d’une page ou d’une `RenderComponentAsync<TComponent>` vue, utilisez la méthode d’assistance HTML:
+Pour afficher un composant à partir d’une page ou d’une `RenderComponentAsync<TComponent>` vue, utilisez la méthode d’assistance HTML :
 
 ```cshtml
-<div id="Counter">
-    @(await Html.RenderComponentAsync<Counter>(new { IncrementAmount = 10 }))
+<div id="MyComponent">
+    @(await Html.RenderComponentAsync<MyComponent>(RenderMode.ServerPrerendered))
 </div>
 ```
 
@@ -87,7 +87,7 @@ Les composants peuvent inclure d’autres composants en les déclarant à l’ai
 
 La liaison d’attribut respecte la casse. Par exemple, `@bind` est valide et `@Bind` n’est pas valide.
 
-Le balisage suivant dans *index. Razor* rend une `HeadingComponent` instance de:
+Le balisage suivant dans *index. Razor* rend une `HeadingComponent` instance de :
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/Index.razor?name=snippet_HeadingComponent)]
 
@@ -132,9 +132,9 @@ Les éléments `ParentComponent` suivants peuvent fournir du contenu pour `Child
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Réprojection d’attribut et paramètres arbitraires
 
-Les composants peuvent capturer et restituer des attributs supplémentaires en plus des paramètres déclarés du composant. Des attributs supplémentaires peuvent être capturés dans un dictionnaire , puis réintégrés à un élément lorsque le composant est rendu [@attributes](xref:mvc/views/razor#attributes) à l’aide de la directive Razor. Ce scénario est utile lors de la définition d’un composant qui produit un élément de balisage qui prend en charge diverses personnalisations. Par exemple, il peut être fastidieux de définir des attributs séparément pour `<input>` un qui prend en charge de nombreux paramètres.
+Les composants peuvent capturer et restituer des attributs supplémentaires en plus des paramètres déclarés du composant. Des attributs supplémentaires peuvent être capturés dans un dictionnaire *, puis* réintégrés à un élément lorsque le composant est rendu [@attributes](xref:mvc/views/razor#attributes) à l’aide de la directive Razor. Ce scénario est utile lors de la définition d’un composant qui produit un élément de balisage qui prend en charge diverses personnalisations. Par exemple, il peut être fastidieux de définir des attributs séparément pour `<input>` un qui prend en charge de nombreux paramètres.
 
-Dans l’exemple suivant, le premier `<input>` élément (`id="useIndividualParams"`) utilise des paramètres de composant individuels, tandis que`id="useAttributesDict"`le deuxième `<input>` élément () utilise la projection d’attributs:
+Dans l’exemple suivant, le premier `<input>` élément (`id="useIndividualParams"`) utilise des paramètres de composant individuels, tandis que`id="useAttributesDict"`le deuxième `<input>` élément () utilise la projection d’attributs :
 
 ```cshtml
 <input id="useIndividualParams"
@@ -173,7 +173,7 @@ Dans l’exemple suivant, le premier `<input>` élément (`id="useIndividualPara
 
 Le type du paramètre doit implémenter `IEnumerable<KeyValuePair<string, object>>` avec des clés de chaîne. L' `IReadOnlyDictionary<string, object>` utilisation de est également une option dans ce scénario.
 
-Les éléments `<input>` rendus à l’aide des deux approches sont identiques:
+Les éléments `<input>` rendus à l’aide des deux approches sont identiques :
 
 ```html
 <input id="useIndividualParams"
@@ -189,7 +189,7 @@ Les éléments `<input>` rendus à l’aide des deux approches sont identiques:
        size="50">
 ```
 
-Pour accepter des attributs arbitraires, définissez un paramètre de `[Parameter]` composant à l' `CaptureUnmatchedValues` aide de l' `true`attribut avec la propriété définie sur:
+Pour accepter des attributs arbitraires, définissez un paramètre de `[Parameter]` composant à l' `CaptureUnmatchedValues` aide de l' `true`attribut avec la propriété définie sur :
 
 ```cshtml
 @code {
@@ -202,7 +202,7 @@ La `CaptureUnmatchedValues` propriété sur `[Parameter]` permet au paramètre d
 
 ## <a name="data-binding"></a>Liaison de données
 
-La liaison de données aux composants et aux éléments DOM s’effectue [@bind](xref:mvc/views/razor#bind) à l’aide de l’attribut. L’exemple suivant lie le `_italicsCheck` champ à l’état activé de la case à cocher:
+La liaison de données aux composants et aux éléments DOM s’effectue [@bind](xref:mvc/views/razor#bind) à l’aide de l’attribut. L’exemple suivant lie le `_italicsCheck` champ à l’état activé de la case à cocher :
 
 ```cshtml
 <input type="checkbox" class="form-check-input" id="italicsCheck" 
@@ -213,7 +213,7 @@ Lorsque la case à cocher est activée et désactivée, la valeur de `true` la `
 
 La case à cocher est mise à jour dans l’interface utilisateur uniquement lorsque le composant est rendu, et non en réponse à la modification de la valeur de la propriété. Étant donné que les composants s’affichent après l’exécution du code du gestionnaire d’événements, les mises à jour de propriétés sont généralement reflétées dans l’interface utilisateur immédiatement.
 
-L' `@bind` utilisation de `CurrentValue` avec une`<input @bind="CurrentValue" />`propriété () équivaut essentiellement à ce qui suit:
+L' `@bind` utilisation de `CurrentValue` avec une`<input @bind="CurrentValue" />`propriété () équivaut essentiellement à ce qui suit :
 
 ```cshtml
 <input value="@CurrentValue"
@@ -222,7 +222,7 @@ L' `@bind` utilisation de `CurrentValue` avec une`<input @bind="CurrentValue" />
 
 Lors du rendu du composant, le `value` de l’élément d’entrée provient de `CurrentValue` la propriété. Lorsque l’utilisateur tape dans la zone de texte, `onchange` l’événement est déclenché et `CurrentValue` la propriété est définie sur la valeur modifiée. En réalité, la génération de code est un peu plus complexe `@bind` , car gère quelques cas où des conversions de type sont effectuées. En principe, `@bind` associe la valeur actuelle d’une expression à `value` un attribut et gère les modifications à l’aide du gestionnaire inscrit.
 
-En plus de gérer `onchange` les événements `@bind` avec la syntaxe, une propriété ou un champ peut être lié à l’aide [@bind-value](xref:mvc/views/razor#bind) d’autres événements `event` en spécifiant un attribut avec un paramètre ([@bind-value:event](xref:mvc/views/razor#bind)). L’exemple suivant lie la `CurrentValue` propriété de l' `oninput` événement:
+En plus de gérer `onchange` les événements `@bind` avec la syntaxe, une propriété ou un champ peut être lié à l’aide [@bind-value](xref:mvc/views/razor#bind) d’autres événements `event` en spécifiant un attribut avec un paramètre ([@bind-value:event](xref:mvc/views/razor#bind)). L’exemple suivant lie la `CurrentValue` propriété de l' `oninput` événement :
 
 ```cshtml
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
@@ -236,18 +236,18 @@ Contrairement `onchange`à, qui se déclenche lorsque l’élément perd `oninpu
 
 La culture actuelle est accessible à partir de <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName> la propriété.
 
-[CultureInfo. InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture) est utilisé pour les types de champ suivants`<input type="{TYPE}" />`():
+[CultureInfo. InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture) est utilisé pour les types de champ suivants`<input type="{TYPE}" />`() :
 
 * `date`
 * `number`
 
-Les types de champ précédents:
+Les types de champ précédents :
 
 * Sont affichés à l’aide des règles de mise en forme appropriées basées sur le navigateur.
 * Ne peut pas contenir de texte de forme libre.
 * Fournir des caractéristiques d’interaction de l’utilisateur en fonction de l’implémentation du navigateur.
 
-Les types de champs suivants ont des exigences de mise en forme spécifiques et ne sont pas actuellement pris en charge par éblouissant, car ils ne sont pas pris en charge par tous les principaux navigateurs:
+Les types de champs suivants ont des exigences de mise en forme spécifiques et ne sont pas actuellement pris en charge par éblouissant, car ils ne sont pas pris en charge par tous les principaux navigateurs :
 
 * `datetime-local`
 * `month`
@@ -270,7 +270,7 @@ La liaison de données <xref:System.DateTime> fonctionne avec les [@bind:format]
 }
 ```
 
-Dans le code précédent, le `<input>` type de champ de l'`type`élément () est `text`défini par défaut sur. `@bind:format`est pris en charge pour la liaison des types .NET suivants:
+Dans le code précédent, le `<input>` type de champ de l'`type`élément () est `text`défini par défaut sur. `@bind:format`est pris en charge pour la liaison des types .NET suivants :
 
 * <xref:System.DateTime?displayProperty=fullName>
 * <xref:System.DateTime?displayProperty=fullName>?
@@ -285,7 +285,7 @@ Il n’est pas recommandé `date` de spécifier un format pour le type de champ,
 
 La liaison reconnaît les paramètres du `@bind-{property}` composant, où peut lier une valeur de propriété à plusieurs composants.
 
-Le composant enfant suivant (`ChildComponent`) a un `Year` paramètre de composant `YearChanged` et un rappel:
+Le composant enfant suivant (`ChildComponent`) a un `Year` paramètre de composant `YearChanged` et un rappel :
 
 ```cshtml
 <h2>Child Component</h2>
@@ -303,7 +303,7 @@ Le composant enfant suivant (`ChildComponent`) a un `Year` paramètre de composa
 
 `EventCallback<T>`est expliqué dans la section [EventCallback suivante](#eventcallback) .
 
-Le composant parent suivant utilise `ChildComponent` et lie le `ParentYear` paramètre `Year` du parent au paramètre sur le composant enfant:
+Le composant parent suivant utilise `ChildComponent` et lie le `ParentYear` paramètre `Year` du parent au paramètre sur le composant enfant :
 
 ```cshtml
 @page "/ParentComponent"
@@ -329,7 +329,7 @@ Le composant parent suivant utilise `ChildComponent` et lie le `ParentYear` para
 }
 ```
 
-Le chargement `ParentComponent` de génère le balisage suivant:
+Le chargement `ParentComponent` de génère le balisage suivant :
 
 ```html
 <h1>Parent Component</h1>
@@ -341,7 +341,7 @@ Le chargement `ParentComponent` de génère le balisage suivant:
 <p>Year: 1978</p>
 ```
 
-Si la valeur de la `ParentYear` propriété est modifiée en sélectionnant le bouton dans `ParentComponent`le `ChildComponent` , `Year` la propriété de est mise à jour. La nouvelle valeur de `Year` est rendue dans l’interface utilisateur lorsque `ParentComponent` le est restitué à nouveau:
+Si la valeur de la `ParentYear` propriété est modifiée en sélectionnant le bouton dans `ParentComponent`le `ChildComponent` , `Year` la propriété de est mise à jour. La nouvelle valeur de `Year` est rendue dans l’interface utilisateur lorsque `ParentComponent` le est restitué à nouveau :
 
 ```html
 <h1>Parent Component</h1>
@@ -355,13 +355,13 @@ Si la valeur de la `ParentYear` propriété est modifiée en sélectionnant le b
 
 Le `Year` paramètre peut être lié, car il a un `YearChanged` événement auxiliaire qui `Year` correspond au type du paramètre.
 
-Par Convention, `<ChildComponent @bind-Year="ParentYear" />` est essentiellement équivalent à l’écriture:
+Par Convention, `<ChildComponent @bind-Year="ParentYear" />` est essentiellement équivalent à l’écriture :
 
 ```cshtml
 <ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
 ```
 
-En général, une propriété peut être liée à un gestionnaire d’événements correspondant `@bind-property:event` à l’aide de l’attribut. Par exemple, la propriété `MyProp` peut être liée à `MyEventHandler` à l’aide des deux attributs suivants:
+En général, une propriété peut être liée à un gestionnaire d’événements correspondant `@bind-property:event` à l’aide de l’attribut. Par exemple, la propriété `MyProp` peut être liée à `MyEventHandler` à l’aide des deux attributs suivants :
 
 ```cshtml
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
@@ -371,7 +371,7 @@ En général, une propriété peut être liée à un gestionnaire d’événemen
 
 Les composants Razor fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML `on{event}` nommé (par exemple `onclick` , `onsubmit`et) avec une valeur typée de type délégué, les composants Razor traitent la valeur de l’attribut en tant que gestionnaire d’événements. Le nom de l’attribut est toujours mis en forme [ @on{Event}](xref:mvc/views/razor#onevent).
 
-Le code suivant appelle la `UpdateHeading` méthode lorsque le bouton est sélectionné dans l’interface utilisateur:
+Le code suivant appelle la `UpdateHeading` méthode lorsque le bouton est sélectionné dans l’interface utilisateur :
 
 ```cshtml
 <button class="btn btn-primary" @onclick="UpdateHeading">
@@ -386,7 +386,7 @@ Le code suivant appelle la `UpdateHeading` méthode lorsque le bouton est sélec
 }
 ```
 
-Le code suivant appelle la `CheckChanged` méthode lorsque la case à cocher est modifiée dans l’interface utilisateur:
+Le code suivant appelle la `CheckChanged` méthode lorsque la case à cocher est modifiée dans l’interface utilisateur :
 
 ```cshtml
 <input type="checkbox" class="form-check-input" @onchange="CheckChanged" />
@@ -401,7 +401,7 @@ Le code suivant appelle la `CheckChanged` méthode lorsque la case à cocher est
 
 Les gestionnaires d’événements peuvent également être asynchrones et <xref:System.Threading.Tasks.Task>retourner un. Il n’est pas nécessaire d’appeler `StateHasChanged()`manuellement. Les exceptions sont journalisées lorsqu’elles se produisent.
 
-Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand le bouton est sélectionné:
+Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand le bouton est sélectionné :
 
 ```cshtml
 <button class="btn btn-primary" @onclick="UpdateHeading">
@@ -420,33 +420,33 @@ Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand
 
 Pour certains événements, les types d’arguments d’événement sont autorisés. Si l’accès à l’un de ces types d’événements n’est pas nécessaire, il n’est pas obligatoire dans l’appel de la méthode.
 
-Les [UIEventArgs](https://github.com/aspnet/AspNetCore/blob/release/3.0-preview8/src/Components/Components/src/UIEventArgs.cs) prises en charge sont indiquées dans le tableau suivant.
+Les éléments [EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web) pris en charge sont présentés dans le tableau suivant.
 
 | Événement | Classe |
 | ----- | ----- |
-| Presse-papiers | `UIClipboardEventArgs` |
-| Déplacez  | `UIDragEventArgs`est utilisé pour contenir les données glissées pendant une opération de glisser-déplacer et peut contenir un ou `UIDataTransferItem`plusieurs. &ndash; `DataTransfer` `UIDataTransferItem`représente un élément de données de glissement. |
-| Error | `UIErrorEventArgs` |
-| Focus | `UIFocusEventArgs`N’inclut pas la prise en charge de `relatedTarget`. &ndash; |
-| Modification de`<input>` | `UIChangeEventArgs` |
-| Clavier | `UIKeyboardEventArgs` |
-| Souris | `UIMouseEventArgs` |
-| Pointeur de la souris | `UIPointerEventArgs` |
-| Roulette de la souris | `UIWheelEventArgs` |
-| Progression | `UIProgressEventArgs` |
-| Entrées tactiles | `UITouchEventArgs`&ndash; représenteunpointdecontactunique`UITouchPoint` sur un appareil tactile. |
+| Presse-papiers        | `ClipboardEventArgs` |
+| Déplacez             | `DragEventArgs`et contiennent des`DataTransferItem` données d’élément glissées. &ndash; `DataTransfer` |
+| Error            | `ErrorEventArgs` |
+| Focus            | `FocusEventArgs`N’inclut pas la prise en charge de `relatedTarget`. &ndash; |
+| Modification de`<input>` | `ChangeEventArgs` |
+| Clavier         | `KeyboardEventArgs` |
+| Souris            | `MouseEventArgs` |
+| Pointeur de la souris    | `PointerEventArgs` |
+| Roulette de la souris      | `WheelEventArgs` |
+| Progression         | `ProgressEventArgs` |
+| Entrées tactiles            | `TouchEventArgs`&ndash; représenteunpointdecontactunique`TouchPoint` sur un appareil tactile. |
 
-Pour plus d’informations sur les propriétés et le comportement de gestion des événements des événements du tableau précédent, consultez [classes EventArgs dans la source de référence (ASPNET/AspNetCore Release/3.0-preview9 Branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src).
+Pour plus d’informations sur les propriétés et le comportement de gestion des événements des événements du tableau précédent, consultez [classes EventArgs dans la source de référence (ASPNET/AspNetCore Release/3.0-preview9 Branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web).
 
 ### <a name="lambda-expressions"></a>Expressions lambda
 
-Les expressions lambda peuvent également être utilisées:
+Les expressions lambda peuvent également être utilisées :
 
 ```cshtml
 <button @onclick="@(e => Console.WriteLine("Hello, world!"))">Say hello</button>
 ```
 
-Il est souvent pratique de se rapprocher de valeurs supplémentaires, par exemple lors de l’itération sur un ensemble d’éléments. L’exemple suivant crée trois boutons, chacun d’entre eux `UpdateHeading` qui passe un argument d'`UIMouseEventArgs`événement () et son numéro`buttonNumber`de bouton () lorsqu’ils sont sélectionnés dans l’interface utilisateur:
+Il est souvent pratique de se rapprocher de valeurs supplémentaires, par exemple lors de l’itération sur un ensemble d’éléments. L’exemple suivant crée trois boutons, chacun d’entre eux `UpdateHeading` qui passe un argument d'`UIMouseEventArgs`événement () et son numéro`buttonNumber`de bouton () lorsqu’ils sont sélectionnés dans l’interface utilisateur :
 
 ```cshtml
 <h2>@message</h2>
@@ -479,7 +479,7 @@ Il est souvent pratique de se rapprocher de valeurs supplémentaires, par exempl
 
 Un scénario courant avec des composants imbriqués est le désir d’exécuter la méthode d’un composant parent lorsqu’un événement de&mdash;composant enfant se produit, `onclick` par exemple, lorsqu’un événement se produit dans l’enfant. Pour exposer des événements entre les composants, `EventCallback`utilisez un. Un composant parent peut affecter une méthode de rappel à un composant `EventCallback`enfant.
 
-L `ChildComponent` 'de l’exemple d’application montre comment un `onclick` gestionnaire de bouton est configuré pour recevoir `EventCallback` un délégué à partir de `ParentComponent`l’exemple de. Le `EventCallback` est typé avec `UIMouseEventArgs`, ce qui est approprié pour `onclick` un événement à partir d’un périphérique:
+L `ChildComponent` 'de l’exemple d’application montre comment un `onclick` gestionnaire de bouton est configuré pour recevoir `EventCallback` un délégué à partir de `ParentComponent`l’exemple de. Le `EventCallback` est typé avec `UIMouseEventArgs`, ce qui est approprié pour `onclick` un événement à partir d’un périphérique :
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
@@ -507,7 +507,7 @@ Lorsque le bouton est sélectionné dans le `ChildComponent`:
 }
 ```
 
-`InvokeAsync` <xref:System.Threading.Tasks.Task>Appelez ou avec`EventCallback<T>` et en attente de: `EventCallback`
+`InvokeAsync` <xref:System.Threading.Tasks.Task>Appelez ou avec`EventCallback<T>` et en attente de : `EventCallback`
 
 ```csharp
 await callback.InvokeAsync(arg);
@@ -519,14 +519,13 @@ Préférez le fortement typé `EventCallback<T>`. `EventCallback` `EventCallback
 
 ## <a name="capture-references-to-components"></a>Capturer des références à des composants
 
-Les références de composant offrent un moyen de référencer une instance de composant afin que vous puissiez émettre des commandes vers `Show` cette `Reset`instance, telles que ou. Pour capturer une référence de composant:
+Les références de composant offrent un moyen de référencer une instance de composant afin que vous puissiez émettre des commandes vers `Show` cette `Reset`instance, telles que ou. Pour capturer une référence de composant :
 
 * Ajoutez un [@ref](xref:mvc/views/razor#ref) attribut au composant enfant.
 * Définissez un champ avec le même type que le composant enfant.
-* Fournissez `@ref:suppressField` le paramètre, qui supprime la génération de champ de sauvegarde. Pour plus d’informations, consultez Suppression de la [prise en charge @ref du champ de stockage automatique pour dans 3.0.0-preview9](https://github.com/aspnet/Announcements/issues/381).
 
 ```cshtml
-<MyLoginDialog @ref="loginDialog" @ref:suppressField ... />
+<MyLoginDialog @ref="loginDialog" ... />
 
 @code {
     private MyLoginDialog loginDialog;
@@ -543,34 +542,67 @@ Lors du rendu du composant, `loginDialog` le champ est rempli avec l’instance 
 > [!IMPORTANT]
 > La `loginDialog` variable est remplie uniquement après le rendu du composant et sa sortie comprend l' `MyLoginDialog` élément. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant `OnAfterRenderAsync` , `OnAfterRender` utilisez les méthodes ou.
 
-<!-- HOLD https://github.com/aspnet/AspNetCore.Docs/pull/13818
-Component references provide a way to reference a component instance so that you can issue commands to that instance, such as `Show` or `Reset`.
-
-The Razor compiler automatically generates a backing field for element and component references when using [@ref](xref:mvc/views/razor#ref). In the following example, there's no need to create a `myLoginDialog` field for the `LoginDialog` component:
-
-```cshtml
-<LoginDialog @ref="myLoginDialog" ... />
-
-@code {
-    private void OnSomething()
-    {
-        myLoginDialog.Show();
-    }
-}
-```
-
-When the component is rendered, the generated `myLoginDialog` field is populated with the `LoginDialog` component instance. You can then invoke .NET methods on the component instance.
-
-In some cases, a backing field is required. For example, declare a backing field when referencing generic components. To suppress backing field generation, specify the `@ref:suppressField` parameter.
-
-> [!IMPORTANT]
-> The generated `myLoginDialog` variable is only populated after the component is rendered and its output includes the `LoginDialog` element. Until that point, there's nothing to reference. To manipulate components references after the component has finished rendering, use the `OnAfterRenderAsync` or `OnAfterRender` methods.
--->
-
 Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composant ne sont pas&mdash;transmises au code JavaScript et ne sont utilisées que dans le code .net.
 
 > [!NOTE]
 > N’utilisez **pas** de références de composant pour muter l’état des composants enfants. Utilisez plutôt des paramètres déclaratifs normaux pour passer des données aux composants enfants. L’utilisation de paramètres déclaratifs normaux entraîne le rerendu automatique des composants enfants.
+
+## <a name="invoke-component-methods-externally-to-update-state"></a>Appeler des méthodes de composant en externe pour mettre à jour l’État
+
+Éblouissant utilise un `SynchronizationContext` pour appliquer un seul thread logique d’exécution. Les méthodes de cycle de vie d’un composant et les rappels d’événements déclenchés par éblouissant sont `SynchronizationContext`exécutés sur ce. Dans le cas où un composant doit être mis à jour en fonction d’un événement externe, tel qu’un minuteur ou `InvokeAsync` d’autres notifications, utilisez la méthode, `SynchronizationContext`qui sera réexpédiée vers le.
+
+Par exemple, considérez un *service de notification* qui peut notifier n’importe quel composant d’écoute de l’État mis à jour :
+
+```csharp
+public class NotifierService
+{
+    // Can be called from anywhere
+    public async Task Update(string key, int value)
+    {
+        if (Notify != null)
+        {
+            await Notify.Invoke(key, value);
+        }
+    }
+
+    public event Action<string, int, Task> Notify;
+}
+```
+
+Utilisation du `NotifierService` pour mettre à jour un composant :
+
+```cshtml
+@page "/"
+@inject NotifierService Notifier
+@implements IDisposable
+
+<p>Last update: @lastNotification.key = @lastNotification.value</p>
+
+@code {
+    private (string key, int value) lastNotification;
+
+    protected override void OnInitialized()
+    {
+        Notifier.Notify += OnNotify;
+    }
+
+    public async Task OnNotify(string key, int value)
+    {
+        await InvokeAsync(() =>
+        {
+            lastNotification = (key, value);
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        Notifier.Notify -= OnNotify;
+    }
+}
+```
+
+Dans l’exemple précédent, `NotifierService` appelle la méthode du `OnNotify` composant `SynchronizationContext`en dehors de l’élément éblouissant. `InvokeAsync`est utilisé pour basculer vers le contexte correct et pour la mise en file d’attente d’un rendu.
 
 ## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Utiliser \@la clé pour contrôler la conservation des éléments et des composants
 
@@ -592,7 +624,7 @@ Prenons l'exemple suivant :
 
 Le contenu de la `People` collection peut changer avec des entrées insérées, supprimées ou réorganisées. Lors du rerendu du composant, le `<DetailsEditor>` composant peut changer pour recevoir des `Details` valeurs de paramètre différentes. Cela peut entraîner un rerendu plus complexe que prévu. Dans certains cas, le rerendu peut entraîner des différences de comportement visibles, telles que le focus de l’élément perdu.
 
-Le processus de mappage peut être contrôlé à `@key` l’aide de l’attribut directive. `@key`force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé:
+Le processus de mappage peut être contrôlé à `@key` l’aide de l’attribut directive. `@key`force l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé :
 
 ```csharp
 @foreach (var person in People)
@@ -606,7 +638,7 @@ Le processus de mappage peut être contrôlé à `@key` l’aide de l’attribut
 }
 ```
 
-Lorsque la `People` collection est modifiée, l’algorithme de comparaison conserve l’Association `<DetailsEditor>` entre les `person` instances et les instances:
+Lorsque la `People` collection est modifiée, l’algorithme de comparaison conserve l’Association `<DetailsEditor>` entre les `person` instances et les instances :
 
 * Si un `Person` est supprimé de la `People` liste, seule l’instance `<DetailsEditor>` correspondante est supprimée de l’interface utilisateur. Les autres instances restent inchangées.
 * Si un `Person` est inséré à une position dans la liste, une nouvelle `<DetailsEditor>` instance est insérée à cette position correspondante. Les autres instances restent inchangées.
@@ -621,7 +653,7 @@ Dans certains scénarios, l’utilisation `@key` de réduit la complexité du re
 
 En règle générale, il est judicieux `@key` d’utiliser chaque fois qu’une liste est rendue (par `@foreach` exemple, dans un bloc) et qu’une `@key`valeur appropriée existe pour définir.
 
-Vous pouvez également utiliser `@key` pour empêcher éblouissant de conserver un élément ou une sous-arborescence de composants lorsqu’un objet change:
+Vous pouvez également utiliser `@key` pour empêcher éblouissant de conserver un élément ou une sous-arborescence de composants lorsqu’un objet change :
 
 ```cshtml
 <div @key="@currentPerson">
@@ -639,7 +671,7 @@ Même si `@key` n’est pas utilisé, éblouissant conserve autant que possible 
 
 ### <a name="what-values-to-use-for-key"></a>Valeurs à utiliser pour \@la clé
 
-En règle générale, il est logique de fournir l’un des types de valeur `@key`suivants pour:
+En règle générale, il est logique de fournir l’un des types de valeur `@key`suivants pour :
 
 * Instances d’objet de modèle (par exemple `Person` , une instance comme dans l’exemple précédent). Cela garantit la préservation en fonction de l’égalité des références d’objet.
 * Identificateurs uniques (par exemple, les valeurs de clé primaire `int`de `string`type, `Guid`ou).
@@ -648,7 +680,7 @@ Vérifiez que les valeurs utilisées `@key` pour ne sont pas en conflit. Si les 
 
 ## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
-`OnInitializedAsync`et `OnInitialized` exécuter le code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le `await` mot clé sur l’opération:
+`OnInitializedAsync`et `OnInitialized` exécuter le code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le `await` mot clé sur l’opération :
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -666,7 +698,7 @@ protected override void OnInitialized()
 }
 ```
 
-`OnParametersSetAsync`et `OnParametersSet` sont appelées lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et chaque fois que le composant est rendu:
+`OnParametersSetAsync`et `OnParametersSet` sont appelées lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et chaque fois que le composant est rendu :
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -710,7 +742,7 @@ Dans le `FetchData` composant des modèles éblouissant, `OnInitializedAsync` es
 
 ### <a name="execute-code-before-parameters-are-set"></a>Exécuter du code avant la définition des paramètres
 
-`SetParameters`peut être substitué pour exécuter du code avant que les paramètres soient définis:
+`SetParameters`peut être substitué pour exécuter du code avant que les paramètres soient définis :
 
 ```csharp
 public override void SetParameters(ParameterView parameters)
@@ -738,7 +770,7 @@ protected override bool ShouldRender()
 
 ## <a name="component-disposal-with-idisposable"></a>Suppression de composant avec IDisposable
 
-Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose) est appelée lorsque le composant est supprimé de l’interface utilisateur. Le composant suivant utilise `@implements IDisposable` et la `Dispose` méthode:
+Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose) est appelée lorsque le composant est supprimé de l’interface utilisateur. Le composant suivant utilise `@implements IDisposable` et la `Dispose` méthode :
 
 ```csharp
 @using System
@@ -774,9 +806,9 @@ Les composants peuvent recevoir des paramètres de routage du modèle de routage
 
 Les paramètres facultatifs ne sont pas `@page` pris en charge. deux directives sont donc appliquées dans l’exemple ci-dessus. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième `@page` directive prend le `{text}` paramètre d’itinéraire et assigne la valeur à `Text` la propriété.
 
-## <a name="base-class-inheritance-for-a-code-behind-experience"></a>Héritage de la classe de base pour une expérience «code-behind»
+## <a name="base-class-inheritance-for-a-code-behind-experience"></a>Héritage de la classe de base pour une expérience « code-behind »
 
-Les fichiers de composants associent C# le balisage HTML et le code de traitement dans le même fichier. La `@inherits` directive peut être utilisée pour fournir des applications éblouissantes avec une expérience «code-behind» qui sépare le balisage de composant du code de traitement.
+Les fichiers de composants associent C# le balisage HTML et le code de traitement dans le même fichier. La `@inherits` directive peut être utilisée pour fournir des applications éblouissantes avec une expérience « code-behind » qui sépare le balisage de composant du code de traitement.
 
 L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) montre comment un composant peut hériter d’une `BlazorRocksBase`classe de base,, pour fournir les propriétés et les méthodes du composant.
 
@@ -792,14 +824,14 @@ La classe de base doit dériver de `ComponentBase`.
 
 ## <a name="import-components"></a>Importer des composants
 
-L’espace de noms d’un composant créé avec Razor est basé sur:
+L’espace de noms d’un composant créé avec Razor est basé sur :
 
 * Du `RootNamespace`projet.
 * Chemin d’accès de la racine du projet au composant. Par exemple, `ComponentsSample/Pages/Index.razor` se trouve dans l' `ComponentsSample.Pages`espace de noms. Les composants C# suivent les règles de liaison de nom. Dans le cas de *index. Razor*, tous les composants dans le même dossier, les mêmes *pages*et le dossier parent, *ComponentsSample*, sont dans l’étendue.
 
 Les composants définis dans un espace de noms différent peuvent être mis en portée à l’aide de la directive [ \@using](xref:mvc/views/razor#using) de Razor.
 
-Si un autre composant `NavMenu.razor`,, existe dans le `ComponentsSample/Shared/`dossier, le composant peut être utilisé `Index.razor` dans avec l' `@using` instruction suivante:
+Si un autre composant `NavMenu.razor`,, existe dans le `ComponentsSample/Shared/`dossier, le composant peut être utilisé `Index.razor` dans avec l' `@using` instruction suivante :
 
 ```cshtml
 @using ComponentsSample.Shared
@@ -809,7 +841,7 @@ This is the Index page.
 <NavMenu></NavMenu>
 ```
 
-Les composants peuvent également être référencés à l’aide de leurs noms complets, ce qui supprime [ \@](xref:mvc/views/razor#using) la nécessité de la directive using:
+Les composants peuvent également être référencés à l’aide de leurs noms complets, ce qui supprime [ \@](xref:mvc/views/razor#using) la nécessité de la directive using :
 
 ```cshtml
 This is the Index page.
@@ -828,7 +860,7 @@ This is the Index page.
 
 Les attributs des éléments HTML sont rendus de manière conditionnelle en fonction de la valeur .NET. Si la valeur est `false` ou `null`, l’attribut n’est pas rendu. Si la valeur est `true`, l’attribut est rendu réduit.
 
-Dans l’exemple suivant, `IsCompleted` détermine si `checked` est rendu dans le balisage de l’élément:
+Dans l’exemple suivant, `IsCompleted` détermine si `checked` est rendu dans le balisage de l’élément :
 
 ```cshtml
 <input type="checkbox" checked="@IsCompleted" />
@@ -839,13 +871,13 @@ Dans l’exemple suivant, `IsCompleted` détermine si `checked` est rendu dans l
 }
 ```
 
-Si `IsCompleted` est`true`, la case à cocher s’affiche comme suit:
+Si `IsCompleted` est`true`, la case à cocher s’affiche comme suit :
 
 ```html
 <input type="checkbox" checked />
 ```
 
-Si `IsCompleted` est`false`, la case à cocher s’affiche comme suit:
+Si `IsCompleted` est`false`, la case à cocher s’affiche comme suit :
 
 ```html
 <input type="checkbox" />
@@ -858,9 +890,9 @@ Pour plus d'informations, consultez <xref:mvc/views/razor>.
 Les chaînes sont normalement rendues à l’aide de nœuds de texte DOM, ce qui signifie que tout balisage qu’elles peuvent contenir est ignorée et traitée comme du texte littéral. Pour afficher le code HTML brut, encapsulez le `MarkupString` contenu HTML dans une valeur. La valeur est analysée au format HTML ou SVG et est insérée dans le DOM.
 
 > [!WARNING]
-> Le rendu de code HTML brut construit à partir de n’importe quelle source non approuvée constitue un risque pour la **sécurité** et doit être évité!
+> Le rendu de code HTML brut construit à partir de n’importe quelle source non approuvée constitue un risque pour la **sécurité** et doit être évité !
 
-L’exemple suivant illustre l’utilisation `MarkupString` du type pour ajouter un bloc de contenu HTML statique à la sortie rendue d’un composant:
+L’exemple suivant illustre l’utilisation `MarkupString` du type pour ajouter un bloc de contenu HTML statique à la sortie rendue d’un composant :
 
 ```html
 @((MarkupString)myMarkup)
@@ -873,7 +905,7 @@ L’exemple suivant illustre l’utilisation `MarkupString` du type pour ajouter
 
 ## <a name="templated-components"></a>Composants basés sur un modèle
 
-Les composants basés sur un modèle sont des composants qui acceptent un ou plusieurs modèles d’interface utilisateur en tant que paramètres, qui peuvent ensuite être utilisés dans le cadre de la logique de rendu du composant. Les composants basés sur un modèle vous permettent de créer des composants de niveau supérieur qui sont plus réutilisables que les composants normaux. Voici quelques exemples:
+Les composants basés sur un modèle sont des composants qui acceptent un ou plusieurs modèles d’interface utilisateur en tant que paramètres, qui peuvent ensuite être utilisés dans le cadre de la logique de rendu du composant. Les composants basés sur un modèle vous permettent de créer des composants de niveau supérieur qui sont plus réutilisables que les composants normaux. Voici quelques exemples :
 
 * Composant de table qui permet à un utilisateur de spécifier des modèles pour l’en-tête, les lignes et le pied de page de la table.
 * Composant de liste qui permet à un utilisateur de spécifier un modèle pour afficher des éléments dans une liste.
@@ -886,7 +918,7 @@ Un composant basé sur un modèle est défini en spécifiant un ou plusieurs par
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/TableTemplate.razor)]
 
-Lorsque vous utilisez un composant basé sur un modèle, les paramètres de modèle peuvent être spécifiés à l’aide d’éléments enfants`TableHeader` qui `RowTemplate` correspondent aux noms des paramètres (et dans l’exemple suivant):
+Lorsque vous utilisez un composant basé sur un modèle, les paramètres de modèle peuvent être spécifiés à l’aide d’éléments enfants`TableHeader` qui `RowTemplate` correspondent aux noms des paramètres (et dans l’exemple suivant) :
 
 ```cshtml
 <TableTemplate Items="@pets">
@@ -903,7 +935,7 @@ Lorsque vous utilisez un composant basé sur un modèle, les paramètres de mod�
 
 ### <a name="template-context-parameters"></a>Paramètres de contexte de modèle
 
-Les arguments de composant `RenderFragment<T>` de type passé comme éléments ont un paramètre `context` implicite nommé (par exemple, à partir `@context.PetId`de l’exemple de code précédent,), mais vous `Context` pouvez modifier le nom de paramètre à l’aide de l’attribut sur l’enfant. appartient. Dans l’exemple suivant, l' `RowTemplate` attribut de `Context` l’élément spécifie le `pet` paramètre:
+Les arguments de composant `RenderFragment<T>` de type passé comme éléments ont un paramètre `context` implicite nommé (par exemple, à partir `@context.PetId`de l’exemple de code précédent,), mais vous `Context` pouvez modifier le nom de paramètre à l’aide de l’attribut sur l’enfant. appartient. Dans l’exemple suivant, l' `RowTemplate` attribut de `Context` l’élément spécifie le `pet` paramètre :
 
 ```cshtml
 <TableTemplate Items="@pets">
@@ -918,7 +950,7 @@ Les arguments de composant `RenderFragment<T>` de type passé comme éléments o
 </TableTemplate>
 ```
 
-Vous pouvez également spécifier l' `Context` attribut sur l’élément de composant. L’attribut `Context` spécifié s’applique à tous les paramètres de modèle spécifiés. Cela peut être utile lorsque vous souhaitez spécifier le nom du paramètre de contenu pour le contenu enfant implicite (sans élément enfant d’encapsulation). Dans l’exemple suivant, l' `Context` attribut apparaît sur l' `TableTemplate` élément et s’applique à tous les paramètres de modèle:
+Vous pouvez également spécifier l' `Context` attribut sur l’élément de composant. L’attribut `Context` spécifié s’applique à tous les paramètres de modèle spécifiés. Cela peut être utile lorsque vous souhaitez spécifier le nom du paramètre de contenu pour le contenu enfant implicite (sans élément enfant d’encapsulation). Dans l’exemple suivant, l' `Context` attribut apparaît sur l' `TableTemplate` élément et s’applique à tous les paramètres de modèle :
 
 ```cshtml
 <TableTemplate Items="@pets" Context="pet">
@@ -935,11 +967,11 @@ Vous pouvez également spécifier l' `Context` attribut sur l’élément de com
 
 ### <a name="generic-typed-components"></a>Composants génériques
 
-Les composants basés sur un modèle sont souvent typés de façon générique. Par exemple, un composant `ListViewTemplate` générique peut être utilisé pour restituer `IEnumerable<T>` des valeurs. Pour définir un composant générique, utilisez la `@typeparam` directive pour spécifier les paramètres de type:
+Les composants basés sur un modèle sont souvent typés de façon générique. Par exemple, un composant `ListViewTemplate` générique peut être utilisé pour restituer `IEnumerable<T>` des valeurs. Pour définir un composant générique, utilisez la `@typeparam` directive pour spécifier les paramètres de type :
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/ListViewTemplate.razor)]
 
-Lorsque vous utilisez des composants génériques, le paramètre de type est déduit si possible:
+Lorsque vous utilisez des composants génériques, le paramètre de type est déduit si possible :
 
 ```cshtml
 <ListViewTemplate Items="@pets">
@@ -949,7 +981,7 @@ Lorsque vous utilisez des composants génériques, le paramètre de type est dé
 </ListViewTemplate>
 ```
 
-Sinon, le paramètre de type doit être spécifié explicitement à l’aide d’un attribut qui correspond au nom du paramètre de type. Dans l’exemple suivant, `TItem="Pet"` spécifie le type:
+Sinon, le paramètre de type doit être spécifié explicitement à l’aide d’un attribut qui correspond au nom du paramètre de type. Dans l’exemple suivant, `TItem="Pet"` spécifie le type :
 
 ```cshtml
 <ListViewTemplate Items="@pets" TItem="Pet">
@@ -1006,18 +1038,7 @@ Par exemple, l’exemple d’application spécifie les`ThemeInfo`informations de
 }
 ```
 
-Pour utiliser des valeurs en cascade, les composants déclarent des paramètres en cascade `[CascadingParameter]` à l’aide de l’attribut ou d’une valeur de nom de chaîne:
-
-```cshtml
-<CascadingValue Value=@PermInfo Name="UserPermissions">...</CascadingValue>
-
-[CascadingParameter(Name = "UserPermissions")]
-private PermInfo Permissions { get; set; }
-```
-
-La liaison avec une valeur de nom de chaîne est pertinente si vous avez plusieurs valeurs en cascade du même type et que vous devez les différencier dans la même sous-arborescence.
-
-Les valeurs en cascade sont liées aux paramètres en cascade par type.
+Pour utiliser des valeurs en cascade, les composants déclarent des paramètres en cascade `[CascadingParameter]` à l’aide de l’attribut. Les valeurs en cascade sont liées aux paramètres en cascade par type.
 
 Dans l’exemple d’application, `CascadingValuesParametersTheme` le composant lie la `ThemeInfo` valeur en cascade à un paramètre en cascade. Le paramètre est utilisé pour définir la classe CSS pour l’un des boutons affichés par le composant.
 
@@ -1057,15 +1078,48 @@ Dans l’exemple d’application, `CascadingValuesParametersTheme` le composant 
 }
 ```
 
+Pour mettre en cascade plusieurs valeurs du même type dans la même sous-arborescence, fournissez une chaîne `CascadingValue` unique `Name` à chaque composant `CascadingParameter`et à son correspondant. Dans l’exemple suivant, deux `CascadingValue` composants montent en cascade `MyCascadingType` différentes instances de par nom :
+
+```cshtml
+<CascadingValue Value=@ParentCascadeParameter1 Name="CascadeParam1">
+    <CascadingValue Value=@ParentCascadeParameter2 Name="CascadeParam2">
+        ...
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private MyCascadingType ParentCascadeParameter1;
+
+    [Parameter]
+    public MyCascadingType ParentCascadeParameter2 { get; set; }
+
+    ...
+}
+```
+
+Dans un composant descendant, les paramètres en cascade reçoivent leurs valeurs des valeurs en cascade correspondantes dans le composant ancêtre par nom :
+
+```cshtml
+...
+
+@code {
+    [CascadingParameter(Name = "CascadeParam1")]
+    protected MyCascadingType ChildCascadeParameter1 { get; set; }
+    
+    [CascadingParameter(Name = "CascadeParam2")]
+    protected MyCascadingType ChildCascadeParameter2 { get; set; }
+}
+```
+
 ### <a name="tabset-example"></a>Exemple TabSet
 
 Les paramètres en cascade permettent également aux composants de collaborer au sein de la hiérarchie des composants. Par exemple, considérez l’exemple *TabSet* suivant dans l’exemple d’application.
 
-L’exemple d’application possède `ITab` une interface qui implémente les onglets suivants:
+L’exemple d’application possède `ITab` une interface qui implémente les onglets suivants :
 
-[!code-cs[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
+[!code-csharp[](common/samples/3.x/BlazorSample/UIInterfaces/ITab.cs)]
 
-Le `CascadingValuesParametersTabSet` composant utilise le `TabSet` composant, qui contient plusieurs `Tab` composants:
+Le `CascadingValuesParametersTabSet` composant utilise le `TabSet` composant, qui contient plusieurs `Tab` composants :
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
@@ -1083,7 +1137,7 @@ Les composants `Tab` descendants capturent `TabSet` le contenant comme paramètr
 
 ## <a name="razor-templates"></a>Modèles Razor
 
-Les fragments de rendu peuvent être définis à l’aide de la syntaxe de modèle Razor. Les modèles Razor sont un moyen de définir un extrait de code d’interface utilisateur et de supposer le format suivant:
+Les fragments de rendu peuvent être définis à l’aide de la syntaxe de modèle Razor. Les modèles Razor sont un moyen de définir un extrait de code d’interface utilisateur et de supposer le format suivant :
 
 ```cshtml
 @<{HTML tag}>...</{HTML tag}>
@@ -1108,7 +1162,7 @@ L’exemple suivant montre comment spécifier `RenderFragment` des valeurs et `R
 }
 ```
 
-Sortie rendue du code précédent:
+Sortie rendue du code précédent :
 
 ```html
 <p>The time is 10/04/2018 01:26:52.</p>
@@ -1123,7 +1177,7 @@ Sortie rendue du code précédent:
 > [!NOTE]
 > L’utilisation `RenderTreeBuilder` de pour créer des composants est un scénario avancé. Un composant mal formé (par exemple, une balise de balisage non fermée) peut entraîner un comportement indéfini.
 
-Prenons le composant `PetDetails` suivant, qui peut être intégré manuellement à un autre composant:
+Prenons le composant `PetDetails` suivant, qui peut être intégré manuellement à un autre composant :
 
 ```cshtml
 <h2>Pet Details Component</h2>
@@ -1178,7 +1232,7 @@ Dans l’exemple suivant, la boucle de la `CreateComponent` méthode génère tr
 
 Un exemple clé de ces améliorations concerne les *numéros de séquence*. Les numéros de séquence indiquent au runtime que les sorties proviennent de lignes de code distinctes et ordonnées. Le runtime utilise ces informations pour générer des différences d’arborescence efficaces en temps linéaire, ce qui est beaucoup plus rapide qu’un algorithme de comparaison d’arborescence générale.
 
-Considérons le fichier `.razor` simple suivant:
+Considérons le fichier `.razor` simple suivant :
 
 ```cshtml
 @if (someFlag)
@@ -1189,7 +1243,7 @@ Considérons le fichier `.razor` simple suivant:
 Second
 ```
 
-Le code précédent se compile comme suit:
+Le code précédent se compile comme suit :
 
 ```csharp
 if (someFlag)
@@ -1200,26 +1254,26 @@ if (someFlag)
 builder.AddContent(1, "Second");
 ```
 
-Lorsque le code s’exécute pour la première fois, si `someFlag` est `true`, le générateur reçoit:
+Lorsque le code s’exécute pour la première fois, si `someFlag` est `true`, le générateur reçoit :
 
 | Séquence | Type      | Données   |
 | :------: | --------- | :----: |
 | 0        | Nœud de texte | Première  |
 | 1        | Nœud de texte | Seconde |
 
-Imaginez que `someFlag` devient `false`et le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit:
+Imaginez que `someFlag` devient `false`et le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit :
 
 | Séquence | Type       | Données   |
 | :------: | ---------- | :----: |
 | 1        | Nœud de texte  | Seconde |
 
-Quand le runtime effectue une comparaison, il constate que l’élément au niveau `0` de la séquence a été supprimé. il génère donc le *script d’édition*trivial suivant:
+Quand le runtime effectue une comparaison, il constate que l’élément au niveau `0` de la séquence a été supprimé. il génère donc le *script d’édition*trivial suivant :
 
 * Supprimez le premier nœud de texte.
 
 #### <a name="what-goes-wrong-if-you-generate-sequence-numbers-programmatically"></a>Qu’est-ce qui se passe si vous générez des numéros séquentiels par programmation
 
-Imaginez plutôt que vous avez écrit la logique de générateur d’arborescence de rendu suivante:
+Imaginez plutôt que vous avez écrit la logique de générateur d’arborescence de rendu suivante :
 
 ```csharp
 var seq = 0;
@@ -1232,20 +1286,20 @@ if (someFlag)
 builder.AddContent(seq++, "Second");
 ```
 
-La première sortie est désormais:
+La première sortie est désormais :
 
 | Séquence | Type      | Données   |
 | :------: | --------- | :----: |
 | 0        | Nœud de texte | Première  |
 | 1        | Nœud de texte | Seconde |
 
-Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag`se `false` trouve sur le deuxième rendu et la sortie est:
+Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag`se `false` trouve sur le deuxième rendu et la sortie est :
 
 | Séquence | Type      | Données   |
 | :------: | --------- | ------ |
 | 0        | Nœud de texte | Seconde |
 
-Cette fois-ci, l’algorithme diff constate que *deux* modifications ont été apportées, et l’algorithme génère le script Edit suivant:
+Cette fois-ci, l’algorithme diff constate que *deux* modifications ont été apportées, et l’algorithme génère le script Edit suivant :
 
 * Remplacez la valeur du premier nœud de texte par `Second`.
 * Supprimez le deuxième nœud de texte.
@@ -1266,7 +1320,7 @@ Il s’agit d’un exemple trivial. Dans des cas plus réalistes avec des struct
 
 Les applications côté serveur éblouissantes sont localisées à l’aide d’un [intergiciel (middleware](xref:fundamentals/localization#localization-middleware)) de localisation. L’intergiciel sélectionne la culture appropriée pour les utilisateurs qui demandent des ressources à partir de l’application.
 
-La culture peut être définie à l’aide de l’une des approches suivantes:
+La culture peut être définie à l’aide de l’une des approches suivantes :
 
 * [Cookies](#cookies)
 * [Fournir l’interface utilisateur pour choisir la culture](#provide-ui-to-choose-the-culture)
@@ -1281,7 +1335,7 @@ L’utilisation d’un cookie garantit que la connexion WebSocket peut propager 
 
 Toute technique peut être utilisée pour assigner une culture si la culture est rendue persistante dans un cookie de localisation. Si l’application a déjà un schéma de localisation établi pour les ASP.NET Core côté serveur, continuez à utiliser l’infrastructure de localisation existante de l’application et à définir le cookie de la culture de localisation dans le schéma de l’application.
 
-L’exemple suivant montre comment définir la culture actuelle dans un cookie qui peut être lu par l’intergiciel (middleware) de localisation. Créez un fichier *pages/Host. cshtml. cs* avec le contenu suivant dans l’application côté serveur éblouissant:
+L’exemple suivant montre comment définir la culture actuelle dans un cookie qui peut être lu par l’intergiciel (middleware) de localisation. Créez un fichier *pages/Host. cshtml. cs* avec le contenu suivant dans l’application côté serveur éblouissant :
 
 ```csharp
 public class HostModel : PageModel
@@ -1298,7 +1352,7 @@ public class HostModel : PageModel
 }
 ```
 
-La localisation est gérée dans l’application:
+La localisation est gérée dans l’application :
 
 1. Le navigateur envoie une requête HTTP initiale à l’application.
 1. La culture est affectée par l’intergiciel (middleware) de localisation.
@@ -1309,11 +1363,11 @@ La localisation est gérée dans l’application:
 
 ## <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
 
-Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur* la redirection. Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à&mdash;une ressource sécurisée. l’utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
+Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur la redirection* . Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à&mdash;une ressource sécurisée. l’utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
 
 L’application conserve la culture sélectionnée de l’utilisateur via une redirection vers un contrôleur. Le contrôleur définit la culture sélectionnée de l’utilisateur dans un cookie et redirige l’utilisateur vers l’URI d’origine.
 
-Établissez un point de terminaison HTTP sur le serveur pour définir la culture sélectionnée de l’utilisateur dans un cookie et effectuer la redirection vers l’URI d’origine:
+Établissez un point de terminaison HTTP sur le serveur pour définir la culture sélectionnée de l’utilisateur dans un cookie et effectuer la redirection vers l’URI d’origine :
 
 ```csharp
 [Route("[controller]/[action]")]
@@ -1337,10 +1391,10 @@ public class CultureController : Controller
 > [!WARNING]
 > Utilisez le `LocalRedirect` résultat de l’action pour empêcher les attaques de redirection ouvertes. Pour plus d'informations, consultez <xref:security/preventing-open-redirects>.
 
-Le composant suivant montre un exemple d’exécution de la redirection initiale lorsque l’utilisateur sélectionne une culture:
+Le composant suivant montre un exemple d’exécution de la redirection initiale lorsque l’utilisateur sélectionne une culture :
 
 ```cshtml
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 <h3>Select your language</h3>
 
@@ -1356,28 +1410,46 @@ Le composant suivant montre un exemple d’exécution de la redirection initiale
     private void OnSelected(UIChangeEventArgs e)
     {
         var culture = (string)e.Value;
-        var uri = new Uri(UriHelper.GetAbsoluteUri())
+        var uri = new Uri(NavigationManager.Uri())
             .GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
         var query = $"?culture={Uri.EscapeDataString(culture)}&" +
             $"redirectUri={Uri.EscapeDataString(uri)}";
 
-        UriHelper.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
+        NavigationManager.NavigateTo("/Culture/SetCulture" + query, forceLoad: true);
     }
 }
 ```
 
 ### <a name="use-net-localization-scenarios-in-blazor-apps"></a>Utiliser des scénarios de localisation .NET dans des applications éblouissantes
 
-Dans les applications éblouissantes, les scénarios de localisation et de globalisation .NET suivants sont disponibles:
+Dans les applications éblouissantes, les scénarios de localisation et de globalisation .NET suivants sont disponibles :
 
 * . Système de ressources du réseau
 * Mise en forme des nombres et des dates spécifiques à la culture
 
 La fonctionnalité de `@bind` éblouissant effectue une globalisation basée sur la culture actuelle de l’utilisateur. Pour plus d’informations, consultez la section [liaison de données](#data-binding) .
 
-Un ensemble limité de scénarios de localisation de ASP.NET Core est actuellement pris en charge:
+Un ensemble limité de scénarios de localisation de ASP.NET Core est actuellement pris en charge :
 
 * `IStringLocalizer<>`*est pris en charge* dans les applications éblouissantes.
 * `IHtmlLocalizer<>`la `IViewLocalizer<>`localisation des annotations de données, et est ASP.net Core les scénarios MVC et **non pris en charge** dans les applications éblouissantes.
 
 Pour plus d'informations, consultez <xref:fundamentals/localization>.
+
+## <a name="scalable-vector-graphics-svg-images"></a>Images SVG (Scalable Vector Graphics)
+
+Étant donné que éblouissant rend les images HTML, prises en charge par le navigateur, y compris les images SVG (Scalable Vector Graphics) ( *. svg*), sont prises en charge via la `<img>` balise :
+
+```html
+<img alt="Example image" src="some-image.svg" />
+```
+
+De même, les images SVG sont prises en charge dans les règles CSS d’un fichier de feuille de style ( *. CSS*) :
+
+```css
+.my-element {
+    background-image: url("some-image.svg");
+}
+```
+
+Toutefois, le balisage SVG en ligne n’est pas pris en charge dans tous les scénarios. Si vous placez une `<svg>` balise directement dans un fichier de composant ( *. Razor*), le rendu d’image de base est pris en charge, mais de nombreux scénarios avancés ne sont pas encore pris en charge. Par exemple, `<use>` les balises ne sont pas `@bind` actuellement respectées et ne peuvent pas être utilisées avec certaines balises SVG. Nous prévoyons de traiter ces limitations dans une version ultérieure.

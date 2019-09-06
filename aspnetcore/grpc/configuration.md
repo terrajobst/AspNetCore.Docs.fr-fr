@@ -1,51 +1,64 @@
 ---
-title: gRPC pour la configuration d’ASP.NET Core
+title: configuration de gRPC pour ASP.NET Core
 author: jamesnk
 description: Découvrez comment configurer gRPC pour les applications ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/30/2019
+ms.date: 08/21/2019
 uid: grpc/configuration
-ms.openlocfilehash: e269d701f45c0b852a9006107f0162cc5af2c38a
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 34eb598211c87fbb2c68ae5e041da50d02f543f7
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814922"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310314"
 ---
-# <a name="grpc-for-aspnet-core-configuration"></a>gRPC pour la configuration d’ASP.NET Core
+# <a name="grpc-for-aspnet-core-configuration"></a>configuration de gRPC pour ASP.NET Core
 
-## <a name="configure-services-options"></a>Configurer les options de services
+## <a name="configure-services-options"></a>Configurer les options des services
 
-Le tableau suivant décrit les options de configuration des services de gRPC :
+Le tableau suivant décrit les options de configuration des services gRPC :
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `SendMaxMessageSize` | `null` | La taille maximale en octets qui peuvent être envoyés à partir du serveur. Essayez d’envoyer un message qui dépasse les résultats de la taille maximale de message dans une exception. |
-| `ReceiveMaxMessageSize` | 4 MB | La taille maximale en octets qui peuvent être reçus par le serveur. Si le serveur reçoit un message qui dépasse cette limite, elle lève une exception. Augmentation de cette valeur permet au serveur recevoir des messages plus volumineux, mais peut affecter négativement la consommation de mémoire. |
-| `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de service. Par défaut, il s’agit de `false`. Paramètre `EnableDetailedErrors` à `true` peut entraîner une fuite des informations sensibles. |
-| `CompressionProviders` | gzip | Une collection de fournisseurs de compression utilisé pour compresser et décompresser des messages. Fournisseurs de compression personnalisé peuvent être créés et ajoutés à la collection. La valeur par défaut configuré le fournisseur prend en charge **gzip** la compression. |
-| `ResponseCompressionAlgorithm` | `null` | L’algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur de la compression dans `CompressionProviders`. Pour l’algorithme compresser une réponse, le client doit indiquer qu’il prend en charge l’algorithme en lui envoyant le **grpc-encodage** en-tête. |
-| `ResponseCompressionLevel` | `null` | Le niveau de compression utilisé pour compresser les messages envoyés à partir du serveur. |
+| `MaxSendMessageSize` | `null` | Taille maximale du message, en octets, qui peut être envoyée à partir du serveur. Toute tentative d’envoi d’un message qui dépasse la taille de message maximale configurée entraîne une exception. |
+| `MaxReceiveMessageSize` | 4 MB | Taille maximale du message, en octets, qui peut être reçue par le serveur. Si le serveur reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au serveur de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. |
+| `EnableDetailedErrors` | `false` | Si `true`la valeur est, les messages d’exception détaillés sont retournés aux clients lorsqu’une exception est levée dans une méthode de service. Par défaut, il s’agit de `false`. La `EnableDetailedErrors` définition `true` de sur peut entraîner une fuite d’informations sensibles. |
+| `CompressionProviders` | gzip, deflate | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** et **deflate** . |
+| `ResponseCompressionAlgorithm` | `null` | Algorithme de compression utilisé pour compresser les messages envoyés à partir du serveur. L’algorithme doit correspondre à un fournisseur `CompressionProviders`de compression dans. Pour que l’algorithme compresse une réponse, le client doit indiquer qu’il prend en charge l’algorithme en l’envoyant dans l’en-tête **GRPC-Accept-Encoding** . |
+| `ResponseCompressionLevel` | `null` | Niveau de compression utilisé pour compresser les messages envoyés à partir du serveur. |
 
-Options peuvent être configurées pour tous les services en fournissant un délégué d’options pour le `AddGrpc` appeler dans `Startup.ConfigureServices`:
+Les options peuvent être configurées pour tous les services en fournissant un délégué `AddGrpc` d’options `Startup.ConfigureServices`à l’appel dans :
 
 [!code-csharp[](~/grpc/configuration/sample/GrcpService/Startup.cs?name=snippet)]
 
-Options pour un seul service remplacent les options globales fournies dans `AddGrpc` et peuvent être configurés à l’aide de `AddServiceOptions<TService>`:
+Les options pour un seul service remplacent les options globales `AddGrpc` fournies dans et peuvent être `AddServiceOptions<TService>`configurées à l’aide de :
 
 [!code-csharp[](~/grpc/configuration/sample/GrcpService/Startup2.cs?name=snippet)]
 
 ## <a name="configure-client-options"></a>Configurer les options du client
 
-Le code suivant définit l’envoi maximal du client et la taille de message de réception :
+Le tableau suivant décrit les options de configuration des canaux gRPC :
 
-[!code-csharp[](~/grpc/configuration/sample/Program.cs?name=snippet&highlight=3-6)]
+| Option | Valeur par défaut | Description |
+| ------ | ------------- | ----------- |
+| `HttpClient` | Nouvelle instance | Utilisé `HttpClient` pour effectuer des appels gRPC. Un client peut être configuré pour configurer un personnalisé `HttpClientHandler`ou ajouter des gestionnaires supplémentaires au pipeline HTTP pour les appels gRPC. Par défaut, une `HttpClient` nouvelle instance est créée. |
+| `MaxSendMessageSize` | `null` | Taille maximale du message, en octets, qui peut être envoyée à partir du client. Toute tentative d’envoi d’un message qui dépasse la taille de message maximale configurée entraîne une exception. |
+| `MaxReceiveMessageSize` | 4 MB | Taille maximale du message, en octets, qui peut être reçue par le client. Si le serveur reçoit un message qui dépasse cette limite, il lève une exception. L’augmentation de cette valeur permet au serveur de recevoir des messages plus volumineux, mais peut avoir un impact négatif sur la consommation de mémoire. |
+| `TransportOptions` | `null` | Options de transport configurer la manière dont le canal appelle le service gRPC. Actuellement, la seule implémentation `HttpClientTransport` est options vous permet de `HttpClient` spécifier le utilisé par gRPC. |
+| `Credentials` | `null` | Instance de `ChannelCredentials`. Les informations d’identification sont utilisées pour ajouter des métadonnées d’authentification à des appels gRPC. |
+| `CompressionProviders` | gzip, deflate | Collection de fournisseurs de compression utilisée pour compresser et décompresser des messages. Des fournisseurs de compression personnalisés peuvent être créés et ajoutés à la collection. Les fournisseurs configurés par défaut prennent en charge la compression **gzip** et **deflate** . |
+
+L'exemple de code suivant :
+
+* Définit la taille maximale des messages d’envoi et de réception sur le canal.
+* Crée un client.
+
+[!code-csharp[](~/grpc/configuration/sample/Program.cs?name=snippet&highlight=3-8)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* <xref:grpc/aspnetcore>
+* <xref:grpc/client>
 * <xref:tutorials/grpc/grpc-start>
-* <xref:grpc/index>
-* <xref:grpc/basics>
-* <xref:grpc/migration>

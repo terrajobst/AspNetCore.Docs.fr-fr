@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: ffe0034f1d33fb9282b39c030421b9b307413cdb
-ms.sourcegitcommit: de17150e5ec7507d7114dde0e5dbc2e45a66ef53
-ms.translationtype: HT
+ms.openlocfilehash: 7f80ead06f00037ae51b35d40dff9bc7f99bc5d8
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113278"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310578"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutoriel : Créer un serveur et un client gRPC dans ASP.NET Core
 
@@ -65,7 +65,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
   ```console
   dotnet new grpc -o GrpcGreeter
@@ -135,8 +135,8 @@ Fichiers projet *GrpcGreeter* :
 
 * *greet.proto* &ndash;Le fichier *Protos/greet.proto* définit gRPC `Greeter` et est utilisé pour générer les ressources du serveur gRPC. Pour plus d’informations, consultez [Introduction à gRPC](xref:grpc/index).
 * Dossier *Services* : contient l’implémentation du service `Greeter`.
-* *appSettings.json* &ndash; contient des données de configuration, telles que le protocole utilisé par Kestrel. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
-* *Program.cs* &ndash; contient le point d’entrée du service gRPC. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host>.
+* *appSettings.json* &ndash; contient des données de configuration, telles que le protocole utilisé par Kestrel. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
+* *Program.cs* &ndash; contient le point d’entrée du service gRPC. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
 * *Startup.cs* &ndash; contient le code qui configure le comportement de l’application. Pour plus d’informations, consultez [Démarrage des applications](xref:fundamentals/startup).
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>Créer le client gRPC dans une application console .NET
@@ -151,7 +151,7 @@ Fichiers projet *GrpcGreeter* :
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
   ```console
   dotnet new console -o GrpcGreeterClient
@@ -180,7 +180,7 @@ Installez les packages à l’aide de la console PMC (console du Gestionnaire de
 
 * Dans Visual Studio, sélectionnez **Outils** > **Gestionnaire de package NuGet** > **Console du Gestionnaire de package**.
 * Dans la fenêtre **Gestionnaire de package**, exécutez `cd GrpcGreeterClient` pour accéder au dossier contenant les fichiers *GrpcGreeterClient.csproj*.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
   ```powershell
   Install-Package Grpc.Net.Client -prerelease
@@ -256,13 +256,13 @@ Mettez à jour le fichier *Program.cs* du client gRPC par le code suivant :
 Le client Greeter est créé en :
 
 * Instanciation d’un `HttpClient` qui contient les informations permettant de créer la connexion au service gRPC.
-* Utilisant le `HttpClient` pour construire le client Greeter :
+* Utilisation du `HttpClient` pour construire un canal gRPC et le client Greeter :
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-6)]
+[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-5)]
 
 Le client Greeter appelle la méthode `SayHello` asynchrone. Le résultat de l’appel `SayHello` s’affiche :
 
-[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=7-9)]
+[!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=6-8)]
 
 ## <a name="test-the-grpc-client-with-the-grpc-greeter-service"></a>Tester le client gRPC avec le service Greeter gRPC
 

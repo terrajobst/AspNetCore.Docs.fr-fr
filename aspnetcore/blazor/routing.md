@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: blazor/routing
-ms.openlocfilehash: 067dad657c1e89a31fac45fdfa095cce4b10798d
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: ae3d7ab01185dd6f2e8e0f59b78c2e693fe464b0
+ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238064"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70310347"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
 
@@ -30,16 +30,17 @@ Le côté serveur éblouissant est intégré à [ASP.net Core routage des points
 
 Le `Router` composant active le routage et un modèle de routage est fourni à chaque composant accessible. Le `Router` composant apparaît dans le fichier *app. Razor* :
 
-Dans une application côté serveur éblouissante :
+Dans une application éblouissante côté serveur ou côté client :
 
 ```cshtml
-<Router AppAssembly="typeof(Startup).Assembly" />
-```
-
-Dans une application éblouissante côté client :
-
-```cshtml
-<Router AppAssembly="typeof(Program).Assembly" />
+<Router AppAssembly="typeof(Startup).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <p>Sorry, there's nothing at this address.</p>
+    </NotFound>
+</Router>
 ```
 
 Lorsqu’un fichier *. Razor* avec une `@page` directive est compilé, la classe générée est fournie en <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> spécifiant le modèle de routage. Lors de l’exécution, le routeur recherche les classes de `RouteAttribute` composant avec un et restitue le composant avec un modèle de routage qui correspond à l’URL demandée.
@@ -49,24 +50,27 @@ Plusieurs modèles de routage peuvent être appliqués à un composant. Le compo
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Pour générer correctement des itinéraires, l’application doit inclure `<base>` une balise dans son fichier *wwwroot/index.html* (le client éblouissant) ou le fichier *pages/_Host. cshtml* (le côté serveur éblouissant) avec le chemin d’accès de base de `href` l’application spécifié dans l’attribut ( `<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/client-side#app-base-path>.
+> Pour que les URL soient correctement résolues, l’application `<base>` doit inclure une balise dans son fichier *wwwroot/index.html* (The éblouissant Client-Side) ou le fichier *pages/_Host. cshtml* (éblouissant côté serveur) avec le chemin d’accès `href` de base de l’application spécifié dans l’attribut ( `<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/client-side#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Fournir du contenu personnalisé lorsque le contenu est introuvable
 
 Le `Router` composant permet à l’application de spécifier du contenu personnalisé si le contenu est introuvable pour l’itinéraire demandé.
 
-Dans le fichier *app. Razor* , définissez le contenu personnalisé dans `<NotFoundContent>` l’élément du `Router` composant :
+Dans le fichier *app. Razor* , définissez le contenu personnalisé dans `<NotFound>` le paramètre de `Router` modèle du composant :
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
-    <NotFoundContent>
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
         <h1>Sorry</h1>
         <p>Sorry, there's nothing at this address.</p> b
-    </NotFoundContent>
+    </NotFound>
 </Router>
 ```
 
-Le contenu de `<NotFoundContent>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
+Le contenu de `<NotFound>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
 
 ## <a name="route-parameters"></a>Paramètres d’itinéraire
 
@@ -89,7 +93,7 @@ Dans l’exemple suivant, l’itinéraire vers le `Users` composant correspond u
 
 Les contraintes de routage indiquées dans le tableau suivant sont disponibles. Pour plus d’informations sur les contraintes d’itinéraire qui correspondent à la culture dite indifférente, consultez l’avertissement sous le tableau.
 
-| Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
+| Contrainte | Exemples           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
 | `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
@@ -147,14 +151,14 @@ Le balisage HTML suivant est rendu :
 
 ## <a name="uri-and-navigation-state-helpers"></a>Aide des URI et de l’état de navigation
 
-Utilisez `Microsoft.AspNetCore.Components.IUriHelper` pour travailler avec les URI et la C# navigation dans le code. `IUriHelper`fournit l’événement et les méthodes répertoriées dans le tableau suivant.
+Utilisez `Microsoft.AspNetCore.Components.NavigationManager` pour travailler avec les URI et la C# navigation dans le code. `NavigationManager`fournit l’événement et les méthodes répertoriées dans le tableau suivant.
 
 | Membre | Description |
 | ------ | ----------- |
-| `GetAbsoluteUri` | Obtient l’URI absolu actuel. |
-| `GetBaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général `GetBaseUri` , correspond à `href` l’attribut sur l’élément `<base>` du document dans *wwwroot/index.html* (éblouissant Client-Side) ou *pages/_Host. cshtml* (le côté serveur de éblouissant). |
+| `Uri` | Obtient l’URI absolu actuel. |
+| `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général `BaseUri` , correspond à `href` l’attribut sur l’élément `<base>` du document dans *wwwroot/index.html* (éblouissant Client-Side) ou *pages/_Host. cshtml* (le côté serveur de éblouissant). |
 | `NavigateTo` | Navigue vers l’URI spécifié. Si `forceLoad` est `true`:<ul><li>Le routage côté client est contourné.</li><li>Le navigateur est obligé de charger la nouvelle page à partir du serveur, que l’URI soit normalement géré ou non par le routeur côté client.</li></ul> |
-| `OnLocationChanged` | Événement qui se déclenche lorsque l’emplacement de navigation a changé. |
+| `LocationChanged` | Événement qui se déclenche lorsque l’emplacement de navigation a changé. |
 | `ToAbsoluteUri` | Convertit un URI relatif en URI absolu. |
 | `ToBaseRelativePath` | À partir d’un URI de base (par exemple, un URI `GetBaseUri`précédemment retourné par), convertit un URI absolu en un URI relatif au préfixe URI de base. |
 
@@ -162,8 +166,7 @@ Le composant suivant accède au composant de `Counter` l’application lorsque l
 
 ```cshtml
 @page "/navigate"
-@using Microsoft.AspNetCore.Components
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 <h1>Navigate in Code Example</h1>
 
@@ -174,7 +177,7 @@ Le composant suivant accède au composant de `Counter` l’application lorsque l
 @code {
     private void NavigateToCounterComponent()
     {
-        UriHelper.NavigateTo("counter");
+        NavigationManager.NavigateTo("counter");
     }
 }
 ```
