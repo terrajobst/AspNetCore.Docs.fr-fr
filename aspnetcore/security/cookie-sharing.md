@@ -5,14 +5,14 @@ description: Découvrez comment partager des cookies d’authentification parmi 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/14/2019
+ms.date: 09/05/2019
 uid: security/cookie-sharing
-ms.openlocfilehash: 1650afce5c371d0830bb207618b9c1495f0ce587
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 9b5bee9fb588ef04efd50aa4a5afc3e53da1b123
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022389"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384761"
 ---
 # <a name="share-authentication-cookies-among-aspnet-apps"></a>Partager des cookies d’authentification entre des applications ASP.NET
 
@@ -20,7 +20,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Luke Latham](https://gi
 
 Les sites Web sont souvent constitués d’applications Web individuelles qui fonctionnent ensemble. Pour fournir une expérience d’authentification unique (SSO), les applications Web d’un site doivent partager des cookies d’authentification. Pour prendre en charge ce scénario, la pile de protection des données permet de partager l’authentification par cookie Katana et ASP.NET Core tickets d’authentification de cookie.
 
-Dans les exemples suivants:
+Dans les exemples suivants :
 
 * Le nom du cookie d’authentification est défini sur une valeur `.AspNet.SharedCookie`courante de.
 * Est défini sur `Identity.Application` explicitement ou par défaut. `AuthenticationType`
@@ -34,9 +34,9 @@ Dans les exemples suivants:
   * Dans .NET Framework applications, ajoutez une référence de package à [Microsoft. AspNetCore. dataprotection. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/).
 * <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*>définit le nom d’application courant.
 
-## <a name="share-authentication-cookies-among-aspnet-core-apps"></a>Partager des cookies d’authentification entre les applications ASP.NET Core
+## <a name="share-authentication-cookies-with-aspnet-core-identity"></a>Partager des cookies d’authentification avec ASP.NET Core identité
 
-Lors de l’utilisation de ASP.NET Core identité:
+Lors de l’utilisation de ASP.NET Core identité :
 
 * Les clés de protection des données et le nom de l’application doivent être partagés entre les applications. Un emplacement de stockage de clés commun est fourni <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.PersistKeysToFileSystem*> à la méthode dans les exemples suivants. Utilisez <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.SetApplicationName*> pour configurer un nom d’application partagée commun`SharedCookieApp` (dans les exemples suivants). Pour plus d'informations, consultez <xref:security/data-protection/configuration/overview>.
 * Utilisez la <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.ConfigureApplicationCookie*> méthode d’extension pour configurer le service de protection des données pour les cookies.
@@ -46,7 +46,7 @@ Dans `Startup.ConfigureServices`:
 
 ```csharp
 services.AddDataProtection()
-    .PersistKeysToFileSystem({PATH TO COMMON KEY RING FOLDER})
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
     .SetApplicationName("SharedCookieApp");
 
 services.ConfigureApplicationCookie(options => {
@@ -54,11 +54,13 @@ services.ConfigureApplicationCookie(options => {
 });
 ```
 
-Lorsque vous utilisez des cookies directement sans ASP.NET Core identité, configurez la `Startup.ConfigureServices`protection et l’authentification des données dans. Dans l’exemple suivant, le type d’authentification est défini `Identity.Application`sur:
+## <a name="share-authentication-cookies-without-aspnet-core-identity"></a>Partager des cookies d’authentification sans ASP.NET Core identité
+
+Lorsque vous utilisez des cookies directement sans ASP.NET Core identité, configurez la `Startup.ConfigureServices`protection et l’authentification des données dans. Dans l’exemple suivant, le type d’authentification est défini `Identity.Application`sur :
 
 ```csharp
 services.AddDataProtection()
-    .PersistKeysToFileSystem({PATH TO COMMON KEY RING FOLDER})
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
     .SetApplicationName("SharedCookieApp");
 
 services.AddAuthentication("Identity.Application")
@@ -68,6 +70,23 @@ services.AddAuthentication("Identity.Application")
     });
 ```
 
+## <a name="share-cookies-across-different-base-paths"></a>Partager des cookies entre différents chemins d’accès de base
+
+Un cookie d’authentification utilise [HttpRequest. PathBase](xref:Microsoft.AspNetCore.Http.HttpRequest.PathBase) comme cookie. [path](xref:Microsoft.AspNetCore.Http.CookieBuilder.Path)par défaut. Si le cookie de l’application doit être partagé entre différents chemins de `Path` base, doit être substitué :
+
+```csharp
+services.AddDataProtection()
+    .PersistKeysToFileSystem("{PATH TO COMMON KEY RING FOLDER}")
+    .SetApplicationName("SharedCookieApp");
+
+services.ConfigureApplicationCookie(options => {
+    options.Cookie.Name = ".AspNet.SharedCookie";
+    options.Cookie.Path = "/";
+});
+```
+
+## <a name="share-cookies-across-subdomains"></a>Partager des cookies entre des sous-domaines
+
 Lorsque vous hébergez des applications qui partagent des cookies entre des sous-domaines, spécifiez un domaine commun dans la propriété [cookie. Domain](xref:Microsoft.AspNetCore.Http.CookieBuilder.Domain) . Pour partager des cookies entre les `contoso.com`applications à, `first_subdomain.contoso.com` tels `second_subdomain.contoso.com`que et, `Cookie.Domain` spécifiez le en tant que `.contoso.com`:
 
 ```csharp
@@ -76,7 +95,7 @@ options.Cookie.Domain = ".contoso.com";
 
 ## <a name="encrypt-data-protection-keys-at-rest"></a>Chiffrer les clés de protection des données au repos
 
-Pour les déploiements de production, `DataProtectionProvider` configurez pour chiffrer les clés au repos avec DPAPI ou un certificat X509Certificate. Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-encryption-at-rest>. Dans l’exemple suivant, une empreinte numérique de certificat est <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*>fournie à:
+Pour les déploiements de production, `DataProtectionProvider` configurez pour chiffrer les clés au repos avec DPAPI ou un certificat X509Certificate. Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-encryption-at-rest>. Dans l’exemple suivant, une empreinte numérique de certificat est <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.ProtectKeysWithCertificate*>fournie à :
 
 ```csharp
 services.AddDataProtection()
@@ -91,7 +110,7 @@ Quand une application utilise l’intergiciel Katana cookie Authentication, elle
 
 Une application ASP.NET 4. x doit cibler .NET Framework 4.5.1 ou version ultérieure. Dans le cas contraire, l’installation des packages NuGet nécessaires échoue.
 
-Pour partager des cookies d’authentification entre une application ASP.NET 4. x et une application ASP.NET Core, configurez l’application ASP.NET Core comme indiqué dans la section [partager des cookies d’authentification parmi les applications ASP.net Core](#share-authentication-cookies-among-aspnet-core-apps) , puis configurez l’application ASP.net 4. x comme suit.
+Pour partager des cookies d’authentification entre une application ASP.NET 4. x et une application ASP.NET Core, configurez l’application ASP.NET Core comme indiqué dans la section [partager des cookies d’authentification parmi les applications ASP.net Core](#share-authentication-cookies-with-aspnet-core-identity) , puis configurez l’application ASP.net 4. x comme suit.
 
 Vérifiez que les packages de l’application sont mis à jour avec les versions les plus récentes. Installez le package [Microsoft. Owin. Security. Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) dans chaque application ASP.net 4. x.
 
@@ -123,7 +142,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
     },
     TicketDataFormat = new AspNetTicketDataFormat(
         new DataProtectorShim(
-            DataProtectionProvider.Create({PATH TO COMMON KEY RING FOLDER},
+            DataProtectionProvider.Create("{PATH TO COMMON KEY RING FOLDER}",
                 (builder) => { builder.SetApplicationName("SharedCookieApp"); })
             .CreateProtector(
                 "Microsoft.AspNetCore.Authentication.Cookies." +

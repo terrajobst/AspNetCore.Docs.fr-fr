@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/12/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: 4b02a9b5867559da493054bb128aabed4d920ace
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 578be568b58dc630e8aabf8cb355266766741b9e
+ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813624"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70384737"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>État de session et d’application dans ASP.NET Core
 
@@ -22,7 +22,7 @@ HTTP est un protocole sans état. Sans effectuer des étapes supplémentaires, l
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/app-state/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="state-management"></a>Gestion de l’état
+## <a name="state-management"></a>Gestion de l'état
 
 L’état peut être stocké à l’aide de plusieurs approches. Chacune d’elles est abordée plus loin dans cette rubrique.
 
@@ -65,21 +65,21 @@ L’état de session présente les comportements suivants :
 * L’application conserve une session pendant une période limitée après la dernière requête. L’application définit le délai d’expiration d’une session ou utilise la valeur par défaut de 20 minutes. L’état de session est idéal pour le stockage des données utilisateur qui sont propres à une session particulière, mais où les données ne nécessitent pas un stockage permanent entre les sessions.
 * Les données de session sont supprimées quand l’implémentation [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) est appelée ou quand la session expire.
 * Il n’existe aucun mécanisme par défaut permettant de signaler au code d’application qu’un navigateur client a été fermé ou que le cookie de session a été supprimé ou a expiré sur le client.
-* Les modèles de pages ASP.NET Core MVC et Razor incluent la prise en charge du Règlement général sur la protection des données (RGPD). Les cookies d’état de session ne sont pas marqués comme étant essentiels par défaut, donc l’état de session n’est pas fonctionnel, sauf si le suivi est autorisé par le visiteur du site. Pour plus d’informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
+* Les modèles de pages ASP.NET Core MVC et Razor incluent la prise en charge du Règlement général sur la protection des données (RGPD). Les cookies d’état de session ne sont pas marqués comme étant essentiels par défaut, donc l’état de session n’est pas fonctionnel, sauf si le suivi est autorisé par le visiteur du site. Pour plus d'informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>.
 
 > [!WARNING]
 > Ne stockez pas de données sensibles dans l’état de session. L’utilisateur risque de ne pas fermer le navigateur et de ne pas effacer le cookie de session. Certains navigateurs conservent des cookies de session valides entre les fenêtres du navigateur. Une session n’est pas toujours limitée à un seul utilisateur ; l’utilisateur suivant risque donc de parcourir l’application avec le même cookie de session.
 
 Le fournisseur de cache en mémoire stocke les données de session dans la mémoire du serveur où réside l’application. Dans un scénario de batterie de serveurs :
 
-* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
+* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
 * Le cookie de session est chiffré par le biais d’[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector). La protection des données doit être configurée correctement pour lire les cookies de session sur chaque ordinateur. Pour plus d’informations, consultez <xref:security/data-protection/introduction> et [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurer l’état de session
 
 Le package [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/), qui est inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), fournit un middleware (intergiciel) pour gérer l’état de session. Pour activer le middleware Session, `Startup` doit contenir les éléments suivants :
 
-* Un des caches mémoire [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache). L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
+* Un des caches mémoire [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache). L’implémentation `IDistributedCache` est utilisée comme magasin de stockage pour la session. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
 * Un appel à [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession) dans `ConfigureServices`.
 * Un appel à [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions.usesession#Microsoft_AspNetCore_Builder_SessionMiddlewareExtensions_UseSession_Microsoft_AspNetCore_Builder_IApplicationBuilder_) dans `Configure`.
 
@@ -163,7 +163,29 @@ L’exemple suivant montre comment définir et obtenir un objet sérialisable av
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core expose la propriété [TempData d’un modèle de page Razor Pages](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.tempdata) ou [TempData d’un contrôleur MVC](/dotnet/api/microsoft.aspnetcore.mvc.controller.tempdata). Cette propriété stocke les données jusqu’à ce qu’elles soient lues. Vous pouvez utiliser les méthodes [Keep](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.keep) et [Peek](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.itempdatadictionary.peek) pour examiner les données sans suppression. TempData est particulièrement utile pour la redirection, quand des données sont nécessaires pour plusieurs requêtes. TempData est implémenté par des fournisseurs TempData à l’aide de cookies ou de l’état de session.
+ASP.NET Core expose le Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData) ou le <xref:Microsoft.AspNetCore.Mvc.Controller.TempData>contrôleur. Cette propriété stocke les données jusqu’à ce qu’elles soient lues dans une autre requête. Les méthodes [Keep (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) et [Peek (String)](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*) peuvent être utilisées pour examiner les données sans suppression à la fin de la requête. [Keep ()](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*) marque tous les éléments du dictionnaire pour la rétention. `TempData`est particulièrement utile pour la redirection quand des données sont requises pour plus d’une requête unique. `TempData`est implémenté par `TempData` les fournisseurs à l’aide de cookies ou de l’état de session.
+
+## <a name="tempdata-samples"></a>Exemples TempData
+
+Examinez la page suivante qui crée un client :
+
+[!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
+
+La page suivante affiche `TempData["Message"]`:
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
+
+Dans le balisage précédent, à la fin de la demande `TempData["Message"]` , n’est **pas** supprimé, car `Peek` est utilisé. L’actualisation de la `TempData["Message"]`page s’affiche.
+
+Le balisage suivant est semblable au code précédent, mais utilise `Keep` pour conserver les données à la fin de la requête :
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
+
+La navigation entre les pages *IndexPeek* et *IndexKeep* ne sera `TempData["Message"]`pas supprimée.
+
+Le code suivant affiche `TempData["Message"]`, mais à la fin de la demande, `TempData["Message"]` est supprimé :
+
+[!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
 ### <a name="tempdata-providers"></a>Fournisseurs TempData
 
@@ -245,7 +267,7 @@ La mise en cache est un moyen efficace de stocker et récupérer des données. L
 
 Les données mises en cache ne sont pas associées à une requête, un utilisateur ou une session spécifique. **Veillez à ne pas mettre en cache des données propres à l’utilisateur susceptibles d’être récupérées par les requêtes d’autres utilisateurs.**
 
-Pour plus d’informations, consultez <xref:performance/caching/response>.
+Pour plus d'informations, consultez <xref:performance/caching/response>.
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 
