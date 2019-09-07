@@ -5,14 +5,14 @@ description: Découvrez comment acheminer des requêtes dans des applications et
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/23/2019
+ms.date: 09/06/2019
 uid: blazor/routing
-ms.openlocfilehash: ae3d7ab01185dd6f2e8e0f59b78c2e693fe464b0
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: d348908261c51b477aa698a407266d05c0df5a33
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310347"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800344"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
 
@@ -28,9 +28,7 @@ Le côté serveur éblouissant est intégré à [ASP.net Core routage des points
 
 ## <a name="route-templates"></a>Modèles de routage
 
-Le `Router` composant active le routage et un modèle de routage est fourni à chaque composant accessible. Le `Router` composant apparaît dans le fichier *app. Razor* :
-
-Dans une application éblouissante côté serveur ou côté client :
+Le `Router` composant active le routage vers chaque composant avec un itinéraire spécifié. Le `Router` composant apparaît dans le fichier *app. Razor* :
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -43,20 +41,27 @@ Dans une application éblouissante côté serveur ou côté client :
 </Router>
 ```
 
-Lorsqu’un fichier *. Razor* avec une `@page` directive est compilé, la classe générée est fournie en <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> spécifiant le modèle de routage. Lors de l’exécution, le routeur recherche les classes de `RouteAttribute` composant avec un et restitue le composant avec un modèle de routage qui correspond à l’URL demandée.
+Lorsqu’un fichier *. Razor* avec une `@page` directive est compilé, la classe générée est fournie en <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> spécifiant le modèle de routage.
+
+Au moment de l' `RouteView` exécution, le composant :
+
+* Reçoit du `RouteData` `Router` avec les paramètres souhaités.
+* Restitue le composant spécifié avec sa disposition (ou une disposition par défaut facultative) à l’aide des paramètres spécifiés.
+
+Vous pouvez éventuellement spécifier un `DefaultLayout` paramètre avec une classe de disposition à utiliser pour les composants qui ne spécifient pas de disposition. Les modèles éblouissants par défaut spécifient le `MainLayout` composant. *MainLayout. Razor* se trouve dans le dossier *partagé* du projet de modèle. Pour plus d’informations sur les mises en <xref:blazor/layouts>page, consultez.
 
 Plusieurs modèles de routage peuvent être appliqués à un composant. Le composant suivant répond aux demandes pour `/BlazorRoute` et `/DifferentBlazorRoute`:
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Pour que les URL soient correctement résolues, l’application `<base>` doit inclure une balise dans son fichier *wwwroot/index.html* (The éblouissant Client-Side) ou le fichier *pages/_Host. cshtml* (éblouissant côté serveur) avec le chemin d’accès `href` de base de l’application spécifié dans l’attribut ( `<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/client-side#app-base-path>.
+> Pour que les URL soient correctement résolues, l’application `<base>` doit inclure une balise dans son fichier *wwwroot/index.html* (The éblouissant Client-Side) ou le fichier *pages/_Host. cshtml* (éblouissant côté serveur) avec le chemin d’accès `href` de base de l’application spécifié dans l’attribut ( `<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Fournir du contenu personnalisé lorsque le contenu est introuvable
 
 Le `Router` composant permet à l’application de spécifier du contenu personnalisé si le contenu est introuvable pour l’itinéraire demandé.
 
-Dans le fichier *app. Razor* , définissez le contenu personnalisé dans `<NotFound>` le paramètre de `Router` modèle du composant :
+Dans le fichier *app. Razor* , définissez le contenu personnalisé dans `NotFound` le paramètre de `Router` modèle du composant :
 
 ```cshtml
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -70,7 +75,13 @@ Dans le fichier *app. Razor* , définissez le contenu personnalisé dans `<NotFo
 </Router>
 ```
 
-Le contenu de `<NotFound>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
+Le contenu des `<NotFound>` balises peut inclure des éléments arbitraires, tels que d’autres composants interactifs. Pour appliquer une disposition par défaut `NotFound` au contenu, <xref:blazor/layouts>consultez.
+
+## <a name="route-to-components-from-multiple-assemblies"></a>Acheminer vers des composants à partir de plusieurs assemblys
+
+Utilisez le `AdditionalAssemblies` paramètre pour spécifier des assemblys supplémentaires que `Router` le composant doit prendre en compte lors de la recherche de composants routables. Les assemblys spécifiés sont pris en compte `AppAssembly`en plus de l’assembly spécifié. Dans l’exemple suivant, `Component1` est un composant routable défini dans une bibliothèque de classes référencée. L’exemple `AdditionalAssemblies` suivant entraîne la prise en charge `Component1`du routage pour :
+
+< routeur AppAssembly = "typeof (Program). Assembly "AdditionalAssemblies =" New [] {typeof (Composant1). Assembly} >...</Router>
 
 ## <a name="route-parameters"></a>Paramètres d’itinéraire
 
@@ -93,7 +104,7 @@ Dans l’exemple suivant, l’itinéraire vers le `Users` composant correspond u
 
 Les contraintes de routage indiquées dans le tableau suivant sont disponibles. Pour plus d’informations sur les contraintes d’itinéraire qui correspondent à la culture dite indifférente, consultez l’avertissement sous le tableau.
 
-| Contrainte | Exemples           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
+| Contrainte | Exemple           | Exemples de correspondances                                                                  | Invariant<br>culture<br>correspondance |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
 | `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | Non                               |
 | `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Oui                              |
@@ -181,4 +192,3 @@ Le composant suivant accède au composant de `Counter` l’application lorsque l
     }
 }
 ```
-

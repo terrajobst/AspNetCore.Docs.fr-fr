@@ -7,18 +7,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 08/05/2019
 uid: signalr/configuration
-ms.openlocfilehash: 475d9664c588c06bfcd816959be8a425ee01c023
-ms.sourcegitcommit: 776367717e990bdd600cb3c9148ffb905d56862d
+ms.openlocfilehash: 156ffac83fbdf61fd88ad8acc307c2c701c46bca
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68915082"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773933"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration de Signalr ASP.NET Core
 
 ## <a name="jsonmessagepack-serialization-options"></a>Options de sérialisation JSON/MessagePack
 
-ASP.NET Core Signalr prend en charge deux protocoles pour l’encodage des messages: [JSON](https://www.json.org/) et [MessagePack](https://msgpack.org/index.html). Chaque protocole possède des options de configuration de la sérialisation.
+ASP.NET Core Signalr prend en charge deux protocoles pour l’encodage des messages : [JSON](https://www.json.org/) et [MessagePack](https://msgpack.org/index.html). Chaque protocole possède des options de configuration de la sérialisation.
 
 La sérialisation JSON peut être configurée sur le serveur à l’aide de la méthode d’extension [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol) , qui peut être `Startup.ConfigureServices` ajoutée après [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans votre méthode. La `AddJsonProtocol` méthode prend un délégué qui reçoit un `options` objet. La propriété [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) sur cet objet est un objet `JsonSerializerSettings` JSON.net qui peut être utilisé pour configurer la sérialisation des arguments et les valeurs de retour. Pour plus d’informations, consultez la [documentation de JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm) .
 
@@ -32,7 +32,7 @@ services.AddSignalR()
     });
 ```
 
-Dans le client .net, la même `AddJsonProtocol` méthode d’extension existe sur [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder). L' `Microsoft.Extensions.DependencyInjection` espace de noms doit être importé pour résoudre la méthode d’extension:
+Dans le client .net, la même `AddJsonProtocol` méthode d’extension existe sur [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder). L' `Microsoft.Extensions.DependencyInjection` espace de noms doit être importé pour résoudre la méthode d’extension :
 
 ```csharp
 // At the top of the file:
@@ -59,7 +59,7 @@ La sérialisation MessagePack peut être configurée en fournissant un délégu�
 
 ## <a name="configure-server-options"></a>Configurer les options de serveur
 
-Le tableau suivant décrit les options de configuration des hubs Signalr:
+Le tableau suivant décrit les options de configuration des hubs Signalr :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -111,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Les options d’un seul Hub remplacent les options globales `AddSignalR` fournies dans et peuvent être <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>configurées à l’aide de:
+Les options d’un seul Hub remplacent les options globales `AddSignalR` fournies dans et peuvent être <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>configurées à l’aide de :
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>
@@ -121,6 +121,30 @@ services.AddSignalR().AddHubOptions<MyHub>(options =>
 ```
 
 ### <a name="advanced-http-configuration-options"></a>Options de configuration HTTP avancées
+
+::: moniker range=">= aspnetcore-3.0"
+
+Utilisez `HttpConnectionDispatcherOptions` pour configurer les paramètres avancés relatifs aux transports et à la gestion des tampons de mémoire. Ces options sont configurées en passant un délégué [à\<MapHub T >](/dotnet/api/microsoft.aspnetcore.builder.hubendpointroutebuilderextensions.maphub) dans. `Startup.Configure`
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseRouting();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapHub<MyHub>("/myhub", options =>
+        {
+            options.Transports =
+                HttpTransportType.WebSockets |
+                HttpTransportType.LongPolling;
+        });
+    });
+}
+```
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
 
 Utilisez `HttpConnectionDispatcherOptions` pour configurer les paramètres avancés relatifs aux transports et à la gestion des tampons de mémoire. Ces options sont configurées en passant un délégué [à\<MapHub T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub) dans. `Startup.Configure`
 
@@ -141,7 +165,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-Le tableau suivant décrit les options de configuration des options HTTP avancées de ASP.NET Core Signalr:
+::: moniker-end
+
+Le tableau suivant décrit les options de configuration des options HTTP avancées de ASP.NET Core Signalr :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -242,7 +268,7 @@ Le tableau suivant répertorie les niveaux de journalisation disponibles. La val
 > [!NOTE]
 > Pour désactiver entièrement la journalisation, spécifiez `signalR.LogLevel.None` dans la méthode `configureLogging`.
 
-Pour plus d’informations sur la journalisation, consultez la [documentation relative](xref:signalr/diagnostics)aux diagnostics de signalr.
+Pour plus d’informations sur la journalisation, consultez la [documentation relative aux diagnostics de signalr](xref:signalr/diagnostics).
 
 Le client Java Signalr utilise la bibliothèque [SLF4J](https://www.slf4j.org/) pour la journalisation. Il s’agit d’une API de journalisation de haut niveau qui permet aux utilisateurs de la bibliothèque de choisir leur propre implémentation de journalisation spécifique en introduisant une dépendance de journalisation spécifique. L’extrait de code suivant montre comment utiliser `java.util.logging` avec le client Java signalr.
 
@@ -250,7 +276,7 @@ Le client Java Signalr utilise la bibliothèque [SLF4J](https://www.slf4j.org/) 
 implementation 'org.slf4j:slf4j-jdk14:1.7.25'
 ```
 
-Si vous ne configurez pas la journalisation dans vos dépendances, SLF4J charge un journal de non-opération par défaut avec le message d’avertissement suivant:
+Si vous ne configurez pas la journalisation dans vos dépendances, SLF4J charge un journal de non-opération par défaut avec le message d’avertissement suivant :
 
 ```
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -264,7 +290,7 @@ Cela peut être ignoré en toute sécurité.
 
 Les transports utilisés par signalr peuvent être configurés dans l' `WithUrl` appel (`withUrl` en JavaScript). Une opération or au niveau du bit des `HttpTransportType` valeurs de peut être utilisée pour restreindre le client à utiliser uniquement les transports spécifiés. Tous les transports sont activés par défaut.
 
-Par exemple, pour désactiver le transport des événements envoyés par le serveur, mais autoriser les connexions WebSocket et d’interrogation longue:
+Par exemple, pour désactiver le transport des événements envoyés par le serveur, mais autoriser les connexions WebSocket et d’interrogation longue :
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -272,7 +298,7 @@ var connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Dans le client JavaScript, les transports sont configurés en définissant le `transport` champ sur l’objet d’options fourni à: `withUrl`
+Dans le client JavaScript, les transports sont configurés en définissant le `transport` champ sur l’objet d’options fourni à : `withUrl`
 
 ```javascript
 let connection = new signalR.HubConnectionBuilder()
@@ -303,7 +329,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/m
 
 ### <a name="configure-bearer-authentication"></a>Configurer l’authentification du porteur
 
-Pour fournir des données d’authentification avec les demandes signalr, `AccessTokenProvider` utilisez l'`accessTokenFactory` option (en JavaScript) pour spécifier une fonction qui retourne le jeton d’accès souhaité. Dans le client .net, ce jeton d’accès est transmis en tant que jeton «authentification du porteur» http ( `Authorization` à l’aide de l' `Bearer`en-tête de type). Dans le client JavaScript, le jeton d’accès est utilisé comme jeton du porteur, **sauf** dans certains cas où les API de navigateur restreignent la possibilité d’appliquer des en-têtes (en particulier dans les demandes d’événements envoyés par le serveur et WebSocket). Dans ce cas, le jeton d’accès est fourni sous la forme d' `access_token`une valeur de chaîne de requête.
+Pour fournir des données d’authentification avec les demandes signalr, `AccessTokenProvider` utilisez l'`accessTokenFactory` option (en JavaScript) pour spécifier une fonction qui retourne le jeton d’accès souhaité. Dans le client .net, ce jeton d’accès est transmis en tant que jeton « authentification du porteur » http ( `Authorization` à l’aide de l' `Bearer`en-tête de type). Dans le client JavaScript, le jeton d’accès est utilisé comme jeton du porteur, **sauf** dans certains cas où les API de navigateur restreignent la possibilité d’appliquer des en-têtes (en particulier dans les demandes d’événements envoyés par le serveur et WebSocket). Dans ce cas, le jeton d’accès est fourni sous la forme d' `access_token`une valeur de chaîne de requête.
 
 Dans le client .NET, l'option `AccessTokenProvider` peut être spécifiée à l’aide du délégué d’options de `WithUrl`:
 
@@ -405,7 +431,7 @@ Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant
 
 ### <a name="configure-additional-options"></a>Configurer des options supplémentaires
 
-Des options supplémentaires peuvent être configurées `WithUrl` dans`withUrl` la méthode (en JavaScript `HubConnectionBuilder` ) sur ou sur les différentes API de `HttpHubConnectionBuilder` configuration sur le dans le client Java:
+Des options supplémentaires peuvent être configurées `WithUrl` dans`withUrl` la méthode (en JavaScript `HubConnectionBuilder` ) sur ou sur les différentes API de `HttpHubConnectionBuilder` configuration sur le dans le client Java :
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -440,7 +466,7 @@ Des options supplémentaires peuvent être configurées `WithUrl` dans`withUrl` 
 
 ---
 
-Dans le client .NET, ces options peuvent être modifiées par le délégué d’options fourni `WithUrl`à:
+Dans le client .NET, ces options peuvent être modifiées par le délégué d’options fourni `WithUrl`à :
 
 ```csharp
 var connection = new HubConnectionBuilder()

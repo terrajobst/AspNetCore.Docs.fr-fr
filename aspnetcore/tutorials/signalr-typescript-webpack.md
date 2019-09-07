@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/23/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: fec89cab52b5909344d2ebc0d69582ecf97ecefc
-ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.openlocfilehash: 628fbb9940ad14cb15e3abd88b8b6a524b24d70a
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384924"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773957"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -413,6 +413,8 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 1. Mappez une route */hub* au hub `ChatHub`. Ajoutez les lignes suivantes à la fin de la méthode `Startup.Configure` :
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
+
+::: moniker-end
 
 1. Créez un répertoire *Hubs* à la racine du projet. Son objectif est de stocker le hub SignalR, qui est créé à l’étape suivante.
 

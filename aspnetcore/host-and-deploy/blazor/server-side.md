@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application Blazor c�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/11/2019
+ms.date: 09/05/2019
 uid: host-and-deploy/blazor/server-side
-ms.openlocfilehash: 56a03ff583bf85497e2b3bacc70123845a046e3d
-ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
-ms.translationtype: HT
+ms.openlocfilehash: 8da71faf6abc5929d6cd43d42fd896e378d99ef6
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67892698"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773575"
 ---
 # <a name="host-and-deploy-blazor-server-side"></a>Héberger et déployer Blazor côté serveur
 
@@ -30,7 +30,7 @@ Un serveur web capable d’héberger une application ASP.NET Core est nécessair
 
 ## <a name="connection-scale-out"></a>Monter en charge la connexion
 
-Les applications côté serveur Blazor nécessitent une seule connexion SignalR active pour chaque utilisateur. Un déploiement de Blazor côté serveur de production nécessite une solution pour prendre en charge autant de connexions simultanées que requis par l’application. Le [Azure SignalR Service](/azure/azure-signalr/) gère la mise à l’échelle des connexions et est recommandé comme solution de mise à l’échelle pour les applications côté serveur Blazor. Pour plus d’informations, consultez <xref:signalr/publish-to-azure-web-app>.
+Les applications côté serveur Blazor nécessitent une seule connexion SignalR active pour chaque utilisateur. Un déploiement de Blazor côté serveur de production nécessite une solution pour prendre en charge autant de connexions simultanées que requis par l’application. Le [Azure SignalR Service](/azure/azure-signalr/) gère la mise à l’échelle des connexions et est recommandé comme solution de mise à l’échelle pour les applications côté serveur Blazor. Pour plus d'informations, consultez <xref:signalr/publish-to-azure-web-app>.
 
 ## <a name="signalr-configuration"></a>Configuration SignalR
 

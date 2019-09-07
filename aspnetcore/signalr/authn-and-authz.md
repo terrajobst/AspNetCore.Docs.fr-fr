@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 07/15/2019
 uid: signalr/authn-and-authz
-ms.openlocfilehash: e7e7a9fd537ba89b64c15594652a290357a00038
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: da226f4e192be8e34a0b2cec1493a1353c995279
+ms.sourcegitcommit: 387cf29f5d5addef2cbc70670a11d612806b36b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68412535"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70746531"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Authentification et autorisation dans ASP.NET Core Signalr
 
@@ -24,7 +24,9 @@ Par [Andrew Stanton-infirmière](https://twitter.com/anurse)
 
 Signalr peut être utilisé avec [l’authentification ASP.net Core](xref:security/authentication/identity) pour associer un utilisateur à chaque connexion. Dans un hub, les données d’authentification sont accessibles à partir de la propriété [ `HubConnectionContext.User` ](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user). L’authentification permet au hub d'appeler des méthodes sur toutes les connexions associées à un utilisateur (voir [gérer les utilisateurs et groupes dans SignalR](xref:signalr/groups) pour plus d’informations). Plusieurs connexions peuvent être associées à un seul utilisateur.
 
-Voici un exemple `Startup.Configure` qui utilise signalr et l’authentification ASP.net Core:
+Voici un exemple `Startup.Configure` qui utilise signalr et l’authentification ASP.net Core :
+
+::: moniker range=">= aspnetcore-3.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -32,7 +34,31 @@ public void Configure(IApplicationBuilder app)
     ...
 
     app.UseStaticFiles();
-    
+
+    app.UseRouting();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapHub<ChatHub>("/chat");
+        endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+    });
+}
+```
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.2"
+
+```csharp
+public void Configure(IApplicationBuilder app)
+{
+    ...
+
+    app.UseStaticFiles();
+
     app.UseAuthentication();
 
     app.UseSignalR(hubs =>
@@ -49,6 +75,8 @@ public void Configure(IApplicationBuilder app)
 
 > [!NOTE]
 > L’ordre dans lequel vous inscrivez Signalr et ASP.NET Core middleware d’authentification est important. Appelez `UseAuthentication` toujours avant `UseSignalR` afin que signalr ait un utilisateur sur le `HttpContext`.
+
+::: moniker-end
 
 ### <a name="cookie-authentication"></a>Authentification par cookie
 
@@ -80,7 +108,7 @@ var connection = new HubConnectionBuilder()
 > [!NOTE]
 > La fonction de jeton d’accès que vous fournissez est appelée avant **chaque** requête HTTP effectuée par signalr. Si vous devez renouveler le jeton afin de maintenir la connexion active (car il peut expirer pendant la connexion), faites-le à partir de cette fonction et retournez le jeton mis à jour.
 
-Dans les API Web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, Signalr ne peut pas définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez des WebSockets et des événements envoyés par le serveur, le jeton est transmis sous la forme d’un paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise:
+Dans les API Web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, Signalr ne peut pas définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez des WebSockets et des événements envoyés par le serveur, le jeton est transmis sous la forme d’un paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise :
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
@@ -162,7 +190,7 @@ public class ChatHub : Hub
 }
 ```
 
-Les méthodes de hub individuel peuvent avoir l'attribut `[Authorize]` également appliqué. Si l’utilisateur actuel ne correspond pas à la stratégie appliquée à la méthode, une erreur est retournée à l’appelant:
+Les méthodes de hub individuel peuvent avoir l'attribut `[Authorize]` également appliqué. Si l’utilisateur actuel ne correspond pas à la stratégie appliquée à la méthode, une erreur est retournée à l’appelant :
 
 ```csharp
 [Authorize]

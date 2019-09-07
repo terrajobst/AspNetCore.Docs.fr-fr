@@ -5,14 +5,14 @@ description: Résoudre les erreurs lors de l’utilisation de gRPC sur .NET Core
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 08/26/2019
+ms.date: 09/05/2019
 uid: grpc/troubleshoot
-ms.openlocfilehash: e0c12aac083bc2e13f66831e756f2a93b7ee76b0
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 86517ec90c1df782da796e4dcf74cdc426565eb6
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310448"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773655"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Résoudre les problèmes de gRPC sur .NET Core
 
@@ -63,10 +63,11 @@ Si vous appelez un service gRPC sur un autre ordinateur et que vous ne pouvez pa
 var httpClientHandler = new HttpClientHandler();
 // Return `true` to allow certificates that are untrusted/invalid
 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
-
 var httpClient = new HttpClient(httpClientHandler);
-httpClient.BaseAddress = new Uri("https://localhost:5001");
-var client = GrpcClient.Create<Greeter.GreeterClient>(httpClient);
+
+var channel = GrpcChannel.ForAddress("https://localhost:5001",
+    new GrpcChannelOptions { HttpClient = httpClient });
+var client = new Greet.GreeterClient(channel);
 ```
 
 > [!WARNING]

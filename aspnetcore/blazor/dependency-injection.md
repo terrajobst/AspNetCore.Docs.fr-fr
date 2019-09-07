@@ -5,14 +5,14 @@ description: Découvrez comment les applications éblouissantes peuvent injecter
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/02/2019
+ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: a2bfa0cbe951e817ed6264f1a151d5a716cd795c
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
+ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310354"
+ms.lasthandoff: 09/07/2019
+ms.locfileid: "70800398"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core l’injection de dépendances éblouissantes
 
@@ -61,7 +61,7 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 
 | Durée de vie | Description |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Le côté client de éblouissant n’a actuellement pas de concept d’étendues DI. `Scoped`-les services inscrits se `Singleton` comportent comme des services. Toutefois, le modèle d’hébergement côté serveur prend en `Scoped` charge la durée de vie. Dans un composant Razor, l’inscription d’un service étendu est limitée à la connexion. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Les applications webassembly éblouissantes n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se `Singleton` comportent comme des services. Toutefois, le modèle d’hébergement côté serveur prend en `Scoped` charge la durée de vie. Dans les applications serveur éblouissantes, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI crée une *seule instance* du service. Tous les composants qui `Singleton` requièrent un service reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Chaque fois qu’un composant obtient une instance d' `Transient` un service à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 
@@ -124,6 +124,29 @@ Conditions préalables pour l’injection de constructeur :
 * Un constructeur doit exister dont les arguments peuvent tous être remplis par DI. Les paramètres supplémentaires non couverts par DI sont autorisés s’ils spécifient des valeurs par défaut.
 * Le constructeur applicable doit être *public*.
 * Un constructeur applicable doit exister. En cas d’ambiguïté, DI lève une exception.
+
+## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>Classes de composants de base de l’utilitaire pour gérer une étendue DI
+
+Dans ASP.NET Core applications, les services délimités sont généralement étendus à la requête actuelle. Une fois la demande terminée, tous les services délimités ou temporaires sont supprimés par le système DI. Dans les applications serveur éblouissantes, l’étendue de la demande est valable pendant la durée de la connexion du client, ce qui peut entraîner des services transitoires et de portée de vie bien plus longs que prévu.
+
+Pour étendre les services à la durée de vie d’un composant, `OwningComponentBase` peut `OwningComponentBase<TService>` utiliser les classes de base et. Ces classes de base exposent `ScopedServices` une `IServiceProvider` propriété de type qui résout les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez `@inherits` la directive.
+
+```cshtml
+@page "/users"
+@attribute [Authorize]
+@inherits OwningComponentBase<Data.ApplicationDbContext>
+
+<h1>Users (@Service.Users.Count())</h1>
+<ul>
+    @foreach (var user in Service.Users)
+    {
+        <li>@user.UserName</li>
+    }
+</ul>
+```
+
+> [!NOTE]
+> Les services injectés dans le composant `@inject` à l' `InjectAttribute` aide de ou de ne sont pas créés dans l’étendue du composant et sont liés à l’étendue de la demande.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -1,30 +1,37 @@
 ---
-title: Utiliser les Services de JavaScript pour créer des Applications à Page unique dans ASP.NET Core
+title: Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 author: scottaddie
-description: En savoir plus sur les avantages de l’utilisation des Services de JavaScript pour créer une Application à Page unique (SPA) soutenu par ASP.NET Core.
+description: Découvrez les avantages de l’utilisation des services JavaScript pour créer une application à page unique (SPA) sauvegardée par ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: H1Hack27Feb2017
-ms.date: 05/28/2019
+ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 19710b58bca606d21feda9069ad00edd1e4f72e9
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 16c9eb1d79bca792062d292795763c54dd02bd37
+ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813472"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773416"
 ---
-# <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utiliser les Services de JavaScript pour créer des Applications à Page unique dans ASP.NET Core
+# <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie) et [Fiyaz Hasan](https://fiyazhasan.me/)
 
-Une Application à Page unique (SPA) est un type d’application web en raison de son expérience utilisateur riche inhérente. L’intégration de frameworks SPA côté client ou les bibliothèques, telles que [Angular](https://angular.io/) ou [réagir](https://facebook.github.io/react/), avec des infrastructures de côté serveur, telles que ASP.NET Core peut être difficile. Services de JavaScript a été développé pour réduire la friction lors du processus d’intégration. Il permet à une opération transparente entre les piles de technologie de serveur et de client.
+Une Application à Page unique (SPA) est un type d’application web en raison de son expérience utilisateur riche inhérente. L’intégration d’infrastructures ou de bibliothèques SPA côté client, telles que l' [angle](https://angular.io/) ou la [réaction](https://facebook.github.io/react/), avec des frameworks côté serveur, tels que les ASP.net Core peut s’avérer difficile. Les services JavaScript ont été développés pour réduire les frottements dans le processus d’intégration. Il permet à une opération transparente entre les piles de technologie de serveur et de client.
 
-## <a name="what-is-javascript-services"></a>Nouveautés des Services de JavaScript
+::: moniker range=">= aspnetcore-3.0"
 
-Services de JavaScript est un ensemble de technologies côté client pour ASP.NET Core. Son objectif est de positionner ASP.NET Core en tant que côté serveur conseillée développeurs pour la création d’applications à page unique.
+> [!WARNING]
+> Les fonctionnalités décrites dans cet article sont obsolètes à partir de ASP.NET Core 3,0. Un mécanisme d’intégration de frameworks SPA plus simple est disponible dans le package NuGet [Microsoft. AspNetCore. SpaServices. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions) . Pour plus d’informations, consultez [[Announcement] Obsoleting Microsoft. AspNetCore. SpaServices et Microsoft. AspNetCore. NodeServices](https://github.com/aspnet/AspNetCore/issues/12890).
 
-Services de JavaScript se compose de deux packages NuGet distinctes :
+::: moniker-end
+
+## <a name="what-is-javascript-services"></a>Qu’est-ce que les services JavaScript ?
+
+Les services JavaScript sont une collection de technologies côté client pour ASP.NET Core. Son objectif est de positionner ASP.NET Core en tant que côté serveur conseillée développeurs pour la création d’applications à page unique.
+
+Les services JavaScript sont constitués de deux packages NuGet distincts :
 
 * [Microsoft.AspNetCore.NodeServices](https://www.nuget.org/packages/Microsoft.AspNetCore.NodeServices/) (NodeServices)
 * [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) (SpaServices)
@@ -39,7 +46,7 @@ Une grande partie de cet article met l’accent est placée sur l’utilisation 
 
 ## <a name="what-is-spaservices"></a>Qu’est SpaServices
 
-SpaServices a été créé pour positionner ASP.NET Core en tant que côté serveur conseillée développeurs pour la création d’applications à page unique. SpaServices n’est pas requis pour développer des applications à page unique avec ASP.NET Core, et il ne verrouille pas les développeurs dans une infrastructure client particulier.
+SpaServices a été créé pour positionner ASP.NET Core en tant que côté serveur conseillée développeurs pour la création d’applications à page unique. SpaServices n’est pas requis pour développer des SPAs avec ASP.NET Core, et il ne verrouille pas les développeurs dans une infrastructure cliente particulière.
 
 SpaServices fournit infrastructure utile telles que :
 
@@ -62,11 +69,11 @@ Pour utiliser SpaServices, installez les éléments suivants :
     node -v && npm -v
     ```
 
-  * Si vous déployez vers un site web Azure, aucune action n’est requise&mdash;Node.js est installé et disponible dans les environnements de serveur.
+  * En cas de déploiement sur un site Web Azure, aucune action n'&mdash;est requise, node. js est installé et disponible dans les environnements de serveur.
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
-  * Sur Windows à l’aide de Visual Studio 2017, le SDK est installé en sélectionnant le **.NET Core le développement multiplateforme** charge de travail.
+  * Sur Windows à l’aide de Visual Studio 2017, le kit de développement logiciel (SDK) est installé en sélectionnant la charge de travail **développement multiplateforme .net Core** .
 
 * [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) package NuGet
 
@@ -76,15 +83,15 @@ Une application universelle (également appelé isomorphes) est une application 
 
 ASP.NET Core [Tag Helpers](xref:mvc/views/tag-helpers/intro) fournie par SpaServices simplifier l’implémentation de pré-rendu de côté serveur en appelant les fonctions JavaScript sur le serveur.
 
-### <a name="server-side-prerendering-prerequisites"></a>Conditions préalables de pré-rendu côté serveur
+### <a name="server-side-prerendering-prerequisites"></a>Conditions préalables pour le prérendu côté serveur
 
-Installer le [aspnet-pré-rendu](https://www.npmjs.com/package/aspnet-prerendering) package npm :
+Installer le package NPM [ASPNET-PreRender](https://www.npmjs.com/package/aspnet-prerendering) :
 
 ```console
 npm i -S aspnet-prerendering
 ```
 
-### <a name="server-side-prerendering-configuration"></a>Configuration de pré-rendu côté serveur
+### <a name="server-side-prerendering-configuration"></a>Configuration du prérendu côté serveur
 
 Les Tag Helpers rendus détectables par le biais de l’inscription d’espace de noms dans le projet *_ViewImports.cshtml* fichier :
 
@@ -94,7 +101,7 @@ Ces Tag Helpers clarifient les subtilités de communiquer directement avec les A
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=5)]
 
-### <a name="asp-prerender-module-tag-helper"></a>module ASP-prerender Tag Helper
+### <a name="asp-prerender-module-tag-helper"></a>ASP-prerende-tag Helper module
 
 Le `asp-prerender-module` Tag Helper, utilisée dans l’exemple de code précédent, exécute *ClientApp/dist/main-server.js* sur le serveur via Node.js. Par souci de clarté, *main-server.js* fichier est un artefact de la tâche de transpilation de TypeScript et JavaScript dans le [Webpack](https://webpack.github.io/) du processus de génération. Webpack définit un alias de point d’entrée de `main-server`; et commence le parcours du graphique de dépendance pour cet alias le *ClientApp/démarrage-server.ts* fichier :
 
@@ -104,7 +111,7 @@ Dans l’exemple suivant Angular, le *ClientApp/démarrage-server.ts* fichier ut
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-34,79-)]
 
-### <a name="asp-prerender-data-tag-helper"></a>ASP-prerender-data Tag Helper
+### <a name="asp-prerender-data-tag-helper"></a>ASP-prerende-tag Helper de données
 
 Associé à la `asp-prerender-module` Tag Helper, le `asp-prerender-data` Tag Helper peut être utilisé pour transmettre des informations contextuelles à partir de la vue Razor pour le code JavaScript côté serveur. Par exemple, le balisage suivant transmet les données utilisateur à la `main-server` module :
 
@@ -114,7 +121,7 @@ La réponse reçue `UserName` argument est sérialisé à l’aide du sérialise
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Les noms de propriété passés dans les Tag Helpers sont représentés par **la casse Pascal** notation. Comparez cela à JavaScript, où les mêmes noms de propriété sont représentés par **une casse mixte**. La configuration de sérialisation JSON par défaut est chargée de cette différence.
+Les noms de propriétés passés dans tag helpers sont représentés par la notation **casse Pascal** . Comparez cela à JavaScript, où les mêmes noms de propriété sont représentés par **une casse mixte**. La configuration de sérialisation JSON par défaut est chargée de cette différence.
 
 Pour étendre l’exemple de code précédent, données peuvent être transmises à partir du serveur à la vue par HYDRATATION le `globals` propriété fournie à la `resolve` (fonction) :
 
@@ -132,15 +139,15 @@ Le `postList` tableau défini à l’intérieur de la `globals` objet est attach
 "build": "npm run build:vendor && npm run build:custom",
 ```
 
-### <a name="webpack-dev-middleware-prerequisites"></a>Conditions préalables d’intergiciel (middleware) de Webpack Dev
+### <a name="webpack-dev-middleware-prerequisites"></a>Conditions préalables pour le middleware de développement WebPack
 
-Installer le [aspnet-webpack](https://www.npmjs.com/package/aspnet-webpack) package npm :
+Installez le package [ASPNET-WebPack](https://www.npmjs.com/package/aspnet-webpack) NPM :
 
 ```console
 npm i -D aspnet-webpack
 ```
 
-### <a name="webpack-dev-middleware-configuration"></a>Configuration de l’intergiciel (middleware) de Webpack Dev
+### <a name="webpack-dev-middleware-configuration"></a>Configuration de l’intergiciel (middleware) WebPack
 
 Intergiciel (middleware) de Webpack Dev est inscrit dans le pipeline de requêtes HTTP via le code suivant dans le *Startup.cs* du fichier `Configure` méthode :
 
@@ -156,15 +163,15 @@ Le *webpack.config.js* du fichier `output.publicPath` propriété indique à l�
 
 Pensez à Webpack [remplacement à chaud de Module](https://webpack.js.org/concepts/hot-module-replacement/) fonctionnalité (HMR) comme une évolution de [intergiciel (middleware) de Webpack Dev](#webpack-dev-middleware). HMR présente les mêmes avantages, mais elle simplifie davantage le flux de travail de développement en mettant à jour automatiquement de contenu de la page après la compilation les modifications. À ne pas confondre avec une actualisation du navigateur, ce qui entraînerait une interférence avec l’état en mémoire actuel et la session de débogage de l’application SPA. Il existe un lien direct entre le service de l’intergiciel (middleware) de Webpack développement et le navigateur, ce qui signifie que les modifications sont envoyées au navigateur.
 
-### <a name="hot-module-replacement-prerequisites"></a>Conditions préalables de remplacement d’un Module à chaud
+### <a name="hot-module-replacement-prerequisites"></a>Conditions préalables pour le remplacement des modules à chaud
 
-Installer le [webpack chaud middleware](https://www.npmjs.com/package/webpack-hot-middleware) package npm :
+Installez le package NPM [WebPack-Hot-middleware](https://www.npmjs.com/package/webpack-hot-middleware) :
 
 ```console
 npm i -D webpack-hot-middleware
 ```
 
-### <a name="hot-module-replacement-configuration"></a>Configuration de remplacement d’un Module à chaud
+### <a name="hot-module-replacement-configuration"></a>Configuration du remplacement des modules à chaud
 
 Le composant HMR doit être enregistré dans le pipeline de demande HTTP de MVC dans le `Configure` méthode :
 
@@ -186,29 +193,29 @@ Après le chargement de l’application dans le navigateur, onglet de la Console
 
 ## <a name="routing-helpers"></a>Programmes d’assistance de routage
 
-Dans la plupart des SPA basé sur ASP.NET Core, routage côté client est souvent souhaité en plus du routage côté serveur. Les systèmes de routage SPA et MVC peuvent travailler indépendamment sans interférence. Il existe, toutefois, un bord cas posant défis : identification des réponses HTTP 404.
+Dans la plupart des ASP.NET Core, le routage côté client est souvent souhaité en plus du routage côté serveur. Les systèmes de routage SPA et MVC peuvent travailler indépendamment sans interférence. Il existe, toutefois, un bord cas posant défis : identification des réponses HTTP 404.
 
-Considérez le scénario dans lequel un itinéraire sans extension de `/some/page` est utilisé. Supposons que la demande n’à la correspondance un itinéraire côté serveur, mais son modèle ne correspond pas à un itinéraire côté client. Examinons à présent une demande entrante pour `/images/user-512.png`, lequel attend généralement rechercher un fichier image sur le serveur. Si ce chemin d’accès de la ressource demandée ne correspond pas à toute approche côté serveur ou un fichier statique, il est peu probable que l’application côté client il traiterait&mdash;généralement retournant un code d’état HTTP 404 est souhaitée.
+Considérez le scénario dans lequel un itinéraire sans extension de `/some/page` est utilisé. Supposons que la demande n’à la correspondance un itinéraire côté serveur, mais son modèle ne correspond pas à un itinéraire côté client. Examinons à présent une demande entrante pour `/images/user-512.png`, lequel attend généralement rechercher un fichier image sur le serveur. Si le chemin d’accès de la ressource demandé ne correspond à aucun itinéraire côté serveur ou fichier statique, il est peu probable que l’application côté&mdash;client ne puisse le gérer. en général, le code d’état HTTP 404 est attendu.
 
-### <a name="routing-helpers-prerequisites"></a>Conditions préalables de programmes d’assistance routage
+### <a name="routing-helpers-prerequisites"></a>Conditions préalables pour le routage
 
-Installez le package npm de routage côté client. À l’aide d’Angular par exemple :
+Installez le package NPM du routage côté client. À l’aide d’Angular par exemple :
 
 ```console
 npm i -S @angular/router
 ```
 
-### <a name="routing-helpers-configuration"></a>Configuration de routage de programmes d’assistance
+### <a name="routing-helpers-configuration"></a>Configuration des assistances pour le routage
 
 Une méthode d’extension nommée `MapSpaFallbackRoute` est utilisé dans le `Configure` méthode :
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
-Itinéraires sont évaluées dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
+Les itinéraires sont évalués dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
 
 ## <a name="create-a-new-project"></a>Créer un nouveau projet
 
-Services de JavaScript fournissent des modèles d’application préconfigurés. SpaServices est utilisé dans ces modèles conjointement avec différentes infrastructures et bibliothèques, telles que Angular et React avec Redux.
+Les services JavaScript fournissent des modèles d’application préconfigurés. SpaServices est utilisé dans ces modèles conjointement avec différents frameworks et bibliothèques, tels que angulaire, REACT et Redux.
 
 Ces modèles peuvent être installés par le biais de l’interface CLI .NET Core en exécutant la commande suivante :
 
@@ -239,11 +246,11 @@ Il existe deux modes de configuration de runtime principal :
   * N’Optimisez le code côté client pour les performances.
 * **Production**:
   * Exclut les mappages de sources.
-  * Optimise le code côté client par le biais de regroupement et minimisation.
+  * Optimise le code côté client via le regroupement et la minimisation.
 
 ASP.NET Core utilise une variable d’environnement nommée `ASPNETCORE_ENVIRONMENT` pour stocker le mode de configuration. Pour plus d’informations, consultez [définir l’environnement](xref:fundamentals/environments#set-the-environment).
 
-### <a name="run-with-net-core-cli"></a>Exécuter avec l’interface CLI .NET Core
+### <a name="run-with-net-core-cli"></a>Exécuter avec CLI .NET Core
 
 Restaurer le NuGet requis et les packages npm en exécutant la commande suivante à la racine du projet :
 
@@ -289,10 +296,10 @@ Combinant les ressources côté client générés et les artefacts de ASP.NET Co
 
 La cible MSBuild responsabilités est les suivantes :
 
-1. Restaurez les packages npm.
-1. Créez une build de production à l’échelle des ressources par des tiers, côté client.
-1. Créez une build de production à l’échelle des ressources côté client personnalisées.
-1. Copier les actifs de Webpack généré dans le dossier de publication.
+1. Restaurez les packages NPM.
+1. Créer une build de niveau production des ressources tierces côté client.
+1. Créez une build de niveau production des ressources client personnalisées.
+1. Copiez les ressources générées par WebPack dans le dossier de publication.
 
 La cible MSBuild est appelée lors de l’exécution :
 
