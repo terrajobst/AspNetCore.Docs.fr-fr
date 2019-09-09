@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/03/2019
+ms.date: 09/09/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 308a8bd10371cc70c431b8858ef7d82c1bb624da
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: c2a2941f2a4e27218c90cf47453c69149da8e766
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975415"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815701"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -310,17 +310,19 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="configure-https"></a>Configurer HTTPS
+## <a name="configure-endpoints"></a>Configuration des points de terminaison
 
-Pour configurer le service avec un point de terminaison sécurisé, procédez comme suit :
+Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port `ASPNETCORE_URLS` en définissant la variable d’environnement.
 
-1. Créez un certificat X.509 pour le système d’hébergement à l’aide des mécanismes d’acquisition et de déploiement de certificat de votre plateforme.
+Pour obtenir d’autres approches de configuration des ports et des URL, notamment la prise en charge des points de terminaison HTTPs, consultez les rubriques suivantes :
 
-1. Spécifiez la [configuration de point de terminaison HTTPS d’un serveur Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) pour utiliser le certificat.
+* <xref:fundamentals/servers/kestrel#endpoint-configuration>Kestrel
+* <xref:fundamentals/servers/httpsys#configure-windows-server>(HTTP. sys)
 
-L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.
+> [!NOTE]
+> L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.
 
 ## <a name="current-directory-and-content-root"></a>Répertoire actif et racine du contenu
 

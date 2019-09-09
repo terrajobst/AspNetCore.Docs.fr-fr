@@ -1,10 +1,11 @@
-# <a name="aspnet-core-web-api-sample"></a>Exemple d’API web ASP.NET Core
+# <a name="aspnet-core-web-api-samples"></a>Exemples d’API Web ASP.NET Core
 
-Le tableau suivant fournit une description des différents dossiers constituant l’exemple de solution :
+Le tableau suivant fournit une description des différents répertoires qui composent l’exemple de solution :
 
-|              Dossier              |                                        Objectif                                        |
-|----------------------------------|---------------------------------------------------------------------------------------|
-|   *WebApiSample.Api.21*   |                         Projet d’API web ASP.NET Core 2.1                          |
-| *WebApiSample.Api.Pre21*  |                         Projet d’API web ASP.NET Core 2.0                          |
-| *WebApiSample.DataAccess* | Projet de couche d’accès aux données .NET Standard 2.0 qui est utilisé par les deux projets d’API web. |
-
+| Répertoire                   | Objectif |
+|-----------------------------|------------------------------------------------------------|
+| *3x/WebApiSample. API. 30*    | Un projet d’API Web ASP.NET Core 3,0.                       |
+| *3x/WebApiSample. DataAccess*| Un projet de couche d’accès aux données .NET Standard 2,1 qui est utilisé par le projet d’API Web ASP.NET Core 3. x.|
+| *2x/WebApiSample. API. 21*    | Un projet d’API Web ASP.NET Core 2,1.                         |
+| *2x/WebApiSample. API. Pre21* | Un projet d’API Web ASP.NET Core 2,0.                         |
+| *2x/WebApiSample. DataAccess*| Un projet de couche d’accès aux données .NET Standard 2,0 qui est utilisé par les projets d’API Web ASP.NET Core 2. x.|

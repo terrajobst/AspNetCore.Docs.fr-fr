@@ -5,14 +5,14 @@ description: Cet article contient des liens vers des ressources d’hébergement
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/28/2019
+ms.date: 09/07/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 5035a31526e0290964e0fdee05753aeaf6cb3790
-ms.sourcegitcommit: 0efb9e219fef481dee35f7b763165e488aa6cf9c
-ms.translationtype: HT
+ms.openlocfilehash: 5da32b5fd1026263f721db442b2676d45b239b8d
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602443"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815600"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -97,17 +97,7 @@ Le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-i
 
 ## <a name="monitoring-and-logging"></a>Surveillance et journalisation
 
-::: moniker range=">= aspnetcore-3.0"
-
-Les applications ASP.NET Core déployées sur App Service reçoivent automatiquement une extension App Service, **Intégration de journalisation ASP.NET Core**. L’extension permet d’intégrer la journalisation dans les applications ASP.NET Core sur Azure App Service.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-Les applications ASP.NET Core déployées sur App Service reçoivent automatiquement une extension App Service, **Extensions de journalisation ASP.NET Core**. L’extension permet d’intégrer la journalisation dans les applications ASP.NET Core sur Azure App Service.
-
-::: moniker-end
+Azure App Service offre les **extensions de journalisation ASP.net Core**, qui permettent l’intégration de la journalisation pour les applications ASP.net core. Pour ajouter automatiquement l’extension à un App Service, utilisez le processus de **publication** de Visual Studio avec un profil de publication **app service** . Si vous n’utilisez pas Visual Studio pour déployer une application, installez manuellement l’extension dans le portail Azure via la boîte de dialogue**Extensions** des **Outils** > de développement de App service.
 
 Pour des informations de surveillance, de journalisation et de dépannage, consultez les articles suivants :
 
@@ -137,7 +127,7 @@ Lors d’une permutation entre les emplacements de déploiement, aucun système 
 * Magasin SQL
 * Cache Redis
 
-Pour plus d’informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
+Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Déployer la version préliminaire d’ASP.NET Core sur Azure App Service
 
@@ -154,7 +144,7 @@ Si un problème se produit avec l’extension de site en préversion, ouvrez un 
 1. Dans le portail Azure, accédez à App Service.
 1. Sélectionnez l’application web.
 1. Tapez « ex » dans la zone de recherche pour filtrer sur les « Extensions » ou faites défiler la liste outils de gestion.
-1. Sélectionner **Extensions**.
+1. Sélectionnez **Extensions**.
 1. Sélectionnez **Ajouter**.
 1. Sélectionnez l’extension **ASP.NET Core {X.Y} ({x64|x86}) Runtime** dans la liste, où `{X.Y}` correspond à la préversion d’ASP.NET Core et `{x64|x86}` spécifie la plateforme.
 1. Sélectionnez **OK** pour accepter les conditions légales.
@@ -189,7 +179,7 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
-Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
+Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -260,7 +250,7 @@ Utilisez Visual Studio ou les outils de l’interface CLI pour un [déploiement 
 1. Dans la boîte de dialogue **Publier** :
    * Confirmez que la configuration **Mise en production** est sélectionnée.
    * Ouvrez la liste déroulante **Mode de déploiement** et sélectionnez **Autonome**.
-   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`.
+   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. Par défaut, il s’agit de `win-x86`.
    * Si vous devez supprimer des fichiers supplémentaires lors du déploiement, ouvrez **Options de publication de fichiers** et sélectionnez la case à cocher pour supprimer des fichiers supplémentaires à la destination.
    * Sélectionnez **Enregistrer**.
 1. Créez un nouveau site ou mettez à jour un site existant en suivant les autres invites de l'Assistant de publication.

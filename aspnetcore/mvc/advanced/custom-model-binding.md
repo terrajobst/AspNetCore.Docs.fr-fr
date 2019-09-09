@@ -5,12 +5,12 @@ description: Découvrez comment la liaison de données permet aux actions du con
 ms.author: riande
 ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 27e19012b6f878f5e3d08846593a7513bd584a4c
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 64429d3d9a64219216f3432924dbd0977dd6e1bb
+ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773496"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70815624"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -132,7 +132,7 @@ L’ajout de votre fournisseur à la fin de la collection peut entraîner l’ap
 
 ### <a name="polymorphic-model-binding"></a>Liaison de modèle polymorphe
 
-La liaison à différents modèles de types dérivés porte le nom de liaison de modèle polymorphe. La liaison de modèle personnalisée est requise lorsque la valeur de la demande doit être liée au type de modèle dérivé spécifique. À moins que cette approche ne soit requise, nous vous recommandons d’éviter la liaison de modèle polymorphe. La liaison de modèle polymorphe rend difficile la raison des modèles liés. Toutefois, si une application requiert une liaison de modèle polymorphe, une implémentation peut se présenter comme suit :
+La liaison à différents modèles de types dérivés porte le nom de liaison de modèle polymorphe. La liaison de modèle personnalisée est requise lorsque la valeur de la demande doit être liée au type de modèle dérivé spécifique. À moins que cette approche ne soit requise, nous vous recommandons d’éviter la liaison de modèle polymorphe. La liaison de modèle polymorphe rend difficile la raison des modèles liés. Toutefois, si une application requiert une liaison de modèle polymorphe, une implémentation peut se présenter comme le code suivant :
 
 [!code-csharp[](custom-model-binding/3.0sample/PolymorphicModelBinding/ModelBinders/PolymorphicModelBinder.cs?name=snippet)]
 
