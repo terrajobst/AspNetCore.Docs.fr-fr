@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 7121670856da4b123b1c3e780a7952da0fb696a1
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: b93641c96ad093b40aaa887f19409d4c2e1490df
+ms.sourcegitcommit: efb9c16321b34f8ede802822b26eb983de16479b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238045"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70842268"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -55,24 +55,24 @@ Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-too
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer la boucle REPL HTTP :
 
 ```console
-dotnet httprepl
+httprepl
 ```
 
 Pour voir les commandes de la boucle REPL HTTP disponibles, exécutez une des commandes suivantes :
 
 ```console
-dotnet httprepl -h
+httprepl -h
 ```
 
 ```console
-dotnet httprepl --help
+httprepl --help
 ```
 
 La sortie suivante s’affiche :
 
 ```console
 Usage:
-  dotnet httprepl [<BASE_ADDRESS>] [options]
+  httprepl [<BASE_ADDRESS>] [options]
 
 Arguments:
   <BASE_ADDRESS> - The initial base address for the REPL.
@@ -131,13 +131,13 @@ La boucle REPL HTTP offre la complétion des commandes. Un appui sur la touche <
 Connectez-vous à une API web en exécutant la commande suivante :
 
 ```console
-dotnet httprepl <ROOT URI>
+httprepl <ROOT URI>
 ```
 
 `<ROOT URI>` est l’URI de base pour l’API web. Par exemple :
 
 ```console
-dotnet httprepl https://localhost:5001
+httprepl https://localhost:5001
 ```
 
 Vous pouvez également exécuter la commande suivante à tout moment pendant l’exécution de la boucle REPL HTTP :
@@ -480,7 +480,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-### <a name="example"></a>Exemples
+### <a name="example"></a>Exemple
 
 Pour émettre une requête HTTP POST :
 
@@ -550,7 +550,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-### <a name="example"></a>Exemple
+### <a name="example"></a>Exemples
 
 Pour émettre une requête HTTP PUT :
 
@@ -662,7 +662,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-### <a name="example"></a>Exemples
+### <a name="example"></a>Exemple
 
 Pour émettre une requête HTTP DELETE :
 
@@ -928,7 +928,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
 Pour supprimer toutes les sorties écrites dans l’interpréteur de commandes par l’outil REPL HTTP, exécutez la commande `clear` ou `cls`. À titre d’illustration, imaginez que l’interpréteur de commandes contient la sortie suivante :
 
 ```console
-dotnet httprepl https://localhost:5001
+httprepl https://localhost:5001
 (Disconnected)~ set base "https://localhost:5001"
 Using swagger metadata from https://localhost:5001/swagger/v1/swagger.json
 
