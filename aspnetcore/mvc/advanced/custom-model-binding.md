@@ -5,12 +5,12 @@ description: Découvrez comment la liaison de données permet aux actions du con
 ms.author: riande
 ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 64429d3d9a64219216f3432924dbd0977dd6e1bb
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: 91f42393ffee3249f9167e10eaea7b279a7cb70b
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815624"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878410"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -133,6 +133,13 @@ L’ajout de votre fournisseur à la fin de la collection peut entraîner l’ap
 ### <a name="polymorphic-model-binding"></a>Liaison de modèle polymorphe
 
 La liaison à différents modèles de types dérivés porte le nom de liaison de modèle polymorphe. La liaison de modèle personnalisée est requise lorsque la valeur de la demande doit être liée au type de modèle dérivé spécifique. À moins que cette approche ne soit requise, nous vous recommandons d’éviter la liaison de modèle polymorphe. La liaison de modèle polymorphe rend difficile la raison des modèles liés. Toutefois, si une application requiert une liaison de modèle polymorphe, une implémentation peut se présenter comme le code suivant :
+
+La liaison à différents modèles de types dérivés porte le nom de liaison de modèle polymorphe. La liaison de modèle personnalisée est requise lorsque la valeur de la demande doit être liée au type de modèle dérivé spécifique. Liaison de modèle polymorphe :
+
+* N’est pas typique d’une API REST conçue pour interagir avec toutes les langues.
+* Rend difficile la raison des modèles liés.
+
+Toutefois, si une application requiert une liaison de modèle polymorphe, une implémentation peut se présenter comme le code suivant :
 
 [!code-csharp[](custom-model-binding/3.0sample/PolymorphicModelBinding/ModelBinders/PolymorphicModelBinder.cs?name=snippet)]
 

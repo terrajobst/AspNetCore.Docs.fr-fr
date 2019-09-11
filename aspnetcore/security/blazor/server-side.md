@@ -5,14 +5,14 @@ description: Découvrez comment limiter les menaces de sécurité pour les appli
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/07/2019
 uid: security/blazor/server-side
-ms.openlocfilehash: 13bb4475b4beac78cf489d83fb59a3e0d6d8f2d9
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: d30f19bfbbcdb6c142f03a6e0cc6e1fc154c2091
+ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800497"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70878524"
 ---
 # <a name="secure-aspnet-core-blazor-server-side-apps"></a>Sécuriser ASP.NET Core les applications côté serveur éblouissantes
 
@@ -115,7 +115,7 @@ Un client interagit avec le serveur par le biais de la distribution d’événem
 Pour les appels de méthodes .NET à JavaScript :
 
 * Tous les appels ont un délai d’expiration configurable après lequel ils échouent, en <xref:System.OperationCanceledException> retournant un à l’appelant.
-  * Il y a un délai d’attente par défaut`CircuitOptions.JSInteropDefaultCallTimeout`pour les appels () d’une minute.
+  * Il y a un délai d’attente par défaut`CircuitOptions.JSInteropDefaultCallTimeout`pour les appels () d’une minute. Pour configurer cette limite, consultez <xref:blazor/javascript-interop#harden-js-interop-calls>.
   * Un jeton d’annulation peut être fourni pour contrôler l’annulation pour chaque appel. S’appuyer sur le délai d’attente de l’appel par défaut lorsque cela est possible et lié au temps à un appel au client si un jeton d’annulation est fourni.
 * Le résultat d’un appel JavaScript ne peut pas être approuvé. Le client d’application éblouissant s’exécutant dans le navigateur recherche la fonction JavaScript à appeler. La fonction est appelée, et le résultat ou une erreur est généré. Un client malveillant peut tenter d’effectuer les opérations suivantes :
   * Entraîner un problème dans l’application en renvoyant une erreur à partir de la fonction JavaScript.
@@ -200,6 +200,72 @@ Un client peut distribuer un ou plusieurs événements d’incréments avant que
 ```
 
 En ajoutant la `if (count < 3) { ... }` vérification à l’intérieur du gestionnaire, la décision `count` d’incrémentation est basée sur l’état actuel de l’application. La décision n’est pas basée sur l’état de l’interface utilisateur tel qu’il était dans l’exemple précédent, qui peut être temporairement périmé.
+
+### <a name="guard-against-multiple-dispatches"></a>Protégez-vous contre plusieurs distributions
+
+Si un rappel d’événement appelle une opération de longue durée, telle que l’extraction de données à partir d’un service externe ou d’une base de données, envisagez d’utiliser une protection. La protection peut empêcher l’utilisateur de faire passer plusieurs opérations en file d’attente pendant que l’opération est en cours avec des commentaires visuels. Le code du composant suivant `isLoading` affecte `true` à `GetForecastAsync` la valeur en cours d’obtention des données du serveur. `isLoading` Tandis `true`que est, le bouton est désactivé dans l’interface utilisateur :
+
+```cshtml
+@page "/fetchdata"
+@using BlazorServerSample.Data
+@inject WeatherForecastService ForecastService
+
+<button disabled="@isLoading" @onclick="UpdateForecasts">Update</button>
+
+@code {
+    private bool isLoading;
+    private WeatherForecast[] forecasts;
+
+    private async Task UpdateForecasts()
+    {
+        if (!isLoading)
+        {
+            isLoading = true;
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            isLoading = false;
+        }
+    }
+}
+```
+
+### <a name="cancel-early-and-avoid-use-after-dispose"></a>Annuler tôt et éviter d’utiliser-after-dispose
+
+En plus d’utiliser une protection comme décrit dans la section [protection contre plusieurs distributions](#guard-against-multiple-dispatches) , envisagez d' <xref:System.Threading.CancellationToken> utiliser un pour annuler les opérations de longue durée lorsque le composant est supprimé. Cette approche présente l’avantage supplémentaire d’éviter l' *utilisation de-after-dispose dans les* composants :
+
+```cshtml
+@implements IDisposable
+
+...
+
+@code {
+    private readonly CancellationTokenSource TokenSource = 
+        new CancellationTokenSource();
+
+    private async Task UpdateForecasts()
+    {
+        ...
+
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now, 
+            TokenSource.Token);
+
+        if (TokenSource.Token.IsCancellationRequested)
+        {
+           return;
+        }
+
+        ...
+    }
+
+    public void Dispose()
+    {
+        CancellationTokenSource.Cancel();
+    }
+}
+```
+
+### <a name="avoid-events-that-produce-large-amounts-of-data"></a>Évitez les événements qui génèrent de grandes quantités de données
+
+Certains événements DOM, tels que `oninput` ou `onscroll`, peuvent générer une grande quantité de données. Évitez d’utiliser ces événements dans des applications serveur éblouissantes.
 
 ## <a name="additional-security-guidance"></a>Aide supplémentaire sur la sécurité
 
@@ -330,6 +396,9 @@ La liste suivante de considérations sur la sécurité n’est pas exhaustive :
 * Empêche le client d’allouer une quantité de mémoire non liée.
   * Données dans le composant.
   * `DotNetObject`références retournées au client.
+* Protégez-vous contre plusieurs distributions.
+* Annule les opérations de longue durée lorsque le composant est supprimé.
+* Évitez les événements qui génèrent de grandes quantités de données.
 * Évitez d’utiliser les entrées d’utilisateur dans le `NavigationManager.Navigate` cadre des appels à et de valider les entrées d’utilisateur pour les URL par rapport à un ensemble d’origines autorisées en premier, si ce n’est pas inévitable.
 * Ne prenez pas des décisions d’autorisation en fonction de l’état de l’interface utilisateur, mais uniquement de l’état du composant.
 * Envisagez d’utiliser la [stratégie de sécurité de contenu (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) pour vous protéger contre les attaques XSS.
