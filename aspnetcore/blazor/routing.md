@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/routing
-ms.openlocfilehash: d348908261c51b477aa698a407266d05c0df5a33
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 1c61eedf7dbf0bbc8796eaa11360783b9d7aba6c
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800344"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963871"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
 
@@ -22,7 +22,7 @@ Découvrez comment acheminer les demandes et comment utiliser le `NavLink` compo
 
 ## <a name="aspnet-core-endpoint-routing-integration"></a>Intégration du routage du point de terminaison ASP.NET Core
 
-Le côté serveur éblouissant est intégré à [ASP.net Core routage des points de terminaison](xref:fundamentals/routing). Une application ASP.net Core est configurée pour accepter les connexions entrantes pour `MapBlazorHub` les `Startup.Configure`composants interactifs avec dans :
+Le serveur éblouissant est intégré à [ASP.net Core routage des points de terminaison](xref:fundamentals/routing). Une application ASP.net Core est configurée pour accepter les connexions entrantes pour `MapBlazorHub` les `Startup.Configure`composants interactifs avec dans :
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
@@ -55,7 +55,7 @@ Plusieurs modèles de routage peuvent être appliqués à un composant. Le compo
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Pour que les URL soient correctement résolues, l’application `<base>` doit inclure une balise dans son fichier *wwwroot/index.html* (The éblouissant Client-Side) ou le fichier *pages/_Host. cshtml* (éblouissant côté serveur) avec le chemin d’accès `href` de base de l’application spécifié dans l’attribut ( `<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
+> Pour que les URL soient correctement résolues, l’application `<base>` doit inclure une balise dans son fichier *wwwroot/index.html* (éblouissant webassembly) ou le fichier *pages/_Host. cshtml* (serveur éblouissant) avec le chemin d' `href` accès de base de l’application spécifié dans l’attribut (`<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Fournir du contenu personnalisé lorsque le contenu est introuvable
 
@@ -120,7 +120,7 @@ Les contraintes de routage indiquées dans le tableau suivant sont disponibles. 
 
 ### <a name="routing-with-urls-that-contain-dots"></a>Routage avec des URL qui contiennent des points
 
-Dans les applications côté serveur éblouissantes, l’itinéraire par défaut dans *_Host. cshtml* `/` est`@page "/"`(). Une URL de demande qui contient un point`.`() ne correspond pas à l’itinéraire par défaut, car l’URL semble demander un fichier. Une application éblouissant retourne une réponse *404-introuvable* pour un fichier statique qui n’existe pas. Pour utiliser des itinéraires qui contiennent un point, configurez *_Host. cshtml* avec le modèle de routage suivant :
+Dans les applications serveur éblouissantes, l’itinéraire par défaut dans *_Host. cshtml* est `/` (`@page "/"`). Une URL de demande qui contient un point`.`() ne correspond pas à l’itinéraire par défaut, car l’URL semble demander un fichier. Une application éblouissant retourne une réponse *404-introuvable* pour un fichier statique qui n’existe pas. Pour utiliser des itinéraires qui contiennent un point, configurez *_Host. cshtml* avec le modèle de routage suivant :
 
 ```cshtml
 @page "/{**path}"
@@ -167,7 +167,7 @@ Utilisez `Microsoft.AspNetCore.Components.NavigationManager` pour travailler ave
 | Membre | Description |
 | ------ | ----------- |
 | `Uri` | Obtient l’URI absolu actuel. |
-| `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général `BaseUri` , correspond à `href` l’attribut sur l’élément `<base>` du document dans *wwwroot/index.html* (éblouissant Client-Side) ou *pages/_Host. cshtml* (le côté serveur de éblouissant). |
+| `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général `BaseUri` , correspond à `href` l’attribut sur l’élément `<base>` du document dans *wwwroot/index.html* (éblouissante webassembly) ou *pages/_Host. cshtml* (serveur éblouissant). |
 | `NavigateTo` | Navigue vers l’URI spécifié. Si `forceLoad` est `true`:<ul><li>Le routage côté client est contourné.</li><li>Le navigateur est obligé de charger la nouvelle page à partir du serveur, que l’URI soit normalement géré ou non par le routeur côté client.</li></ul> |
 | `LocationChanged` | Événement qui se déclenche lorsque l’emplacement de navigation a changé. |
 | `ToAbsoluteUri` | Convertit un URI relatif en URI absolu. |

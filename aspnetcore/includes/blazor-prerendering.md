@@ -1,4 +1,4 @@
-Bien qu’une application côté serveur éblouissante soit prérestitué, certaines actions, telles que l’appel de JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus.
+Bien qu’une application de serveur éblouissante soit prérendue, certaines actions, telles que l’appel en JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus.
 
 Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec le navigateur soit établie, `OnAfterRenderAsync` vous pouvez utiliser l’événement du cycle de vie du composant. Cet événement est appelé uniquement une fois que l’application est entièrement rendue et que la connexion cliente est établie.
 
@@ -62,7 +62,7 @@ Où `JSRuntime.InvokeAsync` est appelé, `ElementRef` est utilisé uniquement da
 }
 ```
 
-Pour restituer de façon conditionnelle un contenu différent selon que l’application est actuellement prérendu du contenu, `IsConnected` utilisez la propriété `IComponentContext` sur le service. En cas d’exécution côté serveur `IsConnected` , retourne `true` uniquement s’il existe une connexion active au client. Elle retourne `true` toujours lorsqu’elle est exécutée côté client.
+Pour restituer de façon conditionnelle un contenu différent selon que l’application est actuellement prérendu du contenu, `IsConnected` utilisez la propriété `IComponentContext` sur le service. Pour les applications serveur éblouissantes `IsConnected` , retourne `true` uniquement s’il existe une connexion active au client. Elle retourne `true` toujours dans les applications webassembly éblouissantes.
 
 ```cshtml
 @page "/isconnected-example"

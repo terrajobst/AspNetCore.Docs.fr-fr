@@ -1,63 +1,63 @@
 ---
 title: ASP.NET Core les modèles d’hébergement éblouissants
 author: guardrex
-description: Comprendre les modèles d’hébergement côté client et côté serveur.
+description: Comprendre les modèles d’hébergement de l’assembly et du serveur éblouissants.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 7880affa59af1fa4fc47aee3dc98ae9aa53729af
-ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
+ms.openlocfilehash: 6e225e490e54e44877fa27573ff9b513c8dcd9a3
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878344"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964028"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 
 Par [Daniel Roth](https://github.com/danroth27)
 
-Blazor est un Framework Web conçu pour s’exécuter côté client dans le navigateur sur un Runtime.net basé sur [webassembly](https://webassembly.org/) (*Blazor côté client*) ou côté serveur dans ASP.net Core (*Blazor côté serveur*). Quel que soit le modèle d’hébergement, les modèles d’application et de composant *sont les mêmes*.
+Éblouissant est un Framework Web conçu pour s’exécuter côté client dans le navigateur sur un Runtime .NET basé sur [Webassembly](https://webassembly.org/)(*éblouissant*) ou côté serveur dans ASP.net Core (*serveur éblouissant*). Quel que soit le modèle d’hébergement, les modèles d’application et de composant *sont les mêmes*.
 
 Pour créer un projet pour les modèles d’hébergement décrits dans cet article, <xref:blazor/get-started>consultez.
 
-## <a name="client-side"></a>Côté client
+## <a name="blazor-webassembly"></a>Webassembly éblouissant
 
 Le modèle d’hébergement principal pour éblouissant s’exécute côté client dans le navigateur sur webassembly. L’application Blazor, ses dépendances et le runtime .NET sont téléchargés sur le navigateur. L’application est exécutée directement sur le thread d’interface utilisateur du navigateur. Les mises à jour de l’interface utilisateur et la gestion des événements se produisent dans le même processus. Les ressources de l’application sont déployées en tant que fichiers statiques sur un serveur Web ou un service qui prend en charge le contenu statique sur les clients.
 
-![Éblouissant côté client : L’application éblouissant s’exécute sur un thread d’interface utilisateur dans le navigateur.](hosting-models/_static/client-side.png)
+![Webassembly éblouissant : L’application éblouissant s’exécute sur un thread d’interface utilisateur dans le navigateur.](hosting-models/_static/blazor-webassembly.png)
 
 Pour créer une application éblouissant à l’aide du modèle d’hébergement côté client, utilisez le modèle d' **application éblouissante Webassembly** ([dotnet New blazorwasm](/dotnet/core/tools/dotnet-new)).
 
-Après avoir sélectionné le modèle **application éblouissant Webassembly** , vous avez la possibilité de configurer l’application pour utiliser un serveur principal ASP.net core en activant la case à cocher **ASP.net Core hébergée** ([dotnet New blazorwasm--Hosted](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core sert l’application éblouissant aux clients. L’application Blazor côté client peut interagir avec le serveur sur le réseau à l’aide d’appels d’API Web ou [Signalr](xref:signalr/introduction).
+Après avoir sélectionné le modèle **application éblouissant Webassembly** , vous avez la possibilité de configurer l’application pour utiliser un serveur principal ASP.net core en activant la case à cocher **ASP.net Core hébergée** ([dotnet New blazorwasm--Hosted](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core sert l’application éblouissant aux clients. L’application éblouissant webassembly peut interagir avec le serveur sur le réseau à l’aide d’appels d’API Web ou [signalr](xref:signalr/introduction).
 
 Les modèles incluent le script *éblouissant. webassembly. js* qui gère les éléments suivants :
 
 * Téléchargement du Runtime .NET, de l’application et des dépendances de l’application.
 * Initialisation du runtime pour exécuter l’application.
 
-Le modèle d’hébergement côté client offre plusieurs avantages :
+Le modèle d’hébergement de webassembly éblouissant offre plusieurs avantages :
 
 * Il n’existe aucune dépendance côté serveur .NET. L’application fonctionne entièrement après son téléchargement sur le client.
 * Les ressources et les fonctionnalités du client sont pleinement exploitées.
 * Le travail est déchargé du serveur vers le client.
 * Un serveur Web ASP.NET Core n’est pas requis pour héberger l’application. Les scénarios de déploiement sans serveur sont possibles (par exemple, pour servir l’application à partir d’un CDN).
 
-L’hébergement côté client présente des inconvénients :
+L’hébergement d’un webassembly éblouissant présente des inconvénients :
 
 * L’application est limitée aux fonctionnalités du navigateur.
 * Le matériel et le logiciel client compatibles (par exemple, la prise en charge de webassembly) sont requis.
 * La taille du téléchargement est supérieure, et les applications prennent plus de temps à se charger.
 * Le Runtime .NET et la prise en charge des outils sont moins matures. Par exemple, des limitations existent dans la prise en charge de [.NET standard](/dotnet/standard/net-standard) et le débogage.
 
-## <a name="server-side"></a>Côté serveur
+## <a name="blazor-server"></a>Serveur éblouissant
 
-Avec le modèle d’hébergement côté serveur, l’application est exécutée sur le serveur à partir d’une application ASP.NET Core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés par le biais d’une connexion [SignalR](xref:signalr/introduction).
+Avec le modèle d’hébergement de serveur éblouissant, l’application est exécutée sur le serveur à partir d’une application ASP.NET Core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés par le biais d’une connexion [SignalR](xref:signalr/introduction).
 
-![Le navigateur interagit avec l’application (hébergée à l’intérieur d’une application ASP.NET Core) sur le serveur via une connexion Signalr.](hosting-models/_static/server-side.png)
+![Le navigateur interagit avec l’application (hébergée à l’intérieur d’une application ASP.NET Core) sur le serveur via une connexion Signalr.](hosting-models/_static/blazor-server.png)
 
-Pour créer une application éblouissant à l’aide du modèle d’hébergement côté serveur, utilisez le modèle d' **application ASP.net Core éblouissante Server** ([dotnet New blazorserver](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core héberge l’application côté serveur et crée le point de terminaison Signalr où les clients se connectent.
+Pour créer une application éblouissant à l’aide du modèle d’hébergement de serveur éblouissant, utilisez le modèle d' **application de serveur ASP.net Core éblouissant** ([dotnet New blazorserver](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core héberge l’application de serveur éblouissante et crée le point de terminaison Signalr où les clients se connectent.
 
 L’application ASP.net Core fait référence à la `Startup` classe de l’application à ajouter :
 
@@ -66,15 +66,15 @@ L’application ASP.net Core fait référence à la `Startup` classe de l’appl
 
 Le script&dagger; *éblouissant. Server. js* établit la connexion client. Il est de la responsabilité de l’application de conserver et de restaurer l’état de l’application en fonction des besoins (par exemple, en cas de perte de connexion réseau).
 
-Le modèle d’hébergement côté serveur offre plusieurs avantages :
+Le modèle d’hébergement de serveur éblouissant offre plusieurs avantages :
 
-* La taille du téléchargement est beaucoup plus petite qu’une application côté client et l’application est chargée beaucoup plus rapidement.
+* La taille du téléchargement est beaucoup plus petite qu’une application de webassembly éblouissante, et l’application se charge beaucoup plus rapidement.
 * L’application tire pleinement parti des fonctionnalités du serveur, notamment de l’utilisation de toutes les API compatibles avec .NET Core.
 * .NET Core sur le serveur est utilisé pour exécuter l’application, de sorte que les outils .NET existants, tels que le débogage, fonctionnent comme prévu.
-* Les clients légers sont pris en charge. Par exemple, les applications côté serveur fonctionnent avec des navigateurs qui ne prennent pas en charge webassembly et sur des appareils à ressources restreintes.
+* Les clients légers sont pris en charge. Par exemple, les applications de serveur éblouissant fonctionnent avec des navigateurs qui ne prennent pas en charge webassembly et sur des appareils avec des ressources restreintes.
 * Le .NET/C# base de code de l’application, y compris le code du composant de l’application, n’est pas pris en charge par les clients.
 
-L’hébergement côté serveur présente des inconvénients :
+L’hébergement du serveur éblouissant présente des inconvénients :
 
 * Une latence plus élevée existe généralement. Chaque interaction utilisateur implique un tronçon réseau.
 * Il n’existe aucune prise en charge hors connexion. Si la connexion cliente échoue, l’application cesse de fonctionner.
@@ -104,7 +104,7 @@ Une mise à jour de l’interface utilisateur dans éblouissant est déclenchée
 
 Le graphique est rerendu et *une différence d’interface utilisateur* (différence) est calculée. Cette différence est le plus petit ensemble de modifications DOM requis pour mettre à jour l’interface utilisateur sur le client. Le diff est envoyé au client dans un format binaire et appliqué par le navigateur.
 
-Un composant est supprimé une fois que l’utilisateur l’a quittée sur le client. Lorsqu’un utilisateur interagit avec un composant, l’état du composant (services, ressources) doit être conservé dans la mémoire du serveur. Étant donné que l’état de nombreux composants peut être géré simultanément par le serveur, l’épuisement de la mémoire est un problème qui doit être résolu. Pour obtenir des conseils sur la création d’une application de serveur éblouissant pour garantir la meilleure utilisation de la mémoire <xref:security/blazor/server-side>du serveur, consultez.
+Un composant est supprimé une fois que l’utilisateur l’a quittée sur le client. Lorsqu’un utilisateur interagit avec un composant, l’état du composant (services, ressources) doit être conservé dans la mémoire du serveur. Étant donné que l’état de nombreux composants peut être géré simultanément par le serveur, l’épuisement de la mémoire est un problème qui doit être résolu. Pour obtenir des conseils sur la création d’une application de serveur éblouissant pour garantir la meilleure utilisation de la mémoire <xref:security/blazor/server>du serveur, consultez.
 
 ### <a name="circuits"></a>Électriques
 
@@ -120,16 +120,16 @@ La latence de l’interface utilisateur est le temps qu’il faut après une act
 
 Pour une application métier limitée à un réseau d’entreprise privé, l’effet sur les perceptions des utilisateurs de la latence en raison de la latence du réseau est généralement inperceptible. Pour une application déployée sur Internet, la latence peut devenir perceptible pour les utilisateurs, en particulier si les utilisateurs sont largement répartis géographiquement.
 
-L’utilisation de la mémoire peut également contribuer à la latence de l’application. L’augmentation de l’utilisation de la mémoire permet de garbage collection fréquentes ou la pagination de la mémoire sur le disque, qui dégradent les performances des applications et augmentent la latence de l’interface utilisateur. Pour plus d'informations, consultez <xref:security/blazor/server-side>.
+L’utilisation de la mémoire peut également contribuer à la latence de l’application. L’augmentation de l’utilisation de la mémoire permet de garbage collection fréquentes ou la pagination de la mémoire sur le disque, qui dégradent les performances des applications et augmentent la latence de l’interface utilisateur. Pour plus d'informations, consultez <xref:security/blazor/server>.
 
-Les applications de serveur éblouissantes doivent être optimisées pour réduire la latence de l’interface utilisateur en réduisant la latence du réseau et l’utilisation de la mémoire. Pour une approche de la mesure de la latence du <xref:host-and-deploy/blazor/server-side#measure-network-latency>réseau, consultez. Pour plus d’informations sur Signalr et éblouissant, consultez :
+Les applications de serveur éblouissantes doivent être optimisées pour réduire la latence de l’interface utilisateur en réduisant la latence du réseau et l’utilisation de la mémoire. Pour une approche de la mesure de la latence du <xref:host-and-deploy/blazor/server#measure-network-latency>réseau, consultez. Pour plus d’informations sur Signalr et éblouissant, consultez :
 
-* <xref:host-and-deploy/blazor/server-side>
-* <xref:security/blazor/server-side>
+* <xref:host-and-deploy/blazor/server>
+* <xref:security/blazor/server>
 
 ### <a name="reconnection-to-the-same-server"></a>Reconnexion au même serveur
 
-Les applications côté serveur éblouissantes nécessitent une connexion active Signalr au serveur. Si la connexion est perdue, l’application tente de se reconnecter au serveur. Tant que l’état du client est toujours en mémoire, la session client reprend sans perte d’État.
+Les applications serveur éblouissantes nécessitent une connexion active Signalr au serveur. Si la connexion est perdue, l’application tente de se reconnecter au serveur. Tant que l’état du client est toujours en mémoire, la session client reprend sans perte d’État.
 
 Lorsque le client détecte que la connexion a été perdue, une interface utilisateur par défaut est affichée à l’utilisateur pendant que le client tente de se reconnecter. En cas d’échec de la reconnexion, l’utilisateur a la possibilité de réessayer. Pour personnaliser l’interface utilisateur, définissez un élément `components-reconnect-modal` avec `id` comme dans la page Razor *_Host. cshtml* . Le client met à jour cet élément avec l’une des classes CSS suivantes en fonction de l’état de la connexion :
 
@@ -139,7 +139,7 @@ Lorsque le client détecte que la connexion a été perdue, une interface utilis
 
 ### <a name="stateful-reconnection-after-prerendering"></a>Reconnexion avec état après le prérendu
 
-Les applications côté serveur éblouissantes sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur avant que la connexion cliente au serveur soit établie. Elle est configurée dans la page Razor *_Host. cshtml* :
+Les applications serveur éblouissantes sont configurées par défaut pour prérestituer l’interface utilisateur sur le serveur avant que la connexion cliente au serveur soit établie. Elle est configurée dans la page Razor *_Host. cshtml* :
 
 ```cshtml
 <body>
@@ -156,8 +156,8 @@ Les applications côté serveur éblouissantes sont configurées par défaut pou
 
 | `RenderMode`        | Description |
 | ------------------- | ----------- |
-| `ServerPrerendered` | Génère le rendu du composant en HTML statique et comprend un marqueur pour une application côté serveur éblouissante. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application éblouissante. Les paramètres ne sont pas pris en charge. |
-| `Server`            | Restitue un marqueur pour une application côté serveur éblouissante. La sortie du composant n’est pas incluse. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application éblouissante. Les paramètres ne sont pas pris en charge. |
+| `ServerPrerendered` | Génère le rendu du composant en HTML statique et comprend un marqueur pour une application de serveur éblouissante. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application éblouissante. Les paramètres ne sont pas pris en charge. |
+| `Server`            | Restitue un marqueur pour une application de serveur éblouissante. La sortie du composant n’est pas incluse. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application éblouissante. Les paramètres ne sont pas pris en charge. |
 | `Static`            | Génère le rendu du composant en HTML statique. Les paramètres sont pris en charge. |
 
 Le rendu des composants serveur à partir d’une page HTML statique n’est pas pris en charge.
@@ -209,9 +209,9 @@ Dans la page Razor suivante, le `MyComponent` composant est rendu statiquement a
 
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
-### <a name="configure-the-signalr-client-for-blazor-server-side-apps"></a>Configurer le client Signalr pour les applications côté serveur éblouissantes
+### <a name="configure-the-signalr-client-for-blazor-server-apps"></a>Configurer le client Signalr pour les applications serveur éblouissantes
 
-Parfois, vous devez configurer le client Signalr utilisé par les applications côté serveur éblouissantes. Par exemple, vous pouvez configurer la journalisation sur le client Signalr pour diagnostiquer un problème de connexion.
+Parfois, vous devez configurer le client Signalr utilisé par les applications serveur éblouissantes. Par exemple, vous pouvez configurer la journalisation sur le client Signalr pour diagnostiquer un problème de connexion.
 
 Pour configurer le client Signalr dans le fichier *pages/_Host. cshtml* :
 

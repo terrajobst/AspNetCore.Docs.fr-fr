@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: 6b62eb372d642c1ad9df880a4b71e5d5a8e40b60
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 767ec8f106bebb92cf13a10eb63fab4905715d3d
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800327"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964098"
 ---
 # <a name="introduction-to-blazor"></a>Introduction à Blazor
 
@@ -101,37 +101,37 @@ Quand ce composant est utilisé dans l’application, IntelliSense dans [Visual 
 
 Les composants s’affichent dans une représentation en mémoire du DOM (Document Object Model) du navigateur appelé *arborescence de rendu*, utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.
 
-## <a name="blazor-client-side"></a>Blazor côté client
+## <a name="blazor-webassembly"></a>Webassembly éblouissant
 
-Blazor côté client est un framework d’application monopage pour la création d’applications web interactives côté client avec .NET. Blazor côté client utilise les normes web ouvertes sans transpilation de plug-ins ou de codes et fonctionne dans tous les navigateurs web modernes, y compris les navigateurs mobiles.
+Le webassembly éblouissant est une infrastructure d’application à page unique pour la création d’applications Web interactives côté client avec .NET. Le webassembly éblouissant utilise des normes Web ouvertes sans plug-ins ou code transpilation et fonctionne dans tous les navigateurs Web modernes, y compris les navigateurs mobiles.
 
 L’exécution de code .NET à l’intérieur des navigateurs web est rendue possible grâce à [WebAssembly](https://webassembly.org) (abrégé en *wasm*). WebAssembly est un format bytecode compact optimisé pour un téléchargement rapide et une vitesse d’exécution maximale. WebAssembly est un standard web ouvert pris en charge dans les navigateurs web sans plug-in.
 
 Le code WebAssembly peut accéder à toutes les fonctionnalités du navigateur via JavaScript, appelé *interopérabilité JavaScript* (ou *interop JavaScript*). Le code .NET exécuté via WebAssembly dans le navigateur s’exécute dans le bac à sable JavaScript du navigateur avec les protections offertes par le bac à sable contre les actions malveillantes sur l’ordinateur client.
 
-![Blazor côté client exécute du code .NET dans le navigateur avec WebAssembly.](index/_static/blazor-client-side.png)
+![Le webassembly éblouissant exécute du code .NET dans le navigateur avec webassembly.](index/_static/blazor-webassembly.png)
 
-Quand une application Blazor côté client est créée et exécutée dans un navigateur :
+Quand une application de webassembly éblouissant est générée et exécutée dans un navigateur :
 
 * Les fichiers de code C# et les fichiers Razor sont compilés dans des assemblys .NET.
 * Les assemblys et le runtime .NET sont téléchargés dans le navigateur.
-* Blazor côté client amorce le runtime .NET et configure le runtime pour charger les assemblys de l’application. Le runtime Blazor côté client utilise l’interopérabilité de JavaScript pour traiter la manipulation DOM et les appels d’API du navigateur.
+* Le webassembly éblouissant amorce le Runtime .NET et configure le runtime pour charger les assemblys de l’application. Le runtime webassembly éblouissant utilise l’interopérabilité JavaScript pour gérer les appels de l’API de manipulation et du navigateur DOM.
 
-La taille de l’application publiée, sa *taille de charge utile*, est un facteur de performance essentiel pour qu’une application soit facile à utiliser. Le téléchargement d’une application volumineuse dans un navigateur prend un certain temps, ce qui nuit à l’expérience utilisateur. Blazor côté client optimise la taille de la charge utile pour réduire les temps de téléchargement :
+La taille de l’application publiée, sa *taille de charge utile*, est un facteur de performance essentiel pour qu’une application soit facile à utiliser. Le téléchargement d’une application volumineuse dans un navigateur prend un certain temps, ce qui nuit à l’expérience utilisateur. Le webassembly éblouissant optimise la taille de la charge utile pour réduire les temps de téléchargement :
 
 * Du code inutilisé est extrait de l’application lorsqu’elle est publiée par l’[éditeur de liens de langage intermédiaire (IL)](xref:host-and-deploy/blazor/configure-linker).
 * Réponses HTTP compressées.
 * Le runtime .NET et les assemblys sont mis en cache dans le navigateur.
 
-## <a name="blazor-server-side"></a>Blazor côté serveur
+## <a name="blazor-server"></a>Serveur éblouissant
 
-Blazor dissocie la logique de rendu de composant de la manière dont les mises à jour de l’interface utilisateur sont appliquées. Blazor côté serveur prend en charge l’hébergement des composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion [SignalR](xref:signalr/introduction).
+Blazor dissocie la logique de rendu de composant de la manière dont les mises à jour de l’interface utilisateur sont appliquées. Le serveur éblouissant fournit la prise en charge de l’hébergement des composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion [SignalR](xref:signalr/introduction).
 
 Le runtime gère l’envoi des événements d’interface utilisateur du navigateur au serveur et applique les mises à jour de l’interface utilisateur renvoyées par le serveur dans le navigateur après avoir exécuté les composants.
 
-La connexion utilisée par Blazor côté serveur pour communiquer avec le navigateur est aussi utilisée pour gérer les appels d’interopérabilité JavaScript.
+La connexion utilisée par le serveur éblouissant pour communiquer avec le navigateur est également utilisée pour gérer les appels Interop JavaScript.
 
-![Blazor côté serveur exécute le code .NET sur le serveur et interagit avec le modèle DOM (Document Object Model) sur le client par le biais d’une connexion SignalR.](index/_static/blazor-server-side.png)
+![Le serveur éblouissant exécute du code .NET sur le serveur et interagit avec le Document Object Model sur le client via une connexion Signalr.](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>Interopérabilité JavaScript
 

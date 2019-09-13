@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ea1111f43b6b8b4f47061056e8ad8d505f92dba6
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: ffbdf6991830d554fc508d1d2fe8e4b9586210df
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800477"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964179"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
@@ -57,7 +57,7 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
 1. Ajoutez le composant `Counter` au composant `Index` de l’application en ajoutant un élément `<Counter />` au composant `Index` (*Index.razor*).
 
-   Si vous utilisez Blazor côté client pour cette expérience, un composant `SurveyPrompt` est utilisé dans le composant `Index`. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application côté serveur Blazor pour cette expérience, ajoutez l’élément `<Counter />` au composant `Index` :
+   Si vous utilisez le webassembly éblouissant pour cette expérience, un `SurveyPrompt` composant est utilisé par le `Index` composant. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application de serveur éblouissante pour cette expérience, ajoutez l' `<Counter />` élément `Index` au composant :
 
    *Pages/Index.razor* :
 
@@ -101,7 +101,7 @@ Les services enregistrés dans le conteneur de services de l’application sont 
 
 Examinez les directives du composant `FetchData`.
 
-S’il fonctionne avec une application côté serveur Blazor, le service `WeatherForecastService` est inscrit en tant que [singleton](xref:fundamentals/dependency-injection#service-lifetimes), de sorte qu’une instance du service est disponible dans toute l’application. La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant.
+Si vous utilisez une application de serveur éblouissant, le `WeatherForecastService` service est inscrit en tant que [Singleton](xref:fundamentals/dependency-injection#service-lifetimes), de sorte qu’une instance du service est disponible dans l’ensemble de l’application. La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant.
 
 *Pages/FetchData.razor* :
 
@@ -111,7 +111,7 @@ Le composant `FetchData` utilise le service injecté, comme `ForecastService`, p
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-S’il fonctionne avec une application côté client Blazor, `HttpClient` est injecté pour obtenir des données de prévisions météorologiques à partir des fichiers *weather.json* du dossier *wwwroot/sample-data* :
+Si vous utilisez une application de webassembly éblouissant `HttpClient` , est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* :
 
 *Pages/FetchData.razor* :
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: 2ba7b0612c2be50ae0797c50dc3cb0d63c0f0c2d
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: ab8cc547463ef647316b5a4e377c15021debc4b1
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800507"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963965"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
@@ -20,26 +20,26 @@ Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 ASP.NET Core prend en charge la configuration et la gestion de la sécurité dans les applications Blazor.
 
-Les scénarios de sécurité diffèrent entre les applications Blazor côté serveur et côté client. Étant donné que les applications Blazor côté serveur s’exécutent sur le serveur, les vérifications d’autorisation sont en mesure de déterminer :
+Les scénarios de sécurité diffèrent entre le serveur éblouissant et les applications webassembly éblouissantes. Étant donné que les applications serveur éblouissantes s’exécutent sur le serveur, les contrôles d’autorisation peuvent déterminer les éléments suivants :
 
 * Les options de l’interface utilisateur présentées à un utilisateur (par exemple, les entrées de menu disponibles pour un utilisateur).
 * Les règles d’accès pour les zones de l’application et les composants.
 
-Les applications Blazor côté client exécutées sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Dans la mesure où les vérifications côté client peuvent être modifiées ou ignorées par un utilisateur, une application Blazor côté client ne peut pas appliquer les règles d’accès d’autorisation.
+Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
 
 ## <a name="authentication"></a>Authentication
 
-Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application Blazor est hébergée, côté serveur ou côté client.
+Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.
 
-### <a name="blazor-server-side-authentication"></a>Authentification Blazor côté serveur
+### <a name="blazor-server-authentication"></a>Authentification du serveur éblouissant
 
-Les applications Blazor côté serveur fonctionnent via une connexion en temps réel qui est créée à l’aide de SignalR. [L’authentification dans les applications basées sur SignalR](xref:signalr/authn-and-authz) est gérée lorsque la connexion est établie. L’authentification peut reposer sur un cookie ou un autre jeton du porteur.
+Les applications serveur éblouissantes fonctionnent sur une connexion en temps réel créée à l’aide de Signalr. [L’authentification dans les applications basées sur SignalR](xref:signalr/authn-and-authz) est gérée lorsque la connexion est établie. L’authentification peut reposer sur un cookie ou un autre jeton du porteur.
 
-Le modèle de projet Blazor côté serveur peut configurer l’authentification pour vous lorsque le projet est créé.
+Le modèle de projet de serveur éblouissant peut configurer l’authentification à votre place lors de la création du projet.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Suivez les instructions de Visual Studio dans l’article <xref:blazor/get-started> pour créer un projet Blazor côté serveur avec un mécanisme d’authentification.
+Suivez les instructions de Visual Studio dans <xref:blazor/get-started> l’article pour créer un projet de serveur éblouissant avec un mécanisme d’authentification.
 
 Après avoir choisi le modèle **Application serveur Blazor** dans la boîte de dialogue **Créer une application web ASP.NET Core.** , sélectionnez **Modifier** sous **Authentification**.
 
@@ -54,7 +54,7 @@ Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d�
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Suivez les instructions de Visual Studio Code dans l’article <xref:blazor/get-started> pour créer un projet Blazor côté serveur avec un mécanisme d’authentification :
+Suivez les instructions de Visual Studio code dans <xref:blazor/get-started> l’article pour créer un projet de serveur éblouissant avec un mécanisme d’authentification :
 
 ```console
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -88,7 +88,7 @@ La commande crée un dossier nommé avec la valeur fournie pour l’espace rése
 <!--
 # [.NET Core CLI](#tab/netcore-cli/)
 
-Follow the .NET Core CLI guidance in the <xref:blazor/get-started> article to create a new Blazor server-side project with an authentication mechanism:
+Follow the .NET Core CLI guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism:
 
 ```console
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -111,15 +111,15 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 ---
 
-### <a name="blazor-client-side-authentication"></a>Authentification Blazor côté client
+### <a name="blazor-webassembly-authentication"></a>Authentification de l’assembly éblouissant
 
-Dans les applications Blazor côté client, les contrôles d’authentification peuvent être contournés, car tout le code côté client peut être modifié par les utilisateurs. Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.
+Dans les applications webassembly éblouissantes, les vérifications d’authentification peuvent être ignorées, car le code côté client peut être modifié par les utilisateurs. Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.
 
-L’implémentation d’un service `AuthenticationStateProvider` personnalisé pour les applications Blazor côté client est couverte dans les sections suivantes.
+L’implémentation d’un `AuthenticationStateProvider` service personnalisé pour les applications webassembly éblouissant est traitée dans les sections suivantes.
 
 ## <a name="authenticationstateprovider-service"></a>Service AuthenticationStateProvider
 
-Les applications Blazor côté serveur incluent un service `AuthenticationStateProvider` intégré qui obtient des données d’état d’authentification auprès de `HttpContext.User` de ASP.NET Core. Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.
+Les `AuthenticationStateProvider` applications serveur éblouissantes incluent un service intégré qui obtient des données d’état d’authentification à partir `HttpContext.User`de ASP.net core. Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.
 
 `AuthenticationStateProvider` est le service sous-jacent utilisé par le composant `AuthorizeView` et le composant `CascadingAuthenticationState` pour obtenir l’état d’authentification.
 
@@ -157,7 +157,7 @@ Pour plus d’informations sur l’injection de dépendances et les services, co
 
 ## <a name="implement-a-custom-authenticationstateprovider"></a>Implémenter un AuthenticationStateProvider personnalisé
 
-Si vous créez une application Blazor côté client ou si les spécifications de votre application requièrent absolument un fournisseur personnalisé, implémentez un fournisseur et substituez `GetAuthenticationStateAsync` :
+Si vous créez une application de webassembly éblouissant ou si la spécification de votre application requiert absolument un fournisseur personnalisé, implémentez un fournisseur et `GetAuthenticationStateAsync`remplacez :
 
 ```csharp
 class CustomAuthStateProvider : AuthenticationStateProvider
@@ -310,13 +310,13 @@ Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Polic
 
 L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies. Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication. Pour plus d'informations, consultez <xref:security/authorization/policies>.
 
-Ces API peuvent être utilisées dans les applications Blazor côté serveur ou client.
+Ces API peuvent être utilisées dans les applications de serveur éblouissant ou de webassembly éblouissantes.
 
 Si ni `Roles` ni `Policy` n’est spécifié, `AuthorizeView` utilise la stratégie par défaut.
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>Contenu affiché lors de l’authentification asynchrone
 
-Blazor permet de déterminer l’état d’authentification *de façon asynchrone*. Le scénario principal de cette approche est dans les applications Blazor côté client qui créent une requête d’authentification sur un point de terminaison externe.
+Blazor permet de déterminer l’état d’authentification *de façon asynchrone*. Le scénario principal de cette approche se trouve dans les applications de webassembly éblouissantes qui effectuent une demande à un point de terminaison externe pour l’authentification.
 
 Lorsque l’authentification est en cours, `AuthorizeView` n’affiche aucun contenu par défaut. Pour afficher le contenu pendant que l’authentification se produit, utilisez l’élément `<Authorizing>` :
 
@@ -333,7 +333,7 @@ Lorsque l’authentification est en cours, `AuthorizeView` n’affiche aucun con
 </AuthorizeView>
 ```
 
-Cette approche n’est pas normalement applicable aux applications Blazor côté serveur. Les applications Blazor côté serveur connaissent l’état de l’authentification dès que l’état est établi. Le contenu de `Authorizing` peut être fourni dans le compsosant `AuthorizeView` d’une application Blazor côté serveur, mais le contenu n’est jamais affiché.
+Cette approche n’est normalement pas applicable aux applications serveur éblouissantes. Les applications serveur éblouissantes connaissent l’état d’authentification dès que l’État est établi. `Authorizing`le contenu peut être fourni dans le composant d' `AuthorizeView` une application serveur éblouissant, mais le contenu n’est jamais affiché.
 
 ## <a name="authorize-attribute"></a>Attribut [Authorize]
 
@@ -382,7 +382,7 @@ Le `Router` composant, conjointement avec le `AuthorizeRouteView` composant, per
 * L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant. L’attribut `[Authorize]` est couvert dans la section [Attribut [Authorize]](#authorize-attribute).
 * Une authentification asynchrone est en cours.
 
-Dans le modèle de projet Blazor côté serveur par défaut, le fichier *App.razor* montre comment définir le contenu personnalisé :
+Dans le modèle de projet de serveur éblouissant, par défaut, le fichier *app. Razor* montre comment définir un contenu personnalisé :
 
 ```cshtml
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -459,9 +459,9 @@ Si l’application est nécessaire pour vérifier les règles d’autorisation d
 }
 ```
 
-## <a name="authorization-in-blazor-client-side-apps"></a>Autorisation dans les applications Blazor côté client
+## <a name="authorization-in-blazor-webassembly-apps"></a>Autorisation dans les applications webassembly éblouissantes
 
-Dans les applications Blazor côté client, les contrôles d’autorisation peuvent être contournés, car tout le code côté client peut être modifié par les utilisateurs. Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.
+Dans les applications webassembly éblouissantes, les vérifications d’autorisation peuvent être ignorées, car le code côté client peut être modifié par les utilisateurs. Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.
 
 **Effectuez toujours les vérifications d’autorisation sur le serveur au sein des points de terminaison de l’API auxquels votre application côté client accède.**
 
@@ -473,7 +473,7 @@ Erreurs courantes :
 
 * **La valeur `null` est reçue pour `authenticationStateTask`**
 
-Il est probable que le projet n’a pas été créé à l’aide d’un modèle Blazor côté serveur avec l’authentification activée. Encapsulez un `<CascadingAuthenticationState>` dans certaines parties de l’arborescence de l’interface utilisateur, par exemple dans *App.razor*, comme suit :
+Il est probable que le projet n’a pas été créé à l’aide d’un modèle de serveur éblouissant avec l’authentification activée. Encapsulez un `<CascadingAuthenticationState>` dans certaines parties de l’arborescence de l’interface utilisateur, par exemple dans *App.razor*, comme suit :
 
 ```cshtml
 <CascadingAuthenticationState>
@@ -488,5 +488,5 @@ Il est probable que le projet n’a pas été créé à l’aide d’un modèle 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:security/index>
-* <xref:security/blazor/server-side>
+* <xref:security/blazor/server>
 * <xref:security/authentication/windowsauth>

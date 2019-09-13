@@ -7,24 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: c3188a1fe1b699b787f7a95630f3918d295d0f68
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: e9477e504d32fd1dd5d6c87392386d1131f46e9f
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69974907"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963993"
 ---
 # <a name="debug-aspnet-core-blazor"></a>ASP.NET Core éblouissant de débogage
 
 [Daniel Roth](https://github.com/danroth27)
 
-La prise en charge *précoce* du débogage des applications côté client éblouissantes s’exécutant sur webassembly dans Chrome.
+Une prise en charge *précoce* pour le débogage des applications webassembly éblouissantes s’exécutant sur webassembly dans Chrome.
 
-Les fonctionnalités du débogueur sont limitées. Les scénarios disponibles sont les suivants:
+Les fonctionnalités du débogueur sont limitées. Les scénarios disponibles sont les suivants :
 
 * Définir et supprimer des points d’arrêt.
 * Une étape (`F10`) à l’aide de l’exécution du`F8`code ou de la reprise ().
-* Dans l' affichage des variables locales, observez les valeurs des variables locales de `int`type `string`, et `bool`.
+* Dans l' *affichage des variables locales,* observez les valeurs des variables locales de `int`type `string`, et `bool`.
 * Consultez la pile des appels, y compris les chaînes d’appel qui passent de JavaScript à .NET et de .NET à JavaScript.
 
 Vous *ne pouvez pas*:
@@ -40,27 +40,27 @@ Le développement d’autres scénarios de débogage est l’un des objectifs de
 
 ## <a name="prerequisites"></a>Prérequis
 
-Le débogage requiert l’un des navigateurs suivants:
+Le débogage requiert l’un des navigateurs suivants :
 
 * Google Chrome (version 70 ou ultérieure)
 * Version préliminaire de Microsoft Edge ([canal de développement Edge](https://www.microsoftedgeinsider.com))
 
 ## <a name="procedure"></a>Procédure
 
-1. Exécutez une application cliente éblouissante dans `Debug` la configuration. Transmettez `--configuration Debug` l’option à la commande [dotnet Run](/dotnet/core/tools/dotnet-run) : `dotnet run --configuration Debug`.
+1. Exécutez une application de webassembly éblouissante dans `Debug` la configuration. Transmettez `--configuration Debug` l’option à la commande [dotnet Run](/dotnet/core/tools/dotnet-run) : `dotnet run --configuration Debug`.
 1. Accédez à l’application dans le navigateur.
 1. Placez le focus clavier sur l’application, et non sur le panneau Outils de développement. Le panneau Outils de développement peut être fermé lorsque le débogage est initié.
-1. Sélectionnez le raccourci clavier de éblouissant spécifique suivant:
+1. Sélectionnez le raccourci clavier de éblouissant spécifique suivant :
    * `Shift+Alt+D`sur Windows/Linux
    * `Shift+Cmd+D`sur macOS
 1. Suivez les étapes indiquées à l’écran pour redémarrer le navigateur en activant le débogage à distance.
-1. Sélectionnez une nouvelle fois le raccourci clavier éblouissant suivant pour démarrer la session de débogage:
+1. Sélectionnez une nouvelle fois le raccourci clavier éblouissant suivant pour démarrer la session de débogage :
    * `Shift+Alt+D`sur Windows/Linux
    * `Shift+Cmd+D`sur macOS
 
 ## <a name="enable-remote-debugging"></a>Activer le débogage à distance
 
-Si le débogage distant est désactivé, une page d’erreur **Impossible de trouver un onglet de navigateur pouvant être** débogué est générée par chrome. La page d’erreur contient des instructions pour l’exécution de chrome avec le port de débogage ouvert, afin que le proxy de débogage éblouissant puisse se connecter à l’application. *Fermez toutes les instances chrome* et redémarrez Chrome comme indiqué.
+Si le débogage distant est désactivé, une page d’erreur **Impossible de trouver un onglet de navigateur pouvant être débogué** est générée par chrome. La page d’erreur contient des instructions pour l’exécution de chrome avec le port de débogage ouvert, afin que le proxy de débogage éblouissant puisse se connecter à l’application. *Fermez toutes les instances chrome* et redémarrez Chrome comme indiqué.
 
 ## <a name="debug-the-app"></a>Déboguer l’application
 
@@ -74,6 +74,6 @@ Les mappages de source de navigateur permettent au navigateur de mapper les fich
 
 ## <a name="troubleshooting-tip"></a>Conseil de dépannage
 
-Si vous rencontrez des erreurs, le Conseil suivant peut vous aider:
+Si vous rencontrez des erreurs, le Conseil suivant peut vous aider :
 
-Dans l' onglet débogueur, ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.
+Dans l’onglet **débogueur** , ouvrez les outils de développement de votre navigateur. Dans la console, exécutez `localStorage.clear()` pour supprimer tous les points d’arrêt.

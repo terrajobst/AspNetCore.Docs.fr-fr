@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: 0b48cd0cbe14d2b07627f56ab78611bbd3209fa1
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6c01fdc390cc9150cf81673c717b73c4b10c31f1
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800398"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963977"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core l’injection de dépendances éblouissantes
 
@@ -61,7 +61,7 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 
 | Durée de vie | Description |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Les applications webassembly éblouissantes n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se `Singleton` comportent comme des services. Toutefois, le modèle d’hébergement côté serveur prend en `Scoped` charge la durée de vie. Dans les applications serveur éblouissantes, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Les applications webassembly éblouissantes n’ont pas actuellement de concept d’étendues DI. `Scoped`-les services inscrits se `Singleton` comportent comme des services. Toutefois, le modèle d’hébergement du serveur éblouissant prend `Scoped` en charge la durée de vie. Dans les applications serveur éblouissantes, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI crée une *seule instance* du service. Tous les composants qui `Singleton` requièrent un service reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Chaque fois qu’un composant obtient une instance d' `Transient` un service à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 

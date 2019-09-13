@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: fa485420c01e6a6d4181f733d6848de08ffca730
-ms.sourcegitcommit: e7c56e8da5419bbc20b437c2dd531dedf9b0dc6b
+ms.openlocfilehash: 1572b9ee646577d094409cc33dd621f2f73dc863
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70878357"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70964211"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core l’interopérabilité avec le JavaScript éblouissant
 
@@ -28,15 +28,15 @@ Il arrive parfois que le code .NET soit requis pour appeler une fonction JavaScr
 
 Pour appeler JavaScript à partir de .net, utilisez `IJSRuntime` l’abstraction. La `InvokeAsync<T>` méthode prend un identificateur pour la fonction JavaScript que vous souhaitez appeler, ainsi que n’importe quel nombre d’arguments sérialisables JSON. L’identificateur de fonction est relatif à la portée globale (`window`). Si vous souhaitez appeler `window.someScope.someFunction`, l’identificateur est. `someScope.someFunction` Il n’est pas nécessaire d’inscrire la fonction avant qu’elle ne soit appelée. Le type `T` de retour doit également être sérialisable JSON.
 
-Pour les applications côté serveur :
+Pour les applications serveur éblouissantes :
 
-* Plusieurs demandes utilisateur sont traitées par l’application côté serveur. N’appelez `JSRuntime.Current` pas dans un composant pour appeler des fonctions JavaScript.
+* Plusieurs demandes utilisateur sont traitées par l’application serveur éblouissante. N’appelez `JSRuntime.Current` pas dans un composant pour appeler des fonctions JavaScript.
 * Injectez `IJSRuntime` l’abstraction et utilisez l’objet injecté pour émettre des appels Interop JavaScript.
 * Lorsqu’une application éblouissant est prérendue, l’appel à JavaScript n’est pas possible, car une connexion avec le navigateur n’a pas été établie. Pour plus d’informations, consultez la section [détecter quand une application éblouissant est un prérendu](#detect-when-a-blazor-app-is-prerendering) .
 
 L’exemple suivant est basé sur [TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder), un décodeur basé sur JavaScript expérimental. L’exemple montre comment appeler une fonction JavaScript à partir d' C# une méthode. La fonction JavaScript accepte un tableau d’octets d' C# une méthode, décode le tableau et retourne le texte au composant pour l’affichage.
 
-À l' `<head>` intérieur de l’élément de *wwwroot/index.html* (éblouissant Client-Side) ou *pages/_Host. cshtml* (le côté serveur de éblouissant), fournissez une `TextDecoder` fonction qui utilise pour décoder un tableau passé :
+À l' `<head>` intérieur de l’élément de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une `TextDecoder` fonction qui utilise pour décoder un tableau passé :
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -70,7 +70,7 @@ Pour utiliser l' `IJSRuntime` abstraction, adoptez l’une des approches suivant
   IJSRuntime JSRuntime { get; set; }
   ```
 
-Dans l’exemple d’application côté client qui accompagne cette rubrique, deux fonctions JavaScript sont disponibles pour l’application côté client qui interagit avec le DOM pour recevoir l’entrée d’utilisateur et afficher un message d’accueil :
+Dans l’exemple d’application côté client qui accompagne cette rubrique, deux fonctions JavaScript sont disponibles pour l’application qui interagit avec le DOM pour recevoir l’entrée d’utilisateur et afficher un message d’accueil :
 
 * `showPrompt`&ndash; Génère une invite pour accepter l’entrée d’utilisateur (nom de l’utilisateur) et retourne le nom à l’appelant.
 * `displayWelcome`Assigne un message de bienvenue de l’appelant à un objet DOM avec `id` un `welcome`de. &ndash;
@@ -79,13 +79,13 @@ Dans l’exemple d’application côté client qui accompagne cette rubrique, de
 
 [!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-Placez la `<script>` balise qui référence le fichier JavaScript dans le fichier *wwwroot/index.html* (The éblouissant Client-Side) ou le fichier *pages/_Host. cshtml* (éblouissant côté serveur).
+Placez la `<script>` balise qui fait référence au fichier JavaScript dans le fichier *wwwroot/index.html* (l’assembly éblouissant) ou le fichier *pages/_Host. cshtml* (serveur éblouissant).
 
-*wwwroot/index.html* (Éblouissant côté client) :
+*wwwroot/index.html* (Webassembly éblouissant) :
 
 [!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml* (Le côté serveur de éblouissant) :
+*Pages/_Host. cshtml* (Serveur éblouissant) :
 
 [!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
 
@@ -93,7 +93,7 @@ Ne placez `<script>` pas de balise dans un fichier de `<script>` composant parce
 
 Les méthodes .NET interagissent avec les fonctions JavaScript dans le fichier *exampleJsInterop. js* en appelant `IJSRuntime.InvokeAsync<T>`.
 
-L' `IJSRuntime` abstraction est asynchrone pour permettre les scénarios côté serveur. Si l’application s’exécute côté client et que vous souhaitez appeler une fonction JavaScript de manière synchrone, vous `IJSInProcessRuntime` devez effectuer `Invoke<T>` un cast aval vers et appeler à la place. Nous recommandons que la plupart des bibliothèques d’interopérabilité JavaScript utilisent les API Async pour s’assurer que les bibliothèques sont disponibles dans tous les scénarios, côté client ou côté serveur.
+L' `IJSRuntime` abstraction est asynchrone pour permettre les scénarios de serveur éblouissants. Si l’application est une application de webassembly éblouissante et que vous souhaitez appeler une fonction JavaScript de manière synchrone `IJSInProcessRuntime` , vous `Invoke<T>` devez effectuer un casting vers et appeler à la place. Nous recommandons que la plupart des bibliothèques d’interopérabilité JavaScript utilisent les API Async pour s’assurer que les bibliothèques sont disponibles dans tous les scénarios.
 
 L’exemple d’application comprend un composant pour illustrer l’interopérabilité JavaScript. Le composant :
 
@@ -178,7 +178,7 @@ La méthode est appelée directement sur l’objet. L’exemple suivant suppose 
 
 ### <a name="static-net-method-call"></a>Appel de méthode .NET statique
 
-Pour appeler une méthode .net statique à partir de JavaScript, `DotNet.invokeMethod` utilisez `DotNet.invokeMethodAsync` les fonctions ou. Transmettez l’identificateur de la méthode statique que vous souhaitez appeler, le nom de l’assembly contenant la fonction et les arguments éventuels. La version asynchrone est recommandée pour prendre en charge les scénarios côté serveur. Pour appeler une méthode .net à partir de JavaScript, la méthode .net doit être publique, statique et avoir `[JSInvokable]` l’attribut. Par défaut, l’identificateur de méthode est le nom de la méthode, mais vous pouvez spécifier un identificateur différent à `JSInvokableAttribute` l’aide du constructeur. L’appel de méthodes génériques ouvertes n’est pas pris en charge actuellement.
+Pour appeler une méthode .net statique à partir de JavaScript, `DotNet.invokeMethod` utilisez `DotNet.invokeMethodAsync` les fonctions ou. Transmettez l’identificateur de la méthode statique que vous souhaitez appeler, le nom de l’assembly contenant la fonction et les arguments éventuels. La version asynchrone est préférable à la prise en charge des scénarios de serveur éblouissants. Pour appeler une méthode .net à partir de JavaScript, la méthode .net doit être publique, statique et avoir `[JSInvokable]` l’attribut. Par défaut, l’identificateur de méthode est le nom de la méthode, mais vous pouvez spécifier un identificateur différent à `JSInvokableAttribute` l’aide du constructeur. L’appel de méthodes génériques ouvertes n’est pas pris en charge actuellement.
 
 L’exemple d’application comprend C# une méthode pour retourner un tableau `int`de. L' `JSInvokable` attribut est appliqué à la méthode.
 
@@ -268,4 +268,4 @@ L’interopérabilité de JS peut échouer en raison d’erreurs réseau et doit
       TimeSpan.FromSeconds({SECONDS}), new[] { "Arg1" });
   ```
 
-Pour plus d’informations sur l’épuisement des <xref:security/blazor/server-side>ressources, consultez.
+Pour plus d’informations sur l’épuisement des <xref:security/blazor/server>ressources, consultez.

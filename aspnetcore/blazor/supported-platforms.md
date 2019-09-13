@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: blazor/supported-platforms
-ms.openlocfilehash: 01f3a55a8536feedf713e07ea3724a0bc51e7c63
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
+ms.openlocfilehash: 042fbb1b2c7f92b7dc6443319f3f195a12a55adc
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "68948249"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963882"
 ---
 # <a name="aspnet-core-blazor-supported-platforms"></a>Plates-formes ASP.NET Core éblouissantes prises en charge
 
@@ -20,7 +20,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 ## <a name="browser-requirements"></a>Exigences liées au navigateur
 
-### <a name="blazor-client-side"></a>Blazor côté client
+### <a name="blazor-webassembly"></a>Webassembly éblouissant
 
 | Visiteur                          | Version               |
 | -------------------------------- | :-------------------: |
@@ -32,7 +32,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 &dagger;Microsoft Internet Explorer ne prend pas en charge [webassembly](https://webassembly.org).
 
-### <a name="blazor-server-side"></a>Blazor côté serveur
+### <a name="blazor-server"></a>Serveur éblouissant
 
 | Visiteur                          | Version    |
 | -------------------------------- | :--------: |

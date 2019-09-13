@@ -1,24 +1,24 @@
 ---
 title: ASP.NET Core la gestion de l’État éblouissant
 author: guardrex
-description: Découvrez comment rendre l’état persistant dans les applications côté serveur éblouissantes.
+description: Découvrez comment rendre l’état persistant dans les applications serveur éblouissantes.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/state-management
-ms.openlocfilehash: 000736dde53670d1df76f41cc7cf4f95ef48800a
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: e1c3b030f466a820d49c36839d7ee26bb7cea4d3
+ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800356"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70963852"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core la gestion de l’État éblouissant
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Le côté serveur de éblouissant est une infrastructure d’application avec état. La plupart du temps, l’application maintient une connexion continue au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
+Le serveur éblouissant est un Framework d’applications avec état. La plupart du temps, l’application maintient une connexion continue au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
 
 Voici des exemples d’État détenu pour le circuit d’un utilisateur :
 
@@ -27,7 +27,7 @@ Voici des exemples d’État détenu pour le circuit d’un utilisateur :
 * Données conservées dans des instances de service d' [injection de dépendance (di)](xref:fundamentals/dependency-injection) dont l’étendue correspond au circuit.
 
 > [!NOTE]
-> Cet article traite de la persistance de l’État dans les applications côté serveur éblouissantes. Les applications côté client éblouissantes peuvent tirer parti de [la persistance de l’État côté client dans le navigateur,](#client-side-in-the-browser) mais elles nécessitent des solutions personnalisées ou des packages tiers au-delà du cadre de cet article.
+> Cet article traite de la persistance de l’État dans les applications serveur éblouissantes. Les applications webassembly éblouissantes peuvent tirer parti de [la persistance de l’État côté client dans le navigateur,](#client-side-in-the-browser) mais elles nécessitent des solutions personnalisées ou des packages tiers au-delà du cadre de cet article.
 
 ## <a name="blazor-circuits"></a>Circuits éblouissants
 
@@ -62,7 +62,7 @@ En règle générale, il n’est pas nécessaire de conserver un État facile à
 
 ## <a name="where-to-persist-state"></a>Emplacement de conservation de l’État
 
-Trois emplacements communs existent pour conserver l’État dans une application côté serveur éblouissante. Chaque approche est la mieux adaptée à différents scénarios et présente des inconvénients différents :
+Trois emplacements communs existent pour la conservation de l’État dans une application serveur éblouissante. Chaque approche est la mieux adaptée à différents scénarios et présente des inconvénients différents :
 
 * [Côté serveur dans une base de données](#server-side-in-a-database)
 * [URL](#url)
@@ -100,7 +100,7 @@ Pour plus d’informations sur la définition de `@page` modèles d’URL <xref:
 Pour les données temporaires que l’utilisateur crée activement, un magasin de stockage commun est le regroupement `localStorage` et `sessionStorage` le navigateur. L’application n’est pas requise pour gérer ou effacer l’État stocké si le circuit est abandonné, ce qui constitue un avantage par rapport au stockage côté serveur.
 
 > [!NOTE]
-> « Côté client » dans cette section fait référence aux scénarios côté client dans le navigateur, et non au [modèle d’hébergement côté client éblouissant](xref:blazor/hosting-models#client-side). `localStorage`et `sessionStorage` peuvent être utilisés dans les applications côté client éblouissantes, mais uniquement en écrivant du code personnalisé ou à l’aide d’un package tiers.
+> « Côté client » dans cette section fait référence aux scénarios côté client dans le navigateur, et non au [modèle d’hébergement de Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly). `localStorage`et `sessionStorage` peuvent être utilisés dans les applications webassembly éblouissantes, mais uniquement en écrivant du code personnalisé ou à l’aide d’un package tiers.
 
 `localStorage`et `sessionStorage` diffèrent comme suit :
 
@@ -118,7 +118,7 @@ Avertissements relatifs à l’utilisation du stockage du navigateur :
 
 * À l’instar de l’utilisation d’une base de données côté serveur, le chargement et l’enregistrement des données sont asynchrones.
 * Contrairement à une base de données côté serveur, le stockage n’est pas disponible pendant le prérendu, car la page demandée n’existe pas dans le navigateur pendant l’étape de prérendu.
-* Le stockage de quelques kilo-octets de données est raisonnable à conserver pour les applications côté serveur éblouissantes. Au-delà de quelques kilo-octets, vous devez prendre en compte les implications en termes de performances, car les données sont chargées et enregistrées sur le réseau.
+* Le stockage de quelques kilo-octets de données est raisonnable à conserver pour les applications serveur éblouissantes. Au-delà de quelques kilo-octets, vous devez prendre en compte les implications en termes de performances, car les données sont chargées et enregistrées sur le réseau.
 * Les utilisateurs peuvent afficher ou altérer les données. La [protection des données](xref:security/data-protection/introduction) ASP.net Core peut atténuer le risque.
 
 ## <a name="third-party-browser-storage-solutions"></a>Solutions de stockage de navigateur tiers
@@ -138,7 +138,7 @@ Voici un exemple de package NuGet qui fournit une protection des `localStorage` 
 
 Pour installer le `Microsoft.AspNetCore.ProtectedBrowserStorage` package :
 
-1. Dans le projet d’application côté serveur éblouissant, ajoutez une référence de package à [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
+1. Dans le projet d’application de serveur éblouissant, ajoutez une référence de package à [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
 1. Dans le code HTML de niveau supérieur (par exemple, dans le fichier *pages/_Host. cshtml* dans le modèle de projet par défaut), `<script>` ajoutez la balise suivante :
 
    ```html
