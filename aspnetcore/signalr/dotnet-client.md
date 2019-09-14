@@ -5,14 +5,14 @@ description: Informations sur le Client .NET SignalR ASP.NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 04/17/2019
+ms.date: 09/13/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: 97c553874cb1e4b678fa0e5cd65074f135193861
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: d2755f652e734bad6447ddeb9a82345dcde25b28
+ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67153115"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70985494"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Client .NET SignalR ASP.NET Core
 
@@ -24,11 +24,25 @@ L’exemple de code dans cet article est une application WPF qui utilise le clie
 
 ## <a name="install-the-signalr-net-client-package"></a>Installer le package du client .NET SignalR
 
-Le package `Microsoft.AspNetCore.SignalR.Client` est requis pour que les clients .NET se connectent à des hubs SignalR. Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **Console du Gestionnaire de package** :
+Le package [Microsoft. AspNetCore. signalr. client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) est requis pour que les clients .net se connectent aux hubs signalr.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **Console du Gestionnaire de package** :
 
 ```powershell
 Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
+
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+Pour installer la bibliothèque cliente, exécutez la commande suivante dans une interface de commande :
+
+```console
+dotnet add package Microsoft.AspNetCore.SignalR.Client
+```
+
+---
 
 ## <a name="connect-to-a-hub"></a>Se connecter à un hub
 
@@ -36,13 +50,13 @@ Pour établir une connexion, créez un `HubConnectionBuilder` et appelez-le `Bui
 
 [!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_MainWindowClass&highlight=15-17,39)]
 
-## <a name="handle-lost-connection"></a>Gérer la perte de connexion
+## <a name="handle-lost-connection"></a>Gérer la connexion perdue
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="automatically-reconnect"></a>Se reconnecter automatiquement
 
-Le <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> peuvent être configurés pour se reconnecter automatiquement à l’aide de la `WithAutomaticReconnect` méthode sur le <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder>. Il ne se reconnecter automatiquement par défaut.
+Peut être configuré pour se reconnecter automatiquement à l' `WithAutomaticReconnect` aide de la méthode sur le. <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection> Par défaut, il ne se reconnectera pas automatiquement.
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -51,9 +65,9 @@ HubConnection connection= new HubConnectionBuilder()
     .Build();
 ```
 
-Sans paramètres, `WithAutomaticReconnect()` configure le client en attente 0, 2, 10 et 30 secondes respectivement avant d’essayer de chaque tentative de reconnexion s’arrête après avoir quatre tentatives ayant échoué.
+Sans aucun paramètre, `WithAutomaticReconnect()` configure le client pour attendre 0, 2, 10 et 30 secondes, respectivement, avant d’essayer chaque tentative de reconnexion, en s’arrêtant après quatre tentatives ayant échoué.
 
-Avant de commencer toute tentative de reconnexion, le `HubConnection` sera la transition vers le `HubConnectionState.Reconnecting` d’état et de déclencher le `Reconnecting` événement.  Cela fournit une opportunité pour avertir les utilisateurs que la connexion a été perdue et désactiver les éléments d’interface utilisateur. Les applications non interactives peuvent démarrer queuing ou la suppression des messages.
+Avant de commencer les tentatives de reconnexion `HubConnection` , le passe à `HubConnectionState.Reconnecting` l’État et déclenche `Reconnecting` l’événement.  Cela permet d’avertir les utilisateurs que la connexion a été perdue et de désactiver les éléments d’interface utilisateur. Les applications non interactives peuvent commencer à mettre en file d’attente ou à déposer des messages.
 
 ```csharp
 connection.Reconnecting += error =>
@@ -67,12 +81,12 @@ connection.Reconnecting += error =>
 };
 ```
 
-Si le client se reconnecte avec succès au sein de ses quatre premières tentatives, le `HubConnection` passera à le `Connected` d’état et de déclencher le `Reconnected` événement. Cela permet d’informer les utilisateurs de la connexion a été rétablie et tous les messages en file d’attente de la file d’attente.
+Si le client se reconnecte correctement dans les quatre premières tentatives, `HubConnection` le passe à l' `Connected` État et déclenche l' `Reconnected` événement. Cela permet d’informer les utilisateurs que la connexion a été rétablie et de défiler tous les messages mis en file d’attente.
 
-Étant donné que la connexion est entièrement nouveau sur le serveur, un nouveau `ConnectionId` seront fournies à la `Reconnected` gestionnaires d’événements.
+Étant donné que la connexion semble entièrement nouvelle sur le serveur, `ConnectionId` une nouvelle est fournie `Reconnected` aux gestionnaires d’événements.
 
 > [!WARNING]
-> Le `Reconnected` du Gestionnaire d’événements `connectionId` paramètre sera null si le `HubConnection` a été configuré pour [ignorer négociation](xref:signalr/configuration#configure-client-options).
+> Le `Reconnected` paramètre du gestionnaire `connectionId` d’événements sera null si a `HubConnection` été configuré pour [ignorer la négociation](xref:signalr/configuration#configure-client-options).
 
 ```csharp
 connection.Reconnected += connectionId =>
@@ -86,7 +100,7 @@ connection.Reconnected += connectionId =>
 };
 ```
 
-`WithAutomaticReconnect()` ne configurez pas le `HubConnection` pour réessayer d’échecs de démarrage initial, afin de l’échec de démarrage doivent être traitées manuellement :
+`WithAutomaticReconnect()`ne configure `HubConnection` pas le pour réessayer les échecs de démarrage initial. les échecs de démarrage doivent donc être gérés manuellement:
 
 ```csharp
 public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, CancellationToken token)
@@ -114,7 +128,7 @@ public static async Task<bool> ConnectWithRetryAsync(HubConnection connection, C
 }
 ```
 
-Si le client ne se reconnecter avec succès au sein de ses quatre premières tentatives, le `HubConnection` sera la transition vers le `Disconnected` d’état et de déclencher le <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> événement. Cela fournit une opportunité pour tenter de redémarrer la connexion manuellement ou informer les utilisateurs de que la connexion a été définitivement perdue.
+Si le client ne se reconnecte pas correctement dans les quatre premières `HubConnection` tentatives, le passe `Disconnected` à l’État et <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> déclenche l’événement. Cela offre la possibilité de tenter de redémarrer manuellement la connexion ou d’informer les utilisateurs que la connexion a été définitivement perdue.
 
 ```csharp
 connection.Closed += error =>
@@ -127,7 +141,7 @@ connection.Closed += error =>
 };
 ```
 
-Pour configurer le nombre de tentatives de reconnexion avant de déconnecter ou de modifier le minutage de la reconnexion, `WithAutomaticReconnect` accepte un tableau de nombres représentant le délai en millisecondes à attendre avant de commencer chaque tentative de reconnexion.
+Pour configurer un nombre personnalisé de tentatives de reconnexion avant de vous déconnecter ou de modifier le délai de reconnexion, `WithAutomaticReconnect` accepte un tableau de nombres représentant le délai en millisecondes à attendre avant de démarrer chaque tentative de reconnexion.
 
 ```csharp
 HubConnection connection= new HubConnectionBuilder()
@@ -138,19 +152,19 @@ HubConnection connection= new HubConnectionBuilder()
     // .WithAutomaticReconnect(new[] { TimeSpan.Zero, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30) }) yields the default behavior.
 ```
 
-L’exemple précédent configure le `HubConnection` pour démarrer une tentative de reconnexions immédiatement après la connexion est perdue. Cela vaut également pour la configuration par défaut.
+L’exemple précédent configure le pour `HubConnection` qu’il commence à tenter de se reconnecter immédiatement après la perte de la connexion. Cela est également vrai pour la configuration par défaut.
 
-Si la première tentative de reconnexion échoue, la deuxième tentative de reconnexion également démarre immédiatement au lieu d’attendre 2 secondes comme il le ferait dans la configuration par défaut.
+Si la première tentative de reconnexion échoue, la deuxième tentative de reconnexion démarre également immédiatement au lieu d’attendre 2 secondes comme dans la configuration par défaut.
 
-Si la deuxième tentative de reconnexion échoue, la troisième tentative de reconnexion démarrera dans 10 secondes, ce qui revient à nouveau à la configuration par défaut.
+Si la deuxième tentative de reconnexion échoue, la troisième tentative de reconnexion démarrera dans 10 secondes, ce qui revient à la configuration par défaut.
 
-Le comportement personnalisé puis diffère à nouveau le comportement par défaut en arrêtant après que la reconnexion troisième tentative d’échec. Dans la configuration par défaut il être un plus reconnectait tentative dans les 30 secondes.
+Le comportement personnalisé s’est ensuite dévergé du comportement par défaut en s’arrêtant après le troisième échec de tentative de reconnexion. Dans la configuration par défaut, il y aura une autre tentative de reconnexion dans 30 secondes.
 
-Si vous souhaitez mieux contrôler la fréquence et le nombre d’automatique nouvelle tentative, `WithAutomaticReconnect` accepte un objet qui implémente le `IRetryPolicy` interface, ce qui a une méthode unique nommée `NextRetryDelay`.
+Si vous souhaitez encore plus de contrôle sur le minutage et le nombre de tentatives de reconnexion automatique, `WithAutomaticReconnect` accepte un objet qui implémente l' `IRetryPolicy` interface, qui `NextRetryDelay`a une méthode unique nommée.
 
-`NextRetryDelay` accepte un seul argument avec le type `RetryContext`. Le `RetryContext` possède trois propriétés : `PreviousRetryCount`, `ElapsedTime` et `RetryReason` qui sont un `long`, un `TimeSpan` et un `Exception` respectivement. Avant la première tentative de reconnexion, les deux `PreviousRetryCount` et `ElapsedTime` sera égal à zéro et le `RetryReason` sera l’Exception qui a provoqué la connexion est perdue. Après chaque tentative ayant échoué, `PreviousRetryCount` sera incrémenté d’un, `ElapsedTime` sera mis à jour pour refléter la quantité de temps passé à la reconnexion jusqu’ici et le `RetryReason` sera l’Exception qui a provoqué la dernière tentative de reconnexion d’échouer.
+`NextRetryDelay`accepte un seul argument avec le type `RetryContext`. `PreviousRetryCount` `long` Atrois`TimeSpan` propriétés: `ElapsedTime` , et`RetryReason`qui sont respectivementun,unetun.`Exception` `RetryContext` Avant la première tentative de reconnexion, `PreviousRetryCount` et `ElapsedTime` sera égal à zéro, et `RetryReason` sera l’exception qui a provoqué la perte de la connexion. Après chaque nouvelle tentative d’échec `PreviousRetryCount` , sera incrémenté d’une unité `ElapsedTime` , sera mis à jour pour refléter le temps passé à se reconnecter jusqu’à présent, `RetryReason` et sera l’exception qui a provoqué l’échec de la dernière tentative de reconnexion.
 
-`NextRetryDelay` doit retourner soit un laps de temps représentant le temps à attendre avant la prochaine tentative de reconnexion ou `null` si le `HubConnection` doit s’arrêter la reconnexion.
+`NextRetryDelay`doit retourner une valeur TimeSpan représentant le délai d’attente avant la tentative de reconnexion suivante `null` ou si `HubConnection` doit arrêter la reconnexion.
 
 ```csharp
 public class RandomRetryPolicy : IRetryPolicy
@@ -181,20 +195,20 @@ HubConnection connection = new HubConnectionBuilder()
     .Build();
 ```
 
-Vous pouvez également écrire le code qui se reconnectera votre client manuellement, comme illustré dans [reconnecter manuellement](#manually-reconnect).
+Vous pouvez également écrire du code qui reconnectera votre client manuellement, comme illustré dans [reconnexion manuelle](#manually-reconnect).
 
 ::: moniker-end
 
-### <a name="manually-reconnect"></a>Reconnecter manuellement
+### <a name="manually-reconnect"></a>Reconnexion manuelle
 
 ::: moniker range="< aspnetcore-3.0"
 
 > [!WARNING]
-> Avant la version 3.0, le client .NET pour SignalR ne se reconnecter automatiquement. Vous devez écrire du code qui se reconnectera votre client manuellement.
+> Avant le 3,0, le client .NET pour Signalr ne se reconnecte pas automatiquement. Vous devez écrire du code qui reconnectera votre client manuellement.
 
 ::: moniker-end
 
-Utilisez l'événement <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> pour répondre à une perte de connexion. Par exemple, vous pouvez souhaiter automatiser une reconnexion.
+Utilisez l'événement <xref:Microsoft.AspNetCore.SignalR.Client.HubConnection.Closed> pour répondre à une perte de connexion. Par exemple, vous souhaiterez peut-être automatiser la reconnexion.
 
 L'événement `Closed` nécessite un délégué qui retourne une `Task`, ce qui permet l’exécution sans utiliser de code asynchrone `async void`. Pour répondre à la signature du délégué dans un gestionnaire d’événements `Closed` qui s’exécute de façon synchrone, retournez `Task.CompletedTask`:
 
@@ -217,14 +231,14 @@ Dans un gestionnaire `Closed` qui redémarre la connexion, envisagez d’attendr
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
 
-Le `InvokeAsync` méthode retourne un `Task` qui se termine lorsque la méthode de serveur est retournée. La valeur de retour, le cas échéant, est fournie en tant que le résultat de la `Task`. Toutes les exceptions levées par la méthode sur le serveur génère une erreur `Task`. Utilisez `await` syntaxe d’attente de la méthode de serveur pour terminer et `try...catch` syntaxe permettant de gérer les erreurs.
+La `InvokeAsync` méthode retourne un `Task` qui se termine lorsque la méthode serveur retourne. La valeur de retour, le cas échéant, est fournie comme résultat de `Task`. Toute exception levée par la méthode sur le serveur génère une erreur `Task`. Utilisez `await` la syntaxe pour attendre la fin de la méthode serveur `try...catch` et la syntaxe pour gérer les erreurs.
 
-Le `SendAsync` méthode retourne un `Task` qui se termine lorsque le message a été envoyé au serveur. Aucune valeur de retour n’est fourni, car ce `Task` n’attendez la fin de la méthode de serveur. Toutes les exceptions levées sur le client lors de l’envoi du message génère une erreur `Task`. Utilisez `await` et `try...catch` syntaxe pour gérer les erreurs d’envoi.
+La `SendAsync` méthode retourne un `Task` qui se termine lorsque le message a été envoyé au serveur. Aucune valeur de retour n’est fournie `Task` , car cela n’attend pas la fin de la méthode serveur. Toutes les exceptions levées sur le client lors de l’envoi du message `Task`génèrent une erreur. Utilisez `await` la `try...catch` syntaxe et pour gérer les erreurs d’envoi.
 
 > [!NOTE]
-> Si vous utilisez le Service Azure SignalR dans *mode sans serveur*, vous ne pouvez pas appeler des méthodes de concentrateur à partir d’un client. Pour plus d’informations, consultez le [documentation de SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config).
+> Si vous utilisez le service Signalr Azure en *mode sans serveur*, vous ne pouvez pas appeler les méthodes de concentrateur à partir d’un client. Pour plus d’informations, consultez la [documentation du service signalr](/azure/azure-signalr/signalr-concept-serverless-development-config).
 
-## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
+## <a name="call-client-methods-from-hub"></a>Appeler des méthodes clientes à partir du Hub
 
 Définissez les méthodes appelées par le hub en utilisant `connection.On` après la génération, mais avant de démarrer la connexion.
 
@@ -234,7 +248,7 @@ Le code précédent dans `connection.On` s’exécute lorsque le code côté ser
 
 [!code-csharp[Call client method](dotnet-client/sample/signalrchat/hubs/chathub.cs?name=snippet_SendMessage)]
 
-## <a name="error-handling-and-logging"></a>Journalisation et gestion des erreurs
+## <a name="error-handling-and-logging"></a>Gestion et journalisation des erreurs
 
 Gérez les erreurs avec une instruction try-catch. Inspectez l'objet `Exception` afin de déterminer l’action appropriée à entreprendre après qu'une erreur se produit.
 
@@ -245,4 +259,4 @@ Gérez les erreurs avec une instruction try-catch. Inspectez l'objet `Exception`
 * [Hubs](xref:signalr/hubs)
 * [Client JavaScript](xref:signalr/javascript-client)
 * [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
-* [Documentation de serverless Azure SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config)
+* [Documentation sans serveur du service Azure Signalr](/azure/azure-signalr/signalr-concept-serverless-development-config)

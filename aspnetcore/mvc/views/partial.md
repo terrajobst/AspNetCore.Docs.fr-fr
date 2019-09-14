@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: 901fd52f89969141713e443890781a77308bd901
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
-ms.translationtype: HT
+ms.openlocfilehash: 50c4f41d5d3099184aa3992ed7e176b74c488d2a
+ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034917"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70985571"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
@@ -308,7 +308,7 @@ Le balisage suivant dans l’exemple d’application illustre la vue *Views/Arti
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-20)]
 
-*Views/Shared/_AuthorPartial.cshtml* est la première vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
+*Views/Shared/_AuthorPartial. cshtml* est la première vue partielle référencée par le fichier de balisage *Read. cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
