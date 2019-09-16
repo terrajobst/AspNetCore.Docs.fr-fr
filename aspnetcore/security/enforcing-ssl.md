@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment exiger le protocole HTTPs/TLS dans une application Web ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 654b083a0dade2fc8df5cccf9fa434f30627794b
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 8474b8f12d3e08e47a4cc9b20543d2a9e6e91998
+ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773970"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71011079"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -232,7 +232,7 @@ Lorsque vous redirigez vers le protocole HTTPS sans avoir besoin de règles de r
 
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Protocole HTTP strict transport Security (HSTS)
 
-Par [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [http strict transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) est une amélioration de sécurité qui est spécifiée par une application Web via l’utilisation d’un en-tête de réponse. Quand un [navigateur prenant en charge HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support) reçoit cet en-tête :
+Par [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [http strict transport Security (HSTS)](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) est une amélioration de sécurité qui est spécifiée par une application Web via l’utilisation d’un en-tête de réponse. Quand un [navigateur prenant en charge HSTS](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html#browser-support) reçoit cet en-tête :
 
 * Le navigateur stocke la configuration pour le domaine qui empêche l’envoi de toute communication sur HTTP. Le navigateur force toutes les communications sur HTTPs.
 * Le navigateur empêche l’utilisateur d’utiliser des certificats non approuvés ou non valides. Le navigateur désactive les invites qui permettent à un utilisateur d’approuver temporairement ce type de certificat.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 225d0e3aa51745253d03e614b1c8568b3a6ba731
-ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
+ms.openlocfilehash: d95f44394d6ecc3c3896b45c5bebc73fa2d92445
+ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2019
-ms.locfileid: "70017495"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71011186"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -43,7 +43,7 @@ Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est conne
 
 ![Capture d’écran montrant Rick connecté](secure-data/_static/rick.png)
 
-Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable:
+Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable :
 
 ![Capture d’écran manager@contoso.com connecté](secure-data/_static/manager1.png)
 
@@ -53,7 +53,7 @@ L’illustration suivante montre les gestionnaires de vue des détails d’un co
 
 Le **approuver** et **rejeter** boutons sont affichés uniquement pour les responsables et les administrateurs.
 
-Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur:
+Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur :
 
 ![Capture d’écran admin@contoso.com connecté](secure-data/_static/admin.png)
 
@@ -242,7 +242,7 @@ Mettre à jour le modèle de page delete pour utiliser le Gestionnaire d’autor
 
 Actuellement, le montre l’interface utilisateur modifie et supprime des liens pour les contacts de que l’utilisateur ne peut pas modifier.
 
-Injecter le service d’autorisation dans le fichier *pages/_ViewImports. cshtml* afin qu’il soit disponible pour tous les affichages:
+Injecter le service d’autorisation dans le fichier *pages/_ViewImports. cshtml* afin qu’il soit disponible pour tous les affichages :
 
 [!code-cshtml[](secure-data/samples/final3/Pages/_ViewImports.cshtml?highlight=6-99)]
 
@@ -276,7 +276,7 @@ Consultez [ce problème](https://github.com/aspnet/AspNetCore.Docs/issues/8502) 
 
 Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
 
-* Choisir un mot de passe fort: Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Choisir un mot de passe fort : Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
 * Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
 
   ```console
@@ -366,7 +366,7 @@ Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est conne
 
 ![Capture d’écran montrant Rick connecté](secure-data/_static/rick.png)
 
-Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable:
+Dans l’image suivante, `manager@contoso.com` est connecté et dans le rôle du responsable :
 
 ![Capture d’écran manager@contoso.com connecté](secure-data/_static/manager1.png)
 
@@ -376,7 +376,7 @@ L’illustration suivante montre les gestionnaires de vue des détails d’un co
 
 Le **approuver** et **rejeter** boutons sont affichés uniquement pour les responsables et les administrateurs.
 
-Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur:
+Dans l’image suivante, `admin@contoso.com` est connecté et dans le rôle de l’administrateur :
 
 ![Capture d’écran admin@contoso.com connecté](secure-data/_static/admin.png)
 
@@ -475,7 +475,7 @@ Ajouter l’ID d’utilisateur administrateur et `ContactStatus` aux contacts. R
 
 ## <a name="create-owner-manager-and-administrator-authorization-handlers"></a>Créer le propriétaire, le gestionnaire et gestionnaires d’autorisations d’administrateur
 
-Créer un `ContactIsOwnerAuthorizationHandler` classe dans le *autorisation* dossier. Le `ContactIsOwnerAuthorizationHandler` vérifie que l’utilisateur agissant sur une ressource propriétaire de la ressource.
+Créez un dossier *authorization* et créez `ContactIsOwnerAuthorizationHandler` une classe dans celui-ci. Le `ContactIsOwnerAuthorizationHandler` vérifie que l’utilisateur agissant sur une ressource propriétaire de la ressource.
 
 [!code-csharp[](secure-data/samples/final2.1/Authorization/ContactIsOwnerAuthorizationHandler.cs)]
 
@@ -599,7 +599,7 @@ Consultez [ce problème](https://github.com/aspnet/AspNetCore.Docs/issues/8502) 
 
 Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
 
-* Choisir un mot de passe fort: Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Choisir un mot de passe fort : Utilisez au moins huit caractères et au moins un caractère majuscule, un chiffre et un symbole. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
 * Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
 
   ```console

@@ -1,18 +1,18 @@
 ---
 title: Implémentations de serveurs web dans ASP.NET Core
-author: guardrex
+author: tdykstra
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/01/2019
+ms.date: 08/10/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 404fec18409a675981fc0c068ee9a99001e06c16
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: cfea559725a644f167aa3afdf88c78bace4b5950
+ms.sourcegitcommit: dc5b293e08336dc236de66ed1834f7ef78359531
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975548"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71011150"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Utilisez Kestrel :
 
   ![Kestrel communique indirectement avec Internet via un serveur proxy inverse, par exemple IIS, Nginx ou Apache](kestrel/_static/kestrel-to-internet.png)
 
-Les deux configurations d’hébergement, &mdash;avec ou sans serveur proxy inverse&mdash;, sont prises en charge pour les applications ASP.NET Core 2.1 ou des versions ultérieures.
+L’hébergement de&mdash;la configuration avec ou sans serveur&mdash;proxy inverse est pris en charge.
 
 Pour des conseils de configuration de Kestrel et des informations sur le moment d’utiliser Kestrel dans une configuration de proxy inverse, consultez <xref:fundamentals/servers/kestrel>.
 
@@ -53,7 +53,7 @@ Lorsque vous utilisez [IIS](/iis/get-started/introduction-to-iis/introduction-to
 * dans le même processus que le processus de travail IIS ([modèle d’hébergement in-process](#hosting-models)) avec le serveur HTTP IIS. *In-process* est la configuration recommandée.
 * Ou dans un processus séparé du processus Worker IIS (le [mode d’hébergement out-of-process](#hosting-models)) avec le [serveur Kestrel](#kestrel).
 
-Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) est un module IIS natif qui gère les requêtes IIS natives entre IIS et le serveur HTTP IIS in-process ou Kestrel. Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module>.
+Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) est un module IIS natif qui gère les requêtes IIS natives entre IIS et le serveur HTTP IIS in-process ou Kestrel. Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="hosting-models"></a>Modèles d'hébergement
 
@@ -128,7 +128,7 @@ Pour plus d’informations sur l’utilisation d’Apache sur Linux comme serveu
 
 ## <a name="httpsys"></a>HTTP.sys
 
-Si vos applications ASP.NET Core sont exécutées sur Windows, HTTP.sys est une alternative à Kestrel. Kestrel est généralement recommandé pour de meilleures performances. HTTP.sys peut être utilisé dans les scénarios où l’application est exposée à Internet et où des fonctionnalités requises sont prises en charge par HTTP.sys, mais pas par Kestrel. Pour plus d’informations, consultez <xref:fundamentals/servers/httpsys>.
+Si vos applications ASP.NET Core sont exécutées sur Windows, HTTP.sys est une alternative à Kestrel. Kestrel est généralement recommandé pour de meilleures performances. HTTP.sys peut être utilisé dans les scénarios où l’application est exposée à Internet et où des fonctionnalités requises sont prises en charge par HTTP.sys, mais pas par Kestrel. Pour plus d'informations, consultez <xref:fundamentals/servers/httpsys>.
 
 ![HTTP.sys communique directement avec Internet](httpsys/_static/httpsys-to-internet.png)
 
@@ -165,7 +165,7 @@ Lors du lancement de l’application à partir d’une invite de commandes dans 
 ::: moniker range=">= aspnetcore-2.2"
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
-  * Système d’exploitation
+  * Système d'exploitation
     * Windows Server 2016/Windows 10 ou version ultérieure&dagger;
     * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
