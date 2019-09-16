@@ -304,8 +304,8 @@
           items:
             - name: Vue d'ensemble
               uid: security/blazor/index
-            - name: Côté serveur
-              uid: security/blazor/server-side
+            - name: Serveur Blazor
+              uid: security/blazor/server
         - name: Gestion de l’état
           uid: blazor/state-management
         - name: Gérer les erreurs
@@ -318,10 +318,10 @@
           items:
             - name: Vue d'ensemble
               uid: host-and-deploy/blazor/index
-            - name: Côté client
-              uid: host-and-deploy/blazor/client-side
-            - name: Côté serveur
-              uid: host-and-deploy/blazor/server-side
+            - name: WebAssembly Blazor
+              uid: host-and-deploy/blazor/webassembly
+            - name: Serveur Blazor
+              uid: host-and-deploy/blazor/server
             - name: Configurer l'éditeur de liens
               uid: host-and-deploy/blazor/configure-linker
     - name: Développement côté client
@@ -785,10 +785,10 @@
       items:
         - name: Vue d'ensemble
           uid: host-and-deploy/blazor/index
-        - name: Côté client
-          uid: host-and-deploy/blazor/client-side
-        - name: Côté serveur
-          uid: host-and-deploy/blazor/server-side
+        - name: WebAssembly Blazor
+          uid: host-and-deploy/blazor/webassembly
+        - name: Serveur Blazor
+          uid: host-and-deploy/blazor/server
         - name: Configurer l'éditeur de liens
           uid: host-and-deploy/blazor/configure-linker
 - name: Sécurité et identité
@@ -999,8 +999,8 @@
       items:
         - name: Vue d'ensemble
           uid: security/blazor/index
-        - name: Côté serveur
-          uid: security/blazor/server-side
+        - name: Serveur Blazor
+          uid: security/blazor/server
 - name: Performances
   items:
     - name: Vue d'ensemble
