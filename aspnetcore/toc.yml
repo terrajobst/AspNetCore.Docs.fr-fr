@@ -153,6 +153,9 @@
 - name: Tutoriels (Microsoft Learn)
   displayName: tutorial
   items:
+    - name: Applications web
+      displayName: 'tutorial, razor, razor pages, ui'
+      href: /learn/modules/create-razor-pages-aspnet-core/
     - name: Applications API Web
       href: /learn/modules/build-web-api-net-core/
     - name: Accès aux données
@@ -435,6 +438,8 @@
           uid: tutorials/get-started-with-nswag
     - name: Types de retour Action
       uid: web-api/action-return-types
+    - name: Gérer les requêtes Patch JSON
+      uid: web-api/jsonpatch
     - name: Mettre en forme les données de la réponse
       uid: web-api/advanced/formatting
     - name: Formateurs personnalisés
