@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/components
-ms.openlocfilehash: bc9fa06e5acccb773717fe87bf4aabb971b8dee5
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: e51f6745f6e0c748e51d7f8a49193f3d81fd2a06
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963777"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039179"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -229,6 +229,34 @@ En plus de gérer `onchange` les événements `@bind` avec la syntaxe, une propr
 ```
 
 Contrairement `onchange`à, qui se déclenche lorsque l’élément perd `oninput` le focus, se déclenche lorsque la valeur de la zone de texte change.
+
+**Valeurs inanalysables**
+
+Quand un utilisateur fournit une valeur non analysable à un élément DataBound, la valeur unanalysable est automatiquement rétablie à sa valeur précédente lorsque l’événement de liaison est déclenché.
+
+Penchons-nous sur le scénario suivant :
+
+* Un `<input>` élément est lié à un `int` type `123`dont la valeur initiale est :
+
+  ```cshtml
+  <input @bind="MyProperty" />
+
+  @code {
+      [Parameter]
+      public int MyProperty { get; set; } = 123;
+  }
+  ```
+* L’utilisateur met à jour la valeur de l’élément à `123.45` dans la page et modifie le focus de l’élément.
+
+Dans le scénario précédent, la valeur de l’élément est rétablie `123`à. Lorsque la `123.45` valeur est rejetée en faveur de la valeur d' `123`origine de, l’utilisateur sait que sa valeur n’a pas été acceptée.
+
+Par défaut, la liaison s’applique à l' `onchange` événement de`@bind="{PROPERTY OR FIELD}"`l’élément (). Utilisez `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` pour définir un événement différent. Pour l' `oninput` événement (`@bind-value:event="oninput"`), la réversion se produit après toute séquence de touches qui introduit une valeur non analysable. Lorsque vous ciblez l' `oninput` événement avec un `int`type lié, un utilisateur ne peut pas taper `.` un caractère. Un `.` caractère est immédiatement supprimé, de sorte que l’utilisateur reçoit des commentaires immédiats que seuls des nombres entiers sont autorisés. Il existe des scénarios dans lesquels le rétablissement de la valeur `oninput` de l’événement n’est pas idéal, par exemple lorsque l’utilisateur doit être autorisé à effacer `<input>` une valeur non analysable. Les alternatives sont les suivantes :
+
+* N’utilisez pas `oninput` l’événement. Utilisez l’événement `onchange` par défaut`@bind="{PROPERTY OR FIELD}"`(), où une valeur non valide n’est pas rétablie tant que l’élément n’a pas perdu le focus.
+* Effectuer une liaison à un type Nullable, `int?` tel `string`que ou, et fournir une logique personnalisée pour gérer les entrées non valides.
+* Utilisez un [composant de validation de formulaire](xref:blazor/forms-validation), `InputNumber` tel `InputDate`que ou. Les composants de validation de formulaire offrent une prise en charge intégrée pour gérer les entrées non valides. Composants de validation de formulaire :
+  * Permet à l’utilisateur de fournir une entrée non valide et de recevoir des `EditContext`erreurs de validation sur le associé.
+  * Affichez les erreurs de validation dans l’interface utilisateur sans interférer avec l’utilisateur qui saisit des données Webform supplémentaires.
 
 **Globalisation**
 

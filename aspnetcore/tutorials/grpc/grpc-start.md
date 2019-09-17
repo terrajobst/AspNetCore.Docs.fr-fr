@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 8/26/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 7f80ead06f00037ae51b35d40dff9bc7f99bc5d8
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: f643ed786366fa6bdadadbc5d67fa2d40a195861
+ms.sourcegitcommit: 07cd66e367d080acb201c7296809541599c947d1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310578"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71039266"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutoriel : Créer un serveur et un client gRPC dans ASP.NET Core
 
@@ -51,7 +51,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Démarrez Visual Studio et sélectionnez **Créer un projet**. Vous pouvez également, dans le menu **Fichier** de Visual Studio, sélectionner **Nouveau** > **Projet**.
-* Dans la boîte de dialogue **Créer un projet**, sélectionnez **Service gPRC**, puis sélectionnez **Suivant** :
+* Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **gRPC service** , puis cliquez sur **suivant**:
 
   ![Boîte de dialogue **Créer un projet**](~/tutorials/grpc/grpc-start/static/cnp.png)
 
