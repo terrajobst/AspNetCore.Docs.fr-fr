@@ -1,7 +1,7 @@
 
-<span data-ttu-id="03799-101">Exécutez les commandes CLI .NET Core suivantes :</span><span class="sxs-lookup"><span data-stu-id="03799-101">Run the following .NET Core CLI commands:</span></span>
+<span data-ttu-id="3ae74-101">Exécutez les commandes CLI .NET Core suivantes :</span><span class="sxs-lookup"><span data-stu-id="3ae74-101">Run the following .NET Core CLI commands:</span></span>
 
-```console
+```dotnetcli
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
