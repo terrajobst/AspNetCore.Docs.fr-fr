@@ -97,7 +97,7 @@
           uid: tutorials/signalr-typescript-webpack
     - name: Applications d’appel de procédure distante
       items:
-        - name: Bien démarrer avec le service gRPC
+        - name: Bien démarrer avec un service gRPC
           uid: tutorials/grpc/grpc-start
     - name: Accès aux données
       items:
@@ -545,6 +545,10 @@
   items:
     - name: Présentation des services gRPC
       uid: grpc/index
+    - name: Didacticiels
+      items:
+        - name: Bien démarrer avec un service gRPC
+          uid: tutorials/grpc/grpc-start
     - name: 'Services gRPC avec C#'
       uid: grpc/basics
     - name: Services gRPC avec ASP.NET Core
@@ -563,6 +567,8 @@
       uid: grpc/migration
     - name: Comparaison des services gRPC avec les API HTTP
       uid: grpc/comparison
+    - name: Exemples
+      href: 'https://github.com/grpc/grpc-dotnet/tree/master/examples'
     - name: Résoudre les problèmes
       uid: grpc/troubleshoot
 - name: 'Tester, déboguer et dépanner'
@@ -999,7 +1005,7 @@
     - name: Liste fiable d’adresses IP
       uid: security/ip-safelist
     - name: Sécurité des applications - OWASP
-      href: 'https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/DotNet_Security_Cheat_Sheet.md'
+      href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
     - name: Blazor
       items:
         - name: Vue d'ensemble
