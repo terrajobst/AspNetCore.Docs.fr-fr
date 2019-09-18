@@ -7,12 +7,12 @@ ms.author: jukotali
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: e992401da2d194b178afbe51a293d103def0f940
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 5e531c0ce0ed48097054fd81ddc3655a66cc7c5f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238154"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081672"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>Opérations de demande et de réponse dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Justin Kotalik](https://github.com/jkotalik)
 
 Cet article explique comment lire à partir du corps de la demande et écrire dans le corps de la réponse. Le code de ces opérations peut être nécessaire lors de l’écriture d’un intergiciel (middleware). En dehors de l’intergiciel d’écriture, le code personnalisé n’est généralement pas nécessaire car les opérations sont gérées par MVC et Razor Pages.
 
-Il existe deux abstractions pour les corps de demande et de <xref:System.IO.Stream> réponse <xref:System.IO.Pipelines.Pipe>: et. Pour la lecture de la demande, [HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) est un <xref:System.IO.Stream>, et `HttpRequest.BodyReader` est un <xref:System.IO.Pipelines.PipeReader>. Pour l’écriture de la réponse, [HttpResponse.Body](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) est un `HttpResponse.BodyWriter` est un <xref:System.IO.Pipelines.PipeWriter>.
+Il existe deux abstractions pour les corps de demande et de <xref:System.IO.Stream> réponse <xref:System.IO.Pipelines.Pipe>: et. Pour la lecture de la demande, [HttpRequest.Body](xref:Microsoft.AspNetCore.Http.HttpRequest.Body) est un <xref:System.IO.Stream>, et `HttpRequest.BodyReader` est un <xref:System.IO.Pipelines.PipeReader>. Pour l’écriture de réponse, [HttpResponse. Body](xref:Microsoft.AspNetCore.Http.HttpResponse.Body) est <xref:System.IO.Stream>un `HttpResponse.BodyWriter` , et <xref:System.IO.Pipelines.PipeWriter>est un.
 
 Les pipelines sont recommandés par rapport aux flux. Les flux peuvent être plus faciles à utiliser pour des opérations simples, mais les pipelines présentent un avantage de performances et sont plus faciles à utiliser dans la plupart des scénarios. ASP.NET Core commence à utiliser des pipelines plutôt que des flux en interne. Voici quelques exemples :
 

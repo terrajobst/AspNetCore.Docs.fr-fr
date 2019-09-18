@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/21/2019
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 50be5a20f6d927270ef2d9dbc6c1cbf24196978f
-ms.sourcegitcommit: 28646e8ca62fb094db1557b5c0c02d5b45531824
-ms.translationtype: HT
+ms.openlocfilehash: fd08a5ebe5b85dcddcec4ef3e57d326a44ce2f2d
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/23/2019
-ms.locfileid: "67333424"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080858"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 
@@ -70,15 +70,15 @@ Quand un projet ASP.NET Core référence `Microsoft.NET.Sdk.Web` dans le fichier
 
 ## <a name="basic-command-line-publishing"></a>Publication de base à partir d’une ligne de commande
 
-La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples suivants, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) de l’interface CLI .NET Core est exécutée à partir du répertoire de projet (qui contient le fichier *.csproj*). Si le dossier du projet n’est pas le répertoire de travail actuel, passez explicitement le chemin du fichier projet. Par exemple :
+La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples suivants, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) de l’interface CLI .NET Core est exécutée à partir du répertoire de projet (qui contient le fichier *.csproj*). Si le dossier du projet n’est pas le répertoire de travail actuel, passez explicitement le chemin du fichier projet. Par exemple :
 
-```console
+```dotnetcli
 dotnet publish C:\Webs\Web1
 ```
 
 Exécutez les commandes suivantes pour créer et publier une application web :
 
-```console
+```dotnetcli
 dotnet new mvc
 dotnet publish
 ```
@@ -100,7 +100,7 @@ Le format par défaut du dossier de publication est *bin\Debug\\{MONIKER DU FRAM
 
 La commande suivante spécifie une build `Release` et le répertoire de publication :
 
-```console
+```dotnetcli
 dotnet publish -c Release -o C:\MyWebs\test
 ```
 
@@ -113,7 +113,9 @@ Les propriétés MSBuild peuvent être passées à l’aide de l’un des format
 
 Par exemple, la commande suivante publie une build `Release` sur un partage réseau. Le partage réseau est spécifié avec des barres obliques ( *//r8/* ) et fonctionne sur toutes les plateformes .NET Core prises en charge.
 
-`dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb`
+```dotnetcli
+dotnet publish -c Release /p:PublishDir=//r8/release/AdminWeb
+```
 
 Vérifiez que l’application publiée pour le déploiement n’est pas en cours d’exécution. Les fichiers dans le dossier *publish* sont verrouillés quand l’application est en cours d’exécution. Le déploiement ne peut pas se produire car les fichiers verrouillés ne peuvent pas être copiés.
 
@@ -123,7 +125,7 @@ Cette section utilise Visual Studio 2019 ou supérieur pour créer un profil de
 
 Créez un profil de publication dans Visual Studio en choisissant l’une des méthodes suivantes :
 
-* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le projet, puis sélectionnez **Publier**.
+* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet, puis sélectionnez **publier**.
 * Sélectionner **Publier {NOM DU PROJET}** dans le menu **Générer**.
 
 L’onglet **Publier** de la page de fonctionnalités de l’application s’affiche. Si le projet n’a pas de profil de publication, la page **Choisir une cible de publication** s’affiche. Vous êtes invité à sélectionner une des cibles de publication suivantes :
@@ -156,19 +158,19 @@ La commande `dotnet publish` peut utiliser les profils de publication de dossier
 
 **Dossier (fonctionne sur plusieurs plateformes) :**
 
-```console
+```dotnetcli
 dotnet publish WebApplication.csproj /p:PublishProfile=<FolderProfileName>
 ```
 
 **MSDeploy :**
 
-```console
+```dotnetcli
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployProfileName> /p:Password=<DeploymentPassword>
 ```
 
 **Package MSDeploy :**
 
-```console
+```dotnetcli
 dotnet publish WebApplication.csproj /p:PublishProfile=<MsDeployPackageProfileName>
 ```
 
@@ -193,7 +195,7 @@ Ajoutez un profil de publication au dossier *Properties/PublishProfiles* avec le
 
 Exécutez la commande suivante pour compresser le contenu de la publication et le publier sur Azure à l’aide des API Kudu :
 
-```console
+```dotnetcli
 dotnet publish /p:PublishProfile=Azure /p:Configuration=Release
 ```
 
@@ -245,7 +247,7 @@ Dans l'exemple précédent :
 * La propriété `<LastUsedBuildConfiguration>` a la valeur `Release`. En cas de publication à partir de Visual Studio, la valeur de `<LastUsedBuildConfiguration>` est définie sur la valeur existante au démarrage du processus de publication. La propriété `<LastUsedBuildConfiguration>` est spéciale et ne doit pas être remplacée dans un fichier MSBuild importé. Cette propriété peut, toutefois, être remplacée à partir de la ligne de commande avec l’une des approches suivantes.
   * À l’aide de CLI .NET Core :
 
-    ```console
+    ```dotnetcli
     dotnet build -c Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
     ```
 
@@ -276,7 +278,7 @@ msbuild {PATH}
 * {PATH} &ndash; Chemin d’accès vers le fichier de projet de l’application.
 * {PROFILE} &ndash; Nom du profil de publication.
 * {USERNAME} &ndash; Nom d’utilisateur MSDeploy. {USERNAME} figure dans le profil de publication.
-* {PASSWORD} &ndash; Mot de passe MSDeploy. Obtenez le {PASSWORD} à partir du fichier *{PROFILE}. PublishSettings*. Téléchargez le fichier *.PublishSettings* à partir d’un des emplacements suivants :
+* {PASSWORD} &ndash; Mot de passe MSDeploy. Obtenez le {PASSWORD} à partir du fichier *{PROFILE}. PublishSettings*. Téléchargez le *.PublishSettings* à partir d’un fichier de :
   * **Explorateur de solutions** : Sélectionnez **Vue** > **Cloud Explorer**. Connectez-vous avec votre abonnement Azure. Ouvrez **App Services**. Faites un clic droit sur l’application. Sélectionnez **Télecharger un profil de publication**.
   * Portail Azure : cliquez sur **Obtenir le profil de publication** dans le panneau **Vue d’ensemble** de l’application web.
 
@@ -292,7 +294,7 @@ msbuild "AzureWebApp.csproj"
 
 Un profil de publication peut également être utilisé avec la commande [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) de l’interface CLI .NET Core à partir d’un interpréteur de commandes Windows :
 
-```console
+```dotnetcli
 dotnet msbuild "AzureWebApp.csproj"
     /p:DeployOnBuild=true 
     /p:PublishProfile="AzureWebApp - Web Deploy" 
@@ -346,7 +348,7 @@ L’élément `<MsDeploySkipRules>` suivant exclut tous les fichiers du dossier 
 </ItemGroup>
 ```
 
-`<MsDeploySkipRules>` ne supprime pas les cibles *skip* du site de déploiement. Les dossiers et fichiers ciblés par `<Content>` sont supprimés du site de déploiement. Par exemple, supposez qu’une application web déployée avait les fichiers suivants :
+`<MsDeploySkipRules>` ne supprime pas les cibles *skip* du site de déploiement. Les fichiers et dossiers `<Content>` ciblés sont supprimés du site de déploiement. Par exemple,  supposez qu'une application web déployée avait les fichiers suivants :
 
 * *Views/Home/About1.cshtml*
 * *Views/Home/About2.cshtml*
@@ -435,7 +437,7 @@ Dans l’exemple suivant, le balisage en surbrillance illustre ce qui suit :
 
 [!code-xml[](visual-studio-publish-profiles/samples/Web1.pubxml?highlight=18-23)]
 
-L’exemple précédent utilise l’élément `ResolvedFileToPublish`, dont le comportement par défaut consiste à toujours copier les fichiers fournis dans l’attribut `Include` sur le site publié. Remplacez le comportement par défaut en incluant un élément enfant `<CopyToPublishDirectory>` avec le texte interne `Never` ou `PreserveNewest`. Par exemple :
+L’exemple précédent utilise l’élément `ResolvedFileToPublish`, dont le comportement par défaut consiste à toujours copier les fichiers fournis dans l’attribut `Include` sur le site publié. Remplacez le comportement par défaut en incluant un élément enfant `<CopyToPublishDirectory>` avec le texte interne `Never` ou `PreserveNewest`. Par exemple :
 
 ```xml
 <ResolvedFileToPublish Include="..\ReadMe2.md">
@@ -471,7 +473,7 @@ Ajoutez la propriété `<AllowUntrustedCertificate>` avec la valeur `True` au pr
 
 ## <a name="the-kudu-service"></a>Le service Kudu
 
-Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Par exemple :
+Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Par exemple :
 
 | URL                                    | Résultat       |
 | -------------------------------------- | ------------ |

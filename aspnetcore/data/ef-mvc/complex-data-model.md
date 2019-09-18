@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: a69f1fdd38fec35dec6bb8125bf29859a437a891
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 85a11ba082fc8f6b364019f6cefcd5b1fe5a9215
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975089"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080471"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core
 
@@ -98,11 +98,11 @@ Le modèle de base de données a maintenant changé d’une manière qui nécess
 
 Enregistrez vos modifications et générez le projet. Ensuite, ouvrez la fenêtre de commande dans le dossier du projet et entrez les commandes suivantes :
 
-```console
+```dotnetcli
 dotnet ef migrations add MaxLengthOnNames
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -126,11 +126,11 @@ L’ajout de l’attribut `Column` change le modèle sur lequel repose `SchoolCo
 
 Enregistrez vos modifications et générez le projet. Ensuite, ouvrez la fenêtre de commande dans le dossier du projet et entrez les commandes suivantes pour créer une autre migration :
 
-```console
+```dotnetcli
 dotnet ef migrations add ColumnFirstName
 ```
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 
@@ -285,7 +285,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-department-entity"></a>Créer l’entité Department
 
-![Entité Department](complex-data-model/_static/department-entity.png)
+![Entité de service](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -434,7 +434,7 @@ Comme vous l’avez vu dans le premier didacticiel, la majeure partie de ce code
 
 Enregistrez vos modifications et générez le projet. Ensuite, ouvrez la fenêtre de commande dans le dossier du projet et entrez la commande `migrations add` (n’exécutez pas encore la commande de mise à jour de base de données) :
 
-```console
+```dotnetcli
 dotnet ef migrations add ComplexDataModel
 ```
 
@@ -483,7 +483,7 @@ Enregistrez les modifications dans *appsettings.json*.
 > [!NOTE]
 > Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
 >
-> ```console
+> ```dotnetcli
 > dotnet ef database drop
 > ```
 
@@ -491,7 +491,7 @@ Enregistrez les modifications dans *appsettings.json*.
 
 Une fois que vous avez modifié le nom de la base de données ou supprimé la base de données, exécutez la commande `database update` dans la fenêtre de commande pour exécuter les migrations.
 
-```console
+```dotnetcli
 dotnet ef database update
 ```
 

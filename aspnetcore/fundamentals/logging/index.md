@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 21e7ee144bdf0355cac8bd8a7706f100c15342da
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 03734addcc0e063c2c216b26b59762d27d35d47c
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975506"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081159"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -49,7 +49,7 @@ Dans une application de console non hôte, appelez la méthode d’extension `Ad
 Les modèles de projet ASP.NET Core par défaut appellent <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource
 * EventLog (uniquement en cas d’exécution sur Windows)
 
@@ -70,7 +70,7 @@ Le code précédent nécessite des références à `Microsoft.Extensions.Logging
 Le modèle de projet par défaut appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource (à partir d’ASP.NET Core 2.2)
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_TemplateCode&highlight=7)]
@@ -621,14 +621,14 @@ Les données de configuration et le code `AddFilter` contenus dans les exemples 
 
 | Number | Fournisseur      | Catégories commençant par...          | Niveau de journalisation minimum |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | Déboguer         | Toutes les catégories                          | Information       |
-| 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Avertissement           |
-| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Déboguer             |
+| 1      | Débogage         | Toutes les catégories                          | Information       |
+| 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Warning           |
+| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Débogage             |
 | 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
 | 5\.      | Console       | Toutes les catégories                          | Information       |
-| 6      | Tous les fournisseurs | Toutes les catégories                          | Déboguer             |
-| 7      | Tous les fournisseurs | System                                  | Déboguer             |
-| 8      | Déboguer         | Microsoft                               | Trace             |
+| 6\.      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
+| 7      | Tous les fournisseurs | System                                  | Débogage             |
+| 8      | Débogage         | Microsoft                               | Trace             |
 
 À la création d’un objet `ILogger`, l’objet `ILoggerFactory` sélectionne une seule règle à appliquer à cet enregistrement d’événements par fournisseur. Tous les messages écrits par une instance `ILogger` sont filtrés selon les règles sélectionnées. La règle la plus spécifique pouvant être appliquée à chaque paire catégorie/fournisseur est sélectionnée parmi les règles disponibles.
 
@@ -651,7 +651,7 @@ L’instance `ILogger` ainsi produite envoie des journaux de niveau `Trace` ou s
 Chaque fournisseur définit un *alias* qui peut être utilisé dans la configuration à la place du nom de type complet.  Pour les fournisseurs intégrés, utilisez les alias suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource
 * EventLog
 * TraceSource
@@ -697,7 +697,7 @@ Une fonction de filtre est appelée pour tous les fournisseurs et toutes les cat
 
 Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core, avec des notes sur les journaux associés :
 
-| Category                            | Notes |
+| Catégorie                            | Notes |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | Diagnostics ASP.NET Core généraux. |
 | Microsoft.AspNetCore.DataProtection | Liste des clés considérées, trouvées et utilisées. |
@@ -784,7 +784,7 @@ logging.AddConsole();
 
 Pour voir la sortie de la journalisation Console, ouvrez une invite de commandes dans le dossier du projet et exécutez la commande suivante :
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -909,7 +909,7 @@ Le fournisseur de journalisation est inclus en tant que dépendance de [Microsof
 
 N’utilisez pas le [package Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) package&mdash;destiné à ASP.NET 4.x.
 
-Pour plus d’informations, consultez les ressources suivantes :
+Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * [Vue d'ensemble d'Application Insights](/azure/application-insights/app-insights-overview)
 * [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core) : commencez ici si vous souhaitez implémenter la gamme complète des données de télémétrie d’Application Insights en même temps que la journalisation.

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/23/2019
 uid: test/integration-tests
-ms.openlocfilehash: 195acd3e03f3de63ebd61767f2c86d1c0f38fca5
-ms.sourcegitcommit: 983b31449fe398e6e922eb13e9eb6f4287ec91e8
+ms.openlocfilehash: 272f0f2140647dd31319f8feada0ec04c7ab4e44
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/24/2019
-ms.locfileid: "70017431"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082498"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Cette rubrique suppose une compréhension de base des tests unitaires. Si vous n
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-L’exemple d’application est une application Razor Pages et suppose une compréhension de base des Razor Pages. Si vous n’êtes pas familiarisé avec Razor Pages, consultez les rubriques suivantes:
+L’exemple d’application est une application Razor Pages et suppose une compréhension de base des Razor Pages. Si vous n’êtes pas familiarisé avec Razor Pages, consultez les rubriques suivantes :
 
 * [Présentation des pages Razor](xref:razor-pages/index)
 * [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
@@ -37,16 +37,16 @@ L’exemple d’application est une application Razor Pages et suppose une compr
 
 Les tests d’intégration évaluent les composants d’une application à un niveau plus large que les [tests unitaires](/dotnet/core/testing/). Les tests unitaires sont utilisés pour tester des composants logiciels isolés, tels que des méthodes de classe individuelles. Les tests d’intégration confirment que deux ou plusieurs composants d’application fonctionnent ensemble pour produire un résultat attendu, y compris éventuellement chaque composant requis pour traiter entièrement une demande.
 
-Ces tests plus larges sont utilisés pour tester l’infrastructure de l’application et l’infrastructure entière, y compris les composants suivants:
+Ces tests plus larges sont utilisés pour tester l’infrastructure de l’application et l’infrastructure entière, y compris les composants suivants :
 
 * Base de données
 * Système de fichiers
 * Appliances réseau
 * Pipeline de requête-réponse
 
-Les tests unitaires utilisent des composants fabriqués, appelés *objets* *substituts* ou factices, à la place des composants d’infrastructure.
+Les tests unitaires utilisent des composants fabriqués, appelés objets *substituts* ou *factices*, à la place des composants d’infrastructure.
 
-Contrairement aux tests unitaires, les tests d’intégration:
+Contrairement aux tests unitaires, les tests d’intégration :
 
 * Utilisez les composants réels utilisés par l’application en production.
 * Nécessitent davantage de code et de traitement des données.
@@ -58,23 +58,23 @@ Par conséquent, limitez l’utilisation des tests d’intégration aux scénari
 > N’écrivez pas de tests d’intégration pour chaque permutation possible d’accès aux données et aux fichiers avec les bases de données et les systèmes de fichiers. Quel que soit le nombre d’emplacements au sein d’une application qui interagissent avec les bases de données et les systèmes de fichiers, un ensemble de tests d’intégration de lecture, d’écriture, de mise à jour et de suppression est généralement en mesure de tester correctement les composants de base de données et de système de fichiers. Utilisez des tests unitaires pour les tests de routine de la logique de méthode qui interagissent avec ces composants. Dans les tests unitaires, l’utilisation de substituts ou de simulacres d’infrastructure entraîne une exécution plus rapide des tests.
 
 > [!NOTE]
-> Dans les discussions sur les tests d’intégration, le projet testé est fréquemment appelé le *système en cours de test*ou «St» pour l’instant.
+> Dans les discussions sur les tests d’intégration, le projet testé est fréquemment appelé le *système en cours de test*ou « St » pour l’instant.
 
 ## <a name="aspnet-core-integration-tests"></a>ASP.NET Core les tests d’intégration
 
-Les tests d’intégration dans ASP.NET Core requièrent les éléments suivants:
+Les tests d’intégration dans ASP.NET Core requièrent les éléments suivants :
 
-* Un projet de test est utilisé pour contenir et exécuter les tests. Le projet de test a une référence au projet de ASP.NET Core testé, appelée *système en cours de test* (St). _«St» est utilisé dans cette rubrique pour faire référence à l’application testée._
+* Un projet de test est utilisé pour contenir et exécuter les tests. Le projet de test a une référence au projet de ASP.NET Core testé, appelée *système en cours de test* (St). _« St » est utilisé dans cette rubrique pour faire référence à l’application testée._
 * Le projet de test crée un hôte Web de test pour le St et utilise un client de serveur de test pour gérer les demandes et les réponses au St.
 * Un testeur de test est utilisé pour exécuter les tests et signaler les résultats des tests.
 
-Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange*, *Act*et Assert habituelles:
+Les tests d’intégration suivent une séquence d’événements qui incluent les étapes de test *arrange*, *Act*et *Assert* habituelles :
 
 1. L’hôte Web de St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
-1. L’étape *organiser* le test est exécutée: L’application de test prépare une requête.
-1. L’étape de test *Act* est exécutée: Le client envoie la demande et reçoit la réponse.
-1. L’étape de test d' *assertion* est exécutée: La réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
+1. L’étape *organiser* le test est exécutée : L’application de test prépare une requête.
+1. L’étape de test *Act* est exécutée : Le client envoie la demande et reçoit la réponse.
+1. L’étape de test d' *assertion* est exécutée : La réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
 1. Le processus se poursuit jusqu’à ce que tous les tests soient exécutés.
 1. Les résultats des tests sont signalés.
 
@@ -82,7 +82,7 @@ En règle générale, l’hôte Web de test est configuré différemment de l’
 
 Les composants d’infrastructure, tels que l’hôte Web de test et le serveur de test en mémoire ([TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)), sont fournis ou gérés par le package [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) . L’utilisation de ce package simplifie la création et l’exécution des tests.
 
-Le `Microsoft.AspNetCore.Mvc.Testing` package gère les tâches suivantes:
+Le `Microsoft.AspNetCore.Mvc.Testing` package gère les tâches suivantes :
 
 * Copie le fichier de dépendances ( *\*. DEPS*) à partir du St dans le répertoire *bin* du projet de test.
 * Définit la racine du contenu sur la racine du projet St pour que les fichiers et les pages statiques soient trouvés lors de l’exécution des tests.
@@ -97,14 +97,14 @@ Il n’existe pratiquement aucune différence entre la configuration des tests d
 
 ## <a name="test-app-prerequisites"></a>Conditions préalables pour les applications de test
 
-Le projet de test doit:
+Le projet de test doit :
 
-* Référencez les packages suivants:
+* Référencez les packages suivants :
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
   * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Spécifiez le kit de développement logiciel (SDK`<Project Sdk="Microsoft.NET.Sdk.Web">`) Web dans le fichier projet (). Le kit de développement logiciel (SDK) Web est requis pour référencer le [AspNetCore](xref:fundamentals/metapackage-app).
 
-Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également:
+Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également :
 
 * [xunit](https://www.nuget.org/packages/xunit/)
 * [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -138,11 +138,11 @@ Dans St, la `/SecurePage` page utilise une convention [AuthorizePage](/dotnet/ap
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
-Dans le `Get_SecurePageRequiresAnAuthenticatedUser` test, un [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) est défini pour interdire les redirections en affectant `false`à [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) la valeur:
+Dans le `Get_SecurePageRequiresAnAuthenticatedUser` test, un [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) est défini pour interdire les redirections en affectant `false`à [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) la valeur :
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/BasicTests.cs?name=snippet2)]
 
-En interautorisant le client à suivre la redirection, vous pouvez effectuer les vérifications suivantes:
+En interautorisant le client à suivre la redirection, vous pouvez effectuer les vérifications suivantes :
 
 * Le code d’état retourné par le St peut être vérifié par rapport au résultat [HttpStatusCode. Redirect](/dotnet/api/system.net.httpstatuscode) attendu, pas le code d’état final après la redirection vers la page de connexion, qui serait [HttpStatusCode. OK](/dotnet/api/system.net.httpstatuscode).
 * La `Location` valeur d’en-tête dans les en-têtes de réponse est vérifiée `http://localhost/Identity/Account/Login`pour confirmer qu’elle commence par, et non par `Location` la réponse de page de connexion finale, où l’en-tête n’est pas présent.
@@ -151,34 +151,34 @@ Pour plus d’informations `WebApplicationFactoryClientOptions`sur, consultez la
 
 ## <a name="customize-webapplicationfactory"></a>Personnaliser WebApplicationFactory
 
-La configuration d’hôte Web peut être créée indépendamment des classes de test en héritant de `WebApplicationFactory` pour créer une ou plusieurs fabriques personnalisées:
+La configuration d’hôte Web peut être créée indépendamment des classes de test en héritant de `WebApplicationFactory` pour créer une ou plusieurs fabriques personnalisées :
 
 1. Hériter `WebApplicationFactory` de et substituer [ConfigureWebHost](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost). [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) permet la configuration de la collection de services avec [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices):
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   L’amorçage de base de données dans l' [exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) d’application `InitializeDbForTests` est effectué par la méthode. La méthode est décrite dans l' [exemple des tests d’intégration: Section organisation](#test-app-organization) des applications de test.
+   L’amorçage de base de données dans l' [exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) d’application `InitializeDbForTests` est effectué par la méthode. La méthode est décrite dans l' [exemple des tests d’intégration : Section organisation](#test-app-organization) des applications de test.
 
-2. Utilisez le personnalisé `CustomWebApplicationFactory` dans les classes de test. L’exemple suivant utilise la fabrique dans la `IndexPageTests` classe:
+2. Utilisez le personnalisé `CustomWebApplicationFactory` dans les classes de test. L’exemple suivant utilise la fabrique dans la `IndexPageTests` classe :
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
    Le client de l’exemple d’application est configuré pour `HttpClient` empêcher la suite de redirections. Comme expliqué dans la section [tester un point de terminaison sécurisé](#test-a-secure-endpoint) , cela permet aux tests de vérifier le résultat de la première réponse de l’application. La première réponse est une redirection dans un grand nombre de ces tests `Location` avec un en-tête.
 
-3. Un test standard utilise les `HttpClient` méthodes d’assistance et pour traiter la demande et la réponse:
+3. Un test standard utilise les `HttpClient` méthodes d’assistance et pour traiter la demande et la réponse :
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet2)]
 
-Toute demande de publication à l’St doit être conforme à la vérification anti-contrefaçon effectuée automatiquement par le [système anti-contrefaçon de protection des données](xref:security/data-protection/introduction)de l’application. Pour organiser la requête de publication d’un test, l’application de test doit:
+Toute demande de publication à l’St doit être conforme à la vérification anti-contrefaçon effectuée automatiquement par le [système anti-contrefaçon de protection des données](xref:security/data-protection/introduction)de l’application. Pour organiser la requête de publication d’un test, l’application de test doit :
 
 1. Effectuez une demande pour la page.
 1. Analysez le cookie anti-contrefaçon et le jeton de validation de demande à partir de la réponse.
 1. Effectuez la demande de publication avec le cookie anti-contrefaçon et le jeton de validation de demande en place.
 
-Les `SendAsync` méthodes d’extension d’assistance *(helpers/HttpClientExtensions. cs*) et `GetDocumentAsync` la méthode d’assistance (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer l’anti-contrefaçon Vérifiez les méthodes suivantes:
+Les `SendAsync` méthodes d’extension d’assistance (*helpers/HttpClientExtensions. cs*) et `GetDocumentAsync` la méthode d’assistance (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer l’anti-contrefaçon Vérifiez les méthodes suivantes :
 
 * `GetDocumentAsync`Reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. &ndash; `GetDocumentAsync`utilise une fabrique qui prépare une *réponse virtuelle* en fonction de l’original `HttpResponseMessage`. Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
-* `SendAsync`les `HttpClient` méthodes d’extension pour compose un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges `SendAsync` pour acceptent le formulaire HTML`IHtmlFormElement`() et les éléments suivants:
+* `SendAsync`les `HttpClient` méthodes d’extension pour compose un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges `SendAsync` pour acceptent le formulaire HTML`IHtmlFormElement`() et les éléments suivants :
   * Bouton envoyer du formulaire (`IHtmlElement`)
   * Collection de valeurs de`IEnumerable<KeyValuePair<string, string>>`formulaire ()
   * Bouton envoyer (`IHtmlElement`) et valeurs de formulaire`IEnumerable<KeyValuePair<string, string>>`()
@@ -192,7 +192,7 @@ Quand une configuration supplémentaire est requise dans une méthode de test, [
 
 La `Post_DeleteMessageHandler_ReturnsRedirectToRoot` méthode de test de l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) montre l' `WithWebHostBuilder`utilisation de. Ce test effectue une suppression d’enregistrement dans la base de données en déclenchant une soumission de formulaire dans St.
 
-Étant donné qu’un autre `IndexPageTests` test de la classe effectue une opération qui supprime tous les enregistrements de la base de données et peut `Post_DeleteMessageHandler_ReturnsRedirectToRoot` s’exécuter avant la méthode, la base de données est amorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du `messages`boutondu formulaire dans le St est simulée dans la requête adressée au St: `deleteBtn1`
+Étant donné qu’un autre `IndexPageTests` test de la classe effectue une opération qui supprime tous les enregistrements de la base de données et peut `Post_DeleteMessageHandler_ReturnsRedirectToRoot` s’exécuter avant la méthode, la base de données est amorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du `messages`boutondu formulaire dans le St est simulée dans la requête adressée au St : `deleteBtn1`
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
@@ -207,7 +207,7 @@ Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/
 | [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | Obtient ou définit une `HttpClient` valeur indiquant si les instances doivent gérer les cookies. | `true` |
 | [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Obtient ou définit le nombre maximal de réponses de redirection `HttpClient` que les instances doivent suivre. | 7 |
 
-Créez la `WebApplicationFactoryClientOptions` classe et transmettez-la à la méthode [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) (les valeurs par défaut sont affichées dans l’exemple de code):
+Créez la `WebApplicationFactoryClientOptions` classe et transmettez-la à la méthode [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) (les valeurs par défaut sont affichées dans l’exemple de code) :
 
 ```csharp
 // Default client option values are shown
@@ -246,24 +246,24 @@ L’exemple de St comprend un service étendu qui retourne un guillemet. Le guil
 
 [!code-cshtml[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Pages/Index.cshtml?name=snippet_Quote)]
 
-Le balisage suivant est généré lors de l’exécution de l’application St:
+Le balisage suivant est généré lors de l’exécution de l’application St :
 
 ```html
 <input id="quote" type="hidden" value="Come on, Sarah. We&#x27;ve an appointment in 
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace l’application `QuoteService` par un service fourni par l’application de test, appelé: `TestQuoteService`
+Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace l’application `QuoteService` par un service fourni par l’application de test, appelé : `TestQuoteService`
 
 *IntegrationTests.IndexPageTests.cs*:
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet4)]
 
-`ConfigureTestServices`est appelé, et le service étendu est inscrit:
+`ConfigureTestServices`est appelé, et le service étendu est inscrit :
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet5&highlight=7-10,17,20-21)]
 
-Le balisage produit pendant l’exécution du test reflète le texte du devis `TestQuoteService`fourni par, donc l’assertion réussit:
+Le balisage produit pendant l’exécution du test reflète le texte du devis `TestQuoteService`fourni par, donc l’assertion réussit :
 
 ```html
 <input id="quote" type="hidden" value="Something&#x27;s interfering with time, 
@@ -278,7 +278,7 @@ Le `WebApplicationFactory` constructeur déduit le chemin d’accès racine du c
 
 Les clichés instantanés provoquent l’exécution des tests dans un répertoire différent de celui du répertoire de sortie. Pour que les tests fonctionnent correctement, les clichés instantanés doivent être désactivés. L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) utilise xUnit et désactive les clichés instantanés pour xUnit en incluant un fichier *xUnit. Runner. JSON* avec le paramètre de configuration correct. Pour plus d’informations, consultez [configuration de xUnit avec JSON](https://xunit.github.io/docs/configuring-with-json.html).
 
-Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le contenu suivant:
+Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le contenu suivant :
 
 ```json
 {
@@ -286,7 +286,7 @@ Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le 
 }
 ```
 
-Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, `Content` ajoutez une cible au fichier projet de l’application de test:
+Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, `Content` ajoutez une cible au fichier projet de l’application de test :
 
 ```xml
 <ItemGroup>
@@ -302,7 +302,7 @@ Après l’exécution des tests `IClassFixture` de l’implémentation, [TestSer
 
 ## <a name="integration-tests-sample"></a>Exemple de tests d’intégration
 
-L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) se compose de deux applications:
+L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) se compose de deux applications :
 
 | Application | Répertoire du projet | Description |
 | --- | ----------------- | ----------- |
@@ -311,16 +311,16 @@ L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mast
 
 Les tests peuvent être exécutés à l’aide des fonctionnalités de test intégrées d’un environnement de développement intégré (IDE), telles que [Visual Studio](https://visualstudio.microsoft.com). Si vous utilisez [Visual Studio code](https://code.visualstudio.com/) ou la ligne de commande, exécutez la commande suivante à l’invite de commandes dans le répertoire *tests/RazorPagesProject. tests* :
 
-```console
+```dotnetcli
 dotnet test
 ```
 
 ### <a name="message-app-sut-organization"></a>Organisation message App (St)
 
-Le St est un système de messagerie Razor Pages avec les caractéristiques suivantes:
+Le St est un système de messagerie Razor Pages avec les caractéristiques suivantes :
 
 * La page d’index de l’application (*pages/index. cshtml* et *pages/index. cshtml. cs*) fournit une interface utilisateur et des méthodes de modèle de page pour contrôler l’ajout, la suppression et l’analyse de messages (mots moyens par message).
-* Un message est décrit par la `Message` classe (*Data/message. cs*) avec deux propriétés: `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
+* Un message est décrit par la `Message` classe (*Data/message. cs*) avec deux propriétés : `Id` (Key) et `Text` (message). La `Text` propriété est obligatoire et limitée à 200 caractères.
 * Les messages sont stockés à l’aide&#8224; [de la base de données en mémoire de Entity Framework](/ef/core/providers/in-memory/).
 * L’application contient une couche d’accès aux données (DAL) dans sa classe de `AppDbContext` contexte de base de données, (*Data/AppDbContext. cs*).
 * Si la base de données est vide au démarrage de l’application, la Banque de messages est initialisée avec trois messages.
@@ -328,7 +328,7 @@ Le St est un système de messagerie Razor Pages avec les caractéristiques suiva
 
 &#8224;La rubrique EF, [test with InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise l’infrastructure de test [xUnit](https://xunit.github.io/) . Les concepts de test et les implémentations de test dans différents frameworks de test sont similaires, mais pas identiques.
 
-Bien que l’application n’utilise pas le modèle de référentiel et ne soit pas un exemple efficace de [modèle d’unité de travail (UOW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor pages prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance de l’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) et logique du contrôleur de [test](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
+Bien que l’application n’utilise pas le modèle de référentiel et ne soit pas un exemple efficace de [modèle d’unité de travail (UOW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Razor pages prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance de l’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) et [logique du contrôleur de test](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
 
 ### <a name="test-app-organization"></a>Organisation des applications de test
 
@@ -346,7 +346,7 @@ L’infrastructure de test est [xUnit](https://xunit.github.io/). Les tests d’
 
 Les tests d’intégration nécessitent généralement un petit jeu de données dans la base de données avant l’exécution du test. Par exemple, un test Delete requiert la suppression d’un enregistrement de base de données, de sorte que la base de données doit avoir au moins un enregistrement pour que la demande Delete aboutisse.
 
-L’exemple d’application amorce la base de données avec trois messages dans *Utilities.cs* que les tests peuvent utiliser lorsqu’ils exécutent:
+L’exemple d’application amorce la base de données avec trois messages dans *Utilities.cs* que les tests peuvent utiliser lorsqu’ils exécutent :
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/Helpers/Utilities.cs?name=snippet1)]
 

@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/15/2019
 uid: getting-started
-ms.openlocfilehash: c35251a0e49fbbffee7b8f5ea6905322b9042261
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: d1edf91f1b37ba2b69732471dc6c1f306ac5ad24
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814932"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081122"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
 Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core pour créer et exécuter une application web ASP.NET Core.
 
-Vous allez apprendre à :
+Vous découvrirez comment effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
@@ -37,7 +37,7 @@ Vous allez apprendre à :
 
 Ouvrez un interpréteur de commandes, puis entrez la commande suivante :
 
-```console
+```dotnetcli
 dotnet new webapp -o aspnetcoreapp
 ```
 
@@ -45,9 +45,9 @@ dotnet new webapp -o aspnetcoreapp
 
 Approuvez le certificat de développement HTTPS :
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-```console
+```dotnetcli
 dotnet dev-certs https --trust
 ```
 
@@ -59,7 +59,7 @@ Sélectionnez **Oui** si vous acceptez d’approuver le certificat de développe
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-```console
+```dotnetcli
 dotnet dev-certs https --trust
 ```
 
@@ -79,11 +79,11 @@ Consultez la documentation de votre distribution Linux pour savoir comment appro
 
 Pour plus d’informations, consultez [Approuver le certificat de développement ASP.NET Core HTTPS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
-```console
+```dotnetcli
 cd aspnetcoreapp
 dotnet run
 ```
@@ -100,7 +100,7 @@ Accédez à [https://localhost:5001](https://localhost:5001) et vérifiez que le
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris à :
+Dans ce tutoriel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.

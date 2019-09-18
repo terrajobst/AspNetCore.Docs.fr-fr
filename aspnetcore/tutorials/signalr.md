@@ -6,18 +6,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 07/08/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 53d3763a93cc72b6bcf85b64a706500299b3597f
-ms.sourcegitcommit: 040aedca220ed24ee1726e6886daf6906f95a028
-ms.translationtype: HT
+ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67893749"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081968"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
+Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créez un projet web.
@@ -66,9 +66,9 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal) dans le dossier dans lequel le nouveau dossier de projet va être créé.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
@@ -110,7 +110,7 @@ La bibliothèque de serveur SignalR est incluse dans le framework partagé ASP.N
 
 * Dans le terminal intégré, exécutez la commande suivante pour installer LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -137,7 +137,7 @@ La bibliothèque de serveur SignalR est incluse dans le framework partagé ASP.N
 
 * Dans le **Terminal**, exécutez la commande suivante pour installer LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -210,7 +210,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
   * Ajoute au bouton Envoyer un gestionnaire qui envoie des messages au hub.
   * Ajoute à l’objet de connexion un gestionnaire qui reçoit des messages à partir du hub et les ajoute à la liste.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -220,7 +220,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Dans le terminal intégré, exécutez la commande suivante :
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 
@@ -234,7 +234,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés instantanément dans les deux pages.
+  Le nom et le message sont affichés sur les deux pages instantanément.
 
   ![Exemple d’application SignalR](signalr/_static/3.x/signalr-get-started-finished.png)
 
@@ -242,7 +242,8 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 > * Si l’application ne fonctionne pas, ouvrez vos outils de développement (F12) de navigateur et accédez à la console. Vous pouvez observer des erreurs liées à votre code HTML et JavaScript. Par exemple, supposez que vous placez *signalr.js* dans un dossier autre que celui stipulé. Dans ce cas, la référence à ce fichier ne fonctionnera pas et vous verrez une erreur 404 dans la console.
 >   ![Erreur de fichier SignalR.js introuvable](signalr/_static/3.x/f12-console.png)
 > * Si vous obtenez l’erreur ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY dans Chrome ou NS_ERROR_NET_INADEQUATE_SECURITY dans Firefox, exécutez ces commandes pour mettre à jour votre certificat de développement :
->   ```
+>
+>   ```dotnetcli
 >   dotnet dev-certs https --clean
 >   dotnet dev-certs https --trust
 >   ```
@@ -258,7 +259,7 @@ Pour en savoir plus sur SignalR, consultez :
 
 ::: moniker range="< aspnetcore-3.0"
 
-Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
+Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créez un projet web.
@@ -307,9 +308,9 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal) dans le dossier dans lequel le nouveau dossier de projet va être créé.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
-   ```console
+   ```dotnetcli
    dotnet new webapp -o SignalRChat
    code -r SignalRChat
    ```
@@ -352,7 +353,7 @@ La bibliothèque de serveur SignalR est incluse dans le métapackage `Microsoft.
 
 * Dans le terminal intégré, exécutez la commande suivante pour installer LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -379,7 +380,7 @@ La bibliothèque de serveur SignalR est incluse dans le métapackage `Microsoft.
 
 * Dans le **Terminal**, exécutez la commande suivante pour installer LibMan.
 
-  ```console
+  ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
 
@@ -452,7 +453,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
   * Ajoute au bouton Envoyer un gestionnaire qui envoie des messages au hub.
   * Ajoute à l’objet de connexion un gestionnaire qui reçoit des messages à partir du hub et les ajoute à la liste.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -462,7 +463,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Dans le terminal intégré, exécutez la commande suivante :
 
-  ```console
+  ```dotnetcli
   dotnet run -p SignalRChat.csproj
   ```
 
@@ -476,7 +477,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés instantanément dans les deux pages.
+  Le nom et le message sont affichés sur les deux pages instantanément.
 
   ![Exemple d’application SignalR](signalr/_static/2.x/signalr-get-started-finished.png)
 
@@ -486,7 +487,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris à :
+Dans ce tutoriel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.

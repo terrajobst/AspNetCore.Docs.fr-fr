@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: cce91b6332295f77c639f881fe342b625fee7fca
-ms.sourcegitcommit: 92c901c7f32ee9efb335d99ec4c3add2cc9f3142
+ms.openlocfilehash: 58773ae6c605ddc7a3d85fb97eeae40d0bbe15fb
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71025519"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080523"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core éblouissante
 
@@ -24,7 +24,7 @@ Prise en main de éblouissant :
 
 1. Installez les modèles éblouissants en exécutant la commande suivante dans une interface de commande :
 
-   ```console
+   ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19457.4
    ```
 
@@ -55,13 +55,13 @@ Prise en main de éblouissant :
 
    3 \. Pour une expérience de webassembly éblouissant, exécutez la commande suivante dans une interface de commande :
 
-      ```console
+      ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
       ```
 
       Pour une expérience de serveur éblouissant, exécutez la commande suivante dans une interface de commande :
 
-      ```console
+      ```dotnetcli
       dotnet new blazorserver -o WebApplication1
       ```
 
@@ -99,7 +99,7 @@ Prise en main de éblouissant :
 
    Pour une expérience de webassembly éblouissant, exécutez les commandes suivantes dans une interface de commande :
 
-   ```console
+   ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
    cd WebApplication1
    dotnet run
@@ -107,7 +107,7 @@ Prise en main de éblouissant :
 
    Pour une expérience de serveur éblouissant, exécutez les commandes suivantes dans une interface de commande :
 
-   ```console
+   ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    cd WebApplication1
    dotnet run

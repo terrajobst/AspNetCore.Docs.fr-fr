@@ -10,7 +10,7 @@
 
 Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

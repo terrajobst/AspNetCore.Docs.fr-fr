@@ -5,12 +5,12 @@ description: Découvrez comment bien démarrer avec ASP.NET Core MVC.
 ms.author: riande
 ms.date: 08/05/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 36f4811f876a6e35440445103a1f86ae06b31b6a
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
-ms.translationtype: HT
+ms.openlocfilehash: 52d8fc631075408991d3a2e62cdaccf681c5927f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022516"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082160"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
@@ -22,7 +22,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous apprenez à :
+L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer une application web.
@@ -76,9 +76,9 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
-   ```console
+   ```dotnetcli
    dotnet new mvc -o MvcMovie
    code -r MvcMovie
    ```
@@ -108,7 +108,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécuter l'application
+### <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -172,7 +172,7 @@ Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commenc
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous apprenez à :
+L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer une application web.
@@ -226,9 +226,9 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
-   ```console
+   ```dotnetcli
    dotnet new mvc -o MvcMovie
    code -r MvcMovie
    ```
@@ -256,7 +256,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécuter l'application
+### <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 08/02/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 3be036d9b4fc6c9898faf14e8a60a8cc7a8683b7
-ms.sourcegitcommit: b5e63714afc26e94be49a92619586df5189ed93a
-ms.translationtype: HT
+ms.openlocfilehash: f20f8c4e9b1089acca6689d14cdf84bef648d461
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68739547"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081759"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Utiliser des assemblys de démarrage d’hébergement dans ASP.NET Core
 
@@ -203,13 +203,13 @@ L’implémentation d’hébergement au démarrage est placée dans le [magasin 
 
 Une fois l’hébergement au démarrage créé, un magasin de runtime est généré à l’aide du fichier manifeste de projet et de la commande [dotnet store](/dotnet/core/tools/dotnet-store).
 
-```console
+```dotnetcli
 dotnet store --manifest {MANIFEST FILE} --runtime {RUNTIME IDENTIFIER} --output {OUTPUT LOCATION} --skip-optimization
 ```
 
 Dans l’exemple d’application (projet *RuntimeStore*), la commande suivante est utilisée :
 
-``` console
+```dotnetcli
 dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./deployment/store --skip-optimization
 ```
 
@@ -327,7 +327,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 * Le fichier de dépendances de l’hébergement au démarrage est mis à la disposition de l’application améliorée de la façon décrite dans la section [Magasin de runtime](#runtime-store) (sans référence au moment de la compilation).
 * Lors du ciblage de .NET Framework, l’assembly peut être chargé dans le contexte de charge par défaut, qui, sur .NET Framework, signifie que l’assembly se trouve à l’un des emplacements suivants :
   * Chemin de base de l’application &ndash; Le dossier *bin* dans lequel se trouve l’exécutable ( *.exe*) de l’application.
-  * Global Assembly Cache (GAC) &ndash; Le GAC stocke des assemblys partagés par plusieurs applications .NET Framework. Pour plus d'informations, voir [Procédure : Installer un assembly dans le Global Assembly Cache](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) dans la documentation de .NET Framework.
+  * Global Assembly Cache (GAC) &ndash; Le GAC stocke des assemblys partagés par plusieurs applications .NET Framework. Pour plus d’informations, consultez [Guide pratique pour Installer un assembly dans le Global Assembly Cache](/dotnet/framework/app-domains/how-to-install-an-assembly-into-the-gac) dans la documentation de .NET Framework.
 
 ## <a name="sample-code"></a>Exemple de code
 
@@ -343,7 +343,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
   * En-têtes de requête
   * Variables d’environnement
 
-Pour exécuter l’exemple :
+Pour exécuter l'exemple :
 
 **Activation à partir d’un package NuGet**
 
@@ -361,7 +361,7 @@ Pour exécuter l’exemple :
 
 Si vous modifiez le projet *HostingStartupPackage* et le recompilez, effacez les caches locaux du package NuGet pour vous assurer que *HostingStartupApp* reçoit le package mis à jour et pas un package périmé du cache local. Pour effacer les caches NuGet locaux, exécutez la commande [dotnet nuget locals](/dotnet/core/tools/dotnet-nuget-locals) suivante :
 
-```console
+```dotnetcli
 dotnet nuget locals all --clear
 ```
 

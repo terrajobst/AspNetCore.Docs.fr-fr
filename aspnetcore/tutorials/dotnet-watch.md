@@ -5,12 +5,12 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 03b4f7f4ade5268915482a659890c7edc2d9a852
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 5462f89a3b5a257ed0a6a8439efb077653fb14f6
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64889874"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082245"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -22,9 +22,9 @@ Ce tutoriel utilise une API web existante avec deux points de terminaison : un q
 
 Téléchargez l’[application exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle est composée de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
-Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
+Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -61,7 +61,7 @@ L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.
 
 1. Installez le package `Microsoft.DotNet.Watcher.Tools` en exécutant la commande suivante :
 
-    ```console
+    ```dotnetcli
     dotnet restore
     ```
 
@@ -69,7 +69,7 @@ L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.
 
 ## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>Exécuter les commandes de l’interface CLI de .NET Core avec `dotnet watch`
 
-Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Par exemple :
+Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Par exemple :
 
 | Commande | Commande avec watch |
 | ---- | ----- |
@@ -177,7 +177,7 @@ Si l’objectif est d’observer les deux projets, créez un fichier projet pers
 
 Pour démarrer l’observation de fichiers sur les deux projets, passez au dossier *test*. Exécutez la commande suivante :
 
-```console
+```dotnetcli
 dotnet watch msbuild /t:Test
 ```
 

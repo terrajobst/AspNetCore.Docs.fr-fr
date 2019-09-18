@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 16c9eb1d79bca792062d292795763c54dd02bd37
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 7aff46f739239246191763e0590046b2d9995922
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773416"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080509"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
@@ -219,7 +219,7 @@ Les services JavaScript fournissent des modèles d’application préconfigurés
 
 Ces modèles peuvent être installés par le biais de l’interface CLI .NET Core en exécutant la commande suivante :
 
-```console
+```dotnetcli
 dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 ```
 
@@ -233,7 +233,7 @@ Une liste des modèles disponibles s’affiche :
 
 Pour créer un nouveau projet à l’aide d’un des modèles SPA, incluez le **nom court** du modèle dans le [dotnet nouvelle](/dotnet/core/tools/dotnet-new) commande. La commande suivante crée une application Angular avec ASP.NET Core MVC est configuré pour le côté serveur :
 
-```console
+```dotnetcli
 dotnet new angular
 ```
 
@@ -254,13 +254,13 @@ ASP.NET Core utilise une variable d’environnement nommée `ASPNETCORE_ENVIRONM
 
 Restaurer le NuGet requis et les packages npm en exécutant la commande suivante à la racine du projet :
 
-```console
+```dotnetcli
 dotnet restore && npm i
 ```
 
 Générer et exécuter l’application :
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -303,7 +303,7 @@ La cible MSBuild responsabilités est les suivantes :
 
 La cible MSBuild est appelée lors de l’exécution :
 
-```console
+```dotnetcli
 dotnet publish -c Release
 ```
 

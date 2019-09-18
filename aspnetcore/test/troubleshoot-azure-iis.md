@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/18/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: deae568a6ba88c9a8365b9d7f2df629899bc64a1
-ms.sourcegitcommit: 16502797ea749e2690feaa5e652a65b89c007c89
+ms.openlocfilehash: 384ae6645ce083fba76a430dfc3bec3a59d3870e
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483318"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081539"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Résoudre les problèmes de ASP.NET Core sur Azure App Service et IIS
 
@@ -51,22 +51,22 @@ Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Ex
 
 ### <a name="40314-forbidden"></a>403,14 interdit
 
-L’application ne démarre pas. L’erreur suivante est enregistrée:
+L’application ne démarre pas. L’erreur suivante est enregistrée :
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-L’erreur est généralement causée par un déploiement rompu sur le système d’hébergement, qui comprend l’un des scénarios suivants:
+L’erreur est généralement causée par un déploiement rompu sur le système d’hébergement, qui comprend l’un des scénarios suivants :
 
 * L’application est déployée dans le mauvais dossier sur le système d’hébergement.
 * Le processus de déploiement n’a pas réussi à déplacer tous les fichiers et dossiers de l’application vers le dossier de déploiement sur le système d’hébergement.
 * Le fichier *Web. config* est manquant dans le déploiement ou le contenu du fichier *Web. config* est incorrect.
 
-Procédez comme suit:
+Procédez comme suit :
 
 1. Supprimez tous les fichiers et dossiers du dossier de déploiement sur le système d’hébergement.
-1. Redéployez le contenu du dossier de *publication* de l’application sur le système d’hébergement à l’aide de votre méthode de déploiement normale, telle que Visual Studio, PowerShell ou le déploiement manuel:
+1. Redéployez le contenu du dossier de *publication* de l’application sur le système d’hébergement à l’aide de votre méthode de déploiement normale, telle que Visual Studio, PowerShell ou le déploiement manuel :
    * Vérifiez que le fichier *Web. config* est présent dans le déploiement et que son contenu est correct.
    * Lors de l’hébergement sur Azure App service, vérifiez que l’application est déployée dans le `D:\home\site\wwwroot` dossier.
    * Lorsque l’application est hébergée par IIS, vérifiez que l’application est déployée sur le **chemin d’accès physique** IIS indiqué dans les **paramètres de base**du gestionnaire des **services Internet**.
@@ -74,7 +74,7 @@ Procédez comme suit:
 
 Pour plus d’informations sur la disposition d’une application ASP.NET Core publiée, <xref:host-and-deploy/directory-structure>consultez. Pour plus d’informations sur le fichier *Web. config* , <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>consultez.
 
-### <a name="500-internal-server-error"></a>Erreur de serveur interne 500
+### <a name="500-internal-server-error"></a>500 Erreur interne du serveur
 
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
 
@@ -265,7 +265,7 @@ De nombreuses erreurs de démarrage ne produisent pas d’informations utiles da
 1. Exécutez l’application :
    * Si l’application est un [déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd) :
 
-     ```console
+     ```dotnetcli
      dotnet .\{ASSEMBLY NAME}.dll
      ```
 
@@ -619,7 +619,7 @@ Parfois, une application opérationnelle échoue immédiatement après la mise �
 * [Application Insights pour ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
 * [Section débogage à distance des applications Web de dépanner une application Web dans Azure App Service à l’aide de Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics)
-* [Guide pratique pour surveiller des applications dans Azure App Service](/azure/app-service/web-sites-monitor)
+* [Guide pratique : surveiller des applications dans Azure App Service](/azure/app-service/web-sites-monitor)
 * [Résoudre les problèmes d’une application web dans Azure App Service avec Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Résoudre les erreurs HTTP « 502 Passerelle incorrecte » et « 503 Service non disponible » dans des applications web Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Résoudre les problèmes de performances d’une application web lente dans Azure App Service](/azure/app-service/app-service-web-troubleshoot-performance-degradation)

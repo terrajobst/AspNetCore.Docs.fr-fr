@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: c2c815735ad1b4dcec761b26ea3992a4effebe62
-ms.sourcegitcommit: 979dbfc5e9ce09b9470789989cddfcfb57079d94
-ms.translationtype: HT
+ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68682691"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081507"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -25,13 +25,13 @@ Cet article s’applique au [SDK .NET Core 2.1](https://dotnet.microsoft.com/do
 
 `dotnet-aspnet-codegenerator` est un [outil global](/dotnet/core/tools/global-tools) qui doit être installé. La commande suivante installe la dernière version stable de l’outil `dotnet-aspnet-codegenerator` :
 
-```console
+```dotnetcli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 La commande suivante met à jour `dotnet-aspnet-codegenerator` vers la dernière version stable disponible à partir du SDK .NET Core installé :
 
-```console
+```dotnetcli
 dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
@@ -54,11 +54,11 @@ Le générateur de code à effectuer. Les générateurs suivants sont disponible
 
 | Générateur | Opération |
 | ----------------- | ------------ | 
-| superficie      | [Génération de modèles automatique pour une zone](/aspnet/core/mvc/controllers/areas) |
+| Partie      | [Génération de modèles automatique pour une zone](/aspnet/core/mvc/controllers/areas) |
   contrôleur| [Génération de modèles automatique pour un contrôleur](/aspnet/core/tutorials/first-mvc-app/adding-model) |
   identité  | [Génération de modèles automatique pour une identité](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [Génération de modèles automatique pour Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
-  view      | [Génération de modèles automatique pour une vue](/aspnet/core/mvc/views/overview) |
+  vue      | [Génération de modèles automatique pour une vue](/aspnet/core/mvc/views/overview) |
 
 ## <a name="options"></a>Options
 
@@ -95,7 +95,7 @@ Spécifie le chemin du fichier projet à exécuter (nom de dossier ou chemin com
 Les sections suivantes décrivent en détail les options disponibles pour les générateurs pris en charge :
 
 * Domaine
-* Contrôleur
+* Controller
 * Identité  
 * Razorpage
 * Vue
@@ -137,7 +137,7 @@ Le tableau ci-dessous répertorie les options uniques à `aspnet-codegenerator c
 
 Utilisez le commutateur `-h` pour obtenir de l’aide sur la commande `aspnet-codegenerator controller` :
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 
@@ -158,7 +158,7 @@ Les Razor Pages peuvent être structurées individuellement en spécifiant le no
 
 Par exemple, la commande suivante utilise le modèle de modification pour générer *MyEdit.cshtml* et *MyEdit.cshtml.cs* :
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieContext -outDir Pages/Movies
 ```
 
@@ -184,7 +184,7 @@ Le tableau ci-dessous répertorie les options uniques à `aspnet-codegenerator r
 
 Utilisez le commutateur `-h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator razorpage -h
 ```
 

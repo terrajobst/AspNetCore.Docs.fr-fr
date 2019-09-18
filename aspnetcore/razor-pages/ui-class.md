@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 08/22/2019
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: 5b83cb44302a5900ec7b2ccc049790b4c1ca57e5
-ms.sourcegitcommit: 6189b0ced9c115248c6ede02efcd0b29d31f2115
+ms.openlocfilehash: 92c04c1ac4c70c6245accf272753bc914aaab860
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69985376"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081871"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer une interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Cette fonctionnalité nécessite [!INCLUDE[](~/includes/2.1-SDK.md)]
 * Vérifiez que **ASP.NET Core 2.1** ou ultérieur est sélectionné.
 * Sélectionnez **Razor Class Library** > **OK**.
 
-Un RCL a le fichier projet suivant:
+Un RCL a le fichier projet suivant :
 
 [!code-xml[Main](ui-class/samples/cli/RazorUIClassLib/RazorUIClassLib.csproj)]
 
@@ -42,7 +42,7 @@ Un RCL a le fichier projet suivant:
 
 À partir de la ligne de commande, exécutez `dotnet new razorclasslib`. Exemple :
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 ```
 
@@ -77,13 +77,13 @@ Ouvrez le fichier *.sln* dans Visual Studio. Exécuter l’application.
 
 À partir d’une invite de commandes dans le répertoire *cli*, générez la RCL et l’application web.
 
-```console
+```dotnetcli
 dotnet build
 ```
 
 Passez au répertoire *WebApp1* et exécutez l’application :
 
-```console
+```dotnetcli
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ Créez le projet RCL :
 
 À partir de la ligne de commande, exécutez ce qui suit :
 
-```console
+```dotnetcli
 dotnet new razorclasslib -o RazorUIClassLib
 dotnet new page -n _Message -np -o RazorUIClassLib/Areas/MyFeature/Pages/Shared
 dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
@@ -138,7 +138,7 @@ Le *_ViewStart.cshtml* fichier est nécessaire pour utiliser la disposition du p
 
 `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers` est nécessaire pour utiliser la vue partielle (`<partial name="_Message" />`). Au lieu d’inclure la directive `@addTagHelper`, vous pouvez ajouter un fichier *_ViewImports.cshtml*. Exemple :
 
-```console
+```dotnetcli
 dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
 ```
 
@@ -146,7 +146,7 @@ Pour plus d’informations sur *_ViewImports.cshtml*, consultez [importation de 
 
 * Générez la bibliothèque de classes pour vérifier l’absence d’erreurs de compilateur :
 
-```console
+```dotnetcli
 dotnet build RazorUIClassLib
 ```
 
@@ -174,9 +174,9 @@ Exécuter l’application.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Créez un Razor Pages application Web et un fichier solution contenant l’application Razor Pages et le RCL:
+Créez un Razor Pages application Web et un fichier solution contenant l’application Razor Pages et le RCL :
 
-```console
+```dotnetcli
 dotnet new webapp -o WebApp1
 dotnet new sln
 dotnet sln add WebApp1
@@ -186,7 +186,7 @@ dotnet add WebApp1 reference RazorUIClassLib
 
 Générez et exécutez l’application web :
 
-```console
+```dotnetcli
 cd WebApp1
 dotnet run
 ```
@@ -197,7 +197,7 @@ dotnet run
 
 ### <a name="test-webapp1"></a>Tester WebApp1
 
-Vérifiez que la bibliothèque de classes de l’interface utilisateur Razor est en cours d’utilisation:
+Vérifiez que la bibliothèque de classes de l’interface utilisateur Razor est en cours d’utilisation :
 
 * Accédez à `/MyFeature/Page1`.
 
@@ -242,7 +242,7 @@ Lors de la compression d’un RCL, toutes les ressources associées dans le doss
 
 Pour exclure des ressources statiques, ajoutez le chemin d’exclusion `$(DefaultItemExcludes)` souhaité au groupe de propriétés dans le fichier projet. Séparez les entrées par un`;`point-virgule ().
 
-Dans l’exemple suivant, la feuille de style *lib. CSS* du dossier *wwwroot* n’est pas considérée comme une ressource statique et n’est pas incluse dans le RCL publié:
+Dans l’exemple suivant, la feuille de style *lib. CSS* du dossier *wwwroot* n’est pas considérée comme une ressource statique et n’est pas incluse dans le RCL publié :
 
 ```xml
 <PropertyGroup>
@@ -252,17 +252,17 @@ Dans l’exemple suivant, la feuille de style *lib. CSS* du dossier *wwwroot* n�
 
 ### <a name="typescript-integration"></a>Intégration de la machine à écrire
 
-Pour inclure des fichiers de machine à écrire dans un RCL:
+Pour inclure des fichiers de machine à écrire dans un RCL :
 
 1. Placez les fichiers de machine à écrire ( *. TS*) en dehors du dossier *wwwroot* . Par exemple, placez les fichiers dans un dossier *client* .
 
-1. Configurez la sortie de génération de machine à écrire pour le dossier *wwwroot* . Définissez la `TypescriptOutDir` propriété à l’intérieur `PropertyGroup` d’un dans le fichier projet:
+1. Configurez la sortie de génération de machine à écrire pour le dossier *wwwroot* . Définissez la `TypescriptOutDir` propriété à l’intérieur `PropertyGroup` d’un dans le fichier projet :
 
    ```xml
    <TypescriptOutDir>wwwroot</TypescriptOutDir>
    ```
 
-1. Incluez la cible de la machine à écrire `ResolveCurrentProjectStaticWebAssets` comme dépendance de la cible en ajoutant la cible `PropertyGroup` suivante à l’intérieur d’un dans le fichier projet:
+1. Incluez la cible de la machine à écrire `ResolveCurrentProjectStaticWebAssets` comme dépendance de la cible en ajoutant la cible `PropertyGroup` suivante à l’intérieur d’un dans le fichier projet :
 
    ```xml
    <ResolveCurrentProjectStaticWebAssetsInputsDependsOn>
@@ -275,7 +275,7 @@ Pour inclure des fichiers de machine à écrire dans un RCL:
 
 Les fichiers inclus dans le dossier *wwwroot* du RCL sont exposés à l’application consommatrice sous le préfixe `_content/{LIBRARY NAME}/`. Par exemple, une bibliothèque nommée *Razor. class. lib* génère un chemin d’accès au contenu statique `_content/Razor.Class.Lib/`à l’emplacement.
 
-L’application consommatrice référence les ressources statiques fournies par la bibliothèque `<script>`avec `<style>` `<img>`,, et d’autres balises html. L’application consommatrice doit avoir la [prise en charge](xref:fundamentals/static-files) des fichiers `Startup.Configure`statiques activée dans:
+L’application consommatrice référence les ressources statiques fournies par la bibliothèque `<script>`avec `<style>` `<img>`,, et d’autres balises html. L’application consommatrice doit avoir la [prise en charge des fichiers statiques](xref:fundamentals/static-files) activée dans `Startup.Configure`:
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -315,7 +315,7 @@ L' `UseStaticWebAssets` appel de n’est pas requis lors de l’exécution`dotne
 
 ### <a name="multi-project-development-flow"></a>Déroulement du développement de projets multiples
 
-Lorsque l’application consommatrice s’exécute:
+Lorsque l’application consommatrice s’exécute :
 
 * Les ressources du RCL restent dans leurs dossiers d’origine. Les ressources ne sont pas déplacées vers l’application consommatrice.
 * Toute modification dans le dossier *wwwroot* de RCL est reflétée dans l’application consommatrice une fois que le RCL est reconstruit et sans régénérer l’application consommateur.

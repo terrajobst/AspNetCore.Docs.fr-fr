@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/29/2019
 uid: web-api/http-repl
-ms.openlocfilehash: b93641c96ad093b40aaa887f19409d4c2e1490df
-ms.sourcegitcommit: efb9c16321b34f8ede802822b26eb983de16479b
+ms.openlocfilehash: 8ef49797fed3379e33810f311bfc474e524122e0
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70842268"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082587"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -44,7 +44,7 @@ Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core
 
 Pour installer la boucle REPL HTTP, exécutez la commande suivante :
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.dotnet-httprepl --version "3.0.0-*"
 ```
 
@@ -550,7 +550,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 [!INCLUDE [HTTP request body CLI options](~/includes/http-repl/requires-body-options.md)]
 
-### <a name="example"></a>Exemples
+### <a name="example"></a>Exemple
 
 Pour émettre une requête HTTP PUT :
 
@@ -662,7 +662,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
-### <a name="example"></a>Exemple
+### <a name="example"></a>Exemples
 
 Pour émettre une requête HTTP DELETE :
 

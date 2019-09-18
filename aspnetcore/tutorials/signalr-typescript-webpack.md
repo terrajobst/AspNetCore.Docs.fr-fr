@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/23/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 628fbb9940ad14cb15e3abd88b8b6a524b24d70a
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 99628b4f52980e6d32c70d11bb0d8a770dac7f86
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081575"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -70,7 +70,7 @@ La configuration de Visual Studio est terminée. Nous allons maintenant créer l
 
 Exécutez la commande suivante dans le **Terminal intégré** :
 
-```console
+```dotnetcli
 dotnet new web -o SignalRWebPack
 ```
 
@@ -249,7 +249,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
 1. Générez et exécutez l’application en exécutant la commande suivante à la racine du projet :
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 
@@ -305,7 +305,7 @@ La configuration de Visual Studio est terminée. Nous allons maintenant créer l
 
 Exécutez la commande suivante dans le **Terminal intégré** :
 
-```console
+```dotnetcli
 dotnet new web -o SignalRWebPack
 ```
 
@@ -484,7 +484,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
 1. Générez et exécutez l’application en exécutant la commande suivante à la racine du projet :
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 

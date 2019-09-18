@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/18/2019
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: 38bdad7110a45538be01cf432aab773c4205980e
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 24462b53525a38eb1bac82e8498d2d073b06a10f
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975421"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71081741"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Images Docker pour ASP.NET Core
 
@@ -52,7 +52,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
     * [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
     * [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
   * [macOS](https://docs.docker.com/docker-for-mac/install/)
-  * [Fenêtres](https://docs.docker.com/docker-for-windows/install/)
+  * [Windows](https://docs.docker.com/docker-for-windows/install/)
 
 * [Git](https://git-scm.com/download)
 
@@ -70,7 +70,7 @@ L’exemple de fichier Dockerfile utilise la [fonctionnalité de build en plusie
 
 * Exécutez la commande suivante pour générer et exécuter l’application localement :
 
-  ```console
+  ```dotnetcli
   dotnet run
   ```
 
@@ -142,7 +142,7 @@ Dans certains scénarios, il peut être intéressant de déployer une applicatio
 
 * Exécutez la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) :
 
-  ```console
+  ```dotnetcli
   dotnet publish -c Release -o published
   ```
 
@@ -154,13 +154,13 @@ Dans certains scénarios, il peut être intéressant de déployer une applicatio
 
   * Windows :
 
-    ```console
+    ```dotnetcli
     dotnet published\aspnetapp.dll
     ```
 
   * Linux :
 
-    ```bash
+    ```dotnetcli
     dotnet published/aspnetapp.dll
     ```
 
@@ -177,9 +177,9 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Le fichier Dockerfile
 
-Voici le fichier Dockerfile utilisé par la commande `docker build` que nous avons exécutée tout à l’heure.  Il utilise `dotnet publish` comme nous l’avons fait dans cette section pour le build et le déploiement.  
+Voici le *fichier dockerfile* utilisé par la `docker build` commande que vous avez exécutée précédemment.  Il utilise `dotnet publish` comme nous l’avons fait dans cette section pour le build et le déploiement.  
 
-```console
+```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /app
 

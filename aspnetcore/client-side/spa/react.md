@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 91a71498574d6d96c2c06e896283fed801e8adb3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 0e61c5b3e31a0b050d356b8f8e16306dc1e2a7f3
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64893696"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080413"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
@@ -26,7 +26,7 @@ Si ASP.NET Core 2.1 est installé, il est inutile d’installer le modèle de pr
 
 Créez un projet à partir d’une invite de commandes à l’aide de la commande `dotnet new react` dans un répertoire vide. Par exemple, les commandes suivantes créent l’application dans un répertoire *my-new-app* et basculent vers ce répertoire :
 
-```console
+```dotnetcli
 dotnet new react -o my-new-app
 cd my-new-app
 ```
@@ -59,7 +59,7 @@ Il existe de légères différences entre l’application React créée par ce m
 
 ## <a name="install-npm-packages"></a>Installer des packages npm
 
-Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Exemple :
+Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Par exemple :
 
 ```console
 cd ClientApp
@@ -80,13 +80,13 @@ Le projet est configuré pour démarrer sa propre instance du serveur de dévelo
 
 Cette configuration par défaut présente un inconvénient. Chaque fois que vous modifiez votre code C# et que votre application ASP.NET Core doit redémarrer, le serveur CRA redémarre. Quelques secondes sont nécessaires avant de démarrer la sauvegarde. Si vous apportez des modifications fréquentes au code C# et que vous ne souhaitez pas attendre que le serveur CRA redémarre, exécutez ce dernier en externe, indépendamment du processus ASP.NET Core. Pour ce faire :
 
-1. Ajouter un *.env* de fichiers à la *ClientApp* sous-répertoire avec le paramètre suivant :
+1. Ajoutez un fichier *. env* au sous-répertoire *ClientApp* avec le paramètre suivant :
 
     ```
     BROWSER=none
     ```
 
-    Cela ne pourra pas votre navigateur web ouvrir au démarrage du serveur d’arc en externe.
+    Cela empêchera votre navigateur Web de s’ouvrir lors du démarrage du serveur arc en externe.
 
 2. Dans une invite de commandes, basculez vers le sous-répertoire *ClientApp* et lancez le serveur de développement CRA :
 
@@ -104,7 +104,7 @@ Cette configuration par défaut présente un inconvénient. Chaque fois que vous
 Quand vous démarrez votre application ASP.NET Core, celle-ci ne lance pas un serveur CRA. L’instance que vous avez démarrée manuellement est utilisée à la place. Cela lui permet de démarrer et de redémarrer plus rapidement. Elle n’attend plus que votre application React soit systématiquement regénérée.
 
 > [!IMPORTANT]
-> « Rendu côté serveur » n’est pas une fonctionnalité prise en charge de ce modèle. L’objectif de ce modèle consiste à répondre à parité avec « créer-react-app ». Par conséquent, scénarios et fonctionnalités non incluses dans un projet de « créer-react-app » (par exemple, SSR) ne sont pas prises en charge et sont laissées en guise d’exercice pour l’utilisateur.
+> « Rendu côté serveur » n’est pas une fonctionnalité prise en charge de ce modèle. L’objectif de ce modèle est de respecter la parité avec « Create-REACT-App ». Ainsi, les scénarios et les fonctionnalités qui ne sont pas inclus dans un projet « Create-REACT-App » (par exemple, SSR) ne sont pas pris en charge et sont laissés en tant qu’exercice pour l’utilisateur.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

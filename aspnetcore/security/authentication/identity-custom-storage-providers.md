@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: da5293462451447766f7b3b5ff733e1ea9449f18
-ms.sourcegitcommit: f30b18442ed12831c7e86b0db249183ccd749f59
+ms.openlocfilehash: 500824807307840a9279dd00c2fe632835737c2d
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68412513"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080794"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour l’identité ASP.NET Core
 
@@ -35,7 +35,7 @@ ASP.NET Core identité est incluse dans les modèles de projet dans Visual Studi
 
 Lorsque vous utilisez l’CLI .NET Core, `-au Individual`ajoutez:
 
-```console
+```dotnetcli
 dotnet new mvc -au Individual
 ```
 

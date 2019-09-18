@@ -11,7 +11,7 @@ Le tableau suivant détaille les paramètres du générateur de code ASP.NET Cor
 
 Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator controller` :
 
-```console
+```dotnetcli
 dotnet aspnet-codegenerator controller -h
 ```
 

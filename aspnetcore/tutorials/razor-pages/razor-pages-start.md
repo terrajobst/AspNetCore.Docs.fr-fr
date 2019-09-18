@@ -5,12 +5,12 @@ description: Cette série de tutoriels montre comment utiliser Razor Pages dans 
 ms.author: riande
 ms.date: 07/25/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 67a5fcee0a37861fd39a018443edbc0b9e513213
-ms.sourcegitcommit: 7a46973998623aead757ad386fe33602b1658793
-ms.translationtype: HT
+ms.openlocfilehash: 0cc00cb85b6054752417b82c783cfd4c306aeda5
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69487659"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082579"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core
 
@@ -76,9 +76,9 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 * Accédez au répertoire (`cd`) qui contiendra le projet.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
@@ -117,7 +117,7 @@ Dans Visual Studio, sélectionnez **Fichier > Ouvrir**, puis sélectionnez le fi
 
 ---
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -159,23 +159,23 @@ Contient les pages Razor et les fichiers de prise en charge. Chaque page Razor e
 * Un fichier *.cshtml* qui contient le balisage HTML avec du code C# en utilisant la syntaxe Razor.
 * Un fichier *. cshtml.cs* qui contient du code C# gérant les événements de page.
 
-Les fichiers de prise en charge ont des noms commençant par un trait de soulignement. Par exemple, le fichier *_Layout.cshtml* configure les éléments d’interface communs à toutes les pages. Ce fichier définit le menu de navigation en haut de la page et la mention de copyright au bas de la page. Pour plus d’informations, consultez <xref:mvc/views/layout>.
+Les fichiers de prise en charge ont des noms commençant par un trait de soulignement. Par exemple, le fichier *_Layout.cshtml* configure les éléments d’interface communs à toutes les pages. Ce fichier définit le menu de navigation en haut de la page et la mention de copyright au bas de la page. Pour plus d'informations, consultez <xref:mvc/views/layout>.
 
 ### <a name="wwwroot-folder"></a>Dossier racine
 
-Contient des fichiers statiques, tels que les fichiers HTML, JavaScript et CSS. Pour plus d’informations, consultez <xref:fundamentals/static-files>.
+Contient des fichiers statiques, tels que les fichiers HTML, JavaScript et CSS. Pour plus d'informations, consultez <xref:fundamentals/static-files>.
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-Contient les données de configuration, comme les chaînes de connexion. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
+Contient les données de configuration, comme les chaînes de connexion. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
 
 ### <a name="programcs"></a>Program.cs
 
-Contient le point d’entrée pour le programme. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host>.
+Contient le point d’entrée pour le programme. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
 
 ### <a name="startupcs"></a>Startup.cs
 
-contient le code qui configure le comportement de l’application. Pour plus d’informations, consultez <xref:fundamentals/startup>.
+contient le code qui configure le comportement de l’application. Pour plus d'informations, consultez <xref:fundamentals/startup>.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -253,9 +253,9 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 * Accédez au répertoire (`cd`) qui contiendra le projet.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
-  ```console
+  ```dotnetcli
   dotnet new webapp -o RazorPagesMovie
   code -r RazorPagesMovie
   ```
@@ -273,7 +273,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 <!-- TODO: update these instruction once mac support 2.2 projects -->
 
-```console
+```dotnetcli
 dotnet new webapp -o RazorPagesMovie
 ```
 
@@ -287,7 +287,7 @@ Dans Visual Studio, sélectionnez **Fichier > Ouvrir**, puis sélectionnez le fi
 
 ---
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécution de l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -358,23 +358,23 @@ Contient les pages Razor et les fichiers de prise en charge. Chaque page Razor e
 * Un fichier *.cshtml* qui contient le balisage HTML avec du code C# en utilisant la syntaxe Razor.
 * Un fichier *. cshtml.cs* qui contient du code C# gérant les événements de page.
 
-Les fichiers de prise en charge ont des noms commençant par un trait de soulignement. Par exemple, le fichier *_Layout.cshtml* configure les éléments d’interface communs à toutes les pages. Ce fichier définit le menu de navigation en haut de la page et la mention de copyright au bas de la page. Pour plus d’informations, consultez <xref:mvc/views/layout>.
+Les fichiers de prise en charge ont des noms commençant par un trait de soulignement. Par exemple, le fichier *_Layout.cshtml* configure les éléments d’interface communs à toutes les pages. Ce fichier définit le menu de navigation en haut de la page et la mention de copyright au bas de la page. Pour plus d'informations, consultez <xref:mvc/views/layout>.
 
 ### <a name="wwwroot-folder"></a>Dossier racine
 
-Contient des fichiers statiques, tels que les fichiers HTML, JavaScript et CSS. Pour plus d’informations, consultez <xref:fundamentals/static-files>.
+Contient des fichiers statiques, tels que les fichiers HTML, JavaScript et CSS. Pour plus d'informations, consultez <xref:fundamentals/static-files>.
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-Contient les données de configuration, comme les chaînes de connexion. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
+Contient les données de configuration, comme les chaînes de connexion. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
 
 ### <a name="programcs"></a>Program.cs
 
-Contient le point d’entrée pour le programme. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host>.
+Contient le point d’entrée pour le programme. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
 
 ### <a name="startupcs"></a>Startup.cs
 
-Contient le code qui configure le comportement de l’application, comme le fait qu’elle exige un consentement pour les cookies. Pour plus d’informations, consultez <xref:fundamentals/startup>.
+Contient le code qui configure le comportement de l’application, comme le fait qu’elle exige un consentement pour les cookies. Pour plus d'informations, consultez <xref:fundamentals/startup>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

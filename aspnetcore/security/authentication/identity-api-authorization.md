@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/05/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: cb51df0267a5eabd4a2694727e9c896d0554265e
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
+ms.openlocfilehash: 4f6e3a4922c0a8a74b0e13edf1f00fe5f7bb76ba
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583594"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082330"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
@@ -26,13 +26,13 @@ L’authentification et l’autorisation de l’utilisateur peuvent être utilis
 
 **Angulaire**:
 
-```console
+```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
 **Réaction**:
 
-```console
+```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
 ```
 
@@ -40,14 +40,14 @@ La commande précédente crée une application ASP.NET Core avec un répertoire 
 
 ## <a name="general-description-of-the-aspnet-core-components-of-the-app"></a>Description générale des composants ASP.NET Core de l’application
 
-Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse:
+Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse :
 
 ### <a name="startup-class"></a>Classe Startup
 
-La `Startup` classe comporte les ajouts suivants:
+La `Startup` classe comporte les ajouts suivants :
 
-* À l' `Startup.ConfigureServices` intérieur de la méthode:
-  * Identité avec l’interface utilisateur par défaut:
+* À l' `Startup.ConfigureServices` intérieur de la méthode :
+  * Identité avec l’interface utilisateur par défaut :
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -58,28 +58,28 @@ La `Startup` classe comporte les ajouts suivants:
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer avec une méthode `AddApiAuthorization` d’assistance supplémentaire qui installe certaines conventions de ASP.net Core par défaut en plus de IdentityServer:
+  * IdentityServer avec une méthode `AddApiAuthorization` d’assistance supplémentaire qui installe certaines conventions de ASP.net Core par défaut en plus de IdentityServer :
 
     ```csharp
     services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * Authentification avec une méthode `AddIdentityServerJwt` d’assistance supplémentaire qui configure l’application pour valider les jetons JWT produits par IdentityServer:
+  * Authentification avec une méthode `AddIdentityServerJwt` d’assistance supplémentaire qui configure l’application pour valider les jetons JWT produits par IdentityServer :
 
     ```csharp
     services.AddAuthentication()
         .AddIdentityServerJwt();
     ```
 
-* À l' `Startup.Configure` intérieur de la méthode:
-  * Intergiciel d’authentification responsable de la validation des informations d’identification de la demande et de la définition de l’utilisateur dans le contexte de la requête:
+* À l' `Startup.Configure` intérieur de la méthode :
+  * Intergiciel d’authentification responsable de la validation des informations d’identification de la demande et de la définition de l’utilisateur dans le contexte de la requête :
 
     ```csharp
     app.UseAuthentication();
     ```
 
-  * L’intergiciel IdentityServer qui expose les points de terminaison Open ID Connect:
+  * L’intergiciel IdentityServer qui expose les points de terminaison Open ID Connect :
 
     ```csharp
     app.UseIdentityServer();
@@ -91,7 +91,7 @@ Cette méthode d’assistance configure IdentityServer pour utiliser notre confi
 
 ### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
-Cette méthode d’assistance configure un modèle de stratégie pour l’application en tant que gestionnaire d’authentification par défaut. La stratégie est configurée pour permettre à l’identité de traiter toutes les demandes routées vers n’importe quel sous-chemin dans l’espace d’URL d’identité «/Identity». Le `JwtBearerHandler` gère toutes les autres requêtes. En outre, cette méthode enregistre une `<<ApplicationName>>API` ressource API avec IdentityServer avec une `<<ApplicationName>>API` étendue par défaut et configure l’intergiciel de jeton de porteur JWT pour valider les jetons émis par IdentityServer pour l’application.
+Cette méthode d’assistance configure un modèle de stratégie pour l’application en tant que gestionnaire d’authentification par défaut. La stratégie est configurée pour permettre à l’identité de traiter toutes les demandes routées vers n’importe quel sous-chemin dans l’espace d’URL d’identité « /Identity ». Le `JwtBearerHandler` gère toutes les autres requêtes. En outre, cette méthode enregistre une `<<ApplicationName>>API` ressource API avec IdentityServer avec une `<<ApplicationName>>API` étendue par défaut et configure l’intergiciel de jeton de porteur JWT pour valider les jetons émis par IdentityServer pour l’application.
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
@@ -135,12 +135,12 @@ Dans le *appSettings. Fichier Development. JSON* de la racine du projet, il exis
 
 ## <a name="general-description-of-the-angular-app"></a>Description générale de l’application angulaire
 
-L’authentification et la prise en charge de l’autorisation d’API dans le modèle angulaire résident dans son propre module angulaire dans le répertoire *ClientApp\src\api-Authorization* . Le module est composé des éléments suivants:
+L’authentification et la prise en charge de l’autorisation d’API dans le modèle angulaire résident dans son propre module angulaire dans le répertoire *ClientApp\src\api-Authorization* . Le module est composé des éléments suivants :
 
-* 3 composants:
+* 3 composants :
   * *login. Component. TS*: Gère le processus de connexion de l’application.
   * *logout. Component. TS*: Gère le workflow de déconnexion de l’application.
-  * *login-menu. Component. TS*: Widget qui affiche l’un des ensembles de liens suivants:
+  * *login-menu. Component. TS*: Widget qui affiche l’un des ensembles de liens suivants :
     * Gestion des profils utilisateur et déconnexion des liens lorsque l’utilisateur est authentifié.
     * Enregistrement et connexion des liens lorsque l’utilisateur n’est pas authentifié.
 * Une protection `AuthorizeGuard` de routage qui peut être ajoutée aux itinéraires et requiert qu’un utilisateur soit authentifié avant de visiter l’itinéraire.
@@ -150,12 +150,12 @@ L’authentification et la prise en charge de l’autorisation d’API dans le m
 
 ## <a name="general-description-of-the-react-app"></a>Description générale de l’application REACT
 
-La prise en charge de l’authentification et de l’autorisation d’API dans le modèle REACT réside dans le répertoire *ClientApp\src\components\api-Authorization* . Il se compose des éléments suivants:
+La prise en charge de l’authentification et de l’autorisation d’API dans le modèle REACT réside dans le répertoire *ClientApp\src\components\api-Authorization* . Il se compose des éléments suivants :
 
-* 4 composants:
+* 4 composants :
   * *Login. js*: Gère le processus de connexion de l’application.
   * *Logout. js*: Gère le workflow de déconnexion de l’application.
-  * *LoginMenu. js*: Widget qui affiche l’un des ensembles de liens suivants:
+  * *LoginMenu. js*: Widget qui affiche l’un des ensembles de liens suivants :
     * Gestion des profils utilisateur et déconnexion des liens lorsque l’utilisateur est authentifié.
     * Enregistrement et connexion des liens lorsque l’utilisateur n’est pas authentifié.
   * *AuthorizeRoute. js*: Composant de routage qui requiert l’authentification d’un utilisateur avant le rendu du composant indiqué dans le `Component` paramètre.
@@ -169,7 +169,7 @@ Par défaut, le système est configuré pour demander facilement une autorisatio
 
 ## <a name="protect-a-client-side-route-angular"></a>Protéger un itinéraire côté client (angulaire)
 
-La protection d’un itinéraire côté client s’effectue en ajoutant la protection d’autorisation à la liste des gardes à exécuter lors de la configuration d’un itinéraire. Par exemple, vous pouvez voir comment l' `fetch-data` itinéraire est configuré dans le module angulaire principal de l’application:
+La protection d’un itinéraire côté client s’effectue en ajoutant la protection d’autorisation à la liste des gardes à exécuter lors de la configuration d’un itinéraire. Par exemple, vous pouvez voir comment l' `fetch-data` itinéraire est configuré dans le module angulaire principal de l’application :
 
 ```typescript
 RouterModule.forRoot([
@@ -186,13 +186,13 @@ L’authentification des demandes auprès des API hébergées parallèlement à 
 
 ## <a name="protect-a-client-side-route-react"></a>Protéger un itinéraire côté client (REACT)
 
-Protégez un itinéraire côté client à l’aide `AuthorizeRoute` du composant au lieu du `Route` composant simple. Par exemple, notez la configuration `fetch-data` de l’itinéraire dans le `App` composant:
+Protégez un itinéraire côté client à l’aide `AuthorizeRoute` du composant au lieu du `Route` composant simple. Par exemple, notez la configuration `fetch-data` de l’itinéraire dans le `App` composant :
 
 ```jsx
 <AuthorizeRoute path='/fetch-data' component={FetchData} />
 ```
 
-Protection d’un itinéraire:
+Protection d’un itinéraire :
 
 * Ne protège pas le point de terminaison réel (qui `[Authorize]` requiert toujours un attribut qui lui est appliqué).
 * Empêche uniquement l’utilisateur de naviguer vers l’itinéraire donné côté client lorsqu’il n’est pas authentifié.
@@ -222,7 +222,7 @@ async populateWeatherData() {
 
 ## <a name="deploy-to-production"></a>Déployer en production
 
-Pour déployer l’application en production, vous devez configurer les ressources suivantes:
+Pour déployer l’application en production, vous devez configurer les ressources suivantes :
 
 * Une base de données pour stocker les comptes d’utilisateur d’identité et les autorisations IdentityServer.
 * Certificat de production à utiliser pour la signature des jetons.
@@ -232,7 +232,7 @@ Pour déployer l’application en production, vous devez configurer les ressourc
 
 ### <a name="example-deploy-to-azure-websites"></a>Exemple : Déployer sur sites Web Azure
 
-Cette section décrit le déploiement de l’application sur des sites Web Azure à l’aide d’un certificat stocké dans le magasin de certificats. Pour modifier l’application afin de charger un certificat à partir du magasin de certificats, le plan de App Service doit être au moins au niveau standard lorsque vous configurez dans une étape ultérieure. Dans le fichier *appSettings. JSON* de l’application, modifiez `IdentityServer` la section pour inclure les détails de la clé:
+Cette section décrit le déploiement de l’application sur des sites Web Azure à l’aide d’un certificat stocké dans le magasin de certificats. Pour modifier l’application afin de charger un certificat à partir du magasin de certificats, le plan de App Service doit être au moins au niveau standard lorsque vous configurez dans une étape ultérieure. Dans le fichier *appSettings. JSON* de l’application, modifiez `IdentityServer` la section pour inclure les détails de la clé :
 
 ```json
 "IdentityServer": {
@@ -259,11 +259,11 @@ Après cette étape, redémarrez l’application et celle-ci doit être fonction
 
 ## <a name="other-configuration-options"></a>Autres options de configuration
 
-La prise en charge de l’autorisation de l’API s’appuie sur IdentityServer avec un ensemble de conventions, de valeurs par défaut et d’améliorations pour simplifier l’expérience de la création de la demande. Inutile de préciser que la pleine puissance de IdentityServer est disponible en arrière-plan si les intégrations de ASP.NET Core ne couvrent pas votre scénario. La prise en charge ASP.NET Core est axée sur les applications «internes», où toutes les applications sont créées et déployées par notre organisation. Par conséquent, le support n’est pas proposé pour les éléments tels que le consentement ou la Fédération. Pour ces scénarios, utilisez IdentityServer et suivez leur documentation.
+La prise en charge de l’autorisation de l’API s’appuie sur IdentityServer avec un ensemble de conventions, de valeurs par défaut et d’améliorations pour simplifier l’expérience de la création de la demande. Inutile de préciser que la pleine puissance de IdentityServer est disponible en arrière-plan si les intégrations de ASP.NET Core ne couvrent pas votre scénario. La prise en charge ASP.NET Core est axée sur les applications « internes », où toutes les applications sont créées et déployées par notre organisation. Par conséquent, le support n’est pas proposé pour les éléments tels que le consentement ou la Fédération. Pour ces scénarios, utilisez IdentityServer et suivez leur documentation.
 
 ### <a name="application-profiles"></a>Profils d’application
 
-Les profils d’application sont des configurations prédéfinies pour les applications qui définissent davantage leurs paramètres. À ce stade, les profils suivants sont pris en charge:
+Les profils d’application sont des configurations prédéfinies pour les applications qui définissent davantage leurs paramètres. À ce stade, les profils suivants sont pris en charge :
 
 * `IdentityServerSPA`: Représente un SPA hébergé en même temps que IdentityServer comme une unité unique.
   * La `redirect_uri` valeur par défaut `/authentication/login-callback`est.
@@ -284,7 +284,7 @@ Les profils d’application sont des configurations prédéfinies pour les appli
 
 Configurez les applications par le biais du système de configuration en les `Clients` ajoutant `Resources`à la liste de ou.
 
-Configurez les `redirect_uri` propriétés `post_logout_redirect_uri` et de chaque client, comme indiqué dans l’exemple suivant:
+Configurez les `redirect_uri` propriétés `post_logout_redirect_uri` et de chaque client, comme indiqué dans l’exemple suivant :
 
 ```json
 "IdentityServer": {
@@ -298,7 +298,7 @@ Configurez les `redirect_uri` propriétés `post_logout_redirect_uri` et de chaq
 }
 ```
 
-Lors de la configuration des ressources, vous pouvez configurer les étendues de la ressource comme indiqué ci-dessous:
+Lors de la configuration des ressources, vous pouvez configurer les étendues de la ressource comme indiqué ci-dessous :
 
 ```json
 "IdentityServer": {

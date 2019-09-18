@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/11/2019
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: 6b6fa3e50f602a92fec9112ac3ba43583de33a70
-ms.sourcegitcommit: 89fcc6cb3e12790dca2b8b62f86609bed6335be9
+ms.openlocfilehash: 5182f1647acb664bf35f086fcddbe909559a62f7
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68994280"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71082302"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>Configuration de la connexion externe Twitter avec ASP.NET Core
 
@@ -23,27 +23,27 @@ Cet exemple montre comment permettre aux utilisateurs de [se connecter avec leur
 
 * Accédez à [ https://apps.twitter.com/ ](https://apps.twitter.com/) et s’y connecter. Si vous ne disposez pas déjà d’un compte Twitter, utilisez le lien **[Inscrivez-vous maintenant](https://twitter.com/signup)** pour en créer un.
 
-* Appuyez sur **créer une nouvelle application** et renseignez le **nom**de l’application, la **Description** et l’URI du **site Web** public (cela peut être temporaire jusqu’à ce que vous enregistriez le nom de domaine):
+* Appuyez sur **créer une nouvelle application** et renseignez le **nom**de l’application, la **Description** et l’URI du **site Web** public (cela peut être temporaire jusqu’à ce que vous enregistriez le nom de domaine) :
 
-* Entrez votre URI de développement `/signin-twitter` avec ajouté dans le champ URI de redirection **OAuth valide** (par exemple `https://webapp128.azurewebsites.net/signin-twitter`:). Le schéma d’authentification Twitter configuré plus tard dans cet exemple gère automatiquement les `/signin-twitter` demandes à l’itinéraire pour implémenter le Flow OAuth.
+* Entrez votre URI de développement `/signin-twitter` avec ajouté dans le champ **URI de redirection OAuth valide** (par exemple `https://webapp128.azurewebsites.net/signin-twitter`:). Le schéma d’authentification Twitter configuré plus tard dans cet exemple gère automatiquement les `/signin-twitter` demandes à l’itinéraire pour implémenter le Flow OAuth.
 
   > [!NOTE]
   > Le segment `/signin-twitter` d’URI est défini en tant que rappel par défaut du fournisseur d’authentification Twitter. Vous pouvez modifier l’URI de rappel par défaut lors de la configuration de l’intergiciel d’authentification Twitter via la propriété héritée [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) de la classe [TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions) .
 
-* Remplissez le reste du formulaire et appuyez sur **créer votre application Twitter**. Les détails de la nouvelle application s’affichent:
+* Remplissez le reste du formulaire et appuyez sur **créer votre application Twitter**. Les détails de la nouvelle application s’affichent :
 
 ## <a name="storing-twitter-consumer-api-key-and-secret"></a>Stockage de la clé et du secret de l’API du consommateur Twitter
 
-Exécutez les commandes suivantes pour stocker `ClientId` et `ClientSecret` utiliser le [Gestionnaire de secret](xref:security/app-secrets)en toute sécurité:
+Exécutez les commandes suivantes pour stocker `ClientId` et `ClientSecret` utiliser le [Gestionnaire de secret](xref:security/app-secrets)en toute sécurité :
 
-```console
+```dotnetcli
 dotnet user-secrets set Authentication:Twitter:ConsumerAPIKey <Key>
 dotnet user-secrets set Authentication:Twitter:ConsumerSecret <Secret>
 ```
 
 Liez des paramètres sensibles tels `Consumer Key` que `Consumer Secret` Twitter et à la configuration de votre application à l’aide du [Gestionnaire de secret](xref:security/app-secrets). Pour les besoins de cet exemple, nommez les jetons `Authentication:Twitter:ConsumerKey` et `Authentication:Twitter:ConsumerSecret`.
 
-Ces jetons se trouvent sous l’onglet **clés et jetons d’accès** après la création d’une application Twitter:
+Ces jetons se trouvent sous l’onglet **clés et jetons d’accès** après la création d’une application Twitter :
 
 ## <a name="configure-twitter-authentication"></a>Configurer l’authentification Twitter
 
@@ -59,19 +59,19 @@ Pour plus d’informations sur les options de configuration prises en charge par
 
 ## <a name="sign-in-with-twitter"></a>Se connecter avec Twitter
 
-Exécutez l’application et sélectionnez **se connecter**. Une option permettant de se connecter avec Twitter s’affiche:
+Exécutez l’application et sélectionnez **se connecter**. Une option permettant de se connecter avec Twitter s’affiche :
 
-En cliquant sur **Twitter** , vous redirigez vers Twitter pour l’authentification:
+En cliquant sur **Twitter** , vous redirigez vers Twitter pour l’authentification :
 
 Après avoir entré vos informations d’identification Twitter, vous êtes redirigé vers le site Web où vous pouvez définir votre adresse de messagerie.
 
-Vous êtes maintenant connecté à l’aide de vos informations d’identification Twitter:
+Vous êtes maintenant connecté à l’aide de vos informations d’identification Twitter :
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
-## <a name="troubleshooting"></a>Résolution de problèmes
+## <a name="troubleshooting"></a>Résolution des problèmes
 
-* **ASP.NET Core 2. x uniquement:** Si l’identité n’est pas `services.AddIdentity` configurée en appelant dans `ConfigureServices`, toute tentative *d’authentification entraînera l’exception ArgumentException: L’option «SignInScheme» doit être fournie*. Le modèle de projet utilisé dans cet exemple permet de s’assurer que cette opération est effectuée.
+* **ASP.NET Core 2. x uniquement :** Si l’identité n’est pas `services.AddIdentity` configurée en appelant dans `ConfigureServices`, toute tentative *d’authentification entraînera l’exception ArgumentException : L’option « SignInScheme » doit être fournie*. Le modèle de projet utilisé dans cet exemple permet de s’assurer que cette opération est effectuée.
 * Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtiendrez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes

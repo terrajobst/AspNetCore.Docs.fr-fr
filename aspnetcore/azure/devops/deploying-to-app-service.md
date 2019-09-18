@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: e09d03f1d30f128b1db1588aa92b28ec3e4ae626
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: df41f296e9c4e1eff6e31d45b29ec30ee1e20cf4
+ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64892636"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71080435"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application dans App Service
 
@@ -35,7 +35,7 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
 
 À partir d’un interpréteur de commandes, vous pouvez télécharger le code, générez le projet et exécutez-le comme suit.
 
-> *Remarque : Les utilisateurs Linux/Mac OS doivent apporter les modifications appropriées pour les chemins d’accès, par exemple, à l’aide de la barre oblique (`/`) au lieu de la barre oblique inverse (`\`).*
+> *Remarque : Les utilisateurs Linux/MacOS doivent apporter les modifications appropriées pour les chemins d’accès, par exemple`/`, à l’aide de la`\`barre oblique () au lieu de la barre oblique inverse ().*
 
 1. Clonez le code dans un dossier sur votre ordinateur local.
 
@@ -51,13 +51,13 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
 
 3. Restaurer les packages et générez la solution.
 
-    ```console
+    ```dotnetcli
     dotnet build
     ```
 
 4. Exécuter l’application.
 
-    ```console
+    ```dotnetcli
     dotnet run
     ```
 
@@ -73,7 +73,7 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
 
 Pour déployer l’application, vous devez créer un Service d’application [application Web](/azure/app-service/app-service-web-overview). Après la création de l’application Web, vous allez déployer à partir de votre ordinateur local à l’aide de Git à celle-ci.
 
-1. Se connecter à la [Azure Cloud Shell](https://shell.azure.com/bash). Remarque : Lorsque vous connectez pour la première fois, Cloud Shell vous invite à créer un compte de stockage pour les fichiers de configuration. Acceptez les valeurs par défaut ou fournissez un nom unique.
+1. Se connecter à la [Azure Cloud Shell](https://shell.azure.com/bash). Remarque : Quand vous vous connectez pour la première fois, Cloud Shell vous invite à créer un compte de stockage pour les fichiers de configuration. Acceptez les valeurs par défaut ou fournissez un nom unique.
 
 2. Utiliser Cloud Shell pour les étapes suivantes.
 
