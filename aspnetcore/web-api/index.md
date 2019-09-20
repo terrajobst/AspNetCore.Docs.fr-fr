@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2019
 uid: web-api/index
-ms.openlocfilehash: 6e1868690a2c384307a23c89467505d3ed8916db
-ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
+ms.openlocfilehash: aab9b848eb6e69055b019c9253c716898e9847e2
+ms.sourcegitcommit: a11f09c10ef3d4eeab7ae9ce993e7f30427741c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985460"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149341"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -141,7 +141,7 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>Exigence du routage d’attribut
 
-L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par exemple :
+L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -159,7 +159,7 @@ Les actions sont inaccessibles par le biais de [routes conventionnelles](xref:mv
 
 ::: moniker-end
 
-## <a name="automatic-http-400-responses"></a>Réponses HTTP 400 automatiques
+### <a name="automatic-http-400-responses"></a>Réponses HTTP 400 automatiques
 
 Grâce à l’attribut `[ApiController]`, les erreurs de validation de modèles déclenchent automatiquement une réponse HTTP 400. Ainsi, le code suivant est inutile dans une méthode d’action :
 
@@ -172,7 +172,7 @@ if (!ModelState.IsValid)
 
 ASP.net Core MVC utilise le <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter> filtre d’action pour effectuer la vérification précédente.
 
-### <a name="default-badrequest-response"></a>Réponse BadRequest par défaut 
+### <a name="default-badrequest-response"></a>Réponse BadRequest par défaut
 
 Avec une version de compatibilité de 2,1, le type de réponse par défaut pour une réponse <xref:Microsoft.AspNetCore.Mvc.SerializableError>http 400 est. Le corps de la requête suivant est un exemple de type sérialisé :
 
@@ -207,36 +207,6 @@ Avec une version de compatibilité 2,2 ou ultérieure, le type de réponse par d
 * Fournit un format lisible par l’ordinateur pour spécifier les erreurs dans les réponses de l’API Web.
 * Est conforme à la [spécification RFC 7807](https://tools.ietf.org/html/rfc7807).
 
-Pour modifier le type de `SerializableError`réponse par défaut, appliquez les modifications en surbrillance dans : `Startup.ConfigureServices`
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_DisableProblemDetailsInvalidModelStateResponseFactory&highlight=4-13)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_DisableProblemDetailsInvalidModelStateResponseFactory&highlight=5-14)]
-
-::: moniker-end
-
-### <a name="customize-badrequest-response"></a>Personnaliser la réponse BadRequest
-
-Pour personnaliser la réponse qui résulte d’une erreur de validation, utilisez <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory>. Par exemple :
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_ConfigureBadRequestResponse&highlight=4-20)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureBadRequestResponse&highlight=5-21)]
-
 ::: moniker-end
 
 ### <a name="log-automatic-400-responses"></a>Consigner automatiquement 400 réponses
@@ -265,9 +235,9 @@ Un attribut de source de liaison définit l’emplacement auquel se trouve la va
 
 |Attribut|Source de liaison |
 |---------|---------|
-|[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la demande |
+|[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la requête |
 |[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Données de formulaire dans le corps de la demande |
-|[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de requête |
+|[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de demande |
 |[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Paramètre de la chaîne de requête de la demande |
 |[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Données d’itinéraire à partir de la demande actuelle |
 |[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Service de demande injecté comme paramètre d’action |
@@ -283,7 +253,7 @@ Dans l’exemple suivant, l’attribut `[FromQuery]` indique que la valeur du pa
 
 L’attribut `[ApiController]` applique des règles d’inférence pour les sources de données par défaut des paramètres d’action. Ces règles vous évitent d’avoir à identifier les sources de liaison manuellement en appliquant des attributs aux paramètres d’action. Les règles d’inférence de source de liaison se comportent comme suit :
 
-* `[FromBody]` est déduit des paramètres de type complexe. Une exception à cette règle d’inférence `[FromBody]` est tout type complexe intégré ayant une signification spéciale, comme <xref:Microsoft.AspNetCore.Http.IFormCollection> et <xref:System.Threading.CancellationToken>. Le code de l’inférence de la source de liaison ignore ces types spéciaux. 
+* `[FromBody]` est déduit des paramètres de type complexe. Une exception à cette règle d’inférence `[FromBody]` est tout type complexe intégré ayant une signification spéciale, comme <xref:Microsoft.AspNetCore.Http.IFormCollection> et <xref:System.Threading.CancellationToken>. Le code de l’inférence de la source de liaison ignore ces types spéciaux.
 * `[FromForm]` est déduit pour les paramètres d’action de type <xref:Microsoft.AspNetCore.Http.IFormFile> et <xref:Microsoft.AspNetCore.Http.IFormFileCollection>. Il n’est pas déduit pour les types simples ou définis par l’utilisateur.
 * `[FromRoute]` est déduit pour tout nom de paramètre d’action correspondant à un paramètre dans le modèle d’itinéraire. Quand plus d’un itinéraire correspond à un paramètre d’action, toute valeur d’itinéraire est considérée comme `[FromRoute]`.
 * `[FromQuery]` est déduit pour tous les autres paramètres d’action.
@@ -364,7 +334,7 @@ Prenons le code suivant dans une action de contrôleur :
 
 [!code-csharp[](index/samples/2.x/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-La `NotFound` méthode génère un code d’état HTTP 404 avec `ProblemDetails` un corps. Par exemple :
+La `NotFound` méthode génère un code d’état HTTP 404 avec `ProblemDetails` un corps. Par exemple :
 
 ```json
 {
@@ -374,22 +344,6 @@ La `NotFound` méthode génère un code d’état HTTP 404 avec `ProblemDetails`
   traceId: "0HLHLV31KRN83:00000001"
 }
 ```
-
-### <a name="customize-problemdetails-response"></a>Personnaliser la réponse ProblemDetails
-
-Utilisez la propriété <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping*> pour configurer le contenu de la réponse `ProblemDetails`. Par exemple, le code suivant met à jour la propriété `type` pour les réponses 404 :
-
-::: moniker range=">= aspnetcore-3.0"
-
-[!code-csharp[](index/samples/3.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=8-9)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.2"
-
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
-
-::: moniker-end
 
 ### <a name="disable-problemdetails-response"></a>Désactiver la réponse ProblemDetails
 
@@ -407,9 +361,10 @@ La création automatique d’une `ProblemDetails` instance est désactivée <xre
 
 ::: moniker-end
 
-## <a name="additional-resources"></a>Ressources supplémentaires 
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:web-api/action-return-types>
+* <xref:web-api/handle-errors>
 * <xref:web-api/advanced/custom-formatters>
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
