@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/06/2019
 uid: blazor/dependency-injection
-ms.openlocfilehash: 6c01fdc390cc9150cf81673c717b73c4b10c31f1
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 074d7a669c900eb242c8329147b28d1c50652915
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963977"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168086"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core l’injection de dépendances éblouissantes
 
 Par [Rainer Stropek](https://www.timecockpit.com)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Éblouissant prend en charge l' [injection de dépendances (di)](xref:fundamentals/dependency-injection). Les applications peuvent utiliser des services intégrés en les injectant dans des composants. Les applications peuvent également définir et inscrire des services personnalisés et les rendre disponibles dans toute l’application via DI.
 
@@ -29,7 +31,7 @@ La méthode DI est une technique permettant d’accéder à des services configu
 
 Les services par défaut sont automatiquement ajoutés à la collection de services de l’application.
 
-| de diffusion en continu | Durée de vie | Description |
+| Service | Durée de vie | Description |
 | ------- | -------- | ----------- |
 | <xref:System.Net.Http.HttpClient> | Singleton | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI. Notez que cette instance de `HttpClient` utilise le navigateur pour gérer le trafic HTTP en arrière-plan. [Httpclient. BaseAddress](xref:System.Net.Http.HttpClient.BaseAddress) est automatiquement défini sur le préfixe URI de base de l’application. Pour plus d'informations, consultez <xref:blazor/call-web-api>. |
 | `IJSRuntime` | Singleton | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d'informations, consultez <xref:blazor/javascript-interop>. |

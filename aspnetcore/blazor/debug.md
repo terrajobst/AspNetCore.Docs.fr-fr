@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/22/2019
 uid: blazor/debug
-ms.openlocfilehash: e9477e504d32fd1dd5d6c87392386d1131f46e9f
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: ebdd015a8d1138d98d8fcd1b1f18b8053248e2bd
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963993"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168120"
 ---
 # <a name="debug-aspnet-core-blazor"></a>ASP.NET Core éblouissant de débogage
 
 [Daniel Roth](https://github.com/danroth27)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Une prise en charge *précoce* pour le débogage des applications webassembly éblouissantes s’exécutant sur webassembly dans Chrome.
 
@@ -58,7 +60,7 @@ Le débogage requiert l’un des navigateurs suivants :
    * `Shift+Alt+D`sur Windows/Linux
    * `Shift+Cmd+D`sur macOS
 
-## <a name="enable-remote-debugging"></a>Activer le débogage à distance
+## <a name="enable-remote-debugging"></a>Activer le débogage distant
 
 Si le débogage distant est désactivé, une page d’erreur **Impossible de trouver un onglet de navigateur pouvant être débogué** est générée par chrome. La page d’erreur contient des instructions pour l’exécution de chrome avec le port de débogage ouvert, afin que le proxy de débogage éblouissant puisse se connecter à l’application. *Fermez toutes les instances chrome* et redémarrez Chrome comme indiqué.
 

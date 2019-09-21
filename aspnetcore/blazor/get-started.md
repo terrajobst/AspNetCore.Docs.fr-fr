@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/get-started
-ms.openlocfilehash: 58773ae6c605ddc7a3d85fb97eeae40d0bbe15fb
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b1d0b1a99bac202567e44ae11986c57ab5891e43
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080523"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168101"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core éblouissante
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Prise en main de éblouissant :
 
@@ -121,8 +123,8 @@ Prise en main de éblouissant :
 
 Plusieurs pages sont disponibles à partir des onglets de la barre latérale :
 
-* Dossier de base
-* Compteur
+* Accueil
+* Counter
 * Extraire les données
 
 Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page Web nécessite normalement l’écriture de JavaScript, mais les composants C#Razor offrent une meilleure approche à l’aide de.

@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: c9b57e2a987ae4a49f0965386ad080c98803d8b0
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 51fb1f9984878fceee0b207d02a02622c3ba191d
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080648"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168350"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 ASP.NET Core prend en charge la configuration et la gestion de la sécurité dans les applications Blazor.
 
@@ -27,7 +29,7 @@ Les scénarios de sécurité diffèrent entre le serveur éblouissant et les app
 
 Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentification
 
 Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.
 
@@ -236,7 +238,7 @@ Configurez `Task<AuthenticationState>` le paramètre en cascade à `AuthorizeRou
 </Router>
 ```
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autorisation
 
 Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* sont appliquées pour contrôler ce que l’utilisateur peut faire.
 

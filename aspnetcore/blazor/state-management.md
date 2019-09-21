@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: blazor/state-management
-ms.openlocfilehash: e1c3b030f466a820d49c36839d7ee26bb7cea4d3
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 2acb91785e8c5fc34070d5428b89119667945753
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70963852"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168205"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core la gestion de l’État éblouissant
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Le serveur éblouissant est un Framework d’applications avec état. La plupart du temps, l’application maintient une connexion continue au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
 

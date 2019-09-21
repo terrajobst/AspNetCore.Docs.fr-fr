@@ -7,22 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/07/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 6e225e490e54e44877fa27573ff9b513c8dcd9a3
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 47c546a086588919e4458d6aeeb39453cbc754e0
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964028"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168141"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 
 Par [Daniel Roth](https://github.com/danroth27)
 
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+
 Éblouissant est un Framework Web conçu pour s’exécuter côté client dans le navigateur sur un Runtime .NET basé sur [Webassembly](https://webassembly.org/)(*éblouissant*) ou côté serveur dans ASP.net Core (*serveur éblouissant*). Quel que soit le modèle d’hébergement, les modèles d’application et de composant *sont les mêmes*.
 
 Pour créer un projet pour les modèles d’hébergement décrits dans cet article, <xref:blazor/get-started>consultez.
 
-## <a name="blazor-webassembly"></a>Webassembly éblouissant
+## <a name="blazor-webassembly"></a>WebAssembly Blazor
 
 Le modèle d’hébergement principal pour éblouissant s’exécute côté client dans le navigateur sur webassembly. L’application Blazor, ses dépendances et le runtime .NET sont téléchargés sur le navigateur. L’application est exécutée directement sur le thread d’interface utilisateur du navigateur. Les mises à jour de l’interface utilisateur et la gestion des événements se produisent dans le même processus. Les ressources de l’application sont déployées en tant que fichiers statiques sur un serveur Web ou un service qui prend en charge le contenu statique sur les clients.
 
@@ -51,7 +53,7 @@ L’hébergement d’un webassembly éblouissant présente des inconvénients :
 * La taille du téléchargement est supérieure, et les applications prennent plus de temps à se charger.
 * Le Runtime .NET et la prise en charge des outils sont moins matures. Par exemple, des limitations existent dans la prise en charge de [.NET standard](/dotnet/standard/net-standard) et le débogage.
 
-## <a name="blazor-server"></a>Serveur éblouissant
+## <a name="blazor-server"></a>Serveur Blazor
 
 Avec le modèle d’hébergement de serveur éblouissant, l’application est exécutée sur le serveur à partir d’une application ASP.NET Core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés par le biais d’une connexion [SignalR](xref:signalr/introduction).
 

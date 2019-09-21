@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 uid: blazor/components
-ms.openlocfilehash: 521421ac413218c1f04dd9feade2a49dc1f7b918
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 55b40bc640715bf4052fa99ed68f63250b67e8d1
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080535"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168222"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -450,7 +450,7 @@ Pour certains événements, les types d’arguments d’événement sont autoris
 
 Les éléments [EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web) pris en charge sont présentés dans le tableau suivant.
 
-| Événement | Classe |
+| événement | Classe |
 | ----- | ----- |
 | Presse-papiers        | `ClipboardEventArgs` |
 | Déplacez             | `DragEventArgs`et contiennent des`DataTransferItem` données d’élément glissées. &ndash; `DataTransfer` |
@@ -1128,7 +1128,7 @@ Vous pouvez également spécifier l' `Context` attribut sur l’élément de com
 
 ### <a name="generic-typed-components"></a>Composants génériques
 
-Les composants basés sur un modèle sont souvent typés de façon générique. Par exemple, un composant `ListViewTemplate` générique peut être utilisé pour restituer `IEnumerable<T>` des valeurs. Pour définir un composant générique, utilisez la `@typeparam` directive pour spécifier les paramètres de type :
+Les composants basés sur un modèle sont souvent typés de façon générique. Par exemple, un composant `ListViewTemplate` générique peut être utilisé pour restituer `IEnumerable<T>` des valeurs. Pour définir un composant générique, utilisez la [@typeparam](xref:mvc/views/razor#typeparam) directive pour spécifier les paramètres de type :
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Components/ListViewTemplate.razor)]
 

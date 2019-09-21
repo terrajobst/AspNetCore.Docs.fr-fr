@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2019
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 03be18e7ee6ca8103e1a666da9e693ff67267d83
-ms.sourcegitcommit: 0b9e767a09beaaaa4301915cdda9ef69daaf3ff2
-ms.translationtype: HT
+ms.openlocfilehash: cf017ec6d6de3c5848b866b0c29781f283c5de44
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538629"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71167986"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
 
 Par [Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor effectue une liaison de [langage intermédiaire (IL)](/dotnet/standard/managed-code#intermediate-language--execution) pendant un build de mise en production pour supprimer un langage intermédiaire inutile des assemblys de sortie de l’application.
 

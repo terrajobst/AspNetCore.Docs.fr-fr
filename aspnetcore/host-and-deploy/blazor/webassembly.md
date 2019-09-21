@@ -7,16 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: f6c143cc17d08e0cada67ec831e090661c4fed56
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: b7de145ae9924dd405e67f60fc93d81549834164
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081444"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168233"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer ASP.NET Core éblouissant webassembly
 
 Par [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com) et [Daniel Roth](https://github.com/danroth27)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Avec le [modèle d’hébergement de Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly):
 
@@ -141,7 +143,7 @@ Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestion
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:test/troubleshoot-azure-iis>.
 
-### <a name="azure-storage"></a>Stockage Azure
+### <a name="azure-storage"></a>Azure Storage
 
 L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l’hébergement d’applications éblouissantes sans serveur. Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
 

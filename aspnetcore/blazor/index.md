@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc, seoapril2019
 ms.date: 09/05/2019
 uid: blazor/index
-ms.openlocfilehash: 767ec8f106bebb92cf13a10eb63fab4905715d3d
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 378892efafa6b979d7f92a5e559b2dc8bb12295d
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964098"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168256"
 ---
 # <a name="introduction-to-blazor"></a>Introduction à Blazor
 
@@ -101,7 +101,9 @@ Quand ce composant est utilisé dans l’application, IntelliSense dans [Visual 
 
 Les composants s’affichent dans une représentation en mémoire du DOM (Document Object Model) du navigateur appelé *arborescence de rendu*, utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.
 
-## <a name="blazor-webassembly"></a>Webassembly éblouissant
+## <a name="blazor-webassembly"></a>WebAssembly Blazor
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Le webassembly éblouissant est une infrastructure d’application à page unique pour la création d’applications Web interactives côté client avec .NET. Le webassembly éblouissant utilise des normes Web ouvertes sans plug-ins ou code transpilation et fonctionne dans tous les navigateurs Web modernes, y compris les navigateurs mobiles.
 
@@ -123,7 +125,7 @@ La taille de l’application publiée, sa *taille de charge utile*, est un facte
 * Réponses HTTP compressées.
 * Le runtime .NET et les assemblys sont mis en cache dans le navigateur.
 
-## <a name="blazor-server"></a>Serveur éblouissant
+## <a name="blazor-server"></a>Serveur Blazor
 
 Blazor dissocie la logique de rendu de composant de la manière dont les mises à jour de l’interface utilisateur sont appliquées. Le serveur éblouissant fournit la prise en charge de l’hébergement des composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion [SignalR](xref:signalr/introduction).
 
