@@ -32,7 +32,6 @@ Où `JSRuntime.InvokeAsync` est appelé, `ElementRef` est utilisé uniquement da
 @page "/prerendered-interop"
 @using Microsoft.AspNetCore.Components
 @using Microsoft.JSInterop
-@inject IComponentContext ComponentContext
 @inject IJSRuntime JSRuntime
 
 <p>
@@ -59,32 +58,5 @@ Où `JSRuntime.InvokeAsync` est appelé, `ElementRef` est utilisé uniquement da
             StateHasChanged();
         }
     }
-}
-```
-
-Pour restituer de façon conditionnelle un contenu différent selon que l’application est actuellement prérendu du contenu, `IsConnected` utilisez la propriété `IComponentContext` sur le service. Pour les applications serveur éblouissantes `IsConnected` , retourne `true` uniquement s’il existe une connexion active au client. Elle retourne `true` toujours dans les applications webassembly éblouissantes.
-
-```cshtml
-@page "/isconnected-example"
-@using Microsoft.AspNetCore.Components.Services
-@inject IComponentContext ComponentContext
-
-<h1>IsConnected Example</h1>
-
-<p>
-    Current state:
-    <strong id="connected-state">
-        @(ComponentContext.IsConnected ? "connected" : "not connected")
-    </strong>
-</p>
-
-<p>
-    Clicks:
-    <strong id="count">@count</strong>
-    <button id="increment-count" @onclick="@(() => count++)">Click me</button>
-</p>
-
-@code {
-    private int count;
 }
 ```

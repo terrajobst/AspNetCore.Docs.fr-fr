@@ -5,14 +5,14 @@ description: Découvrez comment créer des composants de disposition réutilisab
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 09/21/2019
 uid: blazor/layouts
-ms.openlocfilehash: 05a38c10e18407d50422192ab1ddf3ff4b0f3a5b
-ms.sourcegitcommit: 43c6335b5859282f64d66a7696c5935a2bcdf966
+ms.openlocfilehash: 6ae795f720cd2cc1010ebec46bcee877b31d20c6
+ms.sourcegitcommit: 04ce94b3c1b01d167f30eed60c1c95446dfe759d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2019
-ms.locfileid: "70800364"
+ms.lasthandoff: 09/21/2019
+ms.locfileid: "71176425"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core les dispositions éblouissantes
 
@@ -45,6 +45,8 @@ Pour fournir une disposition par défaut `NotFound` pour le contenu, `LayoutView
 
 Pour plus d’informations sur `Router` le composant, <xref:blazor/routing>consultez.
 
+La spécification de la disposition comme disposition par défaut dans le routeur est une pratique utile, car elle peut être remplacée par composant ou par dossier. Préférez utiliser le routeur pour définir la disposition par défaut de l’application, car il s’agit de la technique la plus générale.
+
 ## <a name="specify-a-layout-in-a-component"></a>Spécifier une disposition dans un composant
 
 Utilisez la directive `@layout` Razor pour appliquer une disposition à un composant. Le compilateur convertit `@layout` `LayoutAttribute`en, qui est appliqué à la classe de composant.
@@ -52,6 +54,8 @@ Utilisez la directive `@layout` Razor pour appliquer une disposition à un compo
 Le contenu du composant suivant `MasterList` est inséré dans le `MasterLayout` à la position de `@Body`:
 
 [!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+
+La spécification de la disposition directement dans un composant remplace un ensemble de *dispositions par défaut* dans le routeur `@layout` ou une directive importée à partir de *_Imports. Razor*.
 
 ## <a name="centralized-layout-selection"></a>Sélection de la disposition centralisée
 
@@ -66,6 +70,8 @@ Le fichier *_Imports. Razor* suivant importe :
 [!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 Le fichier *_Imports. Razor* est semblable au [fichier _ViewImports. cshtml pour les vues et les pages Razor,](xref:mvc/views/layout#importing-shared-directives) mais appliqué spécifiquement aux fichiers du composant Razor.
+
+La spécification d’une disposition dans *_Imports. Razor* remplace une disposition spécifiée comme *disposition par défaut*du routeur.
 
 ## <a name="nested-layouts"></a>Dispositions imbriquées
 
