@@ -4,20 +4,20 @@ author: rick-anderson
 description: Bref tutoriel qui crée et exécute une application Hello World de base à l’aide d’ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/15/2019
+ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: d1edf91f1b37ba2b69732471dc6c1f306ac5ad24
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 0f05ab120d64832a4bc2fd70921efc7238ee9eac
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081122"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187056"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
 Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core pour créer et exécuter une application web ASP.NET Core.
 
-Vous découvrirez comment effectuer les actions suivantes :
+Vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
@@ -31,7 +31,7 @@ Vous découvrirez comment effectuer les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [SDK .NET Core 2.2](https://www.microsoft.com/net/download/all)
+[!INCLUDE[](~/includes/3.0-SDK.md)]
 
 ## <a name="create-a-web-app-project"></a>Créer un projet application web
 
@@ -41,11 +41,16 @@ Ouvrez un interpréteur de commandes, puis entrez la commande suivante :
 dotnet new webapp -o aspnetcoreapp
 ```
 
+La commande précédente :
+
+* Crée une application Web.  
+* Le `-o` paramètre crée un répertoire nommé *aspnetcoreapp* avec les fichiers sources de l’application.
+
 ### <a name="trust-the-development-certificate"></a>Approuver le certificat de développement
 
 Approuvez le certificat de développement HTTPS :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -79,9 +84,9 @@ Consultez la documentation de votre distribution Linux pour savoir comment appro
 
 Pour plus d’informations, consultez [Approuver le certificat de développement ASP.NET Core HTTPS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)
 
-## <a name="run-the-app"></a>Exécution de l'application
+## <a name="run-the-app"></a>Exécuter l'application
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 cd aspnetcoreapp
@@ -100,7 +105,7 @@ Accédez à [https://localhost:5001](https://localhost:5001) et vérifiez que le
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce tutoriel, vous avez appris à :
+Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.

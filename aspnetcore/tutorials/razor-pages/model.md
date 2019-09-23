@@ -3,14 +3,14 @@ title: Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ajouter des classes pour gérer des films dans une base de données à l’aide d’Entity Framework Core (EF Core).
 ms.author: riande
-ms.date: 07/22/2019
+ms.date: 9/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 18cf9aea930a7989bb844bc6c40dfa1ce84b7b4d
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: dcbcf37dfd95d784ebe249ec6e9e4184a8853d3d
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082600"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187184"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -99,16 +99,16 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
+   dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Pour Windows 10** : Exécutez la commande suivante :
+* **Pour Windows 10** : Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Pour macOS et Linux** : Exécutez la commande suivante :
+* **Pour macOS et Linux** : Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -122,10 +122,10 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
-   dotnet tool install --global dotnet-aspnet-codegenerator --version 3.0.0-*
+   dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -251,7 +251,7 @@ Vous avez manqué [l’étape des migrations](#pmc).
 
 * Testez le lien **Créer**.
 
-  ![Create page](model/_static/conan.png)
+  ![Créer une page](model/_static/conan.png)
 
   > [!NOTE]
   > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que « Anglais » qui utilisent une virgule (« , ») comme décimale et des formats de date autres que le format « Anglais (États-Unis »), l’application doit être localisée. Pour obtenir des instructions sur la localisation, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).
@@ -359,13 +359,13 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Pour Windows 10** : Exécutez la commande suivante :
+* **Pour Windows 10** : Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Pour macOS et Linux** : Exécutez la commande suivante :
+* **Pour macOS et Linux** : Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -382,7 +382,7 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -496,7 +496,7 @@ Vous avez manqué [l’étape des migrations](#pmc).
 
 * Testez le lien **Créer**.
 
-  ![Create page](model/_static/conan.png)
+  ![Créer une page](model/_static/conan.png)
 
   > [!NOTE]
   > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que « Anglais » qui utilisent une virgule (« , ») comme décimale et des formats de date autres que le format « Anglais (États-Unis »), l’application doit être localisée. Pour obtenir des instructions sur la localisation, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420).

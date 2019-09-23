@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez commencer à utiliser la fonctionna
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 8a4929a905c6a488231d7d29e1101f6fd887477f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: efcf62d56a7b4cee4780d5f0475b4ef363fe1897
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082084"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187074"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
 
@@ -45,7 +45,7 @@ Drop-Database
 * Exécutez la commande suivante dans une invite de commandes pour installer les outils CLI EF :
 
   ```dotnetcli
-  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet tool install --global dotnet-ef
   ```
 
 * Dans l’invite de commandes, accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
@@ -306,7 +306,7 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-Solution : Exécutez `dotnet ef database update`
+Solution : Exécutez `dotnet ef database update`.
 
 ### <a name="additional-resources"></a>Ressources supplémentaires
 

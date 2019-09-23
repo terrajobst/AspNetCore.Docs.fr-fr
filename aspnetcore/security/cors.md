@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: a34b77ad799a00707048c923b82b48774ce91682
-ms.sourcegitcommit: b1e480e1736b0fe0e4d8dce4a4cf5c8e47fc2101
+ms.openlocfilehash: a02b3497684979c1a9e792437f9f1a4c467600f0
+ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71108073"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71187255"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les requêtes Cross-Origin (CORS) dans ASP.NET Core
 
@@ -161,7 +161,7 @@ Utilisez `[EnableCors]` pour spécifier la stratégie par défaut `[EnableCors("
 L' `[EnableCors]` attribut peut être appliqué aux éléments suivants :
 
 * Page Razor`PageModel`
-* Controller
+* Contrôleur
 * Méthode d’action du contrôleur
 
 Vous pouvez appliquer différentes stratégies à Controller/page-Model/action avec l' `[EnableCors]` attribut. Lorsque l' `[EnableCors]` attribut est appliqué à une méthode Controllers/Model-Model/action et que cors est activé dans l’intergiciel (middleware), les deux stratégies sont appliquées. Nous vous recommandons de combiner les stratégies. Utilisez l' `[EnableCors]` attribut ou l’intergiciel (middleware), pas les deux dans la même application.
@@ -217,7 +217,7 @@ Cette section décrit les différentes options qui peuvent être définies dans 
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*>&ndash; Définit la<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.IsOriginAllowed*> propriété de la stratégie pour qu’elle soit une fonction qui permet aux origines de correspondre à un domaine générique configuré lors de l’évaluation si l’origine est autorisée.
 
-[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-104&highlight=4)]
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=100-105&highlight=4-5)]
 
 ::: moniker-end
 
@@ -467,7 +467,7 @@ Si la réponse n’inclut pas `Access-Control-Allow-Origin` l’en-tête, la dem
 Pour tester CORS :
 
 1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
-1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Par exemple :
+1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Par exemple :
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
