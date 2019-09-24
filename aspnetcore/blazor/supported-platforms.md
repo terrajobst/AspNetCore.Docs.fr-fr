@@ -5,14 +5,14 @@ description: En savoir plus sur les plateformes prises en charge pour ASP.NET Co
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2019
+ms.date: 09/23/2019
 uid: blazor/supported-platforms
-ms.openlocfilehash: 8730417f772c84ebcccc449a5826126aa5c64abb
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: b769ee175cde7c9a613d7fb70949de129ca428d3
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168171"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211566"
 ---
 # <a name="aspnet-core-blazor-supported-platforms"></a>Plates-formes ASP.NET Core éblouissantes prises en charge
 

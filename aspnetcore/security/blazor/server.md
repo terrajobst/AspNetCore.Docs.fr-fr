@@ -5,14 +5,14 @@ description: Découvrez comment limiter les menaces de sécurité pour les appli
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 09/23/2019
 uid: security/blazor/server
-ms.openlocfilehash: 72788980ff7c7bd56f55e4e84d820a3684f7275e
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 706f504738d9c6e5af3c368c382424f2e206bcbf
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964267"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211711"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>Sécuriser les applications de serveur ASP.NET Core éblouissantes
 
@@ -41,7 +41,7 @@ Les attaques par déni de service (DoS) cherchent généralement à épuiser les
 
 Les ressources externes à l’infrastructure éblouissant, telles que les bases de données et les descripteurs de fichiers (utilisées pour lire et écrire des fichiers), peuvent également rencontrer une insuffisance des ressources. Pour plus d'informations, consultez <xref:performance/performance-best-practices>.
 
-### <a name="cpu"></a>UC
+### <a name="cpu"></a>Processeur
 
 L’épuisement du processeur peut se produire lorsqu’un ou plusieurs clients forcent le serveur à effectuer des tâches intensives du processeur.
 
@@ -91,7 +91,7 @@ Par défaut, le nombre de connexions par utilisateur n’est pas limité pour un
 
 Les attaques par déni de service (DoS) impliquent un client qui oblige le serveur à épuiser une ou plusieurs de ses ressources, ce qui rend l’application indisponible. Les applications de serveur éblouissantes incluent certaines limites par défaut et s’appuient sur d’autres ASP.NET Core et les limites Signalr pour se protéger contre les attaques par déni de session :
 
-| Limite de l’application du serveur éblouissant                            | Description | Default |
+| Limite de l’application du serveur éblouissant                            | Description | Par défaut |
 | ------------------------------------------------------- | ----------- | ------- |
 | `CircuitOptions.DisconnectedCircuitMaxRetained`         | Nombre maximal de circuits déconnectés qu’un serveur donné détient en mémoire à la fois. | 100 |
 | `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | Durée maximale pendant laquelle un circuit déconnecté est maintenu en mémoire avant d’être détruit. | 3 minutes |
@@ -99,7 +99,7 @@ Les attaques par déni de service (DoS) impliquent un client qui oblige le serve
 | `CircuitOptions.MaxBufferedUnacknowledgedRenderBatches` | Nombre maximal de lots de rendu sans accusé de réception le serveur conserve en mémoire par circuit à un moment donné pour prendre en charge une reconnexion fiable. Après avoir atteint la limite, le serveur cesse de produire de nouveaux lots de rendu jusqu’à ce qu’un ou plusieurs lots aient été reconnus par le client. | 10 |
 
 
-| Signalr et limite de ASP.NET Core             | Description | Default |
+| Signalr et limite de ASP.NET Core             | Description | Par défaut |
 | ------------------------------------------ | ----------- | ------- |
 | `CircuitOptions.MaximumReceiveMessageSize` | Taille de message pour un message individuel. | 32 Ko |
 
@@ -141,11 +141,11 @@ N’approuvez pas les appels de JavaScript aux méthodes .NET. Quand une méthod
   * Évitez de passer des données fournies par l’utilisateur dans des paramètres à des appels JavaScript. Si le passage de données dans des paramètres est absolument requis, assurez-vous que le code JavaScript gère le passage des données sans introduire de vulnérabilités [de script entre sites (XSS)](#cross-site-scripting-xss) . Par exemple, n’écrivez pas les données fournies par l’utilisateur dans le document Object Model (DOM) `innerHTML` en définissant la propriété d’un élément. Envisagez d’utiliser la stratégie de sécurité de `eval` [contenu (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) pour désactiver et d’autres primitives JavaScript non sûres.
 * Évitez d’implémenter la distribution personnalisée des appels .NET en plus de l’implémentation de la distribution du Framework. L’exposition de méthodes .NET au navigateur est un scénario avancé, qui n’est pas recommandé pour le développement général de éblouissant.
 
-### <a name="events"></a>Events
+### <a name="events"></a>Événements
 
 Les événements fournissent un point d’entrée à une application de serveur éblouissante. Les mêmes règles de protection des points de terminaison dans les applications Web s’appliquent à la gestion des événements dans les applications serveur éblouissantes. Un client malveillant peut envoyer toutes les données qu’il souhaite envoyer en tant que charge utile d’un événement.
 
-Par exemple :
+Par exemple :
 
 * Un événement de modification pour `<select>` un peut envoyer une valeur qui ne se trouve pas dans les options que l’application a présentées au client.
 * Un `<input>` peut envoyer des données texte au serveur, en ignorant la validation côté client.

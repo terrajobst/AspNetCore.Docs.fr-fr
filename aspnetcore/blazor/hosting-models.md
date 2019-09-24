@@ -5,14 +5,14 @@ description: Comprendre les modèles d’hébergement de l’assembly et du serv
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/07/2019
+ms.date: 09/23/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 47c546a086588919e4458d6aeeb39453cbc754e0
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: 766b52df82f75ea1223e20d8471faa5732311f91
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168141"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71207232"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 

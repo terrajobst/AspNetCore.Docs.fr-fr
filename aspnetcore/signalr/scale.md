@@ -1,88 +1,100 @@
 ---
-title: Hébergement d’ASP.NET Core SignalR production et de mise à l’échelle
+title: ASP.NET Core de l’hébergement et de la mise à l’échelle de production Signalr
 author: bradygaster
-description: Découvrez comment éviter les performances et la mise à l’échelle des problèmes dans les applications qui utilisent ASP.NET Core SignalR.
+description: Découvrez comment éviter les problèmes de performances et de mise à l’échelle dans les applications qui utilisent ASP.NET Core Signalr.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/scale
-ms.openlocfilehash: 4ac4509acc89d0091a3757c7cfbc9981614f29ad
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 26b02cffdd472fc21dc4aee7052a0ba939b82c0f
+ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64895076"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211736"
 ---
-# <a name="aspnet-core-signalr-hosting-and-scaling"></a>Hébergement de ASP.NET Core SignalR et de mise à l’échelle
+# <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core de l’hébergement et de la mise à l’échelle Signalr
 
-Par [Andrew Stanton-Nurse](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster), et [Nowak](https://github.com/tdykstra),
+Par [Andrew Stanton-infirmière](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster)et [Tom Dykstra](https://github.com/tdykstra),
 
-Cet article explique l’hébergement et de mise à l’échelle des considérations pour les applications à trafic élevé qui utilisent ASP.NET Core SignalR.
+Cet article explique les considérations relatives à l’hébergement et à la mise à l’échelle pour les applications à fort trafic qui utilisent ASP.NET Core Signalr.
+
+## <a name="sticky-sessions"></a>Sessions rémanentes
+
+Signalr exige que toutes les requêtes HTTP pour une connexion spécifique soient gérées par le même processus serveur. Lorsque Signalr est en cours d’exécution sur une batterie de serveurs (plusieurs serveurs), vous devez utiliser des « sessions rémanentes ». Les « sessions rémanentes » sont également appelées « affinité de session » par certains équilibrages de charge. Azure App Service utilise [application Request Routing](https://docs.microsoft.com/iis/extensions/planning-for-arr/application-request-routing-version-2-overview) (arr) pour acheminer les demandes. L’activation du paramètre « affinité ARR » dans votre Azure App Service permet d’activer les « sessions rémanentes ». Les sessions rémanentes ne sont pas nécessaires dans les cas suivants :
+
+1. En cas d’hébergement sur un seul serveur, dans un seul processus.
+1. Lors de l’utilisation du service Azure Signalr.
+1. Lorsque tous les clients sont configurés pour utiliser **uniquement** les WebSockets, **et** que le [paramètre SkipNegotiation](xref:signalr/configuration#configure-additional-options) est activé dans la configuration du client.
+
+Dans toutes les autres circonstances (y compris lorsque le fond de panier ReDim est utilisé), l’environnement du serveur doit être configuré pour les sessions rémanentes.
+
+Pour obtenir des conseils sur la configuration de Azure App Service pour Signalr, consultez <xref:signalr/publish-to-azure-web-app>.
 
 ## <a name="tcp-connection-resources"></a>Ressources de connexion TCP
 
-Le nombre de connexions TCP simultanées prenant en charge un serveur web est limité. Les clients HTTP standards utilisent *éphémère* connexions. Ces connexions peuvent être fermées lorsque le client devient inactif et rouverts ultérieurement. En revanche, une connexion SignalR est *persistant*. Les connexions SignalR restent ouverte, même lorsque le client est inactif. Dans une application à trafic élevé qui sert de nombreux clients, ces connexions persistantes peuvent entraîner des serveurs atteint son nombre maximal de connexions.
+Le nombre de connexions TCP simultanées qu’un serveur Web peut prendre en charge est limité. Les clients HTTP standard utilisent des connexions *éphémères* . Ces connexions peuvent être fermées lorsque le client devient inactif et rouvert ultérieurement. En revanche, une connexion Signalr est *persistante*. Les connexions signalr restent ouvertes même lorsque le client devient inactif. Dans une application à trafic élevé qui dessert de nombreux clients, ces connexions persistantes peuvent entraîner l’atteinte du nombre maximal de connexions des serveurs.
 
-Connexions persistantes également consomment mémoire supplémentaire, pour effectuer le suivi de chaque connexion.
+Les connexions persistantes consomment également de la mémoire supplémentaire pour effectuer le suivi de chaque connexion.
 
-Une utilisation intensive des ressources liées à la connexion par SignalR peut affecter d’autres applications web qui sont hébergées sur le même serveur. Lorsque SignalR s’ouvre et le maintient les connexions TCP disponibles dernière, autres applications web sur le même serveur n’ont également aucun davantage de connexions à leur disposition.
+L’utilisation intensive des ressources liées à la connexion par Signalr peut affecter les autres applications Web qui sont hébergées sur le même serveur. Lorsque Signalr s’ouvre et contient les dernières connexions TCP disponibles, les autres applications Web sur le même serveur n’ont pas non plus de connexions disponibles.
 
-Si un serveur manque de connexions, vous verrez les erreurs de socket aléatoire et erreurs de réinitialisation de connexion. Exemple :
+Si un serveur est à court de connexions, vous verrez des erreurs de socket aléatoires et des erreurs de réinitialisation de la connexion. Par exemple :
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
 ```
 
-Pour éviter l’utilisation des ressources SignalR et provoquent des erreurs dans d’autres applications web, exécutez SignalR sur différents serveurs à vos autres applications web.
+Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs dans d’autres applications Web, exécutez Signalr sur des serveurs différents de ceux des autres applications Web.
 
-Pour éviter l’utilisation des ressources SignalR et provoquent des erreurs dans une application de SignalR, monter en charge pour limiter le nombre de connexions à qu'un serveur doit gérer.
+Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs dans une application Signalr, augmentez la taille des instances pour limiter le nombre de connexions qu’un serveur doit gérer.
 
 ## <a name="scale-out"></a>Monter en charge
 
-Une application qui utilise SignalR doit effectuer le suivi de ses connexions, ce qui crée des problèmes pour une batterie de serveurs. Ajouter un serveur, et il obtient de nouvelles connexions qui ne savent pas sur les autres serveurs. Par exemple, les SignalR sur chaque serveur dans le diagramme suivant n’a pas connaissance des connexions sur les autres serveurs. Lorsqu’il souhaite SignalR sur l’un des serveurs envoyer un message à tous les clients, le message passe uniquement pour les clients connectés à ce serveur.
+Une application qui utilise Signalr doit assurer le suivi de toutes ses connexions, ce qui crée des problèmes pour une batterie de serveurs. Ajoutez un serveur et il obtient les nouvelles connexions que les autres serveurs ne connaissent pas. Par exemple, Signalr sur chaque serveur dans le diagramme suivant n’a pas connaissance des connexions sur les autres serveurs. Lorsque Signalr sur l’un des serveurs souhaite envoyer un message à tous les clients, le message est envoyé uniquement aux clients connectés à ce serveur.
 
-![Mise à l’échelle de SignalR sans fond de panier](scale/_static/scale-no-backplane.png)
+![Mise à l’échelle de Signalr sans fond de panier](scale/_static/scale-no-backplane.png)
 
-Les options de résolution de ce problème sont les [Service Azure SignalR](#azure-signalr-service) et [Redis fond de panier](#redis-backplane).
+Les options pour résoudre ce problème sont le [service Azure signalr](#azure-signalr-service) et le [fond de panier ReDim](#redis-backplane).
 
 ## <a name="azure-signalr-service"></a>Service Azure SignalR
 
-Le Service Azure SignalR est un proxy plutôt que sur un fond de panier. Chaque fois qu’un client établit une connexion au serveur, le client est redirigé pour vous connecter au service. Ce processus est illustré dans le diagramme suivant :
+Le service Azure Signalr est un proxy plutôt qu’un fond de panier. Chaque fois qu’un client initie une connexion au serveur, le client est redirigé pour se connecter au service. Ce processus est illustré dans le diagramme suivant :
 
-![L’établissement d’une connexion au Service Azure SignalR](scale/_static/azure-signalr-service-one-connection.png)
+![Établissement d’une connexion au service Azure Signalr](scale/_static/azure-signalr-service-one-connection.png)
 
-Le résultat est que le service gère toutes les connexions client, tandis que chaque serveur doit uniquement un petit nombre constant de connexions au service, comme illustré dans le diagramme suivant :
+Le résultat est que le service gère toutes les connexions clientes, alors que chaque serveur n’a besoin que d’un petit nombre constant de connexions au service, comme indiqué dans le diagramme suivant :
 
-![Clients connectés au service, les serveurs connectés au service](scale/_static/azure-signalr-service-multiple-connections.png)
+![Clients connectés au service, serveurs connectés au service](scale/_static/azure-signalr-service-multiple-connections.png)
 
-Cette approche de montée en puissance présente plusieurs avantages par rapport à l’alternative de fond de panier de Redis :
+Cette approche de la montée en puissance parallèle présente plusieurs avantages par rapport au fond de panier ReDim :
 
-* Sessions rémanentes, également appelées [affinité du client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity), n’est pas nécessaire, car les clients sont immédiatement redirigés vers le Service Azure SignalR lorsqu’ils se connectent.
-* Une application peut monter en charge de SignalR en fonction du nombre de messages envoyés, tandis que le Service Azure SignalR évolue automatiquement pour gérer n’importe quel nombre de connexions. Par exemple, il peut y avoir des milliers de clients, mais si seules quelques messages par seconde sont envoyées, l’application SignalR ne devra pas évoluer vers plusieurs serveurs pour gérer les connexions elles-mêmes.
-* Une application de SignalR n’utiliser beaucoup plus de ressources de connexion à une application web sans SignalR.
+* Les sessions rémanentes, également appelées « [affinité client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)», ne sont pas nécessaires, car les clients sont immédiatement redirigés vers le service signalr Azure lorsqu’ils se connectent.
+* Une application Signalr peut évoluer en fonction du nombre de messages envoyés, tandis que le service Azure Signalr est automatiquement mis à l’échelle pour gérer un nombre quelconque de connexions. Par exemple, il peut y avoir des milliers de clients, mais si seuls quelques messages par seconde sont envoyés, l’application Signalr n’a pas besoin d’effectuer une montée en charge sur plusieurs serveurs uniquement pour gérer les connexions elles-mêmes.
+* Une application Signalr n’utilise pas beaucoup plus de ressources de connexion qu’une application Web sans Signalr.
 
-Pour ces raisons, nous vous recommandons le Service Azure SignalR pour toutes les applications ASP.NET Core SignalR hébergées sur Azure, y compris App Service, les machines virtuelles et les conteneurs.
+Pour ces raisons, nous recommandons le service Azure Signalr pour toutes les applications ASP.NET Core Signalr hébergées sur Azure, y compris les App Service, les machines virtuelles et les conteneurs.
 
-Pour plus d’informations, consultez le [documentation de Service Azure SignalR](/azure/azure-signalr/signalr-overview).
+Pour plus d’informations, consultez la [documentation relative au service Azure signalr](/azure/azure-signalr/signalr-overview).
 
 ## <a name="redis-backplane"></a>Fond de panier Redis
 
-[Redis](https://redis.io/) est un magasin clé-valeur en mémoire qui prend en charge un système de messagerie avec un modèle de publication/abonnement. Le fond de panier SignalR Redis utilise la fonctionnalité de pub/sub pour transférer des messages vers d’autres serveurs. Lorsqu’un client établit une connexion, les informations de connexion sont passées au fond de panier. Lorsqu’un serveur souhaite envoyer un message à tous les clients, il envoie au fond de panier. Le fond de panier connaît tous les clients connectés et les serveurs, ils sont sur. Il envoie le message à tous les clients par le biais de leurs serveurs respectifs. Ce processus est illustré dans le diagramme suivant :
+[Redims](https://redis.io/) est un magasin de valeurs de clé en mémoire qui prend en charge un système de messagerie avec un modèle de publication/abonnement. Le fond de panier ReDim de Signalr utilise la fonctionnalité Pub/Sub pour transférer les messages vers d’autres serveurs. Lorsqu’un client établit une connexion, les informations de connexion sont transmises au fond de panier. Lorsqu’un serveur souhaite envoyer un message à tous les clients, il envoie au fond de panier. Le fond de panier connaît tous les clients connectés et les serveurs sur lesquels ils se trouvent. Elle envoie le message à tous les clients par le biais de leurs serveurs respectifs. Ce processus est illustré dans le diagramme suivant :
 
-![Fond de panier, message envoyé à partir d’un serveur à tous les clients de redis](scale/_static/redis-backplane.png)
+![Le fond de panier ReDim, message envoyé d’un serveur à tous les clients](scale/_static/redis-backplane.png)
 
-Le fond de panier de Redis est l’approche de montée en puissance recommandée pour les applications hébergées sur votre propre infrastructure. Service Azure SignalR n’est pas une option pratique pour la production avec les applications locales en raison de la latence de la connexion entre votre centre de données et un centre de données Azure.
+Le fond de panier ReDim est l’approche recommandée pour la montée en puissance parallèle pour les applications hébergées dans votre propre infrastructure. Le service Azure Signalr n’est pas une option pratique pour une utilisation en production avec des applications locales en raison de la latence de connexion entre votre centre de données et un centre de données Azure.
 
-Les avantages du Service Azure SignalR indiqués précédemment sont inconvénients pour le fond de panier de Redis :
+Les avantages du service Azure Signalr mentionnés précédemment sont les inconvénients du fond de panier ReDim :
 
-* Sessions rémanentes, également appelées [affinité du client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity), est requis. Une fois qu’une connexion est initiée sur un serveur, la connexion doit rester sur ce serveur.
-* Une application de SignalR doit évoluer en fonction du nombre de clients même si certains messages sont envoyés.
-* Une application de SignalR utilise beaucoup plus de ressources de connexion à une application web sans SignalR.
+* Des sessions rémanentes, également appelées « [affinité du client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)», sont nécessaires. Une fois qu’une connexion est établie sur un serveur, la connexion doit rester sur ce serveur.
+* Une application Signalr doit être montée en charge en fonction du nombre de clients, même si le nombre de messages envoyés est réduit.
+* Une application Signalr utilise beaucoup plus de ressources de connexion qu’une application Web sans Signalr.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 
-* [Documentation SignalR Service Azure](/azure/azure-signalr/signalr-overview)
-* [Configurer un fond de panier de Redis](xref:signalr/redis-backplane)
+* [Documentation du service Azure Signalr](/azure/azure-signalr/signalr-overview)
+* [Configurer un backplane ReDim](xref:signalr/redis-backplane)
