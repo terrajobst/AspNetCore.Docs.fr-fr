@@ -5,14 +5,14 @@ description: Découvrez comment configurer des contrôles d’intégrité pour l
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/10/2019
+ms.date: 09/23/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 8fdb1332882fd25bd61f5403a3b1f10e8a0bc7f7
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d8be6c8eb45cde162693621e63bf40d48d04c324
+ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081519"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71199002"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
@@ -682,7 +682,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -727,9 +727,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> &ndash; Si <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> est `null` (valeur par défaut), le service d’éditeur de vérification de l’intégrité exécute toutes les vérifications d’intégrité inscrites. Pour exécuter un sous-ensemble de contrôles d’intégrité, fournissez une fonction qui filtre l’ensemble de vérifications. Le prédicat est évalué à chaque période.
 * <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout> &ndash; Le délai d’attente pour l’exécution des vérifications d’intégrité pour toutes les instances <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. Utilisez <xref:System.Threading.Timeout.InfiniteTimeSpan> pour une exécution sans délai d’attente. La valeur par défaut est de 30 secondes.
 
-Dans l’exemple d’application, `ReadinessPublisher` est une implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. L’état de la vérification d’intégrité est enregistré dans `Entries` et consigné pour chaque vérification :
+Dans l’exemple d’application, `ReadinessPublisher` est une implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. L’état du contrôle d’intégrité est journalisé pour chaque vérification au niveau du journal :
 
-[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* Information (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>) si l’état des contrôles d' <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>intégrité est.
+* Error (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*>) si l’état <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded> est ou <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>.
+
+[!code-csharp[](health-checks/samples/3.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 Dans l’exemple d’application `LivenessProbeStartup`, la vérification de la disponibilité `StartupHostedService` a un délai de démarrage de deux secondes et exécute la vérification toutes les 30 secondes. Pour activer l’implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>, l’exemple enregistre `ReadinessPublisher` comme un service singleton dans le conteneur [d’injection de dépendance (DI)](xref:fundamentals/dependency-injection) :
 
@@ -1354,7 +1357,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -1402,9 +1405,12 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 > [!WARNING]
 > Dans la version ASP.NET Core 2.2, le paramètre <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period> n’est pas respecté par l’implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> ; il définit la valeur de <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>. Ce problème a été résolu dans ASP.NET Core 3,0.
 
-Dans l’exemple d’application, `ReadinessPublisher` est une implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. L’état de la vérification d’intégrité est enregistré dans `Entries` et consigné pour chaque vérification :
+Dans l’exemple d’application, `ReadinessPublisher` est une implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>. L’état du contrôle d’intégrité est journalisé pour chaque vérification comme suit :
 
-[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=20,22-23)]
+* Information (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogInformation*>) si l’état des contrôles d' <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Healthy>intégrité est.
+* Error (<xref:Microsoft.Extensions.Logging.LoggerExtensions.LogError*>) si l’état <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded> est ou <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy>.
+
+[!code-csharp[](health-checks/samples/2.x/HealthChecksSample/ReadinessPublisher.cs?name=snippet_ReadinessPublisher&highlight=18-27)]
 
 Dans l’exemple d’application `LivenessProbeStartup`, la vérification de la disponibilité `StartupHostedService` a un délai de démarrage de deux secondes et exécute la vérification toutes les 30 secondes. Pour activer l’implémentation <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher>, l’exemple enregistre `ReadinessPublisher` comme un service singleton dans le conteneur [d’injection de dépendance (DI)](xref:fundamentals/dependency-injection) :
 

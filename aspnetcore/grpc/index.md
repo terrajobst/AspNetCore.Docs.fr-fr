@@ -1,23 +1,23 @@
 ---
-title: Présentation de gRPC sur ASP.NET Core
+title: Présentation de gRPC sur .NET Core
 author: juntaoluo
 description: Découvrez les services gRPC avec le serveur Kestrel et la pile ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 02/26/2019
+ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: dd1c42744bfda965df91ea1fcc0b71814317b969
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.openlocfilehash: 928eb58930743cd0905f185f54df46c5984b8e97
+ms.sourcegitcommit: fa61d882be9d0c48bd681f2efcb97e05522051d0
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65085555"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71205681"
 ---
-# <a name="introduction-to-grpc-on-aspnet-core"></a>Présentation de gRPC sur ASP.NET Core
+# <a name="introduction-to-grpc-on-net-core"></a>Présentation de gRPC sur .NET Core
 
-Par [John Luo](https://github.com/juntaoluo)
+Par [John Luo](https://github.com/juntaoluo) et [James Newton-King](https://twitter.com/jamesnk)
 
-[gRPC](https://grpc.io/docs/guides/) est un framework d’appel de procédure distante (RPC) indépendant du langage et très performant. Pour plus d’informations sur les notions de base de gRPC, consultez la [page de documentation gRPC](https://grpc.io/docs/).
+[gRPC](https://grpc.io/docs/guides/) est un framework d’appel de procédure distante (RPC) indépendant du langage et très performant.
 
 Les principaux avantages de gRPC sont :
 * Framework RPC léger à haut niveau de performance et moderne.
@@ -31,11 +31,100 @@ Ces avantages font de gRPC la solution idéale pour :
 * Les systèmes polyglottes où plusieurs langages sont nécessaires au développement.
 * Les services en temps réel de point à point qui doivent gérer des demandes ou réponses de streaming.
 
-Alors qu’une implémentation C# est actuellement disponible dans la [page gRPC](https://grpc.io/docs/quickstart/csharp.html) officielle, l’implémentation actuelle s’appuie sur la bibliothèque native écrite en C (gRPC [C-core](https://grpc.io/blog/grpc-stacks)). Des efforts sont en cours pour fournir une nouvelle implémentation basée sur le serveur HTTP Kestrel et la pile ASP.NET Core entièrement managée. Les documents suivants fournissent une présentation de la création de services gRPC avec cette nouvelle implémentation.
+## <a name="c-tooling-support-for-proto-files"></a>C#Prise en charge des outils pour les fichiers. proto
+
+gRPC utilise une approche contrat d’abord pour le développement d’API. Les services et les messages sont  *\** définis dans les fichiers. proto :
+
+```protobuf
+syntax = "proto3";
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+```
+
+Les types .net pour les services, les clients et les messages sont  *\** générés automatiquement par l’inclusion de fichiers. proto dans un projet :
+
+* Ajoutez une référence de package au package [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
+* *Ajoutez\** des`<Protobuf>` fichiers. proto au groupe d’éléments.
+
+```xml
+<ItemGroup>
+  <Protobuf Include="Protos\greet.proto" />
+</ItemGroup>
+```
+
+Pour plus d’informations sur la prise en charge des <xref:grpc/basics>outils gRPC, consultez.
+
+## <a name="grpc-services-on-aspnet-core"></a>services gRPC sur ASP.NET Core
+
+les services gRPC peuvent être hébergés sur ASP.NET Core. Les services ont une intégration complète aux fonctionnalités populaires de ASP.NET Core telles que la journalisation, l’injection de dépendances, l’authentification et l’autorisation.
+
+Le modèle de projet de service gRPC fournit un service de démarrage :
+
+```csharp
+public class GreeterService : Greeter.GreeterBase
+{
+    private readonly ILogger<GreeterService> _logger;
+
+    public GreeterService(ILogger<GreeterService> logger)
+    {
+        _logger = logger;
+    }
+
+    public override Task<HelloReply> SayHello(HelloRequest request,
+        ServerCallContext context)
+    {
+        _logger.LogInformation("Saying hello to " + request.Name);
+        return Task.FromResult(new HelloReply 
+        {
+            Message = "Hello " + request.Name
+        });
+    }
+}
+```
+
+`GreeterService`hérite du `GreeterBase` type, qui est généré à partir du `Greeter` service dans le  *\*fichier. proto* . Le service est rendu accessible aux clients dans *Startup.cs*:
+
+```csharp
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<GreeterService>();
+});
+```
+
+Pour en savoir plus sur les services gRPC sur ASP.NET Core <xref:grpc/aspnetcore>, consultez.
+
+## <a name="call-grpc-services-with-a-net-client"></a>Appeler gRPC services avec un client .NET
+
+les clients gRPC sont des types de client concrets qui sont [générés à partir de  *\*fichiers. proto* ](xref:grpc/basics#generated-c-assets). Le client gRPC concret possède des méthodes qui traduisent le service gRPC dans le  *\*fichier. proto* .
+
+```csharp
+var channel = GrpcChannel.ForAddress("https://localhost:5001");
+var client = new Greeter.GreeterClient(channel);
+
+var response = await client.SayHello(
+    new HelloRequest { Name = "World" });
+
+Console.WriteLine(response.Message);
+```
+
+Un client gRPC est créé à l’aide d’un canal, qui représente une connexion à long terme à un service gRPC. Un canal peut être créé à `GrpcChannel.ForAddress`l’aide de.
+
+Pour plus d’informations sur la création de clients et l’appel de différentes <xref:grpc/client>méthodes de service, consultez.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:grpc/basics>
-* <xref:tutorials/grpc/grpc-start>
 * <xref:grpc/aspnetcore>
-* <xref:grpc/migration>
+* <xref:grpc/client>
+* <xref:grpc/clientfactory>
+* <xref:tutorials/grpc/grpc-start>
