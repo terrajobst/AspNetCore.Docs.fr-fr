@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/12/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0de2222e8072523ff0e5d261a9fe5ef8eb9a7606
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
+ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081819"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71217788"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 La configuration d’application dans ASP.NET Core est basée sur des paires clé-valeur établies par les *fournisseurs de configuration*. Les fournisseurs de configuration lisent les données de configuration dans les paires clé-valeur à partir de diverses sources de configuration :
 
-* Azure Key Vault
+* Azure Key Vault
 * Configuration de Azure App
 * Arguments de ligne de commande
 * Fournisseurs personnalisés (installés ou créés)
@@ -168,7 +168,7 @@ public class IndexModel : PageModel
 
 Les fournisseurs de configuration ne peuvent pas utiliser le DI, car celui-ci n’est pas disponible lorsque les fournisseurs sont configurés par l’hôte.
 
-### <a name="keys"></a>Clés
+### <a name="keys"></a>Touches
 
 Les clés de configuration adoptent les conventions suivantes :
 
@@ -193,7 +193,7 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 
 | Fournisseur | Fournit la configuration à partir de&hellip; |
 | -------- | ----------------------------------- |
-| [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
+| [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
 | [Fournisseur Azure App Configuration](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentation Azure) | Configuration de Azure App |
 | [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
 | [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
@@ -226,7 +226,7 @@ Pour configurer le générateur d’ordinateur hôte, appelez <xref:Microsoft.Ex
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .ConfigureHostConfiguration((hostingContext, config) =>
+        .ConfigureHostConfiguration(config =>
         {
             var dict = new Dictionary<string, string>
             {
@@ -395,7 +395,7 @@ Pour les applications qui utilisent des mappages de commutateurs, l’appel à `
 
 Une fois le dictionnaire de correspondances de commutateur créé, il contient les données affichées dans le tableau suivant.
 
-| Clé       | Valeur             |
+| Touche       | Value             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -408,7 +408,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 Après avoir exécuté la commande précédente, la configuration contient les valeurs indiquées dans le tableau suivant.
 
-| Clé               | Valeur    |
+| Touche               | Value    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -495,7 +495,7 @@ L’API Configuration possède des règles de traitement spéciales pour quatre 
 | ------------------------ | -------- |
 | `CUSTOMCONNSTR_` | Fournisseur personnalisé |
 | `MYSQLCONNSTR_` | [MySQL](https://www.mysql.com/) |
-| `SQLAZURECONNSTR_` | [Base de données SQL Azure](https://azure.microsoft.com/services/sql-database/) |
+| `SQLAZURECONNSTR_` | [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) |
 | `SQLCONNSTR_` | [SQL Server](https://www.microsoft.com/sql-server/) |
 
 Quand une variable d’environnement est découverte et chargée dans la configuration avec l’un des quatre préfixes indiqués dans le tableau :
@@ -617,7 +617,7 @@ L’exemple d’application tire parti de la méthode pratique statique `CreateD
 1. Exécutez l’exemple d’application. Ouvrez un navigateur vers l’application avec l’adresse `http://localhost:5000`.
 1. Notez que la sortie contient des paires clé-valeur pour la configuration représentée dans le tableau en fonction de l’environnement. Les clés de configuration de la journalisation utilisent le signe deux-points (`:`) comme séparateur hiérarchique.
 
-| Clé                        | Valeur de développement | Valeur de production |
+| Touche                        | Valeur de développement | Valeur de production |
 | -------------------------- | :---------------: | :--------------: |
 | Logging:LogLevel:System    | Information       | Information      |
 | Logging:LogLevel:Microsoft | Information       | Information      |
@@ -871,7 +871,7 @@ var configSection = _config.GetSection("section2");
 var children = configSection.GetChildren();
 ```
 
-### <a name="exists"></a>Exists
+### <a name="exists"></a>Existe
 
 Utilisez [ConfigurationExtensions.Exists](xref:Microsoft.Extensions.Configuration.ConfigurationExtensions.Exists*) pour déterminer si une section de configuration existe :
 
@@ -917,7 +917,7 @@ La section `starship` du fichier *starship.json* crée la configuration lorsque 
 
 Les paires clé-valeur de configuration suivantes sont créées :
 
-| Clé                   | Valeur                                             |
+| Touche                   | Value                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1007,7 +1007,7 @@ TvShow = tvShow;
 
 Observez les valeurs et les clés de configuration indiquées dans le tableau suivant.
 
-| Clé             | Valeur  |
+| Touche             | Value  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | valeur1 |
@@ -1097,7 +1097,7 @@ config.AddJsonFile(
 
 La paire clé-valeur indiquée dans le tableau est chargée dans la configuration.
 
-| Clé             | Valeur  |
+| Touche             | Value  |
 | :-------------: | :----: |
 | array:entries:3 | valeur3 |
 
@@ -1110,7 +1110,7 @@ Si l’instance de classe `ArrayExample` est liée une fois que le Fournisseur d
 | 2                            | valeur2                       |
 | 3                            | valeur3                       |
 | 4                            | value4                       |
-| 5\.                            | value5                       |
+| 5                            | value5                       |
 
 **Traitement de tableau JSON**
 
@@ -1130,7 +1130,7 @@ Si un fichier JSON contient un tableau, les clés de configuration sont créés 
 
 Le Fournisseur de configuration JSON lit les données de configuration dans les paires clé-valeur suivantes :
 
-| Clé                     | Valeur  |
+| Touche                     | Value  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |
