@@ -12,6 +12,8 @@
   uid: getting-started
 - name: Nouveautés
   items:
+    - name: Nouveautés de la version 3.0
+      uid: aspnetcore-3.0
     - name: "Nouveautés de la version\_2.2"
       uid: aspnetcore-2.2
     - name: "Nouveautés de la version\_2.1"
@@ -327,6 +329,8 @@
               uid: host-and-deploy/blazor/server
             - name: Configurer l'éditeur de liens
               uid: host-and-deploy/blazor/configure-linker
+        - name: Exemples
+          href: 'https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor'
     - name: Développement côté client
       items:
         - name: Applications monopages
@@ -436,6 +440,8 @@
           uid: tutorials/get-started-with-swashbuckle
         - name: Bien démarrer avec NSwag
           uid: tutorials/get-started-with-nswag
+        - name: Outils OpenAPI
+          uid: web-api/Microsoft.dotnet-openapi
     - name: Types de retour Action
       uid: web-api/action-return-types
     - name: Gérer les requêtes Patch JSON
@@ -487,6 +493,9 @@
     - name: Clients
       displayName: signalr
       items:
+        - name: Fonctionnalités du client SignalR
+          uid: signalr/client-features
+          displayName: signalr
         - name: Client .NET
           uid: signalr/dotnet-client
           displayName: signalr
@@ -563,6 +572,8 @@
       uid: grpc/configuration
     - name: Authentification et autorisation
       uid: grpc/authn-and-authz
+    - name: Journalisation et diagnostics
+      uid: grpc/diagnostics
     - name: Considérations relatives à la sécurité
       uid: grpc/security
     - name: Migrer les services gRPC à partir de C Core
