@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/19/2019
 uid: razor-pages/index
-ms.openlocfilehash: 7e27bbc84816bd282b2b8de936772eb5c597d74f
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: bccdd7e5c1c90dd76ca1b788dbf09000c5cbe14b
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207374"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256187"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -281,7 +281,9 @@ Le code précédent :
   * Validation côté client.
   * Rendu des erreurs de validation.
 
-* Génère le code HTML suivant :[!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
+* Génère le code HTML suivant :
+
+  [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create5.html)]
 
 La publication de la valeur créer un formulaire sans nom affiche le message d’erreur « le champ nom est obligatoire. » sur le formulaire. Si JavaScript est activé sur le client, le navigateur affiche l’erreur sans la publier sur le serveur.
 
@@ -396,7 +398,9 @@ L’espace de noms généré pour la page Razor *Pages/Customers/Edit.cshtml* es
 
 `@namespace` *fonctionne également avec les vues Razor classiques*.
 
-Examinez le fichier de vue *pages/Create. cshtml* :[!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create3.cshtml?highlight=2-3)]
+Examinez le fichier de vue *pages/Create. cshtml* :
+
+[!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create3.cshtml?highlight=2-3)]
 
 Le fichier de vue *pages/Create. cshtml* mis à jour avec *_ViewImports. cshtml* et le fichier de disposition précédent :
 
