@@ -6,131 +6,101 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/03/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 28e6b8589bbe0b6a3723b64736c723c883302571
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 18a6dd2ddd4f3c3c4466e3b96dd1748fd0972e39
+ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238163"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71250798"
 ---
-# <a name="grpc-services-with-aspnet-core"></a><span data-ttu-id="9b025-103">Services gRPC avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9b025-103">gRPC services with ASP.NET Core</span></span>
+# <a name="grpc-services-with-aspnet-core"></a><span data-ttu-id="54186-103">Services gRPC avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="54186-103">gRPC services with ASP.NET Core</span></span>
 
-<span data-ttu-id="9b025-104">Ce document montre comment prendre en main les services gRPC à l’aide de ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="9b025-104">This document shows how to get started with gRPC services using ASP.NET Core.</span></span>
+<span data-ttu-id="54186-104">Ce document montre comment prendre en main les services gRPC à l’aide de ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="54186-104">This document shows how to get started with gRPC services using ASP.NET Core.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9b025-105">Prérequis</span><span class="sxs-lookup"><span data-stu-id="9b025-105">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="54186-105">Prérequis</span><span class="sxs-lookup"><span data-stu-id="54186-105">Prerequisites</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="9b025-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="9b025-106">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="54186-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54186-106">Visual Studio</span></span>](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="9b025-107">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="9b025-107">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="54186-107">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="54186-107">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="9b025-108">Visual Studio pour Mac</span><span class="sxs-lookup"><span data-stu-id="9b025-108">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[<span data-ttu-id="54186-108">Visual Studio pour Mac</span><span class="sxs-lookup"><span data-stu-id="54186-108">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
 
 ---
 
-## <a name="get-started-with-grpc-service-in-aspnet-core"></a><span data-ttu-id="9b025-109">Bien démarrer avec le service gRPC dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9b025-109">Get started with gRPC service in ASP.NET Core</span></span>
+## <a name="get-started-with-grpc-service-in-aspnet-core"></a><span data-ttu-id="54186-109">Bien démarrer avec le service gRPC dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="54186-109">Get started with gRPC service in ASP.NET Core</span></span>
 
-<span data-ttu-id="9b025-110">[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="9b025-110">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="54186-110">[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="54186-110">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/grpc/grpc-start/sample) ([how to download](xref:index#how-to-download-a-sample)).</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="9b025-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="9b025-111">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="54186-111">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="54186-111">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="9b025-112">Pour obtenir des instructions détaillées sur la création d’un projet gRPC, consultez [prise en main des services gRPC](xref:tutorials/grpc/grpc-start) .</span><span class="sxs-lookup"><span data-stu-id="9b025-112">See [Get started with gRPC services](xref:tutorials/grpc/grpc-start) for detailed instructions on how to create a gRPC project.</span></span>
+<span data-ttu-id="54186-112">Pour obtenir des instructions détaillées sur la création d’un projet gRPC, consultez [prise en main des services gRPC](xref:tutorials/grpc/grpc-start) .</span><span class="sxs-lookup"><span data-stu-id="54186-112">See [Get started with gRPC services](xref:tutorials/grpc/grpc-start) for detailed instructions on how to create a gRPC project.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[<span data-ttu-id="9b025-113">Visual Studio Code / Visual Studio pour Mac</span><span class="sxs-lookup"><span data-stu-id="9b025-113">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[<span data-ttu-id="54186-113">Visual Studio Code / Visual Studio pour Mac</span><span class="sxs-lookup"><span data-stu-id="54186-113">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="9b025-114">Exécutez `dotnet new grpc -o GrpcGreeter` à partir de la ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="9b025-114">Run `dotnet new grpc -o GrpcGreeter` from the command line.</span></span>
+<span data-ttu-id="54186-114">Exécutez `dotnet new grpc -o GrpcGreeter` à partir de la ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="54186-114">Run `dotnet new grpc -o GrpcGreeter` from the command line.</span></span>
 
 ---
 
-## <a name="add-grpc-services-to-an-aspnet-core-app"></a><span data-ttu-id="9b025-115">Ajouter des services gRPC à une application ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9b025-115">Add gRPC services to an ASP.NET Core app</span></span>
+## <a name="add-grpc-services-to-an-aspnet-core-app"></a><span data-ttu-id="54186-115">Ajouter des services gRPC à une application ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="54186-115">Add gRPC services to an ASP.NET Core app</span></span>
 
-<span data-ttu-id="9b025-116">gRPC requiert le package [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) .</span><span class="sxs-lookup"><span data-stu-id="9b025-116">gRPC requires the [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) package.</span></span>
+<span data-ttu-id="54186-116">gRPC requiert le package [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) .</span><span class="sxs-lookup"><span data-stu-id="54186-116">gRPC requires the [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) package.</span></span>
 
-### <a name="configure-grpc"></a><span data-ttu-id="9b025-117">Configurer gRPC</span><span class="sxs-lookup"><span data-stu-id="9b025-117">Configure gRPC</span></span>
+### <a name="configure-grpc"></a><span data-ttu-id="54186-117">Configurer gRPC</span><span class="sxs-lookup"><span data-stu-id="54186-117">Configure gRPC</span></span>
 
-<span data-ttu-id="9b025-118">Dans *Startup.cs* :</span><span class="sxs-lookup"><span data-stu-id="9b025-118">In *Startup.cs*:</span></span>
+<span data-ttu-id="54186-118">Dans *Startup.cs* :</span><span class="sxs-lookup"><span data-stu-id="54186-118">In *Startup.cs*:</span></span>
 
-* <span data-ttu-id="9b025-119">gRPC est activé avec la `AddGrpc` méthode.</span><span class="sxs-lookup"><span data-stu-id="9b025-119">gRPC is enabled with the `AddGrpc` method.</span></span>
-* <span data-ttu-id="9b025-120">Chaque service gRPC est ajouté au pipeline de routage via `MapGrpcService` la méthode.</span><span class="sxs-lookup"><span data-stu-id="9b025-120">Each gRPC service is added to the routing pipeline through the `MapGrpcService` method.</span></span>
+* <span data-ttu-id="54186-119">gRPC est activé avec la `AddGrpc` méthode.</span><span class="sxs-lookup"><span data-stu-id="54186-119">gRPC is enabled with the `AddGrpc` method.</span></span>
+* <span data-ttu-id="54186-120">Chaque service gRPC est ajouté au pipeline de routage via `MapGrpcService` la méthode.</span><span class="sxs-lookup"><span data-stu-id="54186-120">Each gRPC service is added to the routing pipeline through the `MapGrpcService` method.</span></span>
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/Startup.cs?name=snippet&highlight=7,24)]
 
-<span data-ttu-id="9b025-121">ASP.NET Core intergiciels et les fonctionnalités partagent le pipeline de routage, une application peut donc être configurée pour servir des gestionnaires de demandes supplémentaires.</span><span class="sxs-lookup"><span data-stu-id="9b025-121">ASP.NET Core middlewares and features share the routing pipeline, therefore an app can be configured to serve additional request handlers.</span></span> <span data-ttu-id="9b025-122">Les gestionnaires de demandes supplémentaires, tels que les contrôleurs MVC, fonctionnent en parallèle avec les services gRPC configurés.</span><span class="sxs-lookup"><span data-stu-id="9b025-122">The additional request handlers, such as MVC controllers, work in parallel with the configured gRPC services.</span></span>
+<span data-ttu-id="54186-121">ASP.NET Core intergiciels et les fonctionnalités partagent le pipeline de routage, une application peut donc être configurée pour servir des gestionnaires de demandes supplémentaires.</span><span class="sxs-lookup"><span data-stu-id="54186-121">ASP.NET Core middlewares and features share the routing pipeline, therefore an app can be configured to serve additional request handlers.</span></span> <span data-ttu-id="54186-122">Les gestionnaires de demandes supplémentaires, tels que les contrôleurs MVC, fonctionnent en parallèle avec les services gRPC configurés.</span><span class="sxs-lookup"><span data-stu-id="54186-122">The additional request handlers, such as MVC controllers, work in parallel with the configured gRPC services.</span></span>
 
-### <a name="configure-kestrel"></a><span data-ttu-id="9b025-123">Configurer Kestrel</span><span class="sxs-lookup"><span data-stu-id="9b025-123">Configure Kestrel</span></span>
+### <a name="configure-kestrel"></a><span data-ttu-id="54186-123">Configurer Kestrel</span><span class="sxs-lookup"><span data-stu-id="54186-123">Configure Kestrel</span></span>
 
-<span data-ttu-id="9b025-124">Points de terminaison Kestrel gRPC :</span><span class="sxs-lookup"><span data-stu-id="9b025-124">Kestrel gRPC endpoints:</span></span>
+<span data-ttu-id="54186-124">Points de terminaison Kestrel gRPC :</span><span class="sxs-lookup"><span data-stu-id="54186-124">Kestrel gRPC endpoints:</span></span>
 
-* <span data-ttu-id="9b025-125">Nécessite HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="9b025-125">Require HTTP/2.</span></span>
-* <span data-ttu-id="9b025-126">Doit être sécurisé avec HTTPs.</span><span class="sxs-lookup"><span data-stu-id="9b025-126">Should be secured with HTTPS.</span></span>
+* <span data-ttu-id="54186-125">Nécessite HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="54186-125">Require HTTP/2.</span></span>
+* <span data-ttu-id="54186-126">Doit être sécurisé avec [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246).</span><span class="sxs-lookup"><span data-stu-id="54186-126">Should be secured with [Transport Layer Security (TLS)](https://tools.ietf.org/html/rfc5246).</span></span>
 
-#### <a name="http2"></a><span data-ttu-id="9b025-127">HTTP/2</span><span class="sxs-lookup"><span data-stu-id="9b025-127">HTTP/2</span></span>
+#### <a name="http2"></a><span data-ttu-id="54186-127">HTTP/2</span><span class="sxs-lookup"><span data-stu-id="54186-127">HTTP/2</span></span>
 
-<span data-ttu-id="9b025-128">gRPC requiert HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="9b025-128">gRPC requires HTTP/2.</span></span> <span data-ttu-id="9b025-129">gRPC pour ASP.NET Core valide [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) est `HTTP/2`.</span><span class="sxs-lookup"><span data-stu-id="9b025-129">gRPC for ASP.NET Core validates [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) is `HTTP/2`.</span></span>
+<span data-ttu-id="54186-128">gRPC requiert HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="54186-128">gRPC requires HTTP/2.</span></span> <span data-ttu-id="54186-129">gRPC pour ASP.NET Core valide [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) est `HTTP/2`.</span><span class="sxs-lookup"><span data-stu-id="54186-129">gRPC for ASP.NET Core validates [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) is `HTTP/2`.</span></span>
 
-<span data-ttu-id="9b025-130">Kestrel [prend en charge http/2](xref:fundamentals/servers/kestrel#http2-support) sur la plupart des systèmes d’exploitation modernes.</span><span class="sxs-lookup"><span data-stu-id="9b025-130">Kestrel [supports HTTP/2](xref:fundamentals/servers/kestrel#http2-support) on most modern operating systems.</span></span> <span data-ttu-id="9b025-131">Les points de terminaison Kestrel sont configurés pour prendre en charge les connexions HTTP/1.1 et HTTP/2 par défaut.</span><span class="sxs-lookup"><span data-stu-id="9b025-131">Kestrel endpoints are configured to support HTTP/1.1 and HTTP/2 connections by default.</span></span>
+<span data-ttu-id="54186-130">Kestrel [prend en charge http/2](xref:fundamentals/servers/kestrel#http2-support) sur la plupart des systèmes d’exploitation modernes.</span><span class="sxs-lookup"><span data-stu-id="54186-130">Kestrel [supports HTTP/2](xref:fundamentals/servers/kestrel#http2-support) on most modern operating systems.</span></span> <span data-ttu-id="54186-131">Les points de terminaison Kestrel sont configurés pour prendre en charge les connexions HTTP/1.1 et HTTP/2 par défaut.</span><span class="sxs-lookup"><span data-stu-id="54186-131">Kestrel endpoints are configured to support HTTP/1.1 and HTTP/2 connections by default.</span></span>
 
-#### <a name="https"></a><span data-ttu-id="9b025-132">HTTPS</span><span class="sxs-lookup"><span data-stu-id="9b025-132">HTTPS</span></span>
+#### <a name="tls"></a><span data-ttu-id="54186-132">TLS</span><span class="sxs-lookup"><span data-stu-id="54186-132">TLS</span></span>
 
-<span data-ttu-id="9b025-133">Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec HTTPs.</span><span class="sxs-lookup"><span data-stu-id="9b025-133">Kestrel endpoints used for gRPC should be secured with HTTPS.</span></span> <span data-ttu-id="9b025-134">En cours de développement, un point de terminaison HTTPS `https://localhost:5001` est automatiquement créé lorsque le certificat de développement ASP.net Core est présent.</span><span class="sxs-lookup"><span data-stu-id="9b025-134">In development, an HTTPS endpoint is automatically created at `https://localhost:5001` when the ASP.NET Core development certificate is present.</span></span> <span data-ttu-id="9b025-135">Aucune configuration n’est requise.</span><span class="sxs-lookup"><span data-stu-id="9b025-135">No configuration is required.</span></span>
+<span data-ttu-id="54186-133">Les points de terminaison Kestrel utilisés pour gRPC doivent être sécurisés avec TLS.</span><span class="sxs-lookup"><span data-stu-id="54186-133">Kestrel endpoints used for gRPC should be secured with TLS.</span></span> <span data-ttu-id="54186-134">En cours de développement, un point de terminaison sécurisé avec TLS `https://localhost:5001` est automatiquement créé lorsque le certificat de développement ASP.net Core est présent.</span><span class="sxs-lookup"><span data-stu-id="54186-134">In development, an endpoint secured with TLS is automatically created at `https://localhost:5001` when the ASP.NET Core development certificate is present.</span></span> <span data-ttu-id="54186-135">Aucune configuration n’est requise.</span><span class="sxs-lookup"><span data-stu-id="54186-135">No configuration is required.</span></span> <span data-ttu-id="54186-136">Un `https` préfixe vérifie que le point de terminaison Kestrel utilise TLS.</span><span class="sxs-lookup"><span data-stu-id="54186-136">An `https` prefix verifies the Kestrel endpoint is using TLS.</span></span>
 
-<span data-ttu-id="9b025-136">En production, HTTPS doit être explicitement configuré.</span><span class="sxs-lookup"><span data-stu-id="9b025-136">In production, HTTPS must be explicitly configured.</span></span> <span data-ttu-id="9b025-137">Dans l’exemple *appSettings. JSON* suivant, un point de terminaison http/2 sécurisé avec HTTPS est fourni :</span><span class="sxs-lookup"><span data-stu-id="9b025-137">In the following *appsettings.json* example, an HTTP/2 endpoint secured with HTTPS is provided:</span></span>
+<span data-ttu-id="54186-137">En production, TLS doit être configuré de manière explicite.</span><span class="sxs-lookup"><span data-stu-id="54186-137">In production, TLS must be explicitly configured.</span></span> <span data-ttu-id="54186-138">Dans l’exemple *appSettings. JSON* suivant, un point de terminaison http/2 sécurisé avec TLS est fourni :</span><span class="sxs-lookup"><span data-stu-id="54186-138">In the following *appsettings.json* example, an HTTP/2 endpoint secured with TLS is provided:</span></span>
 
-```json
-{
-  "Kestrel": {
-    "Endpoints": {
-      "HttpsDefaultCert": {
-        "Url": "https://localhost:5001",
-        "Protocols": "Http2"
-      }
-    },
-    "Certificates": {
-      "Default": {
-        "Path": "<path to .pfx file>",
-        "Password": "<certificate password>"
-      }
-    }
-  }
-}
-```
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-<span data-ttu-id="9b025-138">Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="9b025-138">Alternatively, Kestrel endpoints can be configured in *Program.cs*:</span></span>
+<span data-ttu-id="54186-139">Vous pouvez également configurer les points de terminaison Kestrel dans *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="54186-139">Alternatively, Kestrel endpoints can be configured in *Program.cs*:</span></span>
 
-```csharp
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.ConfigureKestrel(options =>
-            {
-                // This endpoint will use HTTP/2 and HTTPS on port 5001.
-                options.Listen(IPAddress.Any, 5001, listenOptions =>
-                {
-                    listenOptions.Protocols = HttpProtocols.Http2;
-                    listenOptions.UseHttps("<path to .pfx file>", 
-                        "<certificate password>");
-                });
-            });
-            webBuilder.UseStartup<Startup>();
-        });
-```
+[!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 
-<span data-ttu-id="9b025-139">Quand un point de terminaison HTTP/2 est configuré sans HTTPs, le [ListenOptions. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) du point de `HttpProtocols.Http2`terminaison doit avoir la valeur.</span><span class="sxs-lookup"><span data-stu-id="9b025-139">When an HTTP/2 endpoint is configured without HTTPS, the endpoint's [ListenOptions.Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) must be set to `HttpProtocols.Http2`.</span></span> <span data-ttu-id="9b025-140">`HttpProtocols.Http1AndHttp2`ne peut pas être utilisé, car HTTPs est requis pour négocier HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="9b025-140">`HttpProtocols.Http1AndHttp2` can't be used because HTTPS is required to negotiate HTTP/2.</span></span> <span data-ttu-id="9b025-141">Sans HTTPs, toutes les connexions au point de terminaison par défaut HTTP/1.1 et les appels gRPC échouent.</span><span class="sxs-lookup"><span data-stu-id="9b025-141">Without HTTPS, all connections to the endpoint default to HTTP/1.1, and gRPC calls fail.</span></span>
+#### <a name="protocol-negotiation"></a><span data-ttu-id="54186-140">Négociation de protocole</span><span class="sxs-lookup"><span data-stu-id="54186-140">Protocol negotiation</span></span>
 
-<span data-ttu-id="9b025-142">Pour plus d’informations sur l’activation de HTTP/2 et HTTPs avec Kestrel, consultez [configuration du point de terminaison Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).</span><span class="sxs-lookup"><span data-stu-id="9b025-142">For more information on enabling HTTP/2 and HTTPS with Kestrel, see [Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration).</span></span>
+<span data-ttu-id="54186-141">TLS est utilisé pour davantage que la sécurisation de la communication.</span><span class="sxs-lookup"><span data-stu-id="54186-141">TLS is used for more than securing communication.</span></span> <span data-ttu-id="54186-142">La négociation de [négociation de protocole de couche d’application (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) TLS est utilisée pour négocier le protocole de connexion entre le client et le serveur lorsqu’un point de terminaison prend en charge plusieurs protocoles.</span><span class="sxs-lookup"><span data-stu-id="54186-142">The TLS [Application-Layer Protocol Negotiation (ALPN)](https://tools.ietf.org/html/rfc7301#section-3) handshake is used to negotiate the connection protocol between the client and the server when an endpoint supports multiple protocols.</span></span> <span data-ttu-id="54186-143">Cette négociation détermine si la connexion utilise HTTP/1.1 ou HTTP/2.</span><span class="sxs-lookup"><span data-stu-id="54186-143">This negotiation determines whether the connection uses HTTP/1.1 or HTTP/2.</span></span>
+
+<span data-ttu-id="54186-144">Si un point de terminaison HTTP/2 est configuré sans TLS, le [ListenOptions. Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) du point de `HttpProtocols.Http2`terminaison doit avoir la valeur.</span><span class="sxs-lookup"><span data-stu-id="54186-144">If an HTTP/2 endpoint is configured without TLS, the endpoint's [ListenOptions.Protocols](xref:fundamentals/servers/kestrel#listenoptionsprotocols) must be set to `HttpProtocols.Http2`.</span></span> <span data-ttu-id="54186-145">Un point de terminaison avec plusieurs protocoles (par `HttpProtocols.Http1AndHttp2`exemple,) ne peut pas être utilisé sans TLS, car il n’y a aucune négociation.</span><span class="sxs-lookup"><span data-stu-id="54186-145">An endpoint with multiple protocols (for example, `HttpProtocols.Http1AndHttp2`) can't be used without TLS because there is no negotiation.</span></span> <span data-ttu-id="54186-146">Toutes les connexions au point de terminaison non sécurisé par défaut pour les appels HTTP/1.1 et gRPC échouent.</span><span class="sxs-lookup"><span data-stu-id="54186-146">All connections to the unsecured endpoint default to HTTP/1.1, and gRPC calls fail.</span></span>
+
+<span data-ttu-id="54186-147">Pour plus d’informations sur l’activation de HTTP/2 et de TLS avec Kestrel, consultez [configuration du point de terminaison Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).</span><span class="sxs-lookup"><span data-stu-id="54186-147">For more information on enabling HTTP/2 and TLS with Kestrel, see [Kestrel endpoint configuration](xref:fundamentals/servers/kestrel#endpoint-configuration).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="9b025-143">macOS ne prend pas en charge ASP.NET Core gRPC avec [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246).</span><span class="sxs-lookup"><span data-stu-id="9b025-143">macOS doesn't support ASP.NET Core gRPC with [Transport Layer Security (TLS)](https://tools.ietf.org/html/rfc5246).</span></span> <span data-ttu-id="9b025-144">Une configuration supplémentaire est nécessaire pour exécuter correctement les services gRPC sur MacOS.</span><span class="sxs-lookup"><span data-stu-id="9b025-144">Additional configuration is required to successfully run gRPC services on macOS.</span></span> <span data-ttu-id="9b025-145">Pour plus d’informations, consultez [Impossible de démarrer l’application ASP.NET Core gRPC sur MacOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).</span><span class="sxs-lookup"><span data-stu-id="9b025-145">For more information, see [Unable to start ASP.NET Core gRPC app on macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).</span></span>
+> <span data-ttu-id="54186-148">MacOS ne prend pas en charge ASP.NET Core gRPC avec TLS.</span><span class="sxs-lookup"><span data-stu-id="54186-148">macOS doesn't support ASP.NET Core gRPC with TLS.</span></span> <span data-ttu-id="54186-149">Une configuration supplémentaire est nécessaire pour exécuter correctement les services gRPC sur MacOS.</span><span class="sxs-lookup"><span data-stu-id="54186-149">Additional configuration is required to successfully run gRPC services on macOS.</span></span> <span data-ttu-id="54186-150">Pour plus d’informations, consultez [Impossible de démarrer l’application ASP.NET Core gRPC sur MacOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).</span><span class="sxs-lookup"><span data-stu-id="54186-150">For more information, see [Unable to start ASP.NET Core gRPC app on macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).</span></span>
 
-## <a name="integration-with-aspnet-core-apis"></a><span data-ttu-id="9b025-146">Intégration avec les API ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="9b025-146">Integration with ASP.NET Core APIs</span></span>
+## <a name="integration-with-aspnet-core-apis"></a><span data-ttu-id="54186-151">Intégration avec les API ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="54186-151">Integration with ASP.NET Core APIs</span></span>
 
-<span data-ttu-id="9b025-147">les services gRPC ont un accès complet aux fonctionnalités de ASP.NET Core telles que l' [injection de dépendances](xref:fundamentals/dependency-injection) (di) et la [journalisation](xref:fundamentals/logging/index).</span><span class="sxs-lookup"><span data-stu-id="9b025-147">gRPC services have full access to the ASP.NET Core features such as [Dependency Injection](xref:fundamentals/dependency-injection) (DI) and [Logging](xref:fundamentals/logging/index).</span></span> <span data-ttu-id="9b025-148">Par exemple, l’implémentation de service peut résoudre un service d’enregistreur d’événements à partir du conteneur DI via le constructeur :</span><span class="sxs-lookup"><span data-stu-id="9b025-148">For example, the service implementation can resolve a logger service from the DI container via the constructor:</span></span>
+<span data-ttu-id="54186-152">les services gRPC ont un accès complet aux fonctionnalités de ASP.NET Core telles que l' [injection](xref:fundamentals/dependency-injection) de dépendances (di) et la [journalisation](xref:fundamentals/logging/index).</span><span class="sxs-lookup"><span data-stu-id="54186-152">gRPC services have full access to the ASP.NET Core features such as [Dependency Injection](xref:fundamentals/dependency-injection) (DI) and [Logging](xref:fundamentals/logging/index).</span></span> <span data-ttu-id="54186-153">Par exemple, l’implémentation de service peut résoudre un service d’enregistreur d’événements à partir du conteneur DI via le constructeur:</span><span class="sxs-lookup"><span data-stu-id="54186-153">For example, the service implementation can resolve a logger service from the DI container via the constructor:</span></span>
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase
@@ -141,19 +111,19 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-<span data-ttu-id="9b025-149">Par défaut, l’implémentation du service gRPC peut résoudre d’autres services DI avec n’importe quelle durée de vie (Singleton, étendue ou transitoire).</span><span class="sxs-lookup"><span data-stu-id="9b025-149">By default, the gRPC service implementation can resolve other DI services with any lifetime (Singleton, Scoped, or Transient).</span></span>
+<span data-ttu-id="54186-154">Par défaut, l’implémentation du service gRPC peut résoudre d’autres services DI avec n’importe quelle durée de vie (Singleton, étendue ou transitoire).</span><span class="sxs-lookup"><span data-stu-id="54186-154">By default, the gRPC service implementation can resolve other DI services with any lifetime (Singleton, Scoped, or Transient).</span></span>
 
-### <a name="resolve-httpcontext-in-grpc-methods"></a><span data-ttu-id="9b025-150">Résoudre HttpContext dans les méthodes gRPC</span><span class="sxs-lookup"><span data-stu-id="9b025-150">Resolve HttpContext in gRPC methods</span></span>
+### <a name="resolve-httpcontext-in-grpc-methods"></a><span data-ttu-id="54186-155">Résoudre HttpContext dans les méthodes gRPC</span><span class="sxs-lookup"><span data-stu-id="54186-155">Resolve HttpContext in gRPC methods</span></span>
 
-<span data-ttu-id="9b025-151">L’API gRPC permet d’accéder à certaines données de message HTTP/2, telles que la méthode, l’hôte, l’en-tête et les codes de fin.</span><span class="sxs-lookup"><span data-stu-id="9b025-151">The gRPC API provides access to some HTTP/2 message data, such as the method, host, header, and trailers.</span></span> <span data-ttu-id="9b025-152">L’accès s’effectue `ServerCallContext` par le biais de l’argument passé à chaque méthode gRPC :</span><span class="sxs-lookup"><span data-stu-id="9b025-152">Access is through the `ServerCallContext` argument passed to each gRPC method:</span></span>
+<span data-ttu-id="54186-156">L’API gRPC permet d’accéder à certaines données de message HTTP/2, telles que la méthode, l’hôte, l’en-tête et les codes de fin.</span><span class="sxs-lookup"><span data-stu-id="54186-156">The gRPC API provides access to some HTTP/2 message data, such as the method, host, header, and trailers.</span></span> <span data-ttu-id="54186-157">L’accès s’effectue `ServerCallContext` par le biais de l’argument passé à chaque méthode gRPC:</span><span class="sxs-lookup"><span data-stu-id="54186-157">Access is through the `ServerCallContext` argument passed to each gRPC method:</span></span>
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService.cs?highlight=3-4&name=snippet)]
 
-<span data-ttu-id="9b025-153">`ServerCallContext`ne fournit pas un accès complet `HttpContext` à dans toutes les API ASP.net.</span><span class="sxs-lookup"><span data-stu-id="9b025-153">`ServerCallContext` does not provide full access to `HttpContext` in all ASP.NET APIs.</span></span> <span data-ttu-id="9b025-154">La `GetHttpContext` méthode d’extension fournit un accès complet `HttpContext` au représentant le message http/2 sous-jacent dans les API ASP.net :</span><span class="sxs-lookup"><span data-stu-id="9b025-154">The `GetHttpContext` extension method provides full access to the `HttpContext` representing the underlying HTTP/2 message in ASP.NET APIs:</span></span>
+<span data-ttu-id="54186-158">`ServerCallContext`ne fournit pas un accès complet `HttpContext` à dans toutes les API ASP.net.</span><span class="sxs-lookup"><span data-stu-id="54186-158">`ServerCallContext` does not provide full access to `HttpContext` in all ASP.NET APIs.</span></span> <span data-ttu-id="54186-159">La `GetHttpContext` méthode d’extension fournit un accès complet `HttpContext` au représentant le message http/2 sous-jacent dans les API ASP.net:</span><span class="sxs-lookup"><span data-stu-id="54186-159">The `GetHttpContext` extension method provides full access to the `HttpContext` representing the underlying HTTP/2 message in ASP.NET APIs:</span></span>
 
 [!code-csharp[](~/grpc/aspnetcore/sample/GrcpService/GreeterService2.cs?highlight=6-7&name=snippet)]
 
-## <a name="additional-resources"></a><span data-ttu-id="9b025-155">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="9b025-155">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="54186-160">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="54186-160">Additional resources</span></span>
 
 * <xref:tutorials/grpc/grpc-start>
 * <xref:grpc/index>
