@@ -4,20 +4,20 @@ author: bradygaster
 description: Dans ce tutoriel, vous créez une application de conversation qui utilise ASP.NET Core SignalR.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 07/08/2019
+ms.date: 09/24/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 2dfa994b9763a0139cb70cbf9847ac3b02b568e4
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 7a6574bd3c463f0890f5dc076944f1ab0f0c919a
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081968"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248397"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous allez apprendre à effectuer les actions suivantes :
+Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
 
 > [!div class="checklist"]
 > * Créez un projet web.
@@ -66,7 +66,7 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal) dans le dossier dans lequel le nouveau dossier de projet va être créé.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
@@ -210,7 +210,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
   * Ajoute au bouton Envoyer un gestionnaire qui envoie des messages au hub.
   * Ajoute à l’objet de connexion un gestionnaire qui reçoit des messages à partir du hub et les ajoute à la liste.
 
-## <a name="run-the-app"></a>Exécution de l'application
+## <a name="run-the-app"></a>Exécuter l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -234,7 +234,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés sur les deux pages instantanément.
+  Le nom et le message sont affichés instantanément dans les deux pages.
 
   ![Exemple d’application SignalR](signalr/_static/3.x/signalr-get-started-finished.png)
 
@@ -259,7 +259,7 @@ Pour en savoir plus sur SignalR, consultez :
 
 ::: moniker range="< aspnetcore-3.0"
 
-Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous allez apprendre à effectuer les actions suivantes :
+Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
 
 > [!div class="checklist"]
 > * Créez un projet web.
@@ -308,7 +308,7 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal) dans le dossier dans lequel le nouveau dossier de projet va être créé.
 
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
@@ -453,7 +453,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
   * Ajoute au bouton Envoyer un gestionnaire qui envoie des messages au hub.
   * Ajoute à l’objet de connexion un gestionnaire qui reçoit des messages à partir du hub et les ajoute à la liste.
 
-## <a name="run-the-app"></a>Exécution de l'application
+## <a name="run-the-app"></a>Exécuter l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -477,7 +477,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés sur les deux pages instantanément.
+  Le nom et le message sont affichés instantanément dans les deux pages.
 
   ![Exemple d’application SignalR](signalr/_static/2.x/signalr-get-started-finished.png)
 
@@ -485,9 +485,13 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 > Si l’application ne fonctionne pas, ouvrez vos outils de développement (F12) de navigateur et accédez à la console. Vous pouvez observer des erreurs liées à votre code HTML et JavaScript. Par exemple, supposez que vous placez *signalr.js* dans un dossier autre que celui stipulé. Dans ce cas, la référence à ce fichier ne fonctionnera pas et vous verrez une erreur 404 dans la console.
 > ![Erreur de fichier SignalR.js introuvable](signalr/_static/2.x/f12-console.png)
 
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=iKlVmu-r0JQ)
+
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce tutoriel, vous avez appris à :
+Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/7/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 9407de4ee91ba43b2c95fa98f0cf479bf8539cab
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 47194f786b2d32fb343e8f1078a4400d6db37293
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310495"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248337"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -59,7 +59,7 @@ L’hôte fournit des services accessibles au constructeur de classe `Startup`. 
 Seuls les types de service suivants peuvent être injectés dans le constructeur `Startup` lorsque vous utilisez <xref:Microsoft.Extensions.Hosting.IHostBuilder> :
 
 * `IWebHostEnvironment`
-* `IHostEnvironment`
+* <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartUp2.cs?name=snippet)]
@@ -94,7 +94,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* facultatif.
+* Optionnel.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 

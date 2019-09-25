@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/01/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 261abae499a0d5f807a14aebd224949881067bc7
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
+ms.openlocfilehash: 75af6dc58d31aaad888b14640268bf05c193272d
+ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773812"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71248285"
 ---
 # <a name="net-generic-host"></a>Hôte générique .NET
 
@@ -113,7 +113,7 @@ Les services inscrits automatiquement sont les suivants :
 * [IHostLifetime](#ihostlifetime)
 * [IHostEnvironment / IWebHostEnvironment](#ihostenvironment)
 
-Pour obtenir la liste de tous les services fournis par le framework, consultez <xref:fundamentals/dependency-injection#framework-provided-services>.
+Pour plus d’informations sur les services fournis par le <xref:fundamentals/dependency-injection#framework-provided-services>Framework, consultez.
 
 ## <a name="ihostapplicationlifetime"></a>IHostApplicationLifetime
 
@@ -495,7 +495,7 @@ Pour définir la console dans Visual Studio Code :
 1. Ouvrez le fichier *.vscode/launch.json*.
 1. Dans la configuration **.NET Core Launch (console)** , recherchez l’entrée **console**. Définissez la valeur avec `externalTerminal` ou `integratedTerminal`.
 
-## <a name="introduction"></a>Présentation
+## <a name="introduction"></a>Introduction
 
 La bibliothèque de l’hôte générique est disponible dans l’espace de noms <xref:Microsoft.Extensions.Hosting> et est fournie par le package [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/). Le package `Microsoft.Extensions.Hosting` est inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou ultérieur).
 
