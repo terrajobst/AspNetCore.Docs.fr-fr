@@ -1,36 +1,38 @@
 ---
-title: Comparaison des services gRPC avec les API HTTP
+title: Comparer les services gRPC avec les API HTTP
 author: jamesnk
 description: Découvrez comment gRPC compare avec les API HTTP et ce que sont les scénarios recommandés.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 03/31/2019
+ms.date: 09/25/2019
 uid: grpc/comparison
-ms.openlocfilehash: c34c7ecb668e478e2be3271928a2439979a746d9
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.openlocfilehash: 935078d890998fe6af366e3f6a7bf21f53c20cf7
+ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310472"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71267711"
 ---
-# <a name="comparing-grpc-services-with-http-apis"></a>Comparaison des services gRPC avec les API HTTP
+# <a name="compare-grpc-services-with-http-apis"></a>Comparer les services gRPC avec les API HTTP
 
 Par [James Newton-King](https://twitter.com/jamesnk)
 
 Cet article explique comment les [services gRPC](https://grpc.io/docs/guides/) sont comparés aux API http (y compris les [API Web](xref:web-api/index)ASP.net Core). La technologie utilisée pour fournir une API pour votre application est un choix important, et gRPC offre des avantages uniques par rapport aux API HTTP. Cet article présente les forces et les faiblesses de gRPC et recommande des scénarios d’utilisation de gRPC sur d’autres technologies.
 
-#### <a name="overview"></a>Présentation
+## <a name="high-level-comparison"></a>Comparaison de haut niveau
+
+Le tableau suivant présente une comparaison de haut niveau des fonctionnalités entre les API gRPC et HTTP avec JSON.
 
 | Fonctionnalité          | gRPC                                               | API HTTP avec JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
 | Contrat         | Obligatoire ( *. proto*)                                | Facultatif (OpenAPI)            |
 | Transport        | HTTP/2                                             | HTTP                          |
 | Charge utile          | [Protobuf (petit, binaire)](#performance)           | JSON (grand, lisible par l’utilisateur)  |
-| Prescriptiveness | [Spécification stricte](#strict-specification)      | Compatibilité. Tout HTTP est valide      |
+| Prescriptiveness | [Spécification stricte](#strict-specification)      | Compatibilité. Tout HTTP est valide.      |
 | Diffusion en continu        | [Client, serveur, bidirectionnel](#streaming)       | Client, serveur                |
 | Prise en charge des navigateurs  | [Non (requiert GRPC-Web)](#limited-browser-support) | Oui                           |
 | Sécurité         | Transport (HTTPs)                                  | Transport (HTTPs)             |
-| Code client-général  | [Oui](#code-generation)                            | OpenAPI + outils tiers |
+| Génération de code client | [Oui](#code-generation)                      | OpenAPI + outils tiers |
 
 ## <a name="grpc-strengths"></a>points forts gRPC
 
@@ -47,7 +49,7 @@ gRPC est conçu pour HTTP/2, une révision majeure de HTTP qui offre des avantag
 
 Toutes les infrastructures gRPC fournissent une prise en charge de première classe pour la génération de code. Un fichier de base pour le développement gRPC est le [fichier *. proto* ](https://developers.google.com/protocol-buffers/docs/proto3), qui définit le contrat de services et de messages gRPC. À partir de ce fichier, gRPC frameworks code générera une classe de base de service, des messages et un client complet.
 
-En partageant `*.proto` le fichier entre le serveur et le client, les messages et le code client peuvent être générés de bout en bout. La génération de code du client élimine la duplication des messages sur le client et le serveur, et crée un client fortement typé pour vous. Le fait de ne pas avoir à écrire un client permet d’économiser beaucoup de temps de développement dans les applications avec de nombreux services.
+En partageant le fichier *. proto* entre le serveur et le client, les messages et le code client peuvent être générés de bout en bout. La génération de code du client élimine la duplication des messages sur le client et le serveur, et crée un client fortement typé pour vous. Le fait de ne pas avoir à écrire un client permet d’économiser beaucoup de temps de développement dans les applications avec de nombreux services.
 
 ### <a name="strict-specification"></a>Spécification stricte
 
@@ -95,7 +97,7 @@ Les fonctionnalités de gRPC ne sont pas toutes prises en charge par gRPC-Web. L
 
 Les demandes de l’API HTTP sont envoyées en tant que texte et peuvent être lues et créées par des humains.
 
-par défaut, les messages gRPC sont encodés avec Protobuf. Bien que Protobuf soit efficace pour l’envoi et la réception, son format binaire n’est pas lisible par l’homme. Protobuf requiert la description de l’interface du message spécifiée `*.proto` dans le fichier pour désérialiser correctement. Des outils supplémentaires sont requis pour analyser les charges utiles Protobuf sur le réseau et pour composer les demandes manuellement.
+par défaut, les messages gRPC sont encodés avec Protobuf. Bien que Protobuf soit efficace pour l’envoi et la réception, son format binaire n’est pas lisible par l’homme. Protobuf requiert la description d’interface du message spécifiée dans le fichier *. proto* pour une désérialisation correcte. Des outils supplémentaires sont requis pour analyser les charges utiles Protobuf sur le réseau et pour composer les demandes manuellement.
 
 Des fonctionnalités telles que la [réflexion de serveur](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md) et l’outil en [ligne de commande gRPC](https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md) existent pour faciliter les messages binaires Protobuf. En outre, les messages Protobuf prennent en charge la [conversion vers et à partir de JSON](https://developers.google.com/protocol-buffers/docs/proto3#json). La conversion JSON intégrée offre un moyen efficace de convertir des messages Protobuf vers et à partir d’une forme lisible par l’utilisateur lors du débogage.
 
