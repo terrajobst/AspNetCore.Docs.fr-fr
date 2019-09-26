@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2d0eb24641c3d1f795b9e85ce10d42ee96d30846
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 5e5215f246c6c7a805a4c99f485d51a2fb3c712d
+ms.sourcegitcommit: cf9ffcce4fe0b69fe795aae9ae06e99fdb18bdfc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71306664"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -71,7 +71,7 @@ Le diagramme suivant illustre la conception de l’application.
 * Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
-* Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
+* Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs3.png)
 
@@ -227,9 +227,8 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 ### <a name="add-microsoftentityframeworkcoresqlserver"></a>Ajouter Microsoft.EntityFrameworkCore.SqlServer
 
 * Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Gérer les packages NuGet pour la solution**.
-* Cochez la case **Inclure la préversion**.
 * Sélectionnez l’onglet **Parcourir**, puis entrez **Microsoft.EntityFrameworkCore.SqlServer** dans la zone de recherche.
-* Sélectionnez **Microsoft.EntityFrameworkCore.SqlServer V3.0.0-preview** dans le volet gauche.
+* Dans le volet gauche, sélectionnez **Microsoft. EntityFrameworkCore. SqlServer** .
 * Cochez la case **Projet** dans le volet droit, puis sélectionnez **Installer**.
 * Utilisez les instructions précédentes pour ajouter le package NuGet `Microsoft.EntityFrameworkCore.InMemory`.
 
@@ -913,6 +912,12 @@ Pour supprimer une tâche, vous devez définir le `type` sur l’appel AJAX avec
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxDelete)]
 
 ::: moniker-end
+
+<a name="auth"></a>
+
+## <a name="add-authentication-support-to-a-web-api"></a>Ajouter la prise en charge de l’authentification à une API Web
+
+Consultez le didacticiel [IdentityServer4](https://identityserver4.readthedocs.io/en/latest/quickstarts/0_overview.html) .
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
