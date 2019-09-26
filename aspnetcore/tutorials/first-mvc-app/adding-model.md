@@ -5,12 +5,12 @@ description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: b2ef7a582dfedcd670af7bb18a6927cec31f6414
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 5ad31a2536ad70590eaa767cf20068512241f36b
+ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187274"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71295473"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -62,7 +62,7 @@ Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Con
 Dans la console du gestionnaire de package, exécutez la commande suivante :
 
 ```powershell
-Install-Package Microsoft.EntityFrameworkCore.SqlServer -IncludePrerelease
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 La commande précédente ajoute le fournisseur EF Core SQL Server. Le package du fournisseur installe le package EF Core en tant que dépendance. Plus loin dans ce tutoriel, d’autres packages sont installés automatiquement lors de l’étape de génération de modèles automatique.

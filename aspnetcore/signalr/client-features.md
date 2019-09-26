@@ -1,5 +1,5 @@
 ---
-title: Fonctionnalités du client signalr
+title: Fonctionnalités du client SignalR
 author: bradygaster
 description: Découvrez les fonctionnalités prises en charge par les différents clients ASP.NET Core Signalr.
 monikerRange: '>= aspnetcore-3.0'
@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/18/2019
 uid: signalr/client-features
-ms.openlocfilehash: 55086673e0c9f9b73f07730ea25c3fa322f7fd98
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 2d6759a5484c37aee6db3d22b3127414231605ae
+ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187466"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301189"
 ---
 # <a name="aspnet-core-signalr-client-features"></a>Fonctionnalités du client ASP.NET Core Signalr
 
@@ -20,11 +20,19 @@ ms.locfileid: "71187466"
 
 Le tableau ci-dessous présente les fonctionnalités et la prise en charge des clients qui offrent une prise en charge en temps réel.
 
-| Fonctionnalité | .NET Core | JavaScript | Java |
+| Fonctionnalité | .NET | JavaScript | Java |
 | ---- | :-: | :-: | :-: |
+| Prise en charge du service Azure Signalr |✔|✔|✔|
 | [Streaming de serveur à client](xref:signalr/streaming)          |✔|✔|✔|
 | [Streaming client à serveur](xref:signalr/streaming)          |✔|✔|✔|
 | Reconnexion automatique ([.net](/aspnet/core/signalr/dotnet-client?view=aspnetcore-3.0&tabs=visual-studio#handle-lost-connection), [JavaScript](/aspnet/core/signalr/javascript-client?view=aspnetcore-3.0#reconnect-clients))          |✔|✔| |
+| Transport WebSockets |✔|✔|✔|
+| Transport des événements envoyés par le serveur |✔|✔| |
+| Transport d’interrogation longue |✔|✔|✔|
+| Protocole JSON Hub |✔|✔|✔|
+| Protocole MessagePack Hub |✔|✔| |
+
+La prise en charge de la reconnexion automatique dans le client Java est suivie dans notre suivi des [problèmes](https://github.com/aspnet/AspNetCore/issues/8711).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
