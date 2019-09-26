@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: eafb06d181ca3f085cccb314749c8d4deba074fa
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082558"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278752"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -362,6 +362,58 @@ Le sous-système Windows pour Linux (WSL) génère un certificat auto-signé HTT
 * Dans une fenêtre WSL, exécutez la commande suivante :`ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
 
   La commande précédente définit les variables d’environnement pour que Linux utilise le certificat de confiance Windows.
+
+## <a name="troubleshoot-certificate-problems"></a>Résoudre les problèmes de certificat
+
+Cette section fournit de l’aide lorsque le certificat de développement HTTPs ASP.NET Core a été [installé et approuvé](#trust), mais que vous avez encore des avertissements de navigateur indiquant que le certificat n’est pas approuvé.
+
+### <a name="all-platforms---certificate-not-trusted"></a>Toutes les plateformes-certificat non approuvé
+
+Exécutez les commandes suivantes :
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre de navigateur pour l’application. L’approbation de certificat est mise en cache par les navigateurs.
+
+Les commandes précédentes résolvent la plupart des problèmes d’approbation du navigateur. Si le navigateur n’approuve toujours pas le certificat, suivez les suggestions spécifiques à la plateforme qui suivent.
+
+### <a name="docker---certificate-not-trusted"></a>Dockr-certificat non approuvé
+
+* Supprimez le dossier *C:\Users\{User} \AppData\Roaming\ASP.NET\Https* .
+* Nettoyez la solution. Supprimez les dossiers *bin* et *obj*.
+* Redémarrez l’outil de développement. Par exemple, Visual Studio, Visual Studio Code ou Visual Studio pour Mac.
+
+### <a name="windows---certificate-not-trusted"></a>Windows-certificat non approuvé
+
+* Vérifiez les certificats dans le magasin de certificats. Il doit y avoir `localhost` un certificat avec `ASP.NET Core HTTPS development certificate` le nom convivial à `Current User > Personal > Certificates` la fois sous et`Current User > Trusted root certification authorities > Certificates`
+* Supprimez tous les certificats détectés des autorités de certification racines personnelles et de confiance. Ne supprimez **pas** le certificat IIS Express localhost.
+* Exécutez les commandes suivantes :
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre de navigateur pour l’application.
+
+### <a name="os-x---certificate-not-trusted"></a>OS X-certificat non approuvé
+
+* Ouvrez le trousseau d’accès.
+* Sélectionnez le trousseau système.
+* Vérifiez la présence d’un certificat localhost.
+* Vérifiez qu’il contient un `+` symbole sur l’icône pour indiquer qu’il est approuvé pour tous les utilisateurs.
+* Supprimez le certificat du trousseau système.
+* Exécutez les commandes suivantes :
+
+```dotnetcli
+dotnet devcerts https --clean
+dotnet devcerts https --trust
+```
+
+Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre de navigateur pour l’application.
 
 ## <a name="additional-information"></a>Informations supplémentaires
 

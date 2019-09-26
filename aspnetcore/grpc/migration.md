@@ -4,14 +4,14 @@ author: juntaoluo
 description: Découvrez comment déplacer une application gRPC basée sur un noyau C existante pour qu’elle s’exécute sur ASP.NET Core pile.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 03/31/2019
+ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 39aa711a1a47cf11ec5b08903b4130c7caa1501c
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
+ms.openlocfilehash: 8f0d9dd980fa3281f30dc29d329d10ccd352ae72
+ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022303"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71278697"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migration des services gRPC à partir de C-Core vers ASP.NET Core
 
@@ -23,7 +23,7 @@ En raison de l’implémentation de la pile sous-jacente, certaines fonctionnali
 
 Dans la pile ASP.NET Core, les services gRPC, par défaut, sont créés avec une [durée de vie limitée](xref:fundamentals/dependency-injection#service-lifetimes). En revanche, gRPC C-Core est lié par défaut à un service avec une [durée de vie Singleton](xref:fundamentals/dependency-injection#service-lifetimes).
 
-Une durée de vie limitée permet à l’implémentation de service de résoudre d’autres services avec des durées de vie délimitées. Par exemple, une durée de vie délimitée peut `DbContext` également être résolue à partir du conteneur di via l’injection de constructeur. Utilisation de la durée de vie limitée:
+Une durée de vie limitée permet à l’implémentation de service de résoudre d’autres services avec des durées de vie délimitées. Par exemple, une durée de vie délimitée peut `DbContext` également être résolue à partir du conteneur di via l’injection de constructeur. Utilisation de la durée de vie limitée :
 
 * Une nouvelle instance de l’implémentation de service est construite pour chaque requête.
 * Il n’est pas possible de partager l’état entre les demandes via des membres d’instance sur le type d’implémentation.
@@ -33,7 +33,7 @@ Pour plus d’informations sur les durées de <xref:fundamentals/dependency-inje
 
 ### <a name="add-a-singleton-service"></a>Ajouter un service Singleton
 
-Pour faciliter la transition d’une implémentation gRPC C-Core à ASP.NET Core, il est possible de modifier la durée de vie du service de l’implémentation de service de l’étendue à Singleton. Cela implique l’ajout d’une instance de l’implémentation de service au conteneur DI:
+Pour faciliter la transition d’une implémentation gRPC C-Core à ASP.NET Core, il est possible de modifier la durée de vie du service de l’implémentation de service de l’étendue à Singleton. Cela implique l’ajout d’une instance de l’implémentation de service au conteneur DI :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -49,14 +49,14 @@ Toutefois, une implémentation de service avec une durée de vie Singleton n’e
 
 Dans les applications basées sur C-Core, les paramètres `grpc.max_receive_message_length` tels `grpc.max_send_message_length` que et sont `ChannelOption` configurés avec lors de [la construction de l’instance de serveur](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server__ctor_System_Collections_Generic_IEnumerable_Grpc_Core_ChannelOption__).
 
-Dans ASP.net Core, gRPC fournit la configuration par `GrpcServiceOptions` le biais du type. Par exemple, la taille maximale des messages entrants peut être configurée par le `AddGrpc`biais de:
+Dans ASP.net Core, gRPC fournit la configuration par `GrpcServiceOptions` le biais du type. Par exemple, la taille maximale des messages entrants peut être configurée par le `AddGrpc`biais du service gRPC. L’exemple suivant modifie la valeur `ReceiveMaxMessageSize` par défaut de 4 Mo à 16 Mo :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddGrpc(options =>
     {
-        options.ReceiveMaxMessageSize = 16384; // 16 MB
+        options.ReceiveMaxMessageSize = 16 * 1024 * 1024; // 16 MB
     });
 }
 ```
@@ -65,7 +65,7 @@ Pour plus d’informations sur la configuration <xref:grpc/configuration>, consu
 
 ## <a name="logging"></a>Journalisation
 
-Les applications basées sur le langage C s’appuient sur le `GrpcEnvironment` pour [configurer l’enregistreur](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_) d’événements à des fins de débogage. La pile ASP.NET Core fournit cette fonctionnalité par le biais de l' [API](xref:fundamentals/logging/index)de journalisation. Par exemple, un enregistreur d’événements peut être ajouté au service gRPC via l’injection de constructeur:
+Les applications basées sur le langage C s’appuient sur le `GrpcEnvironment` pour [configurer l’enregistreur](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_) d’événements à des fins de débogage. La pile ASP.NET Core fournit cette fonctionnalité par le biais de l' [API de journalisation](xref:fundamentals/logging/index). Par exemple, un enregistreur d’événements peut être ajouté au service gRPC via l’injection de constructeur :
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase
