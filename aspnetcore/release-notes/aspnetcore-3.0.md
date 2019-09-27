@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités de ASP.NET Core 3,0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/26/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: 490d00da7282e2efe28fcc52e593dd71d7324d3f
-ms.sourcegitcommit: 0365af91518004c4a44a30dc3a8ac324558a399b
+ms.openlocfilehash: c1b61fee7264b972c70dbfa8f1461e33e3645746
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198996"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317657"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -64,7 +64,7 @@ Les composants de éblouissant sont généralement créés à l’aide de syntax
   * Format de sérialisation binaire.
 * Fournit des fonctionnalités telles que :
 
-  * Authentification
+  * Authentication
   * Streaming bidirectionnel et contrôle de flux.
   * Annulation et délais d’attente.
 
@@ -319,6 +319,17 @@ La liste suivante contient les nouvelles directives Razor :
 * [@attribute](xref:mvc/views/razor#attribute)&ndash; La`@attribute` directive applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple, `@attribute [Authorize]`.
 * [@implements](xref:mvc/views/razor#implements)&ndash; La`@implements` directive implémente une interface pour la classe générée. Par exemple, `@implements IDisposable`.
 
+## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 prend en charge l’authentification et l’autorisation pour les API Web et SPAs
+
+[IdentityServer4](https://identityserver.io) est un Framework OpenID Connect et OAuth 2,0 pour ASP.net Core 3,0. IdentityServer4 active les fonctionnalités de sécurité suivantes :
+
+* Authentification en tant que service (AaaS)
+* Authentification unique (SSO) sur plusieurs types d’applications
+* Contrôle d’accès pour les API
+* Passerelle de Fédération
+
+Pour plus d’informations, consultez [Bienvenue dans IdentityServer4](http://docs.identityserver.io/en/latest/index.html).
+
 ## <a name="certificate-and-kerberos-authentication"></a>Certificat et authentification Kerberos
 
 L’authentification par certificat requiert :
@@ -420,9 +431,9 @@ Pour plus d'informations, consultez <xref:migration/22-to-30#kestrel>.
 
 HTTP/2 est activé par défaut dans Kestrel pour les points de terminaison HTTPs. La prise en charge de HTTP/2 pour IIS ou HTTP. sys est activée lorsqu’elle est prise en charge par le système d’exploitation.
 
-## <a name="request-counters"></a>Compteurs de demande
+## <a name="eventcounters-on-request"></a>EventCounters à la demande
 
-L’EventSource d’hébergement (Microsoft. AspNetCore. Hosting) émet les EventCounters suivants en rapport avec les demandes entrantes :
+L’EventSource d’hébergement `Microsoft.AspNetCore.Hosting`,, émet les nouveaux <xref:System.Diagnostics.Tracing.EventCounter> types suivants en rapport avec les demandes entrantes :
 
 * `requests-per-second`
 * `total-requests`

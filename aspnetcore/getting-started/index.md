@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
 uid: getting-started
-ms.openlocfilehash: 0f05ab120d64832a4bc2fd70921efc7238ee9eac
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: c9cd5e05f52c8bdefa931adc654087dac91e2f05
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187056"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317762"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
@@ -50,7 +50,7 @@ La commande précédente :
 
 Approuvez le certificat de développement HTTPS :
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -90,18 +90,18 @@ Exécutez les commandes suivantes :
 
 ```dotnetcli
 cd aspnetcoreapp
-dotnet run
+dotnet watch run
 ```
 
 Une fois que l’interface de commande indique que l’application a démarré, accédez à [https://localhost:5001](https://localhost:5001). Cliquez sur **Accepter** pour accepter la politique de confidentialité et de cookies. Cette application ne conserve pas les informations personnelles.
 
 ## <a name="edit-a-razor-page"></a>Modifier une page Razor
 
-Ouvrez *Pages/Index.cshtml* et modifiez la page avec le balisage mis en surbrillance suivant :
+Ouvrez *pages/index. cshtml* et modifiez et enregistrez la page avec le balisage en surbrillance suivant :
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-Accédez à [https://localhost:5001](https://localhost:5001) et vérifiez que les changements sont affichés.
+Accédez à [https://localhost:5001](https://localhost:5001), actualisez la page et vérifiez que les modifications sont affichées.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

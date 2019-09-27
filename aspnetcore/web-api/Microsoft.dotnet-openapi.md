@@ -3,31 +3,29 @@ title: Développer des applications ASP.NET Core à l’aide de OpenAPI
 author: ryanbrandenburg
 description: Montre comment utiliser l’outil « Microsoft. dotnet-openapi » pour ajouter des références aux fichiers OpenAPI.
 ms.author: rybrande
-ms.date: 08/26/2019
+ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: a9b38bb7e69744d72867bf69cecf1fa92d7c15b3
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: f5eae9e871bc8efc30d500769adb845ff244a90c
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187459"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317773"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>Développer des applications ASP.NET Core à l’aide des outils OpenAPI
 
 Par Ryan Brandenburg
 
-`Microsoft.dotnet-openapi`est un outil Global .NET Core pour la gestion des références [openapi](https://github.com/OAI/OpenAPI-Specification) dans un projet.
+[Microsoft. dotnet-openapi](https://www.nuget.org/packages/Microsoft.dotnet-openapi) est un [outil Global .net Core](/dotnet/core/tools/global-tools) pour la gestion des références [openapi](https://github.com/OAI/OpenAPI-Specification) dans un projet.
 
 ## <a name="installation"></a>Installation
 
 Pour installer `Microsoft.dotnet-openapi`, exécutez la commande suivante :
 
-```console
+```dotnetcli
 dotnet tool install -g Microsoft.dotnet-openapi
 ```
-
-`Microsoft.dotnet-openapi`est un [outil global de .net Core](/dotnet/core/tools/global-tools).
 
 ## <a name="add"></a>Ajouter
 
@@ -108,7 +106,7 @@ Supprime la référence OpenAPI correspondant au nom de fichier donné du fichie
 | ------------|------------|---------|
 | fichier source | Source à laquelle supprimer la référence. |dotnet openapi supprimer *.\OpenAPI.JSON* |
 
-## <a name="refresh"></a>Actualisation
+## <a name="refresh"></a>Actualiser
 
 Actualise la version locale d’un fichier qui a été téléchargé à l’aide du contenu le plus récent à partir de l’URL de téléchargement.
 

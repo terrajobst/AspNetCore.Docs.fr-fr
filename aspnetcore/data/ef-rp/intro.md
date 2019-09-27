@@ -4,14 +4,14 @@ author: tdykstra
 description: Montre comment créer une application Pages Razor à l’aide d’Entity Framework Core.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 07/22/2019
+ms.date: 09/26/2019
 uid: data/ef-rp/intro
-ms.openlocfilehash: 6b7d2ca1cea23efd195f1ae0e0a749c6d2d9b622
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: e261ccd30dc9ef0929e74fa44a5ed752d515b707
+ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186955"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317685"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -19,7 +19,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitte
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Il s’agit du premier tutoriel d’une série qui montre comment utiliser Entity Framework (EF) Core dans une application Razor Pages ASP.NET Core. Dans ces tutoriels, un site web est créé pour une université fictive nommée Contoso. Le site comprend des fonctionnalités comme l’admission des étudiants, la création de cours et les affectations des formateurs.
+Il s’agit de la première d’une série de didacticiels qui montrent comment utiliser Entity Framework (EF) Core dans une application [ASP.NET Core Razor pages](xref:razor-pages/index) . Dans ces tutoriels, un site web est créé pour une université fictive nommée Contoso. Le site comprend des fonctionnalités comme l’admission des étudiants, la création de cours et les affectations des formateurs.
 
 [Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
@@ -127,7 +127,7 @@ Pour exécuter l’application après avoir téléchargé le projet terminé :
 
 Configurez l’en-tête, le pied de page et le menu du site en mettant à jour *Pages/Shared/_Layout.cshtml* :
 
-* Remplacez chaque occurrence de « ContosoUniversity » par « Contoso University ». Il y a trois occurrences.
+* Remplacez chaque occurrence de « ContosoUniversity » par « Contoso University ». Il existe trois occurrences.
 
 * Supprimez les entrées de menu **Home** et **Privacy** et ajoutez les entrées **About**, **Students**, **Courses**, **Instructors** et **Departments**.
 
@@ -165,7 +165,7 @@ La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeli
 
 Dans la base de données, une ligne Enrollment est associée à une ligne Student si sa colonne StudentID contient la valeur d’ID de l’étudiant. Par exemple, supposez qu’une ligne Student présente un ID égal à 1. Les lignes Enrollment associées auront un StudentID égal à 1. StudentID est une *clé étrangère* dans la table Enrollment. 
 
-La propriété `Enrollments` est définie en tant que `ICollection<Enrollment>`, car plusieurs entités Enrollment associées peuvent exister. Vous pouvez utiliser d’autres types de collection, comme `List<Enrollment>` ou `HashSet<Enrollment>`. Quand vous utilisez `ICollection<Enrollment>`, EF Core crée une collection `HashSet<Enrollment>` par défaut.
+La propriété `Enrollments` est définie en tant que `ICollection<Enrollment>`, car plusieurs entités Enrollment associées peuvent exister. Vous pouvez utiliser d’autres types de collection, comme `List<Enrollment>` ou `HashSet<Enrollment>`. Lorsque `ICollection<Enrollment>` est utilisé, le EF Core crée une collection `HashSet<Enrollment>` par défaut.
 
 ## <a name="the-enrollment-entity"></a>L’entité Enrollment
 
@@ -179,11 +179,11 @@ La propriété `EnrollmentID` est la clé primaire ; cette entité utilise le m
 
 La propriété `Grade` est un `enum`. La présence du point d’interrogation après la déclaration de type `Grade` indique que la propriété `Grade` [accepte les valeurs Null](https://docs.microsoft.com/dotnet/csharp/programming-guide/nullable-types/). Une note (Grade) de valeur Null est différente d’une note zéro : la valeur Null signifie que la note n’est pas connue ou qu’elle n’a pas encore été attribuée.
 
-La propriété `StudentID` est une clé étrangère, et la propriété de navigation correspondante est `Student`. Une entité `Enrollment` est associée à une entité `Student`. Par conséquent, la propriété contient une seule entité `Student`.
+La propriété `StudentID` est une clé étrangère, et la propriété de navigation correspondante est `Student`. Une entité `Enrollment` est associée à une entité `Student`, par conséquent, la propriété contient une seule entité `Student`.
 
 La propriété `CourseID` est une clé étrangère, et la propriété de navigation correspondante est `Course`. Une entité `Enrollment` est associée à une entité `Course`.
 
-EF Core interprète une propriété en tant que clé étrangère si elle se nomme `<navigation property name><primary key property name>`. Par exemple, `StudentID` est la clé étrangère pour la propriété de navigation `Student`, car la clé primaire de l’entité `Student` est `ID`. Les propriétés de clé étrangère peuvent également se nommer `<primary key property name>`. Par exemple, `CourseID` puisque la clé primaire de l’entité `Course` est `CourseID`.
+EF Core interprète une propriété comme une clé étrangère si elle est nommée `<navigation property name><primary key property name>`. Par exemple, `StudentID` est la clé étrangère pour la propriété de navigation `Student`, car la clé primaire de l’entité `Student` est `ID`. Les propriétés de clé étrangère peuvent également être nommées `<primary key property name>`. Par exemple, `CourseID` puisque la clé primaire de l’entité `Course` est `CourseID`.
 
 ## <a name="the-course-entity"></a>L’entité Course
 
@@ -193,7 +193,7 @@ Créez *Models/Course.cs* avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Models/Course.cs)]
 
-La propriété `Enrollments` est une propriété de navigation. Une entité `Course` peut être associée à un nombre quelconque d’entités `Enrollment`.
+`Enrollments` est une propriété de navigation. A une entité `Course` peut être associée à un nombre quelconque d'entités `Enrollment`.
 
 L’attribut `DatabaseGenerated` permet à l’application de spécifier la clé primaire, plutôt que de la faire générer par la base de données.
 
@@ -288,7 +288,7 @@ La chaîne de connexion spécifie [SQL Server LocalDB](/sql/database-engine/conf
 
 [!code-json[Main](intro/samples/cu30/appsettings.json?highlight=11)]
 
-LocalDB est une version allégée du moteur de base de données SQL Server Express. Elle est destinée au développement d’applications, et non à une utilisation en production. Par défaut, la Base de données locale crée des fichiers *.mdf* dans le répertoire `C:/Users/<user>`.
+LocalDB est une version légère de SQL Server Express Database Engine et est prévue pour le développement d’applications, et pas à des fins de production. Par défaut, la Base de données locale crée des fichiers *.mdf* dans le répertoire `C:/Users/<user>`.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -306,7 +306,7 @@ Mettez à jour *SchoolContext.cs* avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu30snapshots/1-intro/Data/SchoolContext.cs?highlight=13-22)]
 
-Le code en surbrillance crée une propriété [DbSet\<TEntity>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) pour chaque jeu d’entités. Dans la terminologie d’EF Core :
+Le code en surbrillance crée une propriété [DbSet\<TEntity>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) pour chaque jeu d’entités. Dans la terminologie d’EF Core :
 
 * Un jeu d’entités correspond généralement à une table de base de données.
 * Une entité correspond à une ligne dans la table.
@@ -319,7 +319,7 @@ Générez le projet pour vérifier qu’il n’y a pas d’erreurs du compilateu
 
 ## <a name="startupcs"></a>Startup.cs
 
-ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection). Certains services (comme le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application. Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur. Le code de constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel.
+ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection). Certains services (comme le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application. Les composants qui requièrent ces services (tels que les Pages Razor) sont fournis à ces services via les paramètres du constructeur. Le code de constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel.
 
 L’outil de génération de modèles automatique a inscrit automatiquement la classe du contexte dans le conteneur d’injection de dépendances.
 
@@ -337,7 +337,7 @@ L’outil de génération de modèles automatique a inscrit automatiquement la c
 
 ---
 
-Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du fichier *appsettings.json*.
+Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir de la *appsettings.json* fichier.
 
 ## <a name="create-the-database"></a>Créer la base de données
 
@@ -403,8 +403,8 @@ Drop-Database
 
 * Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 * Dans SSOX, sélectionnez **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}** . Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID.
-* Développez le nœud **Tables**.
-* Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher les données** pour voir les colonnes créées et les lignes insérées dans la table.
+* Développez le noeud **Tables**.
+* Avec le bouton droit sur la table **Student**, cliquez sur **des données d’affichage** pour afficher les colonnes créées et les lignes insérées dans la table.
 * Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher le code** pour voir comment le modèle `Student` est mappé au schéma de la table `Student`.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -419,7 +419,7 @@ La programmation asynchrone est le mode par défaut pour ASP.NET Core et EF Core
 
 Un serveur web a un nombre limité de threads disponibles et, dans les situations de forte charge, tous les threads disponibles peuvent être utilisés. Quand cela se produit, le serveur ne peut pas traiter de nouvelle requête tant que les threads ne sont pas libérés. Avec le code synchrone, plusieurs threads peuvent être bloqués alors qu’ils n’effectuent en fait aucun travail, car ils attendent que des E/S se terminent. Avec le code asynchrone, quand un processus attend que des E/S se terminent, son thread est libéré afin d’être utilisé par le serveur pour traiter d’autres demandes. Il permet ainsi d’utiliser les ressources serveur plus efficacement, et le serveur peut gérer plus de trafic sans retard.
 
-Le code asynchrone introduit néanmoins une petite surcharge au moment de l’exécution. Dans les situations de faible trafic, le gain de performances est négligeable, tandis qu’en cas de trafic élevé l’amélioration potentielle des performances est importante.
+Le code asynchrone introduit une petite quantité de charge au moment de l’exécution. Dans les situations de faible trafic, le gain de performances est négligeable, tandis qu’en cas de trafic élevé l’amélioration potentielle des performances est importante.
 
 Dans le code suivant, le mot clé [async](/dotnet/csharp/language-reference/keywords/async), la valeur renvoyée `Task<T>`, le mot clé `await` et la méthode `ToListAsync` déclenchent l’exécution asynchrone du code.
 
@@ -431,15 +431,15 @@ public async Task OnGetAsync()
 ```
 
 * Le mot clé `async` fait en sorte que le compilateur :
-  * Génère des rappels pour les parties du corps de méthode.
+  * Génèrer des rappels pour les parties du corps de méthode.
   * Crée l’objet [Task](/dotnet/csharp/programming-guide/concepts/async/async-return-types#BKMK_TaskReturnType) qui est retourné.
 * Le type de retour `Task<T>` représente le travail en cours.
-* Le mot clé `await` fait en sorte que le compilateur fractionne la méthode en deux parties. La première partie se termine par l’opération qui est démarrée de façon asynchrone. La seconde partie est placée dans une méthode de rappel qui est appelée quand l’opération se termine.
+* Le (mot clé) `await`, le compilateur fractionner la méthode en deux parties. La première partie se termine par l’opération qui est démarrée de façon asynchrone. La seconde partie est placée dans une méthode de rappel qui est appelée quand l’opération se termine.
 * `ToListAsync` est la version asynchrone de la méthode d’extension `ToList`.
 
-Voici quelques éléments à connaître lors de l’écriture de code asynchrone qui utilise EF Core :
+Les éléments à connaître lors de l’écriture de code asynchrone qui utilise EF Core :
 
-* Seules les instructions qui provoquent l’envoi de requêtes ou de commandes vers la base de données sont exécutées de façon asynchrone. Cela inclut `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync` et `SaveChangesAsync`, mais pas les instructions qui ne font que changer un `IQueryable`, telles que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
+* Seules les instructions qui génèrent des requêtes ou des commandes envoyées à la base de données sont exécutées de façon asynchrone. Cela inclut `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync` et `SaveChangesAsync`, Il n’inclut pas les instructions qui modifient simplement un `IQueryable`, tel que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 * Un contexte EF Core n’est pas thread-safe : n’essayez pas d’effectuer plusieurs opérations en parallèle.
 * Pour tirer parti des avantages de performances du code asynchrone, vérifiez que les packages de bibliothèque (par exemple pour la pagination) utilisent le mode asynchrone s’ils appellent des méthodes EF Core qui envoient des requêtes à la base de données.
 
@@ -456,7 +456,7 @@ Pour plus d’informations sur la programmation asynchrone dans .NET, consultez 
 
 L’exemple d’application web Contoso University montre comment créer une application web Razor Pages ASP.NET Core à l’aide d’Entity Framework (EF) Core.
 
-L’exemple d’application est un site web pour une université Contoso fictive. Il comprend des fonctionnalités telles que l’admission des étudiants, la création des cours et les affectations des formateurs. Cette page est la première d’une série de didacticiels qui expliquent comment générer l’exemple d’application Contoso University.
+L’exemple d’application est un site web pour une université Contoso fictive. Il inclut des fonctionnalités telles que l'admission d’étudiant, la création de cours et les affectations de formateur. Cette page est la première d’une série de didacticiels qui expliquent comment générer l’exemple d’application Contoso University.
 
 [Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
@@ -472,7 +472,7 @@ L’exemple d’application est un site web pour une université Contoso fictive
 
 ---
 
-Connaissance des [Pages Razor](xref:razor-pages/index). Les programmeurs débutants doivent lire [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) avant de démarrer cette série.
+Vous êtes familiarisé avec [Pages Razor](xref:razor-pages/index). Les programmeurs débutants doivent lire [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) avant de démarrer cette série.
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -533,7 +533,7 @@ Créez des classes d’entités pour l’application Contoso University. Commenc
 
 ![Diagramme de modèle de données Cours-Inscription-Étudiant](intro/_static/data-model-diagram.png)
 
-Il existe une relation un-à-plusieurs entre les entités `Student` et `Enrollment`. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`. Un étudiant peut s’inscrire à autant de cours qu’il le souhaite. Un cours peut avoir une quantité illimitée d’élèves inscrits.
+Il existe une relation un-à-plusieurs entre les entités `Student` et `Enrollment`. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`. Un étudiant peut s'inscrire dans n’importe quel nombre de cours. Un cours peut avoir une quantité illimitée d’élèves inscrits.
 
 Dans les sections suivantes, une classe pour chacune de ces entités est créée.
 
@@ -549,7 +549,7 @@ La propriété `ID` devient la colonne de clé primaire de la table de base de d
 
 La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation établissent des liaisons à d’autres entités qui sont associées à cette entité. Ici, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à ce `Student`. Par exemple, si une ligne Student dans la base de données a deux lignes Enrollment associées, la propriété de navigation `Enrollments` contient ces deux entités `Enrollment`. Une ligne `Enrollment` associée est une ligne qui contient la valeur de clé primaire de cette étudiant dans la colonne `StudentID`. Par exemple, supposez que l’étudiant avec ID=1 a deux lignes dans la table `Enrollment`. La table `Enrollment` a deux lignes avec `StudentID` = 1. `StudentID` est une clé étrangère dans la table `Enrollment` qui spécifie l’étudiant dans la table `Student`.
 
-Si une propriété de navigation peut contenir plusieurs entités, la propriété de navigation doit être un type de liste, tel que `ICollection<T>`. Vous pouvez spécifier `ICollection<T>`, ou un type tel que `List<T>` ou `HashSet<T>`. Quand vous utilisez `ICollection<T>`, EF Core crée une collection `HashSet<T>` par défaut. Les propriétés de navigation qui contiennent plusieurs entités proviennent de relations plusieurs-à-plusieurs et un-à-plusieurs.
+Si une propriété de navigation peut contenir plusieurs entités, la propriété de navigation doit être un type de liste, tel que `ICollection<T>`. `ICollection<T>`peut être spécifié, ou un type tel que `List<T>` ou `HashSet<T>`. Lorsque `ICollection<T>` est utilisé, le EF Core crée une collection `HashSet<T>` par défaut. Les propriétés de navigation qui contiennent plusieurs entités proviennent de relations plusieurs-à-plusieurs et un-à-plusieurs.
 
 ### <a name="the-enrollment-entity"></a>L’entité Enrollment
 
@@ -559,15 +559,15 @@ Dans le dossier *Models*, créez un fichier *Enrollment.cs* avec le code suivant
 
 [!code-csharp[](intro/samples/cu21/Models/Enrollment.cs?name=snippet_Intro)]
 
-La propriété `EnrollmentID` est la clé primaire. Cette entité utilise le modèle `classnameID` au lieu de `ID` comme l’entité `Student`. En général, les développeurs choisissent un modèle et l’utilisent dans tout le modèle de données. Dans un prochain didacticiel, nous verrons qu’utiliser ID sans classname simplifie l’implémentation de l’héritage dans le modèle de données.
+La propriété `EnrollmentID` est la clé primaire. Cette entité utilise le modèle `classnameID` au lieu de `ID` comme l'entité `Student`. En général, les développeurs choisissent un modèle et l’utilisent pour tous les modèles de données. Dans un prochain didacticiel, du code sans classname sera indiqué pour rendre plus facile à implémenter l’héritage dans le modèle de données.
 
-La propriété `Grade` est un `enum`. Le point d’interrogation après la déclaration de type `Grade` indique que la propriété `Grade` est nullable. Une note (Grade) qui a la valeur Null est différente d’une note égale à zéro : la valeur Null signifie qu’une note n’est pas connue ou n’a pas encore été affectée.
+La propriété `Grade` est un `enum`. Le point d’interrogation après la déclaration de type `Grade` indique que la propriété `Grade` peut être nulle. Un niveau qui a la valeur "null" est différent de zéro. Une note "null" signifie qu'une note n’est pas connud ou n’a pas encore été affectée.
 
-La propriété `StudentID` est une clé étrangère, et la propriété de navigation correspondante est `Student`. Une entité `Enrollment` est associée à une entité `Student`. Par conséquent, la propriété contient une seule entité `Student`. L’entité `Student` diffère de la propriété de navigation `Student.Enrollments`, qui contient plusieurs entités `Enrollment`.
+La propriété `StudentID` est une clé étrangère, et la propriété de navigation correspondante est `Student`. Une entité `Enrollment` est associée à une entité `Student`, par conséquent, la propriété contient une seule entité `Student`. L'entité `Student` diffère de la propriété de navigation `Student.Enrollments`, qui contient plusieurs entités `Enrollment`.
 
 La propriété `CourseID` est une clé étrangère, et la propriété de navigation correspondante est `Course`. Une entité `Enrollment` est associée à une entité `Course`.
 
-EF Core interprète une propriété en tant que clé étrangère si elle se nomme `<navigation property name><primary key property name>`. Par exemple, `StudentID` pour la propriété de navigation `Student`, puisque la clé primaire de l’entité `Student` est `ID`. Les propriétés de clé étrangère peuvent également se nommer `<primary key property name>`. Par exemple, `CourseID` puisque la clé primaire de l’entité `Course` est `CourseID`.
+EF Core interprète une propriété comme une clé étrangère si elle est nommée `<navigation property name><primary key property name>`. Par exemple,`StudentID` pour la propriété de navigation `Student`, dans la mesure où `Student`, la clé primaire de l’entité est `ID`. Les propriétés de clé étrangère peuvent également être nommées `<primary key property name>`. Par exemple, `CourseID` puisque la clé primaire de l’entité `Course` est `CourseID`.
 
 ### <a name="the-course-entity"></a>L’entité Course
 
@@ -577,7 +577,7 @@ Dans le dossier *Models*, créez un fichier *Course.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Course.cs?name=snippet_Intro)]
 
-La propriété `Enrollments` est une propriété de navigation. Une entité `Course` peut être associée à un nombre quelconque d’entités `Enrollment`.
+La propriété `Enrollments` est une propriété de navigation. A une entité `Course` peut être associée à un nombre quelconque d'entités `Enrollment`.
 
 L’attribut `DatabaseGenerated` permet à l’application de spécifier la clé primaire, plutôt que de la faire générer par la base de données.
 
@@ -630,7 +630,7 @@ Le processus de génération de modèles automatique a créé et changé les fic
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Examiner le contexte inscrit avec l’injection de dépendances
 
-ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection). Des services (tels que le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application. Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur. Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le didacticiel.
+ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection). Des services (tels que le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application. Les composants qui requièrent ces services (tels que les Pages Razor) sont fournis à ces services via les paramètres du constructeur. Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le didacticiel.
 
 L’outil de génération de modèles automatique a créé automatiquement un contexte de base de données et l’a inscrit dans le conteneur d’injection de dépendances.
 
@@ -658,7 +658,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 * Supprimez la base de données.
 * Modification du schéma de base de données (par exemple, ajout d’un champ `EmailAddress`).
-* Exécutez l’application.
+* Exécuter l’application.
 * `EnsureCreated` crée une base de données avec la colonne `EmailAddress`.
 
 `EnsureCreated` est pratique au début du développement quand le schéma évolue rapidement. Plus loin dans le tutoriel, la base de données est supprimée et les migrations sont utilisées.
@@ -693,13 +693,13 @@ La chaîne de connexion spécifie [SQL Server LocalDB](/sql/database-engine/conf
 
 EF Core crée une base de données vide. Dans cette section, une méthode `Initialize` est écrite pour la remplir avec des données de test.
 
-Dans le dossier *Data*, créez un fichier de classe nommé *DbInitializer.cs* et ajoutez le code suivant :
+Dans le dossier *données*, créez un nouveau fichier de classe nommé *DbInitializer.cs* et ajoutez le code suivant :
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
 Remarque : Le code précédent utilise `Models` pour l’espace de noms (`namespace ContosoUniversity.Models`) au lieu de `Data`. `Models` est cohérent avec le code généré par l’outil de génération de modèles automatique. Pour plus d’informations, consultez [ce problème de génération de modèles automatique GitHub](https://github.com/aspnet/Scaffolding/issues/822).
 
-Le code vérifie s’il existe des étudiants dans la base de données. S’il n’y en a pas, la base de données est initialisée avec des données de test. Il charge les données de test dans les tableaux plutôt que dans les collections `List<T>` afin d’optimiser les performances.
+Le code vérifie s'il existe des étudiants dans la base de données. S’il n’y en a pas, la base de données est initialisée avec des données de test. Il charge les données de test dans les tableaux plutôt que dans les collections `List<T>` afin d’optimiser les performances.
 
 La méthode `EnsureCreated` crée automatiquement la base de données pour le contexte de base de données. Si la base de données existe, `EnsureCreated` retourne sans modifier la base de données.
 
@@ -727,7 +727,7 @@ Le nom de la base de données est généré à partir du nom de contexte indiqu�
 Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
 Dans SSOX, cliquez sur **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}** .
 
-Développez le nœud **Tables**.
+Développez le noeud **Tables**.
 
 Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher les données** pour voir les colonnes créées et les lignes insérées dans la table.
 
@@ -744,7 +744,7 @@ Dans le code suivant, le mot clé [async](/dotnet/csharp/language-reference/keyw
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_ScaffoldedIndex)]
 
 * Le mot clé `async` fait en sorte que le compilateur :
-  * Génère des rappels pour les parties du corps de méthode.
+  * Génèrer des rappels pour les parties du corps de méthode.
   * Crée automatiquement l’objet [Task](/dotnet/api/system.threading.tasks.task) qui est retourné. Pour plus d’informations, consultez [Type de retour Task](/dotnet/csharp/programming-guide/concepts/async/async-return-types#BKMK_TaskReturnType).
 
 * Le type de retour implicite `Task` représente le travail en cours.
@@ -753,13 +753,13 @@ Dans le code suivant, le mot clé [async](/dotnet/csharp/language-reference/keyw
 
 Voici quelques éléments à connaître lors de l’écriture de code asynchrone qui utilise EF Core :
 
-* Seules les instructions qui provoquent l’envoi de requêtes ou de commandes vers la base de données sont exécutées de façon asynchrone. Cela comprend `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync` et `SaveChangesAsync`, mais pas les instructions qui ne font que changer un `IQueryable`, telles que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
+* Uniquement les instructions qui génèrent des requêtes ou des commandes à envoyer à la base de données sont exécutées de façon asynchrone. Ceci inclut, `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync`, et `SaveChangesAsync`. mais pas les instructions qui ne font que changer un `IQueryable`, telles que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 * Un contexte EF Core n’est pas thread-safe : n’essayez pas d’effectuer plusieurs opérations en parallèle.
 * Pour tirer parti des avantages de performances du code asynchrone, vérifiez que les packages de bibliothèque (par exemple pour la pagination) utilisent le mode asynchrone s’ils appellent des méthodes EF Core qui envoient des requêtes à la base de données.
 
 Pour plus d’informations sur la programmation asynchrone dans .NET, consultez [Vue d’ensemble d’Async](/dotnet/standard/async) et [Programmation asynchrone avec async et await](/dotnet/csharp/programming-guide/concepts/async/).
 
-Dans le didacticiel suivant, nous allons examiner les opérations CRUD de base (créer, lire, mettre à jour, supprimer).
+Dans le didacticiel suivant, les opérations CRUD de base (créer, lire, mettre à jour, supprimer).
 
 
 
