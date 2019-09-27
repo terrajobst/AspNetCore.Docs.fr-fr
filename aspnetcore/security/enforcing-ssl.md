@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/14/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: aa42b1c7199e951714be809de9c9c5f857473485
-ms.sourcegitcommit: 994da92edb0abf856b1655c18880028b15a28897
+ms.openlocfilehash: 1d1bba6a1f1da2af959bc69b31f79bac53bf48b9
+ms.sourcegitcommit: fe3e556bf438fc4136fcf0bac61cf96e3e91caf5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71278752"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71341464"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -284,9 +284,9 @@ L'exemple de code suivant :
 
 `UseHsts`exclut les hôtes de bouclage suivants :
 
-* `localhost` : Adresse de bouclage IPv4.
-* `127.0.0.1` : Adresse de bouclage IPv4.
-* `[::1]` : Adresse de bouclage IPv6.
+* `localhost` : Adresse de bouclage IPv4.
+* `127.0.0.1` : Adresse de bouclage IPv4.
+* `[::1]` : Adresse de bouclage IPv6.
 
 ## <a name="opt-out-of-httpshsts-on-project-creation"></a>Désactiver HTTPs/HSTS lors de la création du projet
 
@@ -393,8 +393,8 @@ Les commandes précédentes résolvent la plupart des problèmes d’approbation
 * Exécutez les commandes suivantes :
 
 ```dotnetcli
-dotnet devcerts https --clean
-dotnet devcerts https --trust
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
 ```
 
 Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre de navigateur pour l’application.
