@@ -3,15 +3,15 @@ title: 'Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 author: tdykstra
 ms.author: riande
-ms.date: 03/27/2019
+ms.date: 09/28/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 2bf556dae5d30819c54ecc3f0dadfbd3316db1cc
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
-ms.translationtype: HT
+ms.openlocfilehash: cb691dce757a72a01bfd29717710d1be590c4150
+ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059102"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592286"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
 
@@ -47,13 +47,13 @@ Il existe plusieurs façons de permettre à un logiciel de mappage relationnel o
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
-* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Par exemple :
+* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
 * Chargement différé. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Toutefois, la première fois que vous essayez d’accéder à une propriété de navigation, les données requises pour cette propriété de navigation sont récupérées automatiquement. Une requête est envoyée à la base de données chaque fois que vous essayez d’obtenir des données à partir d’une propriété de navigation pour la première fois. Entity Framework Core 1.0 ne prend pas en charge le chargement différé.
 
-### <a name="performance-considerations"></a>Considérations sur les performances
+### <a name="performance-considerations"></a>Considérations relatives aux performances
 
 Si vous savez que vous avez besoin des données associées pour toutes les entités récupérées, le chargement hâtif souvent offre des performances optimales, car une seule requête envoyée à la base de données est généralement plus efficace que les requêtes distinctes pour chaque entité récupérée. Par exemple, supposons que chaque département a dix cours associés. Le chargement hâtif de toutes les données associées générerait une seule requête (de jointure) et un seul aller-retour à la base de données. Une requête distincte pour les cours pour chaque département entraînerait onze allers-retours à la base de données. Les allers-retours supplémentaires à la base de données sont particulièrement nuisibles pour les performances lorsque la latence est élevée.
 
@@ -188,7 +188,7 @@ Vous avez apporté les modifications suivantes au code existant :
   }
   ```
 
-* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Pour plus d’informations, consultez la section [Conversion de ligne explicite avec @ :](xref:mvc/views/razor#explicit-line-transition-with-) de l’article relatif à la syntaxe Razor.
+* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Pour plus d’informations, consultez la section relative à la [transition de ligne explicite](xref:mvc/views/razor#explicit-line-transition) de l’article syntaxe Razor.
 
 * Vous avez ajouté un code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
 

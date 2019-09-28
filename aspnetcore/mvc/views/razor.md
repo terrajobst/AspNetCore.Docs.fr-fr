@@ -3,14 +3,14 @@ title: Informations de référence sur la syntaxe Razor pour ASP.NET Core
 author: rick-anderson
 description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer du code serveur dans des pages web.
 ms.author: riande
-ms.date: 09/19/2019
+ms.date: 09/28/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 9a319f7efb6d879559afd9faca6955aba719fa2f
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: 6f8835419dbf4c271617f57484c3408e0af30617
+ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168295"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71592330"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -227,9 +227,9 @@ La balise `<text>` est utile pour contrôler les espaces blancs dans le contenu 
 * Seul le contenu situé dans la balise `<text>` est affiché.
 * Aucun espace blanc avant ou après la balise `<text>` ne s’affiche dans la sortie HTML.
 
-### <a name="explicit-line-transition-with-colon"></a>Conversion de ligne explicite avec \@&colon;
+### <a name="explicit-line-transition"></a>Transition de ligne explicite
 
-Pour afficher le reste d’une ligne entière en HTML à l’intérieur d’un bloc de code, utilisez la syntaxe `@:` :
+Pour afficher le reste d’une ligne entière au format HTML à l’intérieur d’un bloc de code, utilisez la syntaxe `@:` :
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -487,7 +487,7 @@ Dans les [composants Razor](xref:blazor/components), utilisez `@code` sur `@func
 
 ::: moniker-end
 
-Par exemple :
+Exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -593,7 +593,7 @@ Si « rick@contoso.com » est passé au modèle, la vue génère le balisage HTM
 
 ### <a name="inject"></a>\@inject
 
-La directive `@inject` permet à la page Razor d’injecter un service dans une vue à partir du [conteneur de services](xref:fundamentals/dependency-injection). Pour plus d’informations, consultez [Injection de dépendances dans les vues](xref:mvc/views/dependency-injection).
+La directive `@inject` permet à la page Razor d’injecter un service dans une vue à partir du [conteneur de services](xref:fundamentals/dependency-injection). Pour plus d’informations, consultez [injection de dépendances dans les vues](xref:mvc/views/dependency-injection).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -846,7 +846,7 @@ Sortie rendue :
 </ul>
 ```
 
-## <a name="tag-helpers"></a>Tag Helpers
+## <a name="tag-helpers"></a>Tag helpers
 
 *Ce scénario s’applique uniquement aux vues MVC et à Razor Pages (.cshtml).*
 
