@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/27/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 5e5215f246c6c7a805a4c99f485d51a2fb3c712d
-ms.sourcegitcommit: cf9ffcce4fe0b69fe795aae9ae06e99fdb18bdfc
+ms.openlocfilehash: 366323416061bf729c092419f2f6a5912884252b
+ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306664"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71551732"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -83,7 +83,7 @@ Le diagramme suivant illustre la conception de l’application.
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
-   cd TodoAPI
+   cd TodoApi
    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
@@ -271,8 +271,8 @@ Le code précédent :
 * Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework**, puis **Ajouter**.
 * Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework** :
 
-  * Sélectionnez **TodoItem (TodoAPI.Models)** dans **Classe de modèle**.
-  * Sélectionnez **TodoContext (TodoAPI.Models)** dans **Classe du contexte de données**.
+  * Sélectionnez **TodoItem (TodoApi. Models)** dans la **classe de modèle**.
+  * Sélectionnez **TodoContext (TodoApi. Models)** dans la **classe de contexte de données**.
   * Sélectionnez **Ajouter**
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
@@ -366,7 +366,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
 
 * [https://localhost:5001/api/TodoItems](https://localhost:5001/api/TodoItems)
 * [https://localhost:5001/api/TodoItems/1](https://localhost:5001/api/TodoItems/1)
@@ -696,7 +696,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 14fe4bf9266ec6b2d588fa26d7a460531e33aa30
-ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
+ms.openlocfilehash: c8037d79c79c5b7eb3b99d9724aa3e5361f92b8c
+ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71295492"
+ms.lasthandoff: 09/28/2019
+ms.locfileid: "71482044"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -44,7 +44,7 @@ La prise en charge de la génération d’URL permet de développer l’applicat
 
 Le routage utilise des *points de terminaison* (`Endpoint`) pour représenter les points de terminaison logiques dans une application.
 
-Un point de terminaison définit un délégué pour traiter les requêtes et une collection de métadonnées arbitraires. Les métadonnées sont utilisées pour implémenter des problèmes transversaux basés sur des stratégies et une configuration attachées à chaque point de terminaison.
+Un point de terminaison définit un délégué pour traiter les requêtes et une collection de métadonnées arbitraires. Les métadonnées sont utilisées pour implémenter des problèmes transversaux en fonction des stratégies et de la configuration attachées à chaque point de terminaison.
 
 Le système de routage a les caractéristiques suivantes :
 
@@ -502,7 +502,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -511,7 +511,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1088,7 +1088,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1097,7 +1097,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1542,7 +1542,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1551,7 +1551,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
