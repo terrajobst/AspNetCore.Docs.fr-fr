@@ -27,10 +27,10 @@ La boucle REPL (Read-Eval-Print Loop) HTTP est :
 Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) suivants sont pris en charge :
 
 * [DELETE](#test-http-delete-requests)
-* [TÉLÉCHARGER](#test-http-get-requests)
+* [GET](#test-http-get-requests)
 * [HEAD](#test-http-head-requests)
 * [OPTIONS](#test-http-options-requests)
-* [CORRECTIF](#test-http-patch-requests)
+* [PATCH](#test-http-patch-requests)
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
