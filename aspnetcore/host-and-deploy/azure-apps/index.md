@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/28/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 4dc150ff4534e42e1995a185f650cea9df70ccc4
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 7489868fac513948cbe6f48391e7260a34b2175e
+ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187045"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703751"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -27,6 +27,8 @@ Utilisez Visual Studio pour créer et déployer une application web ASP.NET Core
 
 [Créer une application ASP.NET Core dans App Service sur Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Utilisez la ligne de commande pour créer et déployer une application web ASP.NET Core dans Azure App Service sur Linux.
+
+Consultez le [tableau de bord ASP.net Core sur app service](https://aspnetcoreon.azurewebsites.net/) pour connaître la version de ASP.net Core disponible sur Azure App service.
 
 Les articles suivants sont disponibles dans la documentation d’ASP.NET Core :
 
@@ -200,7 +202,7 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
-Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
+Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Exemple :
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 

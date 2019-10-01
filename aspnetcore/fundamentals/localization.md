@@ -5,16 +5,18 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: ec78d35daf6823779fca491aca7b7b309db4b02e
-ms.sourcegitcommit: e7e04a45195d4e0527af6f7cf1807defb56dc3c3
-ms.translationtype: HT
+ms.openlocfilehash: 6dfbeae201a3586dfea6620917083130c4985b22
+ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66750034"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703810"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://afana.me/) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
+
+Tant que ce document n’a pas été mis à jour pour ASP.NET Core 3,0, consultez le blog de Hisham [Nouveautés de la localisation dans ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0).
 
 Créer un site web multilingue avec ASP.NET Core permet d’atteindre un plus large public. ASP.NET Core offre des services et des intergiciels (middleware) de traduction dans différentes langues et cultures.
 
