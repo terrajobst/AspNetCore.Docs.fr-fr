@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 09/30/2019
 uid: blazor/components
-ms.openlocfilehash: 28e908968bd77c61da72d1bcc6032e580d15541b
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: ea216e405e5be52b578e99a529d8c6a726ea9cdd
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207272"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688032"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -440,9 +440,9 @@ Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand
 
 Pour certains événements, les types d’arguments d’événement sont autorisés. Si l’accès à l’un de ces types d’événements n’est pas nécessaire, il n’est pas obligatoire dans l’appel de la méthode.
 
-Les éléments [EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web) pris en charge sont présentés dans le tableau suivant.
+Pris en charge `EventArgs` sont présentés dans le tableau suivant.
 
-| événement | Classe |
+| Événement | Classe |
 | ----- | ----- |
 | Presse-papiers        | `ClipboardEventArgs` |
 | Déplacez             | `DragEventArgs`et contiennent des`DataTransferItem` données d’élément glissées. &ndash; `DataTransfer` |
@@ -456,7 +456,7 @@ Les éléments [EventArgs](https://github.com/aspnet/AspNetCore/tree/release/3.0
 | Progression         | `ProgressEventArgs` |
 | Entrées tactiles            | `TouchEventArgs`&ndash; représenteunpointdecontactunique`TouchPoint` sur un appareil tactile. |
 
-Pour plus d’informations sur les propriétés et le comportement de gestion des événements des événements du tableau précédent, consultez [classes EventArgs dans la source de référence (ASPNET/AspNetCore Release/3.0-preview9 Branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0-preview9/src/Components/Web/src/Web).
+Pour plus d’informations sur les propriétés et le comportement de gestion des événements des événements dans le tableau précédent, consultez [classes EventArgs dans la source de référence (ASPNET/AspNetCore Release/3.0 Branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web).
 
 ### <a name="lambda-expressions"></a>Expressions lambda
 
@@ -1382,7 +1382,7 @@ Dans l’exemple suivant, la boucle de la `CreateComponent` méthode génère tr
 }
 ```
 
-> ! TRES Les types dans `Microsoft.AspNetCore.Components.RenderTree` autorisent le traitement des *résultats* des opérations de rendu. Il s’agit des détails internes de l’implémentation du Framework éblouissant. Ces types doivent être considérés comme *instables* et susceptibles d’être modifiés dans les versions ultérieures.
+> ! TRES Les types de `Microsoft.AspNetCore.Components.RenderTree` autorisent le traitement des *résultats* des opérations de rendu. Il s’agit des détails internes de l’implémentation du Framework éblouissant. Ces types doivent être considérés comme *instables* et susceptibles d’être modifiés dans les versions ultérieures.
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Les numéros de séquence sont liés aux numéros de ligne de code et non à l’ordre d’exécution
 
@@ -1514,7 +1514,7 @@ La localisation est gérée dans l’application :
 
 1. Le navigateur envoie une requête HTTP initiale à l’application.
 1. La culture est affectée par l’intergiciel (middleware) de localisation.
-1. La `OnGet` méthode dans *_Host. cshtml. cs* rend persistante la culture dans un cookie dans le cadre de la réponse.
+1. La méthode `OnGet` dans *_Host. cshtml. cs* rend persistante la culture dans un cookie dans le cadre de la réponse.
 1. Le navigateur ouvre une connexion WebSocket pour créer une session de serveur éblouissante interactive.
 1. L’intergiciel de localisation lit le cookie et assigne la culture.
 1. La session du serveur éblouissant commence par la culture correcte.

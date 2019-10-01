@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/26/2019
 uid: aspnetcore-3.0
-ms.openlocfilehash: c1b61fee7264b972c70dbfa8f1461e33e3645746
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: a32307f6de01e03e548cbde2c38c9469db74b506
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317657"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688040"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -423,7 +423,7 @@ Tous les services peuvent toujours être injectés directement comme arguments d
 * Les adaptateurs de connexion ont été supprimés de Kestrel et remplacés par un intergiciel de connexion, qui est similaire à l’intergiciel HTTP dans le pipeline ASP.NET Core, mais pour les connexions de niveau inférieur.
 * La couche de transport Kestrel a été exposée en tant qu' `Connections.Abstractions`interface publique dans.
 * L’ambiguïté entre les en-têtes et les codes de fin a été résolue en déplaçant les en-têtes de fin vers une nouvelle collection.
-* Les API d’e/s `HttpReqeuest.Body.Read`synchrones, telles que, sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivé par défaut.
+* Les API d’e/s `HttpRequest.Body.Read`synchrones, telles que, sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivé par défaut.
 
 Pour plus d'informations, consultez <xref:migration/22-to-30#kestrel>.
 

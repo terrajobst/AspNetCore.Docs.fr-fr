@@ -4,14 +4,14 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 09/29/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 366323416061bf729c092419f2f6a5912884252b
-ms.sourcegitcommit: 5d25a7f22c50ca6fdd0f8ecd8e525822e1b35b7a
+ms.openlocfilehash: 7bb98fe5befa8eea80885d246da31ad87d5cfc2d
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71551732"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71691218"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutoriel : Créer une API web avec ASP.NET Core
 
@@ -273,7 +273,7 @@ Le code précédent :
 
   * Sélectionnez **TodoItem (TodoApi. Models)** dans la **classe de modèle**.
   * Sélectionnez **TodoContext (TodoApi. Models)** dans la **classe de contexte de données**.
-  * Sélectionnez **Ajouter**
+  * Sélectionnez **Ajouter**.
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -283,7 +283,7 @@ Exécutez les commandes suivantes :
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext  -outDir Controllers
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
 Les commandes précédentes :
@@ -322,7 +322,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
-* À partir de **Fichier > Paramètres** (onglet **Général*), désactivez **Vérification du certificat SSL**.
+* À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
     > [!WARNING]
     > Réactivez la vérification du certificat SSL après avoir testé le contrôleur.
 
@@ -404,7 +404,7 @@ L’attribut [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute
 * Remplacez `[controller]` par le nom du contrôleur qui, par convention, est le nom de la classe du contrôleur sans le suffixe « Controller ». Pour cet exemple, le nom de la classe du contrôleur étant **TodoItems**Controller, le nom du contrôleur est « TodoItems ». Le [routage](xref:mvc/controllers/routing) d’ASP.NET Core ne respecte pas la casse.
 * Si l’attribut `[HttpGet]` a un modèle de route (par exemple, `[HttpGet("products")]`), ajoutez-le au chemin. Cet exemple n’utilise pas de modèle. Pour plus d’informations, consultez [Routage par attributs avec des attributs Http[Verbe]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
-Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace réservé pour l’identificateur unique de la tâche. Quand `GetTodoItem` est appelée, la valeur de `"{id}"` dans l’URL est fournie à la méthode dans son paramètre `id`.
+Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace réservé pour l’identificateur unique de la tâche. Lorsque `GetTodoItem` est appelé, la valeur de `"{id}"` dans l’URL est fournie à la méthode dans son paramètre `id`.
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
@@ -458,8 +458,8 @@ La réponse `DeleteTodoItem` est [204 (Pas de contenu)](https://www.w3.org/Proto
 Utilisez Postman pour supprimer une tâche :
 
 * Définissez la méthode sur `DELETE`.
-* Définissez l’URI de l’objet à supprimer, par exemple `https://localhost:5001/api/TodoItems/1`.
-* Sélectionnez **Send**.
+* Définissez l’URI de l’objet à supprimer (par exemple `https://localhost:5001/api/TodoItems/1`).
+* Sélectionnez **Send** (Envoyer).
 
 ## <a name="call-the-web-api-with-javascript"></a>Appelez l’API web avec JavaScript
 
@@ -741,7 +741,7 @@ Les types de retour `ActionResult` peuvent représenter une large plage de codes
 
 Ce tutoriel utilise Postman pour tester l’API web.
 
-* Installez [Postman](https://www.getpostman.com/downloads/).
+* Installez le [poste de publication](https://www.getpostman.com/downloads/).
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
@@ -857,8 +857,8 @@ La réponse `DeleteTodoItem` est [204 (Pas de contenu)](https://www.w3.org/Proto
 Utilisez Postman pour supprimer une tâche :
 
 * Définissez la méthode sur `DELETE`.
-* Définissez l’URI de l’objet à supprimer, par exemple `https://localhost:5001/api/todo/1`.
-* Sélectionnez **Send**.
+* Définissez l’URI de l’objet à supprimer (par exemple `https://localhost:5001/api/todo/1`).
+* Sélectionnez **Send** (Envoyer).
 
 L’exemple d’application vous permet de supprimer tous les éléments. Toutefois, quand le dernier élément est supprimé, un autre est créé par le constructeur de classe de modèle au prochain appel de l’API.
 

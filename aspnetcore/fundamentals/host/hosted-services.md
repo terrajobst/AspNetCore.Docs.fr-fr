@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/26/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 5a29952c4e50edb953fa03c6ea1a1ae27b728bb0
-ms.sourcegitcommit: e644258c95dd50a82284f107b9bf3becbc43b2b2
+ms.openlocfilehash: 0eaa3a62370c1e413840bb65f597dc664adafc38
+ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317721"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71688101"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -37,29 +37,7 @@ Cet exemple d’application est fourni en deux versions :
 
 Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écriture d’applications de service durables. Pour utiliser le modèle en tant que base d’une application de services hébergés :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
-1. Créer un nouveau projet.
-1. Sélectionnez **Nouvelle application web ASP.NET Core**. Sélectionnez **Suivant**.
-1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Sélectionnez **Créer**.
-1. Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés.
-1. Sélectionnez le modèle **Service Worker**. Sélectionnez **Créer**.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-1. Créer un nouveau projet.
-1. Sélectionnez **application** sous **.net Core** dans la barre latérale.
-1. Sélectionnez **Worker** sous **ASP.net Core**. Sélectionnez **Suivant**.
-1. Sélectionnez **.net Core 3,0** pour la version cible de .NET **Framework**. Sélectionnez **Suivant**.
-1. Indiquez un nom dans le champ **nom du projet** . Sélectionnez **Créer**.
-
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
-
-Utilisez le modèle Service Worker (`worker`) avec la commande [dotnet new](/dotnet/core/tools/dotnet-new) à partir d’un interpréteur de commandes. Dans l’exemple suivant, une application Service Worker est créée et se nomme `ContosoWorker`. Un dossier pour l’application `ContosoWorker` est créé automatiquement durant l’exécution de la commande.
-
-```dotnetcli
-dotnet new worker -o ContosoWorker
-```
+[!INCLUDE[](~/includes/worker-template-instructions.md)]
 
 ---
 
