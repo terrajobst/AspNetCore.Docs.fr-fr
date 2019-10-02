@@ -8,7 +8,7 @@ ms.date: 05/31/2019
 uid: mvc/models/model-binding
 ms.openlocfilehash: 298e305cf918117ec2d313060a7420a1e721a365
 ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 08/22/2019
 ms.locfileid: "69975295"
