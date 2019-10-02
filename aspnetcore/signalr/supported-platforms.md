@@ -40,11 +40,11 @@ Si le serveur exécute IIS, le transport WebSocket requiert IIS 8.0 ou version u
 
 ## <a name="java-client"></a>Client Java
 
-Le [client Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) prend en charge Java à partir de la version 8.
+Le [client Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) est disponible pour Java à partir de la version 8.
 
 ## <a name="unsupported-clients"></a>Clients non pris en charge
 
-Les clients suivants sont disponibles mais sont expérimentales ou non officiels. Ils ne sont pas actuellement pris en charge et peuvent ne jamais l'être
+Les clients suivants sont disponibles mais sont expérimentales ou non officiels. Ils ne sont actuellement pas pris en charge et peuvent ne jamais l'être
 
 * [Client C++](https://github.com/aspnet/SignalR/tree/master/clients/cpp)
 
