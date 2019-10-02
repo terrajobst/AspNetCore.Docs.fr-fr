@@ -18,13 +18,13 @@ ms.locfileid: "64892016"
 
 ## <a name="server-system-requirements"></a>Configuration requise du système serveur
 
-SignalR pour ASP.NET Core prend en charge n’importe quelle plateforme de serveur ASP.NET Core prend en charge.
+SignalR pour ASP.NET Core prend en charge n’importe quelle plateforme pouvant exécuter ASP.NET Core
 
 ## <a name="javascript-client"></a>Client JavaScript
 
 Le [client JavaScript](https://www.npmjs.com/package/@aspnet/signalr) s’exécute sur NodeJS 8 et versions ultérieures et les navigateurs suivants :
 
-| Visiteur                         | Version |
+| Navigateur                         | Version |
 | ------------------------------- | ------- |
 | Microsoft Edge                  | actuelle |
 | Mozilla Firefox                 | actuelle |
@@ -34,17 +34,17 @@ Le [client JavaScript](https://www.npmjs.com/package/@aspnet/signalr) s’exécu
  
 ## <a name="net-client"></a>Client .NET
 
-Le [client .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) s’exécute sur n’importe quelle plateforme prise en charge par ASP.NET Core. Par exemple, [les développeurs Xamarin peuvent utiliser SignalR](https://github.com/aspnet/Announcements/issues/305) pour la création d’applications Android à l’aide de Xamarin.Android 8.4.0.1 et versions ultérieures et les applications iOS à l’aide de Xamarin.iOS 11.14.0.4 et versions ultérieures.
+Le [client .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) s’exécute sur n’importe quelle plateforme pouvant exécuter ASP.NET Core. Par exemple, [les développeurs Xamarin peuvent utiliser SignalR](https://github.com/aspnet/Announcements/issues/305) pour la création d’applications Android à l’aide de Xamarin.Android 8.4.0.1 et versions ultérieures et les applications iOS à l’aide de Xamarin.iOS 11.14.0.4 et versions ultérieures.
 
-Si le serveur exécute IIS, le transport WebSocket requiert IIS 8.0 ou version ultérieure sur Windows Server 2012 ou version ultérieure. Autres transports sont pris en charge sur toutes les plateformes.
+Si le serveur exécute IIS, le transport WebSocket requiert IIS 8.0 ou version ultérieure sur Windows Server 2012 ou version ultérieure. Les autres transports sont pris en charge sur toutes les plateformes.
 
 ## <a name="java-client"></a>Client Java
 
-Le [client Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) prend en charge de Java 8 et versions ultérieures.
+Le [client Java](https://search.maven.org/artifact/com.microsoft.aspnet/signalr) prend en charge Java à partir de la version 8.
 
 ## <a name="unsupported-clients"></a>Clients non pris en charge
 
-Les clients suivants sont disponibles mais sont expérimentales ou non officiels. Ils ne sont pas actuellement pris en charge et ne peuvent jamais être.
+Les clients suivants sont disponibles mais sont expérimentales ou non officiels. Ils ne sont pas actuellement pris en charge et peuvent ne jamais l'être
 
 * [Client C++](https://github.com/aspnet/SignalR/tree/master/clients/cpp)
 
