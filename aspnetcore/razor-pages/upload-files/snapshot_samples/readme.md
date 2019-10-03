@@ -1,1 +1,0 @@
-Le code contenu dans ce dossier constitue des aperçus ponctuels de la série Pages Razor.
