@@ -1,1 +1,0 @@
-<span data-ttu-id="e3aa3-101">Le code contenu dans ce dossier constitue des aperçus ponctuels de la série Pages Razor.</span><span class="sxs-lookup"><span data-stu-id="e3aa3-101">The code in this folder is snapshots in time from the Razor Pages series.</span></span>
