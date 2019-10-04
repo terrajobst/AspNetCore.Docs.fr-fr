@@ -5,14 +5,14 @@ description: Cet article contient des liens vers des ressources d’hébergement
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/28/2019
+ms.date: 10/02/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 7489868fac513948cbe6f48391e7260a34b2175e
-ms.sourcegitcommit: dc96d76f6b231de59586fcbb989a7fb5106d26a8
+ms.openlocfilehash: bda4923adb0f9769f883ef64f7902c8650308222
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703751"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924890"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -292,7 +292,7 @@ Utilisez Visual Studio ou les outils de l’interface CLI pour un [déploiement 
 1. A partir d'un interpréteur de commandes, publiez l'application dans la configuration Mise en production pour le runtime de l'hôte avec la commande [dotnet publish](/dotnet/core/tools/dotnet-publish). Dans l’exemple suivant, l’application est publiée pour le RID `win-x86`. Le RID fourni à l’option `--runtime` doit être fourni dans la propriété `<RuntimeIdentifier>` (ou `<RuntimeIdentifiers>`) du fichier projet.
 
    ```console
-   dotnet publish --configuration Release --runtime win-x86
+   dotnet publish --configuration Release --runtime win-x86 --self-contained
    ```
 
 1. Déplacez le contenu du répertoire *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* vers le site dans App Service. Si vous faites glisser le contenu du dossier *publish* depuis votre disque dur local ou votre partage réseau directement vers App service dans la console Kudu, faites glisser les fichiers vers le dossier `D:\home\site\wwwroot` dans la console Kudu.

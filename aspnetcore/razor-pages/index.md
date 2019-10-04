@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 09/19/2019
 uid: razor-pages/index
-ms.openlocfilehash: bccdd7e5c1c90dd76ca1b788dbf09000c5cbe14b
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: 63938b0347dc698a67f2ba8c083097c55c6c9c66
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256187"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925279"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -185,7 +185,7 @@ La `Customer` propriété utilise [`[BindProperty]`](xref:Microsoft.AspNetCore.M
 
 [!code-cs[](index/3.0sample/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet_PageModel&highlight=15-16)]
 
-`[BindProperty]`ne doit **pas** être utilisé sur les modèles contenant des propriétés qui ne doivent pas être modifiées par le client. Pour plus d’informations, consultez [survalidation](xref:data/ef-rp/crud#overposting)
+`[BindProperty]`ne doit **pas** être utilisé sur les modèles contenant des propriétés qui ne doivent pas être modifiées par le client. Pour plus d’informations, consultez [survalidation](xref:data/ef-rp/crud#overposting).
 
 Par défaut, Razor Pages lie les propriétés seulement avec des verbes non-`GET`. La liaison aux propriétés évite d’avoir à écrire du code pour convertir des données HTTP en type de modèle. Elle réduit la quantité de code en utilisant la même propriété pour afficher les champs de formulaire (`<input asp-for="Customer.Name">`) et accepter l’entrée.
 
@@ -298,7 +298,7 @@ Prenons le modèle `Movie` suivant :
 
 Les attributs de validation spécifient le comportement à appliquer sur les propriétés de modèle auxquelles ils sont appliqués :
 
-* Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur, mais rien n’empêche un utilisateur d’entrer un espace pour satisfaire à cette validation.
+* Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur, mais rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire cette validation.
 * L’attribut `RegularExpression` sert à limiter les caractères pouvant être entrés. Dans le code précédent, « Genre » :
 
   * Doit utiliser seulement des lettres.
@@ -336,13 +336,13 @@ Razor pages revient à appeler le `OnGet` gestionnaire si aucun `OnHead` gestion
 
 ## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF et pages Razor
 
-Les Razor Pages sont protégées par la validation anti-[contrefaçon](xref:security/anti-request-forgery). Le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) injecte des jetons anti-contrefaçon dans des éléments de formulaire HTML.
+Les Razor Pages sont protégées par la validation anti- [contrefaçon](xref:security/anti-request-forgery). Le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) injecte des jetons anti-contrefaçon dans des éléments de formulaire HTML.
 
 <a name="layout"></a>
 
 ## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>Utilisation de dispositions, partiels, modèles et Tag Helpers avec les pages Razor
 
-Les pages Razor fonctionnent avec toutes les fonctionnalités du moteur de vue Razor. Les dispositions, partiels, modèles, Tag Helpers, *_ViewStart.cshtml* et *_ViewImports.cshtml* fonctionnent de la même façon que pour les vues Razor classiques.
+Les pages Razor fonctionnent avec toutes les fonctionnalités du moteur de vue Razor. Les dispositions, les parties partielles, les modèles, les tag helpers, *_ViewStart. cshtml*et *_ViewImports. cshtml* fonctionnent de la même façon que pour les vues Razor conventionnelles.
 
 Nous allons nettoyer un peu cette page en tirant parti de certaines de ces fonctionnalités.
 
@@ -432,13 +432,13 @@ L’application a la structure de fichiers/dossiers suivante :
     * *Edit.cshtml*
     * *Index.cshtml*
 
-Les pages *pages/Customers/Create. cshtml* et *pages/Customers/Edit. cshtml* redirigent vers *pages/Customers/index. cshtml* après réussite. La chaîne `./Index` est un nom de page relatif utilisé pour accéder à la page précédente. Elle est utilisée pour générer des URL dans la page *pages/Customers/index. cshtml* . Par exemple :
+Les pages *pages/Customers/Create. cshtml* et *pages/Customers/Edit. cshtml* redirigent vers *pages/Customers/index. cshtml* après réussite. La chaîne `./Index` est un nom de page relatif utilisé pour accéder à la page précédente. Elle est utilisée pour générer des URL dans la page *pages/Customers/index. cshtml* . Exemple :
 
 * `Url.Page("./Index", ...)`
 * `<a asp-page="./Index">Customers Index Page</a>`
 * `RedirectToPage("./Index")`
 
-Le nom `/Index` de page absolu est utilisé pour générer des URL dans la page *pages/index. cshtml* . Par exemple :
+Le nom `/Index` de page absolu est utilisé pour générer des URL dans la page *pages/index. cshtml* . Exemple :
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">Home Index Page</a>`
@@ -474,7 +474,7 @@ Pour plus d’informations, consultez <xref:mvc/controllers/areas> et <xref:razo
 
 ## <a name="viewdata-attribute"></a>Attribut ViewData
 
-Les données peuvent être passées à une page <xref:Microsoft.AspNetCore.Mvc.ViewDataAttribute>avec. Les valeurs des propriétés avec l’attribut [ViewData] sont stockées et chargées <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary>à partir de.
+Les données peuvent être passées à une page <xref:Microsoft.AspNetCore.Mvc.ViewDataAttribute>avec. Les valeurs des propriétés avec l’attribut `[ViewData]` sont stockées et chargées à partir de la <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary>.
 
 Dans l’exemple suivant, le `AboutModel` applique l' `[ViewData]` attribut à la `Title` propriété :
 
@@ -579,7 +579,7 @@ Pour configurer des options avancées, utilisez la méthode <xref:Microsoft.Exte
 
 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions> Utilisez pour définir le répertoire racine pour les pages ou ajouter des conventions de modèle d’application pour les pages. Pour plus d’informations sur les conventions, consultez [Razor pages conventions d’autorisation](xref:security/authorization/razor-pages-authorization).
 
-Pour précompiler des vues, consultez [Compilation de vue Razor](xref:mvc/views/view-compilation).
+Pour précompiler des vues, consultez [compilation de vue Razor](xref:mvc/views/view-compilation).
 
 ### <a name="specify-that-razor-pages-are-at-the-content-root"></a>Spécifier que les pages Razor se trouvent à la racine du contenu
 
@@ -595,8 +595,8 @@ Ajouter <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcCoreBuild
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* Consultez [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) qui s’appuie sur cette introduction.
-* [Téléchargez ou affichez des exemples de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/3.0sample).
+* Consultez la page [prise en main de Razor pages](xref:tutorials/razor-pages/razor-pages-start), qui s’appuie sur cette introduction
+* [Télécharger ou afficher l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/3.0sample)
 * <xref:index>
 * <xref:mvc/views/razor>
 * <xref:mvc/controllers/areas>
@@ -948,7 +948,7 @@ L’application a la structure de fichiers/dossiers suivante :
     * *Edit.cshtml*
     * *Index.cshtml*
 
-Une fois l’opération réussie, les pages *Pages/Customers/Create.cshtml* et *Pages/Customers/Edit.cshtml* redirigent vers *Pages/Index.cshtml*. La chaîne `/Index` fait partie de l’URI pour accéder à la page précédente. La chaîne `/Index` peut être utilisée pour générer l’URI de la page *Pages/Index.cshtml*. Par exemple :
+Une fois l’opération réussie, les pages *Pages/Customers/Create.cshtml* et *Pages/Customers/Edit.cshtml* redirigent vers *Pages/Index.cshtml*. La chaîne `/Index` fait partie de l’URI pour accéder à la page précédente. La chaîne `/Index` peut être utilisée pour générer l’URI de la page *Pages/Index.cshtml*. Exemple :
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">My Index Page</a>`

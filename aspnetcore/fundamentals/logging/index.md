@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/11/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 2d517a89c6002b5c85e98128605f95585354f8db
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: bb38ebca3c7b9bb4c28a52c0dad80be9669e1b40
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248256"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924878"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -374,7 +374,7 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 * Debug = 1
 
-  Informations qui peuvent être utiles dans le développement et le débogage. Exemple : `Entering method Configure with flag set to true.` En raison de leur volume élevé, activez les journaux de niveau `Debug` en production seulement pour résoudre des problèmes.
+  Informations qui peuvent être utiles dans le développement et le débogage. Exemple : `Entering method Configure with flag set to true.` En raison de leur volume élevé, activez les journaux de niveau `Debug` en production seulement pour résoudre des problèmes.
 
 * Information = 2
 
@@ -392,7 +392,7 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
   Fournit des informations sur des échecs qui nécessitent un examen immédiat. Exemples : perte de données, espace disque insuffisant.
 
-Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Par exemple :
+Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
 
 * En production, envoyez `Trace` au niveau `Information` dans un magasin de données de volume. Envoyez `Warning` au niveau `Critical` à un magasin de données de valeurs.
 * Pendant le développement, envoyez `Warning` au niveau `Critical` à la console et ajoutez `Trace` au niveau `Information` lors de la résolution des problèmes.
@@ -529,7 +529,7 @@ L’ordre des espaces réservés, pas leurs noms, détermine quels paramètres s
 ```csharp
 string p1 = "parm1";
 string p2 = "parm2";
-_logger.LogInformation("Parameter values: {p1}, {p2}", p1, p2);
+_logger.LogInformation("Parameter values: {p2}, {p1}", p1, p2);
 ```
 
 Ce code crée un message de journal avec les valeurs des paramètres dans la séquence :
@@ -626,7 +626,7 @@ Les données de configuration et le code `AddFilter` contenus dans les exemples 
 | 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Débogage             |
 | 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
 | 5      | Console       | Toutes les catégories                          | Information       |
-| 6      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
+| 6\.      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
 | 7      | Tous les fournisseurs | Système                                  | Débogage             |
 | 8      | Débogage         | Microsoft                               | Suivi             |
 
@@ -679,7 +679,7 @@ Si vous ne définissez pas explicitement le niveau minimum, la valeur par défau
 
 ### <a name="filter-functions"></a>Fonctions de filtre
 
-Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Par exemple :
+Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -697,7 +697,7 @@ Une fonction de filtre est appelée pour tous les fournisseurs et toutes les cat
 
 Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core, avec des notes sur les journaux associés :
 
-| Category                            | Notes |
+| Catégorie                            | Notes |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | Diagnostics ASP.NET Core généraux. |
 | Microsoft.AspNetCore.DataProtection | Liste des clés considérées, trouvées et utilisées. |

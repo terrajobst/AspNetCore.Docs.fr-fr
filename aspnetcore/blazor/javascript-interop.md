@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: 2b5d1433fce6e09adf3caa58e55e678b00ad98ee
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: b30bce6ef3ebf1cd2f4f3fe8d046e1db9b6929d5
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211646"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924646"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core l’interopérabilité avec le JavaScript éblouissant
 
@@ -38,7 +38,7 @@ Pour les applications serveur éblouissantes :
 
 L’exemple suivant est basé sur [TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder), un décodeur basé sur JavaScript expérimental. L’exemple montre comment appeler une fonction JavaScript à partir d' C# une méthode. La fonction JavaScript accepte un tableau d’octets d' C# une méthode, décode le tableau et retourne le texte au composant pour l’affichage.
 
-À l' `<head>` intérieur de l’élément de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une `TextDecoder` fonction qui utilise pour décoder un tableau passé :
+À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction qui utilise `TextDecoder` pour décoder un tableau passé :
 
 [!code-html[](javascript-interop/samples_snapshot/index-script.html)]
 
@@ -81,13 +81,13 @@ Dans l’exemple d’application côté client qui accompagne cette rubrique, de
 
 [!code-javascript[](./common/samples/3.x/BlazorSample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-Placez la `<script>` balise qui fait référence au fichier JavaScript dans le fichier *wwwroot/index.html* (l’assembly éblouissant) ou le fichier *pages/_Host. cshtml* (serveur éblouissant).
+Placez la balise `<script>` qui fait référence au fichier JavaScript dans le fichier *wwwroot/index.html* (l’assembly éblouissant) ou le fichier *pages/_Host. cshtml* (serveur éblouissant).
 
 *wwwroot/index.html* (Webassembly éblouissant) :
 
 [!code-html[](./common/samples/3.x/BlazorSample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml* (Serveur éblouissant) :
+*Pages/_Host. cshtml* (serveur éblouissant) :
 
 [!code-cshtml[](javascript-interop/samples_snapshot/_Host.cshtml?highlight=29)]
 
@@ -139,7 +139,7 @@ L’exemple suivant illustre la capture d’une référence `username` à l' `<i
 ```
 
 > [!NOTE]
-> N’utilisez **pas** de références d’élément capturées comme méthode de remplissage ou de manipulation du DOM quand éblouissant interagit avec les éléments référencés. Cela peut interférer avec le modèle de rendu déclaratif.
+> N’utilisez **pas** de références d’élément capturées comme méthode de remplissage du DOM. Cela peut interférer avec le modèle de rendu déclaratif.
 
 En ce qui concerne le code .net, un `ElementReference` est un handle opaque. La *seule* chose que vous pouvez faire `ElementReference` avec est de la passer au code JavaScript via l’interopérabilité JavaScript. Dans ce cas, le code JavaScript reçoit une `HTMLElement` instance, qu’il peut utiliser avec les API DOM normales.
 

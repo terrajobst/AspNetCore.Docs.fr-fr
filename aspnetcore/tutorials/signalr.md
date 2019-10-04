@@ -6,12 +6,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: tutorials/signalr
-ms.openlocfilehash: 7a6574bd3c463f0890f5dc076944f1ab0f0c919a
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: bec01adc2682f83b0225df66e221bd2e4ea9feb4
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248397"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71925312"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
@@ -95,16 +95,15 @@ La bibliothèque de serveur SignalR est incluse dans le framework partagé ASP.N
 
 * Dans la boîte de dialogue **Ajouter une bibliothèque côté Client**, pour **Fournisseur** sélectionnez **unpkg**.
 
-* Pour **Bibliothèque**, entrez `@aspnet/signalr@next`.
-<!-- when 3.0 is released, change @next to @latest -->
+* Pour **Bibliothèque**, entrez `@microsoft/signalr@latest`.
 
 * Sélectionnez **Choisir des fichiers spécifiques**, développez le dossier *dist/browser*, puis sélectionnez *signalr.js* et *signalr.min.js*.
 
-* Définissez **Emplacement cible** sur *wwwroot/lib/signalr/* , puis sélectionnez **Installer**.
+* Définissez **emplacement cible** sur *wwwroot/js/signalr/* , puis sélectionnez **installer**.
 
-  ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner la bibliothèque](signalr/_static/3.x/libman1.png)
+  ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner la bibliothèque](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
-  LibMan crée un dossier *wwwroot/lib/signalr* et y copie les fichiers sélectionnés.
+  LibMan crée un dossier *wwwroot/js/signalr* et y copie les fichiers sélectionnés.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
@@ -117,20 +116,20 @@ La bibliothèque de serveur SignalR est incluse dans le framework partagé ASP.N
 * Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan. Vous devrez peut-être attendre quelques secondes avant que la sortie ne s’affiche.
 
   ```console
-  libman install @aspnet/signalr@next -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @microsoft/signalr@latest -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   Les paramètres spécifient les options suivantes :
   * Utilisez le fournisseur unpkg.
-  * Copiez les fichiers vers la destination *wwwroot/lib/signalr*.
+  * Copiez les fichiers vers la destination *wwwroot/js/signalr* .
   * Copiez uniquement les fichiers spécifiés.
 
   La sortie se présente comme suit :
 
   ```console
-  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
-  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@next" to "wwwroot/lib/signalr"
+  wwwroot/js/signalr/dist/browser/signalr.js written to disk
+  wwwroot/js/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@microsoft/signalr@latest" to "wwwroot/js/signalr"
   ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
@@ -146,20 +145,20 @@ La bibliothèque de serveur SignalR est incluse dans le framework partagé ASP.N
 * Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan.
 
   ```console
-  libman install @aspnet/signalr@next -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   Les paramètres spécifient les options suivantes :
   * Utilisez le fournisseur unpkg.
-  * Copiez les fichiers vers la destination *wwwroot/lib/signalr*.
+  * Copiez les fichiers vers la destination *wwwroot/js/signalr* .
   * Copiez uniquement les fichiers spécifiés.
 
   La sortie se présente comme suit :
 
   ```console
-  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
-  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@next" to "wwwroot/lib/signalr"
+  wwwroot/js/signalr/dist/browser/signalr.js written to disk
+  wwwroot/js/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@microsoft/signalr@latest" to "wwwroot/js/signalr"
   ```
 
 ---
@@ -234,14 +233,14 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés instantanément dans les deux pages.
+  Le nom et le message sont affichés sur les deux pages instantanément.
 
   ![Exemple d’application SignalR](signalr/_static/3.x/signalr-get-started-finished.png)
 
 > [!TIP]
 > * Si l’application ne fonctionne pas, ouvrez vos outils de développement (F12) de navigateur et accédez à la console. Vous pouvez observer des erreurs liées à votre code HTML et JavaScript. Par exemple, supposez que vous placez *signalr.js* dans un dossier autre que celui stipulé. Dans ce cas, la référence à ce fichier ne fonctionnera pas et vous verrez une erreur 404 dans la console.
 >   ![Erreur de fichier SignalR.js introuvable](signalr/_static/3.x/f12-console.png)
-> * Si vous obtenez l’erreur ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY dans Chrome ou NS_ERROR_NET_INADEQUATE_SECURITY dans Firefox, exécutez ces commandes pour mettre à jour votre certificat de développement :
+> * Si vous recevez l’erreur ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY dans Chrome, exécutez les commandes suivantes pour mettre à jour votre certificat de développement :
 >
 >   ```dotnetcli
 >   dotnet dev-certs https --clean
@@ -477,7 +476,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés instantanément dans les deux pages.
+  Le nom et le message sont affichés sur les deux pages instantanément.
 
   ![Exemple d’application SignalR](signalr/_static/2.x/signalr-get-started-finished.png)
 

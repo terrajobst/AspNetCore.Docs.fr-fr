@@ -5,14 +5,14 @@ description: Comprendre les modèles d’hébergement de l’assembly et du serv
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 766b52df82f75ea1223e20d8471faa5732311f91
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: bc3ad9c7c4731b685fc161844d9f55e51722c0ea
+ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207232"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71924672"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 
@@ -133,11 +133,14 @@ Les applications de serveur éblouissantes doivent être optimisées pour rédui
 
 Les applications serveur éblouissantes nécessitent une connexion active Signalr au serveur. Si la connexion est perdue, l’application tente de se reconnecter au serveur. Tant que l’état du client est toujours en mémoire, la session client reprend sans perte d’État.
 
-Lorsque le client détecte que la connexion a été perdue, une interface utilisateur par défaut est affichée à l’utilisateur pendant que le client tente de se reconnecter. En cas d’échec de la reconnexion, l’utilisateur a la possibilité de réessayer. Pour personnaliser l’interface utilisateur, définissez un élément `components-reconnect-modal` avec `id` comme dans la page Razor *_Host. cshtml* . Le client met à jour cet élément avec l’une des classes CSS suivantes en fonction de l’état de la connexion :
+Lorsque le client détecte que la connexion a été perdue, une interface utilisateur par défaut est affichée à l’utilisateur pendant que le client tente de se reconnecter. En cas d’échec de la reconnexion, l’utilisateur a la possibilité de réessayer. Pour personnaliser l’interface utilisateur, définissez un élément avec `components-reconnect-modal` comme `id` dans la page Razor *_Host. cshtml* . Le client met à jour cet élément avec l’une des classes CSS suivantes en fonction de l’état de la connexion :
 
-* `components-reconnect-show`&ndash; Affichez l’interface utilisateur pour indiquer que la connexion a été perdue et que le client tente de se reconnecter.
+* `components-reconnect-show` &ndash; affiche l’interface utilisateur pour indiquer qu’une connexion a été perdue et que le client tente de se reconnecter.
 * `components-reconnect-hide`&ndash; Le client dispose d’une connexion active et masque l’interface utilisateur.
-* `components-reconnect-failed`&ndash; Échec de la reconnexion. Pour tenter une nouvelle connexion, appelez `window.Blazor.reconnect()`.
+* `components-reconnect-failed` &ndash; échec de la reconnexion, probablement en raison d’une défaillance du réseau. Pour tenter une reconnexion, appelez `window.Blazor.reconnect()`.
+* `components-reconnect-rejected` la reconnexion &ndash; a été rejetée. Le serveur a été atteint mais a refusé la connexion, et l’état de l’utilisateur sur le serveur a disparu. Pour recharger l’application, appelez `location.reload()`. Cet état de connexion peut se produire dans les cas suivants :
+  * Un blocage dans le circuit (code côté serveur) se produit.
+  * Le client est déconnecté suffisamment longtemps pour que le serveur supprime l’état de l’utilisateur. Les instances de composants avec lesquelles l’utilisateur interagit sont supprimées.
 
 ### <a name="stateful-reconnection-after-prerendering"></a>Reconnexion avec état après le prérendu
 
