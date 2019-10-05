@@ -5,42 +5,44 @@ description: Découvrez comment appeler une API Web à partir d’une applicatio
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2019
+ms.date: 09/23/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 60ebd01bc07da22cd1dcd0b16297ee54c97867fc
-ms.sourcegitcommit: f5f0ff65d4e2a961939762fb00e654491a2c772a
+ms.openlocfilehash: ea819da57c382b724098c55f2f799d7deea363f2
+ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030383"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71975642"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core éblouissant
 
-Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
+Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)et [Juan de la Cruz](https://github.com/juandelacruz23)
 
-Les applications côté client éblouissantes appellent des API Web à l’aide d' `HttpClient` un service préconfiguré. Composez des demandes, qui peuvent inclure des options de l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, à l' <xref:System.Net.Http.HttpRequestMessage>aide des applications auxiliaires de l’API JSON ou de.
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Les applications côté serveur éblouissantes appellent des API Web <xref:System.Net.Http.HttpClient> à l’aide d' <xref:System.Net.Http.IHttpClientFactory>instances généralement créées à l’aide de. Pour plus d'informations, consultez <xref:fundamentals/http-requests>.
+Les applications webassembly éblouissant appellent des API Web à l’aide d’un service `HttpClient` préconfiguré. Composez des demandes, qui peuvent inclure des options de l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, à l’aide des applications auxiliaires de l’antivirus de l’aide de éblouissant ou de <xref:System.Net.Http.HttpRequestMessage>.
+
+Les applications serveur éblouissantes appellent des API Web à l’aide d’instances <xref:System.Net.Http.HttpClient> généralement créées à l’aide de <xref:System.Net.Http.IHttpClientFactory>. Pour plus d'informations, consultez <xref:fundamentals/http-requests>.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Pour obtenir des exemples côté client éblouissants, consultez les composants suivants dans l’exemple d’application:
+Pour obtenir des exemples de webassembly éblouissant, consultez les composants suivants dans l’exemple d’application :
 
 * Appeler l’API Web (*pages/CallWebAPI. Razor*)
 * Testeur de requêtes HTTP (*composants/HTTPRequestTester. Razor*)
 
 ## <a name="httpclient-and-json-helpers"></a>Applications auxiliaires HttpClient et JSON
 
-Dans les applications côté client éblouissantes, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour effectuer des requêtes sur le serveur d’origine. Pour utiliser `HttpClient` les applications auxiliaires JSON, ajoutez une référence `Microsoft.AspNetCore.Blazor.HttpClient`de package à. `HttpClient`et les auxiliaires JSON sont également utilisés pour appeler des points de terminaison d’API Web tiers. `HttpClient`est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
+Dans les applications webassembly éblouissantes, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour effectuer des demandes auprès du serveur d’origine. Pour utiliser les applications d’assistance JSON `HttpClient`, ajoutez une référence de package à `Microsoft.AspNetCore.Blazor.HttpClient`. les `HttpClient` et les applications auxiliaires JSON servent également à appeler des points de terminaison d’API Web tiers. `HttpClient` est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
 
-L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injecter `HttpClient` une instance à `@inject` l’aide de la directive:
+L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injectez une instance `HttpClient` à l’aide de la directive `@inject` :
 
 ```cshtml
 @using System.Net.Http
 @inject HttpClient Http
 ```
 
-Dans les exemples suivants, une API Web todo traite les opérations de création, lecture, mise à jour et suppression (CRUD). Les exemples sont basés sur une `TodoItem` classe qui stocke les éléments suivants:
+Dans les exemples suivants, une API Web todo traite les opérations de création, lecture, mise à jour et suppression (CRUD). Les exemples sont basés sur une classe `TodoItem` qui stocke les éléments suivants :
 
 * ID (`Id`, `long`) &ndash; ID unique de l’élément.
 * Nom (`Name`, `string`) &ndash; nom de l’élément.
@@ -55,11 +57,11 @@ private class TodoItem
 }
 ```
 
-Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web dans les exemples suivants) et traitent la réponse:
+Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web dans les exemples suivants) et traitent la réponse :
 
-* `GetJsonAsync`&ndash; Envoie une requête http obtenir et analyse le corps de la réponse JSON pour créer un objet.
+* `GetJsonAsync` &ndash; envoie une requête HTTP obtenir et analyse le corps de la réponse JSON pour créer un objet.
 
-  Dans le code suivant, les `_todoItems` sont affichés par le composant. La `GetTodoItems` méthode est déclenchée lorsque le rendu du composant est terminé ([OnInitializedAsync](xref:blazor/components#lifecycle-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, les `_todoItems` sont affichés par le composant. La méthode `GetTodoItems` est déclenchée à la fin du rendu du composant ([OnInitializedAsync](xref:blazor/components#lifecycle-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -69,13 +71,13 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
       private TodoItem[] _todoItems;
 
       protected override async Task OnInitializedAsync() => 
-          _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/todo");
+          _todoItems = await Http.GetJsonAsync<TodoItem[]>("api/TodoItems");
   }
   ```
 
-* `PostJsonAsync`&ndash; Envoie une requête http postérieure, y compris du contenu encodé JSON, et analyse le corps de la réponse JSON pour créer un objet.
+* `PostJsonAsync` &ndash; envoie une requête HTTP POSTÉRIEURe, y compris du contenu encodé JSON, et analyse le corps de la réponse JSON pour créer un objet.
 
-  Dans le code suivant, `_newItemName` est fourni par un élément lié du composant. La `AddItem` méthode est déclenchée par la sélection `<button>` d’un élément. Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, `_newItemName` est fourni par un élément lié du composant. La méthode `AddItem` est déclenchée en sélectionnant un élément `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -90,14 +92,14 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
       private async Task AddItem()
       {
           var addItem = new TodoItem { Name = _newItemName, IsComplete = false };
-          await Http.PostJsonAsync("api/todo", addItem);
+          await Http.PostJsonAsync("api/TodoItems", addItem);
       }
   }
   ```
 
-* `PutJsonAsync`&ndash; Envoie une requête HTTP PUT, y compris du contenu encodé JSON.
+* `PutJsonAsync` &ndash; envoie une requête HTTP PUT, y compris du contenu encodé JSON.
 
-  Dans le code suivant, `_editItem` les valeurs `Name` pour `IsCompleted` et sont fournies par les éléments dépendants du composant. L’élément `Id` est défini lorsque l’élément est sélectionné dans une autre partie de l’interface utilisateur `EditItem` et est appelé. La `SaveItem` méthode est déclenchée par la sélection de `<button>` l’élément Save. Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, les valeurs `_editItem` pour les `Name` et `IsCompleted` sont fournies par les éléments dépendants du composant. Le @no__t de l’élément est défini lorsque l’élément est sélectionné dans une autre partie de l’interface utilisateur et que `EditItem` est appelé. La méthode `SaveItem` est déclenchée en sélectionnant l’élément Save `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -118,13 +120,13 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
       }
 
       private async Task SaveItem() =>
-          await Http.PutJsonAsync($"api/todo/{_editItem.Id}, _editItem);
+          await Http.PutJsonAsync($"api/TodoItems/{_editItem.Id}, _editItem);
   }
   ```
 
-<xref:System.Net.Http>contient des méthodes d’extension supplémentaires pour envoyer des requêtes HTTP et recevoir des réponses HTTP. [Httpclient. DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*) est utilisé pour envoyer une requête HTTP DELETE à une API Web.
+<xref:System.Net.Http> comprend des méthodes d’extension supplémentaires pour envoyer des requêtes HTTP et recevoir des réponses HTTP. [Httpclient. DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*) est utilisé pour envoyer une requête HTTP DELETE à une API Web.
 
-Dans le code suivant, l’élément `<button>` delete appelle la `DeleteItem` méthode. L’élément `<input>` lié fournit le `id` de l’élément à supprimer. Pour obtenir un exemple complet, consultez l’exemple d’application.
+Dans le code suivant, l’élément delete `<button>` appelle la méthode `DeleteItem`. L’élément `<input>` lié fournit le `id` de l’élément à supprimer. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
 ```cshtml
 @using System.Net.Http
@@ -137,7 +139,7 @@ Dans le code suivant, l’élément `<button>` delete appelle la `DeleteItem` m�
     private long _id;
 
     private async Task DeleteItem() =>
-        await Http.DeleteAsync($"api/todo/{_id}");
+        await Http.DeleteAsync($"api/TodoItems/{_id}");
 }
 ```
 
@@ -147,17 +149,17 @@ La sécurité du navigateur empêche une page Web d’effectuer des demandes ver
 
 L’exemple d’application illustre l’utilisation de CORS dans le composant appeler l’API Web (*pages/CallWebAPI. Razor*).
 
-Pour permettre à d’autres sites d’effectuer des demandes de partage de ressources Cross-Origin (CORS) <xref:security/cors>à votre application, consultez.
+Pour permettre à d’autres sites d’effectuer des demandes de partage de ressources Cross-Origin (CORS) à votre application, consultez <xref:security/cors>.
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient et HttpRequestMessage avec les options de demande d’API Fetch
 
-Quand vous exécutez sur webassembly dans une application cliente éblouissant, utilisez [httpclient](xref:fundamentals/http-requests) et <xref:System.Net.Http.HttpRequestMessage> pour personnaliser les demandes. Par exemple, vous pouvez spécifier l’URI de demande, la méthode HTTP et tous les en-têtes de demande souhaités.
+Quand vous exécutez sur webassembly dans une application de webassembly éblouissante, utilisez [httpclient](xref:fundamentals/http-requests) et <xref:System.Net.Http.HttpRequestMessage> pour personnaliser les demandes. Par exemple, vous pouvez spécifier l’URI de demande, la méthode HTTP et tous les en-têtes de demande souhaités.
 
-Fournissez des options de demande à l' [API](https://developer.mozilla.org/docs/Web/API/Fetch_API) d’extraction `WebAssemblyHttpMessageHandler.FetchArgs` JavaScript sous-jacente à l’aide de la propriété sur la demande. Comme indiqué dans l’exemple suivant, la `credentials` propriété est définie sur l’une des valeurs suivantes:
+Fournissez des options de demande à l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript sous-jacente à l’aide de la propriété `WebAssemblyHttpMessageHandler.FetchArgs` sur la demande. Comme indiqué dans l’exemple suivant, la propriété `credentials` est définie sur l’une des valeurs suivantes :
 
-* `FetchCredentialsOption.Include`(«Include») &ndash; Conseille au navigateur d’envoyer des informations d’identification (telles que des en-têtes de cookies ou d’authentification http) même pour les demandes Cross-Origin. Autorisé uniquement lorsque la stratégie CORS est configurée pour autoriser les informations d’identification.
-* `FetchCredentialsOption.Omit`(«omettre») &ndash; Conseille au navigateur de ne jamais envoyer d’informations d’identification (par exemple, cookies ou en-têtes http auth).
-* `FetchCredentialsOption.SameOrigin`(«même-Origin») &ndash; Conseille au navigateur d’envoyer des informations d’identification (par exemple, cookies ou en-têtes http auth) uniquement si l’URL cible est sur la même origine que l’application appelante.
+* `FetchCredentialsOption.Include` (« Include ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des cookies ou des en-têtes d’authentification HTTP) même pour les demandes Cross-Origin. Autorisé uniquement lorsque la stratégie CORS est configurée pour autoriser les informations d’identification.
+* `FetchCredentialsOption.Omit` (« omettre ») &ndash; conseille au navigateur de ne jamais envoyer d’informations d’identification (telles que des cookies ou des en-têtes HTTP Auth).
+* `FetchCredentialsOption.SameOrigin` (« même-Origin ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des cookies ou des en-têtes HTTP Auth) uniquement si l’URL cible est sur la même origine que l’application appelante.
 
 ```cshtml
 @using System.Net.Http
@@ -173,7 +175,7 @@ Fournissez des options de demande à l' [API](https://developer.mozilla.org/docs
         var requestMessage = new HttpRequestMessage()
         {
             Method = new HttpMethod("POST"),
-            RequestUri = new Uri("https://localhost:10000/api/todo"),
+            RequestUri = new Uri("https://localhost:10000/api/TodoItems"),
             Content = 
                 new StringContent(
                     @"{""name"":""A New Todo Item"",""isComplete"":false}")
@@ -198,16 +200,16 @@ Fournissez des options de demande à l' [API](https://developer.mozilla.org/docs
 }
 ```
 
-Pour plus d’informations sur les options de l' [API FETCH, consultez MDN Web docs: WindowOrWorkerGlobalScope. Fetch ():P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
+Pour plus d’informations sur les options de l’API FETCH, consultez la page documentation @no__t 0MDN : WindowOrWorkerGlobalScope. Fetch () :P arameters @ no__t-0.
 
-Lors de l’envoi d’informations d’identification (cookies/en-têtes d’autorisation `Authorization` ) sur les demandes cors, l’en-tête doit être autorisé par la stratégie cors.
+Lors de l’envoi d’informations d’identification (cookies/en-têtes d’autorisation) sur les demandes CORS, l’en-tête `Authorization` doit être autorisé par la stratégie CORS.
 
-La stratégie suivante comprend la configuration pour:
+La stratégie suivante comprend la configuration pour :
 
-* Origines des demandes`http://localhost:5000`( `https://localhost:5001`,).
+* Origines de la requête (`http://localhost:5000`, `https://localhost:5001`).
 * Toute méthode (verbe).
-* `Content-Type`et `Authorization` en-têtes. Pour autoriser un en-tête personnalisé (par `x-custom-header`exemple,), répertoriez l' <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>en-tête lors de l’appel de.
-* Informations d’identification définies par le code JavaScript côté client`credentials` (la propriété `include`a la valeur).
+* en-têtes `Content-Type` et `Authorization`. Pour autoriser un en-tête personnalisé (par exemple, `x-custom-header`), répertoriez l’en-tête lors de l’appel de <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.
+* Informations d’identification définies par le code JavaScript côté client (la propriété `credentials` est définie sur `include`).
 
 ```csharp
 app.UseCors(policy => 
@@ -217,9 +219,11 @@ app.UseCors(policy =>
     .AllowCredentials());
 ```
 
-Pour plus d’informations, <xref:security/cors> consultez et le composant testeur de requêtes http de l’exemple d’application (*composants/HTTPRequestTester. Razor*).
+Pour plus d’informations, consultez <xref:security/cors> et le composant testeur de requêtes HTTP de l’exemple d’application (*composants/HTTPRequestTester. Razor*).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/http-requests>
+* <xref:security/enforcing-ssl>
+* [Configuration du point de terminaison HTTPs Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
 * [Cross Origin Resource Sharing (CORS) au W3C](https://www.w3.org/TR/cors/)
