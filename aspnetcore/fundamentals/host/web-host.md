@@ -1,21 +1,19 @@
 ---
 title: Hôte web ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: d387098662cc832cc0e49b6a1636f0ebcc7308de
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 977c1df67c2775870d630f3a1085d5e19cef58f5
+ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081689"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981899"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
-
-Par [Luke Latham](https://github.com/guardrex)
 
 Les applications ASP.NET Core configurent et lancent un *hôte*. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes. L’hôte peut aussi configurer la journalisation, l’injection de dépendances et la configuration.
 
@@ -327,7 +325,7 @@ Spécifie le délai d’attente avant l’arrêt de l’hôte web.
 
 **Clé** : shutdownTimeoutSeconds  
 **Type** : *int*  
-**Par défaut** : 5.  
+**Par défaut** : 5  
 **Définition avec** : `UseShutdownTimeout`  
 **Variable d’environnement** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
@@ -530,7 +528,7 @@ using (var host = WebHost.Start(router => router
 
 Utilisez les requêtes de navigateur suivantes avec l’exemple :
 
-| Requête                                    | response                                 |
+| Demande                                    | Réponse                                 |
 | ------------------------------------------ | ---------------------------------------- |
 | `http://localhost:5000/hello/Martin`       | Hello, Martin!                           |
 | `http://localhost:5000/buenosdias/Catrina` | Buenos dias, Catrina!                    |

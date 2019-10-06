@@ -5,14 +5,14 @@ description: Découvrez l’hôte générique .NET Core, qui est responsable de 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2019
+ms.date: 10/05/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 75af6dc58d31aaad888b14640268bf05c193272d
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: bd6e01697900b93d5b98122c726e1f8c8b89c0fc
+ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248285"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981927"
 ---
 # <a name="net-generic-host"></a>Hôte générique .NET
 
@@ -113,13 +113,13 @@ Les services inscrits automatiquement sont les suivants :
 * [IHostLifetime](#ihostlifetime)
 * [IHostEnvironment / IWebHostEnvironment](#ihostenvironment)
 
-Pour plus d’informations sur les services fournis par le <xref:fundamentals/dependency-injection#framework-provided-services>Framework, consultez.
+Pour plus d’informations sur les services fournis par le Framework, consultez <xref:fundamentals/dependency-injection#framework-provided-services>.
 
 ## <a name="ihostapplicationlifetime"></a>IHostApplicationLifetime
 
 Injectez le service <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime> (anciennement `IApplicationLifetime`) dans n’importe quelle classe pour gérer les tâches post-démarrage et d’arrêt approprié. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes du gestionnaire d’événements de démarrage et d’arrêt d’application. L’interface inclut également une méthode `StopApplication`.
 
-L’exemple suivant est une implémentation de `IHostedService` qui inscrit les événements `IApplicationLifetime` :
+L’exemple suivant est une implémentation `IHostedService` qui inscrit des événements `IHostApplicationLifetime` :
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/LifetimeEventsHostedService.cs?name=snippet_LifetimeEvents)]
 
@@ -380,7 +380,7 @@ Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’h�
 
 **Clé** : urls  
 **Type** : *string*  
-**Par défaut**: `http://localhost:5000` et`https://localhost:5001`  
+**Valeur par défaut**: `http://localhost:5000` et `https://localhost:5001`  
 **Variable d’environnement** : `<PREFIX_>URLS`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou appelez `UseUrls` :
@@ -495,7 +495,7 @@ Pour définir la console dans Visual Studio Code :
 1. Ouvrez le fichier *.vscode/launch.json*.
 1. Dans la configuration **.NET Core Launch (console)** , recherchez l’entrée **console**. Définissez la valeur avec `externalTerminal` ou `integratedTerminal`.
 
-## <a name="introduction"></a>Introduction
+## <a name="introduction"></a>Présentation
 
 La bibliothèque de l’hôte générique est disponible dans l’espace de noms <xref:Microsoft.Extensions.Hosting> et est fournie par le package [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/). Le package `Microsoft.Extensions.Hosting` est inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou ultérieur).
 
