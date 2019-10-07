@@ -122,13 +122,8 @@
               uid: data/ef-rp/update-related-data
             - name: Gérer les conflits d’accès concurrentiel
               uid: data/ef-rp/concurrency
-        - name: 'EF Core avec MVC, base de données existante'
+        - name: EF Core avec MVC
           displayName: tutorial
-          href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 'EF Core avec MVC, nouvelle base de données'
-          displayName: tutorial
-          href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 'EF Core avec MVC, 10 tutoriels'
           items:
             - name: Vue d'ensemble
               uid: data/ef-mvc/index
@@ -231,8 +226,6 @@
           uid: razor-pages/filter
         - name: Conventions de routage et d’application
           uid: razor-pages/razor-pages-conventions
-        - name: Charger des fichiers
-          uid: razor-pages/upload-files
         - name: SDK Razor
           uid: razor-pages/sdk
     - name: MVC
@@ -271,8 +264,6 @@
           uid: mvc/controllers/actions
         - name: Routage
           uid: mvc/controllers/routing
-        - name: Chargements de fichiers
-          uid: mvc/models/file-uploads
         - name: Injection de dépendances - contrôleurs
           uid: mvc/controllers/dependency-injection
         - name: Injection de dépendances - vues
@@ -418,6 +409,8 @@
           uid: mvc/controllers/filters
         - name: Zones (Areas)
           uid: mvc/controllers/areas
+        - name: Charger des fichiers
+          uid: mvc/models/file-uploads
         - name: Composants d’application
           uid: mvc/extensibility/app-parts
         - name: aspnet-codegenerator
@@ -632,11 +625,7 @@
               uid: data/ef-rp/update-related-data
             - name: Gérer les conflits d’accès concurrentiel
               uid: data/ef-rp/concurrency
-        - name: 'EF Core avec MVC, nouvelle base de données'
-          href: /ef/core/get-started/aspnetcore/new-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 'EF Core avec MVC, base de données existante'
-          href: /ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-        - name: 'EF Core avec MVC, 10 tutoriels'
+        - name: EF Core avec MVC
           items:
             - name: Vue d'ensemble
               uid: data/ef-mvc/index
