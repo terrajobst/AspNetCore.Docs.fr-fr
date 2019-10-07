@@ -9,7 +9,7 @@ ms.date: 08/29/2019
 uid: web-api/http-repl
 ms.openlocfilehash: 086ac141a04ab4a560f2c26fb049ef8a5493dc97
 ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 09/23/2019
 ms.locfileid: "71187238"
