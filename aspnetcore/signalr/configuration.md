@@ -22,7 +22,7 @@ ASP.NET Core Signalr prend en charge deux protocoles pour l’encodage des messa
 
 La sérialisation JSON peut être configurée sur le serveur à l’aide de la méthode d’extension [AddJsonProtocol](/dotnet/api/microsoft.extensions.dependencyinjection.jsonprotocoldependencyinjectionextensions.addjsonprotocol), qui peut être ajoutée après [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans la méthode `Startup.ConfigureServices`. La méthode `AddJsonProtocol` prend un délégué qui reçoit un objet `options`. La propriété [PayloadSerializerSettings](/dotnet/api/microsoft.aspnetcore.signalr.jsonhubprotocoloptions.payloadserializersettings) sur cet objet est un objet `JsonSerializerSettings` JSON.net qui peut être utilisé pour configurer la sérialisation des arguments et les valeurs de retour. Pour plus d’informations, consultez la [documentation de JSON.net](https://www.newtonsoft.com/json/help/html/Introduction.htm) .
 
-Par exemple, pour configurer le sérialiseur pour utiliser des noms de propriété en PascalCase, au lieu des noms « en casse mixte » par défaut, utilisez le code suivant :
+Par exemple, pour configurer le sérialiseur pour utiliser des noms de propriété « en casse Pascal », au lieu des noms « en casse mixte » par défaut, utilisez le code suivant :
 
 ```csharp
 services.AddSignalR()
