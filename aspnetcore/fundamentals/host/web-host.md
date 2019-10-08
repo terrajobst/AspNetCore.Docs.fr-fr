@@ -2,38 +2,39 @@
 title: Hôte web ASP.NET Core
 author: rick-anderson
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 977c1df67c2775870d630f3a1085d5e19cef58f5
-ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
+ms.openlocfilehash: bc18b5490d232758b796d33a62cd8d1a7dd7289f
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981899"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007108"
 ---
-# <a name="aspnet-core-web-host"></a><span data-ttu-id="189b7-103">Hôte web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="189b7-103">ASP.NET Core Web Host</span></span>
+# <a name="aspnet-core-web-host"></a><span data-ttu-id="f3301-103">Hôte web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f3301-103">ASP.NET Core Web Host</span></span>
 
-<span data-ttu-id="189b7-104">Les applications ASP.NET Core configurent et lancent un *hôte*.</span><span class="sxs-lookup"><span data-stu-id="189b7-104">ASP.NET Core apps configure and launch a *host*.</span></span> <span data-ttu-id="189b7-105">L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications.</span><span class="sxs-lookup"><span data-stu-id="189b7-105">The host is responsible for app startup and lifetime management.</span></span> <span data-ttu-id="189b7-106">Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes.</span><span class="sxs-lookup"><span data-stu-id="189b7-106">At a minimum, the host configures a server and a request processing pipeline.</span></span> <span data-ttu-id="189b7-107">L’hôte peut aussi configurer la journalisation, l’injection de dépendances et la configuration.</span><span class="sxs-lookup"><span data-stu-id="189b7-107">The host can also set up logging, dependency injection, and configuration.</span></span>
+<span data-ttu-id="f3301-104">Les applications ASP.NET Core configurent et lancent un *hôte*.</span><span class="sxs-lookup"><span data-stu-id="f3301-104">ASP.NET Core apps configure and launch a *host*.</span></span> <span data-ttu-id="f3301-105">L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications.</span><span class="sxs-lookup"><span data-stu-id="f3301-105">The host is responsible for app startup and lifetime management.</span></span> <span data-ttu-id="f3301-106">Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes.</span><span class="sxs-lookup"><span data-stu-id="f3301-106">At a minimum, the host configures a server and a request processing pipeline.</span></span> <span data-ttu-id="f3301-107">L’hôte peut aussi configurer la journalisation, l’injection de dépendances et la configuration.</span><span class="sxs-lookup"><span data-stu-id="f3301-107">The host can also set up logging, dependency injection, and configuration.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="189b7-108">Cet article traite de l’hôte Web, qui reste disponible uniquement pour la compatibilité descendante.</span><span class="sxs-lookup"><span data-stu-id="189b7-108">This article covers the Web Host, which remains available only for backward compatibility.</span></span> <span data-ttu-id="189b7-109">L’[Hôte générique](xref:fundamentals/host/generic-host) est recommandé pour tous les types d’applications.</span><span class="sxs-lookup"><span data-stu-id="189b7-109">The [Generic Host](xref:fundamentals/host/generic-host) is recommended for all app types.</span></span>
+<span data-ttu-id="f3301-108">Cet article traite de l’hôte Web, qui reste disponible uniquement pour la compatibilité descendante.</span><span class="sxs-lookup"><span data-stu-id="f3301-108">This article covers the Web Host, which remains available only for backward compatibility.</span></span> <span data-ttu-id="f3301-109">L’[Hôte générique](xref:fundamentals/host/generic-host) est recommandé pour tous les types d’applications.</span><span class="sxs-lookup"><span data-stu-id="f3301-109">The [Generic Host](xref:fundamentals/host/generic-host) is recommended for all app types.</span></span>
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="189b7-110">Cet article traite de l’hôte web qui est responsable de l’hébergement des applications web.</span><span class="sxs-lookup"><span data-stu-id="189b7-110">This article covers the Web Host, which is for hosting web apps.</span></span> <span data-ttu-id="189b7-111">Pour d’autres types d’applications, utilisez l’[Hôte générique](xref:fundamentals/host/generic-host).</span><span class="sxs-lookup"><span data-stu-id="189b7-111">For other kinds of apps, use the [Generic Host](xref:fundamentals/host/generic-host).</span></span>
+<span data-ttu-id="f3301-110">Cet article traite de l’hôte web qui est responsable de l’hébergement des applications web.</span><span class="sxs-lookup"><span data-stu-id="f3301-110">This article covers the Web Host, which is for hosting web apps.</span></span> <span data-ttu-id="f3301-111">Pour d’autres types d’applications, utilisez l’[Hôte générique](xref:fundamentals/host/generic-host).</span><span class="sxs-lookup"><span data-stu-id="f3301-111">For other kinds of apps, use the [Generic Host](xref:fundamentals/host/generic-host).</span></span>
 
 ::: moniker-end
 
-## <a name="set-up-a-host"></a><span data-ttu-id="189b7-112">Configurer un hôte</span><span class="sxs-lookup"><span data-stu-id="189b7-112">Set up a host</span></span>
+## <a name="set-up-a-host"></a><span data-ttu-id="f3301-112">Configurer un hôte</span><span class="sxs-lookup"><span data-stu-id="f3301-112">Set up a host</span></span>
 
-<span data-ttu-id="189b7-113">Créez un hôte en utilisant une instance de [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span><span class="sxs-lookup"><span data-stu-id="189b7-113">Create a host using an instance of [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span></span> <span data-ttu-id="189b7-114">Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`.</span><span class="sxs-lookup"><span data-stu-id="189b7-114">This is typically performed in the app's entry point, the `Main` method.</span></span>
+<span data-ttu-id="f3301-113">Créez un hôte en utilisant une instance de [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span><span class="sxs-lookup"><span data-stu-id="f3301-113">Create a host using an instance of [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span></span> <span data-ttu-id="f3301-114">Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`.</span><span class="sxs-lookup"><span data-stu-id="f3301-114">This is typically performed in the app's entry point, the `Main` method.</span></span>
 
-<span data-ttu-id="189b7-115">Dans les modèles de projet, `Main` se trouve dans *Program.cs*.</span><span class="sxs-lookup"><span data-stu-id="189b7-115">In the project templates, `Main` is located in *Program.cs*.</span></span> <span data-ttu-id="189b7-116">Une application standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour lancer la configuration d’un hôte :</span><span class="sxs-lookup"><span data-stu-id="189b7-116">A typical app calls [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) to start setting up a host:</span></span>
+<span data-ttu-id="f3301-115">Dans les modèles de projet, `Main` se trouve dans *Program.cs*.</span><span class="sxs-lookup"><span data-stu-id="f3301-115">In the project templates, `Main` is located in *Program.cs*.</span></span> <span data-ttu-id="f3301-116">Une application standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour lancer la configuration d’un hôte :</span><span class="sxs-lookup"><span data-stu-id="f3301-116">A typical app calls [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) to start setting up a host:</span></span>
 
 ```csharp
 public class Program
@@ -49,28 +50,28 @@ public class Program
 }
 ```
 
-<span data-ttu-id="189b7-117">Le code qui appelle `CreateDefaultBuilder` est dans une méthode nommée `CreateWebHostBuilder`, qui le sépare du code dans `Main` qui appelle `Run` sur l’objet du générateur.</span><span class="sxs-lookup"><span data-stu-id="189b7-117">The code that calls `CreateDefaultBuilder` is in a method named `CreateWebHostBuilder`, which separates it from the code in `Main` that calls `Run` on the builder object.</span></span> <span data-ttu-id="189b7-118">Cette séparation est requise si vous utilisez [les outils Entity Framework Core](/ef/core/miscellaneous/cli/).</span><span class="sxs-lookup"><span data-stu-id="189b7-118">This separation is required if you use [Entity Framework Core tools](/ef/core/miscellaneous/cli/).</span></span> <span data-ttu-id="189b7-119">Les outils s’attendent à trouver une méthode `CreateWebHostBuilder` qu’ils peuvent appeler au moment du design pour configurer l’hôte sans exécuter l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-119">The tools expect to find a `CreateWebHostBuilder` method that they can call at design time to configure the host without running the app.</span></span> <span data-ttu-id="189b7-120">Une alternative consiste à implémenter `IDesignTimeDbContextFactory`.</span><span class="sxs-lookup"><span data-stu-id="189b7-120">An alternative is to implement `IDesignTimeDbContextFactory`.</span></span> <span data-ttu-id="189b7-121">Pour plus d’informations, consultez [Création de DbContext au moment du design](/ef/core/miscellaneous/cli/dbcontext-creation).</span><span class="sxs-lookup"><span data-stu-id="189b7-121">For more information, see [Design-time DbContext Creation](/ef/core/miscellaneous/cli/dbcontext-creation).</span></span>
+<span data-ttu-id="f3301-117">Le code qui appelle `CreateDefaultBuilder` est dans une méthode nommée `CreateWebHostBuilder`, qui le sépare du code dans `Main` qui appelle `Run` sur l’objet du générateur.</span><span class="sxs-lookup"><span data-stu-id="f3301-117">The code that calls `CreateDefaultBuilder` is in a method named `CreateWebHostBuilder`, which separates it from the code in `Main` that calls `Run` on the builder object.</span></span> <span data-ttu-id="f3301-118">Cette séparation est requise si vous utilisez [les outils Entity Framework Core](/ef/core/miscellaneous/cli/).</span><span class="sxs-lookup"><span data-stu-id="f3301-118">This separation is required if you use [Entity Framework Core tools](/ef/core/miscellaneous/cli/).</span></span> <span data-ttu-id="f3301-119">Les outils s’attendent à trouver une méthode `CreateWebHostBuilder` qu’ils peuvent appeler au moment du design pour configurer l’hôte sans exécuter l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-119">The tools expect to find a `CreateWebHostBuilder` method that they can call at design time to configure the host without running the app.</span></span> <span data-ttu-id="f3301-120">Une alternative consiste à implémenter `IDesignTimeDbContextFactory`.</span><span class="sxs-lookup"><span data-stu-id="f3301-120">An alternative is to implement `IDesignTimeDbContextFactory`.</span></span> <span data-ttu-id="f3301-121">Pour plus d’informations, consultez [Création de DbContext au moment du design](/ef/core/miscellaneous/cli/dbcontext-creation).</span><span class="sxs-lookup"><span data-stu-id="f3301-121">For more information, see [Design-time DbContext Creation](/ef/core/miscellaneous/cli/dbcontext-creation).</span></span>
 
-<span data-ttu-id="189b7-122">`CreateDefaultBuilder` effectue les tâches suivantes :</span><span class="sxs-lookup"><span data-stu-id="189b7-122">`CreateDefaultBuilder` performs the following tasks:</span></span>
+<span data-ttu-id="f3301-122">`CreateDefaultBuilder` effectue les tâches suivantes :</span><span class="sxs-lookup"><span data-stu-id="f3301-122">`CreateDefaultBuilder` performs the following tasks:</span></span>
 
-* <span data-ttu-id="189b7-123">Configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web en utilisant les fournisseurs de configuration d’hébergement de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-123">Configures [Kestrel](xref:fundamentals/servers/kestrel) server as the web server using the app's hosting configuration providers.</span></span> <span data-ttu-id="189b7-124">Pour connaître les options par défaut du serveur Kestrel, consultez <xref:fundamentals/servers/kestrel#kestrel-options>.</span><span class="sxs-lookup"><span data-stu-id="189b7-124">For the Kestrel server's default options, see <xref:fundamentals/servers/kestrel#kestrel-options>.</span></span>
-* <span data-ttu-id="189b7-125">Définit le chemin retourné par [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) comme racine de contenu.</span><span class="sxs-lookup"><span data-stu-id="189b7-125">Sets the content root to the path returned by [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).</span></span>
-* <span data-ttu-id="189b7-126">Charge la [configuration de l’hôte](#host-configuration-values) à partir de :</span><span class="sxs-lookup"><span data-stu-id="189b7-126">Loads [host configuration](#host-configuration-values) from:</span></span>
-  * <span data-ttu-id="189b7-127">Variables d’environnement comportant le préfixe `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`).</span><span class="sxs-lookup"><span data-stu-id="189b7-127">Environment variables prefixed with `ASPNETCORE_` (for example, `ASPNETCORE_ENVIRONMENT`).</span></span>
-  * <span data-ttu-id="189b7-128">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="189b7-128">Command-line arguments.</span></span>
-* <span data-ttu-id="189b7-129">Charge la configuration de l’application dans l’ordre suivant à partir des éléments ci-après :</span><span class="sxs-lookup"><span data-stu-id="189b7-129">Loads app configuration in the following order from:</span></span>
-  * <span data-ttu-id="189b7-130">*appsettings.json*</span><span class="sxs-lookup"><span data-stu-id="189b7-130">*appsettings.json*.</span></span>
-  * <span data-ttu-id="189b7-131">*appsettings.{Environment}.json*</span><span class="sxs-lookup"><span data-stu-id="189b7-131">*appsettings.{Environment}.json*.</span></span>
-  * <span data-ttu-id="189b7-132">L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.</span><span class="sxs-lookup"><span data-stu-id="189b7-132">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment using the entry assembly.</span></span>
-  * <span data-ttu-id="189b7-133">Variables d'environnement.</span><span class="sxs-lookup"><span data-stu-id="189b7-133">Environment variables.</span></span>
-  * <span data-ttu-id="189b7-134">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="189b7-134">Command-line arguments.</span></span>
-* <span data-ttu-id="189b7-135">Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage.</span><span class="sxs-lookup"><span data-stu-id="189b7-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="189b7-136">La journalisation inclut les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) qui sont spécifiées dans une section de configuration de la journalisation dans un fichier *appsettings.json* ou *appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="189b7-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *appsettings.json* or *appsettings.{Environment}.json* file.</span></span>
-* <span data-ttu-id="189b7-137">Lors de l’exécution derrière IIS avec le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` permet l’[intégration IIS](xref:host-and-deploy/iis/index), qui configure l’adresse de base et le port de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-137">When running behind IIS with the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` enables [IIS Integration](xref:host-and-deploy/iis/index), which configures the app's base address and port.</span></span> <span data-ttu-id="189b7-138">L’intégration IIS configure également l’application pour la [capture des erreurs de démarrage](#capture-startup-errors).</span><span class="sxs-lookup"><span data-stu-id="189b7-138">IIS Integration also configures the app to [capture startup errors](#capture-startup-errors).</span></span> <span data-ttu-id="189b7-139">Pour connaître les options par défaut d’IIS, consultez <xref:host-and-deploy/iis/index#iis-options>.</span><span class="sxs-lookup"><span data-stu-id="189b7-139">For the IIS default options, see <xref:host-and-deploy/iis/index#iis-options>.</span></span>
-* <span data-ttu-id="189b7-140">Définissez [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) sur `true` si l’environnement de l’application est Développement.</span><span class="sxs-lookup"><span data-stu-id="189b7-140">Sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span> <span data-ttu-id="189b7-141">Pour plus d’informations, consultez [Validation de l’étendue](#scope-validation).</span><span class="sxs-lookup"><span data-stu-id="189b7-141">For more information, see [Scope validation](#scope-validation).</span></span>
+* <span data-ttu-id="f3301-123">Configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web en utilisant les fournisseurs de configuration d’hébergement de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-123">Configures [Kestrel](xref:fundamentals/servers/kestrel) server as the web server using the app's hosting configuration providers.</span></span> <span data-ttu-id="f3301-124">Pour connaître les options par défaut du serveur Kestrel, consultez <xref:fundamentals/servers/kestrel#kestrel-options>.</span><span class="sxs-lookup"><span data-stu-id="f3301-124">For the Kestrel server's default options, see <xref:fundamentals/servers/kestrel#kestrel-options>.</span></span>
+* <span data-ttu-id="f3301-125">Définit la [racine du contenu](xref:fundamentals/index#content-root) sur le chemin d’accès retourné par [Directory. GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).</span><span class="sxs-lookup"><span data-stu-id="f3301-125">Sets the [content root](xref:fundamentals/index#content-root) to the path returned by [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).</span></span>
+* <span data-ttu-id="f3301-126">Charge la [configuration de l’hôte](#host-configuration-values) à partir de :</span><span class="sxs-lookup"><span data-stu-id="f3301-126">Loads [host configuration](#host-configuration-values) from:</span></span>
+  * <span data-ttu-id="f3301-127">Variables d’environnement comportant le préfixe `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`).</span><span class="sxs-lookup"><span data-stu-id="f3301-127">Environment variables prefixed with `ASPNETCORE_` (for example, `ASPNETCORE_ENVIRONMENT`).</span></span>
+  * <span data-ttu-id="f3301-128">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="f3301-128">Command-line arguments.</span></span>
+* <span data-ttu-id="f3301-129">Charge la configuration de l’application dans l’ordre suivant à partir des éléments ci-après :</span><span class="sxs-lookup"><span data-stu-id="f3301-129">Loads app configuration in the following order from:</span></span>
+  * <span data-ttu-id="f3301-130">*appsettings.json*</span><span class="sxs-lookup"><span data-stu-id="f3301-130">*appsettings.json*.</span></span>
+  * <span data-ttu-id="f3301-131">*appsettings.{Environment}.json*</span><span class="sxs-lookup"><span data-stu-id="f3301-131">*appsettings.{Environment}.json*.</span></span>
+  * <span data-ttu-id="f3301-132">L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.</span><span class="sxs-lookup"><span data-stu-id="f3301-132">[Secret Manager](xref:security/app-secrets) when the app runs in the `Development` environment using the entry assembly.</span></span>
+  * <span data-ttu-id="f3301-133">Variables d'environnement.</span><span class="sxs-lookup"><span data-stu-id="f3301-133">Environment variables.</span></span>
+  * <span data-ttu-id="f3301-134">Arguments de ligne de commande</span><span class="sxs-lookup"><span data-stu-id="f3301-134">Command-line arguments.</span></span>
+* <span data-ttu-id="f3301-135">Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage.</span><span class="sxs-lookup"><span data-stu-id="f3301-135">Configures [logging](xref:fundamentals/logging/index) for console and debug output.</span></span> <span data-ttu-id="f3301-136">La journalisation inclut les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) qui sont spécifiées dans une section de configuration de la journalisation dans un fichier *appsettings.json* ou *appsettings.{Environment}.json*.</span><span class="sxs-lookup"><span data-stu-id="f3301-136">Logging includes [log filtering](xref:fundamentals/logging/index#log-filtering) rules specified in a Logging configuration section of an *appsettings.json* or *appsettings.{Environment}.json* file.</span></span>
+* <span data-ttu-id="f3301-137">Lors de l’exécution derrière IIS avec le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` permet l’[intégration IIS](xref:host-and-deploy/iis/index), qui configure l’adresse de base et le port de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-137">When running behind IIS with the [ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` enables [IIS Integration](xref:host-and-deploy/iis/index), which configures the app's base address and port.</span></span> <span data-ttu-id="f3301-138">L’intégration IIS configure également l’application pour la [capture des erreurs de démarrage](#capture-startup-errors).</span><span class="sxs-lookup"><span data-stu-id="f3301-138">IIS Integration also configures the app to [capture startup errors](#capture-startup-errors).</span></span> <span data-ttu-id="f3301-139">Pour connaître les options par défaut d’IIS, consultez <xref:host-and-deploy/iis/index#iis-options>.</span><span class="sxs-lookup"><span data-stu-id="f3301-139">For the IIS default options, see <xref:host-and-deploy/iis/index#iis-options>.</span></span>
+* <span data-ttu-id="f3301-140">Définissez [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) sur `true` si l’environnement de l’application est Développement.</span><span class="sxs-lookup"><span data-stu-id="f3301-140">Sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span> <span data-ttu-id="f3301-141">Pour plus d’informations, consultez [Validation de l’étendue](#scope-validation).</span><span class="sxs-lookup"><span data-stu-id="f3301-141">For more information, see [Scope validation](#scope-validation).</span></span>
 
-<span data-ttu-id="189b7-142">La configuration définie par `CreateDefaultBuilder` peut être remplacée et enrichie par [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration), [ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) et les autres méthodes et les méthodes d’extension de [ IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span><span class="sxs-lookup"><span data-stu-id="189b7-142">The configuration defined by `CreateDefaultBuilder` can be overridden and augmented by [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration), [ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging), and other methods and extension methods of [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span></span> <span data-ttu-id="189b7-143">En voici quelques exemples :</span><span class="sxs-lookup"><span data-stu-id="189b7-143">A few examples follow:</span></span>
+<span data-ttu-id="f3301-142">La configuration définie par `CreateDefaultBuilder` peut être remplacée et enrichie par [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration), [ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) et les autres méthodes et les méthodes d’extension de [ IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span><span class="sxs-lookup"><span data-stu-id="f3301-142">The configuration defined by `CreateDefaultBuilder` can be overridden and augmented by [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration), [ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging), and other methods and extension methods of [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder).</span></span> <span data-ttu-id="f3301-143">En voici quelques exemples :</span><span class="sxs-lookup"><span data-stu-id="f3301-143">A few examples follow:</span></span>
 
-* <span data-ttu-id="189b7-144">[ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration) permet de spécifier une configuration `IConfiguration` supplémentaire pour l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-144">[ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration) is used to specify additional `IConfiguration` for the app.</span></span> <span data-ttu-id="189b7-145">L’appel `ConfigureAppConfiguration` suivant ajoute un délégué pour inclure la configuration de l’application dans le fichier *appsettings.xml*.</span><span class="sxs-lookup"><span data-stu-id="189b7-145">The following `ConfigureAppConfiguration` call adds a delegate to include app configuration in the *appsettings.xml* file.</span></span> <span data-ttu-id="189b7-146">`ConfigureAppConfiguration` peut être appelé plusieurs fois.</span><span class="sxs-lookup"><span data-stu-id="189b7-146">`ConfigureAppConfiguration` may be called multiple times.</span></span> <span data-ttu-id="189b7-147">Notez que cette configuration ne s’applique pas à l’hôte (par exemple, les URL de serveur ou l’environnement).</span><span class="sxs-lookup"><span data-stu-id="189b7-147">Note that this configuration doesn't apply to the host (for example, server URLs or environment).</span></span> <span data-ttu-id="189b7-148">Voir la section [Valeurs de configuration de l’hôte](#host-configuration-values).</span><span class="sxs-lookup"><span data-stu-id="189b7-148">See the [Host configuration values](#host-configuration-values) section.</span></span>
+* <span data-ttu-id="f3301-144">[ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration) permet de spécifier une configuration `IConfiguration` supplémentaire pour l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-144">[ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration) is used to specify additional `IConfiguration` for the app.</span></span> <span data-ttu-id="f3301-145">L’appel `ConfigureAppConfiguration` suivant ajoute un délégué pour inclure la configuration de l’application dans le fichier *appsettings.xml*.</span><span class="sxs-lookup"><span data-stu-id="f3301-145">The following `ConfigureAppConfiguration` call adds a delegate to include app configuration in the *appsettings.xml* file.</span></span> <span data-ttu-id="f3301-146">`ConfigureAppConfiguration` peut être appelé plusieurs fois.</span><span class="sxs-lookup"><span data-stu-id="f3301-146">`ConfigureAppConfiguration` may be called multiple times.</span></span> <span data-ttu-id="f3301-147">Notez que cette configuration ne s’applique pas à l’hôte (par exemple, les URL de serveur ou l’environnement).</span><span class="sxs-lookup"><span data-stu-id="f3301-147">Note that this configuration doesn't apply to the host (for example, server URLs or environment).</span></span> <span data-ttu-id="f3301-148">Voir la section [Valeurs de configuration de l’hôte](#host-configuration-values).</span><span class="sxs-lookup"><span data-stu-id="f3301-148">See the [Host configuration values](#host-configuration-values) section.</span></span>
 
     ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -81,7 +82,7 @@ public class Program
         ...
     ```
 
-* <span data-ttu-id="189b7-149">L’appel `ConfigureLogging` suivant ajoute un délégué pour configurer le niveau de journalisation minimal ([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel)) sur [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel).</span><span class="sxs-lookup"><span data-stu-id="189b7-149">The following `ConfigureLogging` call adds a delegate to configure the minimum logging level ([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel)) to [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel).</span></span> <span data-ttu-id="189b7-150">Ce paramètre remplace les paramètres de *appsettings.Development.json* (`LogLevel.Debug`) et *appsettings.Production.json* (`LogLevel.Error`) configurés par `CreateDefaultBuilder`.</span><span class="sxs-lookup"><span data-stu-id="189b7-150">This setting overrides the settings in *appsettings.Development.json* (`LogLevel.Debug`) and *appsettings.Production.json* (`LogLevel.Error`) configured by `CreateDefaultBuilder`.</span></span> <span data-ttu-id="189b7-151">`ConfigureLogging` peut être appelé plusieurs fois.</span><span class="sxs-lookup"><span data-stu-id="189b7-151">`ConfigureLogging` may be called multiple times.</span></span>
+* <span data-ttu-id="f3301-149">L’appel `ConfigureLogging` suivant ajoute un délégué pour configurer le niveau de journalisation minimal ([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel)) sur [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel).</span><span class="sxs-lookup"><span data-stu-id="f3301-149">The following `ConfigureLogging` call adds a delegate to configure the minimum logging level ([SetMinimumLevel](/dotnet/api/microsoft.extensions.logging.loggingbuilderextensions.setminimumlevel)) to [LogLevel.Warning](/dotnet/api/microsoft.extensions.logging.loglevel).</span></span> <span data-ttu-id="f3301-150">Ce paramètre remplace les paramètres de *appsettings.Development.json* (`LogLevel.Debug`) et *appsettings.Production.json* (`LogLevel.Error`) configurés par `CreateDefaultBuilder`.</span><span class="sxs-lookup"><span data-stu-id="f3301-150">This setting overrides the settings in *appsettings.Development.json* (`LogLevel.Debug`) and *appsettings.Production.json* (`LogLevel.Error`) configured by `CreateDefaultBuilder`.</span></span> <span data-ttu-id="f3301-151">`ConfigureLogging` peut être appelé plusieurs fois.</span><span class="sxs-lookup"><span data-stu-id="f3301-151">`ConfigureLogging` may be called multiple times.</span></span>
 
     ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -94,7 +95,7 @@ public class Program
 
 ::: moniker range=">= aspnetcore-2.2"
 
-* <span data-ttu-id="189b7-152">L’appel suivant à `ConfigureKestrel` remplace la valeur par défaut de [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) (30 000 000 octets) établie lors de la configuration de Kestrel par `CreateDefaultBuilder` :</span><span class="sxs-lookup"><span data-stu-id="189b7-152">The following call to `ConfigureKestrel` overrides the default [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) of 30,000,000 bytes established when Kestrel was configured by `CreateDefaultBuilder`:</span></span>
+* <span data-ttu-id="f3301-152">L’appel suivant à `ConfigureKestrel` remplace la valeur par défaut de [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) (30 000 000 octets) établie lors de la configuration de Kestrel par `CreateDefaultBuilder` :</span><span class="sxs-lookup"><span data-stu-id="f3301-152">The following call to `ConfigureKestrel` overrides the default [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) of 30,000,000 bytes established when Kestrel was configured by `CreateDefaultBuilder`:</span></span>
 
     ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -108,7 +109,7 @@ public class Program
 
 ::: moniker range="< aspnetcore-2.2"
 
-* <span data-ttu-id="189b7-153">L’appel suivant à [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) remplace la valeur par défaut de [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) (30 000 000 octets) établie lors de la configuration de Kestrel par `CreateDefaultBuilder` :</span><span class="sxs-lookup"><span data-stu-id="189b7-153">The following call to [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) overrides the default [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) of 30,000,000 bytes established when Kestrel was configured by `CreateDefaultBuilder`:</span></span>
+* <span data-ttu-id="f3301-153">L’appel suivant à [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) remplace la valeur par défaut de [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) (30 000 000 octets) établie lors de la configuration de Kestrel par `CreateDefaultBuilder` :</span><span class="sxs-lookup"><span data-stu-id="f3301-153">The following call to [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) overrides the default [Limits.MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserverlimits.maxrequestbodysize) of 30,000,000 bytes established when Kestrel was configured by `CreateDefaultBuilder`:</span></span>
 
     ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -120,136 +121,151 @@ public class Program
 
 ::: moniker-end
 
-<span data-ttu-id="189b7-154">La *racine de contenu* détermine l’emplacement où l’hôte recherche les fichiers de contenu, tels que les fichiers de vue MVC.</span><span class="sxs-lookup"><span data-stu-id="189b7-154">The *content root* determines where the host searches for content files, such as MVC view files.</span></span> <span data-ttu-id="189b7-155">Quand l’application est démarrée à partir du dossier racine du projet, ce dossier est utilisé comme racine de contenu.</span><span class="sxs-lookup"><span data-stu-id="189b7-155">When the app is started from the project's root folder, the project's root folder is used as the content root.</span></span> <span data-ttu-id="189b7-156">Il s’agit du dossier par défaut utilisé dans [Visual Studio](https://visualstudio.microsoft.com) et les [modèles dotnet new](/dotnet/core/tools/dotnet-new).</span><span class="sxs-lookup"><span data-stu-id="189b7-156">This is the default used in [Visual Studio](https://visualstudio.microsoft.com) and the [dotnet new templates](/dotnet/core/tools/dotnet-new).</span></span>
+<span data-ttu-id="f3301-154">La [racine de contenu](xref:fundamentals/index#content-root) détermine l’emplacement où l’hôte recherche les fichiers de contenu, tels que les fichiers de vue MVC.</span><span class="sxs-lookup"><span data-stu-id="f3301-154">The [content root](xref:fundamentals/index#content-root) determines where the host searches for content files, such as MVC view files.</span></span> <span data-ttu-id="f3301-155">Quand l’application est démarrée à partir du dossier racine du projet, ce dossier est utilisé comme racine de contenu.</span><span class="sxs-lookup"><span data-stu-id="f3301-155">When the app is started from the project's root folder, the project's root folder is used as the content root.</span></span> <span data-ttu-id="f3301-156">Il s’agit du dossier par défaut utilisé dans [Visual Studio](https://visualstudio.microsoft.com) et les [modèles dotnet new](/dotnet/core/tools/dotnet-new).</span><span class="sxs-lookup"><span data-stu-id="f3301-156">This is the default used in [Visual Studio](https://visualstudio.microsoft.com) and the [dotnet new templates](/dotnet/core/tools/dotnet-new).</span></span>
 
-<span data-ttu-id="189b7-157">Pour plus d’informations sur la configuration d’application, consultez <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="189b7-157">For more information on app configuration, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="f3301-157">Pour plus d’informations sur la configuration d’application, consultez <xref:fundamentals/configuration/index>.</span><span class="sxs-lookup"><span data-stu-id="f3301-157">For more information on app configuration, see <xref:fundamentals/configuration/index>.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="189b7-158">Au lieu d’utiliser la méthode statique `CreateDefaultBuilder`, vous pouvez aussi créer un hôte à partir de [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Cette approche est prise en charge dans ASP.NET Core 2.x.</span><span class="sxs-lookup"><span data-stu-id="189b7-158">As an alternative to using the static `CreateDefaultBuilder` method, creating a host from [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) is a supported approach with ASP.NET Core 2.x.</span></span>
+> <span data-ttu-id="f3301-158">Au lieu d’utiliser la méthode statique `CreateDefaultBuilder`, vous pouvez aussi créer un hôte à partir de [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Cette approche est prise en charge dans ASP.NET Core 2.x.</span><span class="sxs-lookup"><span data-stu-id="f3301-158">As an alternative to using the static `CreateDefaultBuilder` method, creating a host from [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) is a supported approach with ASP.NET Core 2.x.</span></span>
 
-<span data-ttu-id="189b7-159">Lors de la configuration d’un hôte, les méthodes [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) et [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices) peuvent être fournies.</span><span class="sxs-lookup"><span data-stu-id="189b7-159">When setting up a host, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) and [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices) methods can be provided.</span></span> <span data-ttu-id="189b7-160">Si une classe `Startup` est spécifiée, elle doit définir une méthode `Configure`.</span><span class="sxs-lookup"><span data-stu-id="189b7-160">If a `Startup` class is specified, it must define a `Configure` method.</span></span> <span data-ttu-id="189b7-161">Pour plus d'informations, consultez <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="189b7-161">For more information, see <xref:fundamentals/startup>.</span></span> <span data-ttu-id="189b7-162">Les appels multiples à `ConfigureServices` s’ajoutent les uns aux autres.</span><span class="sxs-lookup"><span data-stu-id="189b7-162">Multiple calls to `ConfigureServices` append to one another.</span></span> <span data-ttu-id="189b7-163">Les appels multiples à `Configure` ou `UseStartup` sur `WebHostBuilder` remplacent les paramètres précédents.</span><span class="sxs-lookup"><span data-stu-id="189b7-163">Multiple calls to `Configure` or `UseStartup` on the `WebHostBuilder` replace previous settings.</span></span>
+<span data-ttu-id="f3301-159">Lors de la configuration d’un hôte, les méthodes [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) et [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices) peuvent être fournies.</span><span class="sxs-lookup"><span data-stu-id="f3301-159">When setting up a host, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) and [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.configureservices) methods can be provided.</span></span> <span data-ttu-id="f3301-160">Si une classe `Startup` est spécifiée, elle doit définir une méthode `Configure`.</span><span class="sxs-lookup"><span data-stu-id="f3301-160">If a `Startup` class is specified, it must define a `Configure` method.</span></span> <span data-ttu-id="f3301-161">Pour plus d'informations, consultez <xref:fundamentals/startup>.</span><span class="sxs-lookup"><span data-stu-id="f3301-161">For more information, see <xref:fundamentals/startup>.</span></span> <span data-ttu-id="f3301-162">Les appels multiples à `ConfigureServices` s’ajoutent les uns aux autres.</span><span class="sxs-lookup"><span data-stu-id="f3301-162">Multiple calls to `ConfigureServices` append to one another.</span></span> <span data-ttu-id="f3301-163">Les appels multiples à `Configure` ou `UseStartup` sur `WebHostBuilder` remplacent les paramètres précédents.</span><span class="sxs-lookup"><span data-stu-id="f3301-163">Multiple calls to `Configure` or `UseStartup` on the `WebHostBuilder` replace previous settings.</span></span>
 
-## <a name="host-configuration-values"></a><span data-ttu-id="189b7-164">Valeurs de configuration de l’hôte</span><span class="sxs-lookup"><span data-stu-id="189b7-164">Host configuration values</span></span>
+## <a name="host-configuration-values"></a><span data-ttu-id="f3301-164">Valeurs de configuration de l’hôte</span><span class="sxs-lookup"><span data-stu-id="f3301-164">Host configuration values</span></span>
 
-<span data-ttu-id="189b7-165">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) s’appuie sur les approches suivantes pour définir les valeurs de configuration de l’hôte :</span><span class="sxs-lookup"><span data-stu-id="189b7-165">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) relies on the following approaches to set the host configuration values:</span></span>
+<span data-ttu-id="f3301-165">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) s’appuie sur les approches suivantes pour définir les valeurs de configuration de l’hôte :</span><span class="sxs-lookup"><span data-stu-id="f3301-165">[WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) relies on the following approaches to set the host configuration values:</span></span>
 
-* <span data-ttu-id="189b7-166">Configuration du générateur de l’hôte, qui inclut des variables d’environnement au format `ASPNETCORE_{configurationKey}`.</span><span class="sxs-lookup"><span data-stu-id="189b7-166">Host builder configuration, which includes environment variables with the format `ASPNETCORE_{configurationKey}`.</span></span> <span data-ttu-id="189b7-167">Par exemple, `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="189b7-167">For example, `ASPNETCORE_ENVIRONMENT`.</span></span>
-* <span data-ttu-id="189b7-168">Des extensions comme [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot) et [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) (voir la section [Remplacer la configuration](#override-configuration)).</span><span class="sxs-lookup"><span data-stu-id="189b7-168">Extensions such as [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot) and [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) (see the [Override configuration](#override-configuration) section).</span></span>
-* <span data-ttu-id="189b7-169">[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) et la clé associée.</span><span class="sxs-lookup"><span data-stu-id="189b7-169">[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) and the associated key.</span></span> <span data-ttu-id="189b7-170">Quand une valeur est définie avec `UseSetting`, elle est définie au format chaîne indépendamment du type.</span><span class="sxs-lookup"><span data-stu-id="189b7-170">When setting a value with `UseSetting`, the value is set as a string regardless of the type.</span></span>
+* <span data-ttu-id="f3301-166">Configuration du générateur de l’hôte, qui inclut des variables d’environnement au format `ASPNETCORE_{configurationKey}`.</span><span class="sxs-lookup"><span data-stu-id="f3301-166">Host builder configuration, which includes environment variables with the format `ASPNETCORE_{configurationKey}`.</span></span> <span data-ttu-id="f3301-167">Par exemple, `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="f3301-167">For example, `ASPNETCORE_ENVIRONMENT`.</span></span>
+* <span data-ttu-id="f3301-168">Des extensions comme [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot) et [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) (voir la section [Remplacer la configuration](#override-configuration)).</span><span class="sxs-lookup"><span data-stu-id="f3301-168">Extensions such as [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot) and [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) (see the [Override configuration](#override-configuration) section).</span></span>
+* <span data-ttu-id="f3301-169">[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) et la clé associée.</span><span class="sxs-lookup"><span data-stu-id="f3301-169">[UseSetting](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder.usesetting) and the associated key.</span></span> <span data-ttu-id="f3301-170">Quand une valeur est définie avec `UseSetting`, elle est définie au format chaîne indépendamment du type.</span><span class="sxs-lookup"><span data-stu-id="f3301-170">When setting a value with `UseSetting`, the value is set as a string regardless of the type.</span></span>
 
-<span data-ttu-id="189b7-171">L’hôte utilise l’option qui définit une valeur en dernier.</span><span class="sxs-lookup"><span data-stu-id="189b7-171">The host uses whichever option sets a value last.</span></span> <span data-ttu-id="189b7-172">Pour plus d’informations, consultez [Remplacer une configuration](#override-configuration) dans la section suivante.</span><span class="sxs-lookup"><span data-stu-id="189b7-172">For more information, see [Override configuration](#override-configuration) in the next section.</span></span>
+<span data-ttu-id="f3301-171">L’hôte utilise l’option qui définit une valeur en dernier.</span><span class="sxs-lookup"><span data-stu-id="f3301-171">The host uses whichever option sets a value last.</span></span> <span data-ttu-id="f3301-172">Pour plus d’informations, consultez [Remplacer une configuration](#override-configuration) dans la section suivante.</span><span class="sxs-lookup"><span data-stu-id="f3301-172">For more information, see [Override configuration](#override-configuration) in the next section.</span></span>
 
-### <a name="application-key-name"></a><span data-ttu-id="189b7-173">Clé d’application (Nom)</span><span class="sxs-lookup"><span data-stu-id="189b7-173">Application Key (Name)</span></span>
+### <a name="application-key-name"></a><span data-ttu-id="f3301-173">Clé d’application (Nom)</span><span class="sxs-lookup"><span data-stu-id="f3301-173">Application Key (Name)</span></span>
 
-<span data-ttu-id="189b7-174">La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="189b7-174">The [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) property is automatically set when [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) or [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) is called during host construction.</span></span> <span data-ttu-id="189b7-175">La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-175">The value is set to the name of the assembly containing the app's entry point.</span></span> <span data-ttu-id="189b7-176">Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :</span><span class="sxs-lookup"><span data-stu-id="189b7-176">To set the value explicitly, use the [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey):</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="189b7-177">**Clé** : applicationName</span><span class="sxs-lookup"><span data-stu-id="189b7-177">**Key**: applicationName</span></span>  
-<span data-ttu-id="189b7-178">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-178">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-179">**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-179">**Default**: The name of the assembly containing the app's entry point.</span></span>  
-<span data-ttu-id="189b7-180">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="189b7-180">**Set using**: `UseSetting`</span></span>  
-<span data-ttu-id="189b7-181">**Variable d’environnement** : `ASPNETCORE_APPLICATIONNAME`</span><span class="sxs-lookup"><span data-stu-id="189b7-181">**Environment variable**: `ASPNETCORE_APPLICATIONNAME`</span></span>
+<span data-ttu-id="f3301-174">La propriété `IWebHostEnvironment.ApplicationName` est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="f3301-174">The `IWebHostEnvironment.ApplicationName` property is automatically set when [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) or [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) is called during host construction.</span></span> <span data-ttu-id="f3301-175">La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-175">The value is set to the name of the assembly containing the app's entry point.</span></span> <span data-ttu-id="f3301-176">Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :</span><span class="sxs-lookup"><span data-stu-id="f3301-176">To set the value explicitly, use the [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey):</span></span>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+<span data-ttu-id="f3301-177">La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="f3301-177">The [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) property is automatically set when [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) or [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) is called during host construction.</span></span> <span data-ttu-id="f3301-178">La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-178">The value is set to the name of the assembly containing the app's entry point.</span></span> <span data-ttu-id="f3301-179">Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :</span><span class="sxs-lookup"><span data-stu-id="f3301-179">To set the value explicitly, use the [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey):</span></span>
+
+::: moniker-end
+
+<span data-ttu-id="f3301-180">**Clé** : applicationName</span><span class="sxs-lookup"><span data-stu-id="f3301-180">**Key**: applicationName</span></span>  
+<span data-ttu-id="f3301-181">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-181">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-182">**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-182">**Default**: The name of the assembly containing the app's entry point.</span></span>  
+<span data-ttu-id="f3301-183">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="f3301-183">**Set using**: `UseSetting`</span></span>  
+<span data-ttu-id="f3301-184">**Variable d’environnement** : `ASPNETCORE_APPLICATIONNAME`</span><span class="sxs-lookup"><span data-stu-id="f3301-184">**Environment variable**: `ASPNETCORE_APPLICATIONNAME`</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.ApplicationKey, "CustomApplicationName")
 ```
 
-### <a name="capture-startup-errors"></a><span data-ttu-id="189b7-182">Capture des erreurs de démarrage</span><span class="sxs-lookup"><span data-stu-id="189b7-182">Capture Startup Errors</span></span>
+### <a name="capture-startup-errors"></a><span data-ttu-id="f3301-185">Capture des erreurs de démarrage</span><span class="sxs-lookup"><span data-stu-id="f3301-185">Capture Startup Errors</span></span>
 
-<span data-ttu-id="189b7-183">Ce paramètre contrôle la capture des erreurs de démarrage.</span><span class="sxs-lookup"><span data-stu-id="189b7-183">This setting controls the capture of startup errors.</span></span>
+<span data-ttu-id="f3301-186">Ce paramètre contrôle la capture des erreurs de démarrage.</span><span class="sxs-lookup"><span data-stu-id="f3301-186">This setting controls the capture of startup errors.</span></span>
 
-<span data-ttu-id="189b7-184">**Clé** : captureStartupErrors</span><span class="sxs-lookup"><span data-stu-id="189b7-184">**Key**: captureStartupErrors</span></span>  
-<span data-ttu-id="189b7-185">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="189b7-185">**Type**: *bool* (`true` or `1`)</span></span>  
-<span data-ttu-id="189b7-186">**Par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.</span><span class="sxs-lookup"><span data-stu-id="189b7-186">**Default**: Defaults to `false` unless the app runs with Kestrel behind IIS, where the default is `true`.</span></span>  
-<span data-ttu-id="189b7-187">**Définition avec** : `CaptureStartupErrors`</span><span class="sxs-lookup"><span data-stu-id="189b7-187">**Set using**: `CaptureStartupErrors`</span></span>  
-<span data-ttu-id="189b7-188">**Variable d’environnement** : `ASPNETCORE_CAPTURESTARTUPERRORS`</span><span class="sxs-lookup"><span data-stu-id="189b7-188">**Environment variable**: `ASPNETCORE_CAPTURESTARTUPERRORS`</span></span>
+<span data-ttu-id="f3301-187">**Clé** : captureStartupErrors</span><span class="sxs-lookup"><span data-stu-id="f3301-187">**Key**: captureStartupErrors</span></span>  
+<span data-ttu-id="f3301-188">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="f3301-188">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="f3301-189">**Par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.</span><span class="sxs-lookup"><span data-stu-id="f3301-189">**Default**: Defaults to `false` unless the app runs with Kestrel behind IIS, where the default is `true`.</span></span>  
+<span data-ttu-id="f3301-190">**Définition avec** : `CaptureStartupErrors`</span><span class="sxs-lookup"><span data-stu-id="f3301-190">**Set using**: `CaptureStartupErrors`</span></span>  
+<span data-ttu-id="f3301-191">**Variable d’environnement** : `ASPNETCORE_CAPTURESTARTUPERRORS`</span><span class="sxs-lookup"><span data-stu-id="f3301-191">**Environment variable**: `ASPNETCORE_CAPTURESTARTUPERRORS`</span></span>
 
-<span data-ttu-id="189b7-189">Avec la valeur `false`, la survenue d’erreurs au démarrage entraîne la fermeture de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="189b7-189">When `false`, errors during startup result in the host exiting.</span></span> <span data-ttu-id="189b7-190">Avec la valeur `true`, l’hôte capture les exceptions levées au démarrage et tente de démarrer le serveur.</span><span class="sxs-lookup"><span data-stu-id="189b7-190">When `true`, the host captures exceptions during startup and attempts to start the server.</span></span>
+<span data-ttu-id="f3301-192">Avec la valeur `false`, la survenue d’erreurs au démarrage entraîne la fermeture de l’hôte.</span><span class="sxs-lookup"><span data-stu-id="f3301-192">When `false`, errors during startup result in the host exiting.</span></span> <span data-ttu-id="f3301-193">Avec la valeur `true`, l’hôte capture les exceptions levées au démarrage et tente de démarrer le serveur.</span><span class="sxs-lookup"><span data-stu-id="f3301-193">When `true`, the host captures exceptions during startup and attempts to start the server.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .CaptureStartupErrors(true)
 ```
 
-### <a name="content-root"></a><span data-ttu-id="189b7-191">Racine de contenu</span><span class="sxs-lookup"><span data-stu-id="189b7-191">Content Root</span></span>
+### <a name="content-root"></a><span data-ttu-id="f3301-194">Racine de contenu</span><span class="sxs-lookup"><span data-stu-id="f3301-194">Content root</span></span>
 
-<span data-ttu-id="189b7-192">Ce paramètre détermine l’emplacement où ASP.NET Core commence la recherche des fichiers de contenu, tels que les vues MVC.</span><span class="sxs-lookup"><span data-stu-id="189b7-192">This setting determines where ASP.NET Core begins searching for content files, such as MVC views.</span></span> 
+<span data-ttu-id="f3301-195">Ce paramètre détermine où ASP.NET Core commence à rechercher les fichiers de contenu.</span><span class="sxs-lookup"><span data-stu-id="f3301-195">This setting determines where ASP.NET Core begins searching for content files.</span></span>
 
-<span data-ttu-id="189b7-193">**Clé** : contentRoot</span><span class="sxs-lookup"><span data-stu-id="189b7-193">**Key**: contentRoot</span></span>  
-<span data-ttu-id="189b7-194">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-194">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-195">**Par défaut** : dossier où réside l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-195">**Default**: Defaults to the folder where the app assembly resides.</span></span>  
-<span data-ttu-id="189b7-196">**Définition avec** : `UseContentRoot`</span><span class="sxs-lookup"><span data-stu-id="189b7-196">**Set using**: `UseContentRoot`</span></span>  
-<span data-ttu-id="189b7-197">**Variable d’environnement** : `ASPNETCORE_CONTENTROOT`</span><span class="sxs-lookup"><span data-stu-id="189b7-197">**Environment variable**: `ASPNETCORE_CONTENTROOT`</span></span>
+<span data-ttu-id="f3301-196">**Clé** : contentRoot</span><span class="sxs-lookup"><span data-stu-id="f3301-196">**Key**: contentRoot</span></span>  
+<span data-ttu-id="f3301-197">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-197">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-198">**Par défaut** : dossier où réside l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-198">**Default**: Defaults to the folder where the app assembly resides.</span></span>  
+<span data-ttu-id="f3301-199">**Définition avec** : `UseContentRoot`</span><span class="sxs-lookup"><span data-stu-id="f3301-199">**Set using**: `UseContentRoot`</span></span>  
+<span data-ttu-id="f3301-200">**Variable d’environnement** : `ASPNETCORE_CONTENTROOT`</span><span class="sxs-lookup"><span data-stu-id="f3301-200">**Environment variable**: `ASPNETCORE_CONTENTROOT`</span></span>
 
-<span data-ttu-id="189b7-198">La racine de contenu est également utilisée comme chemin de base pour le [paramètre de la racine Web](#web-root).</span><span class="sxs-lookup"><span data-stu-id="189b7-198">The content root is also used as the base path for the [Web Root setting](#web-root).</span></span> <span data-ttu-id="189b7-199">Si le chemin est introuvable, l’hôte ne peut pas démarrer.</span><span class="sxs-lookup"><span data-stu-id="189b7-199">If the path doesn't exist, the host fails to start.</span></span>
+<span data-ttu-id="f3301-201">La racine du contenu est également utilisée comme chemin de base pour la [racine Web](xref:fundamentals/index#web-root).</span><span class="sxs-lookup"><span data-stu-id="f3301-201">The content root is also used as the base path for the [web root](xref:fundamentals/index#web-root).</span></span> <span data-ttu-id="f3301-202">Si le chemin d’accès racine du contenu n’existe pas, le démarrage de l’hôte échoue.</span><span class="sxs-lookup"><span data-stu-id="f3301-202">If the content root path doesn't exist, the host fails to start.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\<content-root>")
 ```
 
-### <a name="detailed-errors"></a><span data-ttu-id="189b7-200">Erreurs détaillées</span><span class="sxs-lookup"><span data-stu-id="189b7-200">Detailed Errors</span></span>
+<span data-ttu-id="f3301-203">Pour plus d'informations, voir :</span><span class="sxs-lookup"><span data-stu-id="f3301-203">For more information, see:</span></span>
 
-<span data-ttu-id="189b7-201">Détermine si les erreurs détaillées doivent être capturées.</span><span class="sxs-lookup"><span data-stu-id="189b7-201">Determines if detailed errors should be captured.</span></span>
+* <span data-ttu-id="f3301-204">@no__t 0Fundamentals : Racine du contenu @ no__t-0</span><span class="sxs-lookup"><span data-stu-id="f3301-204">[Fundamentals: Content root](xref:fundamentals/index#content-root)</span></span>
+* [<span data-ttu-id="f3301-205">Racine Web</span><span class="sxs-lookup"><span data-stu-id="f3301-205">Web root</span></span>](#web-root)
 
-<span data-ttu-id="189b7-202">**Clé** : detailedErrors</span><span class="sxs-lookup"><span data-stu-id="189b7-202">**Key**: detailedErrors</span></span>  
-<span data-ttu-id="189b7-203">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="189b7-203">**Type**: *bool* (`true` or `1`)</span></span>  
-<span data-ttu-id="189b7-204">**Valeur par défaut** : false</span><span class="sxs-lookup"><span data-stu-id="189b7-204">**Default**: false</span></span>  
-<span data-ttu-id="189b7-205">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="189b7-205">**Set using**: `UseSetting`</span></span>  
-<span data-ttu-id="189b7-206">**Variable d’environnement** : `ASPNETCORE_DETAILEDERRORS`</span><span class="sxs-lookup"><span data-stu-id="189b7-206">**Environment variable**: `ASPNETCORE_DETAILEDERRORS`</span></span>
+### <a name="detailed-errors"></a><span data-ttu-id="f3301-206">Erreurs détaillées</span><span class="sxs-lookup"><span data-stu-id="f3301-206">Detailed Errors</span></span>
 
-<span data-ttu-id="189b7-207">Quand cette fonctionnalité est activée (ou que <a href="#environment">l’environnement</a> est défini sur `Development`), l’application capture les exceptions détaillées.</span><span class="sxs-lookup"><span data-stu-id="189b7-207">When enabled (or when the <a href="#environment">Environment</a> is set to `Development`), the app captures detailed exceptions.</span></span>
+<span data-ttu-id="f3301-207">Détermine si les erreurs détaillées doivent être capturées.</span><span class="sxs-lookup"><span data-stu-id="f3301-207">Determines if detailed errors should be captured.</span></span>
+
+<span data-ttu-id="f3301-208">**Clé** : detailedErrors</span><span class="sxs-lookup"><span data-stu-id="f3301-208">**Key**: detailedErrors</span></span>  
+<span data-ttu-id="f3301-209">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="f3301-209">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="f3301-210">**Valeur par défaut** : false</span><span class="sxs-lookup"><span data-stu-id="f3301-210">**Default**: false</span></span>  
+<span data-ttu-id="f3301-211">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="f3301-211">**Set using**: `UseSetting`</span></span>  
+<span data-ttu-id="f3301-212">**Variable d’environnement** : `ASPNETCORE_DETAILEDERRORS`</span><span class="sxs-lookup"><span data-stu-id="f3301-212">**Environment variable**: `ASPNETCORE_DETAILEDERRORS`</span></span>
+
+<span data-ttu-id="f3301-213">Quand cette fonctionnalité est activée (ou que <a href="#environment">l’environnement</a> est défini sur `Development`), l’application capture les exceptions détaillées.</span><span class="sxs-lookup"><span data-stu-id="f3301-213">When enabled (or when the <a href="#environment">Environment</a> is set to `Development`), the app captures detailed exceptions.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.DetailedErrorsKey, "true")
 ```
 
-### <a name="environment"></a><span data-ttu-id="189b7-208">Environnement</span><span class="sxs-lookup"><span data-stu-id="189b7-208">Environment</span></span>
+### <a name="environment"></a><span data-ttu-id="f3301-214">Environnement</span><span class="sxs-lookup"><span data-stu-id="f3301-214">Environment</span></span>
 
-<span data-ttu-id="189b7-209">Définit l’environnement de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-209">Sets the app's environment.</span></span>
+<span data-ttu-id="f3301-215">Définit l’environnement de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-215">Sets the app's environment.</span></span>
 
-<span data-ttu-id="189b7-210">**Clé** : environment</span><span class="sxs-lookup"><span data-stu-id="189b7-210">**Key**: environment</span></span>  
-<span data-ttu-id="189b7-211">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-211">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-212">**Par défaut** : Production</span><span class="sxs-lookup"><span data-stu-id="189b7-212">**Default**: Production</span></span>  
-<span data-ttu-id="189b7-213">**Définition avec** : `UseEnvironment`</span><span class="sxs-lookup"><span data-stu-id="189b7-213">**Set using**: `UseEnvironment`</span></span>  
-<span data-ttu-id="189b7-214">**Variable d’environnement** : `ASPNETCORE_ENVIRONMENT`</span><span class="sxs-lookup"><span data-stu-id="189b7-214">**Environment variable**: `ASPNETCORE_ENVIRONMENT`</span></span>
+<span data-ttu-id="f3301-216">**Clé** : environment</span><span class="sxs-lookup"><span data-stu-id="f3301-216">**Key**: environment</span></span>  
+<span data-ttu-id="f3301-217">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-217">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-218">**Par défaut** : Production</span><span class="sxs-lookup"><span data-stu-id="f3301-218">**Default**: Production</span></span>  
+<span data-ttu-id="f3301-219">**Définition avec** : `UseEnvironment`</span><span class="sxs-lookup"><span data-stu-id="f3301-219">**Set using**: `UseEnvironment`</span></span>  
+<span data-ttu-id="f3301-220">**Variable d’environnement** : `ASPNETCORE_ENVIRONMENT`</span><span class="sxs-lookup"><span data-stu-id="f3301-220">**Environment variable**: `ASPNETCORE_ENVIRONMENT`</span></span>
 
-<span data-ttu-id="189b7-215">L’environnement peut être défini à n’importe quelle valeur.</span><span class="sxs-lookup"><span data-stu-id="189b7-215">The environment can be set to any value.</span></span> <span data-ttu-id="189b7-216">Les valeurs définies par le framework sont `Development`, `Staging` et `Production`.</span><span class="sxs-lookup"><span data-stu-id="189b7-216">Framework-defined values include `Development`, `Staging`, and `Production`.</span></span> <span data-ttu-id="189b7-217">Les valeurs ne respectent pas la casse.</span><span class="sxs-lookup"><span data-stu-id="189b7-217">Values aren't case sensitive.</span></span> <span data-ttu-id="189b7-218">Par défaut, *l’environnement* est fourni par la variable d’environnement `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="189b7-218">By default, the *Environment* is read from the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="189b7-219">Si vous utilisez [Visual Studio](https://visualstudio.microsoft.com), les variables d’environnement peuvent être définies dans le fichier *launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="189b7-219">When using [Visual Studio](https://visualstudio.microsoft.com), environment variables may be set in the *launchSettings.json* file.</span></span> <span data-ttu-id="189b7-220">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="189b7-220">For more information, see <xref:fundamentals/environments>.</span></span>
+<span data-ttu-id="f3301-221">L’environnement peut être défini à n’importe quelle valeur.</span><span class="sxs-lookup"><span data-stu-id="f3301-221">The environment can be set to any value.</span></span> <span data-ttu-id="f3301-222">Les valeurs définies par le framework sont `Development`, `Staging` et `Production`.</span><span class="sxs-lookup"><span data-stu-id="f3301-222">Framework-defined values include `Development`, `Staging`, and `Production`.</span></span> <span data-ttu-id="f3301-223">Les valeurs ne respectent pas la casse.</span><span class="sxs-lookup"><span data-stu-id="f3301-223">Values aren't case sensitive.</span></span> <span data-ttu-id="f3301-224">Par défaut, *l’environnement* est fourni par la variable d’environnement `ASPNETCORE_ENVIRONMENT`.</span><span class="sxs-lookup"><span data-stu-id="f3301-224">By default, the *Environment* is read from the `ASPNETCORE_ENVIRONMENT` environment variable.</span></span> <span data-ttu-id="f3301-225">Si vous utilisez [Visual Studio](https://visualstudio.microsoft.com), les variables d’environnement peuvent être définies dans le fichier *launchSettings.json*.</span><span class="sxs-lookup"><span data-stu-id="f3301-225">When using [Visual Studio](https://visualstudio.microsoft.com), environment variables may be set in the *launchSettings.json* file.</span></span> <span data-ttu-id="f3301-226">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="f3301-226">For more information, see <xref:fundamentals/environments>.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseEnvironment(EnvironmentName.Development)
 ```
 
-### <a name="hosting-startup-assemblies"></a><span data-ttu-id="189b7-221">Assemblys d’hébergement au démarrage</span><span class="sxs-lookup"><span data-stu-id="189b7-221">Hosting Startup Assemblies</span></span>
+### <a name="hosting-startup-assemblies"></a><span data-ttu-id="f3301-227">Assemblys d’hébergement au démarrage</span><span class="sxs-lookup"><span data-stu-id="f3301-227">Hosting Startup Assemblies</span></span>
 
-<span data-ttu-id="189b7-222">Définit les assemblys d’hébergement au démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-222">Sets the app's hosting startup assemblies.</span></span>
+<span data-ttu-id="f3301-228">Définit les assemblys d’hébergement au démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-228">Sets the app's hosting startup assemblies.</span></span>
 
-<span data-ttu-id="189b7-223">**Clé** : hostingStartupAssemblies</span><span class="sxs-lookup"><span data-stu-id="189b7-223">**Key**: hostingStartupAssemblies</span></span>  
-<span data-ttu-id="189b7-224">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-224">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-225">**Par défaut** : Chaîne vide</span><span class="sxs-lookup"><span data-stu-id="189b7-225">**Default**: Empty string</span></span>  
-<span data-ttu-id="189b7-226">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="189b7-226">**Set using**: `UseSetting`</span></span>  
-<span data-ttu-id="189b7-227">**Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`</span><span class="sxs-lookup"><span data-stu-id="189b7-227">**Environment variable**: `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`</span></span>
+<span data-ttu-id="f3301-229">**Clé** : hostingStartupAssemblies</span><span class="sxs-lookup"><span data-stu-id="f3301-229">**Key**: hostingStartupAssemblies</span></span>  
+<span data-ttu-id="f3301-230">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-230">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-231">**Par défaut** : Chaîne vide</span><span class="sxs-lookup"><span data-stu-id="f3301-231">**Default**: Empty string</span></span>  
+<span data-ttu-id="f3301-232">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="f3301-232">**Set using**: `UseSetting`</span></span>  
+<span data-ttu-id="f3301-233">**Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`</span><span class="sxs-lookup"><span data-stu-id="f3301-233">**Environment variable**: `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`</span></span>
 
-<span data-ttu-id="189b7-228">Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à charger au démarrage.</span><span class="sxs-lookup"><span data-stu-id="189b7-228">A semicolon-delimited string of hosting startup assemblies to load on startup.</span></span>
+<span data-ttu-id="f3301-234">Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à charger au démarrage.</span><span class="sxs-lookup"><span data-stu-id="f3301-234">A semicolon-delimited string of hosting startup assemblies to load on startup.</span></span>
 
-<span data-ttu-id="189b7-229">La valeur de configuration par défaut est une chaîne vide, mais les assemblys d’hébergement au démarrage incluent toujours l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-229">Although the configuration value defaults to an empty string, the hosting startup assemblies always include the app's assembly.</span></span> <span data-ttu-id="189b7-230">Quand des assemblys d’hébergement au démarrage sont fournis, ils sont ajoutés à l’assembly de l’application et sont chargés lorsque l’application génère ses services communs au démarrage.</span><span class="sxs-lookup"><span data-stu-id="189b7-230">When hosting startup assemblies are provided, they're added to the app's assembly for loading when the app builds its common services during startup.</span></span>
+<span data-ttu-id="f3301-235">La valeur de configuration par défaut est une chaîne vide, mais les assemblys d’hébergement au démarrage incluent toujours l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-235">Although the configuration value defaults to an empty string, the hosting startup assemblies always include the app's assembly.</span></span> <span data-ttu-id="f3301-236">Quand des assemblys d’hébergement au démarrage sont fournis, ils sont ajoutés à l’assembly de l’application et sont chargés lorsque l’application génère ses services communs au démarrage.</span><span class="sxs-lookup"><span data-stu-id="f3301-236">When hosting startup assemblies are provided, they're added to the app's assembly for loading when the app builds its common services during startup.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2")
 ```
 
-### <a name="https-port"></a><span data-ttu-id="189b7-231">Port HTTPS</span><span class="sxs-lookup"><span data-stu-id="189b7-231">HTTPS Port</span></span>
+### <a name="https-port"></a><span data-ttu-id="f3301-237">Port HTTPS</span><span class="sxs-lookup"><span data-stu-id="f3301-237">HTTPS Port</span></span>
 
-<span data-ttu-id="189b7-232">Définissez le port de redirection HTTPS.</span><span class="sxs-lookup"><span data-stu-id="189b7-232">Set the HTTPS redirect port.</span></span> <span data-ttu-id="189b7-233">Utilisé dans [l’application de HTTPS](xref:security/enforcing-ssl).</span><span class="sxs-lookup"><span data-stu-id="189b7-233">Used in [enforcing HTTPS](xref:security/enforcing-ssl).</span></span>
+<span data-ttu-id="f3301-238">Définissez le port de redirection HTTPS.</span><span class="sxs-lookup"><span data-stu-id="f3301-238">Set the HTTPS redirect port.</span></span> <span data-ttu-id="f3301-239">Utilisé dans [l’application de HTTPS](xref:security/enforcing-ssl).</span><span class="sxs-lookup"><span data-stu-id="f3301-239">Used in [enforcing HTTPS](xref:security/enforcing-ssl).</span></span>
 
-<span data-ttu-id="189b7-234">**Clé** : https_port **Type** : *string*
-**Par défaut** : Aucune valeur par défaut n’est définie.</span><span class="sxs-lookup"><span data-stu-id="189b7-234">**Key**: https_port **Type**: *string*
+<span data-ttu-id="f3301-240">**Clé** : https_port **Type** : *string*
+**Par défaut** : Aucune valeur par défaut n’est définie.</span><span class="sxs-lookup"><span data-stu-id="f3301-240">**Key**: https_port **Type**: *string*
 **Default**: A default value isn't set.</span></span>
-<span data-ttu-id="189b7-235">**Définir avec** : `UseSetting`
-**La variable d’environnement**: `ASPNETCORE_HTTPS_PORT`</span><span class="sxs-lookup"><span data-stu-id="189b7-235">**Set using**: `UseSetting`
+<span data-ttu-id="f3301-241">**Définir avec** : `UseSetting`
+**La variable d’environnement**: `ASPNETCORE_HTTPS_PORT`</span><span class="sxs-lookup"><span data-stu-id="f3301-241">**Set using**: `UseSetting`
 **Environment variable**: `ASPNETCORE_HTTPS_PORT`</span></span>
 
 ```csharp
@@ -257,105 +273,105 @@ WebHost.CreateDefaultBuilder(args)
     .UseSetting("https_port", "8080")
 ```
 
-### <a name="hosting-startup-exclude-assemblies"></a><span data-ttu-id="189b7-236">Assemblys d’hébergement à exclure au démarrage</span><span class="sxs-lookup"><span data-stu-id="189b7-236">Hosting Startup Exclude Assemblies</span></span>
+### <a name="hosting-startup-exclude-assemblies"></a><span data-ttu-id="f3301-242">Assemblys d’hébergement à exclure au démarrage</span><span class="sxs-lookup"><span data-stu-id="f3301-242">Hosting Startup Exclude Assemblies</span></span>
 
-<span data-ttu-id="189b7-237">Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à exclure au démarrage.</span><span class="sxs-lookup"><span data-stu-id="189b7-237">A semicolon-delimited string of hosting startup assemblies to exclude on startup.</span></span>
+<span data-ttu-id="f3301-243">Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à exclure au démarrage.</span><span class="sxs-lookup"><span data-stu-id="f3301-243">A semicolon-delimited string of hosting startup assemblies to exclude on startup.</span></span>
 
-<span data-ttu-id="189b7-238">**Clé** : hostingStartupExcludeAssemblies</span><span class="sxs-lookup"><span data-stu-id="189b7-238">**Key**: hostingStartupExcludeAssemblies</span></span>  
-<span data-ttu-id="189b7-239">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-239">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-240">**Par défaut** : Chaîne vide</span><span class="sxs-lookup"><span data-stu-id="189b7-240">**Default**: Empty string</span></span>  
-<span data-ttu-id="189b7-241">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="189b7-241">**Set using**: `UseSetting`</span></span>  
-<span data-ttu-id="189b7-242">**Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`</span><span class="sxs-lookup"><span data-stu-id="189b7-242">**Environment variable**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`</span></span>
+<span data-ttu-id="f3301-244">**Clé** : hostingStartupExcludeAssemblies</span><span class="sxs-lookup"><span data-stu-id="f3301-244">**Key**: hostingStartupExcludeAssemblies</span></span>  
+<span data-ttu-id="f3301-245">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-245">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-246">**Par défaut** : Chaîne vide</span><span class="sxs-lookup"><span data-stu-id="f3301-246">**Default**: Empty string</span></span>  
+<span data-ttu-id="f3301-247">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="f3301-247">**Set using**: `UseSetting`</span></span>  
+<span data-ttu-id="f3301-248">**Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`</span><span class="sxs-lookup"><span data-stu-id="f3301-248">**Environment variable**: `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.HostingStartupExcludeAssembliesKey, "assembly1;assembly2")
 ```
 
-### <a name="prefer-hosting-urls"></a><span data-ttu-id="189b7-243">URL d’hébergement préférées</span><span class="sxs-lookup"><span data-stu-id="189b7-243">Prefer Hosting URLs</span></span>
+### <a name="prefer-hosting-urls"></a><span data-ttu-id="f3301-249">URL d’hébergement préférées</span><span class="sxs-lookup"><span data-stu-id="f3301-249">Prefer Hosting URLs</span></span>
 
-<span data-ttu-id="189b7-244">Indique si l’hôte doit écouter les URL configurées avec `WebHostBuilder` au lieu d’écouter celles configurées avec l’implémentation `IServer`.</span><span class="sxs-lookup"><span data-stu-id="189b7-244">Indicates whether the host should listen on the URLs configured with the `WebHostBuilder` instead of those configured with the `IServer` implementation.</span></span>
+<span data-ttu-id="f3301-250">Indique si l’hôte doit écouter les URL configurées avec `WebHostBuilder` au lieu d’écouter celles configurées avec l’implémentation `IServer`.</span><span class="sxs-lookup"><span data-stu-id="f3301-250">Indicates whether the host should listen on the URLs configured with the `WebHostBuilder` instead of those configured with the `IServer` implementation.</span></span>
 
-<span data-ttu-id="189b7-245">**Clé** : preferHostingUrls</span><span class="sxs-lookup"><span data-stu-id="189b7-245">**Key**: preferHostingUrls</span></span>  
-<span data-ttu-id="189b7-246">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="189b7-246">**Type**: *bool* (`true` or `1`)</span></span>  
-<span data-ttu-id="189b7-247">**Valeur par défaut** : true</span><span class="sxs-lookup"><span data-stu-id="189b7-247">**Default**: true</span></span>  
-<span data-ttu-id="189b7-248">**Définition avec** : `PreferHostingUrls`</span><span class="sxs-lookup"><span data-stu-id="189b7-248">**Set using**: `PreferHostingUrls`</span></span>  
-<span data-ttu-id="189b7-249">**Variable d’environnement** : `ASPNETCORE_PREFERHOSTINGURLS`</span><span class="sxs-lookup"><span data-stu-id="189b7-249">**Environment variable**: `ASPNETCORE_PREFERHOSTINGURLS`</span></span>
+<span data-ttu-id="f3301-251">**Clé** : preferHostingUrls</span><span class="sxs-lookup"><span data-stu-id="f3301-251">**Key**: preferHostingUrls</span></span>  
+<span data-ttu-id="f3301-252">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="f3301-252">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="f3301-253">**Valeur par défaut** : true</span><span class="sxs-lookup"><span data-stu-id="f3301-253">**Default**: true</span></span>  
+<span data-ttu-id="f3301-254">**Définition avec** : `PreferHostingUrls`</span><span class="sxs-lookup"><span data-stu-id="f3301-254">**Set using**: `PreferHostingUrls`</span></span>  
+<span data-ttu-id="f3301-255">**Variable d’environnement** : `ASPNETCORE_PREFERHOSTINGURLS`</span><span class="sxs-lookup"><span data-stu-id="f3301-255">**Environment variable**: `ASPNETCORE_PREFERHOSTINGURLS`</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .PreferHostingUrls(false)
 ```
 
-### <a name="prevent-hosting-startup"></a><span data-ttu-id="189b7-250">Bloquer les assemblys d’hébergement au démarrage</span><span class="sxs-lookup"><span data-stu-id="189b7-250">Prevent Hosting Startup</span></span>
+### <a name="prevent-hosting-startup"></a><span data-ttu-id="f3301-256">Bloquer les assemblys d’hébergement au démarrage</span><span class="sxs-lookup"><span data-stu-id="f3301-256">Prevent Hosting Startup</span></span>
 
-<span data-ttu-id="189b7-251">Empêche le chargement automatique des assemblys d’hébergement au démarrage, y compris ceux configurés par l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-251">Prevents the automatic loading of hosting startup assemblies, including hosting startup assemblies configured by the app's assembly.</span></span> <span data-ttu-id="189b7-252">Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.</span><span class="sxs-lookup"><span data-stu-id="189b7-252">For more information, see <xref:fundamentals/configuration/platform-specific-configuration>.</span></span>
+<span data-ttu-id="f3301-257">Empêche le chargement automatique des assemblys d’hébergement au démarrage, y compris ceux configurés par l’assembly de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-257">Prevents the automatic loading of hosting startup assemblies, including hosting startup assemblies configured by the app's assembly.</span></span> <span data-ttu-id="f3301-258">Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.</span><span class="sxs-lookup"><span data-stu-id="f3301-258">For more information, see <xref:fundamentals/configuration/platform-specific-configuration>.</span></span>
 
-<span data-ttu-id="189b7-253">**Clé** : preventHostingStartup</span><span class="sxs-lookup"><span data-stu-id="189b7-253">**Key**: preventHostingStartup</span></span>  
-<span data-ttu-id="189b7-254">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="189b7-254">**Type**: *bool* (`true` or `1`)</span></span>  
-<span data-ttu-id="189b7-255">**Valeur par défaut** : false</span><span class="sxs-lookup"><span data-stu-id="189b7-255">**Default**: false</span></span>  
-<span data-ttu-id="189b7-256">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="189b7-256">**Set using**: `UseSetting`</span></span>  
-<span data-ttu-id="189b7-257">**Variable d’environnement** : `ASPNETCORE_PREVENTHOSTINGSTARTUP`</span><span class="sxs-lookup"><span data-stu-id="189b7-257">**Environment variable**: `ASPNETCORE_PREVENTHOSTINGSTARTUP`</span></span>
+<span data-ttu-id="f3301-259">**Clé** : preventHostingStartup</span><span class="sxs-lookup"><span data-stu-id="f3301-259">**Key**: preventHostingStartup</span></span>  
+<span data-ttu-id="f3301-260">**Type** : *bool* (`true` ou `1`)</span><span class="sxs-lookup"><span data-stu-id="f3301-260">**Type**: *bool* (`true` or `1`)</span></span>  
+<span data-ttu-id="f3301-261">**Valeur par défaut** : false</span><span class="sxs-lookup"><span data-stu-id="f3301-261">**Default**: false</span></span>  
+<span data-ttu-id="f3301-262">**Définition avec** : `UseSetting`</span><span class="sxs-lookup"><span data-stu-id="f3301-262">**Set using**: `UseSetting`</span></span>  
+<span data-ttu-id="f3301-263">**Variable d’environnement** : `ASPNETCORE_PREVENTHOSTINGSTARTUP`</span><span class="sxs-lookup"><span data-stu-id="f3301-263">**Environment variable**: `ASPNETCORE_PREVENTHOSTINGSTARTUP`</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
 ```
 
-### <a name="server-urls"></a><span data-ttu-id="189b7-258">URL du serveur</span><span class="sxs-lookup"><span data-stu-id="189b7-258">Server URLs</span></span>
+### <a name="server-urls"></a><span data-ttu-id="f3301-264">URL du serveur</span><span class="sxs-lookup"><span data-stu-id="f3301-264">Server URLs</span></span>
 
-<span data-ttu-id="189b7-259">Indique les adresses IP ou les adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes.</span><span class="sxs-lookup"><span data-stu-id="189b7-259">Indicates the IP addresses or host addresses with ports and protocols that the server should listen on for requests.</span></span>
+<span data-ttu-id="f3301-265">Indique les adresses IP ou les adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes.</span><span class="sxs-lookup"><span data-stu-id="f3301-265">Indicates the IP addresses or host addresses with ports and protocols that the server should listen on for requests.</span></span>
 
-<span data-ttu-id="189b7-260">**Clé** : urls</span><span class="sxs-lookup"><span data-stu-id="189b7-260">**Key**: urls</span></span>  
-<span data-ttu-id="189b7-261">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-261">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-262">**Par défaut** : http://localhost:5000</span><span class="sxs-lookup"><span data-stu-id="189b7-262">**Default**: http://localhost:5000</span></span>  
-<span data-ttu-id="189b7-263">**Définition avec** : `UseUrls`</span><span class="sxs-lookup"><span data-stu-id="189b7-263">**Set using**: `UseUrls`</span></span>  
-<span data-ttu-id="189b7-264">**Variable d’environnement** : `ASPNETCORE_URLS`</span><span class="sxs-lookup"><span data-stu-id="189b7-264">**Environment variable**: `ASPNETCORE_URLS`</span></span>
+<span data-ttu-id="f3301-266">**Clé** : urls</span><span class="sxs-lookup"><span data-stu-id="f3301-266">**Key**: urls</span></span>  
+<span data-ttu-id="f3301-267">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-267">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-268">**Par défaut** : http://localhost:5000</span><span class="sxs-lookup"><span data-stu-id="f3301-268">**Default**: http://localhost:5000</span></span>  
+<span data-ttu-id="f3301-269">**Définition avec** : `UseUrls`</span><span class="sxs-lookup"><span data-stu-id="f3301-269">**Set using**: `UseUrls`</span></span>  
+<span data-ttu-id="f3301-270">**Variable d’environnement** : `ASPNETCORE_URLS`</span><span class="sxs-lookup"><span data-stu-id="f3301-270">**Environment variable**: `ASPNETCORE_URLS`</span></span>
 
-<span data-ttu-id="189b7-265">Liste de préfixes d’URL séparés par des points-virgules (;) correspondant aux URL auxquelles le serveur doit répondre.</span><span class="sxs-lookup"><span data-stu-id="189b7-265">Set to a semicolon-separated (;) list of URL prefixes to which the server should respond.</span></span> <span data-ttu-id="189b7-266">Par exemple, `http://localhost:123`.</span><span class="sxs-lookup"><span data-stu-id="189b7-266">For example, `http://localhost:123`.</span></span> <span data-ttu-id="189b7-267">Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`).</span><span class="sxs-lookup"><span data-stu-id="189b7-267">Use "\*" to indicate that the server should listen for requests on any IP address or hostname using the specified port and protocol (for example, `http://*:5000`).</span></span> <span data-ttu-id="189b7-268">Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL.</span><span class="sxs-lookup"><span data-stu-id="189b7-268">The protocol (`http://` or `https://`) must be included with each URL.</span></span> <span data-ttu-id="189b7-269">Les formats pris en charge varient selon les serveurs.</span><span class="sxs-lookup"><span data-stu-id="189b7-269">Supported formats vary among servers.</span></span>
+<span data-ttu-id="f3301-271">Liste de préfixes d’URL séparés par des points-virgules (;) correspondant aux URL auxquelles le serveur doit répondre.</span><span class="sxs-lookup"><span data-stu-id="f3301-271">Set to a semicolon-separated (;) list of URL prefixes to which the server should respond.</span></span> <span data-ttu-id="f3301-272">Par exemple, `http://localhost:123`.</span><span class="sxs-lookup"><span data-stu-id="f3301-272">For example, `http://localhost:123`.</span></span> <span data-ttu-id="f3301-273">Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`).</span><span class="sxs-lookup"><span data-stu-id="f3301-273">Use "\*" to indicate that the server should listen for requests on any IP address or hostname using the specified port and protocol (for example, `http://*:5000`).</span></span> <span data-ttu-id="f3301-274">Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL.</span><span class="sxs-lookup"><span data-stu-id="f3301-274">The protocol (`http://` or `https://`) must be included with each URL.</span></span> <span data-ttu-id="f3301-275">Les formats pris en charge varient selon les serveurs.</span><span class="sxs-lookup"><span data-stu-id="f3301-275">Supported formats vary among servers.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
-<span data-ttu-id="189b7-270">Kestrel a sa propre API de configuration de points de terminaison.</span><span class="sxs-lookup"><span data-stu-id="189b7-270">Kestrel has its own endpoint configuration API.</span></span> <span data-ttu-id="189b7-271">Pour plus d'informations, consultez <xref:fundamentals/servers/kestrel#endpoint-configuration>.</span><span class="sxs-lookup"><span data-stu-id="189b7-271">For more information, see <xref:fundamentals/servers/kestrel#endpoint-configuration>.</span></span>
+<span data-ttu-id="f3301-276">Kestrel a sa propre API de configuration de points de terminaison.</span><span class="sxs-lookup"><span data-stu-id="f3301-276">Kestrel has its own endpoint configuration API.</span></span> <span data-ttu-id="f3301-277">Pour plus d'informations, consultez <xref:fundamentals/servers/kestrel#endpoint-configuration>.</span><span class="sxs-lookup"><span data-stu-id="f3301-277">For more information, see <xref:fundamentals/servers/kestrel#endpoint-configuration>.</span></span>
 
-### <a name="shutdown-timeout"></a><span data-ttu-id="189b7-272">Délai d’arrêt</span><span class="sxs-lookup"><span data-stu-id="189b7-272">Shutdown Timeout</span></span>
+### <a name="shutdown-timeout"></a><span data-ttu-id="f3301-278">Délai d’arrêt</span><span class="sxs-lookup"><span data-stu-id="f3301-278">Shutdown Timeout</span></span>
 
-<span data-ttu-id="189b7-273">Spécifie le délai d’attente avant l’arrêt de l’hôte web.</span><span class="sxs-lookup"><span data-stu-id="189b7-273">Specifies the amount of time to wait for Web Host to shut down.</span></span>
+<span data-ttu-id="f3301-279">Spécifie le délai d’attente avant l’arrêt de l’hôte web.</span><span class="sxs-lookup"><span data-stu-id="f3301-279">Specifies the amount of time to wait for Web Host to shut down.</span></span>
 
-<span data-ttu-id="189b7-274">**Clé** : shutdownTimeoutSeconds</span><span class="sxs-lookup"><span data-stu-id="189b7-274">**Key**: shutdownTimeoutSeconds</span></span>  
-<span data-ttu-id="189b7-275">**Type** : *int*</span><span class="sxs-lookup"><span data-stu-id="189b7-275">**Type**: *int*</span></span>  
-<span data-ttu-id="189b7-276">**Par défaut** : 5</span><span class="sxs-lookup"><span data-stu-id="189b7-276">**Default**: 5</span></span>  
-<span data-ttu-id="189b7-277">**Définition avec** : `UseShutdownTimeout`</span><span class="sxs-lookup"><span data-stu-id="189b7-277">**Set using**: `UseShutdownTimeout`</span></span>  
-<span data-ttu-id="189b7-278">**Variable d’environnement** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`</span><span class="sxs-lookup"><span data-stu-id="189b7-278">**Environment variable**: `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`</span></span>
+<span data-ttu-id="f3301-280">**Clé** : shutdownTimeoutSeconds</span><span class="sxs-lookup"><span data-stu-id="f3301-280">**Key**: shutdownTimeoutSeconds</span></span>  
+<span data-ttu-id="f3301-281">**Type** : *int*</span><span class="sxs-lookup"><span data-stu-id="f3301-281">**Type**: *int*</span></span>  
+<span data-ttu-id="f3301-282">**Par défaut** : 5</span><span class="sxs-lookup"><span data-stu-id="f3301-282">**Default**: 5</span></span>  
+<span data-ttu-id="f3301-283">**Définition avec** : `UseShutdownTimeout`</span><span class="sxs-lookup"><span data-stu-id="f3301-283">**Set using**: `UseShutdownTimeout`</span></span>  
+<span data-ttu-id="f3301-284">**Variable d’environnement** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`</span><span class="sxs-lookup"><span data-stu-id="f3301-284">**Environment variable**: `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`</span></span>
 
-<span data-ttu-id="189b7-279">La clé accepte une valeur *int* avec `UseSetting` (par exemple, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), mais la méthode d’extension [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) prend une valeur [TimeSpan](/dotnet/api/system.timespan).</span><span class="sxs-lookup"><span data-stu-id="189b7-279">Although the key accepts an *int* with `UseSetting` (for example, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), the [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) extension method takes a [TimeSpan](/dotnet/api/system.timespan).</span></span>
+<span data-ttu-id="f3301-285">La clé accepte une valeur *int* avec `UseSetting` (par exemple, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), mais la méthode d’extension [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) prend une valeur [TimeSpan](/dotnet/api/system.timespan).</span><span class="sxs-lookup"><span data-stu-id="f3301-285">Although the key accepts an *int* with `UseSetting` (for example, `.UseSetting(WebHostDefaults.ShutdownTimeoutKey, "10")`), the [UseShutdownTimeout](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useshutdowntimeout) extension method takes a [TimeSpan](/dotnet/api/system.timespan).</span></span>
 
-<span data-ttu-id="189b7-280">Pendant la période du délai d’attente, l’hébergement :</span><span class="sxs-lookup"><span data-stu-id="189b7-280">During the timeout period, hosting:</span></span>
+<span data-ttu-id="f3301-286">Pendant la période du délai d’attente, l’hébergement :</span><span class="sxs-lookup"><span data-stu-id="f3301-286">During the timeout period, hosting:</span></span>
 
-* <span data-ttu-id="189b7-281">Déclenche [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping).</span><span class="sxs-lookup"><span data-stu-id="189b7-281">Triggers [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping).</span></span>
-* <span data-ttu-id="189b7-282">Tente d’arrêter les services hébergés, en journalisant les erreurs pour les services qui échouent à s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="189b7-282">Attempts to stop hosted services, logging any errors for services that fail to stop.</span></span>
+* <span data-ttu-id="f3301-287">Déclenche [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping).</span><span class="sxs-lookup"><span data-stu-id="f3301-287">Triggers [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping).</span></span>
+* <span data-ttu-id="f3301-288">Tente d’arrêter les services hébergés, en journalisant les erreurs pour les services qui échouent à s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="f3301-288">Attempts to stop hosted services, logging any errors for services that fail to stop.</span></span>
 
-<span data-ttu-id="189b7-283">Si la période du délai d’attente expire avant l’arrêt de tous les services hébergés, les services actifs restants sont arrêtés quand l’application s’arrête.</span><span class="sxs-lookup"><span data-stu-id="189b7-283">If the timeout period expires before all of the hosted services stop, any remaining active services are stopped when the app shuts down.</span></span> <span data-ttu-id="189b7-284">Les services s’arrêtent même s’ils n’ont pas terminé les traitements.</span><span class="sxs-lookup"><span data-stu-id="189b7-284">The services stop even if they haven't finished processing.</span></span> <span data-ttu-id="189b7-285">Si des services nécessitent plus de temps pour s’arrêter, augmentez le délai d’attente.</span><span class="sxs-lookup"><span data-stu-id="189b7-285">If services require additional time to stop, increase the timeout.</span></span>
+<span data-ttu-id="f3301-289">Si la période du délai d’attente expire avant l’arrêt de tous les services hébergés, les services actifs restants sont arrêtés quand l’application s’arrête.</span><span class="sxs-lookup"><span data-stu-id="f3301-289">If the timeout period expires before all of the hosted services stop, any remaining active services are stopped when the app shuts down.</span></span> <span data-ttu-id="f3301-290">Les services s’arrêtent même s’ils n’ont pas terminé les traitements.</span><span class="sxs-lookup"><span data-stu-id="f3301-290">The services stop even if they haven't finished processing.</span></span> <span data-ttu-id="f3301-291">Si des services nécessitent plus de temps pour s’arrêter, augmentez le délai d’attente.</span><span class="sxs-lookup"><span data-stu-id="f3301-291">If services require additional time to stop, increase the timeout.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseShutdownTimeout(TimeSpan.FromSeconds(10))
 ```
 
-### <a name="startup-assembly"></a><span data-ttu-id="189b7-286">Assembly de démarrage</span><span class="sxs-lookup"><span data-stu-id="189b7-286">Startup Assembly</span></span>
+### <a name="startup-assembly"></a><span data-ttu-id="f3301-292">Assembly de démarrage</span><span class="sxs-lookup"><span data-stu-id="f3301-292">Startup Assembly</span></span>
 
-<span data-ttu-id="189b7-287">Détermine l’assembly à rechercher pour la classe `Startup`.</span><span class="sxs-lookup"><span data-stu-id="189b7-287">Determines the assembly to search for the `Startup` class.</span></span>
+<span data-ttu-id="f3301-293">Détermine l’assembly à rechercher pour la classe `Startup`.</span><span class="sxs-lookup"><span data-stu-id="f3301-293">Determines the assembly to search for the `Startup` class.</span></span>
 
-<span data-ttu-id="189b7-288">**Clé** : startupAssembly</span><span class="sxs-lookup"><span data-stu-id="189b7-288">**Key**: startupAssembly</span></span>  
-<span data-ttu-id="189b7-289">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-289">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-290">**Par défaut** : l’assembly de l’application</span><span class="sxs-lookup"><span data-stu-id="189b7-290">**Default**: The app's assembly</span></span>  
-<span data-ttu-id="189b7-291">**Définition avec** : `UseStartup`</span><span class="sxs-lookup"><span data-stu-id="189b7-291">**Set using**: `UseStartup`</span></span>  
-<span data-ttu-id="189b7-292">**Variable d’environnement** : `ASPNETCORE_STARTUPASSEMBLY`</span><span class="sxs-lookup"><span data-stu-id="189b7-292">**Environment variable**: `ASPNETCORE_STARTUPASSEMBLY`</span></span>
+<span data-ttu-id="f3301-294">**Clé** : startupAssembly</span><span class="sxs-lookup"><span data-stu-id="f3301-294">**Key**: startupAssembly</span></span>  
+<span data-ttu-id="f3301-295">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-295">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-296">**Par défaut** : l’assembly de l’application</span><span class="sxs-lookup"><span data-stu-id="f3301-296">**Default**: The app's assembly</span></span>  
+<span data-ttu-id="f3301-297">**Définition avec** : `UseStartup`</span><span class="sxs-lookup"><span data-stu-id="f3301-297">**Set using**: `UseStartup`</span></span>  
+<span data-ttu-id="f3301-298">**Variable d’environnement** : `ASPNETCORE_STARTUPASSEMBLY`</span><span class="sxs-lookup"><span data-stu-id="f3301-298">**Environment variable**: `ASPNETCORE_STARTUPASSEMBLY`</span></span>
 
-<span data-ttu-id="189b7-293">L’assembly peut être référencé par nom (`string`) ou type (`TStartup`).</span><span class="sxs-lookup"><span data-stu-id="189b7-293">The assembly by name (`string`) or type (`TStartup`) can be referenced.</span></span> <span data-ttu-id="189b7-294">Si plusieurs méthodes `UseStartup` sont appelées, la dernière prévaut.</span><span class="sxs-lookup"><span data-stu-id="189b7-294">If multiple `UseStartup` methods are called, the last one takes precedence.</span></span>
+<span data-ttu-id="f3301-299">L’assembly peut être référencé par nom (`string`) ou type (`TStartup`).</span><span class="sxs-lookup"><span data-stu-id="f3301-299">The assembly by name (`string`) or type (`TStartup`) can be referenced.</span></span> <span data-ttu-id="f3301-300">Si plusieurs méthodes `UseStartup` sont appelées, la dernière prévaut.</span><span class="sxs-lookup"><span data-stu-id="f3301-300">If multiple `UseStartup` methods are called, the last one takes precedence.</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -367,26 +383,31 @@ WebHost.CreateDefaultBuilder(args)
     .UseStartup<TStartup>()
 ```
 
-### <a name="web-root"></a><span data-ttu-id="189b7-295">Racine Web</span><span class="sxs-lookup"><span data-stu-id="189b7-295">Web Root</span></span>
+### <a name="web-root"></a><span data-ttu-id="f3301-301">Racine web</span><span class="sxs-lookup"><span data-stu-id="f3301-301">Web root</span></span>
 
-<span data-ttu-id="189b7-296">Définit le chemin relatif des ressources statiques de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-296">Sets the relative path to the app's static assets.</span></span>
+<span data-ttu-id="f3301-302">Définit le chemin relatif des ressources statiques de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-302">Sets the relative path to the app's static assets.</span></span>
 
-<span data-ttu-id="189b7-297">**Clé** : webroot</span><span class="sxs-lookup"><span data-stu-id="189b7-297">**Key**: webroot</span></span>  
-<span data-ttu-id="189b7-298">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="189b7-298">**Type**: *string*</span></span>  
-<span data-ttu-id="189b7-299">**Par défaut** : quand aucune valeur n’est spécifiée, la valeur par défaut est « (Racine de contenu)/wwwroot », si ce chemin existe.</span><span class="sxs-lookup"><span data-stu-id="189b7-299">**Default**: If not specified, the default is "(Content Root)/wwwroot", if the path exists.</span></span> <span data-ttu-id="189b7-300">Si ce chemin est introuvable, un fournisseur de fichiers no-op est utilisé.</span><span class="sxs-lookup"><span data-stu-id="189b7-300">If the path doesn't exist, then a no-op file provider is used.</span></span>  
-<span data-ttu-id="189b7-301">**Définition avec** : `UseWebRoot`</span><span class="sxs-lookup"><span data-stu-id="189b7-301">**Set using**: `UseWebRoot`</span></span>  
-<span data-ttu-id="189b7-302">**Variable d’environnement** : `ASPNETCORE_WEBROOT`</span><span class="sxs-lookup"><span data-stu-id="189b7-302">**Environment variable**: `ASPNETCORE_WEBROOT`</span></span>
+<span data-ttu-id="f3301-303">**Clé** : webroot</span><span class="sxs-lookup"><span data-stu-id="f3301-303">**Key**: webroot</span></span>  
+<span data-ttu-id="f3301-304">**Type** : *string*</span><span class="sxs-lookup"><span data-stu-id="f3301-304">**Type**: *string*</span></span>  
+<span data-ttu-id="f3301-305">**Par défaut** : La valeur par défaut est `wwwroot`.</span><span class="sxs-lookup"><span data-stu-id="f3301-305">**Default**: The default is `wwwroot`.</span></span> <span data-ttu-id="f3301-306">Le chemin d’accès à *{root content}/wwwroot* doit exister.</span><span class="sxs-lookup"><span data-stu-id="f3301-306">The path to *{content root}/wwwroot* must exist.</span></span> <span data-ttu-id="f3301-307">Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.</span><span class="sxs-lookup"><span data-stu-id="f3301-307">If the path doesn't exist, a no-op file provider is used.</span></span>  
+<span data-ttu-id="f3301-308">**Définition avec** : `UseWebRoot`</span><span class="sxs-lookup"><span data-stu-id="f3301-308">**Set using**: `UseWebRoot`</span></span>  
+<span data-ttu-id="f3301-309">**Variable d’environnement** : `ASPNETCORE_WEBROOT`</span><span class="sxs-lookup"><span data-stu-id="f3301-309">**Environment variable**: `ASPNETCORE_WEBROOT`</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
 ```
 
-## <a name="override-configuration"></a><span data-ttu-id="189b7-303">Remplacer la configuration</span><span class="sxs-lookup"><span data-stu-id="189b7-303">Override configuration</span></span>
+<span data-ttu-id="f3301-310">Pour plus d'informations, voir :</span><span class="sxs-lookup"><span data-stu-id="f3301-310">For more information, see:</span></span>
 
-<span data-ttu-id="189b7-304">Utilisez [Configuration](xref:fundamentals/configuration/index) pour configurer l’hôte web.</span><span class="sxs-lookup"><span data-stu-id="189b7-304">Use [Configuration](xref:fundamentals/configuration/index) to configure Web Host.</span></span> <span data-ttu-id="189b7-305">Dans l’exemple suivant, la configuration de l’hôte est spécifiée de façon facultative dans un fichier *hostsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="189b7-305">In the following example, host configuration is optionally specified in a *hostsettings.json* file.</span></span> <span data-ttu-id="189b7-306">Toute configuration chargée à partir du fichier *hostsettings.json* est remplaçable par des arguments de ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="189b7-306">Any configuration loaded from the *hostsettings.json* file may be overridden by command-line arguments.</span></span> <span data-ttu-id="189b7-307">La configuration définie (dans `config`) est utilisée pour configurer l’hôte avec [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration).</span><span class="sxs-lookup"><span data-stu-id="189b7-307">The built configuration (in `config`) is used to configure the host with [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration).</span></span> <span data-ttu-id="189b7-308">La configuration `IWebHostBuilder` est ajoutée à la configuration de l’application, mais l’inverse n’est pas vrai &mdash; `ConfigureAppConfiguration` n’a pas d’incidence sur la configuration `IWebHostBuilder`.</span><span class="sxs-lookup"><span data-stu-id="189b7-308">`IWebHostBuilder` configuration is added to the app's configuration, but the converse isn't true&mdash;`ConfigureAppConfiguration` doesn't affect the `IWebHostBuilder` configuration.</span></span>
+* <span data-ttu-id="f3301-311">@no__t 0Fundamentals : Racine Web @ no__t-0</span><span class="sxs-lookup"><span data-stu-id="f3301-311">[Fundamentals: Web root](xref:fundamentals/index#web-root)</span></span>
+* [<span data-ttu-id="f3301-312">Racine du contenu</span><span class="sxs-lookup"><span data-stu-id="f3301-312">Content root</span></span>](#content-root)
 
-<span data-ttu-id="189b7-309">La configuration fournie par `UseUrls` est d’abord remplacée par la configuration *hostsettings.json*, puis par la configuration des arguments de ligne de commande :</span><span class="sxs-lookup"><span data-stu-id="189b7-309">Overriding the configuration provided by `UseUrls` with *hostsettings.json* config first, command-line argument config second:</span></span>
+## <a name="override-configuration"></a><span data-ttu-id="f3301-313">Remplacer la configuration</span><span class="sxs-lookup"><span data-stu-id="f3301-313">Override configuration</span></span>
+
+<span data-ttu-id="f3301-314">Utilisez [Configuration](xref:fundamentals/configuration/index) pour configurer l’hôte web.</span><span class="sxs-lookup"><span data-stu-id="f3301-314">Use [Configuration](xref:fundamentals/configuration/index) to configure Web Host.</span></span> <span data-ttu-id="f3301-315">Dans l’exemple suivant, la configuration de l’hôte est spécifiée de façon facultative dans un fichier *hostsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="f3301-315">In the following example, host configuration is optionally specified in a *hostsettings.json* file.</span></span> <span data-ttu-id="f3301-316">Toute configuration chargée à partir du fichier *hostsettings.json* est remplaçable par des arguments de ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="f3301-316">Any configuration loaded from the *hostsettings.json* file may be overridden by command-line arguments.</span></span> <span data-ttu-id="f3301-317">La configuration définie (dans `config`) est utilisée pour configurer l’hôte avec [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration).</span><span class="sxs-lookup"><span data-stu-id="f3301-317">The built configuration (in `config`) is used to configure the host with [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration).</span></span> <span data-ttu-id="f3301-318">La configuration `IWebHostBuilder` est ajoutée à la configuration de l’application, mais l’inverse n’est pas vrai &mdash; `ConfigureAppConfiguration` n’a pas d’incidence sur la configuration `IWebHostBuilder`.</span><span class="sxs-lookup"><span data-stu-id="f3301-318">`IWebHostBuilder` configuration is added to the app's configuration, but the converse isn't true&mdash;`ConfigureAppConfiguration` doesn't affect the `IWebHostBuilder` configuration.</span></span>
+
+<span data-ttu-id="f3301-319">La configuration fournie par `UseUrls` est d’abord remplacée par la configuration *hostsettings.json*, puis par la configuration des arguments de ligne de commande :</span><span class="sxs-lookup"><span data-stu-id="f3301-319">Overriding the configuration provided by `UseUrls` with *hostsettings.json* config first, command-line argument config second:</span></span>
 
 ```csharp
 public class Program
@@ -416,7 +437,7 @@ public class Program
 }
 ```
 
-<span data-ttu-id="189b7-310">*hostsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="189b7-310">*hostsettings.json*:</span></span>
+<span data-ttu-id="f3301-320">*hostsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="f3301-320">*hostsettings.json*:</span></span>
 
 ```json
 {
@@ -425,29 +446,29 @@ public class Program
 ```
 
 > [!NOTE]
-> <span data-ttu-id="189b7-311">La méthode d’extension [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) ne peut pas analyser une section de configuration retournée par `GetSection` (par exemple, `.UseConfiguration(Configuration.GetSection("section"))`.</span><span class="sxs-lookup"><span data-stu-id="189b7-311">The [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) extension method isn't currently capable of parsing a configuration section returned by `GetSection` (for example, `.UseConfiguration(Configuration.GetSection("section"))`.</span></span> <span data-ttu-id="189b7-312">La méthode `GetSection` filtre les clés de configuration dans la section demandée, mais laisse le nom de la section dans les clés (par exemple, `section:urls`, `section:environment`).</span><span class="sxs-lookup"><span data-stu-id="189b7-312">The `GetSection` method filters the configuration keys to the section requested but leaves the section name on the keys (for example, `section:urls`, `section:environment`).</span></span> <span data-ttu-id="189b7-313">La méthode `UseConfiguration` suppose que les clés correspondent aux clés `WebHostBuilder` (par exemple, `urls`, `environment`).</span><span class="sxs-lookup"><span data-stu-id="189b7-313">The `UseConfiguration` method expects the keys to match the `WebHostBuilder` keys (for example, `urls`, `environment`).</span></span> <span data-ttu-id="189b7-314">La présence du nom de la section dans les clés empêche l’utilisation des valeurs de la section pour configurer l’hôte.</span><span class="sxs-lookup"><span data-stu-id="189b7-314">The presence of the section name on the keys prevents the section's values from configuring the host.</span></span> <span data-ttu-id="189b7-315">Ce problème sera résolu dans une prochaine mise en production.</span><span class="sxs-lookup"><span data-stu-id="189b7-315">This issue will be addressed in an upcoming release.</span></span> <span data-ttu-id="189b7-316">Pour obtenir plus d’informations et connaître les solutions de contournement possibles, consultez [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span><span class="sxs-lookup"><span data-stu-id="189b7-316">For more information and workarounds, see [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span></span>
+> <span data-ttu-id="f3301-321">La méthode d’extension [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) ne peut pas analyser une section de configuration retournée par `GetSection` (par exemple, `.UseConfiguration(Configuration.GetSection("section"))`.</span><span class="sxs-lookup"><span data-stu-id="f3301-321">The [UseConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useconfiguration) extension method isn't currently capable of parsing a configuration section returned by `GetSection` (for example, `.UseConfiguration(Configuration.GetSection("section"))`.</span></span> <span data-ttu-id="f3301-322">La méthode `GetSection` filtre les clés de configuration dans la section demandée, mais laisse le nom de la section dans les clés (par exemple, `section:urls`, `section:environment`).</span><span class="sxs-lookup"><span data-stu-id="f3301-322">The `GetSection` method filters the configuration keys to the section requested but leaves the section name on the keys (for example, `section:urls`, `section:environment`).</span></span> <span data-ttu-id="f3301-323">La méthode `UseConfiguration` suppose que les clés correspondent aux clés `WebHostBuilder` (par exemple, `urls`, `environment`).</span><span class="sxs-lookup"><span data-stu-id="f3301-323">The `UseConfiguration` method expects the keys to match the `WebHostBuilder` keys (for example, `urls`, `environment`).</span></span> <span data-ttu-id="f3301-324">La présence du nom de la section dans les clés empêche l’utilisation des valeurs de la section pour configurer l’hôte.</span><span class="sxs-lookup"><span data-stu-id="f3301-324">The presence of the section name on the keys prevents the section's values from configuring the host.</span></span> <span data-ttu-id="f3301-325">Ce problème sera résolu dans une prochaine mise en production.</span><span class="sxs-lookup"><span data-stu-id="f3301-325">This issue will be addressed in an upcoming release.</span></span> <span data-ttu-id="f3301-326">Pour obtenir plus d’informations et connaître les solutions de contournement possibles, consultez [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span><span class="sxs-lookup"><span data-stu-id="f3301-326">For more information and workarounds, see [Passing configuration section into WebHostBuilder.UseConfiguration uses full keys](https://github.com/aspnet/Hosting/issues/839).</span></span>
 >
-> <span data-ttu-id="189b7-317">`UseConfiguration` copie seulement les clés de la configuration `IConfiguration` fournie vers la configuration du générateur d’hôte.</span><span class="sxs-lookup"><span data-stu-id="189b7-317">`UseConfiguration` only copies keys from the provided `IConfiguration` to the host builder configuration.</span></span> <span data-ttu-id="189b7-318">Par conséquent, le fait de définir `reloadOnChange: true` pour les fichiers de paramètres XML, JSON et INI n’a aucun effet.</span><span class="sxs-lookup"><span data-stu-id="189b7-318">Therefore, setting `reloadOnChange: true` for JSON, INI, and XML settings files has no effect.</span></span>
+> <span data-ttu-id="f3301-327">`UseConfiguration` copie seulement les clés de la configuration `IConfiguration` fournie vers la configuration du générateur d’hôte.</span><span class="sxs-lookup"><span data-stu-id="f3301-327">`UseConfiguration` only copies keys from the provided `IConfiguration` to the host builder configuration.</span></span> <span data-ttu-id="f3301-328">Par conséquent, le fait de définir `reloadOnChange: true` pour les fichiers de paramètres XML, JSON et INI n’a aucun effet.</span><span class="sxs-lookup"><span data-stu-id="f3301-328">Therefore, setting `reloadOnChange: true` for JSON, INI, and XML settings files has no effect.</span></span>
 
-<span data-ttu-id="189b7-319">Pour spécifier l’exécution de l’hôte sur une URL particulière, vous pouvez passer la valeur souhaitée à partir d’une invite de commandes lors de l’exécution de [dotnet run](/dotnet/core/tools/dotnet-run).</span><span class="sxs-lookup"><span data-stu-id="189b7-319">To specify the host run on a particular URL, the desired value can be passed in from a command prompt when executing [dotnet run](/dotnet/core/tools/dotnet-run).</span></span> <span data-ttu-id="189b7-320">L’argument de ligne de commande remplace la valeur `urls` du fichier *hostsettings.json*, et le serveur écoute le port 8080 :</span><span class="sxs-lookup"><span data-stu-id="189b7-320">The command-line argument overrides the `urls` value from the *hostsettings.json* file, and the server listens on port 8080:</span></span>
+<span data-ttu-id="f3301-329">Pour spécifier l’exécution de l’hôte sur une URL particulière, vous pouvez passer la valeur souhaitée à partir d’une invite de commandes lors de l’exécution de [dotnet run](/dotnet/core/tools/dotnet-run).</span><span class="sxs-lookup"><span data-stu-id="f3301-329">To specify the host run on a particular URL, the desired value can be passed in from a command prompt when executing [dotnet run](/dotnet/core/tools/dotnet-run).</span></span> <span data-ttu-id="f3301-330">L’argument de ligne de commande remplace la valeur `urls` du fichier *hostsettings.json*, et le serveur écoute le port 8080 :</span><span class="sxs-lookup"><span data-stu-id="f3301-330">The command-line argument overrides the `urls` value from the *hostsettings.json* file, and the server listens on port 8080:</span></span>
 
 ```dotnetcli
 dotnet run --urls "http://*:8080"
 ```
 
-## <a name="manage-the-host"></a><span data-ttu-id="189b7-321">Gérer l’hôte</span><span class="sxs-lookup"><span data-stu-id="189b7-321">Manage the host</span></span>
+## <a name="manage-the-host"></a><span data-ttu-id="f3301-331">Gérer l’hôte</span><span class="sxs-lookup"><span data-stu-id="f3301-331">Manage the host</span></span>
 
-<span data-ttu-id="189b7-322">**Exécuter**</span><span class="sxs-lookup"><span data-stu-id="189b7-322">**Run**</span></span>
+<span data-ttu-id="f3301-332">**Exécuter**</span><span class="sxs-lookup"><span data-stu-id="f3301-332">**Run**</span></span>
 
-<span data-ttu-id="189b7-323">La méthode `Run` démarre l’application web et bloque le thread appelant jusqu’à l’arrêt de l’hôte :</span><span class="sxs-lookup"><span data-stu-id="189b7-323">The `Run` method starts the web app and blocks the calling thread until the host is shut down:</span></span>
+<span data-ttu-id="f3301-333">La méthode `Run` démarre l’application web et bloque le thread appelant jusqu’à l’arrêt de l’hôte :</span><span class="sxs-lookup"><span data-stu-id="f3301-333">The `Run` method starts the web app and blocks the calling thread until the host is shut down:</span></span>
 
 ```csharp
 host.Run();
 ```
 
-<span data-ttu-id="189b7-324">**Démarrer**</span><span class="sxs-lookup"><span data-stu-id="189b7-324">**Start**</span></span>
+<span data-ttu-id="f3301-334">**Démarrer**</span><span class="sxs-lookup"><span data-stu-id="f3301-334">**Start**</span></span>
 
-<span data-ttu-id="189b7-325">Appelez la méthode `Start` pour exécuter l’hôte en mode non bloquant :</span><span class="sxs-lookup"><span data-stu-id="189b7-325">Run the host in a non-blocking manner by calling its `Start` method:</span></span>
+<span data-ttu-id="f3301-335">Appelez la méthode `Start` pour exécuter l’hôte en mode non bloquant :</span><span class="sxs-lookup"><span data-stu-id="f3301-335">Run the host in a non-blocking manner by calling its `Start` method:</span></span>
 
 ```csharp
 using (host)
@@ -457,7 +478,7 @@ using (host)
 }
 ```
 
-<span data-ttu-id="189b7-326">Si une liste d’URL est passée à la méthode `Start`, l’hôte écoute les URL spécifiées :</span><span class="sxs-lookup"><span data-stu-id="189b7-326">If a list of URLs is passed to the `Start` method, it listens on the URLs specified:</span></span>
+<span data-ttu-id="f3301-336">Si une liste d’URL est passée à la méthode `Start`, l’hôte écoute les URL spécifiées :</span><span class="sxs-lookup"><span data-stu-id="f3301-336">If a list of URLs is passed to the `Start` method, it listens on the URLs specified:</span></span>
 
 ```csharp
 var urls = new List<string>()
@@ -477,11 +498,11 @@ using (host)
 }
 ```
 
-<span data-ttu-id="189b7-327">L’application peut initialiser et démarrer un nouvel hôte ayant les valeurs par défaut préconfigurées de `CreateDefaultBuilder` en utilisant une méthode d’usage statique.</span><span class="sxs-lookup"><span data-stu-id="189b7-327">The app can initialize and start a new host using the pre-configured defaults of `CreateDefaultBuilder` using a static convenience method.</span></span> <span data-ttu-id="189b7-328">Ces méthodes démarrent le serveur sans sortie de console et, avec [WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown), elles attendent un arrêt (Ctrl-C/SIGINT ou SIGTERM) :</span><span class="sxs-lookup"><span data-stu-id="189b7-328">These methods start the server without console output and with [WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown) wait for a break (Ctrl-C/SIGINT or SIGTERM):</span></span>
+<span data-ttu-id="f3301-337">L’application peut initialiser et démarrer un nouvel hôte ayant les valeurs par défaut préconfigurées de `CreateDefaultBuilder` en utilisant une méthode d’usage statique.</span><span class="sxs-lookup"><span data-stu-id="f3301-337">The app can initialize and start a new host using the pre-configured defaults of `CreateDefaultBuilder` using a static convenience method.</span></span> <span data-ttu-id="f3301-338">Ces méthodes démarrent le serveur sans sortie de console et, avec [WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown), elles attendent un arrêt (Ctrl-C/SIGINT ou SIGTERM) :</span><span class="sxs-lookup"><span data-stu-id="f3301-338">These methods start the server without console output and with [WaitForShutdown](/dotnet/api/microsoft.aspnetcore.hosting.webhostextensions.waitforshutdown) wait for a break (Ctrl-C/SIGINT or SIGTERM):</span></span>
 
-<span data-ttu-id="189b7-329">**Start(RequestDelegate app)**</span><span class="sxs-lookup"><span data-stu-id="189b7-329">**Start(RequestDelegate app)**</span></span>
+<span data-ttu-id="f3301-339">**Start(RequestDelegate app)**</span><span class="sxs-lookup"><span data-stu-id="f3301-339">**Start(RequestDelegate app)**</span></span>
 
-<span data-ttu-id="189b7-330">Commencez par un `RequestDelegate` :</span><span class="sxs-lookup"><span data-stu-id="189b7-330">Start with a `RequestDelegate`:</span></span>
+<span data-ttu-id="f3301-340">Commencez par un `RequestDelegate` :</span><span class="sxs-lookup"><span data-stu-id="f3301-340">Start with a `RequestDelegate`:</span></span>
 
 ```csharp
 using (var host = WebHost.Start(app => app.Response.WriteAsync("Hello, World!")))
@@ -491,11 +512,11 @@ using (var host = WebHost.Start(app => app.Response.WriteAsync("Hello, World!"))
 }
 ```
 
-<span data-ttu-id="189b7-331">Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! »</span><span class="sxs-lookup"><span data-stu-id="189b7-331">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="189b7-332">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="189b7-332">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="189b7-333">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="189b7-333">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
+<span data-ttu-id="f3301-341">Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! »</span><span class="sxs-lookup"><span data-stu-id="f3301-341">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="f3301-342">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="f3301-342">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="f3301-343">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="f3301-343">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
 
-<span data-ttu-id="189b7-334">**Start(string url, RequestDelegate app)**</span><span class="sxs-lookup"><span data-stu-id="189b7-334">**Start(string url, RequestDelegate app)**</span></span>
+<span data-ttu-id="f3301-344">**Start(string url, RequestDelegate app)**</span><span class="sxs-lookup"><span data-stu-id="f3301-344">**Start(string url, RequestDelegate app)**</span></span>
 
-<span data-ttu-id="189b7-335">Commencez par une URL et `RequestDelegate` :</span><span class="sxs-lookup"><span data-stu-id="189b7-335">Start with a URL and `RequestDelegate`:</span></span>
+<span data-ttu-id="f3301-345">Commencez par une URL et `RequestDelegate` :</span><span class="sxs-lookup"><span data-stu-id="f3301-345">Start with a URL and `RequestDelegate`:</span></span>
 
 ```csharp
 using (var host = WebHost.Start("http://localhost:8080", app => app.Response.WriteAsync("Hello, World!")))
@@ -505,11 +526,11 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 }
 ```
 
-<span data-ttu-id="189b7-336">Produit le même résultat que **Start(RequestDelegate app)** , sauf que l’application répond sur `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="189b7-336">Produces the same result as **Start(RequestDelegate app)**, except the app responds on `http://localhost:8080`.</span></span>
+<span data-ttu-id="f3301-346">Produit le même résultat que **Start(RequestDelegate app)** , sauf que l’application répond sur `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="f3301-346">Produces the same result as **Start(RequestDelegate app)**, except the app responds on `http://localhost:8080`.</span></span>
 
-<span data-ttu-id="189b7-337">**Start(Action&lt;IRouteBuilder&gt; routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="189b7-337">**Start(Action&lt;IRouteBuilder&gt; routeBuilder)**</span></span>
+<span data-ttu-id="f3301-347">**Start (action @ no__t-1IRouteBuilder > routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="f3301-347">**Start(Action\<IRouteBuilder> routeBuilder)**</span></span>
 
-<span data-ttu-id="189b7-338">Utilisez une instance de `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) pour utiliser le middleware de routage :</span><span class="sxs-lookup"><span data-stu-id="189b7-338">Use an instance of `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) to use routing middleware:</span></span>
+<span data-ttu-id="f3301-348">Utilisez une instance de `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) pour utiliser le middleware de routage :</span><span class="sxs-lookup"><span data-stu-id="f3301-348">Use an instance of `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) to use routing middleware:</span></span>
 
 ```csharp
 using (var host = WebHost.Start(router => router
@@ -528,22 +549,22 @@ using (var host = WebHost.Start(router => router
 }
 ```
 
-<span data-ttu-id="189b7-339">Utilisez les requêtes de navigateur suivantes avec l’exemple :</span><span class="sxs-lookup"><span data-stu-id="189b7-339">Use the following browser requests with the example:</span></span>
+<span data-ttu-id="f3301-349">Utilisez les requêtes de navigateur suivantes avec l’exemple :</span><span class="sxs-lookup"><span data-stu-id="f3301-349">Use the following browser requests with the example:</span></span>
 
-| <span data-ttu-id="189b7-340">Demande</span><span class="sxs-lookup"><span data-stu-id="189b7-340">Request</span></span>                                    | <span data-ttu-id="189b7-341">Réponse</span><span class="sxs-lookup"><span data-stu-id="189b7-341">Response</span></span>                                 |
+| <span data-ttu-id="f3301-350">Demande</span><span class="sxs-lookup"><span data-stu-id="f3301-350">Request</span></span>                                    | <span data-ttu-id="f3301-351">Réponse</span><span class="sxs-lookup"><span data-stu-id="f3301-351">Response</span></span>                                 |
 | ------------------------------------------ | ---------------------------------------- |
-| `http://localhost:5000/hello/Martin`       | <span data-ttu-id="189b7-342">Hello, Martin!</span><span class="sxs-lookup"><span data-stu-id="189b7-342">Hello, Martin!</span></span>                           |
-| `http://localhost:5000/buenosdias/Catrina` | <span data-ttu-id="189b7-343">Buenos dias, Catrina!</span><span class="sxs-lookup"><span data-stu-id="189b7-343">Buenos dias, Catrina!</span></span>                    |
-| `http://localhost:5000/throw/ooops!`       | <span data-ttu-id="189b7-344">Lève une exception avec la chaîne « ooops! »</span><span class="sxs-lookup"><span data-stu-id="189b7-344">Throws an exception with string "ooops!"</span></span> |
-| `http://localhost:5000/throw`              | <span data-ttu-id="189b7-345">Lève une exception avec la chaîne « Uh oh! »</span><span class="sxs-lookup"><span data-stu-id="189b7-345">Throws an exception with string "Uh oh!"</span></span> |
-| `http://localhost:5000/Sante/Kevin`        | <span data-ttu-id="189b7-346">Sante, Kevin!</span><span class="sxs-lookup"><span data-stu-id="189b7-346">Sante, Kevin!</span></span>                            |
-| `http://localhost:5000`                    | <span data-ttu-id="189b7-347">Hello World!</span><span class="sxs-lookup"><span data-stu-id="189b7-347">Hello World!</span></span>                             |
+| `http://localhost:5000/hello/Martin`       | <span data-ttu-id="f3301-352">Hello, Martin!</span><span class="sxs-lookup"><span data-stu-id="f3301-352">Hello, Martin!</span></span>                           |
+| `http://localhost:5000/buenosdias/Catrina` | <span data-ttu-id="f3301-353">Buenos dias, Catrina!</span><span class="sxs-lookup"><span data-stu-id="f3301-353">Buenos dias, Catrina!</span></span>                    |
+| `http://localhost:5000/throw/ooops!`       | <span data-ttu-id="f3301-354">Lève une exception avec la chaîne « ooops! »</span><span class="sxs-lookup"><span data-stu-id="f3301-354">Throws an exception with string "ooops!"</span></span> |
+| `http://localhost:5000/throw`              | <span data-ttu-id="f3301-355">Lève une exception avec la chaîne « Uh oh! »</span><span class="sxs-lookup"><span data-stu-id="f3301-355">Throws an exception with string "Uh oh!"</span></span> |
+| `http://localhost:5000/Sante/Kevin`        | <span data-ttu-id="f3301-356">Sante, Kevin!</span><span class="sxs-lookup"><span data-stu-id="f3301-356">Sante, Kevin!</span></span>                            |
+| `http://localhost:5000`                    | <span data-ttu-id="f3301-357">Hello World!</span><span class="sxs-lookup"><span data-stu-id="f3301-357">Hello World!</span></span>                             |
 
-<span data-ttu-id="189b7-348">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="189b7-348">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="189b7-349">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="189b7-349">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
+<span data-ttu-id="f3301-358">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="f3301-358">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="f3301-359">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="f3301-359">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
 
-<span data-ttu-id="189b7-350">**Start(string url, Action&lt;IRouteBuilder&gt; routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="189b7-350">**Start(string url, Action&lt;IRouteBuilder&gt; routeBuilder)**</span></span>
+<span data-ttu-id="f3301-360">**Start (URL de chaîne, action @ no__t-1IRouteBuilder > routeBuilder)**</span><span class="sxs-lookup"><span data-stu-id="f3301-360">**Start(string url, Action\<IRouteBuilder> routeBuilder)**</span></span>
 
-<span data-ttu-id="189b7-351">Utilisez une URL et une instance de `IRouteBuilder` :</span><span class="sxs-lookup"><span data-stu-id="189b7-351">Use a URL and an instance of `IRouteBuilder`:</span></span>
+<span data-ttu-id="f3301-361">Utilisez une URL et une instance de `IRouteBuilder` :</span><span class="sxs-lookup"><span data-stu-id="f3301-361">Use a URL and an instance of `IRouteBuilder`:</span></span>
 
 ```csharp
 using (var host = WebHost.Start("http://localhost:8080", router => router
@@ -562,11 +583,11 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-<span data-ttu-id="189b7-352">Produit le même résultat que **Start(Action&lt;IRouteBuilder&gt; routeBuilder)** , sauf que l’application répond sur `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="189b7-352">Produces the same result as **Start(Action&lt;IRouteBuilder&gt; routeBuilder)**, except the app responds at `http://localhost:8080`.</span></span>
+<span data-ttu-id="f3301-362">Produit le même résultat que **Start (action @ no__t-1IRouteBuilder > routeBuilder)** , sauf que l’application répond à `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="f3301-362">Produces the same result as **Start(Action\<IRouteBuilder> routeBuilder)**, except the app responds at `http://localhost:8080`.</span></span>
 
-<span data-ttu-id="189b7-353">**StartWith(Action&lt;IApplicationBuilder&gt; app)**</span><span class="sxs-lookup"><span data-stu-id="189b7-353">**StartWith(Action&lt;IApplicationBuilder&gt; app)**</span></span>
+<span data-ttu-id="f3301-363">**StartWith (action @ no__t-1IApplicationBuilder > application)**</span><span class="sxs-lookup"><span data-stu-id="f3301-363">**StartWith(Action\<IApplicationBuilder> app)**</span></span>
 
-<span data-ttu-id="189b7-354">Fournissez un délégué pour configurer un `IApplicationBuilder` :</span><span class="sxs-lookup"><span data-stu-id="189b7-354">Provide a delegate to configure an `IApplicationBuilder`:</span></span>
+<span data-ttu-id="f3301-364">Fournissez un délégué pour configurer un `IApplicationBuilder` :</span><span class="sxs-lookup"><span data-stu-id="f3301-364">Provide a delegate to configure an `IApplicationBuilder`:</span></span>
 
 ```csharp
 using (var host = WebHost.StartWith(app => 
@@ -583,11 +604,11 @@ using (var host = WebHost.StartWith(app =>
 }
 ```
 
-<span data-ttu-id="189b7-355">Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! »</span><span class="sxs-lookup"><span data-stu-id="189b7-355">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="189b7-356">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="189b7-356">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="189b7-357">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="189b7-357">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
+<span data-ttu-id="f3301-365">Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! »</span><span class="sxs-lookup"><span data-stu-id="f3301-365">Make a request in the browser to `http://localhost:5000` to receive the response "Hello World!"</span></span> <span data-ttu-id="f3301-366">`WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM).</span><span class="sxs-lookup"><span data-stu-id="f3301-366">`WaitForShutdown` blocks until a break (Ctrl-C/SIGINT or SIGTERM) is issued.</span></span> <span data-ttu-id="f3301-367">L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.</span><span class="sxs-lookup"><span data-stu-id="f3301-367">The app displays the `Console.WriteLine` message and waits for a keypress to exit.</span></span>
 
-<span data-ttu-id="189b7-358">**StartWith(string url, Action&lt;IApplicationBuilder&gt; app)**</span><span class="sxs-lookup"><span data-stu-id="189b7-358">**StartWith(string url, Action&lt;IApplicationBuilder&gt; app)**</span></span>
+<span data-ttu-id="f3301-368">**StartWith (String url, action @ no__t-1IApplicationBuilder > app)**</span><span class="sxs-lookup"><span data-stu-id="f3301-368">**StartWith(string url, Action\<IApplicationBuilder> app)**</span></span>
 
-<span data-ttu-id="189b7-359">Fournissez une URL et un délégué pour configurer un `IApplicationBuilder` :</span><span class="sxs-lookup"><span data-stu-id="189b7-359">Provide a URL and a delegate to configure an `IApplicationBuilder`:</span></span>
+<span data-ttu-id="f3301-369">Fournissez une URL et un délégué pour configurer un `IApplicationBuilder` :</span><span class="sxs-lookup"><span data-stu-id="f3301-369">Provide a URL and a delegate to configure an `IApplicationBuilder`:</span></span>
 
 ```csharp
 using (var host = WebHost.StartWith("http://localhost:8080", app => 
@@ -604,11 +625,108 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-<span data-ttu-id="189b7-360">Produit le même résultat que **StartWith(Action&lt;IApplicationBuilder&gt; app)** , sauf que l’application répond sur `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="189b7-360">Produces the same result as **StartWith(Action&lt;IApplicationBuilder&gt; app)**, except the app responds on `http://localhost:8080`.</span></span>
+<span data-ttu-id="f3301-370">Produit le même résultat que **startwith (action @ no__t-1IApplicationBuilder > application)** , sauf que l’application répond sur `http://localhost:8080`.</span><span class="sxs-lookup"><span data-stu-id="f3301-370">Produces the same result as **StartWith(Action\<IApplicationBuilder> app)**, except the app responds on `http://localhost:8080`.</span></span>
 
-## <a name="ihostingenvironment-interface"></a><span data-ttu-id="189b7-361">Interface IHostingEnvironment</span><span class="sxs-lookup"><span data-stu-id="189b7-361">IHostingEnvironment interface</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="189b7-362">[L’interface IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) fournit des informations sur l’environnement d’hébergement web de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-362">The [IHostingEnvironment interface](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) provides information about the app's web hosting environment.</span></span> <span data-ttu-id="189b7-363">Utilisez [l’injection de constructeur](xref:fundamentals/dependency-injection) pour obtenir l’interface `IHostingEnvironment` afin d’utiliser ses propriétés et méthodes d’extension :</span><span class="sxs-lookup"><span data-stu-id="189b7-363">Use [constructor injection](xref:fundamentals/dependency-injection) to obtain the `IHostingEnvironment` in order to use its properties and extension methods:</span></span>
+## <a name="iwebhostenvironment-interface"></a><span data-ttu-id="f3301-371">Interface IWebHostEnvironment</span><span class="sxs-lookup"><span data-stu-id="f3301-371">IWebHostEnvironment interface</span></span>
+
+<span data-ttu-id="f3301-372">L’interface `IWebHostEnvironment` fournit des informations sur l’environnement d’hébergement Web de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-372">The `IWebHostEnvironment` interface provides information about the app's web hosting environment.</span></span> <span data-ttu-id="f3301-373">Utilisez [l’injection de constructeur](xref:fundamentals/dependency-injection) pour obtenir l’interface `IWebHostEnvironment` afin d’utiliser ses propriétés et méthodes d’extension :</span><span class="sxs-lookup"><span data-stu-id="f3301-373">Use [constructor injection](xref:fundamentals/dependency-injection) to obtain the `IWebHostEnvironment` in order to use its properties and extension methods:</span></span>
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IWebHostEnvironment _env;
+
+    public CustomFileReader(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+<span data-ttu-id="f3301-374">Vous pouvez utiliser une [approche basée sur une convention](xref:fundamentals/environments#environment-based-startup-class-and-methods) pour configurer l’application au démarrage en fonction de l’environnement.</span><span class="sxs-lookup"><span data-stu-id="f3301-374">A [convention-based approach](xref:fundamentals/environments#environment-based-startup-class-and-methods) can be used to configure the app at startup based on the environment.</span></span> <span data-ttu-id="f3301-375">Vous pouvez également injecter `IWebHostEnvironment` dans le constructeur `Startup` pour l’utiliser dans `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="f3301-375">Alternatively, inject the `IWebHostEnvironment` into the `Startup` constructor for use in `ConfigureServices`:</span></span>
+
+```csharp
+public class Startup
+{
+    public Startup(IWebHostEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IWebHostEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> <span data-ttu-id="f3301-376">En plus de la méthode d’extension `IsDevelopment`, `IWebHostEnvironment` fournit les méthodes `IsStaging`, `IsProduction` et `IsEnvironment(string environmentName)`.</span><span class="sxs-lookup"><span data-stu-id="f3301-376">In addition to the `IsDevelopment` extension method, `IWebHostEnvironment` offers `IsStaging`, `IsProduction`, and `IsEnvironment(string environmentName)` methods.</span></span> <span data-ttu-id="f3301-377">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="f3301-377">For more information, see <xref:fundamentals/environments>.</span></span>
+
+<span data-ttu-id="f3301-378">Le service `IWebHostEnvironment` peut également être injecté directement dans la méthode `Configure` pour configurer le pipeline de traitement :</span><span class="sxs-lookup"><span data-stu-id="f3301-378">The `IWebHostEnvironment` service can also be injected directly into the `Configure` method for setting up the processing pipeline:</span></span>
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the Developer Exception Page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+<span data-ttu-id="f3301-379">`IWebHostEnvironment` peut être injecté dans la méthode `Invoke` lors de la création d’un [intergiciel (middleware)](xref:fundamentals/middleware/write) personnalisé :</span><span class="sxs-lookup"><span data-stu-id="f3301-379">`IWebHostEnvironment` can be injected into the `Invoke` method when creating custom [middleware](xref:fundamentals/middleware/write):</span></span>
+
+```csharp
+public async Task Invoke(HttpContext context, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+## <a name="ihostingenvironment-interface"></a><span data-ttu-id="f3301-380">Interface IHostingEnvironment</span><span class="sxs-lookup"><span data-stu-id="f3301-380">IHostingEnvironment interface</span></span>
+
+<span data-ttu-id="f3301-381">[L’interface IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) fournit des informations sur l’environnement d’hébergement web de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-381">The [IHostingEnvironment interface](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) provides information about the app's web hosting environment.</span></span> <span data-ttu-id="f3301-382">Utilisez [l’injection de constructeur](xref:fundamentals/dependency-injection) pour obtenir l’interface `IHostingEnvironment` afin d’utiliser ses propriétés et méthodes d’extension :</span><span class="sxs-lookup"><span data-stu-id="f3301-382">Use [constructor injection](xref:fundamentals/dependency-injection) to obtain the `IHostingEnvironment` in order to use its properties and extension methods:</span></span>
 
 ```csharp
 public class CustomFileReader
@@ -628,7 +746,7 @@ public class CustomFileReader
 }
 ```
 
-<span data-ttu-id="189b7-364">Vous pouvez utiliser une [approche basée sur une convention](xref:fundamentals/environments#environment-based-startup-class-and-methods) pour configurer l’application au démarrage en fonction de l’environnement.</span><span class="sxs-lookup"><span data-stu-id="189b7-364">A [convention-based approach](xref:fundamentals/environments#environment-based-startup-class-and-methods) can be used to configure the app at startup based on the environment.</span></span> <span data-ttu-id="189b7-365">Vous pouvez également injecter `IHostingEnvironment` dans le constructeur `Startup` pour l’utiliser dans `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="189b7-365">Alternatively, inject the `IHostingEnvironment` into the `Startup` constructor for use in `ConfigureServices`:</span></span>
+<span data-ttu-id="f3301-383">Vous pouvez utiliser une [approche basée sur une convention](xref:fundamentals/environments#environment-based-startup-class-and-methods) pour configurer l’application au démarrage en fonction de l’environnement.</span><span class="sxs-lookup"><span data-stu-id="f3301-383">A [convention-based approach](xref:fundamentals/environments#environment-based-startup-class-and-methods) can be used to configure the app at startup based on the environment.</span></span> <span data-ttu-id="f3301-384">Vous pouvez également injecter `IHostingEnvironment` dans le constructeur `Startup` pour l’utiliser dans `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="f3301-384">Alternatively, inject the `IHostingEnvironment` into the `Startup` constructor for use in `ConfigureServices`:</span></span>
 
 ```csharp
 public class Startup
@@ -657,9 +775,9 @@ public class Startup
 ```
 
 > [!NOTE]
-> <span data-ttu-id="189b7-366">En plus de la méthode d’extension `IsDevelopment`, `IHostingEnvironment` fournit les méthodes `IsStaging`, `IsProduction` et `IsEnvironment(string environmentName)`.</span><span class="sxs-lookup"><span data-stu-id="189b7-366">In addition to the `IsDevelopment` extension method, `IHostingEnvironment` offers `IsStaging`, `IsProduction`, and `IsEnvironment(string environmentName)` methods.</span></span> <span data-ttu-id="189b7-367">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="189b7-367">For more information, see <xref:fundamentals/environments>.</span></span>
+> <span data-ttu-id="f3301-385">En plus de la méthode d’extension `IsDevelopment`, `IHostingEnvironment` fournit les méthodes `IsStaging`, `IsProduction` et `IsEnvironment(string environmentName)`.</span><span class="sxs-lookup"><span data-stu-id="f3301-385">In addition to the `IsDevelopment` extension method, `IHostingEnvironment` offers `IsStaging`, `IsProduction`, and `IsEnvironment(string environmentName)` methods.</span></span> <span data-ttu-id="f3301-386">Pour plus d'informations, consultez <xref:fundamentals/environments>.</span><span class="sxs-lookup"><span data-stu-id="f3301-386">For more information, see <xref:fundamentals/environments>.</span></span>
 
-<span data-ttu-id="189b7-368">Le service `IHostingEnvironment` peut également être injecté directement dans la méthode `Configure` pour configurer le pipeline de traitement :</span><span class="sxs-lookup"><span data-stu-id="189b7-368">The `IHostingEnvironment` service can also be injected directly into the `Configure` method for setting up the processing pipeline:</span></span>
+<span data-ttu-id="f3301-387">Le service `IHostingEnvironment` peut également être injecté directement dans la méthode `Configure` pour configurer le pipeline de traitement :</span><span class="sxs-lookup"><span data-stu-id="f3301-387">The `IHostingEnvironment` service can also be injected directly into the `Configure` method for setting up the processing pipeline:</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -679,7 +797,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-<span data-ttu-id="189b7-369">`IHostingEnvironment` peut être injecté dans la méthode `Invoke` lors de la création d’un [intergiciel (middleware)](xref:fundamentals/middleware/write) personnalisé :</span><span class="sxs-lookup"><span data-stu-id="189b7-369">`IHostingEnvironment` can be injected into the `Invoke` method when creating custom [middleware](xref:fundamentals/middleware/write):</span></span>
+<span data-ttu-id="f3301-388">`IHostingEnvironment` peut être injecté dans la méthode `Invoke` lors de la création d’un [intergiciel (middleware)](xref:fundamentals/middleware/write) personnalisé :</span><span class="sxs-lookup"><span data-stu-id="f3301-388">`IHostingEnvironment` can be injected into the `Invoke` method when creating custom [middleware](xref:fundamentals/middleware/write):</span></span>
 
 ```csharp
 public async Task Invoke(HttpContext context, IHostingEnvironment env)
@@ -697,15 +815,86 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 }
 ```
 
-## <a name="iapplicationlifetime-interface"></a><span data-ttu-id="189b7-370">Interface IApplicationLifetime</span><span class="sxs-lookup"><span data-stu-id="189b7-370">IApplicationLifetime interface</span></span>
+::: moniker-end
 
-<span data-ttu-id="189b7-371">[IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) s’utilise pour les opérations post-démarrage et arrêt.</span><span class="sxs-lookup"><span data-stu-id="189b7-371">[IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) allows for post-startup and shutdown activities.</span></span> <span data-ttu-id="189b7-372">Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.</span><span class="sxs-lookup"><span data-stu-id="189b7-372">Three properties on the interface are cancellation tokens used to register `Action` methods that define startup and shutdown events.</span></span>
+::: moniker range=">= aspnetcore-3.0"
 
-| <span data-ttu-id="189b7-373">Jeton d’annulation</span><span class="sxs-lookup"><span data-stu-id="189b7-373">Cancellation Token</span></span>    | <span data-ttu-id="189b7-374">Événement déclencheur</span><span class="sxs-lookup"><span data-stu-id="189b7-374">Triggered when&#8230;</span></span> |
+## <a name="ihostapplicationlifetime-interface"></a><span data-ttu-id="f3301-389">Interface IHostApplicationLifetime</span><span class="sxs-lookup"><span data-stu-id="f3301-389">IHostApplicationLifetime interface</span></span>
+
+<span data-ttu-id="f3301-390">`IHostApplicationLifetime` autorise les activités postérieures au démarrage et à l’arrêt.</span><span class="sxs-lookup"><span data-stu-id="f3301-390">`IHostApplicationLifetime` allows for post-startup and shutdown activities.</span></span> <span data-ttu-id="f3301-391">Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.</span><span class="sxs-lookup"><span data-stu-id="f3301-391">Three properties on the interface are cancellation tokens used to register `Action` methods that define startup and shutdown events.</span></span>
+
+| <span data-ttu-id="f3301-392">Jeton d’annulation</span><span class="sxs-lookup"><span data-stu-id="f3301-392">Cancellation Token</span></span>    | <span data-ttu-id="f3301-393">Événement déclencheur</span><span class="sxs-lookup"><span data-stu-id="f3301-393">Triggered when&#8230;</span></span> |
 | --------------------- | --------------------- |
-| [<span data-ttu-id="189b7-375">ApplicationStarted</span><span class="sxs-lookup"><span data-stu-id="189b7-375">ApplicationStarted</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstarted) | <span data-ttu-id="189b7-376">L’hôte a complètement démarré.</span><span class="sxs-lookup"><span data-stu-id="189b7-376">The host has fully started.</span></span> |
-| [<span data-ttu-id="189b7-377">ApplicationStopped</span><span class="sxs-lookup"><span data-stu-id="189b7-377">ApplicationStopped</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopped) | <span data-ttu-id="189b7-378">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="189b7-378">The host is completing a graceful shutdown.</span></span> <span data-ttu-id="189b7-379">Toutes les requêtes doivent être traitées.</span><span class="sxs-lookup"><span data-stu-id="189b7-379">All requests should be processed.</span></span> <span data-ttu-id="189b7-380">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="189b7-380">Shutdown blocks until this event completes.</span></span> |
-| [<span data-ttu-id="189b7-381">ApplicationStopping</span><span class="sxs-lookup"><span data-stu-id="189b7-381">ApplicationStopping</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopping) | <span data-ttu-id="189b7-382">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="189b7-382">The host is performing a graceful shutdown.</span></span> <span data-ttu-id="189b7-383">Des requêtes peuvent encore être en cours de traitement.</span><span class="sxs-lookup"><span data-stu-id="189b7-383">Requests may still be processing.</span></span> <span data-ttu-id="189b7-384">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="189b7-384">Shutdown blocks until this event completes.</span></span> |
+| `ApplicationStarted`  | <span data-ttu-id="f3301-394">L’hôte a complètement démarré.</span><span class="sxs-lookup"><span data-stu-id="f3301-394">The host has fully started.</span></span> |
+| `ApplicationStopped`  | <span data-ttu-id="f3301-395">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="f3301-395">The host is completing a graceful shutdown.</span></span> <span data-ttu-id="f3301-396">Toutes les requêtes doivent être traitées.</span><span class="sxs-lookup"><span data-stu-id="f3301-396">All requests should be processed.</span></span> <span data-ttu-id="f3301-397">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="f3301-397">Shutdown blocks until this event completes.</span></span> |
+| `ApplicationStopping` | <span data-ttu-id="f3301-398">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="f3301-398">The host is performing a graceful shutdown.</span></span> <span data-ttu-id="f3301-399">Des requêtes peuvent encore être en cours de traitement.</span><span class="sxs-lookup"><span data-stu-id="f3301-399">Requests may still be processing.</span></span> <span data-ttu-id="f3301-400">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="f3301-400">Shutdown blocks until this event completes.</span></span> |
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app, IHostApplicationLifetime appLifetime)
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+<span data-ttu-id="f3301-401">`StopApplication` demande l’arrêt de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-401">`StopApplication` requests termination of the app.</span></span> <span data-ttu-id="f3301-402">La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :</span><span class="sxs-lookup"><span data-stu-id="f3301-402">The following class uses `StopApplication` to gracefully shut down an app when the class's `Shutdown` method is called:</span></span>
+
+```csharp
+public class MyClass
+{
+    private readonly IHostApplicationLifetime _appLifetime;
+
+    public MyClass(IHostApplicationLifetime appLifetime)
+    {
+        _appLifetime = appLifetime;
+    }
+
+    public void Shutdown()
+    {
+        _appLifetime.StopApplication();
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+## <a name="iapplicationlifetime-interface"></a><span data-ttu-id="f3301-403">Interface IApplicationLifetime</span><span class="sxs-lookup"><span data-stu-id="f3301-403">IApplicationLifetime interface</span></span>
+
+<span data-ttu-id="f3301-404">[IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) s’utilise pour les opérations post-démarrage et arrêt.</span><span class="sxs-lookup"><span data-stu-id="f3301-404">[IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) allows for post-startup and shutdown activities.</span></span> <span data-ttu-id="f3301-405">Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.</span><span class="sxs-lookup"><span data-stu-id="f3301-405">Three properties on the interface are cancellation tokens used to register `Action` methods that define startup and shutdown events.</span></span>
+
+| <span data-ttu-id="f3301-406">Jeton d’annulation</span><span class="sxs-lookup"><span data-stu-id="f3301-406">Cancellation Token</span></span>    | <span data-ttu-id="f3301-407">Événement déclencheur</span><span class="sxs-lookup"><span data-stu-id="f3301-407">Triggered when&#8230;</span></span> |
+| --------------------- | --------------------- |
+| [<span data-ttu-id="f3301-408">ApplicationStarted</span><span class="sxs-lookup"><span data-stu-id="f3301-408">ApplicationStarted</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstarted) | <span data-ttu-id="f3301-409">L’hôte a complètement démarré.</span><span class="sxs-lookup"><span data-stu-id="f3301-409">The host has fully started.</span></span> |
+| [<span data-ttu-id="f3301-410">ApplicationStopped</span><span class="sxs-lookup"><span data-stu-id="f3301-410">ApplicationStopped</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopped) | <span data-ttu-id="f3301-411">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="f3301-411">The host is completing a graceful shutdown.</span></span> <span data-ttu-id="f3301-412">Toutes les requêtes doivent être traitées.</span><span class="sxs-lookup"><span data-stu-id="f3301-412">All requests should be processed.</span></span> <span data-ttu-id="f3301-413">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="f3301-413">Shutdown blocks until this event completes.</span></span> |
+| [<span data-ttu-id="f3301-414">ApplicationStopping</span><span class="sxs-lookup"><span data-stu-id="f3301-414">ApplicationStopping</span></span>](/dotnet/api/microsoft.extensions.hosting.iapplicationlifetime.applicationstopping) | <span data-ttu-id="f3301-415">L’hôte effectue un arrêt approprié.</span><span class="sxs-lookup"><span data-stu-id="f3301-415">The host is performing a graceful shutdown.</span></span> <span data-ttu-id="f3301-416">Des requêtes peuvent encore être en cours de traitement.</span><span class="sxs-lookup"><span data-stu-id="f3301-416">Requests may still be processing.</span></span> <span data-ttu-id="f3301-417">L’arrêt est bloqué tant que cet événement n’est pas terminé.</span><span class="sxs-lookup"><span data-stu-id="f3301-417">Shutdown blocks until this event completes.</span></span> |
 
 ```csharp
 public class Startup
@@ -741,7 +930,7 @@ public class Startup
 }
 ```
 
-<span data-ttu-id="189b7-385">[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application.</span><span class="sxs-lookup"><span data-stu-id="189b7-385">[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requests termination of the app.</span></span> <span data-ttu-id="189b7-386">La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :</span><span class="sxs-lookup"><span data-stu-id="189b7-386">The following class uses `StopApplication` to gracefully shut down an app when the class's `Shutdown` method is called:</span></span>
+<span data-ttu-id="f3301-418">[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application.</span><span class="sxs-lookup"><span data-stu-id="f3301-418">[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requests termination of the app.</span></span> <span data-ttu-id="f3301-419">La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :</span><span class="sxs-lookup"><span data-stu-id="f3301-419">The following class uses `StopApplication` to gracefully shut down an app when the class's `Shutdown` method is called:</span></span>
 
 ```csharp
 public class MyClass
@@ -760,20 +949,22 @@ public class MyClass
 }
 ```
 
-## <a name="scope-validation"></a><span data-ttu-id="189b7-387">Validation de l’étendue</span><span class="sxs-lookup"><span data-stu-id="189b7-387">Scope validation</span></span>
+::: moniker-end
 
-<span data-ttu-id="189b7-388">[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) affecte la valeur `true` à [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) si l’environnement de l’application est Développement.</span><span class="sxs-lookup"><span data-stu-id="189b7-388">[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span>
+## <a name="scope-validation"></a><span data-ttu-id="f3301-420">Validation de l’étendue</span><span class="sxs-lookup"><span data-stu-id="f3301-420">Scope validation</span></span>
 
-<span data-ttu-id="189b7-389">Quand `ValidateScopes` est défini sur `true`, le fournisseur de services par défaut vérifie que :</span><span class="sxs-lookup"><span data-stu-id="189b7-389">When `ValidateScopes` is set to `true`, the default service provider performs checks to verify that:</span></span>
+<span data-ttu-id="f3301-421">[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) affecte la valeur `true` à [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) si l’environnement de l’application est Développement.</span><span class="sxs-lookup"><span data-stu-id="f3301-421">[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) sets [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) to `true` if the app's environment is Development.</span></span>
 
-* <span data-ttu-id="189b7-390">Les services délimités ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.</span><span class="sxs-lookup"><span data-stu-id="189b7-390">Scoped services aren't directly or indirectly resolved from the root service provider.</span></span>
-* <span data-ttu-id="189b7-391">Les services Scoped ne sont pas directement ou indirectement injectés dans des singletons.</span><span class="sxs-lookup"><span data-stu-id="189b7-391">Scoped services aren't directly or indirectly injected into singletons.</span></span>
+<span data-ttu-id="f3301-422">Quand `ValidateScopes` est défini sur `true`, le fournisseur de services par défaut vérifie que :</span><span class="sxs-lookup"><span data-stu-id="f3301-422">When `ValidateScopes` is set to `true`, the default service provider performs checks to verify that:</span></span>
 
-<span data-ttu-id="189b7-392">Le fournisseur de services racine est créé quand [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) est appelé.</span><span class="sxs-lookup"><span data-stu-id="189b7-392">The root service provider is created when [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) is called.</span></span> <span data-ttu-id="189b7-393">La durée de vie du fournisseur de services racine correspond à la durée de vie de l’application/du serveur quand le fournisseur démarre avec l’application et qu’il est supprimé quand l’application s’arrête.</span><span class="sxs-lookup"><span data-stu-id="189b7-393">The root service provider's lifetime corresponds to the app/server's lifetime when the provider starts with the app and is disposed when the app shuts down.</span></span>
+* <span data-ttu-id="f3301-423">Les services délimités ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.</span><span class="sxs-lookup"><span data-stu-id="f3301-423">Scoped services aren't directly or indirectly resolved from the root service provider.</span></span>
+* <span data-ttu-id="f3301-424">Les services Scoped ne sont pas directement ou indirectement injectés dans des singletons.</span><span class="sxs-lookup"><span data-stu-id="f3301-424">Scoped services aren't directly or indirectly injected into singletons.</span></span>
 
-<span data-ttu-id="189b7-394">Les services Scoped sont supprimés par le conteneur qui les a créés.</span><span class="sxs-lookup"><span data-stu-id="189b7-394">Scoped services are disposed by the container that created them.</span></span> <span data-ttu-id="189b7-395">Si un service Scoped est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté.</span><span class="sxs-lookup"><span data-stu-id="189b7-395">If a scoped service is created in the root container, the service's lifetime is effectively promoted to singleton because it's only disposed by the root container when app/server is shut down.</span></span> <span data-ttu-id="189b7-396">La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.</span><span class="sxs-lookup"><span data-stu-id="189b7-396">Validating service scopes catches these situations when `BuildServiceProvider` is called.</span></span>
+<span data-ttu-id="f3301-425">Le fournisseur de services racine est créé quand [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) est appelé.</span><span class="sxs-lookup"><span data-stu-id="f3301-425">The root service provider is created when [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) is called.</span></span> <span data-ttu-id="f3301-426">La durée de vie du fournisseur de services racine correspond à la durée de vie de l’application/du serveur quand le fournisseur démarre avec l’application et qu’il est supprimé quand l’application s’arrête.</span><span class="sxs-lookup"><span data-stu-id="f3301-426">The root service provider's lifetime corresponds to the app/server's lifetime when the provider starts with the app and is disposed when the app shuts down.</span></span>
 
-<span data-ttu-id="189b7-397">Pour toujours valider les étendues, notamment dans l’environnement de production, configurez [ServiceProviderOptions](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions) avec [UseDefaultServiceProvider](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usedefaultserviceprovider) sur le créateur d’hôte :</span><span class="sxs-lookup"><span data-stu-id="189b7-397">To always validate scopes, including in the Production environment, configure the [ServiceProviderOptions](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions) with [UseDefaultServiceProvider](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usedefaultserviceprovider) on the host builder:</span></span>
+<span data-ttu-id="f3301-427">Les services Scoped sont supprimés par le conteneur qui les a créés.</span><span class="sxs-lookup"><span data-stu-id="f3301-427">Scoped services are disposed by the container that created them.</span></span> <span data-ttu-id="f3301-428">Si un service Scoped est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté.</span><span class="sxs-lookup"><span data-stu-id="f3301-428">If a scoped service is created in the root container, the service's lifetime is effectively promoted to singleton because it's only disposed by the root container when app/server is shut down.</span></span> <span data-ttu-id="f3301-429">La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.</span><span class="sxs-lookup"><span data-stu-id="f3301-429">Validating service scopes catches these situations when `BuildServiceProvider` is called.</span></span>
+
+<span data-ttu-id="f3301-430">Pour toujours valider les étendues, notamment dans l’environnement de production, configurez [ServiceProviderOptions](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions) avec [UseDefaultServiceProvider](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usedefaultserviceprovider) sur le créateur d’hôte :</span><span class="sxs-lookup"><span data-stu-id="f3301-430">To always validate scopes, including in the Production environment, configure the [ServiceProviderOptions](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions) with [UseDefaultServiceProvider](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usedefaultserviceprovider) on the host builder:</span></span>
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -782,7 +973,7 @@ WebHost.CreateDefaultBuilder(args)
     })
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="189b7-398">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="189b7-398">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="f3301-431">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="f3301-431">Additional resources</span></span>
 
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/linux-nginx>
