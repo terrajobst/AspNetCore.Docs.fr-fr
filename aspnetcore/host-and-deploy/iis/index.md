@@ -5,14 +5,14 @@ description: Découvrez comment héberger des applications ASP.NET Core sur Wind
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/31/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 4cc25cba95b476f1d14aad87564f9777a0530f86
-ms.sourcegitcommit: 4649814d1ae32248419da4e8f8242850fd8679a5
+ms.openlocfilehash: 8131e9b8e6a3bb3643f41a9be57c5bd2e511476c
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975667"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007359"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -239,7 +239,7 @@ Lorsque vous désactivez le Kit de développement logiciel (SDK) Web en transfor
 
 ### <a name="webconfig-file-location"></a>emplacement du fichier web.config
 
-Pour configurer le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) correctement, le fichier *web.config* doit être présent dans le chemin de racine de contenu (généralement le chemin de base de l’application) de l’application déployée. Il s’agit du même emplacement que le chemin physique du site Web fourni à IIS. Le fichier *web.config* est nécessaire à la racine de l’application pour permettre la publication de plusieurs applications à l’aide de Web Deploy.
+Pour configurer correctement le [Module ASP.net Core](xref:host-and-deploy/aspnet-core-module) , le fichier *Web. config* doit être présent au chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) (en général, le chemin d’accès de base de l’application) de l’application déployée. Il s’agit du même emplacement que le chemin physique du site Web fourni à IIS. Le fichier *web.config* est nécessaire à la racine de l’application pour permettre la publication de plusieurs applications à l’aide de Web Deploy.
 
 Il existe des fichiers sensibles sur le chemin physique de l’application, notamment *\<assembly>.runtimeconfig.json*, *\<assembly>.xml* (commentaires de documentation XML) et *\<assembly>.deps.json*. Lorsque le fichier *web.config* est présent et que le site démarre normalement, IIS ne traite pas ces fichiers sensibles s’ils sont demandés. Si le fichier *web.config* est absent, nommé de manière incorrecte ou s’il est incapable de configurer le site pour un démarrage normal, IIS peut traiter des fichiers sensibles publiquement.
 

@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment utiliser des jetons de modification pour effectuer le suivi des modifications.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 08/27/2019
+ms.date: 10/07/2019
 uid: fundamentals/change-tokens
-ms.openlocfilehash: 86cde7b60f5c398fc6bb215b593643c05565cf3c
-ms.sourcegitcommit: 116bfaeab72122fa7d586cdb2e5b8f456a2dc92a
+ms.openlocfilehash: bb30d7a4c7dc82200821c60a49c314b246562111
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384711"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007210"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
@@ -172,7 +172,7 @@ Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions su
 1. Un jeton de modification est obtenu auprès du fournisseur du fichier avec [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*). Le rappel du jeton est déclenché quand le fichier est modifié.
 1. Le contenu du fichier est mis en cache avec une période [d’expiration décalée](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration). Le jeton de modification est attaché avec [MemoryCacheEntryExtensions.AddExpirationToken](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*) pour supprimer l’entrée du cache si le fichier change alors qu’il est mis en cache.
 
-Dans l’exemple suivant, des fichiers sont stockés à la racine du contenu de l’application. `IWebHostEnvironment.ContentRootFileProvider`est utilisé pour obtenir un <xref:Microsoft.Extensions.FileProviders.IFileProvider> pointage au niveau de `IWebHostEnvironment.ContentRootPath`l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
+Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu](xref:fundamentals/index#content-root)de l’application. `IWebHostEnvironment.ContentRootFileProvider` est utilisé pour obtenir une <xref:Microsoft.Extensions.FileProviders.IFileProvider> qui pointe vers le @no__t 2 de l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
@@ -370,7 +370,7 @@ Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions su
 1. Un jeton de modification est obtenu auprès du fournisseur du fichier avec [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*). Le rappel du jeton est déclenché quand le fichier est modifié.
 1. Le contenu du fichier est mis en cache avec une période [d’expiration décalée](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration). Le jeton de modification est attaché avec [MemoryCacheEntryExtensions.AddExpirationToken](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*) pour supprimer l’entrée du cache si le fichier change alors qu’il est mis en cache.
 
-Dans l’exemple suivant, des fichiers sont stockés à la racine du contenu de l’application. [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) est utilisé pour obtenir un <xref:Microsoft.Extensions.FileProviders.IFileProvider> pointant vers <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath> de l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
+Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu](xref:fundamentals/index#content-root)de l’application. [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) est utilisé pour obtenir un <xref:Microsoft.Extensions.FileProviders.IFileProvider> pointant vers <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath> de l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Services/FileService.cs?name=snippet1)]
 

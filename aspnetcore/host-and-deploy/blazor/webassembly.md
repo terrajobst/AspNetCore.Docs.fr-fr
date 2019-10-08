@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application Blazor av
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: cdb424137d80b280873347c1352fc43d23b4aec3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: a0a11f3aed9035000e79844fbec7cdd17b73fdaa
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211628"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007340"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer ASP.NET Core éblouissant webassembly
 
@@ -111,7 +111,7 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
 
 * Désactivez le gestionnaire de module ASP.NET Core hérité.
 
-  Supprimez le gestionnaire dans le fichier *Web. config* publié de l’application éblouissant en ajoutant `<handlers>` une section au fichier :
+  Supprimez le gestionnaire dans le fichier *Web. config* publié de l’application éblouissant en ajoutant une section `<handlers>` au fichier :
 
   ```xml
   <handlers>
@@ -119,7 +119,7 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
   </handlers>
   ```
 
-* Désactivez l’héritage de la section de l' `<system.webServer>` application racine (parent) `inheritInChildApplications` à l' `false`aide d’un `<location>` élément dont la valeur est :
+* Désactivez l’héritage de la section `<system.webServer>` de l’application racine (parent) à l’aide d’un élément `<location>` avec `inheritInChildApplications` défini sur `false` :
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -143,7 +143,7 @@ Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestion
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:test/troubleshoot-azure-iis>.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Stockage Azure
 
 L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l’hébergement d’applications éblouissantes sans serveur. Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
 
@@ -198,7 +198,7 @@ Les [applications Webassembly éblouissantes](xref:blazor/hosting-models#blazor-
 
 ### <a name="content-root"></a>Racine de contenu
 
-L’argument `--contentroot` définit le chemin absolu du répertoire qui contient les fichiers de contenu de l’application. Dans les exemples suivants, `/content-root-path` est le chemin racine du contenu de l’application.
+L’argument `--contentroot` définit le chemin d’accès absolu au répertoire qui contient les fichiers de contenu de l’application ([racine du contenu](xref:fundamentals/index#content-root)). Dans les exemples suivants, `/content-root-path` est le chemin racine du contenu de l’application.
 
 * Passez l’argument lors de l’exécution de l’application localement à une invite de commandes. À partir du répertoire de l’application, exécutez :
 
@@ -220,7 +220,7 @@ L’argument `--contentroot` définit le chemin absolu du répertoire qui contie
 
 ### <a name="path-base"></a>Base du chemin
 
-L' `--pathbase` argument définit le chemin d’accès de base d’application pour une application exécutée localement avec un chemin d’URL relatif `href` non racine (la balise est `/` définie sur un chemin d’accès autre que pour la mise en lots et la `<base>` production). Dans les exemples suivants, `/relative-URL-path` est la base du chemin de l’application. Pour plus d’informations, consultez chemin de la base de l' [application](xref:host-and-deploy/blazor/index#app-base-path).
+L’argument `--pathbase` définit le chemin d’accès de base d’application pour une application exécutée localement avec un chemin d’URL relatif non racine (la balise `<base>` `href` est définie sur un chemin d’accès autre que `/` pour la mise en lots et la production). Dans les exemples suivants, `/relative-URL-path` est la base du chemin de l’application. Pour plus d’informations, consultez chemin de la base de l' [application](xref:host-and-deploy/blazor/index#app-base-path).
 
 > [!IMPORTANT]
 > Contrairement au chemin fourni au `href` de la balise `<base>`, n’incluez pas de barre oblique (`/`) quand vous passez la valeur d’argument `--pathbase`. Si vous spécifiez `<base href="/CoolApp/">` (inclut une barre oblique) comme chemin de base de l’application dans la balise `<base>`, passez `--pathbase=/CoolApp` (aucune barre oblique de fin) comme valeur d’argument de ligne de commande.

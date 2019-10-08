@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le framework de journalisation fourni p
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/11/2019
+ms.date: 10/07/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: bb38ebca3c7b9bb4c28a52c0dad80be9669e1b40
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 9f7b39cc1c557356b75608817db4e8d6f61af794
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924878"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007028"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -925,6 +925,7 @@ Frameworks de journalisation tiers qui sont pris en charge dans ASP.NET Core :
 * [Gelf](https://docs.graylog.org/en/2.3/pages/gelf.html) ([Dépôt GitHub](https://github.com/mattwcole/gelf-extensions-logging))
 * [JSNLog](https://jsnlog.com/) ([dépôt GitHub](https://github.com/mperdeck/jsnlog))
 * [KissLog.net](https://kisslog.net/) ([référentiel GitHub](https://github.com/catalingavan/KissLog-net))
+* [Log4net](https://logging.apache.org/log4net/) ([GitHub référentiel](https://github.com/huorswords/Microsoft.Extensions.Logging.Log4Net.AspNetCore))
 * [Loggr](https://loggr.net/) ([dépôt GitHub](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](https://nlog-project.org/) ([dépôt GitHub](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([dépôt GitHub](https://github.com/getsentry/sentry-dotnet))
@@ -936,7 +937,7 @@ Certains frameworks tiers prennent en charge la [journalisation sémantique, ég
 L’utilisation d’un framework tiers est semblable à l’utilisation des fournisseurs intégrés :
 
 1. Ajoutez un package NuGet à votre projet.
-1. Appeler une `ILoggerFactory` méthode d’extension fournie par le Framework de journalisation.
+1. Appelez une méthode d’extension `ILoggerFactory` fournie par le Framework de journalisation.
 
 Pour plus d’informations, consultez la documentation de chaque fournisseur. Les fournisseurs de journalisation tiers ne sont pas pris en charge par Microsoft.
 

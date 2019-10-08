@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core fournit un accès au système de fi
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/26/2019
+ms.date: 10/07/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 44c439dce893d486668bf8ac3f20cdf7952c5186
-ms.sourcegitcommit: 0774a61a3a6c1412a7da0e7d932dc60c506441fc
-ms.translationtype: HT
+ms.openlocfilehash: 3a92b44efc70d156596ee9fe80b4f6a65266e73d
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70059097"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007168"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -22,7 +22,7 @@ Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guar
 
 ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Des fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core :
 
-* `IWebHostEnvironment` expose la racine web et la racine de contenu de l’application sous la forme de types `IFileProvider`.
+* `IWebHostEnvironment` expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types `IFileProvider`.
 * [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
 * [Razor](xref:mvc/views/razor) utilise des fournisseurs de fichiers pour localiser des pages et des vues.
 * Les outils .NET Core utilisent des fournisseurs de fichiers et des modèles d’utilisation des caractères génériques pour spécifier les fichiers qui doivent être publiés.
@@ -171,7 +171,7 @@ Les chemins de système de fichiers utilisent des modèles à caractères géné
 
 ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Des fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core :
 
-* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> expose la racine web et la racine de contenu de l’application sous la forme de types `IFileProvider`.
+* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types `IFileProvider`.
 * [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
 * [Razor](xref:mvc/views/razor) utilise des fournisseurs de fichiers pour localiser des pages et des vues.
 * Les outils .NET Core utilisent des fournisseurs de fichiers et des modèles d’utilisation des caractères génériques pour spécifier les fichiers qui doivent être publiés.

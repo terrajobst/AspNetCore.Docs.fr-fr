@@ -5,14 +5,14 @@ description: Découvrez la configuration des applications hébergées derrière 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/12/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 3243f5d3254e6585ff9ca48900a3326aa9b6f502
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 5eb69c2a253d1b8c42edd39b64b595898e6fb948
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219174"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007287"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
@@ -252,7 +252,61 @@ if (string.Equals(
 }
 ```
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="certificate-forwarding"></a>Transfert de certificat 
+
+### <a name="azure"></a>Azure
+
+Pour configurer Azure App Service pour le transfert de certificats, consultez [configurer l’authentification mutuelle TLS pour les Azure App service](/azure/app-service/app-service-web-configure-tls-mutual-auth). Les instructions suivantes concernent la configuration de l’application ASP.NET Core.
+
+Dans `Startup.Configure`, ajoutez le code suivant avant l’appel à `app.UseAuthentication();` :
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+
+Configurez l’intergiciel (middleware) de transfert de certificats pour spécifier le nom d’en-tête utilisé par Azure. Dans `Startup.ConfigureServices`, ajoutez le code suivant pour configurer l’en-tête à partir duquel l’intergiciel génère un certificat :
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "X-ARR-ClientCert");
+```
+
+### <a name="other-web-proxies"></a>Autres proxys Web
+
+Si vous utilisez un proxy qui n’est pas IIS ou le Application Request Routing d’Azure App Service (ARR), configurez le proxy pour transférer le certificat qu’il a reçu dans un en-tête HTTP. Dans `Startup.Configure`, ajoutez le code suivant avant l’appel à `app.UseAuthentication();` :
+
+```csharp
+app.UseCertificateForwarding();
+```
+
+Configurez l’intergiciel (middleware) de transfert de certificat pour spécifier le nom d’en-tête. Dans `Startup.ConfigureServices`, ajoutez le code suivant pour configurer l’en-tête à partir duquel l’intergiciel génère un certificat :
+
+```csharp
+services.AddCertificateForwarding(options =>
+    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
+```
+
+Si le proxy n’encodage pas en base64 du certificat (comme c’est le cas avec Nginx), définissez l’option `HeaderConverter`. Prenons l’exemple suivant dans `Startup.ConfigureServices` :
+
+```csharp
+services.AddCertificateForwarding(options =>
+{
+    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
+    options.HeaderConverter = (headerValue) => 
+    {
+        var clientCertificate = 
+           /* some conversion logic to create an X509Certificate2 */
+        return clientCertificate;
+    }
+});
+```
+
+::: moniker-end
+
+## <a name="troubleshoot"></a>Résolution des problèmes
 
 Quand des en-têtes ne sont pas transférés comme prévu, activez la [journalisation](xref:fundamentals/logging/index). Si les journaux ne fournissent pas suffisamment d’informations pour résoudre le problème, énumérez les en-têtes de requête reçus par le serveur. Utilisez le middleware inclus pour écrire les en-têtes de requête dans une réponse d’application, ou consignez les en-têtes dans le fichier journal. 
 
@@ -336,53 +390,6 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 > [!IMPORTANT]
 > Autorisez uniquement des réseaux et des proxies approuvés pour transférer des en-têtes. Sinon, des attaques d’[usurpation d’adresse IP](https://www.iplocation.net/ip-spoofing) sont possibles.
-
-## <a name="certificate-forwarding"></a>Transfert de certificat 
-
-### <a name="on-azure"></a>Sur Azure
-
-Consultez la [documentation Azure](/azure/app-service/app-service-web-configure-tls-mutual-auth) pour configurer Azure Web Apps. Dans la méthode `Startup.Configure` de votre application, ajoutez le code suivant avant d’appeler `app.UseAuthentication();` :
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-Vous devez également configurer le middleware de transfert de certificat pour spécifier le nom d’en-tête utilisé par Azure. Dans la méthode `Startup.ConfigureServices` de votre application, ajoutez le code suivant pour configurer l’en-tête à partir duquel le middleware génère un certificat :
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "X-ARR-ClientCert");
-```
-
-### <a name="with-other-web-proxies"></a>Avec les autres serveurs proxy web
-
-Si vous utilisez un autre proxy qu’IIS ou que le module Application Request Routing d’Azure Web Apps, configurez votre proxy pour transférer le certificat reçu dans un en-tête HTTP. Dans la méthode `Startup.Configure` de votre application, ajoutez le code suivant avant d’appeler `app.UseAuthentication();` :
-
-```csharp
-app.UseCertificateForwarding();
-```
-
-Vous devez également configurer le middleware de transfert de certificat pour spécifier le nom d’en-tête. Dans la méthode `Startup.ConfigureServices` de votre application, ajoutez le code suivant pour configurer l’en-tête à partir duquel le middleware génère un certificat :
-
-```csharp
-services.AddCertificateForwarding(options =>
-    options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
-```
-
-Enfin, si le proxy fait autre chose que coder le certificat au format base64 (comme c’est le cas avec Nginx), définissez l’option `HeaderConverter`. Prenons l’exemple suivant dans `Startup.ConfigureServices` :
-
-```csharp
-services.AddCertificateForwarding(options =>
-{
-    options.CertificateHeader = "YOUR_CUSTOM_HEADER_NAME";
-    options.HeaderConverter = (headerValue) => 
-    {
-        var clientCertificate = 
-           /* some conversion logic to create an X509Certificate2 */
-        return clientCertificate;
-    }
-});
-```
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’outil global REPL HTTP de .NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/29/2019
+ms.date: 10/07/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 086ac141a04ab4a560f2c26fb049ef8a5493dc97
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
-ms.translationtype: HT
+ms.openlocfilehash: c845c28210d6defcb70a520f176b64986ae3d4a6
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187238"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007448"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -134,7 +134,7 @@ Connectez-vous à une API web en exécutant la commande suivante :
 httprepl <ROOT URI>
 ```
 
-`<ROOT URI>` est l’URI de base pour l’API web. Par exemple :
+`<ROOT URI>` est l’URI de base pour l’API web. Exemple :
 
 ```console
 httprepl https://localhost:5001
@@ -146,7 +146,7 @@ Vous pouvez également exécuter la commande suivante à tout moment pendant l�
 connect <ROOT URI>
 ```
 
-Par exemple :
+Exemple :
 
 ```console
 (Disconnected)~ connect https://localhost:5001
@@ -160,7 +160,7 @@ La commande connect ci-dessus tente de trouver automatiquement le document Swagg
 connect <ROOT URI> --swagger <SWAGGER URI>
 ```
 
-Par exemple :
+Exemple :
 
 ```console
 (Disconnected)~ connect https://localhost:5001 --swagger /swagger/v1/swagger.json
@@ -199,7 +199,7 @@ https://localhost:5001/fruits~ ls
 https://localhost:5001/fruits~
 ```
 
-Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Par exemple :
+Vous pouvez également exécuter la commande `ui` pour ouvrir la page de l’interface utilisateur Swagger de l’API web dans un navigateur. Exemple :
 
 ```console
 https://localhost:5001/~ ui
@@ -233,7 +233,7 @@ Les [couleurs](#set-color-preferences) de la boucle REPL HTTP peuvent être pers
 
 *%HOME%/.httpreplprefs*
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 *%USERPROFILE%\\.httpreplprefs*
 
@@ -243,7 +243,7 @@ Le fichier *.httpreplprefs* est chargé au démarrage et ses modifications ne so
 
 ### <a name="view-the-settings"></a>Voir les paramètres
 
-Pour voir les paramètres disponibles, exécutez la commande `pref get`. Par exemple :
+Pour voir les paramètres disponibles, exécutez la commande `pref get`. Exemple :
 
 ```console
 https://localhost:5001/~ pref get
@@ -281,7 +281,7 @@ Quand des clés d’une couleur spécifique ne sont pas définies, des clés plu
 
 ### <a name="set-indentation-size"></a>Définir la taille de la mise en retrait
 
-La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Par exemple :
+La personnalisation de la taille de la mise en retrait de la réponse est actuellement prise en charge pour JSON uniquement. La taille par défaut est de deux espaces. Exemple :
 
 ```json
 [
@@ -347,7 +347,7 @@ pref set editor.command.default "/usr/bin/code"
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -370,7 +370,7 @@ Par défaut, HTTP REPL possède un ensemble de chemins relatifs qu’il utilise 
 - */swagger.json*
 - */swagger/v1/swagger.json*
 
-Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Par exemple :
+Pour utiliser un autre ensemble de chemins de recherche dans votre environnement, définissez la préférence `swagger.searchPaths`. La valeur doit être une liste de chemins relatifs délimités par des barres verticales. Exemple :
 
 ```console
 pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
@@ -490,7 +490,7 @@ Pour émettre une requête HTTP POST :
     https://localhost:5001/people~ post -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
 
     ```json
     {
@@ -585,7 +585,7 @@ Pour émettre une requête HTTP PUT :
     https://localhost:5001/fruits~ put 2 -h Content-Type=application/json
     ```
 
-    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Par exemple :
+    Dans la commande précédente, l’en-tête `Content-Type` de la requête HTTP est défini pour indiquer un type de média de corps de requête JSON. L’éditeur de texte par défaut ouvre un fichier *.tmp* avec un modèle JSON représentant le corps de la requête HTTP. Exemple :
 
     ```json
     {
@@ -790,7 +790,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :
 
-1. Définir inline avec la requête HTTP. Par exemple :
+1. Définir inline avec la requête HTTP. Exemple :
 
   ```console
   https://localhost:5001/people~ post -h Content-Type=application/json
@@ -798,17 +798,99 @@ Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes
 
   Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
 
-1. Définir avant l’envoi de la requête HTTP. Par exemple :
+1. Définir avant l’envoi de la requête HTTP. Exemple :
 
   ```console
   https://localhost:5001/people~ set header Content-Type application/json
   ```
 
-  Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Par exemple :
+  Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Exemple :
 
   ```console
   https://localhost:5001/people~ set header Content-Type
   ```
+
+## <a name="test-secured-endpoints"></a>Tester les points de terminaison sécurisés
+
+La réplication HTTP prend en charge le test des points de terminaison sécurisés via l’utilisation d’en-têtes de requête HTTP. L’authentification de base, les jetons de porteur JWT et l’authentification Digest sont des exemples de modèles d’authentification et d’autorisation pris en charge. Par exemple, vous pouvez envoyer un jeton de porteur à un point de terminaison à l’aide de la commande suivante :
+
+```console
+set header Authorization "bearer <TOKEN VALUE>"
+```
+
+Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur. Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/). Le REPL HTTP définit le jeton du porteur dans un en-tête de requête HTTP et récupère une liste de Azure App Service Web Apps.
+
+1. Connectez-vous à Azure :
+
+    ```azcli
+    az login
+    ```
+
+1. Récupérez votre ID d’abonnement à l’aide de la commande suivante :
+
+    ```azcli
+    az account show --query id
+    ```
+
+1. Copiez votre ID d’abonnement et exécutez la commande suivante :
+
+    ```azcli
+    az account set --subscription "<SUBSCRIPTION ID>"
+    ```
+
+1. Récupérez votre jeton de porteur avec la commande suivante :
+
+    ```azcli
+    az account get-access-token --query accessToken
+    ```
+
+1. Connectez-vous à l’API REST Azure via la réplication HTTP :
+
+    ```console
+    httprepl https://management.azure.com
+    ```
+
+1. Définissez l’en-tête de demande HTTP `Authorization` :
+
+    ```console
+    https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"
+    ```
+
+1. Accédez à l’abonnement :
+
+    ```console
+    https://management.azure.com/> cd subscriptions/<SUBSCRIPTION ID>
+    ```
+
+1. Obtenir la liste des Web Apps Azure App Service de votre abonnement :
+
+    ```console
+    https://management.azure.com/subscriptions/{SUBSCRIPTION ID}> get providers/Microsoft.Web/sites?api-version=2016-08-01
+    ```
+
+    La réponse suivante s’affiche :
+
+    ```console
+    HTTP/1.1 200 OK
+    Cache-Control: no-cache
+    Content-Length: 35948
+    Content-Type: application/json; charset=utf-8
+    Date: Thu, 19 Sep 2019 23:04:03 GMT
+    Expires: -1
+    Pragma: no-cache
+    Strict-Transport-Security: max-age=31536000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    x-ms-correlation-request-id: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-original-request-ids: <em>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</em>
+    x-ms-ratelimit-remaining-subscription-reads: 11999
+    x-ms-request-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    x-ms-routing-request-id: WESTUS:xxxxxxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
+    {
+      "value": [
+        <AZURE RESOURCES LIST>
+      ]
+    }
+    ```
 
 ## <a name="toggle-http-request-display"></a>Activer/désactiver l’affichage des requêtes HTTP
 
@@ -816,14 +898,14 @@ Par défaut, l’affichage de la requête HTTP envoyée est supprimé. Il est po
 
 ### <a name="enable-request-display"></a>Activer l’affichage des requêtes
 
-Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Par exemple :
+Affichez la requête HTTP envoyée en exécutant la commande `echo on`. Exemple :
 
 ```console
 https://localhost:5001/people~ echo on
 Request echoing is on
 ```
 
-Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Par exemple :
+Les requêtes HTTP suivantes dans la session active affichent les en-têtes de requête. Exemple :
 
 ```console
 https://localhost:5001/people~ post
@@ -861,7 +943,7 @@ https://localhost:5001/people~
 
 ### <a name="disable-request-display"></a>Désactiver l’affichage des requêtes
 
-Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Par exemple :
+Supprimez l’affichage de la requête HTTP envoyée en exécutant la commande `echo off`. Exemple :
 
 ```console
 https://localhost:5001/people~ echo off
@@ -870,7 +952,7 @@ Request echoing is off
 
 ## <a name="run-a-script"></a>Exécuter un script
 
-Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Par exemple :
+Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de les stocker dans un fichier texte. Les commandes placées dans le fichier sont de la même forme que celles exécutées manuellement sur la ligne de commande. Les commandes peuvent être exécutées de façon groupée avec la commande `run`. Exemple :
 
 1. Créez un fichier texte contenant un ensemble de commandes délimitées par des sauts de ligne. Pour illustrer ceci, considérez un fichier *people-script.txt* contenant les commandes suivantes :
 
@@ -882,7 +964,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
     get 1
     ```
 
-1. Exécutez la commande `run`, en passant le chemin du fichier texte. Par exemple :
+1. Exécutez la commande `run`, en passant le chemin du fichier texte. Exemple :
 
     ```console
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt

@@ -2,16 +2,17 @@
 title: Hôte web ASP.NET Core
 author: rick-anderson
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 977c1df67c2775870d630f3a1085d5e19cef58f5
-ms.sourcegitcommit: 4115bf0e850c13d4e655beb5ab5e8ff431173cb6
+ms.openlocfilehash: bc18b5490d232758b796d33a62cd8d1a7dd7289f
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981899"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007108"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
@@ -23,7 +24,7 @@ Cet article traite de l’hôte Web, qui reste disponible uniquement pour la com
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 Cet article traite de l’hôte web qui est responsable de l’hébergement des applications web. Pour d’autres types d’applications, utilisez l’[Hôte générique](xref:fundamentals/host/generic-host).
 
@@ -54,7 +55,7 @@ Le code qui appelle `CreateDefaultBuilder` est dans une méthode nommée `Create
 `CreateDefaultBuilder` effectue les tâches suivantes :
 
 * Configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web en utilisant les fournisseurs de configuration d’hébergement de l’application. Pour connaître les options par défaut du serveur Kestrel, consultez <xref:fundamentals/servers/kestrel#kestrel-options>.
-* Définit le chemin retourné par [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) comme racine de contenu.
+* Définit la [racine du contenu](xref:fundamentals/index#content-root) sur le chemin d’accès retourné par [Directory. GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
 * Charge la [configuration de l’hôte](#host-configuration-values) à partir de :
   * Variables d’environnement comportant le préfixe `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`).
   * Arguments de ligne de commande
@@ -120,7 +121,7 @@ La configuration définie par `CreateDefaultBuilder` peut être remplacée et en
 
 ::: moniker-end
 
-La *racine de contenu* détermine l’emplacement où l’hôte recherche les fichiers de contenu, tels que les fichiers de vue MVC. Quand l’application est démarrée à partir du dossier racine du projet, ce dossier est utilisé comme racine de contenu. Il s’agit du dossier par défaut utilisé dans [Visual Studio](https://visualstudio.microsoft.com) et les [modèles dotnet new](/dotnet/core/tools/dotnet-new).
+La [racine de contenu](xref:fundamentals/index#content-root) détermine l’emplacement où l’hôte recherche les fichiers de contenu, tels que les fichiers de vue MVC. Quand l’application est démarrée à partir du dossier racine du projet, ce dossier est utilisé comme racine de contenu. Il s’agit du dossier par défaut utilisé dans [Visual Studio](https://visualstudio.microsoft.com) et les [modèles dotnet new](/dotnet/core/tools/dotnet-new).
 
 Pour plus d’informations sur la configuration d’application, consultez <xref:fundamentals/configuration/index>.
 
@@ -141,7 +142,17 @@ L’hôte utilise l’option qui définit une valeur en dernier. Pour plus d’i
 
 ### <a name="application-key-name"></a>Clé d’application (Nom)
 
+::: moniker range=">= aspnetcore-3.0"
+
+La propriété `IWebHostEnvironment.ApplicationName` est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte. La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application. Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment.applicationname) est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte. La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application. Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :
+
+::: moniker-end
 
 **Clé** : applicationName  
 **Type** : *string*  
@@ -173,7 +184,7 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="content-root"></a>Racine de contenu
 
-Ce paramètre détermine l’emplacement où ASP.NET Core commence la recherche des fichiers de contenu, tels que les vues MVC. 
+Ce paramètre détermine où ASP.NET Core commence à rechercher les fichiers de contenu.
 
 **Clé** : contentRoot  
 **Type** : *string*  
@@ -181,12 +192,17 @@ Ce paramètre détermine l’emplacement où ASP.NET Core commence la recherche 
 **Définition avec** : `UseContentRoot`  
 **Variable d’environnement** : `ASPNETCORE_CONTENTROOT`
 
-La racine de contenu est également utilisée comme chemin de base pour le [paramètre de la racine Web](#web-root). Si le chemin est introuvable, l’hôte ne peut pas démarrer.
+La racine du contenu est également utilisée comme chemin de base pour la [racine Web](xref:fundamentals/index#web-root). Si le chemin d’accès racine du contenu n’existe pas, le démarrage de l’hôte échoue.
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseContentRoot("c:\\<content-root>")
 ```
+
+Pour plus d'informations, voir :
+
+* @no__t 0Fundamentals : Racine du contenu @ no__t-0
+* [Racine Web](#web-root)
 
 ### <a name="detailed-errors"></a>Erreurs détaillées
 
@@ -365,13 +381,13 @@ WebHost.CreateDefaultBuilder(args)
     .UseStartup<TStartup>()
 ```
 
-### <a name="web-root"></a>Racine Web
+### <a name="web-root"></a>Racine web
 
 Définit le chemin relatif des ressources statiques de l’application.
 
 **Clé** : webroot  
 **Type** : *string*  
-**Par défaut** : quand aucune valeur n’est spécifiée, la valeur par défaut est « (Racine de contenu)/wwwroot », si ce chemin existe. Si ce chemin est introuvable, un fournisseur de fichiers no-op est utilisé.  
+**Par défaut** : La valeur par défaut est `wwwroot`. Le chemin d’accès à *{root content}/wwwroot* doit exister. Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.  
 **Définition avec** : `UseWebRoot`  
 **Variable d’environnement** : `ASPNETCORE_WEBROOT`
 
@@ -379,6 +395,11 @@ Définit le chemin relatif des ressources statiques de l’application.
 WebHost.CreateDefaultBuilder(args)
     .UseWebRoot("public")
 ```
+
+Pour plus d'informations, voir :
+
+* @no__t 0Fundamentals : Racine Web @ no__t-0
+* [Racine du contenu](#content-root)
 
 ## <a name="override-configuration"></a>Remplacer la configuration
 
@@ -505,7 +526,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 Produit le même résultat que **Start(RequestDelegate app)** , sauf que l’application répond sur `http://localhost:8080`.
 
-**Start(Action&lt;IRouteBuilder&gt; routeBuilder)**
+**Start (action @ no__t-1IRouteBuilder > routeBuilder)**
 
 Utilisez une instance de `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) pour utiliser le middleware de routage :
 
@@ -539,7 +560,7 @@ Utilisez les requêtes de navigateur suivantes avec l’exemple :
 
 `WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM). L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.
 
-**Start(string url, Action&lt;IRouteBuilder&gt; routeBuilder)**
+**Start (URL de chaîne, action @ no__t-1IRouteBuilder > routeBuilder)**
 
 Utilisez une URL et une instance de `IRouteBuilder` :
 
@@ -560,9 +581,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-Produit le même résultat que **Start(Action&lt;IRouteBuilder&gt; routeBuilder)** , sauf que l’application répond sur `http://localhost:8080`.
+Produit le même résultat que **Start (action @ no__t-1IRouteBuilder > routeBuilder)** , sauf que l’application répond à `http://localhost:8080`.
 
-**StartWith(Action&lt;IApplicationBuilder&gt; app)**
+**StartWith (action @ no__t-1IApplicationBuilder > application)**
 
 Fournissez un délégué pour configurer un `IApplicationBuilder` :
 
@@ -583,7 +604,7 @@ using (var host = WebHost.StartWith(app =>
 
 Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! » `WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM). L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.
 
-**StartWith(string url, Action&lt;IApplicationBuilder&gt; app)**
+**StartWith (String url, action @ no__t-1IApplicationBuilder > app)**
 
 Fournissez une URL et un délégué pour configurer un `IApplicationBuilder` :
 
@@ -602,7 +623,104 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-Produit le même résultat que **StartWith(Action&lt;IApplicationBuilder&gt; app)** , sauf que l’application répond sur `http://localhost:8080`.
+Produit le même résultat que **startwith (action @ no__t-1IApplicationBuilder > application)** , sauf que l’application répond sur `http://localhost:8080`.
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="iwebhostenvironment-interface"></a>Interface IWebHostEnvironment
+
+L’interface `IWebHostEnvironment` fournit des informations sur l’environnement d’hébergement Web de l’application. Utilisez [l’injection de constructeur](xref:fundamentals/dependency-injection) pour obtenir l’interface `IWebHostEnvironment` afin d’utiliser ses propriétés et méthodes d’extension :
+
+```csharp
+public class CustomFileReader
+{
+    private readonly IWebHostEnvironment _env;
+
+    public CustomFileReader(IWebHostEnvironment env)
+    {
+        _env = env;
+    }
+
+    public string ReadFile(string filePath)
+    {
+        var fileProvider = _env.WebRootFileProvider;
+        // Process the file here
+    }
+}
+```
+
+Vous pouvez utiliser une [approche basée sur une convention](xref:fundamentals/environments#environment-based-startup-class-and-methods) pour configurer l’application au démarrage en fonction de l’environnement. Vous pouvez également injecter `IWebHostEnvironment` dans le constructeur `Startup` pour l’utiliser dans `ConfigureServices` :
+
+```csharp
+public class Startup
+{
+    public Startup(IWebHostEnvironment env)
+    {
+        HostingEnvironment = env;
+    }
+
+    public IWebHostEnvironment HostingEnvironment { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        if (HostingEnvironment.IsDevelopment())
+        {
+            // Development configuration
+        }
+        else
+        {
+            // Staging/Production configuration
+        }
+
+        var contentRootPath = HostingEnvironment.ContentRootPath;
+    }
+}
+```
+
+> [!NOTE]
+> En plus de la méthode d’extension `IsDevelopment`, `IWebHostEnvironment` fournit les méthodes `IsStaging`, `IsProduction` et `IsEnvironment(string environmentName)`. Pour plus d'informations, consultez <xref:fundamentals/environments>.
+
+Le service `IWebHostEnvironment` peut également être injecté directement dans la méthode `Configure` pour configurer le pipeline de traitement :
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // In Development, use the Developer Exception Page
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // In Staging/Production, route exceptions to /error
+        app.UseExceptionHandler("/error");
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+`IWebHostEnvironment` peut être injecté dans la méthode `Invoke` lors de la création d’un [intergiciel (middleware)](xref:fundamentals/middleware/write) personnalisé :
+
+```csharp
+public async Task Invoke(HttpContext context, IWebHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        // Configure middleware for Development
+    }
+    else
+    {
+        // Configure middleware for Staging/Production
+    }
+
+    var contentRootPath = env.ContentRootPath;
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ## <a name="ihostingenvironment-interface"></a>Interface IHostingEnvironment
 
@@ -695,6 +813,77 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 }
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+## <a name="ihostapplicationlifetime-interface"></a>Interface IHostApplicationLifetime
+
+`IHostApplicationLifetime` autorise les activités postérieures au démarrage et à l’arrêt. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.
+
+| Jeton d’annulation    | Événement déclencheur |
+| --------------------- | --------------------- |
+| `ApplicationStarted`  | L’hôte a complètement démarré. |
+| `ApplicationStopped`  | L’hôte effectue un arrêt approprié. Toutes les requêtes doivent être traitées. L’arrêt est bloqué tant que cet événement n’est pas terminé. |
+| `ApplicationStopping` | L’hôte effectue un arrêt approprié. Des requêtes peuvent encore être en cours de traitement. L’arrêt est bloqué tant que cet événement n’est pas terminé. |
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app, IHostApplicationLifetime appLifetime)
+    {
+        appLifetime.ApplicationStarted.Register(OnStarted);
+        appLifetime.ApplicationStopping.Register(OnStopping);
+        appLifetime.ApplicationStopped.Register(OnStopped);
+
+        Console.CancelKeyPress += (sender, eventArgs) =>
+        {
+            appLifetime.StopApplication();
+            // Don't terminate the process immediately, wait for the Main thread to exit gracefully.
+            eventArgs.Cancel = true;
+        };
+    }
+
+    private void OnStarted()
+    {
+        // Perform post-startup activities here
+    }
+
+    private void OnStopping()
+    {
+        // Perform on-stopping activities here
+    }
+
+    private void OnStopped()
+    {
+        // Perform post-stopped activities here
+    }
+}
+```
+
+`StopApplication` demande l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :
+
+```csharp
+public class MyClass
+{
+    private readonly IHostApplicationLifetime _appLifetime;
+
+    public MyClass(IHostApplicationLifetime appLifetime)
+    {
+        _appLifetime = appLifetime;
+    }
+
+    public void Shutdown()
+    {
+        _appLifetime.StopApplication();
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 ## <a name="iapplicationlifetime-interface"></a>Interface IApplicationLifetime
 
 [IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) s’utilise pour les opérations post-démarrage et arrêt. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.
@@ -757,6 +946,8 @@ public class MyClass
     }
 }
 ```
+
+::: moniker-end
 
 ## <a name="scope-validation"></a>Validation de l’étendue
 

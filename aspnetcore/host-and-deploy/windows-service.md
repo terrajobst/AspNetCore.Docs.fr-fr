@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 544037a2a1f836e51b4f10551316312ef55c68da
-ms.sourcegitcommit: fe88748b762525cb490f7e39089a4760f6a73a24
+ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71688078"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007297"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -49,7 +49,7 @@ Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écr
 L’élément `IHostBuilder.UseWindowsService`, fourni par le package [Microsoft.Extensions.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices), est appelé lors de la création de l’hôte. Si l’application s’exécute comme un service Windows, la méthode :
 
 * définit la durée de vie de l’hôte sur `WindowsServiceLifetime` ;
-* définit la racine du contenu.
+* Définit la [racine du contenu](xref:fundamentals/index#content-root).
 * Permet la journalisation dans le journal d’événements en utilisant le nom d’application en tant que nom de source par défaut.
   * Vous pouvez configurer le niveau de journalisation à l’aide de la clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.
   * Seuls les administrateurs peuvent créer des sources d’événement. Si une source d’événement ne peut pas être créée en utilisant le nom de l’application, un avertissement est consigné dans la source *Application* source et les journaux d’événements sont désactivés.
@@ -300,12 +300,12 @@ Les services qui interagissent avec les requêtes provenant d’Internet ou d’
 
 ## <a name="configure-endpoints"></a>Configurer des points de terminaison
 
-Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port `ASPNETCORE_URLS` en définissant la variable d’environnement.
+Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port en définissant la variable d’environnement `ASPNETCORE_URLS`.
 
 Pour obtenir d’autres approches de configuration des ports et des URL, notamment la prise en charge des points de terminaison HTTPs, consultez les rubriques suivantes :
 
-* <xref:fundamentals/servers/kestrel#endpoint-configuration>Kestrel
-* <xref:fundamentals/servers/httpsys#configure-windows-server>(HTTP. sys)
+* <xref:fundamentals/servers/kestrel#endpoint-configuration> (Kestrel)
+* <xref:fundamentals/servers/httpsys#configure-windows-server> (HTTP. sys)
 
 > [!NOTE]
 > L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.
@@ -326,7 +326,7 @@ Utilisez les éléments [IHostEnvironment.ContentRootPath](xref:Microsoft.Extens
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Définir le dossier de l’application comme chemin d’accès racine du contenu
 
-La chaîne <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> correspond au même chemin que celui fourni à l’argument `binPath` lorsqu’un service est créé. Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:System.IO.Directory.SetCurrentDirectory*> en utilisant le chemin d’accès à la racine du contenu de l’application.
+La chaîne <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> correspond au même chemin que celui fourni à l’argument `binPath` lorsqu’un service est créé. Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:System.IO.Directory.SetCurrentDirectory*> avec le chemin d’accès à la [racine de contenu](xref:fundamentals/index#content-root)de l’application.
 
 Dans `Program.Main`, définissez le chemin d’accès au dossier du fichier exécutable du service ainsi que le chemin d’accès pour établir la racine du contenu de l’application :
 

@@ -5,14 +5,14 @@ description: Découvrez comment transformer le fichier web.config lors de la pub
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 10/07/2019
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 32e66007d527f7f7b7cfd88d3bebc9b808251941
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: d28c362a200ad433e316bc1af710231a169a30a4
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081459"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007319"
 ---
 # <a name="transform-webconfig"></a>Transformer web.config
 
@@ -23,12 +23,12 @@ Les transformations du fichier *web.config* peuvent être appliquées automatiqu
 * [Configuration de build](#build-configuration)
 * [Profile](#profile)
 * [Environnement](#environment)
-* [Personnalisée](#custom)
+* [Personnalisé](#custom)
 
 Ces transformations se produisent pour l’un des scénarios de génération *web.config* suivants :
 
 * Généré automatiquement par le SDK `Microsoft.NET.Sdk.Web`.
-* Fourni par le développeur dans la racine de contenu de l’application.
+* Fourni par le développeur dans la [racine de contenu](xref:fundamentals/index#content-root) de l’application.
 
 ## <a name="build-configuration"></a>Configuration de build
 

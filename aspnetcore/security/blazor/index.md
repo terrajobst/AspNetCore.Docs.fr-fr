@@ -5,14 +5,14 @@ description: Pour en savoir plus sur les scénarios d’authentification et d’
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/05/2019
 uid: security/blazor/index
-ms.openlocfilehash: b0536b4290cd39397ceb440e0508b75d0373bc88
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 1fcd54e954d09e66b8bb1c9a51ef56193f3acf93
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211720"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007424"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
@@ -29,7 +29,7 @@ Les scénarios de sécurité diffèrent entre le serveur éblouissant et les app
 
 Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
 
-## <a name="authentication"></a>Authentification
+## <a name="authentication"></a>Authentication
 
 Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.
 
@@ -41,7 +41,7 @@ Le modèle de projet de serveur éblouissant peut configurer l’authentificatio
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Suivez les instructions de Visual Studio dans <xref:blazor/get-started> l’article pour créer un projet de serveur éblouissant avec un mécanisme d’authentification.
+Suivez les instructions de Visual Studio dans l’article <xref:blazor/get-started> pour créer un projet de serveur éblouissant avec un mécanisme d’authentification.
 
 Après avoir choisi le modèle **Application serveur Blazor** dans la boîte de dialogue **Créer une application web ASP.NET Core.** , sélectionnez **Modifier** sous **Authentification**.
 
@@ -56,7 +56,7 @@ Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d�
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Suivez les instructions de Visual Studio code dans <xref:blazor/get-started> l’article pour créer un projet de serveur éblouissant avec un mécanisme d’authentification :
+Suivez les instructions de Visual Studio Code dans l’article <xref:blazor/get-started> pour créer un projet de serveur éblouissant avec un mécanisme d’authentification :
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -117,11 +117,13 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 Dans les applications webassembly éblouissantes, les vérifications d’authentification peuvent être ignorées, car le code côté client peut être modifié par les utilisateurs. Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.
 
-L’implémentation d’un `AuthenticationStateProvider` service personnalisé pour les applications webassembly éblouissant est traitée dans les sections suivantes.
+Ajoutez une référence de package pour [Microsoft. AspNetCore. Components. Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) au fichier projet de l’application.
+
+La mise en œuvre d’un service `AuthenticationStateProvider` personnalisé pour les applications de webassembly éblouissant est traitée dans les sections suivantes.
 
 ## <a name="authenticationstateprovider-service"></a>Service AuthenticationStateProvider
 
-Les `AuthenticationStateProvider` applications serveur éblouissantes incluent un service intégré qui obtient des données d’état d’authentification à partir `HttpContext.User`de ASP.net core. Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.
+Les applications serveur éblouissantes incluent un service `AuthenticationStateProvider` intégré qui obtient des données d’état d’authentification à partir du `HttpContext.User` de ASP.NET Core. Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.
 
 `AuthenticationStateProvider` est le service sous-jacent utilisé par le composant `AuthorizeView` et le composant `CascadingAuthenticationState` pour obtenir l’état d’authentification.
 
@@ -131,6 +133,7 @@ Le service `AuthenticationStateProvider` peut fournir les données <xref:System.
 
 ```cshtml
 @page "/"
+@using Microsoft.AspNetCore.Components.Authorization
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
 <button @onclick="@LogUsername">Write user info to console</button>
@@ -159,21 +162,28 @@ Pour plus d’informations sur l’injection de dépendances et les services, co
 
 ## <a name="implement-a-custom-authenticationstateprovider"></a>Implémenter un AuthenticationStateProvider personnalisé
 
-Si vous créez une application de webassembly éblouissant ou si la spécification de votre application requiert absolument un fournisseur personnalisé, implémentez un fournisseur et `GetAuthenticationStateAsync`remplacez :
+Si vous créez une application de webassembly éblouissant ou si la spécification de votre application requiert absolument un fournisseur personnalisé, implémentez un fournisseur et remplacez `GetAuthenticationStateAsync` :
 
 ```csharp
-class CustomAuthStateProvider : AuthenticationStateProvider
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
+
+namespace BlazorSample.Services
 {
-    public override Task<AuthenticationState> GetAuthenticationStateAsync()
+    public class CustomAuthStateProvider : AuthenticationStateProvider
     {
-        var identity = new ClaimsIdentity(new[]
+        public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            new Claim(ClaimTypes.Name, "mrfibuli"),
-        }, "Fake authentication type");
+            var identity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, "mrfibuli"),
+            }, "Fake authentication type");
 
-        var user = new ClaimsPrincipal(identity);
+            var user = new ClaimsPrincipal(identity);
 
-        return Task.FromResult(new AuthenticationState(user));
+            return Task.FromResult(new AuthenticationState(user));
+        }
     }
 }
 ```
@@ -181,10 +191,10 @@ class CustomAuthStateProvider : AuthenticationStateProvider
 Le service `CustomAuthStateProvider` est inscrit dans `Startup.ConfigureServices` :
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
-}
+// using Microsoft.AspNetCore.Components.Authorization;
+// using BlazorSample.Services;
+
+services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
 Avec `CustomAuthStateProvider`, tous les utilisateurs sont authentifiés avec le nom d’utilisateur `mrfibuli`.
@@ -219,9 +229,12 @@ Si les données d’état d’authentification sont requises pour la logique pro
 }
 ```
 
+> [!NOTE]
+> Dans un composant d’application de webassembly éblouissant, ajoutez l’espace de noms `Microsoft.AspNetCore.Components.Authorization` (`@using Microsoft.AspNetCore.Components.Authorization`).
+
 Si `user.Identity.IsAuthenticated` est `true`, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.
 
-Configurez `Task<AuthenticationState>` le paramètre en cascade à `AuthorizeRouteView` l' `CascadingAuthenticationState` aide des composants et :
+Configurez le paramètre en cascade `Task<AuthenticationState>` à l’aide des composants `AuthorizeRouteView` et `CascadingAuthenticationState` :
 
 ```cshtml
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -238,7 +251,7 @@ Configurez `Task<AuthenticationState>` le paramètre en cascade à `AuthorizeRou
 </Router>
 ```
 
-## <a name="authorization"></a>Autorisation
+## <a name="authorization"></a>Authorization
 
 Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* sont appliquées pour contrôler ce que l’utilisateur peut faire.
 
@@ -279,7 +292,7 @@ Vous pouvez également fournir un contenu différent à afficher si l’utilisat
 </AuthorizeView>
 ```
 
-Le contenu des `<Authorized>` balises et `<NotAuthorized>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
+Le contenu des balises `<Authorized>` et `<NotAuthorized>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
 
 Les conditions d’autorisation, comme les rôles ou les stratégies qui contrôlent les options d’interface utilisateur ou d’accès, sont traitées dans la section [Autorisation](#authorization).
 
@@ -335,11 +348,11 @@ Lorsque l’authentification est en cours, `AuthorizeView` n’affiche aucun con
 </AuthorizeView>
 ```
 
-Cette approche n’est normalement pas applicable aux applications serveur éblouissantes. Les applications serveur éblouissantes connaissent l’état d’authentification dès que l’État est établi. `Authorizing`le contenu peut être fourni dans le composant d' `AuthorizeView` une application serveur éblouissant, mais le contenu n’est jamais affiché.
+Cette approche n’est normalement pas applicable aux applications serveur éblouissantes. Les applications serveur éblouissantes connaissent l’état d’authentification dès que l’État est établi. le contenu `Authorizing` peut être fourni dans un composant `AuthorizeView` de l’application de serveur éblouissant, mais le contenu n’est jamais affiché.
 
 ## <a name="authorize-attribute"></a>Attribut [Authorize]
 
-Tout comme une application peut utiliser `[Authorize]` avec un contrôleur MVC ou une page Razor, `[Authorize]` peut également servir avec les Razor Components :
+L’attribut `[Authorize]` peut être utilisé dans les composants Razor :
 
 ```cshtml
 @page "/"
@@ -348,10 +361,11 @@ Tout comme une application peut utiliser `[Authorize]` avec un contrôleur MVC o
 You can only see this if you're signed in.
 ```
 
+> [!NOTE]
+> Dans un composant d’application de webassembly éblouissant, ajoutez l’espace de noms `Microsoft.AspNetCore.Authorization` (`@using Microsoft.AspNetCore.Authorization`) aux exemples de cette section.
+
 > [!IMPORTANT]
 > Utilisez uniquement `[Authorize]` sur les composants `@page` atteints via le routeur Blazor. L’autorisation est effectuée uniquement en tant qu’aspect du routage et *pas* pour les composants enfants rendus dans une page. Pour autoriser l’affichage d’éléments spécifiques dans une page, utilisez `AuthorizeView` à la place.
-
-Vous devrez peut-être ajouter `@using Microsoft.AspNetCore.Authorization` au composant ou au fichier *_Imports.razor* pour que le composant compile.
 
 L’attribut `[Authorize]` prend également en charge l’autorisation en fonction du rôle ou des stratégies. Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :
 
@@ -378,7 +392,7 @@ Si ni `Roles` ni `Policy` n’est spécifié, `[Authorize]` utilise la stratégi
 
 ## <a name="customize-unauthorized-content-with-the-router-component"></a>Personnaliser le contenu non autorisé avec le composant Router
 
-Le `Router` composant, conjointement avec le `AuthorizeRouteView` composant, permet à l’application de spécifier du contenu personnalisé dans les cas suivants :
+Le composant `Router`, conjointement au composant `AuthorizeRouteView`, permet à l’application de spécifier du contenu personnalisé dans les cas suivants :
 
 * Le contenu est introuvable.
 * L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant. L’attribut `[Authorize]` est couvert dans la section [Attribut [Authorize]](#authorize-attribute).
@@ -412,9 +426,9 @@ Dans le modèle de projet de serveur éblouissant, par défaut, le fichier *app.
 </Router>
 ```
 
-Le contenu des `<NotFound>`balises, `<Authorizing>` `<NotAuthorized>`et peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
+Le contenu des balises `<NotFound>`, `<NotAuthorized>` et `<Authorizing>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
 
-Si l' `<NotAuthorized>` élément n’est pas spécifié `AuthorizeRouteView` , le utilise le message de secours suivant :
+Si l’élément `<NotAuthorized>` n’est pas spécifié, la `AuthorizeRouteView` utilise le message de secours suivant :
 
 ```html
 Not authorized.
@@ -460,6 +474,14 @@ Si l’application est nécessaire pour vérifier les règles d’autorisation d
     }
 }
 ```
+
+> [!NOTE]
+> Dans un composant d’application de webassembly éblouissant, ajoutez les espaces de noms `Microsoft.AspNetCore.Authorization` et `Microsoft.AspNetCore.Components.Authorization` :
+>
+> ```cshtml
+> @using Microsoft.AspNetCore.Authorization
+> @using Microsoft.AspNetCore.Components.Authorization
+> ```
 
 ## <a name="authorization-in-blazor-webassembly-apps"></a>Autorisation dans les applications webassembly éblouissantes
 

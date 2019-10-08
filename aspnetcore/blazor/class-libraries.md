@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
 uid: blazor/class-libraries
-ms.openlocfilehash: d9ef276357e95d97b7d89427c5e237aceea7a0d3
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 2e042b43c6db24e0ecac727be100575fe1275e17
+ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71207099"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71999776"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Bibliothèques de classes des composants Razor ASP.NET Core
 
@@ -28,20 +28,20 @@ Tout comme les composants sont des types .NET standard, les composants fournis p
 
 ## <a name="create-an-rcl"></a>Créer un RCL
 
-Suivez les instructions de l' <xref:blazor/get-started> article pour configurer votre environnement pour éblouissant.
+Suivez les instructions de l’article <xref:blazor/get-started> pour configurer votre environnement pour éblouissant.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Créer un nouveau projet.
 1. Sélectionnez **bibliothèque de classes Razor**. Sélectionnez **Suivant**.
 1. Dans la boîte de dialogue **créer une nouvelle bibliothèque de classes Razor** , sélectionnez **créer**.
-1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom `MyComponentLib1`du projet. Sélectionnez **Créer**.
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom de projet `MyComponentLib1`. Sélectionnez **Créer**.
 1. Ajouter RCL à une solution :
-   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter** > un**projet existant**.
+   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter**un  > **projet existant**.
    1. Accédez au fichier projet de RCL.
    1. Sélectionnez le fichier projet de RCL ( *. csproj*).
 1. Ajoutez une référence à l’RCL à partir de l’application :
-   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **Ajouter** > une**référence**.
+   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **ajouter** > **référence**.
    1. Sélectionnez le projet RCL. Sélectionnez **OK**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -65,11 +65,11 @@ Suivez les instructions de l' <xref:blazor/get-started> article pour configurer 
 Pour utiliser des composants définis dans une bibliothèque dans un autre projet, utilisez l’une des approches suivantes :
 
 * Utilisez le nom de type complet avec l’espace de noms.
-* Utilisez la directive [ \@using](xref:mvc/views/razor#using) de Razor. Des composants individuels peuvent être ajoutés par nom.
+* Utilisez la directive [\@using](xref:mvc/views/razor#using) de Razor. Des composants individuels peuvent être ajoutés par nom.
 
-Dans les exemples suivants, `MyComponentLib1` est une bibliothèque de composants contenant `SalesReport` un composant.
+Dans les exemples suivants, `MyComponentLib1` est une bibliothèque de composants contenant un composant `SalesReport`.
 
-Le `SalesReport` composant peut être référencé à l’aide de son nom de type complet avec l’espace de noms :
+Le composant `SalesReport` peut être référencé à l’aide de son nom de type complet avec l’espace de noms :
 
 ```cshtml
 <h1>Hello, world!</h1>
@@ -79,7 +79,7 @@ Welcome to your new app.
 <MyComponentLib1.SalesReport />
 ```
 
-Le composant peut également être référencé si la bibliothèque est placée dans la portée avec une `@using` directive :
+Le composant peut également être référencé si la bibliothèque est placée dans la portée avec une directive `@using` :
 
 ```cshtml
 @using MyComponentLib1
@@ -91,7 +91,7 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-Incluez `@using MyComponentLib1` la directive dans le fichier *_Import. Razor* de niveau supérieur pour mettre les composants de la bibliothèque à la disposition d’un projet entier. Ajoutez la directive à un fichier *_Import. Razor* à n’importe quel niveau pour appliquer l’espace de noms à une seule page ou à un ensemble de pages dans un dossier.
+Incluez la directive `@using MyComponentLib1` dans le fichier *_Import. Razor* de niveau supérieur pour mettre les composants de la bibliothèque à la disposition d’un projet entier. Ajoutez la directive à un fichier *_Import. Razor* à n’importe quel niveau pour appliquer l’espace de noms à une seule page ou à un ensemble de pages dans un dossier.
 
 ## <a name="build-pack-and-ship-to-nuget"></a>Générer, empaqueter et envoyer à NuGet
 
@@ -101,11 +101,7 @@ Incluez `@using MyComponentLib1` la directive dans le fichier *_Import. Razor* d
 dotnet pack
 ```
 
-Téléchargez le package dans NuGet à l’aide de la commande [dotnet NuGet Publish](/dotnet/core/tools/dotnet-nuget-push) dans une interface de commande :
-
-```dotnetcli
-dotnet nuget publish
-```
+Téléchargez le package dans NuGet à l’aide de la commande [dotnet NuGet Push](/dotnet/core/tools/dotnet-nuget-push) dans un interpréteur de commandes.
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>Créer une bibliothèque de classes de composants Razor avec des ressources statiques
 

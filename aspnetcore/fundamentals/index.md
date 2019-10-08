@@ -5,14 +5,14 @@ description: Découvrez les concepts de base permettant de créer des applicatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 uid: fundamentals/index
-ms.openlocfilehash: cff2afd62ed60648dc689d408dde56ecda18c261
-ms.sourcegitcommit: 2d4c1732c4866ed26b83da35f7bc2ad021a9c701
+ms.openlocfilehash: a70d6aa05a2c92d19076b8d6e4ea24d7554368b6
+ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815654"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72007117"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -252,36 +252,57 @@ Pour plus d'informations, consultez <xref:fundamentals/http-requests>.
 
 ## <a name="content-root"></a>Racine de contenu
 
-La racine de contenu est le chemin de base de tout contenu privé utilisé par l’application, comme les fichiers Razor. Par défaut, la racine de contenu est le chemin de base pour l’exécutable qui héberge l’application. Un autre emplacement peut être spécifié lors de la [création de l’hôte](#host).
+La racine du contenu est le chemin d’accès de base à :
+
+* Exécutable hébergeant l’application ( *. exe*).
+* Assemblys compilés qui composent l’application ( *. dll*).
+* Fichiers de contenu sans code utilisés par l’application, tels que :
+  * Fichiers Razor ( *. cshtml*, *. Razor*)
+  * Fichiers de configuration ( *. JSON*, *. xml*)
+  * Fichiers de données ( *. db*)
+* [Racine Web](#web-root), en général le dossier *wwwroot* publié.
+
+Lors du développement :
+
+* La racine du contenu est par défaut le répertoire racine du projet.
+* Le répertoire racine du projet est utilisé pour créer le :
+  * Chemin d’accès aux fichiers de contenu sans code de l’application dans le répertoire racine du projet.
+  * [Racine Web](#web-root), généralement le dossier *wwwroot* dans le répertoire racine du projet.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Pour plus d’informations, consultez [Racine de contenu](xref:fundamentals/host/generic-host#content-root).
+Vous pouvez spécifier un autre chemin d’accès racine [de contenu lors de la génération de l’hôte](#host). Pour plus d'informations, consultez <xref:fundamentals/host/generic-host#contentrootpath>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Pour plus d’informations, consultez [Racine de contenu](xref:fundamentals/host/web-host#content-root).
+Vous pouvez spécifier un autre chemin d’accès racine [de contenu lors de la génération de l’hôte](#host). Pour plus d'informations, consultez <xref:fundamentals/host/web-host#content-root>.
 
 ::: moniker-end
 
 ## <a name="web-root"></a>Racine web
 
-La racine web (également appelée *webroot*) est le chemin d’accès de base aux ressources statiques publiques, telles que les fichiers CSS, JavaScript et image. Par défaut, l’intergiciel (middleware) des fichiers statiques traite uniquement les fichiers provenant du répertoire racine web (et des sous-répertoires). Le chemin d’accès par défaut de la racine web est *{Content Root}/wwwroot*, mais un autre emplacement peut être spécifié lors de la [création de l’hôte](#host).
+La racine Web est le chemin de base des fichiers de ressources statiques, non-code et publics, tels que :
+
+* Feuilles de style ( *. CSS*)
+* JavaScript ( *. js*)
+* Images ( *. png*, *. jpg*)
+
+Les fichiers statiques sont pris en charge par défaut uniquement à partir du répertoire racine Web (et des sous-répertoires).
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Pour plus d’informations, consultez [Webroot](/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0#webroot)
+Le chemin d’accès racine Web a comme valeur par défaut *{content root}/wwwroot*, mais une autre racine Web peut être spécifiée lors de [la génération de l’hôte](#host). Pour plus d'informations, consultez <xref:fundamentals/host/generic-host#webroot>.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Pour plus d’informations, consultez [Racine web](/aspnet/core/fundamentals/host/web-host#webroot).
+Le chemin d’accès racine Web a comme valeur par défaut *{content root}/wwwroot*, mais une autre racine Web peut être spécifiée lors de [la génération de l’hôte](#host). Pour plus d’informations, consultez [Racine web](xref:fundamentals/host/web-host#web-root).
 
 ::: moniker-end
 
-Dans les fichiers Razor ( *.cshtml*), la barre oblique tilde `~/` pointe vers la racine web. Les chemins commençant par `~/` sont appelés chemins virtuels.
+Dans les fichiers Razor ( *. cshtml*), le tilde-slash (`~/`) pointe vers la racine Web. Un chemin d’accès commençant par `~/` est désigné sous le terme de « *chemin d’accès virtuel*».
 
 Pour plus d'informations, consultez <xref:fundamentals/static-files>.
