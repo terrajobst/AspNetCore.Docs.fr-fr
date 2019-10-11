@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: 438b3802087e2ac3df4cbe69a700b878c1cbbf63
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
-ms.translationtype: HT
+ms.openlocfilehash: 3e0966bf978c99fc00db7682bea3292306cbb03c
+ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037423"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72179038"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -194,30 +194,42 @@ La propriété `CaptureUnmatchedValues` sur `[Parameter]` permet au paramètre d
 
 ## <a name="data-binding"></a>Liaison de données
 
-La liaison de données aux composants et aux éléments DOM s’effectue à l’aide de l’attribut [@bind](xref:mvc/views/razor#bind) . L’exemple suivant lie le champ `_italicsCheck` à l’état activé de la case à cocher :
+La liaison de données aux composants et aux éléments DOM s’effectue à l’aide de l’attribut [@bind](xref:mvc/views/razor#bind) . L’exemple suivant lie une propriété `CurrentValue` à la valeur de la zone de texte :
 
 ```cshtml
-<input type="checkbox" class="form-check-input" id="italicsCheck" 
-    @bind="_italicsCheck" />
+<input @bind="CurrentValue" />
+
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
-Lorsque la case à cocher est activée et désactivée, la valeur de la propriété est mise à jour à `true` et `false`, respectivement.
+Lorsque la zone de texte perd le focus, la valeur de la propriété est mise à jour.
 
-La case à cocher est mise à jour dans l’interface utilisateur uniquement lorsque le composant est rendu, et non en réponse à la modification de la valeur de la propriété. Étant donné que les composants s’affichent après l’exécution du code du gestionnaire d’événements, les mises à jour de propriétés sont généralement reflétées dans l’interface utilisateur immédiatement.
+La zone de texte est mise à jour dans l’interface utilisateur uniquement lorsque le composant est rendu, et non en réponse à la modification de la valeur de la propriété. Étant donné que les composants s’affichent après l’exécution du code du gestionnaire d’événements, les mises à jour de propriétés sont *généralement* reflétées dans l’interface utilisateur immédiatement après le déclenchement d’un gestionnaire d’événements.
 
-L’utilisation de `@bind` avec une propriété `CurrentValue` (`<input @bind="CurrentValue" />`) équivaut essentiellement à ce qui suit :
+L’utilisation de `@bind` avec la propriété `CurrentValue` (`<input @bind="CurrentValue" />`) équivaut essentiellement à ce qui suit :
 
 ```cshtml
 <input value="@CurrentValue"
-    @onchange="@((ChangeEventArgs __e) => CurrentValue = __e.Value)" />
+    @onchange="@((ChangeEventArgs __e) => CurrentValue = 
+        __e.Value.ToString())" />
+        
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
-Lors du rendu du composant, le `value` de l’élément d’entrée provient de la propriété `CurrentValue`. Lorsque l’utilisateur tape dans la zone de texte, l’événement `onchange` est déclenché et la propriété `CurrentValue` est définie sur la valeur modifiée. En réalité, la génération de code est un peu plus complexe, car `@bind` gère quelques cas où des conversions de type sont effectuées. En principe, `@bind` associe la valeur actuelle d’une expression à un attribut `value` et gère les modifications à l’aide du gestionnaire inscrit.
+Lors du rendu du composant, le `value` de l’élément d’entrée provient de la propriété `CurrentValue`. Lorsque l’utilisateur tape dans la zone de texte et modifie le focus de l’élément, l’événement `onchange` est déclenché et la propriété `CurrentValue` est définie sur la valeur modifiée. En réalité, la génération de code est plus complexe, car `@bind` gère les cas où les conversions de type sont effectuées. En principe, `@bind` associe la valeur actuelle d’une expression à un attribut `value` et gère les modifications à l’aide du gestionnaire inscrit.
 
 En plus de gérer les événements `onchange` avec la syntaxe `@bind`, une propriété ou un champ peut être lié à l’aide d’autres événements en spécifiant un attribut [@bind-value](xref:mvc/views/razor#bind) avec un paramètre `event` ([@bind-value:event](xref:mvc/views/razor#bind)). L’exemple suivant lie la propriété `CurrentValue` pour l’événement `oninput` :
 
 ```cshtml
 <input @bind-value="CurrentValue" @bind-value:event="oninput" />
+
+@code {
+    private string CurrentValue { get; set; }
+}
 ```
 
 Contrairement à `onchange`, qui se déclenche lorsque l’élément perd le focus, `oninput` se déclenche lorsque la valeur de la zone de texte change.

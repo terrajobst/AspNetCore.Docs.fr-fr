@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/08/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 5d02e1eb37693881d5b1855e1ed163590d8a44d3
-ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
-ms.translationtype: HT
+ms.openlocfilehash: 8f5c3aabf17e78ae9675048602317c54f08e82a7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165309"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259817"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -154,7 +154,7 @@ public void Configure(IApplicationBuilder app)
 1. Gestion des erreurs/exceptions
    * Quand l’application s’exécute dans l’environnement de développement :
      * Le middleware Page d’exceptions du développeur (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) signale des erreurs de runtime de l’application.
-     * Le middleware Page d’erreur de base de données (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) signale des erreurs de runtime de la base de données.
+     * Le middleware Page d’erreur de base de données (`Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage`) signale des erreurs de runtime de la base de données.
    * Quand l’application s’exécute dans l’environnement de production :
      * Le middleware Gestionnaire d'exceptions (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) intercepte des exceptions levées dans les middlewares suivants.
      * Le middleware Protocole HSTS (HTTP Strict Transport Security) (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) ajoute l’en-tête `Strict-Transport-Security`.
