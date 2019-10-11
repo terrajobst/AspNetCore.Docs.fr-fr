@@ -310,7 +310,7 @@
           uid: blazor/debug
         - name: Appeler une API web
           uid: blazor/call-web-api
-        - name: Hébergement et déploiement
+        - name: Héberger et déployer
           items:
             - name: Vue d'ensemble
               uid: host-and-deploy/blazor/index
@@ -507,7 +507,7 @@
         - name: Informations de référence sur l’API JavaScript
           href: /javascript/api/?view=signalr-js-latest
           displayName: signalr
-    - name: Hébergement et mise à l'échelle
+    - name: Hôte et mise à l’échelle
       displayName: signalr
       items:
         - name: Vue d'ensemble
@@ -661,13 +661,13 @@
           href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
         - name: Stockage de tables
           href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: Hébergement et déploiement
+- name: Héberger et déployer
   displayName: publish
   items:
     - name: Vue d'ensemble
       displayName: 'azure, deploy, publish'
       uid: host-and-deploy/index
-    - name: Héberger sur Azure App Service
+    - name: Azure App Service
       displayName: 'deploy, publish'
       items:
         - name: Vue d'ensemble
@@ -717,7 +717,7 @@
         - name: Étapes suivantes
           displayName: 'azure, deploy, publish'
           uid: azure/devops/next-steps
-    - name: Héberger sur Windows avec IIS
+    - name: IIS
       displayName: 'deploy, publish'
       items:
         - name: Vue d'ensemble
@@ -749,16 +749,16 @@
     - name: HTTP.sys
       displayName: 'deploy, publish, server'
       uid: fundamentals/servers/httpsys
-    - name: Héberger dans un service Windows
+    - name: Service Windows
       displayName: 'deploy, publish'
       uid: host-and-deploy/windows-service
-    - name: Héberger sur Linux avec Nginx
+    - name: Linux avec Nginx
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-nginx
-    - name: Héberger sur Linux avec Apache
+    - name: Linux avec Apache
       displayName: 'deploy, publish'
       uid: host-and-deploy/linux-apache
-    - name: Héberger dans Docker
+    - name: Docker
       displayName: 'deploy, publish'
       items:
         - name: Vue d'ensemble
@@ -779,7 +779,7 @@
     - name: Configuration des proxys et des équilibreurs de charge
       displayName: 'deploy, publish'
       uid: host-and-deploy/proxy-load-balancer
-    - name: Héberger dans une batterie de serveurs web
+    - name: Batterie de serveurs web
       displayName: 'deploy, publish'
       uid: host-and-deploy/web-farm
     - name: Profils de publication Visual Studio
