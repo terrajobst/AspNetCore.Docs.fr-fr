@@ -1,18 +1,18 @@
 ---
 title: Journalisation dans .NET Core et ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Découvrez comment utiliser le framework de journalisation fourni par le package NuGet Microsoft.Extensions.Logging.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/08/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 9f7b39cc1c557356b75608817db4e8d6f61af794
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 697e6cf0cd1b51ad6c2942e21bc084d1fe6bfa4e
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007028"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259735"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -22,7 +22,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Steve Smith](https://ardalis.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. Les parties spécifiques à la journalisation de ces extraits de code s’appliquent à n’importe quelle application .NET Core qui utilise l’[hôte générique](xref:fundamentals/host/generic-host). Pour plus d’informations sur l’utilisation de l’hôte générique dans les applications de console non web, consultez [Services hébergés](xref:fundamentals/host/hosted-services).
+La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. Les parties spécifiques à la journalisation de ces extraits de code s’appliquent à n’importe quelle application .NET Core qui utilise l' [hôte générique](xref:fundamentals/host/generic-host). Pour plus d’informations sur l’utilisation de l’hôte générique dans les applications de console non web, consultez [Services hébergés](xref:fundamentals/host/hosted-services).
 
 Le code de journalisation pour les applications sans hôte générique diffère dans la façon dont les [fournisseurs sont ajoutés](#add-providers) et les [enregistreurs d'événements créés](#create-logs). Des exemples de code non hôte sont présentés dans ces sections de l’article.
 
@@ -394,8 +394,12 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
 
-* En production, envoyez `Trace` au niveau `Information` dans un magasin de données de volume. Envoyez `Warning` au niveau `Critical` à un magasin de données de valeurs.
-* Pendant le développement, envoyez `Warning` au niveau `Critical` à la console et ajoutez `Trace` au niveau `Information` lors de la résolution des problèmes.
+* En production :
+  * La journalisation au niveau du `Trace` à `Information` génère un volume important de messages de journal détaillés. Pour contrôler les coûts et ne pas dépasser les limites de stockage des données, consignez `Trace` par le biais de messages de niveau `Information` dans un magasin de données volumineux et à faible coût.
+  * La journalisation au niveau de `Warning` à `Critical` génère généralement moins de messages journaux plus petits. Par conséquent, les coûts et les limites de stockage ne sont généralement pas un problème, ce qui se traduit par une plus grande flexibilité du choix des magasins de données.
+* Lors du développement :
+  * Consignez les messages `Warning` à `Critical` dans la console.
+  * Ajoutez `Trace` à `Information` messages lors de la résolution des problèmes.
 
 La section [Filtrage de log](#log-filtering) plus loin dans cet article explique comment déterminer les niveaux de journalisation gérés par un fournisseur.
 

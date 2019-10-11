@@ -5,14 +5,14 @@ description: Découvrez le middleware ASP.NET Core et le pipeline de requête.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/22/2019
+ms.date: 10/08/2019
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 674e89cd22ce113474dfbba44b57d9255446fc3e
-ms.sourcegitcommit: f65d8765e4b7c894481db9b37aa6969abc625a48
-ms.translationtype: MT
+ms.openlocfilehash: 5d02e1eb37693881d5b1855e1ed163590d8a44d3
+ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773780"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165309"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -68,18 +68,30 @@ La méthode `Startup.Configure` suivante ajoute des composants middleware utiles
 1. Gestion des erreurs/exceptions
    * Quand l’application s’exécute dans l’environnement de développement :
      * Le middleware Page d’exceptions du développeur (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) signale des erreurs de runtime de l’application.
-     * Le middleware Page d’erreur de base de données (<xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*>) signale des erreurs de runtime de la base de données.
+     * L’intergiciel (middleware) de page d’erreur de base de données signale des erreurs d’exécution.
    * Quand l’application s’exécute dans l’environnement de production :
      * Le middleware Gestionnaire d'exceptions (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) intercepte des exceptions levées dans les middlewares suivants.
      * Le middleware Protocole HSTS (HTTP Strict Transport Security) (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) ajoute l’en-tête `Strict-Transport-Security`.
 1. Le middleware Redirection HTTPS (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) redirige les requêtes HTTP vers HTTPS.
 1. Le middleware Fichier statique (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) retourne des fichiers statiques et court-circuite tout traitement supplémentaire de la requête.
 1. Le middleware Stratégie des cookies (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) met l’application en conformité avec les réglementation du RGPD (Règlement général sur la protection des données).
-1. Intergiciel (middleware)`UseRouting`de routage () pour acheminer les demandes.
+1. Le middleware de routage (`UseRouting`) pour acheminer les demandes.
 1. Le middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) tente d’authentifier l’utilisateur avant qu’il ne soit autorisé à accéder aux ressources sécurisées.
 1. L’intergiciel (`UseAuthorization`) d’autorisation autorise un utilisateur à accéder à des ressources sécurisées.
 1. Le middleware Session (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) établit et maintient l’état de la session. Si l’application utilise l’état de session, appelez le middleware après le middleware Stratégie des cookies et avant le middleware MVC.
-1. Intergiciel (middleware) de`UseEndpoints` routage `MapRazorPages`des points de terminaison (avec) pour ajouter des points de terminaison de Razor pages au pipeline de requêtes.
+1. Intergiciel (middleware) de routage des points de terminaison (`UseEndpoints` avec `MapRazorPages`) pour ajouter des points de terminaison Razor Pages au pipeline de requête.
+
+<!--
+
+FUTURE UPDATE
+
+On the next topic overhaul/release update, add API crosslink to "Database Error Page Middleware" in Item 1 of the list ...
+
+Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage*
+
+... when available via the API docs.
+
+-->
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -210,7 +222,7 @@ Les extensions <xref:Microsoft.AspNetCore.Builder.MapExtensions.Map*> sont utili
 
 Le tableau suivant présente les requêtes et les réponses de `http://localhost:1234` avec le code précédent.
 
-| Requête             | response                     |
+| Demande             | Réponse                     |
 | ------------------- | ---------------------------- |
 | localhost:1234      | Hello from non-Map delegate. |
 | localhost:1234/map1 | Map Test 1                   |
@@ -225,7 +237,7 @@ Quand `Map` est utilisé, les segments de chemin mis en correspondance sont supp
 
 Le tableau suivant présente les requêtes et les réponses de `http://localhost:1234` avec le code précédent.
 
-| Requête                       | response                     |
+| Demande                       | Réponse                     |
 | ----------------------------- | ---------------------------- |
 | localhost:1234                | Hello from non-Map delegate. |
 | localhost:1234/?branch=master | Branch used = master         |
@@ -270,7 +282,7 @@ ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *O
 | [Routage du point de terminaison](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
 | [Session](xref:fundamentals/app-state) | Prend en charge la gestion des sessions utilisateur. | Avant les composants qui nécessitent la session. |
 | [Fichiers statiques](xref:fundamentals/static-files) | Prend en charge le traitement des fichiers statiques et l’exploration des répertoires. | Terminal si une requête correspond à un fichier. |
-| [URL Rewrite](xref:fundamentals/url-rewriting) | Prend en charge la réécriture d’URL et la redirection des requêtes. | Avant les composants qui consomment l’URL. |
+| [Réécriture d’URL](xref:fundamentals/url-rewriting) | Prend en charge la réécriture d’URL et la redirection des requêtes. | Avant les composants qui consomment l’URL. |
 | [WebSockets](xref:fundamentals/websockets) | Autorise le protocole WebSockets. | Avant les composants qui sont nécessaires pour accepter les requêtes WebSocket. |
 
 ## <a name="additional-resources"></a>Ressources supplémentaires

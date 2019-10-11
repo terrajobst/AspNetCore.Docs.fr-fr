@@ -5,14 +5,14 @@ description: Découvrez la prise en charge du débogage des applications ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/08/2019
+ms.date: 10/10/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: f2d5dbbdc80eec035616ddea234ee5d3343eeae8
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: e5da4f7202bf31e65c366d6f7de54212f5b0fed7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815180"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259800"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -58,7 +58,7 @@ IIS doit avoir un site web configuré avec les éléments suivants :
 
 Pour un nouveau projet qui exige le protocole HTTPS, cochez la case **Configurer pour HTTPS** dans la fenêtre **Créer une application web ASP.NET Core** afin d’ajouter [Redirection HTTPS et middleware HSTS](xref:security/enforcing-ssl) à l’application lors de sa création.
 
-Pour un projet existant qui exige le protocole HTTPS, utilisez Redirection HTTPS et middleware HSTS dans `Startup.Configure`. Pour plus d’informations, consultez <xref:security/enforcing-ssl>.
+Pour un projet existant qui exige le protocole HTTPS, utilisez Redirection HTTPS et middleware HSTS dans `Startup.Configure`. Pour plus d'informations, consultez <xref:security/enforcing-ssl>.
 
 Pour un projet qui utilise le protocole HTTP, [Redirection HTTPS et middleware HSTS](xref:security/enforcing-ssl) ne sont pas ajoutés à l’application. Aucune configuration de l’application n’est nécessaire.
 
@@ -140,7 +140,7 @@ Vérifiez que les points de terminaison `applicationUrl` et `launchUrl` coïncid
 Exécutez Visual Studio en tant qu’administrateur :
 
 * Vérifiez que la liste déroulante des configurations de build est définie sur **Déboguer**.
-* Définissez le bouton Exécuter sur le profil **IIS** et sélectionnez le bouton pour démarrer l’application.
+* Définissez le [bouton Démarrer le débogage](/visualstudio/debugger/debugger-feature-tour) sur le profil **IIS** , puis sélectionnez le bouton pour démarrer l’application.
 
 Visual Studio peut demander un redémarrage si vous ne l’exécutez pas en tant qu’administrateur. Si vous y êtes invité, redémarrez Visual Studio.
 

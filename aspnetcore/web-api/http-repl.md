@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: web-api/http-repl
-ms.openlocfilehash: c845c28210d6defcb70a520f176b64986ae3d4a6
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: bb3757f51487a307ebfb97452b80995f84e95e4b
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007448"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037712"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -50,7 +50,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
 
-## <a name="usage"></a>Utilisation
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer la boucle REPL HTTP :
 
@@ -790,25 +790,25 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 Pour définir un en-tête de requête HTTP, utilisez une des approches suivantes :
 
-1. Définir inline avec la requête HTTP. Exemple :
+* Définir inline avec la requête HTTP. Exemple :
 
-  ```console
-  https://localhost:5001/people~ post -h Content-Type=application/json
-  ```
+    ```console
+    https://localhost:5001/people~ post -h Content-Type=application/json
+    ```
+    
+    Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
 
-  Avec l’approche précédente, chaque en-tête de requête HTTP distinct nécessite sa propre option `-h`.
+* Définir avant l’envoi de la requête HTTP. Exemple :
 
-1. Définir avant l’envoi de la requête HTTP. Exemple :
-
-  ```console
-  https://localhost:5001/people~ set header Content-Type application/json
-  ```
-
-  Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Exemple :
-
-  ```console
-  https://localhost:5001/people~ set header Content-Type
-  ```
+    ```console
+    https://localhost:5001/people~ set header Content-Type application/json
+    ```
+    
+    Si l’en-tête est défini avant l’envoi d’une requête, l’en-tête reste défini pour la durée de la session de l’interpréteur de commandes. Pour effacer l’en-tête, spécifiez une valeur vide. Exemple :
+    
+    ```console
+    https://localhost:5001/people~ set header Content-Type
+    ```
 
 ## <a name="test-secured-endpoints"></a>Tester les points de terminaison sécurisés
 

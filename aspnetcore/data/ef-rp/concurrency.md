@@ -1,17 +1,17 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
-author: tdykstra
+author: rick-anderson
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: c9cbf8fd3ed85f32b3c166bf2df702fd26df4fc3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 944e746624bf5fe7c586a521059fa4eb34b0f1e7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080987"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259382"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -162,7 +162,7 @@ Générez le projet.
 
 ---
 
-Cette commande :
+Commande suivante :
 
 * Crée le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.
 * Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*. La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
@@ -518,7 +518,7 @@ Suivez les instructions fournies dans [Générer automatiquement le modèle d’
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Exécutez la commande suivante :
+ Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries

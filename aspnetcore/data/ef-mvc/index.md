@@ -1,22 +1,22 @@
 ---
 title: MVC ASP.NET Core avec EF Core - Série de didacticiels
-author: tdykstra
+author: rick-anderson
 description: ''
 ms.author: riande
 ms.date: 03/27/2017
 uid: data/ef-mvc/index
-ms.openlocfilehash: 06f271dbe77e25e164c74bbca06e6d1cec70c4a6
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 9d0be37a5eacb42723fda89a87385ed184f255fb
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975061"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259660"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>MVC ASP.NET Core avec EF Core - Série de didacticiels
 
 [!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
-1. [Prise en main](xref:data/ef-mvc/intro)
+1. [Bien démarrer](xref:data/ef-mvc/intro)
 1. [Opérations de création, de lecture, de mise à jour et de suppression](xref:data/ef-mvc/crud)
 1. [Tri, filtrage, pagination et regroupement](xref:data/ef-mvc/sort-filter-page)
 1. [Migrations](xref:data/ef-mvc/migrations)

@@ -1,18 +1,18 @@
 ---
 title: 'Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 843ac3523f3ab4bd43f8970ff8e8e2f997fec4d2
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: f0c5bcff4c4b0808f9b4703e1429c3a6d1a7a2d7
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975079"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259720"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 
@@ -199,15 +199,15 @@ Le contexte de base de données effectue le suivi de la synchronisation ou non d
 
 Une entité peut être dans un des états suivants :
 
-* `Added`. L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+* `Added` . L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
 
-* `Unchanged`. La méthode `SaveChanges` ne doit rien faire avec cette entité. Quand vous lisez une entité dans la base de données, l’entité a d’abord cet état.
+* `Unchanged` . La méthode `SaveChanges` ne doit rien faire avec cette entité. Quand vous lisez une entité dans la base de données, l’entité a d’abord cet état.
 
-* `Modified`. Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+* `Modified` . Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
 
-* `Deleted`. L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+* `Deleted` . L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
 
-* `Detached`. L’entité n’est pas suivie par le contexte de base de données.
+* `Detached` . L’entité n’est pas suivie par le contexte de base de données.
 
 Dans une application de poste de travail, les changements d’état sont généralement définis automatiquement. Vous lisez une entité et vous apportez des modifications à certaines de ses valeurs de propriété. Son état passe alors automatiquement à `Modified`. Quand vous appelez `SaveChanges`, Entity Framework génère une instruction SQL UPDATE qui met à jour seulement les propriétés que vous avez modifiées.
 

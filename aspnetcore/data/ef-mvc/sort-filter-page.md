@@ -1,21 +1,21 @@
 ---
 title: 'Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core'
-description: Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
-author: tdykstra
+description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de pagination à la page d’Index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
+author: rick-anderson
 ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 7a5f617b00cceb007f37ca1e585c4c7ff1831b56
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: c4d50b72c5508d52b17c6754b6d8e77c1a3903b6
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975221"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259346"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core
 
-Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour les entités Student. Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
+Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour les entités Student. Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de pagination à la page d’Index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 
 L’illustration suivante montre à quoi ressemblera la page quand vous aurez terminé. Les en-têtes des colonnes sont des liens sur lesquels l’utilisateur peut cliquer pour trier selon les colonnes. Cliquer de façon répétée sur un en-tête de colonne permet de changer l’ordre de tri (croissant ou décroissant).
 
@@ -45,22 +45,22 @@ Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant 
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
-Ce code reçoit un paramètre `sortOrder` à partir de la chaîne de requête dans l’URL. La valeur de chaîne de requête est fournie par ASP.NET Core MVC en tant que paramètre à la méthode d’action. Le paramètre sera la chaîne « Name » ou « Date », éventuellement suivie d’un trait de soulignement et de la chaîne « desc » pour spécifier l’ordre décroissant. L'ordre de tri par défaut est le tri croissant.
+Ce code reçoit un paramètre `sortOrder` de la chaîne de requête dans l’URL. La valeur de chaîne de requête est fournie par ASP.NET Core MVC en tant que paramètre à la méthode d’action. Le paramètre sera une chaîne qui est « Name » ou « Date », éventuellement suivie d’un trait de soulignement et de la chaîne « desc » pour spécifier l’ordre décroissant. L'ordre de tri par défaut est le tri croissant.
 
-La première fois que la page d’index est demandée, il n’y a pas de chaîne de requête. Les étudiants sont affichés dans l’ordre croissant par leur nom, ce qui correspond au paramétrage par défaut de l’instruction `switch`. Quand l’utilisateur clique sur un lien hypertexte d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la chaîne de requête.
+La première fois que la page d’Index est demandée, il n’existe aucune chaîne de requête. Les étudiants sont affichés dans l’ordre croissant par nom, qui est le classement par défaut établi dans ce cas dans l'instruction `switch`. Quand l’utilisateur clique sur un lien hypertexte d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la chaîne de requête.
 
 Les deux éléments `ViewData` (NameSortParm et DateSortParm) sont utilisés par la vue pour configurer les liens hypertexte d’en-tête de colonne avec les valeurs de chaîne de requête appropriées.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
 
-Il s’agit d’instructions ternaires. La première spécifie que si le paramètre `sortOrder` est null ou vide, NameSortParm doit être défini sur « name_desc » ; sinon, il doit être défini sur une chaîne vide. Ces deux instructions permettent à la vue de définir les liens hypertexte d’en-tête de colonne comme suit :
+Il s’agit d’instructions ternaires. La première condition spécifie que si le paramètre `sortOrder` est null ou vide, NameSortParm doit être défini sur « name_desc » ; sinon, il doit être défini sur une chaîne vide. Ces deux instructions permettent à la vue de définir les liens hypertexte de titre de colonne comme suit :
 
-|  Ordre de tri actuel  | Lien hypertexte Nom de famille | Lien hypertexte Date |
+|  Ordre de tri en cours  | Lien hypertexte du nom | Lien hypertexte Date |
 |:--------------------:|:-------------------:|:--------------:|
-| Nom de famille croissant  | descending          | ascending      |
-| Nom de famille décroissant | ascending           | ascending      |
-| Date croissante       | ascending           | descending     |
-| Date décroissante      | ascending           | ascending      |
+| Nom de famille croissant  | décroissant          | croissant      |
+| Nom en ordre décroissant | croissant           | croissant      |
+| Date par ordre croissant       | croissant           | décroissant     |
+| Date par ordre décroissant      | croissant           | croissant      |
 
 La méthode utilise LINQ to Entities pour spécifier la colonne d’après laquelle effectuer le tri. Le code crée une variable `IQueryable` avant l’instruction switch, la modifie dans l’instruction switch et appelle la méthode `ToListAsync` après l’instruction `switch`. Lorsque vous créez et modifiez des variables `IQueryable`, aucune requête n’est envoyée à la base de données. La requête n’est pas exécutée tant que vous ne convertissez pas l’objet `IQueryable` en collection en appelant une méthode telle que `ToListAsync`. Par conséquent, ce code génère une requête unique qui n’est pas exécutée avant l’instruction `return View`.
 
@@ -119,7 +119,7 @@ Si vous marquez cette page d’un signet, vous obtenez la liste filtrée lorsque
 
 ## <a name="add-paging-to-students-index"></a>Ajouter la pagination à l'index des étudiants
 
-Pour ajouter le changement de page à la page d’index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous apporterez des modifications supplémentaires dans la méthode `Index` et ajouterez des boutons de changement de page dans la vue `Index`. L’illustration suivante montre les boutons de changement de page.
+Pour ajouter la pagination à la page d’Index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous allez apporter des modifications supplémentaires dans la méthode `Index` et ajouter des boutons de pagination à la vue `Index`. L’illustration suivante montre les boutons de changement de page.
 
 ![Page d’index des étudiants avec liens de changement de page](sort-filter-page/_static/paging.png)
 
@@ -127,13 +127,13 @@ Dans le dossier du projet, créez `PaginatedList.cs`, puis remplacez le code du 
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Quand la méthode `ToListAsync` est appelée sur `IQueryable`, elle renvoie une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant**.
+La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Lorsque `ToListAsync` est appelée sur le `IQueryable`, il retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant**.
 
 Une méthode `CreateAsync` est utilisée à la place d’un constructeur pour créer l’objet `PaginatedList<T>`, car les constructeurs ne peuvent pas exécuter de code asynchrone.
 
 ## <a name="add-paging-to-index-method"></a>Ajouter la pagination à la méthode Index
 
-Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant.
+Dans *StudentsController.cs*, remplacez la méthode `Index` ar le code suivant.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -147,11 +147,11 @@ public async Task<IActionResult> Index(
     int? pageNumber)
 ```
 
-La première fois que la page s’affiche, ou si l’utilisateur n’a pas cliqué sur un lien de changement de page ni de tri, tous les paramètres sont Null.  Si l’utilisateur clique sur un lien de changement de page, la variable de page contient le numéro de page à afficher.
+La première fois que la page s’affiche, ou si l’utilisateur n’a pas cliqué sur un lien de changement de page ni de tri, tous les paramètres sont Null.  Si un lien de la pagination est activé, la variable de page contient le numéro de page à afficher.
 
-L’élément `ViewData` nommé CurrentSort fournit à l’affichage l’ordre de tri actuel, car il doit être inclus dans les liens de changement de page pour que l’ordre de tri soit conservé lors du changement de page.
+L'élément `ViewData` nommé CurrentSort fournit l’ordre de tri actuel à la vue, car il doit être inclus dans les liens de la pagination afin de conserver l’ordre de tri lors de la pagination.
 
-L’élément `ViewData` nommé CurrentFilter fournit à la vue la chaîne de filtre actuelle. Cette valeur doit être incluse dans les liens de changement de page pour que les paramètres de filtre soient conservés lors du changement de page, et elle doit être restaurée dans la zone de texte lorsque la page est réaffichée.
+L'élément `ViewData` nommé CurrentFilter fournit la chaîne de filtre actuel à la vue. Cette valeur doit être incluse dans les liens de changement de page pour que les paramètres de filtre soient conservés lors du changement de page, et elle doit être restaurée dans la zone de texte lorsque la page est réaffichée.
 
 Si la chaîne de recherche est modifiée au cours du changement de page, la page doit être réinitialisée à 1, car le nouveau filtre peut entraîner l’affichage de données différentes. La chaîne de recherche est modifiée quand une valeur est entrée dans la zone de texte et que le bouton d’envoi est enfoncé. Dans ce cas, le paramètre `searchString` n’est pas Null.
 

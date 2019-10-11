@@ -4,14 +4,14 @@ author: ardalis
 description: Découvrez comment les filtres fonctionnent et comment les utiliser dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2019
+ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 50b199744f32ad19335080da406db69665ec1ae9
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
+ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856160"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72037697"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -133,11 +133,11 @@ Voici un exemple qui illustre l’ordre dans lequel les méthodes de filtre sont
 | Séquence | Étendue de filtre | Méthode de filtre |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
-| 2 | Contrôleur | `OnActionExecuting` |
+| 2 | Controller | `OnActionExecuting` |
 | 3 | Méthode | `OnActionExecuting` |
 | 4 | Méthode | `OnActionExecuted` |
-| 5 | Contrôleur | `OnActionExecuted` |
-| 6 | Global | `OnActionExecuted` |
+| 5 | Controller | `OnActionExecuted` |
+| 6\. | Global | `OnActionExecuted` |
 
 Cette séquence montre que :
 
@@ -190,14 +190,14 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété`Order` | Méthode de filtre |
+| Séquence | Étendue de filtre | Propriété `Order` | Méthode de filtre |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
-| 2 | Contrôleur | 1  | `OnActionExecuting` |
+| 2 | Controller | 1  | `OnActionExecuting` |
 | 3 | Global | 2  | `OnActionExecuting` |
 | 4 | Global | 2  | `OnActionExecuted` |
-| 5 | Contrôleur | 1  | `OnActionExecuted` |
-| 6 | Méthode | 0  | `OnActionExecuted` |
+| 5 | Controller | 1  | `OnActionExecuted` |
+| 6\. | Méthode | 0  | `OnActionExecuted` |
 
 La propriété `Order` remplace l’étendue lors de la détermination de l’ordre dans lequel les filtres s’exécutent. Les filtres sont d’abord classés par ordre, puis l’étendue est utilisée pour couper les liens. Tous les filtres intégrés implémentent `IOrderedFilter` et affectent 0 à la valeur `Order` par défaut. Pour les filtres intégrés, l’étendue détermine l’ordre, sauf si `Order` est défini sur une valeur différente de zéro.
 
@@ -437,9 +437,12 @@ Le code suivant indique un filtre de résultats qui ajoute un en-tête HTTP :
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/LoggingAddHeaderFilter.cs?name=snippet_ResultFilter)]
 
-Le type de résultat à exécuter dépend de l’action. Une action retournant un affichage inclut tous les traitements Razor dans le cadre de la <xref:Microsoft.AspNetCore.Mvc.ViewResult> à exécuter. Une méthode d’API peut effectuer une sérialisation dans le cadre de l’exécution du résultat. Découvrez plus d’informations sur les [résultats d’actions](xref:mvc/controllers/actions).
+Le type de résultat à exécuter dépend de l’action. Une action retournant un affichage inclut tous les traitements Razor dans le cadre de la <xref:Microsoft.AspNetCore.Mvc.ViewResult> à exécuter. Une méthode d’API peut effectuer une sérialisation dans le cadre de l’exécution du résultat. En savoir plus sur les [résultats des actions](xref:mvc/controllers/actions).
 
-Les filtres de résultats sont exécutés seulement pour les résultats qui sont des réussites, quand l’action ou les filtres d’actions produisent un résultat d’action. Les filtres de résultats ne sont pas exécutés quand les filtres d’exceptions gèrent une exception.
+Les filtres de résultats ne sont exécutés que lorsqu’une action ou un filtre d’action produit un résultat d’action. Les filtres de résultats ne sont pas exécutés dans les cas suivants :
+
+* Un filtre d’autorisation ou des courts-circuits de filtre de ressources le pipeline.
+* Un filtre d’exception gère une exception en générant un résultat d’action.
 
 La méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuting*?displayProperty=fullName> peut court-circuiter l’exécution du résultat d’action et les filtres de résultats suivants en définissant <xref:Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext.Cancel?displayProperty=fullName> sur `true`. Écrivez dans l’objet de réponse quand vous court-circuitez pour éviter de générer une réponse vide. La levée d’une exception dans `IResultFilter.OnResultExecuting` :
 
@@ -471,12 +474,10 @@ L’infrastructure fournit un `ResultFilterAttribute` abstrait que vous pouvez p
 
 ### <a name="ialwaysrunresultfilter-and-iasyncalwaysrunresultfilter"></a>IAlwaysRunResultFilter et IAsyncAlwaysRunResultFilter
 
-Les interfaces <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> et <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> déclarent une implémentation <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> qui s’exécute pour tous les résultats d’action. Le filtre est appliqué à tous les résultats d’action, sauf si :
+Les interfaces <xref:Microsoft.AspNetCore.Mvc.Filters.IAlwaysRunResultFilter> et <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncAlwaysRunResultFilter> déclarent une implémentation <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter> qui s’exécute pour tous les résultats d’action. Cela comprend les résultats d’action produits par :
 
-* Un <xref:Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter> ou <xref:Microsoft.AspNetCore.Mvc.Filters.IAuthorizationFilter> s’applique et court-circuite la réponse.
-* Un filtre d’exception gère une exception en générant un résultat d’action.
-
-Les filtres autres que `IExceptionFilter` et `IAuthorizationFilter` ne court-circuitent pas `IAlwaysRunResultFilter` et `IAsyncAlwaysRunResultFilter`.
+* Filtres d’autorisation et filtres de ressources qui court-circuitent.
+* Filtres d’exception.
 
 Par exemple, le filtre suivant exécute et définit toujours un résultat d’action (<xref:Microsoft.AspNetCore.Mvc.ObjectResult>) avec un code d’état *422 Entité non traitée* en cas d’échec de la négociation de contenu :
 

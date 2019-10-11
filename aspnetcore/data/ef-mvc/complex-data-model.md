@@ -1,18 +1,18 @@
 ---
 title: 'Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core'
 description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vous personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage.
-author: tdykstra
+author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 85a11ba082fc8f6b364019f6cefcd5b1fe5a9215
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 313d951ccdd45ae1209ffd9612d24738822fbed8
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080471"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259612"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core
 
@@ -285,7 +285,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-department-entity"></a>Créer l’entité Department
 
-![Entité de service](complex-data-model/_static/department-entity.png)
+![Entité Department](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -481,7 +481,7 @@ Vous avez maintenant un nouveau code dans la classe `DbInitializer` qui ajoute d
 Enregistrez les modifications dans *appsettings.json*.
 
 > [!NOTE]
-> Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
+> Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop`:
 >
 > ```dotnetcli
 > dotnet ef database drop

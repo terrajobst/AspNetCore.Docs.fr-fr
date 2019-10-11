@@ -5,12 +5,12 @@ description: Explique l’utilisation d’une base de données et d’ASP.NET Co
 ms.author: riande
 ms.date: 7/22/2019
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 197697f28e9faa45c1ac2b7f993bde15994957e5
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
-ms.translationtype: HT
+ms.openlocfilehash: 87d27b60940826e21b060f2e07d344b30ff75b27
+ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440392"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72259784"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>Utiliser une base de données et ASP.NET Core
 
@@ -107,10 +107,10 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
+L’exception suivante se produit lorsque `Update-Database` n’a pas été exécutée :
 
-SqlException : Impossible d’ouvrir la base de données 'RazorPagesMovieContext-21' demandée par la connexion. La connexion a échoué.
-Échec de la connexion de l’utilisateur 'nom utilisateur'.
+`SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
+`Login failed for user 'user name'.`
 
 ### <a name="test-the-app"></a>Tester l’application
 
