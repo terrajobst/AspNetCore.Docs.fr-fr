@@ -5,12 +5,12 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 1c29b59f9306774316ff37eeb57cc441fe5c7370
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
-ms.translationtype: HT
+ms.openlocfilehash: de75c3b0651c0cda6629af786d7db9dc83bc4fef
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820084"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288819"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -86,7 +86,7 @@ Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifi
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
-Remplacez le contenu du fichier *Views\Shared\_Layout.cshtml* par le balisage suivant. Les modifications apparaissent en surbrillance :
+Remplacez le contenu du fichier *Views/Shared/_ Layout. cshtml* par le balisage suivant. Les modifications apparaissent en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -97,7 +97,7 @@ Le balisage précédent apporte les modifications suivantes :
 
 Dans le balisage précédent, l’[attribut Tag Helper d’ancrage `asp-area=""`](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur d’attribut ont été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
-**Remarque** : Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque**: Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
 Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
@@ -257,7 +257,7 @@ Dans le balisage précédent, l’[attribut Tag Helper Ancre](xref:mvc/views/tag
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**Remarque** : Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque**: Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
 Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 

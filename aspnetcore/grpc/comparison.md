@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 09/25/2019
 uid: grpc/comparison
-ms.openlocfilehash: 935078d890998fe6af366e3f6a7bf21f53c20cf7
-ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
+ms.openlocfilehash: 5c3ea7a78401e6483425fa0774b3051b3d20f516
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71267711"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72289032"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparer les services gRPC avec les API HTTP
 
@@ -55,7 +55,7 @@ En partageant le fichier *. proto* entre le serveur et le client, les messages e
 
 Il n’existe aucune spécification formelle pour l’API HTTP avec JSON. Les développeurs ont discuté du meilleur format des URL, des verbes HTTP et des codes de réponse.
 
-La [spécification gRPC](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) est normative sur le format qu’un service gRPC doit suivre. gRPC élimine le débat et économise le temps des développeurs, car gPRC est cohérent entre les plateformes et les implémentations.
+La [spécification gRPC](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) est normative sur le format qu’un service gRPC doit suivre. gRPC élimine le débat et économise le temps des développeurs, car gRPC est cohérent entre les plateformes et les implémentations.
 
 ### <a name="streaming"></a>Diffusion en continu
 
@@ -78,10 +78,10 @@ La propagation de l’échéance et de l’annulation via les appels gRPC enfant
 
 gRPC est bien adapté aux scénarios suivants :
 
-* **Microservices** &ndash; gRPC est conçu pour la communication à faible latence et à débit élevé. gRPC est parfait pour les microservices légers où l’efficacité est essentielle.
-* **Communication en temps réel point à point** &ndash; gRPC offre une excellente prise en charge de la diffusion bidirectionnelle. les services gRPC peuvent envoyer des messages en temps réel sans interrogation.
-* **Environnements polyglotte** &ndash; les outils gRPC prennent en charge tous les langages de développement populaires, ce qui fait de gRPC un bon choix pour les environnements multilingues.
-* **Environnements réseau restreints** &ndash; les messages gRPC sont sérialisés avec Protobuf, un format de message léger. Un message gRPC est toujours plus petit qu’un message JSON équivalent.
+* Les **microservices** &ndash; gRPC sont conçus pour une communication à faible latence et à débit élevé. gRPC est parfait pour les microservices légers où l’efficacité est essentielle.
+* La **communication en temps réel point à point** &ndash; gRPC offre une excellente prise en charge de la diffusion bidirectionnelle. les services gRPC peuvent envoyer des messages en temps réel sans interrogation.
+* Les **environnements polyglotte** &ndash; les outils gRPC prennent en charge tous les langages de développement populaires, ce qui fait de gRPC un bon choix pour les environnements multilingues.
+* Les **environnements réseau** &ndash; gRPC sont sérialisés avec Protobuf, un format de message léger. Un message gRPC est toujours plus petit qu’un message JSON équivalent.
 
 ## <a name="grpc-weaknesses"></a>faiblesses gRPC
 
@@ -105,9 +105,9 @@ Des fonctionnalités telles que la [réflexion de serveur](https://github.com/gr
 
 D’autres infrastructures sont recommandées par rapport à gRPC dans les scénarios suivants :
 
-* **API accessibles** par le navigateur &ndash; gRPC n’est pas entièrement pris en charge dans le navigateur. gRPC-Web peut offrir la prise en charge des navigateurs, mais il présente des limitations et introduit un serveur proxy.
+* Les **API accessibles** par le navigateur &ndash; gRPC ne sont pas entièrement prises en charge dans le navigateur. gRPC-Web peut offrir la prise en charge des navigateurs, mais il présente des limitations et introduit un serveur proxy.
 * **Communication en temps réel de diffusion** &ndash; gRPC prend en charge la communication en temps réel via la diffusion en continu, mais le concept de diffusion d’un message à des connexions inscrites n’existe pas. Par exemple, dans un scénario de salle de conversation dans lequel de nouveaux messages de conversation doivent être envoyés à tous les clients dans la salle de conversation, chaque appel gRPC est requis pour diffuser individuellement de nouveaux messages de conversation au client. [Signalr](xref:signalr/introduction) est un Framework utile pour ce scénario. Signalr a le concept de connexions persistantes et la prise en charge intégrée de la diffusion des messages.
-* **Communication entre processus** &ndash; Un processus doit héberger un serveur http/2 pour accepter les appels gRPC entrants. Pour Windows, les [canaux](/dotnet/standard/io/pipe-operations) de communication entre processus sont une méthode de communication rapide et légère.
+* **Communication entre processus** &ndash; un processus doit héberger un serveur http/2 pour accepter les appels gRPC entrants. Pour Windows, les [canaux](/dotnet/standard/io/pipe-operations) de communication entre processus sont une méthode de communication rapide et légère.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

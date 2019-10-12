@@ -4,14 +4,14 @@ author: coderandhiker
 description: Découvrez comment accéder à HttpContext dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/27/2018
+ms.date: 10/11/2018
 uid: fundamentals/httpcontext
-ms.openlocfilehash: 373c036e0839ce51259e23f8503fbe4691b48751
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 888adf6d61e6968127385952e65f942e86b7eb63
+ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886514"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "72288971"
 ---
 # <a name="access-httpcontext-in-aspnet-core"></a>Accéder à HttpContext dans ASP.NET Core
 
@@ -137,7 +137,7 @@ public class UserRepository : IUserRepository
 `HttpContext` n’est pas thread‑safe. La lecture ou l’écriture de propriétés de `HttpContext` en dehors du traitement d’une requête peut entraîner une exception `NullReferenceException`.
 
 > [!NOTE]
-> L’utilisation de `HttpContext` en dehors du traitement d’une requête entraîne souvent une exception `NullReferenceException`. Si votre application génère des `NullReferenceException` sporadiques, examinez les parties du code qui démarrent le traitement en arrière-plan ou qui continue le traitement après qu’une requête a abouti. Recherchez des erreurs comme une méthode de contrôleur qui serait définie en tant que `async void`.
+> L’utilisation de `HttpContext` en dehors du traitement d’une requête entraîne souvent une exception `NullReferenceException`. Si votre application génère des `NullReferenceException` sporadiques, examinez les parties du code qui démarrent le traitement en arrière-plan ou qui continue le traitement après qu’une requête a abouti. Recherchez des erreurs, telles que la définition d’une méthode de contrôleur comme `async void`.
 
 Pour effectuer un travail en arrière-plan en toute sécurité avec des données `HttpContext` :
 
