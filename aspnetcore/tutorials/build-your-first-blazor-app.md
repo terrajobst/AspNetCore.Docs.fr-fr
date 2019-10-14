@@ -5,18 +5,20 @@ description: Créez une application Blazor étape par étape.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/23/2019
+ms.date: 09/15/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ffbdf6991830d554fc508d1d2fe8e4b9586210df
-ms.sourcegitcommit: 092061c4f6ef46ed2165fa84de6273d3786fb97e
+ms.openlocfilehash: 10feb5467a6a6b5a43e0df739fa72902af9854da
+ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964179"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168357"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Ce tutoriel vous montre comment créer et modifier une application Blazor.
 
@@ -97,11 +99,11 @@ La directive `@page` en haut du fichier *Counter.razor* spécifie que le composa
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 
-Les services enregistrés dans le conteneur de services de l’application sont disponibles pour les composants via [l’injection de dépendance (DI)](xref:fundamentals/dependency-injection). Injectez des services dans un composant à l’aide de la directive `@inject`.
+Si vous utilisez une application de serveur éblouissant, le service `WeatherForecastService` est inscrit en tant que [singleton](xref:fundamentals/dependency-injection#service-lifetimes) dans `Startup.ConfigureServices`. Une instance du service est disponible dans l’ensemble de l’application via l' [injection de dépendances (di)](xref:fundamentals/dependency-injection):
 
-Examinez les directives du composant `FetchData`.
+[!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-Si vous utilisez une application de serveur éblouissant, le `WeatherForecastService` service est inscrit en tant que [Singleton](xref:fundamentals/dependency-injection#service-lifetimes), de sorte qu’une instance du service est disponible dans l’ensemble de l’application. La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant.
+La `@inject` directive est utilisée pour injecter l’instance `WeatherForecastService` du service dans le `FetchData` composant.
 
 *Pages/FetchData.razor* :
 
@@ -111,7 +113,7 @@ Le composant `FetchData` utilise le service injecté, comme `ForecastService`, p
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-Si vous utilisez une application de webassembly éblouissant `HttpClient` , est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* :
+Si vous utilisez une application de webassembly éblouissant `HttpClient` , est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* .
 
 *Pages/FetchData.razor* :
 
@@ -120,7 +122,6 @@ Si vous utilisez une application de webassembly éblouissant `HttpClient` , est 
 Une boucle [\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour restituer chaque instance de prévision sous forme de ligne dans la table des données météo :
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
-
 
 ## <a name="build-a-todo-list"></a>Générer une liste de tâches
 
