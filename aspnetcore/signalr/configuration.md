@@ -148,7 +148,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Les options d’un seul concentrateur remplacent les options globales fournies dans `AddSignalR` et peuvent être configurées à l’aide de <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*> :
+Les options d'un Hub spécifique remplacent les options globales fournies dans la méthode `AddSignalR` et peuvent être configurées à l’aide de : <xref:Microsoft.Extensions.DependencyInjection.SignalRDependencyInjectionExtensions.AddHubOptions*>
 
 ```csharp
 services.AddSignalR().AddHubOptions<MyHub>(options =>
