@@ -5,14 +5,14 @@ description: Pour en savoir plus sur les scénarios d’authentification et d’
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/15/2019
 uid: security/blazor/index
-ms.openlocfilehash: 1fcd54e954d09e66b8bb1c9a51ef56193f3acf93
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 85a6a32ea068e6cd00ebb71bdf7fe0bd06b77618
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007424"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391310"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
@@ -29,7 +29,7 @@ Les scénarios de sécurité diffèrent entre le serveur éblouissant et les app
 
 Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentification
 
 Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.
 
@@ -251,7 +251,7 @@ Configurez le paramètre en cascade `Task<AuthenticationState>` à l’aide des 
 </Router>
 ```
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autorisation
 
 Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* sont appliquées pour contrôler ce que l’utilisateur peut faire.
 
@@ -493,7 +493,7 @@ Dans les applications webassembly éblouissantes, les vérifications d’autoris
 
 Erreurs courantes :
 
-* **L’autorisation nécessite un paramètre en cascade de type Task\<AuthenticationState>. Envisagez d’utiliser CascadingAuthenticationState pour fournir cela.**
+* **L’autorisation nécessite un paramètre en cascade de type Task @ no__t-1AuthenticationState >. Envisagez d’utiliser CascadingAuthenticationState pour fournir ce.**
 
 * **La valeur `null` est reçue pour `authenticationStateTask`**
 
