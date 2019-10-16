@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/10/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 32226c06ba005b4a61c473d6584b2b762733dcbd
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: b02e627af875f15a81d68b0d625a2eccf25c0657
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007297"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333805"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -22,7 +22,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell version 6.2 ou ultérieure](https://github.com/PowerShell/PowerShell)
@@ -302,10 +302,12 @@ Les services qui interagissent avec les requêtes provenant d’Internet ou d’
 
 Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port en définissant la variable d’environnement `ASPNETCORE_URLS`.
 
-Pour obtenir d’autres approches de configuration des ports et des URL, notamment la prise en charge des points de terminaison HTTPs, consultez les rubriques suivantes :
+Pour obtenir d’autres approches de configuration des ports et des URL, consultez l’article approprié sur le serveur :
 
-* <xref:fundamentals/servers/kestrel#endpoint-configuration> (Kestrel)
-* <xref:fundamentals/servers/httpsys#configure-windows-server> (HTTP. sys)
+* <xref:fundamentals/servers/kestrel#endpoint-configuration>
+* <xref:fundamentals/servers/httpsys#configure-windows-server>
+
+L’aide précédente couvre la prise en charge des points de terminaison HTTPs. Par exemple, configurez l’application pour HTTPs lorsque l’authentification est utilisée avec un service Windows.
 
 > [!NOTE]
 > L’utilisation du certificat de développement HTTPS ASP.NET Core pour sécuriser un point de terminaison de service n’est pas prise en charge.

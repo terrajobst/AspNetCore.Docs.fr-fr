@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/05/2019
 uid: blazor/components
-ms.openlocfilehash: 3e0966bf978c99fc00db7682bea3292306cbb03c
-ms.sourcegitcommit: d81912782a8b0bd164f30a516ad80f8defb5d020
+ms.openlocfilehash: a71bbf3921417cbd23aeb14d0d78ad8354d6e93a
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72179038"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378685"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -287,7 +287,7 @@ Les types de champs suivants ont des exigences de mise en forme spécifiques et 
 
 `@bind` prend en charge le paramètre `@bind:culture` pour fournir un <xref:System.Globalization.CultureInfo?displayProperty=fullName> pour l’analyse et la mise en forme d’une valeur. La spécification d’une culture n’est pas recommandée lors de l’utilisation des types de champs `date` et `number`. `date` et `number` ont une prise en charge intégrée de éblouissant qui fournit la culture requise.
 
-Pour plus d’informations sur la façon de définir la culture de l'utilisateur, consultez la section [localization](#localization).
+Pour plus d’informations sur la façon de définir la culture de l’utilisateur, consultez la section [Localization](#localization) .
 
 **Chaînes de format**
 
@@ -454,11 +454,11 @@ Pour certains événements, les types d’arguments d’événement sont autoris
 
 Pris en charge `EventArgs` sont présentés dans le tableau suivant.
 
-| Événement | Classe |
+| événement | Class |
 | ----- | ----- |
 | Presse-papiers        | `ClipboardEventArgs` |
 | Déplacez             | `DragEventArgs` &ndash; `DataTransfer` et `DataTransferItem` contiennent des données d’élément glissées. |
-| Error            | `ErrorEventArgs` |
+| Erreur            | `ErrorEventArgs` |
 | Focus            | `FocusEventArgs` &ndash; n’inclut pas la prise en charge de `relatedTarget`. |
 | Modification de`<input>` | `ChangeEventArgs` |
 | Clavier         | `KeyboardEventArgs` |
@@ -692,7 +692,7 @@ Les références de composant offrent un moyen de référencer une instance de c
 Lors du rendu du composant, le champ `loginDialog` est rempli avec l’instance du composant enfant `MyLoginDialog`. Vous pouvez ensuite appeler des méthodes .NET sur l’instance du composant.
 
 > [!IMPORTANT]
-> La variable `loginDialog` est remplie uniquement après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les méthodes `OnAfterRenderAsync` ou `OnAfterRender`.
+> La variable `loginDialog` est remplie uniquement après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](#lifecycle-methods).
 
 Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composant ne sont pas transmises au code JavaScript @ no__t-0they’re utilisé uniquement dans le code .NET.
 
@@ -841,6 +841,9 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
+> [!NOTE]
+> Un travail asynchrone pendant l’initialisation d’un composant doit se produire pendant l’événement de cycle de vie `OnInitializedAsync`.
+
 Pour une opération synchrone, utilisez `OnInitialized` :
 
 ```csharp
@@ -858,6 +861,9 @@ protected override async Task OnParametersSetAsync()
     await ...
 }
 ```
+
+> [!NOTE]
+> Un travail asynchrone lors de l’application de paramètres et de valeurs de propriété doit se produire pendant l’événement de cycle de vie `OnParametersSetAsync`.
 
 ```csharp
 protected override void OnParametersSet()
@@ -884,6 +890,9 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     }
 }
 ```
+
+> [!NOTE]
+> Le travail asynchrone immédiatement après le rendu doit se produire pendant l’événement de cycle de vie `OnAfterRenderAsync`.
 
 ```csharp
 protected override void OnAfterRender(bool firstRender)
@@ -1294,7 +1303,7 @@ Le composant `CascadingValuesParametersTabSet` utilise le composant `TabSet`, qu
 
 [!code-cshtml[](common/samples/3.x/BlazorSample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
-Les composants enfants `Tab` ne sont pas passés explicitement comme paramètres au `TabSet`. Au lieu de cela, les composants enfants `Tab` font partie du contenu enfant du `TabSet`. Toutefois, le `TabSet` doit toujours connaître chaque composant `Tab` afin qu’il puisse restituer les en-têtes et l’onglet actif. Pour activer cette coordination sans nécessiter de code supplémentaire, le composant `TabSet` *peut se présenter sous la forme d’une valeur en cascade* qui est ensuite récupérée par les composants de `Tab` descendants.
+Les composants enfants `Tab` ne sont pas passés explicitement comme paramètres au `TabSet`. Au lieu de cela, les composants enfants `Tab` font partie du contenu enfant du `TabSet`. Toutefois, le `TabSet` doit toujours connaître chaque composant `Tab` afin qu’il puisse restituer les en-têtes et l’onglet actif. Pour activer cette coordination sans nécessiter de code supplémentaire, le composant `TabSet` *peut se présenter comme une valeur en cascade* qui est ensuite récupérée par les composants `Tab` descendants.
 
 composant `TabSet` :
 
@@ -1429,14 +1438,14 @@ builder.AddContent(1, "Second");
 
 Lorsque le code s’exécute pour la première fois, si `someFlag` est `true`, le générateur reçoit :
 
-| Séquence | Type      | Données   |
+| Séquence | Tapez      | Données   |
 | :------: | --------- | :----: |
-| 0        | Nœud de texte | Première  |
+| 0        | Nœud de texte | First  |
 | 1        | Nœud de texte | Seconde |
 
 Imaginez que `someFlag` devient `false` et que le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit :
 
-| Séquence | Type       | Données   |
+| Séquence | Tapez       | Données   |
 | :------: | ---------- | :----: |
 | 1        | Nœud de texte  | Seconde |
 
@@ -1461,14 +1470,14 @@ builder.AddContent(seq++, "Second");
 
 La première sortie est désormais :
 
-| Séquence | Type      | Données   |
+| Séquence | Tapez      | Données   |
 | :------: | --------- | :----: |
-| 0        | Nœud de texte | Première  |
+| 0        | Nœud de texte | First  |
 | 1        | Nœud de texte | Seconde |
 
 Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag` est `false` sur le deuxième rendu et la sortie est :
 
-| Séquence | Type      | Données   |
+| Séquence | Tapez      | Données   |
 | :------: | --------- | ------ |
 | 0        | Nœud de texte | Seconde |
 

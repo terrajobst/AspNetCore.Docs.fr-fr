@@ -5,14 +5,14 @@ description: Découvrez l’hôte générique .NET Core, qui est responsable de 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/15/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 8e29c3a300cc1cdc37458427d3be7ceed84385ef
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: f14917ad924e2c762a14c2cb5f51391d4be06e7b
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259627"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378754"
 ---
 # <a name="net-generic-host"></a>Hôte générique .NET
 
@@ -74,7 +74,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 Si l’application utilise Entity Framework Core, ne changez pas le nom ou la signature de la méthode `CreateHostBuilder`. Les [outils Entity Framework Core tools](/ef/core/miscellaneous/cli/) s’attendent à trouver une méthode `CreateHostBuilder` qui configure l’hôte sans exécuter l’application. Pour plus d’informations, consultez [Création de DbContext au moment du design](/ef/core/miscellaneous/cli/dbcontext-creation).
 
-## <a name="default-builder-settings"></a>Paramètres du générateur par défaut 
+## <a name="default-builder-settings"></a>Paramètres du générateur par défaut
 
 La méthode <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> :
 
@@ -127,7 +127,7 @@ L’exemple suivant est une implémentation `IHostedService` qui inscrit des év
 
 L’implémentation de <xref:Microsoft.Extensions.Hosting.IHostLifetime> contrôle quand l’hôte démarre et quand il s’arrête. La dernière implémentation inscrite est utilisée.
 
-<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> est l’implémentation de `IHostLifetime` par défaut. `ConsoleLifetime`:
+`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` est l’implémentation de `IHostLifetime` par défaut. `ConsoleLifetime`:
 
 * écoute Ctrl+C/SIGINT ou SIGTERM et appelle <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> pour démarrer le processus d’arrêt.
 * Déverrouille les extensions telles que [RunAsync](#runasync) et [WaitForShutdownAsync](#waitforshutdownasync).
@@ -178,7 +178,7 @@ La propriété [IHostEnvironment.ApplicationName](xref:Microsoft.Extensions.Host
 
 **Clé** : applicationName  
 **Type** : *string*  
-**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.
+**Valeur par défaut**: nom de l’assembly qui contient le point d’entrée de l’application.
 **Variable d’environnement** : `<PREFIX_>APPLICATIONNAME`
 
 Pour définir cette valeur, utilisez la variable d’environnement. 
@@ -189,7 +189,7 @@ La propriété [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Host
 
 **Clé** : contentRoot  
 **Type** : *string*  
-**Par défaut** : dossier où réside l’assembly de l’application.  
+**Par défaut**: le dossier dans lequel se trouve l’assembly de l’application.  
 **Variable d’environnement** : `<PREFIX_>CONTENTROOT`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou appelez `UseContentRoot` sur `IHostBuilder` :
@@ -202,7 +202,7 @@ Host.CreateDefaultBuilder(args)
 
 Pour plus d'informations, voir :
 
-* @no__t 0Fundamentals : Racine du contenu @ no__t-0
+* [Notions de base : racine du contenu](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
 
 ### <a name="environmentname"></a>EnvironmentName
@@ -211,7 +211,7 @@ La propriété [IHostEnvironment.EnvironmentName](xref:Microsoft.Extensions.Host
 
 **Clé** : environment  
 **Type** : *string*  
-**Par défaut** : Production  
+**Valeur par défaut** : Production  
 **Variable d’environnement** : `<PREFIX_>ENVIRONMENT`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou appelez `UseEnvironment` sur `IHostBuilder` :
@@ -233,7 +233,7 @@ Si la période du délai d’attente expire avant l’arrêt de tous les service
 
 **Clé** : shutdownTimeoutSeconds  
 **Type** : *int*  
-**Par défaut** : 5 secondes **Variable d’environnement** : `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
+**Valeur par défaut**: 5 secondes, **variable d’environnement**: `<PREFIX_>SHUTDOWNTIMEOUTSECONDS`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou configurez `HostOptions`. L’exemple suivant définit un délai d’expiration de 20 secondes :
 
@@ -261,7 +261,7 @@ Avec la valeur `false`, la survenue d’erreurs au démarrage entraîne la ferme
 
 **Clé** : captureStartupErrors  
 **Type** : *bool* (`true` ou `1`)  
-**Par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
+**Valeur par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
 **Variable d’environnement** : `<PREFIX_>CAPTURESTARTUPERRORS`
 
 Pour définir cette valeur, utilisez la configuration ou appelez `CaptureStartupErrors` :
@@ -291,7 +291,7 @@ Chaîne délimitée par des points-virgules qui spécifie les assemblys d’héb
 
 **Clé** : hostingStartupAssemblies  
 **Type** : *string*  
-**Par défaut** : Chaîne vide  
+**Valeur par défaut** : une chaîne vide  
 **Variable d’environnement** : `<PREFIX_>_HOSTINGSTARTUPASSEMBLIES`
 
 Pour définir cette valeur, utilisez la configuration ou appelez `UseSetting` :
@@ -306,7 +306,7 @@ Chaîne délimitée par des points-virgules qui spécifie les assemblys d’héb
 
 **Clé** : hostingStartupExcludeAssemblies  
 **Type** : *string*  
-**Par défaut** : Chaîne vide  
+**Valeur par défaut** : une chaîne vide  
 **Variable d’environnement** : `<PREFIX_>_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
 Pour définir cette valeur, utilisez la configuration ou appelez `UseSetting` :
@@ -321,7 +321,7 @@ Port de redirection HTTPS. Utilisé dans [l’application de HTTPS](xref:securit
 
 **Clé**: https_port  
 **Type** : *string*  
-**Par défaut** : Aucune valeur par défaut n’est définie.  
+Valeur **par défaut**: aucune valeur par défaut n’est définie.  
 **Variable d’environnement** : `<PREFIX_>HTTPS_PORT`
 
 Pour définir cette valeur, utilisez la configuration ou appelez `UseSetting` :
@@ -366,7 +366,7 @@ Assembly où rechercher la classe `Startup`.
 
 **Clé** : startupAssembly  
 **Type** : *string*  
-**Par défaut** : l’assembly de l’application  
+**Valeur par défaut** : l’assembly de l’application  
 **Variable d’environnement** : `<PREFIX_>STARTUPASSEMBLY`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou appelez `UseStartup`. `UseStartup` peut prendre un nom d’assembly (`string`) ou un type (`TStartup`). Si plusieurs méthodes `UseStartup` sont appelées, la dernière prévaut.
@@ -402,7 +402,7 @@ Chemin relatif des ressources statiques de l’application.
 
 **Clé** : webroot  
 **Type** : *string*  
-**Par défaut** : La valeur par défaut est `wwwroot`. Le chemin d’accès à *{root content}/wwwroot* doit exister. Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.  
+**Valeur par défaut**: la valeur par défaut est `wwwroot`. Le chemin d’accès à *{root content}/wwwroot* doit exister. Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.  
 **Variable d’environnement** : `<PREFIX_>WEBROOT`
 
 Pour définir cette valeur, utilisez la variable d’environnement ou appelez `UseWebRoot` :
@@ -413,7 +413,7 @@ webBuilder.UseWebRoot("public");
 
 Pour plus d'informations, voir :
 
-* @no__t 0Fundamentals : Racine Web @ no__t-0
+* [Notions de base : racine Web](xref:fundamentals/index#web-root)
 * [ContentRootPath](#contentrootpath)
 
 ## <a name="manage-the-host-lifetime"></a>Gérer la durée de vie de l’hôte
@@ -505,7 +505,7 @@ Pour définir la console dans Visual Studio Code :
 1. Ouvrez le fichier *.vscode/launch.json*.
 1. Dans la configuration **.NET Core Launch (console)** , recherchez l’entrée **console**. Définissez la valeur avec `externalTerminal` ou `integratedTerminal`.
 
-## <a name="introduction"></a>Présentation
+## <a name="introduction"></a>Introduction
 
 La bibliothèque de l’hôte générique est disponible dans l’espace de noms <xref:Microsoft.Extensions.Hosting> et est fournie par le package [Microsoft.Extensions.Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting/). Le package `Microsoft.Extensions.Hosting` est inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou ultérieur).
 
@@ -546,8 +546,8 @@ Les services suivants sont inscrits au moment de l’initialisation de l’hôte
 * [Environnement](xref:fundamentals/environments) (<xref:Microsoft.Extensions.Hosting.IHostingEnvironment>)
 * <xref:Microsoft.Extensions.Hosting.HostBuilderContext>
 * [Configuration](xref:fundamentals/configuration/index) (<xref:Microsoft.Extensions.Configuration.IConfiguration>)
-* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ApplicationLifetime>)
-* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (<xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime>)
+* <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (`Microsoft.Extensions.Hosting.Internal.ApplicationLifetime`)
+* <xref:Microsoft.Extensions.Hosting.IHostLifetime> (`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime`)
 * <xref:Microsoft.Extensions.Hosting.IHost>
 * [Options](xref:fundamentals/configuration/options) (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*>)
 * [Journalisation](xref:fundamentals/logging/index) (<xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*>)
@@ -567,7 +567,7 @@ La propriété [IHostingEnvironment.ApplicationName](xref:Microsoft.Extensions.H
 
 **Clé** : applicationName  
 **Type** : *string*  
-**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
+**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
 **Définition avec** : `HostBuilderContext.HostingEnvironment.ApplicationName`  
 **Variable d’environnement** : `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 
@@ -577,7 +577,7 @@ Ce paramètre détermine où l’hôte commence la recherche des fichiers de con
 
 **Clé** : contentRoot  
 **Type** : *string*  
-**Par défaut** : dossier où réside l’assembly de l’application.  
+**Valeur par défaut** : dossier où réside l’assembly de l’application.  
 **Définition avec** : `UseContentRoot`  
 **Variable d’environnement** : `<PREFIX_>CONTENTROOT` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 
@@ -585,7 +585,7 @@ Si le chemin est introuvable, l’hôte ne peut pas démarrer.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseContentRoot)]
 
-Pour plus d’informations, voir [Fundamentals : Racine du contenu @ no__t-0.
+Pour plus d’informations, consultez [principes de base : racine du contenu](xref:fundamentals/index#content-root).
 
 ### <a name="environment"></a>Environnement
 
@@ -593,7 +593,7 @@ Définit l’[environnement](xref:fundamentals/environments) de l’application.
 
 **Clé** : environment  
 **Type** : *string*  
-**Par défaut** : Production  
+**Valeur par défaut** : Production  
 **Définition avec** : `UseEnvironment`  
 **Variable d’environnement** : `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 
@@ -684,7 +684,7 @@ L’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mas
 
 ### <a name="useconsolelifetime"></a>UseConsoleLifetime
 
-<xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> écoute Ctrl+C/SIGINT ou SIGTERM et appelle <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> pour démarrer le processus d’arrêt. <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> déverrouille les extensions telles que [RunAsync](#runasync) et [WaitForShutdownAsync](#waitforshutdownasync). <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> est préinscrit comme implémentation de durée de vie par défaut. La dernière durée de vie inscrite est utilisée.
+<xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> écoute Ctrl+C/SIGINT ou SIGTERM et appelle <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> pour démarrer le processus d’arrêt. <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseConsoleLifetime*> déverrouille les extensions telles que [RunAsync](#runasync) et [WaitForShutdownAsync](#waitforshutdownasync). `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` est préinscrit comme implémentation de durée de vie par défaut. La dernière durée de vie inscrite est utilisée.
 
 [!code-csharp[](generic-host/samples-snapshot/2.x/GenericHostSample/Program.cs?name=snippet_UseConsoleLifetime)]
 
@@ -840,7 +840,7 @@ public class Program
 
 ### <a name="waitforshutdown"></a>WaitForShutdown
 
-<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> est déclenché par le biais de <xref:Microsoft.Extensions.Hosting.IHostLifetime>, par exemple <xref:Microsoft.Extensions.Hosting.Internal.ConsoleLifetime> (écoute Ctrl+C/SIGINT ou SIGTERM). <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> appelle <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
+<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> est déclenché par le biais de <xref:Microsoft.Extensions.Hosting.IHostLifetime>, par exemple `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` (écoute Ctrl+C/SIGINT ou SIGTERM). <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> appelle <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>.
 
 ```csharp
 public class Program

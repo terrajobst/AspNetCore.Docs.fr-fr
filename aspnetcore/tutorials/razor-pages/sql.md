@@ -5,12 +5,12 @@ description: Explique l’utilisation d’une base de données et d’ASP.NET Co
 ms.author: riande
 ms.date: 7/22/2019
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 87d27b60940826e21b060f2e07d344b30ff75b27
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: b5acb573f8fa39e5300ecdb359113d8697d78934
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259784"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334228"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>Utiliser une base de données et ASP.NET Core
 
@@ -38,7 +38,7 @@ Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NE
 
 La valeur du nom de la base de données (`Database={Database name}`) est différent pour votre code généré. La valeur du nom est arbitraire.
 
-[!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json)]
+[!code-json[](razor-pages-start/sample/RazorPagesMovie30/appsettings.json?highlight=10-12)]
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -52,7 +52,7 @@ Quand l’application est déployée sur un serveur de test ou de production, un
 
 ## <a name="sql-server-express-localdb"></a>SQL Server Express LocalDB
 
-LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:/Users/<user/>`.
+LocalDB est une version allégée du moteur de base de données SQL Server Express, qui est ciblée pour le développement de programmes. LocalDB démarre à la demande et s’exécute en mode utilisateur, ce qui n’implique aucune configuration complexe. Par défaut, la base de données LocalDB crée des fichiers `*.mdf` dans le répertoire `C:\Users\<user>\`.
 
 <a name="ssox"></a>
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
@@ -109,8 +109,8 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 L’exception suivante se produit lorsque `Update-Database` n’a pas été exécutée :
 
-`SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
-`Login failed for user 'user name'.`
+> `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
+> `Login failed for user 'user name'.`
 
 ### <a name="test-the-app"></a>Tester l’application
 
@@ -141,8 +141,8 @@ Le tutoriel suivant sert à améliorer la présentation des données.
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 > [!div class="step-by-step"]
-> [Précédent : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)
-> [Suivant : Mise à jour des pages](xref:tutorials/razor-pages/da1)
+> [Précédent : Pages Razor obtenues par génération de modèles automatiques](xref:tutorials/razor-pages/page)
+> [Suivant : Mises à jour des pages](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end
 
@@ -253,7 +253,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
 
-SqlException : Impossible d’ouvrir la base de données 'RazorPagesMovieContext-21' demandée par la connexion. La connexion a échoué.
+SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-21' demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.
 
 ### <a name="test-the-app"></a>Tester l’application
@@ -297,7 +297,7 @@ Le didacticiel suivant nettoie la présentation des données.
 * [Version YouTube de ce tutoriel](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> [Précédent : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)
-> [Suivant : Mise à jour des pages](xref:tutorials/razor-pages/da1)
+> [Précédent : Pages Razor obtenues par génération de modèles automatiques](xref:tutorials/razor-pages/page)
+> [Suivant : Mises à jour des pages](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end

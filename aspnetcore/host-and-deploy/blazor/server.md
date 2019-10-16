@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application de serveu
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/05/2019
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: aedef7fe695dd4a0cbf04d3f3e9947f33f7afa40
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 693d7ff67bad3a0c5bd050b795833763056ed511
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211608"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378812"
 ---
 # <a name="host-and-deploy-blazor-server"></a>Héberger et déployer le serveur éblouissant
 
@@ -42,9 +42,9 @@ Lorsque vous envisagez l’évolutivité d’un serveur unique (montée en puiss
 * Nombre de circuits actifs qu’un serveur peut prendre en charge.
 * Latence de l’interface utilisateur sur le client.
 
-Pour obtenir des conseils sur la création d’applications serveur éblouissantes sécurisées et évolutives, consultez <xref:security/blazor/server>.
+Pour obtenir des conseils sur la création d’applications de serveur éblouissantes et sécurisées et évolutives, consultez <xref:security/blazor/server>.
 
-Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *Hello World*minimale. La taille d’un circuit dépend du code de l’application et des exigences de maintenance d’état associées à chaque composant. Nous vous recommandons de mesurer les demandes de ressources pendant le développement de votre application et de votre infrastructure, mais la ligne de base suivante peut être un point de départ pour la planification de votre cible de déploiement : Si vous vous attendez à ce que votre application prenne en charge 5 000 utilisateurs simultanés, envisagez de budgétiser au moins 1,3 Go de mémoire serveur vers l’application (ou ~ 273 Ko par utilisateur).
+Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *Hello World*minimale. La taille d’un circuit dépend du code de l’application et des exigences de maintenance d’état associées à chaque composant. Nous vous recommandons de mesurer les demandes de ressources pendant le développement de votre application et de votre infrastructure, mais la ligne de base suivante peut être un point de départ pour la planification de votre cible de déploiement : Si vous vous attendez à ce que votre application prenne en charge 5 000 utilisateurs simultanés, pensez à la budgétisation à moins de 1,3 Go de mémoire serveur pour l’application (ou ~ 273 Ko par utilisateur).
 
 ### <a name="signalr-configuration"></a>Configuration SignalR
 
@@ -52,7 +52,11 @@ Les applications serveur éblouissantes utilisent ASP.NET Core Signalr pour comm
 
 Éblouissant fonctionne mieux lorsque vous utilisez WebSockets comme transport Signalr en raison d’une latence, d’une fiabilité et d’une [sécurité](xref:signalr/security)moindres. L’interrogation longue est utilisée par Signalr lorsque WebSocket n’est pas disponible ou lorsque l’application est configurée de manière explicite pour utiliser une interrogation longue. Lors du déploiement sur Azure App Service, configurez l’application pour qu’elle utilise WebSockets dans les paramètres Portail Azure pour le service. Pour plus d’informations sur la configuration de l’application pour Azure App Service, consultez les [instructions de publication signalr](xref:signalr/publish-to-azure-web-app).
 
-Nous vous recommandons d’utiliser le [service Azure signalr](/azure/azure-signalr) pour les applications serveur éblouissantes. Le service permet de mettre à l’échelle une application de serveur éblouissant sur un grand nombre de connexions Signalr simultanées. En outre, la portée mondiale et les centres de données haute performance du service Signalr contribuent de manière significative à réduire la latence en raison de la géographie.
+Nous vous recommandons d’utiliser le [service Azure signalr](/azure/azure-signalr) pour les applications serveur éblouissantes. Le service permet de mettre à l’échelle une application de serveur éblouissant sur un grand nombre de connexions Signalr simultanées. En outre, la portée mondiale et les centres de données haute performance du service Signalr contribuent de manière significative à réduire la latence en raison de la géographie. Pour configurer une application (et éventuellement approvisionner) le service Azure Signalr :
+
+* Créez un profil de publication Azure Apps dans Visual Studio pour l’application de serveur éblouissant.
+* Ajoutez la dépendance du **service Azure signalr** au profil. Si l’abonnement Azure ne dispose pas d’une instance de service Azure Signalr préexistante à attribuer à l’application, sélectionnez **créer une instance de service Azure signalr** pour approvisionner une nouvelle instance de service.
+* Publiez l’application sur Azure.
 
 ### <a name="measure-network-latency"></a>Mesurer la latence du réseau
 

@@ -5,14 +5,14 @@ description: Découvrez comment configurer le module ASP.NET Core pour héberger
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 10/13/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c1c34f368cb3f7767bf0f229ff70c5ab53c6005f
-ms.sourcegitcommit: fcdf9aaa6c45c1a926bd870ed8f893bdb4935152
+ms.openlocfilehash: 917ee462a8f9592120685b53d059a661cb4a7452
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165328"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333890"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -76,6 +76,8 @@ Les caractéristiques suivantes s’appliquent lors de l’hébergement in-proce
       app.UseAuthentication();
   }
   ```
+  
+  * [Les déploiements de package Web (à fichier unique)](/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages) ne sont pas pris en charge.
 
 ### <a name="out-of-process-hosting-model"></a>Modèle d’hébergement out-of-process
 
@@ -169,7 +171,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Par défaut |
+| Attribut | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -241,7 +243,7 @@ Le module ASP.NET Core redirige la sortie de console stdout et stderr vers le di
 
 Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redémarrage du processus. Il incombe à l’hébergeur de limiter l’espace disque utilisé par les journaux.
 
-L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -260,7 +262,7 @@ L’exemple suivant @no__t élément-0 d’un fichier *Web. config* configure la
 
 ## <a name="enhanced-diagnostic-logs"></a>Journaux de diagnostic améliorés
 
-Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *web.config*. L’affectation de la valeur `TRACE` à `debugLevel` expose une fidélité plus élevée des informations de diagnostic :
+Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus grande fidélité des informations de diagnostic :
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -306,7 +308,7 @@ Consultez [Configuration avec web.config](#configuration-with-webconfig) pour ob
 
 *S’applique uniquement lors de l’utilisation du modèle d’hébergement in-process.*
 
-Configurez la taille de la pile managée à l’aide du paramètre `stackSize` en octets dans *Web. config*. La taille par défaut est `1048576` octets (1 Mo).
+Configurez la taille de la pile managée à l’aide du paramètre `stackSize` en octets dans *Web. config*. La taille par défaut est de `1048576` octets (1 Mo).
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -352,9 +354,9 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Sur le système hôte, accédez à *%windir%\System32\inetsrv*.
 1. Recherchez le fichier *aspnetcore.dll*.
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
-1. Sélectionnez l'onglet **Détails**. Le **version du fichier** et la **version du produit** représentent la version installée du module.
+1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement du module se trouvent dans *C:\\Users\\%UserName%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp>_000_AspNetCoreModule_x64.log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur *C : \\Users @ no__t-2% username% \\AppData @ no__t-4Local @ no__t-* 5Temp. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__ @ no__t-7timestamp > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 
@@ -572,7 +574,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Par défaut |
+| Attribut | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -644,7 +646,7 @@ Le module ASP.NET Core redirige la sortie de console stdout et stderr vers le di
 
 Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redémarrage du processus. Il incombe à l’hébergeur de limiter l’espace disque utilisé par les journaux.
 
-L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -663,7 +665,7 @@ L’exemple d’élément `aspNetCore` suivant configure la journalisation stdou
 
 ## <a name="enhanced-diagnostic-logs"></a>Journaux de diagnostic améliorés
 
-Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *web.config*. L’affectation de la valeur `TRACE` à `debugLevel` expose une fidélité plus élevée des informations de diagnostic :
+Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus grande fidélité des informations de diagnostic :
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -737,9 +739,9 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Sur le système hôte, accédez à *%windir%\System32\inetsrv*.
 1. Recherchez le fichier *aspnetcore.dll*.
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
-1. Sélectionnez l'onglet **Détails**. Le **version du fichier** et la **version du produit** représentent la version installée du module.
+1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement du module se trouvent dans *C:\\Users\\%UserName%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp>_000_AspNetCoreModule_x64.log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur *C : \\Users @ no__t-2% username% \\AppData @ no__t-4Local @ no__t-* 5Temp. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__ @ no__t-7timestamp > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 
@@ -873,7 +875,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Par défaut |
+| Attribut | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -929,7 +931,7 @@ Le module ASP.NET Core redirige la sortie de console stdout et stderr vers le di
 
 Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redémarrage du processus. Il incombe à l’hébergeur de limiter l’espace disque utilisé par les journaux.
 
-L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+L’utilisation du journal stdout est uniquement recommandée pour résoudre les problèmes de démarrage de l’application. N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -971,9 +973,9 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Sur le système hôte, accédez à *%windir%\System32\inetsrv*.
 1. Recherchez le fichier *aspnetcore.dll*.
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
-1. Sélectionnez l'onglet **Détails**. Le **version du fichier** et la **version du produit** représentent la version installée du module.
+1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement du module se trouvent dans *C:\\Users\\%UserName%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp>_000_AspNetCoreModule_x64.log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur *C : \\Users @ no__t-2% username% \\AppData @ no__t-4Local @ no__t-* 5Temp. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__ @ no__t-7timestamp > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 

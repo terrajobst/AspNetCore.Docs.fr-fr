@@ -5,18 +5,16 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 8398e99af42da48718eea370cffa6ce4be0086ae
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 9ed133c93a9ec95c63869b710d120eca9fda1b6e
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288905"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333693"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://afana.me/) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
-
-Tant que ce document n’a pas été mis à jour pour ASP.NET Core 3,0, consultez le blog de Hisham [Nouveautés de la localisation dans ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0).
 
 Créer un site web multilingue avec ASP.NET Core permet d’atteindre un plus large public. ASP.NET Core offre des services et des intergiciels (middleware) de traduction dans différentes langues et cultures.
 
@@ -46,7 +44,7 @@ Utilisez l’implémentation de `IHtmlLocalizer<T>` pour les ressources qui cont
 
 [!code-csharp[](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**Remarque :** en général, seul le texte (et non le code HTML) doit être localisé.
+**Remarque :** Vous avez généralement besoin de localiser uniquement le texte et pas le code HTML.
 
 Au niveau le plus bas, vous pouvez sortir `IStringLocalizerFactory` de l’[injection de dépendances](dependency-injection.md) :
 
@@ -62,13 +60,13 @@ Certains développeurs utilisent la classe `Startup` pour contenir des chaînes 
 
 [!code-csharp[](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
-## <a name="view-localization"></a>Localisation de l’affichage
+## <a name="view-localization"></a>Localisation de vue
 
 Le service `IViewLocalizer` fournit des chaînes localisées à une [vue](xref:mvc/views/overview). La classe `ViewLocalizer` implémente cette interface et recherche l’emplacement de la ressource à partir du chemin du fichier de la vue. Le code suivant montre comment utiliser l’implémentation par défaut de `IViewLocalizer` :
 
 [!code-cshtml[](localization/sample/Localization/Views/Home/About.cshtml)]
 
-L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ressources en fonction du nom de fichier de l’affichage. Il n’existe aucune option pour utiliser un fichier de ressources partagées globales. `ViewLocalizer` implémente le localiseur en utilisant `IHtmlLocalizer`, si bien que Razor n’encode pas en HTML la chaîne localisée. Vous pouvez paramétrer des chaînes de ressources pour que `IViewLocalizer` encode en HTML les paramètres, mais pas les chaînes de ressources. Examinez le balisage Razor suivant :
+L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ressources en fonction du nom de fichier de la vue. Il n’existe aucune option pour utiliser un fichier de ressources partagées globales. `ViewLocalizer` implémente le localiseur en utilisant `IHtmlLocalizer`, si bien que Razor n’encode pas en HTML la chaîne localisée. Vous pouvez paramétrer des chaînes de ressources pour que `IViewLocalizer` encode en HTML les paramètres, mais pas les chaînes de ressources. Examinez le balisage Razor suivant :
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -76,13 +74,13 @@ L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ress
 
 Un fichier de ressources en français peut contenir ce qui suit :
 
-| Touche | Value |
+| Touche | valeur |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 La vue contient le balisage HTML provenant du fichier de ressources.
 
-**Remarque :** en général, seul le texte (et non le code HTML) doit être localisé.
+**Remarque :** Vous avez généralement besoin de localiser uniquement le texte et pas le code HTML.
 
 Pour utiliser un fichier de ressources partagées dans une vue, injectez `IHtmlLocalizer<T>` :
 
@@ -130,7 +128,7 @@ Un fichier de ressources est un mécanisme utile pour séparer les chaînes loca
 
 1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément**.
 
-    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
+    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
 
 2. Dans la zone **Rechercher dans les modèles installés**, entrez « ressource » et nommez le fichier.
 
@@ -215,7 +213,7 @@ La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 
 * `AddLocalization` ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
-* `AddViewLocalization` ajoute la prise en charge des fichiers d’affichage localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
+* `AddViewLocalization` ajoute la prise en charge des fichiers de vues localisées. Dans cet exemple de vue, la localisation se base sur le suffixe du fichier de la vue. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` ajoute la prise en charge des messages de validation `DataAnnotations` localisés par le biais d’abstractions `IStringLocalizer`.
 
@@ -274,6 +272,31 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 5. Ajoutez la langue.
 
 6. Tapez sur la langue, puis sur **Monter**.
+
+::: moniker range=">= aspnetcore-3.0"
+### <a name="the-content-language-http-header"></a>En-tête HTTP Content-Language
+
+En-tête d’entité [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language) :
+
+ - Est utilisé pour décrire la ou les langues destinées au public.
+ - Permet à un utilisateur de faire la distinction en fonction de la langue préférée de l’utilisateur.
+
+Les en-têtes d’entité sont utilisés dans les requêtes et les réponses HTTP.
+
+Dans ASP.NET Core 3,0, l’en-tête `Content-Language` peut être ajouté en définissant la propriété `ApplyCurrentCultureToResponseHeaders`.
+
+Ajout de l’en-tête `Content-Language` :
+
+ - Permet à RequestLocalizationMiddleware de définir l’en-tête `Content-Language` avec la `CurrentUICulture`.
+ - Élimine la nécessité de définir l’en-tête de réponse `Content-Language` de manière explicite.
+
+```csharp
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    ApplyCurrentCultureToResponseHeaders = true
+});
+```
+::: moniker-end
 
 ### <a name="use-a-custom-provider"></a>Utiliser un fournisseur personnalisé
 
@@ -337,7 +360,7 @@ Cet exemple de projet **Localization.StarterWeb** sur [GitHub](https://github.co
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
-Le fichier *Views/Shared/_SelectLanguagePartial.cshtml* est ajouté à la section `footer` du fichier de disposition afin d’être disponible pour tous les affichages :
+Le fichier *Views/Shared/_SelectLanguagePartial.cshtml* est ajouté à la section `footer` du fichier de disposition afin d’être disponible pour toutes les vues :
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
@@ -359,16 +382,20 @@ L’internationalisation est souvent abrégée par « I18N ». Cette abréviat
 
 Termes :
 
-* Globalisation (G11N) : processus consistant à faire prendre en charge différentes langues et régions à une application.
-* Localisation (L10N) : processus consistant à personnaliser une application pour une langue et une région données.
-* Internationalisation (I18N) : globalisation et localisation.
-* Culture : langue et, éventuellement, région.
-* Culture neutre : culture dont la langue est spécifiée, mais non la région. (Exemples : « en », « es ».)
-* Culture spécifique : culture dont la langue et la région sont spécifiées. (Exemples : « en-US », « en-GB », « es-CL ».)
-* Culture parente : culture neutre qui contient une culture spécifique. (Exemple : « en » est la culture parent de « en-US » et « en-GB ».)
-* Paramètres régionaux : synonyme de culture.
+* Globalisation (G11N) : Processus permettant de faire prendre en charge différentes langues et régions à une application.
+* Localisation (L10N) : Processus permettant de personnaliser une application pour une langue et une région données.
+* Internationalisation (I18N) : Décrit à la fois la globalisation et la localisation.
+* Culture : Correspond à une langue et éventuellement à une région.
+* Culture neutre : Culture dont la langue est spécifiée, mais pas la région. (Exemples : « en », « es ».)
+* Culture spécifique : Culture dont la langue et la région sont spécifiées. (Exemples : « en-US », « en-GB », « es-CL ».)
+* Culture parent : Culture neutre qui contient une culture spécifique. (Exemple : « en » est la culture parent de « en-US » et « en-GB ».)
+* Paramètres régionaux : Synonyme de culture.
 
-[!INCLUDE[](~/includes/currency.md)]
+[!INCLUDE[](~/includes/localization/currency.md)]
+
+::: moniker range=">= aspnetcore-3.0"
+[!INCLUDE[](~/includes/localization/unsupported-culture-log-level.md)]
+::: moniker-end
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -378,3 +405,4 @@ Termes :
 * [Ressources dans les fichiers .resx](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Kit de ressources pour application multilingue Microsoft](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
 * [Localisation et classes génériques](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
+* [Nouveautés de la localisation dans ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)

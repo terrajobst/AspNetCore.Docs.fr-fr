@@ -5,14 +5,14 @@ description: Explorez ASP.NET Core Blazor, un moyen de créer une interface util
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 10/03/2019
+ms.date: 10/15/2019
 uid: blazor/index
-ms.openlocfilehash: d7dae028fd9a0505c9a2fa49a284f64fce59287f
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: abf631b5e1cf762eaef4bd85a6b85802c9899291
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924660"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391153"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>Présentation de ASP.NET Core éblouissant
 
@@ -135,7 +135,7 @@ La connexion utilisée par le serveur éblouissant pour communiquer avec le navi
 
 ![Le serveur éblouissant exécute du code .NET sur le serveur et interagit avec le Document Object Model sur le client via une connexion Signalr.](index/_static/blazor-server.png)
 
-## <a name="javascript-interop"></a>Interopérabilité JavaScript
+## <a name="javascript-interop"></a>Interopérabilité de JavaScript
 
 Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
 

@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 5c5419eb6ccfbd9ddd8d6fadb24d688966d76c10
-ms.sourcegitcommit: 476ea5ad86a680b7b017c6f32098acd3414c0f6c
-ms.translationtype: HT
+ms.openlocfilehash: c2397a535fa2c128f18d65323d0f4920af914205
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69022404"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334215"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Dans cette section, une logique de validation est ajoutée au modèle `Movie`. Les règles de validation sont appliquées chaque fois qu’un utilisateur crée ou modifie un film.
 
@@ -63,7 +63,7 @@ Sélectionnez le lien **Créer nouveau**. Complétez le formulaire avec des vale
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](validation/_static/val.png)
 
-[!INCLUDE[](~/includes/currency.md)]
+[!INCLUDE[](~/includes/localization/currency.md)]
 
 Notez que le formulaire a affiché automatiquement un message d’erreur de validation dans chaque champ contenant une valeur non valide. Les erreurs sont appliquées à la fois côté client (à l’aide de JavaScript et de jQuery) et côté serveur (quand JavaScript est désactivé pour un utilisateur).
 
@@ -174,7 +174,7 @@ CREATE TABLE [dbo].[Movie] (
 Les modifications précédentes du schéma n’entraînent pas la levée d’une exception par EF. Cependant, créez une migration pour que le schéma soit cohérent avec le modèle.
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration New_DataAnnotations
@@ -207,7 +207,7 @@ Des migrations ne sont pas requises pour SQLite.
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Pour plus d’informations sur le déploiement vers Azure, consultez [Didacticiel : Créer une application ASP.NET Core dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
+Pour plus d’informations sur le déploiement sur Azure, consultez [Didacticiel : créer une application ASP.net core dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb).
 
 Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 

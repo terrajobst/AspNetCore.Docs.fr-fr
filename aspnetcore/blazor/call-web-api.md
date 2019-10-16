@@ -5,14 +5,14 @@ description: Découvrez comment appeler une API Web à partir d’une applicatio
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/15/2019
 uid: blazor/call-web-api
-ms.openlocfilehash: 3d70af2226eb29870458a5fd3c2bbbc3ee5c14ce
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: b08fdf5c2f9a523314b1744a33087eb64fa4c14a
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037440"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390826"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core éblouissant
 
@@ -200,7 +200,7 @@ Fournissez des options de demande à l' [API d’extraction](https://developer.m
 }
 ```
 
-Pour plus d’informations sur les options de l’API FETCH, consultez la page documentation @no__t 0MDN : WindowOrWorkerGlobalScope. Fetch () :P arameters @ no__t-0.
+Pour plus d’informations sur les options de l’API FETCH, consultez [MDN Web docs : WindowOrWorkerGlobalScope. Fetch () :P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters).
 
 Lors de l’envoi d’informations d’identification (cookies/en-têtes d’autorisation) sur les demandes CORS, l’en-tête `Authorization` doit être autorisé par la stratégie CORS.
 

@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer des applications Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 10/15/2019
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 1cfe87c7194b34c2461429225c560f9e689168ae
-ms.sourcegitcommit: 79eeb17604b536e8f34641d1e6b697fb9a2ee21f
+ms.openlocfilehash: 271135a0ebe67d31fd8e2bcf672e723814727147
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211703"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391336"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>Héberger et déployer ASP.NET Core Blazor
 
@@ -50,16 +50,16 @@ Les ressources du dossier sont déployées sur le serveur web. Le déploiement p
 
 Le *chemin d’accès de base* de l’application est le chemin de l’URL racine de l’application. Prenons l’exemple de l’application principale et de l’application éblouissant suivante :
 
-* L’application principale est appelée `MyApp`:
-  * L’application réside physiquement dans *\\d : MyApp*.
-  * Les demandes sont reçues `https://www.contoso.com/{MYAPP RESOURCE}`à l’adresse.
-* Une application éblouissante appelée `CoolApp` est une sous-application de `MyApp`:
-  * La sous-application réside physiquement dans *d :\\MyApp\\coolapp*.
-  * Les demandes sont reçues `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}`à l’adresse.
+* L’application principale est appelée `MyApp` :
+  * L’application se trouve physiquement à l’adresse *d : \\MyApp*.
+  * Les demandes sont reçues à `https://www.contoso.com/{MYAPP RESOURCE}`.
+* Une application éblouissante appelée `CoolApp` est une sous-application de `MyApp` :
+  * La sous-application réside physiquement dans *d : \\MyApp @ no__t-2CoolApp*.
+  * Les demandes sont reçues à `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}`.
 
-Si vous ne spécifiez `CoolApp`pas de configuration supplémentaire pour, la sous-application dans ce scénario n’a aucune connaissance de son emplacement sur le serveur. Par exemple, l’application ne peut pas construire des URL relatives correctes pour ses ressources sans savoir qu’elle réside sur le chemin `/CoolApp/`d’URL relatif.
+Si vous ne spécifiez pas de configuration supplémentaire pour `CoolApp`, la sous-application dans ce scénario n’a aucune connaissance de son emplacement sur le serveur. Par exemple, l’application ne peut pas construire des URL relatives correctes pour ses ressources sans savoir qu’elle réside au chemin d’URL relatif `/CoolApp/`.
 
-Pour fournir la configuration du chemin d’accès de base de `https://www.contoso.com/CoolApp/`l’application éblouissante, l' `href` attribut de la `<base>` balise est défini sur le chemin d’accès racine relatif dans le fichier *wwwroot/index.html* :
+Pour fournir la configuration du chemin d’accès de base de l’application éblouissante `https://www.contoso.com/CoolApp/`, l’attribut `href` de la balise @no__t 1 est défini sur le chemin d’accès racine relatif dans le fichier *wwwroot/index.html* :
 
 ```html
 <base href="/CoolApp/">
@@ -67,17 +67,17 @@ Pour fournir la configuration du chemin d’accès de base de `https://www.conto
 
 En fournissant le chemin d’URL relatif, un composant qui ne se trouve pas dans le répertoire racine peut construire des URL relatives au chemin d’accès racine de l’application. Les composants à différents niveaux de la structure de répertoires peuvent créer des liens vers d’autres ressources à des emplacements de l’application. Le chemin de base de l’application sert également à intercepter les clics sur les liens hypertextes où la cible `href` du lien se trouve dans l’espace d’URI du chemin de base de l’application (le routeur Blazor gère la navigation interne).
 
-Dans de nombreux scénarios d’hébergement, le chemin d’URL relatif à l’application est la racine de l’application. Dans ce cas, le chemin d’accès de base de l’URL relative de l'`<base href="/" />`application est une barre oblique (), qui est la configuration par défaut pour une application éblouissante. Dans d’autres scénarios d’hébergement, tels que les pages GitHub et les sous-applications IIS, le chemin d’accès de base de l’application doit être défini sur le chemin d’URL relatif du serveur vers l’application.
+Dans de nombreux scénarios d’hébergement, le chemin d’URL relatif à l’application est la racine de l’application. Dans ce cas, le chemin d’accès de base de l’URL relative de l’application est une barre oblique (`<base href="/" />`), qui est la configuration par défaut pour une application éblouissante. Dans d’autres scénarios d’hébergement, tels que les pages GitHub et les sous-applications IIS, le chemin d’accès de base de l’application doit être défini sur le chemin d’URL relatif du serveur vers l’application.
 
-Pour définir le chemin de base de l’application, mettez à jour la balise `<base>` dans les éléments de balise `<head>` du fichier *wwwroot/index.html*. Affectez `href` à `/{RELATIVE URL PATH}/` l’attribut la valeur (la barre oblique de fin est requise `{RELATIVE URL PATH}` ), où est le chemin d’URL relatif complet de l’application.
+Pour définir le chemin de base de l’application, mettez à jour la balise `<base>` dans les éléments de balise `<head>` du fichier *wwwroot/index.html*. Définissez la valeur de l’attribut `href` sur `/{RELATIVE URL PATH}/` (la barre oblique de fin est requise), où `{RELATIVE URL PATH}` est le chemin d’URL relatif complet de l’application.
 
-Pour une application avec un chemin d’URL relatif non racine (par exemple, `<base href="/CoolApp/">`), l’application ne parvient pas à trouver ses ressources lorsqu’elle est *exécutée localement*. Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution. Pour passer l’argument de base Path lors de l’exécution locale de l' `dotnet run` application, exécutez la commande à partir du `--pathbase` répertoire de l’application avec l’option :
+Pour une application avec un chemin d’URL relatif non racine (par exemple, `<base href="/CoolApp/">`), l’application ne parvient pas à trouver ses ressources lorsqu’elle est *exécutée localement*. Pour surmonter ce problème pendant le développement local et les tests, vous pouvez fournir un argument de *base de chemin* qui correspond à la valeur `href` de la balise `<base>` au moment de l’exécution. Pour passer l’argument de base Path lors de l’exécution locale de l’application, exécutez la commande `dotnet run` à partir du répertoire de l’application avec l’option `--pathbase` :
 
 ```dotnetcli
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}
 ```
 
-Pour une application avec un chemin `/CoolApp/` d’URL relatif (`<base href="/CoolApp/">`), la commande est la suivante :
+Pour une application avec un chemin d’URL relatif de `/CoolApp/` (`<base href="/CoolApp/">`), la commande est :
 
 ```dotnetcli
 dotnet run --pathbase=/CoolApp

@@ -5,14 +5,14 @@ description: Créez une application Blazor étape par étape.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/15/2019
+ms.date: 10/15/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 10feb5467a6a6b5a43e0df739fa72902af9854da
-ms.sourcegitcommit: e5a74f882c14eaa0e5639ff082355e130559ba83
+ms.openlocfilehash: c357b324905ee3a4c9f4bd167dbbcacaf7e1bc76
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168357"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391206"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
@@ -26,7 +26,7 @@ Suivez les instructions de l’article <xref:blazor/get-started> afin de créer 
 
 ## <a name="build-components"></a>Construire des composants
 
-1. Accédez à chacune des trois pages de l’application dans le dossier *Pages* : Accueil, Compteur et Extraire des données. Ces pages sont implémentées par les fichiers de composants Razor *Index.razor*, *Counter.razor* et *FetchData.razor*.
+1. Accédez à chacune des trois pages de l’application dans le dossier *pages* : Hébergement, compteur et extraction de données. Ces pages sont implémentées par les fichiers de composants Razor *Index.razor*, *Counter.razor* et *FetchData.razor*.
 
 1. Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page web nécessite normalement l’écriture de code JavaScript. Toutefois, Blazor fournit une meilleure approche grâce à l’utilisation du langage C#.
 
@@ -59,7 +59,7 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
 1. Ajoutez le composant `Counter` au composant `Index` de l’application en ajoutant un élément `<Counter />` au composant `Index` (*Index.razor*).
 
-   Si vous utilisez le webassembly éblouissant pour cette expérience, un `SurveyPrompt` composant est utilisé par le `Index` composant. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application de serveur éblouissante pour cette expérience, ajoutez l' `<Counter />` élément `Index` au composant :
+   Si vous utilisez le webassembly éblouissant pour cette expérience, un composant `SurveyPrompt` est utilisé par le composant `Index`. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application de serveur éblouissante pour cette expérience, ajoutez l’élément `<Counter />` au composant `Index` :
 
    *Pages/Index.razor* :
 
@@ -69,11 +69,11 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
 ## <a name="component-parameters"></a>Paramètres de composant
 
-Les composants peuvent également avoir des paramètres. Les paramètres de composant sont définis à l’aide de propriétés publiques sur `[Parameter]` la classe de composant avec l’attribut. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
+Les composants peuvent également avoir des paramètres. Les paramètres de composant sont définis à l’aide de propriétés publiques sur la classe de composant avec l’attribut `[Parameter]`. Utilisez des attributs pour spécifier des arguments pour un composant dans le balisage.
 
 1. Mettez à jour le code C# `@code` du composant :
 
-   * Ajoutez une propriété `IncrementAmount` publique avec l' `[Parameter]` attribut.
+   * Ajoutez une propriété `IncrementAmount` publique avec l’attribut `[Parameter]`.
    * Modifiez la méthode `IncrementCount` pour utiliser `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.
 
    *Pages/Counter.razor* :
@@ -99,11 +99,13 @@ La directive `@page` en haut du fichier *Counter.razor* spécifie que le composa
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 
-Si vous utilisez une application de serveur éblouissant, le service `WeatherForecastService` est inscrit en tant que [singleton](xref:fundamentals/dependency-injection#service-lifetimes) dans `Startup.ConfigureServices`. Une instance du service est disponible dans l’ensemble de l’application via l' [injection de dépendances (di)](xref:fundamentals/dependency-injection):
+### <a name="blazor-server-experience"></a>Expérience du serveur éblouissant
+
+Si vous utilisez une application de serveur éblouissant, le service `WeatherForecastService` est inscrit en tant que [Singleton](xref:fundamentals/dependency-injection#service-lifetimes) dans `Startup.ConfigureServices`. Une instance du service est disponible dans l’ensemble de l’application via l' [injection de dépendances (di)](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-La `@inject` directive est utilisée pour injecter l’instance `WeatherForecastService` du service dans le `FetchData` composant.
+La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant `FetchData`.
 
 *Pages/FetchData.razor* :
 
@@ -113,13 +115,15 @@ Le composant `FetchData` utilise le service injecté, comme `ForecastService`, p
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-Si vous utilisez une application de webassembly éblouissant `HttpClient` , est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* .
+### <a name="blazor-webassembly-experience"></a>Expérience webassembly éblouissante
+
+Si vous utilisez une application de webassembly éblouissante, `HttpClient` est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* .
 
 *Pages/FetchData.razor* :
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-Une boucle [\@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour restituer chaque instance de prévision sous forme de ligne dans la table des données météo :
+Une boucle [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour afficher chaque instance de prévision sous la forme d’une ligne dans la table des données météorologiques :
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 

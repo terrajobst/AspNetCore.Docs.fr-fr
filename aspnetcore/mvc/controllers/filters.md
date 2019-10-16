@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: ed48c2074360768b8d8c5af7057b353b00592394
-ms.sourcegitcommit: 73a451e9a58ac7102f90b608d661d8c23dd9bbaf
+ms.openlocfilehash: 0c3597f24e02af40517e12a86127b140ed4fb550
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72037697"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333933"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -133,11 +133,11 @@ Voici un exemple qui illustre l’ordre dans lequel les méthodes de filtre sont
 | Séquence | Étendue de filtre | Méthode de filtre |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
-| 2 | Controller | `OnActionExecuting` |
+| 2 | Contrôleur | `OnActionExecuting` |
 | 3 | Méthode | `OnActionExecuting` |
 | 4 | Méthode | `OnActionExecuted` |
-| 5 | Controller | `OnActionExecuted` |
-| 6\. | Global | `OnActionExecuted` |
+| 5 | Contrôleur | `OnActionExecuted` |
+| 6 | Global | `OnActionExecuted` |
 
 Cette séquence montre que :
 
@@ -158,7 +158,7 @@ Par exemple, dans l’échantillon à télécharger, `MySampleActionFilter` est 
 
 Voici le `TestController` :
 
-* Applique le `SampleActionFilterAttribute` (`[SampleActionFilter]`) pour l’action `FilterTest2` :
+* Applique la `SampleActionFilterAttribute` (`[SampleActionFilter]`) à l’action `FilterTest2`.
 * Remplace `OnActionExecuting` et `OnActionExecuted`.
 
 [!code-csharp[](./filters/sample/FiltersSample/Controllers/TestController.cs?name=snippet)]
@@ -190,14 +190,14 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété `Order` | Méthode de filtre |
+| Séquence | Étendue de filtre | Propriété`Order` | Méthode de filtre |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
-| 2 | Controller | 1  | `OnActionExecuting` |
+| 2 | Contrôleur | 1  | `OnActionExecuting` |
 | 3 | Global | 2  | `OnActionExecuting` |
 | 4 | Global | 2  | `OnActionExecuted` |
-| 5 | Controller | 1  | `OnActionExecuted` |
-| 6\. | Méthode | 0  | `OnActionExecuted` |
+| 5 | Contrôleur | 1  | `OnActionExecuted` |
+| 6 | Méthode | 0  | `OnActionExecuted` |
 
 La propriété `Order` remplace l’étendue lors de la détermination de l’ordre dans lequel les filtres s’exécutent. Les filtres sont d’abord classés par ordre, puis l’étendue est utilisée pour couper les liens. Tous les filtres intégrés implémentent `IOrderedFilter` et affectent 0 à la valeur `Order` par défaut. Pour les filtres intégrés, l’étendue détermine l’ordre, sauf si `Order` est défini sur une valeur différente de zéro.
 
@@ -449,18 +449,7 @@ La méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuti
 * Empêche l’exécution du résultat d’action et des filtres suivants.
 * Est traitée comme une erreur et non comme une réussite.
 
-Lorsque la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName> s’exécute :
-
-* La réponse a probablement déjà été envoyée au client et ne peut pas être modifiée.
-* Si une exception a été levée, le corps de la réponse n’est pas envoyé.
-
-<!-- Review preceding "If an exception was thrown: Original 
-When the OnResultExecuted method runs, the response has likely been sent to the client and cannot be changed further (unless an exception was thrown).
-
-SHould that be , 
-If an exception was thrown **IN THE RESULT FILTER**, the response body is not sent.
-
- -->
+Lors de l’exécution de la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName>, la réponse a probablement déjà été envoyée au client. Si la réponse a déjà été envoyée au client, elle ne peut plus être modifiée.
 
 `ResultExecutedContext.Canceled` est défini sur `true` si l’exécution du résultat d’action a été court-circuitée par un autre filtre.
 
@@ -532,7 +521,7 @@ Les filtres de ressources fonctionnent comme un [intergiciel](xref:fundamentals/
 
 Pour utiliser un intergiciel comme filtre, créez un type avec une méthode `Configure` qui spécifie l’intergiciel que vous voulez injecter dans le pipeline de filtres. Voici un exemple qui utilise l’intergiciel de localisation pour établir la culture actuelle d’une requête :
 
-[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,21)]
+[!code-csharp[](./filters/sample/FiltersSample/Filters/LocalizationPipeline.cs?name=snippet_MiddlewareFilter&highlight=3,22)]
 
 Utilisez le <xref:Microsoft.AspNetCore.Mvc.MiddlewareFilterAttribute> pour exécuter l’intergiciel :
 
@@ -542,5 +531,5 @@ Les filtres d’intergiciels s’exécutent à la même étape du pipeline de fi
 
 ## <a name="next-actions"></a>Actions suivantes
 
-* Consultez [Méthodes de filtre pour les Razor Pages](xref:razor-pages/filter)
+* Consultez [les méthodes de filtre pour Razor pages](xref:razor-pages/filter).
 * Pour expérimenter les filtres, [téléchargez, testez et modifiez l’échantillon Github](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).

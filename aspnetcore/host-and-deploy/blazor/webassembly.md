@@ -5,14 +5,14 @@ description: Découvrez comment héberger et déployer une application Blazor av
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/15/2019
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: a0a11f3aed9035000e79844fbec7cdd17b73fdaa
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 8ff3f7b089b7aec6b1a6be2c85f24cfb9674b684
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007340"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391323"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Héberger et déployer ASP.NET Core éblouissant webassembly
 
@@ -44,7 +44,7 @@ Quand le document par défaut de l’application est demandé à l’aide de la 
 1. *index.HTML* amorce l’application.
 1. Le routeur de Blazor se charge et le composant `Main` Razor est rendu.
 
-Dans la page principale, la sélection du composant `About` fonctionne sur le client, car le routeur Blazor empêche le navigateur d’effectuer une requête sur Internet à `www.contoso.com` pour `About` et fournit lui-même le composant `About` rendu. Toutes les requêtes pour les points de terminaison internes de *l’application de Webassembly éblouissant* fonctionnent de la même façon : Les requêtes ne déclenchent pas de requêtes basées sur le navigateur pour des ressources hébergées par le serveur sur Internet. Le routeur gère les requêtes en interne.
+Dans la page principale, la sélection du composant `About` fonctionne sur le client, car le routeur Blazor empêche le navigateur d’effectuer une requête sur Internet à `www.contoso.com` pour `About` et fournit lui-même le composant `About` rendu. Toutes les requêtes pour les points de terminaison internes de *l’application* Web de l’outil éblouissant fonctionnent de la même façon : les demandes ne déclenchent pas de requêtes basées sur un navigateur vers des ressources hébergées sur le serveur sur Internet. Le routeur gère les requêtes en interne.
 
 Si une requête pour `www.contoso.com/About` est effectuée à l’aide de la barre d’adresses du navigateur, elle échoue. Comme cette ressource n’existe pas sur l’hôte Internet de l’application, une réponse *404 – Non trouvé* est retournée.
 
@@ -143,7 +143,7 @@ Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestion
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:test/troubleshoot-azure-iis>.
 
-### <a name="azure-storage"></a>Stockage Azure
+### <a name="azure-storage"></a>Azure Storage
 
 L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l’hébergement d’applications éblouissantes sans serveur. Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
 

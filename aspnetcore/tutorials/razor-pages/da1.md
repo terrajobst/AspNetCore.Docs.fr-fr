@@ -5,16 +5,16 @@ description: Découvrez comment mettre à jour les pages générées dans une ap
 ms.author: riande
 ms.date: 12/20/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: f1f69b7facf584d46248405c808e75bdd8448d2b
-ms.sourcegitcommit: 051f068c78931432e030b60094c38376d64d013e
-ms.translationtype: HT
+ms.openlocfilehash: 0f6535462fe2d308825bf7289c10d2b0690cebd4
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68440322"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334114"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Mettre à jour les pages générées dans une application ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -53,6 +53,8 @@ Utilisez **Afficher la Source** dans votre navigateur favori pour examiner le ba
 ```
 
 Les liens générés dynamiquement passent l’ID de film avec une chaîne de requête (par exemple `?id=1` dans `https://localhost:5001/Movies/Details?id=1`).
+
+### <a name="add-route-template"></a>Ajouter un modèle de route
 
 Mettez à jour les pages Razor Edit, Details et Delete pour utiliser le modèle d’itinéraire « {id:int} ». Remplacez la directive de chacune de ces pages (`@page`) par `@page "{id:int}"`. Exécuter l’application, puis affichez le code source. Le code HTML généré ajoute l’ID à la partie de chemin de l’URL :
 
@@ -124,8 +126,8 @@ Les méthodes HTTP GET dans les pages Razor Index, Create et Delete suivent un m
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 > [!div class="step-by-step"]
-> [Précédent : Utilisation avec une base de données](xref:tutorials/razor-pages/sql)
-> [Suivant : Ajouter une recherche](xref:tutorials/razor-pages/search)
+> [Précédent : Utilisation d’une base de données](xref:tutorials/razor-pages/sql)
+> [Suivant : Ajouter une fonction de recherche](xref:tutorials/razor-pages/search)
 
 ::: moniker-end
 
@@ -241,7 +243,7 @@ La fonction de recherche est ajoutée dans le prochain didacticiel.
 * [Version YouTube de ce tutoriel](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
-> [Précédent : Utilisation avec une base de données](xref:tutorials/razor-pages/sql)
-> [Suivant : Ajouter une recherche](xref:tutorials/razor-pages/search)
+> [Précédent : Utilisation d’une base de données](xref:tutorials/razor-pages/sql)
+> [Suivant : Ajouter une fonction de recherche](xref:tutorials/razor-pages/search)
 
 ::: moniker-end

@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le modèle d’options pour représente
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/19/2019
+ms.date: 10/11/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 753afb9def90fd35122182f260f1dd0ce8d2830a
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: eb0b7f3f4596b63cf3142017c5c5fe4923aac3a4
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288959"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378742"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -29,9 +29,9 @@ Ces options fournissent également un mécanisme de validation des données de c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="package"></a>Package
 
-Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+Le package [Microsoft. extensions. options. ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) est implicitement référencé dans les applications ASP.net core.
 
 ## <a name="options-interfaces"></a>Interfaces d’options
 
@@ -138,7 +138,7 @@ Dans le code suivant, un troisième service <xref:Microsoft.Extensions.Options.I
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-La méthode d’extension `GetSection` requiert le package NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Si l’application utilise le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou version ultérieure), le package est automatiquement inclus.
+La méthode d’extension `GetSection` requiert le package NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). `Microsoft.Extensions.Options.ConfigurationExtensions` est implicitement référencé dans les applications ASP.NET Core.
 
 Le fichier *appsettings.json* de l’exemple définit un membre `subsection` avec des clés pour `suboption1` et `suboption2` :
 
@@ -342,7 +342,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-La validation basée sur l’annotation de données est disponible dans le package [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations). Pour cela, appelez la méthode <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> sur `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` est inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.2 ou ultérieur).
+La validation basée sur l’annotation de données est disponible dans le package [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations). Pour cela, appelez la méthode <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> sur `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` est implicitement référencé dans les applications ASP.NET Core.
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -376,7 +376,7 @@ public void CanValidateDataAnnotations()
     var sp = services.BuildServiceProvider();
 
     var error = Assert.Throws<OptionsValidationException>(() => 
-        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().Value);
+        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().CurrentValue);
     ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
         "DataAnnotation validation failed for members Required " +
             "with the error 'The Required field is required.'.",
@@ -423,7 +423,8 @@ services.PostConfigureAll<MyOptions>(myOptions =>
 <xref:Microsoft.Extensions.Options.IOptions%601> et <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> peuvent être utilisées dans `Startup.Configure`, dans la mesure où les services sont générés avant que la méthode `Configure` ne s’exécute.
 
 ```csharp
-public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> optionsAccessor)
+public void Configure(IApplicationBuilder app, 
+    IOptionsMonitor<MyOptions> optionsAccessor)
 {
     var option1 = optionsAccessor.CurrentValue.Option1;
 }
@@ -444,7 +445,7 @@ Ces options fournissent également un mécanisme de validation des données de c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
 
@@ -757,7 +758,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-La validation basée sur l’annotation de données est disponible dans le package [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations). Pour cela, appelez la méthode <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> sur `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` est inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.2 ou ultérieur).
+La validation basée sur l’annotation de données est disponible dans le package [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations). Pour cela, appelez la méthode <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> sur `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` est inclus dans le sous- [package Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -790,7 +791,7 @@ public void CanValidateDataAnnotations()
     var sp = services.BuildServiceProvider();
 
     var error = Assert.Throws<OptionsValidationException>(() => 
-        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().Value);
+        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().CurrentValue);
     ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
         "DataAnnotation validation failed for members Required " +
             "with the error 'The Required field is required.'.",
@@ -858,7 +859,7 @@ Ces options fournissent également un mécanisme de validation des données de c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
 

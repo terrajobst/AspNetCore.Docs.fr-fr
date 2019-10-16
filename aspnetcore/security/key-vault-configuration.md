@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le fournisseur de configuration Azure K
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: cc3894df4df169d941f54ef3dfad5d3e6f798aad
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: c8e76068dbcf2a59a15fa75a1fc5aa0032e6acc5
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007410"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334201"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -76,7 +76,7 @@ Lorsque ces secrets sont stockés dans Azure Key Vault dans le [stockage secret 
 
 ## <a name="secret-storage-in-the-production-environment-with-azure-key-vault"></a>Stockage secret dans l’environnement de production avec Azure Key Vault
 
-Les instructions fournies par le [Quickstart : La définition et la récupération d’un secret à partir d’Azure Key Vault à l’aide de Azure CLI rubrique @ no__t-0 sont résumées ici pour la création d’un Azure Key Vault et le stockage des secrets utilisés par l’exemple d’application. Pour plus d’informations, reportez-vous à la rubrique.
+Les instructions fournies par le Guide de [démarrage rapide : définir et récupérer un secret à partir de Azure Key Vault à l’aide de Azure CLI](/azure/key-vault/quick-create-cli) rubrique sont résumées ici pour créer un Azure Key Vault et stocker des secrets utilisés par l’exemple d’application. Pour plus d’informations, reportez-vous à la rubrique.
 
 1. Ouvrez Azure Cloud Shell à l’aide de l’une des méthodes suivantes dans la [portail Azure](https://portal.azure.com/):
 
@@ -102,7 +102,7 @@ Les instructions fournies par le [Quickstart : La définition et la récupérat
 
 1. Créez des secrets dans le coffre de clés en tant que paires nom-valeur.
 
-   Azure Key Vault noms de secrets sont limités aux caractères alphanumériques et aux tirets. Pour des valeurs hiérarchiques (sections de configuration), utilisez `--` (deux tirets) comme séparateur. Les signes deux-points, qui sont normalement utilisés pour délimiter une section d’une sous-clé dans [ASP.net Core configuration](xref:fundamentals/configuration/index), ne sont pas autorisés dans les noms de secrets du coffre de clés. Par conséquent, les deux tirets sont remplacés par deux points lorsque les clés secrètes sont chargées dans la configuration de l’application.
+   Azure Key Vault noms de secrets sont limités aux caractères alphanumériques et aux tirets. Les valeurs hiérarchiques (sections de configuration) utilisent `--` (deux tirets) comme séparateur. Les signes deux-points, qui sont normalement utilisés pour délimiter une section d’une sous-clé dans [ASP.net Core configuration](xref:fundamentals/configuration/index), ne sont pas autorisés dans les noms de secrets du coffre de clés. Par conséquent, deux tirets sont utilisés et permutés pour un signe deux-points lorsque les secrets sont chargés dans la configuration de l’application.
 
    Les secrets suivants sont destinés à être utilisés avec l’exemple d’application. Les valeurs incluent un suffixe `_prod` pour les distinguer des valeurs de suffixe `_dev` chargées dans l’environnement de développement des secrets de l’utilisateur. Remplacez `{KEY VAULT NAME}` par le nom du coffre de clés que vous avez créé à l’étape précédente :
 
@@ -141,8 +141,8 @@ L’exemple d’application utilise un ID d’application et un certificat X. 50
 
 L’exemple d’application `Certificate` obtient ses valeurs de configuration à partir de `IConfigurationRoot` portant le même nom que le nom de la clé secrète :
 
-* Valeurs non hiérarchiques : La valeur de `SecretName` est obtenu avec `config["SecretName"]`.
-* Valeurs hiérarchiques (sections) : Utilisez la notation `:` (deux-points) ou la méthode d’extension `GetSection`. Utilisez une des ces approches pour obtenir la valeur de configuration, :
+* Valeurs non hiérarchiques : la valeur de `SecretName` est obtenue avec `config["SecretName"]`.
+* Valeurs hiérarchiques (sections) : utilisez la notation `:` (deux-points) ou la méthode d’extension `GetSection`. Utilisez l’une des approches suivantes pour obtenir la valeur de configuration :
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
@@ -190,16 +190,26 @@ L’exemple d’application :
 
 [!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet2&highlight=13-21)]
 
+Exemple de valeur de nom de coffre de clés : `contosovault`
+    
+*appsettings.json* :
+
+```json
+{
+  "KeyVaultName": "Key Vault Name"
+}
+```
+
 Quand vous exécutez l’application, une page Web affiche les valeurs de secret chargées. Dans l’environnement de développement, les valeurs secrètes ont le suffixe `_dev`, car elles sont fournies par les secrets de l’utilisateur. Dans l’environnement de production, les valeurs sont chargées avec le suffixe `_prod`, car elles sont fournies par Azure Key Vault.
 
 Si vous recevez une erreur `Access denied`, confirmez que l’application est inscrite auprès de Azure AD et qu’elle a fourni un accès au coffre de clés. Confirmez que vous avez redémarré le service dans Azure.
 
 ## <a name="use-a-key-name-prefix"></a>Utiliser un préfixe de nom de clé
 
-`AddAzureKeyVault` fournit une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, ce qui vous permet de contrôler la façon dont les secrets de coffre de clés sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger les valeurs des secrets selon une valeur de préfixe que vous indiquez au démarrage de l’application. Cela vous permet, par exemple, de charger des secrets en fonction de la version de l’application.
+`AddAzureKeyVault` fournit une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, ce qui vous permet de contrôler la façon dont les secrets de coffre de clés sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger des valeurs de secret en fonction d’une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, de charger des secrets basés sur la version de l’application.
 
 > [!WARNING]
-> N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer les secrets de plusieurs applications dans le même coffre de clés ou pour placer des secrets d'environnement (par exemple, des secrets de *développement* / de *production*) dans le même coffre. Nous recommandons d'utiliser un coffre de clés distinct pour chaque application et chaque environnement de développement/production afin d’isoler les environnements d’application et ainsi de garantir le niveau de sécurité le plus élevé possible.
+> N’utilisez pas de préfixes sur des secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le même coffre de clés ou pour placer des secrets d’environnement (par exemple, le *développement* et les secrets de *production* ) dans le même coffre. Nous recommandons que les applications et les environnements de développement/production utilisent des coffres de clés distincts pour isoler les environnements d’application pour le plus haut niveau de sécurité.
 
 Dans l’exemple suivant, un secret est établi dans le coffre de clés (et l’utilisation de l’outil secret Manager pour l’environnement de développement) pour `5000-AppSecret` (les points ne sont pas autorisés dans les noms de secret de coffre de clés). Ce secret représente un secret d’application pour la version 5.0.0.0 de l’application. Pour une autre version de l’application, 5.1.0.0, un secret est ajouté au coffre de clés (et à l’aide de l’outil secret Manager) pour `5100-AppSecret`. Chaque version de l’application charge sa valeur secrète avec version dans sa configuration en tant que `AppSecret`, ce qui élimine la version au fur et à mesure qu’elle charge le secret.
 
@@ -211,7 +221,7 @@ L’implémentation `IKeyVaultSecretManager` réagit aux préfixes de version de
 
 [!code-csharp[](key-vault-configuration/sample_snapshot/Startup.cs?name=snippet1)]
 
-La méthode `Load` est appelée par un algorithme de fourniture qui effectue une itération dans les secrets du coffre pour trouver ceux qui comportent le préfixe de la version. Quand un préfixe de version a été trouvé avec la méthode `Load`, l’algorithme utilise la méthode `GetKey` pour retourner le nom de configuration du nom du secret. Il supprime le préfixe de version du nom du secret et retourne le reste du nom du secret pour le charger dans les paires nom-valeur de configuration de l’application.
+La méthode `Load` est appelée par un algorithme de fournisseur qui itère au sein des secrets du coffre pour trouver ceux qui ont le préfixe de version. Lorsqu’un préfixe de version est trouvé avec `Load`, l’algorithme utilise la méthode `GetKey` pour retourner le nom de configuration du nom de la clé secrète. Il supprime le préfixe de version du nom du secret et retourne le reste du nom de secret pour le chargement dans les paires nom-valeur de la configuration de l’application.
 
 Lorsque cette approche est implémentée :
 
@@ -252,13 +262,13 @@ Lorsque cette approche est implémentée :
 1. Si la version de l’application est remplacée dans le fichier projet par `5.1.0.0` et que l’application est de nouveau exécutée, la valeur secrète retournée est `5.1.0.0_secret_value_dev` dans l’environnement de développement et `5.1.0.0_secret_value_prod` en production.
 
 > [!NOTE]
-> Vous pouvez également fournir votre propre implémentation `KeyVaultClient` à `AddAzureKeyVault`. Un client personnalisé permet de partager une seule instance du client dans l’application.
+> Vous pouvez également fournir votre propre implémentation de `KeyVaultClient` à `AddAzureKeyVault`. Un client personnalisé permet de partager une seule instance du client dans l’application.
 
 ## <a name="bind-an-array-to-a-class"></a>Lier un tableau à une classe
 
 Le fournisseur est en mesure de lire les valeurs de configuration dans un tableau pour la liaison à un tableau POCO.
 
-Lors de la lecture à partir d’une source de configuration qui permet aux clés de contenir des séparateurs de deux-points (`:`), un segment de clé numérique est utilisé pour distinguer les clés qui composent un tableau (`:0:`, `:1:`,... `:{n}:`). Pour plus d’informations, voir [Configuration : Liez un tableau à une classe @ no__t-0.
+Lors de la lecture à partir d’une source de configuration qui permet aux clés de contenir des séparateurs de deux-points (`:`), un segment de clé numérique est utilisé pour distinguer les clés qui composent un tableau (`:0:`, `:1:`,... `:{n}:`). Pour plus d’informations, consultez [Configuration : lier un tableau à une classe](xref:fundamentals/configuration/index#bind-an-array-to-a-class).
 
 Les clés de Azure Key Vault ne peuvent pas utiliser un signe deux-points comme séparateur. L’approche décrite dans cette rubrique utilise des doubles tirets (`--`) comme séparateur pour les valeurs hiérarchiques (sections). Les clés de tableau sont stockées dans Azure Key Vault avec des doubles tirets et des segments de clé numériques (`--0--`, `--1--`, &hellip; `--{n}--`).
 
@@ -287,7 +297,7 @@ Examinez la configuration de fournisseur de journalisation [Serilog](https://ser
 
 La configuration indiquée dans le fichier JSON précédent est stockée dans Azure Key Vault à l’aide de la notation à deux tirets (`--`) et de segments numériques :
 
-| Touche | Value |
+| Touche | valeur |
 | --- | ----- |
 | `Serilog--WriteTo--0--Name` | `AzureTableStorage` |
 | `Serilog--WriteTo--0--Args--storageTableName` | `logs` |
@@ -298,7 +308,7 @@ La configuration indiquée dans le fichier JSON précédent est stockée dans Az
 
 ## <a name="reload-secrets"></a>Recharger les secrets
 
-Les secrets sont mis en cache jusqu'à ce que la méthode `IConfigurationRoot.Reload()` soit appelée. Les secrets ayant expiré, désactivés et mis à jour dans le coffre de clés ne sont pas respectés par l’application tant que `Reload` n’est pas exécutée.
+Les secrets sont mis en cache jusqu’à ce que `IConfigurationRoot.Reload()` soit appelé. Les secrets ayant expiré, désactivés et mis à jour dans le coffre de clés ne sont pas respectés par l’application tant que `Reload` n’est pas exécutée.
 
 ```csharp
 Configuration.Reload();
@@ -308,24 +318,24 @@ Configuration.Reload();
 
 Les secrets désactivés et arrivés à expiration lèvent une `KeyVaultClientException` au moment de l’exécution. Pour empêcher l’application de se déclencher, fournissez la configuration à l’aide d’un autre fournisseur de configuration ou mettez à jour le secret désactivé ou expiré.
 
-## <a name="troubleshoot"></a>Résolution des problèmes
+## <a name="troubleshoot"></a>Résoudre les problèmes
 
-Lorsque l’application ne parvient pas à charger la configuration à l’aide du fournisseur, un message d’erreur est écrit dans l' [infrastructure de journalisation ASP.net Core](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
+Lorsque l’application ne parvient pas à charger la configuration à l’aide du fournisseur, un message d’erreur est écrit dans l' [infrastructure de journalisation ASP.net Core](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
 
 * L’application ou le certificat n’est pas configuré correctement dans Azure Active Directory.
 * Le coffre de clés n’existe pas dans Azure Key Vault.
 * L’application n’est pas autorisée à accéder au coffre de clés.
 * La stratégie d’accès n’inclut pas les autorisations `Get` et `List`.
-* Dans le coffre de clés, les données de configuration (paire nom-valeur) sont manquantes, désactivées, expirées ou incorrectement nommées.
+* Dans le coffre de clés, les données de configuration (paire nom-valeur) sont incorrectement nommées, manquantes, désactivées ou expirées.
 * L’application a un nom de coffre de clés incorrect (`KeyVaultName`), Azure AD ID d’application (`AzureADApplicationId`) ou Azure AD empreinte de certificat (`AzureADCertThumbprint`).
 * La clé de configuration (nom) est incorrecte dans l’application pour la valeur que vous essayez de charger.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:fundamentals/configuration/index>
-* [Microsoft Azure : Key Vault @ no__t-0
-* [Microsoft Azure : Documentation de Key Vault @ no__t-0
+* [Microsoft Azure : Key Vault](https://azure.microsoft.com/services/key-vault/)
+* [Microsoft Azure : documentation Key Vault](/azure/key-vault/)
 * [Génération et transfert de clés protégées par HSM pour Azure Key Vault](/azure/key-vault/key-vault-hsm-protected-keys)
 * [KeyVaultClient, classe](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
-* [Démarrage rapide : Définir et récupérer un secret à partir d’Azure Key Vault à l’aide d’une application Web .NET @ no__t-0
-* [Tutoriel : Comment utiliser Azure Key Vault avec la machine virtuelle Windows Azure dans. NET @ no__t-0
+* [Démarrage rapide : définir et récupérer un secret à partir de Azure Key Vault à l’aide d’une application Web .NET](/azure/key-vault/quick-create-net)
+* [Didacticiel : utilisation de Azure Key Vault avec une machine virtuelle Windows Azure dans .NET](/azure/key-vault/tutorial-net-windows-virtual-machine)

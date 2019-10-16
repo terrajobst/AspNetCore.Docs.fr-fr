@@ -5,14 +5,14 @@ description: Découvrez comment créer des revendications et des jetons supplém
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/01/2019
+ms.date: 10/15/2019
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: cdf263df8d1aa17ea3820a16ecbd10abce9d683d
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: 72710d249d3210208dd9b0356a700ba02a0b727a
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925151"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378883"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conserver des revendications et des jetons supplémentaires à partir de fournisseurs externes dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Une application ASP.NET Core peut établir des revendications et des jetons supp
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Choisissez les fournisseurs d’authentification externes à prendre en charge dans l’application. Pour chaque fournisseur, inscrivez l’application et obtenez un ID client et une clé secrète client. Pour plus d'informations, consultez <xref:security/authentication/social/index>. L’exemple d’application utilise le [fournisseur d’authentification Google](xref:security/authentication/google-logins).
 
@@ -47,7 +47,7 @@ L’exemple d’application configure le fournisseur d’authentification Google
 
 Spécifiez la liste des autorisations à récupérer du fournisseur en spécifiant le <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>. Les étendues d’authentification pour les fournisseurs externes communs apparaissent dans le tableau suivant.
 
-| Fournisseur  | `Scope`                                                            |
+| Fournisseur  | Étendue                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
@@ -68,7 +68,7 @@ L’exemple d’application crée des revendications de paramètres régionaux (
 
 [!code-csharp[](additional-claims/samples/3.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=13-14)]
 
-Dans <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Pendant le processus de connexion, le <xref:Microsoft.AspNetCore.Identity.UserManager%601> peut stocker des revendications `ApplicationUser` pour les données utilisateur disponibles à partir du <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
+Dans `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync`, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Pendant le processus de connexion, le <xref:Microsoft.AspNetCore.Identity.UserManager%601> peut stocker des revendications `ApplicationUser` pour les données utilisateur disponibles à partir du <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
 
 Dans l’exemple d’application, `OnPostConfirmationAsync` (*Account/ExternalLogin. cshtml. cs*) établit les revendications de paramètres régionaux (`urn:google:locale`) et d’image (`urn:google:picture`) pour le signé dans `ApplicationUser`, y compris une revendication pour <xref:System.Security.Claims.ClaimTypes.GivenName> :
 
@@ -164,7 +164,7 @@ Une application ASP.NET Core peut établir des revendications et des jetons supp
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Choisissez les fournisseurs d’authentification externes à prendre en charge dans l’application. Pour chaque fournisseur, inscrivez l’application et obtenez un ID client et une clé secrète client. Pour plus d'informations, consultez <xref:security/authentication/social/index>. L’exemple d’application utilise le [fournisseur d’authentification Google](xref:security/authentication/google-logins).
 
@@ -187,7 +187,7 @@ L’exemple d’application configure le fournisseur d’authentification Google
 
 Spécifiez la liste des autorisations à récupérer du fournisseur en spécifiant le <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>. Les étendues d’authentification pour les fournisseurs externes communs apparaissent dans le tableau suivant.
 
-| Fournisseur  | `Scope`                                                            |
+| Fournisseur  | Étendue                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
@@ -208,7 +208,7 @@ L’exemple d’application crée des revendications de paramètres régionaux (
 
 [!code-csharp[](additional-claims/samples/2.x/ClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=13-14)]
 
-Dans <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Pendant le processus de connexion, le <xref:Microsoft.AspNetCore.Identity.UserManager%601> peut stocker des revendications `ApplicationUser` pour les données utilisateur disponibles à partir du <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
+Dans `Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync`, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Pendant le processus de connexion, le <xref:Microsoft.AspNetCore.Identity.UserManager%601> peut stocker des revendications `ApplicationUser` pour les données utilisateur disponibles à partir du <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
 
 Dans l’exemple d’application, `OnPostConfirmationAsync` (*Account/ExternalLogin. cshtml. cs*) établit les revendications de paramètres régionaux (`urn:google:locale`) et d’image (`urn:google:picture`) pour le signé dans `ApplicationUser`, y compris une revendication pour <xref:System.Security.Claims.ClaimTypes.GivenName> :
 

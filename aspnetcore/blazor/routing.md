@@ -5,14 +5,14 @@ description: Découvrez comment acheminer des requêtes dans des applications et
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2019
+ms.date: 10/15/2019
 uid: blazor/routing
-ms.openlocfilehash: 8f48112237e6dd3fed88404c53b8d7d9137ef6ff
-ms.sourcegitcommit: 0b8a7571bf7acf85bf16118acb2435001cbe4b5d
+ms.openlocfilehash: a71709d6b87d8182e90f827d952090aa1e38d701
+ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72236529"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72391194"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
 
@@ -88,7 +88,7 @@ Utilisez le paramètre `AdditionalAssemblies` pour spécifier des assemblys supp
 ```cshtml
 <Router
     AppAssembly="typeof(Program).Assembly"
-    AdditionalAssemblies="new[] { typeof(Component1).Assembly }>
+    AdditionalAssemblies="new[] { typeof(Component1).Assembly }">
     ...
 </Router>
 ```

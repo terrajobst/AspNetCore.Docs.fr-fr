@@ -5,16 +5,16 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 9/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: dcbcf37dfd95d784ebe249ec6e9e4184a8853d3d
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: c101fe4aee9a1fbf28d66a8527e3c199194d73fe
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71187184"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334177"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -47,7 +47,7 @@ Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** 
 
 * Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie**, puis sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 * Cliquez avec le bouton droit sur le dossier *Modèles*, puis sélectionnez **Ajouter** > **Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Dans le volet gauche, sélectionnez **Général**.
   * Dans le volet central, sélectionnez **Classe vide**.
@@ -84,7 +84,7 @@ Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :
 
 * Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)** .
 * Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et changez le nom généré de RazorPagesMovie.**Models**.RazorPagesMovieContext en RazorPagesMovie.**Data**.RazorPagesMovieContext. [Cette modification](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) n'est pas requise. Elle crée la classe de contexte de base de données avec l’espace de noms correct.
-* Sélectionnez **Ajouter**.
+* Sélectionnez **Ajouter** .
 
 ![Image illustrant les instructions précédentes.](model/_static/3/arp.png)
 
@@ -95,20 +95,20 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Pour Windows 10** : Exécutez la commande suivante :
+* **Pour Windows**, exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Pour macOS et Linux** : Exécutez la commande suivante :
+* **Pour macOS et Linux**, exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -118,14 +118,14 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -141,7 +141,7 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 
 Le processus de génération de modèles automatique crée et met à jour les fichiers suivants :
 
-* *Pages/Movies* : Create, Delete, Details, Edit, Index.
+* *Pages/Movies* : Create, Delete, Details, Edit, Index.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="updated"></a>Mis à jour
@@ -154,7 +154,7 @@ Les fichiers créés et mis à jour sont expliqués dans la section suivante.
 
 Le processus de génération de modèles automatique crée les fichiers suivants :
 
-* *Pages/Movies* : Create, Delete, Details, Edit, Index.
+* *Pages/Movies* : Create, Delete, Details, Edit, Index.
 
 Les fichiers créés sont expliqués dans la section suivante.
 
@@ -168,14 +168,14 @@ Les fichiers créés sont expliqués dans la section suivante.
 
 Dans cette section, la console du gestionnaire de package est utilisée pour :
 
-* Ajouter une migration initiale
+* Ajoutez une migration initiale.
 * Mettez à jour la base de données avec la migration initiale.
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
 
   ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
 
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```PMC
 Add-Migration InitialCreate
@@ -192,7 +192,7 @@ Update-Database
 
 ---
 
-Les commandes précédentes génèrent l’avertissement suivant : « Aucun type n’a été spécifié pour la colonne décimale ‘Price’ sur le type d’entité ‘Movie’. Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
+Les commandes précédentes génèrent l’avertissement suivant : « aucun type n’a été spécifié pour la colonne décimale «Price » sur le type d’entité « Movie ». Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
 
 Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
 
@@ -240,7 +240,7 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
-Si vous obtenez l’erreur :
+Si vous obtenez cette erreur :
 
 ```console
 SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
@@ -300,7 +300,7 @@ Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** 
 
 * Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie**, puis sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 * Cliquez avec le bouton droit sur le dossier *Modèles*, puis sélectionnez **Ajouter** > **Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Dans le volet gauche, sélectionnez **Général**.
   * Dans le volet central, sélectionnez **Classe vide**.
@@ -341,7 +341,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 * Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)** .
 * Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et acceptez le nom généré **RazorPagesMovie.Models.RazorPagesMovieContext**.
-* Sélectionnez **Ajouter**.
+* Sélectionnez **Ajouter** .
 
 ![Image illustrant les instructions précédentes.](model/_static/arp.png)
 
@@ -352,20 +352,20 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Pour Windows 10** : Exécutez la commande suivante :
+* **Pour Windows**, exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Pour macOS et Linux** : Exécutez la commande suivante :
+* **Pour macOS et Linux**, exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -375,14 +375,14 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
@@ -396,7 +396,7 @@ Le processus de génération de modèles automatique crée et met à jour les fi
 
 ### <a name="files-created"></a>Fichiers créés
 
-* *Pages/Movies* : Create, Delete, Details, Edit, Index.
+* *Pages/Movies* : Create, Delete, Details, Edit, Index.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>Fichier mis à jour
@@ -413,16 +413,16 @@ Les fichiers créés et mis à jour sont expliqués dans la section suivante.
 
 Dans cette section, la console du gestionnaire de package est utilisée pour :
 
-* Ajouter une migration initiale
+* Ajoutez une migration initiale.
 * Mettez à jour la base de données avec la migration initiale.
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
 
   ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
 
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
-```PMC
+```Powershell
 Add-Migration Initial
 Update-Database
 ```
@@ -437,7 +437,7 @@ Update-Database
 
 ---
 
-Les commandes précédentes génèrent l’avertissement suivant : « Aucun type n’a été spécifié pour la colonne décimale ‘Price’ sur le type d’entité ‘Movie’. Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
+Les commandes précédentes génèrent l’avertissement suivant : « aucun type n’a été spécifié pour la colonne décimale «Price » sur le type d’entité « Movie ». Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
 
 Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
 
@@ -485,7 +485,7 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 
-Si vous obtenez l’erreur :
+Si vous obtenez cette erreur :
 
 ```console
 SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.

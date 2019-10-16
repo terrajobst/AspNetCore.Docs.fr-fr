@@ -5,16 +5,16 @@ description: Montre comment ajouter une fonction de recherche à des pages Razor
 ms.author: riande
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: fde99d8fab00265294bccb2ecdb380d02a8f3673
-ms.sourcegitcommit: a7813a776809a5029c94aa503ee71994f156231f
+ms.openlocfilehash: 1eeb3aa86f2a6928b6d0b368c90e4760a66a6c6e
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71267752"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334061"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -45,7 +45,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-La requête est *seulement* définie à ce stade ; elle n’a **pas** été exécutée sur la base de données.
+La requête est *seulement* définie à ce stade, elle n’a **pas** été exécutée sur la base de données.
 
 Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les films est modifiée de façon à filtrer sur la chaîne de recherche :
 
@@ -53,13 +53,14 @@ Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les 
 
 Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Les expressions lambda sont utilisées dans les requêtes [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) basées sur une méthode comme arguments pour les méthodes d’opérateur de requête standard, telles que la méthode [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) ou `Contains` (utilisée dans le code précédent). Les requêtes LINQ ne sont pas exécutées quand elles sont définies ou quand elles sont modifiées en appelant une méthode (comme `Where`, `Contains` ou `OrderBy`). Au lieu de cela, l’exécution de la requête est différée. Cela signifie que l’évaluation d’une expression est retardée jusqu’à ce que sa valeur réalisée fasse l’objet d’une itération réelle ou que la méthode `ToListAsync` soit appelée. Pour plus d’informations, consultez [Exécution de requête](/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
-**Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
+> [!NOTE]
+> La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données C# , et non dans le code. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
 Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL (par exemple, `https://localhost:5001/Movies?searchString=Ghost`). Les films filtrés sont affichés.
 
 ![Vue Index](search/_static/ghost.png)
 
-Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `https://localhost:5001/Movies/Ghost`).
+Si le modèle de routing suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `https://localhost:5001/Movies/Ghost`).
 
 ```cshtml
 @page "{searchString?}"
@@ -67,7 +68,7 @@ Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaî
 
 La contrainte d’itinéraire précédente permet de rechercher le titre comme données d’itinéraire (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre d’itinéraire facultatif.
 
-![Vue Index avec le mot « ghost » ajouté à l’URL et une liste de films retournée contenant deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
+![Vue Index avec le mot « ghost » ajouté à l’URL, et une liste des films retournés avec deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
 Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte pas la casse.
 
@@ -84,7 +85,7 @@ La balise HTML `<form>` utilise les [Tag Helpers](xref:mvc/views/tag-helpers/int
 
 Enregistrez les modifications apportées, puis testez le filtre.
 
-![Vue Index avec le mot « ghost » tapé dans la zone de texte de filtre des titres](search/_static/filter.png)
+![Vue Index avec le mot « ghost » tapé dans la zone de texte du filtre Title](search/_static/filter.png)
 
 ## <a name="search-by-genre"></a>Rechercher par genre
 
@@ -147,7 +148,7 @@ var movies = from m in _context.Movie
              select m;
 ```
 
-La requête est *seulement* définie à ce stade ; elle n’a **pas** été exécutée sur la base de données.
+La requête est *seulement* définie à ce stade, elle n’a **pas** été exécutée sur la base de données.
 
 Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les films est modifiée de façon à filtrer sur la chaîne de recherche :
 
@@ -155,13 +156,13 @@ Si la propriété `SearchString` n’est pas nulle ou vide, la requête sur les 
 
 Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Les expressions lambda sont utilisées dans les requêtes [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) basées sur une méthode comme arguments pour les méthodes d’opérateur de requête standard, telles que la méthode [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) ou `Contains` (utilisée dans le code précédent). Les requêtes LINQ ne sont pas exécutées quand elles sont définies ou quand elles sont modifiées en appelant une méthode (comme `Where`, `Contains` ou `OrderBy`). Au lieu de cela, l’exécution de la requête est différée. Cela signifie que l’évaluation d’une expression est retardée jusqu’à ce que sa valeur réalisée fasse l’objet d’une itération réelle ou que la méthode `ToListAsync` soit appelée. Pour plus d’informations, consultez [Exécution de requête](/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
-**Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
+**Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
 Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL (par exemple, `https://localhost:5001/Movies?searchString=Ghost`). Les films filtrés sont affichés.
 
 ![Vue Index](search/_static/ghost.png)
 
-Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `https://localhost:5001/Movies/Ghost`).
+Si le modèle de routing suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `https://localhost:5001/Movies/Ghost`).
 
 ```cshtml
 @page "{searchString?}"
@@ -169,7 +170,7 @@ Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaî
 
 La contrainte d’itinéraire précédente permet de rechercher le titre comme données d’itinéraire (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre d’itinéraire facultatif.
 
-![Vue Index avec le mot « ghost » ajouté à l’URL et une liste de films retournée contenant deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
+![Vue Index avec le mot « ghost » ajouté à l’URL, et une liste des films retournés avec deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
 Le runtime ASP.NET Core utilise la [liaison de modèle](xref:mvc/models/model-binding) pour définir la valeur de la propriété `SearchString` à partir de la chaîne de requête (`?searchString=Ghost`) ou des données de la route (`https://localhost:5001/Movies/Ghost`). La liaison de modèle ne respecte pas la casse.
 
@@ -186,7 +187,7 @@ La balise HTML `<form>` utilise les [Tag Helpers](xref:mvc/views/tag-helpers/int
 
 Enregistrez les modifications apportées, puis testez le filtre.
 
-![Vue Index avec le mot « ghost » tapé dans la zone de texte de filtre des titres](search/_static/filter.png)
+![Vue Index avec le mot « ghost » tapé dans la zone de texte du filtre Title](search/_static/filter.png)
 
 ## <a name="search-by-genre"></a>Rechercher par genre
 

@@ -5,14 +5,14 @@ description: Découvrez comment les tests d’intégration garantissent le bon f
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 uid: test/integration-tests
-ms.openlocfilehash: 2825073962d135608c52e7bde42106e7786de521
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 863b95230d376d050c34a9ed585b7696e649cb05
+ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007455"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72378715"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -76,9 +76,9 @@ Les tests d’intégration suivent une séquence d’événements qui incluent l
 
 1. L’hôte Web de St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
-1. L’étape *organiser* le test est exécutée : L’application de test prépare une requête.
-1. L’étape de test *Act* est exécutée : Le client envoie la demande et reçoit la réponse.
-1. L’étape de test d' *assertion* est exécutée : La réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
+1. L’étape *organiser* le test est exécutée : l’application de test prépare une demande.
+1. L’étape de test *Act* est exécutée : le client envoie la demande et reçoit la réponse.
+1. L’étape de test d' *assertion* est exécutée : la réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
 1. Le processus se poursuit jusqu’à ce que tous les tests soient exécutés.
 1. Les résultats des tests sont signalés.
 
@@ -108,8 +108,8 @@ Le projet de test doit :
 
 Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également :
 
-* [xunit](https://www.nuget.org/packages/xunit)
-* [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
+* [xUnit](https://www.nuget.org/packages/xunit)
+* [xUnit. Runner. VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp)
 
 Entity Framework Core est également utilisé dans les tests. L’application référence :
@@ -167,7 +167,24 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans l’exemple de tests [Integration : Test de l’organisation de l’application @ no__t-0.
+   L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans la section [exemple de tests d’intégration : organisation](#test-app-organization) d’une application de test.
+
+   Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. Pour utiliser une base de données différente pour les tests que la base de données de l’application, le contexte de base de données de l’application doit être remplacé par `builder.ConfigureServices`.
+
+   L’exemple d’application recherche le descripteur de service pour le contexte de base de données et utilise le descripteur pour supprimer l’inscription du service. Ensuite, la fabrique ajoute un nouveau `ApplicationDbContext` qui utilise une base de données en mémoire pour les tests.
+
+   Pour vous connecter à une base de données différente de celle de la base de données en mémoire, modifiez l’appel de `UseInMemoryDatabase` pour connecter le contexte à une autre base de données. Pour utiliser une base de données de test SQL Server :
+
+   * Référencez le package NuGet [Microsoft. EntityFrameworkCore. SqlServer] https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) dans le fichier projet.
+   * Appelez `UseSqlServer` avec une chaîne de connexion à la base de données.
+
+   ```csharp
+   services.AddDbContext<ApplicationDbContext>((options, context) => 
+   {
+       context.UseSqlServer(
+           Configuration.GetConnectionString("TestingDbConnectionString"));
+   });
+   ```
 
 2. Utilisez la @no__t personnalisée-0 dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
 
@@ -210,7 +227,7 @@ La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exe
 
 Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances `HttpClient`.
 
-| Option | Description | Par défaut |
+| Option | Description | Valeur par défaut |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si les instances `HttpClient` doivent suivre automatiquement les réponses de redirection. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Obtient ou définit l’adresse de base des instances de `HttpClient`. | `http://localhost` |
@@ -306,8 +323,8 @@ L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mast
 
 | Application | Répertoire du projet | Description |
 | --- | ----------------- | ----------- |
-| Application message (St) | *src/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
-| Tester l’application | *tests/RazorPagesProject.Tests* | Utilisé pour tester l’intégration du St. |
+| Application message (St) | *SRC/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
+| Tester l’application | *tests/RazorPagesProject. tests* | Utilisé pour tester l’intégration du St. |
 
 Les tests peuvent être exécutés à l’aide des fonctionnalités de test intégrées d’un environnement de développement intégré (IDE), telles que [Visual Studio](https://visualstudio.microsoft.com). Si vous utilisez [Visual Studio code](https://code.visualstudio.com/) ou la ligne de commande, exécutez la commande suivante à l’invite de commandes dans le répertoire *tests/RazorPagesProject. tests* :
 
@@ -349,6 +366,8 @@ Les tests d’intégration nécessitent généralement un petit jeu de données 
 L’exemple d’application amorce la base de données avec trois messages dans *Utilities.cs* que les tests peuvent utiliser lorsqu’ils exécutent :
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/Helpers/Utilities.cs?name=snippet1)]
+
+Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. Pour utiliser une base de données différente pour les tests, le contexte de base de données de l’application doit être remplacé par `builder.ConfigureServices`. Pour plus d’informations, consultez la section [personnaliser WebApplicationFactory](#customize-webapplicationfactory) .
 
 ::: moniker-end
 
@@ -410,9 +429,9 @@ Les tests d’intégration suivent une séquence d’événements qui incluent l
 
 1. L’hôte Web de St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
-1. L’étape *organiser* le test est exécutée : L’application de test prépare une requête.
-1. L’étape de test *Act* est exécutée : Le client envoie la demande et reçoit la réponse.
-1. L’étape de test d' *assertion* est exécutée : La réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
+1. L’étape *organiser* le test est exécutée : l’application de test prépare une demande.
+1. L’étape de test *Act* est exécutée : le client envoie la demande et reçoit la réponse.
+1. L’étape de test d' *assertion* est exécutée : la réponse *réelle* est validée en tant que *réussite* ou *échec* en fonction d’une réponse *attendue* .
 1. Le processus se poursuit jusqu’à ce que tous les tests soient exécutés.
 1. Les résultats des tests sont signalés.
 
@@ -439,13 +458,13 @@ Le projet de test doit :
 
 * Référencez les packages suivants :
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Spécifiez le kit de développement logiciel (SDK) Web dans le fichier projet (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Le kit de développement logiciel (SDK) Web est requis pour référencer le [AspNetCore](xref:fundamentals/metapackage-app).
 
 Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également :
 
-* [xunit](https://www.nuget.org/packages/xunit/)
-* [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
+* [xUnit](https://www.nuget.org/packages/xunit/)
+* [xUnit. Runner. VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
 ## <a name="sut-environment"></a>Environnement St
@@ -495,7 +514,7 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans l’exemple de tests [Integration : Test de l’organisation de l’application @ no__t-0.
+   L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans la section [exemple de tests d’intégration : organisation](#test-app-organization) d’une application de test.
 
 2. Utilisez la @no__t personnalisée-0 dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
 
@@ -538,7 +557,7 @@ La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exe
 
 Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances `HttpClient`.
 
-| Option | Description | Par défaut |
+| Option | Description | Valeur par défaut |
 | ------ | ----------- | ------- |
 | [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si les instances `HttpClient` doivent suivre automatiquement les réponses de redirection. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Obtient ou définit l’adresse de base des instances de `HttpClient`. | `http://localhost` |
@@ -644,8 +663,8 @@ L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mast
 
 | Application | Répertoire du projet | Description |
 | --- | ----------------- | ----------- |
-| Application message (St) | *src/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
-| Tester l’application | *tests/RazorPagesProject.Tests* | Utilisé pour tester l’intégration du St. |
+| Application message (St) | *SRC/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
+| Tester l’application | *tests/RazorPagesProject. tests* | Utilisé pour tester l’intégration du St. |
 
 Les tests peuvent être exécutés à l’aide des fonctionnalités de test intégrées d’un environnement de développement intégré (IDE), telles que [Visual Studio](https://visualstudio.microsoft.com). Si vous utilisez [Visual Studio code](https://code.visualstudio.com/) ou la ligne de commande, exécutez la commande suivante à l’invite de commandes dans le répertoire *tests/RazorPagesProject. tests* :
 

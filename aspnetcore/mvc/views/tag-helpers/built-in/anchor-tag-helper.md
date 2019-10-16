@@ -4,14 +4,14 @@ author: pkellner
 description: Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/18/2019
+ms.date: 10/13/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 44fc4ff6334e33630974181021aa1a6880a89917
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: 3ff8a52361b4911a5bb3163a8ea6ae90e504e4ef
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856224"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333941"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
@@ -19,7 +19,7 @@ Par [Peter Kellner](https://peterkellner.net) et [Scott Addie](https://github.co
 
 Le [Tag Helper Ancre](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) améliore la balise d’ancrage HTML standard (`<a ... ></a>`) en ajoutant de nouveaux attributs. Par convention, les noms d’attribut commencent par `asp-`. La valeur d’attribut de l’élément d’ancrage rendu `href` est déterminée par les valeurs des attributs `asp-`.
 
-Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -47,7 +47,7 @@ Si l’attribut `asp-controller` est spécifié et que `asp-action` ne l’est p
 <a href="/Home">All Speakers</a>
 ```
 
-## <a name="asp-action"></a>asp-action
+### <a name="asp-action"></a>asp-action
 
 La valeur de l’attribut [asp-action](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Action*) représente le nom d’action du contrôleur inclus dans l’attribut `href` généré. Le balisage suivant définit la valeur de l’attribut `href` généré sur la page d’évaluations du présentateur :
 
@@ -135,7 +135,7 @@ Le Tag Helper Ancre génère un itinéraire directement vers cette action de con
 
 Si `asp-controller` ou `asp-action` est spécifié en plus de `asp-route`, la route générée ne correspond peut-être pas à ce que vous attendez. `asp-route` ne doit pas être utilisé avec les attributs `asp-controller` ou `asp-action` afin d’éviter un conflit de routage.
 
-## <a name="asp-all-route-data"></a>asp-all-route-data
+### <a name="asp-all-route-data"></a>asp-all-route-data
 
 L’attribut [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) prend en charge la création d’un dictionnaire de paires clé-valeur. La clé est le nom du paramètre et la valeur est la valeur du paramètre.
 
@@ -173,7 +173,7 @@ Les balises de hachage sont utiles lors de la création des applications côté 
 
 L’attribut [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) définit le nom de la zone utilisé pour définir l’itinéraire approprié. Les exemples suivants décrivent la façon dont l’attribut `asp-area` entraîne un remappage des itinéraires.
 
-### <a name="usage-in-razor-pages"></a>Utilisation dans les pages Razor
+#### <a name="usage-in-razor-pages"></a>Utilisation dans les pages Razor
 
 Les zones de pages Razor sont prises en charge dans ASP.NET Core 2.1 ou les versions ultérieures.
 
@@ -207,7 +207,7 @@ Code HTML généré :
 >
 >   [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_AllowAreas)]
 
-### <a name="usage-in-mvc"></a>Utilisation dans MVC
+#### <a name="usage-in-mvc"></a>Utilisation dans MVC
 
 Considérez la hiérarchie de répertoires suivante :
 
@@ -241,7 +241,7 @@ Code HTML généré :
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Par exemple :
+L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -255,7 +255,7 @@ Le nom d’hôte dans l’exemple est localhost. Le Tag Helper Ancre utilise le 
 
 ### <a name="asp-host"></a>asp-host
 
-L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Par exemple :
+L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 

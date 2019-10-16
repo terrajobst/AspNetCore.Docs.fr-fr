@@ -5,18 +5,18 @@ description: Décrit l’obtention de pages Razor par génération de modèles a
 ms.author: riande
 ms.date: 08/17/2019
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: 00a8458b9bee4d30c5774a980ff5c23fb8872737
-ms.sourcegitcommit: 38cac2552029fc19428722bb204ff9e16eb94225
-ms.translationtype: HT
+ms.openlocfilehash: 939ed5c3cdf33d8d99712e3166d8d07d3bac719f
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/18/2019
-ms.locfileid: "69573144"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334081"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Pages Razor obtenues par génération de modèles automatique dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les pages Razor créées par génération de modèles automatique au cours du [didacticiel précédent](xref:tutorials/razor-pages/model).
 
@@ -30,9 +30,9 @@ Examinez le modèle de page *Pages/Movies/Index.cshtml.cs* :
 
 Les pages Razor sont dérivées de `PageModel`. Par convention, la classe dérivée de `PageModel` s’appelle `<PageName>Model`. Le constructeur utilise l’[injection de dépendances](xref:fundamentals/dependency-injection) pour ajouter `RazorPagesMovieContext` à la page. Toutes les pages obtenues par génération de modèles automatique suivent ce modèle. Consultez [Code asynchrone](xref:data/ef-rp/intro#asynchronous-code) pour plus d’informations sur la programmation asynchrone avec Entity Framework.
 
-Quand une requête est effectuée pour la page, la méthode `OnGetAsync` retourne une liste de films à la page Razor. `OnGetAsync` ou `OnGet` est appelé sur une page Razor pour initialiser l’état de la page. Dans ce cas, `OnGetAsync` obtient une liste de films et les affiche.
+Quand une requête est effectuée pour la page, la méthode `OnGetAsync` retourne une liste de films à la page Razor. `OnGetAsync` ou `OnGet` est appelé pour initialiser l’état de la page. Dans ce cas, `OnGetAsync` obtient une liste de films et les affiche.
 
-Si `OnGet` retourne `void` ou que `OnGetAsync` retourne `Task`, aucune méthode de retour n’est utilisée. Lorsque le type de retour est `IActionResult` ou `Task<IActionResult>`, une instruction de retour doit être spécifiée. Par exemple, la méthode *Pages/Movies/Create.cshtml.cs* `OnPostAsync` :
+Lorsque `OnGet` retourne `void` ou `OnGetAsync` retourne @ no__t-3, aucune instruction return n’est utilisée. Lorsque le type de retour est `IActionResult` ou `Task<IActionResult>`, une instruction de retour doit être spécifiée. Par exemple, la méthode *Pages/Movies/Create.cshtml.cs* `OnPostAsync` :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml.cs?name=snippet)]
 
@@ -42,7 +42,9 @@ Si `OnGet` retourne `void` ou que `OnGetAsync` retourne `Task`, aucune méthode 
 
 Razor peut passer du HTML au C# ou à des balises spécifiques à Razor. Quand un symbole `@` est suivi d’un [mot clé réservé Razor](xref:mvc/views/razor#razor-reserved-keywords), il est converti en balise spécifique à Razor. Sinon, il est converti en C#.
 
-La directive Razor `@page` transforme le fichier en une action MVC, ce qui lui permet de prendre en charge des requêtes. `@page` doit être la première directive Razor sur une page. `@page` est un exemple de conversion en balise spécifique à Razor. Pour plus d’informations, consultez [Syntaxe Razor](xref:mvc/views/razor#razor-syntax).
+### <a name="the-page-directive"></a>Directive @page
+
+La directive Razor `@page` fait du fichier une action MVC, ce qui signifie qu’il peut gérer les demandes. `@page` doit être la première directive Razor sur une page. `@page` est un exemple de conversion en balise spécifique à Razor. Pour plus d’informations, consultez [Syntaxe Razor](xref:mvc/views/razor#razor-syntax).
 
 Examinez l’expression lambda utilisée dans le HTML Helper suivant :
 
@@ -50,7 +52,7 @@ Examinez l’expression lambda utilisée dans le HTML Helper suivant :
 @Html.DisplayNameFor(model => model.Movie[0].Title))
 ```
 
-Le HTML Helper `DisplayNameFor` inspecte la propriété `Title` référencée dans l’expression lambda pour déterminer le nom d’affichage. L’expression lambda est inspectée plutôt qu’évaluée. Cela signifie qu’il n’existe pas de violation d’accès quand `model`, `model.Movie` ou `model.Movie[0]` ont une valeur `null` ou vide. Quand l’expression lambda est évaluée (par exemple avec `@Html.DisplayFor(modelItem => item.Title)`), les valeurs de propriété du modèle sont évaluées.
+Le HTML Helper `DisplayNameFor` inspecte la propriété `Title` référencée dans l’expression lambda pour déterminer le nom d’affichage. L’expression lambda est inspectée plutôt qu’évaluée. Cela signifie qu’il n’y a aucune violation d’accès lorsque `model`, `model.Movie` ou `model.Movie[0]` est `null` ou vide. Quand l’expression lambda est évaluée (par exemple avec `@Html.DisplayFor(modelItem => item.Title)`), les valeurs de propriété du modèle sont évaluées.
 
 <a name="md"></a>
 
@@ -81,7 +83,7 @@ Considérez la balise suivante du fichier *Pages/Movies/Index.cshtml* :
 
 La balise précédente en surbrillance est un exemple de passage de Razor au C#. Les caractères `{` et `}` délimitent un bloc de code C#.
 
-La classe de base `PageModel` contient une propriété de dictionnaire `ViewData` qui peut être utilisée pour ajouter des données et les passer à une vue. Des objets sont ajoutés au dictionnaire `ViewData` à l’aide d’un modèle clé/valeur. Dans l’exemple précédent, la propriété `"Title"` est ajoutée au dictionnaire `ViewData`.
+La classe de base `PageModel` contient une propriété de dictionnaire `ViewData` qui peut être utilisée pour passer des données à une vue. Des objets sont ajoutés au dictionnaire `ViewData` à l’aide d’un modèle clé/valeur. Dans l’exemple précédent, la propriété `"Title"` est ajoutée au dictionnaire `ViewData`.
 
 La propriété `"Title"` est utilisée dans le fichier  *Pages/Shared/_Layout.cshtml*. La balise suivante montre les premières lignes du fichier *_Layout.cshtml*.
 
@@ -114,7 +116,7 @@ L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/
 
 Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet du navigateur. Quand vous définissez un signet pour une page, le titre est affecté au signet.
+Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez cette page [GitHub problème 4076](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
@@ -200,18 +202,18 @@ Pour plus d’informations sur les Tag Helpers, comme `<form method="post">`, co
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout d’un modèle](xref:tutorials/razor-pages/model)
-> [Suivant : Base de données](xref:tutorials/razor-pages/sql)
+> [Précédent : ajout d’un modèle](xref:tutorials/razor-pages/model)
+> [suivant : base de données](xref:tutorials/razor-pages/sql)
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les pages Razor créées par génération de modèles automatique au cours du [didacticiel précédent](xref:tutorials/razor-pages/model).
 
-[Affichez ou téléchargez](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) l’exemple.
+[Affichez ou téléchargez](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) l’exemple de code.
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Pages Create, Delete, Details et Edit
 
@@ -300,7 +302,7 @@ L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/
 
 Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Shared/_Layout.cshtml) dans GitHub si vous rencontrez des problèmes.
 
-Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet du navigateur. Quand vous définissez un signet pour une page, le titre est affecté au signet.
+Testez les autres liens (**Home**, **RpMovie**, **Create**, **Edit** et **Delete**). Chaque page définit le titre, que vous pouvez voir dans l’onglet navigateur. Lorsque vous ajoutez une page à un signet, le titre est utilisé pour le signet.
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez la page [GitHub problème 4076](https://github.com/aspnet/AspNetCore.Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale.
@@ -368,7 +370,7 @@ Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) (`<input asp-for=
 * [Version YouTube de ce tutoriel](https://youtu.be/zxgKjPYnOMM)
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout d’un modèle](xref:tutorials/razor-pages/model)
-> [Suivant : Base de données](xref:tutorials/razor-pages/sql)
+> [Précédent : ajout d’un modèle](xref:tutorials/razor-pages/model)
+> [suivant : base de données](xref:tutorials/razor-pages/sql)
 
 ::: moniker-end

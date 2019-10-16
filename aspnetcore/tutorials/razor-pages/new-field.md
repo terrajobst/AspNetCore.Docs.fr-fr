@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 0629605f4d5597a9694cb20ce00b91ff4a768468
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 1b08e1515afe656b95be9fb436caa00cd53ab9ad
+ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082467"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72334102"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +28,7 @@ Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcor
 
 Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
 
-* Ajoute une table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
+* Ajoute une table `__EFMigrationsHistory` à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
 * Si les classes de modèle ne sont pas synchronisées avec la base de données, EF lève une exception.
 
 La vérification automatique de la synchronisation du schéma et du modèle facilite la détection des problèmes d’incohérence et de code de base de données.
@@ -51,19 +51,19 @@ Mettez à jour les pages suivantes :
 * Mettez à jour [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un champ `Rating`.
 * Ajoutez le champ `Rating` à la Page Edit.
 
-L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. Si vous l’exécutez à présent, l’application lève une `SqlException` :
+L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mettre à jour la base de données lève une `SqlException` :
 
 `SqlException: Invalid column name 'Rating'.`
 
-Cette erreur est due au fait que la classe du modèle Movie mise à jour est différente du schéma de la table Movie de la base de données. (Il n’existe pas de colonne `Rating` dans la table de base de données.)
+L’exception `SqlException` est due au fait que la classe de modèle Movie mise à jour est différente du schéma de la table Movie de la base de données. (Il n’existe pas de colonne `Rating` dans la table de base de données.)
 
 Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -82,7 +82,7 @@ Générez la solution.
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration Rating
@@ -94,9 +94,9 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
-La commande `Update-Database` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
+La commande `Update-Database` indique à l’infrastructure d’appliquer les modifications de schéma à la base de données et de conserver les données existantes.
 
 <a name="ssox"></a>
 
@@ -137,7 +137,7 @@ Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher 
 * [Version YouTube de ce tutoriel](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout d’une fonction de recherche](xref:tutorials/razor-pages/search)
+> [Précédent : Ajout de la recherche](xref:tutorials/razor-pages/search)
 > [Suivant : Ajout de la validation](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end
@@ -186,9 +186,9 @@ Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -207,7 +207,7 @@ Générez la solution.
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration Rating
@@ -219,7 +219,7 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 La commande `Update-Database` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
 
@@ -260,7 +260,7 @@ Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher 
 * [Version YouTube de ce tutoriel](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout d’une fonction de recherche](xref:tutorials/razor-pages/search)
+> [Précédent : Ajout de la recherche](xref:tutorials/razor-pages/search)
 > [Suivant : Ajout de la validation](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end
