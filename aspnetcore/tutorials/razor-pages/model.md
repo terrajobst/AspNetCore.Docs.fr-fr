@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 9/22/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: c101fe4aee9a1fbf28d66a8527e3c199194d73fe
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 4f8b80cb51bd10eb3b136a780dc123c41d61c0a5
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334177"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519077"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -196,9 +196,9 @@ Les commandes précédentes génèrent l’avertissement suivant : « aucun ty
 
 Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
 
-La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
+La commande migrations génère du code pour créer le schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext`. L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
 
-La commande `ef database update` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*. La méthode `Up` crée la base de données.
+La commande `update` exécute la méthode `Up` dans les migrations qui n’ont pas été appliquées. Dans ce cas, `update` exécute la méthode `Up` dans *migrations/\<time-horodatage > fichier _InitialCreate. cs* , ce qui crée la base de données.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -229,10 +229,6 @@ Examinez la méthode `Up`.
 Examinez la méthode `Up`.
 
 ---
-
-La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `RazorPagesMovieContext` (dans le fichier *Data/RazorPagesMovieContext.cs*). L’argument `Initial` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d'informations, consultez <xref:data/ef-mvc/migrations>.
-
-La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
 <a name="test"></a>
 
@@ -427,6 +423,10 @@ Add-Migration Initial
 Update-Database
 ```
 
+La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d'informations, consultez <xref:data/ef-mvc/migrations>.
+
+La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*. La méthode `Up` crée la base de données.
+
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
@@ -436,14 +436,8 @@ Update-Database
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
 ---
-
-Les commandes précédentes génèrent l’avertissement suivant : « aucun type n’a été spécifié pour la colonne décimale «Price » sur le type d’entité « Movie ». Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
-
-Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
-
-La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
-
-La commande `ef database update` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*. La méthode `Up` crée la base de données.
+> [!NOTE]
+> Les commandes précédentes génèrent l’avertissement suivant : «*aucun type n’a été spécifié pour la colonne décimale «Price » sur le type d’entité « Movie ». Les valeurs sont tronquées en mode silencieux si elles ne tiennent pas dans la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server qui peut prendre en charge toutes les valeurs à l’aide de’HasColumnType () '.* Vous pouvez ignorer cet avertissement. il sera corrigé dans un didacticiel ultérieur.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -474,10 +468,6 @@ Examinez la méthode `Up`.
 Examinez la méthode `Up`.
 
 ---
-
-La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `RazorPagesMovieContext` (dans le fichier *Data/RazorPagesMovieContext.cs*). L’argument `Initial` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d'informations, consultez <xref:data/ef-mvc/migrations>.
-
-La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
 <a name="test"></a>
 

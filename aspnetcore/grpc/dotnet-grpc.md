@@ -4,20 +4,20 @@ author: juntaoluo
 description: En savoir plus sur l’ajout, la mise à jour, la suppression et la liste de références Protobuf avec l’outil Global dotnet-GRPC.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 uid: grpc/dotnet-grpc
-ms.openlocfilehash: ebd57419be24f7f4ed9765e36cf14189be8438b1
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 994597c854a95bb33de1686ab025cb3744cf6845
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72290060"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519036"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Gérer les références Protobuf avec dotnet-GRPC
 
 Par [John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc` est un outil Global .NET Core pour la gestion des références Protobuf dans un projet .NET gRPC. L’outil peut être utilisé pour ajouter, actualiser, supprimer et répertorier des références Protobuf.
+`dotnet-grpc` est un outil Global .NET Core pour la gestion des références [Protobuf ( *. proto*)](xref:grpc/basics#proto-file) dans un projet .net gRPC. L’outil peut être utilisé pour ajouter, actualiser, supprimer et répertorier des références Protobuf.
 
 ## <a name="installation"></a>Installation
 
@@ -32,10 +32,10 @@ dotnet tool install -g dotnet-grpc
 `dotnet-grpc` peut être utilisé pour ajouter des références Protobuf comme `<Protobuf />` éléments au fichier *. csproj* :
 
 ```xml
-<Protobuf Include="..\Proto\count.proto" GrpcServices="Server" Link="Protos\count.proto" />
+<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Les références Protobuf sont utilisées pour générer les C# ressources client et/ou serveur. Le `dotnet-grpc`tool peut :
+Les références Protobuf sont utilisées pour générer les C# ressources client et/ou serveur. L’outil `dotnet-grpc` peut :
 
 * Créez une référence Protobuf à partir de fichiers locaux sur le disque.
 * Crée une référence Protobuf à partir d’un fichier distant spécifié par une URL.
@@ -52,7 +52,7 @@ La commande `add-file` est utilisée pour ajouter des fichiers locaux sur le dis
 
 Si des fichiers se trouvent en dehors du répertoire du projet, un élément `Link` est ajouté pour afficher le fichier dans le dossier `Protos` dans Visual Studio.
 
-### <a name="usage"></a>Usage
+### <a name="usage"></a>Utilisation
 
 ```dotnetcli
 dotnet grpc add-file [options] <files>...
@@ -77,7 +77,7 @@ dotnet grpc add-file [options] <files>...
 
 La commande `add-url` est utilisée pour ajouter un fichier distant spécifié par une URL source en tant que référence Protobuf. Un chemin d’accès de fichier doit être fourni pour spécifier l’emplacement de téléchargement du fichier distant. Le chemin d’accès du fichier peut être relatif au répertoire actif ou à un chemin d’accès absolu. Si le chemin d’accès au fichier se trouve en dehors du répertoire du projet, un élément `Link` est ajouté pour afficher le fichier sous le dossier virtuel `Protos` dans Visual Studio.
 
-### <a name="usage"></a>Usage
+### <a name="usage"></a>Utilisation
 
 ```dotnetcli
 dotnet-grpc add-url [options] <url>
@@ -106,7 +106,7 @@ La commande `remove` est utilisée pour supprimer les références Protobuf du f
 * Supprime uniquement la référence Protobuf.
 * Ne supprime pas le fichier *. proto* , même s’il a été téléchargé à l’origine à partir d’une URL distante.
 
-### <a name="usage"></a>Usage
+### <a name="usage"></a>Utilisation
 
 ```dotnetcli
 dotnet-grpc remove [options] <references>...
@@ -124,16 +124,16 @@ dotnet-grpc remove [options] <references>...
 |-|-|-|
 | -p | --projet | Chemin d’accès au fichier projet sur lequel effectuer l’opération. Si aucun fichier n’est spécifié, la commande effectue une recherche dans le répertoire actif.
 
-## <a name="refresh"></a>Actualiser
+## <a name="refresh"></a>Actualisation
 
-La commande `refresh` est utilisée pour mettre à jour une référence distante avec le contenu le plus récent à partir de l’URL source. Le chemin d’accès au fichier de téléchargement et l’URL source peuvent être utilisés pour spécifier la référence à mettre à jour. Remarque :
+La commande `refresh` est utilisée pour mettre à jour une référence distante avec le contenu le plus récent à partir de l’URL source. Le chemin d’accès au fichier de téléchargement et l’URL source peuvent être utilisés pour spécifier la référence à mettre à jour. Remarque :
 
 * Les hachages du contenu du fichier sont comparés pour déterminer si le fichier local doit être mis à jour.
 * Aucune information d’horodatage n’est comparée.
 
 L’outil remplace toujours le fichier local par le fichier distant si une mise à jour est nécessaire.
 
-### <a name="usage"></a>Usage
+### <a name="usage"></a>Utilisation
 
 ```dotnetcli
 dotnet-grpc refresh [options] [<references>...]
@@ -152,11 +152,11 @@ dotnet-grpc refresh [options] [<references>...]
 | -p | --projet | Chemin d’accès au fichier projet sur lequel effectuer l’opération. Si aucun fichier n’est spécifié, la commande effectue une recherche dans le répertoire actif.
 | | --à sec-exécution | Génère une liste des fichiers qui seraient mis à jour sans télécharger de nouveau contenu.
 
-## <a name="list"></a>Liste
+## <a name="list"></a>List
 
 La commande `list` est utilisée pour afficher toutes les références Protobuf dans le fichier projet. Si toutes les valeurs d’une colonne sont des valeurs par défaut, la colonne peut être omise.
 
-### <a name="usage"></a>Usage
+### <a name="usage"></a>Utilisation
 
 ```dotnetcli
 dotnet-grpc list [options]

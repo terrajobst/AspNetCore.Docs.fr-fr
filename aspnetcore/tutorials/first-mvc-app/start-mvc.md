@@ -3,18 +3,18 @@ title: Bien démarrer avec ASP.NET Core MVC
 author: rick-anderson
 description: Découvrez comment bien démarrer avec ASP.NET Core MVC.
 ms.author: riande
-ms.date: 08/05/2019
+ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 52d8fc631075408991d3a2e62cdaccf681c5927f
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: f07afb15c0a31110c20d96a5db5c02030cefe5d5
+ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082160"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72519092"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -22,7 +22,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
+L’application gère une base de données de titres de films. Vous apprenez à :
 
 > [!div class="checklist"]
 > * Créer une application web.
@@ -34,7 +34,7 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -66,7 +66,7 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 * Sélectionnez **Application web (modèle-vue-contrôleur)** , puis **Créer**.
 
-![Boîte de dialogue Nouveau projet, .NET Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project22-21.png)
+![Boîte de dialogue Nouveau projet, .NET Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project30.png)
 
 Visual Studio a utilisé le modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base.
 
@@ -83,10 +83,10 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
    code -r MvcMovie
    ```
 
-  * Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « MvcMovie ». Faut-il les ajouter ?**  Sélectionnez **Oui**.
+  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**.
 
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
-  * `code -r MvcMovie`: charge le fichier de projet *RazorPagesMovie.csproj* dans Visual Studio Code.
+  * `code -r MvcMovie` : charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -108,7 +108,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécution de l'application
+### <a name="run-the-app"></a>Exécuter l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -128,7 +128,7 @@ Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
   L’image suivante montre l’application :
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -140,7 +140,7 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
   Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour actualiser les modifications des pages et des vues.
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -153,7 +153,7 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 
   L’image suivante montre l’application :
 
-  ![Page d’accueil ou page d’index](./start-mvc/_static/output_macos.png)
+  ![Page d’accueil ou d’index](./start-mvc/_static/output_macos.png)
 
 ---
 
@@ -162,7 +162,7 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commencer à écrire du code.
 
 > [!div class="step-by-step"]
-> [Next](adding-controller.md)
+> [Suivant](adding-controller.md)
 
 ::: moniker-end
 
@@ -172,7 +172,7 @@ Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commenc
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
+L’application gère une base de données de titres de films. Vous apprenez à :
 
 > [!div class="checklist"]
 > * Créer une application web.
@@ -184,7 +184,7 @@ L’application gère une base de données de titres de films. Vous allez appren
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -233,10 +233,10 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
    code -r MvcMovie
    ```
 
-  * Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « MvcMovie ». Faut-il les ajouter ?**  Sélectionnez **Oui**.
+  * Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’MvcMovie'. Ajoutez-les ?**  Sélectionnez **Oui**.
 
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
-  * `code -r MvcMovie`: charge le fichier de projet *RazorPagesMovie.csproj* dans Visual Studio Code.
+  * `code -r MvcMovie` : charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -256,7 +256,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécution de l'application
+### <a name="run-the-app"></a>Exécuter l'application
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -276,11 +276,11 @@ Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/privacy.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/privacy.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -294,11 +294,11 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/privacy.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/privacy.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -311,11 +311,11 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou page d’index](./start-mvc/_static/output_privacy_macos.png)
+  ![Page d’accueil ou d’index](./start-mvc/_static/output_privacy_macos.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou page d’index](./start-mvc/_static/output_macos.png)
+  ![Page d’accueil ou d’index](./start-mvc/_static/output_macos.png)
 
 ---
 
@@ -324,6 +324,6 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commencer à écrire du code.
 
 > [!div class="step-by-step"]
-> [Next](adding-controller.md)
+> [Suivant](adding-controller.md)
 
 ::: moniker-end
