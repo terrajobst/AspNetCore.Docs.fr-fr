@@ -1,34 +1,36 @@
 ---
-title: ASP.NET Core du routage éblouissant
+title: ASP.NET Core Blazor routage
 author: guardrex
 description: Découvrez comment acheminer des requêtes dans des applications et sur le composant NavLink.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/routing
-ms.openlocfilehash: d9f81c8aa2cf07f8bfaede65efcb7328088f55b9
-ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
+ms.openlocfilehash: d4b76c00f79f333884fa7e30b27eadc6e36de287
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72531141"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589936"
 ---
-# <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
+# <a name="aspnet-core-opno-locblazor-routing"></a>ASP.NET Core Blazor routage
 
 Par [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Découvrez comment acheminer les demandes et comment utiliser le composant `NavLink` pour créer des liens de navigation dans les applications éblouissantes.
+Découvrez comment acheminer les demandes et comment utiliser le composant `NavLink` pour créer des liens de navigation dans les applications Blazor.
 
 ## <a name="aspnet-core-endpoint-routing-integration"></a>Intégration du routage du point de terminaison ASP.NET Core
 
-Le serveur éblouissant est intégré à [ASP.net Core routage des points de terminaison](xref:fundamentals/routing). Une application ASP.NET Core est configurée pour accepter les connexions entrantes pour les composants interactifs avec `MapBlazorHub` dans `Startup.Configure` :
+Blazor Server est intégré à [ASP.net Core routage des points de terminaison](xref:fundamentals/routing). Une application ASP.NET Core est configurée pour accepter les connexions entrantes pour les composants interactifs avec `MapBlazorHub` dans `Startup.Configure` :
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-La configuration la plus courante consiste à acheminer toutes les demandes vers une page Razor, qui joue le rôle d’hôte pour la partie côté serveur de l’application serveur éblouissante. Par Convention, la page *hôte* est généralement nommée *_Host. cshtml*. L’itinéraire spécifié dans le fichier hôte est appelé *itinéraire de secours* , car il fonctionne avec une priorité basse dans la correspondance d’itinéraire. L’itinéraire de secours est pris en compte lorsque les autres itinéraires ne correspondent pas. Cela permet à l’application d’utiliser d’autres contrôleurs et pages sans interférer avec l’application serveur éblouissante.
+La configuration la plus courante consiste à acheminer toutes les demandes vers une page Razor, qui joue le rôle d’hôte pour la partie côté serveur de l’application Blazor Server. Par Convention, la page *hôte* est généralement nommée *_Host. cshtml*. L’itinéraire spécifié dans le fichier hôte est appelé *itinéraire de secours* , car il fonctionne avec une priorité basse dans la correspondance d’itinéraire. L’itinéraire de secours est pris en compte lorsque les autres itinéraires ne correspondent pas. Cela permet à l’application d’utiliser d’autres contrôleurs et pages sans interférer avec l’application Blazor Server.
 
 ## <a name="route-templates"></a>Modèles de routage
 
@@ -52,14 +54,14 @@ Au moment de l’exécution, le composant `RouteView` :
 * Reçoit le `RouteData` de la `Router` avec les paramètres souhaités.
 * Restitue le composant spécifié avec sa disposition (ou une disposition par défaut facultative) à l’aide des paramètres spécifiés.
 
-Vous pouvez éventuellement spécifier un paramètre `DefaultLayout` avec une classe de disposition à utiliser pour les composants qui ne spécifient pas de disposition. Les modèles éblouissants par défaut spécifient le composant `MainLayout`. *MainLayout. Razor* se trouve dans le dossier *partagé* du projet de modèle. Pour plus d’informations sur les dispositions, consultez <xref:blazor/layouts>.
+Vous pouvez éventuellement spécifier un paramètre `DefaultLayout` avec une classe de disposition à utiliser pour les composants qui ne spécifient pas de disposition. Les modèles de Blazor par défaut spécifient le composant `MainLayout`. *MainLayout. Razor* se trouve dans le dossier *partagé* du projet de modèle. Pour plus d’informations sur les dispositions, consultez <xref:blazor/layouts>.
 
 Plusieurs modèles de routage peuvent être appliqués à un composant. Le composant suivant répond aux demandes pour `/BlazorRoute` et `/DifferentBlazorRoute` :
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
 > [!IMPORTANT]
-> Pour que les URL soient correctement résolues, l’application doit inclure une balise `<base>` dans son fichier *wwwroot/index.html* (éblouissant webassembly) ou le fichier *pages/_Host. cshtml* (serveur éblouissant) avec le chemin d’accès de base de l’application spécifié dans l’attribut `href` (`<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
+> Pour que les URL soient correctement résolues, l’application doit inclure une balise `<base>` dans son fichier *wwwroot/index.html* (Blazor webassembly) ou le fichier *pages/_Host. cshtml* (serveur Blazor) avec le chemin d’accès de base de l’application spécifié dans l’attribut `href` (`<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Fournir du contenu personnalisé lorsque le contenu est introuvable
 
@@ -83,7 +85,7 @@ Le contenu des balises `<NotFound>` peut inclure des éléments arbitraires, tel
 
 ## <a name="route-to-components-from-multiple-assemblies"></a>Acheminer vers des composants à partir de plusieurs assemblys
 
-Utilisez le paramètre `AdditionalAssemblies` pour spécifier des assemblys supplémentaires pour le composant `Router` à prendre en compte lors de la recherche de composants routables. Les assemblys spécifiés sont pris en compte en plus de l’assembly spécifié par le @no__t 1/-0. Dans l’exemple suivant, `Component1` est un composant routable défini dans une bibliothèque de classes référencée. L’exemple suivant `AdditionalAssemblies` entraîne la prise en charge du routage pour `Component1` :
+Utilisez le paramètre `AdditionalAssemblies` pour spécifier des assemblys supplémentaires pour le composant `Router` à prendre en compte lors de la recherche de composants routables. Les assemblys spécifiés sont pris en compte en plus de l’assembly spécifié par `AppAssembly`. Dans l’exemple suivant, `Component1` est un composant routable défini dans une bibliothèque de classes référencée. L’exemple suivant `AdditionalAssemblies` entraîne la prise en charge du routage pour `Component1` :
 
 ```cshtml
 <Router
@@ -99,7 +101,7 @@ Le routeur utilise des paramètres de routage pour remplir les paramètres de co
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter&highlight=2,7-8)]
 
-Les paramètres facultatifs ne sont pas pris en charge pour les applications éblouissantes dans ASP.NET Core 3,0. Deux directives `@page` sont appliquées dans l’exemple précédent. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième directive `@page` prend le paramètre de routage `{text}` et affecte la valeur à la propriété `Text`.
+Les paramètres facultatifs ne sont pas pris en charge pour les applications Blazor dans ASP.NET Core 3,0. Deux directives `@page` sont appliquées dans l’exemple précédent. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième directive `@page` prend le paramètre de routage `{text}` et affecte la valeur à la propriété `Text`.
 
 ## <a name="route-constraints"></a>Contraintes d’itinéraire
 
@@ -130,7 +132,7 @@ Les contraintes de routage indiquées dans le tableau suivant sont disponibles. 
 
 ### <a name="routing-with-urls-that-contain-dots"></a>Routage avec des URL qui contiennent des points
 
-Dans les applications serveur éblouissantes, l’itinéraire par défaut dans *_Host. cshtml* est `/` (`@page "/"`). Une URL de demande qui contient un point (`.`) n’est pas mise en correspondance par l’itinéraire par défaut, car l’URL semble demander un fichier. Une application éblouissant retourne une réponse *404-introuvable* pour un fichier statique qui n’existe pas. Pour utiliser des itinéraires qui contiennent un point, configurez *_Host. cshtml* avec le modèle de routage suivant :
+Dans les applications Blazor Server, l’itinéraire par défaut dans *_Host. cshtml* est `/` (`@page "/"`). Une URL de demande qui contient un point (`.`) n’est pas mise en correspondance par l’itinéraire par défaut, car l’URL semble demander un fichier. Une application Blazor retourne une réponse *404-introuvable* pour un fichier statique qui n’existe pas. Pour utiliser des itinéraires qui contiennent un point, configurez *_Host. cshtml* avec le modèle de routage suivant :
 
 ```cshtml
 @page "/{**path}"
@@ -156,7 +158,7 @@ Deux options `NavLinkMatch` peuvent être assignées à l’attribut `Match` de 
 * `NavLinkMatch.All` &ndash; le `NavLink` est actif lorsqu’il correspond à la totalité de l’URL actuelle.
 * `NavLinkMatch.Prefix` (*valeur par défaut*) &ndash; le `NavLink` est actif lorsqu’il correspond à n’importe quel préfixe de l’URL actuelle.
 
-Dans l’exemple précédent, le @no__t d’hébergement-0 `href=""` correspond à l’URL d’hébergement et reçoit uniquement la classe CSS `active` à l’URL du chemin de base par défaut de l’application (par exemple, `https://localhost:5001/`). La deuxième `NavLink` reçoit la classe `active` lorsque l’utilisateur visite une URL avec un préfixe `MyComponent` (par exemple, `https://localhost:5001/MyComponent` et `https://localhost:5001/MyComponent/AnotherSegment`).
+Dans l’exemple précédent, le `href=""` de `NavLink` d’hébergement correspond à l’URL d’hébergement et reçoit uniquement la classe CSS `active` à l’URL du chemin de base par défaut de l’application (par exemple, `https://localhost:5001/`). La deuxième `NavLink` reçoit la classe `active` lorsque l’utilisateur visite une URL avec un préfixe `MyComponent` (par exemple, `https://localhost:5001/MyComponent` et `https://localhost:5001/MyComponent/AnotherSegment`).
 
 Les attributs de composant `NavLink` supplémentaires sont passés à la balise d’ancrage rendue. Dans l’exemple suivant, le composant `NavLink` comprend l’attribut `target` :
 
@@ -177,7 +179,7 @@ Utilisez `Microsoft.AspNetCore.Components.NavigationManager` pour travailler ave
 | Membre | Description |
 | ------ | ----------- |
 | `Uri` | Obtient l’URI absolu actuel. |
-| `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général, `BaseUri` correspond à l’attribut `href` sur l’élément `<base>` du document dans *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant). |
+| `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général, `BaseUri` correspond à l’attribut `href` sur l’élément `<base>` du document dans *wwwroot/index.html* (Blazor webassembly) ou *pages/_Host. cshtml* (serveur Blazor). |
 | `NavigateTo` | Navigue vers l’URI spécifié. Si `forceLoad` est `true` :<ul><li>Le routage côté client est contourné.</li><li>Le navigateur est obligé de charger la nouvelle page à partir du serveur, que l’URI soit normalement géré ou non par le routeur côté client.</li></ul> |
 | `LocationChanged` | Événement qui se déclenche lorsque l’emplacement de navigation a changé. |
 | `ToAbsoluteUri` | Convertit un URI relatif en URI absolu. |

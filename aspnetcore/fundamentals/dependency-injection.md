@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core implémente l’injection de dépen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/24/2019
+ms.date: 10/12/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: fefd0b9df71d5b0e7c30a31620292fd37eeecfa4
-ms.sourcegitcommit: e54672f5c493258dc449fac5b98faf47eb123b28
+ms.openlocfilehash: b07ed6d1c23454c95778a5942de615684b70bc36
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71248262"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589898"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -161,13 +161,13 @@ Dans l’exemple d’application, l’instance `IMyDependency` est demandée et 
 
 ## <a name="services-injected-into-startup"></a>Services injectés au démarrage
 
-Seuls les types de service suivants peuvent être injectés dans `Startup` le constructeur lors de l’utilisation de<xref:Microsoft.Extensions.Hosting.IHostBuilder>l’hôte générique () :
+Seuls les types de service suivants peuvent être injectés dans le constructeur `Startup` lors de l’utilisation de l’hôte générique (<xref:Microsoft.Extensions.Hosting.IHostBuilder>) :
 
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-Les services peuvent être injectés `Startup.Configure`dans :
+Les services peuvent être injectés dans `Startup.Configure` :
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
@@ -180,7 +180,7 @@ Pour plus d'informations, consultez <xref:fundamentals/startup>.
 
 ## <a name="framework-provided-services"></a>Services fournis par le framework
 
-La `Startup.ConfigureServices` méthode est chargée de définir les services utilisés par l’application, y compris les fonctionnalités de plateforme, telles que Entity Framework Core et ASP.net Core Mvc. Initialement, le `IServiceCollection` fourni pour `ConfigureServices` possède des services définis par l’infrastructure en fonction de la [façon dont l’hôte a été configuré](xref:fundamentals/index#host). Il n’est pas rare qu’une application basée sur un modèle de ASP.NET Core dispose de centaines de services enregistrés par l’infrastructure. Un petit exemple de services inscrits au Framework est répertorié dans le tableau suivant.
+La méthode `Startup.ConfigureServices` est chargée de définir les services utilisés par l’application, y compris les fonctionnalités de plateforme, telles que Entity Framework Core et ASP.NET Core MVC. Initialement, le `IServiceCollection` fourni à `ConfigureServices` a des services définis par l’infrastructure en fonction de la [configuration de l’hôte](xref:fundamentals/index#host). Il n’est pas rare qu’une application basée sur un modèle de ASP.NET Core dispose de centaines de services enregistrés par l’infrastructure. Un petit exemple de services inscrits au Framework est répertorié dans le tableau suivant.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -226,7 +226,7 @@ La `Startup.ConfigureServices` méthode est chargée de définir les services ut
 
 ## <a name="register-additional-services-with-extension-methods"></a>Inscrire des services supplémentaires avec les méthodes d’extension
 
-Lorsqu’une méthode d’extension de collection de services est disponible pour inscrire un service (et ses services dépendants, si nécessaire), la convention consiste à utiliser une seule méthode d’extension `Add{SERVICE_NAME}` pour inscrire tous les services requis par ce service. Le code suivant est un exemple de la façon d’ajouter des services supplémentaires au conteneur à l’aide des méthodes d’extension <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> [\<AddDbContext TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) et :
+Lorsqu’une méthode d’extension de collection de services est disponible pour inscrire un service (et ses services dépendants, si nécessaire), la convention consiste à utiliser une seule méthode d’extension `Add{SERVICE_NAME}` pour inscrire tous les services requis par ce service. Le code suivant est un exemple de la façon d’ajouter des services supplémentaires au conteneur à l’aide des méthodes d’extension [AddDbContext \<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) et <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -270,15 +270,15 @@ Les services avec une durée de vie singleton (<xref:Microsoft.Extensions.Depend
 
 ## <a name="service-registration-methods"></a>Méthodes d’inscription du service
 
-Chaque méthode d’extension d’inscription du service propose des surcharges qui sont utiles dans des scénarios spécifiques.
+Les méthodes d’extension d’inscription de service offrent des surcharges qui sont utiles dans des scénarios spécifiques.
 
 | Méthode | Automatique<br>object<br>suppression | Multiple<br>implémentations | Passage d’args |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddScoped<IMyDep, MyDep>();` | Oui | Oui | Non |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddScoped<IMyDep>(sp => new MyDep());`<br>`services.AddScoped<IMyDep>(sp => new MyDep("A string!"));` | Oui | Oui | Oui |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddScoped<MyDep>();` | Oui | Non | Non |
-| `Add{LIFETIME}<{SERVICE}>(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddScoped<IMyDep>(new MyDep());`<br>`services.AddScoped<IMyDep>(new MyDep("A string!"));` | Non | Oui | Oui |
-| `Add{LIFETIME}(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddScoped(new MyDep());`<br>`services.AddScoped(new MyDep("A string!"));` | Non | Non | Oui |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddSingleton<IMyDep, MyDep>();` | Oui | Oui | Non |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Oui | Oui | Oui |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddSingleton<MyDep>();` | Oui | Non | Non |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | Non | Oui | Oui |
+| `AddSingleton(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | Non | Non | Oui |
 
 Pour plus d’informations sur la suppression de type, consultez la section [Suppression des services](#disposal-of-services). Un scénario courant d’implémentations multiples est la [simulation de types à des fins de test](xref:test/integration-tests#inject-mock-services).
 
@@ -417,32 +417,32 @@ Les deux sorties suivantes montrent les résultats de deux requêtes :
 Opérations du contrôleur :
 
 Transient: d233e165-f417-469b-a866-1cf1935d2518  
-Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance : 00000000-0000-0000-0000-000000000000
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
 
 Opérations `OperationService` :
 
 Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
-Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance : 00000000-0000-0000-0000-000000000000
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
 
 **Deuxième requête :**
 
 Opérations du contrôleur :
 
 Transient: b63bd538-0a37-4ff1-90ba-081c5138dda0  
-Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4  
-Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance : 00000000-0000-0000-0000-000000000000
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
 
 Opérations `OperationService` :
 
 Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
-Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4  
-Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance : 00000000-0000-0000-0000-000000000000
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
 
 Observez les valeurs `OperationId` qui varient au sein d’une requête et entre les requêtes :
 

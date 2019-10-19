@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/12/2019
+ms.date: 10/18/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 357a3d89648086f0329cd16bc9d72863df9bdcd6
-ms.sourcegitcommit: 8a36be1bfee02eba3b07b7a86085ec25c38bae6b
+ms.openlocfilehash: 0a9b1a1a08617ef4ca8a36295cec8910ec111acd
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71217788"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589909"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -395,7 +395,7 @@ Pour les applications qui utilisent des mappages de commutateurs, l’appel à `
 
 Une fois le dictionnaire de correspondances de commutateur créé, il contient les données affichées dans le tableau suivant.
 
-| Touche       | Value             |
+| Touche       | valeur             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -408,7 +408,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 Après avoir exécuté la commande précédente, la configuration contient les valeurs indiquées dans le tableau suivant.
 
-| Touche               | Value    |
+| Touche               | valeur    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -421,7 +421,7 @@ Pour activer la configuration des variables d’environnement, appelez la métho
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-[Azure App Service](https://azure.microsoft.com/services/app-service/) vous permet de définir des variables d’environnement dans le portail Azure capables de remplacer la configuration d’application à l’aide du Fournisseur de configuration de variables d’environnement. Pour plus d’informations, consultez les [applications Azure : Remplacer la configuration de l’application à l’aide du Portail Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
+[Azure App Service](https://azure.microsoft.com/services/app-service/) vous permet de définir des variables d’environnement dans le portail Azure capables de remplacer la configuration d’application à l’aide du Fournisseur de configuration de variables d’environnement. Pour plus d’informations, consultez [Azure Apps : remplacer la configuration de l’application à l’aide du portail Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -619,9 +619,9 @@ L’exemple d’application tire parti de la méthode pratique statique `CreateD
 
 | Touche                        | Valeur de développement | Valeur de production |
 | -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | Information       | Information      |
-| Logging:LogLevel:Microsoft | Information       | Information      |
-| Logging:LogLevel:Default   | Débogage             | Error            |
+| Logging:LogLevel:System    | Informations       | Informations      |
+| Logging:LogLevel:Microsoft | Informations       | Informations      |
+| Logging:LogLevel:Default   | Débogage             | Erreur            |
 | AllowedHosts               | *                 | *                |
 
 ### <a name="xml-configuration-provider"></a>Fournisseur de configuration XML
@@ -773,7 +773,7 @@ Le dictionnaire est utilisé avec un appel à `AddInMemoryCollection` pour fourn
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder.GetValue\<T>](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur de la configuration avec une clé spécifiée et la convertit selon le type spécifié. Une surcharge vous permet de fournir une valeur par défaut si la clé est introuvable.
+[ConfigurationBinder. GetValue \<T >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur unique de la configuration avec une clé spécifiée et la convertit en type non collection spécifié. Une surcharge accepte une valeur par défaut.
 
 L’exemple suivant :
 
@@ -917,7 +917,7 @@ La section `starship` du fichier *starship.json* crée la configuration lorsque 
 
 Les paires clé-valeur de configuration suivantes sont créées :
 
-| Touche                   | Value                                             |
+| Touche                   | valeur                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -1007,7 +1007,7 @@ TvShow = tvShow;
 
 Observez les valeurs et les clés de configuration indiquées dans le tableau suivant.
 
-| Touche             | Value  |
+| Touche             | valeur  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | valeur1 |
@@ -1097,7 +1097,7 @@ config.AddJsonFile(
 
 La paire clé-valeur indiquée dans le tableau est chargée dans la configuration.
 
-| Touche             | Value  |
+| Touche             | valeur  |
 | :-------------: | :----: |
 | array:entries:3 | valeur3 |
 
@@ -1130,7 +1130,7 @@ Si un fichier JSON contient un tableau, les clés de configuration sont créés 
 
 Le Fournisseur de configuration JSON lit les données de configuration dans les paires clé-valeur suivantes :
 
-| Touche                     | Value  |
+| Touche                     | valeur  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

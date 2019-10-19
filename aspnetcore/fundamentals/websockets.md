@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/10/2019
 uid: fundamentals/websockets
-ms.openlocfilehash: 5d4d9b02bd45e6650aa56448a3663cad06b3b45e
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: 098e6826d6f7114baceb9578dc6d9883eb83f0aa
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975456"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589708"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -28,7 +28,7 @@ Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [W
 
 Pour la plupart des applications, nous recommandons SignalR sur des WebSockets bruts. SignalR fournit un transport de secours pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. De plus, dans la plupart des scénarios, SignalR ne présente aucun inconvénient majeur concernant le niveau de performance par rapport à l’utilisation de WebSockets bruts.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * ASP.NET Core 1.1 ou ultérieur
 * Tout système d’exploitation prenant en charge ASP.NET Core :
@@ -78,7 +78,7 @@ Les paramètres suivants peuvent être configurés :
 Les paramètres suivants peuvent être configurés :
 
 * `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte. La valeur par défaut est deux minutes.
-* `ReceiveBufferSize` : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
+* <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize> : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
 * `AllowedOrigins` : liste des valeurs d’en-tête Origin autorisées pour les requêtes WebSocket. Par défaut, toutes les origines sont autorisées. Pour plus d’informations, consultez « Restriction d’origine WebSocket » ci-dessous.
 
 ::: moniker-end
@@ -183,12 +183,12 @@ Pour activer la prise en charge du protocole WebSocket sur Windows 8 ou ultérie
 > Ces étapes ne sont pas nécessaires si vous utilisez IIS Express
 
 1. Accédez à **Panneau de configuration** > **Programmes** > **Programmes et fonctionnalités** > **Activer ou désactiver des fonctionnalités Windows** (à gauche de l’écran).
-1. Ouvrez les nœuds suivants : **Internet Information Services** > **Services World Wide Web** > **Fonctionnalités de développement d’applications**.
+1. Ouvrez les nœuds suivants : **Internet Information Services** > **Services World Wide Web** > **Fonctionnalités de développement d’applications**.
 1. Sélectionnez la fonctionnalité **Protocole WebSocket**. Sélectionnez **OK**.
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>Désactiver WebSocket lors de l’utilisation de socket.io sur Node.js
 
-Si vous utilisez la prise en charge de WebSocket dans [socket.io](https://socket.io/) sur [Node.js](https://nodejs.org/), désactivez le module WebSocket IIS par défaut en utilisant l’élément `webSocket` dans *web.config* ou dans *applicationHost.config*. Si cette étape n’est pas effectuée, le module WebSocket IIS tente de gérer la communication WebSocket, au lieu de celle de Node.js et de l’application.
+Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket.io/) sur [node. js](https://nodejs.org/), désactivez le module WebSocket IIS par défaut à l’aide de l’élément `webSocket` dans *Web. config* ou *ApplicationHost. config*. Si cette étape n’est pas effectuée, le module WebSocket IIS tente de gérer la communication WebSocket plutôt que node. js et l’application.
 
 ```xml
 <system.webServer>

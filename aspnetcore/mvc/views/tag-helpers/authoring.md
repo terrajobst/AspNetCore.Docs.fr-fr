@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: c13e63725298975fc882aa45c4e75de53e1d66a8
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: f0c7e114583b2ca2e681c507bef3487c863d8cd0
+ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815159"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72589873"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -31,7 +31,7 @@ Un Tag Helper est toute classe qui implémente l’interface `ITagHelper`. Toute
 
 ## <a name="a-minimal-tag-helper"></a>Tag Helper minimal
 
-Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Par exemple :
+Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Exemple :
 
 ```html
 <email>Support</email>
@@ -67,9 +67,9 @@ Autrement dit, une balise d’ancrage qui en fait un lien e-mail. Vous pouvez ef
 
 1. Afin de rendre la classe `EmailTagHelper` disponible pour toutes les vues Razor, ajoutez la directive `addTagHelper` au fichier *Views/_ViewImports.cshtml* :
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
-   Le code ci-dessus utilise la syntaxe d’expressions génériques pour spécifier que tous les Tag Helpers dans notre assembly seront disponibles. La première chaîne après `@addTagHelper` désigne le Tag Helper à charger (utilisez « * » pour tous les Tag Helpers), et la deuxième chaîne « AuthoringTagHelpers » indique l’assembly dans lequel se trouve le Tag Helper. En outre, notez que la deuxième ligne introduit les Tag Helpers ASP.NET Core MVC à l’aide de la syntaxe d’expressions génériques (ceux-ci sont décrits dans [Introduction aux Tag Helpers](intro.md).) C’est la directive `@addTagHelper` qui met le Tag Helper à la disposition de la vue Razor. Sinon, vous pouvez fournir le nom qualifié complet d’un Tag Helper comme indiqué ci-dessous :
+   Le code ci-dessus utilise la syntaxe d’expressions génériques pour spécifier que tous les Tag Helpers dans notre assembly seront disponibles. La première chaîne après `@addTagHelper` désigne le Tag Helper à charger (utilisez « * » pour tous les Tag Helpers), et la deuxième chaîne « AuthoringTagHelpers » indique l’assembly dans lequel se trouve le Tag Helper. En outre, Notez que la deuxième ligne insère les ASP.NET Core de balises MVC à l’aide de la syntaxe avec caractères génériques (ces informations sont présentées dans [Introduction aux balises d’aide](intro.md)). Il s’agit de la directive `@addTagHelper` qui met le tag Helper à la disposition de la vue Razor. Sinon, vous pouvez fournir le nom qualifié complet d’un Tag Helper comme indiqué ci-dessous :
 
 ```csharp
 @using AuthoringTagHelpers
