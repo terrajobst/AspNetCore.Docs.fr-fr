@@ -1,6 +1,6 @@
 Bien qu’une application de serveur éblouissante soit prérendue, certaines actions, telles que l’appel en JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus.
 
-Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec le navigateur soit établie, `OnAfterRenderAsync` vous pouvez utiliser l’événement du cycle de vie du composant. Cet événement est appelé uniquement une fois que l’application est entièrement rendue et que la connexion cliente est établie.
+Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec le navigateur soit établie, vous pouvez utiliser l’événement `OnAfterRenderAsync` cycle de vie du composant. Cet événement est appelé uniquement une fois que l’application est entièrement rendue et que la connexion cliente est établie.
 
 ```cshtml
 @using Microsoft.JSInterop
@@ -15,18 +15,18 @@ Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec
     {
         if (firstRender)
         {
-            JSRuntime.InvokeAsync<object>(
+            JSRuntime.InvokeVoidAsync(
                 "setElementValue", myInput, "Value set after render");
         }
     }
 }
 ```
 
-Le composant suivant montre comment utiliser l’interopérabilité JavaScript dans le cadre de la logique d’initialisation d’un composant d’une manière compatible avec le prérendu. Le composant montre qu’il est possible de déclencher une mise à jour de `OnAfterRenderAsync`rendu depuis l’intérieur. Le développeur doit éviter de créer une boucle infinie dans ce scénario.
+Le composant suivant montre comment utiliser l’interopérabilité JavaScript dans le cadre de la logique d’initialisation d’un composant d’une manière compatible avec le prérendu. Le composant montre qu’il est possible de déclencher une mise à jour de rendu depuis l’intérieur de `OnAfterRenderAsync`. Le développeur doit éviter de créer une boucle infinie dans ce scénario.
 
-Où `JSRuntime.InvokeAsync` est appelé, `ElementRef` est utilisé uniquement dans `OnAfterRenderAsync` et non dans une méthode de cycle de vie antérieure, car il n’y a pas d’élément JavaScript tant que le composant n’est pas rendu.
+Lorsque `JSRuntime.InvokeAsync` est appelée, `ElementRef` est utilisé uniquement dans `OnAfterRenderAsync` et non dans une méthode de cycle de vie antérieure, car il n’y a pas d’élément JavaScript tant que le composant n’est pas rendu.
 
-`StateHasChanged`est appelé pour restituer à nouveau le composant avec le nouvel état obtenu à partir de l’appel JavaScript Interop. Le code ne crée pas de boucle infinie, car `StateHasChanged` est `null`appelé uniquement lorsque `infoFromJs` est.
+`StateHasChanged` est appelé pour rerestituer le composant avec le nouvel état obtenu à partir de l’appel JavaScript Interop. Le code ne crée pas de boucle infinie car `StateHasChanged` est appelé uniquement lorsque `infoFromJs` est `null`.
 
 ```cshtml
 @page "/prerendered-interop"
