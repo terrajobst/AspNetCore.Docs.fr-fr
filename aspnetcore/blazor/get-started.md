@@ -40,11 +40,11 @@ Prise en main de Blazor :
 
    2 \. Créer un nouveau projet.
 
-   3 \. Sélectionnez l' **application Blazor**. Sélectionnez **Suivant**.
+   3 \. Sélectionnez l' **application éblouissant**. Sélectionnez **Suivant**.
 
    4 \. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Créer**.
 
-   5 \. Pour une expérience de webassembly Blazor, choisissez le modèle **application Blazor Webassembly** . Pour une expérience de serveur Blazor, choisissez le modèle **application de serveur Blazor** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>.
+   5 \. Pour une expérience de webassembly éblouissant, choisissez le modèle **application éblouissant Webassembly** . Pour une expérience de serveur éblouissant, choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>.
 
    6 \. Appuyez sur **F5** pour exécuter l'application.
 
@@ -57,7 +57,7 @@ Prise en main de Blazor :
 
    2 \. Installez le dernier [ C# Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-   3 \. Pour une expérience de webassembly Blazor, exécutez la commande suivante dans une interface de commande :
+   3 \. Pour une expérience de webassembly éblouissant, exécutez la commande suivante dans une interface de commande :
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
@@ -73,9 +73,9 @@ Prise en main de Blazor :
 
    4 \. Ouvrez le dossier *WebApplication1* dans Visual Studio code.
 
-   5 \. Pour un projet de serveur Blazor, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
+   5 \. Pour un projet de serveur éblouissant, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
 
-   6 \. Si vous utilisez une application de serveur Blazor, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly Blazor, exécutez `dotnet run` à partir du dossier du projet de l’application.
+   6 \. Si vous utilisez une application de serveur éblouissant, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly éblouissante, exécutez `dotnet run` à partir du dossier du projet de l’application.
 
    7 \. Dans un navigateur, accédez à `https://localhost:5001`.
 
@@ -141,15 +141,15 @@ Prise en main de Blazor :
 
    1 \. Installez la dernière version de [Visual Studio](https://visualstudio.com/vs/) avec la charge de travail **développement Web et ASP.net** .
 
-   2 \. Si vous le souhaitez, vous pouvez installer [Visual Studio 16,4 Preview 2 ou version ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** pour le développement d’applications Blazor webassembly.
+   2 \. Si vous le souhaitez, vous pouvez installer [Visual Studio 16,4 Preview 2 ou version ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** pour le développement d’applications éblouissantes webassembly.
 
    3 \. Créer un nouveau projet.
 
-   4 \. Sélectionnez l' **application Blazor**. Sélectionnez **Suivant**.
+   4 \. Sélectionnez l' **application éblouissant**. Sélectionnez **Suivant**.
 
    5 \. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Créer**.
 
-   6 \. Pour une expérience de webassembly Blazor, choisissez le modèle **application Blazor Webassembly** . Pour une expérience de serveur Blazor, choisissez le modèle **application de serveur Blazor** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>.
+   6 \. Pour une expérience de webassembly éblouissant, choisissez le modèle **application éblouissant Webassembly** . Pour une expérience de serveur éblouissant, choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>.
 
    7 \. Appuyez sur **F5** pour exécuter l'application.
 
@@ -162,7 +162,7 @@ Prise en main de Blazor :
 
    2 \. Installez le dernier [ C# Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-   3 \. Pour une expérience de webassembly Blazor, exécutez la commande suivante dans une interface de commande :
+   3 \. Pour une expérience de webassembly éblouissant, exécutez la commande suivante dans une interface de commande :
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
@@ -178,9 +178,9 @@ Prise en main de Blazor :
 
    4 \. Ouvrez le dossier *WebApplication1* dans Visual Studio code.
 
-   5 \. Pour un projet de serveur Blazor, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
+   5 \. Pour un projet de serveur éblouissant, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
 
-   6 \. Si vous utilisez une application de serveur Blazor, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly Blazor, exécutez `dotnet run` à partir du dossier du projet de l’application.
+   6 \. Si vous utilisez une application de serveur éblouissant, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly éblouissante, exécutez `dotnet run` à partir du dossier du projet de l’application.
 
    7 \. Dans un navigateur, accédez à `https://localhost:5001`.
 
