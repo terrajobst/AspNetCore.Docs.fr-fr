@@ -5,14 +5,14 @@ description: Découvrez comment appeler des fonctions JavaScript à partir de m�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/16/2019
 uid: blazor/javascript-interop
-ms.openlocfilehash: a8c3a0951761faab1c11507834aeef2507388d71
-ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
+ms.openlocfilehash: b157e16918975cd522318a02f21824d9a0198b11
+ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72531131"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72697928"
 ---
 # <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core l’interopérabilité avec le JavaScript éblouissant
 
@@ -38,9 +38,9 @@ Pour les applications serveur éblouissantes :
 
 L’exemple suivant est basé sur [TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder), un décodeur basé sur JavaScript expérimental. L’exemple montre comment appeler une fonction JavaScript à partir d' C# une méthode. La fonction JavaScript accepte un tableau d’octets d' C# une méthode, décode le tableau et retourne le texte au composant pour l’affichage.
 
-À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction qui utilise `TextDecoder` pour décoder un tableau passé :
+À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript qui utilise `TextDecoder` pour décoder un tableau passé et retourner la valeur décodée :
 
-[!code-html[](javascript-interop/samples_snapshot/index-script.html)]
+[!code-html[](javascript-interop/samples_snapshot/index-script-convertarray.html)]
 
 Du code JavaScript, tel que le code illustré dans l’exemple précédent, peut également être chargé à partir d’un fichier JavaScript ( *. js*) avec une référence au fichier de script :
 
@@ -50,10 +50,12 @@ Du code JavaScript, tel que le code illustré dans l’exemple précédent, peut
 
 Le composant suivant :
 
-* Appelle la fonction JavaScript `ConvertArray` à l’aide de `JsRuntime` lorsqu’un bouton de composant (**convertir un tableau**) est sélectionné.
+* Appelle la fonction JavaScript `convertArray` à l’aide de `JSRuntime` lorsqu’un bouton de composant (**convertir un tableau**) est sélectionné.
 * Une fois la fonction JavaScript appelée, le tableau passé est converti en chaîne. La chaîne est retournée au composant pour l’affichage.
 
 [!code-cshtml[](javascript-interop/samples_snapshot/call-js-example.razor?highlight=2,34-35)]
+
+##  <a name="use-of-ijsruntime"></a>Utilisation de IJSRuntime
 
 Pour utiliser l’abstraction `IJSRuntime`, adoptez l’une des approches suivantes :
 
@@ -61,9 +63,17 @@ Pour utiliser l’abstraction `IJSRuntime`, adoptez l’une des approches suivan
 
   [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
+  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `IJSRuntime.InvokeVoidAsync` et ne retourne pas de valeur :
+
+  [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged1.html)]
+
 * Injecter l’abstraction `IJSRuntime` dans une classe ( *. cs*) :
 
   [!code-csharp[](javascript-interop/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
+
+  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `JSRuntime.InvokeAsync` et retourne une valeur :
+
+  [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
 * Pour la génération de contenu dynamique avec [BuildRenderTree](xref:blazor/components#manual-rendertreebuilder-logic), utilisez l’attribut `[Inject]` :
 
@@ -174,7 +184,7 @@ La méthode est appelée directement sur l’objet. L’exemple suivant suppose 
 [!code-cshtml[](javascript-interop/samples_snapshot/component2.razor?highlight=1,4,12)]
 
 > [!IMPORTANT]
-> La variable `username` est remplie uniquement après le rendu du composant. Si une @no__t non remplie-0 est transmise au code JavaScript, le code JavaScript reçoit la valeur `null`. Pour manipuler des références d’élément après que le composant a terminé le rendu (pour définir le focus initial sur un élément), utilisez les méthodes de [cycle de vie des composants](xref:blazor/components#lifecycle-methods)`OnAfterRenderAsync` ou `OnAfterRender`.
+> La variable `username` est remplie uniquement après le rendu du composant. Si un `ElementReference` non rempli est passé au code JavaScript, le code JavaScript reçoit la valeur `null`. Pour manipuler des références d’élément après que le composant a terminé le rendu (pour définir le focus initial sur un élément), utilisez les méthodes de [cycle de vie des composants](xref:blazor/components#lifecycle-methods)`OnAfterRenderAsync` ou `OnAfterRender`.
 
 ## <a name="invoke-net-methods-from-javascript-functions"></a>Appeler des méthodes .NET à partir de fonctions JavaScript
 
