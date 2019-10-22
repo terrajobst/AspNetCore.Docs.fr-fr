@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/05/2019
+ms.date: 10/20/2019
 uid: blazor/components
-ms.openlocfilehash: cd48111e8d601fc67e8a938fcdd686759a9ddeca
-ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
+ms.openlocfilehash: 065a3a078c56f813ed38f85d7414f22061217dff
+ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72531118"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72697960"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -116,7 +116,7 @@ Dans l’exemple suivant, la `ChildComponent` a une propriété `ChildContent` q
 > [!NOTE]
 > La propriété qui reçoit le contenu `RenderFragment` doit être nommée `ChildContent` par Convention.
 
-Le @no__t suivant peut fournir du contenu pour le rendu de la `ChildComponent` en plaçant le contenu à l’intérieur des balises `<ChildComponent>`.
+Les `ParentComponent` suivantes peuvent fournir du contenu pour le rendu du `ChildComponent` en plaçant le contenu à l’intérieur des balises de `<ChildComponent>`.
 
 *Pages/ParentComponent. Razor*:
 
@@ -509,7 +509,7 @@ Il est souvent pratique de se rapprocher de valeurs supplémentaires, par exempl
 
 ### <a name="eventcallback"></a>EventCallback suivante
 
-Un scénario courant avec des composants imbriqués est le souhait d’exécuter la méthode d’un composant parent lorsqu’un événement de composant enfant se produit @ no__t-0for exemple, lorsqu’un événement `onclick` se produit dans l’enfant. Pour exposer des événements entre les composants, utilisez un `EventCallback`. Un composant parent peut affecter une méthode de rappel à l' @no__t d’un composant enfant.
+Un scénario courant avec des composants imbriqués est le désir d’exécuter la méthode d’un composant parent lorsqu’un événement de composant enfant se produit &mdash;for exemple, lorsqu’un événement `onclick` se produit dans l’enfant. Pour exposer des événements entre les composants, utilisez un `EventCallback`. Un composant parent peut affecter une méthode de rappel à l' `EventCallback` d’un composant enfant.
 
 La `ChildComponent` dans l’exemple d’application montre comment le gestionnaire `onclick` d’un bouton est configuré pour recevoir un délégué `EventCallback` du `ParentComponent` de l’exemple. Le `EventCallback` est tapé avec `MouseEventArgs`, ce qui convient pour un événement `onclick` à partir d’un périphérique :
 
@@ -547,7 +547,7 @@ await callback.InvokeAsync(arg);
 
 Utilisez `EventCallback` et `EventCallback<T>` pour la gestion des événements et la liaison des paramètres du composant.
 
-Préférez le @no__t fortement typé-0 sur `EventCallback`. `EventCallback<T>` offre un meilleur retour d’erreur aux utilisateurs du composant. Comme pour d’autres gestionnaires d’événements d’interface utilisateur, la spécification du paramètre d’événement est facultative. Utilisez `EventCallback` quand aucune valeur n’est passée au rappel.
+Préférez la `EventCallback<T>` fortement typée sur `EventCallback`. `EventCallback<T>` offre un meilleur retour d’erreur aux utilisateurs du composant. Comme pour d’autres gestionnaires d’événements d’interface utilisateur, la spécification du paramètre d’événement est facultative. Utilisez `EventCallback` quand aucune valeur n’est passée au rappel.
 
 ## <a name="chained-bind"></a>Liaison chaînée
 
@@ -694,7 +694,7 @@ Lors du rendu du composant, le champ `loginDialog` est rempli avec l’instance 
 > [!IMPORTANT]
 > La variable `loginDialog` est remplie uniquement après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](#lifecycle-methods).
 
-Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composant ne sont pas transmises au code JavaScript @ no__t-0they’re utilisé uniquement dans le code .NET.
+Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composants ne sont pas transmises à du code JavaScript &mdash;they sont utilisées uniquement dans le code .NET.
 
 > [!NOTE]
 > N’utilisez **pas** de références de composant pour muter l’état des composants enfants. Utilisez plutôt des paramètres déclaratifs normaux pour passer des données aux composants enfants. L’utilisation de paramètres déclaratifs normaux entraîne le rerendu automatique des composants enfants.
@@ -960,6 +960,9 @@ Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/do
 }
 ```
 
+> [!NOTE]
+> L’appel de `StateHasChanged` dans `Dispose` n’est pas pris en charge. `StateHasChanged` peut être appelé dans le cadre du rendu détruit. Les demandes de mises à jour de l’interface utilisateur à ce stade ne sont pas prises en charge.
+
 ## <a name="routing"></a>Routage
 
 Le routage dans éblouissant est obtenu en fournissant un modèle de routage à chaque composant accessible dans l’application.
@@ -980,28 +983,113 @@ Les composants peuvent recevoir des paramètres de routage à partir du modèle 
 
 Les paramètres facultatifs ne sont pas pris en charge. deux directives `@page` sont donc appliquées dans l’exemple ci-dessus. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième directive `@page` prend le paramètre de routage `{text}` et affecte la valeur à la propriété `Text`.
 
-## <a name="base-class-inheritance-for-a-code-behind-experience"></a>Héritage de la classe de base pour une expérience « code-behind »
+::: moniker range=">= aspnetcore-3.1"
 
-Les fichiers de composants associent C# le balisage HTML et le code de traitement dans le même fichier. La directive `@inherits` peut être utilisée pour fournir des applications éblouissantes avec une expérience « code-behind » qui sépare le balisage de composant du code de traitement.
+## <a name="partial-class-support"></a>Prise en charge des classes partielles
+
+Les composants Razor sont générés en tant que classes partielles. Les composants Razor sont créés à l’aide de l’une des approches suivantes :
+
+* C#le code est défini dans un bloc [@code](xref:mvc/views/razor#code) avec le balisage HTML et le code Razor dans un fichier unique. Les modèles éblouissants définissent leurs composants Razor à l’aide de cette approche.
+* C#le code est placé dans un fichier code-behind défini en tant que classe partielle.
+
+L’exemple suivant montre le composant `Counter` par défaut avec un bloc `@code` dans une application générée à partir d’un modèle éblouissant. Le balisage HTML, le code C# Razor et le code se trouvent dans le même fichier :
+
+*Counter. Razor*:
+
+```cshtml
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    int currentCount = 0;
+
+    void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+```
+
+Le composant `Counter` peut également être créé à l’aide d’un fichier code-behind avec une classe partielle :
+
+*Counter. Razor*:
+
+```cshtml
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+```
+
+*Counter.Razor.cs*:
+
+```csharp
+namespace BlazorApp.Pages
+{
+    public partial class Counter
+    {
+        int currentCount = 0;
+
+        void IncrementCount()
+        {
+            currentCount++;
+        }
+    }
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
+## <a name="specify-a-component-base-class"></a>Spécifier une classe de base de composant
+
+La directive `@inherits` peut être utilisée pour spécifier une classe de base pour un composant.
 
 L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) montre comment un composant peut hériter d’une classe de base, `BlazorRocksBase`, pour fournir les propriétés et les méthodes du composant.
 
 *Pages/BlazorRocks. Razor*:
 
-[!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocks.razor?name=snippet_BlazorRocks)]
+```cshtml
+@page "/BlazorRocks"
+@inherits BlazorRocksBase
+
+<h1>@BlazorRocksText</h1>
+```
 
 *BlazorRocksBase.cs*:
 
-[!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRocksBase.cs)]
+```csharp
+using Microsoft.AspNetCore.Components;
+
+namespace BlazorSample
+{
+    public class BlazorRocksBase : ComponentBase
+    {
+        public string BlazorRocksText { get; set; } = 
+            "Blazor rocks the browser!";
+    }
+}
+```
 
 La classe de base doit dériver de `ComponentBase`.
+
+::: moniker-end
 
 ## <a name="import-components"></a>Importer des composants
 
 L’espace de noms d’un composant créé avec Razor est basé sur (par ordre de priorité) :
 
 * désignation [@namespace](xref:mvc/views/razor#namespace) dans le balisage du fichier Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
-* @No__t-0 du projet dans le fichier projet (`<RootNamespace>BlazorSample</RootNamespace>`).
+* @No__t_0 du projet dans le fichier projet (`<RootNamespace>BlazorSample</RootNamespace>`).
 * Nom du projet, pris à partir du nom de fichier du fichier projet ( *. csproj*), et chemin d’accès de la racine du projet au composant. Par exemple, le Framework résout *{Project root}/pages/index.Razor* (*BlazorSample. csproj*) en espace de noms `BlazorSample.Pages`. Les composants C# suivent les règles de liaison de nom. Pour le composant `Index` dans cet exemple, les composants de l’étendue sont tous des composants :
   * Dans le même dossier, *pages*.
   * Composants de la racine du projet qui ne spécifient pas explicitement un espace de noms différent.
@@ -1494,7 +1582,7 @@ Il s’agit d’un exemple trivial. Dans des cas plus réalistes avec des struct
 
 * Les performances de l’application sont affectées si les numéros séquentiels sont générés dynamiquement.
 * L’infrastructure ne peut pas créer ses propres numéros de séquence automatiquement au moment de l’exécution, car les informations nécessaires n’existent pas, sauf si elles sont capturées au moment de la compilation.
-* N’écrivez pas de longs blocs de logique `RenderTreeBuilder` implémentée manuellement. Préférer les fichiers `.razor` et permettre au compilateur de gérer les numéros de séquence. Si vous ne parvenez pas à éviter la logique manuelle `RenderTreeBuilder`, fractionnez les blocs de code longs en éléments plus petits encapsulés dans les appels `OpenRegion` @ no__t-2 @ no__t-3. Chaque région a son propre espace distinct pour les numéros de séquence, ce qui vous permet de redémarrer à partir de zéro (ou tout autre nombre arbitraire) à l’intérieur de chaque région.
+* N’écrivez pas de longs blocs de logique `RenderTreeBuilder` implémentée manuellement. Préférer les fichiers `.razor` et permettre au compilateur de gérer les numéros de séquence. Si vous ne parvenez pas à éviter une logique de `RenderTreeBuilder` manuelle, fractionnez les blocs de code longs en éléments plus petits encapsulés dans `OpenRegion` / `CloseRegion` appels. Chaque région a son propre espace distinct pour les numéros de séquence, ce qui vous permet de redémarrer à partir de zéro (ou tout autre nombre arbitraire) à l’intérieur de chaque région.
 * Si les numéros de séquence sont codés en dur, l’algorithme diff exige uniquement que les numéros de séquence augmentent dans la valeur. La valeur initiale et les écarts ne sont pas pertinents. Une option légitime consiste à utiliser le numéro de ligne de code comme numéro de séquence, ou à commencer à partir de zéro et à augmenter par des ou des centaines (ou un intervalle de préférence). 
 * Éblouissant utilise des numéros de séquence, tandis que d’autres infrastructures d’interface utilisateur de comparaison d’arborescence ne les utilisent pas. La comparaison est beaucoup plus rapide lorsque les numéros de séquence sont utilisés, et éblouissant présente l’avantage d’une étape de compilation qui traite automatiquement les numéros séquentiels pour les développeurs qui créent des fichiers `.razor`.
 
@@ -1545,7 +1633,7 @@ La localisation est gérée dans l’application :
 
 ## <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
 
-Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur la redirection* . Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à une ressource sécurisée @ no__t-0the utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
+Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur la redirection* . Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à une ressource sécurisée &mdash;the utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
 
 L’application conserve la culture sélectionnée de l’utilisateur via une redirection vers un contrôleur. Le contrôleur définit la culture sélectionnée de l’utilisateur dans un cookie et redirige l’utilisateur vers l’URI d’origine.
 

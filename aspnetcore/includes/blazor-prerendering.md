@@ -6,21 +6,33 @@ Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
 
-<input @ref="myInput" value="Value set during render" />
+<div @ref="divElement">Text during render</div>
 
 @code {
-    private ElementReference myInput;
+    private ElementReference divElement;
 
-    protected override void OnAfterRender(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            JSRuntime.InvokeVoidAsync(
-                "setElementValue", myInput, "Value set after render");
+            await JSRuntime.InvokeVoidAsync(
+                "setElementText", divElement, "Text after render");
         }
     }
 }
 ```
+
+Pour l’exemple de code précédent, fournissez une fonction JavaScript `setElementText` à l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissante webassembly) ou *pages/_Host. cshtml* (serveur éblouissant). La fonction est appelée avec `IJSRuntime.InvokeVoidAsync` et ne retourne pas de valeur :
+
+```html
+<!--  -->
+<script>
+  window.setElementText = (element, text) => element.innerText = text;
+</script>
+```
+
+> [!WARNING]
+> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le suivi des modifications de éblouissant.
 
 Le composant suivant montre comment utiliser l’interopérabilité JavaScript dans le cadre de la logique d’initialisation d’un composant d’une manière compatible avec le prérendu. Le composant montre qu’il est possible de déclencher une mise à jour de rendu depuis l’intérieur de `OnAfterRenderAsync`. Le développeur doit éviter de créer une boucle infinie dans ce scénario.
 
@@ -39,24 +51,36 @@ Lorsque `JSRuntime.InvokeAsync` est appelée, `ElementRef` est utilisé uniqueme
     <strong id="val-get-by-interop">@(infoFromJs ?? "No value yet")</strong>
 </p>
 
-<p>
-    Set value via JS interop call:
-    <input id="val-set-by-interop" @ref="myElem" />
-</p>
+Set value via JS interop call:
+<div id="val-set-by-interop" @ref="divElement"></div>
 
 @code {
     private string infoFromJs;
-    private ElementReference myElem;
+    private ElementReference divElement;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender && infoFromJs == null)
         {
             infoFromJs = await JSRuntime.InvokeAsync<string>(
-                "setElementValue", myElem, "Hello from interop call");
+                "setElementText", divElement, "Hello from interop call!");
 
             StateHasChanged();
         }
     }
 }
 ```
+
+Pour l’exemple de code précédent, fournissez une fonction JavaScript `setElementText` à l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissante webassembly) ou *pages/_Host. cshtml* (serveur éblouissant). La fonction est appelée avec `IJSRuntime.InvokeAsync` et retourne une valeur :
+
+```html
+<script>
+  window.setElementText = (element, text) => {
+    element.innerText = text;
+    return text;
+  };
+</script>
+```
+
+> [!WARNING]
+> L’exemple précédent modifie directement le Document Object Model (DOM) à des fins de démonstration uniquement. La modification directe du DOM avec JavaScript n’est pas recommandée dans la plupart des scénarios, car JavaScript peut interférer avec le suivi des modifications de éblouissant.
