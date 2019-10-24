@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/14/2019
 uid: test/integration-tests
-ms.openlocfilehash: 863b95230d376d050c34a9ed585b7696e649cb05
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: c0fede8f9f46d1b10502055d8e1fe7caa48cf351
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378715"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779228"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -126,7 +126,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Tests de base avec le WebApplicationFactory par défaut
 
-[WebApplicationFactory @ no__t-1TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
+[WebApplicationFactory \<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
 
 Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
@@ -175,7 +175,7 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    Pour vous connecter à une base de données différente de celle de la base de données en mémoire, modifiez l’appel de `UseInMemoryDatabase` pour connecter le contexte à une autre base de données. Pour utiliser une base de données de test SQL Server :
 
-   * Référencez le package NuGet [Microsoft. EntityFrameworkCore. SqlServer] https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) dans le fichier projet.
+   * Référencez le package NuGet [Microsoft. EntityFrameworkCore. SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) dans le fichier projet.
    * Appelez `UseSqlServer` avec une chaîne de connexion à la base de données.
 
    ```csharp
@@ -186,7 +186,7 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
    });
    ```
 
-2. Utilisez la @no__t personnalisée-0 dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
+2. Utilisez la `CustomWebApplicationFactory` personnalisée dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
@@ -219,7 +219,7 @@ Quand une configuration supplémentaire est requise dans une méthode de test, [
 
 La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) montre l’utilisation de `WithWebHostBuilder`. Ce test effectue une suppression d’enregistrement dans la base de données en déclenchant une soumission de formulaire dans St.
 
-Étant donné qu’un autre test de la classe `IndexPageTests` effectue une opération qui supprime tous les enregistrements de la base de données et qui peut s’exécuter avant la méthode `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, la base de données est réamorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du premier bouton supprimer du formulaire `messages` dans St est simulée dans la requête adressée au St :
+Étant donné qu’un autre test de la classe `IndexPageTests` effectue une opération qui supprime tous les enregistrements de la base de données et peut s’exécuter avant la méthode `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, la base de données est réamorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du premier bouton supprimer du formulaire `messages` dans St est simulée dans la requête adressée au St :
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
@@ -473,7 +473,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Tests de base avec le WebApplicationFactory par défaut
 
-[WebApplicationFactory @ no__t-1TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
+[WebApplicationFactory \<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
 
 Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
@@ -516,7 +516,7 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans la section [exemple de tests d’intégration : organisation](#test-app-organization) d’une application de test.
 
-2. Utilisez la @no__t personnalisée-0 dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
+2. Utilisez la `CustomWebApplicationFactory` personnalisée dans les classes de test. L’exemple suivant utilise la fabrique dans la classe `IndexPageTests` :
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
@@ -549,7 +549,7 @@ Quand une configuration supplémentaire est requise dans une méthode de test, [
 
 La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) montre l’utilisation de `WithWebHostBuilder`. Ce test effectue une suppression d’enregistrement dans la base de données en déclenchant une soumission de formulaire dans St.
 
-Étant donné qu’un autre test de la classe `IndexPageTests` effectue une opération qui supprime tous les enregistrements de la base de données et qui peut s’exécuter avant la méthode `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, la base de données est réamorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du premier bouton supprimer du formulaire `messages` dans St est simulée dans la requête adressée au St :
+Étant donné qu’un autre test de la classe `IndexPageTests` effectue une opération qui supprime tous les enregistrements de la base de données et peut s’exécuter avant la méthode `Post_DeleteMessageHandler_ReturnsRedirectToRoot`, la base de données est réamorcée dans cette méthode de test pour s’assurer qu’un enregistrement est présent pour que le St puisse être supprimé. La sélection du premier bouton supprimer du formulaire `messages` dans St est simulée dans la requête adressée au St :
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet3)]
 
