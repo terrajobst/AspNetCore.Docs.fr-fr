@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 8/22/2019
 uid: performance/caching/memory
-ms.openlocfilehash: aa39503f034cf46fa4317a1f3cbb8d130afd1b8c
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
+ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333748"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72779189"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache en mémoire dans ASP.NET Core
 
@@ -33,15 +33,15 @@ Le cache en mémoire peut stocker n’importe quel objet. L’interface du cache
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([package NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) peut être utilisé avec :
+<xref:System.Runtime.Caching> / <xref:System.Runtime.Caching.MemoryCache> ([package NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) peut être utilisé avec :
 
 * .NET Standard 2,0 ou version ultérieure.
 * Toute [implémentation .net](/dotnet/standard/net-standard#net-implementation-support) qui cible .NET standard 2,0 ou version ultérieure. Par exemple, ASP.NET Core 2,0 ou version ultérieure.
 * .NET Framework 4,5 ou version ultérieure.
 
-[Microsoft. extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (décrit dans cet article) est recommandé sur `System.Runtime.Caching` @ no__t-4 @ no__t-5, car il est mieux intégré à ASP.net core. Par exemple, `IMemoryCache` fonctionne en mode natif avec ASP.NET Core l' [injection de dépendances](xref:fundamentals/dependency-injection).
+[Microsoft. extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (décrit dans cet article) est recommandé sur `System.Runtime.Caching` / `MemoryCache`, car il est mieux intégré à ASP.net core. Par exemple, `IMemoryCache` fonctionne en mode natif avec ASP.NET Core l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
-Utilisez `System.Runtime.Caching` @ no__t-1 @ no__t-2 comme pont de compatibilité lors du Portage du code de ASP.NET 4. x vers ASP.NET Core.
+Utilisez `System.Runtime.Caching` / `MemoryCache` comme un pont de compatibilité lors du Portage du code de ASP.NET 4. x vers ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Instructions du cache
 
@@ -56,6 +56,7 @@ Utilisez `System.Runtime.Caching` @ no__t-1 @ no__t-2 comme pont de compatibilit
 > [!WARNING]
 > L’utilisation d’un cache de mémoire *partagé* à partir d’une [injection de dépendance](xref:fundamentals/dependency-injection) et l’appel de `SetSize`, `Size` ou `SizeLimit` pour limiter la taille du cache peuvent entraîner l’échec de l’application. Quand une limite de taille est définie sur un cache, toutes les entrées doivent spécifier une taille lors de leur ajout. Cela peut entraîner des problèmes, car les développeurs n’ont peut-être pas un contrôle total sur ce qui utilise le cache partagé. Par exemple, Entity Framework Core utilise le cache partagé et ne spécifie pas de taille. Si une application définit une limite de taille de cache et utilise EF Core, l’application lève une `InvalidOperationException`.
 > Lors de l’utilisation de `SetSize`, `Size` ou `SizeLimit` pour limiter le cache, créez un singleton de cache pour la mise en cache. Pour plus d’informations et pour obtenir un exemple, consultez utiliser la configuration, la [taille et SizeLimit pour limiter la taille du cache](#use-setsize-size-and-sizelimit-to-limit-cache-size).
+> Un cache partagé est un cache partagé par d’autres infrastructures ou bibliothèques. Par exemple, EF Core utilise le cache partagé et ne spécifie pas de taille. 
 
 La mise en cache en mémoire est un *service* référencé à partir d’une application à l’aide de l' [injection de dépendances](xref:fundamentals/dependency-injection). Demandez l’instance `IMemoryCache` dans le constructeur :
 
@@ -206,15 +207,15 @@ Le cache en mémoire peut stocker n’importe quel objet. L’interface du cache
 
 ## <a name="systemruntimecachingmemorycache"></a>System. Runtime. Caching/MemoryCache
 
-<xref:System.Runtime.Caching> @ no__t-1 @ no__t-2 ([package NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) peut être utilisé avec :
+<xref:System.Runtime.Caching> / <xref:System.Runtime.Caching.MemoryCache> ([package NuGet](https://www.nuget.org/packages/System.Runtime.Caching/)) peut être utilisé avec :
 
 * .NET Standard 2,0 ou version ultérieure.
 * Toute [implémentation .net](/dotnet/standard/net-standard#net-implementation-support) qui cible .NET standard 2,0 ou version ultérieure. Par exemple, ASP.NET Core 2,0 ou version ultérieure.
 * .NET Framework 4,5 ou version ultérieure.
 
-[Microsoft. extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)/ @ no__t-2 (décrit dans cet article) est recommandé sur `System.Runtime.Caching` @ no__t-4 @ no__t-5, car il est mieux intégré à ASP.net core. Par exemple, `IMemoryCache` fonctionne en mode natif avec ASP.NET Core l' [injection de dépendances](xref:fundamentals/dependency-injection).
+[Microsoft. extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (décrit dans cet article) est recommandé sur `System.Runtime.Caching` / `MemoryCache`, car il est mieux intégré à ASP.net core. Par exemple, `IMemoryCache` fonctionne en mode natif avec ASP.NET Core l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
-Utilisez `System.Runtime.Caching` @ no__t-1 @ no__t-2 comme pont de compatibilité lors du Portage du code de ASP.NET 4. x vers ASP.NET Core.
+Utilisez `System.Runtime.Caching` / `MemoryCache` comme un pont de compatibilité lors du Portage du code de ASP.NET 4. x vers ASP.NET Core.
 
 ## <a name="cache-guidelines"></a>Instructions du cache
 
