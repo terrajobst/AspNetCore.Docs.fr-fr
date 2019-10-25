@@ -5,22 +5,22 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 5462f89a3b5a257ed0a6a8439efb077653fb14f6
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a2a0bcdace67052975630f99aab23bbb0fd99bff
+ms.sourcegitcommit: 383017d7060a6d58f6a79cf4d7335d5b4b6c5659
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082245"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72816141"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-`dotnet watch` est un outil qui exécute une commande [.NET Core CLI](/dotnet/core/tools) quand des fichiers sources changent. Par exemple, un changement de fichier peut déclencher la compilation, l’exécution de tests ou le déploiement.
+[dotnet Watch](https://www.nuget.org/packages/dotnet-watch) est un outil qui exécute une commande [CLI .net Core](/dotnet/core/tools) lorsque les fichiers sources changent. Par exemple, un changement de fichier peut déclencher la compilation, l’exécution de tests ou le déploiement.
 
 Ce tutoriel utilise une API web existante avec deux points de terminaison : un qui retourne une somme et un qui retourne un produit. La méthode du produit comporte un bogue, qui est résolu dans ce tutoriel.
 
-Téléchargez l’[application exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle est composée de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
+Téléchargez l’[application exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
 Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
 
@@ -69,7 +69,7 @@ L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.
 
 ## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>Exécuter les commandes de l’interface CLI de .NET Core avec `dotnet watch`
 
-Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Par exemple :
+Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Exemple :
 
 | Commande | Commande avec watch |
 | ---- | ----- |
