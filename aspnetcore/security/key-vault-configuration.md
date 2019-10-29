@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le fournisseur de configuration Azure K
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2019
+ms.date: 10/27/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: c8e76068dbcf2a59a15fa75a1fc5aa0032e6acc5
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: acc3a77cdeb3ba73d8467d465128106e461efa7c
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334201"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034330"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -104,7 +104,7 @@ Les instructions fournies par le Guide de [démarrage rapide : définir et réc
 
    Azure Key Vault noms de secrets sont limités aux caractères alphanumériques et aux tirets. Les valeurs hiérarchiques (sections de configuration) utilisent `--` (deux tirets) comme séparateur. Les signes deux-points, qui sont normalement utilisés pour délimiter une section d’une sous-clé dans [ASP.net Core configuration](xref:fundamentals/configuration/index), ne sont pas autorisés dans les noms de secrets du coffre de clés. Par conséquent, deux tirets sont utilisés et permutés pour un signe deux-points lorsque les secrets sont chargés dans la configuration de l’application.
 
-   Les secrets suivants sont destinés à être utilisés avec l’exemple d’application. Les valeurs incluent un suffixe `_prod` pour les distinguer des valeurs de suffixe `_dev` chargées dans l’environnement de développement des secrets de l’utilisateur. Remplacez `{KEY VAULT NAME}` par le nom du coffre de clés que vous avez créé à l’étape précédente :
+   Les secrets suivants sont destinés à être utilisés avec l’exemple d’application. Les valeurs incluent un suffixe de `_prod` pour les distinguer des valeurs de suffixe `_dev` chargées dans l’environnement de développement des secrets d’utilisateur. Remplacez `{KEY VAULT NAME}` par le nom du coffre de clés que vous avez créé à l’étape précédente :
 
    ```azure-cli
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "SecretName" --value "secret_value_1_prod"
@@ -204,6 +204,8 @@ Quand vous exécutez l’application, une page Web affiche les valeurs de secret
 
 Si vous recevez une erreur `Access denied`, confirmez que l’application est inscrite auprès de Azure AD et qu’elle a fourni un accès au coffre de clés. Confirmez que vous avez redémarré le service dans Azure.
 
+Pour plus d’informations sur l’utilisation du fournisseur avec une identité gérée et un pipeline Azure DevOps, consultez [créer une connexion de service Azure Resource Manager à une machine virtuelle avec une identité de service managée](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-to-a-vm-with-a-managed-service-identity).
+
 ## <a name="use-a-key-name-prefix"></a>Utiliser un préfixe de nom de clé
 
 `AddAzureKeyVault` fournit une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, ce qui vous permet de contrôler la façon dont les secrets de coffre de clés sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger des valeurs de secret en fonction d’une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, de charger des secrets basés sur la version de l’application.
@@ -213,7 +215,7 @@ Si vous recevez une erreur `Access denied`, confirmez que l’application est in
 
 Dans l’exemple suivant, un secret est établi dans le coffre de clés (et l’utilisation de l’outil secret Manager pour l’environnement de développement) pour `5000-AppSecret` (les points ne sont pas autorisés dans les noms de secret de coffre de clés). Ce secret représente un secret d’application pour la version 5.0.0.0 de l’application. Pour une autre version de l’application, 5.1.0.0, un secret est ajouté au coffre de clés (et à l’aide de l’outil secret Manager) pour `5100-AppSecret`. Chaque version de l’application charge sa valeur secrète avec version dans sa configuration en tant que `AppSecret`, ce qui élimine la version au fur et à mesure qu’elle charge le secret.
 
-`AddAzureKeyVault` est appelé avec une @no__t personnalisée-1 :
+`AddAzureKeyVault` est appelé avec une `IKeyVaultSecretManager`personnalisée :
 
 [!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?highlight=30-34)]
 
@@ -259,7 +261,7 @@ Lorsque cette approche est implémentée :
 
 1. La version, `5000` (avec le tiret), est supprimée du nom de la clé. Tout au long de l’application, la lecture de la configuration avec la clé `AppSecret` charge la valeur secrète.
 
-1. Si la version de l’application est remplacée dans le fichier projet par `5.1.0.0` et que l’application est de nouveau exécutée, la valeur secrète retournée est `5.1.0.0_secret_value_dev` dans l’environnement de développement et `5.1.0.0_secret_value_prod` en production.
+1. Si la version de l’application est modifiée dans le fichier projet en `5.1.0.0` et que l’application est réexécutée, la valeur secrète retournée est `5.1.0.0_secret_value_dev` dans l’environnement de développement et `5.1.0.0_secret_value_prod` en production.
 
 > [!NOTE]
 > Vous pouvez également fournir votre propre implémentation de `KeyVaultClient` à `AddAzureKeyVault`. Un client personnalisé permet de partager une seule instance du client dans l’application.

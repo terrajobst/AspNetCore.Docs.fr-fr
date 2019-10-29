@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/24/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 0a9b1a1a08617ef4ca8a36295cec8910ec111acd
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: 263f9f7c4c800a74b745fd636196e1e135afc91b
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589909"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033913"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -537,13 +537,10 @@ Appelez `ConfigureAppConfiguration` lors de la création de l’hôte pour spéc
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddIniFile(
         "config.ini", optional: true, reloadOnChange: true);
 })
 ```
-
-Le chemin de base est défini avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.
 
 Exemple générique d’un fichier de configuration INI :
 
@@ -602,13 +599,10 @@ Appelez `ConfigureAppConfiguration` lors de la création de l’hôte pour spéc
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddJsonFile(
         "config.json", optional: true, reloadOnChange: true);
 })
 ```
-
-Le chemin de base est défini avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.
 
 **Exemple**
 
@@ -643,13 +637,10 @@ Appelez `ConfigureAppConfiguration` lors de la création de l’hôte pour spéc
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     config.AddXmlFile(
         "config.xml", optional: true, reloadOnChange: true);
 })
 ```
-
-Le chemin de base est défini avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.
 
 Les fichiers de configuration XML peuvent utiliser des noms d’éléments distincts pour les sections répétitives :
 
@@ -732,14 +723,11 @@ Appelez `ConfigureAppConfiguration` lors de la création de l’hôte pour spéc
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    config.SetBasePath(Directory.GetCurrentDirectory());
     var path = Path.Combine(
         Directory.GetCurrentDirectory(), "path/to/files");
     config.AddKeyPerFile(directoryPath: path, optional: true);
 })
 ```
-
-Le chemin de base est défini avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>.
 
 ## <a name="memory-configuration-provider"></a>Fournisseur de configuration de mémoire
 
@@ -1019,13 +1007,13 @@ Ces clés et valeurs sont chargées dans l’exemple d’application à l’aide
 
 ::: moniker range=">= aspnetcore-3.0"
 
-[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,22)]
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,23)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=5-12,22)]
 
 ::: moniker-end
 
@@ -1203,7 +1191,7 @@ Une méthode d’extension `AddEFConfiguration` permet d’ajouter la source de 
 
 Le code suivant montre comment utiliser le `EFConfigurationProvider` personnalisé dans *Program.cs* :
 
-[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+[!code-csharp[](index/samples/3.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
 ::: moniker-end
 
@@ -1239,7 +1227,7 @@ Une méthode d’extension `AddEFConfiguration` permet d’ajouter la source de 
 
 Le code suivant montre comment utiliser le `EFConfigurationProvider` personnalisé dans *Program.cs* :
 
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=30-31)]
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=29-30)]
 
 ::: moniker-end
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 2461bc398cd237dac04f4eb8832c70290663ff56
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259485"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034029"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -59,7 +59,7 @@ Le code précédent ajoute une propriété `FullName` et les attributs suivants 
 
 Pour les dates d’inscription des étudiants, toutes les pages affichent actuellement l’heure du jour avec la date, alors que seule la date présente un intérêt. Vous pouvez avoir recours aux attributs d’annotation de données pour apporter une modification au code, permettant de corriger le format d’affichage dans chaque page qui affiche ces données. 
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -93,7 +93,7 @@ Vous pouvez également spécifier des règles de validation de données et des m
 
 L’attribut `StringLength` fournit également la validation côté client et côté serveur. La valeur minimale n’a aucun impact sur le schéma de base de données.
 
-L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace blanc comme nom. L’attribut [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) peut être utilisé pour appliquer des restrictions à l’entrée. Par exemple, le code suivant exige que le premier caractère soit en majuscule et que les autres caractères soient alphabétiques :
+L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace blanc comme nom. L’attribut [RegularExpression](/dotnet/api/system.componentmodel.dataannotations.regularexpressionattribute?view=netframework-4.7.1) peut être utilisé pour appliquer des restrictions à l’entrée. Par exemple, le code suivant exige que le premier caractère soit une majuscule et que les autres caractères soient alphabétiques :
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
@@ -155,7 +155,7 @@ L’attribut `Display` indique que la légende des zones de texte doit être «�
 
 ### <a name="create-a-migration"></a>Créer une migration
 
-Exécutez l’application et accédez à la page des étudiants. Une exception est levée. En raison de l’attribut `[Column]`, EF s’attend à trouver une colonne nommée `FirstName`, mais le nom de la colonne dans la base de données est toujours `FirstMidName`.
+Exécutez l’application et accédez à la page des étudiants. une exception soit levée ; En raison de l’attribut `[Column]`, EF s’attend à trouver une colonne nommée `FirstName`, mais le nom de la colonne dans la base de données est toujours `FirstMidName`.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -382,7 +382,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
+Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -441,13 +441,13 @@ Si la table `Enrollment` n’incluait pas d’informations de notes, elle aurait
 
 Les entités `Instructor` et `Course` ont une relation plusieurs-à-plusieurs à l’aide d’une table de jointure pure.
 
-Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais EF Core ne le fait pas. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
+Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais pas EF Core. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
 
 ## <a name="the-courseassignment-entity"></a>Entité CourseAssignment
 
 ![Entité CourseAssignment](complex-data-model/_static/courseassignment-entity.png)
 
-Créez *Models/CourseAssignment.cs* avec le code suivant :
+Créez *Models/CourseAssignment.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu30/Models/CourseAssignment.cs)]
 
@@ -472,7 +472,7 @@ La clé composite garantit que :
 Comme l’entité de jointure `Enrollment` définit sa propre clé primaire, des doublons de ce type sont possibles. Pour éviter ces doublons :
 
 * Ajoutez un index unique sur les champs de clé primaire, ou
-* Configurez `Enrollment` avec une clé primaire composite similaire à `CourseAssignment`. Pour plus d’informations, consultez [Index](/ef/core/modeling/indexes).
+* Configurez `Enrollment` avec une clé primaire composite similaire à `CourseAssignment`. Pour plus d'informations, consultez [Index](/ef/core/modeling/indexes).
 
 ## <a name="update-the-database-context"></a>Mettre à jour le contexte de base de données
 
@@ -610,7 +610,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 * Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet ef database drop --force
@@ -632,7 +632,7 @@ Exécuter l’application. L’exécution de l’application entraîne l’exéc
 Ouvrez la base de données dans SSOX :
 
 * Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
-* Développez le noeud **Tables**. Les tables créées sont affichées.
+* Développez le nœud **Tables**. Les tables créées sont affichées.
 
   ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 
@@ -682,7 +682,7 @@ Dans la classe de migration `ComplexDataModel`, mettez à jour la méthode `Up`�
 
 Ajoutez le code en surbrillance suivant. Le nouveau code va après le bloc `.CreateTable( name: "Department"` :
 
-[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
+[!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=23-31)]
 
 Avec les modifications précédentes, les lignes `Course` existantes seront liées au service « Temp » après l’exécution de la méthode `ComplexDataModel.Up`.
 
@@ -749,7 +749,7 @@ Mettez à jour *Models/Student.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -1079,7 +1079,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
+Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -1144,7 +1144,7 @@ Si la table `Enrollment` n’incluait pas d’informations de notes, elle aurait
 
 Les entités `Instructor` et `Course` ont une relation plusieurs-à-plusieurs à l’aide d’une table de jointure pure.
 
-Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais EF Core ne le fait pas. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
+Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais pas EF Core. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
 
 ## <a name="the-courseassignment-entity"></a>Entité CourseAssignment
 
@@ -1278,7 +1278,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 Disposant à présent d’une base de données, vous devez réfléchir à la façon dont vous y apporterez des modifications. Ce tutoriel montre deux approches :
 
 * [Supprimer et recréer la base de données](#drop)
-* [Appliquer la migration à la base de données](#applyexisting) Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque**: Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
+* [Appliquer la migration à la base de données](#applyexisting) Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque** : Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
 
 <a name="drop"></a>
 
@@ -1315,7 +1315,7 @@ Exécuter l’application. L’exécution de l’application entraîne l’exéc
 Ouvrez la base de données dans SSOX :
 
 * Si SSOX était déjà ouvert, cliquez sur le bouton **Actualiser**.
-* Développez le noeud **Tables**. Les tables créées sont affichées.
+* Développez le nœud **Tables**. Les tables créées sont affichées.
 
 ![Tables dans SSOX](complex-data-model/_static/ssox-tables.png)
 

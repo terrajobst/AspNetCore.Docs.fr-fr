@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: 02e44135ab1742d44691cfda8c4167f21d6efa4e
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.openlocfilehash: ca5b0f8088773027f7403120247cbeca8900bcf5
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975645"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034342"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Client IP safelier pour ASP.NET Core
 
 Par [Damien Bowden](https://twitter.com/damien_bod) et [Tom Dykstra](https://github.com/tdykstra)
  
-Cet article montre trois façons d’implémenter un safelist IP (également appelé liste verte) dans une application ASP.NET Core. Vous pouvez utiliser les éléments suivants:
+Cet article présente trois méthodes permettant d’implémenter une liste d’adresses IP (également appelée liste blanche) dans une application ASP.NET Core. Vous pouvez utiliser les éléments suivants :
 
 * Intergiciel pour vérifier l’adresse IP distante de chaque demande.
 * Filtres d’action pour vérifier l’adresse IP distante des demandes pour des contrôleurs ou des méthodes d’action spécifiques.
@@ -35,7 +35,7 @@ La liste est configurée dans le fichier *appSettings. JSON* . Il s’agit d’u
 
 ## <a name="middleware"></a>Intergiciel (middleware)
 
-La `Configure` méthode ajoute l’intergiciel (middleware) et lui transmet la chaîne safeli dans un paramètre de constructeur.
+La méthode `Configure` ajoute l’intergiciel (middleware) et lui transmet la chaîne safeli dans un paramètre de constructeur.
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Startup.cs?name=snippet_Configure&highlight=10)]
 
@@ -47,7 +47,7 @@ L’intergiciel analyse la chaîne dans un tableau et recherche l’adresse IP d
 
 Si vous souhaitez un safelir uniquement pour des contrôleurs ou des méthodes d’action spécifiques, utilisez un filtre d’action. Voici un exemple : 
 
-[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIdCheckFilter.cs)]
+[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckFilter.cs)]
 
 Le filtre d’action est ajouté au conteneur de services.
 
@@ -57,13 +57,13 @@ Le filtre peut ensuite être utilisé sur un contrôleur ou une méthode d’act
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Controllers/ValuesController.cs?name=snippet_Filter&highlight=1)]
 
-Dans l’exemple d’application, le filtre est appliqué à `Get` la méthode. Ainsi, lorsque vous testez l’application en `Get` envoyant une demande d’API, l’attribut valide l’adresse IP du client. Lorsque vous testez en appelant l’API avec une autre méthode HTTP, l’intergiciel (middleware) valide l’adresse IP du client.
+Dans l’exemple d’application, le filtre est appliqué à la méthode `Get`. Ainsi, lorsque vous testez l’application en envoyant une demande d’API `Get`, l’attribut valide l’adresse IP du client. Lorsque vous testez en appelant l’API avec une autre méthode HTTP, l’intergiciel (middleware) valide l’adresse IP du client.
 
 ## <a name="razor-pages-filter"></a>Filtre de Razor Pages 
 
 Si vous souhaitez obtenir une application Razor Pages, utilisez un filtre Razor Pages. Voici un exemple : 
 
-[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIdCheckPageFilter.cs)]
+[!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckPageFilter.cs)]
 
 Ce filtre est activé en l’ajoutant à la collection de filtres MVC.
 

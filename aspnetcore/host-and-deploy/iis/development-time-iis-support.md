@@ -5,14 +5,14 @@ description: Découvrez la prise en charge du débogage des applications ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2019
+ms.date: 10/26/2019
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: e5da4f7202bf31e65c366d6f7de54212f5b0fed7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2d2c8d8e4b39d18a3a727e2a2bdef3be566897c1
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259800"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034144"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -20,7 +20,7 @@ De [Sourabh Shirhatti](https://twitter.com/sshirhatti) et [Luke Latham](https://
 
 Cet article décrit la prise en charge de [Visual Studio](https://visualstudio.microsoft.com) pour le débogage des applications ASP.NET Core s’exécutant avec IIS sur Windows Server. Cette rubrique présente ce scénario et la configuration d’un projet.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [Visual Studio pour Windows](https://visualstudio.microsoft.com/downloads/)
 * Charge de travail **Développement web et ASP.NET**
@@ -152,7 +152,6 @@ Si vous utilisez un certificat de développement non approuvé, le navigateur pe
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Bien démarrer avec le Gestionnaire IIS dans IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [Héberger ASP.NET Core sur Windows avec IIS](xref:host-and-deploy/iis/index)
-* [Introduction au Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Informations de référence sur la configuration du Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Appliquer HTTPS](xref:security/enforcing-ssl)
+* <xref:host-and-deploy/iis/index>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:security/enforcing-ssl>

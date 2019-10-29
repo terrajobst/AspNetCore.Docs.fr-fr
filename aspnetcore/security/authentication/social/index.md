@@ -1,31 +1,30 @@
 ---
 title: Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 author: rick-anderson
-description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
+description: Ce didacticiel montre comment créer une application ASP.NET Core à l’aide d’OAuth 2,0 avec des fournisseurs d’authentification externes.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: edaf9eeaf02879b2f7816bab0eb373a7de640c05
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082504"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034306"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce tutoriel montre comment créer une application ASP.NET Core 2.2 qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2.0 avec des informations d’identification provenant de fournisseurs d’authentification externes.
+Ce didacticiel montre comment créer une application ASP.NET Core 3,0 qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2,0 avec les informations d’identification des fournisseurs d’authentification externes.
 
-Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) et [Microsoft](xref:security/authentication/microsoft-logins) sont traités dans les sections qui suivent. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
-
-![Icônes de réseau social pour Facebook, Twitter, Google plus et Windows](index/_static/social.png)
+Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins)et [Microsoft](xref:security/authentication/microsoft-logins) sont traités dans les sections suivantes et utilisent le projet de démarrage créé dans cet article. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
 Permettre aux utilisateurs de se connecter avec leurs informations d’identification existantes :
+
 * Est pratique pour les utilisateurs.
-* Transfère une grande partie des complexités de la gestion du processus de connexion à un tiers. 
+* Transfère une grande partie des complexités de la gestion du processus de connexion à un tiers.
 
 Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux peuvent amener du trafic et des conversions de clients, consultez les études de cas par [Facebook](https://www.facebook.com/unsupportedbrowser) et [Twitter](https://dev.twitter.com/resources/case-studies).
 
@@ -36,36 +35,32 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 * Créer un nouveau projet.
 * Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant**.
 * Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Créer**.
-* Sélectionnez **ASP.NET Core 2.2** dans la liste déroulante. Sélectionnez **Application web** dans la liste des modèles.
+* Sélectionnez **ASP.NET Core 3,0** dans la liste déroulante, puis sélectionnez **application Web**.
 * Sous **Authentification**, sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels**. Sélectionnez **OK**.
 * Dans la fenêtre **Créer une application web ASP.NET Core**, sélectionnez **Créer**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
+* Ouvrez le terminal.  Pour Visual Studio Code vous pouvez ouvrir le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
 
-* Exécutez les commandes suivantes :
+* Pour Windows, exécutez la commande suivante :
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
-  code -r WebApp1
+  ```
+
+  Pour macOS et Linux, exécutez la commande suivante :
+
+  ```dotnetcli
+  dotnet new webapp -o WebApp1 -au Individual
   ```
 
   * La commande `dotnet new` crée un nouveau projet Razor Pages dans le dossier *WebApp1*.
-  * `-uld` utilise la Base de données locale au lieu de SQLite. Omettez `-uld` pour utiliser SQLite.
   * `-au Individual` crée le code servant à l’authentification individuelle.
+  * `-uld` utilise la base de données locale, une version allégée de SQL Server Express pour Windows. Omettez `-uld` pour utiliser SQLite.
   * La commande `code` ouvre le dossier *WebApp1* dans une nouvelle instance de Visual Studio Code.
-
-* Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « WebApp1 ». Faut-il les ajouter ?** Sélectionnez **Oui**.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-* Sélectionnez **Fichier** > **Nouvelle solution**.
-* Sélectionnez **.NET Core** > **Application** dans la barre latérale. Sélectionnez le modèle **Application web**. Sélectionnez **Suivant**.
-* Définissez la liste déroulante **Framework cible** sur **.NET Core 2.2**. Sélectionnez **Suivant**.
-* Fournissez un **Nom de projet**. Confirmez ou changez l’**Emplacement**. Sélectionnez **Créer**.
 
 ---
 

@@ -5,14 +5,14 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/20/2019
+ms.date: 10/21/2019
 uid: blazor/components
-ms.openlocfilehash: 065a3a078c56f813ed38f85d7414f22061217dff
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 8c228b168cdbd58928ef3f57ff26bc86e8dfc1ba
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697960"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033982"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -181,7 +181,7 @@ Les éléments `<input>` rendus à l’aide des deux approches sont identiques 
        size="50">
 ```
 
-Pour accepter des attributs arbitraires, définissez un paramètre de composant à l’aide de l’attribut `[Parameter]` avec la propriété `CaptureUnmatchedValues` définie sur `true` :
+Pour accepter des attributs arbitraires, définissez un paramètre de composant à l’aide de l’attribut `[Parameter]` avec la propriété `CaptureUnmatchedValues` définie sur `true`:
 
 ```cshtml
 @code {
@@ -191,6 +191,52 @@ Pour accepter des attributs arbitraires, définissez un paramètre de composant 
 ```
 
 La propriété `CaptureUnmatchedValues` sur `[Parameter]` permet au paramètre de correspondre à tous les attributs qui ne correspondent à aucun autre paramètre. Un composant ne peut définir qu’un seul paramètre avec `CaptureUnmatchedValues`. Le type de propriété utilisé avec `CaptureUnmatchedValues` doit pouvoir être assigné à partir de `Dictionary<string, object>` avec des clés de chaîne. `IEnumerable<KeyValuePair<string, object>>` ou `IReadOnlyDictionary<string, object>` sont également des options dans ce scénario.
+
+La position des `@attributes` par rapport à la position des attributs d’élément est importante. Lorsque `@attributes` sont réparties sur l’élément, les attributs sont traités de droite à gauche (dernier à premier). Prenons l’exemple suivant d’un composant qui consomme un composant `Child` :
+
+*ParentComponent. Razor*:
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*ChildComponent. Razor*:
+
+```cshtml
+<div @attributes="AdditionalAttributes" extra="5" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+L’attribut `extra` du composant `Child` est défini à droite de `@attributes`. Le `<div>` rendu du composant `Parent` contient `extra="5"` lorsqu’il est transmis via l’attribut supplémentaire, car les attributs sont traités de droite à gauche (dernier à premier) :
+
+```html
+<div extra="5" />
+```
+
+Dans l’exemple suivant, l’ordre des `extra` et `@attributes` est inversé dans le `<div>`du composant `Child` :
+
+*ParentComponent. Razor*:
+
+```cshtml
+<ChildComponent extra="10" />
+```
+
+*ChildComponent. Razor*:
+
+```cshtml
+<div extra="5" @attributes="AdditionalAttributes" />
+
+[Parameter(CaptureUnmatchedValues = true)]
+public IDictionary<string, object> AdditionalAttributes { get; set; }
+```
+
+Le `<div>` rendu dans le composant `Parent` contient `extra="10"` lorsqu’il est passé par le biais de l’attribut supplémentaire :
+
+```html
+<div extra="10" />
+```
 
 ## <a name="data-binding"></a>Liaison de données
 
@@ -1089,7 +1135,7 @@ La classe de base doit dériver de `ComponentBase`.
 L’espace de noms d’un composant créé avec Razor est basé sur (par ordre de priorité) :
 
 * désignation [@namespace](xref:mvc/views/razor#namespace) dans le balisage du fichier Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
-* @No__t_0 du projet dans le fichier projet (`<RootNamespace>BlazorSample</RootNamespace>`).
+* `RootNamespace` du projet dans le fichier projet (`<RootNamespace>BlazorSample</RootNamespace>`).
 * Nom du projet, pris à partir du nom de fichier du fichier projet ( *. csproj*), et chemin d’accès de la racine du projet au composant. Par exemple, le Framework résout *{Project root}/pages/index.Razor* (*BlazorSample. csproj*) en espace de noms `BlazorSample.Pages`. Les composants C# suivent les règles de liaison de nom. Pour le composant `Index` dans cet exemple, les composants de l’étendue sont tous des composants :
   * Dans le même dossier, *pages*.
   * Composants de la racine du projet qui ne spécifient pas explicitement un espace de noms différent.

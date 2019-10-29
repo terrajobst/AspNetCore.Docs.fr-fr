@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: blazor/hosting-models
-ms.openlocfilehash: 072f9bbdcf7171ede63383b085f9f0f030bf1076
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: be67c129af4f071d10719e0bbf121de761dde9f4
+ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391167"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73033991"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 
@@ -66,7 +66,7 @@ L’application ASP.NET Core fait référence à la classe `Startup` de l’appl
 * Services côté serveur.
 * L’application vers le pipeline de traitement des demandes.
 
-Le script *éblouissant. Server. js* @ no__t-1 établit la connexion client. Il est de la responsabilité de l’application de conserver et de restaurer l’état de l’application en fonction des besoins (par exemple, en cas de perte de connexion réseau).
+Le script *éblouissant. Server. js*&dagger; établit la connexion client. Il est de la responsabilité de l’application de conserver et de restaurer l’état de l’application en fonction des besoins (par exemple, en cas de perte de connexion réseau).
 
 Le modèle d’hébergement de serveur éblouissant offre plusieurs avantages :
 
@@ -228,7 +228,7 @@ Pour configurer le client Signalr dans le fichier *pages/_Host. cshtml* :
 <script>
   Blazor.start({
     configureSignalR: function (builder) {
-      builder.configureLogging(2); // LogLevel.Information
+      builder.configureLogging("information"); // LogLevel.Information
     }
   });
 </script>
