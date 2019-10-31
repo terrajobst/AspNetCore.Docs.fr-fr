@@ -1,34 +1,53 @@
 ---
 title: Autorisation basée sur les revendications dans ASP.NET Core
 author: rick-anderson
-description: Découvrez comment ajouter des contrôles de revendications pour l’autorisation dans une application ASP.NET Core.
+description: Découvrez comment ajouter des vérifications de revendications pour l’autorisation dans une application ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/claims
-ms.openlocfilehash: 6b60ae5515819b017ab577f655ed91ee4d8ed0dd
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: e289851aafcbc7e3b3f60ab9fbe4b182a78bdf8a
+ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086152"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73143432"
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>Autorisation basée sur les revendications dans ASP.NET Core
 
 <a name="security-authorization-claims-based"></a>
 
-Lors de la création d’une identité d’une ou plusieurs revendications émises par une partie de confiance peut lui être attribuée. Une revendication est une paire nom-valeur qui représente le sujet est, pas quel sujet peut faire. Par exemple, vous pouvez avoir conduire un permis de, émis par une autorité de licence de conduite local. Conduire votre permis de comporte votre date de naissance. Dans ce cas le nom de la revendication serait `DateOfBirth`, la valeur de revendication serait votre date de naissance, par exemple `8th June 1970` et l’émetteur serait l’autorité de licence de conduite. Autorisation basée sur les revendications, la plus simple, vérifie la valeur d’une revendication et autorise l’accès à une ressource en fonction de cette valeur. Pour exemple, si vous souhaitez accéder à un club de nuit, le processus d’autorisation peut être :
+Lorsqu’une identité est créée, elle peut se voir attribuer une ou plusieurs revendications émises par un tiers de confiance. Une revendication est une paire nom/valeur qui représente l’objet, pas ce que le sujet peut faire. Par exemple, vous pouvez avoir une licence de pilote, publiée par une autorité de certification de conduite locale. La date de la licence de votre pilote est la date de naissance. Dans ce cas, le nom de la revendication est `DateOfBirth`, la valeur de la revendication est la date de naissance, par exemple `8th June 1970` et l’émetteur est l’autorité de la licence de conduite. L’autorisation basée sur les revendications, à son plus simple, vérifie la valeur d’une revendication et autorise l’accès à une ressource en fonction de cette valeur. Par exemple, si vous souhaitez accéder à un club nocturne, le processus d’autorisation peut être :
 
-Donne la valeur la valeur de la date de naissance revendication et qu’elles s’approuvent l’émetteur (l’autorité de licence conduite) avant d’accorder à vous accéder à votre responsable de la sécurité de la porte.
+Le responsable de la sécurité de la porte évalue la valeur de votre revendication de date de naissance et s’il fait confiance à l’émetteur (l’autorité de licence de conduite) avant de vous accorder l’accès.
 
 Une identité peut contenir plusieurs revendications avec plusieurs valeurs et peut contenir plusieurs revendications du même type.
 
 ## <a name="adding-claims-checks"></a>Ajout de vérifications de revendications
 
-Revendication les vérifications d’autorisations déclaratives - le développeur les incorpore dans leur code, par rapport à un contrôleur ou une action dans un contrôleur, en spécifiant les revendications qui l’utilisateur actuel doit posséder et éventuellement la valeur de la revendication doit contenir pour accéder à la ressource demandée. Configuration requise est basée sur la stratégie de revendications, le développeur doit créer et enregistrer une stratégie d’exprimer les exigences de revendications.
+Les vérifications d’autorisation basées sur les revendications sont déclaratives : le développeur les incorpore dans leur code, sur un contrôleur ou une action au sein d’un contrôleur, en spécifiant les revendications que l’utilisateur actuel doit posséder, et éventuellement la valeur que la revendication doit conserver pour accéder au ressource demandée. Les demandes de revendications sont basées sur des stratégies, le développeur doit créer et inscrire une stratégie exprimant les exigences en matière de revendications.
 
-Le type le plus simple de stratégie recherche la présence d’une revendication de revendication et ne vérifie pas la valeur.
+Le type de stratégie de revendication le plus simple recherche la présence d’une revendication et ne vérifie pas la valeur.
 
-Vous devez d’abord générer et enregistrez la stratégie. Cette opération a lieu dans le cadre de la configuration du service d’autorisation, qui fait normalement partie intégrante de `ConfigureServices()` dans votre *Startup.cs* fichier.
+Tout d’abord, vous devez créer et inscrire la stratégie. Cela a lieu dans le cadre de la configuration du service d’autorisation, qui participe normalement à `ConfigureServices()` dans votre fichier *Startup.cs* .
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddRazorPages();
+
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("EmployeeOnly", policy => policy.RequireClaim("EmployeeNumber"));
+    });
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -42,9 +61,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Dans ce cas le `EmployeeOnly` stratégie vérifie la présence d’un `EmployeeNumber` revendication sur l’identité actuelle.
+::: moniker-end
 
-Vous appliquez ensuite la stratégie à l’aide de la `Policy` propriété sur le `AuthorizeAttribute` attribut pour spécifier le nom de la stratégie ;
+Dans ce cas, la stratégie de `EmployeeOnly` vérifie la présence d’une revendication `EmployeeNumber` sur l’identité actuelle.
+
+Vous appliquez ensuite la stratégie à l’aide de la propriété `Policy` de l’attribut `AuthorizeAttribute` pour spécifier le nom de la stratégie ;
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -54,7 +75,7 @@ public IActionResult VacationBalance()
 }
 ```
 
-Le `AuthorizeAttribute` attribut peut être appliqué à un contrôleur entier, dans cette instance uniquement la stratégie de correspondance des identités peut accéder à une Action sur le contrôleur.
+L’attribut `AuthorizeAttribute` peut être appliqué à un contrôleur entier. dans ce cas, seules les identités correspondant à la stratégie seront autorisées à accéder à une action sur le contrôleur.
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -66,7 +87,7 @@ public class VacationController : Controller
 }
 ```
 
-Si vous disposez d’un contrôleur qui est protégé par le `AuthorizeAttribute` d’attribut, mais souhaitez autoriser l’accès anonyme aux actions particulières que vous appliquez le `AllowAnonymousAttribute` attribut.
+Si vous avez un contrôleur qui est protégé par l’attribut `AuthorizeAttribute`, mais que vous souhaitez autoriser un accès anonyme à des actions spécifiques, vous appliquez l’attribut `AllowAnonymousAttribute`.
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -83,7 +104,27 @@ public class VacationController : Controller
 }
 ```
 
-La plupart des affirmations sont fournis avec une valeur. Vous pouvez spécifier une liste de valeurs autorisées lors de la création de la stratégie. L’exemple suivant aboutirait uniquement pour les employés dont le numéro employé a été 1, 2, 3, 4 ou 5.
+La plupart des revendications sont accompagnées d’une valeur. Vous pouvez spécifier une liste de valeurs autorisées lors de la création de la stratégie. L’exemple suivant ne fonctionne que pour les employés dont le matricule d’employé était 1, 2, 3, 4 ou 5.
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddRazorPages();
+
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("Founders", policy =>
+                          policy.RequireClaim("EmployeeNumber", "1", "2", "3", "4", "5"));
+    });
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -98,13 +139,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="add-a-generic-claim-check"></a>Ajouter une vérification de la revendication générique
+::: moniker-end
+### <a name="add-a-generic-claim-check"></a>Ajouter une vérification de revendication générique
 
-Si la valeur de revendication n’est pas une valeur unique ou une transformation est requise, utilisez [RequireAssertion](/dotnet/api/microsoft.aspnetcore.authorization.authorizationpolicybuilder.requireassertion). Pour plus d’informations, consultez [à l’aide d’une variable func pour répondre à une stratégie](xref:security/authorization/policies#using-a-func-to-fulfill-a-policy).
+Si la valeur de revendication n’est pas une valeur unique ou si une transformation est requise, utilisez [RequireAssertion](/dotnet/api/microsoft.aspnetcore.authorization.authorizationpolicybuilder.requireassertion). Pour plus d’informations, consultez [utilisation d’une fonction Func pour accomplir une stratégie](xref:security/authorization/policies#using-a-func-to-fulfill-a-policy).
 
-## <a name="multiple-policy-evaluation"></a>Évaluation des stratégies
+## <a name="multiple-policy-evaluation"></a>Évaluation de plusieurs stratégies
 
-Si vous appliquez plusieurs stratégies à un contrôleur ou d’action, puis toutes les stratégies doivent s’écouler avant l’accès est accordé. Exemple :
+Si vous appliquez plusieurs stratégies à un contrôleur ou à une action, toutes les stratégies doivent réussir avant l’octroi de l’accès. Exemple :
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -121,6 +163,6 @@ public class SalaryController : Controller
 }
 ```
 
-Dans l’exemple ci-dessus n’importe quelle identité, ce qui répond à la `EmployeeOnly` stratégie peut accéder à la `Payslip` action en tant que cette stratégie est appliquée sur le contrôleur. Toutefois pour pouvoir appeler le `UpdateSalary` action doit répondre à l’identité *à la fois* le `EmployeeOnly` stratégie et le `HumanResources` stratégie.
+Dans l’exemple ci-dessus, toute identité qui répond à la stratégie de `EmployeeOnly` peut accéder à l’action `Payslip` lorsque cette stratégie est appliquée sur le contrôleur. Toutefois, pour appeler l’action `UpdateSalary`, l’identité *doit respecter la stratégie de `EmployeeOnly`* et la stratégie de `HumanResources`.
 
-Si vous souhaitez que des stratégies plus complexes, telles que la réalisation d’une date de naissance revendication, calculer un âge à partir de celui-ci, puis la vérification de l’âge est 21 ou version antérieure, vous devez écrire [gestionnaires de stratégie personnalisée](xref:security/authorization/policies).
+Si vous souhaitez des stratégies plus compliquées, telles que la prise de la revendication date de naissance, le calcul d’une ancienneté, le contrôle de l’âge est 21 ou plus, vous devez écrire des [gestionnaires de stratégie personnalisés](xref:security/authorization/policies).

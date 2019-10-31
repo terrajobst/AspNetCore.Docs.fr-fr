@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2019
+ms.date: 10/29/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 263f9f7c4c800a74b745fd636196e1e135afc91b
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: c63609cfb91a1668b8e125c54fcfecf5f4ec259b
+ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033913"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73143346"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -296,6 +296,18 @@ Pour fournir une configuration d’application pouvant être remplacée par des 
 {
     // Call other providers here
     config.AddCommandLine(args);
+})
+```
+
+### <a name="remove-providers-added-by-createdefaultbuilder"></a>Supprimer les fournisseurs ajoutés par CreateDefaultBuilder
+
+Pour supprimer les fournisseurs ajoutés par `CreateDefaultBuilder`, appelez d’abord [Clear](/dotnet/api/system.collections.generic.icollection-1.clear) sur [IConfigurationBuilder. sources](xref:Microsoft.Extensions.Configuration.IConfigurationBuilder.Sources) :
+
+```csharp
+.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    config.Sources.Clear();
+    // Add providers here
 })
 ```
 
