@@ -7,18 +7,20 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 0e61c5b3e31a0b050d356b8f8e16306dc1e2a7f3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: bbe5328bfa5b4187989a00c3c94e98dabc5d032a
+ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080413"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73190519"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
 Le modèle de projet React mis à jour fournit un point de départ pratique pour les applications ASP.NET Core utilisant les conventions React et [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) pour implémenter une interface utilisateur (IU) côté client enrichie.
 
 Le modèle revient à créer un projet ASP.NET Core faisant office de backend d’API et un projet React CRA standard en guise d’interface utilisateur, qu’il héberge tous deux dans un projet d’application unique pouvant être généré et publié en tant qu’unité unique.
+
+Le modèle de projet REACT n’est pas destiné au rendu côté serveur (SSR). Pour SSR avec REACT et node. js, examinez [Next. js](https://github.com/zeit/next.js/) ou [Razzle](https://github.com/jaredpalmer/razzle).
 
 ## <a name="create-a-new-app"></a>Créer une application
 
@@ -59,7 +61,7 @@ Il existe de légères différences entre l’application React créée par ce m
 
 ## <a name="install-npm-packages"></a>Installer des packages npm
 
-Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Par exemple :
+Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Exemple :
 
 ```console
 cd ClientApp
