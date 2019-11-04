@@ -6,14 +6,14 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 10/10/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 61324cdd5b574ea8a12a1be5846a25c311ab4499
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 0da5a4cf0d9cc15fee6417d143cfc9e9f1e4509c
+ms.sourcegitcommit: 9e85c2562df5e108d7933635c830297f484bb775
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259671"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73463065"
 ---
-# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Tutoriel : Créer un serveur et un client gRPC dans ASP.NET Core
+# <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Didacticiel : créer un client et un serveur gRPC dans ASP.NET Core
 
 Par [John Luo](https://github.com/juntaoluo)
 
@@ -30,7 +30,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créez un client gRPC.
 > * Tester le service du client gRPC avec le service Greeter gRPC.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -57,8 +57,8 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 * Nommez le projet **GrpcGreeter**. Il est important de nommer le projet *GrpcGreeter* pour que les espaces de noms correspondent quand vous copiez et collez du code.
 * Sélectionnez **Créer**.
-* Dans la boîte de dialogue **Créer un service gRPC** :
-  * Le modèle **Service gRPC** est sélectionné.
+* Dans la boîte de dialogue **créer un service gRPC** :
+  * Le modèle de **service gRPC** est sélectionné.
   * Sélectionnez **Créer**.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -75,12 +75,12 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
   * La commande `dotnet new` crée un nouveau service gRPC dans le dossier *GrpcGreeter*.
   * La commande `code` ouvre le dossier *GrpcGreeter* dans une nouvelle instance de Visual Studio Code.
 
-  Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « GrpcGreeter ». Faut-il les ajouter ?**
+  Une boîte de dialogue s’affiche avec les **ressources requises pour la génération et le débogage dans’GrpcGreeter'. Ajoutez-les ?**
 * Sélectionnez **Oui**.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-À partir d’un terminal, exécutez les commandes suivantes :
+À partir d’un terminal, exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet new grpc -o GrpcGreeter
@@ -134,7 +134,7 @@ info: Microsoft.Hosting.Lifetime[0]
 Fichiers projet *GrpcGreeter* :
 
 * *greet.proto* &ndash;Le fichier *Protos/greet.proto* définit gRPC `Greeter` et est utilisé pour générer les ressources du serveur gRPC. Pour plus d’informations, consultez [Introduction à gRPC](xref:grpc/index).
-* Dossier *Services* : contient l’implémentation du service `Greeter`.
+* Dossier *services* : contient l’implémentation du service `Greeter`.
 * *appSettings.json* &ndash; contient des données de configuration, telles que le protocole utilisé par Kestrel. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
 * *Program.cs* &ndash; contient le point d’entrée du service gRPC. Pour plus d'informations, consultez <xref:fundamentals/host/generic-host>.
 * *Startup.cs* &ndash; contient le code qui configure le comportement de l’application. Pour plus d’informations, consultez [Démarrage des applications](xref:fundamentals/startup).
@@ -255,8 +255,8 @@ Mettez à jour le fichier *Program.cs* du client gRPC par le code suivant :
 
 Le client Greeter est créé en :
 
-* Instanciation d’un `HttpClient` qui contient les informations permettant de créer la connexion au service gRPC.
-* À l’aide de l' `HttpClient` pour construire un canal gRPC et le client Greeter :
+* Instanciant un `GrpcChannel` contenant les informations de création de la connexion au service gRPC.
+* Utilisant le `GrpcChannel` pour construire le client Greeter :
 
 [!code-csharp[](~/tutorials/grpc/grpc-start/sample/GrpcGreeterClient/Program.cs?name=snippet&highlight=3-5)]
 
