@@ -5,14 +5,14 @@ description: Créez une application Blazor étape par étape.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: c357b324905ee3a4c9f4bd167dbbcacaf7e1bc76
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391206"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416178"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
@@ -28,7 +28,7 @@ Suivez les instructions de l’article <xref:blazor/get-started> afin de créer 
 
 1. Accédez à chacune des trois pages de l’application dans le dossier *pages* : Hébergement, compteur et extraction de données. Ces pages sont implémentées par les fichiers de composants Razor *Index.razor*, *Counter.razor* et *FetchData.razor*.
 
-1. Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page web nécessite normalement l’écriture de code JavaScript. Toutefois, Blazor fournit une meilleure approche grâce à l’utilisation du langage C#.
+1. Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page Web nécessite normalement l’écriture de code JavaScript. Avec éblouissant, vous pouvez écrire C# à la place.
 
 1. Examinez l’implémentation du composant `Counter` dans le fichier *Counter.razor*.
 
@@ -73,7 +73,7 @@ Les composants peuvent également avoir des paramètres. Les paramètres de comp
 
 1. Mettez à jour le code C# `@code` du composant :
 
-   * Ajoutez une propriété `IncrementAmount` publique avec l’attribut `[Parameter]`.
+   * Ajoutez une propriété de `IncrementAmount` publique avec l’attribut `[Parameter]`.
    * Modifiez la méthode `IncrementCount` pour utiliser `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.
 
    *Pages/Counter.razor* :

@@ -5,14 +5,14 @@ description: Explorez ASP.NET Core Blazor, un moyen de créer une interface util
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 uid: blazor/index
-ms.openlocfilehash: abf631b5e1cf762eaef4bd85a6b85802c9899291
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: c2574c1250cf94e89dd5476b6174620d83546236
+ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391153"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73427029"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>Présentation de ASP.NET Core éblouissant
 
@@ -152,3 +152,4 @@ Les API qui ne sont pas applicables à l’intérieur d’un navigateur web (par
 * [Guide C#](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)
+* Liens de la communauté [extraordinaire](https://github.com/AdrienTorris/awesome-blazor)

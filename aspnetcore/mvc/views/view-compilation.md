@@ -5,18 +5,18 @@ description: Découvrez comment se produit la compilation de fichiers Razor dans
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/20/2019
+ms.date: 10/31/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 0aa632bce32ef44f65d92639284c64c1d00e952e
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 95fa0d72ed9c088945707ac6b79c3fbde35a5a30
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080822"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416147"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Compilation de fichiers Razor dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range="= aspnetcore-1.1"
 
@@ -38,13 +38,14 @@ Un fichier Razor est compilé au moment de l’exécution, quand la vue MVC ou l
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Les fichiers Razor sont compilés au moment de la génération et de la publication à l’aide du kit [SDK Razor](xref:razor-pages/sdk). La compilation au moment de l’exécution peut éventuellement être activée en configurant votre application.
+Les fichiers Razor avec une extension *. cshtml* sont compilés au moment de la génération et de la publication à l’aide du [Kit de développement logiciel (SDK) Razor](xref:razor-pages/sdk). La compilation au moment de l’exécution peut éventuellement être activée en configurant votre application.
 
 ::: moniker-end
 
 ## <a name="razor-compilation"></a>Compilation Razor
 
 ::: moniker range=">= aspnetcore-3.0"
+
 La compilation au moment de la génération et de la publication des fichiers Razor est activée par défaut par le kit SDK Razor. Quand elle est activée, la compilation au moment de l’exécution complète la compilation au moment de la génération, ce qui permet aux fichiers Razor d’être mis à jour s’ils sont modifiés.
 
 ::: moniker-end

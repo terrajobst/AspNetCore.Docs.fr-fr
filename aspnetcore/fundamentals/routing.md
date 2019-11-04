@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 8b4da4e1e262ec82225413d0338b3492d0b5e152
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: be4493cc927bd5437a2c9dab00b6a555756195bb
+ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190504"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "73416138"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -127,7 +127,7 @@ Les méthodes fournies par <xref:Microsoft.AspNetCore.Routing.LinkGenerator> pre
 >
 > * Utilisez <xref:Microsoft.AspNetCore.Routing.LinkGenerator> avec précaution dans le middleware en combinaison avec `Map` ou `MapWhen`. `Map*` modifie le chemin de base de la requête en cours d’exécution, ce qui affecte la sortie de la génération de liens. Toutes les API <xref:Microsoft.AspNetCore.Routing.LinkGenerator> permettent la spécification d’un chemin de base. Spécifiez toujours un chemin de base vide pour annuler l’effet de `Map*` sur la génération de liens.
 
-## <a name="differences-from-earlier-versions-of-routing"></a>Différences par rapport aux versions précédentes du routage
+## <a name="endpoint-routing-differences-from-earlier-versions-of-routing"></a>Différences de routage des points de terminaison par rapport aux versions antérieures du routage
 
 Il existe quelques différences entre le routage des points de terminaison et les versions du routage antérieures à ASP.NET Core 2,2 :
 
