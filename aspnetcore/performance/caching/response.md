@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment utiliser la mise en cache des réponses pour réduire les besoins en bande passante et accroître les performances des applications ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 10/15/2019
+ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: 4ebac97689347245d25e0954b33729d78dd1b516
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: a456e97053fea7c9ee9ec634ae9b7bbd52febe7f
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378834"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611466"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Mise en cache des réponses dans ASP.NET Core
 
@@ -21,7 +21,9 @@ Par [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.co
 
 La mise en cache des réponses réduit le nombre de demandes qu’un client ou un proxy effectue sur un serveur Web. La mise en cache des réponses réduit également la quantité de travail effectuée par le serveur Web pour générer une réponse. La mise en cache des réponses est contrôlée par des en-têtes qui spécifient comment vous souhaitez que le client, le proxy et l’intergiciel (middleware) effectuent le cache des réponses.
 
-L' [attribut ResponseCache](#responsecache-attribute) participe à la définition des en-têtes de mise en cache des réponses, que les clients peuvent honorer lors de la mise en cache des réponses. L' [intergiciel de mise en](xref:performance/caching/middleware) cache des réponses peut être utilisé pour mettre en cache les réponses sur le serveur. L’intergiciel (middleware) peut utiliser des propriétés <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> pour influencer le comportement de mise en cache côté serveur.
+L' [attribut ResponseCache](#responsecache-attribute) participe à la définition des en-têtes de mise en cache des réponses. Les clients et les proxys intermédiaires doivent honorer les en-têtes pour la mise en cache des réponses sous la [spécification de mise en cache HTTP 1,1](https://tools.ietf.org/html/rfc7234).
+
+Pour la mise en cache côté serveur qui suit la spécification de mise en cache HTTP 1,1, utilisez l’intergiciel (middleware) de [mise en](xref:performance/caching/middleware)cache des réponses. L’intergiciel peut utiliser les propriétés de <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute> pour influencer le comportement de mise en cache côté serveur.
 
 ## <a name="http-based-response-caching"></a>Mise en cache des réponses HTTP
 
@@ -140,10 +142,15 @@ Pragma: no-cache
 
 ### <a name="location-and-duration"></a>Emplacement et durée
 
-Pour activer la mise en cache, <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> doit être défini sur une valeur positive et <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> doit être soit `Any` (valeur par défaut), soit `Client`. Dans ce cas, l’en-tête `Cache-Control` est défini sur la valeur d’emplacement suivie du `max-age` de la réponse.
+Pour activer la mise en cache, <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> doit être défini sur une valeur positive et <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> doit être soit `Any` (valeur par défaut), soit `Client`. L’infrastructure définit l’en-tête `Cache-Control` sur la valeur d’emplacement suivie par le `max-age` de la réponse.
 
-> [!NOTE]
-> les options <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> de `Any` et `Client` traduisent en valeurs d’en-tête `Cache-Control` de `public` et `private`, respectivement. Comme indiqué précédemment, la définition de <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> à `None` définit les deux en-têtes `Cache-Control` et `Pragma` sur `no-cache`.
+les options <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> de `Any` et `Client` traduisent en valeurs d’en-tête `Cache-Control` de `public` et `private`, respectivement. Comme indiqué dans la section [NoStore and location. None](#nostore-and-locationnone) , la définition de <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> sur `None` définit à la fois les en-têtes `Cache-Control` et `Pragma` sur `no-cache`.
+
+`Location.Any` (`Cache-Control` défini sur `public`) indique que le *client ou un proxy intermédiaire* peut mettre en cache la valeur, y compris l' [intergiciel de mise en](xref:performance/caching/middleware)cache des réponses.
+
+`Location.Client` (`Cache-Control` défini sur `private`) indique que *seul le client* peut mettre en cache la valeur. Aucun cache intermédiaire ne doit mettre en cache la valeur, y compris l' [intergiciel de mise en](xref:performance/caching/middleware)cache des réponses.
+
+Les en-têtes de contrôle de cache fournissent simplement des conseils aux clients et aux proxies intermédiaires quand et comment mettre en cache des réponses. Il n’y a aucune garantie que les clients et les proxys honoreront la [spécification de mise en cache HTTP 1,1](https://tools.ietf.org/html/rfc7234). L’intergiciel (middleware) de [mise en cache des réponses](xref:performance/caching/middleware) suit toujours les règles de mise en cache établies par la spécification.
 
 L’exemple suivant montre le modèle de page cache3 de l’exemple d’application et les en-têtes produits en définissant <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Duration> et en conservant la valeur par défaut de <xref:Microsoft.AspNetCore.Mvc.CacheProfile.Location> :
 

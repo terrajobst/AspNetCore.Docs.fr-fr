@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment mettre en cache les données en mémoire dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 8/22/2019
+ms.date: 11/2/2019
 uid: performance/caching/memory
-ms.openlocfilehash: d6b2aa363c552fdbda7f6e9ec5d476768c17d8a5
-ms.sourcegitcommit: 810d5831169770ee240d03207d6671dabea2486e
+ms.openlocfilehash: 1114d154ed1af09958df63ae718712177bbf6db0
+ms.sourcegitcommit: 09f4a5ded39cc8204576fe801d760bd8b611f3aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72779189"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73611445"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache en mémoire dans ASP.NET Core
 
@@ -158,15 +158,18 @@ Pour plus d’informations, consultez [source compact sur GitHub](https://github
 
 ## <a name="cache-dependencies"></a>Dépendances de cache
 
-L’exemple suivant montre comment faire expirer une entrée de cache en cas d’expiration d’une entrée dépendante. Un `CancellationChangeToken` est ajouté à l’élément mis en cache. Lorsque `Cancel` est appelé sur la `CancellationTokenSource`, les deux entrées du cache sont supprimées.
+L’exemple suivant montre comment faire expirer une entrée de cache en cas d’expiration d’une entrée dépendante. Un <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> est ajouté à l’élément mis en cache. Lorsque `Cancel` est appelé sur la `CancellationTokenSource`, les deux entrées du cache sont supprimées.
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
-L’utilisation d’un `CancellationTokenSource` permet de supprimer plusieurs entrées de cache en tant que groupe. Avec le modèle `using` dans le code ci-dessus, les entrées de cache créées dans le bloc `using` héritent des déclencheurs et des paramètres d’expiration.
+L’utilisation d’un <xref:System.Threading.CancellationTokenSource> permet de supprimer plusieurs entrées de cache en tant que groupe. Avec le modèle `using` dans le code ci-dessus, les entrées de cache créées dans le bloc `using` héritent des déclencheurs et des paramètres d’expiration.
 
 ## <a name="additional-notes"></a>Remarques supplémentaires
 
-* L’expiration ne se produit pas en arrière-plan. Il n’existe pas de minuteur qui analyse activement le cache à la recherche d’éléments arrivés à expiration. Toute activité sur le cache (`Get`, `Set`, `Remove`) peut déclencher une analyse en arrière-plan des éléments arrivés à expiration. Un minuteur sur le `CancellationTokenSource` (`CancelAfter`) supprime également l’entrée et déclenche une analyse des éléments arrivés à expiration. Par exemple, au lieu d’utiliser `SetAbsoluteExpiration(TimeSpan.FromHours(1))`, utilisez `CancellationTokenSource.CancelAfter(TimeSpan.FromHours(1))` pour le jeton inscrit. Quand ce jeton est activé, il supprime immédiatement l’entrée et déclenche les rappels d’éviction. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/aspnet/Caching/issues/248).
+* L’expiration ne se produit pas en arrière-plan. Il n’existe pas de minuteur qui analyse activement le cache à la recherche d’éléments arrivés à expiration. Toute activité sur le cache (`Get`, `Set`, `Remove`) peut déclencher une analyse en arrière-plan des éléments arrivés à expiration. Un minuteur sur le `CancellationTokenSource` (<xref:System.Threading.CancellationTokenSource.CancelAfter*>) supprime également l’entrée et déclenche une analyse des éléments arrivés à expiration. L’exemple suivant utilise [CancellationTokenSource (TimeSpan)](/dotnet/api/system.threading.cancellationtokensource.-ctor) pour le jeton inscrit. Quand ce jeton est activé, il supprime immédiatement l’entrée et déclenche les rappels d’éviction :
+
+[!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ae)]
+
 * Lors de l’utilisation d’un rappel pour remplir à nouveau un élément de cache :
 
   * Plusieurs demandes peuvent trouver la valeur de clé mise en cache vide, car le rappel n’est pas terminé.
@@ -327,7 +330,7 @@ Pour plus d’informations, consultez [source compact sur GitHub](https://github
 
 ## <a name="cache-dependencies"></a>Dépendances de cache
 
-L’exemple suivant montre comment faire expirer une entrée de cache en cas d’expiration d’une entrée dépendante. Un `CancellationChangeToken` est ajouté à l’élément mis en cache. Lorsque `Cancel` est appelé sur la `CancellationTokenSource`, les deux entrées du cache sont supprimées.
+L’exemple suivant montre comment faire expirer une entrée de cache en cas d’expiration d’une entrée dépendante. Un <xref:Microsoft.Extensions.Primitives.CancellationChangeToken> est ajouté à l’élément mis en cache. Lorsque `Cancel` est appelé sur la `CancellationTokenSource`, les deux entrées du cache sont supprimées.
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 
