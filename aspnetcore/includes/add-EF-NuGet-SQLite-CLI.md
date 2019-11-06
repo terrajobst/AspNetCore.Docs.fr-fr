@@ -14,3 +14,5 @@ Les commandes précédentes ajoutent :
 * Les outils de Entity Framework Core pour le CLI .NET Core.
 * Le fournisseur EF Core SQLite, qui installe le package EF Core comme une dépendance.
 * Les packages nécessaires à la génération de modèles automatique : `Microsoft.VisualStudio.Web.CodeGeneration.Design` et `Microsoft.EntityFrameworkCore.SqlServer`.
+
+Pour obtenir des conseils sur la configuration de plusieurs environnements qui permet à une application de configurer ses contextes de base de données par environnement, consultez <xref:fundamentals/environments#environment-based-startup-class-and-methods>.

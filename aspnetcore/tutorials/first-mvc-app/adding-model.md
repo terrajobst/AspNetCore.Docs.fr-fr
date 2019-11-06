@@ -5,12 +5,12 @@ description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 5ad31a2536ad70590eaa767cf20068512241f36b
-ms.sourcegitcommit: 14b25156e34c82ed0495b4aff5776ac5b1950b5e
+ms.openlocfilehash: d6d75bcbab875c08bfff532d968013dca323beed
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71295473"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634101"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -148,25 +148,25 @@ Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **C
 
 Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
-* **Classe du modèle :** *Movie (MvcMovie.Models)*
-* **Classe de contexte de données :** *MvcMovieContext (MvcMovie.Data)*
+* **Classe de modèle :** *Movie (MvcMovie.Models)*
+* **Classe de contexte de données :** *MvcMovieContext (MvcMovie. Data)*
 
 ![Ajouter un contexte de données](adding-model/_static/dc3.png)
 
-* **Affichages :** conservez la valeur par défaut de chaque option activée
-* **Nom du contrôleur :** conservez la valeur par défaut *MoviesController*
+* **Affichages :** conservez la valeur par défaut de chaque option activée.
+* **Nom du contrôleur :** conservez la valeur par défaut *MoviesController*.
 * Sélectionnez **Ajouter**
 
 Visual Studio crée :
 
-* Un contrôleur de films (*Controllers/MoviesController.cs*)
+* contrôleur de films (*Controllers/MoviesController.cs*) ;
 * Des fichiers de vues Razor pour les pages Create, Delete, Details, Edit et Index (*Views/Movies/\*.cshtml*)
 
 La création automatique de ces fichiers est appelée *génération de modèles automatique*.
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
 * Sur Linux, exportez le chemin de l’outil de génération de modèles automatique :
 
@@ -174,7 +174,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -184,9 +184,9 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -198,7 +198,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 
 <!-- End of tabs                  -->
 
-Vous ne pouvez pas encore utiliser les pages générées automatiquement, car la base de données n’existe pas. Si vous exécutez l’application et cliquez sur le lien **Movie App**, vous recevez un message d’erreur du type : *Impossible d’ouvrir la base de données* ou *La table suivante n’existe pas : Movie*.
+Vous ne pouvez pas encore utiliser les pages générées automatiquement, car la base de données n’existe pas. Si vous exécutez l’application et cliquez sur le lien de l' **application de film** , vous recevez un message d’erreur Impossible d' *ouvrir la base de données* ou une *table de ce type :* message d’erreur.
 
 <a name="migration"></a>
 
@@ -210,16 +210,16 @@ Utilisez la fonctionnalité [Migrations](xref:data/ef-mvc/migrations) d’EF Co
 
 Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package** (PMC).
 
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
-```console
+```PMC
 Add-Migration InitialCreate
 Update-Database
 ```
 
-* `Add-Migration InitialCreate`: Génère un fichier de migration *Migrations/{horodatage}_InitialCreate.cs*. L’argument `InitialCreate` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné. Étant donné qu’il s’agit de la première migration, la classe générée contient du code permettant de créer le schéma de la base de données. Le schéma de base de données est basé sur le modèle spécifié dans la classe `MvcMovieContext`.
+* `Add-Migration InitialCreate`: génère un fichier de migration *_InitialCreate. cs migrations/{timestamp}* . L’argument `InitialCreate` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné. Étant donné qu’il s’agit de la première migration, la classe générée contient du code permettant de créer le schéma de la base de données. Le schéma de base de données est basé sur le modèle spécifié dans la classe `MvcMovieContext`.
 
-* `Update-Database`: Met à jour la base de données vers la dernière migration, qui a été créée par la commande précédente. La commande exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
+* `Update-Database`: met à jour la base de données avec la dernière migration, créée par la commande précédente. La commande exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
   La commande « database update » génère l’avertissement suivant : 
 
@@ -238,9 +238,9 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-* `ef migrations add InitialCreate`: Génère un fichier de migration *Migrations/{horodatage}_InitialCreate.cs*. L’argument `InitialCreate` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné. Étant donné qu’il s’agit de la première migration, la classe générée contient du code permettant de créer le schéma de la base de données. Le schéma de base de donénes est basé sur le modèle spécifié dans la classe `MvcMovieContext` (dans *Data/MvcMovieContext.cs*).
+* `ef migrations add InitialCreate`: génère un fichier de migration *_InitialCreate. cs migrations/{timestamp}* . L’argument `InitialCreate` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné. Étant donné qu’il s’agit de la première migration, la classe générée contient du code permettant de créer le schéma de la base de données. Le schéma de base de donénes est basé sur le modèle spécifié dans la classe `MvcMovieContext` (dans *Data/MvcMovieContext.cs*).
 
-* `ef database update`: Met à jour la base de données vers la dernière migration, qui a été créée par la commande précédente. La commande exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
+* `ef database update`: met à jour la base de données avec la dernière migration, créée par la commande précédente. La commande exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
 [!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
 
@@ -406,13 +406,13 @@ Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **C
 
 Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
-* **Classe du modèle :** *Movie (MvcMovie.Models)*
-* **Classe de contexte de données :** sélectionnez l’icône **+** et ajoutez le **MvcMovie.Models.MvcMovieContext** par défaut
+* **Classe de modèle :** *Movie (MvcMovie.Models)*
+* **Classe de contexte de données :** sélectionnez l’icône **+** et ajoutez le **MvcMovie.Models.MvcMovieContext** par défaut.
 
 ![Ajouter un contexte de données](adding-model/_static/dc.png)
 
-* **Affichages :** conservez la valeur par défaut de chaque option activée
-* **Nom du contrôleur :** conservez la valeur par défaut *MoviesController*
+* **Affichages :** conservez la valeur par défaut de chaque option activée.
+* **Nom du contrôleur :** conservez la valeur par défaut *MoviesController*.
 * Sélectionnez **Ajouter**
 
 ![Boîte de dialogue Ajouter un contrôleur](adding-model/_static/add_controller2.png)
@@ -420,7 +420,7 @@ Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 Visual Studio crée :
 
 * Une [classe de contexte de base de données](xref:data/ef-mvc/intro#create-the-database-context) Entity Framework Core (*Data/MvcMovieContext.cs*)
-* Un contrôleur de films (*Controllers/MoviesController.cs*)
+* contrôleur de films (*Controllers/MoviesController.cs*) ;
 * Des fichiers de vues Razor pour les pages Create, Delete, Details, Edit et Index (*Views/Movies/\*.cshtml*)
 
 La création automatique du contexte de base de données et de méthodes d’action et de vues [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (créer, lire, mettre à jour et supprimer) porte le nom de *génération de modèles automatique*.
@@ -430,7 +430,7 @@ La création automatique du contexte de base de données et de méthodes d’act
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
@@ -443,7 +443,7 @@ La création automatique du contexte de base de données et de méthodes d’act
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -455,14 +455,14 @@ La création automatique du contexte de base de données et de méthodes d’act
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -506,7 +506,7 @@ Vous devez créer la base de données, et vous utilisez pour cela la fonctionnal
 
 Dans cette section, vous devez effectuer les tâches suivantes :
 
-* Ajouter une migration initiale
+* Ajoutez une migration initiale.
 * Mettez à jour la base de données avec la migration initiale.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -515,9 +515,9 @@ Dans cette section, vous devez effectuer les tâches suivantes :
 
    ![Menu Console du Gestionnaire de package](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
-1. Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+1. Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
-   ```console
+   ```PMC
    Add-Migration Initial
    Update-Database
    ```

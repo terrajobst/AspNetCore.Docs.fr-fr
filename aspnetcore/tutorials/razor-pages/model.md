@@ -3,14 +3,14 @@ title: Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ajouter des classes pour gérer des films dans une base de données à l’aide d’Entity Framework Core (EF Core).
 ms.author: riande
-ms.date: 9/22/2019
+ms.date: 11/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 4f8b80cb51bd10eb3b136a780dc123c41d61c0a5
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.openlocfilehash: 312b3d4eb13eb04453bf0c3256fc362918157a45
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519077"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634172"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -18,7 +18,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans cette section, des classes sont ajoutées pour la gestion des films dans une base de données. Ces classes sont utilisées avec [Entity Framework Core](/ef/core) (EF Core) pour utiliser une base de données. EF Core est un framework de mappage relationnel d’objets qui simplifie l’accès aux données.
+Dans cette section, des classes sont ajoutées pour la gestion des films dans une [base de données SQLite](https://www.sqlite.org/index.html)multiplateforme. Les applications créées à partir d’un modèle de ASP.NET Core utilisent une base de données SQLite. Les classes de modèle de l’application sont utilisées avec [Entity Framework Core (EF Core)](/ef/core) ([fournisseur de base de données SQLite EF Core](/ef/core/providers/sqlite)) pour fonctionner avec la base de données. EF Core est un framework de mappage relationnel d’objets qui simplifie l’accès aux données.
 
 Les classes de modèle portent le nom de classes OCT (« Objet CLR Traditionnel »), car elles n’ont pas de dépendances envers EF Core. Elles définissent les propriétés des données stockées dans la base de données.
 
@@ -198,7 +198,7 @@ Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutorie
 
 La commande migrations génère du code pour créer le schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext`. L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
 
-La commande `update` exécute la méthode `Up` dans les migrations qui n’ont pas été appliquées. Dans ce cas, `update` exécute la méthode `Up` dans *migrations/\<time-horodatage > fichier _InitialCreate. cs* , ce qui crée la base de données.
+La commande `update` exécute la méthode `Up` dans les migrations qui n’ont pas été appliquées. Dans ce cas, `update` exécute la méthode `Up` dans les *migrations/\<horodatage > fichier _InitialCreate. cs* , ce qui crée la base de données.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -267,7 +267,7 @@ Le prochain didacticiel décrit les fichiers créés par la génération de mod�
 <!--  ::: moniker previous version   -->
 ::: moniker range="< aspnetcore-3.0"
 
-Dans cette section, des classes sont ajoutées pour la gestion des films dans une base de données. Ces classes sont utilisées avec [Entity Framework Core](/ef/core) (EF Core) pour utiliser une base de données. EF Core est un framework de mappage relationnel d’objets qui simplifie le code d’accès aux données.
+Dans cette section, des classes sont ajoutées pour la gestion des films dans une [base de données SQLite](https://www.sqlite.org/index.html)multiplateforme. Les applications créées à partir d’un modèle de ASP.NET Core utilisent une base de données SQLite. Les classes de modèle de l’application sont utilisées avec [Entity Framework Core (EF Core)](/ef/core) ([fournisseur de base de données SQLite EF Core](/ef/core/providers/sqlite)) pour fonctionner avec la base de données. EF Core est un framework de mappage relationnel d’objets qui simplifie l’accès aux données.
 
 Les classes de modèle portent le nom de classes OCT (« Objet CLR Traditionnel »), car elles n’ont pas de dépendances envers EF Core. Elles définissent les propriétés des données stockées dans la base de données.
 
