@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le framework de journalisation fourni p
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 11/05/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 697e6cf0cd1b51ad6c2942e21bc084d1fe6bfa4e
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2cb19d251ad69ebd7d18480c14857e948c69b747
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259735"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659972"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -131,6 +131,69 @@ Pour écrire des journaux dans la classe `Program` d’une application ASP.NET C
 
 [!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
 
+La journalisation pendant la construction de l’hôte n’est pas prise en charge directement. Toutefois, un enregistreur d’événements distinct peut être utilisé. Dans l’exemple suivant, un enregistreur d’événements [Serilog](https://serilog.net/) est utilisé pour se connecter `CreateHostBuilder`. `AddSerilog` utilise la configuration statique spécifiée dans `Log.Logger`:
+
+```csharp
+using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        var builtConfig = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddCommandLine(args)
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File(builtConfig["Logging:FilePath"])
+            .CreateLogger();
+
+        try
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddRazorPages();
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddConfiguration(builtConfig);
+                })
+                .ConfigureLogging(logging =>
+                {   
+                    logging.AddSerilog();
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Host builder error");
+
+            throw;
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
+}
+```
+
 ### <a name="create-logs-in-the-startup-class"></a>Créer des journaux dans la classe de démarrage
 
 Pour écrire des journaux dans la méthode `Startup.Configure` d’une application ASP.NET Core, incluez un paramètre `ILogger` dans la signature de la méthode :
@@ -167,6 +230,66 @@ Pour écrire des journaux dans la classe `Startup`, ajoutez un paramètre `ILogg
 Pour écrire des journaux dans la classe `Program`, récupérez une instance `ILogger` auprès de l’injection de dépendances :
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
+
+La journalisation pendant la construction de l’hôte n’est pas prise en charge directement. Toutefois, un enregistreur d’événements distinct peut être utilisé. Dans l’exemple suivant, un enregistreur d’événements [Serilog](https://serilog.net/) est utilisé pour se connecter `CreateWebHostBuilder`. `AddSerilog` utilise la configuration statique spécifiée dans `Log.Logger`:
+
+```csharp
+using System;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var builtConfig = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddCommandLine(args)
+            .Build();
+
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File(builtConfig["Logging:FilePath"])
+            .CreateLogger();
+
+        try
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) =>
+                {
+                    services.AddMvc();
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddConfiguration(builtConfig);
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddSerilog();
+                })
+                .UseStartup<Startup>();
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "Host builder error");
+
+            throw;
+        }
+        finally
+        {
+            Log.CloseAndFlush();
+        }
+    }
+}
+```
 
 ::: moniker-end
 
@@ -374,7 +497,7 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 * Debug = 1
 
-  Informations qui peuvent être utiles dans le développement et le débogage. Exemple : `Entering method Configure with flag set to true.` En raison de leur volume élevé, activez les journaux de niveau `Debug` en production seulement pour résoudre des problèmes.
+  Informations qui peuvent être utiles dans le développement et le débogage. Exemple : `Entering method Configure with flag set to true.` En raison de leur volume élevé, n’activez les journaux de niveau `Debug` en production que pour résoudre des problèmes.
 
 * Information = 2
 
@@ -386,22 +509,22 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 * Error = 4
 
-  Fournit des informations sur des erreurs et des exceptions qui ne peuvent pas être gérées. Ces messages indiquent un échec de l’activité ou de l’opération en cours (par exemple, la requête HTTP actuellement exécutée), pas un échec au niveau de l’application. Exemple de message de log : `Cannot insert record due to duplicate key violation.`
+  Fournit des informations sur des erreurs et des exceptions qui ne peuvent pas être gérées. Ces messages indiquent un échec de l’activité ou de l’opération en cours (par exemple, la requête HTTP actuellement exécutée), pas un échec au niveau de l’application. Exemple de message de journal : `Cannot insert record due to duplicate key violation.`
 
 * Critical = 5
 
   Fournit des informations sur des échecs qui nécessitent un examen immédiat. Exemples : perte de données, espace disque insuffisant.
 
-Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
+Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
 
 * En production :
-  * La journalisation au niveau du `Trace` à `Information` génère un volume important de messages de journal détaillés. Pour contrôler les coûts et ne pas dépasser les limites de stockage des données, consignez `Trace` par le biais de messages de niveau `Information` dans un magasin de données volumineux et à faible coût.
-  * La journalisation au niveau de `Warning` à `Critical` génère généralement moins de messages journaux plus petits. Par conséquent, les coûts et les limites de stockage ne sont généralement pas un problème, ce qui se traduit par une plus grande flexibilité du choix des magasins de données.
+  * La journalisation au `Trace` via des niveaux de `Information` génère un volume important de messages de journal détaillés. Pour contrôler les coûts et ne pas dépasser les limites de stockage des données, consignez les `Trace` des messages de niveau `Information` dans un magasin de données à faible coût.
+  * La journalisation au `Warning` via des niveaux de `Critical` produit généralement moins de messages journaux plus petits. Par conséquent, les coûts et les limites de stockage ne sont généralement pas un problème, ce qui se traduit par une plus grande flexibilité du choix des magasins de données.
 * Lors du développement :
-  * Consignez les messages `Warning` à `Critical` dans la console.
-  * Ajoutez `Trace` à `Information` messages lors de la résolution des problèmes.
+  * Consignez les `Warning` via des messages `Critical` sur la console.
+  * Ajoutez `Trace` par le biais de messages de `Information` lors de la résolution des problèmes.
 
-La section [Filtrage de log](#log-filtering) plus loin dans cet article explique comment déterminer les niveaux de journalisation gérés par un fournisseur.
+La section [Filtrage de journal](#log-filtering) plus loin dans cet article explique comment déterminer les niveaux de journalisation gérés par un fournisseur.
 
 ASP.NET Core écrit des journaux pour les événements de framework. Aucun journal du niveau `Debug` ou `Trace` n’était créé dans les exemples de journaux présentés plus haut dans cet article, puisque les journaux au-dessous du niveau `Information` étaient exclus. Voici un exemple de journaux Console produits par l’exemple d’application configurée pour afficher les journaux `Debug` :
 
@@ -512,7 +635,7 @@ warn: TodoApi.Controllers.TodoController[4000]
       GetById(invalidid) NOT FOUND
 ```
 
-## <a name="log-message-template"></a>Modèle de message de log
+## <a name="log-message-template"></a>Modèle de message de journal
 
 Chaque journal spécifie un modèle de message. Ce dernier peut contenir des espaces réservés pour lesquels les arguments sont fournis. Utilisez des noms et non des nombres pour les espaces réservés.
 
@@ -575,9 +698,9 @@ System.Exception: Item not found exception.
    at TodoApiSample.Controllers.TodoController.GetById(String id) in C:\TodoApiSample\Controllers\TodoController.cs:line 226
 ```
 
-## <a name="log-filtering"></a>Filtrage de journal
+## <a name="log-filtering"></a>Filtrage de log
 
-Vous pouvez spécifier un niveau de journalisation minimum pour une catégorie ou un fournisseur spécifique, ou pour l’ensemble des fournisseurs ou des catégories. Les enregistrements de log en dessous du niveau minimum ne sont pas passés à ce fournisseur, et ne sont donc pas affichés ou stockés.
+Vous pouvez spécifier un niveau de journalisation minimum pour une catégorie ou un fournisseur spécifique, ou pour l’ensemble des fournisseurs ou des catégories. Les enregistrements de journal en dessous du niveau minimum ne sont pas passés à ce fournisseur, et ne sont donc pas affichés ou stockés.
 
 Pour supprimer tous les journaux, choisissez `LogLevel.None` comme niveau de journalisation minimal. La valeur entière de `LogLevel.None` est 6, soit un niveau supérieur à `LogLevel.Critical` (5).
 
@@ -625,12 +748,12 @@ Les données de configuration et le code `AddFilter` contenus dans les exemples 
 
 | nombre | Fournisseur      | Catégories commençant par...          | Niveau de journalisation minimum |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | Débogage         | Toutes les catégories                          | Information       |
+| 1      | Débogage         | Toutes les catégories                          | Informations       |
 | 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Warning           |
 | 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Débogage             |
-| 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
-| 5      | Console       | Toutes les catégories                          | Information       |
-| 6\.      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
+| 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Erreur             |
+| 5      | Console       | Toutes les catégories                          | Informations       |
+| 6      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
 | 7      | Tous les fournisseurs | Système                                  | Débogage             |
 | 8      | Débogage         | Microsoft                               | Suivi             |
 
@@ -683,7 +806,7 @@ Si vous ne définissez pas explicitement le niveau minimum, la valeur par défau
 
 ### <a name="filter-functions"></a>Fonctions de filtre
 
-Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Exemple :
+Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -701,7 +824,7 @@ Une fonction de filtre est appelée pour tous les fournisseurs et toutes les cat
 
 Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core, avec des notes sur les journaux associés :
 
-| Catégorie                            | Notes |
+| Category                            | Notes |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | Diagnostics ASP.NET Core généraux. |
 | Microsoft.AspNetCore.DataProtection | Liste des clés considérées, trouvées et utilisées. |
@@ -713,7 +836,7 @@ Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core,
 | Microsoft.AspNetCore.StaticFiles    | Fichiers pris en charge. |
 | Microsoft.EntityFrameworkCore       | Diagnostics Entity Framework Core généraux. Activité et configuration de la base de données, détection des modifications, migrations. |
 
-## <a name="log-scopes"></a>Étendues de log
+## <a name="log-scopes"></a>Étendues de journal
 
  Une *étendue* peut regrouper un ensemble d’opérations logiques. Ce regroupement permet de joindre les mêmes données à tous les journaux créés au sein d’un ensemble. Par exemple, chaque journal créé dans le cadre du traitement d’une transaction peut contenir l’ID de la transaction.
 
@@ -752,7 +875,7 @@ Le code suivant active les étendues pour le fournisseur Console :
 >
 > Pour plus d'informations sur la configuration, reportez-vous à la section [Configuration](#configuration).
 
-Chaque message de log fournit les informations incluses dans l’étendue :
+Chaque message de journal fournit les informations incluses dans l’étendue :
 
 ```
 info: TodoApiSample.Controllers.TodoController[1002]
@@ -768,7 +891,7 @@ warn: TodoApiSample.Controllers.TodoController[4000]
 ASP.NET Core contient les fournisseurs suivants :
 
 * [Console](#console-provider)
-* [Déboguer](#debug-provider)
+* [Débogage](#debug-provider)
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
@@ -780,7 +903,7 @@ Pour plus d’informations sur stdout et sur la journalisation du débogage avec
 
 ### <a name="console-provider"></a>Fournisseur Console
 
-Le package de fournisseur [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) envoie la sortie de log dans la console. 
+Le package de fournisseur [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) envoie la sortie de journal dans la console. 
 
 ```csharp
 logging.AddConsole();
@@ -794,7 +917,7 @@ dotnet run
 
 ### <a name="debug-provider"></a>Fournisseur Debug
 
-Le package de fournisseur [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) écrit la sortie de log à l’aide de la classe [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) (appels de la méthode `Debug.WriteLine`).
+Le package de fournisseur [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) écrit la sortie de journal à l’aide de la classe [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) (appels de la méthode `Debug.WriteLine`).
 
 Sur Linux, ce fournisseur écrit la sortie de log dans */var/log/message*.
 
@@ -818,7 +941,7 @@ Pour configurer PerfView afin qu’il collecte les événements enregistrés par
 
 ### <a name="windows-eventlog-provider"></a>Fournisseur EventLog Windows
 
-Le package de fournisseur [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) envoie la sortie de log dans le journal des événements Windows.
+Le package de fournisseur [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) envoie la sortie de journal dans le journal des événements Windows.
 
 ```csharp
 logging.AddEventLog();
@@ -840,7 +963,7 @@ Pour pouvoir utiliser ce fournisseur, il faut que l’application s’exécute s
 
 ### <a name="azure-app-service-provider"></a>Fournisseur Azure App Service
 
-Le package de fournisseur [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) écrit les enregistrements de log dans des fichiers texte dans le système de fichiers d’une application Azure App Service, et dans un [stockage Blob](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) dans un compte de stockage Azure.
+Le package de fournisseur [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) écrit les enregistrements de journal dans des fichiers texte dans le système de fichiers d’une application Azure App Service, et dans un [stockage Blob](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) dans un compte de stockage Azure.
 
 ```csharp
 logging.AddAzureWebAppDiagnostics();
@@ -941,7 +1064,7 @@ Certains frameworks tiers prennent en charge la [journalisation sémantique, ég
 L’utilisation d’un framework tiers est semblable à l’utilisation des fournisseurs intégrés :
 
 1. Ajoutez un package NuGet à votre projet.
-1. Appelez une méthode d’extension `ILoggerFactory` fournie par le Framework de journalisation.
+1. Appeler une méthode d’extension `ILoggerFactory` fournie par le Framework de journalisation.
 
 Pour plus d’informations, consultez la documentation de chaque fournisseur. Les fournisseurs de journalisation tiers ne sont pas pris en charge par Microsoft.
 

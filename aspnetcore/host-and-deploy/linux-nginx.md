@@ -5,14 +5,14 @@ description: Découvrez comment configurer Nginx comme proxy inverse sur Ubuntu 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 11/05/2019
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: b71bc0464892f15ef8db0324a8e66a28a6192577
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: c6ae86ec9ac54ddf2d487fd72156199fbdd029ef
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080874"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659869"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -32,7 +32,7 @@ Ce guide montre comment effectuer les opérations suivantes :
 * S’assurer que l’application web s’exécute au démarrage en tant que démon.
 * Configurer un outil de gestion des processus pour aider à redémarrer l’application web.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 1. Accédez à un serveur Ubuntu 16.04 avec un compte d’utilisateur standard disposant de privilèges sudo.
 1. Installez le runtime .NET Core sur le serveur.
@@ -108,7 +108,7 @@ Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Installer Nginx
 
-Utilisez `apt-get` pour installer Nginx. Le programme d’installation crée un script d’initialisation *systemd* qui exécute Nginx en tant que démon au démarrage du système. Suivez les instructions d’installation pour Ubuntu sur le site [Nginx : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
+Utilisez `apt-get` pour installer Nginx. Le programme d’installation crée un script d’initialisation *systemd* qui exécute Nginx en tant que démon au démarrage du système. Suivez les instructions d’installation pour Ubuntu sur le site [Nginx : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
 
 > [!NOTE]
 > Si des modules Nginx facultatifs sont requis, il peut s’avérer nécessaire de configurer Nginx à partir de la source.
@@ -256,7 +256,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="view-logs"></a>Afficher les journaux d’activité
+### <a name="view-logs"></a>Afficher les journaux
 
 Puisque l’application web utilisant Kestrel est gérée à l’aide de `systemd`, tous les processus et les événements sont enregistrés dans un journal centralisé. Toutefois, ce journal inclut toutes les entrées pour tous les services et les processus gérés par `systemd`. Pour afficher les éléments propres à `kestrel-helloapp.service`, utilisez la commande suivante :
 
@@ -264,7 +264,7 @@ Puisque l’application web utilisant Kestrel est gérée à l’aide de `system
 sudo journalctl -fu kestrel-helloapp.service
 ```
 
-Si vous voulez appliquer un filtrage supplémentaire, des options chronologiques, comme `--since today`, `--until 1 hour ago` ou une combinaison de ces options, peuvent réduire la quantité d’entrées retournées.
+Si vous souhaitez appliquer un filtrage supplémentaire, des options temporelles telles que `--since today`, `--until 1 hour ago` ou une combinaison de ces options peut réduire la quantité d’entrées retournées.
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"
@@ -287,7 +287,7 @@ Pour configurer la protection des données de façon à conserver et chiffrer le
 
 ## <a name="long-request-header-fields"></a>Longs champs d'en-tête de demande
 
-Si l’application exige des champs d’en-tête de demande plus long que permis par les paramètres par défaut du serveur proxy (généralement 4K ou 8K selon la plateforme), les directives suivantes nécessitent un réglage. Les valeurs à appliquer dépendent du scénario. Pour plus d'informations, voir la documentation du serveur.
+Les paramètres par défaut du serveur proxy limitent généralement les champs d’en-tête de demande à 4 K ou 8 K en fonction de la plateforme. Une application peut nécessiter des champs plus longs que la valeur par défaut (par exemple, les applications qui utilisent [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)). Si des champs plus longs sont requis, les paramètres par défaut du serveur proxy doivent être ajustés. Les valeurs à appliquer dépendent du scénario. Pour plus d'informations, voir la documentation du serveur.
 
 * [proxy_buffer_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
 * [proxy_buffers](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffers)
@@ -397,7 +397,7 @@ Ajoutez la ligne `add_header X-Content-Type-Options "nosniff";` et enregistrez l
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Prérequis pour .NET Core sur Linux](/dotnet/core/linux-prerequisites)
-* [Nginx : Versions binaires : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
+* [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx : versions binaires : packages Debian/Ubuntu officiels).
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [NGINX : Utilisation de l’en-tête Forwarded](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)
+* [NGINX: Using the Forwarded header](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/) (NGINX : utilisation de l’en-tête Forwarded)

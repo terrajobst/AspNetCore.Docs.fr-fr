@@ -5,14 +5,14 @@ description: Découvrez comment configurer Apache comme serveur proxy inverse su
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 03/31/2019
+ms.date: 11/05/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: ec14bce5d8ada9a56ccc44d1159373dc73a09c1b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: fce91db736908e433ba6803319aa8984bb68a554
+ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081878"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73659888"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -20,7 +20,7 @@ Par [Shayne Boyer](https://github.com/spboyer)
 
 À l’aide de ce guide, découvrez comment configurer [Apache](https://httpd.apache.org/) comme serveur proxy inverse sur [CentOS 7](https://www.centos.org/) pour rediriger le trafic HTTP vers une application web ASP.NET Core s’exécutant sur un serveur [Kestrel](xref:fundamentals/servers/kestrel). [L’extension mod_proxy](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html) et les modules associés créent le proxy inverse du serveur.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * Serveur exécutant CentOS 7 avec un compte d’utilisateur standard disposant du privilège sudo.
 * Installez le runtime .NET Core sur le serveur.
@@ -247,7 +247,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="view-logs"></a>Afficher les journaux d’activité
+### <a name="view-logs"></a>Afficher les journaux
 
 Puisque l’application web utilisant Kestrel est gérée à l’aide de *systemd*, les processus et les événements sont enregistrés dans un journal centralisé. Cependant, ce journal comprend les entrées de tous les services et processus gérés par *systemd*. Pour afficher les éléments propres à `kestrel-helloapp.service`, utilisez la commande suivante :
 
@@ -484,7 +484,7 @@ L’exemple de fichier limite la bande passante à 600 Ko/s sous l’emplacement
 
 ### <a name="long-request-header-fields"></a>Longs champs d'en-tête de demande
 
-Si l’application requiert des champs d’en-tête de demande dépassant la limite autorisée par défaut du serveur proxy (généralement 8190 octets), réglez la valeur de la directive [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize). La valeur à appliquer dépend du scénario. Pour plus d'informations, voir la documentation du serveur.
+Les paramètres par défaut du serveur proxy limitent généralement les champs d’en-tête de demande à 8 190 octets. Une application peut nécessiter des champs plus longs que la valeur par défaut (par exemple, les applications qui utilisent [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)). Si des champs plus longs sont requis, la directive [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize) du serveur proxy doit être ajustée. La valeur à appliquer dépend du scénario. Pour plus d'informations, voir la documentation du serveur.
 
 > [!WARNING]
 > N’augmentez pas la valeur par défaut de `LimitRequestFieldSize` à moins que ce ne soit nécessaire. Son augmentation augmente le risque de dépassement de mémoire tampon (dépassement de capacité) et d’attaques par déni de service (DoS) par des utilisateurs malveillants.

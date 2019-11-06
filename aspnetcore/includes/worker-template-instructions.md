@@ -10,7 +10,7 @@
 1. Créer un nouveau projet.
 1. Sélectionnez **application** sous **.net Core** dans la barre latérale.
 1. Sélectionnez **Worker** sous **ASP.net Core**. Sélectionnez **Suivant**.
-1. Sélectionnez **.net Core 3,0** pour la version cible de .NET **Framework**. Sélectionnez **Suivant**.
+1. Sélectionnez **.net Core 3,0** ou une version ultérieure pour le **Framework cible**. Sélectionnez **Suivant**.
 1. Indiquez un nom dans le champ **nom du projet** . Sélectionnez **Créer**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -20,3 +20,5 @@ Utilisez le modèle Service Worker (`worker`) avec la commande [dotnet new](/dot
 ```dotnetcli
 dotnet new worker -o ContosoWorker
 ```
+
+---
