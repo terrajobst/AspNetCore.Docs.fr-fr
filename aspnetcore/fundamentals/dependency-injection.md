@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core implémente l’injection de dépen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 11/05/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: b07ed6d1c23454c95778a5942de615684b70bc36
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: c46e7322e86c2836a15bd0720995a8634bb185be
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589898"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634012"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -571,7 +571,7 @@ En règle générale, l’application ne doit pas utiliser directement ces propr
 Les bonnes pratiques permettent de :
 
 * Concevoir des services afin d’utiliser l’injection de dépendances pour obtenir leurs dépendances.
-* Éviter les appels de méthode statiques avec état.
+* Évitez les classes et les membres avec état, static. Concevez des applications pour utiliser des services Singleton à la place, ce qui évite de créer un état global.
 * Éviter une instanciation directe de classes dépendantes au sein de services. L’instanciation directe associe le code à une implémentation particulière.
 * Limiter la taille des classes d’application, faire en sorte qu’elles soient bien factorisées et facilement testées.
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: 596eca0f510387a18472eb353672980e0a8e0d24
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
+ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697998"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73634072"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migration des services gRPC à partir de C-Core vers ASP.NET Core
 
@@ -80,9 +80,27 @@ public class GreeterService : Greeter.GreeterBase
 
 Les applications basées sur le langage C configurent le protocole HTTPs via la [propriété Server. ports](https://grpc.io/grpc/csharp/api/Grpc.Core.Server.html#Grpc_Core_Server_Ports). Un concept similaire est utilisé pour configurer des serveurs dans ASP.NET Core. Par exemple, Kestrel utilise la [configuration de point de terminaison](xref:fundamentals/servers/kestrel#endpoint-configuration) pour cette fonctionnalité.
 
-## <a name="interceptors-and-middleware"></a>Intercepteurs et intergiciel
+## <a name="grpc-interceptors-vs-middleware"></a>intercepteurs gRPC vs intergiciel
 
-ASP.NET Core [intergiciel](xref:fundamentals/middleware/index) offre des fonctionnalités similaires par rapport aux intercepteurs des applications gRPC basées sur le langage C. Les intercepteurs et les intercepteurs sont conceptuels de la même façon que les deux sont utilisés pour construire un pipeline qui gère une demande gRPC. Ils autorisent tous deux le travail à effectuer avant ou après le composant suivant dans le pipeline. Toutefois, ASP.NET Core intergiciel fonctionne sur les messages HTTP/2 sous-jacents, tandis que les intercepteurs opèrent sur la couche d’abstraction gRPC à l’aide de [ServerCallContext](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html).
+ASP.NET Core [intergiciel](xref:fundamentals/middleware/index) offre des fonctionnalités similaires par rapport aux intercepteurs des applications gRPC basées sur le langage C. ASP.NET Core l’intergiciel et les intercepteurs sont similaires d’un plan conceptuel. Versions
+
+* Sont utilisés pour construire un pipeline qui gère une demande gRPC.
+* Autorisez l’exécution du travail avant ou après le composant suivant dans le pipeline.
+* Fournir l’accès aux `HttpContext`:
+  * Dans l’intergiciel (middleware), le `HttpContext` est un paramètre.
+  * Dans les intercepteurs, le `HttpContext` est accessible à l’aide du paramètre `ServerCallContext` avec la méthode d’extension `ServerCallContext.GetHttpContext`. Notez que cette fonctionnalité est spécifique aux intercepteurs s’exécutant dans ASP.NET Core.
+
+différences entre l’intercepteur gRPC et l’intergiciel (middleware) ASP.NET Core :
+
+* Intercepteurs
+  * Opérer sur la couche d’abstraction gRPC à l’aide de [ServerCallContext](https://grpc.io/grpc/csharp/api/Grpc.Core.ServerCallContext.html).
+  * Fournir un accès à :
+    * Message désérialisé envoyé à un appel.
+    * Message retourné par l’appel avant qu’il ne soit sérialisé.
+* Intergiciel
+  * S’exécute avant les intercepteurs gRPC.
+  * Opère sur les messages HTTP/2 sous-jacents.
+  * Peut uniquement accéder aux octets des flux de requête et de réponse.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
