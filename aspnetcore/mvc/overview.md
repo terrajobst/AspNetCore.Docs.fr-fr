@@ -1,18 +1,18 @@
 ---
-title: Vue d’ensemble d’ASP.NET Core MVC
+title: Vue d’ensemble du modèle MVC d’ASP.NET Core
 author: ardalis
-description: ASP.NET Core MVC est une infrastructure riche pour la création d’applications web et d'API à l’aide du modèle de conception Model-View-Controller.
+description: Découvrez ASP.NET Core MVC, un puissant framework qui vous permet de générer des applications web et des API à l’aide du modèle de conception Model-View-Controller.
 ms.author: riande
-ms.date: 08/01/2019
+ms.date: 11/07/2019
 uid: mvc/overview
-ms.openlocfilehash: 7f09751850cbfa7bb3dc79656d4530445a9767b1
-ms.sourcegitcommit: 3204bc89ae6354b61ee0a9b2770ebe5214b7790c
-ms.translationtype: HT
+ms.openlocfilehash: 4f4ea3da8563cabaaa6183c6835c2f1eb8c387b4
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707820"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799497"
 ---
-# <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
+# <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble du modèle MVC d’ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -20,7 +20,7 @@ ASP.NET Core MVC est un puissant framework qui vous permet de générer des appl
 
 ## <a name="what-is-the-mvc-pattern"></a>Qu’est-ce que le modèle MVC ?
 
-Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : Les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer la [séparation des préoccupations](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requêtes. Le contrôleur choisit la vue à afficher à l’utilisateur et lui fournit toutes les données de modèle dont elle a besoin.
+Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer la [séparation des préoccupations](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requêtes. Le contrôleur choisit la vue à afficher à l’utilisateur et lui fournit toutes les données de modèle dont elle a besoin.
 
 Le diagramme suivant montre les trois composants principaux et leurs relations entre eux :
 
@@ -57,7 +57,7 @@ ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des 
 
 ## <a name="features"></a>Fonctionnalités
 
-ASP.NET Core MVC inclut les éléments suivants :
+ASP.NET Core MVC inclut les éléments suivants :
 
 * [Le routage](#routing)
 * [La liaison de modèle](#model-binding)
@@ -68,7 +68,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 * [Les APIs Web](#web-apis)
 * [La testabilité](#testability)
 * [Le moteur de vue Razor](#razor-view-engine)
-* [Les vues fortement typées](#strongly-typed-views)
+* [Vues fortement typées](#strongly-typed-views)
 * [Les Tag Helpers](#tag-helpers)
 * [Les composants de vues](#view-components)
 
@@ -104,7 +104,7 @@ La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les 
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
 ```
 
-### <a name="model-validation"></a>Validation du modèle
+### <a name="model-validation"></a>Validation de modèle
 
 ASP.NET Core MVC prend en charge la [validation](models/validation.md) en décorant votre objet de modèle avec des attributs de validation de données d’annotation. Les attributs de validation sont vérifiés côté client avant que les valeurs ne soient postées sur le serveur, ainsi que sur le serveur avant l’appel de l’action du contrôleur.
 
@@ -172,7 +172,7 @@ public class AccountController : Controller
 
 ### <a name="areas"></a>Zones (Areas)
 
-Les [zones](controllers/areas.md) fournissent un moyen de partitionner une application Web ASP.NET Core MVC volumineuse en regroupements fonctionnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques tels que les modèles, les contrôleurs et les vues sont conservés dans des dossiers différents et MVC utilise les conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs entités, telles que le paiement, le facturation et la recherche, etc. Chacune de ces unités a ses propres composants logiques de vues, contrôleurs et modèles.
+Les [zones](controllers/areas.md) permettent de partitionner une grande application web ASP.NET Core MVC en regroupements opérationnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques, comme Modèle, Contrôleur et Vue, sont conservés dans des dossiers différents, et MVC utilise des conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs unités commerciales, telles que l’extraction, la facturation et la recherche, etc. Chacune de ces unités a ses propres affichages de composants logiques, contrôleurs et modèles.
 
 ### <a name="web-apis"></a>API web
 
@@ -253,4 +253,9 @@ Les [composants de vues](views/view-components.md) vous permettent de compresser
 
 La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
 
-Pour plus d’informations, consultez <xref:mvc/compatibility-version>.
+Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [MyTested. AspNetCore. Mvc-bibliothèque de tests Fluent pour ASP.net Core Mvc](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) &ndash; bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. (*Non géré ou pris en charge par Microsoft.* )
+

@@ -5,14 +5,14 @@ description: Commencez avec éblouissant en créant une application éblouissant
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/07/2019
 uid: blazor/get-started
-ms.openlocfilehash: 48d7ff4bf23273daf43128831aa46cfab3d982fe
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: b5043c7e4549800c1ab49bc37dd8f3568975d4aa
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634027"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799230"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core éblouissante
 
@@ -132,7 +132,7 @@ Prise en main de éblouissant :
 1. Installez éventuellement le modèle de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) en installant le [Kit de développement logiciel (SDK) .net Core 3,1 preview](https://dotnet.microsoft.com/download/dotnet-core/3.1) , puis en exécutant la commande suivante dans une interface de commande :
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview1.19508.20
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview2.19528.8
    ```
 
 1. Suivez les instructions de votre choix d’outils :

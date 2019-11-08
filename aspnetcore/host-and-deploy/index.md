@@ -5,14 +5,14 @@ description: Découvrez comment configurer des environnements d’hébergement e
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/12/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/index
-ms.openlocfilehash: 068c5f357b8010d78493a78a10c353e3317f3867
-ms.sourcegitcommit: b4ef2b00f3e1eb287138f8b43c811cb35a100d3e
-ms.translationtype: HT
+ms.openlocfilehash: aa6e3da5f40211535037c671de913ab3219f063a
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969884"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799336"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -68,6 +68,10 @@ Consultez <xref:tutorials/publish-to-azure-webapp-using-vs> pour obtenir des ins
 ## <a name="publish-with-msdeploy-on-windows"></a>Publier avec MSDeploy sur Windows
 
 Consultez <xref:host-and-deploy/visual-studio-publish-profiles> pour obtenir des instructions sur la publication d’une application avec un profil de publication Visual Studio, notamment à partir d’une invite de commandes Windows à l’aide de la commande [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild).
+
+## <a name="internet-information-services-iis"></a>Services IIS (Internet Information Services)
+
+Pour les déploiements vers Internet Information Services (IIS) avec la configuration fournie par le fichier *Web. config* , consultez les articles sous <xref:host-and-deploy/iis/index>.
 
 ## <a name="host-in-a-web-farm"></a>Héberger dans une batterie de serveurs web
 

@@ -5,14 +5,14 @@ description: Découvrez comment configurer le module ASP.NET Core pour héberger
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2019
+ms.date: 11/07/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 42ff4438738931fde70e123031412bcfc8a83efb
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034212"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799416"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -208,7 +208,7 @@ L’exemple suivant définit deux variables d’environnement dans le *fichier W
 ```
 
 > [!NOTE]
-> Une alternative à la définition directe de l’environnement dans le fichier *web.config* consiste à inclure la propriété `<EnvironmentName>` dans le profil de publication ( *.pubxml*) ou le fichier projet. Cette approche définit l’environnement dans *web.config* lorsque le projet est publié :
+> Une alternative à la définition de l’environnement directement dans *Web. config* consiste à inclure la propriété `<EnvironmentName>` dans le [profil de publication (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles) ou le fichier projet. Cette approche définit l’environnement dans *web.config* lorsque le projet est publié :
 >
 > ```xml
 > <PropertyGroup>
@@ -623,7 +623,7 @@ L’exemple suivant définit deux variables d'environnement. `ASPNETCORE_ENVIRON
 ```
 
 > [!NOTE]
-> Une alternative à la définition directe de l’environnement dans le fichier *web.config* consiste à inclure la propriété `<EnvironmentName>` dans le profil de publication ( *.pubxml*) ou le fichier projet. Cette approche définit l’environnement dans *web.config* lorsque le projet est publié :
+> Une alternative à la définition de l’environnement directement dans *Web. config* consiste à inclure la propriété `<EnvironmentName>` dans le [profil de publication (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles) ou le fichier projet. Cette approche définit l’environnement dans *web.config* lorsque le projet est publié :
 >
 > ```xml
 > <PropertyGroup>

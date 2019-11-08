@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/26/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 3484a0233a0d56811235192c4b64aa9296e72b58
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 1cd4ca6fccfee674f46e87ba051e049f7daa5b66
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289072"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799511"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Meilleures pratiques en matière de performances de ASP.NET Core
 
@@ -75,7 +75,7 @@ Relatives
 * **Envisagez** de mettre en cache les données fréquemment sollicitées récupérées à partir d’une base de données ou d’un service distant, si les données obsolètes sont légèrement obsolètes. Selon le scénario, utilisez un [MemoryCache](xref:performance/caching/memory) ou un [DistributedCache](xref:performance/caching/distributed). Pour plus d'informations, consultez <xref:performance/caching/response>.
 * Réduisez les allers **-** retours réseau. L’objectif est de récupérer les données requises dans un appel unique plutôt que plusieurs appels.
 * **Utilisez** des [requêtes sans suivi](/ef/core/querying/tracking#no-tracking-queries) dans Entity Framework Core lors de l’accès à des données en lecture seule. EF Core pouvez retourner les résultats des requêtes sans suivi plus efficacement.
-* **Filtrez** et regroupez les requêtes LINQ (avec `.Where`, `.Select` ou `.Sum`, par exemple) afin que le filtrage soit effectué par la base de données.
+* **Filtrez** et regroupez les requêtes LINQ (avec `.Where`instructions, `.Select`ou `.Sum`, par exemple) afin que le filtrage soit effectué par la base de données.
 * **Supposons** que EF Core résout certains opérateurs de requête sur le client, ce qui peut entraîner une exécution inefficace de la requête. Pour plus d’informations, consultez problèmes de performances de l' [évaluation du client](/ef/core/querying/client-eval#client-evaluation-performance-issues).
 * **N’utilisez pas** de requêtes de projection sur des collections, ce qui peut entraîner l’exécution de requêtes SQL « N + 1 ». Pour plus d’informations, consultez [optimisation des sous-requêtes corrélées](/ef/core/what-is-new/ef-core-2.1#optimization-of-correlated-subqueries).
 
@@ -94,7 +94,7 @@ Bien que [httpclient](/dotnet/api/system.net.http.httpclient) implémente l’in
 
 Relatives
 
-* **Ne créez pas et ne** supprimez pas les instances de `HttpClient` directement.
+* **Ne** créez et ne supprimez pas directement des instances de `HttpClient`.
 * **Utilisez** [HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) pour récupérer des instances `HttpClient`. Pour plus d’informations, consultez [utiliser HttpClientFactory pour implémenter des demandes http résilientes](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
 ## <a name="keep-common-code-paths-fast"></a>Conserver les chemins de code communs rapidement
@@ -133,7 +133,7 @@ Relatives
 
 ## <a name="compress-responses"></a>Compresser les réponses
 
- Le fait de réduire la taille de la réponse augmente généralement la réactivité d’une application, parfois de manière considérable. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application. Pour plus d’informations, consultez [compression des réponses](xref:performance/response-compression).
+ La réduction de la taille de la réponse augmente généralement la réactivité d’une application, souvent considérablement. Une façon de réduire les tailles de charge utile consiste à compresser les réponses d’une application. Pour plus d’informations, consultez [compression des réponses](xref:performance/response-compression).
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Utiliser la dernière version de ASP.NET Core
 
@@ -159,11 +159,12 @@ Les sections suivantes fournissent des conseils en matière de performances et d
 
 Toutes les e/s dans ASP.NET Core sont asynchrones. Les serveurs implémentent l’interface `Stream`, qui a à la fois des surcharges synchrones et asynchrones. Les plus asynchrones doivent être préférables pour éviter le blocage des threads de pool de threads. Les threads de blocage peuvent entraîner une insuffisance du pool de threads.
 
-**N’effectuez pas cette opération :** L'exemple ci-dessous utilise le <xref:System.IO.StreamReader.ReadToEnd*>. Il bloque le thread actuel pour attendre le résultat. Voici un exemple de [sync sur Async @ no__t-1.
+N' **effectuez pas cette opération :** L’exemple suivant utilise l' <xref:System.IO.StreamReader.ReadToEnd*>. Il bloque le thread actuel pour attendre le résultat. Il s’agit d’un exemple de [synchronisation sur Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
+).
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/MyFirstController.cs?name=snippet1)]
 
-Dans le code précédent, `Get` lit de manière synchrone l’intégralité du corps de la requête HTTP dans la mémoire. Si le chargement du client est lent, l’application synchronise sur Async. L’application effectue une synchronisation via Async, car Kestrel ne prend **pas** en charge les lectures synchrones.
+Dans le code précédent, `Get` lit de façon synchrone l’intégralité du corps de la requête HTTP dans la mémoire. Si le chargement du client est lent, l’application synchronise sur Async. L’application effectue une synchronisation via Async, car Kestrel ne prend **pas** en charge les lectures synchrones.
 
 **Procédez comme suit :** L’exemple suivant utilise <xref:System.IO.StreamReader.ReadToEndAsync*> et ne bloque pas le thread pendant la lecture.
 
@@ -183,12 +184,13 @@ Le code précédent désérialise de manière asynchrone le corps de la requête
 ## <a name="prefer-readformasync-over-requestform"></a>Préférer ReadFormAsync sur Request. Form
 
 Utilisez `HttpContext.Request.ReadFormAsync` à la place de `HttpContext.Request.Form`.
-`HttpContext.Request.Form` peut être lu en toute sécurité avec les conditions suivantes :
+les `HttpContext.Request.Form` peuvent être lues en toute sécurité avec les conditions suivantes :
 
-* Le formulaire a été lu par un appel à `ReadFormAsync`, et
+* Le formulaire a été lu par un appel à `ReadFormAsync`et
 * La valeur du formulaire mis en cache est lue à l’aide de `HttpContext.Request.Form`
 
-**N’effectuez pas cette opération :** L’exemple suivant utilise `HttpContext.Request.Form`.  `HttpContext.Request.Form` utilise [SYNC sur Async @ no__t-2 et peut entraîner une insuffisance du pool de threads.
+N' **effectuez pas cette opération :** L’exemple suivant utilise `HttpContext.Request.Form`.  `HttpContext.Request.Form` utilise la [synchronisation sur Async](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#warning-sync-over-async
+) et peut entraîner une insuffisance du pool de threads.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/MySecondController.cs?name=snippet1)]
 
@@ -209,7 +211,7 @@ Ce billet de [blog](https://adamsitnik.com/Array-Pool/#the-problem) décrit succ
 
 > Lorsqu’un objet volumineux est alloué, il est marqué comme objet Gen 2. Non Gen 0 comme pour les petits objets. Les conséquences sont que si vous ne disposez pas de suffisamment de mémoire dans LOH, le garbage collector nettoie l’intégralité du tas managé, pas seulement LOH. Il nettoie donc la génération 0, la génération 1 et la génération 2, y compris LOH. C’est ce que l’on appelle la garbage collection complète et est le garbage collection le plus long. Pour de nombreuses applications, cela peut être acceptable. Mais ce n’est pas vraiment le cas pour les serveurs Web à hautes performances, où peu de mémoires tampons volumineuses sont nécessaires pour gérer une requête Web moyenne (lecture à partir d’un socket, décompression, décodage JSON & plus).
 
-Naïvement stockant un grand corps de requête ou de réponse dans une seule `byte[]` ou `string` :
+Naïvement stockant un grand corps de requête ou de réponse dans une seule `byte[]` ou `string`:
 
 * Peut entraîner une insuffisance de l’espace dans le LOH.
 * Peut entraîner des problèmes de performances pour l’application en raison de l’exécution complète des catalogues globaux.
@@ -227,22 +229,22 @@ ASP.NET Core 3,0 utilise <xref:System.Text.Json> par défaut pour la sérialisat
 
 * Lit et écrit JSON de manière asynchrone.
 * Est optimisé pour le texte UTF-8.
-* En général, performances supérieures à `Newtonsoft.Json`.
+* En général, des performances supérieures à celles de `Newtonsoft.Json`.
 
 ## <a name="do-not-store-ihttpcontextaccessorhttpcontext-in-a-field"></a>Ne pas stocker IHttpContextAccessor. HttpContext dans un champ
 
-[IHttpContextAccessor. HttpContext](xref:Microsoft.AspNetCore.Http.IHttpContextAccessor.HttpContext) retourne le `HttpContext` de la demande active lorsque vous y accédez à partir du thread de demande. Le `IHttpContextAccessor.HttpContext` ne doit **pas** être stocké dans un champ ou une variable.
+[IHttpContextAccessor. HttpContext](xref:Microsoft.AspNetCore.Http.IHttpContextAccessor.HttpContext) retourne le `HttpContext` de la requête active en cas d’accès à partir du thread de demande. Le `IHttpContextAccessor.HttpContext` ne doit **pas** être stocké dans un champ ou une variable.
 
-**N’effectuez pas cette opération :** L’exemple suivant stocke la `HttpContext` dans un champ, puis essaie de l’utiliser ultérieurement.
+N' **effectuez pas cette opération :** L’exemple suivant stocke la `HttpContext` dans un champ, puis essaie de l’utiliser ultérieurement.
 
 [!code-csharp[](performance-best-practices/samples/3.0/MyType.cs?name=snippet1)]
 
-Le code précédent capture souvent une valeur null ou incorrecte `HttpContext` dans le constructeur.
+Le code précédent capture souvent un `HttpContext` null ou incorrect dans le constructeur.
 
 **Procédez comme suit :** L’exemple suivant :
 
-* Stocke le <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> dans un champ.
-* Utilise le champ `HttpContext` à l’heure correcte et recherche `null`.
+* Stocke les <xref:Microsoft.AspNetCore.Http.IHttpContextAccessor> dans un champ.
+* Utilise le champ `HttpContext` à l’heure correcte et recherche les `null`.
 
 [!code-csharp[](performance-best-practices/samples/3.0/MyType.cs?name=snippet2)]
 
@@ -250,7 +252,7 @@ Le code précédent capture souvent une valeur null ou incorrecte `HttpContext` 
 
 `HttpContext` n’est *pas* thread-safe. L’accès à `HttpContext` à partir de plusieurs threads en parallèle peut entraîner un comportement indéfini, tel que les blocages, les incidents et l’altération des données.
 
-**N’effectuez pas cette opération :** L’exemple suivant effectue trois demandes parallèles et journalise le chemin d’accès de la requête entrante avant et après la requête HTTP sortante. Le chemin d’accès de la requête est accessible à partir de plusieurs threads, éventuellement en parallèle.
+N' **effectuez pas cette opération :** L’exemple suivant effectue trois demandes parallèles et journalise le chemin d’accès de la requête entrante avant et après la requête HTTP sortante. Le chemin d’accès de la requête est accessible à partir de plusieurs threads, éventuellement en parallèle.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/AsyncFirstController.cs?name=snippet1&highlight=25,28)]
 
@@ -260,26 +262,26 @@ Le code précédent capture souvent une valeur null ou incorrecte `HttpContext` 
 
 ## <a name="do-not-use-the-httpcontext-after-the-request-is-complete"></a>N’utilisez pas HttpContext une fois la demande terminée
 
-`HttpContext` est valide uniquement tant qu’il existe une requête HTTP active dans le pipeline ASP.NET Core. L’ensemble du pipeline ASP.NET Core est une chaîne asynchrone de délégués qui exécute chaque requête. Lorsque la `Task` retournée à partir de cette chaîne se termine, la `HttpContext` est recyclée.
+`HttpContext` est valide uniquement tant qu’il existe une requête HTTP active dans le pipeline ASP.NET Core. L’ensemble du pipeline ASP.NET Core est une chaîne asynchrone de délégués qui exécute chaque requête. Lorsque le `Task` retourné à partir de cette chaîne se termine, le `HttpContext` est recyclé.
 
-**N’effectuez pas cette opération :** L’exemple suivant utilise `async void`, ce qui fait que la requête HTTP se termine lorsque le premier `await` est atteint :
+N' **effectuez pas cette opération :** L’exemple suivant utilise `async void` qui rend la requête HTTP terminée lorsque le premier `await` est atteint :
 
 * C’est **toujours** une mauvaise pratique dans les applications ASP.net core.
-* Accède au `HttpResponse` une fois la requête HTTP terminée.
+* Accède à la `HttpResponse` une fois la requête HTTP terminée.
 * Arrête le processus.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/AsyncBadVoidController.cs?name=snippet1)]
 
-**Procédez comme suit :** L’exemple suivant retourne un `Task` à l’infrastructure, de sorte que la requête HTTP ne se termine pas tant que l’action n’est pas terminée.
+**Procédez comme suit :** L’exemple suivant retourne un `Task` à l’infrastructure afin que la requête HTTP ne se termine pas tant que l’action n’est pas terminée.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/AsyncSecondController.cs?name=snippet1)]
 
 ## <a name="do-not-capture-the-httpcontext-in-background-threads"></a>Ne pas capturer le HttpContext dans les threads d’arrière-plan
 
-**N’effectuez pas cette opération :** L’exemple suivant montre qu’une fermeture capture l' `HttpContext` à partir de la propriété `Controller`. Il s’agit d’une mauvaise pratique, car l’élément de travail peut :
+N' **effectuez pas cette opération :** L’exemple suivant montre qu’une fermeture capture le `HttpContext` à partir de la propriété `Controller`. Il s’agit d’une mauvaise pratique, car l’élément de travail peut :
 
 * Exécution en dehors de l’étendue de la requête.
-* Tentative de lecture du mauvais `HttpContext`.
+* Tentative de lecture d’un `HttpContext`incorrect.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/FireAndForgetFirstController.cs?name=snippet1)]
 
@@ -290,25 +292,27 @@ Le code précédent capture souvent une valeur null ou incorrecte `HttpContext` 
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/FireAndForgetFirstController.cs?name=snippet2)]
 
+Les tâches en arrière-plan doivent être implémentées en tant que services hébergés. Pour plus d’informations, consultez [Tâches en arrière-plan avec services hébergés](xref:fundamentals/host/hosted-services).
+
 ## <a name="do-not-capture-services-injected-into-the-controllers-on-background-threads"></a>Ne capturez pas les services injectés dans les contrôleurs sur les threads d’arrière-plan
 
-**N’effectuez pas cette opération :** L’exemple suivant montre qu’une fermeture capture le `DbContext` à partir du paramètre d’action `Controller`. Il s’agit d’une mauvaise pratique.  L’élément de travail peut s’exécuter en dehors de l’étendue de la requête. La `ContosoDbContext` est limitée à la requête, ce qui donne un `ObjectDisposedException`.
+N' **effectuez pas cette opération :** L’exemple suivant montre qu’une fermeture capture l' `DbContext` à partir du paramètre d’action `Controller`. Il s’agit d’une mauvaise pratique.  L’élément de travail peut s’exécuter en dehors de l’étendue de la requête. La `ContosoDbContext` est limitée à la requête, ce qui entraîne une `ObjectDisposedException`.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/FireAndForgetSecondController.cs?name=snippet1)]
 
 **Procédez comme suit :** L’exemple suivant :
 
-* Injecte un <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> afin de créer une portée dans l’élément de travail d’arrière-plan. `IServiceScopeFactory` est un singleton.
+* Injecte un <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory> pour créer une portée dans l’élément de travail d’arrière-plan. `IServiceScopeFactory` est un singleton.
 * Crée une nouvelle étendue d’injection de dépendance dans le thread d’arrière-plan.
 * Ne fait référence à rien du contrôleur.
-* Ne capture pas la `ContosoDbContext` de la demande entrante.
+* Ne capture pas les `ContosoDbContext` à partir de la demande entrante.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/FireAndForgetSecondController.cs?name=snippet2)]
 
 Le code en surbrillance suivant :
 
 * Crée une portée pour la durée de vie de l’opération d’arrière-plan et résout des services à partir de celle-ci.
-* Utilise `ContosoDbContext` de l’étendue correcte.
+* Utilise `ContosoDbContext` à partir de l’étendue correcte.
 
 [!code-csharp[](performance-best-practices/samples/3.0/Controllers/FireAndForgetSecondController.cs?name=snippet2&highlight=9-16)]
 
@@ -319,7 +323,7 @@ ASP.NET Core ne met pas en mémoire tampon le corps de la réponse HTTP. La prem
 * Les en-têtes sont envoyés avec ce segment du corps au client.
 * Il n’est plus possible de modifier les en-têtes de réponse.
 
-**N’effectuez pas cette opération :** Le code suivant tente d’ajouter des en-têtes de réponse une fois que la réponse a déjà démarré :
+N' **effectuez pas cette opération :** Le code suivant tente d’ajouter des en-têtes de réponse une fois que la réponse a déjà démarré :
 
 [!code-csharp[](performance-best-practices/samples/3.0/Startup22.cs?name=snippet1)]
 

@@ -5,14 +5,14 @@ description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/10/2019
+ms.date: 11/07/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 3bdc2bf776946b8fae8886a37ecd3ed5e3f860fe
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: e542dd4506eb77f949c0c87bea3044397bbb1b8f
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259822"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799405"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -34,13 +34,13 @@ Utilisez Kestrel :
 
   ![Kestrel communique indirectement avec Internet via un serveur proxy inverse, par exemple IIS, Nginx ou Apache](kestrel/_static/kestrel-to-internet.png)
 
-L’hébergement de la configuration @ no__t-0With ou sans serveur proxy inverse @ no__t-1 est est pris en charge.
+L’hébergement de configuration&mdash;avec ou sans serveur proxy inverse&mdash;est pris en charge.
 
 Pour des conseils de configuration de Kestrel et des informations sur le moment d’utiliser Kestrel dans une configuration de proxy inverse, consultez <xref:fundamentals/servers/kestrel>.
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -80,7 +80,7 @@ ASP.NET Core est fourni avec le [serveur Kestrel](xref:fundamentals/servers/kest
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -156,7 +156,9 @@ Le serveur est lancé lorsque l’environnement de développement intégré (IDE
 * [Visual Studio Code](https://code.visualstudio.com/) &ndash;L’application et le serveur sont démarrés par [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode), qui active le débogueur CoreCLR.
 * [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; L’application et le serveur sont démarrés par le [débogueur Mono Soft-Mode](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/).
 
-Lors du lancement de l’application à partir d’une invite de commandes dans le dossier du projet, [dotnet run](/dotnet/core/tools/dotnet-run) lance l’application et le serveur (Kestrel et HTTP.sys uniquement). La configuration est spécifiée par l’option `-c|--configuration`, qui est définie sur `Debug` (par défaut) ou sur `Release`. Si les profils de lancement sont présents dans un fichier *launchSettings.json*, utilisez l’option `--launch-profile <NAME>` pour définir le profil de lancement (par exemple `Development` ou `Production`). Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
+Lors du lancement de l’application à partir d’une invite de commandes dans le dossier du projet, [dotnet run](/dotnet/core/tools/dotnet-run) lance l’application et le serveur (Kestrel et HTTP.sys uniquement). La configuration est spécifiée par l’option `-c|--configuration`, qui est définie sur `Debug` (par défaut) ou sur `Release`.
+
+Un fichier *launchSettings. JSON* fournit une configuration lors du lancement d’une application avec `dotnet run` ou avec un débogueur intégré à des outils, tels que Visual Studio. Si des profils de lancement sont présents dans un fichier *launchSettings. JSON* , utilisez l’option `--launch-profile {PROFILE NAME}` avec la commande`dotnet run` ou sélectionnez le profil dans Visual Studio. Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
 
 ## <a name="http2-support"></a>Prise en charge de HTTP/2
 
@@ -167,19 +169,19 @@ Lors du lancement de l’application à partir d’une invite de commandes dans 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * Système d'exploitation
     * Windows Server 2016/Windows 10 ou version ultérieure&dagger;
-    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
+    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
-  * Version cible de .NET Framework : non applicable aux déploiements HTTP.sys.
+  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (in-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
-  * Version cible de .NET Framework : non applicable aux déploiements IIS out-of-process.
+  * Version cible de .Net Framework : non applicable aux déploiements IIS out-of-process.
 
 &dagger;Kestrel propose une prise en charge limitée de HTTP/2 sous Windows Server 2012 R2 et Windows 8.1. La prise en charge est limitée car la liste des suites de chiffrement TLS prises en charge sur ces systèmes d’exploitation est limitée. Un certificat généré à l’aide d’Elliptic Curve Digital Signature algorithme (ECDSA) peut être requis pour sécuriser les connexions TLS.
 
@@ -188,12 +190,12 @@ Lors du lancement de l’application à partir d’une invite de commandes dans 
 ::: moniker range="< aspnetcore-2.2"
 
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
-  * Version cible de .NET Framework : non applicable aux déploiements HTTP.sys.
+  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
-  * Version cible de .NET Framework : non applicable aux déploiements IIS out-of-process.
+  * Version cible de .Net Framework : non applicable aux déploiements IIS out-of-process.
 
 ::: moniker-end
 

@@ -5,14 +5,14 @@ description: Découvrez les concepts de base permettant de créer des applicatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 uid: fundamentals/index
-ms.openlocfilehash: a70d6aa05a2c92d19076b8d6e4ea24d7554368b6
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 7173a732a04bf3e598adef298fa9120c15dd52fb
+ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007117"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799374"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -119,7 +119,7 @@ Une application ASP.NET Core utilise une implémentation de serveur HTTP pour é
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ASP.NET Core fournit les implémentations de serveur suivantes :
 
@@ -141,7 +141,7 @@ ASP.NET Core fournit l’implémentation du serveur multiplateforme *Kestrel*. D
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ASP.NET Core fournit les implémentations de serveur suivantes :
 
@@ -302,6 +302,14 @@ Le chemin d’accès racine Web a comme valeur par défaut *{content root}/wwwro
 Le chemin d’accès racine Web a comme valeur par défaut *{content root}/wwwroot*, mais une autre racine Web peut être spécifiée lors de [la génération de l’hôte](#host). Pour plus d’informations, consultez [Racine web](xref:fundamentals/host/web-host#web-root).
 
 ::: moniker-end
+
+Empêchez la publication de fichiers dans *wwwroot* avec le [contenu\<> élément de projet](/visualstudio/msbuild/common-msbuild-project-items#content) dans le fichier projet. L’exemple suivant empêche la publication de contenu dans le répertoire et les sous-répertoires *wwwroot/local* :
+
+```xml
+<ItemGroup>
+  <Content Update="wwwroot\local\**\*.*" CopyToPublishDirectory="Never" />
+</ItemGroup>
+```
 
 Dans les fichiers Razor ( *. cshtml*), le tilde-slash (`~/`) pointe vers la racine Web. Un chemin d’accès commençant par `~/` est désigné sous le terme de « *chemin d’accès virtuel*».
 
