@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core fournit un accès au système de fi
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 3a92b44efc70d156596ee9fe80b4f6a65266e73d
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 531f7acd7a704a74e6142d201f613f05288deecb
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007168"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896855"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -22,7 +22,7 @@ Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guar
 
 ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Des fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core :
 
-* `IWebHostEnvironment` expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types `IFileProvider`.
+* `IWebHostEnvironment` expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types de `IFileProvider`.
 * [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
 * [Razor](xref:mvc/views/razor) utilise des fournisseurs de fichiers pour localiser des pages et des vues.
 * Les outils .NET Core utilisent des fournisseurs de fichiers et des modèles d’utilisation des caractères génériques pour spécifier les fichiers qui doivent être publiés.
@@ -105,7 +105,7 @@ L’exemple d’application crée un `ManifestEmbeddedFileProvider` et transmet 
 
 ```csharp
 var manifestEmbeddedProvider = 
-    new ManifestEmbeddedFileProvider(Assembly.GetEntryAssembly());
+    new ManifestEmbeddedFileProvider(typeof(Program).Assembly);
 ```
 
 Des surcharges supplémentaires vous permettent de :
@@ -171,7 +171,7 @@ Les chemins de système de fichiers utilisent des modèles à caractères géné
 
 ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Des fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core :
 
-* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types `IFileProvider`.
+* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> expose la racine de [contenu](xref:fundamentals/index#content-root) et la [racine Web](xref:fundamentals/index#web-root) de l’application en tant que types de `IFileProvider`.
 * [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
 * [Razor](xref:mvc/views/razor) utilise des fournisseurs de fichiers pour localiser des pages et des vues.
 * Les outils .NET Core utilisent des fournisseurs de fichiers et des modèles d’utilisation des caractères génériques pour spécifier les fichiers qui doivent être publiés.
@@ -252,7 +252,7 @@ L’exemple d’application crée un `ManifestEmbeddedFileProvider` et transmet 
 
 ```csharp
 var manifestEmbeddedProvider = 
-    new ManifestEmbeddedFileProvider(Assembly.GetEntryAssembly());
+    new ManifestEmbeddedFileProvider(typeof(Program).Assembly);
 ```
 
 Des surcharges supplémentaires vous permettent de :
