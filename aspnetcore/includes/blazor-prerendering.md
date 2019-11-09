@@ -25,7 +25,6 @@ Pour différer les appels Interop JavaScript jusqu’à ce que la connexion avec
 Pour l’exemple de code précédent, fournissez une fonction JavaScript `setElementText` à l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissante webassembly) ou *pages/_Host. cshtml* (serveur éblouissant). La fonction est appelée avec `IJSRuntime.InvokeVoidAsync` et ne retourne pas de valeur :
 
 ```html
-<!--  -->
 <script>
   window.setElementText = (element, text) => element.innerText = text;
 </script>
