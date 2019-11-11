@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/05/2019
 uid: performance/memory
-ms.openlocfilehash: 8f6b47ecde6f265bfb9437234b89f11f7d235869
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 4c25c069aa2a6088c0549d786ecdd487ab7b9ea5
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73660016"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896946"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gestion de la mémoire et garbage collection (GC) dans ASP.NET Core
 
@@ -82,7 +82,7 @@ Exécutez MemoryLeak. La mémoire allouée augmente lentement jusqu’à ce qu�
 Le graphique affiche deux valeurs pour l’utilisation de la mémoire :
 
 - Allouée : quantité de mémoire occupée par les objets managés
-- Plage de travail : mémoire physique totale (RAM) utilisée par le processus. La plage de travail affichée correspond à la même valeur que celle que le gestionnaire des tâches peut afficher.
+- Plage de [travail](/windows/win32/memory/working-set): ensemble de pages dans l’espace d’adressage virtuel du processus qui résident actuellement dans la mémoire physique. La plage de travail affichée correspond à la même valeur que celle affichée par le gestionnaire des tâches.
 
 ### <a name="transient-objects"></a>Objets temporaires
 

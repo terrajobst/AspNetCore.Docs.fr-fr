@@ -5,14 +5,14 @@ description: Utilisez l’identité avec une seule application de page hébergé
 monikerRange: '>= aspnetcore-3.0'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 10/29/2019
+ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 5ed5fb61e5989b291523332c6a2ec332f9ca0f6b
-ms.sourcegitcommit: e5d4768aaf85703effb4557a520d681af8284e26
+ms.openlocfilehash: f58d92634ce1ef6110533d56c40b7520dda90514
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73616621"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897047"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
@@ -182,6 +182,30 @@ services.Configure<JwtBearerOptions>(
         ...
     });
 ```
+
+Le gestionnaire JWT de l’API déclenche des événements qui permettent de contrôler le processus d’authentification à l’aide de `JwtBearerEvents`. Pour assurer la prise en charge de l’autorisation d’API, `AddIdentityServerJwt` inscrit ses propres gestionnaires d’événements.
+
+Pour personnaliser la gestion d’un événement, encapsulez le gestionnaire d’événements existant avec une logique supplémentaire, le cas échéant. Exemple :
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
+    options =>
+    {
+        var onTokenValidated = options.Events.OnTokenValidated;       
+        
+        options.Events.OnTokenValidated = async context =>
+        {
+            await onTokenValidated(context);
+            ...
+        }
+    });
+```
+
+Dans le code précédent, le gestionnaire d’événements `OnTokenValidated` est remplacé par une implémentation personnalisée. Cette implémentation :
+
+1. Appelle l’implémentation d’origine fournie par la prise en charge de l’autorisation d’API.
+1. Exécutez sa propre logique personnalisée.
 
 ## <a name="protect-a-client-side-route-angular"></a>Protéger un itinéraire côté client (angulaire)
 

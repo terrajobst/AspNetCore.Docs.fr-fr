@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 09/28/2019
 uid: mvc/views/razor
-ms.openlocfilehash: 6f8835419dbf4c271617f57484c3408e0af30617
-ms.sourcegitcommit: f62014bb558ff6f8fdaef2e96cb05986e216aacd
+ms.openlocfilehash: d8d686c23ea61950947798f213c9846058f1812e
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2019
-ms.locfileid: "71592330"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73896896"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -389,7 +389,7 @@ Razor permet de verrouiller les sections critiques par des instructions lock :
 }
 ```
 
-### <a name="comments"></a>Commentaires
+### <a name="comments"></a>Comments
 
 Razor prend en charge les commentaires HTML et C# :
 
@@ -455,7 +455,7 @@ La directive `@attribute` permet d’ajouter l’attribut donné à la classe de
 
 ::: moniker range=">= aspnetcore-3.0"
 
-### <a name="code"></a>\@code
+### <a name="code"></a>code \@
 
 *Ce scénario s’applique uniquement aux composants Razor (.razor).*
 
@@ -487,7 +487,7 @@ Dans les [composants Razor](xref:blazor/components), utilisez `@code` sur `@func
 
 ::: moniker-end
 
-Exemple :
+Exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -593,7 +593,7 @@ Si « rick@contoso.com » est passé au modèle, la vue génère le balisage HTM
 
 ### <a name="inject"></a>\@inject
 
-La directive `@inject` permet à la page Razor d’injecter un service dans une vue à partir du [conteneur de services](xref:fundamentals/dependency-injection). Pour plus d’informations, consultez [injection de dépendances dans les vues](xref:mvc/views/dependency-injection).
+La directive `@inject` permet à la page Razor d’injecter un service dans une vue à partir du [conteneur de services](xref:fundamentals/dependency-injection). Pour plus d’informations, consultez [Injection de dépendances dans les vues](xref:mvc/views/dependency-injection).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -676,7 +676,7 @@ Si le dossier *EvenMorePages* dans l’exemple précédent comprend un fichier d
 
 La directive `@page` a des effets différents selon le type du fichier dans lequel elle apparaît. La directive :
 
-* Dans un fichier *.cshtml*, indique que le fichier est une page Razor. Pour plus d'informations, consultez <xref:razor-pages/index>.
+* Dans un fichier *.cshtml*, indique que le fichier est une page Razor. Pour plus d’informations, consultez [itinéraires personnalisés](xref:razor-pages/index#custom-routes) et <xref:razor-pages/index>.
 * Spécifie qu’un composant Razor doit gérer les requêtes directement. Pour plus d'informations, consultez <xref:blazor/routing>.
 
 ::: moniker-end
@@ -743,7 +743,7 @@ Les références de composants (`@ref`) permettent de référencer une instance 
 
 *Ce scénario s’applique uniquement aux composants Razor (.razor).*
 
-La `@typeparam` directive déclare un paramètre de type générique pour la classe de composant générée. Pour plus d'informations, consultez <xref:blazor/components#generic-typed-components>.
+La directive `@typeparam` déclare un paramètre de type générique pour la classe de composant générée. Pour plus d'informations, consultez <xref:blazor/components#generic-typed-components>.
 
 ::: moniker-end
 
@@ -846,7 +846,7 @@ Sortie rendue :
 </ul>
 ```
 
-## <a name="tag-helpers"></a>Tag helpers
+## <a name="tag-helpers"></a>Tag Helpers
 
 *Ce scénario s’applique uniquement aux vues MVC et à Razor Pages (.cshtml).*
 
@@ -893,7 +893,7 @@ Les mots clés Razor C# doivent être précédés d’une double séquence d’�
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>Mots clés réservés non utilisés par Razor
 
-* class
+* classe
 
 ## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>Inspecter la classe C# Razor générée pour une vue
 

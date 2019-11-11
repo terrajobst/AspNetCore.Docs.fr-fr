@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 11/07/2019
 uid: security/authentication/certauth
-ms.openlocfilehash: 0db23c325f0b1f5a6500e3b2549db170e3df97c5
-ms.sourcegitcommit: 68d804d60e104c81fe77a87a9af70b5df2726f60
+ms.openlocfilehash: 0062bc0d7688ebcc67f8240da7166d89493f6639
+ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830714"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897033"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurer l’authentification par certificat dans ASP.NET Core
 
@@ -229,21 +229,35 @@ La méthode `AddCertificateForwarding` est utilisée pour spécifier :
 Dans Azure Web Apps, le certificat est transmis comme un en-tête de demande personnalisé nommé `X-ARR-ClientCert`. Pour l’utiliser, configurez le transfert de certificats dans `Startup.ConfigureServices`:
 
 ```csharp
-services.AddCertificateForwarding(options =>
+public void ConfigureServices(IServiceCollection services)
 {
-    options.CertificateHeader = "X-ARR-ClientCert";
-    options.HeaderConverter = (headerValue) =>
+    // ...
+    
+    services.AddCertificateForwarding(options =>
     {
-        X509Certificate2 clientCertificate = null;
-        if(!string.IsNullOrWhiteSpace(headerValue))
+        options.CertificateHeader = "X-ARR-ClientCert";
+        options.HeaderConverter = (headerValue) =>
         {
-            byte[] bytes = StringToByteArray(headerValue);
-            clientCertificate = new X509Certificate2(bytes);
-        }
+            X509Certificate2 clientCertificate = null;
+            if(!string.IsNullOrWhiteSpace(headerValue))
+            {
+                byte[] bytes = StringToByteArray(headerValue);
+                clientCertificate = new X509Certificate2(bytes);
+            }
 
-        return clientCertificate;
-    };
-});
+            return clientCertificate;
+        };
+    });
+}
+
+private static byte[] StringToByteArray(string hex)
+{
+    int NumberChars = hex.Length;
+    byte[] bytes = new byte[NumberChars / 2];
+    for (int i = 0; i < NumberChars; i += 2)
+        bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+    return bytes;
+}
 ```
 
 La méthode `Startup.Configure` ajoute ensuite l’intergiciel (middleware). `UseCertificateForwarding` est appelé avant les appels à `UseAuthentication` et `UseAuthorization`:
@@ -434,7 +448,7 @@ Get-ChildItem -Path cert:\localMachine\my\141594A0AE38CBBECED7AF680F7945CD51D8F2
 Export-Certificate -Cert cert:\localMachine\my\141594A0AE38CBBECED7AF680F7945CD51D8F28A -FilePath child_b_from_a_dev_damienbod.crt
 ```
 
-Lors de l’utilisation de certificats racine, intermédiaires ou enfants, les certificats peuvent être validés à l’aide de l’émetteur ou du sujet, le cas échéant.
+Lors de l’utilisation de certificats racine, intermédiaires ou enfants, les certificats peuvent être validés à l’aide de l’empreinte numérique ou PublicKey, si nécessaire.
 
 ```csharp
 using System.Collections.Generic;
