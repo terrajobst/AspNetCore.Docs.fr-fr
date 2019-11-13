@@ -1,53 +1,55 @@
 ---
-title: Redis fond de panier de montée d’ASP.NET Core SignalR
+title: Panier ReDim pour la montée en charge de ASP.NET Core SignalR
 author: bradygaster
-description: Découvrez comment configurer un fond de panier de Redis pour activer la montée en puissance pour une application ASP.NET Core SignalR.
+description: Découvrez comment configurer un backplane ReDim pour permettre la montée en charge d’une application ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/redis-backplane
-ms.openlocfilehash: adf9bbce1353fd811a4044e173533f76bc4193de
-ms.sourcegitcommit: 4ef0362ef8b6e5426fc5af18f22734158fe587e1
+ms.openlocfilehash: 379d46fcaabb8eb0d04e521a5ad698229f947b7c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67152912"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963919"
 ---
-# <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Configurer un fond de panier de Redis pour ASP.NET Core SignalR scale-out
+# <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>Configurer un backplane ReDim pour ASP.NET Core SignalR montée en puissance parallèle
 
-Par [Andrew Stanton-Nurse](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster), et [Nowak](https://github.com/tdykstra),
+Par [Andrew Stanton-infirmière](https://twitter.com/anurse), [Brady Gaster](https://twitter.com/bradygaster)et [Tom Dykstra](https://github.com/tdykstra),
 
-Cet article explique les aspects de SignalR spécifiques de la configuration d’un [Redis](https://redis.io/) serveur à utiliser pour la montée en puissance une application ASP.NET Core SignalR.
+Cet article explique SignalRaspects spécifiques de la configuration d’un serveur [redims](https://redis.io/) à utiliser pour la montée en charge d’une application ASP.net Core SignalR.
 
-## <a name="set-up-a-redis-backplane"></a>Configurer un fond de panier de Redis
+## <a name="set-up-a-redis-backplane"></a>Configurer un backplane ReDim
 
-* Déployer un serveur Redis.
+* Déployez un serveur ReDim.
 
   > [!IMPORTANT] 
-  > À des fins de production, un fond de panier de Redis est recommandé uniquement lorsqu’elle s’exécute dans le même centre de données que l’application de SignalR. Sinon, la latence du réseau dégrade les performances. Si votre application SignalR est en cours d’exécution dans le cloud Azure, nous recommandons le Service Azure SignalR au lieu de fond de panier de Redis. Vous pouvez utiliser le Service de Cache Redis Azure pour le développement et les environnements de test.
+  > Pour une utilisation en production, un backplane ReDim est recommandé uniquement lorsqu’il s’exécute dans le même centre de données que l’application SignalR. Dans le cas contraire, la latence du réseau dégrade les performances. Si votre application SignalR s’exécute dans le Cloud Azure, nous vous recommandons Azure SignalR service au lieu d’un backplane ReDim. Vous pouvez utiliser le Cache Service Azure Redims pour les environnements de développement et de test.
 
   Pour plus d'informations, reportez-vous aux ressources suivantes :
 
   * <xref:signalr/scale>
-  * [Documentation redis](https://redis.io/)
-  * [Documentation Cache Redis Azure](https://docs.microsoft.com/azure/redis-cache/)
+  * [Documentation redims](https://redis.io/)
+  * [Documentation du cache Redims Azure](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
-* Dans l’application SignalR, installer le `Microsoft.AspNetCore.SignalR.Redis` package NuGet. (Il existe également un `Microsoft.AspNetCore.SignalR.StackExchangeRedis` du package, mais qu’une est pour ASP.NET Core 2.2 et versions ultérieures.)
+* Dans l’application SignalR, installez le package NuGet `Microsoft.AspNetCore.SignalR.Redis`. (Il existe également un package `Microsoft.AspNetCore.SignalR.StackExchangeRedis`, mais celui-ci est destiné à ASP.NET Core 2,2 et versions ultérieures.)
 
-* Dans le `Startup.ConfigureServices` méthode, appelez `AddRedis` après `AddSignalR`:
+* Dans la méthode `Startup.ConfigureServices`, appelez `AddRedis` après `AddSignalR`:
 
   ```csharp
   services.AddSignalR().AddRedis("<your_Redis_connection_string>");
   ```
 
-* Configurer les options en fonction des besoins :
+* Configurez les options selon vos besoins :
  
-  La plupart des options peuvent être définies dans la chaîne de connexion ou dans le [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) objet. Options spécifiées dans `ConfigurationOptions` remplacent celles définies dans la chaîne de connexion.
+  La plupart des options peuvent être définies dans la chaîne de connexion ou dans l’objet [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Les options spécifiées dans `ConfigurationOptions` substituent celles définies dans la chaîne de connexion.
 
-  L’exemple suivant montre comment définir les options dans la `ConfigurationOptions` objet. Cet exemple ajoute un préfixe de canal afin que plusieurs applications peuvent partager la même instance Redis, comme expliqué dans l’étape suivante.
+  L’exemple suivant montre comment définir les options de l’objet `ConfigurationOptions`. Cet exemple ajoute un préfixe de canal afin que plusieurs applications puissent partager la même instance de ReDim, comme expliqué à l’étape suivante.
 
   ```csharp
   services.AddSignalR()
@@ -62,22 +64,22 @@ Cet article explique les aspects de SignalR spécifiques de la configuration d�
 
 ::: moniker range="> aspnetcore-2.1"
 
-* Dans l’application SignalR, installez un des packages NuGet suivants :
+* Dans l’application SignalR, installez l’un des packages NuGet suivants :
 
-  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis` -Dépend de StackExchange.Redis 2.X.X. Il s’agit du package recommandé pour ASP.NET Core 2.2 et versions ultérieures.
-  * `Microsoft.AspNetCore.SignalR.Redis` -Dépend de StackExchange.Redis 1.X.X. Ce package n’est pas disponibles dans ASP.NET Core 3.0.
+  * `Microsoft.AspNetCore.SignalR.StackExchangeRedis`-dépend de StackExchange. Redims 2. X.X. Il s’agit du package recommandé pour ASP.NET Core 2,2 et versions ultérieures.
+  * `Microsoft.AspNetCore.SignalR.Redis`-dépend de StackExchange. Redims 1. X.X. Ce package ne sera pas expédié dans ASP.NET Core 3,0.
 
-* Dans le `Startup.ConfigureServices` méthode, appelez `AddStackExchangeRedis` après `AddSignalR`:
+* Dans la méthode `Startup.ConfigureServices`, appelez `AddStackExchangeRedis` après `AddSignalR`:
 
   ```csharp
   services.AddSignalR().AddStackExchangeRedis("<your_Redis_connection_string>");
   ```
 
-* Configurer les options en fonction des besoins :
+* Configurez les options selon vos besoins :
  
-  La plupart des options peuvent être définies dans la chaîne de connexion ou dans le [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) objet. Options spécifiées dans `ConfigurationOptions` remplacent celles définies dans la chaîne de connexion.
+  La plupart des options peuvent être définies dans la chaîne de connexion ou dans l’objet [ConfigurationOptions](https://stackexchange.github.io/StackExchange.Redis/Configuration#configuration-options) . Les options spécifiées dans `ConfigurationOptions` substituent celles définies dans la chaîne de connexion.
 
-  L’exemple suivant montre comment définir les options dans la `ConfigurationOptions` objet. Cet exemple ajoute un préfixe de canal afin que plusieurs applications peuvent partager la même instance Redis, comme expliqué dans l’étape suivante.
+  L’exemple suivant montre comment définir les options de l’objet `ConfigurationOptions`. Cet exemple ajoute un préfixe de canal afin que plusieurs applications puissent partager la même instance de ReDim, comme expliqué à l’étape suivante.
 
   ```csharp
   services.AddSignalR()
@@ -88,36 +90,36 @@ Cet article explique les aspects de SignalR spécifiques de la configuration d�
 
   Dans le code précédent, `options.Configuration` est initialisé avec tout ce qui a été spécifié dans la chaîne de connexion.
 
-  Pour plus d’informations sur les options de Redis, consultez le [documentation StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration.html).
+  Pour plus d’informations sur les options Redims, consultez la [documentation sur StackExchange](https://stackexchange.github.io/StackExchange.Redis/Configuration.html).
 
 ::: moniker-end
 
-* Si vous utilisez un serveur Redis pour plusieurs applications SignalR, utiliser un préfixe de canal différent pour chaque application SignalR.
+* Si vous utilisez un serveur Redims pour plusieurs applications de SignalR, utilisez un préfixe de canal différent pour chaque application SignalR.
 
-  Définir un préfixe de canal isole une seule application SignalR à partir d’autres personnes qui utilisent des préfixes de canal différent. Si vous n’affectez pas des préfixes différents, un message envoyé à partir d’une application à l’ensemble de ses propres clients passera à tous les clients de toutes les applications qui utilisent le serveur Redis comme un fond de panier.
+  La définition d’un préfixe de canal isole une SignalR application des autres qui utilisent des préfixes de canal différents. Si vous n’assignez pas de préfixes différents, un message envoyé à partir d’une application à tous ses propres clients est envoyé à tous les clients de toutes les applications qui utilisent le serveur ReDim comme fond de panier.
 
-* Configurer votre batterie de serveurs équilibrage du serveur logiciel des sessions rémanentes. Voici quelques exemples de documentation sur la marche à suivre :
+* Configurez le logiciel d’équilibrage de charge de votre batterie de serveurs pour les sessions rémanentes. Voici quelques exemples de documentation sur la manière de procéder :
 
   * [IIS](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)
   * [HAProxy](https://www.haproxy.com/blog/load-balancing-affinity-persistence-sticky-sessions-what-you-need-to-know/)
   * [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#sticky)
   * [pfSense](https://www.netgate.com/docs/pfsense/loadbalancing/inbound-load-balancing.html#sticky-connections)
 
-## <a name="redis-server-errors"></a>Redis des erreurs de serveur
+## <a name="redis-server-errors"></a>Erreurs du serveur ReDim
 
-Lorsqu’un serveur Redis tombe en panne, SignalR lève des exceptions qui indiquent les messages ne seront pas remis. Certains messages d’exception standard :
+Lorsqu’un serveur ReDim tombe en panne, SignalR lève des exceptions qui indiquent que les messages ne sont pas remis. Messages d’exception typiques :
 
-* *Échec d’écriture de messages*
-* *Échec d’appel de méthode de concentrateur 'Nom_méthode'*
-* *Échec de la connexion à Redis*
+* *Échec de l’écriture du message*
+* *Échec de l’appel de la méthode de concentrateur’MethodName'*
+* *Échec de la connexion aux ReDim*
 
-SignalR ne mémoires tampons de messages à envoyer les lorsque le serveur redevient opérationnel. Tous les messages envoyés quand le serveur Redis est en panne sont perdues.
+SignalR ne met pas en mémoire tampon les messages pour les envoyer lorsque le serveur est sauvegardé. Tous les messages envoyés pendant que le serveur Redims est défaillant sont perdus.
 
-SignalR se reconnecte automatiquement lorsque le serveur Redis est à nouveau disponible.
+SignalR se reconnecte automatiquement lorsque le serveur Redims est à nouveau disponible.
 
 ### <a name="custom-behavior-for-connection-failures"></a>Comportement personnalisé pour les échecs de connexion
 
-Voici un exemple qui montre comment gérer les événements d’échec de connexion Redis.
+Voici un exemple qui montre comment gérer les événements d’échec de connexion Redims.
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -184,15 +186,15 @@ services.AddSignalR()
 
 ::: moniker-end
 
-## <a name="redis-clustering"></a>Le Clustering redis
+## <a name="redis-clustering"></a>Clusters ReDim
 
-[Redis Clustering](https://redis.io/topics/cluster-spec) est une méthode pour la haute disponibilité à l’aide de plusieurs serveurs Redis. Clustering n’est pas officiellement pris en charge, mais elle peut fonctionner.
+Le [clustering redims](https://redis.io/topics/cluster-spec) est une méthode permettant d’obtenir une haute disponibilité à l’aide de plusieurs serveurs ReDim. Le clustering n’est pas officiellement pris en charge, mais il peut fonctionner.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * <xref:signalr/scale>
-* [Documentation redis](https://redis.io/documentation)
-* [Documentation de StackExchange Redis](https://stackexchange.github.io/StackExchange.Redis/)
-* [Documentation Cache Redis Azure](https://docs.microsoft.com/azure/redis-cache/)
+* [Documentation redims](https://redis.io/documentation)
+* [Documentation sur StackExchange ReDim](https://stackexchange.github.io/StackExchange.Redis/)
+* [Documentation du cache Redims Azure](https://docs.microsoft.com/azure/redis-cache/)

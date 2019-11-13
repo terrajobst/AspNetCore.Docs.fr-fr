@@ -1,39 +1,41 @@
 ---
-title: ASP.NET Core la gestion de l’État éblouissant
+title: Gestion de l’état de la ASP.NET Core Blazor
 author: guardrex
-description: Découvrez comment rendre l’état persistant dans les applications serveur éblouissantes.
+description: Découvrez comment rendre l’état persistant dans les applications Blazor Server.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 67042fa9b86125fe95d877dbce246abeb6f35dd0
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 408d44a3f2e81a165e8b786c6d2efc9329082e30
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391277"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962825"
 ---
-# <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core la gestion de l’État éblouissant
+# <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Le serveur éblouissant est un Framework d’applications avec état. La plupart du temps, l’application maintient une connexion continue au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
+Blazor Server est une infrastructure d’application avec état. La plupart du temps, l’application maintient une connexion continue au serveur. L’état de l’utilisateur est conservé dans la mémoire du serveur dans un *circuit*. 
 
 Voici des exemples d’État détenu pour le circuit d’un utilisateur :
 
-* La hiérarchie de l’interface utilisateur du rendu @ no__t-0the des instances de composant et leur sortie de rendu la plus récente.
+* L’interface utilisateur rendue&mdash;la hiérarchie des instances de composant et leur sortie de rendu la plus récente.
 * Valeurs de tous les champs et propriétés des instances de composant.
 * Données conservées dans des instances de service d' [injection de dépendance (di)](xref:fundamentals/dependency-injection) dont l’étendue correspond au circuit.
 
 > [!NOTE]
-> Cet article traite de la persistance de l’État dans les applications serveur éblouissantes. Les applications webassembly éblouissantes peuvent tirer parti de [la persistance de l’État côté client dans le navigateur,](#client-side-in-the-browser) mais elles nécessitent des solutions personnalisées ou des packages tiers au-delà du cadre de cet article.
+> Cet article traite de la persistance de l’État dans les applications Blazor Server. Blazor applications webassembly peuvent tirer parti de [la persistance de l’État côté client dans le navigateur,](#client-side-in-the-browser) mais elles nécessitent des solutions personnalisées ou des packages tiers au-delà du cadre de cet article.
 
-## <a name="blazor-circuits"></a>Circuits éblouissants
+## <a name="opno-locblazor-circuits"></a>circuits Blazor
 
-Si un utilisateur subit une perte de connexion réseau temporaire, éblouissant tente de reconnecter l’utilisateur à son circuit d’origine afin qu’il puisse continuer à utiliser l’application. Toutefois, la reconnexion d’un utilisateur à son circuit d’origine dans la mémoire du serveur n’est pas toujours possible :
+Si un utilisateur subit une perte de connexion réseau temporaire, Blazor tente de reconnecter l’utilisateur à son circuit d’origine afin qu’il puisse continuer à utiliser l’application. Toutefois, la reconnexion d’un utilisateur à son circuit d’origine dans la mémoire du serveur n’est pas toujours possible :
 
 * Le serveur ne peut pas conserver un circuit déconnecté de façon infinie. Le serveur doit libérer un circuit déconnecté après un délai d’attente ou lorsque le serveur subit une sollicitation de la mémoire.
 * Dans les environnements de déploiement multiserveur avec équilibrage de charge, toutes les demandes de traitement de serveur peuvent devenir indisponibles à un moment donné. Les serveurs individuels peuvent échouer ou être automatiquement supprimés lorsqu’il n’est plus nécessaire de gérer le volume global de demandes. Le serveur d’origine n’est peut-être pas disponible lorsque l’utilisateur tente de se reconnecter.
@@ -50,7 +52,7 @@ Dans certains scénarios, il est souhaitable de conserver l’état entre les ci
 
 En règle générale, la conservation de l’état entre les circuits s’applique aux scénarios où les utilisateurs créent activement des données, et non simplement à la lecture des données qui existent déjà.
 
-Pour conserver l’État au-delà d’un seul circuit, *ne stockez pas simplement les données dans la mémoire du serveur*. L’application doit conserver les données dans un autre emplacement de stockage. La persistance de l’État n’est pas automatique @ no__t-0you doit prendre des mesures lors du développement de l’application pour implémenter la persistance des données avec état.
+Pour conserver l’État au-delà d’un seul circuit, *ne stockez pas simplement les données dans la mémoire du serveur*. L’application doit conserver les données dans un autre emplacement de stockage. La persistance de l’État n’est pas automatique&mdash;vous devez prendre des mesures lors du développement de l’application pour implémenter la persistance des données avec état.
 
 La persistance des données est généralement requise uniquement pour l’état de valeur élevée que les utilisateurs ont consacrés à la création. Dans les exemples suivants, l’état persistant fait gagner du temps ou contribue à des activités commerciales :
 
@@ -64,7 +66,7 @@ En règle générale, il n’est pas nécessaire de conserver un État facile à
 
 ## <a name="where-to-persist-state"></a>Emplacement de conservation de l’État
 
-Trois emplacements communs existent pour la conservation de l’État dans une application serveur éblouissante. Chaque approche est la mieux adaptée à différents scénarios et présente des inconvénients différents :
+Trois emplacements communs existent pour la conservation de l’État dans une application Blazor Server. Chaque approche est la mieux adaptée à différents scénarios et présente des inconvénients différents :
 
 * [Côté serveur dans une base de données](#server-side-in-a-database)
 * [URL](#url)
@@ -93,7 +95,7 @@ Pour les données temporaires représentant l’état de navigation, modélisez 
 Le contenu de la barre d’adresse du navigateur est conservé :
 
 * Si l’utilisateur recharge manuellement la page.
-* Si le serveur Web devient indisponible, @ no__t-0the utilisateur est obligé de recharger la page pour se connecter à un autre serveur.
+* Si le serveur Web devient indisponible&mdash;l’utilisateur est obligé de recharger la page pour se connecter à un autre serveur.
 
 Pour plus d’informations sur la définition de modèles d’URL avec la directive `@page`, consultez <xref:blazor/routing>.
 
@@ -102,7 +104,7 @@ Pour plus d’informations sur la définition de modèles d’URL avec la direct
 Pour les données temporaires que l’utilisateur crée activement, un magasin de stockage commun est les collections `localStorage` et `sessionStorage` du navigateur. L’application n’est pas requise pour gérer ou effacer l’État stocké si le circuit est abandonné, ce qui constitue un avantage par rapport au stockage côté serveur.
 
 > [!NOTE]
-> « Côté client » dans cette section fait référence aux scénarios côté client dans le navigateur, et non au [modèle d’hébergement de Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly). `localStorage` et `sessionStorage` peuvent être utilisés dans les applications webassembly éblouissantes, mais uniquement en écrivant du code personnalisé ou à l’aide d’un package tiers.
+> « Côté client » dans cette section fait référence aux scénarios côté client dans le navigateur, et non au [Blazor modèle d’hébergement Webassembly](xref:blazor/hosting-models#blazor-webassembly). `localStorage` et `sessionStorage` peuvent être utilisés dans Blazor applications webassembly, mais uniquement en écrivant du code personnalisé ou à l’aide d’un package tiers.
 
 `localStorage` et `sessionStorage` diffèrent comme suit :
 
@@ -120,7 +122,7 @@ Avertissements relatifs à l’utilisation du stockage du navigateur :
 
 * À l’instar de l’utilisation d’une base de données côté serveur, le chargement et l’enregistrement des données sont asynchrones.
 * Contrairement à une base de données côté serveur, le stockage n’est pas disponible pendant le prérendu, car la page demandée n’existe pas dans le navigateur pendant l’étape de prérendu.
-* Le stockage de quelques kilo-octets de données est raisonnable à conserver pour les applications serveur éblouissantes. Au-delà de quelques kilo-octets, vous devez prendre en compte les implications en termes de performances, car les données sont chargées et enregistrées sur le réseau.
+* Le stockage de quelques kilo-octets de données est raisonnable à conserver pour les applications Blazor Server. Au-delà de quelques kilo-octets, vous devez prendre en compte les implications en termes de performances, car les données sont chargées et enregistrées sur le réseau.
 * Les utilisateurs peuvent afficher ou altérer les données. La [protection des données](xref:security/data-protection/introduction) ASP.net Core peut atténuer le risque.
 
 ## <a name="third-party-browser-storage-solutions"></a>Solutions de stockage de navigateur tiers
@@ -140,7 +142,7 @@ Par exemple, un package NuGet qui fournit la [protection des données](xref:secu
 
 Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
 
-1. Dans le projet d’application de serveur éblouissant, ajoutez une référence de package à [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
+1. Dans le projet d’application Blazor Server, ajoutez une référence de package à [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
 1. Dans le code HTML de niveau supérieur (par exemple, dans le fichier *pages/_Host. cshtml* dans le modèle de projet par défaut), ajoutez la balise `<script>` suivante :
 
    ```html
@@ -181,7 +183,7 @@ private async Task IncrementCount()
 
 Dans les applications plus volumineuses et plus réalistes, le stockage de champs individuels est un scénario peu probable. Les applications sont plus susceptibles de stocker des objets de modèle entiers qui incluent un État complexe. `ProtectedSessionStore` sérialise et désérialise automatiquement les données JSON.
 
-Dans l’exemple de code précédent, les données `currentCount` sont stockées en tant que `sessionStorage['count']` dans le navigateur de l’utilisateur. Les données ne sont pas stockées en texte clair mais sont protégées à l’aide de la [protection des données](xref:security/data-protection/introduction)de ASP.net core. Les données chiffrées peuvent être consultées si `sessionStorage['count']` est évaluée dans la console de développement du navigateur.
+Dans l’exemple de code précédent, les données de `currentCount` sont stockées en tant que `sessionStorage['count']` dans le navigateur de l’utilisateur. Les données ne sont pas stockées en texte clair mais sont protégées à l’aide de la [protection des données](xref:security/data-protection/introduction)de ASP.net core. Les données chiffrées peuvent être consultées si `sessionStorage['count']` est évaluée dans la console de développement du navigateur.
 
 Pour récupérer les données `currentCount` si l’utilisateur revient ultérieurement au composant `Counter` (y compris s’il s’agit d’un circuit entièrement nouveau), utilisez `ProtectedSessionStore.GetAsync` :
 

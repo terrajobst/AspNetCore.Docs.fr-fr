@@ -1,39 +1,41 @@
 ---
-title: Appeler une API Web à partir de ASP.NET Core éblouissant
+title: Appeler une API Web à partir de ASP.NET Core Blazor
 author: guardrex
-description: Découvrez comment appeler une API Web à partir d’une application éblouissant à l’aide des applications auxiliaires JSON, y compris la création de demandes de partage des ressources Cross-Origin (CORS).
+description: Découvrez comment appeler une API Web à partir d’une application Blazor à l’aide des applications auxiliaires JSON, y compris la création de demandes de partage des ressources Cross-Origin (CORS).
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: b08fdf5c2f9a523314b1744a33087eb64fa4c14a
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: b5c57317005d0072410542bad322458b1cb3f5ee
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390826"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962727"
 ---
-# <a name="call-a-web-api-from-aspnet-core-blazor"></a>Appeler une API Web à partir de ASP.NET Core éblouissant
+# <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
 Par [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)et [Juan de la Cruz](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Les applications webassembly éblouissant appellent des API Web à l’aide d’un service `HttpClient` préconfiguré. Composez des demandes, qui peuvent inclure des options de l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, à l’aide des applications auxiliaires de l’antivirus de l’aide de éblouissant ou de <xref:System.Net.Http.HttpRequestMessage>.
+Blazor les applications webassembly appellent des API Web à l’aide d’un service `HttpClient` préconfiguré. Composez des requêtes, qui peuvent inclure des options de l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript, à l’aide de Blazor des applications d’assistance JSON ou avec <xref:System.Net.Http.HttpRequestMessage>.
 
-Les applications serveur éblouissantes appellent des API Web à l’aide d’instances <xref:System.Net.Http.HttpClient> généralement créées à l’aide de <xref:System.Net.Http.IHttpClientFactory>. Pour plus d'informations, consultez <xref:fundamentals/http-requests>.
+les applications Blazor Server appellent des API Web à l’aide d’instances <xref:System.Net.Http.HttpClient> généralement créées à l’aide de <xref:System.Net.Http.IHttpClientFactory>. Pour plus d'informations, consultez <xref:fundamentals/http-requests>.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Pour obtenir des exemples de webassembly éblouissant, consultez les composants suivants dans l’exemple d’application :
+Pour obtenir des exemples d' Blazor webassembly, consultez les composants suivants dans l’exemple d’application :
 
 * Appeler l’API Web (*pages/CallWebAPI. Razor*)
 * Testeur de requêtes HTTP (*composants/HTTPRequestTester. Razor*)
 
 ## <a name="httpclient-and-json-helpers"></a>Applications auxiliaires HttpClient et JSON
 
-Dans les applications webassembly éblouissantes, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour effectuer des demandes auprès du serveur d’origine. Pour utiliser les applications d’assistance JSON `HttpClient`, ajoutez une référence de package à `Microsoft.AspNetCore.Blazor.HttpClient`. les `HttpClient` et les applications auxiliaires JSON servent également à appeler des points de terminaison d’API Web tiers. `HttpClient` est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
+Dans Blazor applications webassembly, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour faire des demandes au serveur d’origine. Pour utiliser `HttpClient` les applications auxiliaires JSON, ajoutez une référence de package à `Microsoft.AspNetCore.Blazor.HttpClient`. les `HttpClient` et les applications auxiliaires JSON servent également à appeler des points de terminaison d’API Web tiers. `HttpClient` est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
 
 L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injectez une instance `HttpClient` à l’aide de la directive `@inject` :
 
@@ -99,7 +101,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
 * `PutJsonAsync` &ndash; envoie une requête HTTP PUT, y compris du contenu encodé JSON.
 
-  Dans le code suivant, les valeurs `_editItem` pour les `Name` et `IsCompleted` sont fournies par les éléments dépendants du composant. Le @no__t de l’élément est défini lorsque l’élément est sélectionné dans une autre partie de l’interface utilisateur et que `EditItem` est appelé. La méthode `SaveItem` est déclenchée en sélectionnant l’élément Save `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, `_editItem` valeurs pour `Name` et `IsCompleted` sont fournies par les éléments dépendants du composant. Le `Id` de l’élément est défini lorsque l’élément est sélectionné dans une autre partie de l’interface utilisateur et `EditItem` est appelé. La méthode `SaveItem` est déclenchée en sélectionnant l’élément Save `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -153,7 +155,7 @@ Pour permettre à d’autres sites d’effectuer des demandes de partage de ress
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>HttpClient et HttpRequestMessage avec les options de demande d’API Fetch
 
-Quand vous exécutez sur webassembly dans une application de webassembly éblouissante, utilisez [httpclient](xref:fundamentals/http-requests) et <xref:System.Net.Http.HttpRequestMessage> pour personnaliser les demandes. Par exemple, vous pouvez spécifier l’URI de demande, la méthode HTTP et tous les en-têtes de demande souhaités.
+Quand vous exécutez sur webassembly dans une application Blazor webassembly, utilisez [httpclient](xref:fundamentals/http-requests) et <xref:System.Net.Http.HttpRequestMessage> pour personnaliser les demandes. Par exemple, vous pouvez spécifier l’URI de demande, la méthode HTTP et tous les en-têtes de demande souhaités.
 
 Fournissez des options de demande à l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript sous-jacente à l’aide de la propriété `WebAssemblyHttpMessageHandler.FetchArgs` sur la demande. Comme indiqué dans l’exemple suivant, la propriété `credentials` est définie sur l’une des valeurs suivantes :
 

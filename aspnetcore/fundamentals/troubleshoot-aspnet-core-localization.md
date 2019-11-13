@@ -5,12 +5,12 @@ description: Découvrez comment diagnostiquer les problèmes liés à la localis
 ms.author: riande
 ms.date: 01/24/2019
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: 98e06a92af0b6c045095ac803196bf4b1f25e5c5
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: 229e274a22e170d984a16d3b1ee64ebc38c4ef77
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289012"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963333"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Résoudre les problèmes liés à la localisation ASP.NET Core
 
@@ -50,7 +50,7 @@ Les causes courantes de ressources introuvables sont notamment les suivantes :
 - La ressource est manquante dans le `resx` pour certaines langues, mais elle existe dans d’autres.
 - Si le problème persiste, vérifiez les messages du journal de localisation (qui se trouvent au niveau du journal `Debug`) pour obtenir plus de détails sur les ressources manquantes.
 
-_**Conseil :** Quand vous utilisez `CookieRequestCultureProvider`, vérifiez que des guillemets simples ne sont pas utilisés avec les cultures à l’intérieur de la valeur des cookies de localisation. Par exemple, `c='en-UK'|uic='en-US'` est une valeur de cookie non valide, tandis que `c=en-UK|uic=en-US` est valide._
+_**Indicateur :** Lorsque vous utilisez `CookieRequestCultureProvider`, vérifiez que les guillemets simples ne sont pas utilisés avec les cultures à l’intérieur de la valeur du cookie de localisation. Par exemple, `c='en-UK'|uic='en-US'` est une valeur de cookie non valide, tandis que `c=en-UK|uic=en-US` est un valide._
 
 ## <a name="resources--class-libraries-issues"></a>Problèmes liés aux ressources et aux bibliothèques de classes
 
@@ -100,6 +100,9 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 ## <a name="root-namespace-issues"></a>Problèmes liés à l’espace de noms racine
 
 Si l’espace de noms racine d’un assembly est différent du nom de l’assembly, la localisation ne fonctionne pas par défaut. Pour éviter ce problème, utilisez [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1), qui est décrit en détail [ici](xref:fundamentals/localization?view=aspnetcore-2.2#resource-file-naming).
+
+> [!WARNING]
+> Cela peut se produire lorsque le nom d’un projet n’est pas un identificateur .NET valide. Par exemple `my-project-name.csproj` utilise l’espace de noms racine `my_project_name` et le nom de l’assembly `my-project-name` conduisant à cette erreur. 
 
 ## <a name="resources--build-action"></a>Ressources et action de génération
 

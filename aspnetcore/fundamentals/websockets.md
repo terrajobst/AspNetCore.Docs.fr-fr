@@ -5,14 +5,16 @@ description: Découvrez comment commencer à utiliser les WebSockets dans ASP.NE
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/10/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: 098e6826d6f7114baceb9578dc6d9883eb83f0aa
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: fc07d572116f8eea2b30ea6cf80324e5c66f994c
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589708"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963171"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -22,11 +24,11 @@ Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [W
 
 [Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). [Comment exécuter](#sample-app).
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
+[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités Web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
 
-Pour la plupart des applications, nous recommandons SignalR sur des WebSockets bruts. SignalR fournit un transport de secours pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. De plus, dans la plupart des scénarios, SignalR ne présente aucun inconvénient majeur concernant le niveau de performance par rapport à l’utilisation de WebSockets bruts.
+Pour la plupart des applications, nous vous recommandons d' SignalR sur des WebSockets bruts. SignalR fournit le secours de transport pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. Et dans la plupart des scénarios, SignalR n’a pas d’inconvénient majeur en matière de performances par rapport à l’utilisation de WebSockets bruts.
 
 ## <a name="prerequisites"></a>Configuration requise
 

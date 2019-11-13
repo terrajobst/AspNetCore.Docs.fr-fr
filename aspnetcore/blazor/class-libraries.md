@@ -1,18 +1,20 @@
 ---
 title: Bibliothèques de classes des composants Razor ASP.NET Core
 author: guardrex
-description: Découvrez comment les composants peuvent être inclus dans des applications éblouissantes à partir d’une bibliothèque de composants externes.
+description: Découvrez comment les composants peuvent être inclus dans Blazor applications à partir d’une bibliothèque de composants externes.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/23/2019
+no-loc:
+- Blazor
 uid: blazor/class-libraries
-ms.openlocfilehash: 2e042b43c6db24e0ecac727be100575fe1275e17
-ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
+ms.openlocfilehash: d4cc4124c9dc28ed6da0923b919919df4965f89f
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71999776"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962707"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Bibliothèques de classes des composants Razor ASP.NET Core
 
@@ -28,20 +30,20 @@ Tout comme les composants sont des types .NET standard, les composants fournis p
 
 ## <a name="create-an-rcl"></a>Créer un RCL
 
-Suivez les instructions de l’article <xref:blazor/get-started> pour configurer votre environnement pour éblouissant.
+Suivez les instructions de l’article <xref:blazor/get-started> pour configurer votre environnement pour la Blazor.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Créer un nouveau projet.
 1. Sélectionnez **bibliothèque de classes Razor**. Sélectionnez **Suivant**.
 1. Dans la boîte de dialogue **créer une nouvelle bibliothèque de classes Razor** , sélectionnez **créer**.
-1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom de projet `MyComponentLib1`. Sélectionnez **Créer**.
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom du projet `MyComponentLib1`. Sélectionnez **Créer**.
 1. Ajouter RCL à une solution :
-   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter**un  > **projet existant**.
+   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **ajouter** > **projet existant**.
    1. Accédez au fichier projet de RCL.
    1. Sélectionnez le fichier projet de RCL ( *. csproj*).
 1. Ajoutez une référence à l’RCL à partir de l’application :
-   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **ajouter** > **référence**.
+   1. Cliquez avec le bouton droit sur le projet d’application. Sélectionnez **Ajouter** une **référence**de > .
    1. Sélectionnez le projet RCL. Sélectionnez **OK**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -65,7 +67,7 @@ Suivez les instructions de l’article <xref:blazor/get-started> pour configurer
 Pour utiliser des composants définis dans une bibliothèque dans un autre projet, utilisez l’une des approches suivantes :
 
 * Utilisez le nom de type complet avec l’espace de noms.
-* Utilisez la directive [\@using](xref:mvc/views/razor#using) de Razor. Des composants individuels peuvent être ajoutés par nom.
+* Utilisez le\@de Razor [à l’aide](xref:mvc/views/razor#using) de la directive. Des composants individuels peuvent être ajoutés par nom.
 
 Dans les exemples suivants, `MyComponentLib1` est une bibliothèque de composants contenant un composant `SalesReport`.
 
@@ -91,7 +93,7 @@ Welcome to your new app.
 <SalesReport />
 ```
 
-Incluez la directive `@using MyComponentLib1` dans le fichier *_Import. Razor* de niveau supérieur pour mettre les composants de la bibliothèque à la disposition d’un projet entier. Ajoutez la directive à un fichier *_Import. Razor* à n’importe quel niveau pour appliquer l’espace de noms à une seule page ou à un ensemble de pages dans un dossier.
+Incluez la directive `@using MyComponentLib1` dans le fichier *_Import. Razor* de niveau supérieur pour mettre les composants de la bibliothèque à la disposition d’un projet entier. Ajoutez la directive à un fichier *_Import. Razor* à tout niveau pour appliquer l’espace de noms à une seule page ou à un ensemble de pages dans un dossier.
 
 ## <a name="build-pack-and-ship-to-nuget"></a>Générer, empaqueter et envoyer à NuGet
 

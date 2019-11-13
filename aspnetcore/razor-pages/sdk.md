@@ -6,13 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 08/23/2019
+no-loc:
+- Blazor
 uid: razor-pages/sdk
-ms.openlocfilehash: 606d2bdca3fa4fb1c81df73ac697d2175c3ab633
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 2fbdf95d02d7918236981c7fee8ebcbedf5c55e1
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72334035"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963262"
 ---
 # <a name="aspnet-core-razor-sdk"></a>SDK Razor ASP.NET Core
 
@@ -20,11 +22,11 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Le [!INCLUDE[](~/includes/2.1-SDK.md)] comprend le kit de développement logiciel (SDK) MSBuild `Microsoft.NET.Sdk.Razor` (kit de développement logiciel (SDK). Le SDK Razor :
+Le [!INCLUDE[](~/includes/2.1-SDK.md)] comprend le kit de développement logiciel (SDK) `Microsoft.NET.Sdk.Razor` MSBuild. Le SDK Razor :
 
 ::: moniker range=">= aspnetcore-3.0"
 
-* Est requis pour générer, empaqueter et publier des projets contenant des fichiers [Razor](xref:mvc/views/razor) pour ASP.net Core projets basés sur MVC ou [éblouissants](xref:blazor/index) .
+* Est requis pour générer, empaqueter et publier des projets contenant des fichiers [Razor](xref:mvc/views/razor) pour ASP.net Core projets basés sur MVC ou [Blazor](xref:blazor/index) .
 * Comprend un ensemble de cibles, de propriétés et d’éléments prédéfinis qui permettent de personnaliser la compilation des fichiers Razor ( *. cshtml* ou *. Razor*).
 
 Le kit de développement logiciel (SDK) Razor comprend des éléments `Content` avec des attributs `Include` définis sur les modèles de globbing `**\*.cshtml` et `**\*.razor`. Les fichiers correspondants sont publiés.
@@ -50,7 +52,7 @@ La plupart des applications Web ne sont pas requises pour référencer explicite
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Pour utiliser le kit de développement logiciel (SDK) Razor afin de générer des bibliothèques de classes contenant des vues Razor ou des Razor Pages, nous vous recommandons de commencer par le modèle de projet Bibliothèque de classes Razor (RCL). Un RCL utilisé pour générer au minimum des fichiers éblouissants ( *. Razor*) requiert une référence au package [Microsoft. AspNetCore. Components](https://www.nuget.org/packages/Microsoft.AspNetCore.Components) . Un RCL qui est utilisé pour créer des vues ou des pages Razor (fichiers *. cshtml* ) nécessite au minimum le ciblage de `netcoreapp3.0` ou version ultérieure et a un `FrameworkReference` vers le [Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) dans son fichier projet.
+Pour utiliser le kit de développement logiciel (SDK) Razor afin de générer des bibliothèques de classes contenant des vues Razor ou des Razor Pages, nous vous recommandons de commencer par le modèle de projet Bibliothèque de classes Razor (RCL). Un RCL utilisé pour générer de façon minimale des fichiers Blazor ( *. Razor*) requiert une référence au package [Microsoft. AspNetCore. Components](https://www.nuget.org/packages/Microsoft.AspNetCore.Components) . Un RCL qui est utilisé pour créer des vues ou des pages Razor (fichiers *. cshtml* ) nécessite au minimum le ciblage de `netcoreapp3.0` ou version ultérieure et a un `FrameworkReference` vers le [Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app) dans son fichier projet.
 
 ::: moniker-end
 

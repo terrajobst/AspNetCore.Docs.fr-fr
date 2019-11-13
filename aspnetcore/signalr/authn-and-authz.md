@@ -1,30 +1,32 @@
 ---
-title: Authentification et autorisation dans ASP.NET Core Signalr
+title: Authentification et autorisation dans ASP.NET Core SignalR
 author: bradygaster
-description: Découvrez comment utiliser l’authentification et l’autorisation dans ASP.NET Core Signalr.
+description: Découvrez comment utiliser l’authentification et l’autorisation dans ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/17/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 258b6d92896d38b79116278abb7c70b6063e8131
-ms.sourcegitcommit: ce2bfb01f2cc7dd83f8a97da0689d232c71bcdc4
+ms.openlocfilehash: 5a1e15ef46a3f89af3fbd3d505e7bd340c46e672
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72531170"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963826"
 ---
-# <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Authentification et autorisation dans ASP.NET Core Signalr
+# <a name="authentication-and-authorization-in-aspnet-core-opno-locsignalr"></a>Authentification et autorisation dans ASP.NET Core SignalR
 
 Par [Andrew Stanton-infirmière](https://twitter.com/anurse)
 
 [Afficher ou télécharger l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
-## <a name="authenticate-users-connecting-to-a-signalr-hub"></a>Authentifier les utilisateurs se connectant à un concentrateur Signalr
+## <a name="authenticate-users-connecting-to-a-opno-locsignalr-hub"></a>Authentifier les utilisateurs se connectant à un hub SignalR
 
-Signalr peut être utilisé avec [l’authentification ASP.net Core](xref:security/authentication/identity) pour associer un utilisateur à chaque connexion. Dans un concentrateur, les données d’authentification sont accessibles à partir de la propriété [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . L’authentification permet au hub d’appeler des méthodes sur toutes les connexions associées à un utilisateur. Pour plus d’informations, consultez [gérer les utilisateurs et les groupes dans signalr](xref:signalr/groups). Plusieurs connexions peuvent être associées à un seul utilisateur.
+SignalR peut être utilisé avec [l’authentification ASP.net Core](xref:security/authentication/identity) pour associer un utilisateur à chaque connexion. Dans un concentrateur, les données d’authentification sont accessibles à partir de la propriété [`HubConnectionContext.User`](/dotnet/api/microsoft.aspnetcore.signalr.hubconnectioncontext.user) . L’authentification permet au hub d’appeler des méthodes sur toutes les connexions associées à un utilisateur. Pour plus d’informations, consultez [gérer les utilisateurs et les groupes dans SignalR](xref:signalr/groups). Plusieurs connexions peuvent être associées à un seul utilisateur.
 
-Voici un exemple de `Startup.Configure` qui utilise Signalr et l’authentification ASP.NET Core :
+Voici un exemple de `Startup.Configure` qui utilise l’authentification SignalR et ASP.NET Core :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -74,13 +76,13 @@ public void Configure(IApplicationBuilder app)
 ```
 
 > [!NOTE]
-> L’ordre dans lequel vous inscrivez Signalr et ASP.NET Core middleware d’authentification est important. Appelez toujours `UseAuthentication` avant `UseSignalR` afin que Signalr ait un utilisateur sur le `HttpContext`.
+> L’ordre dans lequel vous enregistrez le SignalR et ASP.NET Core l’intergiciel (middleware) d’authentification est important. Appelez toujours `UseAuthentication` avant `UseSignalR` afin que SignalR ait un utilisateur sur le `HttpContext`.
 
 ::: moniker-end
 
 ### <a name="cookie-authentication"></a>Authentification par cookie
 
-Dans une application basée sur un navigateur, l’authentification par cookie permet à vos informations d’identification utilisateur existantes d’être automatiquement transmises aux connexions Signalr. Lorsque vous utilisez le navigateur client, aucune configuration supplémentaire n’est nécessaire. Si l’utilisateur est connecté à votre application, la connexion Signalr hérite automatiquement de cette authentification.
+Dans une application basée sur un navigateur, l’authentification par cookie permet aux informations d’identification de l’utilisateur existant de circuler automatiquement vers SignalR connexions. Lorsque vous utilisez le navigateur client, aucune configuration supplémentaire n’est nécessaire. Si l’utilisateur est connecté à votre application, la connexion SignalR hérite automatiquement de cette authentification.
 
 Les cookies sont un moyen spécifique au navigateur d’envoyer des jetons d’accès, mais les clients sans navigateur peuvent les envoyer. Lorsque vous utilisez le [client .net](xref:signalr/dotnet-client), la propriété `Cookies` peut être configurée dans l’appel `.WithUrl` pour fournir un cookie. Toutefois, l’utilisation de l’authentification par cookie à partir du client .NET requiert que l’application fournisse une API pour échanger les données d’authentification d’un cookie.
 
@@ -106,14 +108,14 @@ var connection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> La fonction de jeton d’accès que vous fournissez est appelée avant **chaque** requête HTTP effectuée par signalr. Si vous devez renouveler le jeton pour maintenir la connexion active (car elle peut expirer pendant la connexion), faites-le à partir de cette fonction et retournez le jeton mis à jour.
+> La fonction de jeton d’accès que vous fournissez est appelée avant **chaque** requête HTTP effectuée par SignalR. Si vous devez renouveler le jeton pour maintenir la connexion active (car elle peut expirer pendant la connexion), faites-le à partir de cette fonction et retournez le jeton mis à jour.
 
-Dans les API Web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, Signalr ne peut pas définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez des WebSockets et des événements envoyés par le serveur, le jeton est transmis sous la forme d’un paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise :
+Dans les API Web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, SignalR ne peut pas définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez des WebSockets et des événements envoyés par le serveur, le jeton est transmis sous la forme d’un paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise :
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
 
 > [!NOTE]
-> La chaîne de requête est utilisée sur les navigateurs lors de la connexion à WebSockets et aux événements envoyés par le serveur en raison des limitations de l’API du navigateur. Lors de l’utilisation de HTTPs, les valeurs de chaîne de requête sont sécurisées par la connexion TLS. Toutefois, de nombreux serveurs consignent des valeurs de chaîne de requête. Pour plus d’informations, consultez Considérations sur la [sécurité dans ASP.net Core signalr](xref:signalr/security). Signalr utilise des en-têtes pour transmettre des jetons dans des environnements qui les prennent en charge (tels que les clients .NET et Java).
+> La chaîne de requête est utilisée sur les navigateurs lors de la connexion à WebSockets et aux événements envoyés par le serveur en raison des limitations de l’API du navigateur. Lors de l’utilisation de HTTPs, les valeurs de chaîne de requête sont sécurisées par la connexion TLS. Toutefois, de nombreux serveurs consignent des valeurs de chaîne de requête. Pour plus d’informations, consultez Considérations sur la [sécurité dans ASP.NET Core SignalR](xref:signalr/security). SignalR utilise des en-têtes pour transmettre des jetons dans des environnements qui les prennent en charge (tels que les clients .NET et Java).
 
 ### <a name="cookies-vs-bearer-tokens"></a>Cookies et jetons de porteur 
 
@@ -121,7 +123,7 @@ Les cookies sont spécifiques aux navigateurs. Leur envoi à partir d’autres t
 
 ### <a name="windows-authentication"></a>Authentification Windows
 
-Si [l’authentification Windows](xref:security/authentication/windowsauth) est configurée dans votre application, signalr peut utiliser cette identité pour sécuriser les hubs. Toutefois, pour envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. Le système d’authentification Windows ne fournit pas la revendication « identificateur de nom ». Signalr utilise la revendication pour déterminer le nom d’utilisateur.
+Si [l’authentification Windows](xref:security/authentication/windowsauth) est configurée dans votre application, SignalR pouvez utiliser cette identité pour sécuriser les hubs. Toutefois, pour envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. Le système d’authentification Windows ne fournit pas la revendication « identificateur de nom ». SignalR utilise la revendication pour déterminer le nom d’utilisateur.
 
 Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérez l’une des revendications de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser la revendication « Name » (nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
 
@@ -159,7 +161,7 @@ L’authentification Windows est prise en charge uniquement par le client naviga
 
 ### <a name="use-claims-to-customize-identity-handling"></a>Utiliser des revendications pour personnaliser la gestion des identités
 
-Une application qui authentifie les utilisateurs peut dériver des ID d’utilisateur Signalr de revendications d’utilisateur. Pour spécifier le mode de création des ID d’utilisateur par Signalr, implémentez `IUserIdProvider` et inscrivez l’implémentation.
+Une application qui authentifie les utilisateurs peut dériver SignalR ID utilisateur des revendications d’utilisateur. Pour spécifier comment SignalR crée des ID d’utilisateur, implémentez `IUserIdProvider` et inscrivez l’implémentation.
 
 L’exemple de code montre comment utiliser les revendications pour sélectionner l’adresse e-mail de l’utilisateur comme propriété d’identification. 
 
@@ -216,7 +218,7 @@ public class ChatHub : Hub
 
 ### <a name="use-authorization-handlers-to-customize-hub-method-authorization"></a>Utiliser des gestionnaires d’autorisations pour personnaliser l’autorisation de méthode de concentrateur
 
-Signalr fournit une ressource personnalisée aux gestionnaires d’autorisations lorsqu’une méthode de concentrateur requiert une autorisation. La ressource est une instance de `HubInvocationContext`. Le `HubInvocationContext` comprend le `HubCallerContext`, le nom de la méthode de concentrateur appelée et les arguments de la méthode de concentrateur.
+SignalR fournit une ressource personnalisée aux gestionnaires d’autorisations lorsqu’une méthode de concentrateur requiert une autorisation. La ressource est une instance de `HubInvocationContext`. Le `HubInvocationContext` comprend le `HubCallerContext`, le nom de la méthode de concentrateur appelée et les arguments de la méthode de concentrateur.
 
 Prenons l’exemple d’une salle de conversation permettant à plusieurs entreprises de se connecter via Azure Active Directory. Toute personne disposant d’un compte Microsoft peut se connecter à chat, mais seuls les membres de l’organisation propriétaire doivent être en mesure d’interdire les utilisateurs ou d’afficher les historiques de conversation des utilisateurs. En outre, nous pouvons souhaiter restreindre certaines fonctionnalités de certains utilisateurs. L’utilisation des fonctionnalités mises à jour dans ASP.NET Core 3,0 est tout à fait possible. Notez comment le `DomainRestrictedRequirement` sert de `IAuthorizationRequirement` personnalisé. Maintenant que le paramètre de ressource `HubInvocationContext` est passé, la logique interne peut inspecter le contexte dans lequel le concentrateur est appelé et prendre des décisions pour permettre à l’utilisateur d’exécuter des méthodes de concentrateur individuelles.
 

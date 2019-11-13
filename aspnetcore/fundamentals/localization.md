@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 0cf6e5d391242322aa4c7b1a0b6a20dd484c80f6
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 36235e305037c0bbf20093327e2a0ff21b3de809
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896887"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963664"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -165,6 +165,9 @@ Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* d’une 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
 L’attribut [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) fournit l’espace de noms racine d’un assembly quand il est différent du nom de l’assembly. 
+
+> [!WARNING]
+> Cela peut se produire lorsque le nom d’un projet n’est pas un identificateur .NET valide. Par exemple `my-project-name.csproj` utilise l’espace de noms racine `my_project_name` et le nom de l’assembly `my-project-name` conduisant à cette erreur. 
 
 Si l’espace de noms racine d’un assembly est différent du nom de l’assembly :
 

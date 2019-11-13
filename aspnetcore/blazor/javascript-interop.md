@@ -1,26 +1,28 @@
 ---
-title: ASP.NET Core l’interopérabilité avec le JavaScript éblouissant
+title: ASP.NET Core Blazor l’interopérabilité JavaScript
 author: guardrex
-description: Découvrez comment appeler des fonctions JavaScript à partir de méthodes .NET et .NET à partir de JavaScript dans les applications éblouissantes.
+description: Découvrez comment appeler des fonctions JavaScript à partir de méthodes .NET et .NET à partir de JavaScript dans des applications Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/16/2019
+no-loc:
+- Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: b157e16918975cd522318a02f21824d9a0198b11
-ms.sourcegitcommit: eb4fcdeb2f9e8413117624de42841a4997d1d82d
+ms.openlocfilehash: 76437ef00e00f5de1b995b4f0b1a09e5876dff8f
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72697928"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73962839"
 ---
-# <a name="aspnet-core-blazor-javascript-interop"></a>ASP.NET Core l’interopérabilité avec le JavaScript éblouissant
+# <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor l’interopérabilité JavaScript
 
 Par [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27)et [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Une application éblouissant peut appeler des fonctions JavaScript à partir de méthodes .NET et .NET à partir de code JavaScript.
+Une application Blazor peut appeler des fonctions JavaScript à partir de méthodes .NET et .NET à partir de code JavaScript.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -30,15 +32,15 @@ Il arrive parfois que le code .NET soit requis pour appeler une fonction JavaScr
 
 Pour appeler JavaScript à partir de .NET, utilisez l’abstraction `IJSRuntime`. La méthode `InvokeAsync<T>` accepte un identificateur pour la fonction JavaScript que vous souhaitez appeler, ainsi qu’un nombre quelconque d’arguments sérialisables JSON. L’identificateur de fonction est relatif à la portée globale (`window`). Si vous souhaitez appeler `window.someScope.someFunction`, l’identificateur est `someScope.someFunction`. Il n’est pas nécessaire d’inscrire la fonction avant qu’elle ne soit appelée. Le type de retour `T` doit également être sérialisable JSON.
 
-Pour les applications serveur éblouissantes :
+Pour les applications Blazor Server :
 
-* Plusieurs demandes utilisateur sont traitées par l’application serveur éblouissante. N’appelez pas `JSRuntime.Current` dans un composant pour appeler des fonctions JavaScript.
+* Plusieurs demandes utilisateur sont traitées par l’application Blazor Server. N’appelez pas `JSRuntime.Current` dans un composant pour appeler des fonctions JavaScript.
 * Injectez l’abstraction `IJSRuntime` et utilisez l’objet injecté pour émettre des appels Interop JavaScript.
-* Lorsqu’une application éblouissant est prérendue, l’appel à JavaScript n’est pas possible, car une connexion avec le navigateur n’a pas été établie. Pour plus d’informations, consultez la section [détecter quand une application éblouissant est un prérendu](#detect-when-a-blazor-app-is-prerendering) .
+* Lorsqu’une application Blazor est prérendu, l’appel à JavaScript n’est pas possible, car une connexion au navigateur n’a pas été établie. Pour plus d’informations, consultez la section [détecter le prérendu d’une application Blazor](#detect-when-a-blazor-app-is-prerendering) .
 
 L’exemple suivant est basé sur [TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder), un décodeur basé sur JavaScript expérimental. L’exemple montre comment appeler une fonction JavaScript à partir d' C# une méthode. La fonction JavaScript accepte un tableau d’octets d' C# une méthode, décode le tableau et retourne le texte au composant pour l’affichage.
 
-À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript qui utilise `TextDecoder` pour décoder un tableau passé et retourner la valeur décodée :
+À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (Blazor webassembly) ou de *pages/_Host. cshtml* (serveurBlazor), fournissez une fonction JavaScript qui utilise `TextDecoder` pour décoder un tableau passé et retourner la valeur décodée :
 
 [!code-html[](javascript-interop/samples_snapshot/index-script-convertarray.html)]
 
@@ -63,7 +65,7 @@ Pour utiliser l’abstraction `IJSRuntime`, adoptez l’une des approches suivan
 
   [!code-cshtml[](javascript-interop/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
-  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `IJSRuntime.InvokeVoidAsync` et ne retourne pas de valeur :
+  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (Blazor webassembly) ou de *pages/_Host. cshtml* (serveurBlazor), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `IJSRuntime.InvokeVoidAsync` et ne retourne pas de valeur :
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged1.html)]
 
@@ -71,7 +73,7 @@ Pour utiliser l’abstraction `IJSRuntime`, adoptez l’une des approches suivan
 
   [!code-csharp[](javascript-interop/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (éblouissant webassembly) ou *pages/_Host. cshtml* (serveur éblouissant), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `JSRuntime.InvokeAsync` et retourne une valeur :
+  À l’intérieur de l’élément `<head>` de *wwwroot/index.html* (Blazor webassembly) ou de *pages/_Host. cshtml* (serveurBlazor), fournissez une fonction JavaScript `handleTickerChanged`. La fonction est appelée avec `JSRuntime.InvokeAsync` et retourne une valeur :
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -91,13 +93,13 @@ Dans l’exemple d’application côté client qui accompagne cette rubrique, de
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-Placez la balise `<script>` qui fait référence au fichier JavaScript dans le fichier *wwwroot/index.html* (l’assembly éblouissant) ou le fichier *pages/_Host. cshtml* (serveur éblouissant).
+Placez la balise `<script>` qui fait référence au fichier JavaScript dans le fichier *wwwroot/index.html* (Blazor assembly) ou le fichier *pages/_Host. cshtml* (serveurBlazor).
 
-*wwwroot/index.html* (webassembly éblouissant) :
+*wwwroot/index.html* (Blazor webassembly) :
 
 [!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=15)]
 
-*Pages/_Host. cshtml* (serveur éblouissant) :
+*Pages/_Host. cshtml* (serveurBlazor) :
 
 [!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=21)]
 
@@ -105,7 +107,7 @@ Ne placez pas de balise `<script>` dans un fichier composant, car la balise `<sc
 
 Les méthodes .NET interagissent avec les fonctions JavaScript dans le fichier *exampleJsInterop. js* en appelant `IJSRuntime.InvokeAsync<T>`.
 
-L’abstraction `IJSRuntime` est asynchrone pour permettre les scénarios de serveur éblouissants. Si l’application est une application de webassembly éblouissante et que vous souhaitez appeler une fonction JavaScript de manière synchrone, vous devez effectuer un cast aval sur `IJSInProcessRuntime` et appeler `Invoke<T>` à la place. Nous recommandons que la plupart des bibliothèques d’interopérabilité JavaScript utilisent les API Async pour s’assurer que les bibliothèques sont disponibles dans tous les scénarios.
+L’abstraction `IJSRuntime` est asynchrone pour permettre les scénarios de serveur Blazor. Si l’application est une application Blazor webassembly et que vous souhaitez appeler une fonction JavaScript de manière synchrone, vous devez effectuer un cast aval pour `IJSInProcessRuntime` et appeler `Invoke<T>` à la place. Nous recommandons que la plupart des bibliothèques d’interopérabilité JavaScript utilisent les API Async pour s’assurer que les bibliothèques sont disponibles dans tous les scénarios.
 
 L’exemple d’application comprend un composant pour illustrer l’interopérabilité JavaScript. Le composant :
 
@@ -125,7 +127,7 @@ L’exemple d’application comprend un composant pour illustrer l’interopéra
 
 Les fonctions JavaScript qui retournent [void (0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) ou non [défini](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined) sont appelées avec `IJSRuntime.InvokeVoidAsync`.
 
-## <a name="detect-when-a-blazor-app-is-prerendering"></a>Détecter quand une application éblouissant est prérendu
+## <a name="detect-when-a-opno-locblazor-app-is-prerendering"></a>Détecter quand un Blazor application est prérendu
  
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
@@ -190,7 +192,7 @@ La méthode est appelée directement sur l’objet. L’exemple suivant suppose 
 
 ### <a name="static-net-method-call"></a>Appel de méthode .NET statique
 
-Pour appeler une méthode .NET statique à partir de JavaScript, utilisez les fonctions `DotNet.invokeMethod` ou `DotNet.invokeMethodAsync`. Transmettez l’identificateur de la méthode statique que vous souhaitez appeler, le nom de l’assembly contenant la fonction et les arguments éventuels. La version asynchrone est préférable à la prise en charge des scénarios de serveur éblouissants. Pour appeler une méthode .NET à partir de JavaScript, la méthode .NET doit être publique, statique et avoir l’attribut `[JSInvokable]`. Par défaut, l’identificateur de méthode est le nom de la méthode, mais vous pouvez spécifier un identificateur différent à l’aide du constructeur `JSInvokableAttribute`. L’appel de méthodes génériques ouvertes n’est pas pris en charge actuellement.
+Pour appeler une méthode .NET statique à partir de JavaScript, utilisez les fonctions `DotNet.invokeMethod` ou `DotNet.invokeMethodAsync`. Transmettez l’identificateur de la méthode statique que vous souhaitez appeler, le nom de l’assembly contenant la fonction et les arguments éventuels. La version asynchrone est recommandée pour prendre en charge les scénarios de serveur Blazor. Pour appeler une méthode .NET à partir de JavaScript, la méthode .NET doit être publique, statique et avoir l’attribut `[JSInvokable]`. Par défaut, l’identificateur de méthode est le nom de la méthode, mais vous pouvez spécifier un identificateur différent à l’aide du constructeur `JSInvokableAttribute`. L’appel de méthodes génériques ouvertes n’est pas pris en charge actuellement.
 
 L’exemple d’application comprend C# une méthode permettant de retourner un tableau de `int`s. L’attribut `JSInvokable` est appliqué à la méthode.
 
@@ -224,7 +226,7 @@ Vous pouvez également appeler des méthodes d’instance .NET à partir de Java
 > [!NOTE]
 > L’exemple d’application enregistre les messages dans la console côté client. Pour les exemples suivants présentés dans l’exemple d’application, examinez la sortie de console du navigateur dans les outils de développement du navigateur.
 
-Quand le bouton de la **méthode d’instance .net de déclenchement HelloHelper. SayHello** est sélectionné, `ExampleJsInterop.CallHelloHelperSayHello` est appelé et passe un nom, `Blazor`, à la méthode.
+Quand le bouton de **méthode d’instance .net de déclenchement HelloHelper. SayHello** est sélectionné, `ExampleJsInterop.CallHelloHelperSayHello` est appelé et passe un nom, `Blazor`, à la méthode.
 
 *Pages/JsInterop. Razor*:
 
@@ -264,7 +266,7 @@ Pour plus d'informations, consultez <xref:blazor/class-libraries>.
 
 ## <a name="harden-js-interop-calls"></a>Sécuriser les appels d’interopérabilité JS
 
-L’interopérabilité de JS peut échouer en raison d’erreurs réseau et doit être considérée comme non fiable. Par défaut, une application de serveur éblouissante expire des appels d’interopérabilité JS sur le serveur après une minute. Si une application peut tolérer un délai d’expiration plus agressif, par exemple 10 secondes, définissez le délai d’expiration à l’aide de l’une des approches suivantes :
+L’interopérabilité de JS peut échouer en raison d’erreurs réseau et doit être considérée comme non fiable. Par défaut, une application Blazor Server expire les appels d’interopérabilité JS sur le serveur après une minute. Si une application peut tolérer un délai d’expiration plus agressif, par exemple 10 secondes, définissez le délai d’expiration à l’aide de l’une des approches suivantes :
 
 * Globalement dans `Startup.ConfigureServices`, spécifiez le délai d’expiration :
 

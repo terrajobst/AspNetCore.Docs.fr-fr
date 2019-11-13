@@ -4,22 +4,24 @@ author: isaac2004
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 359f961db768b9048427c8ab296ee3e035879408
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.openlocfilehash: a45ba44fb7911a21927a4a996c0d6fa9eb776357
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086404"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963177"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Nouveautés d’ASP.NET Core 2.1
 
 Cet article met en évidence les modifications les plus importantes dans ASP.NET 2.1 Core et fournit des liens vers la documentation appropriée.
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-SignalR a été réécrit pour ASP.NET Core 2.1. ASP.NET Core SignalR inclut un certain nombre d’améliorations :
+SignalR a été réécrite pour ASP.NET Core 2,1. ASP.NET Core SignalR comprend un certain nombre d’améliorations :
 
 * Un modèle simplifié de montée en puissance parallèle.
 * Un nouveau client JavaScript sans dépendance de jQuery.
@@ -70,7 +72,7 @@ Vous pouvez renforcer l’utilisation du protocole HTTPS en utilisant le protoco
 
 En production, HTTPS doit être explicitement configuré. Dans la version 2.1, le schéma de configuration par défaut pour la configuration HTTPS pour Kestrel a été ajouté. Les applications peuvent être configurées pour utiliser :
 
-* Plusieurs points de terminaison, y compris les URL. Pour plus d’informations, consultez [Implémentation du serveur web Kestrel : configuration du point de terminaison](xref:fundamentals/servers/kestrel#endpoint-configuration).
+* Plusieurs points de terminaison, y compris les URL. Pour plus d’informations, consultez [Implémentation du serveur web Kestrel : configuration de point de terminaison](xref:fundamentals/servers/kestrel#endpoint-configuration).
 * Le certificat à utiliser pour le protocole HTTPS à partir d’un fichier sur disque ou d’un magasin de certificats.
 
 ## <a name="gdpr"></a>RGPD
@@ -81,7 +83,7 @@ ASP.NET Core fournit des API et des modèles qui aident à satisfaire à certain
 
 Un nouveau package est introduit qui simplifie la création et l’exécution de tests. Le package [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/) gère les tâches suivantes :
 
-* Il copie le fichier de dépendance (*\*.deps*) à partir de l’application testée dans le dossier *bin* du projet de test.
+* Il copie le fichier de dépendance ( *\*.deps*) à partir de l’application testée dans le dossier *bin* du projet de test.
 * Il définit la racine du contenu sur la racine du projet de l’application testée afin que soient trouvés les pages/vues et fichiers statiques quand les tests sont exécutés.
 * Il fournit la classe [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) afin de simplifier l’amorçage de l’application testée avec [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver).
 
@@ -131,7 +133,7 @@ Pour plus d’informations, consultez [Lancer des requêtes HTTP](xref:fundament
 
 ## <a name="kestrel-transport-configuration"></a>Configuration du transport Kestrel
 
-Dans ASP.NET Core 2.1, le transport par défaut de Kestrel n’est plus basé sur Libuv, mais sur des sockets managés. Pour plus d’informations, consultez [Implémentation du serveur web Kestrel : Configuration du transport](xref:fundamentals/servers/kestrel#transport-configuration).
+Dans ASP.NET Core 2.1, le transport par défaut de Kestrel n’est plus basé sur Libuv, mais sur des sockets managés. Pour plus d’informations, consultez [Implémentation du serveur web Kestrel : configuration du transport](xref:fundamentals/servers/kestrel#transport-configuration).
 
 ## <a name="generic-host-builder"></a>Générateur d’hôte générique
 

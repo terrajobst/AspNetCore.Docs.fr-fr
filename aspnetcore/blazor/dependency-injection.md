@@ -1,28 +1,30 @@
 ---
-title: ASP.NET Core l’injection de dépendances éblouissantes
+title: ASP.NET Core Blazor l’injection de dépendances
 author: guardrex
-description: Découvrez comment les applications éblouissantes peuvent injecter des services dans des composants.
+description: Découvrez comment Blazor applications peuvent injecter des services dans des composants.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: b548f0e50e1a60b74969e5bbee43860be9ba5a7f
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: a39d913636afc55ac9d831de923ba7ae8db1216b
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391138"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963076"
 ---
-# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core l’injection de dépendances éblouissantes
+# <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor l’injection de dépendances
 
 Par [Rainer Stropek](https://www.timecockpit.com)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Éblouissant prend en charge l' [injection de dépendances (di)](xref:fundamentals/dependency-injection). Les applications peuvent utiliser des services intégrés en les injectant dans des composants. Les applications peuvent également définir et inscrire des services personnalisés et les rendre disponibles dans toute l’application via DI.
+Blazor prend en charge l' [injection de dépendances (di)](xref:fundamentals/dependency-injection). Les applications peuvent utiliser des services intégrés en les injectant dans des composants. Les applications peuvent également définir et inscrire des services personnalisés et les rendre disponibles dans toute l’application via DI.
 
-La méthode DI est une technique permettant d’accéder à des services configurés dans un emplacement central. Cela peut être utile dans les applications éblouissantes pour :
+La méthode DI est une technique permettant d’accéder à des services configurés dans un emplacement central. Cela peut être utile dans Blazor applications pour :
 
 * Partager une seule instance d’une classe de service sur de nombreux composants, appelé service *Singleton* .
 * Découplez les composants des classes de service concrètes à l’aide d’abstractions de référence. Par exemple, considérez une interface `IDataAccess` pour accéder aux données dans l’application. L’interface est implémentée par une classe `DataAccess` concrète et inscrite en tant que service dans le conteneur de services de l’application. Quand un composant utilise DI pour recevoir une implémentation `IDataAccess`, le composant n’est pas couplé au type concret. L’implémentation peut être permutée, peut-être pour une implémentation factice dans les tests unitaires.
@@ -63,7 +65,7 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 
 | Durée de vie | Description |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Les applications webassembly éblouissantes n’ont pas actuellement de concept d’étendues DI. les services inscrits @no__t 1/-0 se comportent comme des services `Singleton`. Toutefois, le modèle d’hébergement du serveur éblouissant prend en charge la durée de vie `Scoped`. Dans les applications serveur éblouissantes, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor applications webassembly n’ont pas actuellement de concept d’étendues DI. les services inscrits au `Scoped`se comportent comme des services `Singleton`. Toutefois, le modèle d’hébergement de serveur Blazor prend en charge la durée de vie `Scoped`. Dans les applications Blazor Server, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI crée une *seule instance* du service. Tous les composants nécessitant un service `Singleton` reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Chaque fois qu’un composant obtient une instance d’un service `Transient` à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 
@@ -129,7 +131,7 @@ Conditions préalables pour l’injection de constructeur :
 
 ## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>Classes de composants de base de l’utilitaire pour gérer une étendue DI
 
-Dans ASP.NET Core applications, les services délimités sont généralement étendus à la requête actuelle. Une fois la demande terminée, tous les services délimités ou temporaires sont supprimés par le système DI. Dans les applications serveur éblouissantes, l’étendue de la demande est valable pendant la durée de la connexion du client, ce qui peut entraîner des services transitoires et de portée de vie bien plus longs que prévu.
+Dans ASP.NET Core applications, les services délimités sont généralement étendus à la requête actuelle. Une fois la demande terminée, tous les services délimités ou temporaires sont supprimés par le système DI. Dans les applications Blazor Server, l’étendue de la demande est limitée à la durée de la connexion client, ce qui peut entraîner des services transitoires et de portée de vie bien plus longs que prévu.
 
 Pour étendre les services à la durée de vie d’un composant, peut utiliser les classes de base `OwningComponentBase` et `OwningComponentBase<TService>`. Ces classes de base exposent une propriété `ScopedServices` de type `IServiceProvider` qui résout les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez la directive `@inherits`.
 
