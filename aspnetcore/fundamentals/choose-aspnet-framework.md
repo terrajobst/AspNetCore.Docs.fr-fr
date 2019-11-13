@@ -1,17 +1,19 @@
 ---
 title: Choisir entre ASP.NET 4.x et ASP.NET Core
 author: rick-anderson
-description: Explique ASP.NET Core par rapport à ASP.NET 4.x, et comment choisir entre les deux.
+description: Explique ASP.NET Core et ASP.NET 4. x et comment choisir entre eux.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 07/15/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 9e093e83a1f6367cbb244076a8351644244f9874
-ms.sourcegitcommit: 7e00e8236ca4eabf058f07020a5a3882daf7564f
-ms.translationtype: HT
+ms.openlocfilehash: 8b1681476f96e8613f9461c507fbb7696f888cbc
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68239206"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963626"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Choisir entre ASP.NET 4.x et ASP.NET Core
 
@@ -34,7 +36,7 @@ Le tableau suivant compare ASP.NET Core à ASP.NET 4.x.
 | ASP.NET Core | ASP.NET 4.x |
 |---|---|
 |Générer pour Windows, macOS ou Linux|Générer pour Windows|
-|Nous vous recommandons d’utiliser les [pages Razor](xref:razor-pages/index) pour créer une interface utilisateur web à partir d’ASP.NET Core 2. Voir aussi [MVC](xref:mvc/overview), [API web](xref:tutorials/first-web-api) et [SignalR](xref:signalr/introduction).|Utilisez [Web Forms](/aspnet/web-forms), [SignalR](/aspnet/signalr), [MVC](/aspnet/mvc), [Web API](/aspnet/web-api/), [WebHooks](/aspnet/webhooks/) ou [Pages Web](/aspnet/web-pages)|
+|Nous vous recommandons d’utiliser les [pages Razor](xref:razor-pages/index) pour créer une interface utilisateur web à partir d’ASP.NET Core 2. Voir aussi [MVC](xref:mvc/overview), [API Web](xref:tutorials/first-web-api)et [SignalR](xref:signalr/introduction).|Utiliser [Web Forms](/aspnet/web-forms), [SignalR](/aspnet/signalr), [MVC](/aspnet/mvc), [API Web](/aspnet/web-api/), [webhooks](/aspnet/webhooks/)ou [pages Web](/aspnet/web-pages)|
 |Plusieurs versions par machine|Une seule version par machine|
 |Développer avec [Visual Studio](https://visualstudio.microsoft.com/vs/), [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) ou [Visual Studio Code](https://code.visualstudio.com/) en utilisant C# ou F#|Développer avec [Visual Studio](https://visualstudio.microsoft.com/vs/) en utilisant C#, VB ou F#|
 |Performances supérieures à celles d’ASP.NET 4.x|Bonnes performances|

@@ -1,34 +1,36 @@
 ---
-title: Créer votre première application Blazor
+title: Créer votre première Blazor application
 author: guardrex
-description: Créez une application Blazor étape par étape.
+description: Créez un Blazor application pas à pas.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/31/2019
+no-loc:
+- Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: cc7caa1ee01e0282024895ab35c5b9933b1504d0
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 646e14060b88fc2a0fefc2f7a5ebb1c15ac39b79
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416178"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963708"
 ---
-# <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
+# <a name="build-your-first-opno-locblazor-app"></a>Créer votre première Blazor application
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Ce tutoriel vous montre comment créer et modifier une application Blazor.
+Ce didacticiel vous montre comment créer et modifier une application Blazor.
 
-Suivez les instructions de l’article <xref:blazor/get-started> afin de créer un projet Blazor pour ce tutoriel. Nommez le projet *ToDoList*.
+Suivez les instructions de l’article <xref:blazor/get-started> pour créer un projet Blazor pour ce didacticiel. Nommez le projet *ToDoList*.
 
 ## <a name="build-components"></a>Construire des composants
 
 1. Accédez à chacune des trois pages de l’application dans le dossier *pages* : Hébergement, compteur et extraction de données. Ces pages sont implémentées par les fichiers de composants Razor *Index.razor*, *Counter.razor* et *FetchData.razor*.
 
-1. Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page Web nécessite normalement l’écriture de code JavaScript. Avec éblouissant, vous pouvez écrire C# à la place.
+1. Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. L’incrémentation d’un compteur dans une page Web nécessite normalement l’écriture de code JavaScript. Avec Blazor, vous pouvez écrire C# à la place.
 
 1. Examinez l’implémentation du composant `Counter` dans le fichier *Counter.razor*.
 
@@ -59,7 +61,7 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
 1. Ajoutez le composant `Counter` au composant `Index` de l’application en ajoutant un élément `<Counter />` au composant `Index` (*Index.razor*).
 
-   Si vous utilisez le webassembly éblouissant pour cette expérience, un composant `SurveyPrompt` est utilisé par le composant `Index`. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application de serveur éblouissante pour cette expérience, ajoutez l’élément `<Counter />` au composant `Index` :
+   Si vous utilisez Blazor webassembly pour cette expérience, un composant `SurveyPrompt` est utilisé par le composant `Index`. Remplacez l’élément `<SurveyPrompt>` par un élément `<Counter />`. Si vous utilisez une application Blazor Server pour cette expérience, ajoutez l’élément `<Counter />` au composant `Index` :
 
    *Pages/Index.razor* :
 
@@ -99,9 +101,9 @@ La directive `@page` en haut du fichier *Counter.razor* spécifie que le composa
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 
-### <a name="blazor-server-experience"></a>Expérience du serveur éblouissant
+### <a name="opno-locblazor-server-experience"></a>expérience du serveur de Blazor
 
-Si vous utilisez une application de serveur éblouissant, le service `WeatherForecastService` est inscrit en tant que [Singleton](xref:fundamentals/dependency-injection#service-lifetimes) dans `Startup.ConfigureServices`. Une instance du service est disponible dans l’ensemble de l’application via l' [injection de dépendances (di)](xref:fundamentals/dependency-injection):
+Si vous utilisez une application Blazor Server, le service `WeatherForecastService` est inscrit en tant que [Singleton](xref:fundamentals/dependency-injection#service-lifetimes) dans `Startup.ConfigureServices`. Une instance du service est disponible dans l’ensemble de l’application via l' [injection de dépendances (di)](xref:fundamentals/dependency-injection):
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
@@ -115,9 +117,9 @@ Le composant `FetchData` utilise le service injecté, comme `ForecastService`, p
 
 [!code-cshtml[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-### <a name="blazor-webassembly-experience"></a>Expérience webassembly éblouissante
+### <a name="opno-locblazor-webassembly-experience"></a>expérience d' Blazor webassembly
 
-Si vous utilisez une application de webassembly éblouissante, `HttpClient` est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* .
+Si vous utilisez une application Blazor webassembly, `HttpClient` est injecté pour obtenir des données de prévision météorologiques à partir du fichier *Weather. JSON* dans le dossier *wwwroot/Sample-Data* .
 
 *Pages/FetchData.razor* :
 

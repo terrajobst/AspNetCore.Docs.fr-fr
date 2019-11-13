@@ -4,14 +4,16 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.2.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 88a202d85c4d4ed7a395dba78feea29ef4637732
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
-ms.translationtype: HT
+ms.openlocfilehash: fca653158c95e7c1a11f25f4076830fe3e7e93ae
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975713"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963134"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Nouveautés d’ASP.NET Core 2.2
 
@@ -25,7 +27,7 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0-preview1: Analyseurs et conventions d’OpenAPI](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
+* [ASP.NET Core 2.2.0-Preview1 : conventions de OpenAPI & des analyseurs](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
 
 ## <a name="problem-details-support"></a>Prise en charge des détails des problèmes
 
@@ -74,11 +76,11 @@ Dans les versions antérieures d’ASP.NET Core, IIS sert de proxy inverse. Dans
 
 Pour plus d’informations, consultez [Hébergement in-process pour IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 
-## <a name="signalr-java-client"></a>Client Java SignalR
+## <a name="opno-locsignalr-java-client"></a>client Java SignalR
 
-ASP.NET Core 2.2 introduit un client Java pour SignalR. Ce client prend en charge la connexion à un serveur ASP.NET Core SignalR à partir de code Java, notamment dans des applications Android.
+ASP.NET Core 2,2 introduit un client Java pour SignalR. Ce client prend en charge la connexion à un serveur ASP.NET Core SignalR à partir de code Java, y compris les applications Android.
 
-Pour plus d’informations, consultez [Client Java ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2).
+Pour plus d’informations, consultez [ASP.NET Core SignalR client Java](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2).
 
 ## <a name="cors-improvements"></a>Améliorations apportées à CORS
 
@@ -96,7 +98,7 @@ Pour plus d’informations, consultez [Prise en charge de la compression Brotli 
 
 Les modèles de projet web ASP.NET Core ont été mis à jour vers [Bootstrap 4](https://getbootstrap.com/docs/4.1/migration/) et [Angular 6](https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4). La nouvelle apparence est visuellement plus simple et facilite la visualisation des structures importantes de l’application.
 
-![Page d’accueil ou page d’index](~/tutorials/razor-pages/razor-pages-start/_static/home2.2.png)
+![Page d’accueil ou d’index](~/tutorials/razor-pages/razor-pages-start/_static/home2.2.png)
 
 ## <a name="validation-performance"></a>Performances de la validation
 

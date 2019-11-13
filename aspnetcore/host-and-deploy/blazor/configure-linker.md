@@ -1,26 +1,28 @@
 ---
-title: Configurer l’éditeur de liens pour ASP.NET Core Blazor
+title: Configurez l’éditeur de liens pour ASP.NET Core Blazor
 author: guardrex
-description: Découvrez comment contrôler l’éditeur de liens de langage intermédiaire (IL) lors de la création d’une application Blazor.
+description: Découvrez comment contrôler l’éditeur de liens en langage intermédiaire (IL) lors de la génération d’une application Blazor.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
+no-loc:
+- Blazor
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: a7e59e63c163986c40155e230dc644028e78e5fd
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: b30669a7ca02c756fa10c8cf9973ef87e29e7bd4
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391449"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963617"
 ---
-# <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
+# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>Configurez l’éditeur de liens pour ASP.NET Core Blazor
 
 Par [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor effectue une liaison de [langage intermédiaire (IL)](/dotnet/standard/managed-code#intermediate-language--execution) pendant un build de mise en production pour supprimer un langage intermédiaire inutile des assemblys de sortie de l’application.
+Blazor effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une version Release pour supprimer l’il inutile des assemblys de sortie de l’application.
 
 Contrôlez la liaison d’assembly avec l’une des approches suivantes :
 

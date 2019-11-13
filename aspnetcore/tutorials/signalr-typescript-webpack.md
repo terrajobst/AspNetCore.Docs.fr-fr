@@ -1,29 +1,31 @@
 ---
-title: Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
+title: Utiliser ASP.NET Core SignalR avec une machine à écrire et un WebPack
 author: ssougnez
-description: Dans ce tutoriel, vous configurez Webpack pour regrouper et générer une application web ASP.NET Core SignalR dont le client est écrit en TypeScript.
+description: Dans ce didacticiel, vous allez configurer WebPack pour regrouper et créer une ASP.NET Core SignalR application Web dont le client est écrit en écriture manuscrite.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 10/04/2019
+ms.date: 11/12/2019
+no-loc:
+- SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 630e8cb5efe9c313479960626d3d864c4923cbd1
-ms.sourcegitcommit: 3ffcd8cbff8b49128733842f72270bc58279de70
+ms.openlocfilehash: 759584f432807689ba194c86046364552fce1a45
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955932"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73964016"
 ---
-# <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
+# <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec une machine à écrire et un WebPack
 
 Par [Sébastien Sougnez](https://twitter.com/ssougnez) et [Scott Addie](https://twitter.com/Scott_Addie)
 
-[Webpack](https://webpack.js.org/) permet aux développeurs de regrouper et générer les ressources côté client d’une application web. Ce tutoriel montre comment utiliser Webpack dans une application web ASP.NET Core SignalR dont le client est écrit en [TypeScript](https://www.typescriptlang.org/).
+[Webpack](https://webpack.js.org/) permet aux développeurs de regrouper et générer les ressources côté client d’une application web. Ce didacticiel montre comment utiliser WebPack dans une application Web ASP.NET Core SignalR dont le client est écrit dans la [machine à écrire](https://www.typescriptlang.org/).
 
 Dans ce didacticiel, vous apprendrez à :
 
 > [!div class="checklist"]
-> * Générer automatiquement un modèle d’application ASP.NET Core SignalR de démarrage
-> * Configurer le client TypeScript SignalR
+> * Génération de modèles automatique d’une application de démarrage ASP.NET Core SignalR
+> * Configuration de l' SignalR client de machine à écrire
 > * Configurer un pipeline de build à l’aide de Webpack
 > * Configurer le serveur SignalR
 > * Activer la communication entre le client et le serveur
@@ -32,11 +34,11 @@ Dans ce didacticiel, vous apprendrez à :
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **ASP.NET et développement web**
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail de **développement web et ASP.NET**
 * [SDK .NET Core 3.0 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
@@ -55,7 +57,7 @@ Dans ce didacticiel, vous apprendrez à :
 
 Configurez Visual Studio pour rechercher npm dans la variable d'environnement *PATH*. Par défaut, Visual Studio utilise la version de npm qu’il trouve dans son répertoire d’installation. Suivez ces instructions dans Visual Studio :
 
-1. Accédez à **outils** > **options** > **projets et Solutions** > **Web Package Management** > **Outils Web externes**.
+1. Accédez à **outils** > **options** > **projets et solutions** > **Package Management Web** > **Outils Web externes**.
 1. Sélectionnez l’entrée *$(PATH)* dans la liste. Cliquez sur la flèche vers le haut pour déplacer l’entrée à la deuxième position dans la liste.
 
     ![Configuration de Visual Studio](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
@@ -119,9 +121,9 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Explication des scripts :
 
-    * `build`: Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
-    * `release`: Regroupe vos ressources côté client en mode de production.
-    * `publish`: Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
+    * `build` : Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
+    * `release` : Regroupe vos ressources côté client en mode de production.
+    * `publish` : Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
 
 1. Créez un fichier nommé *webpack.config.js* à la racine du projet avec le contenu suivant :
 
@@ -130,7 +132,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
     Le fichier précédent configure la compilation Webpack. Détails de configuration à prendre en compte :
 
     * La propriété `output` remplace la valeur par défaut de *dist*. Le regroupement est émis dans le répertoire *wwwroot* à la place.
-    * Le tableau `resolve.extensions` inclut *.js* pour importer le client JavaScript SignalR.
+    * Le tableau `resolve.extensions` comprend *. js* pour importer le code JavaScript du client SignalR.
 
 1. Créez un répertoire *src* à la racine du projet. Son objectif est de stocker les ressources côté client du projet.
 
@@ -160,8 +162,8 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Le code TypeScript précédent récupère les références aux éléments DOM et joint deux gestionnaires d’événements :
 
-    * `keyup`: Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
-    * `click`: Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
+    * `keyup` : Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
+    * `click` : Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
 
 ## <a name="configure-the-aspnet-core-app"></a>Configurer l’application ASP.NET Core
 
@@ -171,7 +173,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
    Le code précédent permet au serveur de localiser et traiter le fichier *index.html*, que l’utilisateur entre son URL complète ou l’URL racine de l’application web.
 
-1. À la fin de la méthode `Startup.Configure`, mappez un itinéraire */Hub* sur le concentrateur `ChatHub`. Remplacez le code qui affiche *Hello World !* par la ligne suivante : 
+1. À la fin de la méthode `Startup.Configure`, mappez un itinéraire */Hub* au concentrateur `ChatHub`. Remplacez le code qui affiche *Hello World !* par la ligne suivante : 
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
@@ -179,7 +181,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_AddSignalR)]
 
-1. Créez un répertoire *Hubs* à la racine du projet. Son objectif est de stocker le hub SignalR, qui est créé à l’étape suivante.
+1. Créez un répertoire *Hubs* à la racine du projet. Son objectif est de stocker le Hub SignalR, créé à l’étape suivante.
 
 1. Créez un hub *Hubs/ChatHub.cs* avec le code suivant :
 
@@ -199,7 +201,7 @@ Actuellement, l’application affiche un formulaire simple pour envoyer des mess
     npm install @aspnet/signalr
     ```
 
-    La commande précédente installe le [client SignalR TypeScript](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
+    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
 
 1. Ajoutez le code en surbrillance au fichier *src/index.ts* :
 
@@ -255,7 +257,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 
@@ -271,7 +273,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **ASP.NET et développement web**
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail de **développement web et ASP.NET**
 * [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
@@ -290,7 +292,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
 Configurez Visual Studio pour rechercher npm dans la variable d'environnement *PATH*. Par défaut, Visual Studio utilise la version de npm qu’il trouve dans son répertoire d’installation. Suivez ces instructions dans Visual Studio :
 
-1. Accédez à **outils** > **options** > **projets et Solutions** > **Web Package Management** > **Outils Web externes**.
+1. Accédez à **outils** > **options** > **projets et solutions** > **Package Management Web** > **Outils Web externes**.
 1. Sélectionnez l’entrée *$(PATH)* dans la liste. Cliquez sur la flèche vers le haut pour déplacer l’entrée à la deuxième position dans la liste.
 
     ![Configuration de Visual Studio](signalr-typescript-webpack/_static/signalr-configure-path-visual-studio.png)
@@ -354,9 +356,9 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Explication des scripts :
 
-    * `build`: Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
-    * `release`: Regroupe vos ressources côté client en mode de production.
-    * `publish`: Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
+    * `build` : Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
+    * `release` : Regroupe vos ressources côté client en mode de production.
+    * `publish` : Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
 
 1. Créez un fichier nommé *webpack.config.js* à la racine du projet avec le contenu suivant :
 
@@ -365,7 +367,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
     Le fichier précédent configure la compilation Webpack. Détails de configuration à prendre en compte :
 
     * La propriété `output` remplace la valeur par défaut de *dist*. Le regroupement est émis dans le répertoire *wwwroot* à la place.
-    * Le tableau `resolve.extensions` inclut *.js* pour importer le client JavaScript SignalR.
+    * Le tableau `resolve.extensions` comprend *. js* pour importer le code JavaScript du client SignalR.
 
 1. Créez un répertoire *src* à la racine du projet. Son objectif est de stocker les ressources côté client du projet.
 
@@ -395,8 +397,8 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Le code TypeScript précédent récupère les références aux éléments DOM et joint deux gestionnaires d’événements :
 
-    * `keyup`: Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
-    * `click`: Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
+    * `keyup` : Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
+    * `click` : Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
 
 ## <a name="configure-the-aspnet-core-app"></a>Configurer l’application ASP.NET Core
 
@@ -414,7 +416,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     [!code-csharp[Startup](signalr-typescript-webpack/sample/2.x/Startup.cs?name=snippet_UseSignalR)]
 
-1. Créez un répertoire *Hubs* à la racine du projet. Son objectif est de stocker le hub SignalR, qui est créé à l’étape suivante.
+1. Créez un répertoire *Hubs* à la racine du projet. Son objectif est de stocker le Hub SignalR, créé à l’étape suivante.
 
 1. Créez un hub *Hubs/ChatHub.cs* avec le code suivant :
 
@@ -434,7 +436,7 @@ Actuellement, l’application affiche un formulaire simple pour envoyer des mess
     npm install @aspnet/signalr
     ```
 
-    La commande précédente installe le [client SignalR TypeScript](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
+    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
 
 1. Ajoutez le code en surbrillance au fichier *src/index.ts* :
 
@@ -488,7 +490,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 

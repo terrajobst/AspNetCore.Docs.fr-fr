@@ -4,28 +4,31 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités de ASP.NET Core 3,0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 8c53d8a9fa222ca40f26dc713ec3b70ddde76539
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: c3dde383507ec919f82b5268ddbf23911c3d24f8
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416125"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73963123"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
 Cet article met en évidence les modifications les plus importantes apportées à ASP.NET Core 3,0 avec des liens vers la documentation appropriée.
 
-## <a name="blazor"></a>Blazor
+## Blazor
 
-Éblouissant est une nouvelle infrastructure dans ASP.NET Core pour la création d’une interface utilisateur Web interactive côté client avec .NET :
+Blazor est une nouvelle infrastructure dans ASP.NET Core pour la création d’une interface utilisateur Web interactive côté client avec .NET :
 
 * Créez des interfaces utilisateur interactives riches à l’aide de C# plutôt que JavaScript.
 * Partagez la logique d’application côté serveur et côté client écrite dans .NET.
 * Affichez l’interface utilisateur en langage HTML et CSS pour une large prise en charge des navigateurs, y compris les navigateurs mobiles.
 
-Scénarios pris en charge pour le Framework éblouissant :
+scénarios pris en charge par Blazor Framework :
 
 * Composants de l’interface utilisateur réutilisables (composants Razor)
 * Routage côté client
@@ -37,19 +40,19 @@ Scénarios pris en charge pour le Framework éblouissant :
 
 Pour plus d'informations, consultez <xref:blazor/index>.
 
-### <a name="blazor-server"></a>Serveur Blazor
+### <a name="opno-locblazor-server"></a>Serveur de Blazor
 
-Blazor dissocie la logique de rendu de composant de la manière dont les mises à jour de l’interface utilisateur sont appliquées. Le serveur éblouissant fournit la prise en charge de l’hébergement des composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion SignalR. Le serveur éblouissant est pris en charge dans ASP.NET Core 3,0.
+Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées via une connexion SignalR. Blazor Server est pris en charge dans ASP.NET Core 3,0.
 
-### <a name="blazor-webassembly-preview"></a>Webassembly éblouissant (version préliminaire)
+### <a name="opno-locblazor-webassembly-preview"></a>Blazor webassembly (version préliminaire)
 
-Les applications éblouissantes peuvent également être exécutées directement dans le navigateur à l’aide d’un Runtime .NET basé sur webassembly. Le webassembly éblouissant est en version préliminaire et *n’est pas* pris en charge dans ASP.net Core 3,0. Le webassembly éblouissant sera pris en charge dans une prochaine version de ASP.NET Core.
+Blazor applications peuvent également être exécutées directement dans le navigateur à l’aide d’un Runtime .NET basé sur webassembly. Blazor webassembly est en version préliminaire et *n’est pas* pris en charge dans ASP.net Core 3,0. Blazor webassembly sera pris en charge dans une prochaine version de ASP.NET Core.
 
 ### <a name="razor-components"></a>Composants Razor
 
-Les applications éblouissantes sont générées à partir de composants. Les composants sont des blocs autonomes de l’interface utilisateur (IU), tels qu’une page, une boîte de dialogue ou un formulaire. Les composants sont des classes .NET normales qui définissent la logique de rendu de l’interface utilisateur et les gestionnaires d’événements côté client. Vous pouvez créer des applications Web riches et interactives sans JavaScript.
+les applications Blazor sont générées à partir de composants. Les composants sont des blocs autonomes de l’interface utilisateur (IU), tels qu’une page, une boîte de dialogue ou un formulaire. Les composants sont des classes .NET normales qui définissent la logique de rendu de l’interface utilisateur et les gestionnaires d’événements côté client. Vous pouvez créer des applications Web riches et interactives sans JavaScript.
 
-Les composants de éblouissant sont généralement créés à l’aide de syntaxe Razor, un mélange naturel de C#code HTML et. Les composants Razor sont similaires aux vues Razor Pages et MVC en ce sens qu’ils utilisent tous deux Razor. Contrairement aux pages et aux vues, qui sont basées sur un modèle de requête-réponse, les composants sont utilisés spécifiquement pour gérer la composition de l’interface utilisateur.
+Les composants de Blazor sont généralement créés à l’aide d’syntaxe Razor, un mélange naturel C#de code HTML et. Les composants Razor sont similaires aux vues Razor Pages et MVC en ce sens qu’ils utilisent tous deux Razor. Contrairement aux pages et aux vues, qui sont basées sur un modèle de requête-réponse, les composants sont utilisés spécifiquement pour gérer la composition de l’interface utilisateur.
 
 ## <a name="grpc"></a>gRPC
 
@@ -76,11 +79,11 @@ la fonctionnalité gRPC dans ASP.NET Core 3,0 comprend les éléments suivants 
 
 Pour plus d'informations, consultez <xref:grpc/index>.
 
-## <a name="signalr"></a>SignalR
+## SignalR
 
-Consultez [mettre à jour le code signalr](xref:migration/22-to-30#signalr) pour obtenir des instructions de migration. Signalr utilise désormais `System.Text.Json` pour sérialiser/désérialiser les messages JSON. Consultez [basculer vers Newtonsoft. JSON](xref:migration/22-to-30#switch-to-newtonsoftjson) pour obtenir des instructions sur la restauration du sérialiseur basé sur le `Newtonsoft.Json`.
+Pour obtenir des instructions de migration, consultez [mettre à jour le code SignalR](xref:migration/22-to-30#signalr) . SignalR utilise désormais `System.Text.Json` pour sérialiser/désérialiser les messages JSON. Consultez [basculer vers Newtonsoft. JSON](xref:migration/22-to-30#switch-to-newtonsoftjson) pour obtenir des instructions sur la restauration du sérialiseur basé sur le `Newtonsoft.Json`.
 
-Dans les clients JavaScript et .NET pour Signalr, la prise en charge a été ajoutée pour la reconnexion automatique. Par défaut, le client tente de se reconnecter immédiatement, puis de réessayer au bout de 2, 10 et 30 secondes si nécessaire. Si le client se reconnecte avec succès, il reçoit un nouvel ID de connexion. La reconnexion automatique est opt-in :
+Dans les clients JavaScript et .NET pour SignalR, la prise en charge a été ajoutée pour la reconnexion automatique. Par défaut, le client tente de se reconnecter immédiatement, puis de réessayer au bout de 2, 10 et 30 secondes si nécessaire. Si le client se reconnecte avec succès, il reçoit un nouvel ID de connexion. La reconnexion automatique est opt-in :
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -105,7 +108,7 @@ Si la reconnexion échoue après le dernier intervalle de reconnexion :
 
 Lors des tentatives de reconnexion, mettez à jour l’interface utilisateur de l’application pour notifier l’utilisateur que la reconnexion est tentée.
 
-Pour fournir des commentaires sur l’interface utilisateur lorsque la connexion est interrompue, l’API du client Signalr a été développée pour inclure les gestionnaires d’événements suivants :
+Pour fournir des commentaires sur l’interface utilisateur lorsque la connexion est interrompue, l’API cliente SignalR a été développée pour inclure les gestionnaires d’événements suivants :
 
 * `onreconnecting`: donne aux développeurs la possibilité de désactiver l’interface utilisateur ou de laisser les utilisateurs savoir que l’application est hors connexion.
 * `onreconnected`: donne aux développeurs la possibilité de mettre à jour l’interface utilisateur une fois la connexion rétablie.
@@ -132,7 +135,7 @@ connection.onreconnected((connectionId) => {
 });
 ```
 
-Signalr 3,0 et versions ultérieures fournit une ressource personnalisée aux gestionnaires d’autorisations lorsqu’une méthode de concentrateur requiert une autorisation. La ressource est une instance de `HubInvocationContext`. Le `HubInvocationContext` comprend les éléments suivants :
+SignalR 3,0 et versions ultérieures fournissent une ressource personnalisée aux gestionnaires d’autorisations lorsqu’une méthode de concentrateur requiert une autorisation. La ressource est une instance de `HubInvocationContext`. Le `HubInvocationContext` comprend les éléments suivants :
 
 * `HubCallerContext`
 * Nom de la méthode de concentrateur appelée.
@@ -222,7 +225,7 @@ services
     });
 ```
 
-Les concentrateurs signalr utilisent le [routage des points de terminaison](xref:fundamentals/routing). La connexion du concentrateur signalr a été précédemment effectuée explicitement :
+SignalR hubs utilisent le [routage des points de terminaison](xref:fundamentals/routing). SignalR connexion au Hub a été précédemment effectuée explicitement :
 
 ```csharp
 app.UseSignalR(routes =>
@@ -245,7 +248,7 @@ app.UseRouting(routes =>
 });
 ```
 
-Les concentrateurs signalr 3,0 peuvent être routés via le routage de point de terminaison. Avec le routage de point de terminaison, tous les routages peuvent généralement être configurés dans `UseRouting`:
+les hubs SignalR 3,0 peuvent être routés via le routage des points de terminaison. Avec le routage de point de terminaison, tous les routages peuvent généralement être configurés dans `UseRouting`:
 
 ```csharp
 app.UseRouting(routes =>
@@ -255,7 +258,7 @@ app.UseRouting(routes =>
 });
 ```
 
-ASP.NET Core Signalr 3,0 ajouté :
+ASP.NET Core 3,0 SignalR ajouté :
 
 Diffusion en continu entre le client et le serveur. Avec la diffusion en continu client à serveur, les méthodes côté serveur peuvent prendre des instances d’une `IAsyncEnumerable<T>` ou d’un `ChannelReader<T>`. Dans l’exemple C# suivant, la méthode `UploadStream` sur le Hub recevra un flux de chaînes du client :
 
@@ -286,7 +289,7 @@ async IAsyncEnumerable<string> clientStreamData()
 await connection.SendAsync("UploadStream", clientStreamData());
 ```
 
-Les applications clientes JavaScript utilisent le Signalr `Subject` (ou un [objet RxJS](https://rxjs.dev/api/index/class/Subject)) pour l’argument `stream` de la méthode `UploadStream` Hub ci-dessus.
+Les applications clientes JavaScript utilisent l' SignalR `Subject` (ou un [objet RxJS](https://rxjs.dev/api/index/class/Subject)) pour l’argument `stream` de la méthode `UploadStream` Hub ci-dessus.
 
 ```javascript
 let subject = new signalR.Subject();
