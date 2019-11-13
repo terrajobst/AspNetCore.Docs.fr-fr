@@ -4,13 +4,13 @@ author: rick-anderson
 description: Découvrez comment appeler une API web ASP.NET Core avec JavaScript.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 08/27/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: bbe261307f6f68af002cb98cc4895888ade7f61c
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
+ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 11/13/2019
 ms.locfileid: "72378701"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
@@ -18,6 +18,14 @@ ms.locfileid: "72378701"
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce tutoriel montre comment appeler une API web ASP.NET Core avec JavaScript à l’aide de l’[API Fetch](https://developer.mozilla.org/docs/Web/API/Fetch_API).
+
+::: moniker range="< aspnetcore-3.0"
+
+Pour ASP.NET Core 2.2, consultez la version 2.2 de [Appeler l’API web avec JavaScript](xref:tutorials/first-web-api#call-the-web-api-with-javascript).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="prerequisites"></a>Configuration requise
 
@@ -67,9 +75,9 @@ Dans le code suivant :
 
 * Une variable `item` est déclarée pour construire une représentation littérale d’objet de l’élément de tâche.
 * Une requête Fetch est configurée avec les options suivantes :
-  * `method`&mdash; spécifie le verbe d’action POST HTTP.
-  * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
-  * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
+    * `method`&mdash; spécifie le verbe d’action POST HTTP.
+    * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+    * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
 * Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]
@@ -95,3 +103,5 @@ Passez au tutoriel suivant pour apprendre à générer des pages d’aide d’AP
 
 > [!div class="nextstepaction"]
 > <xref:tutorials/get-started-with-swashbuckle>
+
+::: moniker-end
