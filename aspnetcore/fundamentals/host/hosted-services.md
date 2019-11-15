@@ -5,14 +5,14 @@ description: Découvrez comment implémenter des tâches d’arrière-plan avec 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 11/14/2019
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: c1fbb5ae8ffc4ee506f42df6a4cbbe845b2b903d
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 0fdf503e4a5f6f73d5488261707180cfb5967492
+ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333654"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74115940"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -28,22 +28,23 @@ Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Cet exemple d’application est fourni en deux versions :
-
-* Hôte web &ndash; L’hôte web est utile pour l’hébergement d’applications web. L’exemple de code présenté dans cette rubrique provient de la version de l’hôte web de l’exemple. Pour plus d’informations, consultez la rubrique [Hôte web](xref:fundamentals/host/web-host).
-* Hôte générique &ndash; L’hôte générique est une nouveauté d’ASP.NET Core 2.1. Pour plus d’informations, consultez la rubrique [Hôte générique](xref:fundamentals/host/generic-host).
-
 ## <a name="worker-service-template"></a>Modèle Service Worker
 
-Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écriture d’applications de service durables. Pour utiliser le modèle en tant que base d’une application de services hébergés :
+Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écriture d’applications de service durables. Une application créée à partir du modèle de service Worker spécifie le kit de développement logiciel (SDK) Worker dans son fichier projet :
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+```
+
+Pour utiliser le modèle en tant que base d’une application de services hébergés :
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
----
-
 ## <a name="package"></a>Package
 
-Une référence de package au package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) est ajoutée implicitement pour les applications ASP.net core.
+Une application basée sur le modèle de service worker utilise le kit de développement logiciel (SDK) `Microsoft.NET.Sdk.Worker` et possède une référence de package explicite au package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) . Par exemple, consultez le fichier projet de l’exemple d’application (*BackgroundTasksSample. csproj*).
+
+Pour les applications Web qui utilisent le kit de développement logiciel (SDK) `Microsoft.NET.Sdk.Web`, le package [Microsoft. extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) est référencé implicitement à partir de l’infrastructure partagée. Une référence de package explicite dans le fichier projet de l’application n’est pas obligatoire.
 
 ## <a name="ihostedservice-interface"></a>Interface IHostedService
 
@@ -176,11 +177,6 @@ Dans ASP.NET Core, les tâches d’arrière-plan peuvent être implémentées en
 * Tâches d’arrière-plan en file d’attente qui s’exécutent séquentiellement.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
-
-Cet exemple d’application est fourni en deux versions :
-
-* Hôte web &ndash; L’hôte web est utile pour l’hébergement d’applications web. L’exemple de code présenté dans cette rubrique provient de la version de l’hôte web de l’exemple. Pour plus d’informations, consultez la rubrique [Hôte web](xref:fundamentals/host/web-host).
-* Hôte générique &ndash; L’hôte générique est une nouveauté d’ASP.NET Core 2.1. Pour plus d’informations, consultez la rubrique [Hôte générique](xref:fundamentals/host/generic-host).
 
 ## <a name="package"></a>Package
 
