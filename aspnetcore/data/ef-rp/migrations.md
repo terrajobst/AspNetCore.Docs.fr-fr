@@ -22,7 +22,7 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 
 Ce tutoriel présente la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données.
 
-Lorsqu’une application est développée, le modèle de données change fréquemment. Chaque fois que des modifications sont apportées au modèle, le modèle est désynchronisé avec la base de données. Cette série de tutoriels a commencé par la configuration d’Entity Framework pour créer la base de données si elle n’existait pas. Chaque fois que le modèle de données change, vous devez supprimer la base de données. À l’exécution suivante de l’application, l’appel à `EnsureCreated` a pour effet de recréer la base de données en fonction du nouveau modèle de données. La classe `DbInitializer` s’exécute ensuite pour amorcer la nouvelle base de données.
+Quand une nouvelle application est développée, le modèle de données change fréquemment. Chaque fois que le modèle change, il est désynchronisé avec la base de données. Cette série de tutoriels a commencé par la configuration d’Entity Framework pour créer la base de données si elle n’existait pas. Chaque fois que le modèle de données change, vous devez supprimer la base de données. À l’exécution suivante de l’application, l’appel à `EnsureCreated` a pour effet de recréer la base de données en fonction du nouveau modèle de données. La classe `DbInitializer` s’exécute ensuite pour amorcer la nouvelle base de données.
 
 Cette approche consistant à maintenir la base de données synchronisée avec le modèle de données fonctionne bien tant que vous ne déployez pas l’application en production. Quand l’application s’exécute en production, elle stocke généralement des données qui doivent être tenues à jour. L’application ne peut pas démarrer avec une base de données de test chaque fois qu’une modification est apportée (comme l’ajout d’une nouvelle colonne). La fonctionnalité Migrations d’EF Core résout ce problème en permettant à EF Core de mettre à jour le schéma de base de données au lieu de créer une nouvelle base de données.
 
@@ -82,7 +82,7 @@ dotnet ef database update
 
 ## <a name="up-and-down-methods"></a>Méthodes Up et Down
 
-La commande EF Core `migrations add` a généré du code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<timestamp > _InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités du modèle de données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
+La commande EF Core `migrations add` a généré du code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<horodatage> _InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités du modèle de données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[](intro/samples/cu30/Migrations/20190731193522_InitialCreate.cs)]
 
@@ -92,7 +92,7 @@ Le code précédent concerne la migration initiale. Le code :
 * Est exécuté par la commande `database update`.
 * Crée une base de données pour le modèle de données spécifié par la classe du contexte de base de données.
 
-Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Nous vous conseillons de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration ajoutant une table de département pourrait se nommer « TableAjoutDépartement ».
+Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Nous vous conseillons néanmoins de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration ajoutant une table de département pourrait se nommer « TableAjoutDépartement ».
 
 ## <a name="the-migrations-history-table"></a>Table d’historique des migrations
 
@@ -123,10 +123,10 @@ Exécutez l’application et vérifiez que la base de données est amorcée.
 
 Nous **déconseillons** l’appel de [Database.Migrate](/dotnet/api/microsoft.entityframeworkcore.relationaldatabasefacadeextensions.migrate?view=efcore-2.0#Microsoft_EntityFrameworkCore_RelationalDatabaseFacadeExtensions_Migrate_Microsoft_EntityFrameworkCore_Infrastructure_DatabaseFacade_) dans les applications de production pendant leur démarrage. `Migrate` ne doit pas être appelé à partir d’une application déployée sur une batterie de serveurs. Si un scale-out de plusieurs instances de serveur a lieu sur l’application, il est difficile de vérifier que les mises à jour du schéma de base de données ne se produisent pas à partir de plusieurs serveurs ou qu’elles ne sont pas en conflit avec un accès en lecture/écriture.
 
-La migration de base de données doit être effectuée dans le cadre du déploiement et d’une façon contrôlée. Parmi les approches de migration de base de données de production, citons :
+La migration de base de données doit être effectuée dans le cadre du déploiement et de manière contrôlée. Parmi les approches de migration de base de données de production, citons :
 
 * L’utilisation de migrations pour créer des scripts SQL et l’utilisation de scripts SQL dans le déploiement
-* Exécuter `dotnet ef database update` à partir d’un environnement contrôlé.
+* L’exécution de `dotnet ef database update` à partir d’un environnement contrôlé
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -145,7 +145,7 @@ La solution peut consister à exécuter `dotnet ef database update` à partir d�
 * [CLI EF Core](/ef/core/miscellaneous/cli/dotnet)
 * [Console du Gestionnaire de package (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Le tutoriel suivant crée le modèle de données en ajoutant des propriétés d’entité et de nouvelles entités.
 
@@ -157,12 +157,12 @@ Le tutoriel suivant crée le modèle de données en ajoutant des propriétés d�
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans ce didacticiel, la fonctionnalité de migrations EF Core pour la gestion des modifications du modèle de données est utilisée.
+Dans ce didacticiel, nous allons utiliser la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données.
 
 Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](
 https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
-Lorsqu’une application est développée, le modèle de données change fréquemment. Chaque fois que des modifications sont apportées au modèle, le modèle est désynchronisé avec la base de données. Ce didacticiel a démarré en configurant Entity Framework pour créer la base de données si elle n’existe pas. Chaque fois que le modèle de données change :
+Quand une nouvelle application est développée, le modèle de données change fréquemment. Chaque fois que le modèle change, il est désynchronisé avec la base de données. Ce didacticiel commence par configurer Entity Framework pour créer la base de données si elle n’existe pas. Chaque fois que le modèle de données change :
 
 * La base de données est supprimée
 * EF crée une nouvelle base de données qui correspond au modèle
@@ -170,7 +170,7 @@ Lorsqu’une application est développée, le modèle de données change fréque
 
 Cette approche pour conserver la synchronisation de la base de données avec le modèle de données fonctionne bien jusqu’à ce que vous déployiez l’application en production. Quand l’application s’exécute en production, elle stocke généralement des données qui doivent être tenues à jour. L’application ne peut pas commencer avec une base de données de test chaque fois qu’une modification est apportée (par exemple en cas d’ajout d’une nouvelle colonne). La fonctionnalité Migrations d’EF Core résout ce problème en permettant à EF Core de mettre à jour le schéma de base de données au lieu de créer une nouvelle base de données.
 
-Au lieu de supprimer et recréer la base de données lors de la modification du modèle de données, les migrations mettent à jour le schéma et conservent les données existantes.
+Plutôt que de supprimer et de recréer la base de données quand le modèle de données change, les migrations mettent à jour le schéma et conservent les données existantes.
 
 ## <a name="drop-the-database"></a>Supprimer la base de données
 
@@ -220,13 +220,13 @@ dotnet ef database update
 
 ### <a name="examine-the-up-and-down-methods"></a>Examiner les méthodes Up et Down
 
-La commande EF Core `migrations add` a généré du code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<timestamp > _InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités de modèle données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
+La commande EF Core `migrations add` a généré du code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<horodatage> _InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités du modèle de données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[](intro/samples/cu21/Migrations/20180626224812_InitialCreate.cs?range=7-24,77-88)]
 
-Les migrations appellent la méthode `Up` pour implémenter les modifications de modèle de données pour une migration. Quand vous entrez une commande pour restaurer la mise à jour, les migrations appellent la méthode `Down`.
+La fonctionnalité Migrations appelle la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour restaurer la mise à jour, les migrations appellent la méthode `Down`.
 
-Le code précédent concerne la migration initiale. Ce code a été créé quand la commande `migrations add InitialCreate` a été exécutée. Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Nous vous conseillons de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration ajoutant une table de département pourrait se nommer « TableAjoutDépartement ».
+Le code précédent concerne la migration initiale. Ce code a été créé quand la commande `migrations add InitialCreate` a été exécutée. Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Nous vous conseillons néanmoins de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration ajoutant une table de département pourrait se nommer « TableAjoutDépartement ».
 
 Si la migration initiale est créée et que la base de données existe :
 
@@ -261,12 +261,12 @@ Pour supprimer les migrations, la commande supprime la migration et garantit que
 
 ### <a name="remove-ensurecreated-and-test-the-app"></a>Supprimer EnsureCreated et tester l’application
 
-Dans les phases initiales de développement, nous avons utilisé `EnsureCreated`. Dans ce tutoriel, nous utilisons des migrations. `EnsureCreated` présente les limitations suivantes :
+Dans les phases initiales de développement, nous avons utilisé `EnsureCreated`. Dans ce tutoriel, nous utilisons des migrations. La commande `EnsureCreated` a les limitations suivantes :
 
 * Elle ignore les migrations et crée la base de données et le schéma
 * Elle ne crée pas de table de migrations
 * Elle ne peut *pas* être utilisée avec des migrations
-* Est conçu pour des tests ou pour un prototypage rapide dans lequel la base de données est supprimée et recréée fréquemment.
+* Elle est conçue pour effectuer des tests et un prototypage rapide, où la base de données est supprimée et recréée fréquemment.
 
 Supprimez `EnsureCreated` :
 
@@ -278,7 +278,7 @@ Exécutez l’application et vérifiez que la base de données est amorcée.
 
 ### <a name="inspect-the-database"></a>Inspecter la base de données
 
-Utilisez **l’Explorateur d’objets SQL Server** pour inspecter la base de données. Notez l’ajout d’une table `__EFMigrationsHistory`. La table `__EFMigrationsHistory` effectue le suivi des migrations qui ont été appliquées à la base de données. Consultez les données de la table `__EFMigrationsHistory`: elle affiche une ligne pour la première migration. Le dernier journal dans l’exemple de sortie CLI précédent montre l’instruction INSERT qui crée cette ligne.
+Utilisez **l’Explorateur d’objets SQL Server** pour inspecter la base de données. Notez l’ajout d’une table `__EFMigrationsHistory`. La table `__EFMigrationsHistory` effectue le suivi des migrations qui ont été appliquées à la base de données. Visualisez les données dans la table `__EFMigrationsHistory` ; elle affiche une ligne pour la première migration. Le dernier journal dans l’exemple de sortie CLI précédent montre l’instruction INSERT qui crée cette ligne.
 
 Exécutez l’application et vérifiez que tout fonctionne.
 
@@ -291,7 +291,7 @@ La migration de base de données doit être effectuée dans le cadre du déploie
 * L’utilisation de migrations pour créer des scripts SQL et l’utilisation de scripts SQL dans le déploiement
 * L’exécution de `dotnet ef database update` à partir d’un environnement contrôlé
 
-EF Core utilise la table  `__MigrationsHistory` pour voir si les migrations doivent s’exécuter. Si la base de données est à jour, aucune migration n’est exécutée.
+EF Core utilise la table `__MigrationsHistory` pour voir si des migrations doivent s’exécuter. Si la base de données est à jour, aucune migration n’est exécutée.
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -306,7 +306,7 @@ The login failed.
 Login failed for user 'user name'.
 ```
 
-Solution : Exécutez `dotnet ef database update`
+Solution : Exécutez `dotnet ef database update`.
 
 ### <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -15,7 +15,7 @@ ms.locfileid: "71082315"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>Ajouter un nouveau champ à une application ASP.NET Core MVC
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Dans cette section, Migrations [Entity Framework](/ef/core/get-started/aspnetcore/new-db) Code First est utilisé pour :
 
@@ -101,11 +101,11 @@ Pour ce didacticiel, les migrations Code First sont utilisées.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 
   ![Menu Console du Gestionnaire de package](adding-model/_static/pmc.png)
 
-Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration Rating
@@ -114,7 +114,7 @@ Update-Database
 
 La commande `Add-Migration` indique au framework de migration d’examiner le modèle `Movie` actuel avec le schéma de la base de données `Movie` actuel et de créer le code nécessaire pour migrer la base de données vers le nouveau modèle.
 
-Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 Si tous les enregistrements de la base de données sont supprimés, la méthode d’initialisation amorce la base de données et inclut le champ `Rating`.
 

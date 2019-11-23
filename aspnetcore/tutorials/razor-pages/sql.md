@@ -57,7 +57,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 <a name="ssox"></a>
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu View](sql/_static/ssox.png)
+  ![Menu Affichage](sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` et sélectionnez **Concepteur de vues** :
 
@@ -100,7 +100,7 @@ if (context.Movie.Any())
 Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes :
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendances.
-* Appeler la méthode seed et la passer au contexte.
+* Appeler la méthode de remplissage initial, en lui transmettant le contexte.
 * Supprimer le contexte une fois la méthode seed terminée.
 
 Le code suivant montre le fichier *Program.cs* mis à jour.
@@ -132,7 +132,7 @@ L’exception suivante se produit lorsque `Update-Database` n’a pas été exé
 
 Supprimez tous les enregistrements dans la base de données (pour que la méthode seed s’exécute). Arrêtez et démarrez l’application pour amorcer la base de données.
 
-L’application affiche les données de départ.
+L’application affiche les données de valeurs de départ.
 
 ---
 
@@ -196,7 +196,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 <a name="ssox"></a>
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu View](sql/_static/ssox.png)
+  ![Menu Affichage](sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` et sélectionnez **Concepteur de vues** :
 
@@ -244,7 +244,7 @@ if (context.Movie.Any())
 Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes :
 
 * Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendances.
-* Appeler la méthode seed et la passer au contexte.
+* Appeler la méthode de remplissage initial, en lui transmettant le contexte.
 * Supprimer le contexte une fois la méthode seed terminée.
 
 Le code suivant montre le fichier *Program.cs* mis à jour.
@@ -276,13 +276,13 @@ SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-
 
 Supprimez tous les enregistrements dans la base de données (pour que la méthode seed s’exécute). Arrêtez et démarrez l’application pour amorcer la base de données.
 
-L’application affiche les données de départ.
+L’application affiche les données de valeurs de départ.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Supprimez tous les enregistrements dans la base de données (pour que la méthode seed s’exécute). Arrêtez et démarrez l’application pour amorcer la base de données.
 
-L’application affiche les données de départ.
+L’application affiche les données de valeurs de départ.
 
 ---
 

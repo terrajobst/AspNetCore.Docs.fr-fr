@@ -130,7 +130,7 @@ En raison de l’imbrication de filtres, le code *après* des filtres s’exécu
   
 Voici un exemple qui illustre l’ordre dans lequel les méthodes de filtre sont appelées pour les filtres d’actions synchrones.
 
-| Séquence | Étendue de filtre | Méthode de filtre |
+| Séquence | Étendue de filtre | Filter, méthode |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
 | 2 | Contrôleur | `OnActionExecuting` |
@@ -190,7 +190,7 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété`Order` | Méthode de filtre |
+| Séquence | Étendue de filtre | Propriété `Order` | Filter, méthode |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
 | 2 | Contrôleur | 1  | `OnActionExecuting` |
@@ -268,7 +268,7 @@ Lors de l’utilisation de `ServiceFilterAttribute`, définir [ServiceFilterAttr
 
 * Évitez de l’utiliser avec un filtre qui dépend de services avec une durée de vie autre que singleton.
 
- L'objet <xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute> implémente l'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>. `IFilterFactory` expose la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> pour la création d’une instance <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. `CreateInstance` charge le type spécifié à partir de l’injection de dépendances.
+ <xref:Microsoft.AspNetCore.Mvc.ServiceFilterAttribute> implémente <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>. `IFilterFactory` expose la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> pour la création d’une instance <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. `CreateInstance` charge le type spécifié à partir de l’injection de dépendances.
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 
@@ -295,7 +295,7 @@ VS debug window shows
 FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 -->
 
-## <a name="authorization-filters"></a>Filtres d’autorisations
+## <a name="authorization-filters"></a>Filtres d'autorisation
 
 Filtres d’autorisations :
 
@@ -335,7 +335,7 @@ Exemples de filtre de ressources :
   * Il empêche la liaison de données d’accéder aux données de formulaire.
   * Il est utilisé pour les chargements de fichiers volumineux et pour empêcher que le formulaire de données ne soit lu en mémoire.
 
-## <a name="action-filters"></a>Filtres d’actions
+## <a name="action-filters"></a>Filtres d'action
 
 > [!IMPORTANT]
 > Les filtres d’action ne s’appliquent **pas** aux Razor Pages. Razor Pages prennent en charge <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> et <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter).
@@ -371,7 +371,7 @@ Levée d’une exception dans une méthode d’action :
 Pour un `IAsyncActionFilter`, un appel à <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate> :
 
 * Exécute tous les filtres d’actions suivants et la méthode d’action.
-* Retourne `ActionExecutedContext`.
+* Renvoie `ActionExecutedContext`.
 
 Pour court-circuiter, attribuez <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result?displayProperty=fullName> à une instance de résultat et n’appelez pas le `next` (le `ActionExecutionDelegate`).
 
@@ -395,7 +395,7 @@ La méthode `OnActionExecuted` s’exécute après la méthode d’action :
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/ValidateModelAttribute.cs?name=snippet2&higlight=12-99)]
 
-## <a name="exception-filters"></a>Filtres d’exceptions
+## <a name="exception-filters"></a>Filtres d'exception
 
 Les filtres d’exceptions :
 
@@ -449,7 +449,7 @@ La méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuti
 * Empêche l’exécution du résultat d’action et des filtres suivants.
 * Est traitée comme une erreur et non comme une réussite.
 
-Lors de l’exécution de la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName>, la réponse a probablement déjà été envoyée au client. Si la réponse a déjà été envoyée au client, elle ne peut plus être modifiée.
+Lorsque la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IResultFilter.OnResultExecuted*?displayProperty=fullName> s’exécute, la réponse a probablement déjà été envoyée au client. Si la réponse a déjà été envoyée au client, elle ne peut plus être modifiée.
 
 `ResultExecutedContext.Canceled` est défini sur `true` si l’exécution du résultat d’action a été court-circuitée par un autre filtre.
 
@@ -474,7 +474,7 @@ Par exemple, le filtre suivant exécute et définit toujours un résultat d’ac
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-L'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implémente l'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Par conséquent, une instance de `IFilterFactory` peut être utilisée comme instance de `IFilterMetadata` n’importe où dans le pipeline de filtres. Quan se prépare à appeler le filtre, il tente de le caster en `IFilterFactory`. Si ce cast réussit, la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> est appelée pour créer l’instance `IFilterMetadata` qui sera appelée. La conception est flexible, car il n’est pas nécessaire de définir explicitement le pipeline de filtres exact quand l’application démarre.
+<xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory> implémente <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. Par conséquent, une instance de `IFilterFactory` peut être utilisée comme instance de `IFilterMetadata` n’importe où dans le pipeline de filtres. Quan se prépare à appeler le filtre, il tente de le caster en `IFilterFactory`. Si ce cast réussit, la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> est appelée pour créer l’instance `IFilterMetadata` qui sera appelée. La conception est flexible, car il n’est pas nécessaire de définir explicitement le pipeline de filtres exact quand l’application démarre.
 
 Une autre approche pour la création de filtres est d’implémenter `IFilterFactory` à l’aide des implémentations d’attribut personnalisé :
 
@@ -505,7 +505,7 @@ Les filtres qui implémentent `IFilterFactory` sont utiles pour les filtres qui�
 * Ne nécessitent pas le passage de paramètres.
 * Disposent de dépendances de constructeur qui doivent être remplies par l’injection de dépendances.
 
-L'objet <xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute> implémente l'objet <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>. `IFilterFactory` expose la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> pour la création d’une instance <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. `CreateInstance` charge le type spécifié à partir du conteneur de services (injection de dépendances).
+<xref:Microsoft.AspNetCore.Mvc.TypeFilterAttribute> implémente <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory>. `IFilterFactory` expose la méthode <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.CreateInstance*> pour la création d’une instance <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterMetadata>. `CreateInstance` charge le type spécifié à partir du conteneur de services (injection de dépendances).
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/SampleActionFilterAttribute.cs?name=snippet_TypeFilterAttribute&highlight=1,3,7)]
 

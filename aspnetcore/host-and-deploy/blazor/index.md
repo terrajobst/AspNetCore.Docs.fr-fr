@@ -50,16 +50,16 @@ Les ressources du dossier sont déployées sur le serveur web. Le déploiement p
 
 Le *chemin d’accès de base* de l’application est le chemin de l’URL racine de l’application. Prenons l’exemple de l’application principale et de l’application éblouissant suivante :
 
-* L’application principale est appelée `MyApp` :
-  * L’application se trouve physiquement à l’adresse *d : \\MyApp*.
-  * Les demandes sont reçues à `https://www.contoso.com/{MYAPP RESOURCE}`.
-* Une application éblouissante appelée `CoolApp` est une sous-application de `MyApp` :
-  * La sous-application réside physiquement dans *d : \\MyApp @ no__t-2CoolApp*.
-  * Les demandes sont reçues à `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}`.
+* L’application principale est appelée `MyApp`:
+  * L’application se trouve physiquement dans *d :\\MyApp*.
+  * Les demandes sont reçues au `https://www.contoso.com/{MYAPP RESOURCE}`.
+* Une application éblouissante appelée `CoolApp` est une sous-application de `MyApp`:
+  * La sous-application réside physiquement dans *d :\\MyApp\\coolapp*.
+  * Les demandes sont reçues au `https://www.contoso.com/CoolApp/{COOLAPP RESOURCE}`.
 
 Si vous ne spécifiez pas de configuration supplémentaire pour `CoolApp`, la sous-application dans ce scénario n’a aucune connaissance de son emplacement sur le serveur. Par exemple, l’application ne peut pas construire des URL relatives correctes pour ses ressources sans savoir qu’elle réside au chemin d’URL relatif `/CoolApp/`.
 
-Pour fournir la configuration du chemin d’accès de base de l’application éblouissante `https://www.contoso.com/CoolApp/`, l’attribut `href` de la balise @no__t 1 est défini sur le chemin d’accès racine relatif dans le fichier *wwwroot/index.html* :
+Pour fournir la configuration du chemin d’accès de base de l’application éblouissante `https://www.contoso.com/CoolApp/`, l’attribut `href` de la balise `<base>` est défini sur le chemin d’accès racine relatif dans le fichier *wwwroot/index.html* :
 
 ```html
 <base href="/CoolApp/">
@@ -77,7 +77,7 @@ Pour une application avec un chemin d’URL relatif non racine (par exemple, `<b
 dotnet run --pathbase=/{RELATIVE URL PATH (no trailing slash)}
 ```
 
-Pour une application avec un chemin d’URL relatif de `/CoolApp/` (`<base href="/CoolApp/">`), la commande est :
+Pour une application avec un chemin d’URL relatif de `/CoolApp/` (`<base href="/CoolApp/">`), la commande est la suivante :
 
 ```dotnetcli
 dotnet run --pathbase=/CoolApp

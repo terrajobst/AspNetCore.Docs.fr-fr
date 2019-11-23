@@ -51,7 +51,7 @@ La surcharge [ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>
 
 Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET Core pour surveiller les modifications apportées aux objets :
 
-* Pour surveiller les modifications apportées aux fichiers, la méthode <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> de <xref:Microsoft.Extensions.FileProviders.IFileProvider> crée un `IChangeToken` pour les fichiers ou le dossier à surveiller.
+* Pour surveiller les modifications apportées aux fichiers, la méthode <xref:Microsoft.Extensions.FileProviders.IFileProvider> de <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> crée un `IChangeToken` pour les fichiers ou le dossier à surveiller.
 * Les jetons `IChangeToken` peuvent être ajoutés aux entrées du cache pour déclencher des suppressions dans le cache en cas de modification.
 * Pour les modifications `TOptions`, l’implémentation <xref:Microsoft.Extensions.Options.OptionsMonitor`1> par défaut de <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> a une surcharge qui accepte une ou plusieurs instances <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1>. Chaque instance retourne un `IChangeToken` pour inscrire un rappel de notification de modification pour les modifications des options de suivi.
 
@@ -172,7 +172,7 @@ Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions su
 1. Un jeton de modification est obtenu auprès du fournisseur du fichier avec [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*). Le rappel du jeton est déclenché quand le fichier est modifié.
 1. Le contenu du fichier est mis en cache avec une période [d’expiration décalée](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration). Le jeton de modification est attaché avec [MemoryCacheEntryExtensions.AddExpirationToken](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*) pour supprimer l’entrée du cache si le fichier change alors qu’il est mis en cache.
 
-Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu](xref:fundamentals/index#content-root)de l’application. `IWebHostEnvironment.ContentRootFileProvider` est utilisé pour obtenir une <xref:Microsoft.Extensions.FileProviders.IFileProvider> qui pointe vers le @no__t 2 de l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
+Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu](xref:fundamentals/index#content-root)de l’application. `IWebHostEnvironment.ContentRootFileProvider` est utilisé pour obtenir un <xref:Microsoft.Extensions.FileProviders.IFileProvider> pointant sur le `IWebHostEnvironment.ContentRootPath`de l’application. `filePath` est obtenue avec [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath).
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
@@ -249,7 +249,7 @@ La surcharge [ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>
 
 Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET Core pour surveiller les modifications apportées aux objets :
 
-* Pour surveiller les modifications apportées aux fichiers, la méthode <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> de <xref:Microsoft.Extensions.FileProviders.IFileProvider> crée un `IChangeToken` pour les fichiers ou le dossier à surveiller.
+* Pour surveiller les modifications apportées aux fichiers, la méthode <xref:Microsoft.Extensions.FileProviders.IFileProvider> de <xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*> crée un `IChangeToken` pour les fichiers ou le dossier à surveiller.
 * Les jetons `IChangeToken` peuvent être ajoutés aux entrées du cache pour déclencher des suppressions dans le cache en cas de modification.
 * Pour les modifications `TOptions`, l’implémentation <xref:Microsoft.Extensions.Options.OptionsMonitor`1> par défaut de <xref:Microsoft.Extensions.Options.IOptionsMonitor`1> a une surcharge qui accepte une ou plusieurs instances <xref:Microsoft.Extensions.Options.IOptionsChangeTokenSource`1>. Chaque instance retourne un `IChangeToken` pour inscrire un rappel de notification de modification pour les modifications des options de suivi.
 

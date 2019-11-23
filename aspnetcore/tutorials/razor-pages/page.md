@@ -60,7 +60,7 @@ Le HTML Helper `DisplayNameFor` inspecte la propriété `Title` référencée da
 
 [!code-cshtml[](razor-pages-start/snapshot_sample3/RazorPagesMovie30/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
-La directive `@model` spécifie le type du modèle passé à la page Razor. Dans l’exemple précédent, la ligne `@model` rend la classe dérivée `PageModel` accessible à la page Razor. Le modèle est utilisé dans les [HTML Helpers](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) `@Html.DisplayNameFor` et `@Html.DisplayFor` de la page.
+La directive `@model` spécifie le type du modèle passé à la page Razor. Dans l’exemple précédent, la ligne `@model` rend la classe dérivée `PageModel` accessible à la page Razor. Le modèle est utilisé dans les `@Html.DisplayNameFor`HTML Helpers`@Html.DisplayFor` [ et ](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) de la page.
 
 ### <a name="the-layout-page"></a>La page de disposition
 
@@ -213,7 +213,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les pages Razor créées par génération de modèles automatique au cours du [didacticiel précédent](xref:tutorials/razor-pages/model).
 
-[Affichez ou téléchargez](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) l’exemple de code.
+[Affichez ou téléchargez](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22) l’exemple.
 
 ## <a name="the-create-delete-details-and-edit-pages"></a>Pages Create, Delete, Details et Edit
 
@@ -251,7 +251,7 @@ Le HTML Helper `DisplayNameFor` inspecte la propriété `Title` référencée da
 
 [!code-cshtml[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?range=1-2&highlight=2)]
 
-La directive `@model` spécifie le type du modèle passé à la page Razor. Dans l’exemple précédent, la ligne `@model` rend la classe dérivée `PageModel` accessible à la page Razor. Le modèle est utilisé dans les [HTML Helpers](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) `@Html.DisplayNameFor` et `@Html.DisplayFor` de la page.
+La directive `@model` spécifie le type du modèle passé à la page Razor. Dans l’exemple précédent, la ligne `@model` rend la classe dérivée `PageModel` accessible à la page Razor. Le modèle est utilisé dans les `@Html.DisplayNameFor`HTML Helpers`@Html.DisplayFor` [ et ](/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs#understanding-html-helpers) de la page.
 
 ### <a name="the-layout-page"></a>La page de disposition
 

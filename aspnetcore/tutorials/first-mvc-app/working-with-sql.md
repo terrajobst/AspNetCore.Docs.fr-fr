@@ -16,7 +16,7 @@ ms.locfileid: "72289080"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’objet `MvcMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
@@ -48,7 +48,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu View](working-with-sql/_static/ssox.png)
+  ![Menu Affichage](working-with-sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` **> Concepteur de vue**.
 
@@ -58,7 +58,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 Notez l’icône de clé en regard de `ID`. Par défaut, EF fait d’une propriété nommée `ID` la clé primaire.
 
-* Cliquez avec le bouton droit sur la table `Movie` **> Afficher les données**.
+* Cliquez avec le bouton droit sur la table `Movie` **> Afficher les données**
 
   ![Menu contextuel ouvert sur la table Movie](working-with-sql/_static/ssox2.png)
 
@@ -117,7 +117,7 @@ Supprimez tous les enregistrements dans la base de données (pour que la méthod
 
 ---
 
-L’application affiche les données de départ.
+L’application affiche les données de valeurs de départ.
 
 ![Application MVC Movie ouverte dans Microsoft Edge, affichant les données relatives aux films](working-with-sql/_static/m55.png)
 
@@ -128,7 +128,7 @@ L’application affiche les données de départ.
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’objet `MvcMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
@@ -160,7 +160,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu View](working-with-sql/_static/ssox.png)
+  ![Menu Affichage](working-with-sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` **> Concepteur de vue**.
 
@@ -170,7 +170,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 Notez l’icône de clé en regard de `ID`. Par défaut, EF fait d’une propriété nommée `ID` la clé primaire.
 
-* Cliquez avec le bouton droit sur la table `Movie` **> Afficher les données**.
+* Cliquez avec le bouton droit sur la table `Movie` **> Afficher les données**
 
   ![Menu contextuel ouvert sur la table Movie](working-with-sql/_static/ssox2.png)
 
@@ -229,7 +229,7 @@ Supprimez tous les enregistrements dans la base de données (pour que la méthod
 
 ---
 
-L’application affiche les données de départ.
+L’application affiche les données de valeurs de départ.
 
 ![Application MVC Movie ouverte dans Microsoft Edge, affichant les données relatives aux films](working-with-sql/_static/m55.png)
 

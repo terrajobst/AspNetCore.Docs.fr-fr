@@ -168,7 +168,7 @@ Si l’application s’exécute sur le serveur, mais ne répond pas sur Internet
 
 Quand vous avez terminé de tester l’application, arrêtez-la avec `Ctrl+C` depuis l’invite de commandes.
 
-## <a name="monitor-the-app"></a>Surveiller l’application
+## <a name="monitor-the-app"></a>Surveiller l'application
 
 Le serveur est configuré pour transférer les requêtes faites à `http://<serveraddress>:80` à l’application ASP.NET Core s’exécutant sur Kestrel à l’adresse `http://127.0.0.1:5000`. Toutefois, Nginx n’est pas configuré pour gérer le processus Kestrel. *systemd* peut être utilisé pour créer un fichier de service afin de démarrer et de surveiller l’application web sous-jacente. *systemd* est un système d’initialisation qui fournit de nombreuses et puissantes fonctionnalités pour le démarrage, l’arrêt et la gestion des processus. 
 

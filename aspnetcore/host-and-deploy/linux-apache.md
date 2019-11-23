@@ -162,7 +162,7 @@ sudo systemctl restart httpd
 sudo systemctl enable httpd
 ```
 
-## <a name="monitor-the-app"></a>Surveiller l’application
+## <a name="monitor-the-app"></a>Surveiller l'application
 
 Apache est désormais configuré pour transférer les requêtes faites à `http://localhost:80` vers l’application ASP.NET Core s’exécutant sur Kestrel à l’adresse `http://127.0.0.1:5000`. Cependant, Apache n’est pas configuré pour gérer le processus Kestrel. Utilisez *systemd* pour créer un fichier de service afin de démarrer et surveiller l’application web sous-jacente. *systemd* est un système d’initialisation qui fournit de nombreuses et puissantes fonctionnalités pour le démarrage, l’arrêt et la gestion des processus.
 
@@ -417,7 +417,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier. Redémarrez Apache.
 
-### <a name="load-balancing"></a>Équilibrage de charge
+### <a name="load-balancing"></a>Équilibrage de la charge
 
 Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestrel sur la même machine de l’instance. Afin de multiplier les instances en cas de défaillance, l’utilisation de *mod_proxy_balancer* et la modification du **VirtualHost** permettent de gérer plusieurs instances des applications web derrière le serveur proxy Apache.
 

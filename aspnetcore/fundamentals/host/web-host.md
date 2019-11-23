@@ -144,7 +144,7 @@ L’hôte utilise l’option qui définit une valeur en dernier. Pour plus d’i
 
 ::: moniker range=">= aspnetcore-3.0"
 
-La propriété `IWebHostEnvironment.ApplicationName` est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé pendant la construction de l’hôte. La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application. Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :
+La propriété `IWebHostEnvironment.ApplicationName` est définie automatiquement quand [UseStartup](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup) ou [configure](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configure) est appelé lors de la construction de l’hôte. La valeur affectée correspond au nom de l’assembly contenant le point d’entrée de l’application. Pour définir la valeur explicitement, utilisez [WebHostDefaults.ApplicationKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.applicationkey) :
 
 ::: moniker-end
 
@@ -156,7 +156,7 @@ La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.exten
 
 **Clé** : applicationName  
 **Type** : *string*  
-**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
+**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_APPLICATIONNAME`
 
@@ -171,7 +171,7 @@ Ce paramètre contrôle la capture des erreurs de démarrage.
 
 **Clé** : captureStartupErrors  
 **Type** : *bool* (`true` ou `1`)  
-**Par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
+**Valeur par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
 **Définition avec** : `CaptureStartupErrors`  
 **Variable d’environnement** : `ASPNETCORE_CAPTURESTARTUPERRORS`
 
@@ -188,7 +188,7 @@ Ce paramètre détermine où ASP.NET Core commence à rechercher les fichiers de
 
 **Clé** : contentRoot  
 **Type** : *string*  
-**Par défaut** : dossier où réside l’assembly de l’application.  
+**Valeur par défaut** : dossier où réside l’assembly de l’application.  
 **Définition avec** : `UseContentRoot`  
 **Variable d’environnement** : `ASPNETCORE_CONTENTROOT`
 
@@ -201,7 +201,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Pour plus d'informations, voir :
 
-* @no__t 0Fundamentals : Racine du contenu @ no__t-0
+* [Notions de base : racine du contenu](xref:fundamentals/index#content-root)
 * [Racine Web](#web-root)
 
 ### <a name="detailed-errors"></a>Erreurs détaillées
@@ -227,7 +227,7 @@ Définit l’environnement de l’application.
 
 **Clé** : environment  
 **Type** : *string*  
-**Par défaut** : Production  
+**Valeur par défaut** : Production  
 **Définition avec** : `UseEnvironment`  
 **Variable d’environnement** : `ASPNETCORE_ENVIRONMENT`
 
@@ -244,7 +244,7 @@ Définit les assemblys d’hébergement au démarrage de l’application.
 
 **Clé** : hostingStartupAssemblies  
 **Type** : *string*  
-**Par défaut** : Chaîne vide  
+**Valeur par défaut** : une chaîne vide  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
@@ -261,10 +261,10 @@ WebHost.CreateDefaultBuilder(args)
 
 Définissez le port de redirection HTTPS. Utilisé dans [l’application de HTTPS](xref:security/enforcing-ssl).
 
-**Clé** : https_port **Type** : *string*
-**Par défaut** : Aucune valeur par défaut n’est définie.
-**Définir avec** : `UseSetting`
-**La variable d’environnement**: `ASPNETCORE_HTTPS_PORT`
+**Clé** : https_port **Type** : *chaîne*
+**Valeur par défaut** : une valeur par défaut n’est pas définie.
+**Définition avec** : `UseSetting`
+**Variable d’environnement** : `ASPNETCORE_HTTPS_PORT`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -277,7 +277,7 @@ Chaîne délimitée par des points-virgules qui spécifie les assemblys d’héb
 
 **Clé** : hostingStartupExcludeAssemblies  
 **Type** : *string*  
-**Par défaut** : Chaîne vide  
+**Valeur par défaut** : une chaîne vide  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
@@ -341,7 +341,7 @@ Spécifie le délai d’attente avant l’arrêt de l’hôte web.
 
 **Clé** : shutdownTimeoutSeconds  
 **Type** : *int*  
-**Par défaut** : 5  
+**Valeur par défaut** : 5  
 **Définition avec** : `UseShutdownTimeout`  
 **Variable d’environnement** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
@@ -365,7 +365,7 @@ Détermine l’assembly à rechercher pour la classe `Startup`.
 
 **Clé** : startupAssembly  
 **Type** : *string*  
-**Par défaut** : l’assembly de l’application  
+**Valeur par défaut** : l’assembly de l’application  
 **Définition avec** : `UseStartup`  
 **Variable d’environnement** : `ASPNETCORE_STARTUPASSEMBLY`
 
@@ -387,7 +387,7 @@ Définit le chemin relatif des ressources statiques de l’application.
 
 **Clé** : webroot  
 **Type** : *string*  
-**Par défaut** : La valeur par défaut est `wwwroot`. Le chemin d’accès à *{root content}/wwwroot* doit exister. Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.  
+**Valeur par défaut**: la valeur par défaut est `wwwroot`. Le chemin d’accès à *{root content}/wwwroot* doit exister. Si ce chemin n’existe pas, un fournisseur de fichiers no-op est utilisé.  
 **Définition avec** : `UseWebRoot`  
 **Variable d’environnement** : `ASPNETCORE_WEBROOT`
 
@@ -398,7 +398,7 @@ WebHost.CreateDefaultBuilder(args)
 
 Pour plus d'informations, voir :
 
-* @no__t 0Fundamentals : Racine Web @ no__t-0
+* [Notions de base : racine Web](xref:fundamentals/index#web-root)
 * [Racine du contenu](#content-root)
 
 ## <a name="override-configuration"></a>Remplacer la configuration
@@ -526,7 +526,7 @@ using (var host = WebHost.Start("http://localhost:8080", app => app.Response.Wri
 
 Produit le même résultat que **Start(RequestDelegate app)** , sauf que l’application répond sur `http://localhost:8080`.
 
-**Start (action @ no__t-1IRouteBuilder > routeBuilder)**
+**Start (action\<IRouteBuilder > routeBuilder)**
 
 Utilisez une instance de `IRouteBuilder` ([Microsoft.AspNetCore.Routing](https://www.nuget.org/packages/Microsoft.AspNetCore.Routing/)) pour utiliser le middleware de routage :
 
@@ -549,7 +549,7 @@ using (var host = WebHost.Start(router => router
 
 Utilisez les requêtes de navigateur suivantes avec l’exemple :
 
-| Demande                                    | Réponse                                 |
+| Requête                                    | Réponse                                 |
 | ------------------------------------------ | ---------------------------------------- |
 | `http://localhost:5000/hello/Martin`       | Hello, Martin!                           |
 | `http://localhost:5000/buenosdias/Catrina` | Buenos dias, Catrina!                    |
@@ -560,7 +560,7 @@ Utilisez les requêtes de navigateur suivantes avec l’exemple :
 
 `WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM). L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.
 
-**Start (URL de chaîne, action @ no__t-1IRouteBuilder > routeBuilder)**
+**Start (URL de chaîne, action\<IRouteBuilder > routeBuilder)**
 
 Utilisez une URL et une instance de `IRouteBuilder` :
 
@@ -581,9 +581,9 @@ using (var host = WebHost.Start("http://localhost:8080", router => router
 }
 ```
 
-Produit le même résultat que **Start (action @ no__t-1IRouteBuilder > routeBuilder)** , sauf que l’application répond à `http://localhost:8080`.
+Produit le même résultat que **Start (Action\<IRouteBuilder > routeBuilder)** , sauf que l’application répond à `http://localhost:8080`.
 
-**StartWith (action @ no__t-1IApplicationBuilder > application)**
+**StartWith (action\<IApplicationBuilder > application)**
 
 Fournissez un délégué pour configurer un `IApplicationBuilder` :
 
@@ -604,7 +604,7 @@ using (var host = WebHost.StartWith(app =>
 
 Envoyez une requête à `http://localhost:5000` dans le navigateur pour recevoir la réponse « Hello World! » `WaitForShutdown` bloque la requête jusqu’à l’émission d’une commande d’arrêt (Ctrl-C/SIGINT ou SIGTERM). L’application affiche le message `Console.WriteLine` et attend que l’utilisateur appuie sur une touche pour s’arrêter.
 
-**StartWith (String url, action @ no__t-1IApplicationBuilder > app)**
+**StartWith (URL de chaîne, action\<IApplicationBuilder > application)**
 
 Fournissez une URL et un délégué pour configurer un `IApplicationBuilder` :
 
@@ -623,7 +623,7 @@ using (var host = WebHost.StartWith("http://localhost:8080", app =>
 }
 ```
 
-Produit le même résultat que **startwith (action @ no__t-1IApplicationBuilder > application)** , sauf que l’application répond sur `http://localhost:8080`.
+Produit le même résultat que **startwith (Action\<IApplicationBuilder > application)** , sauf que l’application répond sur `http://localhost:8080`.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -819,7 +819,7 @@ public async Task Invoke(HttpContext context, IHostingEnvironment env)
 
 ## <a name="ihostapplicationlifetime-interface"></a>Interface IHostApplicationLifetime
 
-`IHostApplicationLifetime` autorise les activités postérieures au démarrage et à l’arrêt. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.
+`IHostApplicationLifetime` permet les activités postérieures au démarrage et à l’arrêt. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes `Action` qui définissent les événements de démarrage et d’arrêt.
 
 | Jeton d’annulation    | Événement déclencheur |
 | --------------------- | --------------------- |
@@ -861,7 +861,7 @@ public class Startup
 }
 ```
 
-`StopApplication` demande l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :
+`StopApplication` demande l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application lors de l’appel de la méthode `Shutdown` de la classe :
 
 ```csharp
 public class MyClass
@@ -928,7 +928,7 @@ public class Startup
 }
 ```
 
-[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :
+[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application lors de l’appel de la méthode `Shutdown` de la classe :
 
 ```csharp
 public class MyClass
@@ -951,7 +951,7 @@ public class MyClass
 
 ## <a name="scope-validation"></a>Validation de l’étendue
 
-[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) affecte la valeur `true` à [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) si l’environnement de l’application est Développement.
+[CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) affecte la valeur [ à ](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes)ServiceProviderOptions.ValidateScopes`true` si l’environnement de l’application est Développement.
 
 Quand `ValidateScopes` est défini sur `true`, le fournisseur de services par défaut vérifie que :
 

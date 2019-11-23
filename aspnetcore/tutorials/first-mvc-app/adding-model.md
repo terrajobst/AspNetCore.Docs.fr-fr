@@ -93,7 +93,7 @@ Le code précédent crée une propriété [DbSet\<Movie>](/dotnet/api/microsoft.
 
 ASP.NET Core comprend [l’injection de dépendances (DI)](xref:fundamentals/dependency-injection). Les services (tels que le contexte de base de données EF Core) doivent être inscrits auprès de l’injection de dépendances au démarrage de l’application. Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur. Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel. Dans cette section, vous allez inscrire le contexte de base de données auprès du conteneur d’injection de dépendances.
 
-En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
+En tête du fichier `using`Startup.cs *, ajoutez les instructions*  suivantes :
 
 ```csharp
 using MvcMovie.Data;
@@ -166,7 +166,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 
 ### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) 
 
-* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
 * Sur Linux, exportez le chemin de l’outil de génération de modèles automatique :
 
@@ -174,7 +174,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -184,9 +184,9 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 
 ### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -375,7 +375,7 @@ Comme l’objet `Model` est fortement typé (en tant qu’objet `IEnumerable<Mov
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Globalisation et localisation](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]
@@ -443,7 +443,7 @@ La création automatique du contexte de base de données et de méthodes d’act
 <!--  Until https://github.com/aspnet/Scaffolding/issues/582 is fixed windows needs backslash or the namespace is namespace RazorPagesMovie.Pages_Movies rather than namespace RazorPagesMovie.Pages.Movies
 -->
 
-* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
@@ -456,7 +456,7 @@ La création automatique du contexte de base de données et de méthodes d’act
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -468,14 +468,14 @@ La création automatique du contexte de base de données et de méthodes d’act
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Ouvrez une fenêtre de commande dans le répertoire du projet (celui qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Installez l’outil de génération de modèles automatique :
 
   ```dotnetcli
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -535,7 +535,7 @@ Dans cette section, vous devez effectuer les tâches suivantes :
    Update-Database
    ```
 
-   La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial.
+   La commande `Add-Migration` génère du code pour créer le schéma de base de données initial.
 
    Le schéma de base de données est basé sur le modèle spécifié dans la classe `MvcMovieContext`. L’argument `Initial` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est utilisé. Pour plus d'informations, consultez <xref:data/ef-mvc/migrations>.
 
@@ -545,7 +545,7 @@ Dans cette section, vous devez effectuer les tâches suivantes :
 
 [!INCLUDE [initial migration](~/includes/RP/model3.md)]
 
-La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial.
+La commande `ef migrations add InitialCreate` génère du code pour créer le schéma de base de données initial.
 
 Le schéma de base de donénes est basé sur le modèle spécifié dans la classe `MvcMovieContext` (dans *Data/MvcMovieContext.cs*). L’argument `InitialCreate` est le nom de la migration. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
 
@@ -684,7 +684,7 @@ Comme l’objet `Model` est fortement typé (en tant qu’objet `IEnumerable<Mov
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Globalisation et localisation](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]

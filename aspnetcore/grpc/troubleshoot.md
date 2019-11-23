@@ -92,7 +92,7 @@ var client = new Greet.GreeterClient(channel);
 
 Kestrel ne prend pas en charge HTTP/2 avec TLS sur macOS et les anciennes versions de Windows telles que Windows 7. Le modèle et les exemples de ASP.NET Core gRPC utilisent TLS par défaut. Le message d’erreur suivant s’affiche lorsque vous essayez de démarrer le serveur gRPC :
 
-> Impossible d’établir une liaison à https://localhost:5001 sur l’interface de bouclage IPv4 : « HTTP/2 sur TLS n’est pas pris en charge sur macOS en raison de la prise en charge de ALPN manquante. ».
+> Impossible d’établir une liaison à https://localhost:5001 sur l’interface de bouclage IPv4 : « HTTP/2 sur TLS n’est pas pris en charge sur macOS en raison d’une prise en charge ALPN manquante. ».
 
 Pour contourner ce problème, configurez Kestrel et le client gRPC pour utiliser HTTP/2 *sans* TLS. Vous ne devez effectuer cette opération qu’au cours du développement. Si vous n’utilisez pas TLS, les messages gRPC sont envoyés sans chiffrement.
 
@@ -129,7 +129,7 @@ la génération de code gRPC des clients concrets et des classes de base de serv
 
 Pour plus d’informations sur la C# génération de ressources gRPC, consultez <xref:grpc/basics>.
 
-Par défaut, une référence `<Protobuf>` génère un client concret et une classe de base de service. L’attribut `GrpcServices` de l’élément de référence peut être utilisé C# pour limiter la génération d’éléments multimédias. Les options valides de `GrpcServices` sont les suivantes :
+Par défaut, une référence `<Protobuf>` génère un client concret et une classe de base de service. L’attribut `GrpcServices` de l’élément de référence peut être utilisé C# pour limiter la génération d’éléments multimédias. Les options de `GrpcServices` valides sont les suivantes :
 
 * `Both` (valeur par défaut absente)
 * `Server`
@@ -161,9 +161,9 @@ Les projets WPF présentent un [problème connu](https://github.com/dotnet/wpf/i
 Vous pouvez contourner ce problème en :
 
 1. Créez un projet de bibliothèque de classes .NET Core.
-2. Dans le nouveau projet, ajoutez des références pour activer [ C# la génération de code à partir de *@no__t de 3 à 3 fichiers. proto* ](xref:grpc/basics#generated-c-assets):
+2. Dans le nouveau projet, ajoutez des références pour activer [ C# la génération de code à partir des fichiers *\*. proto* ](xref:grpc/basics#generated-c-assets):
     * Ajoutez une référence de package au package [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
-    * Ajoutez *@no__t les fichiers. proto* au groupe d’éléments `<Protobuf>`.
+    * Ajoutez *\*fichiers. proto* au groupe d’éléments `<Protobuf>`.
 3. Dans l’application WPF, ajoutez une référence au nouveau projet.
 
 L’application WPF peut utiliser les types générés par gRPC à partir du nouveau projet de bibliothèque de classes.

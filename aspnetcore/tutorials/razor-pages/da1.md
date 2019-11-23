@@ -66,7 +66,7 @@ Mettez à jour les pages Razor Edit, Details et Delete pour utiliser le modèle 
 </td>
 ```
 
-Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’inclut **pas** l’entier retourne une erreur HTTP 404 (introuvable). Par exemple, `http://localhost:5000/Movies/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
+Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’inclut **pas** l’entier retourne une erreur HTTP 404 (introuvable). Par exemple, `http://localhost:5000/Movies/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte d’itinéraire :
 
  ```cshtml
 @page "{id:int?}"
@@ -179,7 +179,7 @@ Mettez à jour les pages Razor Edit, Details et Delete pour utiliser le modèle 
 </td>
 ```
 
-Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’inclut **pas** l’entier retourne une erreur HTTP 404 (introuvable). Par exemple, `http://localhost:5000/Movies/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
+Une requête à la page avec le modèle d’itinéraire « {id:int} » qui n’inclut **pas** l’entier retourne une erreur HTTP 404 (introuvable). Par exemple, `http://localhost:5000/Movies/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte d’itinéraire :
 
  ```cshtml
 @page "{id:int?}"

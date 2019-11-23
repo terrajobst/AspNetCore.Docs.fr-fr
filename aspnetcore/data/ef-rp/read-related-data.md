@@ -42,13 +42,13 @@ EF Core peut charger des données associées dans les propriétés de navigation
   * Une requête pour la requête principale 
   * Une requête pour chaque « périmètre » de collection dans l’arborescence de la charge.
 
-* Requêtes distinctes avec `Load` : Les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Quand EF Core « corrige », cela signifie que les propriétés de navigation sont renseignées automatiquement. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
+* Requêtes distinctes avec `Load` : les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Quand EF Core « corrige », cela signifie que les propriétés de navigation sont renseignées automatiquement. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
   Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
-* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -63,7 +63,7 @@ L’entité `Course` comprend une propriété de navigation qui contient l’ent
 Pour afficher le nom du service (« department ») affecté pour un cours (« course ») :
 
 * Chargez l’entité `Department` associée dans la propriété de navigation `Course.Department`.
-* Obtenez le nom à partir de la propriété `Name` de l’entité `Department`.
+* Obtenez le nom à partir de la propriété `Department` de l’entité `Name`.
 
 <a name="scaffold"></a>
 
@@ -227,7 +227,7 @@ La méthode `Where` retourne une collection. Mais dans ce cas, le filtre sélect
 
 ![Instructor-to-Courses m:M](complex-data-model/_static/courseassignment.png)
 
-La méthode `Single` est utilisée sur une collection quand la collection ne compte qu’un seul élément. La méthode `Single` lève une exception si la collection est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui renvoie une valeur par défaut (Null dans ce cas) si la collection est vide.
+La méthode `Single` est utilisée sur une collection quand la collection ne compte qu’un seul élément. La méthode `Single` lève une exception si la collection est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui retourne une valeur par défaut (Null dans le cas présent) si la collection est vide.
 
 Le code suivant renseigne la propriété `Enrollments` du modèle d’affichage quand un cours est sélectionné :
 
@@ -281,7 +281,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Ajoute un tableau d’inscriptions d’étudiants pour le cours sélectionné.
 
-Exécutez l’application et sélectionnez l’onglet **Instructors**. La page affiche le `Location` (bureau) de l’entité `OfficeAssignment` associée. Si `OfficeAssignment` a la valeur Null, une cellule de tableau vide est affichée.
+Exécutez l’application et sélectionnez l’onglet **Instructors** . La page affiche le `Location` (Office) à partir de l’entité `OfficeAssignment` associée. Si `OfficeAssignment` a la valeur Null, une cellule de tableau vide est affichée.
 
 Cliquez sur le lien **Select** pour un formateur. Le style de ligne change et les cours attribués à ce formateur s’affichent.
 
@@ -318,7 +318,7 @@ Notez que le code précédent commente `.AsNoTracking()`. Les propriétés de na
 
 Testez l’application. Du point de vue d’un utilisateur, l’application se comporte de façon identique à la version précédente.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Le didacticiel suivant montre comment mettre à jour les données associées.
 
@@ -353,13 +353,13 @@ EF Core peut charger des données associées dans les propriétés de navigation
   * Une requête pour la requête principale 
   * Une requête pour chaque « périmètre » de collection dans l’arborescence de la charge.
 
-* Requêtes distinctes avec `Load` : Les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Le terme « corrige » signifie qu’EF Core renseigne automatiquement les propriétés de navigation. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
+* Requêtes distinctes avec `Load` : les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Le terme « corrige » signifie qu’EF Core renseigne automatiquement les propriétés de navigation. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
   Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
-* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -380,7 +380,7 @@ Pour afficher le nom du département affecté dans une liste de cours
 
 <a name="scaffold"></a>
 
-### <a name="scaffold-the-course-model"></a>Échafaudage (scaffolding) du modèle de cours
+### <a name="scaffold-the-course-model"></a>Génération automatique du modèle Course
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
@@ -396,7 +396,7 @@ Suivez les instructions fournies dans [Générer automatiquement le modèle d’
 
 ---
 
-La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
+La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
 
 Ouvrez *Pages/Courses/Index.cshtml.cs* et examinez la méthode `OnGetAsync`. Le moteur de génération de modèles automatique a spécifié le chargement hâtif pour la propriété de navigation `Department`. La méthode `Include` spécifie le chargement hâtif.
 
@@ -498,8 +498,8 @@ Examinez la requête dans le fichier *Pages/Instructors/Index.cshtml.cs* :
 
 La requête comporte deux Include :
 
-* `OfficeAssignment`: Affiché dans [l’affichage Instructors](#IP).
-* `CourseAssignments`: Qui affiche les cours dispensés.
+* `OfficeAssignment` : affiché dans l’[affichage Instructors](#IP).
+* `CourseAssignments` : qui affiche les cours dispensés.
 
 ### <a name="update-the-instructors-index-page"></a>Mettre à jour la page d’index des formateurs
 
@@ -527,7 +527,7 @@ Le balisage précédent apporte les modifications suivantes :
   }
   ```
 
-* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Pour plus d’informations sur cette syntaxe Razor, consultez [transition de ligne explicite](xref:mvc/views/razor#explicit-line-transition) .
+* Ajout d’une colonne **Courses** qui affiche les cours dispensés par chaque formateur. Pour plus d’informations sur cette syntaxe Razor, consultez [transition de ligne explicite](xref:mvc/views/razor#explicit-line-transition) .
 
 * Vous avez ajouté un code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
 
@@ -546,7 +546,7 @@ Le balisage précédent apporte les modifications suivantes :
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-Exécutez l’application et sélectionnez le lien **Instructors**. La page affiche le `Location` (bureau) de l’entité `OfficeAssignment` associée. Si OfficeAssignment` est Null, une cellule de table vide est affichée.
+Exécutez l’application et sélectionnez l’onglet **Instructors** . La page affiche le `Location` (Office) à partir de l’entité `OfficeAssignment` associée. Si OfficeAssignment` est Null, une cellule de table vide est affichée.
 
 Cliquez sur le lien **Select**. Le style de ligne change.
 

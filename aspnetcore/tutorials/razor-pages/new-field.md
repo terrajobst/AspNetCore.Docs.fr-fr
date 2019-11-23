@@ -53,19 +53,19 @@ Mettez à jour les pages suivantes :
 * Mettez à jour [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un champ `Rating`.
 * Ajoutez le champ `Rating` à la Page Edit.
 
-L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mettre à jour la base de données lève une `SqlException` :
+L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mettre à jour la base de données lève une `SqlException`:
 
 `SqlException: Invalid column name 'Rating'.`
 
-L’exception `SqlException` est due au fait que la classe de modèle Movie mise à jour est différente du schéma de la table Movie de la base de données. (Il n’existe pas de colonne `Rating` dans la table de base de données.)
+L’exception `SqlException` est provoquée par la classe de modèle Movie mise à jour qui est différente de celle du schéma de la table Movie de la base de données. (Il n’existe pas de colonne `Rating` dans la table de base de données.)
 
 Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -83,7 +83,7 @@ Générez la solution.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -96,7 +96,7 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 La commande `Update-Database` indique à l’infrastructure d’appliquer les modifications de schéma à la base de données et de conserver les données existantes.
 
@@ -188,9 +188,9 @@ Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -208,7 +208,7 @@ Générez la solution.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -221,7 +221,7 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 La commande `Update-Database` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
 

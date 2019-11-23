@@ -30,7 +30,7 @@ Le modèle de données final est présenté dans l’illustration suivante :
 
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
-## <a name="the-student-entity"></a>L’entité Student
+## <a name="the-student-entity"></a>Entité Student
 
 ![Entité Student](complex-data-model/_static/student-entity.png)
 
@@ -399,7 +399,7 @@ Par exemple, si la propriété `Department.InstructorID` a été définie comme 
      .OnDelete(DeleteBehavior.Restrict)
   ```
 
-## <a name="the-enrollment-entity"></a>L’entité Enrollment
+## <a name="the-enrollment-entity"></a>Entité Enrollment
 
 Un enregistrement d’inscription correspond à un cours suivi par un étudiant.
 
@@ -534,7 +534,7 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 ## <a name="add-a-migration"></a>Ajouter une migration
 
-Générez le projet.
+créer le projet ;
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -608,9 +608,9 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
+* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet ef database drop --force
@@ -625,7 +625,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 ---
 
-Exécuter l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -711,9 +711,9 @@ La méthode `DbInitializer.Initialize` étant conçue pour fonctionner uniquemen
 
 ---
 
-Exécuter l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Les deux tutoriels suivants montrent comment lire et mettre à jour des données associées.
 
@@ -758,7 +758,7 @@ L’attribut `DataType` émet des attributs HTML 5 `data-` utilisés par les nav
 
 `DataType.Date` ne spécifie pas le format de la date qui s’affiche. Par défaut, le champ de date est affiché conformément aux formats par défaut basés sur l’objet [CultureInfo](xref:fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support) du serveur.
 
-L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
+L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -773,7 +773,7 @@ L’attribut `DisplayFormat` peut être utilisé seul. Il est généralement pr�
 
 Pour plus d’informations, consultez la [documentation relative au Tag Helper \<input>](xref:mvc/views/working-with-forms#the-input-tag-helper).
 
-Exécuter l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
+Exécutez l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
 
 ![Page d’index des étudiants affichant les dates sans les heures](complex-data-model/_static/dates-no-times.png)
 
@@ -827,7 +827,7 @@ SqlException: Invalid column name 'FirstName'.
 
 Pour mettre à jour la base de données
 
-* Générez le projet.
+* créer le projet ;
 * Ouvrez une fenêtre de commande dans le dossier du projet. Entrez les commandes suivantes pour créer une migration et mettre à jour la base de données :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -1242,7 +1242,7 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 ## <a name="add-a-migration"></a>Ajouter une migration
 
-Générez le projet.
+créer le projet ;
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -1310,7 +1310,7 @@ dotnet ef database update
 
 ---
 
-Exécuter l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
 Ouvrez la base de données dans SSOX :
 
@@ -1347,7 +1347,7 @@ Pour faire en sorte que la migration `ComplexDataModel` fonctionne avec des donn
 
 #### <a name="fix-the-foreign-key-constraints"></a>Corriger les contraintes de clé étrangère
 
-Mettez à jour la méthode `Up` de la classe `ComplexDataModel` :
+Mettez à jour la méthode `ComplexDataModel` de la classe `Up` :
 
 * Ouvrez le fichier *{horodatage}_ComplexDataModel.cs*.
 * Commentez la ligne de code qui ajoute la colonne `DepartmentID` à la table `Course`.
@@ -1358,7 +1358,7 @@ Ajoutez le code en surbrillance suivant. Le nouveau code va après le bloc `.Cre
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
-Avec les modifications précédentes, les lignes `Course` existantes seront toutes associées au département « Temp » après l’exécution de la méthode `Up` de `ComplexDataModel`.
+Avec les modifications précédentes, les lignes `Course` existantes seront toutes associées au département « Temp » après l’exécution de la méthode `ComplexDataModel` de `Up`.
 
 Une application de production :
 
