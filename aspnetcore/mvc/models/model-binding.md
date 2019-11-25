@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment fonctionne la liaison de modèle avec ASP.NET Core, et comment personnaliser son comportement.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
-ms.date: 05/31/2019
+ms.date: 11/15/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: aeb2da7e11df1eab5a17e2ae0a3971420c9383b4
-ms.sourcegitcommit: 032113208bb55ecfb2faeb6d3e9ea44eea827950
+ms.openlocfilehash: a025419a5b4d2c2e3e5c5a7850df281ddd3164ea
+ms.sourcegitcommit: f91d322f790123d41ec3271fa084ae20ed9f89a6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73190598"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155044"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -40,7 +40,7 @@ Et que l’application reçoive une requête avec l’URL suivante :
 http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-La liaison de modèle suit les étapes ci-après une fois que le système de routage a sélectionné la méthode d’action :
+La liaison de modèle passe par les étapes suivantes après que le système de routage a sélectionné la méthode d’action :
 
 * Elle recherche le premier paramètre de `GetByID`, un entier nommé `id`.
 * Elle parcourt les sources disponibles dans la requête HTTP et trouve `id` = « 2 » dans les données de routage.

@@ -4,16 +4,16 @@ author: bradygaster
 description: Dans ce didacticiel, vous allez créer une application de conversation qui utilise ASP.NET Core SignalR.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: ac727ed0517a8b30fd8194c010576fdd74a5950a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 55ebdbfa4556deca74a6cdf0638307425cd1a01a
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74052859"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317498"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-opno-locsignalr"></a>Didacticiel : prise en main de ASP.NET Core SignalR
 
@@ -32,7 +32,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 ![[! Opérationnel. Exemple d’application non-LOC (Signalr)]](signalr/_static/3.x/signalr-get-started-finished.png)
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -263,7 +263,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 > * Ajouter du code qui envoie des messages de n’importe quel client vers tous les clients connectés.  
 À la fin, vous disposerez d’une application de conversation active : ![[ ! Opérationnel. NO-LOC (Signalr)] exemple d’application](signalr/_static/2.x/signalr-get-started-finished.png)   
 
-## <a name="prerequisites"></a>Configuration requise    
+## <a name="prerequisites"></a>Conditions préalables requises    
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)   
 
@@ -328,7 +328,7 @@ La bibliothèque SignalR Server est incluse dans le sous-package `Microsoft.AspN
 
 * Dans la boîte de dialogue **Ajouter une bibliothèque côté Client**, pour **Fournisseur** sélectionnez **unpkg**. 
 
-* Pour **Bibliothèque**, entrez `@aspnet/signalr@1`, puis sélectionnez la version la plus récente qui n’est pas en préversion. 
+* Pour **Bibliothèque**, entrez `@microsoft/signalr@3`, puis sélectionnez la version la plus récente qui n’est pas en préversion.  
 
   ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner la bibliothèque](signalr/_static/2.x/libman1.png)   
 
@@ -351,7 +351,7 @@ La bibliothèque SignalR Server est incluse dans le sous-package `Microsoft.AspN
 * Exécutez la commande suivante pour récupérer la bibliothèque cliente SignalR à l’aide de LibMan. Vous devrez peut-être attendre quelques secondes avant que la sortie ne s’affiche. 
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   Les paramètres spécifient les options suivantes : 
@@ -364,7 +364,7 @@ La bibliothèque SignalR Server est incluse dans le sous-package `Microsoft.AspN
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.0.1" to "wwwroot/lib/signalr" 
   ```   
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)   
@@ -380,7 +380,7 @@ La bibliothèque SignalR Server est incluse dans le sous-package `Microsoft.AspN
 * Exécutez la commande suivante pour récupérer la bibliothèque cliente SignalR à l’aide de LibMan.    
 
   ```console    
-  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js    
+  libman install @microsoft/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js 
   ```   
 
   Les paramètres spécifient les options suivantes : 
@@ -393,7 +393,7 @@ La bibliothèque SignalR Server est incluse dans le sous-package `Microsoft.AspN
   ```console    
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk   
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk   
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"    
+  Installed library "@microsoft/signalr@3.x.x" to "wwwroot/lib/signalr" 
   ```   
 
 --- 
@@ -454,17 +454,17 @@ Le serveur de SignalR doit être configuré pour transmettre les demandes Signal
 
 * Dans le terminal intégré, exécutez la commande suivante :    
 
-  ```dotnetcli  
-  dotnet run -p SignalRChat.csproj  
-  ```   
+  ```dotnetcli
+  dotnet run -p SignalRChat.csproj
+  ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)   
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Dans le menu, sélectionnez **Exécuter > Démarrer sans débogage**.  
+* Dans le menu, sélectionnez **Exécuter > Démarrer sans débogage**.
 
---- 
+---
 
-* Copiez l’URL à partir de la barre d’adresse, ouvrez un autre onglet ou instance du navigateur, puis collez l’URL dans la barre d’adresse.    
+* Copiez l’URL à partir de la barre d’adresse, ouvrez un autre onglet ou instance du navigateur, puis collez l’URL dans la barre d’adresse.
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.  
 

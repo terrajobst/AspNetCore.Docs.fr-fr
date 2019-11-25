@@ -5,14 +5,16 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/21/2019
+no-loc:
+- Blazor
 uid: blazor/components
-ms.openlocfilehash: 8c228b168cdbd58928ef3f57ff26bc86e8dfc1ba
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 267a6f5aa96feeecc280238abbef86949750b07e
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033982"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317214"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -20,17 +22,17 @@ Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Les applications éblouissantes sont créées à l’aide de *composants*. Un composant est un bloc d’interface utilisateur (IU) autonome, tel qu’une page, une boîte de dialogue ou un formulaire. Un composant comprend le balisage HTML et la logique de traitement requise pour injecter des données ou répondre à des événements d’interface utilisateur. Les composants sont flexibles et légers. Elles peuvent être imbriquées, réutilisées et partagées entre les projets.
+les applications Blazor sont générées à l’aide de *composants*. Un composant est un bloc d’interface utilisateur (IU) autonome, tel qu’une page, une boîte de dialogue ou un formulaire. Un composant comprend le balisage HTML et la logique de traitement requise pour injecter des données ou répondre à des événements d’interface utilisateur. Les composants sont flexibles et légers. Elles peuvent être imbriquées, réutilisées et partagées entre les projets.
 
 ## <a name="component-classes"></a>Classes de composant
 
-Les composants sont implémentés dans les fichiers de composants [Razor](xref:mvc/views/razor) ( *. Razor*) C# à l’aide d’une combinaison de balises et html. Un composant de éblouissant est officiellement désigné sous le terme de *composant Razor*.
+Les composants sont implémentés dans les fichiers de composants [Razor](xref:mvc/views/razor) ( *. Razor*) C# à l’aide d’une combinaison de balises et html. Un composant de Blazor est officiellement désigné sous le terme de *composant Razor*.
 
 Le nom d’un composant doit commencer par un caractère majuscule. Par exemple, *MyCoolComponent. Razor* est valide et *MyCoolComponent. Razor* n’est pas valide.
 
 L’interface utilisateur d’un composant est définie à l’aide de HTML. La logique de rendu dynamique (par exemple, les boucles, conditions, expressions) est ajoutée à l’aide d’une syntaxe C# intégrée appelée [Razor](xref:mvc/views/razor). Quand une application est compilée, le balisage C# html et la logique de rendu sont convertis en une classe de composant. Le nom de la classe générée correspond au nom du fichier.
 
-Les membres de la classe de composants sont définis dans un bloc `@code`. Dans le bloc `@code`, l’état du composant (propriétés, champs) est spécifié avec des méthodes pour la gestion des événements ou pour la définition d’une autre logique de composant. Plus d’un bloc `@code` est autorisé.
+Les membres de la classe de composants sont définis dans un bloc `@code`. Dans le bloc `@code`, l’état du composant (propriétés, champs) est spécifié avec les méthodes de gestion des événements ou pour la définition d’une autre logique de composant. Plus d’un bloc `@code` est autorisé.
 
 > [!NOTE]
 > Dans les versions préliminaires antérieures de ASP.NET Core 3,0, les blocs `@functions` ont été utilisés dans le même but que les blocs `@code` dans les composants Razor. les blocs `@functions` continuent de fonctionner dans les composants Razor, mais nous vous recommandons d’utiliser le bloc `@code` dans ASP.NET Core 3,0 Preview 6 ou version ultérieure.
@@ -49,9 +51,9 @@ Les membres de composant peuvent être utilisés dans le cadre de la logique de 
 }
 ```
 
-Une fois le composant restitué initialement, le composant régénère son arborescence de rendu en réponse aux événements. Il compare ensuite la nouvelle arborescence de rendu à la précédente et applique toutes les modifications à la Document Object Model du navigateur (DOM).
+Une fois le composant restitué initialement, le composant régénère son arborescence de rendu en réponse aux événements. Blazor compare ensuite la nouvelle arborescence de rendu à la précédente et applique toutes les modifications à l’Document Object Model du navigateur (DOM).
 
-Les composants sont C# des classes ordinaires qui peuvent être placées n’importe où dans un projet. Les composants qui produisent des pages Web résident généralement dans le dossier *pages* . Les composants qui ne sont pas des pages sont souvent placés dans le dossier *partagé* ou dans un dossier personnalisé ajouté au projet. Pour utiliser un dossier personnalisé, ajoutez l’espace de noms du dossier personnalisé au composant parent ou au fichier *_Imports. Razor* de l’application. Par exemple, l’espace de noms suivant rend les composants dans un dossier de *composants* disponibles lorsque l’espace de noms racine de l’application est `WebApplication` :
+Les composants sont C# des classes ordinaires qui peuvent être placées n’importe où dans un projet. Les composants qui produisent des pages Web résident généralement dans le dossier *pages* . Les composants qui ne sont pas des pages sont souvent placés dans le dossier *partagé* ou dans un dossier personnalisé ajouté au projet. Pour utiliser un dossier personnalisé, ajoutez l’espace de noms du dossier personnalisé au composant parent ou au fichier *_Imports. Razor* de l’application. Par exemple, l’espace de noms suivant rend les composants dans un dossier de *composants* disponibles lorsque l’espace de noms racine de l’application est `WebApplication`:
 
 ```cshtml
 @using WebApplication.Components
@@ -61,17 +63,60 @@ Les composants sont C# des classes ordinaires qui peuvent être placées n’imp
 
 Utilisez des composants avec des applications Razor Pages et MVC existantes. Il n’est pas nécessaire de réécrire des pages ou des vues existantes pour utiliser des composants Razor. Lorsque la page ou la vue est restituée, les composants sont prérendus en même temps.
 
-Pour afficher un composant à partir d’une page ou d’une vue, utilisez la méthode d’assistance HTML `RenderComponentAsync<TComponent>` :
+::: moniker range=">= aspnetcore-3.1"
+
+Pour afficher un composant à partir d’une page ou d’une vue, utilisez le tag Helper `Component` :
 
 ```cshtml
-<div id="MyComponent">
-    @(await Html.RenderComponentAsync<MyComponent>(RenderMode.ServerPrerendered))
-</div>
+<component type="typeof(Counter)" render-mode="ServerPrerendered" 
+    param-IncrementAmount="10" />
 ```
+
+`RenderMode` configure si le composant :
+
+* Est prérendu dans la page.
+* Est rendu en HTML statique sur la page ou s’il contient les informations nécessaires pour démarrer un Blazor application à partir de l’agent utilisateur.
+
+| `RenderMode`        | Description |
+| ------------------- | ----------- |
+| `ServerPrerendered` | Génère le rendu du composant en HTML statique et comprend un marqueur pour une application Blazor Server. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. |
+| `Server`            | Restitue un marqueur pour une application Blazor Server. La sortie du composant n’est pas incluse. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. |
+| `Static`            | Génère le rendu du composant en HTML statique. |
 
 Alors que les pages et les vues peuvent utiliser des composants, la réciproque n’est pas vraie. Les composants ne peuvent pas utiliser les scénarios spécifiques aux vues et aux pages, tels que les vues partielles et les sections. Pour utiliser la logique de la vue partielle dans un composant, factorisez la logique de la vue partielle dans un composant.
 
-Pour plus d’informations sur la façon dont les composants sont rendus et l’état des composants géré dans les applications serveur éblouissantes, consultez l’article <xref:blazor/hosting-models>.
+Le rendu des composants serveur à partir d’une page HTML statique n’est pas pris en charge.
+
+Pour plus d’informations sur la façon dont les composants sont rendus, l’état des composants et le tag Helper `Component`, consultez <xref:blazor/hosting-models>.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
+Pour afficher un composant à partir d’une page ou d’une vue, utilisez la méthode d’assistance HTML `RenderComponentAsync<TComponent>` :
+
+```cshtml
+@(await Html.RenderComponentAsync<MyComponent>(RenderMode.ServerPrerendered))
+```
+
+`RenderMode` configure si le composant :
+
+* Est prérendu dans la page.
+* Est rendu en HTML statique sur la page ou s’il contient les informations nécessaires pour démarrer un Blazor application à partir de l’agent utilisateur.
+
+| `RenderMode`        | Description |
+| ------------------- | ----------- |
+| `ServerPrerendered` | Génère le rendu du composant en HTML statique et comprend un marqueur pour une application Blazor Server. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. Les paramètres ne sont pas pris en charge. |
+| `Server`            | Restitue un marqueur pour une application Blazor Server. La sortie du composant n’est pas incluse. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. Les paramètres ne sont pas pris en charge. |
+| `Static`            | Génère le rendu du composant en HTML statique. Les paramètres sont pris en charge. |
+
+Alors que les pages et les vues peuvent utiliser des composants, la réciproque n’est pas vraie. Les composants ne peuvent pas utiliser les scénarios spécifiques aux vues et aux pages, tels que les vues partielles et les sections. Pour utiliser la logique de la vue partielle dans un composant, factorisez la logique de la vue partielle dans un composant.
+
+Le rendu des composants serveur à partir d’une page HTML statique n’est pas pris en charge.
+
+Pour plus d’informations sur la façon dont les composants sont rendus, l’état des composants et le `RenderComponentAsync` application auxiliaire HTML, consultez <xref:blazor/hosting-models>.
+
+::: moniker-end
 
 ## <a name="use-components"></a>Utiliser des composants
 
@@ -79,7 +124,7 @@ Les composants peuvent inclure d’autres composants en les déclarant à l’ai
 
 La liaison d’attribut respecte la casse. Par exemple, `@bind` est valide et `@Bind` n’est pas valide.
 
-Le balisage suivant dans *index. Razor* rend une instance `HeadingComponent` :
+Le balisage suivant dans *index. Razor* rend une instance de `HeadingComponent` :
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/Index.razor?name=snippet_HeadingComponent)]
 
@@ -97,7 +142,7 @@ Les composants peuvent avoir des *paramètres de composant*, qui sont définis �
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=11-12)]
 
-Dans l’exemple suivant, la `ParentComponent` définit la valeur de la propriété `Title` de la `ChildComponent`.
+Dans l’exemple suivant, le `ParentComponent` définit la valeur de la propriété `Title` du `ChildComponent`.
 
 *Pages/ParentComponent. Razor*:
 
@@ -107,14 +152,14 @@ Dans l’exemple suivant, la `ParentComponent` définit la valeur de la proprié
 
 Les composants peuvent définir le contenu d’un autre composant. Le composant d’affectation fournit le contenu entre les balises qui spécifient le composant récepteur.
 
-Dans l’exemple suivant, la `ChildComponent` a une propriété `ChildContent` qui représente un `RenderFragment`, qui représente un segment de l’interface utilisateur à restituer. La valeur de `ChildContent` est positionnée dans le balisage du composant où le contenu doit être rendu. La valeur de `ChildContent` est reçue du composant parent et affichée à l’intérieur du `panel-body` du panneau de démarrage.
+Dans l’exemple suivant, la `ChildComponent` a une propriété `ChildContent` qui représente un `RenderFragment`, qui représente un segment de l’interface utilisateur à restituer. La valeur de `ChildContent` est positionnée dans le balisage du composant où le contenu doit être rendu. La valeur de `ChildContent` est reçue du composant parent et affichée à l’intérieur du `panel-body`du panneau de démarrage.
 
 *Composants/ChildComponent. Razor*:
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
-> La propriété qui reçoit le contenu `RenderFragment` doit être nommée `ChildContent` par Convention.
+> La propriété qui reçoit le contenu du `RenderFragment` doit être nommée `ChildContent` par Convention.
 
 Les `ParentComponent` suivantes peuvent fournir du contenu pour le rendu du `ChildComponent` en plaçant le contenu à l’intérieur des balises de `<ChildComponent>`.
 
@@ -124,7 +169,7 @@ Les `ParentComponent` suivantes peuvent fournir du contenu pour le rendu du `Chi
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Réprojection d’attribut et paramètres arbitraires
 
-Les composants peuvent capturer et restituer des attributs supplémentaires en plus des paramètres déclarés du composant. Des attributs supplémentaires peuvent être capturés dans un dictionnaire *, puis* réintégrés à un élément lorsque le composant est rendu à l’aide de la directive Razor [@attributes](xref:mvc/views/razor#attributes) . Ce scénario est utile lors de la définition d’un composant qui produit un élément de balisage qui prend en charge diverses personnalisations. Par exemple, il peut être fastidieux de définir des attributs séparément pour un `<input>` qui prend en charge de nombreux paramètres.
+Les composants peuvent capturer et restituer des attributs supplémentaires en plus des paramètres déclarés du composant. Des attributs supplémentaires peuvent être capturés dans un dictionnaire *, puis* réintégrés à un élément lorsque le composant est rendu à l’aide de la directive [@attributes](xref:mvc/views/razor#attributes) Razor. Ce scénario est utile lors de la définition d’un composant qui produit un élément de balisage qui prend en charge diverses personnalisations. Par exemple, il peut être fastidieux de définir des attributs séparément pour un `<input>` qui prend en charge de nombreux paramètres.
 
 Dans l’exemple suivant, le premier élément `<input>` (`id="useIndividualParams"`) utilise des paramètres de composant individuels, tandis que le deuxième élément `<input>` (`id="useAttributesDict"`) utilise la projection d’attributs :
 
@@ -266,7 +311,7 @@ L’utilisation de `@bind` avec la propriété `CurrentValue` (`<input @bind="Cu
 }
 ```
 
-Lors du rendu du composant, le `value` de l’élément d’entrée provient de la propriété `CurrentValue`. Lorsque l’utilisateur tape dans la zone de texte et modifie le focus de l’élément, l’événement `onchange` est déclenché et la propriété `CurrentValue` est définie sur la valeur modifiée. En réalité, la génération de code est plus complexe, car `@bind` gère les cas où les conversions de type sont effectuées. En principe, `@bind` associe la valeur actuelle d’une expression à un attribut `value` et gère les modifications à l’aide du gestionnaire inscrit.
+Lors du rendu du composant, le `value` de l’élément d’entrée provient de la propriété `CurrentValue`. Lorsque l’utilisateur tape dans la zone de texte et modifie le focus de l’élément, l’événement `onchange` est déclenché et la propriété `CurrentValue` est définie sur la valeur modifiée. En réalité, la génération de code est plus complexe, car `@bind` gère les cas où les conversions de types sont effectuées. En principe, `@bind` associe la valeur actuelle d’une expression à un attribut `value` et gère les modifications à l’aide du gestionnaire inscrit.
 
 En plus de gérer les événements `onchange` avec la syntaxe `@bind`, une propriété ou un champ peut être lié à l’aide d’autres événements en spécifiant un attribut [@bind-value](xref:mvc/views/razor#bind) avec un paramètre `event` ([@bind-value:event](xref:mvc/views/razor#bind)). L’exemple suivant lie la propriété `CurrentValue` pour l’événement `oninput` :
 
@@ -286,7 +331,7 @@ Quand un utilisateur fournit une valeur non analysable à un élément DataBound
 
 Penchons-nous sur le scénario suivant :
 
-* Un élément `<input>` est lié à un type `int` avec une valeur initiale de `123` :
+* Un élément `<input>` est lié à un type `int` avec une valeur initiale de `123`:
 
   ```cshtml
   <input @bind="MyProperty" />
@@ -300,17 +345,17 @@ Penchons-nous sur le scénario suivant :
 
 Dans le scénario précédent, la valeur de l’élément est rétablie à `123`. Lorsque la valeur `123.45` est rejetée en faveur de la valeur d’origine de `123`, l’utilisateur sait que sa valeur n’a pas été acceptée.
 
-Par défaut, la liaison s’applique à l’événement `onchange` de l’élément (`@bind="{PROPERTY OR FIELD}"`). Utilisez `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` pour définir un événement différent. Pour l’événement `oninput` (`@bind-value:event="oninput"`), la Reversion se produit après toute séquence de touches qui introduit une valeur non analysable. Lors du ciblage de l’événement `oninput` avec un type de liaison `int`, un utilisateur ne peut pas taper un caractère `.`. Un caractère `.` est immédiatement supprimé, de sorte que l’utilisateur reçoit un commentaire immédiat indiquant que seuls des nombres entiers sont autorisés. Il existe des scénarios dans lesquels le rétablissement de la valeur sur l’événement `oninput` n’est pas idéal, par exemple lorsque l’utilisateur doit être autorisé à effacer une valeur `<input>` non analysable. Les alternatives sont les suivantes :
+Par défaut, la liaison s’applique à l’événement `onchange` de l’élément (`@bind="{PROPERTY OR FIELD}"`). Utilisez `@bind-value="{PROPERTY OR FIELD}" @bind-value:event={EVENT}` pour définir un événement différent. Pour l’événement `oninput` (`@bind-value:event="oninput"`), la Reversion se produit après toute séquence de touches qui introduit une valeur non analysable. Quand vous ciblez l’événement `oninput` avec un type lié `int`, un utilisateur ne peut pas taper un caractère `.`. Si un caractère de `.` est immédiatement supprimé, l’utilisateur reçoit des commentaires immédiats que seuls des nombres entiers sont autorisés. Il existe des scénarios où le rétablissement de la valeur sur l’événement `oninput` n’est pas idéal, par exemple lorsque l’utilisateur doit être autorisé à effacer une valeur de `<input>` non analysable. Les alternatives sont les suivantes :
 
-* N’utilisez pas l’événement `oninput`. Utilisez l’événement `onchange` par défaut (`@bind="{PROPERTY OR FIELD}"`), où une valeur non valide n’est pas rétablie tant que l’élément perd le focus.
+* N’utilisez pas l’événement `oninput`. Utilisez l’événement `onchange` par défaut (`@bind="{PROPERTY OR FIELD}"`), où une valeur non valide n’est pas rétablie tant que l’élément n’a pas perdu le focus.
 * Effectuer une liaison à un type Nullable, tel que `int?` ou `string`, et fournir une logique personnalisée pour gérer les entrées non valides.
 * Utilisez un [composant de validation de formulaire](xref:blazor/forms-validation), tel que `InputNumber` ou `InputDate`. Les composants de validation de formulaire offrent une prise en charge intégrée pour gérer les entrées non valides. Composants de validation de formulaire :
-  * Permet à l’utilisateur de fournir une entrée non valide et de recevoir des erreurs de validation sur le `EditContext` associé.
+  * Permet à l’utilisateur de fournir une entrée non valide et de recevoir des erreurs de validation sur les `EditContext`associées.
   * Affichez les erreurs de validation dans l’interface utilisateur sans interférer avec l’utilisateur qui saisit des données Webform supplémentaires.
 
 **Globalisation**
 
-les valeurs `@bind` sont mises en forme pour être affichées et analysées à l’aide des règles de la culture actuelle.
+`@bind` valeurs sont mises en forme pour l’affichage et l’analyse à l’aide des règles de la culture actuelle.
 
 La culture actuelle est accessible à partir de la propriété <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>.
 
@@ -325,15 +370,15 @@ Les types de champ précédents :
 * Ne peut pas contenir de texte de forme libre.
 * Fournir des caractéristiques d’interaction de l’utilisateur en fonction de l’implémentation du navigateur.
 
-Les types de champs suivants ont des exigences de mise en forme spécifiques et ne sont pas actuellement pris en charge par éblouissant, car ils ne sont pas pris en charge par tous les principaux navigateurs :
+Les types de champs suivants ont des exigences de mise en forme spécifiques et ne sont pas actuellement pris en charge par Blazor, car ils ne sont pas pris en charge par tous les principaux navigateurs :
 
 * `datetime-local`
 * `month`
 * `week`
 
-`@bind` prend en charge le paramètre `@bind:culture` pour fournir un <xref:System.Globalization.CultureInfo?displayProperty=fullName> pour l’analyse et la mise en forme d’une valeur. La spécification d’une culture n’est pas recommandée lors de l’utilisation des types de champs `date` et `number`. `date` et `number` ont une prise en charge intégrée de éblouissant qui fournit la culture requise.
+`@bind` prend en charge le paramètre `@bind:culture` pour fournir une <xref:System.Globalization.CultureInfo?displayProperty=fullName> pour l’analyse et la mise en forme d’une valeur. La spécification d’une culture n’est pas recommandée lors de l’utilisation des types de champ `date` et `number`. `date` et `number` disposent d’une prise en charge intégrée Blazor qui fournit la culture requise.
 
-Pour plus d’informations sur la façon de définir la culture de l’utilisateur, consultez la section [Localization](#localization) .
+Pour plus d’informations sur la façon de définir la culture de l'utilisateur, consultez la section [localization](#localization).
 
 **Chaînes de format**
 
@@ -348,22 +393,22 @@ La liaison de données fonctionne avec les chaînes de format <xref:System.DateT
 }
 ```
 
-Dans le code précédent, le type de champ de l’élément `<input>` (`type`) est défini par défaut sur `text`. `@bind:format` est pris en charge pour la liaison des types .NET suivants :
+Dans le code précédent, le type de champ de l’élément `<input>` (`type`) a par défaut la valeur `text`. `@bind:format` est pris en charge pour la liaison des types .NET suivants :
 
 * <xref:System.DateTime?displayProperty=fullName>
 * <xref:System.DateTime?displayProperty=fullName>?
 * <xref:System.DateTimeOffset?displayProperty=fullName>
 * <xref:System.DateTimeOffset?displayProperty=fullName>?
 
-L’attribut `@bind:format` spécifie le format de date à appliquer à la `value` de l’élément `<input>`. Le format est également utilisé pour analyser la valeur lorsqu’un événement `onchange` se produit.
+L’attribut `@bind:format` spécifie le format de date à appliquer aux `value` de l’élément `<input>`. Le format est également utilisé pour analyser la valeur lorsqu’un événement `onchange` se produit.
 
-Il n’est pas recommandé de spécifier un format pour le type de champ `date`, car éblouissant offre une prise en charge intégrée de la mise en forme des dates.
+Il n’est pas recommandé de spécifier un format pour le type de champ `date`, car Blazor offre une prise en charge intégrée de la mise en forme des dates.
 
 **Paramètres du composant**
 
-La liaison reconnaît les paramètres du composant, où `@bind-{property}` peut lier une valeur de propriété à plusieurs composants.
+La liaison reconnaît les paramètres du composant, où `@bind-{property}` pouvez lier une valeur de propriété à plusieurs composants.
 
-Le composant enfant suivant (`ChildComponent`) a un paramètre de composant `Year` et un rappel `YearChanged` :
+Le composant enfant suivant (`ChildComponent`) a un paramètre de composant `Year` et `YearChanged` rappel :
 
 ```cshtml
 <h2>Child Component</h2>
@@ -407,7 +452,7 @@ Le composant parent suivant utilise `ChildComponent` et lie le paramètre `Paren
 }
 ```
 
-Le chargement du `ParentComponent` produit le balisage suivant :
+Le chargement de l' `ParentComponent` produit le balisage suivant :
 
 ```html
 <h1>Parent Component</h1>
@@ -419,7 +464,7 @@ Le chargement du `ParentComponent` produit le balisage suivant :
 <p>Year: 1978</p>
 ```
 
-Si la valeur de la propriété `ParentYear` est modifiée en sélectionnant le bouton dans la `ParentComponent`, la propriété `Year` de l' `ChildComponent` est mise à jour. La nouvelle valeur de `Year` est restituée dans l’interface utilisateur lorsque le `ParentComponent` est restitué à nouveau :
+Si la valeur de la propriété `ParentYear` est modifiée en sélectionnant le bouton dans la `ParentComponent`, la propriété `Year` de la `ChildComponent` est mise à jour. La nouvelle valeur de `Year` est rendue dans l’interface utilisateur lorsque le `ParentComponent` est restitué à nouveau :
 
 ```html
 <h1>Parent Component</h1>
@@ -431,15 +476,15 @@ Si la valeur de la propriété `ParentYear` est modifiée en sélectionnant le b
 <p>Year: 1986</p>
 ```
 
-Le paramètre `Year` peut être lié, car il a un événement associé `YearChanged` qui correspond au type du paramètre `Year`.
+Le paramètre `Year` peut être lié, car il a un `YearChanged` événement associé qui correspond au type du paramètre `Year`.
 
-Par Convention, `<ChildComponent @bind-Year="ParentYear" />` équivaut essentiellement à écrire :
+Par Convention, `<ChildComponent @bind-Year="ParentYear" />` revient essentiellement à écrire :
 
 ```cshtml
 <ChildComponent @bind-Year="ParentYear" @bind-Year:event="YearChanged" />
 ```
 
-En général, une propriété peut être liée à un gestionnaire d’événements correspondant à l’aide de l’attribut `@bind-property:event`. Par exemple, la propriété `MyProp` peut être liée à `MyEventHandler` à l’aide des deux attributs suivants :
+En général, une propriété peut être liée à un gestionnaire d’événements correspondant à l’aide de `@bind-property:event` attribut. Par exemple, la propriété `MyProp` peut être liée à `MyEventHandler` à l’aide des deux attributs suivants :
 
 ```cshtml
 <MyComponent @bind-MyProp="MyValue" @bind-MyProp:event="MyEventHandler" />
@@ -447,9 +492,9 @@ En général, une propriété peut être liée à un gestionnaire d’événemen
 
 ## <a name="event-handling"></a>Gestion des événements
 
-Les composants Razor fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML nommé `on{event}` (par exemple, `onclick` et `onsubmit`) avec une valeur de type délégué, les composants Razor traitent la valeur de l’attribut en tant que gestionnaire d’événements. Le nom de l’attribut est toujours mis en forme [@on {Event}](xref:mvc/views/razor#onevent).
+Les composants Razor fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML nommé `on{EVENT}` (par exemple, `onclick` et `onsubmit`) avec une valeur de type délégué, les composants Razor traitent la valeur de l’attribut en tant que gestionnaire d’événements. Le nom de l’attribut est toujours mis en forme [@on{Event}](xref:mvc/views/razor#onevent).
 
-Le code suivant appelle la méthode `UpdateHeading` quand le bouton est sélectionné dans l’interface utilisateur :
+Le code suivant appelle la méthode `UpdateHeading` lorsque le bouton est sélectionné dans l’interface utilisateur :
 
 ```cshtml
 <button class="btn btn-primary" @onclick="UpdateHeading">
@@ -498,21 +543,22 @@ Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand
 
 Pour certains événements, les types d’arguments d’événement sont autorisés. Si l’accès à l’un de ces types d’événements n’est pas nécessaire, il n’est pas obligatoire dans l’appel de la méthode.
 
-Pris en charge `EventArgs` sont présentés dans le tableau suivant.
+Les `EventArgs` prises en charge sont indiquées dans le tableau suivant.
 
-| événement | Class |
-| ----- | ----- |
-| Presse-papiers        | `ClipboardEventArgs` |
-| Déplacez             | `DragEventArgs` &ndash; `DataTransfer` et `DataTransferItem` contiennent des données d’élément glissées. |
-| Erreur            | `ErrorEventArgs` |
-| Focus            | `FocusEventArgs` &ndash; n’inclut pas la prise en charge de `relatedTarget`. |
-| Modification de`<input>` | `ChangeEventArgs` |
-| Clavier         | `KeyboardEventArgs` |
-| Souris            | `MouseEventArgs` |
-| Pointeur de la souris    | `PointerEventArgs` |
-| Roulette de la souris      | `WheelEventArgs` |
-| Progression         | `ProgressEventArgs` |
-| Entrées tactiles            | `TouchEventArgs` &ndash; `TouchPoint` représente un point de contact unique sur un appareil tactile. |
+| Événement            | Class                | Remarques et événements DOM |
+| ---------------- | -------------------- | -------------------- |
+| Presse-papiers        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
+| Déplacez             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` et `DataTransferItem` contiennent des données d’élément glissées. |
+| Error            | `ErrorEventArgs`     | `onerror` |
+| Événement            | `EventArgs`          | *Général*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*Presse-papiers*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*Entrée*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*Media*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Focus            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>N’inclut pas la prise en charge de `relatedTarget`. |
+| Entrée            | `ChangeEventArgs`    | `onchange`, `oninput` |
+| Clavier         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
+| Souris            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
+| Pointeur de la souris    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
+| Roulette de la souris      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
+| Progression         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
+| Entrées tactiles            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint` représente un point de contact unique sur un appareil tactile. |
 
 Pour plus d’informations sur les propriétés et le comportement de gestion des événements des événements dans le tableau précédent, consultez [classes EventArgs dans la source de référence (ASPNET/AspNetCore Release/3.0 Branch)](https://github.com/aspnet/AspNetCore/tree/release/3.0/src/Components/Web/src/Web).
 
@@ -551,23 +597,23 @@ Il est souvent pratique de se rapprocher de valeurs supplémentaires, par exempl
 ```
 
 > [!NOTE]
-> N’utilisez **pas** la variable de boucle (`i`) dans une boucle `for` directement dans une expression lambda. Dans le cas contraire, la même variable est utilisée par toutes les expressions lambda provoquant la valeur de `i` dans toutes les expressions lambda. Capturez toujours sa valeur dans une variable locale (`buttonNumber` dans l’exemple précédent), puis utilisez-la.
+> N’utilisez **pas** la variable de boucle (`i`) dans une boucle `for` directement dans une expression lambda. Dans le cas contraire, la même variable est utilisée par toutes les expressions lambda provoquant la même valeur de `i`dans toutes les expressions lambda. Capturez toujours sa valeur dans une variable locale (`buttonNumber` dans l’exemple précédent), puis utilisez-la.
 
 ### <a name="eventcallback"></a>EventCallback suivante
 
-Un scénario courant avec des composants imbriqués est le désir d’exécuter la méthode d’un composant parent lorsqu’un événement de composant enfant se produit &mdash;for exemple, lorsqu’un événement `onclick` se produit dans l’enfant. Pour exposer des événements entre les composants, utilisez un `EventCallback`. Un composant parent peut affecter une méthode de rappel à l' `EventCallback` d’un composant enfant.
+Un scénario courant avec des composants imbriqués est le souhait d’exécuter la méthode d’un composant parent lorsqu’un événement de composant enfant se produit&mdash;par exemple, lorsqu’un événement `onclick` se produit dans l’enfant. Pour exposer des événements entre les composants, utilisez un `EventCallback`. Un composant parent peut affecter une méthode de rappel à l' `EventCallback`d’un composant enfant.
 
-La `ChildComponent` dans l’exemple d’application montre comment le gestionnaire `onclick` d’un bouton est configuré pour recevoir un délégué `EventCallback` du `ParentComponent` de l’exemple. Le `EventCallback` est tapé avec `MouseEventArgs`, ce qui convient pour un événement `onclick` à partir d’un périphérique :
+La `ChildComponent` dans l’exemple d’application montre comment le gestionnaire de `onclick` d’un bouton est configuré pour recevoir un délégué `EventCallback` de l' `ParentComponent`de l’exemple. Le `EventCallback` est tapé avec `MouseEventArgs`, ce qui est approprié pour un événement `onclick` à partir d’un périphérique :
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=5-7,17-18)]
 
-La `ParentComponent` définit le `EventCallback<T>` de l’enfant sur sa méthode `ShowMessage` :
+Le `ParentComponent` définit le `EventCallback<T>` de l’enfant sur sa méthode `ShowMessage` :
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/ParentComponent.razor?name=snippet_ParentComponent&highlight=6,16-19)]
 
-Lorsque le bouton est sélectionné dans le `ChildComponent` :
+Lorsque le bouton est sélectionné dans la `ChildComponent`:
 
-* La méthode `ShowMessage` de `ParentComponent` est appelée. `messageText` est mis à jour et affiché dans la `ParentComponent`.
+* La méthode `ShowMessage` de `ParentComponent`est appelée. `messageText` est mis à jour et affiché dans le `ParentComponent`.
 * Un appel à `StateHasChanged` n’est pas requis dans la méthode du rappel (`ShowMessage`). `StateHasChanged` est appelé automatiquement pour rerestituer le `ParentComponent`, tout comme les événements enfants déclenchent le rerendu des composants dans les gestionnaires d’événements qui s’exécutent dans l’enfant.
 
 `EventCallback` et `EventCallback<T>` autorisent les délégués asynchrones. `EventCallback<T>` est fortement typé et requiert un type d’argument spécifique. `EventCallback` est faiblement typé et autorise tout type d’argument.
@@ -585,7 +631,7 @@ Lorsque le bouton est sélectionné dans le `ChildComponent` :
 }
 ```
 
-Appelez une `EventCallback` ou `EventCallback<T>` avec `InvokeAsync` et attendez le <xref:System.Threading.Tasks.Task> :
+Appelez une `EventCallback` ou `EventCallback<T>` avec `InvokeAsync` et attendez la <xref:System.Threading.Tasks.Task>:
 
 ```csharp
 await callback.InvokeAsync(arg);
@@ -595,11 +641,81 @@ Utilisez `EventCallback` et `EventCallback<T>` pour la gestion des événements 
 
 Préférez la `EventCallback<T>` fortement typée sur `EventCallback`. `EventCallback<T>` offre un meilleur retour d’erreur aux utilisateurs du composant. Comme pour d’autres gestionnaires d’événements d’interface utilisateur, la spécification du paramètre d’événement est facultative. Utilisez `EventCallback` quand aucune valeur n’est passée au rappel.
 
+::: moniker range=">= aspnetcore-3.1"
+
+### <a name="prevent-default-actions"></a>Empêcher les actions par défaut
+
+Utilisez l’attribut [@on{Event} :p directive reventdefault](xref:mvc/views/razor#oneventpreventdefault) pour empêcher l’action par défaut pour un événement.
+
+Quand une clé est sélectionnée sur un appareil d’entrée et que le focus de l’élément se trouve sur une zone de texte, un navigateur affiche normalement le caractère de la clé dans la zone de texte. Dans l’exemple suivant, le comportement par défaut est évité en spécifiant l’attribut de directive `@onkeypress:preventDefault`. Le compteur est incrémenté, et la clé de **+** n’est pas capturée dans la valeur de l’élément `<input>` :
+
+```cshtml
+<input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
+
+@code {
+    private int _count = 0;
+
+    private void KeyHandler(KeyboardEventArgs e)
+    {
+        if (e.Key == "+")
+        {
+            _count++;
+        }
+    }
+}
+```
+
+La spécification de l’attribut `@on{EVENT}:preventDefault` sans valeur est équivalente à `@on{EVENT}:preventDefault="true"`.
+
+La valeur de l’attribut peut également être une expression. Dans l’exemple suivant, `_shouldPreventDefault` est un champ `bool` défini sur `true` ou `false`:
+
+```cshtml
+<input @onkeypress:preventDefault="_shouldPreventDefault" />
+```
+
+Un gestionnaire d’événements n’est pas nécessaire pour empêcher l’action par défaut. Le gestionnaire d’événements et les scénarios d’action par défaut peuvent être utilisés indépendamment.
+
+### <a name="stop-event-propagation"></a>Arrêter la propagation des événements
+
+Utilisez l’attribut de directive [@on{Event} : stopPropagation](xref:mvc/views/razor#oneventstoppropagation) pour arrêter la propagation des événements.
+
+Dans l’exemple suivant, la sélection de la case à cocher empêche les événements Click du deuxième `<div>` enfant de se propager vers le `<div>`parent :
+
+```cshtml
+<label>
+    <input @bind="_stopPropagation" type="checkbox" />
+    Stop Propagation
+</label>
+
+<div @onclick="OnSelectParentDiv">
+    <h3>Parent div</h3>
+
+    <div @onclick="OnSelectChildDiv">
+        Child div that doesn't stop propagation when selected.
+    </div>
+
+    <div @onclick="OnSelectChildDiv" @onclick:stopPropagation="_stopPropagation">
+        Child div that stops propagation when selected.
+    </div>
+</div>
+
+@code {
+    private bool _stopPropagation = false;
+
+    private void OnSelectParentDiv() => 
+        Console.WriteLine($"The parent div was selected. {DateTime.Now}");
+    private void OnSelectChildDiv() => 
+        Console.WriteLine($"A child div was selected. {DateTime.Now}");
+}
+```
+
+::: moniker-end
+
 ## <a name="chained-bind"></a>Liaison chaînée
 
 Un scénario courant consiste à chaîner un paramètre lié aux données à un élément de page dans la sortie du composant. Ce scénario est appelé *liaison chaînée* car plusieurs niveaux de liaison se produisent simultanément.
 
-Une liaison chaînée ne peut pas être implémentée avec la syntaxe `@bind` dans l’élément de la page. Le gestionnaire d’événements et la valeur doivent être spécifiés séparément. Toutefois, un composant parent peut utiliser la syntaxe `@bind` avec le paramètre du composant.
+Une liaison chaînée ne peut pas être implémentée avec `@bind` syntaxe dans l’élément de la page. Le gestionnaire d’événements et la valeur doivent être spécifiés séparément. Toutefois, un composant parent peut utiliser `@bind` syntaxe avec le paramètre du composant.
 
 Le composant `PasswordField` suivant (*passwordField. Razor*) :
 
@@ -654,7 +770,7 @@ Le composant `PasswordField` est utilisé dans un autre composant :
 Pour effectuer des vérifications ou des erreurs d’interruption sur le mot de passe dans l’exemple précédent :
 
 * Créez un champ de stockage pour `Password` (`password` dans l’exemple de code suivant).
-* Effectuez les vérifications ou les erreurs d’interruption dans l’accesseur Set `Password`.
+* Effectuez les vérifications ou les erreurs d’interruption dans le `Password` Setter.
 
 L’exemple suivant fournit un retour immédiat à l’utilisateur si un espace est utilisé dans la valeur du mot de passe :
 
@@ -738,16 +854,16 @@ Les références de composant offrent un moyen de référencer une instance de c
 Lors du rendu du composant, le champ `loginDialog` est rempli avec l’instance du composant enfant `MyLoginDialog`. Vous pouvez ensuite appeler des méthodes .NET sur l’instance du composant.
 
 > [!IMPORTANT]
-> La variable `loginDialog` est remplie uniquement après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](#lifecycle-methods).
+> La variable `loginDialog` n’est remplie qu’après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](#lifecycle-methods).
 
-Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composants ne sont pas transmises à du code JavaScript &mdash;they sont utilisées uniquement dans le code .NET.
+Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composants ne sont pas transmises au code JavaScript&mdash;elles sont utilisées uniquement dans le code .NET.
 
 > [!NOTE]
 > N’utilisez **pas** de références de composant pour muter l’état des composants enfants. Utilisez plutôt des paramètres déclaratifs normaux pour passer des données aux composants enfants. L’utilisation de paramètres déclaratifs normaux entraîne le rerendu automatique des composants enfants.
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>Appeler des méthodes de composant en externe pour mettre à jour l’État
 
-Éblouissant utilise un `SynchronizationContext` pour appliquer un seul thread logique d’exécution. Les méthodes de cycle de vie d’un composant et les rappels d’événements déclenchés par éblouissant sont exécutés sur ce `SynchronizationContext`. Dans le cas où un composant doit être mis à jour en fonction d’un événement externe, tel qu’un minuteur ou d’autres notifications, utilisez la méthode `InvokeAsync`, qui sera réexpédiée vers le `SynchronizationContext` de l’éblouissant.
+Blazor utilise un `SynchronizationContext` pour appliquer un seul thread logique d’exécution. Les méthodes de cycle de vie d’un composant et les rappels d’événements déclenchés par Blazor sont exécutés sur ce `SynchronizationContext`. Dans le cas où un composant doit être mis à jour en fonction d’un événement externe, tel qu’un minuteur ou d’autres notifications, utilisez la méthode `InvokeAsync`, qui sera réexpédiée à la `SynchronizationContext`du Blazor.
 
 Par exemple, considérez un *service de notification* qui peut notifier n’importe quel composant d’écoute de l’État mis à jour :
 
@@ -767,7 +883,7 @@ public class NotifierService
 }
 ```
 
-Utilisation de l' `NotifierService` pour mettre à jour un composant :
+Utilisation du `NotifierService` pour mettre à jour un composant :
 
 ```cshtml
 @page "/"
@@ -800,13 +916,13 @@ Utilisation de l' `NotifierService` pour mettre à jour un composant :
 }
 ```
 
-Dans l’exemple précédent, `NotifierService` appelle la méthode `OnNotify` du composant en dehors du `SynchronizationContext` de éblouissant. `InvokeAsync` est utilisé pour basculer vers le contexte correct et pour la mise en file d’attente d’un rendu.
+Dans l’exemple précédent, `NotifierService` appelle la méthode `OnNotify` du composant en dehors du `SynchronizationContext`de Blazor. `InvokeAsync` est utilisé pour basculer vers le contexte correct et pour la mise en file d’attente d’un rendu.
 
-## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Utilisez \@key pour contrôler la préservation des éléments et des composants
+## <a name="use-key-to-control-the-preservation-of-elements-and-components"></a>Utiliser \@clé pour contrôler la conservation des éléments et des composants
 
-Lors du rendu d’une liste d’éléments ou de composants, et que les éléments ou composants changent par la suite, l’algorithme de différenciation de éblouissant doit décider quel élément ou composant précédent peut être conservé et comment les objets de modèle doivent être mappés à ces éléments. Normalement, ce processus est automatique et peut être ignoré, mais dans certains cas, il peut être utile de contrôler le processus.
+Lors du rendu d’une liste d’éléments ou de composants, et que les éléments ou composants changent par la suite, l’algorithme de différenciation de Blazordoit déterminer lequel des éléments ou composants précédents peuvent être conservés et comment les objets de modèle doivent être mappés à eux. Normalement, ce processus est automatique et peut être ignoré, mais dans certains cas, il peut être utile de contrôler le processus.
 
-Prenons l'exemple suivant :
+Prenons l'exemple suivant :
 
 ```csharp
 @foreach (var person in People)
@@ -820,9 +936,9 @@ Prenons l'exemple suivant :
 }
 ```
 
-Le contenu de la collection `People` peut changer avec les entrées insérées, supprimées ou réorganisées. Lors du rerendu du composant, le composant `<DetailsEditor>` peut changer pour recevoir des valeurs de paramètre `Details` différentes. Cela peut entraîner un rerendu plus complexe que prévu. Dans certains cas, le rerendu peut entraîner des différences de comportement visibles, telles que le focus de l’élément perdu.
+Le contenu de la collection `People` peut changer avec des entrées insérées, supprimées ou réorganisées. Lors du rerendu du composant, le composant `<DetailsEditor>` peut changer pour recevoir différentes valeurs de paramètres de `Details`. Cela peut entraîner un rerendu plus complexe que prévu. Dans certains cas, le rerendu peut entraîner des différences de comportement visibles, telles que le focus de l’élément perdu.
 
-Le processus de mappage peut être contrôlé à l’aide de l’attribut de directive `@key`. `@key` provoque l’algorithme de comparaison pour garantir la préservation des éléments ou des composants en fonction de la valeur de la clé :
+Le processus de mappage peut être contrôlé à l’aide de l’attribut de directive `@key`. `@key` oblige l’algorithme de comparaison à garantir la préservation des éléments ou des composants en fonction de la valeur de la clé :
 
 ```csharp
 @foreach (var person in People)
@@ -836,22 +952,22 @@ Le processus de mappage peut être contrôlé à l’aide de l’attribut de dir
 }
 ```
 
-En cas de modification de la collection `People`, l’algorithme de comparaison conserve l’association entre les instances `<DetailsEditor>` et les instances `person` :
+En cas de modification de la collection `People`, l’algorithme de comparaison conserve l’association entre les instances de `<DetailsEditor>` et les instances `person` :
 
 * Si un `Person` est supprimé de la liste `People`, seule l’instance `<DetailsEditor>` correspondante est supprimée de l’interface utilisateur. Les autres instances restent inchangées.
-* Si un `Person` est inséré à une position dans la liste, une nouvelle instance `<DetailsEditor>` est insérée à cette position correspondante. Les autres instances restent inchangées.
-* Si les entrées `Person` sont réordonnées, les instances de `<DetailsEditor>` correspondantes sont conservées et réordonnées dans l’interface utilisateur.
+* Si une `Person` est insérée à une position dans la liste, une nouvelle instance de `<DetailsEditor>` est insérée à cette position correspondante. Les autres instances restent inchangées.
+* Si `Person` entrées sont réordonnées, les instances de `<DetailsEditor>` correspondantes sont conservées et réordonnées dans l’interface utilisateur.
 
 Dans certains scénarios, l’utilisation de `@key` réduit la complexité du rerendu et évite les problèmes potentiels liés aux parties avec état de la modification du modèle DOM, telles que la position du focus.
 
 > [!IMPORTANT]
 > Les clés sont locales pour chaque élément ou composant conteneur. Les clés ne sont pas comparées globalement dans le document.
 
-### <a name="when-to-use-key"></a>Quand utiliser \@key
+### <a name="when-to-use-key"></a>Quand utiliser \@clé
 
-En général, il est logique d’utiliser `@key` chaque fois qu’une liste est affichée (par exemple, dans un bloc `@foreach`) et qu’une valeur appropriée existe pour définir le `@key`.
+En général, il est logique d’utiliser `@key` chaque fois qu’une liste est rendue (par exemple, dans un bloc `@foreach`) et qu’une valeur appropriée existe pour définir le `@key`.
 
-Vous pouvez également utiliser `@key` pour empêcher éblouissant de conserver un élément ou une sous-arborescence de composant quand un objet change :
+Vous pouvez également utiliser `@key` pour empêcher Blazor de conserver un élément ou une sous-arborescence de composant quand un objet change :
 
 ```cshtml
 <div @key="currentPerson">
@@ -859,26 +975,26 @@ Vous pouvez également utiliser `@key` pour empêcher éblouissant de conserver 
 </div>
 ```
 
-Si `@currentPerson` change, la directive d’attribut `@key` force éblouissant à ignorer la totalité du `<div>` et de ses descendants, et à reconstruire la sous-arborescence de l’interface utilisateur avec de nouveaux éléments et composants. Cela peut être utile si vous devez garantir qu’aucun État d’interface utilisateur n’est préservé lorsque `@currentPerson` change.
+Si `@currentPerson` change, la directive d’attribut `@key` force Blazor à ignorer l’intégralité du `<div>` et ses descendants, et à reconstruire la sous-arborescence de l’interface utilisateur avec de nouveaux éléments et composants. Cela peut être utile si vous avez besoin de garantir qu’aucun État d’interface utilisateur n’est préservé lorsque `@currentPerson` change.
 
-### <a name="when-not-to-use-key"></a>Quand ne pas utiliser \@key
+### <a name="when-not-to-use-key"></a>Quand ne pas utiliser la clé de \@
 
-Il y a un coût en matière de performances lors de la comparaison avec `@key`. Le coût des performances n’est pas important, mais spécifiez uniquement `@key` si le contrôle des règles de conservation des éléments ou des composants offre l’application.
+Il y a un coût en matière de performances lors de la comparaison avec `@key`. Le coût des performances n’est pas important, mais spécifiez uniquement `@key` si les règles de conservation des éléments ou des composants bénéficient de l’application.
 
-Même si `@key` n’est pas utilisé, éblouissant conserve autant que possible les instances d’élément et de composant enfants. Le seul avantage à utiliser `@key` est de contrôler la *façon dont* les instances de modèle sont mappées aux instances de composant conservées, au lieu de l’algorithme de comparaison qui sélectionne le mappage.
+Même si `@key` n’est pas utilisé, Blazor conserve autant que possible les instances d’élément et de composant enfants. Le seul avantage de l’utilisation de `@key` est de contrôler la *façon dont* les instances de modèle sont mappées aux instances de composant conservées, au lieu de l’algorithme de comparaison qui sélectionne le mappage.
 
-### <a name="what-values-to-use-for-key"></a>Valeurs à utiliser pour \@key
+### <a name="what-values-to-use-for-key"></a>Valeurs à utiliser pour \@clé
 
-En général, il est logique de fournir l’un des types de valeur suivants pour `@key` :
+En règle générale, il est logique de fournir l’un des types de valeur suivants pour `@key`:
 
-* Les instances d’objet de modèle (par exemple, une instance `Person` comme dans l’exemple précédent). Cela garantit la préservation en fonction de l’égalité des références d’objet.
-* Identificateurs uniques (par exemple, les valeurs de clé primaire de type `int`, `string` ou `Guid`).
+* Instances d’objet de modèle (par exemple, une instance de `Person` comme dans l’exemple précédent). Cela garantit la préservation en fonction de l’égalité des références d’objet.
+* Identificateurs uniques (par exemple, les valeurs de clé primaire de type `int`, `string`ou `Guid`).
 
-Assurez-vous que les valeurs utilisées pour `@key` ne sont pas en conflit. Si les valeurs en conflit sont détectées dans le même élément parent, éblouissant lève une exception, car il ne peut pas mapper de manière déterministe les anciens éléments ou composants aux nouveaux éléments ou composants. Utilisez uniquement des valeurs distinctes, telles que des instances d’objets ou des valeurs de clé primaire.
+Assurez-vous que les valeurs utilisées pour `@key` ne sont pas en conflit. Si les valeurs en conflit sont détectées dans le même élément parent, Blazor lève une exception, car il ne peut pas mapper de manière déterministe les anciens éléments ou composants aux nouveaux éléments ou composants. Utilisez uniquement des valeurs distinctes, telles que des instances d’objets ou des valeurs de clé primaire.
 
 ## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
-`OnInitializedAsync` et `OnInitialized` exécutent du code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le mot clé `await` sur l’opération :
+`OnInitializedAsync` et `OnInitialized` exécuter du code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le mot clé `await` sur l’opération :
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -890,7 +1006,7 @@ protected override async Task OnInitializedAsync()
 > [!NOTE]
 > Un travail asynchrone pendant l’initialisation d’un composant doit se produire pendant l’événement de cycle de vie `OnInitializedAsync`.
 
-Pour une opération synchrone, utilisez `OnInitialized` :
+Pour une opération synchrone, utilisez `OnInitialized`:
 
 ```csharp
 protected override void OnInitialized()
@@ -899,7 +1015,7 @@ protected override void OnInitialized()
 }
 ```
 
-`OnParametersSetAsync` et `OnParametersSet` sont appelés lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et chaque fois que le composant est rendu :
+`OnParametersSetAsync` et `OnParametersSet` sont appelées lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et à chaque rendu du composant parent :
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -918,13 +1034,13 @@ protected override void OnParametersSet()
 }
 ```
 
-`OnAfterRenderAsync` et `OnAfterRender` sont appelés après la fin du rendu d’un composant. Les références d’élément et de composant sont remplies à ce stade. Utilisez cette étape pour effectuer des étapes d’initialisation supplémentaires à l’aide du contenu rendu, par exemple l’activation de bibliothèques JavaScript tierces qui opèrent sur les éléments DOM rendus.
+`OnAfterRenderAsync` et `OnAfterRender` sont appelées après la fin du rendu d’un composant. Les références d’élément et de composant sont remplies à ce stade. Utilisez cette étape pour effectuer des étapes d’initialisation supplémentaires à l’aide du contenu rendu, par exemple l’activation de bibliothèques JavaScript tierces qui opèrent sur les éléments DOM rendus.
 
 `OnAfterRender` *n’est pas appelé lors du prérendu sur le serveur.*
 
 Le paramètre `firstRender` pour `OnAfterRenderAsync` et `OnAfterRender` est :
 
-* Affectez la valeur `true` la première fois que l’instance du composant est appelée.
+* Défini sur `true` la première fois que l’instance de composant est appelée.
 * Garantit que le travail d’initialisation n’est effectué qu’une seule fois.
 
 ```csharp
@@ -952,9 +1068,9 @@ protected override void OnAfterRender(bool firstRender)
 
 ### <a name="handle-incomplete-async-actions-at-render"></a>Gérer les actions asynchrones incomplètes au rendu
 
-Les actions asynchrones exécutées dans des événements de cycle de vie peuvent ne pas être terminées avant le rendu du composant. Les objets peuvent être `null` ou remplis de façon incomplète avec des données pendant l’exécution de la méthode de cycle de vie. Fournissez une logique de rendu pour confirmer que les objets sont initialisés. Affichez les éléments d’interface utilisateur d’espace réservé (par exemple, un message de chargement) tandis que les objets sont `null`.
+Les actions asynchrones exécutées dans des événements de cycle de vie peuvent ne pas être terminées avant le rendu du composant. Les objets peuvent être `null` ou remplis de façon incomplète avec des données pendant l’exécution de la méthode Lifecycle. Fournissez une logique de rendu pour confirmer que les objets sont initialisés. Affichez les éléments d’interface utilisateur d’espace réservé (par exemple, un message de chargement) pendant que les objets sont `null`.
 
-Dans le composant `FetchData` des modèles éblouissant, `OnInitializedAsync` est remplacé par asynchrone recevoir les données de prévision (`forecasts`). Lorsque `forecasts` est `null`, un message de chargement est affiché à l’utilisateur. Une fois le `Task` retourné par `OnInitializedAsync` se termine, le composant est rerendu avec l’État mis à jour.
+Dans le composant `FetchData` des modèles Blazor, `OnInitializedAsync` est remplacé par asynchrone recevoir les données de prévision (`forecasts`). Lorsque `forecasts` est `null`, un message de chargement s’affiche pour l’utilisateur. Une fois la `Task` retournée par `OnInitializedAsync` terminée, le composant est rerendu avec l’État mis à jour.
 
 *Pages/FetchData.razor* :
 
@@ -1011,11 +1127,11 @@ Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/do
 
 ## <a name="routing"></a>Routage
 
-Le routage dans éblouissant est obtenu en fournissant un modèle de routage à chaque composant accessible dans l’application.
+Le routage dans Blazor est obtenu en fournissant un modèle de routage à chaque composant accessible dans l’application.
 
-Lorsqu’un fichier Razor avec une directive `@page` est compilé, la classe générée reçoit une <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> spécifiant le modèle de routage. Lors de l’exécution, le routeur recherche les classes de composant avec un `RouteAttribute` et effectue le rendu du composant dont le modèle de routage correspond à l’URL demandée.
+Lorsqu’un fichier Razor avec une directive `@page` est compilé, la classe générée reçoit une <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> spécifiant le modèle de routage. Lors de l’exécution, le routeur recherche les classes de composant avec un `RouteAttribute` et rend le composant qui a un modèle de routage correspondant à l’URL demandée.
 
-Plusieurs modèles de routage peuvent être appliqués à un composant. Le composant suivant répond aux demandes pour `/BlazorRoute` et `/DifferentBlazorRoute` :
+Plusieurs modèles de routage peuvent être appliqués à un composant. Le composant suivant répond aux demandes de `/BlazorRoute` et `/DifferentBlazorRoute`:
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/BlazorRoute.razor?name=snippet_BlazorRoute)]
 
@@ -1027,7 +1143,7 @@ Les composants peuvent recevoir des paramètres de routage à partir du modèle 
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/RouteParameter.razor?name=snippet_RouteParameter)]
 
-Les paramètres facultatifs ne sont pas pris en charge. deux directives `@page` sont donc appliquées dans l’exemple ci-dessus. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième directive `@page` prend le paramètre de routage `{text}` et affecte la valeur à la propriété `Text`.
+Les paramètres facultatifs ne sont pas pris en charge. deux directives `@page` sont donc appliquées dans l’exemple ci-dessus. La première permet de naviguer jusqu’au composant sans paramètre. La deuxième `@page` directive prend le paramètre d’itinéraire `{text}` et assigne la valeur à la propriété `Text`.
 
 ::: moniker range=">= aspnetcore-3.1"
 
@@ -1035,10 +1151,10 @@ Les paramètres facultatifs ne sont pas pris en charge. deux directives `@page` 
 
 Les composants Razor sont générés en tant que classes partielles. Les composants Razor sont créés à l’aide de l’une des approches suivantes :
 
-* C#le code est défini dans un bloc [@code](xref:mvc/views/razor#code) avec le balisage HTML et le code Razor dans un fichier unique. Les modèles éblouissants définissent leurs composants Razor à l’aide de cette approche.
+* C#le code est défini dans un bloc [@code](xref:mvc/views/razor#code) avec le balisage HTML et le code Razor dans un fichier unique. les modèles de Blazor définissent leurs composants Razor à l’aide de cette approche.
 * C#le code est placé dans un fichier code-behind défini en tant que classe partielle.
 
-L’exemple suivant montre le composant `Counter` par défaut avec un bloc `@code` dans une application générée à partir d’un modèle éblouissant. Le balisage HTML, le code C# Razor et le code se trouvent dans le même fichier :
+L’exemple suivant montre le composant `Counter` par défaut avec un bloc `@code` dans une application générée à partir d’un modèle Blazor. Le balisage HTML, le code C# Razor et le code se trouvent dans le même fichier :
 
 *Counter. Razor*:
 
@@ -1134,9 +1250,9 @@ La classe de base doit dériver de `ComponentBase`.
 
 L’espace de noms d’un composant créé avec Razor est basé sur (par ordre de priorité) :
 
-* désignation [@namespace](xref:mvc/views/razor#namespace) dans le balisage du fichier Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
+* [@namespace](xref:mvc/views/razor#namespace) la désignation dans le balisage du fichier Razor ( *. Razor*) (`@namespace BlazorSample.MyNamespace`).
 * `RootNamespace` du projet dans le fichier projet (`<RootNamespace>BlazorSample</RootNamespace>`).
-* Nom du projet, pris à partir du nom de fichier du fichier projet ( *. csproj*), et chemin d’accès de la racine du projet au composant. Par exemple, le Framework résout *{Project root}/pages/index.Razor* (*BlazorSample. csproj*) en espace de noms `BlazorSample.Pages`. Les composants C# suivent les règles de liaison de nom. Pour le composant `Index` dans cet exemple, les composants de l’étendue sont tous des composants :
+* Nom du projet, pris à partir du nom de fichier du fichier projet ( *. csproj*), et chemin d’accès de la racine du projet au composant. Par exemple, le Framework résout *{Project root}/pages/index.Razor* (*BlazorSample. csproj*) en l’espace de noms `BlazorSample.Pages`. Les composants C# suivent les règles de liaison de nom. Pour le composant `Index` dans cet exemple, les composants de l’étendue sont tous les composants :
   * Dans le même dossier, *pages*.
   * Composants de la racine du projet qui ne spécifient pas explicitement un espace de noms différent.
 
@@ -1161,11 +1277,11 @@ This is the Index page.
 ```
 
 > [!NOTE]
-> La qualification `global::` n’est pas prise en charge.
+> La qualification de `global::` n’est pas prise en charge.
 >
 > L’importation de composants avec des instructions `using` avec alias (par exemple, `@using Foo = Bar`) n’est pas prise en charge.
 >
-> Les noms partiellement qualifiés ne sont pas pris en charge. Par exemple, l’ajout de `@using BlazorSample` et la référence à `NavMenu.razor` avec `<Shared.NavMenu></Shared.NavMenu>` n’est pas pris en charge.
+> Les noms partiellement qualifiés ne sont pas pris en charge. Par exemple, l’ajout de `@using BlazorSample` et la référencement d' `NavMenu.razor` avec `<Shared.NavMenu></Shared.NavMenu>` ne sont pas pris en charge.
 
 ## <a name="conditional-html-element-attributes"></a>Attributs d’éléments HTML conditionnels
 
@@ -1182,13 +1298,13 @@ Dans l’exemple suivant, `IsCompleted` détermine si `checked` est restitué da
 }
 ```
 
-Si `IsCompleted` est `true`, la case à cocher est restituée comme suit :
+Si `IsCompleted` est `true`, la case à cocher s’affiche comme suit :
 
 ```html
 <input type="checkbox" checked />
 ```
 
-Si `IsCompleted` est `false`, la case à cocher est restituée comme suit :
+Si `IsCompleted` est `false`, la case à cocher s’affiche comme suit :
 
 ```html
 <input type="checkbox" />
@@ -1197,7 +1313,7 @@ Si `IsCompleted` est `false`, la case à cocher est restituée comme suit :
 Pour plus d'informations, consultez <xref:mvc/views/razor>.
 
 > [!WARNING]
-> Certains attributs HTML, tels que [Aria](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), ne fonctionnent pas correctement quand le type .net est un `bool`. Dans ce cas, utilisez un type `string` à la place d’un `bool`.
+> Certains attributs HTML, tels que [Aria](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons), ne fonctionnent pas correctement quand le type .net est un `bool`. Dans ce cas, utilisez un type de `string` à la place d’un `bool`.
 
 ## <a name="raw-html"></a>HTML brut
 
@@ -1226,7 +1342,7 @@ Les composants basés sur un modèle sont des composants qui acceptent un ou plu
 
 ### <a name="template-parameters"></a>Paramètres de modèle
 
-Un composant basé sur un modèle est défini en spécifiant un ou plusieurs paramètres de composant de type `RenderFragment` ou `RenderFragment<T>`. Un fragment de rendu représente un segment de l’interface utilisateur à restituer. `RenderFragment<T>` accepte un paramètre de type qui peut être spécifié lors de l’appel du fragment de rendu.
+Un composant basé sur un modèle est défini en spécifiant un ou plusieurs paramètres de composant de type `RenderFragment` ou `RenderFragment<T>`. Un fragment de rendu représente un segment de l’interface utilisateur à restituer. `RenderFragment<T>` prend un paramètre de type qui peut être spécifié lors de l’appel du fragment de rendu.
 
 composant `TableTemplate` :
 
@@ -1311,7 +1427,7 @@ Dans certains scénarios, il est peu commode de transmettre des données d’un 
 
 ### <a name="theme-example"></a>Exemple de thème
 
-Dans l’exemple suivant tiré de l’exemple d’application, la classe `ThemeInfo` spécifie les informations de thème pour descendre dans la hiérarchie des composants, de sorte que tous les boutons d’une partie donnée de l’application partagent le même style.
+Dans l’exemple suivant tiré de l’exemple d’application, la classe `ThemeInfo` spécifie les informations de thème pour descendre dans la hiérarchie des composants afin que tous les boutons d’une partie donnée de l’application partagent le même style.
 
 *UIThemeClasses/themeinfo. cs*:
 
@@ -1324,7 +1440,7 @@ public class ThemeInfo
 
 Un composant ancêtre peut fournir une valeur en cascade à l’aide du composant de valeur en cascade. Le composant `CascadingValue` encapsule une sous-arborescence de la hiérarchie des composants et fournit une valeur unique à tous les composants de cette sous-arborescence.
 
-Par exemple, l’exemple d’application spécifie les informations de thème (`ThemeInfo`) dans l’une des dispositions de l’application en tant que paramètre en cascade pour tous les composants qui composent le corps de la disposition de la propriété `@Body`. `ButtonClass` reçoit une valeur de `btn-success` dans le composant de disposition. Tout composant descendant peut utiliser cette propriété par le biais de l’objet en cascade `ThemeInfo`.
+Par exemple, l’exemple d’application spécifie les informations de thème (`ThemeInfo`) dans l’une des dispositions de l’application en tant que paramètre en cascade pour tous les composants qui composent le corps de la disposition de la propriété `@Body`. une valeur de `btn-success` dans le composant de disposition est assignée à `ButtonClass`. Tout composant descendant peut consommer cette propriété par le biais du `ThemeInfo` objet en cascade.
 
 composant `CascadingValuesParametersLayout` :
 
@@ -1392,7 +1508,7 @@ composant `CascadingValuesParametersTheme` :
 }
 ```
 
-Pour mettre en cascade plusieurs valeurs du même type dans la même sous-arborescence, fournissez une chaîne `Name` unique à chaque composant `CascadingValue` et son `CascadingParameter` correspondante. Dans l’exemple suivant, deux composants `CascadingValue` montent en cascade différentes instances de `MyCascadingType` par nom :
+Pour mettre en cascade plusieurs valeurs du même type dans la même sous-arborescence, fournissez une chaîne de `Name` unique à chaque composant `CascadingValue` et à la `CascadingParameter`correspondante. Dans l’exemple suivant, deux composants de `CascadingValue` cascadent différentes instances de `MyCascadingType` par nom :
 
 ```cshtml
 <CascadingValue Value=@ParentCascadeParameter1 Name="CascadeParam1">
@@ -1429,7 +1545,7 @@ Dans un composant descendant, les paramètres en cascade reçoivent leurs valeur
 
 Les paramètres en cascade permettent également aux composants de collaborer au sein de la hiérarchie des composants. Par exemple, considérez l’exemple *TabSet* suivant dans l’exemple d’application.
 
-L’exemple d’application a une interface `ITab` que les onglets implémentent :
+L’exemple d’application possède une interface `ITab` que les onglets implémentent :
 
 [!code-csharp[](common/samples/3.x/BlazorWebAssemblySample/UIInterfaces/ITab.cs)]
 
@@ -1437,13 +1553,13 @@ Le composant `CascadingValuesParametersTabSet` utilise le composant `TabSet`, qu
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Pages/CascadingValuesParametersTabSet.razor?name=snippet_TabSet)]
 
-Les composants enfants `Tab` ne sont pas passés explicitement comme paramètres au `TabSet`. Au lieu de cela, les composants enfants `Tab` font partie du contenu enfant du `TabSet`. Toutefois, le `TabSet` doit toujours connaître chaque composant `Tab` afin qu’il puisse restituer les en-têtes et l’onglet actif. Pour activer cette coordination sans nécessiter de code supplémentaire, le composant `TabSet` *peut se présenter comme une valeur en cascade* qui est ensuite récupérée par les composants `Tab` descendants.
+Les composants `Tab` enfants ne sont pas explicitement passés comme paramètres au `TabSet`. Au lieu de cela, les composants de `Tab` enfants font partie du contenu enfant du `TabSet`. Toutefois, le `TabSet` doit toujours connaître chaque composant `Tab` afin qu’il puisse restituer les en-têtes et l’onglet actif. Pour activer cette coordination sans nécessiter de code supplémentaire, le composant `TabSet` *peut se présenter comme une valeur en cascade* qui est ensuite récupérée par les composants de `Tab` descendants.
 
 composant `TabSet` :
 
 [!code-cshtml[](common/samples/3.x/BlazorWebAssemblySample/Components/TabSet.razor)]
 
-Les composants descendants `Tab` capturent le `TabSet` contenant un paramètre en cascade, de sorte que les composants `Tab` s’ajoutent aux `TabSet` et coordonnent l’onglet actif.
+Les composants de `Tab` descendants capturent le `TabSet` contenant sous forme de paramètre en cascade, de sorte que les composants `Tab` s’ajoutent eux-mêmes au `TabSet` et coordonnent l’onglet actif.
 
 composant `Tab` :
 
@@ -1457,7 +1573,7 @@ Les fragments de rendu peuvent être définis à l’aide de la syntaxe de modè
 @<{HTML tag}>...</{HTML tag}>
 ```
 
-L’exemple suivant montre comment spécifier des valeurs `RenderFragment` et `RenderFragment<T>` et rendre des modèles directement dans un composant. Les fragments de rendu peuvent également être passés comme arguments à des [composants basés](#templated-components)sur un modèle.
+L’exemple suivant montre comment spécifier des valeurs `RenderFragment` et `RenderFragment<T>` et afficher des modèles directement dans un composant. Les fragments de rendu peuvent également être passés comme arguments à des [composants basés](#templated-components)sur un modèle.
 
 ```cshtml
 @timeTemplate
@@ -1505,7 +1621,7 @@ Prenons le composant `PetDetails` suivant, qui peut être intégré manuellement
 }
 ```
 
-Dans l’exemple suivant, la boucle de la méthode `CreateComponent` génère trois composants `PetDetails`. Lors de l’appel de méthodes `RenderTreeBuilder` pour créer les composants (`OpenComponent` et `AddAttribute`), les numéros de séquence sont des numéros de ligne de code source. L’algorithme de différence éblouissant s’appuie sur les numéros de séquence correspondant à des lignes de code distinctes, et non sur des appels d’appel distincts. Lors de la création d’un composant avec des méthodes `RenderTreeBuilder`, coder en dur les arguments pour les numéros de séquence. **L’utilisation d’un calcul ou d’un compteur pour générer le numéro de séquence peut entraîner des performances médiocres.** Pour plus d’informations, consultez la section [numéros de séquence liés à des numéros de ligne de code et non à un ordre d’exécution](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) .
+Dans l’exemple suivant, la boucle de la méthode `CreateComponent` génère trois composants `PetDetails`. Lors de l’appel de méthodes `RenderTreeBuilder` pour créer les composants (`OpenComponent` et `AddAttribute`), les numéros de séquence sont des numéros de ligne de code source. L’algorithme de différence Blazor s’appuie sur les numéros de séquence correspondant à des lignes de code distinctes, et non sur des appels d’appel distincts. Lors de la création d’un composant avec des méthodes `RenderTreeBuilder`, coder en dur les arguments pour les numéros de séquence. **L’utilisation d’un calcul ou d’un compteur pour générer le numéro de séquence peut entraîner des performances médiocres.** Pour plus d’informations, consultez la section [numéros de séquence liés à des numéros de ligne de code et non à un ordre d’exécution](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) .
 
 composant `BuiltContent` :
 
@@ -1540,15 +1656,15 @@ composant `BuiltContent` :
 }
 ```
 
-> ! TRES Les types dans `Microsoft.AspNetCore.Components.RenderTree` permettent le traitement des *résultats* des opérations de rendu. Il s’agit des détails internes de l’implémentation du Framework éblouissant. Ces types doivent être considérés comme *instables* et susceptibles d’être modifiés dans les versions ultérieures.
+> ! TRES Les types dans `Microsoft.AspNetCore.Components.RenderTree` permettent le traitement des *résultats* des opérations de rendu. Il s’agit des détails internes de l’implémentation du Framework Blazor. Ces types doivent être considérés comme *instables* et susceptibles d’être modifiés dans les versions ultérieures.
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>Les numéros de séquence sont liés aux numéros de ligne de code et non à l’ordre d’exécution
 
-Les fichiers de éblouissant `.razor` sont toujours compilés. Cela constitue un avantage considérable pour `.razor`, car l’étape de compilation peut être utilisée pour injecter des informations qui améliorent les performances de l’application au moment de l’exécution.
+Blazor `.razor` fichiers sont toujours compilés. C’est un avantage considérable pour `.razor`, car l’étape de compilation peut être utilisée pour injecter des informations qui améliorent les performances de l’application au moment de l’exécution.
 
 Un exemple clé de ces améliorations concerne les *numéros de séquence*. Les numéros de séquence indiquent au runtime que les sorties proviennent de lignes de code distinctes et ordonnées. Le runtime utilise ces informations pour générer des différences d’arborescence efficaces en temps linéaire, ce qui est beaucoup plus rapide qu’un algorithme de comparaison d’arborescence générale.
 
-Considérons le fichier simple `.razor` suivant :
+Considérez le fichier `.razor` simple suivant :
 
 ```cshtml
 @if (someFlag)
@@ -1572,18 +1688,18 @@ builder.AddContent(1, "Second");
 
 Lorsque le code s’exécute pour la première fois, si `someFlag` est `true`, le générateur reçoit :
 
-| Séquence | Tapez      | Données   |
+| Séquence | Type      | Données   |
 | :------: | --------- | :----: |
 | 0        | Nœud de texte | First  |
 | 1        | Nœud de texte | Seconde |
 
-Imaginez que `someFlag` devient `false` et que le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit :
+Imaginez que `someFlag` devient `false`et que le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit :
 
-| Séquence | Tapez       | Données   |
+| Séquence | Type       | Données   |
 | :------: | ---------- | :----: |
 | 1        | Nœud de texte  | Seconde |
 
-Quand le runtime effectue une comparaison, il constate que l’élément à la séquence `0` a été supprimé. il génère donc le *script d’édition*trivial suivant :
+Quand le runtime effectue une comparaison, il constate que l’élément au `0` de la séquence a été supprimé, donc il génère le *script d’édition*trivial suivant :
 
 * Supprimez le premier nœud de texte.
 
@@ -1604,14 +1720,14 @@ builder.AddContent(seq++, "Second");
 
 La première sortie est désormais :
 
-| Séquence | Tapez      | Données   |
+| Séquence | Type      | Données   |
 | :------: | --------- | :----: |
 | 0        | Nœud de texte | First  |
 | 1        | Nœud de texte | Seconde |
 
-Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag` est `false` sur le deuxième rendu et la sortie est :
+Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag` est `false` sur le deuxième rendu et la sortie est la suivante :
 
-| Séquence | Tapez      | Données   |
+| Séquence | Type      | Données   |
 | :------: | --------- | ------ |
 | 0        | Nœud de texte | Seconde |
 
@@ -1620,7 +1736,7 @@ Cette fois-ci, l’algorithme diff constate que *deux* modifications ont été a
 * Remplacez la valeur du premier nœud de texte par `Second`.
 * Supprimez le deuxième nœud de texte.
 
-La génération des numéros de séquence a perdu toutes les informations utiles sur l’emplacement où les branches et les boucles `if/else` étaient présentes dans le code d’origine. Il en résulte une comparaison de **deux fois plus longtemps** qu’auparavant.
+La génération des numéros de séquence a perdu toutes les informations utiles sur l’emplacement où les `if/else` branches et les boucles étaient présentes dans le code d’origine. Il en résulte une comparaison de **deux fois plus longtemps** qu’auparavant.
 
 Il s’agit d’un exemple trivial. Dans des cas plus réalistes avec des structures complexes et profondément imbriquées, et surtout avec des boucles, le coût des performances est plus grave. Au lieu d’identifier immédiatement les blocs de boucle ou les branches qui ont été insérées ou supprimées, l’algorithme diff doit recurse profondément dans les arborescences de rendu et générer des scripts de modification beaucoup plus longs, car il est mal informé de la façon dont les anciennes et les nouvelles structures sont liées les unes aux autres.
 
@@ -1628,13 +1744,13 @@ Il s’agit d’un exemple trivial. Dans des cas plus réalistes avec des struct
 
 * Les performances de l’application sont affectées si les numéros séquentiels sont générés dynamiquement.
 * L’infrastructure ne peut pas créer ses propres numéros de séquence automatiquement au moment de l’exécution, car les informations nécessaires n’existent pas, sauf si elles sont capturées au moment de la compilation.
-* N’écrivez pas de longs blocs de logique `RenderTreeBuilder` implémentée manuellement. Préférer les fichiers `.razor` et permettre au compilateur de gérer les numéros de séquence. Si vous ne parvenez pas à éviter une logique de `RenderTreeBuilder` manuelle, fractionnez les blocs de code longs en éléments plus petits encapsulés dans `OpenRegion` / `CloseRegion` appels. Chaque région a son propre espace distinct pour les numéros de séquence, ce qui vous permet de redémarrer à partir de zéro (ou tout autre nombre arbitraire) à l’intérieur de chaque région.
+* N’écrivez pas de longs blocs de `RenderTreeBuilder` logique implémentée manuellement. Préférez `.razor` fichiers et permettre au compilateur de gérer les numéros de séquence. Si vous ne parvenez pas à éviter une logique de `RenderTreeBuilder` manuelle, fractionnez les blocs de code longs en éléments plus petits encapsulés dans `OpenRegion`/`CloseRegion` appels. Chaque région a son propre espace distinct pour les numéros de séquence, ce qui vous permet de redémarrer à partir de zéro (ou tout autre nombre arbitraire) à l’intérieur de chaque région.
 * Si les numéros de séquence sont codés en dur, l’algorithme diff exige uniquement que les numéros de séquence augmentent dans la valeur. La valeur initiale et les écarts ne sont pas pertinents. Une option légitime consiste à utiliser le numéro de ligne de code comme numéro de séquence, ou à commencer à partir de zéro et à augmenter par des ou des centaines (ou un intervalle de préférence). 
-* Éblouissant utilise des numéros de séquence, tandis que d’autres infrastructures d’interface utilisateur de comparaison d’arborescence ne les utilisent pas. La comparaison est beaucoup plus rapide lorsque les numéros de séquence sont utilisés, et éblouissant présente l’avantage d’une étape de compilation qui traite automatiquement les numéros séquentiels pour les développeurs qui créent des fichiers `.razor`.
+* Blazor utilise des numéros de séquence, tandis que d’autres infrastructures d’interface utilisateur de comparaison d’arborescence ne les utilisent pas. La comparaison est beaucoup plus rapide lorsque les numéros de séquence sont utilisés et Blazor présente l’avantage d’une étape de compilation qui traite automatiquement les numéros séquentiels pour les développeurs qui créent des fichiers *. Razor* .
 
 ## <a name="localization"></a>Localisation
 
-Les applications serveur éblouissantes sont localisées à l’aide de l' [intergiciel (middleware](xref:fundamentals/localization#localization-middleware)) de localisation. L’intergiciel sélectionne la culture appropriée pour les utilisateurs qui demandent des ressources à partir de l’application.
+les applications Blazor Server sont localisées à l’aide de l' [intergiciel (middleware](xref:fundamentals/localization#localization-middleware)) de localisation. L’intergiciel sélectionne la culture appropriée pour les utilisateurs qui demandent des ressources à partir de l’application.
 
 La culture peut être définie à l’aide de l’une des approches suivantes :
 
@@ -1642,6 +1758,10 @@ La culture peut être définie à l’aide de l’une des approches suivantes :
 * [Fournir l’interface utilisateur pour choisir la culture](#provide-ui-to-choose-the-culture)
 
 Pour plus d’informations et d’exemples, consultez <xref:fundamentals/localization>.
+
+### <a name="configure-the-linker-for-internationalization-opno-locblazor-webassembly"></a>Configurer l’éditeur de liens pour l’internationalisation (Blazor webassembly)
+
+Par défaut, la configuration de l’éditeur de liens de Blazorpour les applications webassembly Blazor supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement. Pour plus d’informations et de conseils sur le contrôle du comportement de l’éditeur de liens, consultez <xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>.
 
 ### <a name="cookies"></a>Cookies
 
@@ -1651,7 +1771,7 @@ L’utilisation d’un cookie garantit que la connexion WebSocket peut propager 
 
 Toute technique peut être utilisée pour assigner une culture si la culture est rendue persistante dans un cookie de localisation. Si l’application a déjà un schéma de localisation établi pour les ASP.NET Core côté serveur, continuez à utiliser l’infrastructure de localisation existante de l’application et à définir le cookie de la culture de localisation dans le schéma de l’application.
 
-L’exemple suivant montre comment définir la culture actuelle dans un cookie qui peut être lu par l’intergiciel (middleware) de localisation. Créez un fichier *pages/Host. cshtml. cs* avec le contenu suivant dans l’application de serveur éblouissant :
+L’exemple suivant montre comment définir la culture actuelle dans un cookie qui peut être lu par l’intergiciel (middleware) de localisation. Créez un fichier *pages/Host. cshtml. cs* avec le contenu suivant dans l’application Blazor Server :
 
 ```csharp
 public class HostModel : PageModel
@@ -1673,13 +1793,13 @@ La localisation est gérée dans l’application :
 1. Le navigateur envoie une requête HTTP initiale à l’application.
 1. La culture est affectée par l’intergiciel (middleware) de localisation.
 1. La méthode `OnGet` dans *_Host. cshtml. cs* rend persistante la culture dans un cookie dans le cadre de la réponse.
-1. Le navigateur ouvre une connexion WebSocket pour créer une session de serveur éblouissante interactive.
+1. Le navigateur ouvre une connexion WebSocket pour créer une session Blazor Server interactive.
 1. L’intergiciel de localisation lit le cookie et assigne la culture.
-1. La session du serveur éblouissant commence par la culture correcte.
+1. La session du serveur de Blazor commence par la culture correcte.
 
-## <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
+### <a name="provide-ui-to-choose-the-culture"></a>Fournir l’interface utilisateur pour choisir la culture
 
-Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur la redirection* . Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à une ressource sécurisée &mdash;the utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
+Pour fournir une interface utilisateur permettant à un utilisateur de sélectionner une culture, il est recommandé d’effectuer une *approche basée sur la redirection* . Le processus est similaire à ce qui se produit dans une application Web lorsqu’un utilisateur tente d’accéder à une ressource sécurisée&mdash;l’utilisateur est redirigé vers une page de connexion, puis redirigé vers la ressource d’origine. 
 
 L’application conserve la culture sélectionnée de l’utilisateur via une redirection vers un contrôleur. Le contrôleur définit la culture sélectionnée de l’utilisateur dans un cookie et redirige l’utilisateur vers l’URI d’origine.
 
@@ -1736,25 +1856,25 @@ Le composant suivant montre un exemple d’exécution de la redirection initiale
 }
 ```
 
-### <a name="use-net-localization-scenarios-in-blazor-apps"></a>Utiliser des scénarios de localisation .NET dans des applications éblouissantes
+### <a name="use-net-localization-scenarios-in-opno-locblazor-apps"></a>Utiliser les scénarios de localisation .NET dans les applications Blazor
 
-Dans les applications éblouissantes, les scénarios de localisation et de globalisation .NET suivants sont disponibles :
+Dans Blazor Apps, les scénarios de localisation et de globalisation .NET suivants sont disponibles :
 
 * . Système de ressources du réseau
 * Mise en forme des nombres et des dates spécifiques à la culture
 
-La fonctionnalité `@bind` de éblouissant effectue une globalisation basée sur la culture actuelle de l’utilisateur. Pour plus d’informations, consultez la section [liaison de données](#data-binding) .
+la fonctionnalité de `@bind` de Blazoreffectue une globalisation basée sur la culture actuelle de l’utilisateur. Pour plus d’informations, consultez la section [liaison de données](#data-binding) .
 
 Un ensemble limité de scénarios de localisation de ASP.NET Core est actuellement pris en charge :
 
-* `IStringLocalizer<>` *est pris en charge* dans les applications éblouissantes.
-* `IHtmlLocalizer<>`, `IViewLocalizer<>` et la localisation des annotations de données sont ASP.NET Core scénarios MVC et **ne sont pas pris en charge** dans les applications éblouissantes.
+* `IStringLocalizer<>` *est pris en charge* dans les applications Blazor.
+* la localisation des annotations de données `IHtmlLocalizer<>`, `IViewLocalizer<>`et est ASP.NET Core les scénarios MVC et **non pris en charge** dans les applications Blazor.
 
 Pour plus d'informations, consultez <xref:fundamentals/localization>.
 
 ## <a name="scalable-vector-graphics-svg-images"></a>Images SVG (Scalable Vector Graphics)
 
-Étant donné que éblouissant rend les images HTML, prises en charge par le navigateur, y compris les images SVG (Scalable Vector Graphics) ( *. svg*), sont prises en charge via la balise `<img>` :
+Étant donné que Blazor restitue le code HTML, les images prises en charge par le navigateur, y compris les images SVG (Scalable Vector Graphics) ( *. svg*), sont prises en charge via la balise `<img>` :
 
 ```html
 <img alt="Example image" src="some-image.svg" />
@@ -1768,8 +1888,8 @@ De même, les images SVG sont prises en charge dans les règles CSS d’un fichi
 }
 ```
 
-Toutefois, le balisage SVG en ligne n’est pas pris en charge dans tous les scénarios. Si vous placez une balise `<svg>` directement dans un fichier de composant ( *. Razor*), le rendu d’image de base est pris en charge, mais de nombreux scénarios avancés ne sont pas encore pris en charge. Par exemple, les balises `<use>` ne sont pas respectées et `@bind` ne peut pas être utilisée avec certaines balises SVG. Nous prévoyons de traiter ces limitations dans une version ultérieure.
+Toutefois, le balisage SVG en ligne n’est pas pris en charge dans tous les scénarios. Si vous placez une balise de `<svg>` directement dans un fichier de composant ( *. Razor*), le rendu d’image de base est pris en charge, mais de nombreux scénarios avancés ne sont pas encore pris en charge. Par exemple, les balises `<use>` ne sont pas respectées et `@bind` ne peuvent pas être utilisées avec certaines balises SVG. Nous prévoyons de traiter ces limitations dans une version ultérieure.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* <xref:security/blazor/server> &ndash; fournit des conseils sur la création d’applications serveur éblouissantes qui doivent être en concurrence avec l’épuisement des ressources.
+* <xref:security/blazor/server> &ndash; contient des conseils sur la création d’applications serveur Blazor qui doivent rivaliser avec l’épuisement des ressources.

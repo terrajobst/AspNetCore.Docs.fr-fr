@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 870ce2eb28f384b380cc1178842325dc28199f09
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 15f94fd1c619e9f69c5783f664eafc9ca28f86f9
+ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814991"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74239860"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="what-are-tag-helpers"></a>Que sont les Tag Helpers ?
 
-Les Tag Helpers permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Par exemple, le `ImageTagHelper` intégré peut ajouter un numéro de version au nom de l’image. Chaque fois que l’image change, le serveur en génère une nouvelle version unique, pour que les clients soient sûrs d’obtenir l’image actuelle (au lieu d’une image mise en cache obsolète). Il existe de nombreux Tag Helpers pour les tâches courantes (par exemple la création de formulaires ou de liens, le chargement de ressources, etc.) et bien d’autres encore, dans les dépôts GitHub publics et sous forme de packages NuGet. Les Tag Helpers sont créés en C# et ciblent les éléments HTML en fonction du nom de l’élément, du nom de l’attribut ou de la balise parente. Par exemple, le `LabelTagHelper` intégré peut cibler l’élément `<label>` HTML quand les attributs `LabelTagHelper` sont appliqués. Si vous connaissez déjà les [HTML Helpers](https://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers), les Tag Helpers permettent de réduire les transitions explicites entre le code HTML et le code C# dans les affichages Razor. Dans de nombreux cas, les HTML Helpers offrent une autre approche par rapport à un Tag Helper spécifique. Toutefois, il est clair que les Tag Helpers ne remplacent pas les HTML Helpers, et qu’il n’existe pas toujours un Tag Helper pour chaque HTML Helper. [Comparaison des Tag Helpers aux HTML Helpers](#tag-helpers-compared-to-html-helpers) explique les différences de façon plus approfondie.
+Les Tag Helpers permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Par exemple, le `ImageTagHelper` intégré peut ajouter un numéro de version au nom de l’image. Chaque fois que l’image change, le serveur en génère une nouvelle version unique, pour que les clients soient sûrs d’obtenir l’image actuelle (au lieu d’une image mise en cache obsolète). Il existe de nombreux Tag helpers intégrés pour les tâches courantes - telles que la création de formulaires, des liens, de chargement de ressources et plus - et bien d'autres sont disponibles dans les dépôts GitHub publics et sous forme de NuGet packages. Les Tag helpers sont créés en c#, et ils ciblent des éléments HTML en fonction de la balise parente, du nom d’attribut ou du nom de l’élément. Par exemple, le `LabelTagHelper` intégré peut cibler l’élément `<label>` HTML quand les attributs `LabelTagHelper` sont appliqués. Si vous connaissez déjà les [HTML Helpers](https://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers), les Tag Helpers permettent de réduire les transitions explicites entre le code HTML et le code C# dans les affichages Razor. Dans de nombreux cas, les HTML Helpers offrent une autre approche par rapport à un Tag Helper spécifique. Toutefois, il est clair que les Tag Helpers ne remplacent pas les HTML Helpers, et qu’il n’existe pas toujours un Tag Helper pour chaque HTML Helper. [Comparaison des Tag Helpers aux HTML Helpers](#tag-helpers-compared-to-html-helpers) explique les différences de façon plus approfondie.
 
 ## <a name="what-tag-helpers-provide"></a>Ce que fournissent des Tag helpers
 
@@ -27,7 +27,7 @@ Les Tag Helpers permettent au code côté serveur de participer à la création 
 
 **Un riche environnement IntelliSense pour la création de balises HTML et Razor** Cet environnement se démarque fortement des HTML Helpers, correspondant à la précédente approche de la création côté serveur de balises dans les affichages Razor. [Comparaison des Tag Helpers aux HTML Helpers](#tag-helpers-compared-to-html-helpers) explique les différences de façon plus approfondie. [Prise en charge IntelliSense des Tag Helpers](#intellisense-support-for-tag-helpers) explique l’environnement IntelliSense. Même les développeurs habitués à la syntaxe Razor C# sont plus productifs en utilisant des Tag Helpers qu’en écrivant des balises Razor C#.
 
-**Un moyen d’améliorer votre productivité et votre capacité à produire du code plus robuste, fiable et facile à gérer en utilisant des informations uniquement disponibles sur le serveur** Par exemple, l’ancien usage pour la mise à jour des images consistait à modifier le nom de l’image quand vous modifiiez l’image. Les images doivent être efficacement mises en cache pour des raisons de performance, et à moins de modifier le nom d’une image, les clients risquent d’obtenir une copie obsolète. Auparavant, une fois qu’une image avait été modifiée, le nom devait être modifié et chaque référence à l’image dans l’application web avait besoin d’être mise à jour. Non seulement ce travail était fastidieux, mais il engendrait facilement des erreurs (vous pouviez oublier une référence, entrer la mauvaise chaîne par inadvertance, etc.). Le `ImageTagHelper` intégré peut s’en charger automatiquement à votre place. Le `ImageTagHelper` peut ajouter un numéro de version au nom de l’image, si bien que dès que l’image change, le serveur génère automatiquement une nouvelle version unique de l’image. Les clients sont sûrs d’obtenir l’image actuelle. Cette robustesse et cette économie de travail sont inhérentes à l’utilisation du `ImageTagHelper`.
+**Un moyen d’améliorer votre productivité et votre capacité à produire du code plus robuste, fiable et facile à gérer en utilisant des informations uniquement disponibles sur le serveur** Par exemple, l’ancien usage pour la mise à jour des images consistait à modifier le nom de l’image quand vous modifiiez l’image. Les images doivent être efficacement mises en cache pour des raisons de performance, et à moins de modifier le nom d’une image, les clients risquent d’obtenir une copie obsolète. Auparavant, une fois qu’une image avait été modifiée, le nom devait être modifié et chaque référence à l’image dans l’application web avait besoin d’être mise à jour. Not only is this very labor intensive, it's also error prone (you could miss a reference, accidentally enter the wrong string, etc.) The built-in `ImageTagHelper` can do this for you automatically. Le `ImageTagHelper` peut ajouter un numéro de version au nom de l’image, si bien que dès que l’image change, le serveur génère automatiquement une nouvelle version unique de l’image. Les clients sont sûrs d’obtenir l’image actuelle. Cette robustesse et cette économie de travail sont inhérentes à l’utilisation du `ImageTagHelper`.
 
 La plupart des Tag Helpers intégrés ciblent les éléments HTML standard et fournissent des attributs côté serveur pour l’élément. Par exemple, l’élément `<input>` utilisé dans de nombreuses vues dans le dossier *Views/Account* contient l’attribut `asp-for`. Cet attribut extrait le nom de la propriété de modèle spécifiée dans le code HTML restitué. Examinons une vue Razor avec le modèle suivant :
 
@@ -97,7 +97,7 @@ Comme mentionné précédemment, l’ajout de la directive `@addTagHelper` au fi
 
 Le`@removeTagHelper` a les deux mêmes paramètres que `@addTagHelper`, et il supprime un Tag helper ajoutée précédemment. Par exemple, `@removeTagHelper` appliqué à une vue supprime le Tag helper spécifié de la vue. Utiliser `@removeTagHelper` dans un fichier *Views/Folder/_ViewImports.cshtml* supprime le Tag helper à partir de toutes les vues du *dossier*.
 
-### <a name="controlling-tag-helper-scope-with-the-viewimportscshtml-file"></a>Contrôle de l’étendue des Tag Helpers à l’aide du fichier *_ViewImports.cshtml*
+### <a name="controlling-tag-helper-scope-with-the-_viewimportscshtml-file"></a>Contrôle de l’étendue des Tag Helpers à l’aide du fichier *_ViewImports.cshtml*
 
 Vous pouvez ajouter un fichier *_ViewImports.cshtml* à tout dossier d’affichage. Le moteur d’affichage applique les directives de ce fichier et du fichier *Views/_ViewImports.cshtml*. Si vous avez ajouté un fichier *Views/Home/_ViewImports.cshtml* vide pour les affichages *Home*, rien n’est modifié car le fichier *_ViewImports.cshtml* est additif. Toute directive `@addTagHelper` que vous ajoutez au fichier *Views/Home/_ViewImports.cshtml* (qui n’est pas dans le fichier *Views/_ViewImports.cshtml* par défaut) expose ces Tag Helpers uniquement aux affichages inclus dans le dossier *Home*.
 
@@ -132,6 +132,22 @@ Les mêmes règles de hiérarchie qui s’appliquent à `@addTagHelper` s’appl
 ## <a name="self-closing-tag-helpers"></a>Tag Helpers à fermeture automatique
 
 De nombreux Tag Helpers ne peuvent pas être utilisés en tant que balises à fermeture automatique. Certains Tag Helpers sont conçus en tant que balises à fermeture automatique. L’utilisation d’un Tag Helper qui n’a pas été conçu pour être à fermeture automatique supprime la sortie rendue. La fermeture automatique d’un Tag Helper aboutit à une balise à fermeture automatique dans la sortie rendue. Pour plus d’informations, consultez [cette remarque](xref:mvc/views/tag-helpers/authoring#self-closing) dans [Création de Tag Helpers](xref:mvc/views/tag-helpers/authoring).
+
+## <a name="c-in-tag-helpers-attributedeclaration"></a>C# in Tag Helpers attribute/declaration 
+
+Tag Helpers do not allow C# in the element's attribute or tag declaration area. For example, the following code is not valid:
+
+```cshtml
+<input asp-for="LastName"  
+       @(Model?.LicenseId == null ? "disabled" : string.Empty) />
+```
+
+The preceding code can be written as:
+
+```cshtml
+<input asp-for="LastName" 
+       disabled="@(Model?.LicenseId == null)" />
+```
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Prise en charge IntelliSense des Tag Helpers
 

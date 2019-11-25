@@ -4,16 +4,16 @@ author: ssougnez
 description: Dans ce didacticiel, vous allez configurer WebPack pour regrouper et créer une ASP.NET Core SignalR application Web dont le client est écrit en écriture manuscrite.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 759584f432807689ba194c86046364552fce1a45
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a7c99c9e79647995886aec5b3a91584fd2f24451
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964016"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317484"
 ---
 # <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec une machine à écrire et un WebPack
 
@@ -34,7 +34,7 @@ Dans ce didacticiel, vous apprendrez à :
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -198,10 +198,10 @@ Actuellement, l’application affiche un formulaire simple pour envoyer des mess
 1. Exécutez la commande suivante à la racine du projet :
 
     ```console
-    npm install @aspnet/signalr
+    npm install @microsoft/signalr
     ```
 
-    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
+    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@microsoft/signalr), ce qui permet au client d’envoyer des messages au serveur.
 
 1. Ajoutez le code en surbrillance au fichier *src/index.ts* :
 
@@ -433,10 +433,10 @@ Actuellement, l’application affiche un formulaire simple pour envoyer des mess
 1. Exécutez la commande suivante à la racine du projet :
 
     ```console
-    npm install @aspnet/signalr
+    npm install @microsoft/signalr
     ```
 
-    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@aspnet/signalr), ce qui permet au client d’envoyer des messages au serveur.
+    La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@microsoft/signalr), ce qui permet au client d’envoyer des messages au serveur.
 
 1. Ajoutez le code en surbrillance au fichier *src/index.ts* :
 

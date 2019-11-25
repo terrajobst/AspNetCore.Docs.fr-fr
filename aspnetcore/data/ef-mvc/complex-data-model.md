@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : créer un modèle de données complexe-ASP.NET MVC avec EF Core'
 description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vous personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage.
 author: rick-anderson
 ms.author: riande
@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 313d951ccdd45ae1209ffd9612d24738822fbed8
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: b8b1ade4c8c29d34200bf8c0944cff6adec0bb95
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259612"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74288957"
 ---
-# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core
+# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Didacticiel : créer un modèle de données complexe-ASP.NET MVC avec EF Core
 
 Dans les didacticiels précédents, vous avez travaillé avec un modèle de données simple composé de trois entités. Dans ce didacticiel, vous allez ajouter des entités et des relations, et vous personnaliserez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données.
 
@@ -38,7 +38,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Changer la chaîne de connexion
 > * Mettre à jour la base de données
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [À l’aide de migrations d’EF Core](migrations.md)
 
@@ -58,7 +58,7 @@ L’attribut `DataType` sert à spécifier un type de données qui est plus spé
 
 `DataType.Date` ne spécifie pas le format de la date qui s’affiche. Par défaut, le champ de données est affiché conformément aux formats par défaut basés sur l’objet CultureInfo du serveur.
 
-L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
+L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -86,7 +86,7 @@ Supposons que vous voulez garantir que les utilisateurs n’entrent pas plus de 
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
-L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace blanc comme nom. Vous pouvez utiliser l’attribut `RegularExpression` pour appliquer des restrictions à l’entrée. Par exemple, le code suivant exige que le premier caractère soit en majuscule et que les autres caractères soient alphabétiques :
+L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace blanc comme nom. Vous pouvez utiliser l’attribut `RegularExpression` pour appliquer des restrictions à l’entrée. Par exemple, le code suivant exige que le premier caractère soit une majuscule et que les autres caractères soient alphabétiques :
 
 ```csharp
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
@@ -153,13 +153,14 @@ Dans *Models/Student.cs*, remplacez le code que vous avez ajouté précédemment
 
 ### <a name="the-required-attribute"></a>Attribut Required
 
-L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas requis pour les types non nullables tels que les types valeur (DateTime, int, double, float, etc.). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs requis.
+L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas requis pour les types non nullables tels que les types valeur (DateTime, int, double, float, etc.). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
 
-Vous pouvez supprimer l’attribut `Required` et le remplacer par un paramètre de longueur minimale pour l’attribut `StringLength` :
+L'attribut `Required` doit être utilisé avec `MinimumLength` pour appliquer `MinimumLength`.
 
 ```csharp
 [Display(Name = "Last Name")]
-[StringLength(50, MinimumLength=1)]
+[Required]
+[StringLength(50, MinimumLength=2)]
 public string LastName { get; set; }
 ```
 
@@ -191,7 +192,7 @@ Vous pouvez placer plusieurs attributs sur une seule ligne et écrire les attrib
 
 Les propriétés `CourseAssignments` et `OfficeAssignment` sont des propriétés de navigation.
 
-Un formateur peut animer un nombre quelconque de cours, de sorte que `CourseAssignments` est défini comme une collection.
+Un formateur pouvant animer un nombre quelconque de cours, `CourseAssignments` est défini comme une collection.
 
 ```csharp
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
@@ -228,7 +229,7 @@ Vous pouvez également utiliser l’attribut `Key` si l’entité a sa propre cl
 
 Par défaut, EF traite la clé comme n’étant pas générée par la base de données, car la colonne est utilisée pour une relation d’identification.
 
-### <a name="the-instructor-navigation-property"></a>Propriété de navigation du formateur
+### <a name="the-instructor-navigation-property"></a>Propriété de navigation Instructor
 
 L’entité Instructor a une propriété de navigation `OfficeAssignment` nullable (parce qu’un formateur n’a peut-être pas d’affectation de bureau) et l’entité OfficeAssignment a une propriété de navigation `Instructor` non nullable (comme une affectation de bureau ne peut pas exister sans formateur, `InstructorID` est non nullable). Lorsqu’une entité Instructor a une entité OfficeAssignment associée, chaque entité a une référence à l’autre dans sa propriété de navigation.
 
@@ -271,7 +272,7 @@ public int DepartmentID { get; set; }
 public Department Department { get; set; }
 ```
 
-Un cours peut avoir un nombre quelconque d’étudiants inscrits, si bien que la propriété de navigation `Enrollments` est une collection :
+Un cours pouvant avoir un nombre quelconque d’étudiants inscrits, la propriété de navigation `Enrollments` est une collection :
 
 ```csharp
 public ICollection<Enrollment> Enrollments { get; set; }
@@ -313,7 +314,7 @@ public int? InstructorID { get; set; }
 public Instructor Administrator { get; set; }
 ```
 
-Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
+Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -361,9 +362,9 @@ Il existe une relation plusieurs-à-plusieurs entre les entités Student et Cour
 
 L’illustration suivante montre à quoi ressemblent ces relations dans un diagramme d’entité. (Ce diagramme a été généré à l’aide d’Entity Framework Power Tools pour EF 6.x ; la création du diagramme ne fait pas partie de ce didacticiel, elle est uniquement utilisée ici à titre d’illustration.)
 
-![Relation plusieurs-à-plusieurs Student-Course](complex-data-model/_static/student-course.png)
+![Relation plusieurs à plusieurs Student-Course](complex-data-model/_static/student-course.png)
 
-Chaque ligne de relation comporte un 1 à une extrémité et un astérisque (*) à l’autre, ce qui indique une relation un-à-plusieurs.
+Chaque ligne de relation comporte un 1 à une extrémité et un astérisque (*) à l’autre, ce qui indique une relation un-à-plusieurs.
 
 Si la table Enrollment n’incluait pas d’informations de notes, elle aurait uniquement besoin de contenir les deux clés étrangères CourseID et StudentID. Dans ce cas, ce serait une table de jointure plusieurs-à-plusieurs sans charge utile (ou une table de jointure pure) dans la base de données. Les entités Instructor and Course ont ce type de relation plusieurs-à-plusieurs, et l’étape suivante consiste à créer une classe d’entité qui fonctionnera comme une table de jointure sans charge utile.
 
@@ -373,7 +374,7 @@ Si la table Enrollment n’incluait pas d’informations de notes, elle aurait u
 
 ![Entité CourseAssignment](complex-data-model/_static/courseassignment-entity.png)
 
-Créez *Models/CourseAssignment.cs* avec le code suivant :
+Créez *Models/CourseAssignment.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
@@ -385,7 +386,7 @@ Une table de jointure est requise dans la base de données pour la relation plus
 
 Étant donné que les clés étrangères ne sont pas nullables et qu’elles identifient ensemble de façon unique chaque ligne de la table, une clé primaire distincte n’est pas requise. Les propriétés *InstructorID* et *CourseID* doivent fonctionner comme une clé primaire composite. La seule façon d’identifier des clés primaires composites pour EF consiste à utiliser l’*API Fluent* (ce n’est pas possible à l’aide d’attributs). Vous allez voir comment configurer la clé primaire composite dans la section suivante.
 
-La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusieurs lignes pour un formateur, vous ne puissiez pas avoir plusieurs lignes pour les mêmes formateur et cours. L’entité de jointure `Enrollment` définit sa propre clé primaire, si bien que les doublons de ce type sont possibles. Pour éviter ces doublons, vous pourriez ajouter un index unique sur les champs de clé étrangère ou configurer `Enrollment` avec une clé composite primaire similaire à `CourseAssignment`. Pour plus d’informations, consultez [Index](/ef/core/modeling/indexes).
+La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusieurs lignes pour un formateur, vous ne puissiez pas avoir plusieurs lignes pour les mêmes formateur et cours. L’entité de jointure `Enrollment` définit sa propre clé primaire, si bien que les doublons de ce type sont possibles. Pour éviter ces doublons, vous pourriez ajouter un index unique sur les champs de clé étrangère ou configurer `Enrollment` avec une clé composite primaire similaire à `CourseAssignment`. Pour plus d'informations, consultez [Index](/ef/core/modeling/indexes).
 
 ## <a name="update-the-database-context"></a>Mettre à jour le contexte de base de données
 
@@ -410,7 +411,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Dans ce didacticiel, vous utilisez l’API Fluent uniquement pour le mappage de base de données que vous ne pouvez pas faire avec des attributs. Toutefois, vous pouvez également utiliser l’API Fluent pour spécifier la majorité des règles de mise en forme, de validation et de mappage que vous pouvez spécifier à l’aide d’attributs. Certains attributs, tels que `MinimumLength`, ne peuvent pas être appliqués avec l’API Fluent. Comme mentionné précédemment, `MinimumLength` ne change pas le schéma, il applique uniquement une règle de validation côté client et côté serveur.
 
-Certains développeurs préfèrent utiliser exclusivement l’API Fluent afin de conserver des classes d’entité « propres ». Vous pouvez combiner les attributs et l’API Fluent si vous le voulez, et il existe quelques personnalisations qui peuvent être effectuées uniquement à l’aide de l’API Fluent, mais en général la pratique recommandée consiste à choisir l’une de ces deux approches et à l’utiliser constamment, autant que possible. Si vous utilisez ces deux approches, notez que partout où il existe un conflit, l’API Fluent a priorité sur les attributs.
+Certains développeurs préfèrent utiliser exclusivement l’API Fluent afin de conserver des classes d’entité « propres ». Vous pouvez combiner les attributs et l’API Fluent si vous le voulez, et il existe quelques personnalisations qui peuvent être effectuées uniquement à l’aide de l’API Fluent, mais en général la pratique recommandée consiste à choisir l’une de ces deux approches et à l’utiliser constamment, autant que possible. Si vous utilisez ces deux approches, notez que partout où il existe un conflit, l’API Fluent a priorité sur les attributs.
 
 Pour plus d’informations sur les attributs et l’API Fluent, consultez [Méthodes de configuration](/ef/core/modeling/).
 
@@ -453,7 +454,7 @@ Parfois, lorsque vous exécutez des migrations avec des données existantes, vou
 
 Pour faire en sorte que cette migration fonctionne avec les données existantes, vous devez modifier le code pour attribuer à la nouvelle colonne une valeur par défaut et créer un département stub nommé « Temp » qui agira en tant que département par défaut. Par conséquent, les lignes Course existantes seront toutes associées au département « Temp » après l’exécution de la méthode `Up`.
 
-* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*.
+* Ouvrez le fichier *{horodatage}_ComplexDataModel.cs*.
 
 * Commentez la ligne de code qui ajoute la colonne DepartmentID à la table Course.
 
@@ -481,7 +482,7 @@ Vous avez maintenant un nouveau code dans la classe `DbInitializer` qui ajoute d
 Enregistrez les modifications dans *appsettings.json*.
 
 > [!NOTE]
-> Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop`:
+> Au lieu de changer le nom de la base de données, vous pouvez la supprimer. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
 >
 > ```dotnetcli
 > dotnet ef database drop
@@ -527,9 +528,9 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Remplir la base de données avec des données de test
 > * Ajouter une migration
 > * Changer la chaîne de connexion
-> * Mettre à jour la base de données
+> * Base de données mise à jour
 
 Passez au tutoriel suivant pour en savoir plus sur l’accès aux données associées.
 
 > [!div class="nextstepaction"]
-> [Suivant : Accéder aux données associées](read-related-data.md)
+> [Suivant : accéder aux données associées](read-related-data.md)

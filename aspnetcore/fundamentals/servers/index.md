@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: e542dd4506eb77f949c0c87bea3044397bbb1b8f
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: d46793ef54c99fe609b5983c5a658fb7b20032fa
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799405"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289061"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -22,7 +22,7 @@ Une application ASP.NET Core s’exécute avec une implémentation de serveur HT
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel est le serveur web par défaut inclus dans les modèles de projet ASP.NET Core.
+Kestrel est le serveur Web par défaut spécifié par les modèles de projet ASP.NET Core.
 
 Utilisez Kestrel :
 
@@ -40,7 +40,7 @@ Pour des conseils de configuration de Kestrel et des informations sur le moment 
 
 ::: moniker range=">= aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -80,7 +80,7 @@ ASP.NET Core est fourni avec le [serveur Kestrel](xref:fundamentals/servers/kest
 
 ::: moniker range="< aspnetcore-2.2"
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ASP.NET Core est fourni avec les composants suivants :
 
@@ -99,7 +99,7 @@ Les requêtes arrivent du web au pilote HTTP.sys en mode noyau. Le pilote route 
 
 Le module spécifie le port via une variable d’environnement au démarrage, et le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) configure le serveur pour qu’il écoute sur `http://localhost:{port}`. Des vérifications supplémentaires sont effectuées, et les requêtes qui ne proviennent pas du module sont rejetées. Le module ne prend pas en charge le transfert HTTPS : les requêtes sont donc transférées via HTTP, même si IIS les reçoit via HTTPS.
 
-Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. Le middleware ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
+Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. L’intergiciel (middleware) ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
 
 Pour des conseils de configuration d’IIS et du module ASP.NET Core, consultez les rubriques suivantes :
 
@@ -146,19 +146,19 @@ Le <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> disponible dans la m�
 
 ## <a name="custom-servers"></a>Serveurs personnalisés
 
-Si les serveurs intégrés ne répondent pas aux spécifications de l’application, vous pouvez créer une implémentation serveur personnalisée. Le [guide OWIN (Open Web Interface pour .NET)](xref:fundamentals/owin) montre comment écrire une implémentation <xref:Microsoft.AspNetCore.Hosting.Server.IServer> basée sur [Nowin](https://github.com/Bobris/Nowin). Seules les interfaces des fonctionnalités utilisées par l’application nécessitent une implémentation, bien qu’au minimum <xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature> et <xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature> doivent être pris en charge.
+Si les serveurs intégrés ne répondent pas aux spécifications de l’application, vous pouvez créer une implémentation serveur personnalisée. Le [guide OWIN (Open Web Interface pour .NET)](xref:fundamentals/owin) montre comment écrire une implémentation [ basée sur ](https://github.com/Bobris/Nowin)Nowin<xref:Microsoft.AspNetCore.Hosting.Server.IServer>. Seules les interfaces des fonctionnalités utilisées par l’application nécessitent une implémentation, bien qu’au minimum <xref:Microsoft.AspNetCore.Http.Features.IHttpRequestFeature> et <xref:Microsoft.AspNetCore.Http.Features.IHttpResponseFeature> doivent être pris en charge.
 
 ## <a name="server-startup"></a>Démarrage du serveur
 
 Le serveur est lancé lorsque l’environnement de développement intégré (IDE) ou l’éditeur démarre l’application :
 
-* Des &ndash;profils de lancement [Visual Studio](https://visualstudio.microsoft.com) peuvent être utilisés pour démarrer l’application et le serveur avec [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) ou avec la console.
+* Des [profils de lancement ](https://visualstudio.microsoft.com)Visual Studio&ndash; peuvent être utilisés pour démarrer l’application et le serveur avec [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) ou avec la console.
 * [Visual Studio Code](https://code.visualstudio.com/) &ndash;L’application et le serveur sont démarrés par [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode), qui active le débogueur CoreCLR.
 * [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; L’application et le serveur sont démarrés par le [débogueur Mono Soft-Mode](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/).
 
 Lors du lancement de l’application à partir d’une invite de commandes dans le dossier du projet, [dotnet run](/dotnet/core/tools/dotnet-run) lance l’application et le serveur (Kestrel et HTTP.sys uniquement). La configuration est spécifiée par l’option `-c|--configuration`, qui est définie sur `Debug` (par défaut) ou sur `Release`.
 
-Un fichier *launchSettings. JSON* fournit une configuration lors du lancement d’une application avec `dotnet run` ou avec un débogueur intégré à des outils, tels que Visual Studio. Si des profils de lancement sont présents dans un fichier *launchSettings. JSON* , utilisez l’option `--launch-profile {PROFILE NAME}` avec la commande`dotnet run` ou sélectionnez le profil dans Visual Studio. Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
+Un fichier *launchSettings. JSON* fournit une configuration lors du lancement d’une application avec `dotnet run` ou avec un débogueur intégré à des outils, tels que Visual Studio. Si des profils de lancement sont présents dans un fichier *launchSettings. JSON* , utilisez l’option `--launch-profile {PROFILE NAME}` avec la commande `dotnet run` ou sélectionnez le profil dans Visual Studio. Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
 
 ## <a name="http2-support"></a>Prise en charge de HTTP/2
 
@@ -169,15 +169,15 @@ Un fichier *launchSettings. JSON* fournit une configuration lors du lancement d�
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * Système d'exploitation
     * Windows Server 2016/Windows 10 ou version ultérieure&dagger;
-    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
+    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
-  * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+  * Framework cible : .NET Core 2.2 ou version ultérieure
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Windows Server 2016/Windows 10 ou version ultérieure
   * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (in-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
-  * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+  * Framework cible : .NET Core 2.2 ou version ultérieure
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
@@ -190,7 +190,7 @@ Un fichier *launchSettings. JSON* fournit une configuration lors du lancement d�
 ::: moniker range="< aspnetcore-2.2"
 
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Windows Server 2016/Windows 10 ou version ultérieure
   * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure

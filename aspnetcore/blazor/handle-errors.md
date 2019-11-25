@@ -1,35 +1,76 @@
 ---
-title: Gérer les erreurs dans les applications ASP.NET Core éblouissantes
+title: Gérer les erreurs dans les applications de Blazor ASP.NET Core
 author: guardrex
-description: Découvrez comment l’ASP.NET Core éblouissants gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
+description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 11/21/2019
+no-loc:
+- Blazor
+- SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: afcaa4d926c3e5f0a018897ce4b67b54574dae77
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: f2fa59259f1dd36f50e81256bddea265e347554b
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426988"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317152"
 ---
-# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Gérer les erreurs dans les applications ASP.NET Core éblouissantes
+# <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Cet article explique comment éblouissant gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
+Cet article explique comment Blazor gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
 
-## <a name="how-the-blazor-framework-reacts-to-unhandled-exceptions"></a>Comment le Framework éblouissant réagit aux exceptions non gérées
+::: moniker range=">= aspnetcore-3.1"
 
-Le serveur éblouissant est un Framework avec état. Tandis que les utilisateurs interagissent avec une application, ils maintiennent une connexion au serveur appelé « *circuit*». Le circuit contient des instances de composant actives, ainsi que de nombreux autres aspects de l’État, tels que :
+## <a name="detailed-errors-during-development"></a>Erreurs détaillées pendant le développement
+
+Quand une application Blazor ne fonctionne pas correctement pendant le développement, la réception d’informations d’erreur détaillées de l’application vous aide à résoudre les problèmes et à résoudre le problème. Lorsqu’une erreur se produit, Blazor applications affichent une barre dorée en bas de l’écran :
+
+* Pendant le développement, la barre dorée vous dirige vers la console du navigateur, où vous pouvez voir l’exception.
+* En production, la barre dorée avertit l’utilisateur qu’une erreur s’est produite et recommande l’actualisation du navigateur.
+
+L’interface utilisateur de cette expérience de gestion des erreurs fait partie des modèles de projet Blazor. Dans une application Blazor webassembly, personnalisez l’expérience dans le fichier *wwwroot/index.html* :
+
+```html
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+```
+
+Dans une application Blazor Server, personnalisez l’expérience dans le fichier *pages/_Host. cshtml* :
+
+```cshtml
+<div id="blazor-error-ui">
+    <environment include="Staging,Production">
+        An error has occurred. This application may no longer respond until reloaded.
+    </environment>
+    <environment include="Development">
+        An unhandled exception has occurred. See browser dev tools for details.
+    </environment>
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+```
+
+L’élément `blazor-error-ui` est masqué par les styles inclus avec les modèles Blazor, puis indiqué lorsqu’une erreur se produit.
+
+::: moniker-end
+
+## <a name="how-the-opno-locblazor-framework-reacts-to-unhandled-exceptions"></a>Comment le Blazor Framework réagit aux exceptions non gérées
+
+Blazor Server est un Framework avec état. Tandis que les utilisateurs interagissent avec une application, ils maintiennent une connexion au serveur appelé « *circuit*». Le circuit contient des instances de composant actives, ainsi que de nombreux autres aspects de l’État, tels que :
 
 * Sortie du rendu le plus récent des composants.
 * Ensemble actuel de délégués de gestion d’événements qui peuvent être déclenchés par les événements côté client.
 
 Si un utilisateur ouvre l’application dans plusieurs onglets de navigateur, il dispose de plusieurs circuits indépendants.
 
-Éblouissant traite la plupart des exceptions non gérées comme étant irrécupérables par le circuit dans lequel elles se produisent. Si un circuit est arrêté en raison d’une exception non gérée, l’utilisateur ne peut continuer à interagir avec l’application qu’en rechargeant la page pour créer un nouveau circuit. Les circuits en dehors de celui qui est terminé, qui sont des circuits pour d’autres utilisateurs ou d’autres onglets de navigateur, ne sont pas affectés. Ce scénario est similaire à une application de bureau qui se bloque&mdash;l’application bloquée doit être redémarrée, mais les autres applications ne sont pas affectées.
+Blazor traite la plupart des exceptions non gérées comme étant irrécupérables par le circuit dans lequel elles se produisent. Si un circuit est arrêté en raison d’une exception non gérée, l’utilisateur ne peut continuer à interagir avec l’application qu’en rechargeant la page pour créer un nouveau circuit. Les circuits en dehors de celui qui est terminé, qui sont des circuits pour d’autres utilisateurs ou d’autres onglets de navigateur, ne sont pas affectés. Ce scénario est similaire à une application de bureau qui se bloque&mdash;l’application bloquée doit être redémarrée, mais les autres applications ne sont pas affectées.
 
 Un circuit se termine lorsqu’une exception non gérée se produit pour les raisons suivantes :
 
@@ -48,9 +89,9 @@ En production, ne rendez pas les messages d’exception d’infrastructure ou le
 
 ## <a name="log-errors-with-a-persistent-provider"></a>Consigner les erreurs avec un fournisseur persistant
 
-Si une exception non gérée se produit, l’exception est consignée dans <xref:Microsoft.Extensions.Logging.ILogger> instances configurées dans le conteneur de service. Par défaut, les applications éblouissantes se connectent à la sortie de la console avec le fournisseur de journalisation de la console. Envisagez de vous connecter à un emplacement plus permanent avec un fournisseur qui gère la taille du journal et la rotation des journaux. Pour plus d'informations, consultez <xref:fundamentals/logging/index>.
+Si une exception non gérée se produit, l’exception est consignée dans <xref:Microsoft.Extensions.Logging.ILogger> instances configurées dans le conteneur de service. Par défaut, les applications Blazor sont consignées dans la sortie de la console avec le fournisseur de journalisation de la console. Envisagez de vous connecter à un emplacement plus permanent avec un fournisseur qui gère la taille du journal et la rotation des journaux. Pour plus d'informations, consultez <xref:fundamentals/logging/index>.
 
-Lors du développement, éblouissant envoie généralement les détails complets des exceptions à la console du navigateur pour faciliter le débogage. En production, les erreurs détaillées dans la console du navigateur sont désactivées par défaut, ce qui signifie que les erreurs ne sont pas envoyées aux clients, mais que les détails complets de l’exception sont toujours consignés côté serveur. Pour plus d'informations, consultez <xref:fundamentals/error-handling>.
+Pendant le développement, Blazor envoie généralement les détails complets des exceptions à la console du navigateur pour faciliter le débogage. En production, les erreurs détaillées dans la console du navigateur sont désactivées par défaut, ce qui signifie que les erreurs ne sont pas envoyées aux clients, mais que les détails complets de l’exception sont toujours consignés côté serveur. Pour plus d'informations, consultez <xref:fundamentals/error-handling>.
 
 Vous devez choisir les incidents à enregistrer et le niveau de gravité des incidents journalisés. Les utilisateurs hostiles peuvent être en mesure de déclencher délibérément des erreurs. Par exemple, ne consignez pas un incident à partir d’une erreur où un `ProductId` inconnu est fourni dans l’URL d’un composant qui affiche les détails du produit. Toutes les erreurs ne doivent pas être traitées comme des incidents de gravité élevée pour la journalisation.
 
@@ -72,7 +113,7 @@ Les exceptions non gérées précédentes sont décrites dans les sections suiva
 
 ### <a name="component-instantiation"></a>Instanciation du composant
 
-Quand éblouissant crée une instance d’un composant :
+Lorsque Blazor crée une instance d’un composant :
 
 * Le constructeur du composant est appelé.
 * Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [@inject](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [[Inject]](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés. 
@@ -81,7 +122,7 @@ Un circuit échoue quand un constructeur exécuté ou une méthode setter pour u
 
 ### <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
-Pendant la durée de vie d’un composant, éblouissant appelle les méthodes de cycle de vie :
+Pendant la durée de vie d’un composant, Blazor appelle les méthodes de cycle de vie :
 
 * `OnInitialized` / `OnInitializedAsync`
 * `OnParametersSet` / `OnParametersSetAsync`
@@ -155,7 +196,7 @@ Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
 
 ### <a name="circuit-handlers"></a>Gestionnaires de circuits
 
-Éblouissant permet au code de définir un *Gestionnaire de circuit*, qui reçoit des notifications lorsque l’état du circuit d’un utilisateur change. Les États suivants sont utilisés :
+Blazor permet au code de définir un *Gestionnaire de circuit*, qui reçoit des notifications lorsque l’état du circuit d’un utilisateur change. Les États suivants sont utilisés :
 
 * `initialized`
 * `connected`
@@ -172,11 +213,32 @@ Lorsqu’un circuit se termine parce qu’un utilisateur s’est déconnecté et
 
 ### <a name="prerendering"></a>Préaffichant
 
-Les composants éblouissants peuvent être prérendus à l’aide d' `Html.RenderComponentAsync` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
+::: moniker range=">= aspnetcore-3.1"
+
+Blazor composants peuvent être prérendus à l’aide du tag Helper `Component` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
 
 * Création d’un nouveau circuit pour tous les composants prérendus qui font partie de la même page.
 * Génération du code HTML initial.
-* Le traitement du circuit comme `disconnected` jusqu’à ce que le navigateur de l’utilisateur établisse une connexion Signalr au même serveur. Lorsque la connexion est établie, l’interactivité sur le circuit est reprise et le balisage HTML des composants est mis à jour.
+* Le traitement du circuit comme `disconnected` jusqu’à ce que le navigateur de l’utilisateur établisse une connexion SignalR au même serveur. Lorsque la connexion est établie, l’interactivité sur le circuit est reprise et le balisage HTML des composants est mis à jour.
+
+Si un composant lève une exception non gérée pendant le prérendu, par exemple, pendant une méthode de cycle de vie ou dans une logique de rendu :
+
+* L’exception est irrécupérable pour le circuit.
+* L’exception est levée dans la pile des appels à partir du tag Helper `Component`. Par conséquent, la requête HTTP entière échoue, sauf si l’exception est explicitement interceptée par le code du développeur.
+
+Dans des circonstances normales, lorsque le prérendu échoue, la création et le rendu du composant n’ont pas de sens, car un composant de travail ne peut pas être rendu.
+
+Pour tolérer les erreurs qui peuvent se produire pendant le prérendu, la logique de gestion des erreurs doit être placée à l’intérieur d’un composant qui peut lever des exceptions. Utilisez les instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Au lieu d’encapsuler le tag Helper `Component` dans une instruction `try-catch`, placez la logique de gestion des erreurs dans le composant rendu par le tag Helper `Component`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
+les composants Blazor peuvent être prérendus à l’aide de `Html.RenderComponentAsync` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
+
+* Création d’un nouveau circuit pour tous les composants prérendus qui font partie de la même page.
+* Génération du code HTML initial.
+* Le traitement du circuit comme `disconnected` jusqu’à ce que le navigateur de l’utilisateur établisse une connexion SignalR au même serveur. Lorsque la connexion est établie, l’interactivité sur le circuit est reprise et le balisage HTML des composants est mis à jour.
 
 Si un composant lève une exception non gérée pendant le prérendu, par exemple, pendant une méthode de cycle de vie ou dans une logique de rendu :
 
@@ -186,6 +248,8 @@ Si un composant lève une exception non gérée pendant le prérendu, par exempl
 Dans des circonstances normales, lorsque le prérendu échoue, la création et le rendu du composant n’ont pas de sens, car un composant de travail ne peut pas être rendu.
 
 Pour tolérer les erreurs qui peuvent se produire pendant le prérendu, la logique de gestion des erreurs doit être placée à l’intérieur d’un composant qui peut lever des exceptions. Utilisez les instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Au lieu d’encapsuler l’appel à `RenderComponentAsync` dans une instruction `try-catch`, placez la logique de gestion des erreurs dans le composant rendu par `RenderComponentAsync`.
+
+::: moniker-end
 
 ## <a name="advanced-scenarios"></a>Scénarios avancés
 
@@ -213,7 +277,7 @@ Pour éviter les modèles de récurrence infinis, assurez-vous que le code de re
 
 ### <a name="custom-render-tree-logic"></a>Logique d’arborescence de rendu personnalisé
 
-La plupart des composants éblouissants sont implémentés en tant que fichiers *. Razor* et sont compilés pour produire une logique qui opère sur un `RenderTreeBuilder` pour afficher leur sortie. Un développeur peut implémenter manuellement `RenderTreeBuilder` logique à C# l’aide du code procédural. Pour plus d'informations, consultez <xref:blazor/components#manual-rendertreebuilder-logic>.
+La plupart des composants Blazor sont implémentés en tant que fichiers *. Razor* et sont compilés pour produire une logique qui fonctionne sur un `RenderTreeBuilder` pour restituer leur sortie. Un développeur peut implémenter manuellement `RenderTreeBuilder` logique à C# l’aide du code procédural. Pour plus d'informations, consultez <xref:blazor/components#manual-rendertreebuilder-logic>.
 
 > [!WARNING]
 > L’utilisation de la logique du générateur d’arborescence de rendu manuel est considérée comme un scénario avancé et risqué, non recommandé pour le développement de composants généraux.

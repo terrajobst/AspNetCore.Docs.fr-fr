@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le framework de journalisation fourni p
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/13/2019
+ms.date: 11/19/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: eda5c9c0372e47f5670cf097b5db80ec227bcb47
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: b23e64077290f0f613e904651e4bb640fcbba95d
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74115957"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74289088"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -49,7 +49,7 @@ Dans une application de console non hôte, appelez la méthode d’extension `Ad
 Les modèles de projet ASP.NET Core par défaut appellent <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Débogage
+* Déboguer
 * EventSource
 * EventLog (uniquement en cas d’exécution sur Windows)
 
@@ -70,7 +70,7 @@ Le code précédent nécessite des références à `Microsoft.Extensions.Logging
 Le modèle de projet par défaut appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Débogage
+* Déboguer
 * EventSource (à partir d’ASP.NET Core 2.2)
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_TemplateCode&highlight=7)]
@@ -311,8 +311,6 @@ La configuration de fournisseur de journalisation est fournie par un ou plusieur
 
 Par exemple, la configuration de journalisation est généralement fournie par la section `Logging` des fichiers de paramètres d’application. L’exemple suivant montre le contenu d’un fichier *appsettings.Development.json* standard :
 
-::: moniker range=">= aspnetcore-2.1"
-
 ```json
 {
   "Logging": {
@@ -337,7 +335,7 @@ Les autres propriétés sous `Logging` spécifient les fournisseurs de journalis
 
 Si les niveaux sont spécifiés dans `Logging.{providername}.LogLevel`, ils remplacent ce qui est défini dans `Logging.LogLevel`.
 
-::: moniker-end
+L’API de journalisation n’inclut pas de scénario pour modifier les niveaux de journal lorsqu’une application est en cours d’exécution. Toutefois, certains fournisseurs de configuration sont en charge du rechargement de la configuration, ce qui prend immédiatement effet sur la configuration de la journalisation. Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider), qui est ajouté par `CreateDefaultBuilder` pour lire les fichiers de paramètres, recharge la configuration de journalisation par défaut. Si la configuration est modifiée dans le code pendant qu’une application est en cours d’exécution, l’application peut appeler [IConfigurationRoot. Reload](xref:Microsoft.Extensions.Configuration.IConfigurationRoot.Reload*) pour mettre à jour la configuration de journalisation de l’application.
 
 Pour plus d’informations sur l’implémentation des fournisseurs de configuration, consultez <xref:fundamentals/configuration/index>.
 
@@ -433,7 +431,7 @@ Les autres sections de cet article détaillent certains points et présentent le
 
 Les interfaces `ILogger` et `ILoggerFactory` se trouvent dans [Microsoft.Extensions.Logging.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/), et leurs implémentations par défaut se trouvent dans [Microsoft.Extensions.Logging](https://www.nuget.org/packages/microsoft.extensions.logging/).
 
-## <a name="log-category"></a>Catégorie de log
+## <a name="log-category"></a>Catégorie de journal
 
 Quand un objet `ILogger` est créé, une *catégorie* lui est spécifiée. Cette catégorie est incluse dans tous les messages de journal créés par cette instance de `ILogger`. Si la catégorie peut être n’importe quelle chaîne, la convention est d’utiliser le nom de la classe, par exemple « TodoApi.Controllers.TodoController ».
 
@@ -467,7 +465,7 @@ Pour spécifier explicitement la catégorie, appelez `ILoggerFactory.CreateLogge
 
 `ILogger<T>` équivaut à appeler `CreateLogger` avec le nom de type complet `T`.
 
-## <a name="log-level"></a>Niveau du log
+## <a name="log-level"></a>Niveau du journal
 
 Chaque journal spécifie une valeur <xref:Microsoft.Extensions.Logging.LogLevel>. Le niveau de journalisation indique la gravité ou l’importance. Vous pourriez par exemple écrire un journal `Information` lorsqu’une méthode se termine normalement et un journal `Warning` lorsqu’une méthode retourne un code de statut *404 Not Found*.
 
@@ -515,7 +513,7 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
   Fournit des informations sur des échecs qui nécessitent un examen immédiat. Exemples : perte de données, espace disque insuffisant.
 
-Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
+Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Par exemple :
 
 * En production :
   * La journalisation au `Trace` via des niveaux de `Information` génère un volume important de messages de journal détaillés. Pour contrôler les coûts et ne pas dépasser les limites de stockage des données, consignez les `Trace` des messages de niveau `Information` dans un magasin de données à faible coût.
@@ -526,7 +524,7 @@ Le niveau de journalisation permet de contrôler le volume de la sortie de journ
 
 La section [Filtrage de journal](#log-filtering) plus loin dans cet article explique comment déterminer les niveaux de journalisation gérés par un fournisseur.
 
-ASP.NET Core écrit des journaux pour les événements de framework. Aucun journal du niveau `Debug` ou `Trace` n’était créé dans les exemples de journaux présentés plus haut dans cet article, puisque les journaux au-dessous du niveau `Information` étaient exclus. Voici un exemple de journaux Console produits par l’exemple d’application configurée pour afficher les journaux `Debug` :
+ASP.NET Core écrit des journaux pour les événements de framework. Aucun journal du niveau `Information` ou `Debug` n’était créé dans les exemples de journaux présentés plus haut dans cet article, puisque les journaux au-dessous du niveau `Trace` étaient exclus. Voici un exemple de journaux Console produits par l’exemple d’application configurée pour afficher les journaux `Debug` :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -706,7 +704,7 @@ Pour supprimer tous les journaux, choisissez `LogLevel.None` comme niveau de jou
 
 ### <a name="create-filter-rules-in-configuration"></a>Créer des règles de filtre dans la configuration
 
-Le code du modèle de projet appelle `CreateDefaultBuilder` afin de configurer la journalisation pour les fournisseurs Console et Debug. La méthode `CreateDefaultBuilder` définit également la journalisation pour rechercher la configuration dans une section `Logging`, conformément à ce qui a été expliqué [plus haut dans cet article](#configuration).
+Le code du modèle de projet appelle `CreateDefaultBuilder` pour configurer la journalisation des fournisseurs de console, de débogage et EventSource (ASP.NET Core 2,2 ou version ultérieure). La méthode `CreateDefaultBuilder` définit également la journalisation pour rechercher la configuration dans une section `Logging`, conformément à ce qui a été expliqué [plus haut dans cet article](#configuration).
 
 Les données de configuration spécifient des niveaux de journalisation minimum par fournisseur et par catégorie, comme dans l’exemple suivant :
 
@@ -748,14 +746,14 @@ Les données de configuration et le code `AddFilter` contenus dans les exemples 
 
 | nombre | Fournisseur      | Catégories commençant par...          | Niveau de journalisation minimum |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | Débogage         | Toutes les catégories                          | Informations       |
+| 1      | Déboguer         | Toutes les catégories                          | Information       |
 | 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Warning           |
-| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Débogage             |
+| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Déboguer             |
 | 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Erreur             |
-| 5      | Console       | Toutes les catégories                          | Informations       |
-| 6      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
-| 7      | Tous les fournisseurs | Système                                  | Débogage             |
-| 8      | Débogage         | Microsoft                               | Suivi             |
+| 5      | Console       | Toutes les catégories                          | Information       |
+| 6      | Tous les fournisseurs | Toutes les catégories                          | Déboguer             |
+| 7      | Tous les fournisseurs | Système                                  | Déboguer             |
+| 8      | Déboguer         | Microsoft                               | Suivi             |
 
 À la création d’un objet `ILogger`, l’objet `ILoggerFactory` sélectionne une seule règle à appliquer à cet enregistrement d’événements par fournisseur. Tous les messages écrits par une instance `ILogger` sont filtrés selon les règles sélectionnées. La règle la plus spécifique pouvant être appliquée à chaque paire catégorie/fournisseur est sélectionnée parmi les règles disponibles.
 
@@ -778,7 +776,7 @@ L’instance `ILogger` ainsi produite envoie des journaux de niveau `Trace` ou s
 Chaque fournisseur définit un *alias* qui peut être utilisé dans la configuration à la place du nom de type complet.  Pour les fournisseurs intégrés, utilisez les alias suivants :
 
 * Console
-* Débogage
+* Déboguer
 * EventSource
 * EventLog
 * TraceSource
@@ -806,7 +804,7 @@ Si vous ne définissez pas explicitement le niveau minimum, la valeur par défau
 
 ### <a name="filter-functions"></a>Fonctions de filtre
 
-Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Exemple :
+Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Par exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -824,7 +822,7 @@ Une fonction de filtre est appelée pour tous les fournisseurs et toutes les cat
 
 Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core, avec des notes sur les journaux associés :
 
-| Category                            | Notes |
+| Catégorie                            | Notes |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | Diagnostics ASP.NET Core généraux. |
 | Microsoft.AspNetCore.DataProtection | Liste des clés considérées, trouvées et utilisées. |
@@ -1081,7 +1079,7 @@ Le fournisseur de package n’est pas inclus dans le framework partagé. Pour ut
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
+::: moniker range="< aspnetcore-3.0"
 
 Le package du fournisseur n’est pas inclus dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Lorsque vous ciblez .NET framework ou référencez le métapackage `Microsoft.AspNetCore.App`, ajoutez le package de fournisseur dans le projet. 
 
@@ -1130,7 +1128,7 @@ Pour configurer le streaming des journaux Azure :
 
 * Accédez à la page **Journaux App Service** dans le portail de votre application.
 * Définissez **Journalisation des applications (Système de fichiers)** sur **Activé**.
-* Choisissez le **niveau** du journal.
+* Choisissez le **niveau** du journal. Ce paramètre s’applique uniquement à la diffusion en continu de journaux Azure, pas aux autres fournisseurs de journalisation de l’application.
 
 Accédez à la page **Streaming des journaux** pour voir les messages d’application. Ils sont consignés par application par le biais de l’interface `ILogger`.
 

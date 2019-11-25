@@ -3,14 +3,14 @@ title: Informations de référence sur la syntaxe Razor pour ASP.NET Core
 author: rick-anderson
 description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer du code serveur dans des pages web.
 ms.author: riande
-ms.date: 09/28/2019
+ms.date: 11/09/2019
 uid: mvc/views/razor
-ms.openlocfilehash: d8d686c23ea61950947798f213c9846058f1812e
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: dea1cd8986757b0bafab9ba9e8aa358a57a6b5eb
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896896"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317403"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -487,7 +487,7 @@ Dans les [composants Razor](xref:blazor/components), utilisez `@code` sur `@func
 
 ::: moniker-end
 
-Exemple :
+Par exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -721,11 +721,31 @@ Dans des [composants Razor](xref:blazor/components), `@using` contrôle égaleme
 
 La liaison de données dans des composants s’effectue avec l’attribut `@bind`. Pour plus d'informations, consultez <xref:blazor/components#data-binding>.
 
-### <a name="onevent"></a>\@on{event}
+### <a name="onevent"></a>\@sur {EVENT}
 
 *Ce scénario s’applique uniquement aux composants Razor (.razor).*
 
 Razor fournit des fonctionnalités de gestion des événements pour les composants. Pour plus d'informations, consultez <xref:blazor/components#event-handling>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.1"
+
+### <a name="oneventpreventdefault"></a>\@sur {EVENT} :p reventDefault
+
+*Ce scénario s’applique uniquement aux composants Razor (.razor).*
+
+Empêche l’action par défaut pour l’événement.
+
+### <a name="oneventstoppropagation"></a>\@sur {EVENT} : stopPropagation
+
+*Ce scénario s’applique uniquement aux composants Razor (.razor).*
+
+Arrête la propagation d’événements pour l’événement.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="key"></a>\@key
 

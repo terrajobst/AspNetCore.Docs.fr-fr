@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 408d44a3f2e81a165e8b786c6d2efc9329082e30
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 38ee5fccdf476f08c9f39d01b53c81b48eea04bf
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962825"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317182"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
@@ -56,8 +56,8 @@ Pour conserver l’État au-delà d’un seul circuit, *ne stockez pas simplemen
 
 La persistance des données est généralement requise uniquement pour l’état de valeur élevée que les utilisateurs ont consacrés à la création. Dans les exemples suivants, l’état persistant fait gagner du temps ou contribue à des activités commerciales :
 
-* WebForm à plusieurs étapes &ndash; il est fastidieux pour un utilisateur de saisir à nouveau des données pour plusieurs étapes terminées d’un processus à plusieurs étapes si leur état est perdu. Un utilisateur perd l’État dans ce scénario s’il quitte le formulaire à étapes et retourne au formulaire par la suite.
-* Panier d’achat &ndash; tout composant commercial important d’une application qui représente un chiffre d’affaires potentiel peut être maintenu. Un utilisateur qui perd son état et, par conséquent, son panier, peut acheter moins de produits ou de services lorsqu’ils reviennent sur le site ultérieurement.
+* WebForm à plusieurs étapes &ndash; il prend beaucoup de temps pour qu’un utilisateur entre à nouveau des données pour plusieurs étapes terminées d’un processus à plusieurs étapes si leur état est perdu. Un utilisateur perd l’État dans ce scénario s’il quitte le formulaire à étapes et retourne au formulaire par la suite.
+* Le panier d’achat &ndash; tout composant commercialement important d’une application qui représente un chiffre d’affaires potentiel peut être maintenu. Un utilisateur qui perd son état et, par conséquent, son panier, peut acheter moins de produits ou de services lorsqu’ils reviennent sur le site ultérieurement.
 
 En règle générale, il n’est pas nécessaire de conserver un État facile à recréer, tel que le nom d’utilisateur entré dans une boîte de dialogue de connexion qui n’a pas été envoyée.
 
@@ -101,17 +101,17 @@ Pour plus d’informations sur la définition de modèles d’URL avec la direct
 
 ### <a name="client-side-in-the-browser"></a>Côté client dans le navigateur
 
-Pour les données temporaires que l’utilisateur crée activement, un magasin de stockage commun est les collections `localStorage` et `sessionStorage` du navigateur. L’application n’est pas requise pour gérer ou effacer l’État stocké si le circuit est abandonné, ce qui constitue un avantage par rapport au stockage côté serveur.
+Pour les données temporaires que l’utilisateur crée activement, un magasin de stockage commun est le `localStorage` et les collections de `sessionStorage` du navigateur. L’application n’est pas requise pour gérer ou effacer l’État stocké si le circuit est abandonné, ce qui constitue un avantage par rapport au stockage côté serveur.
 
 > [!NOTE]
 > « Côté client » dans cette section fait référence aux scénarios côté client dans le navigateur, et non au [Blazor modèle d’hébergement Webassembly](xref:blazor/hosting-models#blazor-webassembly). `localStorage` et `sessionStorage` peuvent être utilisés dans Blazor applications webassembly, mais uniquement en écrivant du code personnalisé ou à l’aide d’un package tiers.
 
 `localStorage` et `sessionStorage` diffèrent comme suit :
 
-* `localStorage` est limité au navigateur de l’utilisateur. Si l’utilisateur recharge la page ou ferme et ouvre à nouveau le navigateur, l’état persiste. Si l’utilisateur ouvre plusieurs onglets de navigateur, l’État est partagé à travers les onglets. Les données sont conservées dans `localStorage` jusqu’à ce qu’elles soient explicitement effacées.
-* `sessionStorage` est limité à l’onglet navigateur de l’utilisateur. Si l’utilisateur recharge l’onglet, l’état persiste. Si l’utilisateur ferme l’onglet ou le navigateur, l’État est perdu. Si l’utilisateur ouvre plusieurs onglets de navigateur, chaque onglet possède sa propre version indépendante des données.
+* `localStorage` est étendu au navigateur de l’utilisateur. Si l’utilisateur recharge la page ou ferme et ouvre à nouveau le navigateur, l’état persiste. Si l’utilisateur ouvre plusieurs onglets de navigateur, l’État est partagé à travers les onglets. Les données sont conservées dans `localStorage` jusqu’à ce qu’elles soient explicitement effacées.
+* `sessionStorage` s’étend à l’onglet navigateur de l’utilisateur. Si l’utilisateur recharge l’onglet, l’état persiste. Si l’utilisateur ferme l’onglet ou le navigateur, l’État est perdu. Si l’utilisateur ouvre plusieurs onglets de navigateur, chaque onglet possède sa propre version indépendante des données.
 
-En règle générale, `sessionStorage` est plus sûr à utiliser. `sessionStorage` permet d’éviter le risque qu’un utilisateur ouvre plusieurs onglets et rencontre les éléments suivants :
+En règle générale, il est plus sûr d’utiliser `sessionStorage`. `sessionStorage` évite le risque qu’un utilisateur ouvre plusieurs onglets et rencontre les éléments suivants :
 
 * Bogues dans le stockage d’État sur les onglets.
 * Comportement confus quand une tabulation remplace l’état d’autres onglets.
@@ -127,13 +127,13 @@ Avertissements relatifs à l’utilisation du stockage du navigateur :
 
 ## <a name="third-party-browser-storage-solutions"></a>Solutions de stockage de navigateur tiers
 
-Les packages NuGet tiers fournissent des API pour l’utilisation de `localStorage` et `sessionStorage`.
+Les packages NuGet tiers fournissent des API pour travailler avec des `localStorage` et des `sessionStorage`.
 
 Il est judicieux de choisir un package qui utilise de manière transparente la [protection des données](xref:security/data-protection/introduction)de ASP.net core. ASP.NET Core protection des données chiffre les données stockées et réduit le risque potentiel de falsification des données stockées. Si les données sérialisées JSON sont stockées en texte clair, les utilisateurs peuvent voir les données à l’aide des outils de développement du navigateur et également modifier les données stockées. La sécurisation des données n’est pas toujours un problème, car les données peuvent être de nature insignifiante. Par exemple, la lecture ou la modification de la couleur stockée d’un élément d’interface utilisateur n’est pas un risque de sécurité significatif pour l’utilisateur ou l’organisation. Évitez d’autoriser les utilisateurs à inspecter ou altérer des *données sensibles*.
 
 ## <a name="protected-browser-storage-experimental-package"></a>Package d’expérimentation de stockage protégé du navigateur
 
-Par exemple, un package NuGet qui fournit la [protection des données](xref:security/data-protection/introduction) pour `localStorage` et `sessionStorage` est [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
+Voici un exemple de package NuGet qui fournit une [protection des données](xref:security/data-protection/introduction) pour `localStorage` et `sessionStorage` est [Microsoft. AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage).
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` est un package expérimental non pris en charge, inapproprié pour une utilisation en production à l’heure actuelle.
@@ -149,7 +149,7 @@ Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
    <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
    ```
 
-1. Dans la méthode `Startup.ConfigureServices`, appelez `AddProtectedBrowserStorage` pour ajouter les services `localStorage` et `sessionStorage` à la collection de services :
+1. Dans la méthode `Startup.ConfigureServices`, appelez `AddProtectedBrowserStorage` pour ajouter des services `localStorage` et `sessionStorage` à la collection de services :
 
    ```csharp
    services.AddProtectedBrowserStorage();
@@ -157,7 +157,7 @@ Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
 
 ### <a name="save-and-load-data-within-a-component"></a>Enregistrer et charger des données dans un composant
 
-Dans tout composant nécessitant le chargement ou l’enregistrement de données dans le stockage du navigateur, utilisez [@inject](xref:blazor/dependency-injection#request-a-service-in-a-component) pour injecter une instance de l’un des éléments suivants :
+Dans tous les composants qui requièrent le chargement ou l’enregistrement de données dans le stockage du navigateur, utilisez [@inject](xref:blazor/dependency-injection#request-a-service-in-a-component) pour injecter une instance de l’un des éléments suivants :
 
 * `ProtectedLocalStorage`
 * `ProtectedSessionStorage`
@@ -171,7 +171,7 @@ Le choix dépend du magasin de stockage que vous souhaitez utiliser. Dans l’ex
 
 L’instruction `@using` peut être placée dans un fichier *_Imports. Razor* plutôt que dans le composant. L’utilisation du fichier *_Imports. Razor* rend l’espace de noms disponible pour les plus grands segments de l’application ou de l’application entière.
 
-Pour conserver la valeur `currentCount` dans le composant `Counter` du modèle de projet, modifiez la méthode `IncrementCount` pour utiliser `ProtectedSessionStore.SetAsync` :
+Pour conserver la valeur `currentCount` dans le `Counter` composant du modèle de projet, modifiez la méthode `IncrementCount` pour utiliser `ProtectedSessionStore.SetAsync`:
 
 ```csharp
 private async Task IncrementCount()
@@ -185,7 +185,7 @@ Dans les applications plus volumineuses et plus réalistes, le stockage de champ
 
 Dans l’exemple de code précédent, les données de `currentCount` sont stockées en tant que `sessionStorage['count']` dans le navigateur de l’utilisateur. Les données ne sont pas stockées en texte clair mais sont protégées à l’aide de la [protection des données](xref:security/data-protection/introduction)de ASP.net core. Les données chiffrées peuvent être consultées si `sessionStorage['count']` est évaluée dans la console de développement du navigateur.
 
-Pour récupérer les données `currentCount` si l’utilisateur revient ultérieurement au composant `Counter` (y compris s’il s’agit d’un circuit entièrement nouveau), utilisez `ProtectedSessionStore.GetAsync` :
+Pour récupérer les données de `currentCount` si l’utilisateur revient ultérieurement au composant `Counter` (y compris s’il s’agit d’un circuit entièrement nouveau), utilisez `ProtectedSessionStore.GetAsync`:
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -194,7 +194,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelé qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelé ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page.
+Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelée qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page.
 
 > [!WARNING]
 > Les exemples de cette section ne fonctionnent que si le prérendu n’est pas activé sur le serveur. Quand le prérendu est activé, une erreur est générée de la façon suivante :
@@ -241,7 +241,17 @@ Lors du prérendu :
 
 L’une des méthodes permettant de résoudre l’erreur consiste à désactiver le prérendu. C’est généralement le meilleur choix si l’application utilise beaucoup le stockage basé sur le navigateur. Le prérendu ajoute de la complexité et ne tire pas parti de l’application, car l’application ne peut pas prérestituer de contenu utile tant que `localStorage` ou `sessionStorage` n’est pas disponible.
 
+::: moniker range=">= aspnetcore-3.1"
+
+Pour désactiver le prérendu, ouvrez le fichier *pages/_Host. cshtml* et remplacez l’appel de `render-mode` du Tag Helper `Component` par `Server`.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.1"
+
 Pour désactiver le prérendu, ouvrez le fichier *pages/_Host. cshtml* et modifiez l’appel en `Html.RenderComponentAsync<App>(RenderMode.Server)`.
+
+::: moniker-end
 
 Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `localStorage` ou `sessionStorage`. Pour conserver le prérendu activé, différez l’opération de chargement jusqu’à ce que le navigateur soit connecté au circuit. Voici un exemple de stockage d’une valeur de compteur :
 
@@ -357,7 +367,7 @@ Les composants encapsulés reçoivent et peuvent modifier l’état du compteur 
 
 Le composant précédent n’est pas requis pour interagir avec `ProtectedBrowserStorage`, pas plus qu’il ne gère pas une phase de « chargement ».
 
-Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering) .
+Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering).
 
 En général, le modèle de *composant parent du fournisseur d’État* est recommandé :
 

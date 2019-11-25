@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor Se
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: ad83c57f55c75d4a49656fa5d7046c32b0f049ff
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: b688d000f26c9b230d9fdee8423b3194145fe1aa
+ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963573"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74317296"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Héberger et déployer Blazor serveur
 
@@ -55,11 +55,55 @@ les applications Blazor Server utilisent ASP.NET Core SignalR pour communiquer a
 
 Blazor fonctionne mieux lorsque vous utilisez WebSockets comme transport SignalR en raison d’une latence, d’une fiabilité et d’une [sécurité](xref:signalr/security)moindres. L’interrogation longue est utilisée par les SignalR lorsque WebSocket n’est pas disponible ou lorsque l’application est configurée explicitement pour utiliser l’interrogation longue. Lors du déploiement sur Azure App Service, configurez l’application pour qu’elle utilise WebSockets dans les paramètres Portail Azure pour le service. Pour plus d’informations sur la configuration de l’application pour Azure App Service, consultez les [instructions de publicationSignalR](xref:signalr/publish-to-azure-web-app).
 
+#### <a name="azure-opno-locsignalr-service"></a>Service SignalR Azure
+
 Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-signalr) pour les applications Blazor Server. Le service permet la mise à l’échelle d’une application Blazor Server vers un grand nombre de connexions SignalR simultanées. En outre, la portée mondiale et les centres de données haute performance du service SignalR contribuent de manière significative à réduire la latence en raison de la géographie. Pour configurer une application (et éventuellement approvisionner) le service Azure SignalR :
 
-* Créez un profil de publication Azure Apps dans Visual Studio pour l’application Blazor Server.
-* Ajoutez la dépendance du **service Azure SignalR** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure SignalR existante à attribuer à l’application, sélectionnez **créer une nouvelle instance azure SignalR service** pour approvisionner une nouvelle instance de service.
-* Publiez l’application sur Azure.
+1. Activez le service pour prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#reconnection-to-the-same-server). Définissez l’option `ServerStickyMode` ou la valeur de configuration sur `Required`. En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
+
+   * `Startup.ConfigureServices`:
+  
+     ```csharp
+     services.AddSignalR().AddAzureSignalR(options =>
+     {
+         options.ServerStickyMode = 
+             Microsoft.Azure.SignalR.ServerStickyMode.Required;
+     });
+     ```
+
+   * Configuration (utilisez l' **une** des approches suivantes) :
+  
+     * *appsettings.json* :
+
+       ```json
+       "Azure:SignalR:ServerStickyMode": "Required"
+       ```
+
+     * La **configuration** d’app service > **paramètres d’Application** dans le Portail Azure (**nom**: `Azure:SignalR:ServerStickyMode`, **valeur**: `Required`).
+
+1. Créez un profil de publication Azure Apps dans Visual Studio pour l’application Blazor Server.
+1. Ajoutez la dépendance du **service Azure SignalR** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure SignalR existante à attribuer à l’application, sélectionnez **créer une nouvelle instance azure SignalR service** pour approvisionner une nouvelle instance de service.
+1. Publiez l’application sur Azure.
+
+#### <a name="iis"></a>IIS
+
+Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec Application Request Routing. Pour plus d’informations, consultez [équilibrage de charge http à l’aide de application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
+
+#### <a name="kubernetes"></a>Kubernetes
+
+Créez une définition d’entrée avec les [Annotations Kubernetes suivantes pour les sessions rémanentes](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):
+
+```yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: <ingress-name>
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "affinity"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "14400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
+```
 
 ### <a name="measure-network-latency"></a>Mesurer la latence du réseau
 

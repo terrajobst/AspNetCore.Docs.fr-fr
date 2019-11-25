@@ -5,12 +5,12 @@ description: Apprenez à utiliser des dispositions communes, à partager des dir
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 9a7b8003b24329f6e9cbd349ee47f6844b7c5f6d
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
+ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238031"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74288994"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
@@ -37,7 +37,7 @@ Les structures HTML communes comme les scripts et les feuilles de style sont aus
 
 Par convention, la disposition par défaut d’une application ASP.NET Core se nomme *_Layout.cshtml*. Les fichiers de disposition pour les projets ASP.NET Core créés avec les modèles sont les suivants :
 
-* Pages Razor : *Pages/Shared/_Layout.cshtml*
+* Razor Pages : *Pages/Shared/_Layout.cshtml*
 
   ![Dossier Pages dans l’Explorateur de solutions](layout/_static/rp-web-project-views.png)
 
@@ -68,9 +68,9 @@ Par défaut, chaque disposition doit appeler `RenderBody`. À chaque appel de `R
 Une disposition peut éventuellement faire référence à une ou plusieurs *sections*, en appelant `RenderSection`. Les sections sont un moyen d’organiser certains éléments dans la page. Chaque appel à `RenderSection` peut spécifier si cette section est obligatoire ou facultative :
 
 ```html
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+<script type="text/javascript" src="~/scripts/global.js"></script>
+
+@RenderSection("Scripts", required: false)
 ```
 
 Si une section obligatoire est introuvable, une exception est levée. Chacune des vues spécifient le contenu à afficher dans une section à l’aide de la syntaxe Razor `@section`. Si une page ou vue définit une section, elle doit être affichée (sinon, une erreur se produit).
@@ -79,7 +79,7 @@ Exemple de définition `@section` dans une vue Razor Pages :
 
 ```html
 @section Scripts {
-     <script type="text/javascript" src="/scripts/main.js"></script>
+     <script type="text/javascript" src="~/scripts/main.js"></script>
 }
 ```
 
