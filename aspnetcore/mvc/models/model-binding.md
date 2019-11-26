@@ -40,7 +40,7 @@ Et que l’application reçoive une requête avec l’URL suivante :
 http://contoso.com/api/pets/2?DogsOnly=true
 ```
 
-Model binding goes through the following steps after the routing system selects the action method:
+La liaison de modèle passe par les étapes suivantes après que le système de routage a sélectionné la méthode d’action :
 
 * Elle recherche le premier paramètre de `GetByID`, un entier nommé `id`.
 * Elle parcourt les sources disponibles dans la requête HTTP et trouve `id` = « 2 » dans les données de routage.
@@ -86,15 +86,15 @@ Par défaut, la liaison de modèle obtient des données sous la forme de paires 
 1. Champs de formulaire
 1. Corps de la requête (pour les [contrôleurs ayant l’attribut [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
 1. Données de route
-1. Paramètres de la chaîne de requête
+1. Paramètre de chaîne de requête
 1. Fichiers chargés
 
-For each target parameter or property, the sources are scanned in the order indicated in the preceding list. Il existe quelques exceptions :
+Pour chaque paramètre ou propriété cible, les sources sont analysées dans l’ordre indiqué dans la liste précédente. Il existe quelques exceptions :
 
 * Les données de routage et les valeurs de chaîne de requête sont utilisées uniquement pour les types simples.
 * Les fichiers chargés sont liés uniquement aux types cibles qui implémentent `IFormFile` ou `IEnumerable<IFormFile>`.
 
-If the default source is not correct, use one of the following attributes to specify the source:
+Si la source par défaut n’est pas correcte, utilisez l’un des attributs suivants pour spécifier la source :
 
 * [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Obtient les valeurs à partir de la chaîne de requête. 
 * [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Obtient les valeurs à partir des données de routage.
@@ -114,15 +114,15 @@ Ces attributs :
 
 ### <a name="frombody-attribute"></a>Attribut [FromBody]
 
-Apply the `[FromBody]` attribute to a parameter to populate its properties from the body of an HTTP request. The ASP.NET Core runtime delegates the responsibility of reading the body to an input formatter. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
+Appliquez l’attribut `[FromBody]` à un paramètre pour remplir ses propriétés à partir du corps d’une requête HTTP. Le runtime ASP.NET Core délègue la responsabilité de lire le corps dans un formateur d’entrée. Les formateurs d’entrée sont décrits [plus loin dans cet article](#input-formatters).
 
-When `[FromBody]` is applied to a complex type parameter, any binding source attributes applied to its properties are ignored. For example, the following `Create` action specifies that its `pet` parameter is populated from the body:
+Lorsque `[FromBody]` est appliqué à un paramètre de type complexe, tous les attributs de source de liaison appliqués à ses propriétés sont ignorés. Par exemple, l’action `Create` suivante spécifie que son paramètre `pet` est renseigné à partir du corps :
 
 ```csharp
 public ActionResult<Pet> Create([FromBody] Pet pet)
 ```
 
-The `Pet` class specifies that its `Breed` property is populated from a query string parameter:
+La classe `Pet` spécifie que sa propriété `Breed` est remplie à partir d’un paramètre de chaîne de requête :
 
 ```csharp
 public class Pet
@@ -136,12 +136,12 @@ public class Pet
 
 Dans l'exemple précédent :
 
-* The `[FromQuery]` attribute is ignored.
-* The `Breed` property is not populated from a query string parameter. 
+* L’attribut `[FromQuery]` est ignoré.
+* La propriété `Breed` n’est pas remplie à partir d’un paramètre de chaîne de requête. 
 
-Input formatters read only the body and don't understand binding source attributes. If a suitable value is found in the body, that value is used to populate the `Breed` property.
+Les formateurs d’entrée lisent uniquement le corps et ne comprennent pas les attributs de source de liaison. Si une valeur appropriée est trouvée dans le corps, cette valeur est utilisée pour remplir la propriété `Breed`.
 
-N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action. Once the request stream is read by an input formatter, it's no longer available to be read again for binding other `[FromBody]` parameters.
+N’appliquez pas `[FromBody]` à plus d’un paramètre par méthode d’action. Une fois que le flux de requête est lu par un formateur d’entrée, il ne peut plus être lu pour lier d’autres paramètres de `[FromBody]`.
 
 ### <a name="additional-sources"></a>Sources supplémentaires
 

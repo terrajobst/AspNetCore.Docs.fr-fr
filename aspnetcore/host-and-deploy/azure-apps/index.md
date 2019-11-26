@@ -28,9 +28,9 @@ Utilisez Visual Studio pour créer et déployer une application web ASP.NET Core
 [Créer une application ASP.NET Core dans App Service sur Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Utilisez la ligne de commande pour créer et déployer une application web ASP.NET Core dans Azure App Service sur Linux.
 
-See the [ASP.NET Core on App Service Dashboard](https://aspnetcoreon.azurewebsites.net/) for the version of ASP.NET Core available on Azure App service.
+Consultez le [tableau de bord ASP.net Core sur app service](https://aspnetcoreon.azurewebsites.net/) pour connaître la version de ASP.net Core disponible sur Azure App service.
 
-Subscribe to the [App Service Announcements](https://github.com/Azure/app-service-announcements/) repository and monitor the issues. The App Service team regularly posts announcements and scenarios arriving in App Service.
+Abonnez-vous au référentiel d' [annonces App service](https://github.com/Azure/app-service-announcements/) et surveillez les problèmes. L’équipe App Service publie régulièrement les annonces et les scénarios arrivant dans App Service.
 
 Les articles suivants sont disponibles dans la documentation d’ASP.NET Core :
 
@@ -51,9 +51,9 @@ Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NE
 
 ## <a name="application-configuration"></a>Configuration d’application
 
-### <a name="platform"></a>Plate-forme
+### <a name="platform"></a>Plateforme
 
-The platform architecture (x86/x64) of an App Services app is set in the app's settings in the Azure Portal for apps that are hosted on an A-series compute (Basic) or higher hosting tier. Confirm that the app's publish settings (for example, in the Visual Studio [publish profile (.pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) match the setting in the app's service configuration in the Azure Portal.
+L’architecture de la plateforme (x86/x64) d’une application App Services est définie dans les paramètres de l’application dans le portail Azure pour les applications hébergées sur un niveau d’hébergement de calcul (de base) de série A. Vérifiez que les paramètres de publication de l’application (par exemple, dans le [profil de publication Visual Studio (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) correspondent au paramètre dans la configuration de service de l’application dans le portail Azure.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -67,7 +67,7 @@ Concernant les applications avec des dépendances natives, des runtimes pour les
 
 ::: moniker-end
 
-For more information on .NET Core framework components and distribution methods, such as information on the .NET Core runtime and the .NET Core SDK, see [About .NET Core: Composition](/dotnet/core/about#composition).
+Pour plus d’informations sur les composants .NET Core Framework et les méthodes de distribution, telles que les informations sur le Runtime .NET Core et le kit SDK .NET Core, consultez [à propos de .net Core : composition](/dotnet/core/about#composition).
 
 ### <a name="packages"></a>Packages
 
@@ -139,39 +139,39 @@ Les [clés de Protection des données](xref:security/data-protection/implementat
 Lors d’une permutation entre les emplacements de déploiement, aucun système utilisant la protection des données ne peut déchiffrer les données stockées à l’aide du porte-clés au sein de l’emplacement précédent. L’intergiciel (middleware) ASP.NET Cookie utilise la protection des données pour protéger ses cookies. Cela entraîne la déconnexion des utilisateurs des applications qui utilisent l’intergiciel ASP.NET Cookie standard. Pour une solution de porte-clés indépendante de l’emplacement, utilisez un fournisseur de porte-clés externe, tel que :
 
 * Stockage Blob Azure
-* Azure Key Vault
+* Azure Key Vault
 * Magasin SQL
 * Cache Redis
 
 Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
-## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Deploy ASP.NET Core 3.0 to Azure App Service
+## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Déployer ASP.NET Core 3,0 sur Azure App Service
 
-ASP.NET Core 3.0 is supported on Azure App Service. To deploy a preview release of a .NET Core version later than .NET Core 3.0, use one of the following techniques. These approaches are also used when the runtime is available but the SDK hasn't been installed on Azure App Service.
+ASP.NET Core 3,0 est pris en charge sur Azure App Service. Pour déployer une version préliminaire d’une version .NET Core ultérieure à .NET Core 3,0, utilisez l’une des techniques suivantes. Ces approches sont également utilisées lorsque le runtime est disponible, mais que le kit de développement logiciel (SDK) n’a pas été installé sur Azure App Service.
 
-* [Specify the .NET Core SDK Version using Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines)
+* [Spécifier la version de kit SDK .NET Core à l’aide de Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines)
 * [Déployer une application en préversion autonome](#deploy-a-self-contained-preview-app).
 * [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers).
 * [Installer l’extension de site de préversion](#install-the-preview-site-extension).
 
-### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Specify the .NET Core SDK Version using Azure Pipelines
+### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Spécifier la version de kit SDK .NET Core à l’aide de Azure Pipelines
 
-Use [Azure App Service CI/CD scenarios](/azure/app-service/deploy-continuous-deployment) to set up a continuous integration build with Azure DevOps. After the Azure DevOps build is created, optionally configure the build to use a specific SDK version. 
+Utilisez [Azure App service scénarios ci/CD](/azure/app-service/deploy-continuous-deployment) pour configurer une build d’intégration continue avec Azure DevOps. Une fois la build Azure DevOps créée, vous pouvez éventuellement configurer la build pour qu’elle utilise une version spécifique du kit de développement logiciel (SDK). 
 
-#### <a name="specify-the-net-core-sdk-version"></a>Specify the .NET Core SDK version
+#### <a name="specify-the-net-core-sdk-version"></a>Spécifier la version de kit SDK .NET Core
 
-When using the App Service deployment center to create an Azure DevOps build, the default build pipeline includes steps for `Restore`, `Build`, `Test`, and `Publish`. To specify the SDK version, select the **Add (+)** button in the Agent job list to add a new step. Search for **.NET Core SDK** in the search bar. 
+Lorsque vous utilisez le centre de déploiement App Service pour créer une build Azure DevOps, le pipeline de build par défaut comprend des étapes pour `Restore`, `Build`, `Test`et `Publish`. Pour spécifier la version du kit de développement logiciel (SDK), cliquez sur le bouton **Ajouter (+)** dans la liste des travaux de l’agent pour ajouter une nouvelle étape. Recherchez **Kit SDK .net Core** dans la barre de recherche. 
 
-![Add the .NET Core SDK step](index/add-sdk-step.png)
+![Ajouter l’étape kit SDK .NET Core](index/add-sdk-step.png)
 
-Move the step into the first position in the build so that the steps following it use the specified version of the .NET Core SDK. Specify the version of the .NET Core SDK. In this example, the SDK is set to `3.0.100`.
+Déplacez l’étape dans la première position de la build afin que les étapes qui suivent utilisent la version spécifiée du kit SDK .NET Core. Spécifiez la version du kit SDK .NET Core. Dans cet exemple, le kit de développement logiciel (SDK) est défini sur `3.0.100`.
 
-![Completed SDK step](index/sdk-step-first-place.png)
+![Étape du SDK terminée](index/sdk-step-first-place.png)
 
-To publish a [self-contained deployment (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), configure SCD in the `Publish` step and provide the [Runtime Identifier (RID)](/dotnet/core/rid-catalog).
+Pour publier un [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd), configurez la SCD à l’étape `Publish` et fournissez l' [identificateur de Runtime (RID)](/dotnet/core/rid-catalog).
 
-![Self-contained publish](index/self-contained.png)
+![Publication autonome](index/self-contained.png)
 
 ### <a name="deploy-a-self-contained-preview-app"></a>Déployer une application en préversion autonome
 
@@ -196,7 +196,7 @@ Si un problème se produit avec l’extension de site en préversion, ouvrez un 
 1. Sélectionnez l’application web.
 1. Tapez « ex » dans la zone de recherche pour filtrer sur les « Extensions » ou faites défiler la liste outils de gestion.
 1. Sélectionner **Extensions**.
-1. Sélectionnez **Ajouter** .
+1. Sélectionnez **Ajouter**.
 1. Sélectionnez l’extension **ASP.NET Core {X.Y} ({x64|x86}) Runtime** dans la liste, où `{X.Y}` correspond à la préversion d’ASP.NET Core et `{x64|x86}` spécifie la plateforme.
 1. Sélectionnez **OK** pour accepter les conditions légales.
 1. Sélectionnez **OK** pour installer l’extension.
@@ -215,11 +215,11 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
    La commande retourne `True` quand le runtime de la préversion x64 est installée.
 
 > [!NOTE]
-> The platform architecture (x86/x64) of an App Services app is set in the app's settings in the Azure Portal for apps that are hosted on an A-series compute (Basic) or higher hosting tier. Confirm that the app's publish settings (for example, in the Visual Studio [publish profile (.pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) match the setting in the app's service configuration in the Azure portal.
+> L’architecture de la plateforme (x86/x64) d’une application App Services est définie dans les paramètres de l’application dans le portail Azure pour les applications hébergées sur un niveau d’hébergement de calcul (de base) de série A. Vérifiez que les paramètres de publication de l’application (par exemple, dans le [profil de publication Visual Studio (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) correspondent au paramètre dans la configuration de service de l’application dans la portail Azure.
 >
-> Si l’application s’exécute en mode in-process et si la plateforme est configurée pour une architecture 64 bits (x64), le module ASP.NET Core utilise le runtime de la préversion 64 bits, le cas échéant. Install the **ASP.NET Core {X.Y} (x64) Runtime** extension using the Azure Portal.
+> Si l’application s’exécute en mode in-process et si la plateforme est configurée pour une architecture 64 bits (x64), le module ASP.NET Core utilise le runtime de la préversion 64 bits, le cas échéant. Installez l’extension d' **exécution de ASP.net Core {X. Y} (x64)** à l’aide du portail Azure.
 >
-> After installing the x64 preview runtime, run the following command in the Azure Kudu PowerShell command window to verify the installation. Substitute the ASP.NET Core runtime version for `{X.Y}` in the following command:
+> Après l’installation du runtime d’évaluation x64, exécutez la commande suivante dans la fenêtre de commande Azure Kudu PowerShell pour vérifier l’installation. Remplacez la version ASP.NET Core Runtime pour `{X.Y}` dans la commande suivante :
 >
 > ```powershell
 > Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
@@ -240,7 +240,7 @@ Si un modèle ARM est utilisé pour créer et déployer des applications, le typ
 
 ::: moniker range=">= aspnetcore-2.2"
 
-For a 64-bit deployment:
+Pour un déploiement de 64 bits :
 
 * Utilisez un SDK .NET Core 64 bits pour générer une application 64 bits.
 * Définissez **Plateforme** sur **64 bits** dans **Configuration** > **Paramètres généraux** d’App Service. L’application doit utiliser un plan de service De base ou supérieur pour permettre le choix du nombre de bits de la plateforme.
@@ -288,7 +288,7 @@ Utilisez Visual Studio ou les outils de l’interface CLI pour un [déploiement 
 1. Dans la boîte de dialogue **Publier** :
    * Confirmez que la configuration **Mise en production** est sélectionnée.
    * Ouvrez la liste déroulante **Mode de déploiement** et sélectionnez **Autonome**.
-   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`,
+   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`.
    * Si vous devez supprimer des fichiers supplémentaires lors du déploiement, ouvrez **Options de publication de fichiers** et sélectionnez la case à cocher pour supprimer des fichiers supplémentaires à la destination.
    * Sélectionnez **Enregistrer**.
 1. Créez un nouveau site ou mettez à jour un site existant en suivant les autres invites de l'Assistant de publication.
@@ -316,7 +316,7 @@ Utilisez Visual Studio ou les outils de l’interface CLI pour un [déploiement 
 
 ## <a name="protocol-settings-https"></a>Paramètres de protocole (HTTPS)
 
-Les liaisons de protocole sécurisées permettent de spécifier un certificat à utiliser pour répondre à des requêtes sur HTTPS. La liaison nécessite un certificat privé valide ( *.pfx*) émis pour le nom d’hôte spécifique. For more information, see [Tutorial: Bind an existing custom SSL certificate to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-ssl).
+Les liaisons de protocole sécurisées permettent de spécifier un certificat à utiliser pour répondre à des requêtes sur HTTPS. La liaison nécessite un certificat privé valide ( *.pfx*) émis pour le nom d’hôte spécifique. Pour plus d’informations, consultez [Didacticiel : lier un certificat SSL personnalisé existant à Azure App service](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ## <a name="transform-webconfig"></a>Transformer web.config
 

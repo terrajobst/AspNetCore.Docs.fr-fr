@@ -74,7 +74,7 @@ Trois emplacements communs existent pour la conservation de l’État dans une a
 
 ### <a name="server-side-in-a-database"></a>Côté serveur dans une base de données
 
-Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Les options sont les suivantes :
+Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Les options sont :
 
 * Base de données SQL relationnelle
 * Magasin clé-valeur
@@ -367,7 +367,7 @@ Les composants encapsulés reçoivent et peuvent modifier l’état du compteur 
 
 Le composant précédent n’est pas requis pour interagir avec `ProtectedBrowserStorage`, pas plus qu’il ne gère pas une phase de « chargement ».
 
-Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering).
+Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering) .
 
 En général, le modèle de *composant parent du fournisseur d’État* est recommandé :
 

@@ -389,7 +389,7 @@ Razor permet de verrouiller les sections critiques par des instructions lock :
 }
 ```
 
-### <a name="comments"></a>Comments
+### <a name="comments"></a>Commentaires
 
 Razor prend en charge les commentaires HTML et C# :
 
@@ -487,7 +487,7 @@ Dans les [composants Razor](xref:blazor/components), utilisez `@code` sur `@func
 
 ::: moniker-end
 
-Par exemple :
+Exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -866,7 +866,7 @@ Sortie rendue :
 </ul>
 ```
 
-## <a name="tag-helpers"></a>Tag Helpers
+## <a name="tag-helpers"></a>Tag helpers
 
 *Ce scénario s’applique uniquement aux vues MVC et à Razor Pages (.cshtml).*
 
@@ -894,14 +894,14 @@ Les mots clés Razor sont précédés d’une séquence d’échappement `@(Razo
 
 ### <a name="c-razor-keywords"></a>Mots clés Razor C#
 
-* casse
+* cas
 * do
 * default
-* for
+* pour
 * foreach
 * if
 * else
-* lock
+* verrou
 * switch
 * try
 * catch

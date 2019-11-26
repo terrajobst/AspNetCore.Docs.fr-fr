@@ -512,7 +512,7 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 
 [Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 

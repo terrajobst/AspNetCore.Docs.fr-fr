@@ -29,7 +29,7 @@ Cet article explique SignalRaspects spécifiques de la configuration d’un serv
   > [!IMPORTANT] 
   > Pour une utilisation en production, un backplane ReDim est recommandé uniquement lorsqu’il s’exécute dans le même centre de données que l’application SignalR. Dans le cas contraire, la latence du réseau dégrade les performances. Si votre application SignalR s’exécute dans le Cloud Azure, nous vous recommandons Azure SignalR service au lieu d’un backplane ReDim. Vous pouvez utiliser le Cache Service Azure Redims pour les environnements de développement et de test.
 
-  Pour plus d'informations, reportez-vous aux ressources suivantes :
+  Pour plus d'informations, voir les ressources suivantes :
 
   * <xref:signalr/scale>
   * [Documentation redims](https://redis.io/)
@@ -224,9 +224,9 @@ services.AddSignalR()
 
 Le [clustering redims](https://redis.io/topics/cluster-spec) est une méthode permettant d’obtenir une haute disponibilité à l’aide de plusieurs serveurs ReDim. Le clustering n’est pas officiellement pris en charge, mais il peut fonctionner.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Pour plus d'informations, voir les ressources suivantes :
 
 * <xref:signalr/scale>
 * [Documentation redims](https://redis.io/documentation)

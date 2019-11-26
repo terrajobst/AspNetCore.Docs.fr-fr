@@ -62,15 +62,15 @@ Voici certains des attributs de validation prédéfinis :
 
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d’erreur
+### <a name="error-messages"></a>Messages d'erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -422,15 +422,15 @@ Les attributs de validation intégrés sont les suivants :
 
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d’erreur
+### <a name="error-messages"></a>Messages d'erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]

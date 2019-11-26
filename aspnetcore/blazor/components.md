@@ -329,7 +329,7 @@ Contrairement à `onchange`, qui se déclenche lorsque l’élément perd le foc
 
 Quand un utilisateur fournit une valeur non analysable à un élément DataBound, la valeur unanalysable est automatiquement rétablie à sa valeur précédente lorsque l’événement de liaison est déclenché.
 
-Penchons-nous sur le scénario suivant :
+Considérez le scénario suivant :
 
 * Un élément `<input>` est lié à un type `int` avec une valeur initiale de `123`:
 
@@ -378,7 +378,7 @@ Les types de champs suivants ont des exigences de mise en forme spécifiques et 
 
 `@bind` prend en charge le paramètre `@bind:culture` pour fournir une <xref:System.Globalization.CultureInfo?displayProperty=fullName> pour l’analyse et la mise en forme d’une valeur. La spécification d’une culture n’est pas recommandée lors de l’utilisation des types de champ `date` et `number`. `date` et `number` disposent d’une prise en charge intégrée Blazor qui fournit la culture requise.
 
-Pour plus d’informations sur la façon de définir la culture de l'utilisateur, consultez la section [localization](#localization).
+Pour plus d’informations sur la façon de définir la culture de l’utilisateur, consultez la section [Localization](#localization) .
 
 **Chaînes de format**
 
@@ -545,7 +545,7 @@ Pour certains événements, les types d’arguments d’événement sont autoris
 
 Les `EventArgs` prises en charge sont indiquées dans le tableau suivant.
 
-| Événement            | Class                | Remarques et événements DOM |
+| Événement            | Classe                | Remarques et événements DOM |
 | ---------------- | -------------------- | -------------------- |
 | Presse-papiers        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
 | Déplacez             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer` et `DataTransferItem` contiennent des données d’élément glissées. |
@@ -922,7 +922,7 @@ Dans l’exemple précédent, `NotifierService` appelle la méthode `OnNotify` d
 
 Lors du rendu d’une liste d’éléments ou de composants, et que les éléments ou composants changent par la suite, l’algorithme de différenciation de Blazordoit déterminer lequel des éléments ou composants précédents peuvent être conservés et comment les objets de modèle doivent être mappés à eux. Normalement, ce processus est automatique et peut être ignoré, mais dans certains cas, il peut être utile de contrôler le processus.
 
-Prenons l'exemple suivant :
+Prenons l'exemple suivant :
 
 ```csharp
 @foreach (var person in People)
@@ -1690,7 +1690,7 @@ Lorsque le code s’exécute pour la première fois, si `someFlag` est `true`, l
 
 | Séquence | Type      | Données   |
 | :------: | --------- | :----: |
-| 0        | Nœud de texte | First  |
+| 0        | Nœud de texte | Premier  |
 | 1        | Nœud de texte | Seconde |
 
 Imaginez que `someFlag` devient `false`et que le balisage est de nouveau restitué. Cette fois-ci, le générateur reçoit :
@@ -1722,7 +1722,7 @@ La première sortie est désormais :
 
 | Séquence | Type      | Données   |
 | :------: | --------- | :----: |
-| 0        | Nœud de texte | First  |
+| 0        | Nœud de texte | Premier  |
 | 1        | Nœud de texte | Seconde |
 
 Ce résultat est identique au cas précédent, donc aucun problème négatif n’existe. `someFlag` est `false` sur le deuxième rendu et la sortie est la suivante :

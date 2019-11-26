@@ -100,7 +100,7 @@ Pour contrôler les assemblys I18N qui sont conservés, définissez la `<MonoLin
 | `all`            | Tous les assemblys inclus |
 | `cjk`            | *I18n. CJK. dll*          |
 | `mideast`        | *I18n. MidEast. dll*      |
-| `none` (valeur par défaut) | aucune.                    |
+| `none` (valeur par défaut) | Aucune                    |
 | `other`          | *I18n. Other. dll*        |
 | `rare`           | *I18n. Rare. dll*         |
 | `west`           | *I18n. West. dll*         |

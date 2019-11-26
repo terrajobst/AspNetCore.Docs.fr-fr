@@ -16,7 +16,7 @@ ms.locfileid: "74288994"
 
 Article rédigé par [Steve Smith](https://ardalis.com/) et [Dave Brock](https://twitter.com/daveabrock)
 
-Les pages et les vues ont souvent des éléments visuels et programmatiques en commun. Cet article montre comment :
+Les pages et les vues ont souvent des éléments visuels et programmatiques en commun. Cet article explique comment :
 
 * Utiliser des dispositions communes.
 * Partager des directives.

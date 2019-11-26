@@ -59,11 +59,11 @@ Quand un délégué ne passe pas une requête au délégué suivant, on parle al
 
 <a name="order"></a>
 
-## <a name="middleware-order"></a>Middleware order
+## <a name="middleware-order"></a>Ordre des intergiciels (middleware)
 
-L’ordre dans lequel les composants de middleware sont ajoutés dans la méthode `Startup.Configure` définit l’ordre dans lequel ils sont appelés sur les requêtes et l’ordre inverse pour la réponse. The order is **critical** for security, performance, and functionality.
+L’ordre dans lequel les composants de middleware sont ajoutés dans la méthode `Startup.Configure` définit l’ordre dans lequel ils sont appelés sur les requêtes et l’ordre inverse pour la réponse. L’ordre est **essentiel** pour la sécurité, les performances et les fonctionnalités.
 
-The following `Startup.Configure` method adds security related middleware components in the recommended order:
+La méthode `Startup.Configure` suivante ajoute les composants de l’intergiciel (middleware) associés à la sécurité dans l’ordre recommandé :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -71,26 +71,26 @@ The following `Startup.Configure` method adds security related middleware compon
 
 Dans le code précédent :
 
-* Middleware that is not added when creating a new web app with [individual users accounts](xref:security/authentication/identity) is commented out.
-* Not every middleware needs to go in this exact order, but many do. For example, `UseCors`, `UseAuthentication`, and `UseAuthorization` must go in the order shown.
+* Les intergiciels (middleware) qui ne sont pas ajoutés lors de la création d’une nouvelle application Web avec des [comptes d’utilisateurs individuels](xref:security/authentication/identity) sont commentés.
+* Tous les intergiciels (middleware) ne doivent pas être placés dans cet ordre exact, mais beaucoup d’entre eux. Par exemple, `UseCors`, `UseAuthentication`et `UseAuthorization` doivent être placés dans l’ordre indiqué.
 
 La méthode `Startup.Configure` suivante ajoute des composants middleware utiles pour les scénarios d’application courants :
 
 1. Gestion des erreurs/exceptions
    * Quand l’application s’exécute dans l’environnement de développement :
      * Le middleware Page d’exceptions du développeur (<xref:Microsoft.AspNetCore.Builder.DeveloperExceptionPageExtensions.UseDeveloperExceptionPage*>) signale des erreurs de runtime de l’application.
-     * Database Error Page Middleware reports database runtime errors.
+     * L’intergiciel (middleware) de page d’erreur de base de données signale des erreurs d’exécution.
    * Quand l’application s’exécute dans l’environnement de production :
      * Le middleware Gestionnaire d'exceptions (<xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*>) intercepte des exceptions levées dans les middlewares suivants.
      * Le middleware Protocole HSTS (HTTP Strict Transport Security) (<xref:Microsoft.AspNetCore.Builder.HstsBuilderExtensions.UseHsts*>) ajoute l’en-tête `Strict-Transport-Security`.
 1. Le middleware Redirection HTTPS (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) redirige les requêtes HTTP vers HTTPS.
 1. Le middleware Fichier statique (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) retourne des fichiers statiques et court-circuite tout traitement supplémentaire de la requête.
 1. Le middleware Stratégie des cookies (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) met l’application en conformité avec les réglementation du RGPD (Règlement général sur la protection des données).
-1. Routing Middleware (`UseRouting`) to route requests.
+1. L’intergiciel (`UseRouting`) de routage pour acheminer les demandes.
 1. Le middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) tente d’authentifier l’utilisateur avant qu’il ne soit autorisé à accéder aux ressources sécurisées.
-1. Authorization Middleware (`UseAuthorization`) authorizes a user to access secure resources.
+1. L’intergiciel (`UseAuthorization`) d’autorisation autorise un utilisateur à accéder à des ressources sécurisées.
 1. Le middleware Session (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) établit et maintient l’état de la session. Si l’application utilise l’état de session, appelez le middleware après le middleware Stratégie des cookies et avant le middleware MVC.
-1. Endpoint Routing Middleware (`UseEndpoints` with `MapRazorPages`) to add Razor Pages endpoints to the request pipeline.
+1. Intergiciel (middleware) de routage des points de terminaison (`UseEndpoints` avec `MapRazorPages`) pour ajouter des points de terminaison Razor Pages au pipeline de requête.
 
 <!--
 
@@ -137,11 +137,11 @@ Dans l’exemple de code précédent, chaque méthode d’extension d’intergic
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> est le premier composant d’intergiciel ajouté au pipeline. Par conséquent, le middleware Gestion des exceptions intercepte toutes les exceptions qui se produisent dans les appels ultérieurs.
 
-Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Any files served by Static File Middleware, including those under *wwwroot*, are publicly available. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
+Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Tous les fichiers pris en charge par l’intergiciel (middleware) de fichiers statiques, y compris ceux qui se trouvent sous *wwwroot*, sont disponibles publiquement. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
 
 Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), qui effectue l’authentification. Le middleware Authentification ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné une page Razor/un contrôleur MVC et une action spécifiques.
 
-L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware Fichier statique avant le middleware Compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. The Razor Pages responses can be compressed.
+L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware Fichier statique avant le middleware Compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. Les réponses Razor Pages peuvent être compressées.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -166,8 +166,8 @@ public void Configure(IApplicationBuilder app)
 
 Dans le code précédent :
 
-* Middleware that is not added when creating a new web app with [individual users accounts](xref:security/authentication/identity) is commented out.
-* Not every middleware needs to go in this exact order, but many do. For example, `UseCors` and `UseAuthentication` must go in the order shown.
+* Les intergiciels (middleware) qui ne sont pas ajoutés lors de la création d’une nouvelle application Web avec des [comptes d’utilisateurs individuels](xref:security/authentication/identity) sont commentés.
+* Tous les intergiciels (middleware) ne doivent pas être placés dans cet ordre exact, mais beaucoup d’entre eux. Par exemple, `UseCors` et `UseAuthentication` doivent être placés dans l’ordre indiqué.
 
 La méthode `Startup.Configure` suivante ajoute des composants middleware utiles pour les scénarios d’application courants :
 
@@ -212,7 +212,7 @@ Dans l’exemple de code précédent, chaque méthode d’extension d’intergic
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> est le premier composant d’intergiciel ajouté au pipeline. Par conséquent, le middleware Gestion des exceptions intercepte toutes les exceptions qui se produisent dans les appels ultérieurs.
 
-Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Any files served by Static File Middleware, including those under *wwwroot*, are publicly available. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
+Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Tous les fichiers pris en charge par l’intergiciel (middleware) de fichiers statiques, y compris ceux qui se trouvent sous *wwwroot*, sont disponibles publiquement. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
 
 Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), qui effectue l’authentification. Le middleware Authentification ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné une page Razor/un contrôleur MVC et une action spécifiques.
 
@@ -283,12 +283,12 @@ app.Map("/level1", level1App => {
 
 ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *Ordre* fournit des notes sur l’emplacement du middleware dans le pipeline de traitement de la requête et sur les conditions dans lesquelles le middleware peut mettre fin au traitement de la requête. Lorsqu’un middleware court-circuite le pipeline de traitement de la requête et empêche tout middleware en aval de traiter une requête, on parle de *middleware terminal*. Pour plus d’informations sur le court-circuit, consultez la section [Créer un pipeline de middlewares avec IApplicationBuilder](#create-a-middleware-pipeline-with-iapplicationbuilder).
 
-| Intergiciel (middleware) | Description | Trier |
+| Intergiciel (middleware) | Description | Order |
 | ---------- | ----------- | ----- |
 | [Authentification](xref:security/authentication/identity) | Prend en charge l’authentification. | Avant que `HttpContext.User` ne soit nécessaire. Terminal pour les rappels OAuth. |
 | [Stratégie de cookies](xref:security/gdpr) | Effectue le suivi de consentement des utilisateurs pour le stockage des informations personnelles et applique des normes minimales pour les champs de cookie, comme `secure` et `SameSite`. | Avant le middleware qui émet les cookies. Exemples : authentification, session, MVC (TempData). |
 | [CORS](xref:security/cors) | Configure le partage des ressources cross-origin (CORS). | Avant les composants qui utilisent CORS. |
-| [Diagnostics](xref:fundamentals/error-handling) | Several separate middlewares that provide a developer exception page, exception handling, status code pages, and the default web page for new apps. | Avant les composants qui génèrent des erreurs. Terminal for exceptions or serving the default web page for new apps. |
+| [Diagnostics](xref:fundamentals/error-handling) | Plusieurs intergiciels distincts qui fournissent une page d’exception de développeur, la gestion des exceptions, les pages de codes d’État et la page Web par défaut pour les nouvelles applications. | Avant les composants qui génèrent des erreurs. Terminal pour les exceptions ou service de la page Web par défaut pour les nouvelles applications. |
 | [En-têtes transférés](xref:host-and-deploy/proxy-load-balancer) | Transfère les en-têtes en proxy vers la requête actuelle. | Avant les composants qui consomment les champs mis à jour. Exemples : schéma, hôte, IP du client, méthode. |
 | [Contrôle d’intégrité](xref:host-and-deploy/health-checks) | Contrôle l’intégrité d’une application ASP.NET Core et de ses dépendances, notamment la disponibilité de la base de données. | Terminal si une requête correspond à un point de terminaison de contrôle d’intégrité. |
 | [Remplacement de la méthode HTTP](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | Autorise une requête POST entrante à remplacer la méthode. | Avant les composants qui consomment la méthode mise à jour. |
@@ -299,10 +299,10 @@ ASP.NET Core est fourni avec les composants de middleware suivant. La colonne *O
 | [Mise en cache des réponses](xref:performance/caching/middleware) | Prend en charge la mise en cache des réponses. | Avant les composants qui nécessitent la mise en cache. |
 | [Compression des réponses](xref:performance/response-compression) | Prend en charge la compression des réponses. | Avant les composants qui nécessitent la compression. |
 | [Localisation des requêtes](xref:fundamentals/localization) | Prend en charge la localisation. | Avant la localisation des composants sensibles. |
-| [Endpoint Routing](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
+| [Routage du point de terminaison](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
 | [Session](xref:fundamentals/app-state) | Prend en charge la gestion des sessions utilisateur. | Avant les composants qui nécessitent la session. |
 | [Fichiers statiques](xref:fundamentals/static-files) | Prend en charge le traitement des fichiers statiques et l’exploration des répertoires. | Terminal si une requête correspond à un fichier. |
-| [URL Rewrite](xref:fundamentals/url-rewriting) | Prend en charge la réécriture d’URL et la redirection des requêtes. | Avant les composants qui consomment l’URL. |
+| [Réécriture d’URL](xref:fundamentals/url-rewriting) | Prend en charge la réécriture d’URL et la redirection des requêtes. | Avant les composants qui consomment l’URL. |
 | [WebSockets](xref:fundamentals/websockets) | Autorise le protocole WebSockets. | Avant les composants qui sont nécessaires pour accepter les requêtes WebSocket. |
 
 ## <a name="additional-resources"></a>Ressources supplémentaires

@@ -38,7 +38,7 @@ Les tests de charge peuvent être configurés pour s’exécuter sur site ou dan
 La liste suivante contient des outils de performances Web tiers avec différents ensembles de fonctionnalités :
 
 * [Apache JMeter](https://jmeter.apache.org/)
-* [ApacheBench (ab)](https://httpd.apache.org/docs/2.4/programs/ab.html)
+* [ApacheBench (AB)](https://httpd.apache.org/docs/2.4/programs/ab.html)
 * [Gatling](https://gatling.io/)
 * [Caroubes](https://locust.io/)
 * [Surtension de l’ouest du vent](https://websurge.west-wind.com/)

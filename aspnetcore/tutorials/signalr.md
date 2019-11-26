@@ -32,7 +32,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 ![[! Opérationnel. Exemple d’application non-LOC (Signalr)]](signalr/_static/3.x/signalr-get-started-finished.png)
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -235,7 +235,7 @@ Le serveur de SignalR doit être configuré pour transmettre les demandes Signal
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.
 
-  Le nom et le message sont affichés instantanément dans les deux pages.
+  Le nom et le message sont affichés sur les deux pages instantanément.
 
   ![[! Opérationnel. Exemple d’application non-LOC (Signalr)]](signalr/_static/3.x/signalr-get-started-finished.png)
 
@@ -263,7 +263,7 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 > * Ajouter du code qui envoie des messages de n’importe quel client vers tous les clients connectés.  
 À la fin, vous disposerez d’une application de conversation active : ![[ ! Opérationnel. NO-LOC (Signalr)] exemple d’application](signalr/_static/2.x/signalr-get-started-finished.png)   
 
-## <a name="prerequisites"></a>Conditions préalables requises    
+## <a name="prerequisites"></a>Configuration requise    
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)   
 
@@ -468,7 +468,7 @@ Le serveur de SignalR doit être configuré pour transmettre les demandes Signal
 
 * Choisissez un des navigateurs, entrez un nom et un message, puis sélectionnez le bouton **Envoyer le message**.  
 
-  Le nom et le message sont affichés instantanément dans les deux pages.   
+  Le nom et le message sont affichés sur les deux pages instantanément.   
 
   ![[! Opérationnel. Exemple d’application non-LOC (Signalr)]](signalr/_static/2.x/signalr-get-started-finished.png) 
 

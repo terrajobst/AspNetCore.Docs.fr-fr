@@ -34,7 +34,7 @@ Dans ce didacticiel, vous apprendrez à :
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Conditions préalables requises
+## <a name="prerequisites"></a>Configuration requise
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -257,7 +257,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 
@@ -490,7 +490,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 

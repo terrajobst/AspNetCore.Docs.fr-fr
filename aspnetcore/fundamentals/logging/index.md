@@ -49,7 +49,7 @@ Dans une application de console non hôte, appelez la méthode d’extension `Ad
 Les modèles de projet ASP.NET Core par défaut appellent <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource
 * EventLog (uniquement en cas d’exécution sur Windows)
 
@@ -70,7 +70,7 @@ Le code précédent nécessite des références à `Microsoft.Extensions.Logging
 Le modèle de projet par défaut appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource (à partir d’ASP.NET Core 2.2)
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_TemplateCode&highlight=7)]
@@ -465,7 +465,7 @@ Pour spécifier explicitement la catégorie, appelez `ILoggerFactory.CreateLogge
 
 `ILogger<T>` équivaut à appeler `CreateLogger` avec le nom de type complet `T`.
 
-## <a name="log-level"></a>Niveau du journal
+## <a name="log-level"></a>Niveau de journalisation
 
 Chaque journal spécifie une valeur <xref:Microsoft.Extensions.Logging.LogLevel>. Le niveau de journalisation indique la gravité ou l’importance. Vous pourriez par exemple écrire un journal `Information` lorsqu’une méthode se termine normalement et un journal `Warning` lorsqu’une méthode retourne un code de statut *404 Not Found*.
 
@@ -501,11 +501,11 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
   Informations de suivi du flux général de l’application. Ces journaux ont généralement une utilité à long terme. Exemple : `Request received for path /api/todo`
 
-* Warning = 3
+* Avertissement = 3
 
   Informations sur les événements anormaux ou inattendus dans le flux de l’application. Il peut s’agir d’erreurs ou d’autres situations qui ne provoquent pas l’arrêt de l’application, mais qu’il peut être intéressant d’examiner. Le niveau de journalisation `Warning` est généralement utilisé pour les exceptions gérées. Exemple : `FileNotFoundException for file quotes.txt.`
 
-* Error = 4
+* Erreur = 4
 
   Fournit des informations sur des erreurs et des exceptions qui ne peuvent pas être gérées. Ces messages indiquent un échec de l’activité ou de l’opération en cours (par exemple, la requête HTTP actuellement exécutée), pas un échec au niveau de l’application. Exemple de message de journal : `Cannot insert record due to duplicate key violation.`
 
@@ -513,7 +513,7 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
   Fournit des informations sur des échecs qui nécessitent un examen immédiat. Exemples : perte de données, espace disque insuffisant.
 
-Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Par exemple :
+Le niveau de journalisation permet de contrôler le volume de la sortie de journal écrite sur un support de stockage ou dans une fenêtre d’affichage. Exemple :
 
 * En production :
   * La journalisation au `Trace` via des niveaux de `Information` génère un volume important de messages de journal détaillés. Pour contrôler les coûts et ne pas dépasser les limites de stockage des données, consignez les `Trace` des messages de niveau `Information` dans un magasin de données à faible coût.
@@ -746,14 +746,14 @@ Les données de configuration et le code `AddFilter` contenus dans les exemples 
 
 | nombre | Fournisseur      | Catégories commençant par...          | Niveau de journalisation minimum |
 | :----: | ------------- | --------------------------------------- | ----------------- |
-| 1      | Déboguer         | Toutes les catégories                          | Information       |
-| 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Warning           |
-| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Déboguer             |
-| 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Erreur             |
+| 1      | Débogage         | Toutes les catégories                          | Information       |
+| 2      | Console       | Microsoft.AspNetCore.Mvc.Razor.Internal | Avertissement           |
+| 3      | Console       | Microsoft.AspNetCore.Mvc.Razor.Razor    | Débogage             |
+| 4      | Console       | Microsoft.AspNetCore.Mvc.Razor          | Error             |
 | 5      | Console       | Toutes les catégories                          | Information       |
-| 6      | Tous les fournisseurs | Toutes les catégories                          | Déboguer             |
-| 7      | Tous les fournisseurs | Système                                  | Déboguer             |
-| 8      | Déboguer         | Microsoft                               | Suivi             |
+| 6\.      | Tous les fournisseurs | Toutes les catégories                          | Débogage             |
+| 7      | Tous les fournisseurs | System                                  | Débogage             |
+| 8      | Débogage         | Microsoft                               | Trace             |
 
 À la création d’un objet `ILogger`, l’objet `ILoggerFactory` sélectionne une seule règle à appliquer à cet enregistrement d’événements par fournisseur. Tous les messages écrits par une instance `ILogger` sont filtrés selon les règles sélectionnées. La règle la plus spécifique pouvant être appliquée à chaque paire catégorie/fournisseur est sélectionnée parmi les règles disponibles.
 
@@ -776,7 +776,7 @@ L’instance `ILogger` ainsi produite envoie des journaux de niveau `Trace` ou s
 Chaque fournisseur définit un *alias* qui peut être utilisé dans la configuration à la place du nom de type complet.  Pour les fournisseurs intégrés, utilisez les alias suivants :
 
 * Console
-* Déboguer
+* Débogage
 * EventSource
 * EventLog
 * TraceSource
@@ -804,7 +804,7 @@ Si vous ne définissez pas explicitement le niveau minimum, la valeur par défau
 
 ### <a name="filter-functions"></a>Fonctions de filtre
 
-Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Par exemple :
+Une fonction de filtre est appelée pour tous les fournisseurs et toutes les catégories pour lesquels la configuration ou le code n’applique aucune règle. Le code de la fonction a accès au type de fournisseur, à la catégorie et au niveau de journalisation. Exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -822,7 +822,7 @@ Une fonction de filtre est appelée pour tous les fournisseurs et toutes les cat
 
 Voici quelques catégories utilisées par ASP.NET Core et Entity Framework Core, avec des notes sur les journaux associés :
 
-| Catégorie                            | Notes |
+| Catégorie                            | Remarques |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | Diagnostics ASP.NET Core généraux. |
 | Microsoft.AspNetCore.DataProtection | Liste des clés considérées, trouvées et utilisées. |
@@ -996,7 +996,7 @@ Utilisez les outils de trace dotnet pour collecter une trace à partir d’une a
    | 4       | Active l’événement `FormatMessage` lors de l’appel de `ILogger.Log()`. Fournit la version de chaîne mise en forme des informations. |
    | 8       | Active l’événement `MessageJson` lors de l’appel de `ILogger.Log()`. Fournit une représentation JSON des arguments. |
 
-   | Niveau d'événement | Description     |
+   | Niveau de l'événement | Description     |
    | :---------: | --------------- |
    | 0           | `LogAlways`     |
    | 1           | `Critical`      |
@@ -1140,7 +1140,7 @@ Le fournisseur de journalisation est inclus en tant que dépendance de [Microsof
 
 N’utilisez pas le [package Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) package&mdash;destiné à ASP.NET 4.x.
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Pour plus d'informations, voir les ressources suivantes :
 
 * [Vue d'ensemble d'Application Insights](/azure/application-insights/app-insights-overview)
 * [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core) : commencez ici si vous souhaitez implémenter la gamme complète des données de télémétrie d’Application Insights en même temps que la journalisation.

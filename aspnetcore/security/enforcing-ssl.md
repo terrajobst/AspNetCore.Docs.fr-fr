@@ -29,7 +29,7 @@ Aucune API ne peut empêcher un client d’envoyer des données sensibles à la 
 > [!WARNING]
 > ## <a name="api-projects"></a>Projets d’API
 >
-> Ne **pas** utiliser [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
+> N' utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
 >
 > * Ne pas écouter sur HTTP.
 > * Fermer la connexion avec le code d’état 400 (demande incorrecte) et ne pas servir la demande.
@@ -45,7 +45,7 @@ Aucune API ne peut empêcher un client d’envoyer des données sensibles à la 
 > [!WARNING]
 > ## <a name="api-projects"></a>Projets d’API
 >
-> Ne **pas** utiliser [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
+> N' utilisez pas [RequireHttpsAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requirehttpsattribute) sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise des codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPs. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirection HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les API web doivent soit :
 >
 > * Ne pas écouter sur HTTP.
 > * Fermer la connexion avec le code d’état 400 (demande incorrecte) et ne pas servir la demande.
@@ -224,7 +224,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="https-redirection-middleware-alternative-approach"></a>Approche alternative de l’intergiciel (middleware) de redirection HTTPs
 
-Une alternative à l’utilisation de l’intergiciel (middleware) de redirection HTTPs (`UseHttpsRedirection`) consiste à utiliser l’intergiciel (`AddRedirectToHttps`) de réécriture d’URL. `AddRedirectToHttps` pouvez également définir le code et le port d’état lors de l’exécution de la redirection. Pour plus d’informations, consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting).
+Une alternative à l’utilisation de l’intergiciel (middleware) de redirection HTTPs (`UseHttpsRedirection`) consiste à utiliser l’intergiciel (`AddRedirectToHttps`) de réécriture d’URL. `AddRedirectToHttps` pouvez également définir le code et le port d’état lors de l’exécution de la redirection. Pour plus d’informations, consultez intergiciel (middleware) de [réécriture d’URL](xref:fundamentals/url-rewriting).
 
 Lorsque vous redirigez vers HTTPs sans avoir besoin de règles de redirection supplémentaires, nous vous recommandons d’utiliser le middleware de redirection HTTPs (`UseHttpsRedirection`) décrit dans cette rubrique.
 
