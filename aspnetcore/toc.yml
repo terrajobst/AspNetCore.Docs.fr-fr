@@ -282,6 +282,8 @@
           uid: blazor/hosting-models
         - name: Créer votre première application
           uid: tutorials/first-blazor-app
+        - name: Modèles
+          uid: blazor/templates
         - name: Composants
           uid: blazor/components
         - name: Formulaires et validation
@@ -1100,6 +1102,9 @@
       uid: fundamentals/middleware/extensibility-third-party-container
 - name: Migration
   items:
+    - name: 3.0 à 3.1
+      displayName: 'migrate, migration'
+      uid: migration/30-to-31
     - name: 2.2 à 3.0
       displayName: 'migrate, migration'
       uid: migration/22-to-30
