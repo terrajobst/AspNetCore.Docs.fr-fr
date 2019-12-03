@@ -286,6 +286,8 @@
           uid: blazor/templates
         - name: Composants
           uid: blazor/components
+        - name: Cycle de vie
+          uid: blazor/lifecycle
         - name: Formulaires et validation
           uid: blazor/forms-validation
         - name: Bibliothèques de composants
@@ -819,6 +821,8 @@
       uid: security/index
     - name: Authentification
       items:
+        - name: Vue d'ensemble
+          uid: security/authentication/index
         - name: Présentation d’Identity
           uid: security/authentication/identity
         - name: Identité avec SPA
