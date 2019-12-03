@@ -5,14 +5,14 @@ description: Découvrez l’hôte générique .NET Core, qui est responsable de 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/02/2019
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: f14917ad924e2c762a14c2cb5f51391d4be06e7b
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 2ed4af109b5ccd303a03a0d9167649dda7793126
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378754"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717020"
 ---
 # <a name="net-generic-host"></a>Hôte générique .NET
 
@@ -119,7 +119,7 @@ Pour plus d’informations sur les services fournis par le Framework, consultez 
 
 Injectez le service <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime> (anciennement `IApplicationLifetime`) dans n’importe quelle classe pour gérer les tâches post-démarrage et d’arrêt approprié. Trois propriétés de l’interface sont des jetons d’annulation utilisés pour inscrire les méthodes du gestionnaire d’événements de démarrage et d’arrêt d’application. L’interface inclut également une méthode `StopApplication`.
 
-L’exemple suivant est une implémentation `IHostedService` qui inscrit des événements `IHostApplicationLifetime` :
+L’exemple suivant est une implémentation de `IHostedService` qui inscrit des événements `IHostApplicationLifetime` :
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/LifetimeEventsHostedService.cs?name=snippet_LifetimeEvents)]
 
@@ -129,7 +129,7 @@ L’implémentation de <xref:Microsoft.Extensions.Hosting.IHostLifetime> contrô
 
 `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` est l’implémentation de `IHostLifetime` par défaut. `ConsoleLifetime`:
 
-* écoute Ctrl+C/SIGINT ou SIGTERM et appelle <xref:Microsoft.Extensions.Hosting.IApplicationLifetime.StopApplication*> pour démarrer le processus d’arrêt.
+* Écoute la combinaison de touches Ctrl + C/SIGINT ou SIGTERM et appelle <xref:Microsoft.Extensions.Hosting.IHostApplicationLifetime.StopApplication*> pour démarrer le processus d’arrêt.
 * Déverrouille les extensions telles que [RunAsync](#runasync) et [WaitForShutdownAsync](#waitforshutdownasync).
 
 ## <a name="ihostenvironment"></a>IHostEnvironment
@@ -140,9 +140,7 @@ Injectez le service <xref:Microsoft.Extensions.Hosting.IHostEnvironment> dans un
 * [EnvironmentName](#environmentname)
 * [ContentRootPath](#contentrootpath)
 
-Les applications web implémentent l’interface `IWebHostEnvironment`, qui hérite de `IHostEnvironment` et ajoute :
-
-* [WebRootPath](#webroot)
+Les applications Web implémentent l’interface `IWebHostEnvironment`, qui hérite `IHostEnvironment` et ajoute [WebRootPath](#webroot).
 
 ## <a name="host-configuration"></a>Configuration de l’hôte
 
@@ -200,7 +198,7 @@ Host.CreateDefaultBuilder(args)
     //...
 ```
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * [Notions de base : racine du contenu](xref:fundamentals/index#content-root)
 * [WebRoot](#webroot)
@@ -226,7 +224,7 @@ Host.CreateDefaultBuilder(args)
 
 [HostOptions.ShutdownTimeout](xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*) définit le délai d’expiration pour <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>. La valeur par défaut est de cinq secondes.  Pendant la période du délai d’expiration, l’hôte :
 
-* Déclenche [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.applicationstopping).
+* Déclenche [IApplicationLifetime.ApplicationStopping](/dotnet/api/microsoft.aspnetcore.hosting.ihostapplicationlifetime.applicationstopping).
 * Tente d’arrêter les services hébergés, en journalisant les erreurs pour les services qui échouent à s’arrêter.
 
 Si la période du délai d’attente expire avant l’arrêt de tous les services hébergés, les services actifs restants sont arrêtés quand l’application s’arrête. Les services s’arrêtent même s’ils n’ont pas terminé les traitements. Si des services nécessitent plus de temps pour s’arrêter, augmentez le délai d’attente.
@@ -379,7 +377,7 @@ webBuilder.UseStartup("StartupAssemblyName");
 webBuilder.UseStartup<Startup>();
 ```
 
-### <a name="urls"></a>URL
+### <a name="urls"></a>Adresses URL
 
 Liste délimitée par des points-virgules d’adresses IP ou d’adresses d’hôte avec les ports et protocoles sur lesquels le serveur doit écouter les requêtes. Par exemple, `http://localhost:123`. Utilisez « \* » pour indiquer que le serveur doit écouter les requêtes sur toutes les adresses IP ou tous les noms d’hôte qui utilisent le port et le protocole spécifiés (par exemple, `http://*:5000`). Le protocole (`http://` ou `https://`) doit être inclus avec chaque URL. Les formats pris en charge varient selon les serveurs.
 
@@ -411,7 +409,7 @@ Pour définir cette valeur, utilisez la variable d’environnement ou appelez `U
 webBuilder.UseWebRoot("public");
 ```
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * [Notions de base : racine Web](xref:fundamentals/index#web-root)
 * [ContentRootPath](#contentrootpath)
@@ -420,7 +418,7 @@ Pour plus d'informations, voir :
 
 Appelez des méthodes sur l’implémentation de <xref:Microsoft.Extensions.Hosting.IHost> pour démarrer et arrêter l’application. Ces méthodes affectent toutes les implémentations de <xref:Microsoft.Extensions.Hosting.IHostedService> qui sont inscrites dans le conteneur de service.
 
-### <a name="run"></a>Exécuter
+### <a name="run"></a>Exécutez.
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run*> exécute l’application et bloque le thread appelant jusqu’à l’arrêt de l’hôte.
 
@@ -432,7 +430,7 @@ Appelez des méthodes sur l’implémentation de <xref:Microsoft.Extensions.Host
 
 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*> permet la prise en charge de la console, génère et démarre l’hôte et attend Ctrl+C/SIGINT ou SIGTERM pour l’arrêter.
 
-### <a name="start"></a>Start
+### <a name="start"></a>Début
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start*> démarre l’hôte en mode synchrone.
 
@@ -740,7 +738,7 @@ public static class Extensions
 
 L’implémentation <xref:Microsoft.Extensions.Hosting.IHost> est chargée de démarrer et d’arrêter les implémentations <xref:Microsoft.Extensions.Hosting.IHostedService> qui sont inscrites dans le conteneur de service.
 
-### <a name="run"></a>Exécuter
+### <a name="run"></a>Exécutez.
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run*> exécute l’application et bloque le thread appelant jusqu’à l’arrêt de l’hôte :
 

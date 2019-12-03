@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/26/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 179ab4c97426c9d3cb8ed069d2059d767d755533
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: de1b3e270ccd90bde741975de38a224e557f1a08
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034267"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717414"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -325,15 +325,36 @@ Pour obtenir une version antérieure du programme d’installation :
 1. Exécutez le programme d’installation sur le serveur. Les paramètres suivants sont disponibles lorsque vous exécutez le programme d’installation à partir d’un shell de commande administrateur :
 
    * `OPT_NO_ANCM=1` &ndash; Sauter l’installation du module ASP.NET Core.
-   * `OPT_NO_RUNTIME=1` &ndash;Sauter l'installation du runtime .NET Core.
-   * `OPT_NO_SHAREDFX=1` &ndash; Sauter l'installation de l’infrastructure partagée ASP.NET (runtime ASP.NET).
+   * `OPT_NO_RUNTIME=1` &ndash;Sauter l'installation du runtime .NET Core. Utilisé lorsque le serveur héberge uniquement [des déploiements autonomes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
+   * `OPT_NO_SHAREDFX=1` &ndash; Sauter l'installation de l’infrastructure partagée ASP.NET (runtime ASP.NET). Utilisé lorsque le serveur héberge uniquement [des déploiements autonomes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1` &ndash; Ignorer l’installation des runtimes x86. Utilisez ce paramètre lorsque vous savez que vous n’hébergerez pas d’applications 32 bits. Si vous n’excluez pas d’avoir à héberger des applications 32 bits et 64 bits dans le futur, n'utilisez pas ce paramètre et installez les deux runtimes.
    * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; Désactivez la vérification d’utilisation d’une Configuration partagée IIS lorsque la configuration partagée (*applicationHost.config*) se trouve sur le même ordinateur que l’installation d’IIS. *Disponible uniquement pour les programmes d’installation du pack d’hébergement ASP.NET Core 2.2 ou version ultérieure.* Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
-1. Redémarrez le système ou exécutez **net stop was /y** suivi de **net start w3svc** à partir d’un shell de commande. Le redémarrage d’IIS récupère une modification apportée au CHEMIN D’ACCÈS du système, qui est une variable d’environnement, par le programme d’installation.
+1. Redémarrez le système ou exécutez les commandes suivantes dans une interface de commande :
+
+   ```console
+   net stop was /y
+   net start w3svc
+   ```
+   Le redémarrage d’IIS récupère une modification apportée au CHEMIN D’ACCÈS du système, qui est une variable d’environnement, par le programme d’installation.
+
+::: moniker range=">= aspnetcore-3.0"
+
+ASP.NET Core n’adopte pas le comportement de restauration par progression pour les mises à jour correctives des packages d’infrastructure partagés. Après la mise à niveau de l’infrastructure partagée en installant un nouveau bundle d’hébergement, redémarrez le système ou exécutez les commandes suivantes dans un interpréteur de commandes :
+
+```console
+net stop was /y
+net start w3svc
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 Il n’est pas nécessaire d’arrêter manuellement des sites individuels dans IIS lors de l’installation du bundle d’hébergement. Les applications hébergées (sites IIS) redémarrent lors du redémarrage d’IIS. Les applications redémarrent lorsqu’elles reçoivent leur première requête, y compris à partir du [module d’initialisation](#application-initialization-module-and-idle-timeout)de l’application.
 
 ASP.NET Core adopte le comportement de restauration par progression pour les mises à jour correctives des packages d’infrastructure partagés. Lorsque les applications hébergées par IIS redémarrent avec IIS, elles sont chargées avec les dernières versions de correctif de leurs packages référencés lorsqu’elles reçoivent leur première demande. Si IIS n’est pas redémarré, les applications redémarrent et présentent le comportement de restauration par progression lorsque leurs processus de travail sont recyclés et qu’ils reçoivent leur première demande.
+
+::: moniker-end
 
 > [!NOTE]
 > Pour plus d’informations sur la configuration partagée IIS, consultez [Module ASP.NET Core avec configuration partagée des services Internet (IIS)](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).
@@ -376,7 +397,7 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/inst
 **Configuration de l’authentification Windows (facultatif)**  
 Pour plus d'informations, consultez la rubrique [Configurer l’authentification Windows](xref:security/authentication/windowsauth).
 
-## <a name="deploy-the-app"></a>Déployer l’application
+## <a name="deploy-the-app"></a>Déployer l'application
 
 Déployez l’application dans le dossier **Chemin d’accès physique** IIS qui a été créé dans la section [Créer le site IIS](#create-the-iis-site). [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) est le mécanisme recommandé pour le déploiement, mais il existe plusieurs options pour déplacer l’application à partir du dossier *publier* du projet vers le dossier de déploiement du système d’hébergement.
 
@@ -555,7 +576,7 @@ Les sections de configuration des applications ASP.NET 4.x dans *web.config* ne 
 
 Les applications ASP.NET Core sont configurées à l’aide d’autres fournisseurs de configuration. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-## <a name="application-pools"></a>Pools d'applications
+## <a name="application-pools"></a>Pools d’applications
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -574,7 +595,7 @@ Quand vous hébergez plusieurs sites Web sur un même serveur, nous vous recomma
 
 ::: moniker-end
 
-## <a name="application-pool-identity"></a>Identité du pool d’applications
+## <a name="application-pool-identity"></a>Identité du pool d'applications
 
 Un compte d’identité du pool d’applications permet à une application de s’exécuter sous un compte unique sans qu’il soit nécessaire de créer et de gérer des domaines ou des comptes locaux. Sur IIS 8.0 ou version ultérieure, le processus Worker d’administration IIS (WAS) crée un compte virtuel avec le nom du nouveau pool d’applications et exécute les processus Worker du pool d’applications sous ce compte par défaut. Dans la console de gestion IIS, sous **Paramètres avancés** pour le pool d’applications, vérifiez que **l’Identité** est configurée pour utiliser **ApplicationPoolIdentity** :
 

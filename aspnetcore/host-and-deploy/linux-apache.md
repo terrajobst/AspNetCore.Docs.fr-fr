@@ -5,14 +5,14 @@ description: Découvrez comment configurer Apache comme serveur proxy inverse su
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: fce91db736908e433ba6803319aa8984bb68a554
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 730ed1847ec5728657d56db3ccf0f1f5fab6b5dd
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659888"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717362"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -24,10 +24,13 @@ Par [Shayne Boyer](https://github.com/spboyer)
 
 * Serveur exécutant CentOS 7 avec un compte d’utilisateur standard disposant du privilège sudo.
 * Installez le runtime .NET Core sur le serveur.
-   1. Visitez la [page All Downloads de .NET Core](https://www.microsoft.com/net/download/all).
-   1. Dans la liste **Runtime**, sélectionnez le runtime le plus récent qui n’est pas une préversion.
-   1. Sélectionnez et suivez les instructions pour CentOS/Oracle.
+   1. Visitez la [page Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core).
+   1. Sélectionnez la dernière version non préliminaire de .NET Core.
+   1. Téléchargez le dernier Runtime non Preview dans le tableau sous **exécuter des applications-Runtime**.
+   1. Sélectionnez le lien **des instructions du gestionnaire de package** Linux et suivez les instructions CentOS.
 * Une application ASP.NET Core existante.
+
+À tout moment après la mise à niveau de l’infrastructure partagée, redémarrez le ASP.NET Core les applications hébergées par le serveur.
 
 ## <a name="publish-and-copy-over-the-app"></a>Publier et copier sur l’application
 
@@ -381,6 +384,10 @@ sudo systemctl restart httpd
 
 ## <a name="additional-apache-suggestions"></a>Autres suggestions pour Apache
 
+### <a name="restart-apps-with-shared-framework-updates"></a>Redémarrer des applications avec des mises à jour de Framework partagé
+
+Après la mise à niveau de l’infrastructure partagée sur le serveur, redémarrez le ASP.NET Core les applications hébergées par le serveur.
+
 ### <a name="additional-headers"></a>En-têtes facultatifs
 
 Afin d’assurer une protection contre les attaques malveillantes, vous devez modifier ou ajouter quelques en-têtes. Vérifiez que le module `mod_headers` est installé :
@@ -417,7 +424,7 @@ sudo nano /etc/httpd/conf/httpd.conf
 
 Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier. Redémarrez Apache.
 
-### <a name="load-balancing"></a>Équilibrage de la charge
+### <a name="load-balancing"></a>Équilibrage de charge
 
 Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestrel sur la même machine de l’instance. Afin de multiplier les instances en cas de défaillance, l’utilisation de *mod_proxy_balancer* et la modification du **VirtualHost** permettent de gérer plusieurs instances des applications web derrière le serveur proxy Apache.
 

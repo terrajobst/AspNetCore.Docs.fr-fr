@@ -5,16 +5,16 @@ description: Découvrez comment la bibliothèque de SignalR ASP.NET Core simplif
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 11/27/2019
 no-loc:
 - SignalR
 uid: signalr/introduction
-ms.openlocfilehash: 7108d9f223db78937dd1203a1cb4b890006b20ec
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: e84dd0d086cbfc80a80bc10baa33979da9b5d137
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963940"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717232"
 ---
 # <a name="introduction-to-aspnet-core-opno-locsignalr"></a>Présentation de ASP.NET Core SignalR
 
@@ -42,7 +42,7 @@ La source est hébergée dans un [référentielSignalR sur GitHub](https://githu
 
 ## <a name="transports"></a>Transports
 
-SignalR prend en charge plusieurs techniques pour gérer les communications en temps réel :
+SignalR prend en charge les techniques suivantes pour gérer les communications en temps réel (par ordre de secours normal) :
 
 * [WebSockets](https://tools.ietf.org/html/rfc7118)
 * Événements envoyés par le serveur

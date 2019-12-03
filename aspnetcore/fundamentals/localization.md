@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 391786498dc7088f3a06915128f23b2c0e734656
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 645f680436336acbe1d5c2854a242527c9b4b9cb
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681108"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717401"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -372,6 +372,10 @@ La méthode `SetLanguage` définit le cookie de la culture.
 [!code-csharp[](localization/sample/Localization/Controllers/HomeController.cs?range=57-67)]
 
 Vous ne pouvez pas incorporer *_SelectLanguagePartial.cshtml* dans l’exemple de code de ce projet. Le projet **Localization.StarterWeb** sur [GitHub](https://github.com/aspnet/entropy) comporte du code pour faire passer `RequestLocalizationOptions` à une ligne de code partiellement exécutée Razor par le biais du conteneur [Injection de dépendances](dependency-injection.md).
+
+## <a name="model-binding-route-data-and-query-strings"></a>Données d’itinéraire de liaison de modèle et chaînes de requête
+
+Consultez [comportement de la globalisation des données de routage de liaison de modèle et des chaînes de requête](xref:mvc/models/model-binding#glob).
 
 ## <a name="globalization-and-localization-terms"></a>Terminologie de la globalisation et de la localisation
 

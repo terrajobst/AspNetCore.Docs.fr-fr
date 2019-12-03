@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: 823d92c279454fc6c744eebbecf4268412774eba
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: a49fec38a6d38bbd33e9461cbcceb39bfe810f5c
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478716"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717284"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -304,7 +304,7 @@ Vous pouvez utiliser l’attribut `[Bind]` pour éviter le surpostage dans les s
 
 ## <a name="collections"></a>Collections
 
-Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles qui sont des collections de types simples, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre à lier soit un tableau nommé `selectedCourses` :
 
@@ -349,7 +349,7 @@ Pour les cibles qui sont des collections de types simples, la liaison de modèle
 
 ## <a name="dictionaries"></a>Dictionnaires
 
-Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Exemple :
+Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondances avec *nom_paramètre* ou *nom_propriété*. Si aucune correspondance n’est localisée, elle recherche l’un des formats pris en charge sans le préfixe. Par exemple :
 
 * Supposons que le paramètre cible soit un `Dictionary<int, string>` nommé `selectedCourses` :
 
@@ -380,6 +380,27 @@ Pour les cibles `Dictionary`, la liaison de modèle recherche les correspondance
 
   * selectedCourses["1050"]="Chemistry"
   * selectedCourses["2000"]="Economics"
+
+<a name="glob"></a>
+
+## <a name="globalization-behavior-of-model-binding-route-data-and-query-strings"></a>Comportement de globalisation des données de routage de liaison de modèle et des chaînes de requête
+
+Fournisseur de valeurs d’itinéraire ASP.NET Core et fournisseur de valeur de chaîne de requête :
+
+* Traitez les valeurs comme une culture dite indifférente.
+* Attendez-vous à ce que les URL soient invariantes de culture.
+
+En revanche, les valeurs provenant des données de formulaire subissent une conversion dépendante de la culture. Cela est dû au fait que les URL peuvent être partagées entre les paramètres régionaux.
+
+Pour que le fournisseur de valeurs d’itinéraire ASP.NET Core et le fournisseur de valeurs de chaîne de requête soient soumis à une conversion dépendante de la culture :
+
+* Héritent de <xref:Microsoft.AspNetCore.Mvc.ModelBinding.IValueProviderFactory>
+* Copiez le code à partir de [QueryStringValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs) ou [RouteValueValueProviderFactory](https://github.com/aspnet/AspNetCore/blob/master/src/Mvc/Mvc.Core/src/ModelBinding/RouteValueProviderFactory.cs)
+* Remplacer la [valeur de culture](https://github.com/aspnet/AspNetCore/blob/e625fe29b049c60242e8048b4ea743cca65aa7b5/src/Mvc/Mvc.Core/src/ModelBinding/QueryStringValueProviderFactory.cs#L30) passée au constructeur de fournisseur de valeur par [CultureInfo. CurrentCulture](xref:System.Globalization.CultureInfo.CurrentCulture)
+* Remplacez la fabrique de fournisseur de valeur par défaut dans les options MVC par la nouvelle.
+
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet)]
+[!code-csharp[](model-binding/samples/StartupMB.cs?name=snippet1)]
 
 ## <a name="special-data-types"></a>Types de données spéciaux
 

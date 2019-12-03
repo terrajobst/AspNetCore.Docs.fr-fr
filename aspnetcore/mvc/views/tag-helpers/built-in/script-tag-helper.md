@@ -4,14 +4,14 @@ author: rick-anderson
 ms.author: riande
 description: Découvrez les attributs d’assistance de balise de script ASP.NET Core et le rôle joué par chaque attribut lors de l’extension du comportement de la balise de script HTML.
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 12/02/2019
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: c3d9148bd62dcc045873cc3a72884ae458349d70
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 8a90eb5a74ff3f8178a47c59ad7ba1b6a389ab87
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717375"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>Tag Helper de script dans ASP.NET Core
 
@@ -33,6 +33,8 @@ Le balisage Razor suivant montre un élément `script` avec une solution de seco
         integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
 </script>
 ```
+
+N’utilisez pas l’attribut [defer](https://developer.mozilla.org/docs/Web/HTML/Element/script) de l’élément `<script>` pour différer le chargement du script CDN. Le tag Helper script rend JavaScript qui exécute immédiatement l’expression [asp-Fallback-test](#asp-fallback-test) . L’expression échoue si le chargement du script CDN est différé.
 
 ## <a name="commonly-used-script-tag-helper-attributes"></a>Attributs d’assistance de balise de script couramment utilisés
 

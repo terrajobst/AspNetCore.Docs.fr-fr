@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/27/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 7a5b5c84775ea2482034ef9f3e8a2376036e66cb
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: 746604bc92775a6fac124ee8bfcf37635786fe41
+ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478738"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74717007"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -189,7 +189,7 @@ public class ValuesController : ControllerBase
 
     * mettre en cache
     * gestion des erreurs
-    * sérialisation
+    * serialization
     * enregistrer
 
 Pour créer un gestionnaire de délégation :
@@ -293,7 +293,7 @@ Le fait de conserver une seule instance `HttpClient` active pendant une longue d
 L’utilisation de `IHttpClientFactory` dans une application DI-Enabled évite les opérations suivantes :
 
 * Problèmes d’épuisement des ressources par le regroupement `HttpMessageHandler` instances.
-* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances sur des instances régulières.
+* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances à intervalles réguliers.
 
 Il existe d’autres façons de résoudre les problèmes précédents à l’aide d’une instance de <xref:System.Net.Http.SocketsHttpHandler> à long terme.
 
@@ -304,7 +304,7 @@ Il existe d’autres façons de résoudre les problèmes précédents à l’aid
 Les approches précédentes résolvent les problèmes de gestion des ressources qui `IHttpClientFactory` résolus de la même façon.
 
 - Le `SocketsHttpHandler` partage les connexions entre les instances de `HttpClient`. Ce partage empêche l’épuisement des sockets.
-- Le `SocketsHttpHandler ` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS d’État.
+- Le `SocketsHttpHandler` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS périmés.
 
 ### <a name="cookies"></a>Cookies
 
@@ -594,7 +594,7 @@ Le fait de conserver une seule instance `HttpClient` active pendant une longue d
 L’utilisation de `IHttpClientFactory` dans une application DI-Enabled évite les opérations suivantes :
 
 * Problèmes d’épuisement des ressources par le regroupement `HttpMessageHandler` instances.
-* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances sur des instances régulières.
+* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances à intervalles réguliers.
 
 Il existe d’autres façons de résoudre les problèmes précédents à l’aide d’une instance de <xref:System.Net.Http.SocketsHttpHandler> à long terme.
 
@@ -605,7 +605,7 @@ Il existe d’autres façons de résoudre les problèmes précédents à l’aid
 Les approches précédentes résolvent les problèmes de gestion des ressources qui `IHttpClientFactory` résolus de la même façon.
 
 - Le `SocketsHttpHandler` partage les connexions entre les instances de `HttpClient`. Ce partage empêche l’épuisement des sockets.
-- Le `SocketsHttpHandler ` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS d’État.
+- Le `SocketsHttpHandler` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS périmés.
 
 ### <a name="cookies"></a>Cookies
 
@@ -902,7 +902,7 @@ Le fait de conserver une seule instance `HttpClient` active pendant une longue d
 L’utilisation de `IHttpClientFactory` dans une application DI-Enabled évite les opérations suivantes :
 
 * Problèmes d’épuisement des ressources par le regroupement `HttpMessageHandler` instances.
-* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances sur des instances régulières.
+* Problèmes DNS périmés par le cycle `HttpMessageHandler` instances à intervalles réguliers.
 
 Il existe d’autres façons de résoudre les problèmes précédents à l’aide d’une instance de <xref:System.Net.Http.SocketsHttpHandler> à long terme.
 
@@ -913,7 +913,7 @@ Il existe d’autres façons de résoudre les problèmes précédents à l’aid
 Les approches précédentes résolvent les problèmes de gestion des ressources qui `IHttpClientFactory` résolus de la même façon.
 
 - Le `SocketsHttpHandler` partage les connexions entre les instances de `HttpClient`. Ce partage empêche l’épuisement des sockets.
-- Le `SocketsHttpHandler ` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS d’État.
+- Le `SocketsHttpHandler` cycle les connexions en fonction des `PooledConnectionLifetime` afin d’éviter les problèmes DNS périmés.
 
 ### <a name="cookies"></a>Cookies
 
