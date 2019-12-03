@@ -5,17 +5,17 @@ description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exc
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: f2fa59259f1dd36f50e81256bddea265e347554b
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 9784b357c2cdeb7422bbe40a39f881c97f6d716a
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317152"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680991"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -122,7 +122,7 @@ Un circuit échoue quand un constructeur exécuté ou une méthode setter pour u
 
 ### <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
-Pendant la durée de vie d’un composant, Blazor appelle les méthodes de cycle de vie :
+Pendant la durée de vie d’un composant, Blazor appelle les [méthodes de cycle de vie](xref:blazor/lifecycle):
 
 * `OnInitialized` / `OnInitializedAsync`
 * `OnParametersSet` / `OnParametersSetAsync`
@@ -173,7 +173,7 @@ Un composant peut être supprimé de l’interface utilisateur, par exemple, par
 
 Si la méthode `Dispose` du composant lève une exception non gérée, l’exception est irrécupérable pour le circuit. Si la logique de suppression peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
-Pour plus d’informations sur la suppression de composants, consultez <xref:blazor/components#component-disposal-with-idisposable>.
+Pour plus d’informations sur la suppression de composants, consultez <xref:blazor/lifecycle#component-disposal-with-idisposable>.
 
 ### <a name="javascript-interop"></a>Interopérabilité de JavaScript
 

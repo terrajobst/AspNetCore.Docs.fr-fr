@@ -3,14 +3,14 @@ title: Globalisation et localisation dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les services et intergiciels (middleware) fournis par ASP.NET Core pour localiser du contenu dans différentes langues et cultures.
 ms.author: riande
-ms.date: 01/14/2017
+ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 36235e305037c0bbf20093327e2a0ff21b3de809
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 391786498dc7088f3a06915128f23b2c0e734656
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963664"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681108"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -74,7 +74,7 @@ L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ress
 
 Un fichier de ressources en français peut contenir ce qui suit :
 
-| Touche | valeur |
+| Clé | Value |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -151,7 +151,7 @@ Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `Resource
 | Nom de la ressource | Affectation de noms avec des points ou un chemin |
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | Points  |
-| Resources/Controllers/HomeController.fr.resx  | Chemin d’accès |
+| Resources/Controllers/HomeController.fr.resx  | Path |
 |    |     |
 
 Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les vues Razor suivent un modèle similaire. Le fichier de ressources d’une vue peut être nommé selon la convention avec des points ou un chemin. Les fichiers de ressources d’une vue Razor imitent le chemin de son fichier de vue associé. Si nous affectons à `ResourcesPath` la valeur « Resources », le fichier de ressources en français associé à l’affichage *Views/Home/About.cshtml* peut porter l’un des noms suivants :
@@ -276,7 +276,7 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 6. Tapez sur la langue, puis sur **Monter**.
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-3.1"
 ### <a name="the-content-language-http-header"></a>En-tête HTTP Content-Language
 
 En-tête d’entité [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language) :
@@ -286,12 +286,12 @@ En-tête d’entité [Content-Language](https://developer.mozilla.org/en-US/docs
 
 Les en-têtes d’entité sont utilisés dans les requêtes et les réponses HTTP.
 
-Dans ASP.NET Core 3,0, l’en-tête `Content-Language` peut être ajouté en définissant la propriété `ApplyCurrentCultureToResponseHeaders`.
+Vous pouvez ajouter l’en-tête `Content-Language` en définissant la propriété `ApplyCurrentCultureToResponseHeaders`.
 
 Ajout de l’en-tête `Content-Language` :
 
- - Permet à RequestLocalizationMiddleware de définir l’en-tête `Content-Language` avec la `CurrentUICulture`.
- - Élimine la nécessité de définir l’en-tête de réponse `Content-Language` de manière explicite.
+ - Permet à RequestLocalizationMiddleware de définir l’en-tête de `Content-Language` avec le `CurrentUICulture`.
+ - Élimine la nécessité de définir l’en-tête de réponse `Content-Language` explicitement.
 
 ```csharp
 app.UseRequestLocalization(new RequestLocalizationOptions
@@ -407,5 +407,4 @@ Termes :
 * [Internationalisation et localisation d’applications .NET](/dotnet/standard/globalization-localization/index)
 * [Ressources dans les fichiers .resx](/dotnet/framework/resources/working-with-resx-files-programmatically)
 * [Kit de ressources pour application multilingue Microsoft](https://marketplace.visualstudio.com/items?itemName=MultilingualAppToolkit.MultilingualAppToolkit-18308)
-* [Localisation et classes génériques](https://github.com/hishamco/hishambinateya.com/blob/master/Posts/localization-and-generics.md)
-* [Nouveautés de la localisation dans ASP.NET Core 3,0](http://hishambinateya.com/what-is-new-in-localization-in-asp.net-core-3.0)
+* [Localisation et classes génériques](http://hishambinateya.com/localization-and-generics)

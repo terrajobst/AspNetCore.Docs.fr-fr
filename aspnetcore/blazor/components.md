@@ -9,12 +9,12 @@ ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/components
-ms.openlocfilehash: 89c92fbd5a3939cd2b4a34c39163767bcdf73bb8
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 764e5e7db995b2dcadccf6d93c826ccf32c9ba04
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550306"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681004"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -522,7 +522,7 @@ Le code suivant appelle la méthode `CheckChanged` lorsque la case à cocher est
 }
 ```
 
-Les gestionnaires d’événements peuvent également être asynchrones et retourner un <xref:System.Threading.Tasks.Task>. Il n’est pas nécessaire d’appeler manuellement `StateHasChanged()`. Les exceptions sont journalisées lorsqu’elles se produisent.
+Les gestionnaires d’événements peuvent également être asynchrones et retourner un <xref:System.Threading.Tasks.Task>. Il n’est pas nécessaire d’appeler manuellement [StateHasChanged](xref:blazor/lifecycle#state-changes). Les exceptions sont journalisées lorsqu’elles se produisent.
 
 Dans l’exemple suivant, `UpdateHeading` est appelé de façon asynchrone quand le bouton est sélectionné :
 
@@ -614,7 +614,7 @@ Le `ParentComponent` définit le `EventCallback<T>` de l’enfant sur sa méthod
 Lorsque le bouton est sélectionné dans la `ChildComponent`:
 
 * La méthode `ShowMessage` de `ParentComponent`est appelée. `messageText` est mis à jour et affiché dans le `ParentComponent`.
-* Un appel à `StateHasChanged` n’est pas requis dans la méthode du rappel (`ShowMessage`). `StateHasChanged` est appelé automatiquement pour rerestituer le `ParentComponent`, tout comme les événements enfants déclenchent le rerendu des composants dans les gestionnaires d’événements qui s’exécutent dans l’enfant.
+* Un appel à [StateHasChanged](xref:blazor/lifecycle#state-changes) n’est pas requis dans la méthode du rappel (`ShowMessage`). `StateHasChanged` est appelé automatiquement pour rerestituer le `ParentComponent`, tout comme les événements enfants déclenchent le rerendu des composants dans les gestionnaires d’événements qui s’exécutent dans l’enfant.
 
 `EventCallback` et `EventCallback<T>` autorisent les délégués asynchrones. `EventCallback<T>` est fortement typé et requiert un type d’argument spécifique. `EventCallback` est faiblement typé et autorise tout type d’argument.
 
@@ -854,7 +854,7 @@ Les références de composant offrent un moyen de référencer une instance de c
 Lors du rendu du composant, le champ `loginDialog` est rempli avec l’instance du composant enfant `MyLoginDialog`. Vous pouvez ensuite appeler des méthodes .NET sur l’instance du composant.
 
 > [!IMPORTANT]
-> La variable `loginDialog` n’est remplie qu’après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](#lifecycle-methods).
+> La variable `loginDialog` n’est remplie qu’après le rendu du composant et sa sortie comprend l’élément `MyLoginDialog`. Jusqu’à ce stade, il n’y a rien à référencer. Pour manipuler des références de composants après la fin du rendu du composant, utilisez les [méthodes OnAfterRenderAsync ou OnAfterRender](xref:blazor/lifecycle#after-component-render).
 
 Bien que la capture de références de composant utilise une syntaxe similaire pour [capturer des références d’élément](xref:blazor/javascript-interop#capture-references-to-elements), il ne s’agit pas d’une fonctionnalité [JavaScript Interop](xref:blazor/javascript-interop) . Les références de composants ne sont pas transmises au code JavaScript&mdash;elles sont utilisées uniquement dans le code .NET.
 
@@ -863,7 +863,7 @@ Bien que la capture de références de composant utilise une syntaxe similaire p
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>Appeler des méthodes de composant en externe pour mettre à jour l’État
 
-Blazor utilise un `SynchronizationContext` pour appliquer un seul thread logique d’exécution. Les méthodes de cycle de vie d’un composant et les rappels d’événements déclenchés par Blazor sont exécutés sur ce `SynchronizationContext`. Dans le cas où un composant doit être mis à jour en fonction d’un événement externe, tel qu’un minuteur ou d’autres notifications, utilisez la méthode `InvokeAsync`, qui sera réexpédiée à la `SynchronizationContext`du Blazor.
+Blazor utilise un `SynchronizationContext` pour appliquer un seul thread logique d’exécution. Les méthodes de [cycle de vie](xref:blazor/lifecycle) d’un composant et les rappels d’événements déclenchés par Blazor sont exécutés sur ce `SynchronizationContext`. Dans le cas où un composant doit être mis à jour en fonction d’un événement externe, tel qu’un minuteur ou d’autres notifications, utilisez la méthode `InvokeAsync`, qui sera réexpédiée à la `SynchronizationContext`du Blazor.
 
 Par exemple, considérez un *service de notification* qui peut notifier n’importe quel composant d’écoute de l’État mis à jour :
 
@@ -991,139 +991,6 @@ En règle générale, il est logique de fournir l’un des types de valeur suiva
 * Identificateurs uniques (par exemple, les valeurs de clé primaire de type `int`, `string`ou `Guid`).
 
 Assurez-vous que les valeurs utilisées pour `@key` ne sont pas en conflit. Si les valeurs en conflit sont détectées dans le même élément parent, Blazor lève une exception, car il ne peut pas mapper de manière déterministe les anciens éléments ou composants aux nouveaux éléments ou composants. Utilisez uniquement des valeurs distinctes, telles que des instances d’objets ou des valeurs de clé primaire.
-
-## <a name="lifecycle-methods"></a>Méthodes de cycle de vie
-
-`OnInitializedAsync` et `OnInitialized` exécuter du code pour initialiser le composant. Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le mot clé `await` sur l’opération :
-
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> Un travail asynchrone pendant l’initialisation d’un composant doit se produire pendant l’événement de cycle de vie `OnInitializedAsync`.
-
-Pour une opération synchrone, utilisez `OnInitialized`:
-
-```csharp
-protected override void OnInitialized()
-{
-    ...
-}
-```
-
-`OnParametersSetAsync` et `OnParametersSet` sont appelées lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et à chaque rendu du composant parent :
-
-```csharp
-protected override async Task OnParametersSetAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> Un travail asynchrone lors de l’application de paramètres et de valeurs de propriété doit se produire pendant l’événement de cycle de vie `OnParametersSetAsync`.
-
-```csharp
-protected override void OnParametersSet()
-{
-    ...
-}
-```
-
-`OnAfterRenderAsync` et `OnAfterRender` sont appelées après la fin du rendu d’un composant. Les références d’élément et de composant sont remplies à ce stade. Utilisez cette étape pour effectuer des étapes d’initialisation supplémentaires à l’aide du contenu rendu, par exemple l’activation de bibliothèques JavaScript tierces qui opèrent sur les éléments DOM rendus.
-
-`OnAfterRender` *n’est pas appelé lors du prérendu sur le serveur.*
-
-Le paramètre `firstRender` pour `OnAfterRenderAsync` et `OnAfterRender` est :
-
-* Défini sur `true` la première fois que l’instance de composant est appelée.
-* Garantit que le travail d’initialisation n’est effectué qu’une seule fois.
-
-```csharp
-protected override async Task OnAfterRenderAsync(bool firstRender)
-{
-    if (firstRender)
-    {
-        await ...
-    }
-}
-```
-
-> [!NOTE]
-> Le travail asynchrone immédiatement après le rendu doit se produire pendant l’événement de cycle de vie `OnAfterRenderAsync`.
-
-```csharp
-protected override void OnAfterRender(bool firstRender)
-{
-    if (firstRender)
-    {
-        ...
-    }
-}
-```
-
-### <a name="handle-incomplete-async-actions-at-render"></a>Gérer les actions asynchrones incomplètes au rendu
-
-Les actions asynchrones exécutées dans des événements de cycle de vie peuvent ne pas être terminées avant le rendu du composant. Les objets peuvent être `null` ou remplis de façon incomplète avec des données pendant l’exécution de la méthode Lifecycle. Fournissez une logique de rendu pour confirmer que les objets sont initialisés. Affichez les éléments d’interface utilisateur d’espace réservé (par exemple, un message de chargement) pendant que les objets sont `null`.
-
-Dans le composant `FetchData` des modèles Blazor, `OnInitializedAsync` est remplacé par asynchrone recevoir les données de prévision (`forecasts`). Lorsque `forecasts` est `null`, un message de chargement s’affiche pour l’utilisateur. Une fois la `Task` retournée par `OnInitializedAsync` terminée, le composant est rerendu avec l’État mis à jour.
-
-*Pages/FetchData.razor* :
-
-[!code-cshtml[](components/samples_snapshot/3.x/FetchData.razor?highlight=9)]
-
-### <a name="execute-code-before-parameters-are-set"></a>Exécuter du code avant la définition des paramètres
-
-`SetParameters` peut être substitué pour exécuter du code avant que les paramètres soient définis :
-
-```csharp
-public override void SetParameters(ParameterView parameters)
-{
-    ...
-
-    base.SetParameters(parameters);
-}
-```
-
-Si `base.SetParameters` n’est pas appelé, le code personnalisé peut interpréter la valeur des paramètres entrants de la façon requise. Par exemple, il n’est pas nécessaire que les paramètres entrants soient assignés aux propriétés de la classe.
-
-### <a name="suppress-refreshing-of-the-ui"></a>Supprimer l’actualisation de l’interface utilisateur
-
-`ShouldRender` peut être substitué pour supprimer l’actualisation de l’interface utilisateur. Si l’implémentation retourne `true`, l’interface utilisateur est actualisée. Même si `ShouldRender` est substitué, le composant est toujours restitué initialement.
-
-```csharp
-protected override bool ShouldRender()
-{
-    var renderUI = true;
-
-    return renderUI;
-}
-```
-
-## <a name="component-disposal-with-idisposable"></a>Suppression de composant avec IDisposable
-
-Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose) est appelée lorsque le composant est supprimé de l’interface utilisateur. Le composant suivant utilise `@implements IDisposable` et la méthode `Dispose` :
-
-```csharp
-@using System
-@implements IDisposable
-
-...
-
-@code {
-    public void Dispose()
-    {
-        ...
-    }
-}
-```
-
-> [!NOTE]
-> L’appel de `StateHasChanged` dans `Dispose` n’est pas pris en charge. `StateHasChanged` peut être appelé dans le cadre du rendu détruit. Les demandes de mises à jour de l’interface utilisateur à ce stade ne sont pas prises en charge.
 
 ## <a name="routing"></a>Routage
 

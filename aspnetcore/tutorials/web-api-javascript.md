@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment appeler une API web ASP.NET Core avec JavaScript.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/27/2019
+ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 0070816149d64fc1d71d453eb0f135050c78597a
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "72378701"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681173"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
 
@@ -44,13 +44,15 @@ L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itin
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
-1. Créez un répertoire *wwwroot* à la racine du projet.
+1. Créez un dossier *wwwroot* dans la racine du projet.
 
-1. Ajoutez un fichier HTML nommé *index.html* au répertoire *wwwroot*. Remplacez son contenu par le balisage suivant :
+1. Créez un dossier *js* à l’intérieur du dossier *wwwroot* .
+
+1. Ajoutez un fichier HTML nommé *index. html* au dossier *wwwroot* . Remplacez le contenu de *index. html* par le balisage suivant :
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez son contenu par le code suivant :
+1. Ajoutez un fichier JavaScript nommé *site. js* au dossier *wwwroot/js* . Remplacez le contenu de *site. js* par le code suivant :
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
@@ -75,9 +77,9 @@ Dans le code suivant :
 
 * Une variable `item` est déclarée pour construire une représentation littérale d’objet de l’élément de tâche.
 * Une requête Fetch est configurée avec les options suivantes :
-    * `method`&mdash; spécifie le verbe d’action POST HTTP.
-    * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
-    * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
+  * `method`&mdash; spécifie le verbe d’action POST HTTP.
+  * `body`&mdash; spécifie la représentation JSON du corps de la demande. Le JSON est généré en passant le littéral d’objet stocké dans `item` à la fonction [JSON. stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).
+  * `headers`&mdash; spécifie les en-têtes de requête HTTP `Accept` et `Content-Type`. Les deux en-têtes sont définies sur `application/json` pour spécifier le type de média respectivement reçu et envoyé.
 * Une requête HTTP POST est envoyée à l’itinéraire *api/TodoItems*.
 
 [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_AddItem)]

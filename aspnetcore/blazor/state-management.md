@@ -5,16 +5,16 @@ description: Découvrez comment rendre l’état persistant dans les application
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: 38ee5fccdf476f08c9f39d01b53c81b48eea04bf
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: facd6c2747bb0b31404c3c4fce25b76cd141932e
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317182"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680978"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
@@ -138,7 +138,7 @@ Voici un exemple de package NuGet qui fournit une [protection des données](xref
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` est un package expérimental non pris en charge, inapproprié pour une utilisation en production à l’heure actuelle.
 
-### <a name="installation"></a>Installation
+### <a name="installation"></a>Installation de
 
 Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
 
@@ -194,7 +194,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelée qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page.
+Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelée qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d'informations, consultez <xref:blazor/lifecycle>.
 
 > [!WARNING]
 > Les exemples de cette section ne fonctionnent que si le prérendu n’est pas activé sur le serveur. Quand le prérendu est activé, une erreur est générée de la façon suivante :

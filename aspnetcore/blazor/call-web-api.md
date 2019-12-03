@@ -5,16 +5,16 @@ description: Découvrez comment appeler une API Web à partir d’une applicatio
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: b5c57317005d0072410542bad322458b1cb3f5ee
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: ffc9904c5746fbf0fafa10cf054666608942650c
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962727"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74680900"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
@@ -37,7 +37,7 @@ Pour obtenir des exemples d' Blazor webassembly, consultez les composants suivan
 
 Dans Blazor applications webassembly, [httpclient](xref:fundamentals/http-requests) est disponible en tant que service préconfiguré pour faire des demandes au serveur d’origine. Pour utiliser `HttpClient` les applications auxiliaires JSON, ajoutez une référence de package à `Microsoft.AspNetCore.Blazor.HttpClient`. les `HttpClient` et les applications auxiliaires JSON servent également à appeler des points de terminaison d’API Web tiers. `HttpClient` est implémenté à l’aide de l' [API FETCH](https://developer.mozilla.org/docs/Web/API/Fetch_API) du navigateur et est soumis à ses limitations, y compris l’application de la même stratégie d’origine.
 
-L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injectez une instance `HttpClient` à l’aide de la directive `@inject` :
+L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injectez une instance de `HttpClient` à l’aide de la directive `@inject` :
 
 ```cshtml
 @using System.Net.Http
@@ -63,7 +63,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
 * `GetJsonAsync` &ndash; envoie une requête HTTP obtenir et analyse le corps de la réponse JSON pour créer un objet.
 
-  Dans le code suivant, les `_todoItems` sont affichés par le composant. La méthode `GetTodoItems` est déclenchée à la fin du rendu du composant ([OnInitializedAsync](xref:blazor/components#lifecycle-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
+  Dans le code suivant, les `_todoItems` sont affichés par le composant. La méthode `GetTodoItems` est déclenchée lorsque le rendu du composant est terminé ([OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
 
   ```cshtml
   @using System.Net.Http
@@ -128,7 +128,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
 <xref:System.Net.Http> comprend des méthodes d’extension supplémentaires pour envoyer des requêtes HTTP et recevoir des réponses HTTP. [Httpclient. DeleteAsync](xref:System.Net.Http.HttpClient.DeleteAsync*) est utilisé pour envoyer une requête HTTP DELETE à une API Web.
 
-Dans le code suivant, l’élément delete `<button>` appelle la méthode `DeleteItem`. L’élément `<input>` lié fournit le `id` de l’élément à supprimer. Pour obtenir un exemple complet, consultez l’exemple d’application.
+Dans le code suivant, l’élément delete `<button>` appelle la méthode `DeleteItem`. L’élément `<input>` lié fournit les `id` de l’élément à supprimer. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
 ```cshtml
 @using System.Net.Http
@@ -159,9 +159,9 @@ Quand vous exécutez sur webassembly dans une application Blazor webassembly, ut
 
 Fournissez des options de demande à l' [API d’extraction](https://developer.mozilla.org/docs/Web/API/Fetch_API) JavaScript sous-jacente à l’aide de la propriété `WebAssemblyHttpMessageHandler.FetchArgs` sur la demande. Comme indiqué dans l’exemple suivant, la propriété `credentials` est définie sur l’une des valeurs suivantes :
 
-* `FetchCredentialsOption.Include` (« Include ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des cookies ou des en-têtes d’authentification HTTP) même pour les demandes Cross-Origin. Autorisé uniquement lorsque la stratégie CORS est configurée pour autoriser les informations d’identification.
+* `FetchCredentialsOption.Include` (« Include ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des en-têtes de cookies ou d’authentification HTTP) même pour les demandes Cross-Origin. Autorisé uniquement lorsque la stratégie CORS est configurée pour autoriser les informations d’identification.
 * `FetchCredentialsOption.Omit` (« omettre ») &ndash; conseille au navigateur de ne jamais envoyer d’informations d’identification (telles que des cookies ou des en-têtes HTTP Auth).
-* `FetchCredentialsOption.SameOrigin` (« même-Origin ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des cookies ou des en-têtes HTTP Auth) uniquement si l’URL cible est sur la même origine que l’application appelante.
+* `FetchCredentialsOption.SameOrigin` (« même-Origin ») &ndash; conseille au navigateur d’envoyer des informations d’identification (telles que des cookies ou des en-têtes HTTP Auth) uniquement si l’URL cible est identique à celle de l’application appelante.
 
 ```cshtml
 @using System.Net.Http
@@ -208,10 +208,10 @@ Lors de l’envoi d’informations d’identification (cookies/en-têtes d’aut
 
 La stratégie suivante comprend la configuration pour :
 
-* Origines de la requête (`http://localhost:5000`, `https://localhost:5001`).
+* Origines des demandes (`http://localhost:5000`, `https://localhost:5001`).
 * Toute méthode (verbe).
-* en-têtes `Content-Type` et `Authorization`. Pour autoriser un en-tête personnalisé (par exemple, `x-custom-header`), répertoriez l’en-tête lors de l’appel de <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.
-* Informations d’identification définies par le code JavaScript côté client (la propriété `credentials` est définie sur `include`).
+* `Content-Type` et `Authorization` en-têtes. Pour autoriser un en-tête personnalisé (par exemple, `x-custom-header`), répertoriez l’en-tête lors de l’appel de <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>.
+* Informations d’identification définies par le code JavaScript côté client (`credentials` propriété définie sur `include`).
 
 ```csharp
 app.UseCors(policy => 

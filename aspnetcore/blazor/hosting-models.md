@@ -5,17 +5,17 @@ description: Découvrez les modèles d’hébergement Blazor webassembly et Blaz
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 11/23/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a017737eacd93ac776afe7ee8024eed602d7edcc
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 38db9804c9cdd1aa31ca48af2dd9ec2e85175156
+ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317226"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74681043"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor des modèles d’hébergement
 
@@ -222,7 +222,7 @@ Blazor applications serveur sont configurées par défaut pour prérestituer l�
 
 Le rendu des composants serveur à partir d’une page HTML statique n’est pas pris en charge.
 
-Lorsque `RenderMode` est `ServerPrerendered`, le composant est initialement restitué de manière statique dans le cadre de la page. Une fois que le navigateur a établi une connexion au serveur, le composant est *à nouveau*rendu et le composant est maintenant interactif. Si une [méthode de cycle de vie](xref:blazor/components#lifecycle-methods) pour l’initialisation du composant (`OnInitialized{Async}`) est présente, la méthode est exécutée *deux fois*:
+Lorsque `RenderMode` est `ServerPrerendered`, le composant est initialement restitué de manière statique dans le cadre de la page. Une fois que le navigateur a établi une connexion au serveur, le composant est *à nouveau*rendu et le composant est maintenant interactif. Si la méthode de cycle de vie [OnInitialized {Async}](xref:blazor/lifecycle#component-initialization-methods) pour initialiser le composant est présente, la méthode est exécutée *deux fois*:
 
 * Lorsque le composant est prérendu statiquement.
 * Après l’établissement de la connexion au serveur.
