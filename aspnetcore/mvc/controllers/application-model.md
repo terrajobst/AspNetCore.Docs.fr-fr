@@ -5,12 +5,12 @@ description: Découvrez comment lire et manipuler le modèle d’application pou
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f7f64c8b3a63ec66936772e724edb57037654059
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 4e264dc7cc63955df42df0b9eeeb7b82ae286241
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815510"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733958"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Utiliser le modèle d’application dans ASP.NET Core
 
@@ -71,7 +71,7 @@ Le `CorsApplicationModelProvider` implémente le comportement associé au `IEnab
 
 ## <a name="conventions"></a>Conventions
 
-Le modèle d’application définit des abstractions de convention qui fournissent un moyen de personnaliser le comportement des modèles plus simple que de remplacer tout le modèle ou tout le fournisseur. Ces abstractions constituent le moyen recommandé pour modifier le comportement de votre application. Les conventions vous permettent d’écrire du code qui applique dynamiquement des personnalisations. Alors que les [filtres](xref:mvc/controllers/filters) fournissent un moyen de modifier le comportement du framework, les personnalisations vous permettent de contrôler la façon dont l’application toute entière est assemblée.
+Le modèle d’application définit des abstractions de convention qui fournissent un moyen de personnaliser le comportement des modèles plus simple que de remplacer tout le modèle ou tout le fournisseur. Ces abstractions constituent le moyen recommandé pour modifier le comportement de votre application. Les conventions vous permettent d’écrire du code qui applique dynamiquement des personnalisations. Bien que les [filtres](xref:mvc/controllers/filters) offrent un moyen de modifier le comportement de l’infrastructure, les personnalisations vous permettent de contrôler le fonctionnement de l’ensemble de l’application.
 
 Les conventions suivantes sont disponibles :
 
@@ -82,7 +82,7 @@ Les conventions suivantes sont disponibles :
 
 Vous appliquez les conventions en les ajoutant aux options MVC, ou en implémentant des `Attribute` et en les appliquant à des contrôleurs, des actions ou des paramètres d’action (de façon similaire à des [ `Filters`](xref:mvc/controllers/filters)). Contrairement aux filtres, les conventions sont exécutées seulement lors du démarrage de l’application, et non pas dans le cadre de chaque requête.
 
-### <a name="sample-modifying-the-applicationmodel"></a>Aperçu : Modification du ApplicationModel
+### <a name="sample-modifying-the-applicationmodel"></a>Exemple : Modification du ApplicationModel
 
 La convention suivante est utilisée pour ajouter une propriété au modèle d’application. 
 
@@ -96,7 +96,7 @@ Les propriétés sont accessibles à partir de la collection de propriétés `Ac
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/AppModelController.cs?name=AppModelController)]
 
-### <a name="sample-modifying-the-controllermodel-description"></a>Aperçu : Modification de la description de ControllerModel
+### <a name="sample-modifying-the-controllermodel-description"></a>Exemple : Modification de la description de ControllerModel
 
 Comme dans l’exemple précédent, le modèle de contrôleur peut également être modifié pour y inclure des propriétés personnalisées. Celles-ci remplacent les propriétés existantes portant le même nom que celui spécifié dans le modèle d’application. L’attribut de convention suivant ajoute une description au niveau du contrôleur :
 
@@ -108,7 +108,7 @@ Cette convention est appliquée en tant qu’attribut sur un contrôleur.
 
 Vous accédez à la propriété « description » de la même façon que dans les exemples précédents.
 
-### <a name="sample-modifying-the-actionmodel-description"></a>Aperçu : Modification de la description de ActionModel
+### <a name="sample-modifying-the-actionmodel-description"></a>Exemple : Modification de la description de ActionModel
 
 Une convention d’attribut distincte peut être appliquée à des actions individuelles, en remplaçant le comportement déjà appliqué au niveau de l’application ou du contrôleur.
 
@@ -118,7 +118,7 @@ L’application de ceci à une action dans l’exemple de contrôleur précéden
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/DescriptionAttributesController.cs?name=DescriptionAttributesController&highlight=9)]
 
-### <a name="sample-modifying-the-parametermodel"></a>Aperçu : Modification du ParameterModel
+### <a name="sample-modifying-the-parametermodel"></a>Exemple : Modification du ParameterModel
 
 La convention suivante peut être appliquée à des paramètres d’action pour modifier leur `BindingInfo`. La convention suivante nécessite que le paramètre soit un paramètre de route ; les autres sources potentielles de liaison (comme les valeurs de la chaîne de requête) sont ignorées.
 
@@ -128,7 +128,7 @@ L’attribut peut être appliqué à n’importe quel paramètre d’action :
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Controllers/ParameterModelController.cs?name=ParameterModelController&highlight=5)]
 
-### <a name="sample-modifying-the-actionmodel-name"></a>Aperçu : Modification du nom de ActionModel
+### <a name="sample-modifying-the-actionmodel-name"></a>Exemple : Modification du nom de ActionModel
 
 La convention suivante modifie le `ActionModel` pour mettre à jour le *nom* de l’action à laquelle il est appliqué. Le nouveau nom est fourni à l’attribut en tant que paramètre. Ce nouveau nom est utilisé par le routage : il affecte donc la route utilisée pour atteindre cette méthode d’action.
 
@@ -143,7 +143,7 @@ Même si le nom de la méthode est `SomeName`, l’attribut remplace la conventi
 > [!NOTE]
 > Cet exemple est essentiellement identique à l’utilisation de l’attribut intégré [ActionName](/dotnet/api/microsoft.aspnetcore.mvc.actionnameattribute).
 
-### <a name="sample-custom-routing-convention"></a>Aperçu : Convention de routage personnalisée
+### <a name="sample-custom-routing-convention"></a>Exemple : Convention de routage personnalisée
 
 Vous pouvez utiliser une `IApplicationModelConvention` pour personnaliser le fonctionnement du routage. Par exemple, la convention suivante intègre des espaces de noms de contrôleurs dans leurs routes, en remplaçant `.` dans l’espace de noms par `/` dans la route :
 

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/27/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 746604bc92775a6fac124ee8bfcf37635786fe41
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: f33444b8fc08dc022da7700af53a218600290162
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717007"
+ms.locfileid: "74733919"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -93,7 +93,7 @@ Clients typés :
   * Pour encapsuler toute la logique traitant le point de terminaison.
 * Utilisez DI et pouvez les injecter lorsque cela est requis dans l’application.
 
-Un client typé accepte un `HttpClient` dans son constructeur :
+Un client typé accepte un paramètre `HttpClient` dans son constructeur :
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -390,7 +390,7 @@ Vous pouvez inscrire la `IHttpClientFactory` en appelant la méthode d’extensi
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-Une fois inscrit, le code peut accepter un `IHttpClientFactory` partout où des services peuvent être injectés avec [une injection de dépendance](xref:fundamentals/dependency-injection). La `IHttpClientFactory` peut être utilisée pour créer une instance de `HttpClient` :
+Une fois inscrit, le code peut accepter un `IHttpClientFactory` partout où des services peuvent être injectés avec [une injection de dépendance](xref:fundamentals/dependency-injection). La `IHttpClientFactory` peut être utilisée pour créer une instance de `HttpClient` :
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -421,7 +421,7 @@ Clients typés :
 * Fournissent un emplacement unique pour configurer et interagir avec un `HttpClient` particulier. Par exemple, un même client typé peut être utilisé pour un point de terminaison de backend et pour encapsuler la logique relative à ce point de terminaison.
 * Fonctionnent avec l’injection de dépendances et peuvent être injectés là où c’est nécessaire dans votre application.
 
-Un client typé accepte un `HttpClient` dans son constructeur :
+Un client typé accepte un paramètre `HttpClient` dans son constructeur :
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -510,7 +510,7 @@ Pour créer un gestionnaire, définissez une classe dérivant de <xref:System.Ne
 
 Le code précédent définit un gestionnaire de base. Il vérifie si un en-tête `X-API-KEY` a été inclus dans la requête. Si l’en-tête est manquant, il peut éviter l’appel HTTP et retourner une réponse appropriée.
 
-Lors de l’inscription, un ou plusieurs gestionnaires peuvent être ajoutés à la configuration pour un `HttpClient`. Cette tâche est accomplie via des méthodes d’extension sur le <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder>.
+Au cours de l’inscription, un ou plusieurs gestionnaires peuvent être ajoutés à la configuration d’un `HttpClient`. Cette tâche est accomplie via des méthodes d’extension sur le <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder>.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
@@ -695,7 +695,7 @@ Vous pouvez inscrire la `IHttpClientFactory` en appelant la méthode d’extensi
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-Une fois inscrit, le code peut accepter un `IHttpClientFactory` partout où des services peuvent être injectés avec [une injection de dépendance](xref:fundamentals/dependency-injection). La `IHttpClientFactory` peut être utilisée pour créer une instance de `HttpClient` :
+Une fois inscrit, le code peut accepter un `IHttpClientFactory` partout où des services peuvent être injectés avec [une injection de dépendance](xref:fundamentals/dependency-injection). La `IHttpClientFactory` peut être utilisée pour créer une instance de `HttpClient` :
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -726,7 +726,7 @@ Clients typés :
 * Fournissent un emplacement unique pour configurer et interagir avec un `HttpClient` particulier. Par exemple, un même client typé peut être utilisé pour un point de terminaison de backend et pour encapsuler la logique relative à ce point de terminaison.
 * Fonctionnent avec l’injection de dépendances et peuvent être injectés là où c’est nécessaire dans votre application.
 
-Un client typé accepte un `HttpClient` dans son constructeur :
+Un client typé accepte un paramètre `HttpClient` dans son constructeur :
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -815,7 +815,7 @@ Pour créer un gestionnaire, définissez une classe dérivant de <xref:System.Ne
 
 Le code précédent définit un gestionnaire de base. Il vérifie si un en-tête `X-API-KEY` a été inclus dans la requête. Si l’en-tête est manquant, il peut éviter l’appel HTTP et retourner une réponse appropriée.
 
-Lors de l’inscription, un ou plusieurs gestionnaires peuvent être ajoutés à la configuration pour un `HttpClient`. Cette tâche est accomplie via des méthodes d’extension sur le <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder>.
+Au cours de l’inscription, un ou plusieurs gestionnaires peuvent être ajoutés à la configuration d’un `HttpClient`. Cette tâche est accomplie via des méthodes d’extension sur le <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder>.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 

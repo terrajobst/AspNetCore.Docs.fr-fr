@@ -5,16 +5,16 @@ description: Découvrez comment Blazor applications peuvent injecter des service
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: a39d913636afc55ac9d831de923ba7ae8db1216b
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 165cfa7a98cdd523c25d5c4bfc8e2c9d0ef1ad22
+ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963076"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74733815"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor l’injection de dépendances
 
@@ -27,7 +27,7 @@ Blazor prend en charge l' [injection de dépendances (di)](xref:fundamentals/dep
 La méthode DI est une technique permettant d’accéder à des services configurés dans un emplacement central. Cela peut être utile dans Blazor applications pour :
 
 * Partager une seule instance d’une classe de service sur de nombreux composants, appelé service *Singleton* .
-* Découplez les composants des classes de service concrètes à l’aide d’abstractions de référence. Par exemple, considérez une interface `IDataAccess` pour accéder aux données dans l’application. L’interface est implémentée par une classe `DataAccess` concrète et inscrite en tant que service dans le conteneur de services de l’application. Quand un composant utilise DI pour recevoir une implémentation `IDataAccess`, le composant n’est pas couplé au type concret. L’implémentation peut être permutée, peut-être pour une implémentation factice dans les tests unitaires.
+* Découplez les composants des classes de service concrètes à l’aide d’abstractions de référence. Par exemple, considérez une interface `IDataAccess` pour accéder aux données de l’application. L’interface est implémentée par une classe `DataAccess` concrète et inscrite en tant que service dans le conteneur de services de l’application. Lorsqu’un composant utilise DI pour recevoir une implémentation `IDataAccess`, le composant n’est pas couplé au type concret. L’implémentation peut être permutée, peut-être pour une implémentation factice dans les tests unitaires.
 
 ## <a name="default-services"></a>Services par défaut
 
@@ -35,7 +35,7 @@ Les services par défaut sont automatiquement ajoutés à la collection de servi
 
 | Service | Durée de vie | Description |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Singleton | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI. Notez que cette instance de `HttpClient` utilise le navigateur pour gérer le trafic HTTP en arrière-plan. [Httpclient. BaseAddress](xref:System.Net.Http.HttpClient.BaseAddress) est automatiquement défini sur le préfixe URI de base de l’application. Pour plus d'informations, consultez <xref:blazor/call-web-api>. |
+| <xref:System.Net.Http.HttpClient> | Singleton | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI.<br><br>L’instance de `HttpClient` dans une application Blazor webassembly utilise le navigateur pour gérer le trafic HTTP en arrière-plan.<br><br>Blazor applications serveur n’incluent pas d' `HttpClient` configuré en tant que service par défaut. Fournissez une `HttpClient` à une application Blazor Server.<br><br>Pour plus d'informations, consultez <xref:blazor/call-web-api>. |
 | `IJSRuntime` | Singleton | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d'informations, consultez <xref:blazor/javascript-interop>. |
 | `NavigationManager` | Singleton | Contient des assistances pour l’utilisation des URI et de l’état de navigation. Pour plus d’informations, consultez [URI et assistance de l’état de navigation](xref:blazor/routing#uri-and-navigation-state-helpers). |
 
@@ -52,7 +52,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-La méthode `ConfigureServices` reçoit une <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, qui est une liste d’objets descripteurs de service (<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>). Les services sont ajoutés en fournissant des descripteurs de service à la collection de services. L’exemple suivant illustre le concept avec l’interface `IDataAccess` et son implémentation concrète `DataAccess` :
+Une <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, qui est une liste d’objets de descripteur de service (<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>), est passée à la méthode `ConfigureServices`. Les services sont ajoutés en fournissant des descripteurs de service à la collection de services. L’exemple suivant illustre le concept avec l’interface `IDataAccess` et son implémentation concrète `DataAccess`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -66,27 +66,27 @@ Les services peuvent être configurés avec les durées de vie indiquées dans l
 | Durée de vie | Description |
 | -------- | ----------- |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | Blazor applications webassembly n’ont pas actuellement de concept d’étendues DI. les services inscrits au `Scoped`se comportent comme des services `Singleton`. Toutefois, le modèle d’hébergement de serveur Blazor prend en charge la durée de vie `Scoped`. Dans les applications Blazor Server, l’inscription d’un service étendu est limitée à la *connexion*. Pour cette raison, il est préférable d’utiliser les services délimités pour les services qui doivent être étendus à l’utilisateur actuel, même si l’objectif actuel est d’exécuter côté client dans le navigateur. |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI crée une *seule instance* du service. Tous les composants nécessitant un service `Singleton` reçoivent une instance du même service. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI crée une *seule instance* du service. Tous les composants qui requièrent un service `Singleton` reçoivent une instance du même service. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | Chaque fois qu’un composant obtient une instance d’un service `Transient` à partir du conteneur de service, il reçoit une *nouvelle instance* du service. |
 
 Le système DI est basé sur le système DI dans ASP.NET Core. Pour plus d'informations, consultez <xref:fundamentals/dependency-injection>.
 
 ## <a name="request-a-service-in-a-component"></a>Demander un service dans un composant
 
-Une fois les services ajoutés à la collection de services, injectez les services dans les composants à l’aide de la directive Razor [\@inject](xref:mvc/views/razor#inject) . `@inject` a deux paramètres :
+Une fois les services ajoutés à la collection de services, injectez les services dans les composants à l’aide de l' [\@injecter](xref:mvc/views/razor#inject) la directive Razor. `@inject` a deux paramètres :
 
-* Tapez &ndash; pour le type de service à injecter.
-* Propriété &ndash; nom de la propriété qui reçoit le service d’application injecté. La propriété ne nécessite pas de création manuelle. Le compilateur crée la propriété.
+* Tapez &ndash; le type du service à injecter.
+* Propriété &ndash; le nom de la propriété qui reçoit le service d’application injecté. La propriété ne nécessite pas de création manuelle. Le compilateur crée la propriété.
 
 Pour plus d'informations, consultez <xref:mvc/views/dependency-injection>.
 
 Utilisez plusieurs instructions `@inject` pour injecter différents services.
 
-L'exemple suivant montre comment utiliser `@inject`. Le service qui implémente `Services.IDataAccess` est injecté dans la propriété du composant `DataRepository`. Notez que le code utilise uniquement l’abstraction `IDataAccess` :
+L'exemple suivant montre comment utiliser `@inject`. Le service qui implémente `Services.IDataAccess` est injecté dans la `DataRepository`de propriété du composant. Notez que le code utilise uniquement l’abstraction `IDataAccess` :
 
 [!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-En interne, la propriété générée (`DataRepository`) est décorée avec l’attribut `InjectAttribute`. En règle générale, cet attribut n’est pas utilisé directement. Si une classe de base est requise pour les composants et les propriétés injectées sont également requises pour la classe de base, ajoutez manuellement le `InjectAttribute` :
+En interne, la propriété générée (`DataRepository`) est décorée avec l’attribut `InjectAttribute`. En règle générale, cet attribut n’est pas utilisé directement. Si une classe de base est requise pour les composants et les propriétés injectées sont également requises pour la classe de base, ajoutez manuellement l' `InjectAttribute`:
 
 ```csharp
 public class ComponentBase : IComponent
@@ -109,7 +109,7 @@ Dans les composants dérivés de la classe de base, la directive `@inject` n’e
 
 ## <a name="use-di-in-services"></a>Utiliser DI dans les services
 
-Les services complexes peuvent nécessiter des services supplémentaires. Dans l’exemple précédent, `DataAccess` peut nécessiter le service par défaut `HttpClient`. `@inject` (ou `InjectAttribute`) n’est pas disponible pour une utilisation dans les services. L' *injection de constructeur* doit être utilisée à la place. Les services requis sont ajoutés en ajoutant des paramètres au constructeur du service. Lorsque DI crée le service, il reconnaît les services dont il a besoin dans le constructeur et les fournit en conséquence.
+Les services complexes peuvent nécessiter des services supplémentaires. Dans l’exemple précédent, `DataAccess` peut nécessiter le service `HttpClient` par défaut. `@inject` (ou le `InjectAttribute`) ne peut pas être utilisé dans les services. L' *injection de constructeur* doit être utilisée à la place. Les services requis sont ajoutés en ajoutant des paramètres au constructeur du service. Lorsque DI crée le service, il reconnaît les services dont il a besoin dans le constructeur et les fournit en conséquence.
 
 ```csharp
 public class DataAccess : IDataAccess
@@ -133,7 +133,7 @@ Conditions préalables pour l’injection de constructeur :
 
 Dans ASP.NET Core applications, les services délimités sont généralement étendus à la requête actuelle. Une fois la demande terminée, tous les services délimités ou temporaires sont supprimés par le système DI. Dans les applications Blazor Server, l’étendue de la demande est limitée à la durée de la connexion client, ce qui peut entraîner des services transitoires et de portée de vie bien plus longs que prévu.
 
-Pour étendre les services à la durée de vie d’un composant, peut utiliser les classes de base `OwningComponentBase` et `OwningComponentBase<TService>`. Ces classes de base exposent une propriété `ScopedServices` de type `IServiceProvider` qui résout les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez la directive `@inherits`.
+Pour étendre les services à la durée de vie d’un composant, peut utiliser les classes de base `OwningComponentBase` et `OwningComponentBase<TService>`. Ces classes de base exposent une propriété `ScopedServices` de type `IServiceProvider` qui résolvent les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez la directive `@inherits`.
 
 ```cshtml
 @page "/users"
