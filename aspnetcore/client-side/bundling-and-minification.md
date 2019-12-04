@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 7499381a24a2513a4fbd1205f245e624c86647c3
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a7a5c40d6c31c4416212c02c1b491dd794f2a1d3
+ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080560"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803277"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et réduire les ressources statiques dans ASP.NET Core
 
@@ -25,9 +25,9 @@ Le regroupement et la minimisation sont deux optimisations de performances disti
 
 Le regroupement et la minimisation améliorent principalement le temps de chargement de la première page de la demande. Une fois qu’une page Web a été demandée, le navigateur met en cache les ressources statiques (JavaScript, CSS et images). Par conséquent, le regroupement et la minimisation n’améliorent pas les performances lorsque vous demandez la même page ou les mêmes pages sur le même site demandant les mêmes ressources. Si l’en-tête Expires n’est pas défini correctement sur les ressources et si le regroupement et la minimisation ne sont pas utilisés, les heuristiques d’actualisation du navigateur marquent les ressources obsolètes après quelques jours. En outre, le navigateur requiert une demande de validation pour chaque ressource. Dans ce cas, le regroupement et la minimisation améliorent les performances même après la première demande de page.
 
-### <a name="bundling"></a>regroupement
+### <a name="bundling"></a>Regroupement
 
-Le regroupement combine plusieurs fichiers dans un seul fichier. Le regroupement réduit le nombre de demandes de serveur nécessaires pour afficher une ressource Web, telle qu’une page Web. Vous pouvez créer un nombre quelconque de regroupements individuels spécifiquement pour CSS, JavaScript, etc. Moins de fichiers signifie moins de demandes HTTP du navigateur vers le serveur ou à partir du service qui fournit votre application. Cela a pour effet d’améliorer les performances de chargement de la première page.
+Le regroupement consiste à combiner plusieurs fichiers en un seul. Le regroupement réduit le nombre de demandes de serveur nécessaires pour afficher une ressource Web, telle qu’une page Web. Vous pouvez créer un nombre quelconque de regroupements individuels spécifiquement pour CSS, JavaScript, etc. Moins de fichiers signifie moins de demandes HTTP du navigateur vers le serveur ou à partir du service qui fournit votre application. Cela a pour effet d’améliorer les performances de chargement de la première page.
 
 ### <a name="minification"></a>Réduction
 
@@ -63,7 +63,7 @@ Les navigateurs sont relativement détaillés en ce qui concerne les en-têtes d
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Choisir une stratégie de regroupement et de minimisation
 
-Les modèles de projet MVC et Razor Pages fournissent une solution prête à l’emploi pour le regroupement et la minimisation consistant en un fichier de configuration JSON. Des outils tiers, tels que le testeur de tâches [grunt](xref:client-side/using-grunt) , accomplissent les mêmes tâches avec un peu plus de complexité. Un outil tiers est une solution idéale lorsque votre flux de travail de développement nécessite un traitement au-&mdash;delà du regroupement et de la minimisation, tels que le tissu et l’optimisation d’image. En utilisant le regroupement et la minimisation au moment du design, les fichiers minimisés sont créés avant le déploiement de l’application. Le regroupement et le minimisation avant le déploiement offrent l’avantage de réduire la charge du serveur. Toutefois, il est important de reconnaître que le regroupement et la minimisation au moment du design augmentent la complexité de la génération et ne fonctionne qu’avec les fichiers statiques.
+Les modèles de projet MVC et Razor Pages fournissent une solution prête à l’emploi pour le regroupement et la minimisation consistant en un fichier de configuration JSON. Des outils tiers, tels que le testeur de tâches [grunt](xref:client-side/using-grunt) , accomplissent les mêmes tâches avec un peu plus de complexité. Un outil tiers est une solution idéale lorsque votre flux de travail de développement nécessite un traitement au-delà du regroupement et de la minimisation&mdash;tels que le déformatage et l’optimisation de l’image. En utilisant le regroupement et la minimisation au moment du design, les fichiers minimisés sont créés avant le déploiement de l’application. Le regroupement et le minimisation avant le déploiement offrent l’avantage de réduire la charge du serveur. Toutefois, il est important de reconnaître que le regroupement et la minimisation au moment du design augmentent la complexité de la génération et ne fonctionne qu’avec les fichiers statiques.
 
 ## <a name="configure-bundling-and-minification"></a>Configurer le regroupement et la minimisation
 
@@ -83,18 +83,18 @@ Dans ASP.NET Core 2,1 ou version ultérieure, ajoutez un nouveau fichier JSON, n
 
 Le fichier *bundleconfig. JSON* définit les options pour chaque bundle. Dans l’exemple précédent, une configuration de regroupement unique est définie pour les fichiers JavaScript personnalisés (*wwwroot/js/site. js*) et StyleSheet (*wwwroot/CSS/site. CSS*).
 
-Les options de configuration sont les suivantes:
+Les options de configuration comprennent ce qui suit :
 
-* `outputFileName`: Nom du fichier de Bundle à générer. Peut contenir un chemin d’accès relatif à partir du fichier *bundleconfig. JSON* . **Obligatoire**
-* `inputFiles`: Tableau de fichiers à regrouper. Il s’agit de chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide génère un fichier de sortie vide. les modèles [globbing](https://www.tldp.org/LDP/abs/html/globbingref.html) sont pris en charge.
-* `minify`: Options de minimisation pour le type de sortie. **facultatif**, *par défaut `minify: { enabled: true }` :*
+* `outputFileName`: nom du fichier de Bundle à générer. Peut contenir un chemin d’accès relatif à partir du fichier *bundleconfig. JSON* . **obligatoire**
+* `inputFiles`: tableau de fichiers à regrouper. Il s’agit de chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide génère un fichier de sortie vide. les modèles [globbing](https://www.tldp.org/LDP/abs/html/globbingref.html) sont pris en charge.
+* `minify`: options de minimisation pour le type de sortie. **facultatif**, *`minify: { enabled: true }`par défaut*
   * Les options de configuration sont disponibles pour chaque type de fichier de sortie.
     * [Minifier CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minifier JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minifier HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Indicateur précisant s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *valeur par défaut-false*
-* `sourceMap`: Indicateur précisant s’il faut générer un mappage source pour le fichier groupé. **facultatif**, *valeur par défaut-false*
-* `sourceMapRootPath`: Chemin d’accès racine pour le stockage du fichier de mappage source généré.
+* `includeInProject`: indicateur qui spécifie s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *valeur par défaut-false*
+* `sourceMap`: indicateur précisant s’il faut générer un mappage source pour le fichier groupé. **facultatif**, *valeur par défaut-false*
+* `sourceMapRootPath`: chemin d’accès racine pour le stockage du fichier de mappage source généré.
 
 ## <a name="build-time-execution-of-bundling-and-minification"></a>Exécution du regroupement et de la minimisation au moment de la génération
 
@@ -107,7 +107,7 @@ Le package NuGet [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBund
 
 Ajoutez le package *BuildBundlerMinifier* à votre projet.
 
-Générez le projet. Les éléments suivants s’affichent dans la fenêtre Sortie :
+créer le projet ; Les éléments suivants s’affichent dans la fenêtre Sortie :
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
@@ -197,7 +197,7 @@ dotnet bundle
 ```
 
 > [!IMPORTANT]
-> Le gestionnaire de package NuGet ajoute des dépendances au fichier * `<PackageReference />` . csproj en tant que nœuds. La `dotnet bundle` commande est inscrite avec l’CLI .net Core uniquement lorsqu' `<DotNetCliToolReference />` un nœud est utilisé. Modifiez le fichier *. csproj en conséquence.
+> Le gestionnaire de package NuGet ajoute des dépendances au fichier *. csproj en tant que nœuds de `<PackageReference />`. La commande `dotnet bundle` est inscrite auprès du CLI .NET Core uniquement lorsqu’un nœud `<DotNetCliToolReference />` est utilisé. Modifiez le fichier *. csproj en conséquence.
 
 ## <a name="add-files-to-workflow"></a>Ajouter des fichiers au flux de travail
 
@@ -213,7 +213,7 @@ Pour réduire *Custom. CSS* et le regrouper avec *site. CSS* dans un fichier *si
 > Vous pouvez également utiliser le modèle globbing suivant :
 >
 > ```json
-> "inputFiles": ["wwwroot/**/*(*.css|!(*.min.css))"]
+> "inputFiles": ["wwwroot/**/!(*.min).css" ]
 > ```
 >
 > Ce modèle globbing correspond à tous les fichiers CSS et exclut le modèle de fichier minimisés.
@@ -226,7 +226,7 @@ Il est recommandé d’utiliser les fichiers regroupés et minimisés de votre a
 
 Spécifiez les fichiers à inclure dans vos pages à l’aide du [tag Helper d’environnement](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) dans vos vues. Le tag Helper d’environnement affiche uniquement son contenu lorsqu’il s’exécute dans des [environnements](xref:fundamentals/environments)spécifiques.
 
-La balise suivante `environment` affiche les fichiers CSS non traités lors de l’exécution dans `Development` l’environnement :
+La balise `environment` suivante effectue le rendu des fichiers CSS non traités lors de l’exécution dans l’environnement `Development` :
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -240,7 +240,7 @@ La balise suivante `environment` affiche les fichiers CSS non traités lors de l
 
 ::: moniker-end
 
-La balise suivante `environment` affiche les fichiers CSS regroupés et minimisés lorsqu’ils s’exécutent dans `Development`un environnement autre que. Par exemple, l’exécution `Production` de `Staging` dans ou déclenche le rendu de ces feuilles de style :
+La balise `environment` suivante affiche les fichiers CSS regroupés et minimisés lorsqu’ils s’exécutent dans un environnement autre que `Development`. Par exemple, l’exécution de dans `Production` ou `Staging` déclenche le rendu de ces feuilles de style :
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -269,7 +269,7 @@ Cliquez avec le bouton droit sur le fichier *bundleconfig. JSON* dans Explorateu
 
 ![Convertir en élément de menu contextuel Gulp](../client-side/bundling-and-minification/_static/convert-to-gulp.png)
 
-Les fichiers *gulpfile. js* et *Package. JSON* sont ajoutés au projet. Les packages de [NPM](https://www.npmjs.com/) de prise en charge répertoriés dans la `devDependencies` section du fichier *Package. JSON* sont installés.
+Les fichiers *gulpfile. js* et *Package. JSON* sont ajoutés au projet. Les packages de [NPM](https://www.npmjs.com/) de prise en charge répertoriés dans la section `devDependencies` du fichier *Package. JSON* sont installés.
 
 Exécutez la commande suivante dans la fenêtre PMC pour installer Gulp CLI en tant que dépendance globale :
 
@@ -285,10 +285,10 @@ Le fichier *gulpfile. js* lit le fichier *bundleconfig. JSON* pour les entrées,
 
 Si Visual Studio et/ou le Bundleer & extension Minifier ne sont pas disponibles, convertissez-les manuellement.
 
-Ajoutez un fichier *Package. JSON* , avec le code `devDependencies`suivant, à la racine du projet :
+Ajoutez un fichier *Package. JSON* , avec le `devDependencies`suivant, à la racine du projet :
 
 > [!WARNING]
-> Le `gulp-uglify` module ne prend pas en charge ECMAScript (es) 2015/ES6 et versions ultérieures. Installez [Gulp-terser](https://www.npmjs.com/package/gulp-terser) au lieu `gulp-uglify` de pour utiliser ES2015/ES6 ou une version ultérieure.
+> Le module `gulp-uglify` ne prend pas en charge ECMAScript (ES) 2015/ES6 et versions ultérieures. Installez [Gulp-terser](https://www.npmjs.com/package/gulp-terser) au lieu de `gulp-uglify` pour utiliser ES2015/ES6 ou une version ultérieure.
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
@@ -314,7 +314,7 @@ Pour déclencher la tâche de minimisation Gulp avant la génération du projet 
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
-Dans cet exemple, toutes les tâches définies dans `MyPreCompileTarget` la cible s’exécutent avant la `Build` cible prédéfinie. Une sortie similaire à ce qui suit apparaît dans la fenêtre sortie de Visual Studio :
+Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cible s’exécutent avant la cible prédéfinie `Build`. Une sortie similaire à ce qui suit apparaît dans la fenêtre sortie de Visual Studio :
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
@@ -327,7 +327,6 @@ Dans cet exemple, toutes les tâches définies dans `MyPreCompileTarget` la cibl
 1>[14:17:49] Finished 'min:css' after 88 ms
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
-
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
