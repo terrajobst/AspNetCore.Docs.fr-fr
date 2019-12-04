@@ -1,1 +1,0 @@
-> <span data-ttu-id="e33b9-101">AVERTISSEMENT Cette rubrique n’a pas été mise à jour pour ASP.NET Core 3,0.</span><span class="sxs-lookup"><span data-stu-id="e33b9-101">Warning This topic has not been updated for ASP.NET Core 3.0.</span></span>
