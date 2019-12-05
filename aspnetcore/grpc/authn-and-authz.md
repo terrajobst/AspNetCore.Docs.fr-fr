@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 08/13/2019
 uid: grpc/authn-and-authz
-ms.openlocfilehash: e8dd384ec43a66e56891925dcaa529085fa200c7
-ms.sourcegitcommit: 6d26ab647ede4f8e57465e29b03be5cb130fc872
+ms.openlocfilehash: 84903ee781588ff525d1dfce6a313e3867794762
+ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71999860"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74852699"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>Authentification et autorisation dans gRPC pour ASP.NET Core
 
@@ -45,7 +45,7 @@ public void Configure(IApplicationBuilder app)
 
 Le mécanisme d’authentification utilisé par votre application pendant un appel doit être configuré. La configuration de l’authentification est ajoutée à `Startup.ConfigureServices` et sera différente selon le mécanisme d’authentification utilisé par votre application. Pour obtenir des exemples d’utilisation de la sécurisation des applications ASP.NET Core, consultez [exemples d’authentification](xref:security/authentication/samples).
 
-Une fois l’authentification configurée, l’utilisateur est accessible dans une méthode de service gRPC via le `ServerCallContext`.
+Une fois l’authentification configurée, l’utilisateur est accessible dans une méthode de service gRPC via l' `ServerCallContext`.
 
 ```csharp
 public override Task<BuyTicketsResponse> BuyTickets(
@@ -80,7 +80,7 @@ public bool DoAuthenticatedCall(
 }
 ```
 
-La configuration de `ChannelCredentials` sur un canal est une autre façon d’envoyer le jeton au service avec des appels gRPC. Les informations d’identification sont exécutées chaque fois qu’un appel gRPC est effectué, ce qui évite d’avoir à écrire du code à plusieurs endroits pour passer le jeton vous-même.
+La configuration d' `ChannelCredentials` sur un canal est une autre façon d’envoyer le jeton au service avec des appels gRPC. Les informations d’identification sont exécutées chaque fois qu’un appel gRPC est effectué, ce qui évite d’avoir à écrire du code à plusieurs endroits pour passer le jeton vous-même.
 
 Les informations d’identification dans l’exemple suivant configure le canal pour envoyer le jeton avec chaque appel gRPC :
 
@@ -97,7 +97,7 @@ private static GrpcChannel CreateAuthenticatedChannel(string address)
     });
 
     // SslCredentials is used here because this channel is using TLS.
-    // Channels that aren't using TLS should use ChannelCredentials.Insecure instead.
+    // CallCredentials can't be used with ChannelCredentials.Insecure on non-TLS channels.
     var channel = GrpcChannel.ForAddress(address, new GrpcChannelOptions
     {
         Credentials = ChannelCredentials.Create(new SslCredentials(), credentials)
@@ -106,7 +106,7 @@ private static GrpcChannel CreateAuthenticatedChannel(string address)
 }
 ```
 
-### <a name="client-certificate-authentication"></a>Authentification par certificat client
+### <a name="client-certificate-authentication"></a>Authentification du certificat du client
 
 Un client peut également fournir un certificat client pour l’authentification. L' [authentification par certificat](https://tools.ietf.org/html/rfc5246#section-7.4.4) se produit au niveau du TLS, à long terme avant qu’il ne soit ASP.net core. Lorsque la demande entre ASP.NET Core, le [package d’authentification du certificat client](xref:security/authentication/certauth) vous permet de résoudre le certificat en `ClaimsPrincipal`.
 
@@ -142,7 +142,7 @@ Un grand nombre ASP.NET Core mécanismes d’authentification pris en charge fon
 * Certificat client
 * IdentityServer
 * Jeton JWT
-* OAuth 2,0
+* OAuth 2.0
 * OpenID Connect
 * WS-Federation
 
@@ -150,7 +150,7 @@ Pour plus d’informations sur la configuration de l’authentification sur le s
 
 La configuration du client gRPC pour utiliser l’authentification dépend du mécanisme d’authentification que vous utilisez. Les exemples précédents du jeton de porteur et du certificat client illustrent deux façons de configurer le client gRPC pour envoyer des métadonnées d’authentification avec des appels gRPC :
 
-* Les clients gRPC fortement typés utilisent `HttpClient` en interne. L’authentification peut être configurée sur [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler), ou en ajoutant des instances [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) personnalisées au `HttpClient`.
+* Les clients gRPC fortement typés utilisent `HttpClient` en interne. L’authentification peut être configurée sur [`HttpClientHandler`](/dotnet/api/system.net.http.httpclienthandler)ou en ajoutant des instances de [`HttpMessageHandler`](/dotnet/api/system.net.http.httpmessagehandler) personnalisées au `HttpClient`.
 * Chaque appel gRPC a un argument `CallOptions` facultatif. Les en-têtes personnalisés peuvent être envoyés à l’aide de la collection d’en-têtes de l’option.
 
 > [!NOTE]
@@ -167,7 +167,7 @@ public class TicketerService : Ticketer.TicketerBase
 }
 ```
 
-Vous pouvez utiliser les arguments et les propriétés de constructeur de l’attribut `[Authorize]` pour limiter l’accès uniquement aux utilisateurs correspondant à des [stratégies d’autorisation](xref:security/authorization/policies)spécifiques. Par exemple, si vous avez une stratégie d’autorisation personnalisée appelée `MyAuthorizationPolicy`, assurez-vous que seuls les utilisateurs correspondant à cette stratégie peuvent accéder au service à l’aide du code suivant :
+Vous pouvez utiliser les arguments de constructeur et les propriétés de l’attribut `[Authorize]` pour limiter l’accès uniquement aux utilisateurs correspondant à des [stratégies d’autorisation](xref:security/authorization/policies)spécifiques. Par exemple, si vous avez une stratégie d’autorisation personnalisée appelée `MyAuthorizationPolicy`, assurez-vous que seuls les utilisateurs qui correspondent à cette stratégie peuvent accéder au service à l’aide du code suivant :
 
 ```csharp
 [Authorize("MyAuthorizationPolicy")]

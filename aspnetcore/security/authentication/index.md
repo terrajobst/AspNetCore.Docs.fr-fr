@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/04/2019
 uid: security/authentication/index
-ms.openlocfilehash: 324b2669d3b69e4757a284e4ae7e1de5f4e87e5a
-ms.sourcegitcommit: 05ca05a5c8f6ae556aaad66ad9e4ec1e6b643c77
+ms.openlocfilehash: 40b2fb59b96486435a2ec0a7d69bee5ab4a814d2
+ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74810252"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74852712"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -41,7 +41,7 @@ Le paramètre `AddAuthentication` `JwtBearerDefaults.AuthenticationScheme` est l
 
 Si plusieurs schémas sont utilisés, les stratégies d’autorisation (ou attributs d’autorisation) peuvent [spécifier le schéma d’authentification (ou les schémas)](xref:security/authorization/limitingidentitybyscheme) dont ils dépendent pour authentifier l’utilisateur. Dans l’exemple ci-dessus, le schéma d’authentification de cookie peut être utilisé en spécifiant son nom (`CookieAuthenticationDefaults.AuthenticationScheme` par défaut, bien qu’un autre nom puisse être fourni lors de l’appel de `AddCookie`).
 
-Dans certains cas, l’appel à `AddAuthentication` est automatiquement effectué par d’autres méthodes d’extension. Par exemple, lors de l’utilisation d' [ASP.net Core identité](xref:security/authentication/identity),`AddAuthentication` est appelée en interne.
+Dans certains cas, l’appel à `AddAuthentication` est automatiquement effectué par d’autres méthodes d’extension. Par exemple, lors de l’utilisation d' [ASP.net Core identité](xref:security/authentication/identity), `AddAuthentication` est appelée en interne.
 
 L’intergiciel d’authentification est ajouté dans `Startup.Configure` en appelant la méthode d’extension <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> sur le `IApplicationBuilder`de l’application. L’appel de `UseAuthentication` inscrit l’intergiciel qui utilise les schémas d’authentification précédemment enregistrés. Appelez `UseAuthentication` avant tout middleware dépendant des utilisateurs authentifiés. Lors de l’utilisation du routage de point de terminaison, l’appel à `UseAuthentication` doit se faire :
 
@@ -80,14 +80,14 @@ En fonction de la configuration du schéma d’authentification et du contexte d
 
 ### <a name="authenticate"></a>Authentifier
 
-L’action d’authentification d’un schéma d’authentification est responsable de la construction de l’identité de l’utilisateur en fonction du contexte de la requête. Elle retourne une <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indiquant si l’authentification a réussi et, le cas échéant, l’identité de l’utilisateur dans un ticket d’authentification. Consultez HttpContext. AuthenticateAsync. Les exemples d’authentification sont les suivants :
+L’action d’authentification d’un schéma d’authentification est responsable de la construction de l’identité de l’utilisateur en fonction du contexte de la requête. Elle retourne une <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indiquant si l’authentification a réussi et, le cas échéant, l’identité de l’utilisateur dans un ticket d’authentification. Consultez `HttpContext.AuthenticateAsync`. Les exemples d’authentification sont les suivants :
 
 * Schéma d’authentification de cookie qui construit l’identité de l’utilisateur à partir des cookies.
 * Un modèle de porteur JWT qui désérialise et valide un jeton de porteur JWT pour construire l’identité de l’utilisateur.
 
 ### <a name="challenge"></a>Test
 
-Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez HttpContext. ChallengeAsync. Les exemples de demande d’authentification sont les suivants :
+Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez `HttpContext.ChallengeAsync`. Les exemples de demande d’authentification sont les suivants :
 
 * Schéma d’authentification de cookie redirigeant l’utilisateur vers une page de connexion.
 * Un modèle de porteur JWT renvoyant un résultat 401 avec un en-tête `www-authenticate: bearer`.
@@ -96,7 +96,7 @@ Une action de stimulation doit permettre à l’utilisateur de connaître le mé
 
 ### <a name="forbid"></a>Disant
 
-L’action interdire d’un schéma d’authentification est appelée par l’autorisation lorsqu’un utilisateur authentifié tente d’accéder à une ressource à laquelle il n’est pas autorisé à accéder. Consultez HttpContext. ForbidAsync. Les exemples d’authentifications interdits sont les suivants :
+L’action interdire d’un schéma d’authentification est appelée par l’autorisation lorsqu’un utilisateur authentifié tente d’accéder à une ressource à laquelle il n’est pas autorisé à accéder. Consultez `HttpContext.ForbidAsync`. Les exemples d’authentifications interdits sont les suivants :
 * Schéma d’authentification de cookie redirigeant l’utilisateur vers une page indiquant que l’accès a été interdit.
 * Un schéma de porteur JWT renvoyant un résultat 403.
 * Schéma d’authentification personnalisé redirigeant vers une page dans laquelle l’utilisateur peut demander l’accès à la ressource.
