@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le framework de journalisation fourni p
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 12/04/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 23ce2d09d2ce9f415ce71bcd7c21c29cb2a040fc
-ms.sourcegitcommit: 918d7000b48a2892750264b852bad9e96a1165a7
+ms.openlocfilehash: 49d598330948c5f4a137c534094e14ed5e01e27c
+ms.sourcegitcommit: f4cd3828e26e6d549ba8d0c36a17be35ad9e5a51
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74550361"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74825493"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -22,7 +22,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Steve Smith](https://ardalis.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. Les parties spécifiques à la journalisation de ces extraits de code s’appliquent à n’importe quelle application .NET Core qui utilise l' [hôte générique](xref:fundamentals/host/generic-host). Pour plus d’informations sur l’utilisation de l’hôte générique dans les applications de console non web, consultez [Services hébergés](xref:fundamentals/host/hosted-services).
+La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. The logging-specific parts of these code snippets apply to any .NET Core app that uses the [Generic Host](xref:fundamentals/host/generic-host). Pour plus d’informations sur l’utilisation de l’hôte générique dans les applications de console non web, consultez [Services hébergés](xref:fundamentals/host/hosted-services).
 
 Le code de journalisation pour les applications sans hôte générique diffère dans la façon dont les [fournisseurs sont ajoutés](#add-providers) et les [enregistreurs d'événements créés](#create-logs). Des exemples de code non hôte sont présentés dans ces sections de l’article.
 
@@ -48,10 +48,10 @@ Dans une application de console non hôte, appelez la méthode d’extension `Ad
 
 Les modèles de projet ASP.NET Core par défaut appellent <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
-* Console
-* Débogage
-* EventSource
-* EventLog (uniquement en cas d’exécution sur Windows)
+* [Console](#console-provider)
+* [Débogage](#debug-provider)
+* [EventSource](#event-source-provider)
+* [EventLog](#windows-eventlog-provider) (only when running on Windows)
 
 Vous pouvez remplacer les fournisseurs par défaut par ceux de votre choix. Appelez <xref:Microsoft.Extensions.Logging.LoggingBuilderExtensions.ClearProviders%2A> et ajoutez les fournisseurs que vous souhaitez.
 
@@ -129,9 +129,9 @@ Les [niveaux](#log-level) et les [catégories](#log-category) sont expliqués pl
 
 Pour écrire des journaux dans la classe `Program` d’une application ASP.NET Core, récupérez une instance `ILogger` de l’injection de dépendances après la création de l’hôte :
 
-[!code-csharp[](index/samples/3.x/TodoApiSample/Program.cs?name=snippet_LogFromMain&highlight=9,10)]
+[!code-csharp[](index/samples_snapshot/3.x/TodoApiSample/Program.cs?highlight=9,10)]
 
-La journalisation pendant la construction de l’hôte n’est pas prise en charge directement. Toutefois, un enregistreur d’événements distinct peut être utilisé. Dans l’exemple suivant, un enregistreur d’événements [Serilog](https://serilog.net/) est utilisé pour se connecter `CreateHostBuilder`. `AddSerilog` utilise la configuration statique spécifiée dans `Log.Logger`:
+La journalisation pendant la construction de l’hôte n’est pas prise en charge directement. Toutefois, un enregistreur d’événements distinct peut être utilisé. In the following example, a [Serilog](https://serilog.net/) logger is used to log in `CreateHostBuilder`. `AddSerilog` utilise la configuration statique spécifiée dans `Log.Logger`:
 
 ```csharp
 using System;
@@ -992,9 +992,9 @@ Utilisez les outils de trace dotnet pour collecter une trace à partir d’une a
    | Mot clé | Description |
    | :-----: | ----------- |
    | 1       | Consigne les événements Meta relatifs au `LoggingEventSource`. N’enregistre pas les événements à partir de `ILogger`). |
-   | 2       | Active l’événement `Message` lors de l’appel de `ILogger.Log()`. Fournit des informations d’une façon de programmation (non mise en forme). |
-   | 4       | Active l’événement `FormatMessage` lors de l’appel de `ILogger.Log()`. Fournit la version de chaîne mise en forme des informations. |
-   | 8       | Active l’événement `MessageJson` lors de l’appel de `ILogger.Log()`. Fournit une représentation JSON des arguments. |
+   | 2       | Turns on the `Message` event when `ILogger.Log()` is called. Provides information in a programmatic (not formatted) way. |
+   | 4       | Turns on the `FormatMessage` event when `ILogger.Log()` is called. Provides the formatted string version of the information. |
+   | 8       | Turns on the `MessageJson` event when `ILogger.Log()` is called. Provides a JSON representation of the arguments. |
 
    | Niveau de l'événement | Description     |
    | :---------: | --------------- |
@@ -1005,39 +1005,39 @@ Utilisez les outils de trace dotnet pour collecter une trace à partir d’une a
    | 4           | `Informational` |
    | 5           | `Verbose`       |
 
-   `FilterSpecs` entrées pour `{Logger Category}` et `{Event Level}` représentent des conditions de filtrage de journal supplémentaires. Séparez les entrées `FilterSpecs` par un point-virgule (`;`).
+   `FilterSpecs` entries for `{Logger Category}` and `{Event Level}` represent additional log filtering conditions. Separate `FilterSpecs` entries with a semicolon (`;`).
 
-   Exemple utilisant un interpréteur de commandes Windows (**sans** guillemets simples autour de la valeur `--providers`) :
+   Example using a Windows command shell (**no** single quotes around the `--providers` value):
 
    ```dotnetcli
    dotnet trace collect -p {PID} --providers Microsoft-Extensions-Logging:4:2:FilterSpecs=\"Microsoft.AspNetCore.Hosting*:4\"
    ```
 
-   La commande précédente active :
+   The preceding command activates:
 
-   * Enregistreur d’événements de la source d’événements pour produire des chaînes mises en forme (`4`) pour les erreurs (`2`).
-   * `Microsoft.AspNetCore.Hosting` la journalisation au niveau de journalisation `Informational` (`4`).
+   * The Event Source logger to produce formatted strings (`4`) for errors (`2`).
+   * `Microsoft.AspNetCore.Hosting` logging at the `Informational` logging level (`4`).
 
-1. Arrêtez les outils de trace dotnet en appuyant sur la touche entrée ou Ctrl + C.
+1. Stop the dotnet trace tooling by pressing the Enter key or Ctrl+C.
 
-   La trace est enregistrée avec le nom *trace. NetTrace* dans le dossier où la commande `dotnet trace` est exécutée.
+   The trace is saved with the name *trace.nettrace* in the folder where the `dotnet trace` command is executed.
 
-1. Ouvrez la trace avec [Perfview](#perfview). Ouvrez le fichier *trace. NetTrace* et explorez les événements de trace.
+1. Open the trace with [Perfview](#perfview). Open the *trace.nettrace* file and explore the trace events.
 
 Pour plus d'informations, consultez .
 
-* [Utilitaire trace for Performance Analysis (dotnet-trace)](/dotnet/core/diagnostics/dotnet-trace) (documentation .net Core)
-* [Utilitaire trace for Performance Analysis (dotnet-trace) (documentation sur le](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) référentiel GitHub dotnet/Diagnostics)
-* [LoggingEventSource, classe](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource) (Explorateur d’API .net)
+* [Trace for performance analysis utility (dotnet-trace)](/dotnet/core/diagnostics/dotnet-trace) (.NET Core documentation)
+* [Trace for performance analysis utility (dotnet-trace)](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) (dotnet/diagnostics GitHub repository documentation)
+* [LoggingEventSource Class](xref:Microsoft.Extensions.Logging.EventSource.LoggingEventSource) (.NET API Browser)
 * <xref:System.Diagnostics.Tracing.EventLevel>
-* [Source de référence LoggingEventSource (3,0)](https://github.com/aspnet/Extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; pour obtenir la source de référence pour une version différente, remplacez la branche par `release/{Version}`, où `{Version}` est la version de ASP.net Core souhaitée.
-* [Perfview](#perfview) &ndash; utile pour l’affichage des traces de la source d’événements.
+* [LoggingEventSource reference source (3.0)](https://github.com/aspnet/Extensions/blob/release/3.0/src/Logging/Logging.EventSource/src/LoggingEventSource.cs) &ndash; To obtain reference source for a different version, change the branch to `release/{Version}`, where `{Version}` is the version of ASP.NET Core desired.
+* [Perfview](#perfview) &ndash; Useful for viewing Event Source traces.
 
 #### <a name="perfview"></a>Perfview
 
 ::: moniker-end
 
-Utilisez l' [utilitaire PerfView](https://github.com/Microsoft/perfview) pour collecter et afficher les journaux. Il existe d’autres outils d’affichage des journaux ETW, mais PerfView est l’outil recommandé pour gérer les événements ETW générés par ASP.NET Core.
+Use the [PerfView utility](https://github.com/Microsoft/perfview) to collect and view logs. Il existe d’autres outils d’affichage des journaux ETW, mais PerfView est l’outil recommandé pour gérer les événements ETW générés par ASP.NET Core.
 
 Pour configurer PerfView afin qu’il collecte les événements enregistrés par ce fournisseur, ajoutez la chaîne `*Microsoft-Extensions-Logging` à la liste des **fournisseurs supplémentaires**. (N’oubliez pas d’inclure l’astérisque au début de la chaîne.)
 
@@ -1051,7 +1051,11 @@ Le package de fournisseur [Microsoft.Extensions.Logging.EventLog](https://www.nu
 logging.AddEventLog();
 ```
 
-Les [surcharges AddEventLog](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions) vous permettent de passer à <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>.
+Les [surcharges AddEventLog](xref:Microsoft.Extensions.Logging.EventLoggerFactoryExtensions) vous permettent de passer à <xref:Microsoft.Extensions.Logging.EventLog.EventLogSettings>. If `null` or not specified, the following default settings are used:
+
+* `LogName` &ndash; "Application"
+* `SourceName` &ndash; ".NET Runtime"
+* `MachineName` &ndash; local machine
 
 ### <a name="tracesource-provider"></a>Fournisseur TraceSource
 
@@ -1128,7 +1132,7 @@ Pour configurer le streaming des journaux Azure :
 
 * Accédez à la page **Journaux App Service** dans le portail de votre application.
 * Définissez **Journalisation des applications (Système de fichiers)** sur **Activé**.
-* Choisissez le **niveau** du journal. Ce paramètre s’applique uniquement à la diffusion en continu de journaux Azure, pas aux autres fournisseurs de journalisation de l’application.
+* Choisissez le **niveau** du journal. This setting only applies to Azure log streaming, not other logging providers in the app.
 
 Accédez à la page **Streaming des journaux** pour voir les messages d’application. Ils sont consignés par application par le biais de l’interface `ILogger`.
 
@@ -1156,7 +1160,7 @@ Frameworks de journalisation tiers qui sont pris en charge dans ASP.NET Core :
 * [Gelf](https://docs.graylog.org/en/2.3/pages/gelf.html) ([Dépôt GitHub](https://github.com/mattwcole/gelf-extensions-logging))
 * [JSNLog](https://jsnlog.com/) ([dépôt GitHub](https://github.com/mperdeck/jsnlog))
 * [KissLog.net](https://kisslog.net/) ([référentiel GitHub](https://github.com/catalingavan/KissLog-net))
-* [Log4net](https://logging.apache.org/log4net/) ([GitHub référentiel](https://github.com/huorswords/Microsoft.Extensions.Logging.Log4Net.AspNetCore))
+* [Log4Net](https://logging.apache.org/log4net/) ([GitHub repo](https://github.com/huorswords/Microsoft.Extensions.Logging.Log4Net.AspNetCore))
 * [Loggr](https://loggr.net/) ([dépôt GitHub](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](https://nlog-project.org/) ([dépôt GitHub](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([dépôt GitHub](https://github.com/getsentry/sentry-dotnet))
@@ -1168,7 +1172,7 @@ Certains frameworks tiers prennent en charge la [journalisation sémantique, ég
 L’utilisation d’un framework tiers est semblable à l’utilisation des fournisseurs intégrés :
 
 1. Ajoutez un package NuGet à votre projet.
-1. Appeler une méthode d’extension `ILoggerFactory` fournie par le Framework de journalisation.
+1. Call an `ILoggerFactory` extension method provided by the logging framework.
 
 Pour plus d’informations, consultez la documentation de chaque fournisseur. Les fournisseurs de journalisation tiers ne sont pas pris en charge par Microsoft.
 
