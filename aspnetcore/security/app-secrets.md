@@ -4,97 +4,97 @@ author: rick-anderson
 description: Découvrez comment stocker et récupérer des informations sensibles en tant que secrets d’application lors du développement d’une application ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 03/13/2019
+ms.date: 12/05/2019
 uid: security/app-secrets
-ms.openlocfilehash: 0203a5737caf1af809b739d9e266a6971cd1523b
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 3323b7b614b7e8bc711b2c5acfb501b65b3d783b
+ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080715"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74852686"
 ---
-# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a><span data-ttu-id="fa109-103">Stockage sécurisé des secrets d’application en développement dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="fa109-103">Safe storage of app secrets in development in ASP.NET Core</span></span>
+# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a><span data-ttu-id="e5d31-103">Stockage sécurisé des secrets d’application en développement dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e5d31-103">Safe storage of app secrets in development in ASP.NET Core</span></span>
 
-<span data-ttu-id="fa109-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27)et [Scott Addie](https://github.com/scottaddie)</span><span class="sxs-lookup"><span data-stu-id="fa109-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27), and [Scott Addie](https://github.com/scottaddie)</span></span>
+<span data-ttu-id="e5d31-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27)et [Scott Addie](https://github.com/scottaddie)</span><span class="sxs-lookup"><span data-stu-id="e5d31-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27), and [Scott Addie](https://github.com/scottaddie)</span></span>
 
-<span data-ttu-id="fa109-105">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="fa109-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="e5d31-105">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="e5d31-105">[View or download sample code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/app-secrets/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="fa109-106">Ce document explique les techniques permettant de stocker et de récupérer des données sensibles pendant le développement d’une application ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="fa109-106">This document explains techniques for storing and retrieving sensitive data during the development of an ASP.NET Core app.</span></span> <span data-ttu-id="fa109-107">Ne stockez jamais de mots de passe ou d’autres données sensibles dans le code source.</span><span class="sxs-lookup"><span data-stu-id="fa109-107">Never store passwords or other sensitive data in source code.</span></span> <span data-ttu-id="fa109-108">Les secrets de production ne doivent pas être utilisés à des fins de développement ou de test.</span><span class="sxs-lookup"><span data-stu-id="fa109-108">Production secrets shouldn't be used for development or test.</span></span> <span data-ttu-id="fa109-109">Vous pouvez stocker et protéger les secrets de test et de production Azure avec le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration).</span><span class="sxs-lookup"><span data-stu-id="fa109-109">You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>
+<span data-ttu-id="e5d31-106">Ce document décrit les techniques de stockage et de récupération des données sensibles lors du développement d’une application ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="e5d31-106">This document explains techniques for storing and retrieving sensitive data during the development of an ASP.NET Core app.</span></span> <span data-ttu-id="e5d31-107">Ne stockez jamais de mots de passe ou d’autres données sensibles dans le code source.</span><span class="sxs-lookup"><span data-stu-id="e5d31-107">Never store passwords or other sensitive data in source code.</span></span> <span data-ttu-id="e5d31-108">Les secrets de production ne doivent pas être utilisés à des fins de développement ou de test.</span><span class="sxs-lookup"><span data-stu-id="e5d31-108">Production secrets shouldn't be used for development or test.</span></span> <span data-ttu-id="e5d31-109">Les secrets ne doivent pas être déployés avec l’application.</span><span class="sxs-lookup"><span data-stu-id="e5d31-109">Secrets shouldn't be deployed with the app.</span></span> <span data-ttu-id="e5d31-110">Au lieu de cela, les secrets doivent être mis à disposition dans l’environnement de production par un moyen contrôlé, comme les variables d’environnement, les Azure Key Vault, etc. Vous pouvez stocker et protéger les secrets de test et de production Azure à l’aide du [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration).</span><span class="sxs-lookup"><span data-stu-id="e5d31-110">Instead, secrets should be made available in the production environment through a controlled means like environment variables, Azure Key Vault, etc. You can store and protect Azure test and production secrets with the [Azure Key Vault configuration provider](xref:security/key-vault-configuration).</span></span>
 
-## <a name="environment-variables"></a><span data-ttu-id="fa109-110">Variables d’environnement</span><span class="sxs-lookup"><span data-stu-id="fa109-110">Environment variables</span></span>
+## <a name="environment-variables"></a><span data-ttu-id="e5d31-111">Variables d'environnement</span><span class="sxs-lookup"><span data-stu-id="e5d31-111">Environment variables</span></span>
 
-<span data-ttu-id="fa109-111">Les variables d’environnement permettent d’éviter le stockage de secrets d’application dans le code ou dans des fichiers de configuration locaux.</span><span class="sxs-lookup"><span data-stu-id="fa109-111">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="fa109-112">Les variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifiées précédemment.</span><span class="sxs-lookup"><span data-stu-id="fa109-112">Environment variables override configuration values for all previously specified configuration sources.</span></span>
+<span data-ttu-id="e5d31-112">Les variables d’environnement sont utilisées pour éviter le stockage des secrets d’application dans le code ou dans des fichiers de configuration locaux.</span><span class="sxs-lookup"><span data-stu-id="e5d31-112">Environment variables are used to avoid storage of app secrets in code or in local configuration files.</span></span> <span data-ttu-id="e5d31-113">Les variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifiées précédemment.</span><span class="sxs-lookup"><span data-stu-id="e5d31-113">Environment variables override configuration values for all previously specified configuration sources.</span></span>
 
 ::: moniker range="<= aspnetcore-1.1"
 
-<span data-ttu-id="fa109-113">Configurez la lecture des valeurs de variable <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> d’environnement `Startup` en appelant dans le constructeur :</span><span class="sxs-lookup"><span data-stu-id="fa109-113">Configure the reading of environment variable values by calling <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> in the `Startup` constructor:</span></span>
+<span data-ttu-id="e5d31-114">Configurez la lecture des valeurs de variable d’environnement en appelant <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> dans le constructeur `Startup` :</span><span class="sxs-lookup"><span data-stu-id="e5d31-114">Configure the reading of environment variable values by calling <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> in the `Startup` constructor:</span></span>
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=8)]
 
 ::: moniker-end
 
-<span data-ttu-id="fa109-114">Imaginez une application web ASP.NET Core dans laquelle la sécurité **Comptes d’utilisateur individuels** est activée.</span><span class="sxs-lookup"><span data-stu-id="fa109-114">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="fa109-115">Une chaîne de connexion de base de données par défaut est incluse dans le fichier *appsettings.json* du projet avec la clé `DefaultConnection`.</span><span class="sxs-lookup"><span data-stu-id="fa109-115">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="fa109-116">La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe.</span><span class="sxs-lookup"><span data-stu-id="fa109-116">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="fa109-117">Durant le déploiement de l’application, la valeur de la clé `DefaultConnection` peut être remplacée par la valeur d’une variable d’environnement.</span><span class="sxs-lookup"><span data-stu-id="fa109-117">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="fa109-118">La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.</span><span class="sxs-lookup"><span data-stu-id="fa109-118">The environment variable may store the complete connection string with sensitive credentials.</span></span>
+<span data-ttu-id="e5d31-115">Prenons l’exemple d’une application Web ASP.NET Core dans laquelle la sécurité **des comptes d’utilisateur individuels** est activée.</span><span class="sxs-lookup"><span data-stu-id="e5d31-115">Consider an ASP.NET Core web app in which **Individual User Accounts** security is enabled.</span></span> <span data-ttu-id="e5d31-116">Une chaîne de connexion de base de données par défaut est incluse dans le fichier *appSettings. JSON* du projet avec la clé `DefaultConnection`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-116">A default database connection string is included in the project's *appsettings.json* file with the key `DefaultConnection`.</span></span> <span data-ttu-id="e5d31-117">La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe.</span><span class="sxs-lookup"><span data-stu-id="e5d31-117">The default connection string is for LocalDB, which runs in user mode and doesn't require a password.</span></span> <span data-ttu-id="e5d31-118">Pendant le déploiement de l’application, la valeur de clé de `DefaultConnection` peut être remplacée par la valeur d’une variable d’environnement.</span><span class="sxs-lookup"><span data-stu-id="e5d31-118">During app deployment, the `DefaultConnection` key value can be overridden with an environment variable's value.</span></span> <span data-ttu-id="e5d31-119">La variable d’environnement peut stocker la chaîne de connexion complète avec des informations d’identification sensibles.</span><span class="sxs-lookup"><span data-stu-id="e5d31-119">The environment variable may store the complete connection string with sensitive credentials.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="fa109-119">Les variables d’environnement sont généralement stockées au format texte brut non chiffré.</span><span class="sxs-lookup"><span data-stu-id="fa109-119">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="fa109-120">Si l’ordinateur ou le processus est compromis, des tiers non approuvés peuvent y accéder.</span><span class="sxs-lookup"><span data-stu-id="fa109-120">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="fa109-121">Il peut donc être nécessaire de prendre des mesures supplémentaires pour empêcher la divulgation des secrets utilisateur.</span><span class="sxs-lookup"><span data-stu-id="fa109-121">Additional measures to prevent disclosure of user secrets may be required.</span></span>
+> <span data-ttu-id="e5d31-120">Les variables d’environnement sont généralement stockées en texte brut et non chiffré.</span><span class="sxs-lookup"><span data-stu-id="e5d31-120">Environment variables are generally stored in plain, unencrypted text.</span></span> <span data-ttu-id="e5d31-121">Si l’ordinateur ou le processus est compromis, les variables d’environnement sont accessibles aux parties non fiables.</span><span class="sxs-lookup"><span data-stu-id="e5d31-121">If the machine or process is compromised, environment variables can be accessed by untrusted parties.</span></span> <span data-ttu-id="e5d31-122">Des mesures supplémentaires pour empêcher la divulgation de secrets d’utilisateur peuvent être nécessaires.</span><span class="sxs-lookup"><span data-stu-id="e5d31-122">Additional measures to prevent disclosure of user secrets may be required.</span></span>
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-## <a name="secret-manager"></a><span data-ttu-id="fa109-122">L'outil Secret Manager (Gestionnaire de secrets)</span><span class="sxs-lookup"><span data-stu-id="fa109-122">Secret Manager</span></span>
+## <a name="secret-manager"></a><span data-ttu-id="e5d31-123">L'outil Secret Manager (Gestionnaire de secrets)</span><span class="sxs-lookup"><span data-stu-id="e5d31-123">Secret Manager</span></span>
 
-<span data-ttu-id="fa109-123">L’outil secret Manager stocke les données sensibles pendant le développement d’un projet ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="fa109-123">The Secret Manager tool stores sensitive data during the development of an ASP.NET Core project.</span></span> <span data-ttu-id="fa109-124">Dans ce contexte, un élément de données sensibles est un secret d’application.</span><span class="sxs-lookup"><span data-stu-id="fa109-124">In this context, a piece of sensitive data is an app secret.</span></span> <span data-ttu-id="fa109-125">Les secrets de l’application sont stockés dans un emplacement distinct de l’arborescence du projet.</span><span class="sxs-lookup"><span data-stu-id="fa109-125">App secrets are stored in a separate location from the project tree.</span></span> <span data-ttu-id="fa109-126">Les secrets de l’application sont associés à un projet spécifique ou partagés entre plusieurs projets.</span><span class="sxs-lookup"><span data-stu-id="fa109-126">The app secrets are associated with a specific project or shared across several projects.</span></span> <span data-ttu-id="fa109-127">Les secrets de l’application ne sont pas archivés dans le contrôle de code source.</span><span class="sxs-lookup"><span data-stu-id="fa109-127">The app secrets aren't checked into source control.</span></span>
+<span data-ttu-id="e5d31-124">L’outil secret Manager stocke les données sensibles pendant le développement d’un projet ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="e5d31-124">The Secret Manager tool stores sensitive data during the development of an ASP.NET Core project.</span></span> <span data-ttu-id="e5d31-125">Dans ce contexte, un élément de données sensibles est un secret d’application.</span><span class="sxs-lookup"><span data-stu-id="e5d31-125">In this context, a piece of sensitive data is an app secret.</span></span> <span data-ttu-id="e5d31-126">Les secrets de l’application sont stockés dans un emplacement distinct de l’arborescence du projet.</span><span class="sxs-lookup"><span data-stu-id="e5d31-126">App secrets are stored in a separate location from the project tree.</span></span> <span data-ttu-id="e5d31-127">Les secrets de l’application sont associés à un projet spécifique ou partagés entre plusieurs projets.</span><span class="sxs-lookup"><span data-stu-id="e5d31-127">The app secrets are associated with a specific project or shared across several projects.</span></span> <span data-ttu-id="e5d31-128">Les secrets de l’application ne sont pas archivés dans le contrôle de code source.</span><span class="sxs-lookup"><span data-stu-id="e5d31-128">The app secrets aren't checked into source control.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="fa109-128">L'outil Secret Manager ne chiffre pas les clés secrètes stockées et donc ne doit pas être traité comme un magasin approuvé.</span><span class="sxs-lookup"><span data-stu-id="fa109-128">The Secret Manager tool doesn't encrypt the stored secrets and shouldn't be treated as a trusted store.</span></span> <span data-ttu-id="fa109-129">Il est utile uniquement à des fins de développement.</span><span class="sxs-lookup"><span data-stu-id="fa109-129">It's for development purposes only.</span></span> <span data-ttu-id="fa109-130">Les clés et valeurs sont stockées dans un fichier de configuration JSON dans le répertoire de profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="fa109-130">The keys and values are stored in a JSON configuration file in the user profile directory.</span></span>
+> <span data-ttu-id="e5d31-129">L'outil Secret Manager ne chiffre pas les clés secrètes stockées et donc ne doit pas être traité comme un magasin approuvé.</span><span class="sxs-lookup"><span data-stu-id="e5d31-129">The Secret Manager tool doesn't encrypt the stored secrets and shouldn't be treated as a trusted store.</span></span> <span data-ttu-id="e5d31-130">Il est utile uniquement à des fins de développement.</span><span class="sxs-lookup"><span data-stu-id="e5d31-130">It's for development purposes only.</span></span> <span data-ttu-id="e5d31-131">Les clés et valeurs sont stockées dans un fichier de configuration JSON dans le répertoire de profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e5d31-131">The keys and values are stored in a JSON configuration file in the user profile directory.</span></span>
 
-## <a name="how-the-secret-manager-tool-works"></a><span data-ttu-id="fa109-131">Fonctionnement de l’outil Secret Manager</span><span class="sxs-lookup"><span data-stu-id="fa109-131">How the Secret Manager tool works</span></span>
+## <a name="how-the-secret-manager-tool-works"></a><span data-ttu-id="e5d31-132">Fonctionnement de l’outil Secret Manager</span><span class="sxs-lookup"><span data-stu-id="e5d31-132">How the Secret Manager tool works</span></span>
 
-<span data-ttu-id="fa109-132">L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées.</span><span class="sxs-lookup"><span data-stu-id="fa109-132">The Secret Manager tool abstracts away the implementation details, such as where and how the values are stored.</span></span> <span data-ttu-id="fa109-133">Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation.</span><span class="sxs-lookup"><span data-stu-id="fa109-133">You can use the tool without knowing these implementation details.</span></span> <span data-ttu-id="fa109-134">Les valeurs sont stockées dans un fichier de configuration JSON dans un dossier de profil utilisateur protégé du système sur l’ordinateur local :</span><span class="sxs-lookup"><span data-stu-id="fa109-134">The values are stored in a JSON configuration file in a system-protected user profile folder on the local machine:</span></span>
+<span data-ttu-id="e5d31-133">L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées.</span><span class="sxs-lookup"><span data-stu-id="e5d31-133">The Secret Manager tool abstracts away the implementation details, such as where and how the values are stored.</span></span> <span data-ttu-id="e5d31-134">Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation.</span><span class="sxs-lookup"><span data-stu-id="e5d31-134">You can use the tool without knowing these implementation details.</span></span> <span data-ttu-id="e5d31-135">Les valeurs sont stockées dans un fichier de configuration JSON dans un dossier de profil utilisateur protégé du système sur l’ordinateur local :</span><span class="sxs-lookup"><span data-stu-id="e5d31-135">The values are stored in a JSON configuration file in a system-protected user profile folder on the local machine:</span></span>
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="fa109-135">Windows</span><span class="sxs-lookup"><span data-stu-id="fa109-135">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="e5d31-136">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="e5d31-136">Windows</span></span>](#tab/windows)
 
-<span data-ttu-id="fa109-136">Chemin d’accès au système de fichiers :</span><span class="sxs-lookup"><span data-stu-id="fa109-136">File system path:</span></span>
+<span data-ttu-id="e5d31-137">Chemin d’accès au système de fichiers :</span><span class="sxs-lookup"><span data-stu-id="e5d31-137">File system path:</span></span>
 
 `%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
 
-# <a name="linux--macostablinuxmacos"></a>[<span data-ttu-id="fa109-137">Linux / macOS</span><span class="sxs-lookup"><span data-stu-id="fa109-137">Linux / macOS</span></span>](#tab/linux+macos)
+# <a name="linux--macostablinuxmacos"></a>[<span data-ttu-id="e5d31-138">Linux / macOS</span><span class="sxs-lookup"><span data-stu-id="e5d31-138">Linux / macOS</span></span>](#tab/linux+macos)
 
-<span data-ttu-id="fa109-138">Chemin d’accès au système de fichiers :</span><span class="sxs-lookup"><span data-stu-id="fa109-138">File system path:</span></span>
+<span data-ttu-id="e5d31-139">Chemin d’accès au système de fichiers :</span><span class="sxs-lookup"><span data-stu-id="e5d31-139">File system path:</span></span>
 
 `~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
 
 ---
 
-<span data-ttu-id="fa109-139">Dans les chemins d’accès de fichier `<user_secrets_id>` précédents, `UserSecretsId` remplacez par la valeur spécifiée dans le fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-139">In the preceding file paths, replace `<user_secrets_id>` with the `UserSecretsId` value specified in the *.csproj* file.</span></span>
+<span data-ttu-id="e5d31-140">Dans les chemins d’accès de fichier précédents, remplacez `<user_secrets_id>` par la valeur `UserSecretsId` spécifiée dans le fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-140">In the preceding file paths, replace `<user_secrets_id>` with the `UserSecretsId` value specified in the *.csproj* file.</span></span>
 
-<span data-ttu-id="fa109-140">N’écrivez pas de code dépendant de l’emplacement ou du format des données enregistrées avec l’outil secret Manager.</span><span class="sxs-lookup"><span data-stu-id="fa109-140">Don't write code that depends on the location or format of data saved with the Secret Manager tool.</span></span> <span data-ttu-id="fa109-141">Ces détails d’implémentation peuvent changer.</span><span class="sxs-lookup"><span data-stu-id="fa109-141">These implementation details may change.</span></span> <span data-ttu-id="fa109-142">Par exemple, les valeurs secrètes ne sont pas chiffrées, mais peuvent être dans le futur.</span><span class="sxs-lookup"><span data-stu-id="fa109-142">For example, the secret values aren't encrypted, but could be in the future.</span></span>
+<span data-ttu-id="e5d31-141">N’écrivez pas de code dépendant de l’emplacement ou du format des données enregistrées avec l’outil secret Manager.</span><span class="sxs-lookup"><span data-stu-id="e5d31-141">Don't write code that depends on the location or format of data saved with the Secret Manager tool.</span></span> <span data-ttu-id="e5d31-142">Ces détails d’implémentation peuvent changer.</span><span class="sxs-lookup"><span data-stu-id="e5d31-142">These implementation details may change.</span></span> <span data-ttu-id="e5d31-143">Par exemple, les valeurs secrètes ne sont pas chiffrées, mais peuvent être dans le futur.</span><span class="sxs-lookup"><span data-stu-id="e5d31-143">For example, the secret values aren't encrypted, but could be in the future.</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
-## <a name="install-the-secret-manager-tool"></a><span data-ttu-id="fa109-143">Installer l’outil secret Manager</span><span class="sxs-lookup"><span data-stu-id="fa109-143">Install the Secret Manager tool</span></span>
+## <a name="install-the-secret-manager-tool"></a><span data-ttu-id="e5d31-144">Installer l’outil secret Manager</span><span class="sxs-lookup"><span data-stu-id="e5d31-144">Install the Secret Manager tool</span></span>
 
-<span data-ttu-id="fa109-144">L’outil Gestionnaire de secret est fourni avec le CLI .NET Core dans kit SDK .NET Core 2.1.300 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="fa109-144">The Secret Manager tool is bundled with the .NET Core CLI in .NET Core SDK 2.1.300 or later.</span></span> <span data-ttu-id="fa109-145">Pour les versions kit SDK .NET Core antérieures à 2.1.300, l’installation des outils est nécessaire.</span><span class="sxs-lookup"><span data-stu-id="fa109-145">For .NET Core SDK versions before 2.1.300, tool installation is necessary.</span></span>
+<span data-ttu-id="e5d31-145">L’outil Gestionnaire de secret est fourni avec le CLI .NET Core dans kit SDK .NET Core 2.1.300 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="e5d31-145">The Secret Manager tool is bundled with the .NET Core CLI in .NET Core SDK 2.1.300 or later.</span></span> <span data-ttu-id="e5d31-146">Pour les versions kit SDK .NET Core antérieures à 2.1.300, l’installation des outils est nécessaire.</span><span class="sxs-lookup"><span data-stu-id="e5d31-146">For .NET Core SDK versions before 2.1.300, tool installation is necessary.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="fa109-146">Exécutez `dotnet --version` à partir d’une interface de commande pour voir le numéro de version du kit SDK .net Core installé.</span><span class="sxs-lookup"><span data-stu-id="fa109-146">Run `dotnet --version` from a command shell to see the installed .NET Core SDK version number.</span></span>
+> <span data-ttu-id="e5d31-147">Exécutez `dotnet --version` à partir d’une interface de commande pour voir le numéro de version du kit SDK .NET Core installé.</span><span class="sxs-lookup"><span data-stu-id="e5d31-147">Run `dotnet --version` from a command shell to see the installed .NET Core SDK version number.</span></span>
 
-<span data-ttu-id="fa109-147">Un avertissement s’affiche si le kit SDK .NET Core utilisé comprend l’outil :</span><span class="sxs-lookup"><span data-stu-id="fa109-147">A warning is displayed if the .NET Core SDK being used includes the tool:</span></span>
+<span data-ttu-id="e5d31-148">Un avertissement s’affiche si le kit SDK .NET Core utilisé comprend l’outil :</span><span class="sxs-lookup"><span data-stu-id="e5d31-148">A warning is displayed if the .NET Core SDK being used includes the tool:</span></span>
 
 ```console
 The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET Core SDK. Information on resolving this warning is available at (https://aka.ms/dotnetclitools-in-box).
 ```
 
-<span data-ttu-id="fa109-148">Installez le package NuGet [Microsoft. extensions. SecretManager. Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) dans votre projet ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="fa109-148">Install the [Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) NuGet package in your ASP.NET Core project.</span></span> <span data-ttu-id="fa109-149">Exemple :</span><span class="sxs-lookup"><span data-stu-id="fa109-149">For example:</span></span>
+<span data-ttu-id="e5d31-149">Installez le package NuGet [Microsoft. extensions. SecretManager. Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) dans votre projet ASP.net core.</span><span class="sxs-lookup"><span data-stu-id="e5d31-149">Install the [Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) NuGet package in your ASP.NET Core project.</span></span> <span data-ttu-id="e5d31-150">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="e5d31-150">For example:</span></span>
 
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=15-16)]
 
-<span data-ttu-id="fa109-150">Exécutez la commande suivante dans une interface de commande pour valider l’installation de l’outil :</span><span class="sxs-lookup"><span data-stu-id="fa109-150">Execute the following command in a command shell to validate the tool installation:</span></span>
+<span data-ttu-id="e5d31-151">Exécutez la commande suivante dans une interface de commande pour valider l’installation de l’outil :</span><span class="sxs-lookup"><span data-stu-id="e5d31-151">Execute the following command in a command shell to validate the tool installation:</span></span>
 
 ```dotnetcli
 dotnet user-secrets -h
 ```
 
-<span data-ttu-id="fa109-151">L’outil Gestionnaire de secret affiche des exemples d’utilisation, d’options et d’aide sur les commandes :</span><span class="sxs-lookup"><span data-stu-id="fa109-151">The Secret Manager tool displays sample usage, options, and command help:</span></span>
+<span data-ttu-id="e5d31-152">L’outil Gestionnaire de secret affiche des exemples d’utilisation, d’options et d’aide sur les commandes :</span><span class="sxs-lookup"><span data-stu-id="e5d31-152">The Secret Manager tool displays sample usage, options, and command help:</span></span>
 
 ```console
 Usage: dotnet user-secrets [options] [command]
@@ -117,29 +117,29 @@ Use "dotnet user-secrets [command] --help" for more information about a command.
 ```
 
 > [!NOTE]
-> <span data-ttu-id="fa109-152">Vous devez être dans le même répertoire que le fichier *. csproj* pour exécuter les outils définis dans les éléments du `DotNetCliToolReference` fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-152">You must be in the same directory as the *.csproj* file to run tools defined in the *.csproj* file's `DotNetCliToolReference` elements.</span></span>
+> <span data-ttu-id="e5d31-153">Vous devez être dans le même répertoire que le fichier *. csproj* pour exécuter les outils définis dans les éléments `DotNetCliToolReference` du fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-153">You must be in the same directory as the *.csproj* file to run tools defined in the *.csproj* file's `DotNetCliToolReference` elements.</span></span>
 
 ::: moniker-end
 
-## <a name="enable-secret-storage"></a><span data-ttu-id="fa109-153">Activer le stockage secret</span><span class="sxs-lookup"><span data-stu-id="fa109-153">Enable secret storage</span></span>
+## <a name="enable-secret-storage"></a><span data-ttu-id="e5d31-154">Activer le stockage secret</span><span class="sxs-lookup"><span data-stu-id="e5d31-154">Enable secret storage</span></span>
 
-<span data-ttu-id="fa109-154">L’outil Gestionnaire de secret fonctionne sur les paramètres de configuration spécifiques au projet stockés dans votre profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="fa109-154">The Secret Manager tool operates on project-specific configuration settings stored in your user profile.</span></span>
+<span data-ttu-id="e5d31-155">L’outil Gestionnaire de secret fonctionne sur les paramètres de configuration spécifiques au projet stockés dans votre profil utilisateur.</span><span class="sxs-lookup"><span data-stu-id="e5d31-155">The Secret Manager tool operates on project-specific configuration settings stored in your user profile.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="fa109-155">L’outil Gestionnaire de secret comprend `init` une commande dans kit SDK .net Core 3.0.100 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="fa109-155">The Secret Manager tool includes an `init` command in .NET Core SDK 3.0.100 or later.</span></span> <span data-ttu-id="fa109-156">Pour utiliser des secrets d’utilisateur, exécutez la commande suivante dans le répertoire du projet :</span><span class="sxs-lookup"><span data-stu-id="fa109-156">To use user secrets, run the following command in the project directory:</span></span>
+<span data-ttu-id="e5d31-156">L’outil Gestionnaire de secret comprend une commande `init` dans kit SDK .NET Core 3.0.100 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="e5d31-156">The Secret Manager tool includes an `init` command in .NET Core SDK 3.0.100 or later.</span></span> <span data-ttu-id="e5d31-157">Pour utiliser des secrets d’utilisateur, exécutez la commande suivante dans le répertoire du projet :</span><span class="sxs-lookup"><span data-stu-id="e5d31-157">To use user secrets, run the following command in the project directory:</span></span>
 
 ```dotnetcli
 dotnet user-secrets init
 ```
 
-<span data-ttu-id="fa109-157">La commande précédente ajoute un `UserSecretsId` élément dans un `PropertyGroup` du fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-157">The preceding command adds a `UserSecretsId` element within a `PropertyGroup` of the *.csproj* file.</span></span> <span data-ttu-id="fa109-158">Par défaut, le texte interne de `UserSecretsId` est un GUID.</span><span class="sxs-lookup"><span data-stu-id="fa109-158">By default, the inner text of `UserSecretsId` is a GUID.</span></span> <span data-ttu-id="fa109-159">Le texte interne est arbitraire, mais il est unique pour le projet.</span><span class="sxs-lookup"><span data-stu-id="fa109-159">The inner text is arbitrary, but is unique to the project.</span></span>
+<span data-ttu-id="e5d31-158">La commande précédente ajoute un élément `UserSecretsId` dans une `PropertyGroup` du fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-158">The preceding command adds a `UserSecretsId` element within a `PropertyGroup` of the *.csproj* file.</span></span> <span data-ttu-id="e5d31-159">Par défaut, le texte interne de `UserSecretsId` est un GUID.</span><span class="sxs-lookup"><span data-stu-id="e5d31-159">By default, the inner text of `UserSecretsId` is a GUID.</span></span> <span data-ttu-id="e5d31-160">Le texte interne est arbitraire, mais il est unique pour le projet.</span><span class="sxs-lookup"><span data-stu-id="e5d31-160">The inner text is arbitrary, but is unique to the project.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-<span data-ttu-id="fa109-160">Pour utiliser des secrets d’utilisateur, `UserSecretsId` définissez un élément `PropertyGroup` dans un du fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-160">To use user secrets, define a `UserSecretsId` element within a `PropertyGroup` of the *.csproj* file.</span></span> <span data-ttu-id="fa109-161">Le texte interne de `UserSecretsId` est arbitraire, mais il est unique pour le projet.</span><span class="sxs-lookup"><span data-stu-id="fa109-161">The inner text of `UserSecretsId` is arbitrary, but is unique to the project.</span></span> <span data-ttu-id="fa109-162">Les développeurs génèrent généralement un GUID pour le `UserSecretsId`.</span><span class="sxs-lookup"><span data-stu-id="fa109-162">Developers typically generate a GUID for the `UserSecretsId`.</span></span>
+<span data-ttu-id="e5d31-161">Pour utiliser des secrets d’utilisateur, définissez un élément `UserSecretsId` dans un `PropertyGroup` du fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-161">To use user secrets, define a `UserSecretsId` element within a `PropertyGroup` of the *.csproj* file.</span></span> <span data-ttu-id="e5d31-162">Le texte interne de `UserSecretsId` est arbitraire, mais il est unique pour le projet.</span><span class="sxs-lookup"><span data-stu-id="e5d31-162">The inner text of `UserSecretsId` is arbitrary, but is unique to the project.</span></span> <span data-ttu-id="e5d31-163">Les développeurs génèrent généralement un GUID pour le `UserSecretsId`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-163">Developers typically generate a GUID for the `UserSecretsId`.</span></span>
 
 ::: moniker-end
 
@@ -156,27 +156,27 @@ dotnet user-secrets init
 ::: moniker-end
 
 > [!TIP]
-> <span data-ttu-id="fa109-163">Dans Visual Studio, cliquez avec le bouton droit sur le projet dans Explorateur de solutions, puis sélectionnez **gérer les secrets d’utilisateur** dans le menu contextuel.</span><span class="sxs-lookup"><span data-stu-id="fa109-163">In Visual Studio, right-click the project in Solution Explorer, and select **Manage User Secrets** from the context menu.</span></span> <span data-ttu-id="fa109-164">Ce geste ajoute un `UserSecretsId` élément, rempli avec un GUID, au fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-164">This gesture adds a `UserSecretsId` element, populated with a GUID, to the *.csproj* file.</span></span>
+> <span data-ttu-id="e5d31-164">Dans Visual Studio, cliquez avec le bouton droit sur le projet dans Explorateur de solutions, puis sélectionnez **gérer les secrets d’utilisateur** dans le menu contextuel.</span><span class="sxs-lookup"><span data-stu-id="e5d31-164">In Visual Studio, right-click the project in Solution Explorer, and select **Manage User Secrets** from the context menu.</span></span> <span data-ttu-id="e5d31-165">Ce geste ajoute un élément `UserSecretsId`, rempli avec un GUID, au fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-165">This gesture adds a `UserSecretsId` element, populated with a GUID, to the *.csproj* file.</span></span>
 
-## <a name="set-a-secret"></a><span data-ttu-id="fa109-165">Définir une clé secrète</span><span class="sxs-lookup"><span data-stu-id="fa109-165">Set a secret</span></span>
+## <a name="set-a-secret"></a><span data-ttu-id="e5d31-166">Définir une clé secrète</span><span class="sxs-lookup"><span data-stu-id="e5d31-166">Set a secret</span></span>
 
-<span data-ttu-id="fa109-166">Définissez un secret d’application comprenant une clé et sa valeur.</span><span class="sxs-lookup"><span data-stu-id="fa109-166">Define an app secret consisting of a key and its value.</span></span> <span data-ttu-id="fa109-167">Le secret est associé à la valeur du `UserSecretsId` projet.</span><span class="sxs-lookup"><span data-stu-id="fa109-167">The secret is associated with the project's `UserSecretsId` value.</span></span> <span data-ttu-id="fa109-168">Par exemple, exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="fa109-168">For example, run the following command from the directory in which the *.csproj* file exists:</span></span>
+<span data-ttu-id="e5d31-167">Définissez un secret d’application comprenant une clé et sa valeur.</span><span class="sxs-lookup"><span data-stu-id="e5d31-167">Define an app secret consisting of a key and its value.</span></span> <span data-ttu-id="e5d31-168">Le secret est associé à la valeur de `UserSecretsId` du projet.</span><span class="sxs-lookup"><span data-stu-id="e5d31-168">The secret is associated with the project's `UserSecretsId` value.</span></span> <span data-ttu-id="e5d31-169">Par exemple, exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="e5d31-169">For example, run the following command from the directory in which the *.csproj* file exists:</span></span>
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 ```
 
-<span data-ttu-id="fa109-169">Dans l’exemple précédent, le signe deux-points indique `Movies` qu’il s’agit d’un `ServiceApiKey` littéral d’objet avec une propriété.</span><span class="sxs-lookup"><span data-stu-id="fa109-169">In the preceding example, the colon denotes that `Movies` is an object literal with a `ServiceApiKey` property.</span></span>
+<span data-ttu-id="e5d31-170">Dans l’exemple précédent, le signe deux-points indique que `Movies` est un littéral d’objet avec une propriété `ServiceApiKey`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-170">In the preceding example, the colon denotes that `Movies` is an object literal with a `ServiceApiKey` property.</span></span>
 
-<span data-ttu-id="fa109-170">L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires.</span><span class="sxs-lookup"><span data-stu-id="fa109-170">The Secret Manager tool can be used from other directories too.</span></span> <span data-ttu-id="fa109-171">Utilisez l' `--project` option pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="fa109-171">Use the `--project` option to supply the file system path at which the *.csproj* file exists.</span></span> <span data-ttu-id="fa109-172">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="fa109-172">For example:</span></span>
+<span data-ttu-id="e5d31-171">L’outil Gestionnaire de secret peut également être utilisé à partir d’autres annuaires.</span><span class="sxs-lookup"><span data-stu-id="e5d31-171">The Secret Manager tool can be used from other directories too.</span></span> <span data-ttu-id="e5d31-172">Utilisez l’option `--project` pour fournir le chemin d’accès au système de fichiers où se trouve le fichier *. csproj* .</span><span class="sxs-lookup"><span data-stu-id="e5d31-172">Use the `--project` option to supply the file system path at which the *.csproj* file exists.</span></span> <span data-ttu-id="e5d31-173">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="e5d31-173">For example:</span></span>
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
 ```
 
-### <a name="json-structure-flattening-in-visual-studio"></a><span data-ttu-id="fa109-173">Aplatissement de la structure JSON dans Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fa109-173">JSON structure flattening in Visual Studio</span></span>
+### <a name="json-structure-flattening-in-visual-studio"></a><span data-ttu-id="e5d31-174">Aplatissement de la structure JSON dans Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e5d31-174">JSON structure flattening in Visual Studio</span></span>
 
-<span data-ttu-id="fa109-174">Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un fichier *secrets. JSON* dans l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="fa109-174">Visual Studio's **Manage User Secrets** gesture opens a *secrets.json* file in the text editor.</span></span> <span data-ttu-id="fa109-175">Remplacez le contenu de *secrets. JSON* par les paires clé-valeur à stocker.</span><span class="sxs-lookup"><span data-stu-id="fa109-175">Replace the contents of *secrets.json* with the key-value pairs to be stored.</span></span> <span data-ttu-id="fa109-176">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="fa109-176">For example:</span></span>
+<span data-ttu-id="e5d31-175">Le geste **gérer les secrets** de l’utilisateur de Visual Studio ouvre un fichier *secrets. JSON* dans l’éditeur de texte.</span><span class="sxs-lookup"><span data-stu-id="e5d31-175">Visual Studio's **Manage User Secrets** gesture opens a *secrets.json* file in the text editor.</span></span> <span data-ttu-id="e5d31-176">Remplacez le contenu de *secrets. JSON* par les paires clé-valeur à stocker.</span><span class="sxs-lookup"><span data-stu-id="e5d31-176">Replace the contents of *secrets.json* with the key-value pairs to be stored.</span></span> <span data-ttu-id="e5d31-177">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="e5d31-177">For example:</span></span>
 
 ```json
 {
@@ -187,7 +187,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 }
 ```
 
-<span data-ttu-id="fa109-177">La structure JSON est aplatie après des modifications `dotnet user-secrets remove` via `dotnet user-secrets set`ou.</span><span class="sxs-lookup"><span data-stu-id="fa109-177">The JSON structure is flattened after modifications via `dotnet user-secrets remove` or `dotnet user-secrets set`.</span></span> <span data-ttu-id="fa109-178">Par exemple, l' `dotnet user-secrets remove "Movies:ConnectionString"` exécution de réduit `Movies` le littéral d’objet.</span><span class="sxs-lookup"><span data-stu-id="fa109-178">For example, running `dotnet user-secrets remove "Movies:ConnectionString"` collapses the `Movies` object literal.</span></span> <span data-ttu-id="fa109-179">Le fichier modifié ressemble à ce qui suit :</span><span class="sxs-lookup"><span data-stu-id="fa109-179">The modified file resembles the following:</span></span>
+<span data-ttu-id="e5d31-178">La structure JSON est aplatie après des modifications via `dotnet user-secrets remove` ou `dotnet user-secrets set`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-178">The JSON structure is flattened after modifications via `dotnet user-secrets remove` or `dotnet user-secrets set`.</span></span> <span data-ttu-id="e5d31-179">Par exemple, l’exécution de `dotnet user-secrets remove "Movies:ConnectionString"` réduit le littéral d’objet `Movies`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-179">For example, running `dotnet user-secrets remove "Movies:ConnectionString"` collapses the `Movies` object literal.</span></span> <span data-ttu-id="e5d31-180">Le fichier modifié ressemble à ce qui suit :</span><span class="sxs-lookup"><span data-stu-id="e5d31-180">The modified file resembles the following:</span></span>
 
 ```json
 {
@@ -195,21 +195,21 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 }
 ```
 
-## <a name="set-multiple-secrets"></a><span data-ttu-id="fa109-180">Définir plusieurs secrets</span><span class="sxs-lookup"><span data-stu-id="fa109-180">Set multiple secrets</span></span>
+## <a name="set-multiple-secrets"></a><span data-ttu-id="e5d31-181">Définir plusieurs secrets</span><span class="sxs-lookup"><span data-stu-id="e5d31-181">Set multiple secrets</span></span>
 
-<span data-ttu-id="fa109-181">Un lot de secrets peut être défini par la canalisation JSON `set` à la commande.</span><span class="sxs-lookup"><span data-stu-id="fa109-181">A batch of secrets can be set by piping JSON to the `set` command.</span></span> <span data-ttu-id="fa109-182">Dans l’exemple suivant, le contenu du fichier *Input. JSON* est dirigé vers la `set` commande.</span><span class="sxs-lookup"><span data-stu-id="fa109-182">In the following example, the *input.json* file's contents are piped to the `set` command.</span></span>
+<span data-ttu-id="e5d31-182">Un lot de secrets peut être défini par la canalisation JSON à la commande `set`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-182">A batch of secrets can be set by piping JSON to the `set` command.</span></span> <span data-ttu-id="e5d31-183">Dans l’exemple suivant, le contenu du fichier *Input. JSON* est dirigé vers la commande `set`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-183">In the following example, the *input.json* file's contents are piped to the `set` command.</span></span>
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="fa109-183">Windows</span><span class="sxs-lookup"><span data-stu-id="fa109-183">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="e5d31-184">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="e5d31-184">Windows</span></span>](#tab/windows)
 
-<span data-ttu-id="fa109-184">Ouvrez une interface de commande, puis exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="fa109-184">Open a command shell, and execute the following command:</span></span>
+<span data-ttu-id="e5d31-185">Ouvrez une interface de commande, puis exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="e5d31-185">Open a command shell, and execute the following command:</span></span>
 
   ```dotnetcli
   type .\input.json | dotnet user-secrets set
   ```
 
-# <a name="linux--macostablinuxmacos"></a>[<span data-ttu-id="fa109-185">Linux / macOS</span><span class="sxs-lookup"><span data-stu-id="fa109-185">Linux / macOS</span></span>](#tab/linux+macos)
+# <a name="linux--macostablinuxmacos"></a>[<span data-ttu-id="e5d31-186">Linux / macOS</span><span class="sxs-lookup"><span data-stu-id="e5d31-186">Linux / macOS</span></span>](#tab/linux+macos)
 
-<span data-ttu-id="fa109-186">Ouvrez une interface de commande, puis exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="fa109-186">Open a command shell, and execute the following command:</span></span>
+<span data-ttu-id="e5d31-187">Ouvrez une interface de commande, puis exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="e5d31-187">Open a command shell, and execute the following command:</span></span>
 
   ```dotnetcli
   cat ./input.json | dotnet user-secrets set
@@ -217,23 +217,23 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ---
 
-## <a name="access-a-secret"></a><span data-ttu-id="fa109-187">Accéder à une clé secrète</span><span class="sxs-lookup"><span data-stu-id="fa109-187">Access a secret</span></span>
+## <a name="access-a-secret"></a><span data-ttu-id="e5d31-188">Accéder à une clé secrète</span><span class="sxs-lookup"><span data-stu-id="e5d31-188">Access a secret</span></span>
 
-<span data-ttu-id="fa109-188">L' [API de Configuration ASP.net Core](xref:fundamentals/configuration/index) permet d’accéder aux secrets du gestionnaire de secret.</span><span class="sxs-lookup"><span data-stu-id="fa109-188">The [ASP.NET Core Configuration API](xref:fundamentals/configuration/index) provides access to Secret Manager secrets.</span></span>
+<span data-ttu-id="e5d31-189">L' [API de Configuration ASP.net Core](xref:fundamentals/configuration/index) permet d’accéder aux secrets du gestionnaire de secret.</span><span class="sxs-lookup"><span data-stu-id="e5d31-189">The [ASP.NET Core Configuration API](xref:fundamentals/configuration/index) provides access to Secret Manager secrets.</span></span>
 
 ::: moniker range=">= aspnetcore-2.0 <= aspnetcore-2.2"
 
-<span data-ttu-id="fa109-189">Si votre projet cible .NET Framework, installez le package NuGet [Microsoft. extensions. Configuration. UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) .</span><span class="sxs-lookup"><span data-stu-id="fa109-189">If your project targets .NET Framework, install the [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet package.</span></span>
+<span data-ttu-id="e5d31-190">Si votre projet cible .NET Framework, installez le package NuGet [Microsoft. extensions. Configuration. UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) .</span><span class="sxs-lookup"><span data-stu-id="e5d31-190">If your project targets .NET Framework, install the [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet package.</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.0"
 
-<span data-ttu-id="fa109-190">Dans ASP.net Core 2,0 ou version ultérieure, la source de configuration des secrets de l’utilisateur est automatiquement ajoutée en mode <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> de développement lorsque le projet appelle pour initialiser une nouvelle instance de l’hôte avec des valeurs par défaut préconfigurées.</span><span class="sxs-lookup"><span data-stu-id="fa109-190">In ASP.NET Core 2.0 or later, the user secrets configuration source is automatically added in development mode when the project calls <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> to initialize a new instance of the host with preconfigured defaults.</span></span> <span data-ttu-id="fa109-191">`CreateDefaultBuilder`appelle <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> lorsque<xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> est :<xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development></span><span class="sxs-lookup"><span data-stu-id="fa109-191">`CreateDefaultBuilder` calls <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> when the <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> is <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>:</span></span>
+<span data-ttu-id="e5d31-191">Dans ASP.NET Core 2,0 ou version ultérieure, la source de configuration des secrets de l’utilisateur est automatiquement ajoutée en mode de développement lorsque le projet appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> pour initialiser une nouvelle instance de l’hôte avec des valeurs par défaut préconfigurées.</span><span class="sxs-lookup"><span data-stu-id="e5d31-191">In ASP.NET Core 2.0 or later, the user secrets configuration source is automatically added in development mode when the project calls <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> to initialize a new instance of the host with preconfigured defaults.</span></span> <span data-ttu-id="e5d31-192">`CreateDefaultBuilder` appelle <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> lorsque le <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> est <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>:</span><span class="sxs-lookup"><span data-stu-id="e5d31-192">`CreateDefaultBuilder` calls <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> when the <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> is <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>:</span></span>
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
-<span data-ttu-id="fa109-192">Quand `CreateDefaultBuilder` n’est pas appelé, ajoutez explicitement la source de configuration des <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> secrets de `Startup` l’utilisateur en appelant dans le constructeur.</span><span class="sxs-lookup"><span data-stu-id="fa109-192">When `CreateDefaultBuilder` isn't called, add the user secrets configuration source explicitly by calling <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> in the `Startup` constructor.</span></span> <span data-ttu-id="fa109-193">Appelez `AddUserSecrets` uniquement lorsque l’application s’exécute dans l’environnement de développement, comme illustré dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="fa109-193">Call `AddUserSecrets` only when the app runs in the Development environment, as shown in the following example:</span></span>
+<span data-ttu-id="e5d31-193">Quand `CreateDefaultBuilder` n’est pas appelé, ajoutez explicitement la source de configuration des secrets de l’utilisateur en appelant <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> dans le constructeur `Startup`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-193">When `CreateDefaultBuilder` isn't called, add the user secrets configuration source explicitly by calling <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> in the `Startup` constructor.</span></span> <span data-ttu-id="e5d31-194">Appelez `AddUserSecrets` uniquement lorsque l’application s’exécute dans l’environnement de développement, comme illustré dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="e5d31-194">Call `AddUserSecrets` only when the app runs in the Development environment, as shown in the following example:</span></span>
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
 
@@ -241,15 +241,15 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ::: moniker range="<= aspnetcore-1.1"
 
-<span data-ttu-id="fa109-194">Installez le package NuGet [Microsoft. extensions. Configuration. UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) .</span><span class="sxs-lookup"><span data-stu-id="fa109-194">Install the [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet package.</span></span>
+<span data-ttu-id="e5d31-195">Installez le package NuGet [Microsoft. extensions. Configuration. UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) .</span><span class="sxs-lookup"><span data-stu-id="e5d31-195">Install the [Microsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet package.</span></span>
 
-<span data-ttu-id="fa109-195">Ajoutez la source de configuration des secrets de l’utilisateur <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> avec un `Startup` appel à dans le constructeur :</span><span class="sxs-lookup"><span data-stu-id="fa109-195">Add the user secrets configuration source with a call to <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> in the `Startup` constructor:</span></span>
+<span data-ttu-id="e5d31-196">Ajoutez la source de configuration des secrets de l’utilisateur à l’aide d’un appel à <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> dans le constructeur `Startup` :</span><span class="sxs-lookup"><span data-stu-id="e5d31-196">Add the user secrets configuration source with a call to <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets*> in the `Startup` constructor:</span></span>
 
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=12)]
 
 ::: moniker-end
 
-<span data-ttu-id="fa109-196">Les secrets de l’utilisateur peuvent être `Configuration` récupérés via l’API :</span><span class="sxs-lookup"><span data-stu-id="fa109-196">User secrets can be retrieved via the `Configuration` API:</span></span>
+<span data-ttu-id="e5d31-197">Les secrets de l’utilisateur peuvent être récupérés via l’API `Configuration` :</span><span class="sxs-lookup"><span data-stu-id="e5d31-197">User secrets can be retrieved via the `Configuration` API:</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -263,13 +263,13 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ::: moniker-end
 
-## <a name="map-secrets-to-a-poco"></a><span data-ttu-id="fa109-197">Mapper les secrets à un POCO</span><span class="sxs-lookup"><span data-stu-id="fa109-197">Map secrets to a POCO</span></span>
+## <a name="map-secrets-to-a-poco"></a><span data-ttu-id="e5d31-198">Mapper les secrets à un POCO</span><span class="sxs-lookup"><span data-stu-id="e5d31-198">Map secrets to a POCO</span></span>
 
-<span data-ttu-id="fa109-198">Le mappage d’un littéral d’objet entier à un POCO (une classe .NET simple avec des propriétés) est utile pour l’agrégation des propriétés associées.</span><span class="sxs-lookup"><span data-stu-id="fa109-198">Mapping an entire object literal to a POCO (a simple .NET class with properties) is useful for aggregating related properties.</span></span>
+<span data-ttu-id="e5d31-199">Le mappage d’un littéral d’objet entier à un POCO (une classe .NET simple avec des propriétés) est utile pour l’agrégation des propriétés associées.</span><span class="sxs-lookup"><span data-stu-id="e5d31-199">Mapping an entire object literal to a POCO (a simple .NET class with properties) is useful for aggregating related properties.</span></span>
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-<span data-ttu-id="fa109-199">Pour mapper les secrets précédents à un poco, utilisez la `Configuration` fonctionnalité de [liaison de graphique d’objets](xref:fundamentals/configuration/index#bind-to-an-object-graph) de l’API.</span><span class="sxs-lookup"><span data-stu-id="fa109-199">To map the preceding secrets to a POCO, use the `Configuration` API's [object graph binding](xref:fundamentals/configuration/index#bind-to-an-object-graph) feature.</span></span> <span data-ttu-id="fa109-200">Le code suivant est lié à un poco `MovieSettings` personnalisé et accède à la `ServiceApiKey` valeur de la propriété :</span><span class="sxs-lookup"><span data-stu-id="fa109-200">The following code binds to a custom `MovieSettings` POCO and accesses the `ServiceApiKey` property value:</span></span>
+<span data-ttu-id="e5d31-200">Pour mapper les secrets précédents à un POCO, utilisez la fonctionnalité de [liaison de graphique d’objets](xref:fundamentals/configuration/index#bind-to-an-object-graph) de l’API `Configuration`.</span><span class="sxs-lookup"><span data-stu-id="e5d31-200">To map the preceding secrets to a POCO, use the `Configuration` API's [object graph binding](xref:fundamentals/configuration/index#bind-to-an-object-graph) feature.</span></span> <span data-ttu-id="e5d31-201">Le code suivant est lié à un `MovieSettings` POCO personnalisé et accède à la valeur de la propriété `ServiceApiKey` :</span><span class="sxs-lookup"><span data-stu-id="e5d31-201">The following code binds to a custom `MovieSettings` POCO and accesses the `ServiceApiKey` property value:</span></span>
 
 ::: moniker range=">= aspnetcore-1.1"
 
@@ -283,27 +283,27 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ::: moniker-end
 
-<span data-ttu-id="fa109-201">Les `Movies:ConnectionString` secrets `Movies:ServiceApiKey` et sont mappés aux propriétés respectives dans `MovieSettings`:</span><span class="sxs-lookup"><span data-stu-id="fa109-201">The `Movies:ConnectionString` and `Movies:ServiceApiKey` secrets are mapped to the respective properties in `MovieSettings`:</span></span>
+<span data-ttu-id="e5d31-202">Les secrets `Movies:ConnectionString` et `Movies:ServiceApiKey` sont mappés aux propriétés respectives dans `MovieSettings`:</span><span class="sxs-lookup"><span data-stu-id="e5d31-202">The `Movies:ConnectionString` and `Movies:ServiceApiKey` secrets are mapped to the respective properties in `MovieSettings`:</span></span>
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Models/MovieSettings.cs?name=snippet_MovieSettingsClass)]
 
-## <a name="string-replacement-with-secrets"></a><span data-ttu-id="fa109-202">Remplacement de chaîne par des secrets</span><span class="sxs-lookup"><span data-stu-id="fa109-202">String replacement with secrets</span></span>
+## <a name="string-replacement-with-secrets"></a><span data-ttu-id="e5d31-203">Remplacement de chaîne par des secrets</span><span class="sxs-lookup"><span data-stu-id="e5d31-203">String replacement with secrets</span></span>
 
-<span data-ttu-id="fa109-203">Le stockage des mots de passe en texte brut n’est pas sécurisé.</span><span class="sxs-lookup"><span data-stu-id="fa109-203">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="fa109-204">Par exemple, une chaîne de connexion de base de données stockée dans *appSettings. JSON* peut inclure un mot de passe pour l’utilisateur spécifié :</span><span class="sxs-lookup"><span data-stu-id="fa109-204">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
+<span data-ttu-id="e5d31-204">Le stockage des mots de passe en texte brut n’est pas sécurisé.</span><span class="sxs-lookup"><span data-stu-id="e5d31-204">Storing passwords in plain text is insecure.</span></span> <span data-ttu-id="e5d31-205">Par exemple, une chaîne de connexion de base de données stockée dans *appSettings. JSON* peut inclure un mot de passe pour l’utilisateur spécifié :</span><span class="sxs-lookup"><span data-stu-id="e5d31-205">For example, a database connection string stored in *appsettings.json* may include a password for the specified user:</span></span>
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-<span data-ttu-id="fa109-205">Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret.</span><span class="sxs-lookup"><span data-stu-id="fa109-205">A more secure approach is to store the password as a secret.</span></span> <span data-ttu-id="fa109-206">Exemple :</span><span class="sxs-lookup"><span data-stu-id="fa109-206">For example:</span></span>
+<span data-ttu-id="e5d31-206">Une approche plus sécurisée consiste à stocker le mot de passe en tant que secret.</span><span class="sxs-lookup"><span data-stu-id="e5d31-206">A more secure approach is to store the password as a secret.</span></span> <span data-ttu-id="e5d31-207">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="e5d31-207">For example:</span></span>
 
 ```dotnetcli
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-<span data-ttu-id="fa109-207">Supprimez `Password` la paire clé-valeur de la chaîne de connexion dans *appSettings. JSON*.</span><span class="sxs-lookup"><span data-stu-id="fa109-207">Remove the `Password` key-value pair from the connection string in *appsettings.json*.</span></span> <span data-ttu-id="fa109-208">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="fa109-208">For example:</span></span>
+<span data-ttu-id="e5d31-208">Supprimez la paire clé-valeur `Password` de la chaîne de connexion dans *appSettings. JSON*.</span><span class="sxs-lookup"><span data-stu-id="e5d31-208">Remove the `Password` key-value pair from the connection string in *appsettings.json*.</span></span> <span data-ttu-id="e5d31-209">Par exemple :</span><span class="sxs-lookup"><span data-stu-id="e5d31-209">For example:</span></span>
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-<span data-ttu-id="fa109-209">La valeur du secret peut être définie sur la <xref:System.Data.SqlClient.SqlConnectionStringBuilder> propriété d' <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password*> un objet pour terminer la chaîne de connexion :</span><span class="sxs-lookup"><span data-stu-id="fa109-209">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password*> property to complete the connection string:</span></span>
+<span data-ttu-id="e5d31-210">La valeur du secret peut être définie sur la propriété <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password*> d’un objet <xref:System.Data.SqlClient.SqlConnectionStringBuilder> pour terminer la chaîne de connexion :</span><span class="sxs-lookup"><span data-stu-id="e5d31-210">The secret's value can be set on a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password*> property to complete the connection string:</span></span>
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -317,36 +317,36 @@ dotnet user-secrets set "DbPassword" "pass123"
 
 ::: moniker-end
 
-## <a name="list-the-secrets"></a><span data-ttu-id="fa109-210">Répertorier les secrets</span><span class="sxs-lookup"><span data-stu-id="fa109-210">List the secrets</span></span>
+## <a name="list-the-secrets"></a><span data-ttu-id="e5d31-211">Répertorier les secrets</span><span class="sxs-lookup"><span data-stu-id="e5d31-211">List the secrets</span></span>
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-<span data-ttu-id="fa109-211">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="fa109-211">Run the following command from the directory in which the *.csproj* file exists:</span></span>
+<span data-ttu-id="e5d31-212">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="e5d31-212">Run the following command from the directory in which the *.csproj* file exists:</span></span>
 
 ```dotnetcli
 dotnet user-secrets list
 ```
 
-<span data-ttu-id="fa109-212">La sortie suivante apparaît :</span><span class="sxs-lookup"><span data-stu-id="fa109-212">The following output appears:</span></span>
+<span data-ttu-id="e5d31-213">La sortie suivante apparaît :</span><span class="sxs-lookup"><span data-stu-id="e5d31-213">The following output appears:</span></span>
 
 ```console
 Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted_Connection=True;MultipleActiveResultSets=true
 Movies:ServiceApiKey = 12345
 ```
 
-<span data-ttu-id="fa109-213">Dans l’exemple précédent, un signe deux-points dans le nom de clé désigne la hiérarchie d’objets dans *secrets. JSON*.</span><span class="sxs-lookup"><span data-stu-id="fa109-213">In the preceding example, a colon in the key names denotes the object hierarchy within *secrets.json*.</span></span>
+<span data-ttu-id="e5d31-214">Dans l’exemple précédent, un signe deux-points dans le nom de clé désigne la hiérarchie d’objets dans *secrets. JSON*.</span><span class="sxs-lookup"><span data-stu-id="e5d31-214">In the preceding example, a colon in the key names denotes the object hierarchy within *secrets.json*.</span></span>
 
-## <a name="remove-a-single-secret"></a><span data-ttu-id="fa109-214">Supprimer une seule clé secrète</span><span class="sxs-lookup"><span data-stu-id="fa109-214">Remove a single secret</span></span>
+## <a name="remove-a-single-secret"></a><span data-ttu-id="e5d31-215">Supprimer une seule clé secrète</span><span class="sxs-lookup"><span data-stu-id="e5d31-215">Remove a single secret</span></span>
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-<span data-ttu-id="fa109-215">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="fa109-215">Run the following command from the directory in which the *.csproj* file exists:</span></span>
+<span data-ttu-id="e5d31-216">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="e5d31-216">Run the following command from the directory in which the *.csproj* file exists:</span></span>
 
 ```dotnetcli
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-<span data-ttu-id="fa109-216">Le fichier *secrets. JSON* de l’application a été modifié pour supprimer la paire clé-valeur associée `MoviesConnectionString` à la clé :</span><span class="sxs-lookup"><span data-stu-id="fa109-216">The app's *secrets.json* file was modified to remove the key-value pair associated with the `MoviesConnectionString` key:</span></span>
+<span data-ttu-id="e5d31-217">Le fichier *secrets. JSON* de l’application a été modifié pour supprimer la paire clé-valeur associée à la clé de `MoviesConnectionString` :</span><span class="sxs-lookup"><span data-stu-id="e5d31-217">The app's *secrets.json* file was modified to remove the key-value pair associated with the `MoviesConnectionString` key:</span></span>
 
 ```json
 {
@@ -356,35 +356,35 @@ dotnet user-secrets remove "Movies:ConnectionString"
 }
 ```
 
-<span data-ttu-id="fa109-217">L' `dotnet user-secrets list` exécution affiche le message suivant :</span><span class="sxs-lookup"><span data-stu-id="fa109-217">Running `dotnet user-secrets list` displays the following message:</span></span>
+<span data-ttu-id="e5d31-218">L’exécution de `dotnet user-secrets list` affiche le message suivant :</span><span class="sxs-lookup"><span data-stu-id="e5d31-218">Running `dotnet user-secrets list` displays the following message:</span></span>
 
 ```console
 Movies:ServiceApiKey = 12345
 ```
 
-## <a name="remove-all-secrets"></a><span data-ttu-id="fa109-218">Supprimer tous les secrets</span><span class="sxs-lookup"><span data-stu-id="fa109-218">Remove all secrets</span></span>
+## <a name="remove-all-secrets"></a><span data-ttu-id="e5d31-219">Supprimer tous les secrets</span><span class="sxs-lookup"><span data-stu-id="e5d31-219">Remove all secrets</span></span>
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-<span data-ttu-id="fa109-219">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="fa109-219">Run the following command from the directory in which the *.csproj* file exists:</span></span>
+<span data-ttu-id="e5d31-220">Exécutez la commande suivante à partir du répertoire dans lequel se trouve le fichier *. csproj* :</span><span class="sxs-lookup"><span data-stu-id="e5d31-220">Run the following command from the directory in which the *.csproj* file exists:</span></span>
 
 ```dotnetcli
 dotnet user-secrets clear
 ```
 
-<span data-ttu-id="fa109-220">Tous les secrets d’utilisateur de l’application ont été supprimés du fichier *secrets. JSON* :</span><span class="sxs-lookup"><span data-stu-id="fa109-220">All user secrets for the app have been deleted from the *secrets.json* file:</span></span>
+<span data-ttu-id="e5d31-221">Tous les secrets d’utilisateur de l’application ont été supprimés du fichier *secrets. JSON* :</span><span class="sxs-lookup"><span data-stu-id="e5d31-221">All user secrets for the app have been deleted from the *secrets.json* file:</span></span>
 
 ```json
 {}
 ```
 
-<span data-ttu-id="fa109-221">L' `dotnet user-secrets list` exécution affiche le message suivant :</span><span class="sxs-lookup"><span data-stu-id="fa109-221">Running `dotnet user-secrets list` displays the following message:</span></span>
+<span data-ttu-id="e5d31-222">L’exécution de `dotnet user-secrets list` affiche le message suivant :</span><span class="sxs-lookup"><span data-stu-id="e5d31-222">Running `dotnet user-secrets list` displays the following message:</span></span>
 
 ```console
 No secrets configured for this application.
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="fa109-222">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="fa109-222">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e5d31-223">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="e5d31-223">Additional resources</span></span>
 
 * <xref:fundamentals/configuration/index>
 * <xref:security/key-vault-configuration>
