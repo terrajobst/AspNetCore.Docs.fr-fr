@@ -4,14 +4,14 @@ author: mjrousos
 description: En savoir plus sur l’authentification dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/22/2019
+ms.date: 12/04/2019
 uid: security/authentication/index
-ms.openlocfilehash: 5e6c875188831c468bc6ca52ce71c5961b43573c
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 324b2669d3b69e4757a284e4ae7e1de5f4e87e5a
+ms.sourcegitcommit: 05ca05a5c8f6ae556aaad66ad9e4ec1e6b643c77
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681454"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74810252"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -57,7 +57,7 @@ Un schéma d’authentification est un nom qui correspond à :
 * Gestionnaire d'authentifications.
 * Options de configuration de cette instance spécifique du gestionnaire.
 
-Les schémas sont utiles comme un mécanisme permettant de faire référence aux comportements d’authentification, de stimulation et d’interdiction du gestionnaire associé. Par exemple, une stratégie d’autorisation peut spécifier, par son nom, le ou les schémas d’autorisation à utiliser pour authentifier l’utilisateur. Lors de la configuration de l’authentification, il est courant de spécifier le schéma d’authentification par défaut. Le schéma par défaut est utilisé, sauf si une ressource demande un schéma spécifique. Il est également possible d’effectuer les opérations suivantes :
+Les schémas sont utiles comme un mécanisme permettant de faire référence aux comportements d’authentification, de stimulation et d’interdiction du gestionnaire associé. Par exemple, une stratégie d’autorisation peut utiliser des noms de schémas pour spécifier le (s) schéma (s) d’authentification à utiliser pour authentifier l’utilisateur. Lors de la configuration de l’authentification, il est courant de spécifier le schéma d’authentification par défaut. Le schéma par défaut est utilisé, sauf si une ressource demande un schéma spécifique. Il est également possible d’effectuer les opérations suivantes :
 
 * Spécifiez différents schémas par défaut à utiliser pour les actions Authenticate, Challenge et interdire.
 * Combiner plusieurs schémas en un seul à l’aide de [modèles de stratégie](xref:security/authentication/policyschemes).
