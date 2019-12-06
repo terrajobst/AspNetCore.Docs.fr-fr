@@ -5,14 +5,14 @@ description: Découvrez comment se produit la compilation de fichiers Razor dans
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 12/05/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 95fa0d72ed9c088945707ac6b79c3fbde35a5a30
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 0a5770a00c5cb319b571628659a07e73e0de54f9
+ms.sourcegitcommit: fd2483f0a384b1c479c5b4af025ee46917db1919
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416147"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74867976"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Compilation de fichiers Razor dans ASP.NET Core
 
@@ -115,7 +115,7 @@ La compilation au moment de la génération est complétée par la compilation a
 La valeur par défaut de `true` pour :
 
 * Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> ou une version antérieure
-* Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> ou ultérieur et que l’application se trouve dans l’environnement de développement <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*>. En d’autres termes, les fichiers Razor ne se recompilent pas dans un environnement non centré sur le développement, sauf si <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est explicitement défini.
+* Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> ou ultérieur et que l’application se trouve dans l’environnement de développement <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*>. En d’autres termes, les fichiers Razor ne sont pas recompilés dans un environnement de non-développement, sauf si <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est défini explicitement.
 
 Pour des conseils et des exemples concernant la définition de la version de compatibilité de l’application, consultez <xref:mvc/compatibility-version>.
 
@@ -123,16 +123,57 @@ Pour des conseils et des exemples concernant la définition de la version de com
 
 ::: moniker range=">= aspnetcore-3.0"
 
-La compilation au moment de l’exécution est activée à l’aide du package `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`. Pour activer la compilation au moment de l’exécution, les applications doivent :
+Pour activer la compilation au moment de l’exécution pour tous les environnements et modes de configuration :
 
-* Installer le package NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
-* Mettre à jour la méthode `Startup.ConfigureServices` du projet pour inclure un appel à `AddRazorRuntimeCompilation` :
+1. Installer le package NuGet [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/).
 
-  ```csharp
-  services
-      .AddControllersWithViews()
-      .AddRazorRuntimeCompilation();
-  ```
+1. Mettez à jour la méthode `Startup.ConfigureServices` du projet pour inclure un appel à `AddRazorRuntimeCompilation`. Par exemple :
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddRazorPages()
+            .AddRazorRuntimeCompilation();
+
+        // code omitted for brevity
+    }
+    ```
+
+### <a name="conditionally-enable-runtime-compilation"></a>Activation conditionnelle de la compilation du Runtime
+
+La compilation au moment de l’exécution peut être activée de sorte qu’elle ne soit disponible que pour le développement local. L’activation conditionnelle de cette manière garantit que la sortie publiée :
+
+* Utilise des vues compilées.
+* Est de taille inférieure.
+* N’active pas les observateurs de fichiers en production.
+
+Pour activer la compilation au moment de l’exécution en fonction de l’environnement et du mode de configuration :
+
+1. Référencez de manière conditionnelle le package [Microsoft. AspNetCore. Mvc. Razor. RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) en fonction de la valeur active `Configuration` :
+
+    ```xml
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" Condition="'$(Configuration)' == 'Debug'" />
+    ```
+
+1. Mettez à jour la méthode `Startup.ConfigureServices` du projet pour inclure un appel à `AddRazorRuntimeCompilation`. Exécutez une `AddRazorRuntimeCompilation` de manière conditionnelle, de sorte qu’elle s’exécute uniquement en mode débogage lorsque la variable `ASPNETCORE_ENVIRONMENT` est définie sur `Development`:
+
+    ```csharp
+    public IWebHostEnvironment Env { get; set; }
+    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        IMvcBuilder builder = services.AddRazorPages();
+    
+    #if DEBUG
+        if (Env.IsDevelopment())
+        {
+            builder.AddRazorRuntimeCompilation();
+        }
+    #endif
+
+        // code omitted for brevity
+    }
+    ```
 
 ::: moniker-end
 
