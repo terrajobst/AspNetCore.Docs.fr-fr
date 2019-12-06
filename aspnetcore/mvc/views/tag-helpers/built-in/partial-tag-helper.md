@@ -7,22 +7,22 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 757c407bbae9c33c5b05a1edc01a37c2ced8dd36
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 508f91cdcd93c149602223250520eecb73625b24
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880991"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Tag Helper Partial dans ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie)
 
-Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d'ensemble de
 
 Le Tag Helper Partial est utilisé dans le cadre du rendu d’une [vue partielle](xref:mvc/views/partial) dans les pages Razor et les applications MVC. Tenez compte des points suivants :
 
@@ -32,10 +32,10 @@ Le Tag Helper Partial est utilisé dans le cadre du rendu d’une [vue partielle
 
 Parmi les options HTML Helper utilisées pour le rendu d’une vue partielle, citons les suivantes :
 
-* [@await Html.PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync)
-* [@await Html.RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync)
-* [@Html.Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
-* [@Html.RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
+* [`@await Html.PartialAsync`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync)
+* [`@await Html.RenderPartialAsync`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync)
+* [`@Html.Partial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial)
+* [`@Html.RenderPartial`](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial)
 
 Le modèle *Product* est utilisé dans les exemples tout au long de ce document :
 
@@ -43,7 +43,7 @@ Le modèle *Product* est utilisé dans les exemples tout au long de ce document 
 
 Voici l’inventaire des attributs du Tag Helper Partial.
 
-## <a name="name"></a>name
+## <a name="name"></a>nom
 
 L'attribut `name` est obligatoire. Il indique le nom ou le chemin de la vue partielle à afficher. Quand un nom de vue partielle est fourni, le processus de [découverte de vue](xref:mvc/views/overview#view-discovery) est lancé. Ce processus est ignoré quand un chemin explicite est fourni. Pour connaître toutes les valeurs `name` acceptables, consultez [Découverte des vues partielles](xref:mvc/views/partial#partial-view-discovery).
 
@@ -51,7 +51,7 @@ Le balisage suivant utilise un chemin explicite indiquant que le fichier *_Produ
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
-## <a name="for"></a>for
+## <a name="for"></a>pour
 
 L’attribut `for` affecte un [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression) à évaluer par rapport au modèle actif. `ModelExpression` déduit la syntaxe `@Model.`. Par exemple, `for="Product"` peut être utilisé à la place de `for="@Model.Product"`. Pour substituer ce comportement d’inférence par défaut, utilisez le symbole `@` pour définir une expression inline.
 
@@ -63,7 +63,7 @@ La vue partielle est liée à la propriété `Product` du modèle de page associ
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Product.cshtml.cs?highlight=8)]
 
-## <a name="model"></a>modèle
+## <a name="model"></a>model
 
 L’attribut `model` affecte une instance de modèle à passer à la vue partielle. L’attribut `model` ne peut pas être utilisé avec l’attribut [for](#for).
 

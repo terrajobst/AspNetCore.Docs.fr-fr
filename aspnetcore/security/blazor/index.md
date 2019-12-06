@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ebc4d72191dff33a7fb6170650be67c3836cdaa
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 693ac1a5b5bcaf8a9bbf0ff9ab63fb41764e3888
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73964009"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880455"
 ---
 # <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a>ASP.NET Core Blazor l’authentification et l’autorisation
 
@@ -67,7 +67,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 Les valeurs autorisées d’authentification (`{AUTHENTICATION}`) sont présentées dans le tableau suivant.
 
-| Mécanisme d’authentification                                                                 | Valeur`{AUTHENTICATION}` |
+| Mécanisme d’authentification                                                                 | Valeur de `{AUTHENTICATION}` |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
 | Aucune authentification                                                                        | `None`                   |
 | Individuel<br>Les utilisateurs stockés dans l’application avec l’identité ASP.NET Core.                        | `Individual`             |
@@ -237,7 +237,7 @@ Si les données d’état d’authentification sont requises pour la logique pro
 
 Si `user.Identity.IsAuthenticated` est `true`, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.
 
-Configurez le paramètre en cascade `Task<AuthenticationState>` à l’aide des composants `AuthorizeRouteView` et `CascadingAuthenticationState` :
+Configurez le `Task<AuthenticationState>` paramètre en cascade à l’aide des composants `AuthorizeRouteView` et `CascadingAuthenticationState` :
 
 ```cshtml
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -398,7 +398,7 @@ Si ni `Roles` ni `Policy` n’est spécifié, `[Authorize]` utilise la stratégi
 Le composant `Router`, conjointement au composant `AuthorizeRouteView`, permet à l’application de spécifier du contenu personnalisé dans les cas suivants :
 
 * Le contenu est introuvable.
-* L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant. L’attribut `[Authorize]` est couvert dans la section [Attribut [Authorize]](#authorize-attribute).
+* L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant. L’attribut `[Authorize]` est abordé dans la section [`[Authorize]` attribut](#authorize-attribute) .
 * Une authentification asynchrone est en cours.
 
 Dans le modèle de projet Blazor Server par défaut, le fichier *app. Razor* montre comment définir un contenu personnalisé :
@@ -429,9 +429,9 @@ Dans le modèle de projet Blazor Server par défaut, le fichier *app. Razor* mon
 </Router>
 ```
 
-Le contenu des balises `<NotFound>`, `<NotAuthorized>` et `<Authorizing>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
+Le contenu des balises `<NotFound>`, `<NotAuthorized>`et `<Authorizing>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.
 
-Si l’élément `<NotAuthorized>` n’est pas spécifié, la `AuthorizeRouteView` utilise le message de secours suivant :
+Si l’élément `<NotAuthorized>` n’est pas spécifié, le `AuthorizeRouteView` utilise le message de secours suivant :
 
 ```html
 Not authorized.

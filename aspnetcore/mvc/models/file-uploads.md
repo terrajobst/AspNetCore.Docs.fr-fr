@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/04/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: b57ad4fe62de38085c11d7026d278cc6e0c565ce
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 20e58660185a3055e06e92d9136e80e2394a470d
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963158"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881068"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -183,7 +183,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utilisez `XMLHttpRequest`. Exemple :
+* Utilisez `XMLHttpRequest`. Par exemple :
 
   ```javascript
   <script>
@@ -456,7 +456,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -686,7 +686,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 }
 ```
 
-La `RequestSizeLimitAttribute` peut également être appliquée à l’aide de la directive Razor [@attribute](xref:mvc/views/razor#attribute) :
+La `RequestSizeLimitAttribute` peut également être appliquée à l’aide de la directive Razor [`@attribute`](xref:mvc/views/razor#attribute) :
 
 ```cshtml
 @attribute [RequestSizeLimitAttribute(52428800)]
@@ -718,7 +718,7 @@ Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se 
 
 Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (ASPNET/AspNetCore #2711)](https://github.com/aspnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+## <a name="troubleshoot"></a>Dépannage
 
 Voici certains problèmes courants rencontrés avec le chargement de fichiers et leurs solutions possibles.
 
@@ -733,7 +733,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Pour plus d’informations sur l’amélioration de la limite, consultez la section [limite de longueur du contenu IIS](#iis-content-length-limit) .
 
-### <a name="connection-failure"></a>Échec de la connexion
+### <a name="connection-failure"></a>Échec de connexion
 
 Une erreur de connexion et une connexion du serveur de réinitialisation indiquent probablement que le fichier téléchargé dépasse la taille maximale du corps de la demande de Kestrel. Pour plus d’informations, consultez la section [taille maximale du corps de la demande Kestrel](#kestrel-maximum-request-body-size) . Les limites de connexion du client Kestrel peuvent également nécessiter des ajustements.
 
@@ -912,7 +912,7 @@ L’exemple suivant est similaire à l’exemple précédent, à l’exception d
 Pour exécuter la publication de formulaire dans JavaScript pour les clients qui [ne prennent pas en charge l’API FETCH](https://caniuse.com/#feat=fetch), utilisez l’une des approches suivantes :
 
 * Utilisez un Polyfill d’extraction (par exemple, [Window. Fetch Polyfill (GitHub/fetch)](https://github.com/github/fetch)).
-* Utilisez `XMLHttpRequest`. Exemple :
+* Utilisez `XMLHttpRequest`. Par exemple :
 
   ```javascript
   <script>
@@ -1185,7 +1185,7 @@ L’analyse des fichiers exige des ressources serveur dans des scénarios de vol
 
 ### <a name="file-extension-validation"></a>Validation de l’extension de fichier
 
-L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Exemple :
+L’extension du fichier chargé doit être vérifiée par rapport à une liste d’extensions autorisées. Par exemple :
 
 ```csharp
 private string[] permittedExtensions = { ".txt", ".pdf" };
@@ -1440,7 +1440,7 @@ Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se 
 
 Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (ASPNET/AspNetCore #2711)](https://github.com/aspnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+## <a name="troubleshoot"></a>Dépannage
 
 Voici certains problèmes courants rencontrés avec le chargement de fichiers et leurs solutions possibles.
 
@@ -1455,7 +1455,7 @@ The request filtering module is configured to deny a request that exceeds the re
 
 Pour plus d’informations sur l’amélioration de la limite, consultez la section [limite de longueur du contenu IIS](#iis-content-length-limit) .
 
-### <a name="connection-failure"></a>Échec de la connexion
+### <a name="connection-failure"></a>Échec de connexion
 
 Une erreur de connexion et une connexion du serveur de réinitialisation indiquent probablement que le fichier téléchargé dépasse la taille maximale du corps de la demande de Kestrel. Pour plus d’informations, consultez la section [taille maximale du corps de la demande Kestrel](#kestrel-maximum-request-body-size) . Les limites de connexion du client Kestrel peuvent également nécessiter des ajustements.
 

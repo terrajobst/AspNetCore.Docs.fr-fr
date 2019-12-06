@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/09/2019
 uid: web-api/action-return-types
-ms.openlocfilehash: c409170a24225e160c1c53e7294590589e114f7f
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: fe665026fdced22ccf4b4f1ba655e858a7acf016
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116085"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879739"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Types de retour de l’action du contrôleur dans ASP.NET Core API Web
 
@@ -92,7 +92,7 @@ Les deux actions précédentes sont non bloquantes à partir de ASP.NET Core 3,0
 
 Le type de retour <xref:Microsoft.AspNetCore.Mvc.IActionResult> est approprié lorsque plusieurs types de retour `ActionResult` sont possibles dans une action. Les types `ActionResult` représentent différents codes d’état HTTP. Toute classe non abstraite dérivant de `ActionResult` est qualifiée de type de retour valide. Voici quelques types de retour courants dans cette catégorie : <xref:Microsoft.AspNetCore.Mvc.BadRequestResult> (400), <xref:Microsoft.AspNetCore.Mvc.NotFoundResult> (404) et <xref:Microsoft.AspNetCore.Mvc.OkObjectResult> (200). Les méthodes pratiques de la classe <xref:Microsoft.AspNetCore.Mvc.ControllerBase> peuvent également être utilisées pour retourner des `ActionResult` types à partir d’une action. Par exemple, `return BadRequest();` est une forme abrégée de `return new BadRequestResult();`.
 
-Étant donné qu’il existe plusieurs types et chemins de retour dans ce type d’action, l’utilisation libérale de l’attribut [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) est nécessaire. Cet attribut produit des détails de réponse plus descriptifs pour les pages d’aide de l’API Web générées par des outils tels que [Swagger](xref:tutorials/web-api-help-pages-using-swagger). `[ProducesResponseType]` indique les types connus et les codes d’état HTTP que l’action doit retourner.
+Comme il existe plusieurs types de retour et chemins d’accès dans ce type d’action, l’utilisation libérale de l’attribut [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) est nécessaire. Cet attribut produit des détails de réponse plus descriptifs pour les pages d’aide de l’API Web générées par des outils tels que [Swagger](xref:tutorials/web-api-help-pages-using-swagger). `[ProducesResponseType]` indique les types connus et les codes d’état HTTP que l’action doit retourner.
 
 ### <a name="synchronous-action"></a>Action synchrone
 
@@ -142,13 +142,13 @@ Par exemple, le modèle suivant indique que les requêtes doivent inclure les pr
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Si l’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) dans ASP.net Core 2,1 ou une version ultérieure est appliqué, les erreurs de validation de modèle génèrent un code d’état 400. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
+Si l’attribut [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) dans ASP.net Core 2,1 ou une version ultérieure est appliqué, les erreurs de validation de modèle génèrent un code d’état 400. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
 
 ## <a name="actionresultt-type"></a>Type ActionResult\<T>
 
 ASP.NET Core 2,1 a introduit le type de retour [ActionResult\<t >](xref:Microsoft.AspNetCore.Mvc.ActionResult`1) pour les actions du contrôleur d’API Web. Elle vous permet de retourner un type dérivant de <xref:Microsoft.AspNetCore.Mvc.ActionResult> ou de retourner un [type spécifique](#specific-type). `ActionResult<T>` offre les avantages suivants par rapport au [type IActionResult](#iactionresult-type) :
 
-* La propriété `Type` de l’attribut [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) peut être exclue. Par exemple, `[ProducesResponseType(200, Type = typeof(Product))]` est simplifié en `[ProducesResponseType(200)]`. Le type de retour attendu pour l’action est déduit de `T` dans `ActionResult<T>`.
+* La propriété `Type` de l’attribut [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute) peut être exclue. Par exemple, `[ProducesResponseType(200, Type = typeof(Product))]` est simplifié en `[ProducesResponseType(200)]`. Le type de retour attendu pour l’action est déduit de `T` dans `ActionResult<T>`.
 * Des [opérateurs de cast implicite](/dotnet/csharp/language-reference/keywords/implicit) prennent en charge la conversion de `T` et `ActionResult` en `ActionResult<T>`. `T` convertit en <xref:Microsoft.AspNetCore.Mvc.ObjectResult>, ce qui signifie que `return new ObjectResult(T);` est simplifié pour `return T;`.
 
 C# ne prend pas en charge les opérateurs de cast implicite sur les interfaces. Par conséquent, `ActionResult<T>` nécessite une conversion de l’interface en un type concret. Par exemple, l’utilisation de `IEnumerable` dans l’exemple suivant ne fonctionne pas :
@@ -183,7 +183,7 @@ Considérez une action asynchrone pour laquelle il existe deux types de retour p
 Dans l’action précédente :
 
 * Un code d’état 400 (<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*>) est retourné par le runtime ASP.NET Core dans les cas suivants :
-  * L’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) a été appliqué et la validation du modèle échoue.
+  * L’attribut [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) a été appliqué et la validation du modèle échoue.
   * La description de produit contient « XYZ Widget ».
 * Un code d’État 201 est généré par la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> lors de la création d’un produit. Dans ce chemin d’accès de code, l’objet `Product` est fourni dans le corps de la réponse. Un en-tête de réponse `Location` contenant l’URL du produit nouvellement créé est fourni.
 

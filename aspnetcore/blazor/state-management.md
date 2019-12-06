@@ -9,12 +9,12 @@ ms.date: 11/23/2019
 no-loc:
 - Blazor
 uid: blazor/state-management
-ms.openlocfilehash: facd6c2747bb0b31404c3c4fce25b76cd141932e
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: ed203458126f3b4c97103c88a465e3eb5953a775
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74680978"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879716"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
@@ -77,7 +77,7 @@ Trois emplacements communs existent pour la conservation de l’État dans une a
 Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Les options sont :
 
 * Base de données SQL relationnelle
-* Magasin clé-valeur
+* stockage clé-valeur
 * Magasin d’objets BLOB
 * Magasin de tables
 
@@ -157,7 +157,7 @@ Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
 
 ### <a name="save-and-load-data-within-a-component"></a>Enregistrer et charger des données dans un composant
 
-Dans tous les composants qui requièrent le chargement ou l’enregistrement de données dans le stockage du navigateur, utilisez [@inject](xref:blazor/dependency-injection#request-a-service-in-a-component) pour injecter une instance de l’un des éléments suivants :
+Dans tous les composants qui requièrent le chargement ou l’enregistrement de données dans le stockage du navigateur, utilisez [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) pour injecter une instance de l’un des éléments suivants :
 
 * `ProtectedLocalStorage`
 * `ProtectedSessionStorage`
@@ -367,7 +367,7 @@ Les composants encapsulés reçoivent et peuvent modifier l’état du compteur 
 
 Le composant précédent n’est pas requis pour interagir avec `ProtectedBrowserStorage`, pas plus qu’il ne gère pas une phase de « chargement ».
 
-Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering) .
+Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering).
 
 En général, le modèle de *composant parent du fournisseur d’État* est recommandé :
 

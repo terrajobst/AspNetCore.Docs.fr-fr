@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC et Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 19f71799e958e2761832c91cec6762a6d391d2b5
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317424"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881040"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -55,22 +55,22 @@ Voici certains des attributs de validation prédéfinis :
 * `[Phone]`: valide que la propriété a un format de numéro de téléphone.
 * `[Range]`: valide que la valeur de la propriété est comprise dans une plage spécifiée.
 * `[RegularExpression]`: valide le fait que la valeur de propriété corresponde à une expression régulière spécifiée.
-* `[Required]`: vérifie que le champ n’a pas la valeur null. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Required]](#required-attribute).
+* `[Required]`: vérifie que le champ n’a pas la valeur null. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Required]` attribut](#required-attribute) .
 * `[StringLength]`: valide le fait qu’une valeur de propriété de chaîne ne dépasse pas une limite de longueur spécifiée.
 * `[Url]`: valide que la propriété a un format d’URL.
-* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Remote]](#remote-attribute).
+* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez `[`[Remote] 'attribute] (attribut #remote).
 
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d'erreur
+### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -126,7 +126,7 @@ Pour implémenter la validation à distance
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Email)]
  
-   L’attribut `[Remote]` se trouve dans l’espace de noms `Microsoft.AspNetCore.Mvc`.
+   L'attribut `[Remote]` se trouve dans l'espace de noms `Microsoft.AspNetCore.Mvc`.
    
 ### <a name="additional-fields"></a>Champs supplémentaires
 
@@ -134,7 +134,7 @@ La propriété `AdditionalFields` de l’attribut `[Remote]` vous permet de vali
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Name&highlight=1,5)]
 
-`AdditionalFields` peut être défini explicitement avec les chaînes `"FirstName"` et `"LastName"`, mais l’utilisation de l’opérateur [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) simplifie la refactorisation ultérieure. La méthode d’action pour cette validation doit accepter les arguments `firstName` et `lastName` :
+`AdditionalFields` peut être défini explicitement avec les chaînes « FirstName » et « LastName », mais l’utilisation de l’opérateur [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifie la refactorisation ultérieure. La méthode d’action pour cette validation doit accepter les arguments `firstName` et `lastName` :
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -255,9 +255,13 @@ Les balises d’assistance précédentes affichent le code HTML suivant :
 </div>
 ```
 
-Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `Movie.ReleaseDate`. L’attribut `data-val-required` contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. jQuery Unobtrusive Validation passe cette valeur à la méthode [`required()`](https://jqueryvalidation.org/required-method/) de jQuery Validate, qui affiche alors ce message dans l’élément **\<span>** qui l’accompagne.
+Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `Movie.ReleaseDate`. L’attribut `data-val-required` contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. la validation jQuery discrète passe cette valeur à la méthode jQuery Validate [Required ()](https://jqueryvalidation.org/required-method/) , qui affiche ensuite ce message dans l’élément de **\<span** qui l’accompagne.
 
 La validation du type de données est basée sur le type .NET d’une propriété, sauf en cas de substitution par un attribut `[DataType]`. Les navigateurs ont leurs propres messages d’erreur par défaut, mais le package jQuery Validation Unobtrusive Validation peut remplacer ces messages. Les attributs `[DataType]` et les sous-classes comme `[EmailAddress]` vous permettent de spécifier le message d’erreur.
+
+## <a name="unobtrusive-validation"></a>Validation discrète
+
+Pour plus d’informations sur la validation discrète, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/1111).
 
 ### <a name="add-validation-to-dynamic-forms"></a>Ajouter une validation à des formulaires dynamiques
 
@@ -415,22 +419,22 @@ Les attributs de validation intégrés sont les suivants :
 * `[Phone]`: valide que la propriété a un format de numéro de téléphone.
 * `[Range]`: valide que la valeur de la propriété est comprise dans une plage spécifiée.
 * `[RegularExpression]`: valide le fait que la valeur de propriété corresponde à une expression régulière spécifiée.
-* `[Required]`: vérifie que le champ n’a pas la valeur null. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Required]](#required-attribute).
+* `[Required]`: vérifie que le champ n’a pas la valeur null. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Required]` attribut](#required-attribute) .
 * `[StringLength]`: valide le fait qu’une valeur de propriété de chaîne ne dépasse pas une limite de longueur spécifiée.
 * `[Url]`: valide que la propriété a un format d’URL.
-* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Remote]](#remote-attribute).
+* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Remote]` attribut](#remote-attribute) .
 
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d'erreur
+### <a name="error-messages"></a>Messages d’erreur
 
-Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Exemple :
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Exemple :
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
 
 ```csharp
 [StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
@@ -486,7 +490,7 @@ Pour implémenter la validation à distance
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserEmailProperty)]
  
-   L’attribut `[Remote]` se trouve dans l’espace de noms `Microsoft.AspNetCore.Mvc`. Installez le package NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), si vous n’utilisez pas le métapaquet `Microsoft.AspNetCore.App` ou `Microsoft.AspNetCore.All`.
+   L'attribut `[Remote]` se trouve dans l'espace de noms `Microsoft.AspNetCore.Mvc`. Installez le package NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), si vous n’utilisez pas le métapaquet `Microsoft.AspNetCore.App` ou `Microsoft.AspNetCore.All`.
    
 ### <a name="additional-fields"></a>Champs supplémentaires
 
@@ -494,7 +498,7 @@ La propriété `AdditionalFields` de l’attribut `[Remote]` vous permet de vali
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserNameProperties)]
 
-`AdditionalFields` peut être défini explicitement avec les chaînes `"FirstName"` et `"LastName"`, mais l’utilisation de l’opérateur [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) simplifie la refactorisation ultérieure. La méthode d’action pour cette validation doit accepter les arguments de nom et de prénom :
+`AdditionalFields` peut être défini explicitement avec les chaînes `"FirstName"` et `"LastName"`, mais l’utilisation de l’opérateur [nameof](/dotnet/csharp/language-reference/keywords/nameof) simplifie la refactorisation ultérieure. La méthode d’action pour cette validation doit accepter les arguments de nom et de prénom :
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Controllers/UsersController.cs?name=snippet_VerifyName)]
 
@@ -624,7 +628,7 @@ Les Tag Helpers précédents restituent le code HTML suivant.
 </form>
 ```
 
-Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `ReleaseDate`. L’attribut `data-val-required` contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. jQuery Unobtrusive Validation passe cette valeur à la méthode [`required()`](https://jqueryvalidation.org/required-method/) de jQuery Validate, qui affiche alors ce message dans l’élément **\<span>** qui l’accompagne.
+Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `ReleaseDate`. L’attribut `data-val-required` contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. la validation jQuery discrète passe cette valeur à la méthode jQuery Validate [Required ()](https://jqueryvalidation.org/required-method/) , qui affiche ensuite ce message dans l’élément de **\<span** qui l’accompagne.
 
 La validation du type de données est basée sur le type .NET d’une propriété, sauf en cas de substitution par un attribut `[DataType]`. Les navigateurs ont leurs propres messages d’erreur par défaut, mais le package jQuery Validation Unobtrusive Validation peut remplacer ces messages. Les attributs `[DataType]` et les sous-classes comme `[EmailAddress]` vous permettent de spécifier le message d’erreur.
 

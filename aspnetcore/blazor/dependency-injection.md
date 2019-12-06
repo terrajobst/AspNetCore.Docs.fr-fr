@@ -5,16 +5,16 @@ description: Découvrez comment Blazor applications peuvent injecter des service
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/27/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/dependency-injection
-ms.openlocfilehash: 165cfa7a98cdd523c25d5c4bfc8e2c9d0ef1ad22
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 17dd0f927064ae7c2b1e3e439fd93e2cb220a5a4
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733815"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879781"
 ---
 # <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor l’injection de dépendances
 
@@ -86,7 +86,7 @@ L'exemple suivant montre comment utiliser `@inject`. Le service qui implémente 
 
 [!code-cshtml[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-En interne, la propriété générée (`DataRepository`) est décorée avec l’attribut `InjectAttribute`. En règle générale, cet attribut n’est pas utilisé directement. Si une classe de base est requise pour les composants et les propriétés injectées sont également requises pour la classe de base, ajoutez manuellement l' `InjectAttribute`:
+En interne, la propriété générée (`DataRepository`) utilise l’attribut `InjectAttribute`. En règle générale, cet attribut n’est pas utilisé directement. Si une classe de base est requise pour les composants et les propriétés injectées sont également requises pour la classe de base, ajoutez manuellement l' `InjectAttribute`:
 
 ```csharp
 public class ComponentBase : IComponent

@@ -4,16 +4,16 @@ author: mjrousos
 description: Conseils pour améliorer les performances dans les applications ASP.NET Core et éviter les problèmes de performances courants.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: performance/performance-best-practices
-ms.openlocfilehash: 64d231ca435ccbfe9bfcd839a2b67fcee68c0cc6
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: bd30776d527b4ac9f44005e9f5d03fec7cfda2e6
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239881"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880916"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Meilleures pratiques en matière de performances de ASP.NET Core
 
@@ -41,7 +41,7 @@ Un problème de performances courant dans les applications de ASP.NET Core consi
 * Acquérir des verrous dans les chemins de code communs. Les applications ASP.NET Core sont plus performantes quand elles sont conçues pour exécuter du code en parallèle.
 * Appelez [Task. Run](/dotnet/api/system.threading.tasks.task.run) et attendez-y immédiatement. ASP.NET Core exécute déjà le code d’application sur des threads de pool de threads normaux, donc l’appel de Task. Run entraîne uniquement une planification de pool de threads superflue. Même si le code planifié bloque un thread, Task. Run n’empêche pas cela.
 
-**Procédez**comme suit :
+**À faire** :
 
 * Rendez les [chemins de code à chaud](#understand-hot-code-paths) asynchrones.
 * Appeler l’accès aux données et les API d’opérations de longue durée de manière asynchrone si une API asynchrone est disponible. Une fois encore, n’utilisez pas [Task. Run](/dotnet/api/system.threading.tasks.task.run) pour rendre une API synchronus asynchrone.
@@ -56,7 +56,7 @@ Le [garbage collector .net Core](/dotnet/standard/garbage-collection/) gère l�
 Recommandations :
 
 * **Envisagez** de mettre en cache des objets volumineux fréquemment utilisés. La mise en cache des objets volumineux empêche les allocations coûteuses.
-* **Effectuez** des tampons de pool à l’aide d’un [`ArrayPool<T>`](/dotnet/api/system.buffers.arraypool-1) pour stocker de grands tableaux.
+* **Effectuez** des tampons de pool à l’aide d’un [ArrayPool\<t >](/dotnet/api/system.buffers.arraypool-1) pour stocker des tableaux volumineux.
 * **N'** allouez pas de nombreux objets volumineux à courte durée de vie sur les [chemins de code à chaud](#understand-hot-code-paths).
 
 Les problèmes de mémoire, tels que le précédent, peuvent être diagnostiqués en examinant les statistiques de garbage collection (GC) dans [PerfView](https://github.com/Microsoft/perfview) et en examinant :
@@ -98,7 +98,7 @@ Bien que [httpclient](/dotnet/api/system.net.http.httpclient) implémente l’in
 Recommandations :
 
 * **Ne** créez et ne supprimez pas directement des instances de `HttpClient`.
-* **Utilisez** [HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) pour récupérer des instances `HttpClient`. Pour plus d’informations, consultez [utiliser HttpClientFactory pour implémenter des demandes http résilientes](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
+* **Utilisez** [HttpClientFactory](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests) pour récupérer des instances `HttpClient`. Pour plus d’informations, consultez [Utiliser HttpClientFactory pour implémenter des requêtes HTTP résilientes](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests).
 
 ## <a name="keep-common-code-paths-fast"></a>Conserver les chemins de code communs rapidement
 
@@ -140,7 +140,7 @@ Recommandations :
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Utiliser la dernière version de ASP.NET Core
 
-Chaque nouvelle version de ASP.NET Core comprend des améliorations des performances. Les optimisations dans .NET Core et ASP.NET Core signifient que les versions plus récentes sont généralement plus performantes que les anciennes. Par exemple, .NET Core 2,1 a ajouté la prise en charge des expressions régulières compilées et bénéficié à partir de [`Span<T>`](https://msdn.microsoft.com/magazine/mt814808.aspx). ASP.NET Core 2,2 a ajouté la prise en charge de HTTP/2. [ASP.NET Core 3,0 ajoute de nombreuses améliorations](xref:aspnetcore-3.0) qui réduisent l’utilisation de la mémoire et améliorent le débit. Si les performances sont prioritaires, envisagez une mise à niveau vers la version actuelle de ASP.NET Core.
+Chaque nouvelle version de ASP.NET Core comprend des améliorations des performances. Les optimisations dans .NET Core et ASP.NET Core signifient que les versions plus récentes sont généralement plus performantes que les anciennes. Par exemple, .NET Core 2,1 a ajouté la prise en charge des expressions régulières compilées et bénéficié à partir de [Span\<t >](https://msdn.microsoft.com/magazine/mt814808.aspx). ASP.NET Core 2,2 a ajouté la prise en charge de HTTP/2. [ASP.NET Core 3,0 ajoute de nombreuses améliorations](xref:aspnetcore-3.0) qui réduisent l’utilisation de la mémoire et améliorent le débit. Si les performances sont prioritaires, envisagez une mise à niveau vers la version actuelle de ASP.NET Core.
 
 ## <a name="minimize-exceptions"></a>Réduire les exceptions
 

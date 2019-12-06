@@ -9,12 +9,12 @@ ms.date: 11/27/2019
 no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 2a83761b598a339aeaf8bec6f8fd50d09e608f0c
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 07069410135e216ff5f4de94285a54be66d44615
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681212"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880379"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>Créer votre première Blazor application
 
@@ -125,7 +125,7 @@ Si vous utilisez une application Blazor webassembly, `HttpClient` est injecté p
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-Une boucle [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour afficher chaque instance de prévision sous la forme d’une ligne dans la table des données météorologiques :
+Une boucle [`@foreach`](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour afficher chaque instance de prévision sous la forme d’une ligne dans la table des données météorologiques :
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 

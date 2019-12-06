@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Découvrez comment utiliser NSwag pour générer des pages d’aide et de documentation pour une API web ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 06/21/2019
+ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 23927e6ce0a7b29ce3f32d4e7f7d3f234257ca9b
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 676e911a14bd128998c987b3f955c40e19af98d1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416155"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881304"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
@@ -73,7 +73,7 @@ Vous pouvez installer le package NuGet NSwag avec l’une des méthodes suivante
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Exécutez la commande suivante :
+Exécutez la commande suivante : .
 
 ```dotnetcli
 dotnet add TodoApi.csproj package NSwag.AspNetCore
@@ -93,7 +93,7 @@ Ajoutez et configurez Swagger dans votre application ASP.NET Core en exécutant 
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
-* Lancez l’application. Accédez à :
+* Lancez l’application. Accédez à
   * `http://localhost:<port>/swagger` pour voir l’IU de Swagger.
   * `http://localhost:<port>/swagger/v1/swagger.json` pour voir la spécification Swagger.
 
@@ -257,7 +257,7 @@ Prenons l'exemple suivant :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-L’action précédente retourne `IActionResult`, mais à l’intérieur de l’action, [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) ou [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) sont retournés. Utilisez les annotations de données pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Décorez l’action avec les attributs suivants :
+L’action précédente retourne `IActionResult`, mais à l’intérieur de l’action, [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*) ou [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) sont retournés. Utilisez les annotations de données pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Marquez l’action avec les attributs suivants :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -271,7 +271,7 @@ Prenons l'exemple suivant :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-L’action précédente retourne `ActionResult<T>`. À l’intérieur de l’action, il retourne [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*). Étant donné que le contrôleur est décoré avec l’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), une réponse [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) est également possible. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses). Utilisez les annotations de données pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Décorez l’action avec les attributs suivants :
+L’action précédente retourne `ActionResult<T>`. À l’intérieur de l’action, il retourne [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*). Étant donné que le contrôleur a l’attribut [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) , une réponse [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) est également possible. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses). Utilisez les annotations de données pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Marquez l’action avec les attributs suivants :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
@@ -279,6 +279,6 @@ Dans ASP.NET Core 2.2 ou une version ultérieure, vous pouvez utiliser les conve
 
 ::: moniker-end
 
-Le générateur Swagger peut maintenant décrire précisément cette action et les clients générés savent ce qu’ils reçoivent quand ils appellent le point de terminaison. Nous vous recommandons vivement de décorer toutes les actions avec ces attributs.
+Le générateur Swagger peut maintenant décrire précisément cette action et les clients générés savent ce qu’ils reçoivent quand ils appellent le point de terminaison. En guise de recommandation, marquez toutes les actions avec ces attributs.
 
 Pour obtenir des indications sur les réponses HTTP que doivent retourner vos actions d’API, consultez la [spécification RFC 7231](https://tools.ietf.org/html/rfc7231#section-4.3).

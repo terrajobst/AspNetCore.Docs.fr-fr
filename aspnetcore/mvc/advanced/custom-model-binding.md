@@ -3,14 +3,14 @@ title: Liaison de données personnalisée dans ASP.NET Core
 author: ardalis
 description: Découvrez comment la liaison de données permet aux actions du contrôleur de fonctionner directement avec des types de modèle dans ASP.NET Core.
 ms.author: riande
-ms.date: 11/13/2018
+ms.date: 12/05/2019
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: b2fbe6a9f11315d1fb8863fbf62e8929c7ff3fc2
-ms.sourcegitcommit: d34b2627a69bc8940b76a949de830335db9701d3
+ms.openlocfilehash: 625cc6c9ca5a2c22d028ea25f8fc0d942b71f12d
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71186878"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881127"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Avant de créer votre propre classeur de modèles personnalisé, vérifiez la fa
 
 Les chaînes encodées au format Base64 peuvent être utilisées pour représenter des données binaires. Par exemple, l’image suivante peut être encodée sous forme de chaîne.
 
-![dotnet bot](custom-model-binding/images/bot.png "dotnet bot")
+![bot dotnet](custom-model-binding/images/bot.png "bot dotnet")
 
 Une petite partie de la chaîne encodée est affichée dans l’image suivante :
 
@@ -69,7 +69,7 @@ L’exemple suivant montre comment utiliser `ByteArrayModelBinder` pour converti
 
 Vous pouvez envoyer (POST) une chaîne encodée au format base64 à cette méthode d’API à l’aide d’un outil tel que [Postman](https://www.getpostman.com/) :
 
-![postman](custom-model-binding/images/postman.png "postman")
+![Postman](custom-model-binding/images/postman.png "Postman")
 
 Tant que le classeur peut lier les données de requête à des propriétés ou des arguments nommés de manière appropriée, la liaison de données s’effectue correctement. L’exemple suivant montre comment utiliser `ByteArrayModelBinder` avec un modèle de vue :
 
@@ -147,4 +147,4 @@ Les classeurs de modèles personnalisés :
 
 - Ne doivent pas tenter de définir des codes d’état ou de retourner des résultats (par exemple, 404 Introuvable). En cas d’échec de la liaison de données, un [filtre d’action](xref:mvc/controllers/filters) ou une logique située dans la méthode d’action elle-même doit prendre en charge l’erreur.
 - Sont surtout utiles pour éliminer le code répétitif et les problèmes transversaux des méthodes d’action.
-- Ne doivent pas être utilisés pour convertir une chaîne en type personnalisé. En règle générale, [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter) est une meilleure option.
+- En général, ne doit pas être utilisé pour convertir une chaîne en type personnalisé, un [TypeConverter](/dotnet/api/system.componentmodel.typeconverter) est généralement une meilleure option.

@@ -3,14 +3,14 @@ title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 ms.author: riande
-ms.date: 08/16/2019
+ms.date: 12/05/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 9065aa23a537add5a9376472e4f4478e9d4149bd
-ms.sourcegitcommit: 776598f71da0d1e4c9e923b3b395d3c3b5825796
-ms.translationtype: HT
+ms.openlocfilehash: 7e02a21361e0e2148b29a3ae0f1ba25e68239e13
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70024741"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881113"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Si vous utilisez Razor Pages, consultez [Zones avec Razor Pages](#areas-with-raz
 Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et des vues est constituée des éléments suivants :
 
 * Une [structure de dossiers Zone](#area-folder-structure).
-* Des contrôleurs décorés avec l’attribut [&lbrack;Area&rbrack;](#attribute) pour associer le contrôleur à la zone :
+* Les contrôleurs avec l’attribut [`[Area]`](#attribute) pour associer le contrôleur à la zone :
 
   [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 
@@ -47,7 +47,7 @@ Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et
 Imaginez une application qui contient deux groupes logiques, *Produits* et *Services*. En utilisant des zones, la structure de dossiers se présenterait comme suit :
 
 * Nom du projet
-  * Zones (Areas)
+  * Domaines
     * Produits
       * Contrôleurs
         * HomeController.cs
@@ -55,7 +55,7 @@ Imaginez une application qui contient deux groupes logiques, *Produits* et *Serv
       * Affichages
         * Accueil
           * Index.cshtml
-        * Gérer
+        * Gestion
           * Index.cshtml
           * About.cshtml
     * Services
@@ -137,7 +137,7 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 Les zones avec Razor Pages requièrent un dossier *Areas/<area name>/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) :
 
 * Nom du projet
-  * Zones (Areas)
+  * Domaines
     * Produits
       * Pages
         * _ViewImports
@@ -145,7 +145,7 @@ Les zones avec Razor Pages requièrent un dossier *Areas/<area name>/Pages* à l
         * Index
     * Services
       * Pages
-        * Gérer
+        * Gestion
           * À propos de
           * Index
 

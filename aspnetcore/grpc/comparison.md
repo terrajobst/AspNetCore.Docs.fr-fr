@@ -4,16 +4,16 @@ author: jamesnk
 description: Découvrez comment gRPC compare avec les API HTTP et ce que sont les scénarios recommandés.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: ceb24d656827548492a6fa326681922297fc481b
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8935e665dfd5d8f9afa002f475c202ec0f0ee657
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963661"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880678"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparer les services gRPC avec les API HTTP
 
@@ -25,14 +25,14 @@ Cet article explique comment les [services gRPC](https://grpc.io/docs/guides/) s
 
 Le tableau suivant présente une comparaison de haut niveau des fonctionnalités entre les API gRPC et HTTP avec JSON.
 
-| Fonction          | gRPC                                               | API HTTP avec JSON           |
+| Composant          | gRPC                                               | API HTTP avec JSON           |
 | ---------------- | -------------------------------------------------- | ----------------------------- |
 | Contrat         | Obligatoire ( *. proto*)                                | Facultatif (OpenAPI)            |
 | Protocole         | HTTP/2                                             | HTTP                          |
 | Charge utile          | [Protobuf (petit, binaire)](#performance)           | JSON (grand, lisible par l’utilisateur)  |
 | Prescriptiveness | [Spécification stricte](#strict-specification)      | Compatibilité. Tout HTTP est valide.     |
-| Diffusion en continu        | [Client, serveur, bidirectionnel](#streaming)       | Client, serveur                |
-| Prise en charge des navigateurs  | [Non (requiert GRPC-Web)](#limited-browser-support) | Oui                           |
+| Diffusion        | [Client, serveur, bidirectionnel](#streaming)       | Client, serveur                |
+| Navigateurs pris en charge  | [Non (requiert GRPC-Web)](#limited-browser-support) | Oui                           |
 | Sécurité         | Transport (TLS)                                    | Transport (TLS)               |
 | Génération de code client | [Oui](#code-generation)                      | OpenAPI + outils tiers |
 
@@ -49,7 +49,7 @@ gRPC est conçu pour HTTP/2, une révision majeure de HTTP qui offre des avantag
 
 ### <a name="code-generation"></a>Génération de code
 
-Toutes les infrastructures gRPC fournissent une prise en charge de première classe pour la génération de code. Un fichier de base pour le développement gRPC est le [fichier *. proto* ](https://developers.google.com/protocol-buffers/docs/proto3), qui définit le contrat de services et de messages gRPC. À partir de ce fichier, gRPC frameworks code générera une classe de base de service, des messages et un client complet.
+Toutes les infrastructures gRPC fournissent une prise en charge de première classe pour la génération de code. Un fichier de base pour le développement gRPC est le [fichier. proto](https://developers.google.com/protocol-buffers/docs/proto3), qui définit le contrat de services et de messages gRPC. À partir de ce fichier, gRPC frameworks code générera une classe de base de service, des messages et un client complet.
 
 En partageant le fichier *. proto* entre le serveur et le client, les messages et le code client peuvent être générés de bout en bout. La génération de code du client élimine la duplication des messages sur le client et le serveur, et crée un client fortement typé pour vous. Le fait de ne pas avoir à écrire un client permet d’économiser beaucoup de temps de développement dans les applications avec de nombreux services.
 
@@ -59,7 +59,7 @@ Il n’existe aucune spécification formelle pour l’API HTTP avec JSON. Les d�
 
 La [spécification gRPC](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) est normative sur le format qu’un service gRPC doit suivre. gRPC élimine le débat et économise le temps des développeurs, car gRPC est cohérent entre les plateformes et les implémentations.
 
-### <a name="streaming"></a>Diffusion en continu
+### <a name="streaming"></a>Diffusion
 
 HTTP/2 fournit une base pour les flux de communication de longue durée et en temps réel. gRPC fournit une prise en charge de première classe pour la diffusion via HTTP/2.
 

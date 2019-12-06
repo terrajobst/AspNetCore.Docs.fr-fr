@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2019
+ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: dac5a48042a71774cb884e30a166be68bee69691
-ms.sourcegitcommit: f5762967df3be8b8c868229e679301f2f7954679
-ms.translationtype: HT
+ms.openlocfilehash: 452ccd76eece55cb5cf38fe39781f2f64dd5d466
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048108"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880874"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -104,7 +104,7 @@ var entityTag = new EntityTagHeaderValue("\"MyCalculatedEtagValue\"");
 return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNow.AddSeconds(-5), entityTag: entityTag);
 ```
 
-Le fichier retourné aux visiteurs sera décoré avec les en-têtes HTTP appropriés pour les valeurs `ETag` et `LastModified`.
+Le fichier retourné à vos visiteurs contient les en-têtes HTTP appropriés pour les valeurs `ETag` et `LastModified`.
 
 Si un visiteur de l’application demande du contenu avec un en-tête de requête de plage, ASP.NET Core reconnaît la requête et gère l’en-tête. Si le contenu demandé peut être remis partiellement, ASP.NET Core retourne uniquement le jeu d’octets demandé. Vous n’avez pas besoin d’écrire des gestionnaires spéciaux dans vos méthodes pour adapter ou gérer cette fonctionnalité. Elle est gérée automatiquement pour vous.
 

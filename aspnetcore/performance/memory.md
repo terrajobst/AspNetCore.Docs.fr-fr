@@ -4,20 +4,20 @@ author: rick-anderson
 description: Découvrez comment fonctionne la gestion de la mémoire dans ASP.NET Core et comment le garbage collector (GC) fonctionne.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/05/2019
 uid: performance/memory
-ms.openlocfilehash: 4c25c069aa2a6088c0549d786ecdd487ab7b9ea5
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 85e34c9faa31a1020a4200eb99003455ca435ec3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896946"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880946"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gestion de la mémoire et garbage collection (GC) dans ASP.NET Core
 
 Par [Sébastien Ros](https://github.com/sebastienros) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-La gestion de la mémoire est complexe, même dans une infrastructure gérée telle que .NET. L’analyse et la compréhension des problèmes de mémoire peuvent être difficiles. Cet article :
+La gestion de la mémoire est complexe, même dans une infrastructure gérée telle que .NET. L’analyse et la compréhension des problèmes de mémoire peuvent être difficiles. Cet article :
 
 * A été motivée par de nombreuses *fuites de mémoire* et les problèmes de *GC ne fonctionnaient pas* . La plupart de ces problèmes ont été provoqués par le fait de ne pas comprendre comment fonctionne la consommation de mémoire dans .NET Core, ou de ne pas comprendre comment elle est mesurée.
 * Illustre l’utilisation de la mémoire problématique et suggère d’autres approches.
@@ -274,7 +274,7 @@ Les liens suivants présentent l’approche ASP.NET Core pour la conservation de
 - [ResponseCaching/Streams/StreamUtilities. cs](https://github.com/aspnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 - [ResponseCaching/MemoryResponseCache. cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * [Segment de mémoire Large Object non couvert](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Tas d’objets volumineux](/dotnet/standard/garbage-collection/large-object-heap)
@@ -373,7 +373,7 @@ Le graphique suivant affiche l’appel de l’API précédente avec une charge m
 
 Dans le graphique précédent, les collections de génération 0 se produisent environ une fois par seconde.
 
-Le code précédent peut être optimisé en regroupant la mémoire tampon de `byte` à l’aide de [`ArrayPool<T>`](xref:System.Buffers.ArrayPool`1). Une instance statique est réutilisée entre les requêtes.
+Le code précédent peut être optimisé en regroupant la mémoire tampon de `byte` à l’aide de [ArrayPool\<t >](xref:System.Buffers.ArrayPool`1). Une instance statique est réutilisée entre les requêtes.
 
 Ce qui diffère avec cette approche, c’est qu’un objet regroupé est retourné à partir de l’API. Cela signifie que :
 

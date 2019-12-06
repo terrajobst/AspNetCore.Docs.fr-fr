@@ -4,14 +4,14 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/29/2019
+ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: abb55ea12583374639f28945037cb6aa41a5a32d
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 96b4c030c1d91f97725d1f3623c7b4023ad99ff3
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73427038"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880636"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -32,17 +32,17 @@ Dans ce didacticiel, vous apprendrez à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d'ensemble de
 
 Ce didacticiel crée l’API suivante :
 
-|API | Description | Corps de la requête | Corps de réponse |
+|API | Description | Corps de demande | Corps de réponse |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | aucune. | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | aucune. | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | aucune. |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | aucune. | aucune.|
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
 
 Le diagramme suivant illustre la conception de l’application.
 
@@ -297,7 +297,7 @@ Les commandes précédentes :
 Le code généré :
 
 * Définit une classe de contrôleur d’API sans méthodes.
-* Décore la classe avec l’attribut [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
+* Marque la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) . Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
 * Utilise l’injection de dépendances pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
 
 ## <a name="examine-the-posttodoitem-create-method"></a>Examiner la méthode de création de PostTodoItem
@@ -306,7 +306,7 @@ Remplacez l’instruction return dans `PostTodoItem` pour utiliser l’opérateu
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
-Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). La méthode obtient la valeur de la tâche dans le corps de la requête HTTP.
+Le code précédent est une méthode HTTP Après, comme indiqué par l’attribut [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) . La méthode obtient la valeur de la tâche dans le corps de la requête HTTP.
 
 La méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> :
 
@@ -366,7 +366,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur ou de Postman. Par exemple :
 
 * [https://localhost:5001/api/TodoItems](https://localhost:5001/api/TodoItems)
 * [https://localhost:5001/api/TodoItems/1](https://localhost:5001/api/TodoItems/1)
@@ -483,17 +483,17 @@ Dans ce didacticiel, vous apprendrez à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données relationnelle.
 
-## <a name="overview"></a>Vue d'ensemble
+## <a name="overview"></a>Vue d'ensemble de
 
 Ce didacticiel crée l’API suivante :
 
-|API | Description | Corps de la requête | Corps de réponse |
+|API | Description | Corps de demande | Corps de réponse |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | aucune. | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | aucune. | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | aucune. |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | aucune. | aucune.|
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
+|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
 
 Le diagramme suivant illustre la conception de l’application.
 
@@ -679,7 +679,7 @@ Le code précédent :
 Le code précédent :
 
 * Définit une classe de contrôleur d’API sans méthodes.
-* Décore la classe avec l’attribut [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
+* Marque la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) . Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
 * Utilise l’injection de dépendances pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
 * Ajoute un élément nommé `Item1` à la base de données si celle-ci est vide. Ce code se trouvant dans le constructeur, il s’exécute chaque fois qu’une nouvelle requête HTTP existe. Si vous supprimez tous les éléments, le constructeur recrée `Item1` au prochain appel d’une méthode d’API. Ainsi, il peut vous sembler à tort que la suppression n’a pas fonctionné.
 
@@ -696,7 +696,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 
 Arrêtez l’application si elle est toujours en cours d’exécution. Ensuite, réexécutez-la pour inclure les dernières modifications.
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -773,7 +773,7 @@ Ajoutez la méthode `PostTodoItem` suivante à *Controllers/TodoController.cs* :
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). La méthode obtient la valeur de la tâche dans le corps de la requête HTTP.
+Le code précédent est une méthode HTTP Après, comme indiqué par l’attribut [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) . La méthode obtient la valeur de la tâche dans le corps de la requête HTTP.
 
 La méthode `CreatedAtAction` :
 
@@ -785,7 +785,7 @@ La méthode `CreatedAtAction` :
 
 ### <a name="test-the-posttodoitem-method"></a>Tester la méthode PostTodoItem
 
-* Générez le projet.
+* créer le projet ;
 * Dans Postman, définissez la méthode HTTP sur `POST`.
 * Sélectionnez l’onglet **Body** (Corps).
 * Sélectionnez la case d’option **raw** (données brutes).
@@ -923,7 +923,7 @@ Pour supprimer une tâche, vous devez définir le `type` sur l’appel AJAX avec
 
 [Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Pour plus d'informations, voir les ressources suivantes :
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>

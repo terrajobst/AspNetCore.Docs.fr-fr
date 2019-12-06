@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment créer des Tag Helpers dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/29/2019
+ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: f0c7e114583b2ca2e681c507bef3487c863d8cd0
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589873"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881001"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -31,7 +31,7 @@ Un Tag Helper est toute classe qui implémente l’interface `ITagHelper`. Toute
 
 ## <a name="a-minimal-tag-helper"></a>Tag Helper minimal
 
-Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Exemple :
+Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Par exemple :
 
 ```html
 <email>Support</email>
@@ -117,7 +117,7 @@ Cette approche fonctionne pour l’attribut « href » tant qu’il n’existe p
 <a name="self-closing"></a>
 
    > [!NOTE]
-   > Si vous deviez écrire la fermeture automatique de la balise e-mail (`<email mail-to="Rick" />`), la sortie finale se fermerait aussi automatiquement. Pour activer la capacité d’écrire la balise avec uniquement une balise de début (`<email mail-to="Rick">`) vous devez décorer la classe avec le code suivant :
+   > Si vous deviez écrire la fermeture automatique de la balise e-mail (`<email mail-to="Rick" />`), la sortie finale se fermerait aussi automatiquement. Pour activer la possibilité d’écrire la balise avec uniquement une balise de début (`<email mail-to="Rick">`), vous devez marquer la classe avec ce qui suit :
    >
    > [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1&range=6-10)]
 

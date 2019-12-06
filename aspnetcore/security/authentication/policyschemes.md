@@ -1,38 +1,38 @@
 ---
-title: Jeux de stratégie dans ASP.NET Core
+title: Schémas de stratégie dans ASP.NET Core
 author: rick-anderson
-description: Modèles de stratégie d’authentification facilitent l’ont un schéma d’authentification logique unique
+description: Les schémas de stratégie d’authentification facilitent l’utilisation d’un seul schéma d’authentification logique.
 ms.author: riande
-ms.date: 02/28/2019
+ms.date: 12/05/2019
 uid: security/authentication/policyschemes
-ms.openlocfilehash: be03f349455c673b0739935ad20e596325c8cb74
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: f02d8e5cac20a9b60c5eddbd28253efacf682ea1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815282"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880714"
 ---
-# <a name="policy-schemes-in-aspnet-core"></a>Jeux de stratégie dans ASP.NET Core
+# <a name="policy-schemes-in-aspnet-core"></a>Schémas de stratégie dans ASP.NET Core
 
-Modèles de stratégie d’authentification facilitent l’ont un schéma d’authentification logiques seule potentiellement utiliser plusieurs approches. Par exemple, un jeu de stratégie peut utiliser l’authentification Google pour défis et l’authentification des cookies pour tout le reste. Les jeux de stratégie d’authentification permettent de :
+Les schémas de stratégie d’authentification facilitent l’utilisation d’un seul schéma d’authentification logique. Par exemple, un modèle de stratégie peut utiliser l’authentification Google pour résoudre les problèmes et l’authentification des cookies pour tout le reste. Les schémas de stratégie d’authentification le font :
 
-* Très simple de transférer une action de l’authentification vers un autre schéma.
-* Avant de façon dynamique en fonction de la demande.
+* Action d’authentification facile à transférer vers un autre schéma.
+* Transférer dynamiquement en fonction de la requête.
 
-Tous les schémas d’authentification qui utilisez dérivés <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> et associé [ `AuthenticationHandler<TOptions>` ](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1):
+Tous les schémas d’authentification qui utilisent des <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> dérivées et les [>s de\<AuthenticationHandler](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)associées sont les suivants :
 
-* Sont automatiquement des jeux de stratégie dans ASP.NET Core 2.1 et versions ultérieures.
-* Peut être activée via la configuration des options de ce modèle.
+* Sont automatiquement des schémas de stratégie dans ASP.NET Core 2,1 et versions ultérieures.
+* Peut être activé par le biais de la configuration des options du schéma.
 
 [!code-csharp[sample](policyschemes/samples/AuthenticationSchemeOptions.cs?name=snippet)]
 
 ## <a name="examples"></a>Exemples
 
-L’exemple suivant montre un schéma de niveau supérieur qui combine les schémas de niveau inférieur. L’authentification Google est utilisée pour les défis, et l’authentification des cookies est utilisée pour tout le reste :
+L’exemple suivant montre un modèle de niveau supérieur qui combine des schémas de niveau inférieur. L’authentification Google est utilisée pour les défis et l’authentification par cookie est utilisée pour tout le reste :
 
 [!code-csharp[sample](policyschemes/samples/Startup.cs?name=snippet1)]
 
-L’exemple suivant active la sélection dynamique de schémas de base de chaque demande. Autrement dit, comment combiner les cookies et l’authentification d’API :
+L’exemple suivant active la sélection dynamique de schémas pour chaque demande. Autrement dit, comment mélanger les cookies et l’authentification de l’API :
 
  <!-- REVIEW, missing If set in public Func<HttpContext, string> ForwardDefaultSelector -->
 

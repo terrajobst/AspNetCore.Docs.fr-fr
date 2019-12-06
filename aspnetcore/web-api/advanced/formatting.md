@@ -4,14 +4,14 @@ author: ardalis
 description: Découvrez comment mettre en forme les données des réponses dans l’API web ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 8/22/2019
+ms.date: 12/05/2019
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 78fe620ea8fdd681a276253f77939bcb2a56ebb9
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 4433ed11dad7522962ebeed411c4bef88e07e7af
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391290"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881358"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -135,7 +135,7 @@ services.AddControllers().AddJsonOptions(options =>
 });
 ```
 
-Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult`. Exemple :
+Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult`. Par exemple :
 
 ```csharp
 public IActionResult Get()
@@ -174,7 +174,7 @@ services.AddControllers().AddNewtonsoftJson(options =>
 });
 ```
 
-Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult`. Exemple :
+Les options de sérialisation de sortie, en fonction de l’action, peuvent être configurées à l’aide de `JsonResult`. Par exemple :
 
 ```csharp
 public IActionResult Get()
@@ -230,7 +230,7 @@ Certains cas spéciaux sont implémentés avec des formateurs intégrés. Par d�
 
 Sans la `StringOutputFormatter`, le format de formateur JSON intégré `string` les types de retour. Si le formateur JSON intégré est supprimé et qu’un formateur XML est disponible, le formateur XML met en forme `string` types de retour. Sinon, les types de retour `string` retournent `406 Not Acceptable`.
 
-Sans `HttpNoContentOutputFormatter`, les objets null sont mis en forme avec le formateur configuré. Exemple :
+Sans `HttpNoContentOutputFormatter`, les objets null sont mis en forme avec le formateur configuré. Par exemple :
 
 * Le formateur JSON retourne une réponse avec un corps de `null`.
 * Le formateur XML retourne un élément XML vide avec l’attribut `xsi:nil="true"` Set.
@@ -242,13 +242,13 @@ Les clients peuvent demander un format particulier dans le cadre de l’URL, par
 * Dans la chaîne de requête ou dans une partie du chemin d’accès.
 * En utilisant une extension de fichier spécifique au format, par exemple. XML ou. JSON.
 
-Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Exemple :
+Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Par exemple :
 
 [!code-csharp[](./formatting/sample/Controllers/ProductsController.cs?name=snippet)]
 
 L’itinéraire précédent permet de spécifier le format demandé en tant qu’extension de fichier facultative. L’attribut [`[FormatFilter]`](xref:Microsoft.AspNetCore.Mvc.FormatFilterAttribute) vérifie l’existence de la valeur de format dans le `RouteData` et mappe le format de réponse au formateur approprié lors de la création de la réponse.
 
-|           Route        |             Formateur              |
+|           Route        |             Formatter              |
 |------------------------|------------------------------------|
 |   `/api/products/5`    |    Le formateur de sortie par défaut    |
 | `/api/products/5.json` | Le formateur JSON (s’il est configuré) |

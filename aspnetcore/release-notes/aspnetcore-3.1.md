@@ -4,17 +4,17 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités de ASP.NET Core 3,1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 634c6937089a0a0fe1f862a83771aff65a1f8418
-ms.sourcegitcommit: 5974e3e66dab3398ecf2324fbb82a9c5636f70de
+ms.openlocfilehash: 5eaf14f3b9c5a5b2b83e469c4dc8119b5fc341c1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74778841"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880813"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>Nouveautés de ASP.NET Core 3,1
 
@@ -47,7 +47,7 @@ Pour plus d’informations, consultez [intégrer des composants dans des applica
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>Prise en charge des files d’attente partagées dans HTTP. sys
 
-[Http. sys](xref:fundamentals/servers/httpsys) prend en charge la création de files d’attente de demandes anonymes. Dans ASP.NET Core 3,1, nous avons ajouté la possibilité de créer une file d’attente de requêtes HTTP. sys nommée existante ou de l’attacher à celle-ci. La création ou l’attachement à une file d’attente de requêtes HTTP. sys existante active les scénarios où le protocole HTTP. Le processus de contrôleur sys qui possède la file d’attente est indépendant du processus de l’écouteur. Cette indépendance permet de conserver les connexions existantes et les demandes mises en file d’attente entre les redémarrages du processus de l’écouteur :
+[Http. sys](xref:fundamentals/servers/httpsys) prend en charge la création de files d’attente de demandes anonymes. Dans ASP.NET Core 3,1, nous avons ajouté la possibilité de créer une file d’attente de requêtes HTTP. sys nommée existante ou de l’attacher à celle-ci. La création ou l’attachement à une file d’attente de requêtes HTTP. sys existante active les scénarios où le processus de contrôleur HTTP. sys qui possède la file d’attente est indépendant du processus d’écoute. Cette indépendance permet de conserver les connexions existantes et les demandes mises en file d’attente entre les redémarrages du processus de l’écouteur :
 
 [!code-csharp[](sample/Program.cs?name=snippet)]
 

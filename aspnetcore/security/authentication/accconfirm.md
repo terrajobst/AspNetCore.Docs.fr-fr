@@ -5,12 +5,12 @@ description: Découvrez comment créer une application ASP.NET Core avec une con
 ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 8a515990be584aa1233fc3bf77811ae3784d9b1c
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: a4ecc2d91fb72915703dfaa146260f0c1360bded
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081560"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880766"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et récupération de mot de passe dans ASP.NET Core
 
@@ -32,7 +32,7 @@ Consultez [ce fichier PDF](https://webpifeed.blob.core.windows.net/webpifeed/Par
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 [.NET Core 3,0 SDK ou version ultérieure](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -46,11 +46,11 @@ cd WebPWrecover
 dotnet run
 ```
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Une fois inscrit, vous êtes redirigé vers la page `/Identity/Account/RegisterConfirmation` vers qui contient un lien pour simuler la confirmation de l’e-mail :
+Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Une fois inscrit, vous êtes redirigé vers la page à `/Identity/Account/RegisterConfirmation` qui contient un lien pour simuler la confirmation de l’e-mail :
 
-* Sélectionnez le `Click here to confirm your account` lien.
+* Sélectionnez le lien `Click here to confirm your account`.
 * Sélectionnez le lien de **connexion** et connectez-vous avec les mêmes informations d’identification.
-* Sélectionnez le `Hello YourEmail@provider.com!` lien, qui vous redirige vers la `/Identity/Account/Manage/PersonalData` page.
+* Sélectionnez le lien `Hello YourEmail@provider.com!`, qui vous redirige vers la page `/Identity/Account/Manage/PersonalData`.
 * Sélectionnez l’onglet **données personnelles** sur la gauche, puis sélectionnez **supprimer**.
 
 ### <a name="configure-an-email-provider"></a>Configurer un fournisseur de messagerie
@@ -63,7 +63,7 @@ Créez une classe pour extraire la clé de messagerie électronique sécurisée.
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
+Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -74,7 +74,7 @@ Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Sur Windows, le gestionnaire de secret stocke des paires de clés/valeur dans un fichier *secrets.json* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
 
-Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La `SendGridKey` valeur a été supprimée.
+Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
 
 ```json
 {
@@ -113,16 +113,16 @@ Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour
 
 ### <a name="implement-iemailsender"></a>Implémenter IEmailSender
 
-Pour implémenter `IEmailSender`, créez *services/EMailSender. cs* avec du code similaire à ce qui suit :
+Pour implémenter `IEmailSender`, créez *services/EMailSender. cs* avec un code similaire à ce qui suit :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Services/EmailSender.cs)]
 
 ### <a name="configure-startup-to-support-email"></a>Configurer le démarrage pour la prise en charge de la messagerie
 
-Ajoutez le code suivant à la `ConfigureServices` méthode dans le fichier *Startup.cs* :
+Ajoutez le code suivant à la méthode `ConfigureServices` dans le fichier *Startup.cs* :
 
 * Ajoutez `EmailSender` en tant que service temporaire.
-* Inscrivez l' `AuthMessageSenderOptions` instance de configuration.
+* Inscrivez l’instance de configuration `AuthMessageSenderOptions`.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Startup.cs?name=snippet1&highlight=11-15)]
 
@@ -161,7 +161,7 @@ Les jetons utilisateur d’identité intégrés (consultez [AspNetCore/SRC/Ident
 
 La durée de vie des jetons par défaut des [jetons d’utilisateur d’identité](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) est d' [un jour](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). Cette section montre comment modifier la durée de vie des jetons de courrier électronique.
 
-Ajoutez un [> TUser\<DataProtectorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) personnalisé et <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+Ajoutez un [DataProtectorTokenProvider personnalisé\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) et <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 
@@ -179,8 +179,8 @@ Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore/issues/5410
 
 Si vous ne parvenez à faire fonctionner l'email :
 
-* Définissez un point d' `EmailSender.Execute` arrêt dans `SendGridClient.SendEmailAsync` pour vérifier que est appelé.
-* Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l' `EmailSender.Execute`aide d’un code similaire à.
+* Définissez un point d’arrêt dans `EmailSender.Execute` pour vérifier que `SendGridClient.SendEmailAsync` est appelé.
+* Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l’aide d’un code similaire à `EmailSender.Execute`.
 * Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
 * Vérifiez votre dossier de courrier indésirable.
 * Essayez un autre alias de messagerie sur un autre fournisseur de messagerie (Microsoft, Yahoo, Gmail, etc.)
@@ -217,7 +217,7 @@ Activer la confirmation du compte sur un site avec des utilisateurs bloque tous 
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 [.NET Core 2,2 SDK ou version ultérieure](https://www.microsoft.com/net/download/all)
 
@@ -239,7 +239,7 @@ dotnet run
 
 ## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour afin que les nouveaux utilisateurs ne puissent pas se connecter tant que leur adresse de messagerie n’a pas été validée.
+Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. À ce stade, la seule validation sur l’e-mail est avec l’attribut [`[EmailAddress]`](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) . Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour afin que les nouveaux utilisateurs ne puissent pas se connecter tant que leur adresse de messagerie n’a pas été validée.
 
 [!INCLUDE[](~/includes/view-identity-db.md)]
 
@@ -255,7 +255,7 @@ Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregist
 
 En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
 
-Mise `Startup.ConfigureServices` à jour pour exiger un e-mail confirmé :
+Mettre à jour `Startup.ConfigureServices` pour exiger un e-mail confirmé :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
@@ -271,7 +271,7 @@ Créez une classe pour extraire la clé de messagerie électronique sécurisée.
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
+Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -280,7 +280,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Sur Windows, le gestionnaire de secret stocke des paires de clés/valeur dans un fichier *secrets.json* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
 
-Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La `SendGridKey` valeur a été supprimée.
+Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
 
 ```json
 {
@@ -319,22 +319,22 @@ Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour
 
 ### <a name="implement-iemailsender"></a>Implémenter IEmailSender
 
-Pour implémenter `IEmailSender`, créez *services/EMailSender. cs* avec du code similaire à ce qui suit :
+Pour implémenter `IEmailSender`, créez *services/EMailSender. cs* avec un code similaire à ce qui suit :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Services/EmailSender.cs)]
 
 ### <a name="configure-startup-to-support-email"></a>Configurer le démarrage pour la prise en charge de la messagerie
 
-Ajoutez le code suivant à la `ConfigureServices` méthode dans le fichier *Startup.cs* :
+Ajoutez le code suivant à la méthode `ConfigureServices` dans le fichier *Startup.cs* :
 
 * Ajoutez `EmailSender` en tant que service temporaire.
-* Inscrivez l' `AuthMessageSenderOptions` instance de configuration.
+* Inscrivez l’instance de configuration `AuthMessageSenderOptions`.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=15-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Activer la récupération du mot de passe et la confirmation du compte
 
-Le modèle contient du code pour la confirmation du compte et la récupération de mot de passe. Recherchez la `OnPostAsync` méthode dans *Areas/Identity/pages/Account/Register. cshtml. cs*.
+Le modèle contient du code pour la confirmation du compte et la récupération de mot de passe. Recherchez la méthode `OnPostAsync` dans *Areas/Identity/pages/Account/Register. cshtml. cs*.
 
 Empêchez les utilisateurs nouvellement inscrits d’être automatiquement connectés en commentant la ligne suivante :
 
@@ -358,7 +358,7 @@ Exécuter l’application web, et testez le flux de confirmation du compte et de
 
 ### <a name="view-the-manage-page"></a>Afficher la page gérer
 
-Sélectionnez votre nom d’utilisateur dans la fenêtre ![navigateur : navigateur avec le nom d’utilisateur](accconfirm/_static/un.png)
+Sélectionnez votre nom d’utilisateur dans le navigateur : ![fenêtre du navigateur avec le nom d’utilisateur](accconfirm/_static/un.png)
 
 La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email** affiche une case à cocher indiquant que l’adresse de messagerie a été confirmée.
 
@@ -387,7 +387,7 @@ Les jetons utilisateur d’identité intégrés (consultez [AspNetCore/SRC/Ident
 
 La durée de vie des jetons par défaut des [jetons d’utilisateur d’identité](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Extensions.Core/src/TokenOptions.cs) est d' [un jour](https://github.com/aspnet/AspNetCore/blob/v2.2.2/src/Identity/Core/src/DataProtectionTokenProviderOptions.cs). Cette section montre comment modifier la durée de vie des jetons de courrier électronique.
 
-Ajoutez un [> TUser\<DataProtectorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) personnalisé et <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
+Ajoutez un [DataProtectorTokenProvider personnalisé\<TUser >](/dotnet/api/microsoft.aspnetcore.identity.dataprotectortokenprovider-1) et <xref:Microsoft.AspNetCore.Identity.DataProtectionTokenProviderOptions>:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/TokenProviders/CustomTokenProvider.cs?name=snippet1)]
 
@@ -405,8 +405,8 @@ Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore/issues/5410
 
 Si vous ne parvenez à faire fonctionner l'email :
 
-* Définissez un point d' `EmailSender.Execute` arrêt dans `SendGridClient.SendEmailAsync` pour vérifier que est appelé.
-* Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l' `EmailSender.Execute`aide d’un code similaire à.
+* Définissez un point d’arrêt dans `EmailSender.Execute` pour vérifier que `SendGridClient.SendEmailAsync` est appelé.
+* Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l’aide d’un code similaire à `EmailSender.Execute`.
 * Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
 * Vérifiez votre dossier de courrier indésirable.
 * Essayez un autre alias de messagerie sur un autre fournisseur de messagerie (Microsoft, Yahoo, Gmail, etc.)

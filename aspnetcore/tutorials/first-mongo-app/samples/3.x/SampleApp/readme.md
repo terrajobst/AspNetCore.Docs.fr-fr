@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: aspnetcore-webapi-mongodb
-ms.openlocfilehash: 402b25f3f7c1644a52832b5c8566269773932e95
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
-ms.translationtype: HT
+ms.openlocfilehash: 01f9cf237dcf2a9b95c181c2cb87ef9f59102244
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886301"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881167"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -27,7 +27,7 @@ Dans ce didacticiel, vous apprendrez à :
 * Effectuer des opérations CRUD MongoDB à partir d’une API web
 * Personnaliser la sérialisation JSON
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [SDK .NET Core 3.0 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Préversion de Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=16&utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019preview) avec la charge de travail **ASP.NET et développement web**
@@ -128,7 +128,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 1. Sélectionnez le type de projet **Application web ASP.NET Core**, puis sélectionnez **Suivant**.
 1. Nommez le projet *BooksApi*, puis sélectionnez **Créer**.
 1. Sélectionnez le framework cible **.NET Core** et **ASP.NET Core 3.0**. Sélectionnez le modèle de projet **API**, puis sélectionnez **Créer**.
-1. Consultez la galerie [NuGet : MongoDB.Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .NET pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package**, accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
+1. Visitez la [galerie NuGet : MongoDB. Driver](https://www.nuget.org/packages/MongoDB.Driver/) pour déterminer la dernière version stable du pilote .net pour MongoDB. Dans la fenêtre **Console du Gestionnaire de Package**, accédez à la racine du projet. Exécutez la commande suivante afin d’installer le pilote .NET pour MongoDB :
 
     ```powershell
     Install-Package MongoDB.Driver -Version {VERSION}
@@ -137,7 +137,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 ## <a name="add-an-entity-model"></a>Ajouter un modèle d’entité
 
 1. Ajoutez un répertoire *Models* à la racine du projet.
-1. Ajoutez une classe `Book` au répertoire *Models* avec le code suivant :
+1. Ajoutez une classe `Book` au répertoire *Modèles* avec le code suivant :
 
     ```csharp
     using MongoDB.Bson;
@@ -166,10 +166,10 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
     Dans la classe précédente, la propriété `Id` :
 
     * Est requise pour mapper l’objet Common Language Runtime (CLR) à la collection MongoDB.
-    * Est annotée avec [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété en tant que clé primaire du document.
-    * Est annotée avec [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour autoriser le passage du paramètre en tant que type `string` à la place d’une structure [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo gère la conversion de `string` en `ObjectId`.
+    * Est annoté avec [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété comme clé primaire du document.
+    * Est annoté avec [`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour permettre le passage du paramètre en tant que type `string` au lieu d’une structure [ObjectID](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) . Mongo gère la conversion de `string` en `ObjectId`.
 
-    La propriété `BookName` est annotée avec l’attribut [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
+    La propriété `BookName` est annotée avec l’attribut [`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) . La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
 
 ## <a name="add-a-configuration-model"></a>Ajouter un modèle de configuration
 
@@ -491,7 +491,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
     À la suite du changement effectué, les noms de propriétés de la réponse JSON sérialisée de l’API web correspondent aux noms de propriétés équivalents du type d’objet CLR. Par exemple, la propriété `Author` de la classe `Book` est sérialisée en tant que `Author`.
 
-1. Dans *Models/Book.cs*, annotez la propriété `BookName` avec l’attribut [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
+1. Dans *Models/Book. cs*, annotez la propriété `BookName` avec l’attribut [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
 
     ```csharp
     [BsonElement("Name")]
@@ -509,7 +509,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
 1. Répétez les étapes définies dans la section [Tester l’API web](#test-the-web-api). Notez la différence des noms de propriétés JSON.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Pour plus d’informations sur la création d’API web ASP.NET Core, consultez les ressources suivantes :
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: 42c0efcd914eaa54134827cdf3bd6bd599d512b2
-ms.sourcegitcommit: 77c8be22d5e88dd710f42c739748869f198865dd
+ms.openlocfilehash: 1425abbfc7bce6bdc445f4e41d9e004405c96e13
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73427004"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880333"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -221,10 +221,10 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
    Dans la classe précédente, la propriété `Id` :
 
    * Est requise pour mapper l’objet Common Language Runtime (CLR) à la collection MongoDB.
-   * Est annotée avec [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété en tant que clé primaire du document.
-   * Est annotée avec [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour autoriser le passage du paramètre en tant que type `string` à la place d’une structure [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo gère la conversion de `string` en `ObjectId`.
+   * Est annoté avec [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété comme clé primaire du document.
+   * Est annoté avec [`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour permettre le passage du paramètre en tant que type `string` au lieu d’une structure [ObjectID](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) . Mongo gère la conversion de `string` en `ObjectId`.
 
-   La propriété `BookName` est annotée avec l’attribut [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
+   La propriété `BookName` est annotée avec l’attribut [`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) . La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
 
 ## <a name="add-a-configuration-model"></a>Ajouter un modèle de configuration
 
@@ -354,7 +354,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
    À la suite du changement effectué, les noms de propriétés de la réponse JSON sérialisée de l’API web correspondent aux noms de propriétés équivalents du type d’objet CLR. Par exemple, la propriété `Author` de la classe `Book` est sérialisée en tant que `Author`.
 
-1. Dans *Models/Book.cs*, annotez la propriété `BookName` avec l’attribut [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
+1. Dans *Models/Book. cs*, annotez la propriété `BookName` avec l’attribut [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -571,10 +571,10 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
    Dans la classe précédente, la propriété `Id` :
 
    * Est requise pour mapper l’objet Common Language Runtime (CLR) à la collection MongoDB.
-   * Est annotée avec [[BsonId]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété en tant que clé primaire du document.
-   * Est annotée avec [[BsonRepresentation(BsonType.ObjectId)]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour autoriser le passage du paramètre en tant que type `string` à la place d’une structure [ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm). Mongo gère la conversion de `string` en `ObjectId`.
+   * Est annoté avec [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm) pour désigner cette propriété comme clé primaire du document.
+   * Est annoté avec [`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) pour permettre le passage du paramètre en tant que type `string` au lieu d’une structure [ObjectID](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm) . Mongo gère la conversion de `string` en `ObjectId`.
 
-   La propriété `BookName` est annotée avec l’attribut [[BsonElement]](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm). La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
+   La propriété `BookName` est annotée avec l’attribut [`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm) . La valeur de l’attribut de `Name` représente le nom de propriété dans la collection MongoDB.
 
 ## <a name="add-a-configuration-model"></a>Ajouter un modèle de configuration
 
@@ -702,7 +702,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
    À la suite du changement effectué, les noms de propriétés de la réponse JSON sérialisée de l’API web correspondent aux noms de propriétés équivalents du type d’objet CLR. Par exemple, la propriété `Author` de la classe `Book` est sérialisée en tant que `Author`.
 
-1. Dans *Models/Book.cs*, annotez la propriété `BookName` avec l’attribut [[JsonProperty]](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
+1. Dans *Models/Book. cs*, annotez la propriété `BookName` avec l’attribut [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm) suivant :
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -720,7 +720,7 @@ Pour satisfaire les exigences précédentes, apportez les changements suivants 
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 Pour plus d’informations sur la création d’API web ASP.NET Core, consultez les ressources suivantes :
 

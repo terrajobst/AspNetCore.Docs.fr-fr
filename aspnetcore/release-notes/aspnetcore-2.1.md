@@ -4,16 +4,16 @@ author: isaac2004
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.1.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: a45ba44fb7911a21927a4a996c0d6fa9eb776357
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: d969b4caab44e3e50b3a0202b25864921d6d01dc
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963177"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880854"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Nouveautés d’ASP.NET Core 2.1
 
@@ -51,7 +51,7 @@ Pour plus d’informations, consultez [Identité de vue de structure dans les pr
 
 ## <a name="https"></a>HTTPS
 
-L’importance croissante accordée à la sécurité et à la confidentialité justifie l’activation du protocole HTTPS pour les applications web. La mise en œuvre du protocole HTTPS devient de plus en plus stricte sur le web. Les sites qui n’utilisent pas le protocole HTTPS sont considérés comme non sécurisés. Les navigateurs (Chrome, Mozilla) commencent à imposer l’utilisation des fonctionnalités web dans un contexte sécurisé. Le [RGPD](xref:security/gdpr) exige l’utilisation du protocole HTTPS pour protéger la confidentialité des utilisateurs. L’utilisation du protocole HTTPS en production est critique et son utilisation en développement peut aider à éviter les problèmes liés au déploiement (tels que les liens non sécurisés). ASP.NET Core 2.1 inclut un certain nombre d’améliorations qui facilitent l’utilisation du protocole HTTPS pendant le développement et sa configuration en production. Pour plus d’informations, consultez [Appliquer HTTPS](xref:security/enforcing-ssl).
+L’importance croissante accordée à la sécurité et à la confidentialité justifie l’activation du protocole HTTPS pour les applications web. La mise en œuvre du protocole HTTPS devient de plus en plus stricte sur le web. Les sites qui n’utilisent pas le protocole HTTPs sont considérés comme non sécurisés. Les navigateurs (Chrome, Mozilla) commencent à imposer l’utilisation des fonctionnalités web dans un contexte sécurisé. Le [RGPD](xref:security/gdpr) exige l’utilisation du protocole HTTPS pour protéger la confidentialité des utilisateurs. L’utilisation du protocole HTTPS en production est critique et son utilisation en développement peut aider à éviter les problèmes liés au déploiement (tels que les liens non sécurisés). ASP.NET Core 2.1 inclut un certain nombre d’améliorations qui facilitent l’utilisation du protocole HTTPS pendant le développement et sa configuration en production. Pour plus d’informations, consultez [Appliquer HTTPS](xref:security/enforcing-ssl).
 
 ### <a name="on-by-default"></a>Activé par défaut
 
@@ -147,7 +147,7 @@ Les modèles d’applications monopages pour Angular, React et React avec Redux 
 
 Le modèle Angular est basé sur l’interface CLI Angular, tandis que les modèles React sont basés sur create-react-app.
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * <xref:spa/angular>
 * <xref:spa/react>

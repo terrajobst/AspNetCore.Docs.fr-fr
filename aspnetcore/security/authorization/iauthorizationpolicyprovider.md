@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/14/2019
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 4f6a4ea209ebe30759f9f14b15b0385399b36ead
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: fe07a113a29ed3e14679e3f3f2249b0810c17593
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116060"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880703"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Fournisseurs de stratégies d’autorisation personnalisés utilisant IAuthorizationPolicyProvider dans ASP.NET Core 
 
@@ -31,7 +31,7 @@ Voici quelques exemples de scénarios dans lesquels un [IAuthorizationPolicyProv
 
 Les applications ASP.NET Core utilisent une implémentation de l’interface `IAuthorizationPolicyProvider` pour récupérer les stratégies d’autorisation. Par défaut, [DefaultAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) est inscrit et utilisé. `DefaultAuthorizationPolicyProvider` retourne les stratégies du `AuthorizationOptions` fourni dans un appel de `IServiceCollection.AddAuthorization`.
 
-Vous pouvez personnaliser ce comportement en inscrivant une implémentation de `IAuthorizationPolicyProvider` différente dans le conteneur d' [injection de dépendances](xref:fundamentals/dependency-injection) de l’application. 
+Personnalisez ce comportement en inscrivant une implémentation de `IAuthorizationPolicyProvider` différente dans le conteneur d' [injection de dépendances](xref:fundamentals/dependency-injection) de l’application. 
 
 L’interface `IAuthorizationPolicyProvider` contient trois API :
 

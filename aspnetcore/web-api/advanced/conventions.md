@@ -5,20 +5,20 @@ description: Découvrez plus d’informations sur les conventions d’API web da
 monikerRange: '>= aspnetcore-2.2'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/13/2018
+ms.date: 12/05/2019
 uid: web-api/advanced/conventions
-ms.openlocfilehash: ae409158defe15ffaa7454039b302cf3c6437e54
-ms.sourcegitcommit: 6d9cf728465cdb0de1037633a8b7df9a8989cccb
-ms.translationtype: HT
+ms.openlocfilehash: 2c7e33da24322504fc5e1be83c0b814710186687
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67463281"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881317"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
 Par [Pranav Krishnamoorthy](https://github.com/pranavkm) et [Scott Addie](https://github.com/scottaddie)
 
-ASP.NET Core 2.2 et ses versions ultérieures incluent un moyen d’extraire la [documentation des API](xref:tutorials/web-api-help-pages-using-swagger) courantes et de l’appliquer à plusieurs actions, à plusieurs contrôleurs ou à tous les contrôleurs au sein d’un assembly. Les conventions des API web sont un substitut permettant de décorer des actions individuelles avec [[ProducesResponseType]](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute).
+ASP.NET Core 2.2 et ses versions ultérieures incluent un moyen d’extraire la [documentation des API](xref:tutorials/web-api-help-pages-using-swagger) courantes et de l’appliquer à plusieurs actions, à plusieurs contrôleurs ou à tous les contrôleurs au sein d’un assembly. Les conventions d’API Web sont un substitut de la décoration des actions individuelles avec [`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute).
 
 Une convention vous permet de :
 
@@ -52,7 +52,7 @@ Les conventions ne se combinent pas : chaque action peut être associée à une 
 
     Pour plus d’informations sur `[ProducesDefaultResponseType]`, consultez [Réponse par défaut](https://swagger.io/docs/specification/describing-responses/#default).
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un contrôleur &mdash; applique le type de convention spécifié à toutes les actions sur le contrôleur. Une méthode de convention est décorée avec des indicateurs qui déterminent les actions auxquelles la méthode de convention s’applique. Pour plus d’informations sur les indicateurs, consultez [Créer des conventions d’API web](#create-web-api-conventions)).
+1. `Microsoft.AspNetCore.Mvc.ApiConventionTypeAttribute` appliqué à un contrôleur &mdash; applique le type de convention spécifié à toutes les actions sur le contrôleur. Une méthode de Convention est marquée avec des indicateurs qui déterminent les actions auxquelles la méthode de Convention s’applique. Pour plus d’informations sur les indicateurs, consultez [Créer des conventions d’API web](#create-web-api-conventions)).
 
     Dans l’exemple suivant, l’ensemble de conventions par défaut est appliqué à toutes les actions dans *ContactsConventionController* :
 
@@ -73,7 +73,7 @@ Si les conventions d’API par défaut ne répondent pas à vos besoins, créez 
 
 ### <a name="response-types"></a>Types de réponse
 
-Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Par exemple :
+Ces méthodes sont annotées avec des attributs `[ProducesResponseType]` ou `[ProducesDefaultResponseType]`. Par exemple :
 
 ```csharp
 public static class MyAppConventions
@@ -91,9 +91,9 @@ Si des attributs de métadonnées plus spécifiques sont absents, l’applicatio
 * La méthode de convention s’applique à toute action nommée `Find`.
 * Un paramètre nommé `id` est présent sur l’action `Find`.
 
-### <a name="naming-requirements"></a>Exigences de dénomination
+### <a name="naming-requirements"></a>Exigences concernant l'affectation des noms
 
-Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Par exemple :
+Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Par exemple :
 
 ```csharp
 [ProducesResponseType(StatusCodes.Status200OK)]

@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 9f249fac331d31249f9325892e8365e3d0b4cc5a
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: e737a8a85e7eb83d95618d71e85b0307c54b0766
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717059"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879685"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -116,7 +116,7 @@ Les exceptions non gérées précédentes sont décrites dans les sections suiva
 Lorsque Blazor crée une instance d’un composant :
 
 * Le constructeur du composant est appelé.
-* Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [@inject](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [[Inject]](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés. 
+* Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés. 
 
 Un circuit échoue quand un constructeur exécuté ou une méthode setter pour une propriété `[Inject]` lève une exception non gérée. L’exception est irrécupérable, car l’infrastructure ne peut pas instancier le composant. Si la logique du constructeur peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
@@ -185,7 +185,7 @@ Les conditions suivantes s’appliquent à la gestion des erreurs avec `InvokeAs
 * Si un appel à `InvokeAsync<T>` échoue de manière asynchrone, le <xref:System.Threading.Tasks.Task> .NET échoue. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car le code côté JavaScript lève une exception ou retourne un `Promise` qui s’est terminé comme `rejected`. Le code du développeur doit intercepter l’exception. Si vous utilisez l’opérateur [await](/dotnet/csharp/language-reference/keywords/await) , encapsulez l’appel de méthode dans une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Dans le cas contraire, le code défaillant entraîne une exception non gérée qui est irrécupérable pour le circuit.
 * Par défaut, les appels à `InvokeAsync<T>` doivent se terminer dans un laps de temps donné, sinon l’appel expire. Le délai d’expiration par défaut est d’une minute. Le délai d’attente protège le code contre toute perte de connectivité réseau ou de code JavaScript qui ne renvoie jamais de message d’achèvement. Si l’appel expire, le `Task` résultant échoue avec une <xref:System.OperationCanceledException>. Interceptez et traitez l’exception avec la journalisation.
 
-De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l' [attribut [JSInvokable]](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions). Si ces méthodes .NET lèvent une exception non gérée :
+De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l’attribut [`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions) . Si ces méthodes .NET lèvent une exception non gérée :
 
 * L’exception n’est pas traitée comme étant irrécupérable pour le circuit.
 * Le `Promise` côté JavaScript est rejeté.

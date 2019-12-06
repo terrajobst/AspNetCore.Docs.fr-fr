@@ -3,14 +3,14 @@ title: Créer des services backend pour les applications mobiles natives avec AS
 author: ardalis
 description: Découvrez comment créer des services backend en utilisant ASP.NET Core MVC pour prendre en charge des applications mobiles natives.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 12/05/2019
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: b50d2593d7dc4b89472033898373e3a22fc9a7a3
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 38ac69bfe9d99d6d61f96fde92d86fd752ebbb6b
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64883954"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881160"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Créer des services backend pour les applications mobiles natives avec ASP.NET Core
 
@@ -63,7 +63,7 @@ L’application doit répondre à toutes les demandes adressées au port 5000. P
 > [!NOTE]
 > Vérifiez que vous exécutez l’application directement et non pas derrière IIS Express, qui ignore par défaut les demandes non locales. Exécutez [dotnet run](/dotnet/core/tools/dotnet-run) à partir d’une invite de commandes, ou choisissez le profil du nom d’application dans la liste déroulante Cible de débogage dans la barre d’outils de Visual Studio.
 
-Ajoutez une classe de modèle pour représenter des éléments de tâche à effectuer. Marquez les champs obligatoires en utilisant l’attribut `[Required]` :
+Ajoutez une classe de modèle pour représenter des éléments de tâche à effectuer. Marquez les champs obligatoires avec l’attribut `[Required]` :
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
@@ -108,7 +108,7 @@ Vous pouvez tester votre nouvelle méthode d’API via différents outils, comme
 
 ### <a name="creating-items"></a>Création d’éléments
 
-Par convention, la création d’éléments de données est mappée au verbe HTTP POST. Un attribut `[HttpPost]` est appliqué à la méthode `Create`, laquelle accepte une instance de `ToDoItem`. Comme l’argument `item` sera passé dans le corps de la requête POST, ce paramètre est décoré avec l’attribut `[FromBody]`.
+Par convention, la création d’éléments de données est mappée au verbe HTTP POST. La méthode `Create` a un attribut `[HttpPost]` qui lui est appliqué et accepte une instance `ToDoItem`. Étant donné que l’argument `item` est passé dans le corps de la publication, ce paramètre spécifie l’attribut `[FromBody]`.
 
 À l’intérieur de la méthode, la validité et l’existence préalable de l’élément dans le magasin de données sont vérifiées et, si aucun problème ne se produit, il est ajouté via le référentiel. La vérification `ModelState.IsValid` effectue la [validation du modèle](../mvc/models/validation.md) et doit être effectuée dans chaque méthode d’API qui accepte une entrée utilisateur.
 

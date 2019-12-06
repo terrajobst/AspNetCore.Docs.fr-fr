@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 11/09/2019
 uid: mvc/views/razor
-ms.openlocfilehash: dea1cd8986757b0bafab9ba9e8aa358a57a6b5eb
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: a18fd2886124f186b8f35abf4b55a51f1f996958
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317403"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881013"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -389,7 +389,7 @@ Razor permet de verrouiller les sections critiques par des instructions lock :
 }
 ```
 
-### <a name="comments"></a>Commentaires
+### <a name="comments"></a>Comments
 
 Razor prend en charge les commentaires HTML et C# :
 
@@ -455,7 +455,7 @@ La directive `@attribute` permet d’ajouter l’attribut donné à la classe de
 
 ::: moniker range=">= aspnetcore-3.0"
 
-### <a name="code"></a>code \@
+### <a name="code"></a>\@code
 
 *Ce scénario s’applique uniquement aux composants Razor (.razor).*
 
@@ -467,7 +467,7 @@ Le blob `@code` permet à un [composant Razor](xref:blazor/components) d’ajout
 }
 ```
 
-Pour les composants Razor, `@code` est un alias [@functions](#functions) et est recommandé sur `@functions`. Plus d’un bloc `@code` est autorisé.
+Pour les composants Razor, `@code` est un alias [`@functions`](#functions) et est recommandé sur `@functions`. Plus d’un bloc `@code` est autorisé.
 
 ::: moniker-end
 
@@ -487,7 +487,7 @@ Dans les [composants Razor](xref:blazor/components), utilisez `@code` sur `@func
 
 ::: moniker-end
 
-Exemple :
+Par exemple :
 
 [!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
@@ -866,7 +866,7 @@ Sortie rendue :
 </ul>
 ```
 
-## <a name="tag-helpers"></a>Tag helpers
+## <a name="tag-helpers"></a>Tag Helpers
 
 *Ce scénario s’applique uniquement aux vues MVC et à Razor Pages (.cshtml).*
 
@@ -874,19 +874,19 @@ Il existe trois directives spécifiques aux [Tag Helpers](xref:mvc/views/tag-hel
 
 | Directive | Fonction |
 | --------- | -------- |
-| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Rend les Tag Helpers disponibles dans une vue. |
-| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Supprime les Tag Helpers précédemment ajoutés à une vue. |
-| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Spécifie un préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur usage explicite. |
+| [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#add-helper-label) | Rend les Tag Helpers disponibles dans une vue. |
+| [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Supprime les Tag Helpers précédemment ajoutés à une vue. |
+| [`@tagHelperPrefix`](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Spécifie un préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur usage explicite. |
 
 ## <a name="razor-reserved-keywords"></a>Mots clés réservés Razor
 
 ### <a name="razor-keywords"></a>Mots clés Razor
 
 * page (nécessite ASP.NET Core 2.1 ou ultérieur)
-* namespace
+* Espace de noms
 * fonctions
 * hérite
-* modèle
+* model
 * section
 * helper (non pris en charge par ASP.NET Core)
 
@@ -894,19 +894,19 @@ Les mots clés Razor sont précédés d’une séquence d’échappement `@(Razo
 
 ### <a name="c-razor-keywords"></a>Mots clés Razor C#
 
-* cas
+* casse
 * do
 * default
 * pour
 * foreach
 * if
 * else
-* verrou
+* lock
 * switch
 * try
 * catch
 * finally
-* using
+* utilisation
 * while
 
 Les mots clés Razor C# doivent être précédés d’une double séquence d’échappement `@(@C# Razor Keyword)` (par exemple, `@(@case)`). La première séquence d’échappement `@` est pour l’analyseur Razor. La seconde séquence d’échappement `@` est pour l’analyseur C#.

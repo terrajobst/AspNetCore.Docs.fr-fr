@@ -5,14 +5,14 @@ description: Découvrez comment gérer les erreurs dans les applications ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 12/05/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: bff526e196ecc378d4687e1c38188977aeeccfd9
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: 162972043a90fc8cc45aed52b5fa80ade3e11f39
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589888"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880061"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -64,7 +64,7 @@ public IActionResult Error()
 }
 ```
 
-Ne décorez pas la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet`. Les verbes explicites empêchent certaines demandes d’atteindre la méthode. Autorisez l’accès anonyme à la méthode afin que les utilisateurs non authentifiés puissent recevoir la vue des erreurs.
+Ne Marquez pas la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet`. Les verbes explicites empêchent certaines demandes d’atteindre la méthode. Autorisez l’accès anonyme à la méthode afin que les utilisateurs non authentifiés puissent recevoir la vue des erreurs.
 
 ### <a name="access-the-exception"></a>Accéder à l'exception
 
@@ -166,7 +166,7 @@ Le point de terminaison qui traite l’erreur peut récupérer l’URL d’origi
 
 ## <a name="disable-status-code-pages"></a>Désactiver les pages de codes d’état
 
-Pour désactiver les pages de codes d’état d’un contrôleur MVC ou d’une méthode d’action, utilisez l’attribut [[SkipStatusCodePages]](xref:Microsoft.AspNetCore.Mvc.SkipStatusCodePagesAttribute).
+Pour désactiver les pages de codes d’État pour un contrôleur MVC ou une méthode d’action, utilisez l’attribut [`[SkipStatusCodePages]`](xref:Microsoft.AspNetCore.Mvc.SkipStatusCodePagesAttribute) .
 
 Pour désactiver les pages de codes d’état de requêtes spécifiques dans une méthode de gestionnaire Razor Pages ou dans un contrôleur MVC, utilisez <xref:Microsoft.AspNetCore.Diagnostics.IStatusCodePagesFeature> :
 
@@ -219,7 +219,7 @@ if (env.IsDevelopment())
 
 <!-- FUTURE UPDATE: On the next topic overhaul/release update, add API crosslink to this section for xref:Microsoft.AspNetCore.Builder.DatabaseErrorPageExtensions.UseDatabaseErrorPage* when available via the API docs. -->
 
-## <a name="exception-filters"></a>Filtres d’exceptions
+## <a name="exception-filters"></a>Filtres d'exception
 
 Dans les applications MVC, vous pouvez configurer les filtres d’exception globalement, contrôleur par contrôleur ou action par action. Dans les applications Razor Pages, ils peuvent être configurés globalement ou modèle de page par modèle de page. Ces filtres gèrent les exceptions non prises en charge qui se produisent pendant l’exécution d’une action de contrôleur ou d’un autre filtre. Pour plus d'informations, consultez <xref:mvc/controllers/filters#exception-filters>.
 

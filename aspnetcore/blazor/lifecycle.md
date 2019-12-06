@@ -5,16 +5,16 @@ description: Découvrez comment utiliser les méthodes de cycle de vie des compo
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/lifecycle
-ms.openlocfilehash: 1482f6b2147c74b11836e8029401bb8bcb3cdb2d
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 280ea832f492852e425e3e15c61cac54fd1e39d6
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681412"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879668"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET Core Blazor cycle de vie
 
@@ -64,7 +64,7 @@ public override async Task SetParametersAsync(ParameterView parameters)
 
 <xref:Microsoft.AspNetCore.Components.ParameterView> contient le jeu entier de valeurs de paramètre chaque fois que `SetParametersAsync` est appelé.
 
-L’implémentation par défaut de `SetParametersAsync` définit la valeur de chaque propriété décorée avec l’attribut `[Parameter]` ou `[CascadingParameter]` qui a une valeur correspondante dans le `ParameterView`. Les paramètres qui n’ont pas de valeur correspondante dans `ParameterView` restent inchangés.
+L’implémentation par défaut de `SetParametersAsync` définit la valeur de chaque propriété avec l’attribut `[Parameter]` ou `[CascadingParameter]` qui a une valeur correspondante dans le `ParameterView`. Les paramètres qui n’ont pas de valeur correspondante dans `ParameterView` restent inchangés.
 
 Si `base.SetParametersAync` n’est pas appelé, le code personnalisé peut interpréter la valeur des paramètres entrants de la façon requise. Par exemple, il n’est pas nécessaire d’assigner les paramètres entrants aux propriétés de la classe.
 

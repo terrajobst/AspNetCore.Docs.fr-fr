@@ -3,14 +3,14 @@ title: Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 author: ardalis
 description: ''
 ms.author: riande
-ms.date: 07/03/2017
+ms.date: 12/05/2019
 uid: mvc/controllers/actions
-ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 715a73863513870d1cbd522e75013d41830da1e7
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890254"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881103"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
@@ -23,13 +23,15 @@ Les contrôleurs, les actions et les résultats des actions sont une part fondam
 Un contrôleur est utilisé pour définir et regrouper un ensemble d’actions. Une action (ou *méthode d’action*) est une méthode sur un contrôleur qui gère les demandes. Les contrôleurs regroupent de façon logique des actions similaires. Cette agrégation des actions permet l’application collective de jeux de règles communs, comme le routage, la mise en cache et les autorisations. Les demandes sont mappées à des actions via un [routage](xref:mvc/controllers/routing).
 
 Par convention, les classes de contrôleur :
-* Se trouvent dans le dossier *Controllers* au niveau de la racine du projet
-* Héritent de `Microsoft.AspNetCore.Mvc.Controller`
+
+* Résident dans le dossier des *contrôleurs* de niveau racine du projet.
+* Héritez de `Microsoft.AspNetCore.Mvc.Controller`.
 
 Un contrôleur est une classe instanciable dans laquelle au moins une des conditions suivantes est vraie :
-* Le nom de classe a comme suffixe « Controller »
-* La classe hérite d’une classe dont le nom est suivi du suffixe « Controller »
-* La classe est décorée avec l’attribut `[Controller]`
+
+* Le nom de la classe est suivi d’un suffixe `Controller`.
+* La classe hérite d’une classe dont le nom est suivi d’un suffixe `Controller`.
+* L’attribut `[Controller]` est appliqué à la classe.
 
 Une classe de contrôleur ne doit pas avoir d’attribut `[NonController]` associé.
 
@@ -41,9 +43,9 @@ Le contrôleur prend le résultat du traitement du modèle (le cas échéant) et
 
 Le contrôleur est une abstraction *au niveau de l’interface utilisateur*. Ses responsabilités sont de garantir que les données de la demande sont valides et de choisir la vue (ou le résultat d’API) à retourner. Dans les applications bien construites, il n’inclut pas directement l’accès aux données ni la logique métier. Au lieu de cela, le contrôleur délègue à des services la gestion de ces responsabilités.
 
-## <a name="defining-actions"></a>Définition d’actions
+## <a name="defining-actions"></a>Définition des actions
 
-Les méthodes publiques sur un contrôleur, sauf celles qui sont décorées avec l’attribut `[NonAction]`, sont des actions. Les paramètres sur les actions sont liés aux données des demandes et sont validés avec la [liaison de modèle](xref:mvc/models/model-binding). La validation du modèle est effectuée pour tout ce qui est lié au modèle. La valeur de la propriété `ModelState.IsValid` indique si la liaison de modèle et la validation ont réussi.
+Les méthodes publiques sur un contrôleur, à l’exception de celles avec l’attribut `[NonAction]`, sont des actions. Les paramètres sur les actions sont liés aux données des demandes et sont validés avec la [liaison de modèle](xref:mvc/models/model-binding). La validation du modèle est effectuée pour tout ce qui est lié au modèle. La valeur de la propriété `ModelState.IsValid` indique si la liaison de modèle et la validation ont réussi.
 
 Les méthodes d’action doivent contenir la logique nécessaire pour mapper une demande à un problème métier. Les problèmes métier doivent généralement être représentés comme des services auxquels le contrôleur accède via [l’injection de dépendances](xref:mvc/controllers/dependency-injection). Les actions mappent ensuite le résultat de l’action métier à un état de l’application.
 
@@ -53,7 +55,7 @@ Les actions peuvent retourner des valeurs de n’importe quel type, mais elles r
 
 Les contrôleurs héritent généralement de la classe [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller), bien que ce ne soit pas obligatoire. Le fait de dériver de `Controller` fournit l’accès à trois catégories de méthodes helper :
 
-#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. Méthodes aboutissant à un corps de réponse vide
+#### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. les méthodes conduisent à un corps de réponse vide
 
 Aucune en-tête de réponse HTTP `Content-Type` n’est présente, étant donné que le corps de la réponse n’a pas de contenu à décrire.
 
@@ -69,7 +71,7 @@ Il existe deux types de résultats dans cette catégorie : Redirection et Code d
 
     Le type de résultat Redirection diffère du type Code d’état HTTP principalement par l’ajout d’un en-tête de réponse HTTP `Location`.
 
-#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2. Méthodes aboutissant à un corps de réponse de non vide avec un type de contenu prédéfini
+#### <a name="2-methods-resulting-in-a-non-empty-response-body-with-a-predefined-content-type"></a>2. les méthodes conduisent à un corps de réponse non vide avec un type de contenu prédéfini
 
 La plupart des méthodes helper de cette catégorie incluent une propriété `ContentType`, qui vous permet de définir l’en-tête de réponse `Content-Type` pour décrire le corps de la réponse.
 
@@ -85,7 +87,7 @@ Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/
     
     `File` et `PhysicalFile` sont des méthodes courantes de ce type. Par exemple, `return PhysicalFile(customerFilePath, "text/xml");` retourne [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult).
 
-#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Méthodes aboutissant à un corps de réponse non vide mise en forme selon un type de contenu négocié avec le client
+#### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. les méthodes qui aboutissent à un corps de réponse non vide mis en forme dans un type de contenu négocié avec le client
 
 Cette catégorie est plus connue sous le nom de **Négociation de contenu**. La [Négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) s’applique chaque fois qu’une action retourne un type [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou quelque chose d’autre qu’une implémentation de [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Une action qui retourne une implémentation autre que `IActionResult` (par exemple `object`) retourne également une Réponse mise en forme.
 

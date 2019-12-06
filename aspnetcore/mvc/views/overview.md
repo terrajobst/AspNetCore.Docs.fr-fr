@@ -3,14 +3,14 @@ title: Vues dans ASP.NET Core MVC
 author: ardalis
 description: Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC.
 ms.author: riande
-ms.date: 04/03/2019
+ms.date: 12/05/2019
 uid: mvc/views/overview
-ms.openlocfilehash: 5e56c6bb18cb5d2389c11eb3e4aa9869228da47d
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: f636908ee36d0af6e92875876240cb8712dd2ccc
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891344"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881020"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -43,7 +43,7 @@ Les vues facilitent l’implémentation du principe de conception basé sur la s
 
 ## <a name="creating-a-view"></a>Création d’une vue
 
-Les vues associées à un contrôleur spécifique sont créées dans le dossier *Vues/[nom_contrôleur]*. Les vues communes à plusieurs contrôleurs sont créées dans le dossier *Vues/Partagé*. Pour créer une vue, ajoutez un nouveau fichier et attribuez-lui le même nom que son action de contrôleur associée, avec l’extension de fichier *.cshtml*. Pour créer une vue correspondant à l’action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Vues/Accueil* :
+Les vues associées à un contrôleur spécifique sont créées dans le dossier *Vues/[nom_contrôleur]* . Les vues communes à plusieurs contrôleurs sont créées dans le dossier *Vues/Partagé*. Pour créer une vue, ajoutez un nouveau fichier et attribuez-lui le même nom que son action de contrôleur associée, avec l’extension de fichier *.cshtml*. Pour créer une vue correspondant à l’action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Vues/Accueil* :
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -87,7 +87,7 @@ La méthode d’assistance `View` a plusieurs surcharges. Vous pouvez éventuell
 
 Quand une action doit retourner une vue, un processus appelé *détection de la vue* s’enclenche. Ce processus détermine quel fichier de vue est utilisé en fonction du nom de la vue. 
 
-Le comportement par défaut de la méthode `View` (`return View();`) est de retourner une vue du même nom que la méthode d’action à partir de laquelle elle est appelée. Par exemple, le nom de la méthode `ActionResult` *About* du contrôleur est utilisé pour rechercher un fichier de vue nommé *About.cshtml*. Le Runtime commence par rechercher la vue dans le dossier *Vues/[nom_contrôleur]*. S’il ne trouve pas de vue correspondante, il recherche ensuite la vue dans le dossier *Partagé*.
+Le comportement par défaut de la méthode `View` (`return View();`) est de retourner une vue du même nom que la méthode d’action à partir de laquelle elle est appelée. Par exemple, le nom de la méthode `ActionResult` *About* du contrôleur est utilisé pour rechercher un fichier de vue nommé *About.cshtml*. Le Runtime commence par rechercher la vue dans le dossier *Vues/[nom_contrôleur]* . S’il ne trouve pas de vue correspondante, il recherche ensuite la vue dans le dossier *Partagé*.
 
 Peu importe si vous retournez implicitement `ViewResult` avec `return View();` ou si vous passez explicitement le nom de la vue à la méthode `View` avec `return View("<ViewName>");`. Dans les deux cas, la détection de la vue recherche un fichier de vue correspondant dans cet ordre :
 
@@ -202,7 +202,7 @@ En plus des vues fortement typées, les vues ont accès à une collection de don
 | Une vue et une [disposition](xref:mvc/views/layout)   | Définition du contenu de l’élément **\<title>** dans la disposition à partir d’un fichier de vue.  |
 | Une [vue partielle](xref:mvc/views/partial) et une vue | Widget qui affiche des données en fonction de la page web demandée par l’utilisateur.      |
 
-Cette collection peut être référencée par les propriétés `ViewData` ou `ViewBag` sur les contrôleurs et les vues. La propriété `ViewData` est un dictionnaire d’objets faiblement typés. La propriété `ViewBag` est un wrapper autour de `ViewData` qui fournit des propriétés dynamiques pour la collection `ViewData` sous-jacente. Remarque : Les recherches de clés respectent la casse pour `ViewData` et `ViewBag`.
+Cette collection peut être référencée par les propriétés `ViewData` ou `ViewBag` sur les contrôleurs et les vues. La propriété `ViewData` est un dictionnaire d’objets faiblement typés. La propriété `ViewBag` est un wrapper autour de `ViewData` qui fournit des propriétés dynamiques pour la collection `ViewData` sous-jacente. Remarque : les recherches de clés ne respectent pas la casse pour les `ViewData` et les `ViewBag`.
 
 `ViewData` et `ViewBag` sont résolues dynamiquement au moment de l’exécution. Dans la mesure où elles n’effectuent pas de contrôle de type à la compilation, ces deux propriétés sont généralement davantage sujettes aux erreurs qu’un ViewModel. Pour cette raison, certains développeurs préfèrent ne jamais utiliser les propriétés `ViewData` et `ViewBag`, ou les utiliser le moins possible.
 
@@ -252,9 +252,9 @@ Utilisation des données dans une vue :
 
 **Attribut ViewData**
 
-Une autre approche qui utilise le [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) est [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés définies sur des contrôleurs ou sur des modèles de page Razor décorés avec `[ViewData]` sont stockées dans le dictionnaire et chargées à partir de celui-ci.
+Une autre approche qui utilise le [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) est [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés sur les contrôleurs ou les modèles de page Razor marqués avec l’attribut `[ViewData]` ont leurs valeurs stockées et chargées à partir du dictionnaire.
 
-Dans l’exemple suivant, le contrôleur Home contient une propriété `Title` décorée avec `[ViewData]`. La méthode `About` définit le titre de la vue About :
+Dans l’exemple suivant, le contrôleur d’hébergement contient une propriété `Title` marquée avec `[ViewData]`. La méthode `About` définit le titre de la vue About :
 
 ```csharp
 public class HomeController : Controller

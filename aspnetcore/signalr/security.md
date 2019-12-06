@@ -5,16 +5,16 @@ description: Découvrez comment utiliser l’authentification et l’autorisatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: c5a34ae67bdfb8f7fd92c00f18973b66b685a99c
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: f443fe0fbaaa1facd09edc0878c048772895ecff
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963900"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881180"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>Considérations relatives à la sécurité dans ASP.NET Core SignalR
 
@@ -22,9 +22,9 @@ Par [Andrew Stanton-infirmière](https://twitter.com/anurse)
 
 Cet article fournit des informations sur la sécurisation des SignalR.
 
-## <a name="cross-origin-resource-sharing"></a>Partage des ressources Cross-Origin
+## <a name="cross-origin-resource-sharing"></a>Partage de ressources cross-origin
 
-Le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/) peut être utilisé pour autoriser les connexions de SignalR Cross-Origin dans le navigateur. Si le code JavaScript est hébergé sur un domaine différent de l’application SignalR, l' [intergiciel (middleware) cors](xref:security/cors) doit être activé pour permettre à JavaScript de se connecter à l’application SignalR. Autorisez les requêtes Cross-Origin uniquement à partir des domaines que vous approuvez ou contrôlez. Exemple :
+Le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/) peut être utilisé pour autoriser les connexions de SignalR Cross-Origin dans le navigateur. Si le code JavaScript est hébergé sur un domaine différent de l’application SignalR, l' [intergiciel (middleware) cors](xref:security/cors) doit être activé pour permettre à JavaScript de se connecter à l’application SignalR. Autorisez les requêtes Cross-Origin uniquement à partir des domaines que vous approuvez ou contrôlez. Par exemple :
 
 * Votre site est hébergé sur `http://www.example.com`
 * Votre application SignalR est hébergée sur `http://signalr.example.com`
@@ -106,7 +106,7 @@ Dans ASP.NET Core 2,1 et versions ultérieures, la validation d’en-tête peut 
 
 ## <a name="access-token-logging"></a>Journalisation des jetons d’accès
 
-Lorsque vous utilisez des WebSockets ou des événements envoyés par le serveur, le client du navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement aussi sécurisée que l’utilisation de l’en-tête `Authorization` standard. Vous devez toujours utiliser le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Exemple :
+Lorsque vous utilisez des WebSockets ou des événements envoyés par le serveur, le client du navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement aussi sécurisée que l’utilisation de l’en-tête `Authorization` standard. Vous devez toujours utiliser le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Par exemple :
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
@@ -117,7 +117,7 @@ Si vous avez des doutes quant à la journalisation de ces données avec les jour
 
 ## <a name="exceptions"></a>Exceptions
 
-Les messages d’exception sont généralement considérés comme des données sensibles qui ne doivent pas être révélées à un client. Par défaut, SignalR n’envoie pas les détails d’une exception levée par une méthode de concentrateur au client. Au lieu de cela, le client reçoit un message générique indiquant qu’une erreur s’est produite. La remise d’un message d’exception au client peut être remplacée (par exemple dans le développement ou le test) par [`EnableDetailedErrors`](xref:signalr/configuration#configure-server-options). Les messages d’exception ne doivent pas être exposés au client dans les applications de production.
+Les messages d’exception sont généralement considérés comme des données sensibles qui ne doivent pas être révélées à un client. Par défaut, SignalR n’envoie pas les détails d’une exception levée par une méthode de concentrateur au client. Au lieu de cela, le client reçoit un message générique indiquant qu’une erreur s’est produite. La remise de message d’exception au client peut être remplacée (par exemple, dans le développement ou le test) par [EnableDetailedErrors](xref:signalr/configuration#configure-server-options). Les messages d’exception ne doivent pas être exposés au client dans les applications de production.
 
 ## <a name="buffer-management"></a>Gestion des tampons
 
@@ -131,7 +131,7 @@ Si vos messages sont supérieurs à 32 Ko, vous pouvez augmenter la limite. L’
 * Le client peut forcer le serveur à allouer de grandes mémoires tampons de mémoire.
 * L’allocation de serveurs de mémoires tampons de grande taille peut réduire le nombre de connexions simultanées.
 
-Il existe des limites pour les messages entrants et sortants, qui peuvent être configurés sur l’objet [`HttpConnectionDispatcherOptions`](xref:signalr/configuration#configure-server-options) configuré dans `MapHub`:
+Il existe des limites pour les messages entrants et sortants, qui peuvent être configurés sur l’objet [HttpConnectionDispatcherOptions](xref:signalr/configuration#configure-server-options) configuré dans `MapHub`:
 
 * `ApplicationMaxBufferSize` représente le nombre maximal d’octets du client que le serveur met en mémoire tampon. Si le client tente d’envoyer un message d’une taille supérieure à cette limite, la connexion peut être fermée.
 * `TransportMaxBufferSize` représente le nombre maximal d’octets que le serveur peut envoyer. Si le serveur tente d’envoyer un message (y compris les valeurs de retour des méthodes de concentrateur) supérieures à cette limite, une exception est levée.

@@ -3,14 +3,14 @@ title: Créer un serveur et un client gRPC .NET Core dans ASP.NET Core
 author: juntaoluo
 description: Ce tutoriel montre comment créer un service gRPC et un client gRPC sur ASP.NET Core. Découvrez comment créer un projet de service gRPC, modifier un fichier proto et ajouter un appel duplex de streaming.
 ms.author: johluo
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: e5373d9abb9a770132e756843dbd15534dbe3356
-ms.sourcegitcommit: 231780c8d7848943e5e9fd55e93f437f7e5a371d
+ms.openlocfilehash: c179dd31e6484246498c857aad797eb752f00bf5
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116094"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74879645"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>Didacticiel : créer un client et un serveur gRPC dans ASP.NET Core
 
@@ -52,7 +52,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 * Démarrez Visual Studio et sélectionnez **Créer un projet**. Vous pouvez également, dans le menu **Fichier** de Visual Studio, sélectionner **Nouveau** > **Projet**.
 * Dans la boîte de dialogue **créer un nouveau projet** , sélectionnez **gRPC service** , puis cliquez sur **suivant**:
 
-  ![Boîte de dialogue **Créer un projet**](~/tutorials/grpc/grpc-start/static/cnp.png)
+  ![Boîte de dialogue créer un nouveau projet](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * Nommez le projet **GrpcGreeter**. Il est important de nommer le projet *GrpcGreeter* pour que les espaces de noms correspondent quand vous copiez et collez du code.
 * Sélectionnez **Créer**.
@@ -302,7 +302,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 
-### <a name="next-steps"></a>Étapes suivantes
+### <a name="next-steps"></a>Étapes suivantes :
 
 * <xref:grpc/index>
 * <xref:grpc/basics>

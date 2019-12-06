@@ -5,14 +5,14 @@ description: Découvrez comment la classe Startup en ASP.NET Core configure les 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/02/2019
+ms.date: 12/05/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 081eaa772d136477a37a3392877886327e0cda7c
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 2468c685850f74b8dafb3e0abea6d7b83c417af0
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634037"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880519"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -43,7 +43,7 @@ L’exemple précédent concerne [Razor Pages](xref:razor-pages/index), toutefoi
 
 ::: moniker-end
 
-La classe `Startup` est spécifiée quand l’[hôte](xref:fundamentals/index#host) de l’application est créé. La classe `Startup` est généralement spécifiée en appelant la méthode [`WebHostBuilderExtensions.UseStartup<TStartup>`](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) dans le générateur d’hôte :
+La classe `Startup` est spécifiée quand l’[hôte](xref:fundamentals/index#host) de l’application est créé. La classe `Startup` est généralement spécifiée en appelant la méthode [WebHostBuilderExtensions. UseStartup\<TStartup >](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*) sur le générateur d’ordinateur hôte :
 
 ::: moniker range="< aspnetcore-3.0"
 
@@ -95,7 +95,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* Optionnel.
+* Option facultative.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 

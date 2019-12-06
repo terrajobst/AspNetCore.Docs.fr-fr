@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 11/21/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a49fec38a6d38bbd33e9461cbcceb39bfe810f5c
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 705044804b6ecc980baa88a624863ce5ac72a694
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881054"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -96,11 +96,11 @@ Pour chaque paramètre ou propriété cible, les sources sont analysées dans l�
 
 Si la source par défaut n’est pas correcte, utilisez l’un des attributs suivants pour spécifier la source :
 
-* [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) - Obtient les valeurs à partir de la chaîne de requête. 
-* [[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) - Obtient les valeurs à partir des données de routage.
-* [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) - Obtient les valeurs à partir des champs de formulaire postés.
-* [[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) - Obtient les valeurs à partir du corps de la requête.
-* [[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) - Obtient les valeurs à partir des en-têtes HTTP.
+* [`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute) -obtient des valeurs à partir de la chaîne de requête. 
+* [`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute) -obtient des valeurs à partir des données d’itinéraire.
+* [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) -obtient des valeurs à partir de champs de formulaire publiés.
+* [`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) : obtient les valeurs du corps de la demande.
+* [`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) -obtient des valeurs à partir des en-têtes HTTP.
 
 Ces attributs :
 
@@ -166,7 +166,7 @@ Par défaut, aucune erreur d’état de modèle n’est créée, s’il n’exis
 * Pour les types complexes, la liaison de modèle crée une instance à l’aide du constructeur par défaut, sans définir de propriétés.
 * Les tableaux ont la valeur `Array.Empty<T>()`, sauf les tableaux `byte[]` qui ont une valeur `null`.
 
-Si l’état de modèle doit être rendu non valide quand les champs de formulaire d’une propriété de modèle ne contiennent rien, utilisez l’attribut [[BindRequired]](#bindrequired-attribute).
+Si l’état du modèle doit être invalidé lorsque rien n’est trouvé dans les champs de formulaire d’une propriété de modèle, utilisez l’attribut [`[BindRequired]`](#bindrequired-attribute) .
 
 Notez que ce comportement de `[BindRequired]` s’applique à la liaison de modèle des données de formulaire postées, et non aux données JSON ou XML d’un corps de requête. Les données du corps de requête sont prises en charge par les [formateurs d’entrée](#input-formatters).
 

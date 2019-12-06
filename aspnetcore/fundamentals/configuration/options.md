@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/18/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 4192bab8acef7c4f7bdf1ac481c468cd0a835420
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 46cfff905636dc0d50fcde5e781ce47fb6d85cc0
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239794"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880383"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -168,7 +168,7 @@ L’injection d’options est illustrée comme exemple &num;4 dans l’exemple d
 
 Injectez <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> dans :
 
-* Une page Razor ou une vue MVC avec la directive Razor [@inject](xref:mvc/views/razor#inject) .
+* Une page Razor ou une vue MVC avec la directive Razor [`@inject`](xref:mvc/views/razor#inject) .
 * Modèle de page ou de vue.
 
 L’exemple suivant tiré de l’exemple d’application injecte <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> dans un modèle de page (*pages/index. cshtml. cs*) :
@@ -592,7 +592,7 @@ L’injection d’options est illustrée comme exemple &num;4 dans l’exemple d
 
 Injectez <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> dans :
 
-* Une page Razor ou une vue MVC avec la directive Razor [@inject](xref:mvc/views/razor#inject) .
+* Une page Razor ou une vue MVC avec la directive Razor [`@inject`](xref:mvc/views/razor#inject) .
 * Modèle de page ou de vue.
 
 L’exemple suivant tiré de l’exemple d’application injecte <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> dans un modèle de page (*pages/index. cshtml. cs*) :

@@ -4,16 +4,16 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.2.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: fca653158c95e7c1a11f25f4076830fe3e7e93ae
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8995a514ea2e5016da85952d0f0beaf396a5d639
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963134"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880846"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Nouveautés d’ASP.NET Core 2.2
 
@@ -23,7 +23,7 @@ Cet article met en évidence les modifications les plus importantes dans ASP.NET
 
 OpenAPI (anciennement appelé Swagger) est une spécification indépendante du langage pour décrire des API REST. L’écosystème OpenAPI a des outils qui permettent de découvrir, de tester et de produire du code client avec la spécification. La prise en charge de la génération et de la visualisation de documents OpenAPI dans ASP.NET Core MVC est fournie par le biais de projets portés par la communauté, comme [NSwag](https://github.com/RicoSuter/NSwag) et [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). ASP.NET Core 2.2 fournit des outils et des expériences de runtime améliorés pour la création de documents OpenAPI.
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Pour plus d'informations, voir les ressources suivantes :
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
@@ -37,7 +37,7 @@ ASP.NET Core 2.1 a introduit `ProblemDetails`, basé sur la spécification [RFC 
 
 ASP.NET Core 2.2 utilise un nouveau système de *routage de point de terminaison* pour améliorer la distribution des requêtes. Les changements sont notamment de nouveaux membres d’API de génération de liens et les transformateurs de paramètres de route.
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Pour plus d'informations, voir les ressources suivantes :
 
 * [Routage de point de terminaison dans la version 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
 * [Transformateurs de paramètres de route](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (consultez la section **Routage**)
@@ -57,7 +57,12 @@ Pour plus d’informations, consultez [Contrôles d’intégrité dans ASP.NET C
 
 ASP.NET Core 2.2 ajoute la prise en charge de HTTP/2.
 
-HTTP/2 est une révision majeure du protocole HTTP. Certaines des principales fonctionnalités de HTTP/2 sont la prise en charge de la compression des en-têtes et le flux entièrement multiplexés sur une même connexion. Si HTTP/2 préserve la sémantique de HTTP (en-têtes HTTP, méthodes, etc.), il s’agit d’un changement majeur par rapport à HTTP/1.x quant à la façon dont les données sont structurées en trames et envoyées sur le réseau.
+HTTP/2 est une révision majeure du protocole HTTP. Les fonctionnalités notables de HTTP/2 sont les suivantes :
+
+* Prise en charge de la compression d’en-tête.
+* Flux entièrement multiplexés sur une seule connexion.
+
+Alors que HTTP/2 conserve la sémantique HTTP (par exemple, les en-têtes et les méthodes HTTP), il s’agit d’une modification avec rupture par rapport à HTTP/1. x sur la façon dont les données sont encadrées et envoyées entre le client et le serveur.
 
 En raison de ce changement de tramage, les serveurs et les clients doivent négocier la version du protocole utilisée. APLN (Application-Layer Protocol Negotiation) est une extension de TLS qui permet au serveur et au client de négocier la version du protocole utilisé dans le cadre de leur négociation TLS. Bien que le serveur et le client puissent partager une connaissance préalable quant au protocole, tous les principaux navigateurs prennent en charge ALPN comme unique moyen d’établir une connexion HTTP/2.
 
@@ -65,7 +70,7 @@ Pour plus d’informations, consultez [Prise en charge de HTTP/2](xref:fundament
 
 ## <a name="kestrel-configuration"></a>Configuration de Kestrel
 
-Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont configurées en appelant `UseKestrel`. Dans la version 2.2, les options de Kestrel sont configurées en appelant `ConfigureKestrel` sur le générateur de l’hôte. Cette modification résout un problème quant à l’ordre des inscriptions `IServer` pour l’hébergement in-process. Pour plus d'informations, reportez-vous aux ressources suivantes :
+Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont configurées en appelant `UseKestrel`. Dans la version 2.2, les options de Kestrel sont configurées en appelant `ConfigureKestrel` sur le générateur de l’hôte. Cette modification résout un problème quant à l’ordre des inscriptions `IServer` pour l’hébergement in-process. Pour plus d'informations, voir les ressources suivantes :
 
 * [Réduire les conflits liés à UseIIS](https://github.com/aspnet/KestrelHttpServer/issues/2760)
 * [Configurer les options du serveur Kestrel avec ConfigureKestrel](xref:fundamentals/servers/kestrel?view=aspnetcore-2.2#how-to-use-kestrel-in-aspnet-core-apps)

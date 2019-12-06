@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’interface utilisateur Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 08/21/2019
+ms.date: 12/05/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: d3cef72de22e54f7e65ddf9f1446eb32256d0c71
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: dea8564a1ee94d6ff1d96e9aab68205292765178
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71924984"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881250"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -67,7 +67,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
 
 ### <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Exécutez la commande suivante :
+Exécutez la commande suivante : .
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0-rc4
@@ -244,7 +244,7 @@ Pour supprimer des avertissements à l’échelle d’un projet, définissez une
 
 ::: moniker-end
 
-Pour supprimer des avertissements uniquement pour des membres spécifiques, placez le code dans les directives de préprocesseur [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning). Cette approche est utile pour le code qui ne doit pas être exposé par le biais des documentations des API. Dans l’exemple suivant, le code d’avertissement CS1591 est ignoré pour toute la classe `Program`. La mise en œuvre de code d’avertissement est restaurée à la fin de la définition de classe. Spécifier plusieurs codes d’avertissement avec une liste délimitée par des virgules.
+Pour supprimer des avertissements uniquement pour des membres spécifiques, placez le code dans les directives de préprocesseur [#pragma warning](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning). Cette approche est utile pour le code qui ne doit pas être exposé via les docs de l’API. Dans l’exemple suivant, le code d’avertissement CS1591 est ignoré pour l’ensemble de la classe `Program`. La mise en œuvre de code d’avertissement est restaurée à la fin de la définition de classe. Spécifier plusieurs codes d’avertissement avec une liste délimitée par des virgules.
 
 ```csharp
 namespace TodoApi
@@ -355,7 +355,7 @@ Notez les améliorations de l’interface utilisateur avec ces commentaires supp
 
 ### <a name="data-annotations"></a>Annotations de données
 
-Décorez le modèle avec des attributs, présents dans l’espace de noms [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations), pour gérer les composants de l’interface utilisateur Swagger.
+Marquez le modèle avec des attributs, qui se trouvent dans l’espace de noms [System. ComponentModel. DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) , pour aider à piloter les composants de l’interface utilisateur Swagger.
 
 Ajoutez l’attribut `[Required]` à la propriété `Name` de la classe `TodoItem` :
 
@@ -447,7 +447,7 @@ Dans ASP.NET Core 2.2 ou une version ultérieure, les conventions peuvent être 
 
 ::: moniker-end
 
-### <a name="customize-the-ui"></a>Personnaliser l’interface utilisateur
+### <a name="customize-the-ui"></a>Personnaliser l’IU
 
 L’interface utilisateur est fonctionnelle et conviviale. Toutefois, les pages de documentation d’API doivent représenter votre marque ou thème. La personnalisation des composants Swashbuckle nécessite d’ajouter les ressources qui traitent les fichiers statiques et de générer la structure de dossiers pour héberger ces fichiers.
 

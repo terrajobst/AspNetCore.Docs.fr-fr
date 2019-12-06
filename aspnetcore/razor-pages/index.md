@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Découvrez comment les pages Razor dans ASP.NET Core permettent de développer des scénarios orientés page de façon plus simple et plus productive qu’avec MVC.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 10/07/2019
+ms.date: 12/05/2019
 uid: razor-pages/index
-ms.openlocfilehash: 67cc4f9b261372996d612f922c9f491f53948ece
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: fbe6e307ff5f7388e91cc2276f22ae1672507587
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412069"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880901"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -71,7 +71,7 @@ Considérez une page de base : <a name="OnGet"></a>
 
 [!code-cshtml[](index/3.0sample/RazorPagesIntro/Pages/Index.cshtml?highlight=1)]
 
-Le code précédent ressemble beaucoup à un [fichier vue Razor](xref:tutorials/first-mvc-app/adding-view) utilisé dans une application ASP.NET Core avec des contrôleurs et des vues. Ce qui le rend différent est la directive [@page](xref:mvc/views/razor#page) . `@page` fait du fichier une action MVC, ce qui signifie qu’il gère les demandes directement, sans passer par un contrôleur. `@page` doit être la première directive Razor sur une page. `@page` affecte le comportement d’autres constructions [Razor](xref:mvc/views/razor) . Razor Pages noms de fichiers ont un suffixe *. cshtml* .
+Le code précédent ressemble beaucoup à un [fichier vue Razor](xref:tutorials/first-mvc-app/adding-view) utilisé dans une application ASP.NET Core avec des contrôleurs et des vues. Ce qui le rend différent est la directive [`@page`](xref:mvc/views/razor#page) . `@page` fait du fichier une action MVC, ce qui signifie qu’il gère les demandes directement, sans passer par un contrôleur. `@page` doit être la première directive Razor sur une page. `@page` affecte le comportement d’autres constructions [Razor](xref:mvc/views/razor) . Razor Pages noms de fichiers ont un suffixe *. cshtml* .
 
 Une page similaire, utilisant une classe `PageModel`, est illustrée dans les deux fichiers suivants. Le fichier *Pages/Index2.cshtml* :
 
@@ -99,7 +99,7 @@ Remarques :
 
 ## <a name="write-a-basic-form"></a>Écrire un formulaire de base
 
-Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro)et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
+Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
 
 Pour les exemples de ce document, le `DbContext` est initialisé dans le fichier [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/3.0sample/RazorPagesContacts/Startup.cs#L23-L24).
 
@@ -126,9 +126,9 @@ Par convention, la classe `PageModel` se nomme `<PageName>Model` et se trouve da
 La classe `PageModel` permet de séparer la logique d’une page de sa présentation. Elle définit des gestionnaires de page pour les demandes envoyées à la page et les données utilisées pour l’afficher. Cette séparation permet :
 
 * Gestion des dépendances de page via l' [injection de dépendances](xref:fundamentals/dependency-injection).
-* [Tests unitaires](xref:test/razor-pages-tests)
+* [Test unitaire](xref:test/razor-pages-tests)
 
-La page a une `OnPostAsync`méthode de gestionnaire, qui s’exécute sur les requêtes `POST` (quand un utilisateur poste le formulaire). Les méthodes de gestionnaire pour tout verbe HTTP peuvent être ajoutées. Les gestionnaires les plus courants sont :
+La page a une *méthode de gestionnaire* `OnPostAsync`, qui s’exécute sur les requêtes `POST` (quand un utilisateur poste le formulaire). Les méthodes de gestionnaire pour tout verbe HTTP peuvent être ajoutées. Les gestionnaires les plus courants sont :
 
 * `OnGet` pour initialiser l’état nécessaire pour la page. Dans le code précédent, la méthode `OnGet` affiche la page Razor *CreateModel. cshtml* .
 * `OnPost` pour gérer les envois de formulaire.
@@ -198,7 +198,7 @@ Examen du fichier de vue *pages/Create. cshtml* :
 * Dans le code précédent, le [tag Helper d’entrée](xref:mvc/views/working-with-forms#the-input-tag-helper) `<input asp-for="Customer.Name" />` lie l’élément HTML `<input>` à l’expression de modèle `Customer.Name`.
 * [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#addtaghelper-makes-tag-helpers-available) rend les balises d’aide tag disponibles.
 
-### <a name="the-home-page"></a>Page d’hébergement
+### <a name="the-home-page"></a>La page d’accueil
 
 *Index. cshtml* est la page d’hébergement :
 
@@ -229,7 +229,7 @@ Lorsque le bouton supprimer est rendu en HTML, son [formaction](https://develope
 * ID du contact client, spécifié par l’attribut `asp-route-id`.
 * `handler`, spécifié par l’attribut `asp-page-handler`.
 
-Quand le bouton est sélectionné, une demande `POST` de forumaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
+Quand le bouton est sélectionné, une demande `POST` de formulaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
 
 Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini sur une autre valeur, comme `remove`, une méthode de gestionnaire avec le nom `OnPostRemoveAsync` est sélectionnée.
 
@@ -246,7 +246,7 @@ La méthode `OnPostDeleteAsync` :
 
 [!code-cshtml[](index/3.0sample/RazorPagesContacts/Pages/Customers/Edit.cshtml?highlight=1)]
 
-La première ligne contient la directive `@page "{id:int}"`. La contrainte de routage `"{id:int}"` indique à la page qu’elle doit accepter les requêtes qui contiennent des données d’itinéraire `int`. Si une requête à la page ne contient de données d’itinéraire qui peuvent être converties en `int`, le runtime retourne une erreur HTTP 404 (introuvable). Pour que l’ID soit facultatif, ajoutez `?` à la contrainte d’itinéraire :
+La première ligne contient la directive `@page "{id:int}"`. La contrainte de routage `"{id:int}"` indique à la page qu’elle doit accepter les requêtes qui contiennent des données d’itinéraire `int`. Si une requête à la page ne contient de données d’itinéraire qui peuvent être converties en `int`, le runtime retourne une erreur HTTP 404 (introuvable). Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
 
  ```cshtml
 @page "{id:int?}"
@@ -290,7 +290,7 @@ La publication de la valeur créer un formulaire sans nom affiche le message d�
 L’attribut `[StringLength(10)]` génère `data-val-length-max="10"` sur le rendu HTML. `data-val-length-max` empêche les navigateurs d’entrer une valeur supérieure à la longueur maximale spécifiée. Si un outil tel que [Fiddler](https://www.telerik.com/fiddler) est utilisé pour modifier et relire la publication :
 
 * Avec le nom plus long que 10.
-* Le message d’erreur « le nom du champ doit être une chaîne d’une longueur maximale de 10 ». est retourné.
+* Le message d’erreur « le nom du champ doit être une chaîne d’une longueur maximale de 10 ». » est renvoyé.
 
 Considérez le modèle de `Movie` suivant :
 
@@ -317,7 +317,7 @@ La page créer du modèle de `Movie` affiche les erreurs avec des valeurs non va
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](~/tutorials/razor-pages/validation/_static/val.png)
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * [Ajouter la validation à l’application vidéo](xref:tutorials/razor-pages/validation)
 * [Validation de modèle dans ASP.net Core](xref:mvc/models/validation).
@@ -432,13 +432,13 @@ L’application a la structure de fichiers/dossiers suivante :
     * *Edit.cshtml*
     * *Index.cshtml*
 
-Les pages *pages/Customers/Create. cshtml* et *pages/Customers/Edit. cshtml* redirigent vers *pages/Customers/index. cshtml* après réussite. La chaîne `./Index` est un nom de page relatif utilisé pour accéder à la page précédente. Elle est utilisée pour générer des URL dans la page *pages/Customers/index. cshtml* . Exemple :
+Les pages *pages/Customers/Create. cshtml* et *pages/Customers/Edit. cshtml* redirigent vers *pages/Customers/index. cshtml* après réussite. La chaîne `./Index` est un nom de page relatif utilisé pour accéder à la page précédente. Elle est utilisée pour générer des URL dans la page *pages/Customers/index. cshtml* . Par exemple :
 
 * `Url.Page("./Index", ...)`
 * `<a asp-page="./Index">Customers Index Page</a>`
 * `RedirectToPage("./Index")`
 
-Le nom de page absolu `/Index` est utilisé pour générer des URL dans la page *pages/index. cshtml* . Exemple :
+Le nom de page absolu `/Index` est utilisé pour générer des URL dans la page *pages/index. cshtml* . Par exemple :
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">Home Index Page</a>`
@@ -692,7 +692,7 @@ Remarques :
 
 ## <a name="write-a-basic-form"></a>Écrire un formulaire de base
 
-Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro)et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
+Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
 
 Pour les exemples de ce document, le `DbContext` est initialisé dans le fichier [Startup.cs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16).
 
@@ -721,7 +721,7 @@ La classe `PageModel` permet de séparer la logique d’une page de sa présenta
 * Gestion des dépendances de page via l' [injection de dépendances](xref:fundamentals/dependency-injection).
 * [Test unitaire](xref:test/razor-pages-tests) des pages.
 
-La page a une `OnPostAsync`méthode de gestionnaire, qui s’exécute sur les requêtes `POST` (quand un utilisateur poste le formulaire). Vous pouvez ajouter des méthodes de gestionnaire pour n’importe quel verbe HTTP. Les gestionnaires les plus courants sont :
+La page a une *méthode de gestionnaire* `OnPostAsync`, qui s’exécute sur les requêtes `POST` (quand un utilisateur poste le formulaire). Vous pouvez ajouter des méthodes de gestionnaire pour n’importe quel verbe HTTP. Les gestionnaires les plus courants sont :
 
 * `OnGet` pour initialiser l’état nécessaire pour la page. Exemple [OnGet](#OnGet).
 * `OnPost` pour gérer les envois de formulaire.
@@ -774,7 +774,7 @@ Le fichier *Pages/Edit.cshtml* :
 
 [!code-cshtml[](index/sample/RazorPagesContacts/Pages/Edit.cshtml?highlight=1)]
 
-La première ligne contient la directive `@page "{id:int}"`. La contrainte de routage `"{id:int}"` indique à la page qu’elle doit accepter les requêtes qui contiennent des données d’itinéraire `int`. Si une requête à la page ne contient de données d’itinéraire qui peuvent être converties en `int`, le runtime retourne une erreur HTTP 404 (introuvable). Pour que l’ID soit facultatif, ajoutez `?` à la contrainte d’itinéraire :
+La première ligne contient la directive `@page "{id:int}"`. La contrainte de routage `"{id:int}"` indique à la page qu’elle doit accepter les requêtes qui contiennent des données d’itinéraire `int`. Si une requête à la page ne contient de données d’itinéraire qui peuvent être converties en `int`, le runtime retourne une erreur HTTP 404 (introuvable). Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
 
  ```cshtml
 @page "{id:int?}"
@@ -799,7 +799,7 @@ Voici un exemple de bouton Supprimer rendu avec un ID de contact client de `1`:
 <button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
 ```
 
-Quand le bouton est sélectionné, une demande `POST` de forumaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
+Quand le bouton est sélectionné, une demande `POST` de formulaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
 
 Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini sur une autre valeur, comme `remove`, une méthode de gestionnaire avec le nom `OnPostRemoveAsync` est sélectionnée. Le code suivant montre le gestionnaire de `OnPostDeleteAsync` :
 
@@ -814,7 +814,7 @@ La méthode `OnPostDeleteAsync` :
 
 ## <a name="mark-page-properties-as-required"></a>Marquer les propriétés de page comme Required
 
-Les propriétés définies sur `PageModel` peuvent être décorées avec l’attribut [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) :
+Les propriétés d’un `PageModel` peuvent être marquées avec l’attribut [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) :
 
 [!code-cs[](index/sample/Create.cshtml.cs?highlight=3,15-16)]
 
@@ -948,7 +948,7 @@ L’application a la structure de fichiers/dossiers suivante :
     * *Edit.cshtml*
     * *Index.cshtml*
 
-Une fois l’opération réussie, les pages *Pages/Customers/Create.cshtml* et *Pages/Customers/Edit.cshtml* redirigent vers *Pages/Index.cshtml*. La chaîne `/Index` fait partie de l’URI pour accéder à la page précédente. La chaîne `/Index` peut être utilisée pour générer l’URI de la page *Pages/Index.cshtml*. Exemple :
+Une fois l’opération réussie, les pages *Pages/Customers/Create.cshtml* et *Pages/Customers/Edit.cshtml* redirigent vers *Pages/Index.cshtml*. La chaîne `/Index` fait partie de l’URI pour accéder à la page précédente. La chaîne `/Index` peut être utilisée pour générer l’URI de la page *Pages/Index.cshtml*. Par exemple :
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">My Index Page</a>`
@@ -979,9 +979,9 @@ Pour plus d'informations, consultez <xref:mvc/controllers/areas>.
 
 ## <a name="viewdata-attribute"></a>Attribut ViewData
 
-Les données peuvent être passées à une page avec [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés définies sur des contrôleurs ou sur des modèles de page Razor décorés avec `[ViewData]` sont stockées et chargées à partir de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).
+Les données peuvent être passées à une page avec [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les propriétés sur les contrôleurs ou les modèles de page Razor avec l’attribut `[ViewData]` ont leurs valeurs stockées et chargées à partir du [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).
 
-Dans l’exemple suivant, `AboutModel` contient une propriété `Title` décorée avec `[ViewData]`. La propriété `Title` a pour valeur le titre de la page À propos de :
+Dans l’exemple suivant, le `AboutModel` contient une propriété `Title` marquée avec `[ViewData]`. La propriété `Title` a pour valeur le titre de la page À propos de :
 
 ```csharp
 public class AboutModel : PageModel

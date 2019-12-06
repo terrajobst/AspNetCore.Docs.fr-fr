@@ -3,14 +3,14 @@ title: Routage vers les actions du contrôleur dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergiciel) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions.
 ms.author: riande
-ms.date: 01/24/2019
+ms.date: 12/05/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: a0dbfbe60c151990581b494f81e500fe0b315f55
-ms.sourcegitcommit: a166291c6708f5949c417874108332856b53b6a9
+ms.openlocfilehash: b0cd3df6eb0efa90fc76d206413016d6c624285c
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72589852"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881074"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -165,7 +165,7 @@ Dans le cadre du traitement des requêtes, MVC vérifie que les valeurs de route
 
 ### <a name="disambiguating-actions"></a>Résolution des ambiguïtés pour les actions
 
-Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Exemple :
+Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Par exemple :
 
 ```csharp
 public class ProductsController : Controller
@@ -336,7 +336,7 @@ public class ProductsApiController : Controller
 }
 ```
 
-Dans cet exemple, le chemin d’URL `/products` peut être mis en correspondance avec `ProductsApi.ListProducts` et le chemin d’URL `/products/5` peut être mis en correspondance avec `ProductsApi.GetProduct(int)`. Ces deux actions correspondent seulement à HTTP `GET`, car elles sont décorées avec `HttpGetAttribute`.
+Dans cet exemple, le chemin d’URL `/products` peut être mis en correspondance avec `ProductsApi.ListProducts` et le chemin d’URL `/products/5` peut être mis en correspondance avec `ProductsApi.GetProduct(int)`. Ces deux actions correspondent uniquement à HTTP `GET`, car elles sont marquées avec le `HttpGetAttribute`.
 
 Les modèles de routes appliqués à une action qui commencent par `/` ou `~/` ne sont pas combinés avec les modèles de routes appliqués au contrôleur. Cet exemple met en correspondance avec un ensemble de chemins d’URL similaires à la *route par défaut*.
 
@@ -675,7 +675,7 @@ Les routes conventionnelles dédiées s’appuient sur un comportement spécial 
 
 <a name="routing-areas-ref-label"></a>
 
-## <a name="areas"></a>Zones (Areas)
+## <a name="areas"></a>Domaines
 
 Les [zones](areas.md) sont une fonctionnalité de MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms de routage distinct (pour les actions de contrôleur) et d’une structure de dossiers (pour les vues). L’utilisation de zones permet à une application d’avoir plusieurs contrôleurs portant le même nom, pour autant qu’ils soient dans des *zones* différentes. L’utilisation de zones crée une hiérarchie qui permet le routage par ajout d’un autre paramètre de route, `area`, à `controller` et à `action`. Cette section explique comment le routage interagit avec les zones. Pour plus d’informations sur l’utilisation des zones avec des vues, consultez [Zones](areas.md).
 

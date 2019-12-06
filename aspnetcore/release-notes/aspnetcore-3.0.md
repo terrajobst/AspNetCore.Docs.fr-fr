@@ -4,17 +4,17 @@ author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités de ASP.NET Core 3,0.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: c3dde383507ec919f82b5268ddbf23911c3d24f8
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ade13c38880c9915ec590297f2a43548ca400a8
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963123"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880829"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -40,7 +40,7 @@ scénarios pris en charge par Blazor Framework :
 
 Pour plus d'informations, consultez <xref:blazor/index>.
 
-### <a name="opno-locblazor-server"></a>Serveur de Blazor
+### <a name="opno-locblazor-server"></a>Serveur Blazor
 
 Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées via une connexion SignalR. Blazor Server est pris en charge dans ASP.NET Core 3,0.
 
@@ -182,7 +182,7 @@ Dans le code précédent, `DomainRestrictedRequirement` sert de `IAuthorizationR
 * Inspectez le contexte dans lequel le Hub est appelé.
 * Prendre des décisions pour permettre à l’utilisateur d’exécuter des méthodes de concentrateur individuelles.
 
-Les méthodes de concentrateur individuelles peuvent être décorées avec le nom de la stratégie vérifiée par le code au moment de l’exécution. À mesure que les clients tentent d’appeler des méthodes de concentrateur individuelles, le gestionnaire de `DomainRestrictedRequirement` exécute et contrôle l’accès aux méthodes. En fonction de la façon dont le `DomainRestrictedRequirement` contrôle l’accès :
+Les méthodes de concentrateur individuelles peuvent être marquées avec le nom de la stratégie vérifiée par le code au moment de l’exécution. À mesure que les clients tentent d’appeler des méthodes de concentrateur individuelles, le gestionnaire de `DomainRestrictedRequirement` exécute et contrôle l’accès aux méthodes. En fonction de la façon dont le `DomainRestrictedRequirement` contrôle l’accès :
 
 * Tous les utilisateurs connectés peuvent appeler la méthode `SendMessage`.
 * Seuls les utilisateurs qui se sont connectés avec une adresse de messagerie `@jabbr.net` peuvent afficher les historiques des utilisateurs.
@@ -319,8 +319,8 @@ Pour ajouter Json.NET à ASP.NET Core 3,0, consultez [Ajouter la prise en charge
 
 La liste suivante contient les nouvelles directives Razor :
 
-* [@attribute](xref:mvc/views/razor#attribute) &ndash; la directive `@attribute` applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple, `@attribute [Authorize]`.
-* [@implements](xref:mvc/views/razor#implements) &ndash; la directive `@implements` implémente une interface pour la classe générée. Par exemple, `@implements IDisposable`.
+* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; la directive `@attribute` applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple, `@attribute [Authorize]`.
+* [`@implements`](xref:mvc/views/razor#implements) &ndash; la directive `@implements` implémente une interface pour la classe générée. Par exemple, `@implements IDisposable`.
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 prend en charge l’authentification et l’autorisation pour les API Web et SPAs
 
@@ -428,7 +428,7 @@ Tous les services peuvent toujours être injectés directement comme arguments d
 * Les adaptateurs de connexion ont été supprimés de Kestrel et remplacés par un intergiciel de connexion, qui est similaire à l’intergiciel HTTP dans le pipeline ASP.NET Core, mais pour les connexions de niveau inférieur.
 * La couche de transport Kestrel a été exposée en tant qu’interface publique dans `Connections.Abstractions`.
 * L’ambiguïté entre les en-têtes et les codes de fin a été résolue en déplaçant les en-têtes de fin vers une nouvelle collection.
-* Les API d’e/s synchrones, telles que `HttpRequest.Body.Read`, sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivé par défaut.
+* Les API d’e/s synchrones, telles que `HttpRequest.Body.Read`, sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivée par défaut.
 
 Pour plus d'informations, consultez <xref:migration/22-to-30#kestrel>.
 
@@ -458,7 +458,7 @@ Pour plus d'informations, consultez <xref:fundamentals/routing#routing-basics>.
 
 ## <a name="health-checks"></a>Contrôles d’intégrité
 
-Les contrôles d’intégrité utilisent le routage de point de terminaison avec l’hôte générique. Dans `Startup.Configure`, appelez `MapHealthChecks` sur le générateur de point de terminaison à l’aide de l’URL de point de terminaison ou du chemin d’accès relatif :
+Les contrôles d’intégrité utilisent le routage de point de terminaison avec l’hôte générique. Dans `Startup.Configure`, appelez `MapHealthChecks` sur le générateur de points de terminaison à l’aide de l’URL de point de terminaison ou du chemin d’accès relatif :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -480,7 +480,7 @@ Pour plus d’informations, consultez les articles suivants :
 
 ## <a name="pipes-on-httpcontext"></a>Canaux sur HttpContext
 
-Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l’API <xref:System.IO.Pipelines>. La clé publique du signataire doit être fournie à la classe <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` propriété fournit une <xref:System.IO.Pipelines.PipeReader> qui peut être utilisée pour lire le corps de la requête. La clé publique du signataire doit être fournie à la classe <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` propriété fournit une <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisée pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du flux de `HttpRequest.Body`. `HttpResponse.BodyWriter` est un analogue du flux de `HttpResponse.Body`.
+Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l’API <xref:System.IO.Pipelines>. Le paramètre <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` propriété fournit une <xref:System.IO.Pipelines.PipeReader> qui peut être utilisée pour lire le corps de la requête. Le paramètre <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` propriété fournit une <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisée pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du flux de `HttpRequest.Body`. `HttpResponse.BodyWriter` est un analogue du flux de `HttpResponse.Body`.
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -492,7 +492,7 @@ Les erreurs de démarrage lors de l’hébergement d’applications ASP.NET Core
 
 .NET Core 3,0 introduit le nouveau modèle d’application de service Worker. Ce modèle fournit un point de départ pour l’écriture de services à long terme dans .NET Core.
 
-Pour plus d'informations, voir :
+Pour plus d'informations, consultez .
 
 * [Les Workers .NET Core en tant que services Windows](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>

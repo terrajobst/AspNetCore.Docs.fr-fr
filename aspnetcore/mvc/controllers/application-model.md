@@ -3,14 +3,14 @@ title: Utiliser le modèle d’application dans ASP.NET Core
 author: ardalis
 description: Découvrez comment lire et manipuler le modèle d’application pour modifier le comportement des éléments MVC dans ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 12/05/2019
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 4e264dc7cc63955df42df0b9eeeb7b82ae286241
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: 4b6c978e5752eb320412a1c204df8e3d288fe4a1
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733958"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74881092"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Utiliser le modèle d’application dans ASP.NET Core
 
@@ -196,7 +196,7 @@ Le `UseWebApiParameterConventionsAttribute` est utilisé pour appliquer la conve
 
 Le `UseWebApiRoutesAttribute` spécifie si la convention de contrôleur `WebApiApplicationModelConvention` est appliquée. Quand elle est activée, cette convention est utilisée pour ajouter la prise en charge de [zones](xref:mvc/controllers/areas) pour la route.
 
-En plus d’un ensemble de conventions, le package de compatibilité inclut une classe de base `System.Web.Http.ApiController` qui remplace celle fournie par l’API web. Ceci permet à vos contrôleurs écrits pour API web et héritant de son `ApiController` de fonctionner comme prévu quand ils s’exécutent sur ASP.NET Core MVC. Cette classe de contrôleur de base est décorée avec tous les attributs `UseWebApi*` répertoriés ci-dessus. Le `ApiController` expose les propriétés, les méthodes et les types de résultats qui sont compatibles avec ceux trouvés dans l’API web.
+En plus d’un ensemble de conventions, le package de compatibilité inclut une classe de base `System.Web.Http.ApiController` qui remplace celle fournie par l’API web. Ceci permet à vos contrôleurs écrits pour API web et héritant de son `ApiController` de fonctionner comme prévu quand ils s’exécutent sur ASP.NET Core MVC. Tous les attributs de `UseWebApi*` répertoriés précédemment sont appliqués à la classe de contrôleur de base. Le `ApiController` expose les propriétés, les méthodes et les types de résultats qui sont compatibles avec ceux trouvés dans l’API web.
 
 ## <a name="using-apiexplorer-to-document-your-app"></a>Utilisation d’ApiExplorer pour documenter votre application
 
