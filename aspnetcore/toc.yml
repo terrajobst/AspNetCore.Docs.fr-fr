@@ -350,8 +350,6 @@
               uid: client-side/libman/libman-vs
         - name: Grunt
           uid: client-side/using-grunt
-        - name: Bower
-          uid: client-side/bower
         - name: Concaténer et minifier
           uid: client-side/bundling-and-minification
         - name: Lien du navigateur
@@ -557,6 +555,13 @@
     - name: Journalisation et diagnostics
       displayName: signalr
       uid: signalr/diagnostics
+    - name: Spécifications
+      displayName: 'signalr, specs'
+      items:
+        - name: Protocole de hub
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/HubProtocol.md'
+        - name: Protocoles de transport
+          href: 'https://github.com/aspnet/AspNetCore/blob/master/src/SignalR/docs/specs/TransportProtocols.md'
 - name: Applications d’appel de procédure distante
   items:
     - name: Présentation des services gRPC
