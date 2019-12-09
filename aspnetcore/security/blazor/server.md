@@ -5,17 +5,17 @@ description: Découvrez comment limiter les menaces de sécurité pour les appli
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: 5cf83a4dd255959e8840fca3a8194b5b4e2ad0a8
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 2d644b84b304a31ad0debc16164ad155c7f7da65
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963878"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944280"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>Sécuriser les applications ASP.NET Core Blazor Server
 
@@ -104,7 +104,7 @@ Les attaques par déni de service (DoS) impliquent un client qui oblige le serve
 
 | limite de SignalR et de ASP.NET Core             | Description | Valeur par défaut |
 | ------------------------------------------ | ----------- | ------- |
-| `CircuitOptions.MaximumReceiveMessageSize` | Taille de message pour un message individuel. | 32 KO |
+| `CircuitOptions.MaximumReceiveMessageSize` | Taille de message pour un message individuel. | 32 Ko |
 
 ## <a name="interactions-with-the-browser-client"></a>Interactions avec le navigateur (client)
 
@@ -144,11 +144,11 @@ N’approuvez pas les appels de JavaScript aux méthodes .NET. Quand une méthod
   * Évitez de passer des données fournies par l’utilisateur dans des paramètres à des appels JavaScript. Si le passage de données dans des paramètres est absolument requis, assurez-vous que le code JavaScript gère le passage des données sans introduire de vulnérabilités [de script entre sites (XSS)](#cross-site-scripting-xss) . Par exemple, n’écrivez pas les données fournies par l’utilisateur dans le Document Object Model (DOM) en définissant la propriété `innerHTML` d’un élément. Envisagez d’utiliser la [stratégie de sécurité de contenu (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) pour désactiver les `eval` et d’autres primitives JavaScript non sûres.
 * Évitez d’implémenter la distribution personnalisée des appels .NET en plus de l’implémentation de la distribution du Framework. L’exposition de méthodes .NET au navigateur est un scénario avancé, qui n’est pas recommandé pour le développement Blazor général.
 
-### <a name="events"></a>événements
+### <a name="events"></a>Events
 
 Les événements fournissent un point d’entrée à une application Blazor Server. Les mêmes règles de protection des points de terminaison dans les applications Web s’appliquent à la gestion des événements dans les applications Blazor Server. Un client malveillant peut envoyer toutes les données qu’il souhaite envoyer en tant que charge utile d’un événement.
 
-Exemple :
+Par exemple :
 
 * Un événement de modification pour un `<select>` peut envoyer une valeur qui ne figure pas dans les options que l’application a présentées au client.
 * Une `<input>` peut envoyer des données texte au serveur, en ignorant la validation côté client.
@@ -159,7 +159,7 @@ Blazor les événements serveur sont asynchrones, plusieurs événements peuvent
 
 Imaginez un composant de compteur qui doit permettre à un utilisateur d’incrémenter un compteur au maximum trois fois. Le bouton permettant d’incrémenter le compteur dépend de la valeur de `count`:
 
-```cshtml
+```razor
 <p>Count: @count<p>
 
 @if (count < 3)
@@ -180,7 +180,7 @@ Imaginez un composant de compteur qui doit permettre à un utilisateur d’incr�
 
 Un client peut distribuer un ou plusieurs événements d’incréments avant que l’infrastructure génère un nouveau rendu de ce composant. Le résultat est que l' `count` peut être incrémenté *plus de trois fois* par l’utilisateur, car le bouton n’est pas supprimé rapidement par l’interface utilisateur. La méthode correcte pour atteindre la limite de trois `count` incréments est indiquée dans l’exemple suivant :
 
-```cshtml
+```razor
 <p>Count: @count<p>
 
 @if (count < 3)
@@ -208,7 +208,7 @@ En ajoutant la vérification `if (count < 3) { ... }` à l’intérieur du gesti
 
 Si un rappel d’événement appelle une opération de longue durée, telle que l’extraction de données à partir d’un service externe ou d’une base de données, envisagez d’utiliser une protection. La protection peut empêcher l’utilisateur de faire passer plusieurs opérations en file d’attente pendant que l’opération est en cours avec des commentaires visuels. Le code de composant suivant définit `isLoading` à `true` lorsque `GetForecastAsync` obtient des données du serveur. Si `isLoading` est `true`, le bouton est désactivé dans l’interface utilisateur :
 
-```cshtml
+```razor
 @page "/fetchdata"
 @using BlazorServerSample.Data
 @inject WeatherForecastService ForecastService
@@ -235,7 +235,7 @@ Si un rappel d’événement appelle une opération de longue durée, telle que 
 
 En plus d’utiliser une protection comme décrit dans la section [protection contre plusieurs distributions](#guard-against-multiple-dispatches) , envisagez d’utiliser une <xref:System.Threading.CancellationToken> pour annuler les opérations de longue durée lorsque le composant est supprimé. Cette approche présente l’avantage supplémentaire d’éviter l' *utilisation de-after-dispose dans les* composants :
 
-```cshtml
+```razor
 @implements IDisposable
 
 ...
@@ -291,8 +291,8 @@ L’erreur côté client n’inclut pas la pile des appels et ne fournit pas de 
 
 Activer les erreurs détaillées avec :
 
-* `CircuitOptions.DetailedErrors`.,
-* `DetailedErrors` clé de configuration. Par exemple, affectez à la variable d’environnement `ASPNETCORE_DETAILEDERRORS` la valeur `true`.
+* `CircuitOptions.DetailedErrors`.
+* Clé de configuration `DetailedErrors`. Par exemple, affectez à la variable d’environnement `ASPNETCORE_DETAILEDERRORS` la valeur `true`.
 
 > [!WARNING]
 > L’exposition des informations sur les erreurs aux clients sur Internet est un risque de sécurité qui doit toujours être évité.

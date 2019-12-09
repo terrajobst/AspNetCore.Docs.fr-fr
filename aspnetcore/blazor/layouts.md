@@ -5,16 +5,16 @@ description: Découvrez comment créer des composants de disposition réutilisab
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/layouts
-ms.openlocfilehash: 3546259fc6b622a6137a6baa8f446c5f43af1cab
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 90acfb0d4e9daadb12be79de6bd0c99fc545697a
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962807"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944055"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>Dispositions de Blazor ASP.NET Core
 
@@ -31,7 +31,7 @@ Pour transformer un *composant* en une *disposition*, le composant :
 
 L’exemple de code suivant montre le modèle Razor d’un composant de disposition, *MainLayout. Razor*. La disposition hérite `LayoutComponentBase` et définit la `@Body` entre la barre de navigation et le pied de page :
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
+[!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
 Dans une application basée sur l’un des modèles d’application Blazor, le composant `MainLayout` (*MainLayout. Razor*) se trouve dans le dossier *partagé* de l’application.
 
@@ -39,11 +39,11 @@ Dans une application basée sur l’un des modèles d’application Blazor, le c
 
 Spécifiez la disposition de l’application par défaut dans le composant `Router` dans le fichier *app. Razor* de l’application. Le composant `Router` suivant, fourni par les modèles de Blazor par défaut, définit la disposition par défaut sur le composant `MainLayout` :
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
+[!code-razor[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
 
 Pour fournir une disposition par défaut pour le contenu de `NotFound`, spécifiez un `LayoutView` pour le contenu de `NotFound` :
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
+[!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
 
 Pour plus d’informations sur le composant `Router`, consultez <xref:blazor/routing>.
 
@@ -55,7 +55,7 @@ Utilisez la directive Razor `@layout` pour appliquer une disposition à un compo
 
 Le contenu du composant `MasterList` suivant est inséré dans le `MasterLayout` à la position de `@Body`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterList.razor?highlight=1)]
 
 La spécification de la disposition directement dans un composant remplace un ensemble de *dispositions par défaut* dans le routeur ou une directive de `@layout` importée à partir de *_Imports. Razor*.
 
@@ -65,11 +65,11 @@ Chaque dossier d’une application peut éventuellement contenir un fichier mod�
 
 Le fichier *_Imports. Razor* suivant importe les éléments suivants :
 
-* `MyCoolLayout`.,
+* `MyCoolLayout`.
 * Tous les composants Razor dans le même dossier et dans tous les sous-dossiers.
 * Espace de noms `BlazorApp1.Data` .
  
-[!code-cshtml[](layouts/sample_snapshot/3.x/_Imports.razor)]
+[!code-razor[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
 Le fichier *_Imports. Razor* est semblable au [fichier _ViewImports. cshtml pour les vues et les pages Razor,](xref:mvc/views/layout#importing-shared-directives) mais appliqué spécifiquement aux fichiers du composant Razor.
 
@@ -81,15 +81,15 @@ Les applications peuvent se composer de dispositions imbriquées. Un composant p
 
 L’exemple suivant montre comment utiliser des dispositions imbriquées. Le fichier *EpisodesComponent. Razor* est le composant à afficher. Le composant fait référence à la `MasterListLayout`:
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
+[!code-razor[](layouts/sample_snapshot/3.x/EpisodesComponent.razor?highlight=1)]
 
 Le fichier *MasterListLayout. Razor* fournit le `MasterListLayout`. La disposition fait référence à une autre disposition, `MasterLayout`, où elle est affichée. `EpisodesComponent` s’affiche où `@Body` apparaît :
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterListLayout.razor?highlight=1,9)]
 
 Enfin, `MasterLayout` dans *MasterLayout. Razor* contient les éléments de disposition de niveau supérieur, tels que l’en-tête, le menu principal et le pied de page. `MasterListLayout` avec le `EpisodesComponent` est rendu là où `@Body` apparaît :
 
-[!code-cshtml[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
+[!code-razor[](layouts/sample_snapshot/3.x/MasterLayout.razor?highlight=6)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -5,16 +5,16 @@ description: Découvrez comment les composants peuvent être inclus dans Blazor 
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/23/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/class-libraries
-ms.openlocfilehash: d4cc4124c9dc28ed6da0923b919919df4965f89f
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 6bac007e3e1d046d6b16a3a0be6dc5976b99b766
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962707"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943873"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Bibliothèques de classes des composants Razor ASP.NET Core
 
@@ -34,12 +34,12 @@ Suivez les instructions de l’article <xref:blazor/get-started> pour configurer
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Créer un nouveau projet.
+1. Créez un nouveau projet.
 1. Sélectionnez **bibliothèque de classes Razor**. Sélectionnez **Suivant**.
 1. Dans la boîte de dialogue **créer une nouvelle bibliothèque de classes Razor** , sélectionnez **créer**.
 1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Les exemples de cette rubrique utilisent le nom du projet `MyComponentLib1`. Sélectionnez **Créer**.
 1. Ajouter RCL à une solution :
-   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **ajouter** > **projet existant**.
+   1. Cliquez avec le bouton droit sur la solution. Sélectionnez **Ajouter** > **un projet existant**.
    1. Accédez au fichier projet de RCL.
    1. Sélectionnez le fichier projet de RCL ( *. csproj*).
 1. Ajoutez une référence à l’RCL à partir de l’application :
@@ -73,7 +73,7 @@ Dans les exemples suivants, `MyComponentLib1` est une bibliothèque de composant
 
 Le composant `SalesReport` peut être référencé à l’aide de son nom de type complet avec l’espace de noms :
 
-```cshtml
+```razor
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
@@ -83,7 +83,7 @@ Welcome to your new app.
 
 Le composant peut également être référencé si la bibliothèque est placée dans la portée avec une directive `@using` :
 
-```cshtml
+```razor
 @using MyComponentLib1
 
 <h1>Hello, world!</h1>

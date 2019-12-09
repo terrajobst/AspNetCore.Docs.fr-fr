@@ -5,16 +5,16 @@ description: Découvrez comment appeler une API Web à partir d’une applicatio
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/call-web-api
-ms.openlocfilehash: d4c69e8be2d4f6295c7177bf5d00aed596d0ead2
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: f1929b48275a36552f061a64823267df0f3acabc
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733854"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943912"
 ---
 # <a name="call-a-web-api-from-aspnet-core-opno-locblazor"></a>Appeler une API Web à partir de ASP.NET Core Blazor
 
@@ -49,7 +49,7 @@ les `HttpClient` et les applications auxiliaires JSON servent également à appe
 
 L’adresse de base du client est définie sur l’adresse du serveur d’origine. Injectez une instance de `HttpClient` à l’aide de la directive `@inject` :
 
-```cshtml
+```razor
 @using System.Net.Http
 @inject HttpClient Http
 ```
@@ -75,7 +75,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
   Dans le code suivant, les `_todoItems` sont affichés par le composant. La méthode `GetTodoItems` est déclenchée lorsque le rendu du composant est terminé ([OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)). Pour obtenir un exemple complet, consultez l’exemple d’application.
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -91,7 +91,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
   Dans le code suivant, `_newItemName` est fourni par un élément lié du composant. La méthode `AddItem` est déclenchée en sélectionnant un élément `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -113,7 +113,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
   Dans le code suivant, `_editItem` valeurs pour `Name` et `IsCompleted` sont fournies par les éléments dépendants du composant. Le `Id` de l’élément est défini lorsque l’élément est sélectionné dans une autre partie de l’interface utilisateur et `EditItem` est appelé. La méthode `SaveItem` est déclenchée en sélectionnant l’élément Save `<button>`. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
-  ```cshtml
+  ```razor
   @using System.Net.Http
   @inject HttpClient Http
 
@@ -140,7 +140,7 @@ Les méthodes d’assistance JSON envoient des demandes à un URI (une API Web d
 
 Dans le code suivant, l’élément delete `<button>` appelle la méthode `DeleteItem`. L’élément `<input>` lié fournit les `id` de l’élément à supprimer. Pour obtenir un exemple complet, consultez l’exemple d’application.
 
-```cshtml
+```razor
 @using System.Net.Http
 @inject HttpClient Http
 
@@ -155,7 +155,7 @@ Dans le code suivant, l’élément delete `<button>` appelle la méthode `Delet
 }
 ```
 
-## <a name="cross-origin-resource-sharing-cors"></a>Partage des ressources Cross-Origin (CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>Partage des ressources cross-origin (CORS)
 
 La sécurité du navigateur empêche une page Web d’effectuer des demandes vers un autre domaine que celui qui a servi la page Web. Cette restriction est appelée *stratégie de même origine*. La stratégie de même origine empêche un site malveillant de lire des données sensibles à partir d’un autre site. Pour effectuer des demandes à partir du navigateur vers un point de terminaison avec une origine différente, le *point de terminaison* doit activer le [partage des ressources Cross-Origin (cors)](https://www.w3.org/TR/cors/).
 
@@ -167,7 +167,7 @@ Pour permettre à d’autres sites d’effectuer des demandes de partage de ress
 
 Quand vous exécutez sur webassembly dans une application Blazor webassembly, utilisez [httpclient](xref:fundamentals/http-requests) et <xref:System.Net.Http.HttpRequestMessage> pour personnaliser les demandes. Par exemple, vous pouvez spécifier l’URI de demande, la méthode HTTP et tous les en-têtes de demande souhaités.
 
-```cshtml
+```razor
 @using System.Net.Http
 @using System.Net.Http.Headers
 @inject HttpClient Http

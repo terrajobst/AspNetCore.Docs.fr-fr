@@ -5,17 +5,17 @@ description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exc
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: e737a8a85e7eb83d95618d71e85b0307c54b0766
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: d73eb9a0dd0ec7a4bec4b7b9aeaaa4a9ee888bce
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879685"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943704"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -138,7 +138,7 @@ Dans l’exemple suivant, où `OnParametersSetAsync` appelle une méthode pour o
   * `loadFailed` est défini sur `true`, qui est utilisé pour afficher un message d’erreur à l’utilisateur.
   * L’erreur est consignée.
 
-[!code-cshtml[](handle-errors/samples_snapshot/3.x/product-details.razor?highlight=11,27-39)]
+[!code-razor[](handle-errors/samples_snapshot/3.x/product-details.razor?highlight=11,27-39)]
 
 ### <a name="rendering-logic"></a>Logique de rendu
 
@@ -148,7 +148,7 @@ La logique de rendu peut lever une exception. Un exemple de ce scénario se prod
 
 Pour éviter une exception de référence null dans la logique de rendu, recherchez un objet `null` avant d’accéder à ses membres. Dans l’exemple suivant, `person.Address` propriétés ne sont pas accessibles si `person.Address` est `null`:
 
-[!code-cshtml[](handle-errors/samples_snapshot/3.x/person-example.razor?highlight=1)]
+[!code-razor[](handle-errors/samples_snapshot/3.x/person-example.razor?highlight=1)]
 
 Le code précédent suppose que `person` n’est pas `null`. Souvent, la structure du code garantit l’existence d’un objet au moment du rendu du composant. Dans ce cas, il n’est pas nécessaire de vérifier la `null` dans la logique de rendu. Dans l’exemple précédent, il est possible que `person` existe, car `person` est créé lors de l’instanciation du composant.
 

@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor Se
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: b688d000f26c9b230d9fdee8423b3194145fe1aa
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: d45d355eabc53fc90bcda4cb7be22fb6a9f04541
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317296"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74944332"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Héberger et déployer Blazor serveur
 
@@ -49,7 +49,7 @@ Pour obtenir des conseils sur la création d’applications Blazor Server sécur
 
 Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *Hello World*minimale. La taille d’un circuit dépend du code de l’application et des exigences de maintenance d’état associées à chaque composant. Nous vous recommandons de mesurer les demandes de ressources pendant le développement de votre application et de votre infrastructure, mais la ligne de base suivante peut être un point de départ pour la planification de votre cible de déploiement : Si vous vous attendez à ce que votre application prenne en charge 5 000 utilisateurs simultanés, pensez à la budgétisation à moins de 1,3 Go de mémoire serveur pour l’application (ou ~ 273 Ko par utilisateur).
 
-### <a name="opno-locsignalr-configuration"></a>configuration de SignalR
+### <a name="opno-locsignalr-configuration"></a>Configuration de SignalR
 
 les applications Blazor Server utilisent ASP.NET Core SignalR pour communiquer avec le navigateur. [les conditions d’hébergement et de mise à l’échelle deSignalR](xref:signalr/publish-to-azure-web-app) s’appliquent aux applications Blazor Server.
 
@@ -83,7 +83,7 @@ Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-sign
 
 1. Créez un profil de publication Azure Apps dans Visual Studio pour l’application Blazor Server.
 1. Ajoutez la dépendance du **service Azure SignalR** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure SignalR existante à attribuer à l’application, sélectionnez **créer une nouvelle instance azure SignalR service** pour approvisionner une nouvelle instance de service.
-1. Publiez l’application sur Azure.
+1. Publiez l’application dans Azure.
 
 #### <a name="iis"></a>IIS
 
@@ -109,7 +109,7 @@ metadata:
 
 L' [interopérabilité js](xref:blazor/javascript-interop) peut être utilisée pour mesurer la latence du réseau, comme le montre l’exemple suivant :
 
-```cshtml
+```razor
 @inject IJSRuntime JS
 
 @if (latency is null)

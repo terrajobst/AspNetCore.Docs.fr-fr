@@ -5,17 +5,17 @@ description: Explorez ASP.NET Core Blazor, un moyen de créer une interface util
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 11/12/2019
+ms.date: 12/05/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 8b656a7461c78475432722540ad628258cfe19c4
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 4ab6af649afe66d92fb2ea07d3abed057f321bce
+ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962912"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74943717"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Présentation de ASP.NET Core Blazor
 
@@ -38,7 +38,7 @@ L’utilisation de .NET dans le développement web côté client offre les avant
 * Restez productif grâce à Visual Studio sur Windows, Linux et macOS.
 * Développez avec un ensemble commun de langages, de frameworks et d’outils stables, riches en fonctionnalités et faciles à utiliser.
 
-## <a name="components"></a>Composants
+## <a name="components"></a>Components
 
 les applications Blazor sont basées sur des *composants*. Un composant de Blazor est un élément de l’interface utilisateur, tel qu’une page, une boîte de dialogue ou un formulaire de saisie de données.
 
@@ -53,7 +53,7 @@ La classe de composant est généralement écrite sous la forme d’une page de 
 
 Le balisage Razor suivant montre un composant (*Dialog.razor*), qui peut être imbriqué dans un autre composant :
 
-```cshtml
+```razor
 <div>
     <h1>@Title</h1>
 
@@ -84,7 +84,7 @@ Dans l’exemple suivant, le composant `Index` utilise le composant `Dialog`. `C
 
 *Index.razor* :
 
-```cshtml
+```razor
 @page "/"
 
 <h1>Hello, world!</h1>
@@ -128,7 +128,7 @@ La taille de l’application publiée, sa *taille de charge utile*, est un facte
 * Réponses HTTP compressées.
 * Le runtime .NET et les assemblys sont mis en cache dans le navigateur.
 
-## <a name="opno-locblazor-server"></a>Serveur de Blazor
+## <a name="opno-locblazor-server"></a>Serveur Blazor
 
 Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées via une connexion [SignalR](xref:signalr/introduction) .
 
