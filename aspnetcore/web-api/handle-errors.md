@@ -5,14 +5,14 @@ description: En savoir plus sur la gestion des erreurs avec ASP.NET Core API Web
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 09/27/2019
+ms.date: 12/10/2019
 uid: web-api/handle-errors
-ms.openlocfilehash: 457ad7449c608c3b1b0acd729626e07808f55897
-ms.sourcegitcommit: ddc813f0f1fb293861a01597532919945b0e7fe5
+ms.openlocfilehash: c2dbc47b4495b7187aefbc62eb6d2f0c9683c2da
+ms.sourcegitcommit: 29ace642ca0e1f0b48a18d66de266d8811df2b83
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74412094"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74987834"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Gérer les erreurs dans les API Web ASP.NET Core
 
@@ -68,7 +68,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-Pour afficher une réponse au format HTML à la place, définissez le `Accept` en-tête de demande HTTP sur le type de média `text/html`. Exemple :
+Pour afficher une réponse au format HTML à la place, définissez le `Accept` en-tête de demande HTTP sur le type de média `text/html`. Par exemple :
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
@@ -149,7 +149,7 @@ Dans les environnements non-développement, l’intergiciel (middleware) de [ges
 
     ::: moniker-end
 
-L’action `Error` précédente envoie une charge utile conforme à [RFC7807](https://tools.ietf.org/html/rfc7807)au client.
+L’action `Error` précédente envoie une charge utile conforme à la norme [RFC 7807](https://tools.ietf.org/html/rfc7807)au client.
 
 L’intergiciel (middleware) de gestion des exceptions peut également fournir une sortie de négociation de contenu plus détaillée dans l’environnement de développement local. Utilisez les étapes suivantes pour créer un format de charge utile cohérent dans les environnements de développement et de production :
 
@@ -267,6 +267,13 @@ Pour les contrôleurs d’API Web, MVC répond avec un type de réponse <xref:Mi
 ## <a name="client-error-response"></a>Réponse d’erreur du client
 
 Un *résultat d’erreur* est défini en tant que résultat avec le code d’état HTTP 400 ou une version ultérieure. Pour les contrôleurs d’API Web, MVC transforme un résultat d’erreur en résultat avec <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>.
+
+::: moniker range="= aspnetcore-2.1"
+
+> [!IMPORTANT]
+> ASP.NET Core 2,1 génère une réponse de détails de problème quasiment conforme à RFC 7807. Si la conformité de 100% est importante, mettez à niveau le projet vers ASP.NET Core 2,2 ou version ultérieure.
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
