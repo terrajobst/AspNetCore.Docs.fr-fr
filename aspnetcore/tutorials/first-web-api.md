@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 96b4c030c1d91f97725d1f3623c7b4023ad99ff3
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
+ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880636"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74959110"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -52,15 +52,15 @@ Le diagramme suivant illustre la conception de l’application.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -71,7 +71,7 @@ Le diagramme suivant illustre la conception de l’application.
 * Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
-* Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 3.0** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**.
+* Dans la boîte de dialogue **créer une application Web ASP.net Core** , vérifiez que **.net Core** et **ASP.net Core 3,1** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs3.png)
 
@@ -106,7 +106,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
-* Dans la boîte de dialogue **Configurer votre nouvelle API web ASP.NET Core**, sélectionnez *.NET Core 3.0* comme **Framework cible**.
+* Dans la boîte de dialogue **configurer votre nouvelle API Web ASP.net Core** , sélectionnez **Framework cible** de * *.net Core 3,1*.
 
 * Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
