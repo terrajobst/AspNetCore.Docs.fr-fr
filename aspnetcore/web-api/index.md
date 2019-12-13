@@ -5,14 +5,14 @@ description: Découvrez les principes fondamentaux de la création d’une API w
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/12/2019
+ms.date: 11/22/2019
 uid: web-api/index
-ms.openlocfilehash: aab9b848eb6e69055b019c9253c716898e9847e2
-ms.sourcegitcommit: a11f09c10ef3d4eeab7ae9ce993e7f30427741c1
+ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
+ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149341"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74880531"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -24,7 +24,7 @@ ASP.NET Core prend en charge la création de services RESTful, également appel�
 
 ## <a name="controllerbase-class"></a>Classe ControllerBase
 
-Une API Web se compose d’une ou de plusieurs classes de contrôleur <xref:Microsoft.AspNetCore.Mvc.ControllerBase>qui dérivent de. Le modèle de projet d’API Web fournit un contrôleur de démarrage :
+Une API Web se compose d’une ou de plusieurs classes de contrôleur qui dérivent de <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. Le modèle de projet d’API Web fournit un contrôleur de démarrage :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -34,25 +34,25 @@ Une API Web se compose d’une ou de plusieurs classes de contrôleur <xref:Micr
 
 ::: moniker range="<= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=3)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=3)]
 
 ::: moniker-end
 
-Ne créez pas de contrôleur d’API web en effectuant une dérivation de la classe <xref:Microsoft.AspNetCore.Mvc.Controller>. `Controller` dérive de `ControllerBase` et ajoute la prise en charge pour les vues ; ainsi, il est destiné à la gestion des pages web, pas des demandes d’API web. Il existe une exception à cette règle : Si vous envisagez d’utiliser le même contrôleur pour les vues et les API Web, `Controller`dérivez-le de.
+Ne créez pas de contrôleur d’API web en effectuant une dérivation de la classe <xref:Microsoft.AspNetCore.Mvc.Controller>. `Controller` dérive de `ControllerBase` et ajoute la prise en charge pour les vues ; ainsi, il est destiné à la gestion des pages web, pas des demandes d’API web. Il existe une exception à cette règle : Si vous envisagez d’utiliser le même contrôleur pour les vues et les API Web, dérivez-le de `Controller`.
 
 La classe `ControllerBase` fournit de nombreuses propriétés et méthodes qui sont utiles pour gérer les requêtes HTTP. Par exemple, `ControllerBase.CreatedAtAction` retourne un code d’état 201 :
 
-[!code-csharp[](index/samples/2.x/Controllers/PetsController.cs?name=snippet_400And201&highlight=10)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_400And201&highlight=10)]
 
 Voici d’autres exemples de méthodes fournies par `ControllerBase`.
 
 |Méthode   |Notes    |
 |---------|---------|
-|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest*>| Retourne le code d’état 400.|
-|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*>|Retourne le code d’état 404.|
-|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile*>|Retourne un fichier.|
-|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>|Appelle la [liaison de modèle](xref:mvc/models/model-binding).|
-|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryValidateModel*>|Appelle la [validation de modèle](xref:mvc/models/validation).|
+|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| Retourne le code d’état 400.|
+|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|Retourne le code d’état 404.|
+|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.PhysicalFile%2A>|Retourne un fichier.|
+|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync%2A>|Appelle la [liaison de modèle](xref:mvc/models/model-binding).|
+|<xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryValidateModel%2A>|Appelle la [validation de modèle](xref:mvc/models/validation).|
 
 Pour obtenir la liste complète des méthodes et propriétés disponibles, consultez <xref:Microsoft.AspNetCore.Mvc.ControllerBase>.
 
@@ -60,23 +60,23 @@ Pour obtenir la liste complète des méthodes et propriétés disponibles, consu
 
 L’espace de noms <xref:Microsoft.AspNetCore.Mvc> fournit des attributs qui peuvent être utilisés pour configurer le comportement des contrôleurs d’API web et des méthodes d’action. L’exemple suivant utilise des attributs pour spécifier le verbe d’action HTTP pris en charge et tous les codes d’état HTTP connus qui peuvent être retournés :
 
-[!code-csharp[](index/samples/2.x/Controllers/PetsController.cs?name=snippet_400And201&highlight=1-3)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_400And201&highlight=1-3)]
 
 Voici d’autres exemples d’attributs disponibles.
 
 |Attribut|Notes|
 |---------|-----|
-|[[Route]](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
-|[[Bind]](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|
-|[[HttpGet]](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |Identifie une action qui prend en charge le verbe d’action HTTP.|
-|[[Consumes]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|Spécifie les types de données acceptés par une action.|
-|[[Produces]](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|Spécifie les types de données retournés par une action.|
+|[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
+|[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|
+|[`[HttpGet]`](<xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute>)  |Identifie une action qui prend en charge le verbe d’action HTTP.|
+|[`[Consumes]`](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>)|Spécifie les types de données acceptés par une action.|
+|[`[Produces]`](<xref:Microsoft.AspNetCore.Mvc.ProducesAttribute>)|Spécifie les types de données retournés par une action.|
 
 Pour obtenir la liste des attributs disponibles, consultez l’espace de noms <xref:Microsoft.AspNetCore.Mvc>.
 
 ## <a name="apicontroller-attribute"></a>Attribut ApiController
 
-L’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) peut être appliqué à une classe de contrôleur pour activer les consignes strictes suivants, comportements spécifiques aux API :
+L’attribut [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) peut être appliqué à une classe de contrôleur pour activer les consignes strictes suivants, comportements spécifiques à l’API :
 
 * [Exigence du routage d’attribut](#attribute-routing-requirement)
 * [Réponses HTTP 400 automatiques](#automatic-http-400-responses)
@@ -98,7 +98,7 @@ L’attribut `[ApiController]` peut être appliqué à des contrôleurs spécifi
 
 ::: moniker range="<= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=2)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=2)]
 
 ::: moniker-end
 
@@ -106,7 +106,7 @@ L’attribut `[ApiController]` peut être appliqué à des contrôleurs spécifi
 
 Une façon d’utiliser l’attribut sur plusieurs contrôleurs consiste à créer une classe de contrôleur de base personnalisée annotée avec l’attribut `[ApiController]`. L’exemple suivant montre une classe de base personnalisée et un contrôleur qui dérive de celle-ci :
 
-[!code-csharp[](index/samples/2.x/Controllers/MyControllerBase.cs?name=snippet_MyControllerBase)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/MyControllerBase.cs?name=snippet_MyControllerBase)]
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -116,7 +116,7 @@ Une façon d’utiliser l’attribut sur plusieurs contrôleurs consiste à cré
 
 ::: moniker range="<= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Controllers/PetsController.cs?name=snippet_Inherit)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_Inherit)]
 
 ::: moniker-end
 
@@ -124,7 +124,7 @@ Une façon d’utiliser l’attribut sur plusieurs contrôleurs consiste à cré
 
 ### <a name="attribute-on-an-assembly"></a>Attribut sur un assembly
 
-Si la [version de compatibilité](xref:mvc/compatibility-version) est définie sur 2.2 ou une version ultérieure, l’attribut `[ApiController]` peut être appliqué à un assembly. De cette manière, l’annotation applique le comportement de l’API web à tous les contrôleurs de l’assembly. Les contrôleurs individuels n’ont aucun moyen de refuser. Appliquez l’attribut assembly au niveau de l’assembly à `Startup` la déclaration d’espace de noms qui entoure la classe :
+Si la [version de compatibilité](xref:mvc/compatibility-version) est définie sur 2.2 ou une version ultérieure, l’attribut `[ApiController]` peut être appliqué à un assembly. De cette manière, l’annotation applique le comportement de l’API web à tous les contrôleurs de l’assembly. Les contrôleurs individuels n’ont aucun moyen de refuser. Appliquez l’attribut assembly au niveau de l’assembly à la déclaration d’espace de noms qui entoure la classe `Startup` :
 
 ```csharp
 [assembly: ApiController]
@@ -147,19 +147,19 @@ L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par ex
 
 [!code-csharp[](index/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_ControllerSignature&highlight=2)]
 
-Les actions sont inaccessibles par le biais `UseEndpoints`des <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> [itinéraires conventionnels](xref:mvc/controllers/routing#conventional-routing) définis par, ou <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> dans `Startup.Configure`.
+Les actions sont inaccessibles par le biais des [itinéraires conventionnels](xref:mvc/controllers/routing#conventional-routing) définis par `UseEndpoints`, <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A>ou <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> dans `Startup.Configure`.
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=1)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/ValuesController.cs?name=snippet_ControllerSignature&highlight=1)]
 
-Les actions sont inaccessibles par le biais de [routes conventionnelles](xref:mvc/controllers/routing#conventional-routing) définies par <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> ou <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> dans `Startup.Configure`.
+Les actions sont inaccessibles par le biais de [routes conventionnelles](xref:mvc/controllers/routing#conventional-routing) définies par <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc%2A> ou <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute%2A> dans `Startup.Configure`.
 
 ::: moniker-end
 
-### <a name="automatic-http-400-responses"></a>Réponses HTTP 400 automatiques
+## <a name="automatic-http-400-responses"></a>Réponses HTTP 400 automatiques
 
 Grâce à l’attribut `[ApiController]`, les erreurs de validation de modèles déclenchent automatiquement une réponse HTTP 400. Ainsi, le code suivant est inutile dans une méthode d’action :
 
@@ -170,11 +170,11 @@ if (!ModelState.IsValid)
 }
 ```
 
-ASP.net Core MVC utilise le <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter> filtre d’action pour effectuer la vérification précédente.
+ASP.NET Core MVC utilise le filtre d’action <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter> pour effectuer la vérification précédente.
 
 ### <a name="default-badrequest-response"></a>Réponse BadRequest par défaut
 
-Avec une version de compatibilité de 2,1, le type de réponse par défaut pour une réponse <xref:Microsoft.AspNetCore.Mvc.SerializableError>http 400 est. Le corps de la requête suivant est un exemple de type sérialisé :
+Avec une version de compatibilité de 2,1, le type de réponse par défaut pour une réponse HTTP 400 est <xref:Microsoft.AspNetCore.Mvc.SerializableError>. Le corps de la requête suivant est un exemple de type sérialisé :
 
 ```json
 {
@@ -186,7 +186,7 @@ Avec une version de compatibilité de 2,1, le type de réponse par défaut pour 
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Avec une version de compatibilité 2,2 ou ultérieure, le type de réponse par défaut pour une réponse HTTP <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>400 est. Le corps de la requête suivant est un exemple de type sérialisé :
+Avec une version de compatibilité 2,2 ou ultérieure, le type de réponse par défaut pour une réponse HTTP 400 est <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>. Le corps de la requête suivant est un exemple de type sérialisé :
 
 ```json
 {
@@ -202,7 +202,7 @@ Avec une version de compatibilité 2,2 ou ultérieure, le type de réponse par d
 }
 ```
 
-`ValidationProblemDetails` Type :
+Type de `ValidationProblemDetails` :
 
 * Fournit un format lisible par l’ordinateur pour spécifier les erreurs dans les réponses de l’API Web.
 * Est conforme à la [spécification RFC 7807](https://tools.ietf.org/html/rfc7807).
@@ -223,9 +223,15 @@ Pour désactiver le comportement 400 automatique, définissez la propriété <x
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,7)]
+[!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,7)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+[!code-csharp[](index/samples/2.x/2.1/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=1,5)]
 
 ::: moniker-end
 
@@ -235,12 +241,12 @@ Un attribut de source de liaison définit l’emplacement auquel se trouve la va
 
 |Attribut|Source de liaison |
 |---------|---------|
-|[[FromBody]](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la requête |
-|[[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Données de formulaire dans le corps de la demande |
-|[[FromHeader]](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de demande |
-|[[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Paramètre de la chaîne de requête de la demande |
-|[[FromRoute]](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Données d’itinéraire à partir de la demande actuelle |
-|[[FromServices]](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Service de demande injecté comme paramètre d’action |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la requête |
+|[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Données de formulaire dans le corps de la demande |
+|[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de demande |
+|[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Paramètre de la chaîne de requête de la demande |
+|[`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Données d’itinéraire à partir de la demande actuelle |
+|[`[FromServices]`](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Service de demande injecté comme paramètre d’action |
 
 > [!WARNING]
 > N’utilisez pas `[FromRoute]` lorsque les valeurs risquent de contenir `%2f` (c’est-à-dire `/`). `%2f` ne sera pas sans la séquence d’échappement `/`. Utilisez `[FromQuery]` si la valeur peut contenir `%2f`.
@@ -249,7 +255,7 @@ Sans l’attribut `[ApiController]` ou des attributs de source de liaison comme 
 
 Dans l’exemple suivant, l’attribut `[FromQuery]` indique que la valeur du paramètre `discontinuedOnly` est fournie dans la chaîne de requête de l’URL de demande :
 
-[!code-csharp[](index/samples/2.x/Controllers/ProductsController.cs?name=snippet_BindingSourceAttributes&highlight=3)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/ProductsController.cs?name=snippet_BindingSourceAttributes&highlight=3)]
 
 L’attribut `[ApiController]` applique des règles d’inférence pour les sources de données par défaut des paramètres d’action. Ces règles vous évitent d’avoir à identifier les sources de liaison manuellement en appliquant des attributs aux paramètres d’action. Les règles d’inférence de source de liaison se comportent comme suit :
 
@@ -302,17 +308,23 @@ Pour désactiver l’inférence de la source de liaison, définissez <xref:Micro
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,6)]
+[!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,6)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+[!code-csharp[](index/samples/2.x/2.1/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=1,4)]
 
 ::: moniker-end
 
 ## <a name="multipartform-data-request-inference"></a>Inférence de demande multipart/form-data
 
-L' `[ApiController]` attribut applique une règle d’inférence lorsqu’un paramètre d’action est annoté avec l’attribut [[FromForm]](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) . Le `multipart/form-data` type de contenu de la demande est déduit.
+L’attribut `[ApiController]` applique une règle d’inférence lorsqu’un paramètre d’action est annoté avec l’attribut [`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute) . Le type de contenu de la demande `multipart/form-data` est déduit.
 
-Pour désactiver le comportement par défaut, affectez à `true` la `Startup.ConfigureServices`propriété la <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> valeur dans :
+Pour désactiver le comportement par défaut, affectez à la propriété <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressConsumesConstraintForFormFileParameters> la valeur `true` dans `Startup.ConfigureServices`:
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -320,11 +332,19 @@ Pour désactiver le comportement par défaut, affectez à `true` la `Startup.Con
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,5)]
+[!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,5)]
 
 ::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+[!code-csharp[](index/samples/2.x/2.1/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=1,3)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="problem-details-for-error-status-codes"></a>Fonctionnalité Détails du problème pour les codes d’état erreur
 
@@ -332,9 +352,9 @@ Quand la version de compatibilité est 2.2 ou ultérieure, MVC transforme un ré
 
 Prenons le code suivant dans une action de contrôleur :
 
-[!code-csharp[](index/samples/2.x/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
+[!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-La `NotFound` méthode génère un code d’état HTTP 404 avec `ProblemDetails` un corps. Par exemple :
+La méthode `NotFound` produit un code d’état HTTP 404 avec un corps de `ProblemDetails`. Par exemple :
 
 ```json
 {
@@ -347,7 +367,9 @@ La `NotFound` méthode génère un code d’état HTTP 404 avec `ProblemDetails`
 
 ### <a name="disable-problemdetails-response"></a>Désactiver la réponse ProblemDetails
 
-La création automatique d’une `ProblemDetails` instance est désactivée <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors*> lorsque la propriété a `true`la valeur. Ajoutez le code suivant dans `Startup.ConfigureServices` :
+La création automatique d’une instance de `ProblemDetails` est désactivée lorsque la propriété <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.SuppressMapClientErrors%2A> est définie sur `true`. Ajoutez le code suivant dans `Startup.ConfigureServices` :
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -355,9 +377,9 @@ La création automatique d’une `ProblemDetails` instance est désactivée <xre
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.2"
+::: moniker range="= aspnetcore-2.2"
 
-[!code-csharp[](index/samples/2.x/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,8)]
+[!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,8)]
 
 ::: moniker-end
 
