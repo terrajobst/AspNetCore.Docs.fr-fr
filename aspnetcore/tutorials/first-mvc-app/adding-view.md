@@ -14,7 +14,7 @@ ms.locfileid: "72288819"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -32,7 +32,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -57,9 +57,9 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **Web** dans le volet gauche.
   * Sélectionnez **Fichier HTML vide** dans le volet central.
@@ -86,7 +86,7 @@ Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifi
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
-Remplacez le contenu du fichier *Views/Shared/_ Layout. cshtml* par le balisage suivant. Les modifications apparaissent en surbrillance :
+Remplacez le contenu du fichier *Views/Shared/_Layout. cshtml* par le balisage suivant. Les modifications sont mises en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -95,9 +95,9 @@ Le balisage précédent apporte les modifications suivantes :
 * Remplacement de 3 occurrences de `MvcMovie` par `Movie App`.
 * Remplacement de l’élément d’ancrage `<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcMovie</a>` par `<a class="navbar-brand" asp-controller="Movies" asp-action="Index">Movie App</a>`.
 
-Dans le balisage précédent, l’[attribut Tag Helper d’ancrage `asp-area=""`](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur d’attribut ont été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
+Dans le balisage précédent, l’`asp-area=""` [attribut Tag Helper d’ancrage](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur d’attribut ont été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
-**Remarque**: Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque**: le contrôleur de `Movies` n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
 Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
@@ -127,7 +127,7 @@ Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la proprié
 <title>@ViewData["Title"] - Movie App</title>
    ```
 
-Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
+Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur CTRL + F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec `ViewData["Title"]` que nous avons définis dans le modèle de vue *index. cshtml* et l’application « -Movie » supplémentaire ajoutée au fichier de disposition.
 
 Le contenu du modèle de vue *Index.cshtml* est fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml*. Une réponse HTML unique est envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages d’une application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
 
@@ -139,7 +139,7 @@ Nos quelques « données » (dans le cas présent, le message « Hello from our 
 
 Les actions du contrôleur sont appelées en réponse à une demande d’URL entrante. Une classe de contrôleur est l’endroit où le code est écrit et qui gère les demandes du navigateur entrantes. Le contrôleur récupère les données d’une source de données et détermine le type de réponse à envoyer au navigateur. Il est possible d’utiliser des modèles de vue à partir d’un contrôleur pour générer et mettre en forme une réponse HTML au navigateur.
 
-Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un modèle de vue restitue une réponse. Une meilleure pratique : N’oubliez pas que les modèles de vue ne doivent **pas** exécuter de logique métier ou interagir directement avec une base de données. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données que le contrôleur lui fournit. Préserver cette « séparation des intérêts » permet de maintenir le code clair, testable et facile à gérer.
+Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un modèle de vue restitue une réponse. N’oubliez pas que les modèles de vue ne doivent **pas** exécuter de logique métier ou interagir directement avec une base de données. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données que le contrôleur lui fournit. Préserver cette « séparation des intérêts » permet de maintenir le code clair, testable et facile à gérer.
 
 Actuellement, le `Welcome` méthode présente dans la classe `HelloWorldController` prend un paramètre `name` et un paramètre `ID`, puis sort les valeurs directement dans le navigateur. Au lieu que le contrôleur restitue cette réponse sous forme de chaîne, changez le contrôleur pour qu’il utilise un modèle de vue à la place. Comme le modèle de vue génère une réponse dynamique, les bits de données appropriés doivent être passés du contrôleur à la vue pour générer la réponse. Pour cela, le contrôleur doit placer les données dynamiques (paramètres) dont le modèle de vue a besoin dans un dictionnaire `ViewData` auquel le modèle de vue peut ensuite accéder.
 
@@ -189,7 +189,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -214,9 +214,9 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **Web** dans le volet gauche.
   * Sélectionnez **Fichier HTML vide** dans le volet central.
@@ -250,14 +250,14 @@ Le balisage suivant illustre les changements en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
 
-Dans le balisage précédent, l’[attribut Tag Helper Ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-area` a été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
+Dans le balisage précédent, l’`asp-area` [attribut Tag Helper Ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) a été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
 <!-- Routing has changed in 2.2, it's going to the last route.
 >[!WARNING]
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**Remarque**: Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
+**Remarque**: le contrôleur de `Movies` n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
 Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
@@ -287,7 +287,7 @@ Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la proprié
 <title>@ViewData["Title"] - Movie App</title>
    ```
 
-Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec la valeur `ViewData["Title"]` que nous avons définie dans le modèle de vue *Index.cshtml* et la chaîne « - Movie App » ajoutée dans le fichier de disposition.
+Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur CTRL + F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec `ViewData["Title"]` que nous avons définis dans le modèle de vue *index. cshtml* et l’application « -Movie » supplémentaire ajoutée au fichier de disposition.
 
 Notez également comment le contenu du modèle de vue *Index.cshtml* a été fusionné avec le modèle de vue *Views/Shared/_Layout.cshtml* et qu’une seule réponse HTML a été envoyée au navigateur. Les modèles de disposition permettent d’apporter facilement des modifications qui s’appliquent à toutes les pages de votre application. Pour en savoir plus, consultez [Disposition](xref:mvc/views/layout).
 
@@ -299,7 +299,7 @@ Nos quelques « données » (dans le cas présent, le message « Hello from our 
 
 Les actions du contrôleur sont appelées en réponse à une demande d’URL entrante. Une classe de contrôleur est l’endroit où le code est écrit et qui gère les demandes du navigateur entrantes. Le contrôleur récupère les données d’une source de données et détermine le type de réponse à envoyer au navigateur. Il est possible d’utiliser des modèles de vue à partir d’un contrôleur pour générer et mettre en forme une réponse HTML au navigateur.
 
-Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un modèle de vue restitue une réponse. Une meilleure pratique : N’oubliez pas que les modèles de vue ne doivent **pas** exécuter de logique métier ou interagir directement avec une base de données. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données que le contrôleur lui fournit. Préserver cette « séparation des intérêts » permet de maintenir le code clair, testable et facile à gérer.
+Les contrôleurs sont chargés de fournir les données nécessaires pour qu’un modèle de vue restitue une réponse. N’oubliez pas que les modèles de vue ne doivent **pas** exécuter de logique métier ou interagir directement avec une base de données. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données que le contrôleur lui fournit. Préserver cette « séparation des intérêts » permet de maintenir le code clair, testable et facile à gérer.
 
 Actuellement, le `Welcome` méthode présente dans la classe `HelloWorldController` prend un paramètre `name` et un paramètre `ID`, puis sort les valeurs directement dans le navigateur. Au lieu que le contrôleur restitue cette réponse sous forme de chaîne, changez le contrôleur pour qu’il utilise un modèle de vue à la place. Comme le modèle de vue génère une réponse dynamique, les bits de données appropriés doivent être passés du contrôleur à la vue pour générer la réponse. Pour cela, le contrôleur doit placer les données dynamiques (paramètres) dont le modèle de vue a besoin dans un dictionnaire `ViewData` auquel le modèle de vue peut ensuite accéder.
 
