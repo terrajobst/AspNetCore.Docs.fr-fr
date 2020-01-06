@@ -5,12 +5,12 @@ description: Découvrez comment utiliser des méthodes et des vues de contrôleu
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 6d960da5acecbb95893bd339b4391560bedffb3d
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
-ms.translationtype: HT
+ms.openlocfilehash: 2c442060872ab1d2d79a2e355ae257fdf1005914
+ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815416"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75492644"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Méthodes et vues de contrôleur dans ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Nous avons une bonne ébauche de l’application de films, mais sa présentation n’est pas idéale, par exemple, **ReleaseDate** devrait être écrit en deux mots.
 
-![Vue Index : Release Date apparaît en un seul mot (sans espace) et chaque date de sortie d’un film a comme heure « 12 AM »](working-with-sql/_static/m55.png)
+![Vue d’index : Release Date apparaît en un seul mot (sans espace) et chaque date de sortie d’un film a comme heure « 12 AM »](working-with-sql/_static/m55.png)
 
 Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes en surbrillance ci-dessous :
 
@@ -36,7 +36,7 @@ Les liens **Edit**, **Details** et **Delete** sont générés par le Tag Helper 
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Dans le code ci-dessus, le `AnchorTagHelper` génère dynamiquement la valeur d’attribut `href` HTML à partir de l’ID d’itinéraire et de la méthode d’action de contrôleur. Utilisez **Afficher la Source** dans votre navigateur favori ou les outils de développement pour examiner le balisage généré. Une partie du code HTML généré est affichée ci-dessous :
+Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Dans le code ci-dessus, le `AnchorTagHelper` génère dynamiquement la valeur de l’attribut HTML `href` à partir de la méthode d’action du contrôleur et de l’ID de l’itinéraire. Vous utilisez **afficher la source** à partir de votre navigateur favori ou utiliser les outils de développement pour examiner le balisage généré. Une partie du code HTML généré est affichée ci-dessous :
 
 ```html
  <td>
@@ -48,7 +48,7 @@ Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté se
 
 Rappelez-vous le format du [routage](xref:mvc/controllers/routing) défini dans le fichier *Startup.cs* :
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
 ASP.NET Core traduit `https://localhost:5001/Movies/Edit/4` en une requête à la méthode d’action `Edit` du contrôleur `Movies` avec un paramètre `Id` de 4. (Les méthodes de contrôleur sont également appelées méthodes d’action.)
 

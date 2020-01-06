@@ -6,13 +6,15 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 07/05/2019
+no-loc:
+- Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: c13ba02845eef5c53a939feec2be8a01bc4ca128
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 47027033c0b7130f2d38d22c02a54945b2cc31b3
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71082528"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358911"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hébergement d’images ASP.NET Core avec l’arrimeur sur HTTPs
 
@@ -26,22 +28,22 @@ Consultez [développement d’Applications ASP.net core avec l’arrimeur sur ht
 
 Cet exemple requiert l' [ancrage 17,06](https://docs.docker.com/release-notes/docker-ce) ou une version ultérieure du [client dockr](https://www.docker.com/products/docker).
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 Le [Kit de développement logiciel (SDK) .net Core 2,2](https://www.microsoft.com/net/download) ou version ultérieure est requis pour certaines des instructions contenues dans ce document.
 
 ## <a name="certificates"></a>Certificats
 
-Un certificat d’une [autorité de certification](https://en.wikipedia.org/wiki/Certificate_authority) est requis pour l' [Hébergement de production](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) pour un domaine.  Le [chiffrement](https://letsencrypt.org/) est une autorité de certification qui offre des certificats gratuits.
+Un certificat d’une [autorité de certification](https://wikipedia.org/wiki/Certificate_authority) est requis pour l' [Hébergement de production](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/) pour un domaine. [Let's Encrypt](https://letsencrypt.org/) est une autorité de certification qui offre des certificats gratuits.
 
-Ce document utilise des [certificats de développement auto-signés](https://en.wikipedia.org/wiki/Self-signed_certificate) pour héberger des `localhost`images prégénérées sur. Les instructions sont similaires à l’utilisation de certificats de production.
+Ce document utilise des [certificats de développement auto-signés](https://en.wikipedia.org/wiki/Self-signed_certificate) pour héberger des images prégénérées sur `localhost`. Les instructions sont similaires à l’utilisation de certificats de production.
 
 Pour les certificats de production :
 
-* L' `dotnet dev-certs` outil n’est pas requis.
+* L’outil `dotnet dev-certs` n’est pas requis.
 * Les certificats n’ont pas besoin d’être stockés à l’emplacement utilisé dans les instructions. Tout emplacement doit fonctionner, bien que le stockage des certificats dans votre répertoire de site ne soit pas recommandé.
 
-Instructions de montage de certificats de volume dans des conteneurs. Vous pouvez ajouter des certificats dans des images de `COPY` conteneur à l’aide d’une commande dans un fichier dockerfile. La copie de certificats dans une image n’est pas recommandée :
+Instructions de montage de certificats de volume dans des conteneurs. Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une commande `COPY` dans un *fichier dockerfile*. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
 
 * Il est difficile d’utiliser la même image pour le test avec des certificats de développeur.
 * Il est difficile d’utiliser la même image pour l’hébergement avec des certificats de production.
@@ -80,7 +82,7 @@ dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p { password her
 dotnet dev-certs https --trust
 ```
 
-`dotnet dev-certs https --trust`est pris en charge uniquement sur macOS et Windows. Vous devez faire confiance aux certificats sur Linux de la manière prise en charge par votre distribution. Il est probable que vous ayez besoin d’approuver le certificat dans votre navigateur.
+`dotnet dev-certs https --trust` est pris en charge uniquement sur macOS et Windows. Vous devez faire confiance aux certificats sur Linux de la manière prise en charge par votre distribution. Il est probable que vous ayez besoin d’approuver le certificat dans votre navigateur.
 
 Dans les commandes précédentes, remplacez `{ password here }` par un mot de passe.
 

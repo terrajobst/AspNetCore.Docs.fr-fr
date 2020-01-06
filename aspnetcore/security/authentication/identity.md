@@ -5,18 +5,18 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 12/05/2019
 uid: security/authentication/identity
-ms.openlocfilehash: c867b73a96fd081f6e2ca17fef561ac539c0a129
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 787d39dd7824f912128e6af849fa268c3e8eb908
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880731"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359197"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core l’identité :
 
@@ -48,7 +48,7 @@ Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisate
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **Fichier** > **Nouveau** > **Projet**.
+* Sélectionnez **fichier** > **nouveau** > **projet**.
 * Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
 * Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
@@ -216,6 +216,7 @@ Pour plus d’informations, consultez [source AddDefaultIdentity](https://github
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+* Pour plus d’informations sur la configuration de l’identité à l’aide de SQLite, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Configurer Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
@@ -229,7 +230,7 @@ Pour plus d’informations, consultez [source AddDefaultIdentity](https://github
 
 ::: moniker range="< aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core identité est un système d’appartenance qui ajoute des fonctionnalités de connexion aux applications ASP.NET Core. Les utilisateurs peuvent créer un compte avec les informations de connexion stockées dans l’identité, ou ils peuvent utiliser un fournisseur de connexion externe. Les fournisseurs de connexion externes pris en charge incluent [Facebook, Google, Microsoft Account et Twitter](xref:security/authentication/social/index).
 
@@ -257,7 +258,7 @@ Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisate
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **Fichier** > **Nouveau** > **Projet**.
+* Sélectionnez **fichier** > **nouveau** > **projet**.
 * Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
 * Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
@@ -403,6 +404,7 @@ Consultez [configuration](#pw) d’un exemple qui définit la configuration mini
 
 ## <a name="next-steps"></a>Étapes suivantes
 
+* Pour plus d’informations sur la configuration de l’identité à l’aide de SQLite, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/5131) .
 * [Configurer Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 7aff46f739239246191763e0590046b2d9995922
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.openlocfilehash: 52285999d7710cc3198836b9246596980cfc1666
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71080509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355786"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
@@ -69,7 +69,7 @@ Pour utiliser SpaServices, installez les éléments suivants :
     node -v && npm -v
     ```
 
-  * En cas de déploiement sur un site Web Azure, aucune action n'&mdash;est requise, node. js est installé et disponible dans les environnements de serveur.
+  * En cas de déploiement sur un site Web Azure, aucune action n’est requise&mdash;node. js est installé et disponible dans les environnements de serveur.
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -195,7 +195,7 @@ Après le chargement de l’application dans le navigateur, onglet de la Console
 
 Dans la plupart des ASP.NET Core, le routage côté client est souvent souhaité en plus du routage côté serveur. Les systèmes de routage SPA et MVC peuvent travailler indépendamment sans interférence. Il existe, toutefois, un bord cas posant défis : identification des réponses HTTP 404.
 
-Considérez le scénario dans lequel un itinéraire sans extension de `/some/page` est utilisé. Supposons que la demande n’à la correspondance un itinéraire côté serveur, mais son modèle ne correspond pas à un itinéraire côté client. Examinons à présent une demande entrante pour `/images/user-512.png`, lequel attend généralement rechercher un fichier image sur le serveur. Si le chemin d’accès de la ressource demandé ne correspond à aucun itinéraire côté serveur ou fichier statique, il est peu probable que l’application côté&mdash;client ne puisse le gérer. en général, le code d’état HTTP 404 est attendu.
+Considérez le scénario dans lequel un itinéraire sans extension de `/some/page` est utilisé. Supposons que la demande n’à la correspondance un itinéraire côté serveur, mais son modèle ne correspond pas à un itinéraire côté client. Examinons à présent une demande entrante pour `/images/user-512.png`, lequel attend généralement rechercher un fichier image sur le serveur. Si le chemin d’accès de la ressource demandé ne correspond à aucun itinéraire côté serveur ou à un fichier statique, il est peu probable que l’application côté client la gère&mdash;qui retourne généralement un code d’état HTTP 404 est souhaité.
 
 ### <a name="routing-helpers-prerequisites"></a>Conditions préalables pour le routage
 
@@ -213,7 +213,7 @@ Une méthode d’extension nommée `MapSpaFallbackRoute` est utilisé dans le `C
 
 Les itinéraires sont évalués dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
 
-## <a name="create-a-new-project"></a>Créer un nouveau projet
+## <a name="create-a-new-project"></a>Créer un projet
 
 Les services JavaScript fournissent des modèles d’application préconfigurés. SpaServices est utilisé dans ces modèles conjointement avec différents frameworks et bibliothèques, tels que angulaire, REACT et Redux.
 
@@ -225,11 +225,11 @@ dotnet new --install Microsoft.AspNetCore.SpaTemplates::*
 
 Une liste des modèles disponibles s’affiche :
 
-| Modèles                                 | Nom court | Langue | Balises        |
+| Modèles                                 | Nom court | Language | Balises        |
 | ------------------------------------------| :--------: | :------: | :---------: |
-| MVC ASP.NET Core avec Angular             | angular    | [C#]     | MVC/Web/SPA |
-| MVC ASP.NET Core avec React.js            | react      | [C#]     | MVC/Web/SPA |
-| MVC ASP.NET Core avec React.js et Redux  | reactredux | [C#]     | MVC/Web/SPA |
+| MVC ASP.NET Core avec Angular             | angular    | [C#]     | Web/MVC/SPA |
+| MVC ASP.NET Core avec React.js            | react      | [C#]     | Web/MVC/SPA |
+| MVC ASP.NET Core avec React.js et Redux  | reactredux | [C#]     | Web/MVC/SPA |
 
 Pour créer un nouveau projet à l’aide d’un des modèles SPA, incluez le **nom court** du modèle dans le [dotnet nouvelle](/dotnet/core/tools/dotnet-new) commande. La commande suivante crée une application Angular avec ASP.NET Core MVC est configuré pour le côté serveur :
 
@@ -241,10 +241,10 @@ dotnet new angular
 
 Il existe deux modes de configuration de runtime principal :
 
-* **Développement**:
+* **Développement** :
   * Il inclut des mappages de source pour faciliter le débogage.
   * N’Optimisez le code côté client pour les performances.
-* **Production**:
+* **Production** :
   * Exclut les mappages de sources.
   * Optimise le code côté client via le regroupement et la minimisation.
 
@@ -278,7 +278,7 @@ Les modèles SpaServices sont préconfigurées pour exécuter des tests de côt�
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Ouvrez l’invite de commandes dans le *ClientApp* directory. Exécutez la commande suivante :
+Ouvrez l’invite de commandes dans le *ClientApp* directory. Exécutez la commande suivante : .
 
 ```console
 npm test
@@ -289,6 +289,8 @@ Le script lance le testeur Karma, qui lit les paramètres définis dans le *karm
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 
 ## <a name="publish-the-app"></a>Publier l'application
+
+Pour plus d’informations sur la publication sur Azure, consultez [ce numéro GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/12474) .
 
 Combinant les ressources côté client générés et les artefacts de ASP.NET Core publiées dans un package prêt à déployer peut s’avérer fastidieuse. Heureusement, SpaServices orchestre ce processus d’ensemble de la publication avec une cible MSBuild personnalisée nommée `RunWebpack`:
 

@@ -8,12 +8,12 @@ ms.date: 11/21/2019
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: a7c99c9e79647995886aec5b3a91584fd2f24451
-ms.sourcegitcommit: 3e503ef510008e77be6dd82ee79213c9f7b97607
+ms.openlocfilehash: 331176f299c0efcd7acb19430ffddcaee7ca1cf3
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74317484"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357943"
 ---
 # <a name="use-aspnet-core-opno-locsignalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec une machine à écrire et un WebPack
 
@@ -38,7 +38,7 @@ Dans ce didacticiel, vous apprendrez à :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail de **développement web et ASP.NET**
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **ASP.NET et développement web**
 * [SDK .NET Core 3.0 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
@@ -173,7 +173,7 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
    Le code précédent permet au serveur de localiser et traiter le fichier *index.html*, que l’utilisateur entre son URL complète ou l’URL racine de l’application web.
 
-1. À la fin de la méthode `Startup.Configure`, mappez un itinéraire */Hub* au concentrateur `ChatHub`. Remplacez le code qui affiche *Hello World !* par la ligne suivante : 
+1. À la fin de la méthode `Startup.Configure`, mappez un itinéraire */Hub* au concentrateur `ChatHub`. Remplacez le code qui affiche *Hello World !* par la ligne suivante : 
 
    [!code-csharp[Startup](signalr-typescript-webpack/sample/3.x/Startup.cs?name=snippet_UseSignalR&highlight=3)]
 
@@ -257,7 +257,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 
@@ -273,7 +273,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail de **développement web et ASP.NET**
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **ASP.NET et développement web**
 * [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
@@ -433,7 +433,7 @@ Actuellement, l’application affiche un formulaire simple pour envoyer des mess
 1. Exécutez la commande suivante à la racine du projet :
 
     ```console
-    npm install @microsoft/signalr
+    npm install @aspnet/signalr
     ```
 
     La commande précédente installe la [SignalR client de machine à écrire](https://www.npmjs.com/package/@microsoft/signalr), ce qui permet au client d’envoyer des messages au serveur.
@@ -490,7 +490,7 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 
     Le serveur web démarre l’application et la rend disponible sur localhost.
 
-1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL de la barre d’adresse.
+1. Ouvrez un navigateur avec l’adresse `http://localhost:<port_number>`. Le fichier *wwwroot/index.html* est présent. Copiez l’URL à partir de la barre d’adresse.
 
 1. Ouvrez une autre instance de navigateur (n’importe quel navigateur). Copiez l’URL de la barre d’adresse.
 

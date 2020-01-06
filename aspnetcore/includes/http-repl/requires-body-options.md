@@ -1,6 +1,6 @@
 * `-c|--content`
 
-  Fournit un corps de requête HTTP inline. Par exemple, `-c "{ 'id': 2, 'name': 'Cherry' }"`.
+  Fournit un corps de requête HTTP inline. Par exemple, `-c "{"id":2,"name":"Cherry"}"`.
 
 * `-f|--file`
 

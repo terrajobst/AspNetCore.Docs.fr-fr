@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4377d7d1895b80b3c98a5b480c0f42820f11fbb8
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 3bf930d19684e84365f0ff0255fccd2939fb3f39
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354923"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
@@ -42,7 +42,7 @@ Ce didacticiel crée l’API suivante :
 |GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
 |PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
+|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
 
 Le diagramme suivant illustre la conception de l’application.
 
@@ -68,7 +68,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
+* Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
 * Dans la boîte de dialogue **créer une application Web ASP.net Core** , vérifiez que **.net Core** et **ASP.net Core 3,1** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**.
@@ -98,11 +98,11 @@ Le diagramme suivant illustre la conception de l’application.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Sélectionnez **Fichier** > **Nouvelle solution**.
+* Sélectionnez **fichier** > **nouvelle solution**.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Sélectionnez **.NET Core** > **Application** > **API** > **Suivant**.
+* Sélectionnez **.net Core** > **application** > **API** > **suivant**.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
@@ -204,7 +204,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
   ![nouveau dossier](first-web-api-mac/_static/folder.png)
 
-* Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Nouveau fichier** > **Général** > **Classe vide**.
+* Cliquez avec le bouton droit sur le dossier *Models* , puis sélectionnez **Ajouter** > **nouveau fichier** > **général** > **classe vide**.
 
 * Nommez la classe *TodoItem* et cliquez sur **Nouveau**.
 
@@ -267,7 +267,7 @@ Le code précédent :
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
-* Sélectionnez **Ajouter** > **Nouvel élément généré automatiquement**.
+* Sélectionnez **ajouter** > **nouvel élément de génération de modèles**automatique.
 * Sélectionnez **Contrôleur d’API avec actions, utilisant Entity Framework**, puis **Ajouter**.
 * Dans la boîte de dialogue **Contrôleur d’API avec actions, utilisant Entity Framework** :
 
@@ -322,7 +322,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez l’application web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
-* À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
+* À partir de **paramètres** de > de **fichier** (onglet**général** ), désactivez la **vérification de certificat SSL**.
     > [!WARNING]
     > Réactivez la vérification du certificat SSL après avoir testé le contrôleur.
 
@@ -451,8 +451,6 @@ Examinez la méthode `DeleteTodoItem` :
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Delete)]
 
-La réponse `DeleteTodoItem` est [204 (Pas de contenu)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
-
 ### <a name="test-the-deletetodoitem-method"></a>Tester la méthode DeleteTodoItem
 
 Utilisez Postman pour supprimer une tâche :
@@ -493,7 +491,7 @@ Ce didacticiel crée l’API suivante :
 |GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
 |PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
-|DELETE /api/TodoItems/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
+|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
 
 Le diagramme suivant illustre la conception de l’application.
 
@@ -519,7 +517,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
+* Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
 * Nommez le projet *TodoApi* et cliquez sur **Créer**.
 * Dans la boîte de dialogue **Créer une application web ASP.NET Core**, vérifiez que **.NET Core** et **ASP.NET Core 2.2** sont sélectionnés. Sélectionnez le modèle **API** et cliquez sur **Créer**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
@@ -543,11 +541,11 @@ Le diagramme suivant illustre la conception de l’application.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Sélectionnez **Fichier** > **Nouvelle solution**.
+* Sélectionnez **fichier** > **nouvelle solution**.
 
   ![macOS - Nouvelle solution](first-web-api-mac/_static/sln.png)
 
-* Sélectionnez **.NET Core** > **Application** > **API** > **Suivant**.
+* Sélectionnez **.net Core** > **application** > **API** > **suivant**.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
@@ -609,7 +607,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
   ![nouveau dossier](first-web-api-mac/_static/folder.png)
 
-* Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Nouveau fichier** > **Général** > **Classe vide**.
+* Cliquez avec le bouton droit sur le dossier *Models* , puis sélectionnez **Ajouter** > **nouveau fichier** > **général** > **classe vide**.
 
 * Nommez la classe *TodoItem* et cliquez sur **Nouveau**.
 
@@ -660,7 +658,7 @@ Le code précédent :
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
-* Sélectionnez **Ajouter** > **Nouvel élément**.
+* Sélectionnez **ajouter** > **nouvel élément**.
 * Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur d’API**.
 * Nommez la classe *TodoController* et sélectionnez **Ajouter**.
 
@@ -668,7 +666,7 @@ Le code précédent :
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans le dossier *Controllers*, créez une classe nommée `TodoController`.
+* Dans le dossier *Contrôleurs*, créez une classe nommée `TodoController`.
 
 ---
 
@@ -748,7 +746,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* À partir de **Fichier** > **Paramètres** (onglet **Général**), désactivez **Vérification du certificat SSL**.
+* À partir de **paramètres** de > de **fichier** (onglet**général** ), désactivez la **vérification de certificat SSL**.
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -830,7 +828,7 @@ Si vous obtenez une erreur en appelant `PutTodoItem`, appelez `GET` pour vérifi
 
 Cet exemple utilise une base de données en mémoire qui doit être initialisée chaque fois que l’application est démarrée. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET pour vérifier qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
-Mettez à jour la tâche dont l’ID = 1 et nommez-la « feed fish » :
+Mettez à jour la tâche dont l’id est 1 en définissant son nom sur « feed fish » :
 
 ```json
   {

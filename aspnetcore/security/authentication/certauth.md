@@ -4,14 +4,14 @@ author: blowdart
 description: Découvrez comment configurer l’authentification par certificat dans ASP.NET Core pour IIS et HTTP. sys.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 12/09/2019
+ms.date: 01/02/2020
 uid: security/authentication/certauth
-ms.openlocfilehash: 38ee8a6767191bb3eee4286e49b96162b14d9889
-ms.sourcegitcommit: 4e3edff24ba6e43a103fee1b126c9826241bb37b
+ms.openlocfilehash: 9c175439c0313d62c75898f1af097774b06f353a
+ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74959058"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608143"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurer l’authentification par certificat dans ASP.NET Core
 
@@ -63,23 +63,33 @@ Le gestionnaire de `CertificateAuthenticationOptions` a des validations intégr�
 
 ### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = chained, SelfSigned ou All (chaîné | SelfSigned)
 
-Cette vérification valide que seul le type de certificat approprié est autorisé.
+Valeur par défaut : `CertificateTypes.Chained`
+
+Cette vérification valide que seul le type de certificat approprié est autorisé. Si l’application utilise des certificats auto-signés, cette option doit être définie sur `CertificateTypes.All` ou `CertificateTypes.SelfSigned`.
 
 ### <a name="validatecertificateuse"></a>ValidateCertificateUse
+
+Valeur par défaut : `true`
 
 Cette vérification permet de vérifier que le certificat présenté par le client a l’utilisation améliorée de la clé d’authentification du client, ou aucune EKU. Comme les spécifications indiquent, si aucune EKU n’est spécifiée, toutes les utilisations améliorées de la EKU sont considérées comme valides.
 
 ### <a name="validatevalidityperiod"></a>ValidateValidityPeriod
 
+Valeur par défaut : `true`
+
 Ce contrôle vérifie que le certificat se trouve dans sa période de validité. À chaque demande, le gestionnaire s’assure qu’un certificat valide lorsqu’il a été présenté n’a pas expiré pendant sa session active.
 
 ### <a name="revocationflag"></a>RevocationFlag
+
+Valeur par défaut : `X509RevocationFlag.ExcludeRoot`
 
 Indicateur qui spécifie les certificats de la chaîne qui sont vérifiés pour la révocation.
 
 Les vérifications de révocation sont effectuées uniquement lorsque le certificat est chaîné à un certificat racine.
 
 ### <a name="revocationmode"></a>RevocationMode
+
+Valeur par défaut : `X509RevocationMode.Online`
 
 Indicateur qui spécifie comment les vérifications de révocation sont effectuées.
 
@@ -376,6 +386,9 @@ Get-ChildItem -Path cert:\localMachine\my\"The thumbprint..." | Export-PfxCertif
 
 Export-Certificate -Cert cert:\localMachine\my\"The thumbprint..." -FilePath root_ca_dev_damienbod.crt
 ```
+
+> [!NOTE]
+> La valeur du paramètre `-DnsName` doit correspondre à la cible de déploiement de l’application. Par exemple, « localhost » pour le développement.
 
 #### <a name="install-in-the-trusted-root"></a>Installer dans la racine approuvée
 

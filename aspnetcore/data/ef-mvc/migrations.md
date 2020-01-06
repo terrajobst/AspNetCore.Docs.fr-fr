@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Utilisation de la fonctionnalité de migrations - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : utilisation de la fonctionnalité migrations-ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC.
 author: rick-anderson
 ms.author: riande
@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 4c96815461898ce9273f953f083143d8b50d406e
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: bcd36509fe42da0a79b9243d17701f40e066a212
+ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259408"
+ms.lasthandoff: 12/29/2019
+ms.locfileid: "75542688"
 ---
-# <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Tutoriel : Utilisation de la fonctionnalité de migrations - ASP.NET MVC avec EF Core
+# <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Didacticiel : utilisation de la fonctionnalité migrations-ASP.NET MVC avec EF Core
 
 Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données. Dans les didacticiels suivants, vous allez ajouter d’autres migrations au fil de la modification du modèle de données.
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * En savoir plus sur les migrations
@@ -28,7 +28,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * En savoir plus sur la capture instantanée du modèle de données
 > * Appliquer la migration
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [Tri, filtrage et pagination](sort-filter-page.md)
 
@@ -49,7 +49,7 @@ Dans le fichier *appsettings.json*, remplacez le nom de la base de données dans
 Cette modification configure le projet de façon à ce que la première migration crée une nouvelle base de données. Ce n’est pas obligatoire pour commencer à utiliser les migrations, mais vous verrez plus tard pourquoi c’est judicieux.
 
 > [!NOTE]
-> Au lieu de changer le nom de la base de données, vous pouvez la supprimer. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
+> Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **SQL Server Object Explorer** (SSOX) ou la commande CLI `database drop` :
 >
 > ```dotnetcli
 > dotnet ef database drop
@@ -86,7 +86,7 @@ Done. To undo this action, use 'ef migrations remove'
 > [!NOTE]
 > Si vous voyez un message d’erreur *Aucun exécutable trouvé correspondant à la commande « dotnet-ef »* , consultez [ce billet de blog](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/) pour résoudre ce problème.
 
-Si vous voyez un message d’erreur « *Impossible d’accéder au fichier... ContosoUniversity.dll, car il est utilisé par un autre processus.* », recherchez l’icône IIS Express dans la barre d’état système de Windows, cliquez avec le bouton droit, puis cliquez sur **ContosoUniversity > Arrêter le Site**.
+Si vous voyez un message d’erreur «*Impossible d’accéder au fichier... ContosoUniversity. dll, car il est utilisé par un autre processus.* », recherchez l’icône IIS Express dans la barre d’état système de Windows, cliquez dessus avec le bouton droit, puis cliquez sur **ContosoUniversity > arrêter le site**.
 
 ## <a name="examine-up-and-down-methods"></a>Examiner les méthodes Up et Down
 
@@ -104,7 +104,7 @@ Si vous avez créé la migration initiale alors que la base de données existait
 
 Migrations crée une *capture instantanée* du schéma de base de données actuel dans *Migrations/SchoolContextModelSnapshot.cs*. Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données au fichier de capture instantanée.
 
-Lors de la suppression d’une migration, utilisez la commande [dotnet ef migrations remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove). `dotnet ef migrations remove` supprime la migration et garantit que la capture instantanée est correctement réinitialisée.
+Utilisez la commande [dotnet EF migrations Remove](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) pour supprimer une migration. `dotnet ef migrations remove` supprime la migration et garantit que la capture instantanée est correctement réinitialisée. Si `dotnet ef migrations remove` échoue, utilisez `dotnet ef migrations remove -v` pour obtenir plus d’informations sur l’échec.
 
 Pour plus d’informations sur l’utilisation du fichier de capture instantanée, consultez [Migrations EF Core dans les environnements d’équipe](/ef/core/managing-schemas/migrations/teams).
 
@@ -161,7 +161,7 @@ Les outils EF pour la gestion des migrations sont disponibles à partir de comma
 
 Les commandes EF pour la console du Gestionnaire de package se trouvent dans le package [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools). Ce package étant inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), vous n’avez pas besoin d’ajouter une référence de package si votre application en comporte une pour `Microsoft.AspNetCore.App`.
 
-**Important :** Il ne s’agit pas du même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celui-ci se termine par `Tools`, contrairement au nom du package CLI qui se termine par `Tools.DotNet`.
+**Important :** Il ne s’agit pas du même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celui-ci se termine par `Tools`, contrairement au nom du package CLI qui se termine par `Tools.DotNet`.
 
 Pour plus d’informations sur les commandes CLI, consultez [Interface CLI .NET Core](/ef/core/miscellaneous/cli/dotnet).
 
@@ -173,7 +173,7 @@ Pour plus d’informations sur les commandes de la console du Gestionnaire de pa
 
 ## <a name="next-step"></a>Étape suivante
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Découvert des informations sur les migrations"
@@ -182,9 +182,9 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créer une migration initiale
 > * Examiner les méthodes Up et Down
 > * Découvrir des informations sur la capture instantanée du modèle de données
-> * Appliquer la migration
+> * Migration appliquée
 
-Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cours de ce processus, vous allez créer et appliquer d’autres migrations.
+Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cour de ce processus, vous allez créer et appliquer d’autres migrations.
 
 > [!div class="nextstepaction"]
 > [Créer et appliquer d’autres migrations](complex-data-model.md)

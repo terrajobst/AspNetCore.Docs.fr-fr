@@ -5,20 +5,20 @@ description: Découvrez comment contrôler le comportement de l’application da
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 12/17/2019
 uid: fundamentals/environments
-ms.openlocfilehash: affbb95273c91fe5bf452e0e1ebefa669297304c
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 30e2771c0a24fcbf6490d08c7028566314b6c011
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358719"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core configure le comportement de l’application en fonction de l’environnement d’exécution à l’aide d’une variable d’environnement.
 
@@ -188,11 +188,12 @@ Lorsque l’hôte est généré, le dernier paramètre d’environnement lu par 
 Pour définir l’environnement dans [Azure App Service](https://azure.microsoft.com/services/app-service/), effectuez les étapes suivantes :
 
 1. Sélectionnez l’application dans le panneau **App Services**.
-1. Dans le groupe **PARAMÈTRES**, sélectionnez le panneau **Paramètres de l’application**.
-1. Dans la zone **Paramètres d’application**, sélectionnez **Ajouter un nouveau paramètre**.
-1. Pour **Entrer un nom**, spécifiez `ASPNETCORE_ENVIRONMENT`. Pour **Entrer une valeur**, spécifiez l’environnement (par exemple `Staging`).
-1. Cochez la case **Paramètre d’emplacement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel quand des emplacements de déploiement sont permutés. Pour plus d’informations, consultez [Documentation Azure : Quels sont les paramètres qui sont permutés ?](/azure/app-service/web-sites-staged-publishing).
-1. Sélectionnez **Enregistrer** en haut du panneau.
+1. Dans le groupe **paramètres** , sélectionnez le panneau **configuration** .
+1. Dans l’onglet Paramètres de l' **application** , sélectionnez **nouveau paramètre d’application**.
+1. Dans la fenêtre **Ajouter/modifier un paramètre d’application** , indiquez `ASPNETCORE_ENVIRONMENT` pour le **nom**. Pour **valeur**, fournissez l’environnement (par exemple, `Staging`).
+1. Activez la case à cocher **paramètre d’emplacement de déploiement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel lorsque les emplacements de déploiement sont permutés. Pour plus d’informations, consultez [configurer des environnements intermédiaires dans Azure App service](/azure/app-service/web-sites-staged-publishing) dans la documentation Azure.
+1. Sélectionnez **OK** pour fermer la fenêtre **Ajouter/modifier un paramètre d’application** .
+1. Sélectionnez **Enregistrer** en haut du panneau de **configuration** .
 
 Azure App Service redémarre automatiquement l’application après qu’un paramètre d’application (variable d’environnement) est ajouté, changé ou supprimé dans le portail Azure.
 
@@ -447,7 +448,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 ::: moniker range="< aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core configure le comportement de l’application en fonction de l’environnement d’exécution à l’aide d’une variable d’environnement.
 
@@ -617,11 +618,12 @@ Lorsque l’hôte est généré, le dernier paramètre d’environnement lu par 
 Pour définir l’environnement dans [Azure App Service](https://azure.microsoft.com/services/app-service/), effectuez les étapes suivantes :
 
 1. Sélectionnez l’application dans le panneau **App Services**.
-1. Dans le groupe **PARAMÈTRES**, sélectionnez le panneau **Paramètres de l’application**.
-1. Dans la zone **Paramètres d’application**, sélectionnez **Ajouter un nouveau paramètre**.
-1. Pour **Entrer un nom**, spécifiez `ASPNETCORE_ENVIRONMENT`. Pour **Entrer une valeur**, spécifiez l’environnement (par exemple `Staging`).
-1. Cochez la case **Paramètre d’emplacement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel quand des emplacements de déploiement sont permutés. Pour plus d’informations, consultez [Documentation Azure : Quels sont les paramètres qui sont permutés ?](/azure/app-service/web-sites-staged-publishing).
-1. Sélectionnez **Enregistrer** en haut du panneau.
+1. Dans le groupe **paramètres** , sélectionnez le panneau **configuration** .
+1. Dans l’onglet Paramètres de l' **application** , sélectionnez **nouveau paramètre d’application**.
+1. Dans la fenêtre **Ajouter/modifier un paramètre d’application** , indiquez `ASPNETCORE_ENVIRONMENT` pour le **nom**. Pour **valeur**, fournissez l’environnement (par exemple, `Staging`).
+1. Activez la case à cocher **paramètre d’emplacement de déploiement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel lorsque les emplacements de déploiement sont permutés. Pour plus d’informations, consultez [configurer des environnements intermédiaires dans Azure App service](/azure/app-service/web-sites-staged-publishing) dans la documentation Azure.
+1. Sélectionnez **OK** pour fermer la fenêtre **Ajouter/modifier un paramètre d’application** .
+1. Sélectionnez **Enregistrer** en haut du panneau de **configuration** .
 
 Azure App Service redémarre automatiquement l’application après qu’un paramètre d’application (variable d’environnement) est ajouté, changé ou supprimé dans le portail Azure.
 

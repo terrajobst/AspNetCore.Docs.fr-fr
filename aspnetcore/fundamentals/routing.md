@@ -5,14 +5,14 @@ description: Découvrez comment le routage ASP.NET Core est responsable du mappa
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: be4493cc927bd5437a2c9dab00b6a555756195bb
-ms.sourcegitcommit: eb2fe5ad2e82fab86ca952463af8d017ba659b25
+ms.openlocfilehash: 9780183f8f9bc322f73d058b3cab7f8c10f7cd5f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416138"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354738"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Ryan Nowak](https://github.com/rynowak), [Steve Smith](https://ardalis.com/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Le routage est chargé de mapper les URI de requête aux points de terminaison et de distribuer les demandes entrantes à ces points de terminaison. Les routes sont définies dans l’application et configurées au démarrage de l’application. Une route peut éventuellement extraire des valeurs de l’URL contenue dans la requête, et ces valeurs peuvent ensuite être utilisées pour le traitement de la requête. À l’aide des informations de routage de l’application, le routage est également en mesure de générer des URL qui mappent aux points de terminaison.
+Le routage est chargé de mapper les URI de requête aux points de terminaison et de distribuer les demandes entrantes à ces points de terminaison. Les routes sont définies dans l’application et configurées au démarrage de l’application. Une route peut éventuellement extraire des valeurs de l’URL contenue dans la requête, et ces valeurs peuvent ensuite être utilisées pour le traitement de la requête. À l’aide des informations de routage de l’application, le routage est également en mesure de générer des URL qui mappent aux points de terminaison. De nombreuses applications n’ont pas besoin d’ajouter des itinéraires au-delà de ce que les modèles fournissent. Les modèles de ASP.NET Core pour les contrôleurs et les pages Razor configurent les points de terminaison de routage. Si vous devez ajouter des points de terminaison de routage personnalisés, les points de terminaison personnalisés peuvent être configurés avec les points de terminaison de routage générés par le modèle.
 
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans Razor Pages, consultez <xref:razor-pages/razor-pages-conventions>.
@@ -38,7 +38,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -126,6 +126,22 @@ Les méthodes fournies par <xref:Microsoft.AspNetCore.Routing.LinkGenerator> pre
 > * Utilisez les méthodes d’extension `GetUri*` avec précaution dans une configuration d’application qui ne valide pas l’en-tête `Host` des requêtes entrantes. Si l’en-tête `Host` des requêtes entrantes n’est pas validé, l’entrée de requête non approuvée peut être renvoyée au client dans les URI d’une page/vue. Nous recommandons que toutes les applications de production configurent leur serveur pour qu’il valide l’en-tête `Host` par rapport à des valeurs valides connues.
 >
 > * Utilisez <xref:Microsoft.AspNetCore.Routing.LinkGenerator> avec précaution dans le middleware en combinaison avec `Map` ou `MapWhen`. `Map*` modifie le chemin de base de la requête en cours d’exécution, ce qui affecte la sortie de la génération de liens. Toutes les API <xref:Microsoft.AspNetCore.Routing.LinkGenerator> permettent la spécification d’un chemin de base. Spécifiez toujours un chemin de base vide pour annuler l’effet de `Map*` sur la génération de liens.
+
+## <a name="endpoint-routing"></a>Routage du point de terminaison
+
+* Un point de terminaison de routage a un modèle, des métadonnées et un délégué de requête qui sert la réponse du point de terminaison. Les métadonnées sont utilisées pour implémenter des problèmes transversaux en fonction des stratégies et de la configuration attachées à chaque point de terminaison. Par exemple, un intergiciel (middleware) d’autorisation peut interroger la collection de métadonnées du point de terminaison pour une [stratégie d’autorisation](xref:security/authorization/policies#applying-policies-to-mvc-controllers).
+* Le routage des points de terminaison s’intègre à l’intergiciel (middleware) à l’aide de deux méthodes d’extension :
+  * [UseRouting](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*) ajoute la correspondance d’itinéraire au pipeline de l’intergiciel (middleware). Il doit précéder tous les intergiciels (middleware) prenant en charge les routes, tels que l’autorisation, l’exécution du point de terminaison, etc.
+  * [UseEndpoints](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*) ajoute l’exécution du point de terminaison au pipeline d’intergiciel (middleware). Il exécute le délégué de requête qui sert la réponse du point de terminaison.
+  `UseEndpoints` est également la configuration des points de terminaison de routage qui peuvent être mis en correspondance et exécutés par l’application. Par exemple, <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*>, <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>et <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>.
+* Les applications utilisent les méthodes d’assistance de ASP.NET Core pour configurer leurs itinéraires. Les frameworks ASP.NET Core fournissent des méthodes d’assistance comme <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>,, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> et `MapHub<THub>`. Il existe également des méthodes d’assistance pour configurer vos propres points de terminaison de routage personnalisés : <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>, <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>et [MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions). 
+* Le routage des points de terminaison prend également en charge les points de terminaison qui changent après le démarrage d’une application. Pour la prendre en charge dans votre application ou ASP.NET Core Framework, vous devez créer et inscrire un <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> personnalisé. Il s’agit d’une fonctionnalité avancée qui n’est généralement pas nécessaire. Les points de terminaison sont généralement configurés au démarrage et sont statiques pendant toute la durée de vie de l’application. Le chargement de la configuration de l’itinéraire à partir d’un fichier ou d’une base de données au démarrage n’est pas dynamique.
+
+Le code suivant illustre un exemple de routage de point de terminaison de base :
+
+[!code-csharp[](routing/samples/3.x/Startup.cs?name=snippet)]
+
+Pour plus d’informations sur le routage des points de terminaison, consultez [correspondance d’URL](#url-matching) dans ce document.
 
 ## <a name="endpoint-routing-differences-from-earlier-versions-of-routing"></a>Différences de routage des points de terminaison par rapport aux versions antérieures du routage
 
@@ -349,7 +365,7 @@ Ajoutez le routage au conteneur de service dans `Startup.ConfigureServices` :
 Les routes doivent être configurées dans la méthode `Startup.Configure`. L’exemple d’application utilise les API suivantes :
 
 * <xref:Microsoft.AspNetCore.Routing.RouteBuilder>
-* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; Établit une correspondance uniquement avec les requêtes HTTP GET.
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; correspond uniquement aux requêtes HTTP.
 * <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Startup.cs?name=snippet_RouteHandler)]
@@ -358,9 +374,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | Réponse                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -441,7 +457,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -502,7 +518,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -511,7 +527,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -706,7 +722,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -1010,7 +1026,7 @@ Ajoutez le routage au conteneur de service dans `Startup.ConfigureServices` :
 Les routes doivent être configurées dans la méthode `Startup.Configure`. L’exemple d’application utilise les API suivantes :
 
 * <xref:Microsoft.AspNetCore.Routing.RouteBuilder>
-* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; Établit une correspondance uniquement avec les requêtes HTTP GET.
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; correspond uniquement aux requêtes HTTP.
 * <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_RouteHandler)]
@@ -1019,9 +1035,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | Réponse                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -1102,7 +1118,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -1163,7 +1179,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1172,7 +1188,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]
@@ -1282,7 +1298,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -1462,7 +1478,7 @@ Ajoutez le routage au conteneur de service dans `Startup.ConfigureServices` :
 Les routes doivent être configurées dans la méthode `Startup.Configure`. L’exemple d’application utilise les API suivantes :
 
 * <xref:Microsoft.AspNetCore.Routing.RouteBuilder>
-* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; Établit une correspondance uniquement avec les requêtes HTTP GET.
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*> &ndash; correspond uniquement aux requêtes HTTP.
 * <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_RouteHandler)]
@@ -1471,9 +1487,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | Réponse                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -1556,7 +1572,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -1617,7 +1633,7 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 Outre les contraintes d’itinéraire intégré, les contraintes d’itinéraire personnalisé peuvent être créées en implémentant l’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>. L’interface <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> contient une méthode unique, `Match`, qui retourne `true` si la contrainte est satisfaite et `false` dans le cas contraire.
 
-Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Exemple :
+Pour utiliser un <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> personnalisé, le type de contrainte d’itinéraire doit être inscrit avec le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> de l’application dans le conteneur de service de l’application. Un <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> est un dictionnaire qui mappe les clés de contrainte d’itinéraire aux implémentations <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> qui valident ces contraintes. Le <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> d’une application peut être mis à jour dans `Startup.ConfigureServices` dans le cadre d’un appel [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) ou en configurant <xref:Microsoft.AspNetCore.Routing.RouteOptions> directement avec `services.Configure<RouteOptions>`. Par exemple :
 
 ```csharp
 services.AddRouting(options =>
@@ -1626,7 +1642,7 @@ services.AddRouting(options =>
 });
 ```
 
-La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Exemple :
+La contrainte peut ensuite être appliquée aux itinéraires de la manière habituelle, en utilisant le nom spécifié lors de l’inscription du type de contrainte. Par exemple :
 
 ```csharp
 [HttpGet("{id:customName}")]

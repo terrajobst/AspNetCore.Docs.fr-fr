@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’outil global REPL HTTP de .NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/02/2019
+ms.date: 12/11/2019
 uid: web-api/http-repl
-ms.openlocfilehash: c6e3ab5685b5bd0b154d20585fb0d187f81da641
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 34ec2b2eb511f33e1263cdad4a338183a3e4b83a
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356165"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -27,12 +27,12 @@ La boucle REPL (Read-Eval-Print Loop) HTTP est :
 Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#74-supported-methods) suivants sont pris en charge :
 
 * [DELETE](#test-http-delete-requests)
-* [Télécharger](#test-http-get-requests)
+* [GET](#test-http-get-requests)
 * [HEAD](#test-http-head-requests)
 * [OPTIONS](#test-http-options-requests)
-* [CORRECTIF](#test-http-patch-requests)
-* [Publier](#test-http-post-requests)
-* [POSÉ](#test-http-put-requests)
+* [PATCH](#test-http-patch-requests)
+* [POST](#test-http-post-requests)
+* [PUT](#test-http-put-requests)
 
 Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
@@ -690,8 +690,9 @@ Pour émettre une requête HTTP DELETE :
         "data": "Strawberry"
       }
     ]
+    ```
 
-1. Run the `delete` command on an endpoint that supports it:
+1. Exécutez la commande `delete` sur un point de terminaison qui la prend en charge :
 
     ```console
     https://localhost:5001/fruits~ delete 2
@@ -820,7 +821,7 @@ set header Authorization "bearer <TOKEN VALUE>"
 
 Pour accéder à un point de terminaison hébergé par Azure ou pour utiliser l' [API REST Azure](/rest/api/azure/), vous avez besoin d’un jeton de porteur. Procédez comme suit pour obtenir un jeton de porteur pour votre abonnement Azure via le [Azure CLI](/cli/azure/). Le REPL HTTP définit le jeton du porteur dans un en-tête de requête HTTP et récupère une liste de Azure App Service Web Apps.
 
-1. Connectez-vous à Azure :
+1. Connexion à Azure :
 
     ```azcli
     az login

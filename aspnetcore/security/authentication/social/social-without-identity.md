@@ -3,14 +3,14 @@ title: Authentification Facebook, Google et fournisseur externe sans ASP.NET Cor
 author: rick-anderson
 description: Explication de l’utilisation de l’authentification utilisateur Facebook, Google, Twitter, etc. sans ASP.NET Core identité.
 ms.author: riande
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: 680ea091dcc5ed7f94879b5d277e8be7e5abeb7b
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 612964ec9ed4975cdc81780dda3bac6cce96037f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289113"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359056"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification du fournisseur de connexion sociale sans ASP.NET Core d’identité
 
@@ -47,7 +47,7 @@ Dans `Startup.Configure`, appelez `UseAuthentication` et `UseAuthorization` entr
 
 [!code-csharp[](social-without-identity/samples_snapshot/3.x/Startup.cs?name=snippet2&highlight=3-4)]
 
-Pour en savoir plus sur les schémas d’authentification et l’authentification des cookies, consultez <xref:security/authentication/cookie>.
+Pour en savoir plus sur les schémas d’authentification, consultez [concepts d’authentification](xref:security/authentication/index#authentication-concepts). Pour en savoir plus sur l’authentification par cookie, consultez <xref:security/authentication/cookie>.
 
 ## <a name="apply-authorization"></a>Appliquer l’autorisation
 
@@ -102,7 +102,7 @@ Dans la méthode `Configure`, appelez la méthode `UseAuthentication` pour appel
 
 [!code-csharp[](social-without-identity/samples_snapshot/2.x/Startup.cs?name=snippet2)]
 
-Pour en savoir plus sur les schémas d’authentification et l’authentification des cookies, consultez <xref:security/authentication/cookie>.
+Pour en savoir plus sur les schémas d’authentification, consultez [concepts d’authentification](xref:security/authentication/index#authentication-concepts). Pour en savoir plus sur l’authentification par cookie, consultez <xref:security/authentication/cookie>.
 
 ## <a name="apply-authorization"></a>Appliquer l’autorisation
 

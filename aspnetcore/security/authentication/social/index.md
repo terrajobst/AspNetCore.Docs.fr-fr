@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/21/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 627ca483d60514d85e38c0e346ff5aef64ad9fee
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 06ce9c72f43955345efb61afed2538158810005f
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358067"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -32,7 +32,7 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Créer un nouveau projet.
+* Créez un nouveau projet.
 * Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant**.
 * Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Créer**.
 * Sélectionnez **ASP.NET Core 3,0** dans la liste déroulante, puis sélectionnez **application Web**.
@@ -45,7 +45,7 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
 
-* Pour Windows, exécutez la commande suivante :
+* Pour Windows, exécutez la commande ci-dessous :
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
@@ -109,10 +109,9 @@ Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous
 
 * Définissez un mot de passe valide à utiliser pour vous connecter avec votre e-mail.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
+* Pour plus d’informations sur la personnalisation des boutons de connexion, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/10563) .
 * Cet article a présenté l’authentification externe et expliqué les prérequis nécessaires pour ajouter des connexions externes à votre application ASP.NET Core.
-
 * Référencez les pages spécifiques au fournisseur pour configurer les connexions pour les fournisseurs nécessaires à votre application.
-
 * Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.

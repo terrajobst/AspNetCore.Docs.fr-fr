@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 7fc767939996a489174be949742637030924616d
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 6506430202870ba9de2f8eb6f33d79c7c1fbbbd4
+ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963745"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608065"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR l’hébergement et la mise à l’échelle
 
@@ -42,7 +42,7 @@ Les connexions persistantes consomment également de la mémoire supplémentaire
 
 L’utilisation intensive des ressources liées à la connexion par SignalR peut affecter les autres applications Web qui sont hébergées sur le même serveur. Lorsque SignalR s’ouvre et contient les dernières connexions TCP disponibles, les autres applications Web sur le même serveur n’ont pas non plus de connexions disponibles.
 
-Si un serveur est à court de connexions, vous verrez des erreurs de socket aléatoires et des erreurs de réinitialisation de la connexion. Exemple :
+Si un serveur est à court de connexions, vous verrez des erreurs de socket aléatoires et des erreurs de réinitialisation de la connexion. Par exemple :
 
 ```
 An attempt was made to access a socket in a way forbidden by its access permissions...
@@ -90,13 +90,28 @@ Le fond de panier ReDim est l’approche recommandée pour la montée en puissan
 
 Les avantages du service Azure SignalR indiqués plus haut sont les inconvénients du fond de panier ReDim :
 
-* Des sessions rémanentes, également appelées « [affinité du client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)», sont nécessaires. Une fois qu’une connexion est établie sur un serveur, la connexion doit rester sur ce serveur.
+* Des sessions rémanentes, également appelées « [affinité du client](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing#step-3---configure-client-affinity)», sont nécessaires, sauf lorsque les **deux** conditions suivantes sont réunies :
+  * Tous les clients sont configurés pour utiliser **uniquement** les WebSockets.
+  * Le [paramètre SkipNegotiation](xref:signalr/configuration#configure-additional-options) est activé dans la configuration du client. 
+   Une fois qu’une connexion est établie sur un serveur, la connexion doit rester sur ce serveur.
 * Une application SignalR doit monter en charge en fonction du nombre de clients, même si peu de messages sont envoyés.
 * Une application SignalR utilise beaucoup plus de ressources de connexion qu’une application Web sans SignalR.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="iis-limitations-on-windows-client-os"></a>Limitations IIS sur le système d’exploitation client Windows
 
-Pour plus d'informations, reportez-vous aux ressources suivantes :
+Windows 10 et Windows 8. x sont des systèmes d’exploitation clients. IIS sur les systèmes d’exploitation clients est limité à 10 connexions simultanées. les connexions de SignalRsont les suivantes :
+
+* Transitoire et fréquemment rétabli.
+* **N’est pas** supprimé immédiatement lorsqu’il n’est plus utilisé.
+
+Les conditions précédentes permettent d’atteindre la limite de 10 connexions sur un système d’exploitation client. Lorsqu’un système d’exploitation client est utilisé pour le développement, nous vous recommandons les opérations suivantes :
+
+* Évitez les services Internet.
+* Utilisez Kestrel ou IIS Express comme cibles de déploiement.
+
+## <a name="next-steps"></a>Étapes suivantes :
+
+Pour plus d'informations, voir les ressources suivantes :
 
 * [Documentation Azure SignalR service](/azure/azure-signalr/signalr-overview)
 * [Configurer un backplane ReDim](xref:signalr/redis-backplane)

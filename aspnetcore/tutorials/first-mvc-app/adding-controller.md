@@ -5,12 +5,12 @@ description: Découvrez comment ajouter un contrôleur à une application ASP.NE
 ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1c54959130f3a9959d4d4fdb8dcaa0d37ee2f046
-ms.sourcegitcommit: 2eb605f4f20ac4dd9de6c3b3e3453e108a357a21
-ms.translationtype: HT
+ms.openlocfilehash: fe0c1d3c066d6ab20387391e15c3a7cfe684c61e
+ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68820055"
+ms.lasthandoff: 12/29/2019
+ms.locfileid: "75542704"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -20,13 +20,13 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Le modèle d’architecture MVC (Model-View-Controller) sépare une application en trois composants principaux : **M**odèle, **V**ue et **C**ontrôleur. Le modèle MVC vous permet de créer des applications qui sont plus faciles à tester et à mettre à jour que les applications monolithiques traditionnelles. Les applications basées sur MVC contiennent :
 
-* **M**odèles : des classes qui représentent les données de l’application. Les classes du modèle utilisent une logique de validation pour appliquer des règles d’entreprise à ces données. En règle générale, les objets du modèle récupèrent et stockent l’état du modèle dans une base de données. Dans ce didacticiel, un modèle `Movie` récupère les données des films dans une base de données, les fournit à la vue ou les met à jour. Les données mises à jour sont écrites dans une base de données.
+* Des **M**odèles : des classes qui représentent les données de l’application. Les classes du modèle utilisent une logique de validation pour appliquer des règles d’entreprise à ces données. En règle générale, les objets du modèle récupèrent et stockent l’état du modèle dans une base de données. Dans ce didacticiel, un modèle `Movie` récupère les données des films dans une base de données, les fournit à la vue ou les met à jour. Les données mises à jour sont écrites dans une base de données.
 
-* **V**ue : Les vues sont les composants qui affichent l’interface utilisateur de l’application. En règle générale, cette interface utilisateur affiche les données du modèle.
+* **V**ues : les vues sont les composants qui affichent l’interface utilisateur de l’application. En règle générale, cette interface utilisateur affiche les données du modèle.
 
 * **C**ontrôleurs : les classes qui gèrent les demandes du navigateur. Ils récupèrent les données du modèle et appellent les modèles de vue qui retournent une réponse. Dans une application MVC, la vue affiche seulement les informations ; le contrôleur gère et répond aux entrées et aux interactions de l’utilisateur. Par exemple, le contrôleur gère les valeurs des données de routage et des chaînes de requête, et passe ces valeurs au modèle. Le modèle peut utiliser ces valeurs pour interroger la base de données. Par exemple, `https://localhost:5001/Home/Privacy` a comme données de routage `Home` (le contrôleur) et `Privacy` (la méthode d’action à appeler sur le contrôleur Home). `https://localhost:5001/Movies/Edit/5` est une demande de modification du film avec l’ID 5 à l’aide du contrôleur movie. Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
 
-Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
+Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l'interface utilisateur appartient à la vue. La logique d'entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
 
 Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
@@ -34,12 +34,12 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le ![menu contextuel](adding-controller/_static/add_controller.png) **Contrôleurs > Ajouter > Contrôleur**
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le ![menu contextuel](adding-controller/_static/add_controller.png)**Contrôleurs > Ajouter > Contrôleur**
   
 
 * Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Contrôleur MVC - vide**
 
-  ![Ajoutez un contrôleur MVC et nommez-le](adding-controller/_static/ac.png)
+  ![Ajouter un contrôleur MVC et le nommer](adding-controller/_static/ac.png)
 
 * Dans la **boîte de dialogue Ajouter un contrôleur MVC vide**, entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
@@ -58,7 +58,7 @@ Sélectionnez **ASP.NET Core** et **Classe de contrôleur MVC**.
 
 Nommez le contrôleur **HelloWorldController**.
 
-![Ajoutez un contrôleur MVC et nommez-le](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
+![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
 
@@ -108,7 +108,7 @@ Exécutez l’application et accédez à :
 
 (Remplacez `{PORT}` par votre numéro de port.) Vous pouvez essayer différentes valeurs pour `name` et `numtimes` dans l’URL. Le système de [liaison de données](xref:mvc/models/model-binding) du modèle MVC mappe automatiquement les paramètres nommés provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Pour plus d’informations, consultez [Liaison de données](xref:mvc/models/model-binding).
 
-![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, NumTimes is: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Fenêtre de navigateur présentant une réponse de l’application Hello Rick, NumTimes est\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés en tant que [chaînes de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) dans l’URL ci-dessus est un séparateur, qui est suivi des chaînes de requête. Le caractère `&` sépare les chaînes de requête.
 
@@ -134,13 +134,13 @@ Dans ces exemples, le contrôleur traite la partie « VC » du modèle MVC, au
 
 Le modèle d’architecture MVC (Model-View-Controller) sépare une application en trois composants principaux : **M**odèle, **V**ue et **C**ontrôleur. Le modèle MVC vous permet de créer des applications qui sont plus faciles à tester et à mettre à jour que les applications monolithiques traditionnelles. Les applications basées sur MVC contiennent :
 
-* **M**odèles : des classes qui représentent les données de l’application. Les classes du modèle utilisent une logique de validation pour appliquer des règles d’entreprise à ces données. En règle générale, les objets du modèle récupèrent et stockent l’état du modèle dans une base de données. Dans ce didacticiel, un modèle `Movie` récupère les données des films dans une base de données, les fournit à la vue ou les met à jour. Les données mises à jour sont écrites dans une base de données.
+* Des **M**odèles : des classes qui représentent les données de l’application. Les classes du modèle utilisent une logique de validation pour appliquer des règles d’entreprise à ces données. En règle générale, les objets du modèle récupèrent et stockent l’état du modèle dans une base de données. Dans ce didacticiel, un modèle `Movie` récupère les données des films dans une base de données, les fournit à la vue ou les met à jour. Les données mises à jour sont écrites dans une base de données.
 
-* **V**ue : Les vues sont les composants qui affichent l’interface utilisateur de l’application. En règle générale, cette interface utilisateur affiche les données du modèle.
+* **V**ues : les vues sont les composants qui affichent l’interface utilisateur de l’application. En règle générale, cette interface utilisateur affiche les données du modèle.
 
 * **C**ontrôleurs : les classes qui gèrent les demandes du navigateur. Ils récupèrent les données du modèle et appellent les modèles de vue qui retournent une réponse. Dans une application MVC, la vue affiche seulement les informations ; le contrôleur gère et répond aux entrées et aux interactions de l’utilisateur. Par exemple, le contrôleur gère les valeurs des données de routage et des chaînes de requête, et passe ces valeurs au modèle. Le modèle peut utiliser ces valeurs pour interroger la base de données. Par exemple, `https://localhost:5001/Home/About` a comme données de routage `Home` (le contrôleur) et `About` (la méthode d’action à appeler sur le contrôleur Home). `https://localhost:5001/Movies/Edit/5` est une demande de modification du film avec l’ID 5 à l’aide du contrôleur movie. Les données d’itinéraire sont expliquées plus loin dans le didacticiel.
 
-Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l’interface utilisateur appartient à la vue. La logique d’entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
+Le modèle MVC vous permet de créer des applications qui séparent les différents aspects de l’application (logique d’entrée, logique métier et logique de l’interface utilisateur), tout en assurant un couplage faible entre ces éléments. Le modèle spécifie l’emplacement de chaque type de logique dans l’application. La logique de l'interface utilisateur appartient à la vue. La logique d'entrée appartient au contrôleur. La logique métier appartient au modèle. Cette séparation vous aide à gérer la complexité quand vous créez une application, car elle vous permet de travailler sur un aspect de l’implémentation à la fois, sans impacter le code d’un autre aspect. Par exemple, vous pouvez travailler sur le code des vues de façon indépendante du code de la logique métier.
 
 Nous présentons ces concepts dans cette série de didacticiels et nous vous montrons comment les utiliser pour créer une application de gestion de films. Le projet MVC contient des dossiers pour les *contrôleurs* et pour les *vues*.
 
@@ -148,12 +148,12 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le ![menu contextuel](adding-controller/_static/add_controller.png) **Contrôleurs > Ajouter > Contrôleur**
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le ![menu contextuel](adding-controller/_static/add_controller.png)**Contrôleurs > Ajouter > Contrôleur**
   
 
 * Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Contrôleur MVC - vide**
 
-  ![Ajoutez un contrôleur MVC et nommez-le](adding-controller/_static/ac.png)
+  ![Ajouter un contrôleur MVC et le nommer](adding-controller/_static/ac.png)
 
 * Dans la **boîte de dialogue Ajouter un contrôleur MVC vide**, entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
@@ -172,7 +172,7 @@ Sélectionnez **ASP.NET Core** et **Classe de contrôleur MVC**.
 
 Nommez le contrôleur **HelloWorldController**.
 
-![Ajoutez un contrôleur MVC et nommez-le](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
+![Ajouter un contrôleur MVC et le nommer](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
 
@@ -227,7 +227,7 @@ Exécutez l’application et accédez à :
 
 (Remplacez `{PORT}` par votre numéro de port.) Vous pouvez essayer différentes valeurs pour `name` et `numtimes` dans l’URL. Le système de [liaison de données](xref:mvc/models/model-binding) du modèle MVC mappe automatiquement les paramètres nommés provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Pour plus d’informations, consultez [Liaison de données](xref:mvc/models/model-binding).
 
-![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, NumTimes is: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Fenêtre de navigateur présentant une réponse de l’application Hello Rick, NumTimes est\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés en tant que [chaînes de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) dans l’URL ci-dessus est un séparateur, qui est suivi des chaînes de requête. Le caractère `&` sépare les chaînes de requête.
 

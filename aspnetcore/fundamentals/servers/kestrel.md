@@ -5,14 +5,14 @@ description: Découvrez plus d’informations sur Kestrel, serveur web multiplat
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/14/2019
+ms.date: 12/26/2019
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 6fba6689f72f7a565e28d80f6770765ab097cf11
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 9fbf0ec93634100fccef279fc7cad92cb1420e84
+ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289103"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75492597"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -42,7 +42,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
-* Framework cible : .NET Core 2.2 ou version ultérieure
+* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -135,15 +135,30 @@ Utilisez l' **une** des approches suivantes :
 * Configurez Kestrel dans `Startup.ConfigureServices`:
 
   1. Injecte une instance de `IConfiguration` dans la classe `Startup`. L’exemple suivant suppose que la configuration injectée est assignée à la propriété `Configuration`.
-  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel.
+  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel :
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -421,7 +436,7 @@ Configure Kestrel pour l’utilisation de HTTPS.
 
 Extensions de `ListenOptions.UseHttps` :
 
-* `UseHttps` &ndash; Configure Kestrel pour l’utilisation de HTTPS avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
+* `UseHttps` &ndash; configurer Kestrel pour utiliser le protocole HTTPs avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -465,7 +480,7 @@ Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.Get
 Dans l’exemple de fichier *appsettings.json* suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Les points de terminaison HTTPS qui ne spécifient pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) utilise comme alternative de secours le certificat défini sous **Certificats** > **Par défaut**  ou bien le certificat de développement.
+* Tout point de terminaison HTTPs qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple suivant) revient au certificat défini sous **certificats** > **par défaut** ou au certificat de développement.
 
 ```json
 {
@@ -637,7 +652,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 La méthode <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> se lie à un socket TCP, et une expression lambda options permet la configuration d’un certificat X.509 :
 
-[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=9-16)]
+[!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_TCPSocket&highlight=12-18)]
 
 L’exemple configure HTTPS pour un point de terminaison avec <xref:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions>. Utilisez la même API afin de configurer d’autres paramètres Kestrel pour des points de terminaison spécifiques.
 
@@ -697,11 +712,11 @@ Restrictions TLS pour HTTP/2 :
 * Renégociation désactivée
 * Compression désactivée
 * Tailles minimales de l’échange de clé éphémère :
-  * Diffie-Hellman à courbe elliptique (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 bits minimum
-  * Diffie-Hellman à champ fini (DHE) &lbrack;`TLS12`&rbrack; &ndash; 2 048 bits minimum
+  * Elliptic Curve Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 bits minimum
+  * Diffie-Hellman de champ fini (DHE) &lbrack;`TLS12`&rbrack; &ndash; 2048 bits minimum
 * Suite de chiffrement non inscrite sur liste rouge
 
-Prise en charge par défaut de `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; avec la courbe elliptique P-256 &lbrack;`FIPS186`&rbrack;.
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; avec la courbe elliptique P-256 &lbrack;`FIPS186`&rbrack; est pris en charge par défaut.
 
 L’exemple suivant autorise les connexions HTTP/1.1 et HTTP/2 sur le port 8000. Les connexions sont sécurisées par TLS avec un certificat fourni :
 
@@ -978,7 +993,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
-* Framework cible : .NET Core 2.2 ou version ultérieure
+* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -1039,7 +1054,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-Si l’application n’appelle pas `CreateDefaultBuilder` pour configurer l’hôte, appelez <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> **avant** d’appeler `ConfigureKestrel` :
+Si l’application n’appelle pas `CreateDefaultBuilder` pour configurer l’hôte, appelez <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> **avant** d’appeler `ConfigureKestrel`:
 
 ```csharp
 public static void Main(string[] args)
@@ -1089,15 +1104,30 @@ Utilisez l' **une** des approches suivantes :
 * Configurez Kestrel dans `Startup.ConfigureServices`:
 
   1. Injecte une instance de `IConfiguration` dans la classe `Startup`. L’exemple suivant suppose que la configuration injectée est assignée à la propriété `Configuration`.
-  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel.
+  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel :
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -1395,7 +1425,7 @@ Configure Kestrel pour l’utilisation de HTTPS.
 
 Extensions de `ListenOptions.UseHttps` :
 
-* `UseHttps` &ndash; Configure Kestrel pour l’utilisation de HTTPS avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
+* `UseHttps` &ndash; configurer Kestrel pour utiliser le protocole HTTPs avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -1439,7 +1469,7 @@ Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.Get
 Dans l’exemple de fichier *appsettings.json* suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Les points de terminaison HTTPS qui ne spécifient pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) utilise comme alternative de secours le certificat défini sous **Certificats** > **Par défaut**  ou bien le certificat de développement.
+* Tout point de terminaison HTTPs qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple suivant) revient au certificat défini sous **certificats** > **par défaut** ou au certificat de développement.
 
 ```json
 {
@@ -1680,11 +1710,11 @@ Restrictions TLS pour HTTP/2 :
 * Renégociation désactivée
 * Compression désactivée
 * Tailles minimales de l’échange de clé éphémère :
-  * Diffie-Hellman à courbe elliptique (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 bits minimum
-  * Diffie-Hellman à champ fini (DHE) &lbrack;`TLS12`&rbrack; &ndash; 2 048 bits minimum
+  * Elliptic Curve Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 224 bits minimum
+  * Diffie-Hellman de champ fini (DHE) &lbrack;`TLS12`&rbrack; &ndash; 2048 bits minimum
 * Suite de chiffrement non inscrite sur liste rouge
 
-Prise en charge par défaut de `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; avec la courbe elliptique P-256 &lbrack;`FIPS186`&rbrack;.
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256` &lbrack;`TLS-ECDHE`&rbrack; avec la courbe elliptique P-256 &lbrack;`FIPS186`&rbrack; est pris en charge par défaut.
 
 L’exemple suivant autorise les connexions HTTP/1.1 et HTTP/2 sur le port 8000. Les connexions sont sécurisées par TLS avec un certificat fourni :
 
@@ -1979,15 +2009,30 @@ Utilisez l' **une** des approches suivantes :
 * Configurez Kestrel dans `Startup.ConfigureServices`:
 
   1. Injecte une instance de `IConfiguration` dans la classe `Startup`. L’exemple suivant suppose que la configuration injectée est assignée à la propriété `Configuration`.
-  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel.
+  2. Dans `Startup.ConfigureServices`, chargez la section `Kestrel` de configuration dans la configuration de Kestrel :
 
      ```csharp
-     // using Microsoft.Extensions.Configuration
-
-     public void ConfigureServices(IServiceCollection services)
+     using Microsoft.Extensions.Configuration
+     
+     public class Startup
      {
-         services.Configure<KestrelServerOptions>(
-             Configuration.GetSection("Kestrel"));
+         public Startup(IConfiguration configuration)
+         {
+             Configuration = configuration;
+         }
+
+         public IConfiguration Configuration { get; }
+
+         public void ConfigureServices(IServiceCollection services)
+         {
+             services.Configure<KestrelServerOptions>(
+                 Configuration.GetSection("Kestrel"));
+         }
+
+         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+         {
+             ...
+         }
      }
      ```
 
@@ -2241,7 +2286,7 @@ Configure Kestrel pour l’utilisation de HTTPS.
 
 Extensions de `ListenOptions.UseHttps` :
 
-* `UseHttps` &ndash; Configure Kestrel pour l’utilisation de HTTPS avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
+* `UseHttps` &ndash; configurer Kestrel pour utiliser le protocole HTTPs avec le certificat par défaut. Lève une exception si aucun certificat par défaut n’est configuré.
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -2285,7 +2330,7 @@ Par défaut, `CreateDefaultBuilder` appelle `Configure(context.Configuration.Get
 Dans l’exemple de fichier *appsettings.json* suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Les points de terminaison HTTPS qui ne spécifient pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) utilise comme alternative de secours le certificat défini sous **Certificats** > **Par défaut**  ou bien le certificat de développement.
+* Tout point de terminaison HTTPs qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple suivant) revient au certificat défini sous **certificats** > **par défaut** ou au certificat de développement.
 
 ```json
 {

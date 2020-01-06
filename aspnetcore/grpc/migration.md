@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
-ms.openlocfilehash: c4c07808540c9af370bfa253e8154a8a19f0f3de
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355137"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migration des services gRPC à partir de C-Core vers ASP.NET Core
 
@@ -82,7 +82,7 @@ Les applications basées sur le langage C configurent le protocole HTTPs via la 
 
 ## <a name="grpc-interceptors-vs-middleware"></a>intercepteurs gRPC vs intergiciel
 
-ASP.NET Core [intergiciel](xref:fundamentals/middleware/index) offre des fonctionnalités similaires par rapport aux intercepteurs des applications gRPC basées sur le langage C. ASP.NET Core l’intergiciel et les intercepteurs sont similaires d’un plan conceptuel. Versions
+ASP.NET Core [intergiciel](xref:fundamentals/middleware/index) offre des fonctionnalités similaires par rapport aux intercepteurs des applications gRPC basées sur le langage C. ASP.NET Core l’intergiciel et les intercepteurs sont similaires d’un plan conceptuel. Les deux :
 
 * Sont utilisés pour construire un pipeline qui gère une demande gRPC.
 * Autorisez l’exécution du travail avant ou après le composant suivant dans le pipeline.
@@ -97,7 +97,8 @@ différences entre l’intercepteur gRPC et l’intergiciel (middleware) ASP.NET
   * Fournir un accès à :
     * Message désérialisé envoyé à un appel.
     * Message retourné par l’appel avant qu’il ne soit sérialisé.
-* Intergiciel
+  * Peut intercepter et gérer les exceptions levées à partir des services gRPC.
+* Middleware :
   * S’exécute avant les intercepteurs gRPC.
   * Opère sur les messages HTTP/2 sous-jacents.
   * Peut uniquement accéder aux octets des flux de requête et de réponse.

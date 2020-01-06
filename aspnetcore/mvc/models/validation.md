@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC et Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 7a6017141eb1016128c4a135c187479717580bb5
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 042a9933e561de4957f6332bdff3c4f09d2e119b
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355262"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -58,11 +58,11 @@ Voici certains des attributs de validation prédéfinis :
 * `[Required]`: vérifie que le champ n’a pas la valeur null. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Required]` attribut](#required-attribute) .
 * `[StringLength]`: valide le fait qu’une valeur de propriété de chaîne ne dépasse pas une limite de longueur spécifiée.
 * `[Url]`: valide que la propriété a un format d’URL.
-* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez `[`[Remote] 'attribute] (attribut #remote).
+* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Remote]` attribut](#remote-attribute) .
 
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d’erreur
+### <a name="error-messages"></a>Messages d'erreur
 
 Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
@@ -126,7 +126,7 @@ Pour implémenter la validation à distance
 
    [!code-csharp[](validation/samples/3.x/ValidationSample/Models/User.cs?name=snippet_Email)]
  
-   L'attribut `[Remote]` se trouve dans l'espace de noms `Microsoft.AspNetCore.Mvc`.
+   L’attribut `[Remote]` se trouve dans l’espace de noms `Microsoft.AspNetCore.Mvc`.
    
 ### <a name="additional-fields"></a>Champs supplémentaires
 
@@ -424,9 +424,11 @@ Les attributs de validation intégrés sont les suivants :
 * `[Url]`: valide que la propriété a un format d’URL.
 * `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [`[Remote]` attribut](#remote-attribute) .
 
+Lors de l’utilisation de l’attribut `[RegularExpression]` avec la validation côté client, l’expression régulière est exécutée dans JavaScript sur le client. Cela signifie que le comportement de correspondance [ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior) sera utilisé. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/dotnet/corefx/issues/42487).
+
 Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
 
-### <a name="error-messages"></a>Messages d’erreur
+### <a name="error-messages"></a>Messages d'erreur
 
 Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
@@ -490,7 +492,7 @@ Pour implémenter la validation à distance
 
    [!code-csharp[](validation/samples/2.x/ValidationSample/Models/User.cs?name=snippet_UserEmailProperty)]
  
-   L'attribut `[Remote]` se trouve dans l'espace de noms `Microsoft.AspNetCore.Mvc`. Installez le package NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), si vous n’utilisez pas le métapaquet `Microsoft.AspNetCore.App` ou `Microsoft.AspNetCore.All`.
+   L’attribut `[Remote]` se trouve dans l’espace de noms `Microsoft.AspNetCore.Mvc`. Installez le package NuGet [Microsoft.AspNetCore.Mvc.ViewFeatures](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.ViewFeatures), si vous n’utilisez pas le métapaquet `Microsoft.AspNetCore.App` ou `Microsoft.AspNetCore.All`.
    
 ### <a name="additional-fields"></a>Champs supplémentaires
 

@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 926160a41c82853d83890f0d52b14d7d5561a990
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: eaf737642cdbd7ab2b1b5c16538b47a70cddd332
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963768"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354697"
 ---
 # <a name="aspnet-core-opno-locsignalr-javascript-client"></a>ASP.NET Core SignalR client JavaScript
 
@@ -35,7 +35,7 @@ La bibliothèque cliente JavaScript SignalR est fournie sous la forme d’un pac
   npm install @microsoft/signalr
   ```
 
-NPM installe le contenu du package dans le dossier *node_modules\\@microsoft\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier *wwwroot\\lib* . Copiez le fichier *signalr. js* dans le dossier *wwwroot\lib\signalr* .
+npm installe le contenu du package dans le *node_modules\\@microsoft\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
 
 ::: moniker-end
 
@@ -46,7 +46,7 @@ NPM installe le contenu du package dans le dossier *node_modules\\@microsoft\sig
   npm install @aspnet/signalr
   ```
 
-NPM installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier *wwwroot\\lib* . Copiez le fichier *signalr. js* dans le dossier *wwwroot\lib\signalr* .
+npm installe le contenu du package dans le *node_modules\\@aspnet\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
 
 ::: moniker-end
 
@@ -58,26 +58,26 @@ Référencez le client JavaScript SignalR dans l’élément `<script>`.
 <script src="~/lib/signalr/signalr.js"></script>
 ```
 
-## <a name="connect-to-a-hub"></a>Se connecter à un concentrateur
+## <a name="connect-to-a-hub"></a>Se connecter à un hub
 
 Le code suivant crée et démarre une connexion. Le nom du concentrateur ne respecte pas la casse.
 
 [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-13,43-45)]
 
-### <a name="cross-origin-connections"></a>Connexions Cross-Origin
+### <a name="cross-origin-connections"></a>Connexions cross-origin
 
-En règle générale, les navigateurs chargent les connexions à partir du même domaine que la page demandée. Toutefois, il peut arriver qu’une connexion à un autre domaine soit nécessaire.
+En règle générale, les navigateurs chargent les connexions à partir du même domaine que la page demandée. Toutefois, il existe des cas où une connexion à un autre domaine est nécessaire.
 
 Pour empêcher un site malveillant de lire des données sensibles à partir d’un autre site, les [connexions Cross-Origin](xref:security/cors) sont désactivées par défaut. Pour autoriser une demande Cross-Origin, activez-la dans la classe `Startup`.
 
 [!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
-## <a name="call-hub-methods-from-client"></a>Appeler les méthodes de concentrateur à partir du client
+## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
-Les clients JavaScript appellent des méthodes publiques sur des hubs à l’aide de la méthode [Invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
+Les clients JavaScript appellent les méthodes publiques sur les hubs via la méthode [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
 
-* Nom de la méthode de concentrateur. Dans l’exemple suivant, le nom de la méthode sur le Hub est `SendMessage`.
-* Tous les arguments définis dans la méthode de concentrateur. Dans l’exemple suivant, le nom de l’argument est `message`. L’exemple de code utilise la syntaxe de fonction Arrow qui est prise en charge dans les versions actuelles de tous les principaux navigateurs, à l’exception d’Internet Explorer.
+* Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode sur le hub est `SendMessage`.
+* Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`. L’exemple de code utilise la syntaxe de fonction Arrow qui est prise en charge dans les versions actuelles de tous les principaux navigateurs, à l’exception d’Internet Explorer.
 
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
@@ -93,10 +93,10 @@ La méthode `send` retourne un `Promise`JavaScript. La `Promise` est résolue lo
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes clientes à partir du Hub
 
-Pour recevoir des messages à partir du concentrateur, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de l' `HubConnection`.
+Pour recevoir des messages à partir du hub, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de la `HubConnection`.
 
 * Nom de la méthode du client JavaScript. Dans l’exemple suivant, le nom de la méthode est `ReceiveMessage`.
-* Arguments que le Hub transmet à la méthode. Dans l’exemple suivant, la valeur de l’argument est `message`.
+* Les arguments que le hub passe à la méthode. Dans l’exemple suivant, la valeur de l’argument est `message`.
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
@@ -107,11 +107,11 @@ Le code précédent dans `connection.on` s’exécute lorsque le code côté ser
 SignalR détermine la méthode cliente à appeler en faisant correspondre le nom de la méthode et les arguments définis dans `SendAsync` et `connection.on`.
 
 > [!NOTE]
-> Il est recommandé d’appeler la méthode [Start](/javascript/api/%40aspnet/signalr/hubconnection#start) sur le `HubConnection` après `on`. Cela permet de s’assurer que vos gestionnaires sont inscrits avant la réception de tous les messages.
+> Comme meilleure pratique, appelez la méthode [start](/javascript/api/%40aspnet/signalr/hubconnection#start) sur le `HubConnection` après `on`. En procédant comme ceci, vos gestionnaires sont enregistrés avant que tous les messages soient reçus.
 
 ## <a name="error-handling-and-logging"></a>Gestion et journalisation des erreurs
 
-Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les erreurs côté client. Utilisez `console.error` pour générer des erreurs dans la console du navigateur.
+Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les erreurs côté client. Utilisez `console.error` pour envoyer les erreurs vers la console du navigateur.
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=49-51)]
 
@@ -236,15 +236,16 @@ const connection = new signalR.HubConnectionBuilder()
     .withUrl("/chatHub")
     .withAutomaticReconnect({
         nextRetryDelayInMilliseconds: retryContext => {
-          if (retryContext.elapsedMilliseconds < 60000) {
-            // If we've been reconnecting for less than 60 seconds so far,
-            // wait between 0 and 10 seconds before the next reconnect attempt.
-            return Math.random() * 10000;
-          } else {
-            // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
-            return null;
-          }
-        })
+            if (retryContext.elapsedMilliseconds < 60000) {
+                // If we've been reconnecting for less than 60 seconds so far,
+                // wait between 0 and 10 seconds before the next reconnect attempt.
+                return Math.random() * 10000;
+            } else {
+                // If we've been reconnecting for more than 60 seconds so far, stop reconnecting.
+                return null;
+            }
+        }
+    })
     .build();
 ```
 
@@ -272,7 +273,7 @@ Une implémentation réelle utilise une interruption exponentielle ou une nouvel
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Informations de référence sur l’API JavaScript](/javascript/api/?view=signalr-js-latest)
+* [Référence API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
 * [Hubs](xref:signalr/hubs)

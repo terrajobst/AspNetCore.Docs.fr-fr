@@ -5,19 +5,19 @@ description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 1.1.
 ms.author: riande
 ms.date: 12/18/2018
 uid: aspnetcore-1.1
-ms.openlocfilehash: 167842a7376a6bb0a88e6f41159730f076bb2bdb
-ms.sourcegitcommit: 335a88c1b6e7f0caa8a3a27db57c56664d676d34
-ms.translationtype: HT
+ms.openlocfilehash: 0b1c4eb467dd13a7654229b3ed76dd14e984e94b
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67034717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355224"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Nouveautés d’ASP.NET Core 1.1
 
 ASP.NET Core 1.1 inclut les nouvelles fonctionnalités suivantes :
 
-- [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting)
-- [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
+- [Intergiciel (middleware) de réécriture d’URL](xref:fundamentals/url-rewriting)
+- [Intergiciel (middleware) de mise en cache des réponses](xref:performance/caching/middleware)
 - [Afficher les composants sous forme de Tag Helpers](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [Intergiciel en tant que filtres MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
 - [Fournisseur de TempData basé sur les cookies](xref:fundamentals/app-state#tempdata)
@@ -29,7 +29,7 @@ ASP.NET Core 1.1 inclut les nouvelles fonctionnalités suivantes :
 
 ## <a name="choosing-between-versions-10-and-11-of-aspnet-core"></a>Choix entre les versions 1.0 et 1.1 d’ASP.NET Core
 
-ASP.NET Core 1.1 a plus de fonctionnalités que la version 1.0. D’une façon générale, nous vous recommandons d’utiliser la version la plus récente.
+ASP.NET Core 1,1 possède plus de fonctionnalités que ASP.NET Core 1,0. D’une façon générale, nous vous recommandons d’utiliser la version la plus récente.
 
 ## <a name="additional-information"></a>Informations supplémentaires
 

@@ -6,16 +6,18 @@ ms.author: casoper
 ms.date: 12/05/2019
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 0c7e8a1db924bdedf29468bf6b8cc17f03962c6d
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 9b18b19838a2d25944a2498b6eec1677e56b12cc
+ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880742"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358259"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
 Auteur : [Cam Soper](https://twitter.com/camsoper)
+
+<!-- Next update remove screenshots. They become obsolete too soon and are more work to update -->
 
 [Azure B2C Active de répertoire](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit une authentification pour les applications hébergées dans le cloud et sur site. Types d’authentification, les comptes individuels, les comptes de réseau social et fédérés comptes d’entreprise. Azure AD B2C fournit également l’authentification multifacteur avec une configuration minimale.
 
@@ -54,9 +56,9 @@ Dans le locataire Azure AD B2C nouvellement créé, inscrire votre API à l’ai
 
 Utilisez les valeurs suivantes :
 
-| Paramètre                       | Value               | Notes                                                                                  |
+| Paramètre                       | Value               | Remarques                                                                                  |
 |-------------------------------|---------------------|----------------------------------------------------------------------------------------|
-| **Nom**                      | *{Nom de l’API}*        | Entrez un **nom** pour l’application qui décrit votre application aux consommateurs.                     |
+| **Name**                      | *{Nom de l’API}*        | Entrez un **nom** pour l’application qui décrit votre application aux consommateurs.                     |
 | **Inclure l’application web / API web** | Oui                 |                                                                                        |
 | **Autoriser un flux implicite**       | Oui                 |                                                                                        |
 | **URL de réponse**                 | `https://localhost` | URL de réponse sont des points de terminaison auxquels Azure AD B2C retourne les jetons demandés par votre application. |
@@ -110,9 +112,9 @@ Dans Visual Studio, exécutez l’API. Visual Studio lance un navigateur pointé
 
 Utilisez les valeurs suivantes :
 
-| Paramètre                       | Value                            | Notes                           |
+| Paramètre                       | Value                            | Remarques                           |
 |-------------------------------|----------------------------------|---------------------------------|
-| **Nom**                      | Postman                          |                                 |
+| **Name**                      | Postman                          |                                 |
 | **Inclure l’application web / API web** | Oui                              |                                 |
 | **Autoriser un flux implicite**       | Oui                              |                                 |
 | **URL de réponse**                 | `https://getpostman.com/postman` |                                 |
@@ -169,7 +171,7 @@ Pour faire une demande authentifiée à l’API web, un jeton du porteur est req
 
 2. Terminer la **obtenir nouveau jeton d’accès** boîte de dialogue comme suit :
 
-   |                Paramètre                 |                                             Value                                             |                                                                                                                                    Notes                                                                                                                                     |
+   |                Paramètre                 |                                             Value                                             |                                                                                                                                    Remarques                                                                                                                                     |
    |----------------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
    |      **Nom du jeton**       |                                          *{nom du jeton}*                                       |                                                                                                                   Entrez un nom descriptif pour le jeton.                                                                                                                    |
    |      **Type d’octroi**       |                                           Implicite                                            |                                                                                                                                                                                                                                                                              |
