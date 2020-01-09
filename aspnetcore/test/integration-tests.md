@@ -5,14 +5,14 @@ description: Découvrez comment les tests d’intégration garantissent le bon f
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/28/2019
+ms.date: 01/06/2019
 uid: test/integration-tests
-ms.openlocfilehash: 33f3e29bc649fa65efdff0c47e54a83662005577
-ms.sourcegitcommit: de0fc77487a4d342bcc30965ec5c142d10d22c03
+ms.openlocfilehash: ccee8957a72da0eb5d870b1bd184ee1ea146a0e6
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73143368"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693789"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -108,8 +108,8 @@ Le projet de test doit :
 
 Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également :
 
-* [xUnit](https://www.nuget.org/packages/xunit)
-* [xUnit. Runner. VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
+* [xunit](https://www.nuget.org/packages/xunit)
+* [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp)
 
 Entity Framework Core est également utilisé dans les tests. L’application référence :
@@ -126,7 +126,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Tests de base avec le WebApplicationFactory par défaut
 
-[WebApplicationFactory \<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
+[WebApplicationFactory\<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
 
 Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
@@ -148,11 +148,11 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    L’amorçage de base de données dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectué par la méthode `InitializeDbForTests`. La méthode est décrite dans la section [exemple de tests d’intégration : organisation](#test-app-organization) d’une application de test.
 
-   Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. Pour utiliser une base de données différente pour les tests que la base de données de l’application, le contexte de base de données de l’application doit être remplacé par `builder.ConfigureServices`.
+   Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel de `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. L’ordre d’exécution est une modification avec rupture pour l' [hôte générique](xref:fundamentals/host/generic-host) avec la version de ASP.net Core 3,0. Pour utiliser une base de données différente pour les tests que la base de données de l’application, le contexte de base de données de l’application doit être remplacé dans `builder.ConfigureServices`.
 
-   L’exemple d’application recherche le descripteur de service pour le contexte de base de données et utilise le descripteur pour supprimer l’inscription du service. Ensuite, la fabrique ajoute un nouveau `ApplicationDbContext` qui utilise une base de données en mémoire pour les tests.
+   L’exemple d’application recherche le descripteur de service pour le contexte de base de données et utilise le descripteur pour supprimer l’inscription du service. Ensuite, la fabrique ajoute une nouvelle `ApplicationDbContext` qui utilise une base de données en mémoire pour les tests.
 
-   Pour vous connecter à une base de données différente de celle de la base de données en mémoire, modifiez l’appel de `UseInMemoryDatabase` pour connecter le contexte à une autre base de données. Pour utiliser une base de données de test SQL Server :
+   Pour vous connecter à une base de données différente de celle de la base de données en mémoire, modifiez l’appel `UseInMemoryDatabase` pour connecter le contexte à une autre base de données. Pour utiliser une base de données de test SQL Server :
 
    * Référencez le package NuGet [Microsoft. EntityFrameworkCore. SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) dans le fichier projet.
    * Appelez `UseSqlServer` avec une chaîne de connexion à la base de données.
@@ -169,9 +169,9 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
-   Le client de l’exemple d’application est configuré pour empêcher la `HttpClient` des redirections suivantes. Comme expliqué plus loin dans la section [d’authentification des simulacres](#mock-authentication) , cela permet aux tests de vérifier le résultat de la première réponse de l’application. La première réponse est une redirection dans un grand nombre de ces tests avec un en-tête `Location`.
+   Le client de l’exemple d’application est configuré pour empêcher le `HttpClient` de suivre les redirections. Comme expliqué plus loin dans la section [d’authentification des simulacres](#mock-authentication) , cela permet aux tests de vérifier le résultat de la première réponse de l’application. La première réponse est une redirection dans un grand nombre de ces tests avec un en-tête de `Location`.
 
-3. Un test standard utilise les méthodes `HttpClient` et Helper pour traiter la demande et la réponse :
+3. Un test standard utilise la `HttpClient` et les méthodes d’assistance pour traiter la demande et la réponse :
 
    [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet2)]
 
@@ -181,10 +181,10 @@ Toute demande de publication à l’St doit être conforme à la vérification a
 1. Analysez le cookie anti-contrefaçon et le jeton de validation de demande à partir de la réponse.
 1. Effectuez la demande de publication avec le cookie anti-contrefaçon et le jeton de validation de demande en place.
 
-Les méthodes d’extension `SendAsync` (*helpers/HttpClientExtensions. cs*) et la méthode d’assistance `GetDocumentAsync` (*helpers/HtmlHelper. cs*) dans l’exemple d' [application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-contrefaçon avec l’option méthodes suivantes :
+Les méthodes d’extension d’assistance `SendAsync` (*helpers/HttpClientExtensions. cs*) et la méthode d’assistance `GetDocumentAsync` (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-contrefaçon avec les méthodes suivantes :
 
-* `GetDocumentAsync` &ndash; reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction du `HttpResponseMessage` d’origine. Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
-* les méthodes d’extension `SendAsync` pour le `HttpClient` composent un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML (`IHtmlFormElement`) et les éléments suivants :
+* `GetDocumentAsync` &ndash; reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction du `HttpResponseMessage`d’origine. Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
+* `SendAsync` méthodes d’extension pour l' `HttpClient` composer un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appeler [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML (`IHtmlFormElement`) et les éléments suivants :
   * Bouton envoyer du formulaire (`IHtmlElement`)
   * Collection de valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
   * Bouton envoyer (`IHtmlElement`) et valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
@@ -194,7 +194,7 @@ Les méthodes d’extension `SendAsync` (*helpers/HttpClientExtensions. cs*) et 
 
 ## <a name="customize-the-client-with-withwebhostbuilder"></a>Personnaliser le client avec WithWebHostBuilder
 
-Quand une configuration supplémentaire est requise dans une méthode de test, [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) crée un nouveau `WebApplicationFactory` avec un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) qui est personnalisé davantage par la configuration.
+Quand une configuration supplémentaire est requise dans une méthode de test, [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) crée un `WebApplicationFactory` avec un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) qui est personnalisé plus en détail par configuration.
 
 La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) montre l’utilisation de `WithWebHostBuilder`. Ce test effectue une suppression d’enregistrement dans la base de données en déclenchant une soumission de formulaire dans St.
 
@@ -204,14 +204,14 @@ La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exe
 
 ## <a name="client-options"></a>Options du client
 
-Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances `HttpClient`.
+Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances de `HttpClient`.
 
 | Option | Description | Valeur par défaut |
 | ------ | ----------- | ------- |
-| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si les instances `HttpClient` doivent suivre automatiquement les réponses de redirection. | `true` |
+| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si `HttpClient` instances doit suivre automatiquement les réponses de redirection. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Obtient ou définit l’adresse de base des instances de `HttpClient`. | `http://localhost` |
 | [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | Obtient ou définit si les instances `HttpClient` doivent gérer les cookies. | `true` |
-| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Obtient ou définit le nombre maximal de réponses de redirection que les instances `HttpClient` doivent suivre. | 7 |
+| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Obtient ou définit le nombre maximal de réponses de redirection que `HttpClient` instances doit suivre. | 7 |
 
 Créez la classe `WebApplicationFactoryClientOptions` et transmettez-la à la méthode [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) (les valeurs par défaut sont affichées dans l’exemple de code) :
 
@@ -259,7 +259,7 @@ Le balisage suivant est généré lors de l’exécution de l’application St 
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace le `QuoteService` de l’application par un service fourni par l’application de test, appelé `TestQuoteService` :
+Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace le `QuoteService` de l’application par un service fourni par l’application de test, appelé `TestQuoteService`:
 
 *IntegrationTests.IndexPageTests.cs*:
 
@@ -322,7 +322,7 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Comment l’infrastructure de test déduit le chemin racine du contenu de l’application
 
-Le constructeur `WebApplicationFactory` déduit le chemin [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l’assembly `TEntryPoint` `System.Reflection.Assembly.FullName`. Si un attribut avec la clé correcte est introuvable, `WebApplicationFactory` revient à la recherche d’un fichier solution ( *. sln*) et ajoute le nom de l’assembly `TEntryPoint` au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
+Le constructeur `WebApplicationFactory` déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à la `System.Reflection.Assembly.FullName`d’assembly `TEntryPoint`. Si un attribut avec la clé correcte est introuvable, `WebApplicationFactory` revient à rechercher un fichier solution ( *. sln*) et ajoute le nom de l’assembly `TEntryPoint` au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
 
 ## <a name="disable-shadow-copying"></a>Désactiver les clichés instantanés
 
@@ -338,7 +338,7 @@ Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le 
 
 ## <a name="disposal-of-objects"></a>Suppression d’objets
 
-Après l’exécution des tests de l’implémentation `IClassFixture`, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) et [httpclient](/dotnet/api/system.net.http.httpclient) sont supprimés quand xUnit supprime le [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). Si les objets instanciés par le développeur nécessitent une suppression, supprimez-les dans l’implémentation `IClassFixture`. Pour plus d’informations, consultez [implémentation d’une méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose).
+Après l’exécution des tests de l’implémentation de `IClassFixture`, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) et [httpclient](/dotnet/api/system.net.http.httpclient) sont supprimés quand xUnit supprime la [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). Si les objets instanciés par le développeur nécessitent une suppression, supprimez-les dans l’implémentation `IClassFixture`. Pour plus d’informations, consultez [implémentation d’une méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose).
 
 ## <a name="integration-tests-sample"></a>Exemple de tests d’intégration
 
@@ -346,8 +346,8 @@ L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mast
 
 | Application | Répertoire du projet | Description |
 | --- | ----------------- | ----------- |
-| Application message (St) | *SRC/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
-| Tester l’application | *tests/RazorPagesProject. tests* | Utilisé pour tester l’intégration du St. |
+| Application message (St) | *src/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
+| Tester une application | *tests/RazorPagesProject.Tests* | Utilisé pour tester l’intégration du St. |
 
 Les tests peuvent être exécutés à l’aide des fonctionnalités de test intégrées d’un environnement de développement intégré (IDE), telles que [Visual Studio](https://visualstudio.microsoft.com). Si vous utilisez [Visual Studio code](https://code.visualstudio.com/) ou la ligne de commande, exécutez la commande suivante à l’invite de commandes dans le répertoire *tests/RazorPagesProject. tests* :
 
@@ -364,7 +364,7 @@ Le St est un système de messagerie Razor Pages avec les caractéristiques suiva
 * Les messages sont stockés à l’aide&#8224; [de la base de données en mémoire de Entity Framework](/ef/core/providers/in-memory/).
 * L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` (*Data/AppDbContext. cs*).
 * Si la base de données est vide au démarrage de l’application, la Banque de messages est initialisée avec trois messages.
-* L’application comprend un `/SecurePage` qui est accessible uniquement par un utilisateur authentifié.
+* L’application comprend un `/SecurePage` qui n’est accessible qu’à un utilisateur authentifié.
 
 &#8224;La rubrique EF, [test with InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise l’infrastructure de test [xUnit](https://xunit.github.io/) . Les concepts de test et les implémentations de test dans différents frameworks de test sont similaires, mais pas identiques.
 
@@ -379,9 +379,9 @@ L’application de test est une application console dans le répertoire *tests/R
 | *AuthTests* | Contient des méthodes de test pour :<ul><li>Accès à une page sécurisée par un utilisateur non authentifié.</li><li>Accès à une page sécurisée par un utilisateur authentifié à l’aide d’un simulacre <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>.</li><li>Obtention d’un profil utilisateur GitHub et vérification de la connexion de l’utilisateur du profil.</li></ul> |
 | *BasicTests* | Contient une méthode de test pour le routage et le type de contenu. |
 | *IntegrationTests* | Contient les tests d’intégration pour la page d’index à l’aide de la classe de `WebApplicationFactory` personnalisée. |
-| *Programmes d’assistance/utilitaires* | <ul><li>*Utilities.cs* contient la méthode `InitializeDbForTests` utilisée pour amorcer la base de données avec des données de test.</li><li>*HtmlHelpers.cs* fournit une méthode pour retourner un AngleSharp `IHtmlDocument` pour une utilisation par les méthodes de test.</li><li>*HttpClientExtensions.cs* fournit des surcharges pour `SendAsync` pour envoyer des demandes au St.</li></ul> |
+| *Programmes d’assistance/utilitaires* | <ul><li>*Utilities.cs* contient la méthode `InitializeDbForTests` utilisée pour amorcer la base de données avec des données de test.</li><li>*HtmlHelpers.cs* fournit une méthode pour retourner un `IHtmlDocument` AngleSharp pour une utilisation par les méthodes de test.</li><li>*HttpClientExtensions.cs* fournit des surcharges pour `SendAsync` envoyer des demandes au St.</li></ul> |
 
-L’infrastructure de test est [xUnit](https://xunit.github.io/). Les tests d’intégration sont effectués à l’aide de [Microsoft. AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost), qui comprend le [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Étant donné que le package [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) est utilisé pour configurer l’hôte de test et le serveur de test, les packages `TestHost` et `TestServer` ne nécessitent pas de références de package directes dans le fichier projet de l’application de test ou dans la configuration du développeur dans le test lancement.
+L’infrastructure de test est [xUnit](https://xunit.github.io/). Les tests d’intégration sont effectués à l’aide de [Microsoft. AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost), qui comprend le [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Étant donné que le package [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) est utilisé pour configurer l’hôte de test et le serveur de test, les packages `TestHost` et `TestServer` ne requièrent pas de références de package directes dans le fichier projet ou la configuration de développeur de l’application de test dans l’application de test.
 
 **Amorçage de la base de données à des fins de test**
 
@@ -391,7 +391,7 @@ L’exemple d’application amorce la base de données avec trois messages dans 
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/Helpers/Utilities.cs?name=snippet1)]
 
-Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. Pour utiliser une base de données différente pour les tests, le contexte de base de données de l’application doit être remplacé par `builder.ConfigureServices`. Pour plus d’informations, consultez la section [personnaliser WebApplicationFactory](#customize-webapplicationfactory) .
+Le contexte de base de données de St est inscrit dans sa méthode `Startup.ConfigureServices`. Le rappel de `builder.ConfigureServices` de l’application de test est exécuté *après* l’exécution du code `Startup.ConfigureServices` de l’application. Pour utiliser une base de données différente pour les tests, le contexte de base de données de l’application doit être remplacé dans `builder.ConfigureServices`. Pour plus d’informations, consultez la section [personnaliser WebApplicationFactory](#customize-webapplicationfactory) .
 
 ::: moniker-end
 
@@ -482,13 +482,13 @@ Le projet de test doit :
 
 * Référencez les packages suivants :
   * [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
-  * [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+  * [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * Spécifiez le kit de développement logiciel (SDK) Web dans le fichier projet (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Le kit de développement logiciel (SDK) Web est requis pour référencer le [AspNetCore](xref:fundamentals/metapackage-app).
 
 Ces conditions préalables peuvent être consultées dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspectez le fichier *tests/RazorPagesProject. tests/RazorPagesProject. tests. csproj* . L’exemple d’application utilise l’infrastructure de test [xUnit](https://xunit.github.io/) et la bibliothèque de l’analyseur [AngleSharp](https://anglesharp.github.io/) , de sorte que l’exemple d’application référence également :
 
-* [xUnit](https://www.nuget.org/packages/xunit/)
-* [xUnit. Runner. VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
+* [xunit](https://www.nuget.org/packages/xunit/)
+* [xunit.runner.visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
 * [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
 ## <a name="sut-environment"></a>Environnement St
@@ -497,7 +497,7 @@ Si l' [environnement](xref:fundamentals/environments) de St n’est pas défini,
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Tests de base avec le WebApplicationFactory par défaut
 
-[WebApplicationFactory \<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
+[WebApplicationFactory\<TEntryPoint >](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée de St, généralement la classe `Startup`.
 
 Les classes de test implémentent une interface de *contexte de classe* ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer que la classe contient des tests et fournir des instances d’objet partagé dans les tests de la classe.
 
@@ -523,9 +523,9 @@ La configuration d’hôte Web peut être créée indépendamment des classes de
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet1)]
 
-   Le client de l’exemple d’application est configuré pour empêcher la `HttpClient` des redirections suivantes. Comme expliqué plus loin dans la section [d’authentification des simulacres](#mock-authentication) , cela permet aux tests de vérifier le résultat de la première réponse de l’application. La première réponse est une redirection dans un grand nombre de ces tests avec un en-tête `Location`.
+   Le client de l’exemple d’application est configuré pour empêcher le `HttpClient` de suivre les redirections. Comme expliqué plus loin dans la section [d’authentification des simulacres](#mock-authentication) , cela permet aux tests de vérifier le résultat de la première réponse de l’application. La première réponse est une redirection dans un grand nombre de ces tests avec un en-tête de `Location`.
 
-3. Un test standard utilise les méthodes `HttpClient` et Helper pour traiter la demande et la réponse :
+3. Un test standard utilise la `HttpClient` et les méthodes d’assistance pour traiter la demande et la réponse :
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/IndexPageTests.cs?name=snippet2)]
 
@@ -535,10 +535,10 @@ Toute demande de publication à l’St doit être conforme à la vérification a
 1. Analysez le cookie anti-contrefaçon et le jeton de validation de demande à partir de la réponse.
 1. Effectuez la demande de publication avec le cookie anti-contrefaçon et le jeton de validation de demande en place.
 
-Les méthodes d’extension `SendAsync` (*helpers/HttpClientExtensions. cs*) et la méthode d’assistance `GetDocumentAsync` (*helpers/HtmlHelper. cs*) dans l’exemple d' [application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-contrefaçon avec l’option méthodes suivantes :
+Les méthodes d’extension d’assistance `SendAsync` (*helpers/HttpClientExtensions. cs*) et la méthode d’assistance `GetDocumentAsync` (*helpers/HtmlHelper. cs*) dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) utilisent l’analyseur [AngleSharp](https://anglesharp.github.io/) pour gérer la vérification anti-contrefaçon avec les méthodes suivantes :
 
-* `GetDocumentAsync` &ndash; reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction du `HttpResponseMessage` d’origine. Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
-* les méthodes d’extension `SendAsync` pour le `HttpClient` composent un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appellent [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML (`IHtmlFormElement`) et les éléments suivants :
+* `GetDocumentAsync` &ndash; reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuelle* en fonction du `HttpResponseMessage`d’origine. Pour plus d’informations, consultez la [documentation AngleSharp](https://github.com/AngleSharp/AngleSharp#documentation).
+* `SendAsync` méthodes d’extension pour l' `HttpClient` composer un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appeler [SendAsync (HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour envoyer des demandes au St. Les surcharges pour `SendAsync` acceptent le formulaire HTML (`IHtmlFormElement`) et les éléments suivants :
   * Bouton envoyer du formulaire (`IHtmlElement`)
   * Collection de valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
   * Bouton envoyer (`IHtmlElement`) et valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
@@ -548,7 +548,7 @@ Les méthodes d’extension `SendAsync` (*helpers/HttpClientExtensions. cs*) et 
 
 ## <a name="customize-the-client-with-withwebhostbuilder"></a>Personnaliser le client avec WithWebHostBuilder
 
-Quand une configuration supplémentaire est requise dans une méthode de test, [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) crée un nouveau `WebApplicationFactory` avec un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) qui est personnalisé davantage par la configuration.
+Quand une configuration supplémentaire est requise dans une méthode de test, [WithWebHostBuilder](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.withwebhostbuilder) crée un `WebApplicationFactory` avec un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) qui est personnalisé plus en détail par configuration.
 
 La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples) montre l’utilisation de `WithWebHostBuilder`. Ce test effectue une suppression d’enregistrement dans la base de données en déclenchant une soumission de formulaire dans St.
 
@@ -558,14 +558,14 @@ La méthode de test `Post_DeleteMessageHandler_ReturnsRedirectToRoot` de l' [exe
 
 ## <a name="client-options"></a>Options du client
 
-Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances `HttpClient`.
+Le tableau suivant indique les [WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions) par défaut disponibles lors de la création d’instances de `HttpClient`.
 
 | Option | Description | Valeur par défaut |
 | ------ | ----------- | ------- |
-| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si les instances `HttpClient` doivent suivre automatiquement les réponses de redirection. | `true` |
+| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | Obtient ou définit une valeur indiquant si `HttpClient` instances doit suivre automatiquement les réponses de redirection. | `true` |
 | [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | Obtient ou définit l’adresse de base des instances de `HttpClient`. | `http://localhost` |
 | [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | Obtient ou définit si les instances `HttpClient` doivent gérer les cookies. | `true` |
-| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Obtient ou définit le nombre maximal de réponses de redirection que les instances `HttpClient` doivent suivre. | 7 |
+| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | Obtient ou définit le nombre maximal de réponses de redirection que `HttpClient` instances doit suivre. | 7 |
 
 Créez la classe `WebApplicationFactoryClientOptions` et transmettez-la à la méthode [CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient) (les valeurs par défaut sont affichées dans l’exemple de code) :
 
@@ -613,7 +613,7 @@ Le balisage suivant est généré lors de l’exécution de l’application St 
     London, and we&#x27;re already 30,000 years late.">
 ```
 
-Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace le `QuoteService` de l’application par un service fourni par l’application de test, appelé `TestQuoteService` :
+Pour tester l’injection de service et de guillemets dans un test d’intégration, un service fictif est injecté dans le St par le test. Le service factice remplace le `QuoteService` de l’application par un service fourni par l’application de test, appelé `TestQuoteService`:
 
 *IntegrationTests.IndexPageTests.cs*:
 
@@ -676,7 +676,7 @@ protected override IHostBuilder CreateHostBuilder() =>
 
 ## <a name="how-the-test-infrastructure-infers-the-app-content-root-path"></a>Comment l’infrastructure de test déduit le chemin racine du contenu de l’application
 
-Le constructeur `WebApplicationFactory` déduit le chemin [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à l’assembly `TEntryPoint` `System.Reflection.Assembly.FullName`. Si un attribut avec la clé correcte est introuvable, `WebApplicationFactory` revient à la recherche d’un fichier solution ( *. sln*) et ajoute le nom de l’assembly `TEntryPoint` au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
+Le constructeur `WebApplicationFactory` déduit le chemin d’accès [racine du contenu](xref:fundamentals/index#content-root) de l’application en recherchant un [WebApplicationFactoryContentRootAttribute](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactorycontentrootattribute) sur l’assembly contenant les tests d’intégration avec une clé égale à la `System.Reflection.Assembly.FullName`d’assembly `TEntryPoint`. Si un attribut avec la clé correcte est introuvable, `WebApplicationFactory` revient à rechercher un fichier solution ( *. sln*) et ajoute le nom de l’assembly `TEntryPoint` au répertoire de la solution. Le répertoire racine de l’application (chemin racine du contenu) est utilisé pour découvrir les affichages et les fichiers de contenu.
 
 ## <a name="disable-shadow-copying"></a>Désactiver les clichés instantanés
 
@@ -690,7 +690,7 @@ Ajoutez le fichier *xUnit. Runner. JSON* à la racine du projet de test avec le 
 }
 ```
 
-Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, ajoutez une cible `Content` au fichier projet de l’application de test :
+Si vous utilisez Visual Studio, définissez la propriété **copier dans le répertoire de sortie** du fichier sur **toujours copier**. Si vous n’utilisez pas Visual Studio, ajoutez une `Content` cible au fichier projet de l’application de test :
 
 ```xml
 <ItemGroup>
@@ -702,7 +702,7 @@ Si vous utilisez Visual Studio, définissez la propriété **copier dans le rép
 
 ## <a name="disposal-of-objects"></a>Suppression d’objets
 
-Après l’exécution des tests de l’implémentation `IClassFixture`, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) et [httpclient](/dotnet/api/system.net.http.httpclient) sont supprimés quand xUnit supprime le [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). Si les objets instanciés par le développeur nécessitent une suppression, supprimez-les dans l’implémentation `IClassFixture`. Pour plus d’informations, consultez [implémentation d’une méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose).
+Après l’exécution des tests de l’implémentation de `IClassFixture`, [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) et [httpclient](/dotnet/api/system.net.http.httpclient) sont supprimés quand xUnit supprime la [WebApplicationFactory](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1). Si les objets instanciés par le développeur nécessitent une suppression, supprimez-les dans l’implémentation `IClassFixture`. Pour plus d’informations, consultez [implémentation d’une méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose).
 
 ## <a name="integration-tests-sample"></a>Exemple de tests d’intégration
 
@@ -710,8 +710,8 @@ L' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/mast
 
 | Application | Répertoire du projet | Description |
 | --- | ----------------- | ----------- |
-| Application message (St) | *SRC/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
-| Tester l’application | *tests/RazorPagesProject. tests* | Utilisé pour tester l’intégration du St. |
+| Application message (St) | *src/RazorPagesProject* | Permet à l’utilisateur d’ajouter, de supprimer, de supprimer et d’analyser des messages. |
+| Tester une application | *tests/RazorPagesProject.Tests* | Utilisé pour tester l’intégration du St. |
 
 Les tests peuvent être exécutés à l’aide des fonctionnalités de test intégrées d’un environnement de développement intégré (IDE), telles que [Visual Studio](https://visualstudio.microsoft.com). Si vous utilisez [Visual Studio code](https://code.visualstudio.com/) ou la ligne de commande, exécutez la commande suivante à l’invite de commandes dans le répertoire *tests/RazorPagesProject. tests* :
 
@@ -728,7 +728,7 @@ Le St est un système de messagerie Razor Pages avec les caractéristiques suiva
 * Les messages sont stockés à l’aide&#8224; [de la base de données en mémoire de Entity Framework](/ef/core/providers/in-memory/).
 * L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` (*Data/AppDbContext. cs*).
 * Si la base de données est vide au démarrage de l’application, la Banque de messages est initialisée avec trois messages.
-* L’application comprend un `/SecurePage` qui est accessible uniquement par un utilisateur authentifié.
+* L’application comprend un `/SecurePage` qui n’est accessible qu’à un utilisateur authentifié.
 
 &#8224;La rubrique EF, [test with InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise l’infrastructure de test [xUnit](https://xunit.github.io/) . Les concepts de test et les implémentations de test dans différents frameworks de test sont similaires, mais pas identiques.
 
@@ -743,9 +743,9 @@ L’application de test est une application console dans le répertoire *tests/R
 | *AuthTests* | Contient des méthodes de test pour :<ul><li>Accès à une page sécurisée par un utilisateur non authentifié.</li><li>Accès à une page sécurisée par un utilisateur authentifié à l’aide d’un simulacre <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1>.</li><li>Obtention d’un profil utilisateur GitHub et vérification de la connexion de l’utilisateur du profil.</li></ul> |
 | *BasicTests* | Contient une méthode de test pour le routage et le type de contenu. |
 | *IntegrationTests* | Contient les tests d’intégration pour la page d’index à l’aide de la classe de `WebApplicationFactory` personnalisée. |
-| *Programmes d’assistance/utilitaires* | <ul><li>*Utilities.cs* contient la méthode `InitializeDbForTests` utilisée pour amorcer la base de données avec des données de test.</li><li>*HtmlHelpers.cs* fournit une méthode pour retourner un AngleSharp `IHtmlDocument` pour une utilisation par les méthodes de test.</li><li>*HttpClientExtensions.cs* fournit des surcharges pour `SendAsync` pour envoyer des demandes au St.</li></ul> |
+| *Programmes d’assistance/utilitaires* | <ul><li>*Utilities.cs* contient la méthode `InitializeDbForTests` utilisée pour amorcer la base de données avec des données de test.</li><li>*HtmlHelpers.cs* fournit une méthode pour retourner un `IHtmlDocument` AngleSharp pour une utilisation par les méthodes de test.</li><li>*HttpClientExtensions.cs* fournit des surcharges pour `SendAsync` envoyer des demandes au St.</li></ul> |
 
-L’infrastructure de test est [xUnit](https://xunit.github.io/). Les tests d’intégration sont effectués à l’aide de [Microsoft. AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost), qui comprend le [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Étant donné que le package [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) est utilisé pour configurer l’hôte de test et le serveur de test, les packages `TestHost` et `TestServer` ne nécessitent pas de références de package directes dans le fichier projet de l’application de test ou dans la configuration du développeur dans le test lancement.
+L’infrastructure de test est [xUnit](https://xunit.github.io/). Les tests d’intégration sont effectués à l’aide de [Microsoft. AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost), qui comprend le [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver). Étant donné que le package [Microsoft. AspNetCore. Mvc. testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing) est utilisé pour configurer l’hôte de test et le serveur de test, les packages `TestHost` et `TestServer` ne requièrent pas de références de package directes dans le fichier projet ou la configuration de développeur de l’application de test dans l’application de test.
 
 **Amorçage de la base de données à des fins de test**
 

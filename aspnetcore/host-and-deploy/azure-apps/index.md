@@ -5,14 +5,14 @@ description: Cet article contient des liens vers des ressources d’hébergement
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: f9fc6e706046165c142e19ca38d97ac21914dc9b
-ms.sourcegitcommit: a104ba258ae7c0b3ee7c6fa7eaea1ddeb8b6eb73
+ms.openlocfilehash: 51d82d1deadb3d2adbdccd39c8d949e3f9f812fd
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74478758"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693841"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -51,7 +51,7 @@ Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NE
 
 ## <a name="application-configuration"></a>Configuration d’application
 
-### <a name="platform"></a>Plateforme
+### <a name="platform"></a>Platform
 
 L’architecture de la plateforme (x86/x64) d’une application App Services est définie dans les paramètres de l’application dans le portail Azure pour les applications hébergées sur un niveau d’hébergement de calcul (de base) de série A. Vérifiez que les paramètres de publication de l’application (par exemple, dans le [profil de publication Visual Studio (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) correspondent au paramètre dans la configuration de service de l’application dans le portail Azure.
 
@@ -87,13 +87,13 @@ Quand un paramètre d’application est créé ou modifié dans le portail Azure
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Quand une application utilise [l’Hôte générique](xref:fundamentals/host/generic-host), les variables d’environnement ne sont par défaut pas chargées dans une configuration de l’application ; le fournisseur de configuration doit être ajouté par le développeur. Ce dernier détermine le préfixe de variable d’environnement lors de l’ajout du fournisseur de configuration. Pour plus d’informations, voir <xref:fundamentals/host/generic-host> et [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
+Quand une application utilise l' [hôte générique](xref:fundamentals/host/generic-host), les variables d’environnement sont chargées dans la configuration de l’application lorsque <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> est appelé pour générer l’hôte. Pour plus d’informations, voir <xref:fundamentals/host/generic-host> et [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Quand une application génère l’hôte via [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder), les variables d’environnement qui permettent de configurer l’hôte utilisent le préfixe `ASPNETCORE_`. Pour plus d’informations, voir <xref:fundamentals/host/web-host> et [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
+Quand une application utilise l' [hôte Web](xref:fundamentals/host/web-host), les variables d’environnement sont chargées dans la configuration de l’application lorsque <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> est appelé pour générer l’hôte. Pour plus d’informations, voir <xref:fundamentals/host/web-host> et [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 ::: moniker-end
 
@@ -139,21 +139,23 @@ Les [clés de Protection des données](xref:security/data-protection/implementat
 Lors d’une permutation entre les emplacements de déploiement, aucun système utilisant la protection des données ne peut déchiffrer les données stockées à l’aide du porte-clés au sein de l’emplacement précédent. L’intergiciel (middleware) ASP.NET Cookie utilise la protection des données pour protéger ses cookies. Cela entraîne la déconnexion des utilisateurs des applications qui utilisent l’intergiciel ASP.NET Cookie standard. Pour une solution de porte-clés indépendante de l’emplacement, utilisez un fournisseur de porte-clés externe, tel que :
 
 * Stockage Blob Azure
-* Azure Key Vault
+* Azure Key Vault
 * Magasin SQL
 * Cache Redis
 
 Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
-## <a name="deploy-aspnet-core-30-to-azure-app-service"></a>Déployer ASP.NET Core 3,0 sur Azure App Service
+## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>Déployer une application ASP.NET Core qui utilise une version préliminaire de .NET Core
 
-ASP.NET Core 3,0 est pris en charge sur Azure App Service. Pour déployer une version préliminaire d’une version .NET Core ultérieure à .NET Core 3,0, utilisez l’une des techniques suivantes. Ces approches sont également utilisées lorsque le runtime est disponible, mais que le kit de développement logiciel (SDK) n’a pas été installé sur Azure App Service.
+Pour déployer une application qui utilise une version préliminaire de .NET Core, consultez les ressources suivantes. Ces approches sont également utilisées lorsque le runtime est disponible, mais que le kit de développement logiciel (SDK) n’a pas été installé sur Azure App Service.
 
 * [Spécifier la version de kit SDK .NET Core à l’aide de Azure Pipelines](#specify-the-net-core-sdk-version-using-azure-pipelines)
-* [Déployer une application en préversion autonome](#deploy-a-self-contained-preview-app).
-* [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers).
-* [Installer l’extension de site de préversion](#install-the-preview-site-extension).
+* [Déployer une application de prévisualisation autonome](#deploy-a-self-contained-preview-app)
+* [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers)
+* [Installer l’extension de site de version Preview](#install-the-preview-site-extension)
+
+Consultez le [tableau de bord ASP.net Core sur app service](https://aspnetcoreon.azurewebsites.net/) pour connaître la version de ASP.net Core disponible sur Azure App service.
 
 ### <a name="specify-the-net-core-sdk-version-using-azure-pipelines"></a>Spécifier la version de kit SDK .NET Core à l’aide de Azure Pipelines
 
@@ -196,7 +198,7 @@ Si un problème se produit avec l’extension de site en préversion, ouvrez un 
 1. Sélectionnez l’application web.
 1. Tapez « ex » dans la zone de recherche pour filtrer sur les « Extensions » ou faites défiler la liste outils de gestion.
 1. Sélectionner **Extensions**.
-1. Sélectionnez **Ajouter**.
+1. Sélectionnez **Ajouter** .
 1. Sélectionnez l’extension **ASP.NET Core {X.Y} ({x64|x86}) Runtime** dans la liste, où `{X.Y}` correspond à la préversion d’ASP.NET Core et `{x64|x86}` spécifie la plateforme.
 1. Sélectionnez **OK** pour accepter les conditions légales.
 1. Sélectionnez **OK** pour installer l’extension.
@@ -232,7 +234,7 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
-Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Exemple :
+Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -288,7 +290,7 @@ Utilisez Visual Studio ou les outils de l’interface CLI pour un [déploiement 
 1. Dans la boîte de dialogue **Publier** :
    * Confirmez que la configuration **Mise en production** est sélectionnée.
    * Ouvrez la liste déroulante **Mode de déploiement** et sélectionnez **Autonome**.
-   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`.
+   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`,
    * Si vous devez supprimer des fichiers supplémentaires lors du déploiement, ouvrez **Options de publication de fichiers** et sélectionnez la case à cocher pour supprimer des fichiers supplémentaires à la destination.
    * Sélectionnez **Enregistrer**.
 1. Créez un nouveau site ou mettez à jour un site existant en suivant les autres invites de l'Assistant de publication.
