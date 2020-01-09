@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 802d5c65423227e5fb7ccf39d692df2f0178ad34
-ms.sourcegitcommit: e6bd2bbe5683e9a7dbbc2f2eab644986e6dc8a87
+ms.openlocfilehash: 7fc3644df3dcb957f2537538aaa9506c6b38a480
+ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70238189"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75693971"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
@@ -23,7 +23,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 ::: moniker-end
 
 
-Consultez [Publier sur Azure à partir de Visual Studio pour Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) si vous utilisez macOS.
+Consultez [publier une application Web sur Azure App service à l’aide de Visual Studio pour Mac](https://docs.microsoft.com/visualstudio/mac/publish-app-svc?view=vsmac-2019) si vous travaillez sur MacOS.
 
 Pour résoudre un problème de déploiement App Service, consultez <xref:test/troubleshoot-azure-iis>.
 
@@ -61,7 +61,7 @@ La boîte de dialogue **Modifier l’authentification** s’affiche.
 
 Visual Studio crée la solution.
 
-## <a name="run-the-app"></a>Exécution de l'application
+## <a name="run-the-app"></a>Exécuter l'application
 
 * Appuyez sur CTRL+F5 pour exécuter le projet.
 * Testez les liens **À propos de** et **Contact**.
@@ -72,10 +72,10 @@ Visual Studio crée la solution.
 
 * Sélectionnez **S’inscrire**, puis inscrivez un nouvel utilisateur. Vous pouvez utiliser une adresse e-mail fictive. Quand vous effectuez l’envoi, la page affiche l’erreur suivante :
 
-    *« Erreur de serveur interne : Une opération de base de données a échoué lors du traitement de la requête. Exception SQL : Impossible d'ouvrir la base de données. Appliquer des migrations existantes pour le contexte de base de données d’application peut résoudre ce problème. »*
+    *«Erreur de serveur interne : une opération de base de données a échoué lors du traitement de la demande. Exception SQL : impossible d’ouvrir la base de données. L’application de migrations existantes pour le contexte de la base de la base de la base de de l’application peut résoudre ce problème*
 * Sélectionnez **Appliquer les migrations**, puis, une fois la page mise à jour, actualisez-la.
 
-![Erreur de serveur interne : Une opération de base de données a échoué lors du traitement de la requête. Exception SQL : Impossible d'ouvrir la base de données. Appliquer des migrations existantes pour le contexte de base de données d’application peut résoudre ce problème.](publish-to-azure-webapp-using-vs/_static/mig.png)
+![Erreur de serveur interne : Une opération de base de données a échoué lors du traitement de la requête. Exception SQL : Impossible d’ouvrir la base de données. Appliquer des migrations existantes pour le contexte de base de données d’application peut résoudre ce problème.](publish-to-azure-webapp-using-vs/_static/mig.png)
 
 L’application affiche l’adresse e-mail utilisée pour inscrire le nouvel utilisateur et un lien **Se déconnecter**.
 
@@ -144,7 +144,7 @@ Dans la page **Paramètres** de la boîte de dialogue **Publier** :
 
 * Sélectionnez **Enregistrer**. Visual Studio retourne à la boîte de dialogue **Publier**. 
 
-![Boîte de dialogue Publier : Panneau des paramètres](publish-to-azure-webapp-using-vs/_static/pubs.png)
+![Boîte de dialogue Publier : panneau Paramètres](publish-to-azure-webapp-using-vs/_static/pubs.png)
 
 Cliquez sur **Publier**. Visual Studio publie votre application sur Azure. Quand le déploiement est terminé, l’application est ouverte dans un navigateur.
 
@@ -180,11 +180,11 @@ Après avoir testé l’application, accédez au [portail Azure](https://portal.
 
 * Dans la page **Groupes de ressources**, sélectionnez **Supprimer**.
 
-![Portail Azure : Page Groupes de ressources](publish-to-azure-webapp-using-vs/_static/rgd.png)
+![Portail Azure : page Groupes de ressources](publish-to-azure-webapp-using-vs/_static/rgd.png)
 
 * Entrez le nom du groupe de ressources, puis sélectionnez **Supprimer**. Votre application et toutes les autres ressources créées dans ce didacticiel sont désormais supprimées d’Azure.
 
-### <a name="next-steps"></a>Étapes suivantes
+### <a name="next-steps"></a>Étapes suivantes :
 
 * <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 
