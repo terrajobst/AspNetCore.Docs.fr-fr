@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/javascript-interop
-ms.openlocfilehash: 2350870f8548a9c8df324182883a105706c12c20
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 7135e44278632ee53bdf899b95da9ad70d329045
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355749"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828124"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor l’interopérabilité JavaScript
 
@@ -363,4 +363,4 @@ Pour plus d’informations sur l’épuisement des ressources, consultez <xref:s
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Exemple InteropComponent. Razor (ASPNET/AspNetCore GitHub, version 3,0)](https://github.com/aspnet/AspNetCore/blob/release/3.0/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
+* [Exemple InteropComponent. Razor (référentiel GitHub dotnet/AspNetCore, branche de version 3,0)](https://github.com/dotnet/AspNetCore/blob/release/3.0/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)

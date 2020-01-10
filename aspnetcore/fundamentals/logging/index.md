@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le framework de journalisation fourni p
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2019
+ms.date: 01/08/2020
 uid: fundamentals/logging/index
-ms.openlocfilehash: e1c50c4592b21d56ed813dac43204d63f1bfe46c
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: d9ef6694b6c0b0a88b13d60915be6e04ebdffb28
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359346"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829047"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>Journalisation dans .NET Core et ASP.NET Core
 
@@ -22,7 +22,7 @@ Par [Tom Dykstra](https://github.com/tdykstra) et [Steve Smith](https://ardalis.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. Les parties spécifiques à la journalisation de ces extraits de code s’appliquent à n’importe quelle application .NET Core qui utilise l' [hôte générique](xref:fundamentals/host/generic-host). Pour plus d’informations sur l’utilisation de l’hôte générique dans les applications de console non web, consultez [Services hébergés](xref:fundamentals/host/hosted-services).
+La plupart des exemples de code présentés dans cet article proviennent d’applications ASP.NET Core. Les parties spécifiques à la journalisation de ces extraits de code s’appliquent à n’importe quelle application .NET Core qui utilise l' [hôte générique](xref:fundamentals/host/generic-host). Pour obtenir un exemple d’utilisation de l’hôte générique dans une application de console non Web, consultez le fichier *Program.cs* de l' [exemple d’application tâches en arrière-plan](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/hosted-services/samples) (<xref:fundamentals/host/hosted-services>).
 
 Le code de journalisation pour les applications sans hôte générique diffère dans la façon dont les [fournisseurs sont ajoutés](#add-providers) et les [enregistreurs d'événements créés](#create-logs). Des exemples de code non hôte sont présentés dans ces sections de l’article.
 

@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 09/06/2019
 uid: client-side/spa-services
-ms.openlocfilehash: 52285999d7710cc3198836b9246596980cfc1666
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: caff1a735de3274b371f67e6e485dc42e579452c
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355786"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828215"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Utilisez les services JavaScript pour créer des applications à page unique dans ASP.NET Core
 
@@ -23,7 +23,7 @@ Une Application à Page unique (SPA) est un type d’application web en raison d
 ::: moniker range=">= aspnetcore-3.0"
 
 > [!WARNING]
-> Les fonctionnalités décrites dans cet article sont obsolètes à partir de ASP.NET Core 3,0. Un mécanisme d’intégration de frameworks SPA plus simple est disponible dans le package NuGet [Microsoft. AspNetCore. SpaServices. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions) . Pour plus d’informations, consultez [[Announcement] Obsoleting Microsoft. AspNetCore. SpaServices et Microsoft. AspNetCore. NodeServices](https://github.com/aspnet/AspNetCore/issues/12890).
+> Les fonctionnalités décrites dans cet article sont obsolètes à partir de ASP.NET Core 3,0. Un mécanisme d’intégration de frameworks SPA plus simple est disponible dans le package NuGet [Microsoft. AspNetCore. SpaServices. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices.Extensions) . Pour plus d’informations, consultez [[Announcement] Obsoleting Microsoft. AspNetCore. SpaServices et Microsoft. AspNetCore. NodeServices](https://github.com/dotnet/AspNetCore/issues/12890).
 
 ::: moniker-end
 

@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: f443fe0fbaaa1facd09edc0878c048772895ecff
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1bdb8b10a24c65735f49f04285e4129cb77eb3fb
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881180"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828943"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>Considérations relatives à la sécurité dans ASP.NET Core SignalR
 
@@ -35,7 +35,15 @@ Pour plus d’informations sur la configuration de CORS, consultez [activer les 
 
 * Autorisez les origines attendues spécifiques. L’autorisation d’une origine est possible, mais elle n’est **pas** sécurisée ou recommandée.
 * Les méthodes HTTP `GET` et `POST` doivent être autorisées.
-* Les informations d’identification doivent être activées, même lorsque l’authentification n’est pas utilisée.
+* Les informations d’identification doivent être autorisées afin que les sessions rémanentes basées sur des cookies fonctionnent correctement. Ils doivent être activés même lorsque l’authentification n’est pas utilisée.
+
+<!--
+::: moniker range=">= aspnetcore-5.0"  // Moniker here just to make sure this doesn't get missed in the 5.0 version update.
+However, in 5.0 we have provided an option in the TypeScript client to not use credentials.
+The not to use credentials option should only be used when you know 100% that credentials like Cookies are not needed in your app (cookies are used by azure app service when using multiple servers)
+
+For more info, see https://github.com/aspnet/AspNetCore.Docs/issues/16003
+.-->
 
 Par exemple, la stratégie CORS suivante permet à un client de navigateur SignalR hébergé sur `https://example.com` d’accéder à l’application SignalR hébergée sur `https://signalr.example.com`:
 

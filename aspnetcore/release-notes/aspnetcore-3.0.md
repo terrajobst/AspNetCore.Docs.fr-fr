@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 4ade13c38880c9915ec590297f2a43548ca400a8
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 1dee9a7e1cc381547e7ece71f302f407223dc838
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880829"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829112"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -36,11 +36,11 @@ scénarios pris en charge par Blazor Framework :
 * Prise en charge de l’injection de dépendances
 * Formulaires et validation
 * Créer des bibliothèques de composants avec des bibliothèques de classes Razor
-* Interopérabilité de JavaScript
+* Interopérabilité JavaScript
 
 Pour plus d'informations, consultez <xref:blazor/index>.
 
-### <a name="opno-locblazor-server"></a>Serveur Blazor
+### <a name="opno-locblazor-server"></a>Serveur de Blazor
 
 Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées via une connexion SignalR. Blazor Server est pris en charge dans ASP.NET Core 3,0.
 
@@ -536,7 +536,7 @@ Les assemblys les plus notables supprimés de l’infrastructure partagée ASP.N
 * [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) (JSON.net). Pour ajouter Json.NET à ASP.NET Core 3,0, consultez [Ajouter la prise en charge du format JSON basé sur Newtonsoft. JSON](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support). ASP.NET Core 3,0 introduit `System.Text.Json` pour la lecture et l’écriture de JSON. Pour plus d’informations, consultez [nouvelle SÉRIALISATION JSON](#new-json-serialization) dans ce document.
 * [Entity Framework Core](/ef/core/)
 
-Pour obtenir la liste complète des assemblys supprimés de l’infrastructure partagée, consultez [assemblys en cours de suppression de Microsoft. AspNetCore. App 3,0](https://github.com/aspnet/AspNetCore/issues/3755). Pour plus d’informations sur la motivation de cette modification, consultez [modifications critiques apportées à Microsoft. AspNetCore. app dans 3,0](https://github.com/aspnet/Announcements/issues/325) et [un premier aperçu des modifications apportées à ASP.net Core 3,0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/).
+Pour obtenir la liste complète des assemblys supprimés de l’infrastructure partagée, consultez [assemblys en cours de suppression de Microsoft. AspNetCore. App 3,0](https://github.com/dotnet/AspNetCore/issues/3755). Pour plus d’informations sur la motivation de cette modification, consultez [modifications critiques apportées à Microsoft. AspNetCore. app dans 3,0](https://github.com/aspnet/Announcements/issues/325) et [un premier aperçu des modifications apportées à ASP.net Core 3,0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/).
 
 <!-- 
 ## Additional information

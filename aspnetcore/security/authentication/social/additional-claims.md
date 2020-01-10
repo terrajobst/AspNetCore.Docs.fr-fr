@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2019
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 72710d249d3210208dd9b0356a700ba02a0b727a
-ms.sourcegitcommit: dd026eceee79e943bd6b4a37b144803b50617583
+ms.openlocfilehash: 44b3e72085e6265319b53b548f7f7ddde2adbd14
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72378883"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828579"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conserver des revendications et des jetons supplémentaires à partir de fournisseurs externes dans ASP.NET Core
 
@@ -51,7 +51,7 @@ Spécifiez la liste des autorisations à récupérer du fournisseur en spécifia
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
-| Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
+| de Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
 Dans l’exemple d’application, la portée `userinfo.profile` de Google est automatiquement ajoutée par l’infrastructure quand <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> est appelé sur le <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder>. Si l’application requiert des étendues supplémentaires, ajoutez-les aux options. Dans l’exemple suivant, l’étendue Google `https://www.googleapis.com/auth/user.birthday.read` est ajoutée afin de récupérer l’anniversaire d’un utilisateur :
@@ -191,7 +191,7 @@ Spécifiez la liste des autorisations à récupérer du fournisseur en spécifia
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
-| Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
+| de Microsoft | `https://login.microsoftonline.com/common/oauth2/v2.0/authorize` |
 | Twitter   | `https://api.twitter.com/oauth/authenticate`                     |
 
 Dans l’exemple d’application, la portée `userinfo.profile` de Google est automatiquement ajoutée par l’infrastructure quand <xref:Microsoft.Extensions.DependencyInjection.GoogleExtensions.AddGoogle*> est appelé sur le <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilder>. Si l’application requiert des étendues supplémentaires, ajoutez-les aux options. Dans l’exemple suivant, l’étendue Google `https://www.googleapis.com/auth/user.birthday.read` est ajoutée afin de récupérer l’anniversaire d’un utilisateur :
@@ -300,4 +300,4 @@ Authentication Properties
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* L' [application SocialSample d’ingénierie ASPNET/AspNetCore](https://github.com/aspnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample) &ndash; l’exemple d’application liée se trouve sur la branche d’ingénierie de l' `master` [ASPNET/AspNetCore GitHub référentiel](https://github.com/aspnet/AspNetCore) . La branche `master` contient du code sous développement actif pour la prochaine version de ASP.NET Core. Pour afficher une version de l’exemple d’application pour une version finale de ASP.NET Core, utilisez la liste déroulante **branche** pour sélectionner une branche de version (par exemple `release/{X.Y}`).
+* L' [application SocialSample d’ingénierie dotnet/AspNetCore](https://github.com/dotnet/AspNetCore/tree/master/src/Security/Authentication/samples/SocialSample) &ndash; l’exemple d’application liée se trouve sur la branche ingénieurs [de dotnet/AspNetCore GitHub référentiel](https://github.com/dotnet/AspNetCore) `master`. La branche `master` contient du code sous développement actif pour la prochaine version de ASP.NET Core. Pour afficher une version de l’exemple d’application pour une version finale de ASP.NET Core, utilisez la liste déroulante **branche** pour sélectionner une branche de version (par exemple `release/{X.Y}`).

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/20/2019
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 49a0f59fb6930235de10c726f3695f2a5352efb2
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: b0f5d44f153a095a6108a12ee91f4cc46fe0a0de
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74251964"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829008"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Résoudre les problèmes de ASP.NET Core sur Azure App Service et IIS
 
@@ -63,7 +63,7 @@ L’erreur est généralement causée par un déploiement rompu sur le système 
 * Le processus de déploiement n’a pas réussi à déplacer tous les fichiers et dossiers de l’application vers le dossier de déploiement sur le système d’hébergement.
 * Le fichier *Web. config* est manquant dans le déploiement ou le contenu du fichier *Web. config* est incorrect.
 
-Procédez comme suit :
+Effectuez les étapes suivantes :
 
 1. Supprimez tous les fichiers et dossiers du dossier de déploiement sur le système d’hébergement.
 1. Redéployez le contenu du dossier de *publication* de l’application sur le système d’hébergement à l’aide de votre méthode de déploiement normale, telle que Visual Studio, PowerShell ou le déploiement manuel :
@@ -74,7 +74,7 @@ Procédez comme suit :
 
 Pour plus d’informations sur la disposition d’une application ASP.NET Core publiée, consultez <xref:host-and-deploy/directory-structure>. Pour plus d’informations sur le fichier *Web. config* , consultez <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>.
 
-### <a name="500-internal-server-error"></a>500 Erreur interne du serveur
+### <a name="500-internal-server-error"></a>Erreur de serveur interne 500
 
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
 
@@ -109,7 +109,7 @@ Une erreur inconnue s’est produite lors du chargement des composants du [Modul
 
 * Contactez le [Support Microsoft](https://support.microsoft.com/oas/default.aspx?prid=15832) (sélectionnez **Outils de développement**, puis **ASP.NET Core**).
 * Posez une question sur Stack Overflow.
-* Signalez un problème sur notre [dépôt GitHub](https://github.com/aspnet/AspNetCore).
+* Signalez un problème sur notre [dépôt GitHub](https://github.com/dotnet/AspNetCore).
 
 ### <a name="50030-in-process-startup-failure"></a>500.30 - Échec du démarrage in-process
 
@@ -507,7 +507,7 @@ Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module#enh
 
 ### <a name="enable-the-developer-exception-page"></a>Afficher la page d’exception de développeur
 
-Vous pouvez ajouter la `ASPNETCORE_ENVIRONMENT`variable d’environnement [ au fichier web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) pour exécuter l’application dans l’environnement de développement. Tant que l’environnement n’est pas substitué dans le démarrage de l’application par `UseEnvironment` sur le générateur de l’hôte, la définition de la variable d’environnement permet à la [page d’exception de développeur](xref:fundamentals/error-handling) d’apparaître quand l’application est exécutée.
+La [variable d’environnement `ASPNETCORE_ENVIRONMENT` peut être ajoutée à Web. config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) pour exécuter l’application dans l’environnement de développement. Tant que l’environnement n’est pas substitué dans le démarrage de l’application par `UseEnvironment` sur le générateur de l’hôte, la définition de la variable d’environnement permet à la [page d’exception de développeur](xref:fundamentals/error-handling) d’apparaître quand l’application est exécutée.
 
 ::: moniker range=">= aspnetcore-2.2"
 

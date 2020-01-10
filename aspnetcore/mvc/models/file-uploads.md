@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/04/2019
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 20e58660185a3055e06e92d9136e80e2394a470d
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: b5433576ff3e997e6d80201236be2d8463a52d07
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881068"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829229"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -716,7 +716,7 @@ La limite de demandes par défaut (`maxAllowedContentLength`) est de 30 millions
 
 Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se produit pas dans le cas d’un hébergement sur Kestrel. Pour plus d’informations, consultez [limites de demande \<requestLimits >](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
-Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (ASPNET/AspNetCore #2711)](https://github.com/aspnet/AspNetCore/issues/2711).
+Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (dotnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
 ## <a name="troubleshoot"></a>Dépannage
 
@@ -1438,7 +1438,7 @@ La limite de demandes par défaut (`maxAllowedContentLength`) est de 30 millions
 
 Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se produit pas dans le cas d’un hébergement sur Kestrel. Pour plus d’informations, consultez [limites de demande \<requestLimits >](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
-Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (ASPNET/AspNetCore #2711)](https://github.com/aspnet/AspNetCore/issues/2711).
+Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (dotnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
 ## <a name="troubleshoot"></a>Dépannage
 

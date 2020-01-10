@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 032105c67e15ab94635ae6fadea103450c7eb0fb
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: d7d4eece935bd83b69a6a5d81898012b99d73193
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944237"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828904"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce document montre comment :
 
@@ -415,7 +415,7 @@ dotnet dev-certs https --trust
 
 Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre de navigateur pour l’application.
 
-Consultez [erreur HTTPS à l’aide de IIS Express (ASPNET/AspNetCore #16892)](https://github.com/aspnet/AspNetCore/issues/16892) pour résoudre les problèmes liés aux certificats dans Visual Studio.
+Consultez [erreur HTTPS à l’aide de IIS Express (dotnet/AspNetCore #16892)](https://github.com/dotnet/AspNetCore/issues/16892) pour résoudre les problèmes liés aux certificats dans Visual Studio.
 
 ### <a name="iis-express-ssl-certificate-used-with-visual-studio"></a>IIS Express certificat SSL utilisé avec Visual Studio
 

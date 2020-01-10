@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: a4583d49eb0b42f1fa6e3d8c444d263cba34da79
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 8df070b580b6125db6616b33a81f3ffebad69f3a
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356846"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828917"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -337,7 +337,7 @@ La signature de méthode de `PriorityList.Invoke` est synchrone, mais Razor trou
 
 ## <a name="all-view-component-parameters-are-required"></a>Tous les paramètres du composant de vue sont requis.
 
-Chaque paramètre d’un composant de vue est un attribut requis. Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore/issues/5011). Si un paramètre est omis :
+Chaque paramètre d’un composant de vue est un attribut requis. Consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore/issues/5011). Si un paramètre est omis :
 
 * La signature de la méthode `InvokeAsync` ne correspond pas, et la méthode n’est pas exécutée.
 * ViewComponent n’affiche aucun balisage.

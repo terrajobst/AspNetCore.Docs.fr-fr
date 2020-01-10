@@ -7,22 +7,22 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: f58d92634ce1ef6110533d56c40b7520dda90514
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.openlocfilehash: 31a5e47d772e7416646c4d83c3209d7d2b254199
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897047"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829164"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
 ASP.NET Core 3,0 ou version ultérieure offre une authentification dans les applications à page unique (SPAs) à l’aide de la prise en charge de l’autorisation de l’API. ASP.NET Core identité pour l’authentification et le stockage des utilisateurs est associée à [IdentityServer](https://identityserver.io/) pour l’implémentation d’Open ID Connect.
 
-Un paramètre d’authentification a été ajouté aux modèles de projet **angulaire** et **REACT** qui est similaire au paramètre d’authentification dans l' **application Web (Model-View-Controller)** et l' **application Web** (Razor pages) modèles de projet. Les valeurs de paramètre autorisées sont **None** et **Individual**. Le modèle de projet **REACT. js et Redux** ne prend pas en charge le paramètre d’authentification pour l’instant.
+Un paramètre d’authentification a été ajouté aux modèles de projet **angulaire** et **REACT** qui est similaire au paramètre d’authentification dans les modèles de projet **application Web (Model-View-Controller)** et **application Web** (Razor pages). Les valeurs de paramètre autorisées sont **None** et **Individual**. Le modèle de projet **REACT. js et Redux** ne prend pas en charge le paramètre d’authentification pour l’instant.
 
 ## <a name="create-an-app-with-api-authorization-support"></a>Créer une application avec prise en charge des autorisations d’API
 
-L’authentification et l’autorisation de l’utilisateur peuvent être utilisées avec les deux types d’angle et de réaction. Ouvrez une interface de commande, puis exécutez la commande suivante :
+L’authentification et l’autorisation de l’utilisateur peuvent être utilisées avec les deux types d’angle et de réaction. Ouvrez une invite de commandes et exécutez la commande suivante :
 
 **Angulaire**:
 
@@ -42,7 +42,7 @@ La commande précédente crée une application ASP.NET Core avec un répertoire 
 
 Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse :
 
-### <a name="startup-class"></a>Classe Startup
+### <a name="startup-class"></a>Classe de démarrage
 
 La classe `Startup` présente les ajouts suivants :
 
@@ -58,7 +58,7 @@ La classe `Startup` présente les ajouts suivants :
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer avec une méthode d’assistance `AddApiAuthorization` supplémentaire qui installe certaines conventions de ASP.NET Core par défaut en plus de IdentityServer :
+  * IdentityServer avec une méthode d’assistance `AddApiAuthorization` supplémentaire qui définit des conventions de ASP.NET Core par défaut par-dessus IdentityServer :
 
     ```csharp
     services.AddIdentityServer()
@@ -95,7 +95,7 @@ Cette méthode d’assistance configure un modèle de stratégie pour l’applic
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-Dans le fichier *Controllers\WeatherForecastController.cs* , notez l’attribut `[Authorize]` appliqué à la classe qui indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut est configurée pour utiliser le schéma d’authentification par défaut, qui est configurée par `AddIdentityServerJwt` vers le schéma de stratégie mentionné plus haut, ce qui rend le `JwtBearerHandler` configuré par une telle méthode d’assistance le gestionnaire par défaut pour les demandes à application.
+Dans le fichier *Controllers\WeatherForecastController.cs* , notez l’attribut `[Authorize]` appliqué à la classe qui indique que l’utilisateur doit être autorisé en fonction de la stratégie par défaut pour accéder à la ressource. La stratégie d’autorisation par défaut est configurée pour utiliser le schéma d’authentification par défaut, qui est configurée par `AddIdentityServerJwt` vers le schéma de stratégie mentionné plus haut, ce qui fait du `JwtBearerHandler` configuré par une telle méthode d’assistance le gestionnaire par défaut pour les demandes à l’application.
 
 ### <a name="applicationdbcontext"></a>ApplicationDbContext
 
@@ -121,7 +121,7 @@ Dans le fichier *appSettings. JSON* de la racine du projet, une nouvelle section
 }
 ```
 
-### <a name="appsettingsdevelopmentjson"></a>rend. Development. JSON
+### <a name="appsettingsdevelopmentjson"></a>appsettings.Development.json
 
 Dans le *appSettings. Fichier Development. JSON* de la racine du projet, il existe une section `IdentityServer` qui décrit la clé utilisée pour signer les jetons. Lors du déploiement en production, une clé doit être approvisionnée et déployée parallèlement à l’application, comme expliqué dans la section [déploiement en production](#deploy-to-production) .
 
@@ -185,7 +185,7 @@ services.Configure<JwtBearerOptions>(
 
 Le gestionnaire JWT de l’API déclenche des événements qui permettent de contrôler le processus d’authentification à l’aide de `JwtBearerEvents`. Pour assurer la prise en charge de l’autorisation d’API, `AddIdentityServerJwt` inscrit ses propres gestionnaires d’événements.
 
-Pour personnaliser la gestion d’un événement, encapsulez le gestionnaire d’événements existant avec une logique supplémentaire, le cas échéant. Exemple :
+Pour personnaliser la gestion d’un événement, encapsulez le gestionnaire d’événements existant avec une logique supplémentaire, le cas échéant. Par exemple :
 
 ```csharp
 services.Configure<JwtBearerOptions>(
@@ -260,7 +260,7 @@ async populateWeatherData() {
 }
 ```
 
-## <a name="deploy-to-production"></a>Déployer en production
+## <a name="deploy-to-production"></a>Déployer en production
 
 Pour déployer l’application en production, vous devez configurer les ressources suivantes :
 
@@ -301,7 +301,7 @@ Après cette étape, redémarrez l’application et celle-ci doit être fonction
 
 La prise en charge de l’autorisation de l’API s’appuie sur IdentityServer avec un ensemble de conventions, de valeurs par défaut et d’améliorations pour simplifier l’expérience de la création de la demande. Inutile de préciser que la pleine puissance de IdentityServer est disponible en arrière-plan si les intégrations de ASP.NET Core ne couvrent pas votre scénario. La prise en charge ASP.NET Core est axée sur les applications « internes », où toutes les applications sont créées et déployées par notre organisation. Par conséquent, le support n’est pas proposé pour les éléments tels que le consentement ou la Fédération. Pour ces scénarios, utilisez IdentityServer et suivez leur documentation.
 
-### <a name="application-profiles"></a>Profils d’application
+### <a name="application-profiles"></a>Profils de l'application
 
 Les profils d’application sont des configurations prédéfinies pour les applications qui définissent davantage leurs paramètres. À ce stade, les profils suivants sont pris en charge :
 
