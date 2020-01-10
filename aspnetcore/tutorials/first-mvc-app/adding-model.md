@@ -5,12 +5,12 @@ description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
 ms.date: 8/15/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 2fac37e7069fb2a464d4de1da8912197f7adf8a8
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 5d4251a2577111324aa2cfb715c41e3ecad5a9d1
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73761087"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722793"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -32,9 +32,13 @@ Dans ce didacticiel, vous écrivez d’abord les classes du modèle, puis EF Cor
 
 Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** > **Classe**. Nommez le fichier *Movie.cs*.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ajoutez un fichier nommé *Movie.cs* au dossier *Models*.
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+Cliquez avec le bouton droit sur le dossier *modèles* > **Ajouter** > **nouvelle classe** > **classe vide**. Nommez le fichier *Movie.cs*.
 
 ---
 
@@ -55,7 +59,7 @@ Les [DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) sont tr
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package** (PMC).
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet** > la **console du gestionnaire de package** (PMC).
 
 ![Menu Console du Gestionnaire de package](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -67,9 +71,26 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 La commande précédente ajoute le fournisseur EF Core SQL Server. Le package du fournisseur installe le package EF Core en tant que dépendance. Plus loin dans ce tutoriel, d’autres packages sont installés automatiquement lors de l’étape de génération de modèles automatique.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+Dans le menu **projet** , sélectionnez **gérer les packages NuGet**.
+
+Dans le champ de **recherche** dans l’angle supérieur droit, entrez `Microsoft.EntityFrameworkCore.SQLite` et appuyez sur la touche **retour** pour effectuer la recherche. Sélectionnez le package NuGet correspondant, puis cliquez sur le bouton **Ajouter un package** .
+
+![Ajouter Entity Framework Core package NuGet](~/tutorials/first-mvc-app-mac/adding-model/_static/add-nuget-packages.png)
+
+La boîte de dialogue **Sélectionner les projets** s’affiche, avec le projet `MvcMovie` sélectionné. Appuyez sur le bouton **OK** .
+
+Une boîte de dialogue d' **acceptation de licence** s’affiche. Passez en revue les licences comme vous le souhaitez, puis cliquez sur le bouton **accepter** .
+
+Répétez les étapes ci-dessus pour installer les packages NuGet suivants :
+ * `Microsoft.VisualStudio.Web.CodeGeneration.Design`
+ * `Microsoft.EntityFrameworkCore.SqlServer`
+ * `Microsoft.EntityFrameworkCore.Design`
 
 ---
 
@@ -93,7 +114,7 @@ Le code précédent crée une propriété [DbSet\<Movie>](/dotnet/api/microsoft.
 
 ASP.NET Core comprend [l’injection de dépendances (DI)](xref:fundamentals/dependency-injection). Les services (tels que le contexte de base de données EF Core) doivent être inscrits auprès de l’injection de dépendances au démarrage de l’application. Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur. Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel. Dans cette section, vous allez inscrire le contexte de base de données auprès du conteneur d’injection de dépendances.
 
-En tête du fichier `using`Startup.cs *, ajoutez les instructions*  suivantes :
+En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
 
 ```csharp
 using MvcMovie.Data;
@@ -148,7 +169,7 @@ Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **C
 
 Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
-* **Classe de modèle :** *Movie (MvcMovie.Models)*
+* **Classe de modèle :** *Movie (MvcMovie. Models)*
 * **Classe de contexte de données :** *MvcMovieContext (MvcMovie. Data)*
 
 ![Ajouter un contexte de données](adding-model/_static/dc3.png)
@@ -159,7 +180,7 @@ Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
 Visual Studio crée :
 
-* contrôleur de films (*Controllers/MoviesController.cs*) ;
+* Un contrôleur de films (*Controllers/MoviesController.cs*)
 * Des fichiers de vues Razor pour les pages Create, Delete, Details, Edit et Index (*Views/Movies/\*.cshtml*)
 
 La création automatique de ces fichiers est appelée *génération de modèles automatique*.
@@ -174,7 +195,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante : .
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -186,7 +207,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante : .
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -208,7 +229,7 @@ Utilisez la fonctionnalité [Migrations](xref:data/ef-mvc/migrations) d’EF Co
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package** (PMC).
+Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet** > la **console du gestionnaire de package** (PMC).
 
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
@@ -375,7 +396,7 @@ Comme l’objet `Model` est fortement typé (en tant qu’objet `IEnumerable<Mov
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Globalisation et localisation](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]
@@ -419,7 +440,7 @@ Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **C
 
 Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
-* **Classe de modèle :** *Movie (MvcMovie.Models)*
+* **Classe de modèle :** *Movie (MvcMovie. Models)*
 * **Classe de contexte de données :** sélectionnez l’icône **+** et ajoutez le **MvcMovie.Models.MvcMovieContext** par défaut.
 
 ![Ajouter un contexte de données](adding-model/_static/dc.png)
@@ -433,7 +454,7 @@ Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 Visual Studio crée :
 
 * Une [classe de contexte de base de données](xref:data/ef-mvc/intro#create-the-database-context) Entity Framework Core (*Data/MvcMovieContext.cs*)
-* contrôleur de films (*Controllers/MoviesController.cs*) ;
+* Un contrôleur de films (*Controllers/MoviesController.cs*)
 * Des fichiers de vues Razor pour les pages Create, Delete, Details, Edit et Index (*Views/Movies/\*.cshtml*)
 
 La création automatique du contexte de base de données et de méthodes d’action et de vues [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (créer, lire, mettre à jour et supprimer) porte le nom de *génération de modèles automatique*.
@@ -456,7 +477,7 @@ La création automatique du contexte de base de données et de méthodes d’act
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante : .
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -475,7 +496,7 @@ La création automatique du contexte de base de données et de méthodes d’act
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante : .
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -524,7 +545,7 @@ Dans cette section, vous devez effectuer les tâches suivantes :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package** (PMC).
+1. Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet** > la **console du gestionnaire de package** (PMC).
 
    ![Menu Console du Gestionnaire de package](~/tutorials/first-mvc-app/adding-model/_static/pmc.png)
 
@@ -684,11 +705,11 @@ Comme l’objet `Model` est fortement typé (en tant qu’objet `IEnumerable<Mov
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Globalisation et localisation](xref:fundamentals/localization)
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout d’une vue](adding-view.md)
-> [Suivant : Utilisation de SQL](working-with-sql.md)
+> [Précédente ajout d’une vue](adding-view.md)
+> [suivant l’utilisation d’une base de données](working-with-sql.md)
 
 ::: moniker-end

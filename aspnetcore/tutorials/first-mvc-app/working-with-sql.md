@@ -5,18 +5,18 @@ description: Découvrez comment utiliser SQL Server LocalDB ou SQLite dans une a
 ms.author: riande
 ms.date: 8/16/2019
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: de392f4220cf0182d02a20f387164d2f4b184b58
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: d556f07111fb2022a1c2f1a066459566e302835d
+ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72289080"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75722767"
 ---
 # <a name="work-with-sql-in-aspnet-core"></a>Utiliser SQL dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’objet `MvcMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
@@ -48,7 +48,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu Affichage](working-with-sql/_static/ssox.png)
+  ![Menu View](working-with-sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` **> Concepteur de vue**.
 
@@ -117,7 +117,7 @@ Supprimez tous les enregistrements dans la base de données (pour que la méthod
 
 ---
 
-L’application affiche les données de valeurs de départ.
+L’application affiche les données de départ.
 
 ![Application MVC Movie ouverte dans Microsoft Edge, affichant les données relatives aux films](working-with-sql/_static/m55.png)
 
@@ -128,7 +128,7 @@ L’application affiche les données de valeurs de départ.
 
 ::: moniker range="< aspnetcore-3.0"
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’objet `MvcMovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
@@ -160,7 +160,7 @@ LocalDB est une version allégée du moteur de base de données SQL Server Expre
 
 * Dans le menu **Affichage**, ouvrez **l’Explorateur d’objets SQL Server** (SSOX).
 
-  ![Menu Affichage](working-with-sql/_static/ssox.png)
+  ![Menu View](working-with-sql/_static/ssox.png)
 
 * Cliquez avec le bouton droit sur la table `Movie` **> Concepteur de vue**.
 
@@ -229,9 +229,9 @@ Supprimez tous les enregistrements dans la base de données (pour que la méthod
 
 ---
 
-L’application affiche les données de valeurs de départ.
+L’application affiche les données de départ.
 
-![Application MVC Movie ouverte dans Microsoft Edge, affichant les données relatives aux films](working-with-sql/_static/m55.png)
+![Application MVC Movie ouverte dans Microsoft Edge, affichant les données relatives aux films](working-with-sql/_static/m55_mac.png)
 
 > [!div class="step-by-step"]
 > [Précédent](adding-model.md)
