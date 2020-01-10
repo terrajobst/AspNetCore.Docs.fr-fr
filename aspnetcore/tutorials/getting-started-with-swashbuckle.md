@@ -1,17 +1,17 @@
 ---
 title: Bien démarrer avec Swashbuckle et ASP.NET Core
 author: zuckerthoben
-description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’interface utilisateur Swagger.
+description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’IU Swagger.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: dea8564a1ee94d6ff1d96e9aab68205292765178
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: f3c20eb085fa5277dd37b7323b5a7d7d286bcd99
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881250"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866070"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -25,7 +25,7 @@ Swashbuckle compte trois composants principaux :
 
 * [Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/) : générateur Swagger qui crée des objets `SwaggerDocument` directement à partir de vos routes, contrôleurs et modèles. Il est généralement associé à l’intergiciel de point de terminaison Swagger pour exposer automatiquement Swagger JSON.
 
-* [Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): version incorporée de l’outil d'interface utilisateur Swagger. Elle interprète Swagger JSON afin de générer une expérience complète et personnalisable pour décrire la fonctionnalité de l’API web. Elle inclut des ateliers de test intégrés pour les méthodes publiques.
+* [Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): version incorporée de l’outil IU Swagger. Elle interprète Swagger JSON afin de générer une expérience complète et personnalisable pour décrire la fonctionnalité de l’API web. Il inclut des ateliers de test intégrés pour les méthodes publiques.
 
 ## <a name="package-installation"></a>Installation de package
 
@@ -39,7 +39,7 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
   * Exécutez la commande suivante :
 
     ```powershell
-    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc4
+    Install-Package Swashbuckle.AspNetCore -Version 5.0.0-rc5
     ```
 
 * À partir de la boîte de dialogue **Gérer les packages NuGet** :
@@ -101,7 +101,7 @@ Ajoutez le générateur Swagger à la collection de services dans la méthode `S
 
 ::: moniker-end
 
-Dans la méthode `Startup.Configure`, activez l’intergiciel pour traiter le document JSON généré et l’interface utilisateur Swagger :
+Dans la méthode `Startup.Configure`, activez l’intergiciel pour traiter le document JSON généré et l’IU Swagger :
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
@@ -122,7 +122,7 @@ Lancez l’application et accédez à `http://localhost:<port>/swagger/v1/swagge
 L’interface utilisateur Swagger se trouve à l’adresse `http://localhost:<port>/swagger`. Explorez l’API via l’interface utilisateur Swagger et incorporez-la dans d’autres programmes.
 
 > [!TIP]
-> Pour utiliser l’interface utilisateur Swagger à la racine de l’application (`http://localhost:<port>/`), définissez la propriété `RoutePrefix` sur une chaîne vide :
+> Pour utiliser l’IU Swagger à la racine de l’application (`http://localhost:<port>/`), définissez la propriété `RoutePrefix` sur une chaîne vide :
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
 
@@ -185,7 +185,7 @@ Vous pouvez activer les commentaires XML en adoptant l’une des approches suiva
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* Ouvrez la boîte de dialogue **Options du projet** > **Générer**>**Compilateur**
+* Ouvrir la boîte de dialogue **Options du projet** > **générer** > **compiler**
 * Cochez la case **Générer la documentation XML** dans la section **Options générales**.
 
 ::: moniker-end
@@ -296,11 +296,11 @@ Quand vous ajoutez des commentaires avec trois barres obliques à une action, la
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Delete&highlight=1-3)]
 
-L’interface utilisateur Swagger affiche le texte interne de l’élément `<summary>` du code précédent :
+L’IU Swagger affiche le texte interne de l’élément `<summary>` du code précédent :
 
 ![Interface utilisateur de Swagger affichant le commentaire XML « Deletes a specific TodoItem. » pour la méthode DELETE.](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
 
-L’interface utilisateur est définie par le schéma JSON généré :
+L’IU est définie par le schéma JSON généré :
 
 ```json
 "delete": {
@@ -349,7 +349,7 @@ Ajoutez un élément [\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remark
 
 ::: moniker-end
 
-Notez les améliorations de l’interface utilisateur avec ces commentaires supplémentaires :
+Notez les améliorations de l’IU avec ces commentaires supplémentaires :
 
 ![Interface utilisateur de Swagger avec des commentaires supplémentaires affichés](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
 
@@ -473,7 +473,7 @@ Activez le middleware de fichiers statiques :
 
 ::: moniker-end
 
-Récupérez le contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/master/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
+Faites l’acquisition du contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/master/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
 
 Créez un dossier *wwwroot/swagger/ui* et copiez dedans le contenu du dossier *dist*.
 

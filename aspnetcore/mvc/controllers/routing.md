@@ -5,12 +5,12 @@ description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergic
 ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: b0cd3df6eb0efa90fc76d206413016d6c624285c
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 8cf7e74df292a614f287eff8561a22187f6558ce
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881074"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866057"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -111,7 +111,7 @@ routes.DefaultHandler = new MvcRouteHandler(...);
 app.UseRouter(routes.Build());
 ```
 
-`UseMvc` ne définit directement aucune route, il ajoute un espace réservé à la collection de routes pour la route `attribute`. La surcharge `UseMvc(Action<IRouteBuilder>)` vous permet d’ajouter vos propres routes et prend également en charge le routage par attribut.  `UseMvc` et toutes ses variations ajoutent un espace réservé pour la route d’attribut ; le routage par attribut est toujours disponible, quelle que soit la façon dont vous configurez `UseMvc`. `UseMvcWithDefaultRoute` définit une route par défaut et prend en charge le routage par attribut. La section [Routage par attribut](#attribute-routing-ref-label) comprend plus de détails sur le routage par attribut.
+`UseMvc` ne définit directement aucune route, il ajoute un espace réservé à la collection de routes pour la route `attribute`. La surcharge `UseMvc(Action<IRouteBuilder>)` vous permet d’ajouter vos propres routes et prend également en charge le routage par attribut.  `UseMvc` et toutes ses variantes ajoutent un espace réservé pour l’attribut itinéraire-l’acheminement des attributs est toujours disponible, quelle que soit la façon dont vous configurez `UseMvc`. `UseMvcWithDefaultRoute` définit une route par défaut et prend en charge le routage par attribut. La section [Routage par attribut](#attribute-routing-ref-label) comprend plus de détails sur le routage par attribut.
 
 <a name="routing-conventional-ref-label"></a>
 
@@ -303,7 +303,7 @@ L’action `ProductsApi.GetProduct(int)` est exécutée pour un chemin d’URL c
 
 ## <a name="route-name"></a>Nom des routes
 
-Le code suivant définit un *nom de route* `Products_List` :
+Le code suivant définit un *nom de route*`Products_List` :
 
 ```csharp
 public class ProductsApiController : Controller
@@ -600,7 +600,7 @@ MVC génère une table de recherche de toutes les actions routées par attributs
 `Url.Action` (`IUrlHelper` . `Action`) et toutes les surcharges associées sont tous basés sur cette idée que vous voulez spécifier ce à quoi vous liez en spécifiant un nom de contrôleur et un nom d’action.
 
 > [!NOTE]
-> Quand vous utilisez `Url.Action`, les valeurs de route actuelles pour `controller` et `action` sont spécifiées pour vous : la valeur de `controller` et de `action` font partie des *valeurs ambiantes* **et des** *valeurs*. La méthode `Url.Action` utilise toujours les valeurs actuelles de `action` et de `controller`, et génère un chemin d’URL qui route vers l’action actuelle.
+> Lorsque vous utilisez `Url.Action`, les valeurs d’itinéraire actuelles pour `controller` et `action` sont spécifiées pour vous-la valeur de `controller` et `action` font partie des *valeurs ambiantes* **et** des *valeurs*. La méthode `Url.Action` utilise toujours les valeurs actuelles de `action` et de `controller`, et génère un chemin d’URL qui route vers l’action actuelle.
 
 Le routage essaye d’utiliser les valeurs dans les valeurs ambiantes pour renseigner les informations que vous n’avez pas fournies lors de la génération d’une URL. En utilisant une route comme `{a}/{b}/{c}/{d}` et les valeurs ambiantes `{ a = Alice, b = Bob, c = Carol, d = David }`, le routage a suffisamment d’informations pour générer une URL sans aucune autre valeur supplémentaire, car tous les paramètres de route ont une valeur. Si vous avez ajouté la valeur `{ d = Donovan }`, la valeur `{ d = David }` est ignorée, et le chemin d’URL généré est `Alice/Bob/Carol/Donovan`.
 
@@ -626,7 +626,7 @@ Le code ci-dessus a montré la génération d’une URL en passant le nom du con
 
 ### <a name="generating-urls-in-html"></a>Génération des URL en HTML
 
-`IHtmlHelper` fournit les méthodes `HtmlHelper` `Html.BeginForm` et `Html.ActionLink` pour générer respectivement les éléments `<form>` et `<a>`. Ces méthodes utilisent la méthode `Url.Action` pour générer une URL et ils acceptent les arguments similaires. Les pendants de `Url.RouteUrl` pour `HtmlHelper` sont `Html.BeginRouteForm` et `Html.RouteLink`, qui ont des fonctionnalités similaires.
+`IHtmlHelper` fournit les méthodes `HtmlHelper``Html.BeginForm` et `Html.ActionLink` pour générer respectivement les éléments `<form>` et `<a>`. Ces méthodes utilisent la méthode `Url.Action` pour générer une URL et ils acceptent les arguments similaires. Les pendants de `Url.RouteUrl` pour `HtmlHelper` sont `Html.BeginRouteForm` et `Html.RouteLink`, qui ont des fonctionnalités similaires.
 
 Les TagHelpers génèrent des URL via le TagHelper `form` et le TagHelper `<a>`. Ils utilisent tous les deux `IUrlHelper` pour leur implémentation. Pour plus d’informations, consultez [Utilisation des formulaires](../views/working-with-forms.md).
 
