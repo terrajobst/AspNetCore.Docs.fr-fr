@@ -5,12 +5,12 @@ description: Découvrez comment ajouter un contrôleur à une application ASP.NE
 ms.author: riande
 ms.date: 08/05/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: fe0c1d3c066d6ab20387391e15c3a7cfe684c61e
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: fb670902b0dafa7dce2b3372e550095387844936
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542704"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914248"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -110,7 +110,7 @@ Exécutez l’application et accédez à :
 
 ![Fenêtre de navigateur présentant une réponse de l’application Hello Rick, NumTimes est\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés en tant que [chaînes de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) dans l’URL ci-dessus est un séparateur, qui est suivi des chaînes de requête. Le caractère `&` sépare les chaînes de requête.
+Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés dans la [chaîne de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) de l’URL ci-dessus est un séparateur, et la chaîne de requête suit. Le caractère `&` sépare les paires champ-valeur.
 
 Remplacez la méthode `Welcome` par le code suivant :
 
@@ -229,7 +229,7 @@ Exécutez l’application et accédez à :
 
 ![Fenêtre de navigateur présentant une réponse de l’application Hello Rick, NumTimes est\: 4](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
-Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés en tant que [chaînes de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) dans l’URL ci-dessus est un séparateur, qui est suivi des chaînes de requête. Le caractère `&` sépare les chaînes de requête.
+Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés dans la [chaîne de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) de l’URL ci-dessus est un séparateur, et la chaîne de requête suit. Le caractère `&` sépare les paires champ-valeur.
 
 Remplacez la méthode `Welcome` par le code suivant :
 

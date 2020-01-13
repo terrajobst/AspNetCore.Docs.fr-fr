@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2020
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: 897ec2f012adcd325ca0472f381f129bc2b62854
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 49229b5db4d58f25f86425f8622d12c9107262bd
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828878"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914211"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -104,7 +104,7 @@ Le service hébergé est activé une seule fois au démarrage de l’application
 
 <xref:Microsoft.Extensions.Hosting.BackgroundService> est une classe de base pour l’implémentation d’un <xref:Microsoft.Extensions.Hosting.IHostedService>à long terme.
 
-[ExecuteAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*) est appelé pour exécuter le service d’arrière-plan. L’implémentation retourne un <xref:System.Threading.Tasks.Task> qui représente toute la durée de vie du service d’arrière-plan. Aucun autre service n’est démarré tant que [ExecuteAsync n’est pas asynchrone](https://github.com/aspnet/Extensions/issues/2149), par exemple en appelant `await`. Évitez d’effectuer des opérations d’initialisation de blocage longues dans `ExecuteAsync`. L’hôte bloque dans [StopAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*) en attente de la fin de `ExecuteAsync`.
+[ExecuteAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.ExecuteAsync*) est appelé pour exécuter le service d’arrière-plan. L’implémentation retourne un <xref:System.Threading.Tasks.Task> qui représente toute la durée de vie du service d’arrière-plan. Aucun autre service n’est démarré tant que [ExecuteAsync n’est pas asynchrone](https://github.com/dotnet/extensions/issues/2149), par exemple en appelant `await`. Évitez d’effectuer des opérations d’initialisation de blocage longues dans `ExecuteAsync`. L’hôte bloque dans [StopAsync (CancellationToken)](xref:Microsoft.Extensions.Hosting.BackgroundService.StopAsync*) en attente de la fin de `ExecuteAsync`.
 
 Le jeton d’annulation est déclenché lors de l’appel de [IHostedService. StopAsync](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*) . Votre implémentation de `ExecuteAsync` doit se terminer rapidement lorsque le jeton d’annulation est déclenché afin d’arrêter correctement le service. Dans le cas contraire, le service s’arrête de manière inappropriée au délai d’attente de l’arrêt. Pour plus d’informations, consultez la section de l' [interface IHostedService](#ihostedservice-interface) .
 

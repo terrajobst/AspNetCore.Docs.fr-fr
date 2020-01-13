@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : En savoir plus sur les scénarios avancés - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : en savoir plus sur les scénarios avancés-ASP.NET MVC avec EF Core'
 description: Ce tutoriel présente plusieurs rubriques pratiques pour aller au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 author: rick-anderson
 ms.author: riande
@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: d4a2aad6d93cc9a53c730323620de59fead6d5ab
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: abea9b189861954533b24cb73650af41952d1a86
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259587"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914114"
 ---
-# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Tutoriel : En savoir plus sur les scénarios avancés - ASP.NET MVC avec EF Core
+# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Didacticiel : en savoir plus sur les scénarios avancés-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez implémenté l’héritage TPH (table par hiérarchie). Ce didacticiel présente plusieurs rubriques qu’il est utile de connaître lorsque vous allez au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Exécuter des requêtes SQL brutes
@@ -31,7 +31,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * En savoir plus sur le code source et les plans de développement EF Core
 > * Apprendre à utiliser du code dynamique LINQ pour simplifier le code
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Configuration requise
 
 * [Implémenter l’héritage](inheritance.md)
 
@@ -109,7 +109,7 @@ Cliquez sur **Mettre à jour**. Vous voyez le nombre de lignes affectées :
 
 Cliquez sur **Revenir à la liste** pour afficher la liste des cours avec le nombre révisé de crédits.
 
-Notez que le code de production garantit que les mises à jour fourniront toujours des données valides. Le code simplifié indiqué ici peut multiplier le nombre de crédits suffisamment pour générer des nombres supérieurs à 5. (La propriété `Credits` a un attribut `[Range(0, 5)]`.) La requête de mise à jour fonctionne, mais des données non valides peuvent provoquer des résultats inattendus dans d’autres parties du système qui supposent que le nombre de crédits est inférieur ou égal à 5.
+Notez que le code de production garantit que les mises à jour fourniront toujours des données valides. Le code simplifié indiqué ici peut multiplier le nombre de crédits suffisamment pour générer des nombres supérieurs à 5. (La propriété `Credits` a un attribut `[Range(0, 5)]`.) La requête de mise à jour fonctionne, mais les données non valides peuvent entraîner des résultats inattendus dans d’autres parties du système qui supposent que le nombre de crédits est inférieur ou égal à 5.
 
 Pour plus d’informations sur les requêtes SQL brutes, consultez [Requêtes SQL brutes](/ef/core/querying/raw-sql).
 
@@ -173,7 +173,7 @@ Entity Framework détermine la manière dont une entité a changé (et par cons�
 
 * ChangeTracker.Entries
 
-Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Exemple :
+Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Par exemple :
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -181,7 +181,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="ef-core-source-code-and-development-plans"></a>Code source et plans de développement EF Core
 
-La source d’Entity Framework Core se trouve à l’adresse [https://github.com/aspnet/EntityFrameworkCore](https://github.com/aspnet/EntityFrameworkCore). Le dépôt EF Core contient les builds nocturnes, le suivi des problèmes, les spécifications des fonctionnalités, les notes des réunions de conception et [la feuille de route de développement futur](https://github.com/aspnet/EntityFrameworkCore/wiki/Roadmap). Vous pouvez signaler ou rechercher des bogues, et apporter votre contribution.
+La source d’Entity Framework Core se trouve à l’adresse [https://github.com/dotnet/efcore](https://github.com/dotnet/efcore). Le dépôt EF Core contient les builds nocturnes, le suivi des problèmes, les spécifications des fonctionnalités, les notes des réunions de conception et [la feuille de route de développement futur](https://github.com/dotnet/efcore/wiki/Roadmap). Vous pouvez signaler ou rechercher des bogues, et apporter votre contribution.
 
 Bien que le code source soit ouvert, Entity Framework Core est entièrement pris en charge comme produit Microsoft. L’équipe Microsoft Entity Framework garde le contrôle sur le choix des contributions qui sont acceptées et teste toutes les modifications du code pour garantir la qualité de chaque version.
 
@@ -207,7 +207,7 @@ Tom Dykstra et Rick Anderson (twitter @RickAndMSFT) ont rédigé ce didacticiel.
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll est utilisé par un autre processus
 
-Message d’erreur :
+Message d’erreur :
 
 > Impossible d’ouvrir ’...bin\Debug\netcoreapp1.0\ContosoUniversity.dll’ en écriture -- ’Le processus ne peut pas accéder au fichier ’...\bin\Debug\netcoreapp1.0\ContosoUniversity.dll’, car il est en cours d’utilisation par un autre processus.
 
@@ -217,7 +217,7 @@ Arrêtez le site dans IIS Express. Accédez à la barre d’état système de Wi
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Migration structurée sans code dans les méthodes Up et Down
 
-Cause possible :
+Cause possible :
 
 Les commandes CLI d’EF ne ferment et n’enregistrent pas automatiquement des fichiers de code. Si vous avez des modifications non enregistrées lorsque vous exécutez la commande `migrations add`, EF ne trouve pas vos modifications.
 
@@ -241,9 +241,9 @@ dotnet ef database drop
 
 ### <a name="error-locating-sql-server-instance"></a>Erreur lors de la localisation de l’instance SQL Server
 
-Message d’erreur :
+Message d'erreur :
 
-> Une erreur liée au réseau ou spécifique à l’instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou n’est pas accessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. (fournisseur : Interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
+> Une erreur liée au réseau ou spécifique à l’instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou n’est pas accessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. (fournisseur : interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
 
 Solution :
 
@@ -255,15 +255,15 @@ Vérifiez la chaîne de connexion. Si vous avez supprimé manuellement le fichie
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-Pour plus d’informations sur EF Core, consultez la [documentation sur Entity Framework Core](/ef/core). Un ouvrage est également disponible : [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action).
+Pour plus d’informations sur EF Core, consultez la [documentation sur Entity Framework Core](/ef/core). Un ouvrage est également disponible : [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action).
 
 Pour plus d’informations sur le déploiement d’une application web, consultez <xref:host-and-deploy/index>.
 
 Pour plus d’informations sur les autres rubriques associées à ASP.NET Core MVC, par exemple l’authentification et l’autorisation, consultez <xref:index>.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Exécuter des requêtes SQL brutes
@@ -279,4 +279,4 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 Cette étape termine cette série de tutoriels sur l’utilisation d’Entity Framework Core dans une application ASP.NET Core MVC. Cette série a fait appel à une nouvelle base de données ; une alternative consiste à rétroconcevoir un modèle à partir d’une base de données existante.
 
 > [!div class="nextstepaction"]
-> [Tutoriel : EF Core avec MVC, base de données existante](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)
+> [Didacticiel : EF Core avec MVC, base de données existante](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

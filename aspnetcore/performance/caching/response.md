@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 11/04/2019
 uid: performance/caching/response
-ms.openlocfilehash: 9246305e6979a6a7e006f567ee6bf9569029aef1
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: e20c197c7ce3334d4f4f0b917d1fc94174e6c615
+ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828306"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75914201"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Mise en cache de la réponse dans ASP.NET Core
 
@@ -66,7 +66,7 @@ Pour plus d'informations, consultez <xref:performance/caching/memory>.
 
 ### <a name="distributed-cache"></a>Cache distribué
 
-Utilisez un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs ou sur le cloud. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe si les données mises en cache pour le client sont disponibles. ASP.NET Core offre des caches distribués Redis et SQL Server.
+Utilisez un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs ou sur le cloud. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe si les données mises en cache pour le client sont disponibles. ASP.NET Core fonctionne avec les caches distribués SQL Server, [ReDim](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)et [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) .
 
 Pour plus d'informations, consultez <xref:performance/caching/distributed>.
 
@@ -78,7 +78,7 @@ Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/cache
 
 ### <a name="distributed-cache-tag-helper"></a>Tag Helper Cache distribué
 
-Mettez en cache le contenu à partir d’une vue MVC ou d’une page Razor dans des scénarios de batterie de serveurs Web ou de Cloud distribué avec le tag Helper de cache distribué. Tag helper de cache distribué utilise SQL Server ou Redis pour stocker les données.
+Mettez en cache le contenu à partir d’une vue MVC ou d’une page Razor dans des scénarios de batterie de serveurs Web ou de Cloud distribué avec le tag Helper de cache distribué. Le tag Helper de cache distribué utilise SQL Server, les [redims](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)ou [NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/) pour stocker des données.
 
 Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>.
 
