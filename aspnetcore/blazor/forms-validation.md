@@ -9,12 +9,12 @@ ms.date: 12/05/2019
 no-loc:
 - Blazor
 uid: blazor/forms-validation
-ms.openlocfilehash: f4c1845ee4b6ff9274b7117167367ccdd9f36c12
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: a94a433f26e451bbadc73615e502e46d273f05c2
+ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943691"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75828137"
 ---
 # <a name="aspnet-core-opno-locblazor-forms-and-validation"></a>ASP.NET Core Blazor Forms et validation
 
@@ -193,7 +193,7 @@ Créez un composant avec le balisage suivant et utilisez le composant tout comme
 
 ## <a name="validation-support"></a>Prise en charge de la validation
 
-Le composant `DataAnnotationsValidator` attache la prise en charge de la validation à l’aide d’annotations de données à la `EditContext`en cascade. L’activation de la prise en charge de la validation à l’aide d’annotations de données requiert ce geste explicite. Pour utiliser un système de validation différent des annotations de données, remplacez le `DataAnnotationsValidator` par une implémentation personnalisée. L’implémentation de ASP.NET Core est disponible pour l’inspection dans la source de référence : [DataAnnotationsValidator](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[AddDataAnnotationsValidation](https://github.com/aspnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs).
+Le composant `DataAnnotationsValidator` attache la prise en charge de la validation à l’aide d’annotations de données à la `EditContext`en cascade. L’activation de la prise en charge de la validation à l’aide d’annotations de données requiert ce geste explicite. Pour utiliser un système de validation différent des annotations de données, remplacez le `DataAnnotationsValidator` par une implémentation personnalisée. L’implémentation de ASP.NET Core est disponible pour l’inspection dans la source de référence : [DataAnnotationsValidator](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs)/[AddDataAnnotationsValidation](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs).
 
 Blazor effectue deux types de validation :
 
@@ -251,7 +251,7 @@ private class MyCustomValidator : ValidationAttribute
 
 ### <a name="compareproperty-attribute"></a>Attribut [CompareProperty]
 
-Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le composant `DataAnnotationsValidator`. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)Le package *expérimental* DataAnnotations. validation introduit un attribut de validation supplémentaire, `ComparePropertyAttribute`, qui contourne ces limitations. Dans une application Blazor, `[CompareProperty]` est un remplacement direct de l’attribut `[Compare]`. Pour plus d’informations, consultez [CompareAttribute ignoré avec OnValidSubmit EditForm (ASPNET/AspNetCore #10643)](https://github.com/aspnet/AspNetCore/issues/10643#issuecomment-543909748).
+Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le composant `DataAnnotationsValidator`. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)Le package *expérimental* DataAnnotations. validation introduit un attribut de validation supplémentaire, `ComparePropertyAttribute`, qui contourne ces limitations. Dans une application Blazor, `[CompareProperty]` est un remplacement direct de l’attribut `[Compare]`. Pour plus d’informations, consultez [CompareAttribute ignoré avec OnValidSubmit EditForm (dotnet/AspNetCore #10643)](https://github.com/dotnet/AspNetCore/issues/10643#issuecomment-543909748).
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>Modèles imbriqués, types de collection et types complexes
 
