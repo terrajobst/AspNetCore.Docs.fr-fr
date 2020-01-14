@@ -9,12 +9,12 @@ ms.date: 12/09/2019
 no-loc:
 - Blazor
 uid: blazor/get-started
-ms.openlocfilehash: e368ecaf931d392de7e52ec2d5a2dfd171c2c86f
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 554f4daff92a0839ee7679287a4618e9b51e0fe5
+ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943761"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921307"
 ---
 # <a name="get-started-with-aspnet-core-opno-locblazor"></a>Prise en main de ASP.NET Core Blazor
 
@@ -30,7 +30,7 @@ Prise en main de Blazor:
 
 1. Installez éventuellement le modèle [Blazor Webassembly](xref:blazor/hosting-models#blazor-webassembly) :
    * Installez le [Kit de développement logiciel (SDK) .net Core 3,1 ou ultérieur (version préliminaire)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Exécutez la commande suivante dans une interface de commande. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)Le package de modèles a une version préliminaire alors que Blazor Webassembly est en préversion.
+   * Exécutez la commande suivante dans une interface de commande. [Microsoft.AspNetCore.Blazor.](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)Le package de modèles a une version préliminaire alors que Blazor Webassembly est en préversion.
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
@@ -42,7 +42,7 @@ Prise en main de Blazor:
 
    1 \. Installez [Visual Studio 16,4 ou une version ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** .
 
-   2 \. Créer un nouveau projet.
+   2 \. Créez un nouveau projet.
 
    3 \. Sélectionnez **Blazor application**. Sélectionnez **Suivant**.
 
@@ -85,7 +85,7 @@ Prise en main de Blazor:
 
    # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-   1 \. Installez [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/). Basculez le [canal de mise à jour vers](/visualstudio/mac/install-preview)la version préliminaire.
+   1 \. Installez [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/).
 
    2 \. Sélectionnez **fichier** > **nouvelle solution** ou créer un **nouveau projet**.
 
@@ -135,7 +135,7 @@ Prise en main de Blazor:
 
 1. Installez éventuellement le modèle [Blazor Webassembly](xref:blazor/hosting-models#blazor-webassembly) :
    * Installez le [Kit de développement logiciel (SDK) .net Core 3,1 ou ultérieur (version préliminaire)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Exécutez la commande suivante dans une interface de commande. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)Le package de modèles a une version préliminaire alors que Blazor Webassembly est en préversion.
+   * Exécutez la commande suivante dans une interface de commande. [Microsoft.AspNetCore.Blazor.](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)Le package de modèles a une version préliminaire alors que Blazor Webassembly est en préversion.
 
    ```dotnetcli
    dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
@@ -149,7 +149,7 @@ Prise en main de Blazor:
 
    2 \. Si vous le souhaitez, vous pouvez installer [Visual Studio 16,4 Preview 2 ou version ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** pour Blazor développement d’applications webassembly.
 
-   3 \. Créer un nouveau projet.
+   3 \. Créez un nouveau projet.
 
    4 \. Sélectionnez **Blazor application**. Sélectionnez **Suivant**.
 
@@ -238,7 +238,7 @@ Prise en main de Blazor:
 
 Plusieurs pages sont disponibles à partir des onglets de la barre latérale :
 
-* Dossier de base
+* Accueil
 * Counter
 * Extraire les données
 
@@ -265,7 +265,7 @@ Ajoutez un composant à un autre composant à l’aide de la syntaxe HTML. Par e
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-Exécuter l’application. La page d’accueil possède son propre compteur fourni par le composant `Counter`.
+Exécutez l’application. La page d’accueil possède son propre compteur fourni par le composant `Counter`.
 
 Les paramètres de composant sont spécifiés à l’aide d’attributs ou de [contenu enfant](xref:blazor/components#child-content), ce qui vous permet de définir des propriétés sur le composant enfant. Pour ajouter un paramètre au composant `Counter`, mettez à jour le bloc `@code` du composant :
 
@@ -282,9 +282,9 @@ Spécifiez le `IncrementAmount` dans l’élément `<Counter>` du composant `Ind
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-Exécuter l’application. Le composant `Index` possède son propre compteur qui est incrémenté de dix chaque fois que le bouton **Click Me** est sélectionné. Le composant `Counter` (*Counter. Razor*) sur `/counter` continue d’être incrémenté d’une unité.
+Exécutez l’application. Le composant `Index` possède son propre compteur qui est incrémenté de dix chaque fois que le bouton **Click Me** est sélectionné. Le composant `Counter` (*Counter. Razor*) sur `/counter` continue d’être incrémenté d’une unité.
 
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a>Étapes suivantes :
 
 <xref:tutorials/first-blazor-app>
 
