@@ -9,12 +9,12 @@ ms.date: 07/05/2019
 no-loc:
 - Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: 47027033c0b7130f2d38d22c02a54945b2cc31b3
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 07e2791e5b26975c71323f8cb41a4b0fbe0cdf11
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358911"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952140"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hébergement d’images ASP.NET Core avec l’arrimeur sur HTTPs
 
@@ -43,7 +43,7 @@ Pour les certificats de production :
 * L’outil `dotnet dev-certs` n’est pas requis.
 * Les certificats n’ont pas besoin d’être stockés à l’emplacement utilisé dans les instructions. Tout emplacement doit fonctionner, bien que le stockage des certificats dans votre répertoire de site ne soit pas recommandé.
 
-Instructions de montage de certificats de volume dans des conteneurs. Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une commande `COPY` dans un *fichier dockerfile*. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
+Les instructions contenues dans la section suivante contiennent des certificats de montage de volume dans des conteneurs à l’aide de l’option de ligne de commande `-v` de l’ancrage. Vous pouvez ajouter des certificats dans des images de conteneur à l’aide d’une commande `COPY` dans un *fichier dockerfile*, mais cela n’est pas recommandé. La copie de certificats dans une image n’est pas recommandée pour les raisons suivantes :
 
 * Il est difficile d’utiliser la même image pour le test avec des certificats de développeur.
 * Il est difficile d’utiliser la même image pour l’hébergement avec des certificats de production.

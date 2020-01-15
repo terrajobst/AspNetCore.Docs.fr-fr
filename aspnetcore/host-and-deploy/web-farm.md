@@ -5,14 +5,14 @@ description: Découvrez comment héberger plusieurs instances d’une applicatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 16ec2162be8199857d0f2d0ff989ec4cdc6c3277
-ms.sourcegitcommit: 68d804d60e104c81fe77a87a9af70b5df2726f60
+ms.openlocfilehash: 5c13e9bc4c514f9b42871d55a430265c8ec2da23
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830704"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951821"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Héberger ASP.NET Core dans une batterie de serveurs web
 
@@ -20,10 +20,10 @@ Par [Luke Latham](https://github.com/guardrex) et [Chris Ross](https://github.co
 
 Une *batterie de serveurs Web* est un groupe d’au moins deux serveurs web (ou *nœuds*) qui héberge plusieurs instances d’une application. Lorsque les requêtes des utilisateurs arrivent à une batterie de serveurs web, un *équilibreur de charge* les répartit sur les nœuds de la batterie de serveurs web. Les batteries de serveurs web apportent les améliorations suivantes :
 
-* **Fiabilité/disponibilité** &ndash; Lorsqu’un ou plusieurs nœuds échouent, l’équilibreur de charge peut acheminer les requêtes vers d’autres nœuds qui fonctionnent pour continuer le traitement des requêtes.
-* **Capacité/niveau de performances** &ndash; Plusieurs nœuds peuvent traiter plus de requêtes qu’un serveur unique. L’équilibreur de charge équilibre la charge de travail en répartissant les requêtes sur les nœuds.
-* **Évolutivité** &ndash; Lorsqu’une capacité supérieure ou inférieure est requise, le nombre de nœuds actifs peut être augmenté ou réduit pour l’adapter à la charge de travail. Les technologies de plateformes de batterie de serveurs web, telles qu’[Azure App Service](https://azure.microsoft.com/services/app-service/), peuvent automatiquement ajouter ou supprimer des nœuds, à la demande de l’administrateur système ou automatiquement, sans intervention humaine.
-* **Facilité de maintenance** &ndash; Les nœuds d’une batterie de serveurs web peuvent s’appuyer sur un ensemble de services partagés, ce qui facilite la gestion système. Par exemple, les nœuds d’une batterie de serveurs web peuvent reposer sur un serveur de base de données unique et un emplacement réseau commun pour les ressources statiques, telles que les images et les fichiers téléchargeables.
+* **Fiabilité/disponibilité** &ndash; en cas d’échec d’un ou de plusieurs nœuds, l’équilibreur de charge peut acheminer les demandes vers d’autres nœuds opérationnels pour poursuivre le traitement des demandes.
+* **Capacité/performance** &ndash; plusieurs nœuds peuvent traiter plus de demandes qu’un seul serveur. L’équilibreur de charge équilibre la charge de travail en répartissant les requêtes sur les nœuds.
+* L' **extensibilité** &ndash; lorsque plus ou moins de capacité est nécessaire, le nombre de nœuds actifs peut être augmenté ou réduit pour correspondre à la charge de travail. Les technologies de plateformes de batterie de serveurs web, telles qu’[Azure App Service](https://azure.microsoft.com/services/app-service/), peuvent automatiquement ajouter ou supprimer des nœuds, à la demande de l’administrateur système ou automatiquement, sans intervention humaine.
+* La **maintenabilité** &ndash; nœuds d’une batterie de serveurs Web peut reposer sur un ensemble de services partagés, ce qui permet une gestion plus facile du système. Par exemple, les nœuds d’une batterie de serveurs web peuvent reposer sur un serveur de base de données unique et un emplacement réseau commun pour les ressources statiques, telles que les images et les fichiers téléchargeables.
 
 Cette rubrique décrit la configuration et les dépendances des applications ASP.NET Core hébergées dans une batterie de serveurs web qui s’appuie sur des ressources partagées.
 
@@ -60,13 +60,13 @@ Les scénarios suivants ne nécessitent pas une configuration supplémentaire, m
 
 | Scénario | Dépend de &hellip; |
 | -------- | ------------------- |
-| Authentification | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d’informations, consultez <xref:security/authentication/cookie> et <xref:security/cookie-sharing>. |
-| identité | Authentification et configuration de la base de données.<br><br>Pour plus d'informations, consultez <xref:security/authentication/identity>. |
+| Authentification | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d'informations, consultez les rubriques <xref:security/authentication/cookie> et <xref:security/cookie-sharing>. |
+| Identity | Authentification et configuration de la base de données.<br><br>Pour plus d'informations, consultez <xref:security/authentication/identity>. |
 | Session | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) et Mise en cache (voir <xref:performance/caching/distributed>).<br><br>Pour plus d’informations, consultez [État de session et d’application : état de session](xref:fundamentals/app-state#session-state). |
 | TempData | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) ou Session (voir [État de session et d’application : état de session](xref:fundamentals/app-state#session-state)).<br><br>Pour plus d’informations, consultez [État de session et d’application : TempData](xref:fundamentals/app-state#tempdata). |
 | Anti-contrefaçon | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d'informations, consultez <xref:security/anti-request-forgery>. |
 
-## <a name="troubleshoot"></a>Résoudre les problèmes
+## <a name="troubleshoot"></a>Dépannage
 
 ### <a name="data-protection-and-caching"></a>Protection et mise en cache des données
 
@@ -92,3 +92,4 @@ Si les applications de la batterie de serveurs web sont capables de répondre au
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * L' [extension de script personnalisé pour Windows](/azure/virtual-machines/extensions/custom-script-windows) &ndash; télécharge et exécute des scripts sur des machines virtuelles Azure, ce qui est utile pour la configuration et l’installation de logiciels après le déploiement.
+* <xref:host-and-deploy/proxy-load-balancer>

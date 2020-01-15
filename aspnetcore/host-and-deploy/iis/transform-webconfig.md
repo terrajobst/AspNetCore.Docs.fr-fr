@@ -5,14 +5,14 @@ description: Découvrez comment transformer le fichier web.config lors de la pub
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: d28c362a200ad433e316bc1af710231a169a30a4
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: ef627de70c6aea44962d2187c4d401baab6557ae
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007319"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952045"
 ---
 # <a name="transform-webconfig"></a>Transformer web.config
 
@@ -23,7 +23,7 @@ Les transformations du fichier *web.config* peuvent être appliquées automatiqu
 * [Configuration de build](#build-configuration)
 * [Profile](#profile)
 * [Environnement](#environment)
-* [Personnalisé](#custom)
+* [Custom](#custom)
 
 Ces transformations se produisent pour l’un des scénarios de génération *web.config* suivants :
 
@@ -182,5 +182,5 @@ dotnet publish /p:IsWebConfigTransformDisabled=true
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Syntaxe de transformation d'un fichier Web.config pour le déploiement d'un projet d'application Web](https://go.microsoft.com/fwlink/?LinkId=301874)
-* [Syntaxe de transformation d'un fichier Web.config pour le déploiement d'un projet Web à l'aide de Visual Studio](https://docs.microsoft.com/previous-versions/aspnet/dd465326(v=vs.110))
+* [Syntaxe de transformation d'un fichier Web.config pour le déploiement d'un projet d'application Web](/previous-versions/dd465326(v=vs.100))
+* [Syntaxe de transformation d'un fichier Web.config pour le déploiement d'un projet Web à l'aide de Visual Studio](/previous-versions/aspnet/dd465326(v=vs.110))

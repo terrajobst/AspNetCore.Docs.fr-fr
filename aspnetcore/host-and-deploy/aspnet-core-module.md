@@ -5,14 +5,14 @@ description: Découvrez comment configurer le module ASP.NET Core pour héberger
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c9bbd36b8a55b837f6d78abf99215c5496895a39
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 75f4a158253dd3276ed37011d9aa73d82cad5b79
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799416"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952016"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -173,7 +173,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Valeur par défaut |
+| Attribute | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -247,7 +247,7 @@ Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redém
 
 L’utilisation du journal stdout est recommandée uniquement pour résoudre les problèmes de démarrage d’application lors de l’hébergement sur IIS ou lors de l’utilisation [de la prise en charge au moment du développement pour IIS avec Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), et non pendant le débogage local et l’exécution de l’application avec IIS Express.
 
-N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -272,7 +272,7 @@ Pour plus d’informations sur les formats de chemin d’accès, consultez [form
 
 ## <a name="enhanced-diagnostic-logs"></a>Journaux de diagnostic améliorés
 
-Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus grande fidélité des informations de diagnostic :
+Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus haute fidélité des informations de diagnostic :
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -306,8 +306,8 @@ Emplacements (plusieurs emplacements sont autorisés) :
 
 Les paramètres de gestionnaire peuvent également être fournis par le biais de variables d’environnement :
 
-* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; Chemin du fichier journal de débogage. (Par défaut : *aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG` &ndash; Paramètre du niveau de débogage.
+* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; chemin d’accès au fichier journal de débogage. (Par défaut : *aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG` &ndash; le paramètre de niveau de débogage.
 
 > [!WARNING]
 > Ne laissez **pas** la journalisation du débogage activée dans le déploiement plus longtemps que nécessaire pour résoudre un problème. La taille du journal n’est pas limitée. Si vous laissez la journalisation du débogage activée, vous risquez d’épuiser l’espace disque disponible et de bloquer le serveur ou le service d’application.
@@ -366,11 +366,11 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
 1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64. log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<horodateur > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 
-### <a name="module"></a>Module
+### <a name="module"></a>Module, mot clé
 
 **IIS (x86/amd64) :**
 
@@ -588,7 +588,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Valeur par défaut |
+| Attribute | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p> | |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -662,7 +662,7 @@ Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redém
 
 L’utilisation du journal stdout est recommandée uniquement pour résoudre les problèmes de démarrage d’application lors de l’hébergement sur IIS ou lors de l’utilisation [de la prise en charge au moment du développement pour IIS avec Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), et non pendant le débogage local et l’exécution de l’application avec IIS Express.
 
-N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -685,7 +685,7 @@ Pour plus d’informations sur les formats de chemin d’accès, consultez [form
 
 ## <a name="enhanced-diagnostic-logs"></a>Journaux de diagnostic améliorés
 
-Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus grande fidélité des informations de diagnostic :
+Le module ASP.NET Core est configurable pour proposer des journaux de diagnostic améliorés. Ajoutez l’élément `<handlerSettings>` à l’élément `<aspNetCore>` dans *Web. config*. La définition de la `debugLevel` sur `TRACE` expose une plus haute fidélité des informations de diagnostic :
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -719,8 +719,8 @@ Emplacements (plusieurs emplacements sont autorisés) :
 
 Les paramètres de gestionnaire peuvent également être fournis par le biais de variables d’environnement :
 
-* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; Chemin du fichier journal de débogage. (Par défaut : *aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG` &ndash; Paramètre du niveau de débogage.
+* `ASPNETCORE_MODULE_DEBUG_FILE` &ndash; chemin d’accès au fichier journal de débogage. (Par défaut : *aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG` &ndash; le paramètre de niveau de débogage.
 
 > [!WARNING]
 > Ne laissez **pas** la journalisation du débogage activée dans le déploiement plus longtemps que nécessaire pour résoudre un problème. La taille du journal n’est pas limitée. Si vous laissez la journalisation du débogage activée, vous risquez d’épuiser l’espace disque disponible et de bloquer le serveur ou le service d’application.
@@ -761,11 +761,11 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
 1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64. log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<horodateur > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 
-### <a name="module"></a>Module
+### <a name="module"></a>Module, mot clé
 
 **IIS (x86/amd64) :**
 
@@ -838,7 +838,7 @@ Les requêtes arrivent du web au pilote HTTP.sys en mode noyau. Le pilote route 
 
 Le module spécifie le port via une variable d’environnement au démarrage, et le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) configure le serveur pour qu’il écoute sur `http://localhost:{port}`. Des vérifications supplémentaires sont effectuées, et les requêtes qui ne proviennent pas du module sont rejetées. Le module ne prend pas en charge le transfert HTTPS : les requêtes sont donc transférées via HTTP, même si IIS les reçoit via HTTPS.
 
-Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. Le middleware ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
+Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. L’intergiciel (middleware) ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
 
 De nombreux modules natifs, comme l’authentification Windows, restent actifs. Pour obtenir plus d’informations sur les modules IIS actifs avec le module ASP.NET Core, consultez <xref:host-and-deploy/iis/modules>.
 
@@ -895,7 +895,7 @@ Pour plus d’informations sur la configuration d’une sous-application IIS, co
 
 ### <a name="attributes-of-the-aspnetcore-element"></a>Attributs de l’élément aspNetCore
 
-| Attribut | Description | Valeur par défaut |
+| Attribute | Description | Valeur par défaut |
 | --------- | ----------- | :-----: |
 | `arguments` | <p>Attribut de chaîne facultatif.</p><p>Arguments pour l’exécutable spécifié dans **processPath**.</p>| |
 | `disableStartUpErrorPage` | <p>Attribut booléen facultatif.</p><p>Si la valeur est true, la page **502.5 - Échec du processus** est supprimée, et la page de code d’état 502 configurée dans le fichier *web.config* est prioritaire.</p> | `false` |
@@ -953,7 +953,7 @@ Aucune rotation n’est appliquée aux journaux, sauf en cas de recyclage/redém
 
 L’utilisation du journal stdout est recommandée uniquement pour résoudre les problèmes de démarrage d’application lors de l’hébergement sur IIS ou lors de l’utilisation [de la prise en charge au moment du développement pour IIS avec Visual Studio](xref:host-and-deploy/iis/development-time-iis-support), et non pendant le débogage local et l’exécution de l’application avec IIS Express.
 
-N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour journaliser la routine d’une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+N’utilisez pas le journal stdout à des fins de journalisation d’application générale. Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 Un horodatage et une extension de fichier sont ajoutés automatiquement quand le fichier journal est créé. Le nom du fichier journal est créé en ajoutant l’horodatage, un ID de processus et une extension de fichier ( *.log*) au dernier segment du chemin d'accès `stdoutLogFile` (généralement *stdout*), séparés par des traits de soulignement. Si le chemin d'accès `stdoutLogFile` se termine par *stdout*, un journal pour une application avec un PID de 1934 créé le 5/2/2018 à 19:42:32 affiche le nom de fichier *stdout_20180205194132_1934.log*.
 
@@ -999,11 +999,11 @@ Pour déterminer la version du module ASP.NET Core installé :
 1. Cliquez avec le bouton droit sur le fichier, puis sélectionnez **Propriétés** dans le menu contextuel.
 1. Sélectionnez l’onglet **Détails** . La version du **fichier** et la version du **produit** représentent la version installée du module.
 
-Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<timestamp > _000_AspNetCoreModule_x64. log*.
+Les journaux du programme d’installation du bundle d’hébergement pour le module se trouvent sur le *lecteur C :\\utilisateurs\\% username%\\AppData\\Local\\Temp*. Le fichier est nommé *dd_DotNetCoreWinSvrHosting__\<horodateur > _000_AspNetCoreModule_x64. log*.
 
 ## <a name="module-schema-and-configuration-file-locations"></a>Emplacements des fichiers du module, du schéma et de configuration
 
-### <a name="module"></a>Module
+### <a name="module"></a>Module, mot clé
 
 **IIS (x86/amd64) :**
 
@@ -1046,5 +1046,6 @@ Vous trouverez les fichiers en recherchant *aspnetcore* dans le fichier *applica
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:host-and-deploy/iis/index>
-* [Dépôt GitHub du module ASP.NET Core (source de référence)](https://github.com/aspnet/AspNetCoreModule)
+* <xref:host-and-deploy/azure-apps/index>
+* [Source de référence du Module ASP.net Core (branche principale)](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2) &ndash; utilisez la liste déroulante **branche** pour sélectionner une version spécifique (par exemple, `release/3.1`).
 * <xref:host-and-deploy/iis/modules>

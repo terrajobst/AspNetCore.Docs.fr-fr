@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 01/13/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 9f0ad2791e504a0ff46daad07054b6bf909a546a
-ms.sourcegitcommit: 897d4abff58505dae86b2947c5fe3d1b80d927f3
+ms.openlocfilehash: 09ef06f179e34cd7f4f04ac30c3b5dd95d058244
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73634074"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951884"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -21,11 +21,11 @@ Par [Luke Latham](https://github.com/guardrex)
 La configuration d’application dans ASP.NET Core est basée sur des paires clé-valeur établies par les *fournisseurs de configuration*. Les fournisseurs de configuration lisent les données de configuration dans les paires clé-valeur à partir de diverses sources de configuration :
 
 * Azure Key Vault
-* Configuration de Azure App
+* Azure App Configuration
 * Arguments de ligne de commande
 * Fournisseurs personnalisés (installés ou créés)
 * Fichiers de répertoire
-* Variables d’environnement
+* Variables d'environnement
 * Objets .NET en mémoire
 * Fichiers de paramètres
 
@@ -109,7 +109,7 @@ Adoptez les pratiques suivantes pour sécuriser les données de configuration se
 Pour plus d’informations, consultez les rubriques suivantes :
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets> &ndash; inclut des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. Secret Manager utilise le fournisseur de configuration de fichier pour stocker les secrets utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
+* <xref:security/app-secrets> &ndash; fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. Secret Manager utilise le fournisseur de configuration de fichier pour stocker les secrets utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) stocke en toute sécurité des secrets d’application pour les applications ASP.NET Core. Pour plus d'informations, consultez <xref:security/key-vault-configuration>.
 
@@ -149,7 +149,9 @@ Au démarrage de l’application, les sources de configuration sont lues dans l�
 
 Les fournisseurs de configuration qui implémentent la détection des modifications peuvent recharger la configuration lorsqu’un paramètre sous-jacent est modifié. Par exemple, le fournisseur de configuration de fichier (décrit plus loin dans cette rubrique) et le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) implémentent la détection des modifications.
 
-<xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application. <xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une Razor Page <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> pour obtenir la configuration de la classe :
+<xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application. <xref:Microsoft.Extensions.Configuration.IConfiguration> peuvent être injectées dans un Razor Pages <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> ou MVC <xref:Microsoft.AspNetCore.Mvc.Controller> pour obtenir la configuration de la classe.
+
+Dans les exemples suivants, le champ `_config` est utilisé pour accéder aux valeurs de configuration :
 
 ```csharp
 public class IndexModel : PageModel
@@ -160,9 +162,18 @@ public class IndexModel : PageModel
     {
         _config = config;
     }
+}
+```
 
-    // The _config local variable is used to obtain configuration 
-    // throughout the class.
+```csharp
+public class HomeController : Controller
+{
+    private readonly IConfiguration _config;
+
+    public HomeController(IConfiguration config)
+    {
+        _config = config;
+    }
 }
 ```
 
@@ -177,7 +188,7 @@ Les clés de configuration adoptent les conventions suivantes :
 * Clés hiérarchiques
   * Dans l’API Configuration, un séparateur sous forme de signe deux-points (`:`) fonctionne sur toutes les plateformes.
   * Dans les variables d’environnement, un séparateur sous forme de signe deux-points peut ne pas fonctionner sur toutes les plateformes. Un trait de soulignement double (`__`) est pris en charge par toutes les plateformes et automatiquement transformé en signe deux-points.
-  * Dans Azure Key Vault, les clés hiérarchiques utilisent `--` (deux tirets) comme séparateur. Vous devez fournir du code pour remplacer les tirets par un signe deux-points lorsque les secrets sont chargés dans la configuration de l’application.
+  * Dans Azure Key Vault, les clés hiérarchiques utilisent `--` (deux tirets) comme séparateur. Écrivez du code pour remplacer les tirets par un signe deux-points lorsque les secrets sont chargés dans la configuration de l’application.
 * <xref:Microsoft.Extensions.Configuration.ConfigurationBinder> prend en charge la liaison de tableaux à des objets à l’aide d’index de tableau dans les clés de configuration. La liaison de tableau est décrite dans la section [Lier un tableau à une classe](#bind-an-array-to-a-class).
 
 ### <a name="values"></a>Valeurs
@@ -194,28 +205,28 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 | Fournisseur | Fournit la configuration à partir de&hellip; |
 | -------- | ----------------------------------- |
 | [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
-| [Fournisseur Azure App Configuration](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentation Azure) | Configuration de Azure App |
+| [Fournisseur Azure App Configuration](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentation Azure) | Azure App Configuration |
 | [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
 | [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
-| [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d’environnement |
+| [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d'environnement |
 | [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers (INI, JSON, XML) |
 | [Fournisseur de configuration clé par fichier](#key-per-file-configuration-provider) | Fichiers de répertoire |
 | [Fournisseur de configuration de mémoire](#memory-configuration-provider) | Collections en mémoire |
 | [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (rubrique *Sécurité*) | Fichier dans le répertoire de profil utilisateur |
 
-Au démarrage, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés. Les fournisseurs de configuration décrits dans cette rubrique sont décrits dans l’ordre alphabétique, et non dans l’ordre où votre code peut les organiser. Organisez les fournisseurs de configuration dans votre code en fonction de vos priorités pour les sources de configuration sous-jacentes.
+Au démarrage, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés. Les fournisseurs de configuration décrits dans cette rubrique sont décrits par ordre alphabétique, et non pas dans l’ordre dans lequel le code les réorganise. Commandez des fournisseurs de configuration dans le code pour répondre aux priorités des sources de configuration sous-jacentes requises par l’application.
 
 Une séquence type des fournisseurs de configuration est la suivante :
 
 1. Fichiers (*appsettings.json*, *appsettings.{Environment}.json*, où `{Environment}` est l'environnement d’hébergement actuel de l'application)
 1. [Azure Key Vault](xref:security/key-vault-configuration)
 1. [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement uniquement)
-1. Variables d’environnement
+1. Variables d'environnement
 1. Arguments de ligne de commande
 
 Une pratique courante consiste à placer le Fournisseur de configuration de ligne de commande en dernier dans une série de fournisseurs pour permettre aux arguments de ligne de commande de remplacer la configuration définie par les autres fournisseurs.
 
-La séquence de fournisseurs précédente est utilisée lorsque vous initialisez un nouveau générateur d’hôte avec `CreateDefaultBuilder`. Pour plus d’informations, consultez la section [Configuration par défaut](#default-configuration).
+La séquence de fournisseurs précédente est utilisée lorsqu’un nouveau générateur d’hôte est initialisé avec `CreateDefaultBuilder`. Pour plus d’informations, consultez la section [Configuration par défaut](#default-configuration).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -374,7 +385,7 @@ dotnet run CommandLineKey1= CommandLineKey2=value2
 
 ### <a name="switch-mappings"></a>Correspondances de commutateur
 
-Les correspondances de commutateur permettent une logique de remplacement des noms de clés. Lorsque vous générez manuellement la configuration avec un <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, vous pouvez fournir un dictionnaire des remplacements de commutateur à la méthode <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
+Les correspondances de commutateur permettent une logique de remplacement des noms de clés. Lors de la génération manuelle d’une configuration avec un <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, fournissez un dictionnaire de remplacements de commutateur dans la méthode <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
 
 Quand le dictionnaire de correspondances de commutateur est utilisé, il est vérifié afin de déterminer s’il contient une clé correspondant à celle fournie par un argument de ligne de commande. Si la clé de ligne de commande est trouvée dans le dictionnaire, la valeur du dictionnaire (le remplacement de la clé) est repassée pour définir la paire clé-valeur dans la configuration de l’application. Une correspondance de commutateur est nécessaire pour chaque clé de ligne de commande préfixée avec un tiret unique (`-`).
 
@@ -407,7 +418,7 @@ Pour les applications qui utilisent des mappages de commutateurs, l’appel à `
 
 Une fois le dictionnaire de correspondances de commutateur créé, il contient les données affichées dans le tableau suivant.
 
-| Touche       | valeur             |
+| Clé       | Value             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -420,7 +431,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 Après avoir exécuté la commande précédente, la configuration contient les valeurs indiquées dans le tableau suivant.
 
-| Touche               | valeur    |
+| Clé               | Value    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -433,7 +444,7 @@ Pour activer la configuration des variables d’environnement, appelez la métho
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
-[Azure App Service](https://azure.microsoft.com/services/app-service/) vous permet de définir des variables d’environnement dans le portail Azure capables de remplacer la configuration d’application à l’aide du Fournisseur de configuration de variables d’environnement. Pour plus d’informations, consultez [Azure Apps : remplacer la configuration de l’application à l’aide du portail Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
+[Azure App service](https://azure.microsoft.com/services/app-service/) permet de définir des variables d’environnement dans le portail Azure qui peuvent remplacer la configuration de l’application à l’aide du fournisseur de configuration des variables d’environnement. Pour plus d’informations, consultez [Azure Apps : remplacer la configuration de l’application à l’aide du portail Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -456,19 +467,16 @@ Pour activer la configuration des variables d’environnement, appelez la métho
 
 Le fournisseur de configuration de variables d’environnement est appelé une fois que la configuration est établie à partir des secrets utilisateur et des fichiers *appsettings*. Le fait d’appeler le fournisseur ainsi permet de lire les variables d’environnement pendant l’exécution pour substituer la configuration définie par les secrets utilisateur et les fichiers *appsettings*.
 
-Si vous devez fournir la configuration de l'application à partir de variables d'environnement supplémentaires, appelez les fournisseurs supplémentaires de l'application dans `ConfigureAppConfiguration` et appelez `AddEnvironmentVariables` avec le préfixe.
+Pour fournir la configuration d’application à partir de variables d’environnement supplémentaires, appelez les fournisseurs supplémentaires de l’application dans `ConfigureAppConfiguration` et appelez `AddEnvironmentVariables` avec le préfixe :
 
 ```csharp
 .ConfigureAppConfiguration((hostingContext, config) =>
 {
-    // Call additional providers here as needed.
-    // Call AddEnvironmentVariables last if you need to allow
-    // environment variables to override values from other 
-    // providers.
     config.AddEnvironmentVariables(prefix: "PREFIX_");
 })
-}
 ```
+
+Appelez `AddEnvironmentVariables` dernier pour autoriser les variables d’environnement avec le préfixe spécifié à substituer des valeurs d’autres fournisseurs.
 
 **Exemple**
 
@@ -479,7 +487,7 @@ L’exemple d’application tire parti de la méthode pratique statique `CreateD
 
 Pour que la liste des variables d’environnement restituée par l’application soit courte, l’application filtre les variables d’environnement. Consultez le fichier *Pages/Index.cshtml.cs* de l’exemple d’application.
 
-Si vous souhaitez exposer toutes les variables d’environnement disponibles pour l’application, remplacez `FilteredConfiguration` dans *Pages/Index.cshtml.cs* par ce qui suit :
+Pour exposer toutes les variables d’environnement disponibles pour l’application, remplacez la `FilteredConfiguration` dans *pages/index. cshtml. cs* par ce qui suit :
 
 ```csharp
 FilteredConfiguration = _config.AsEnumerable();
@@ -487,7 +495,7 @@ FilteredConfiguration = _config.AsEnumerable();
 
 ### <a name="prefixes"></a>Préfixes
 
-Les variables d’environnement chargées dans la configuration de l’application sont filtrées lorsque vous fournissez un préfixe pour la méthode `AddEnvironmentVariables`. Par exemple, pour filtrer les variables d’environnement sur le préfixe `CUSTOM_`, fournissez le préfixe au fournisseur de configuration :
+Les variables d’environnement chargées dans la configuration de l’application sont filtrées lorsque vous fournissez un préfixe à la méthode `AddEnvironmentVariables`. Par exemple, pour filtrer les variables d’environnement sur le préfixe `CUSTOM_`, fournissez le préfixe au fournisseur de configuration :
 
 ```csharp
 var config = new ConfigurationBuilder()
@@ -591,10 +599,10 @@ Les surcharges permettent de spécifier :
 * Si la configuration est rechargée quand le fichier est modifié.
 * Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
 
-`AddJsonFile` est appelé automatiquement deux fois lorsque vous initialisez un nouveau générateur d’hôte avec `CreateDefaultBuilder`. La méthode est appelée pour charger la configuration à partir de :
+`AddJsonFile` est appelé automatiquement deux fois lorsqu’un nouveau générateur d’hôte est initialisé avec `CreateDefaultBuilder`. La méthode est appelée pour charger la configuration à partir de :
 
-* *appSettings.JSON* &ndash; Ce fichier est lu en premier. La version de l’environnement du fichier peut remplacer les valeurs fournies par le fichier *appsettings.json*.
-* *appsettings.{Environment}.json* &ndash; La version de l’environnement du fichier est chargée à partir du fichier [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
+* *appSettings. json* &ndash; ce fichier est lu en premier. La version de l’environnement du fichier peut remplacer les valeurs fournies par le fichier *appsettings.json*.
+* *appSettings. {Environment}. JSON* &ndash; la version de l’environnement du fichier est chargée à partir de [IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
 
 Pour plus d’informations, consultez la section [Configuration par défaut](#default-configuration).
 
@@ -618,17 +626,47 @@ Appelez `ConfigureAppConfiguration` lors de la création de l’hôte pour spéc
 
 **Exemple**
 
-L’exemple d’application tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut deux appels à `AddJsonFile`. La configuration est chargée à partir d’*appsettings.json* et d’*appsettings{Environment}.json*.
+L’exemple d’application tire parti de la méthode de commodité statique `CreateDefaultBuilder` pour créer l’hôte, ce qui comprend deux appels à `AddJsonFile`:
+
+::: moniker range=">= aspnetcore-3.0"
+
+* Le premier appel à `AddJsonFile` charge la configuration à partir de *appSettings. JSON*:
+
+  [!code-json[](index/samples/3.x/ConfigurationSample/appsettings.json)]
+
+* Le deuxième appel à `AddJsonFile` charge la configuration à partir de *appSettings. { Environnement}. JSON*. Pour *appSettings. Development. JSON* dans l’exemple d’application, le fichier suivant est chargé :
+
+  [!code-json[](index/samples/3.x/ConfigurationSample/appsettings.Development.json)]
 
 1. Exécutez l’exemple d’application. Ouvrez un navigateur vers l’application avec l’adresse `http://localhost:5000`.
-1. Notez que la sortie contient des paires clé-valeur pour la configuration représentée dans le tableau en fonction de l’environnement. Les clés de configuration de la journalisation utilisent le signe deux-points (`:`) comme séparateur hiérarchique.
+1. La sortie contient des paires clé-valeur pour la configuration en fonction de l’environnement de l’application. Le niveau de journalisation de la `Logging:LogLevel:Default` de clé est `Debug` lors de l’exécution de l’application dans l’environnement de développement.
+1. Exécutez à nouveau l’exemple d’application dans l’environnement de production :
+   1. Ouvrez le fichier *Properties/launchSettings. JSON* .
+   1. Dans le profil `ConfigurationSample`, remplacez la valeur de la variable d’environnement `ASPNETCORE_ENVIRONMENT` par `Production`.
+   1. Enregistrez le fichier et exécutez l’application avec `dotnet run` dans un interpréteur de commandes.
+1. Paramètres dans *appSettings. Development. JSON* ne remplace plus les paramètres dans *appSettings. JSON*. Le niveau de journalisation de la clé `Logging:LogLevel:Default` est `Information`.
 
-| Touche                        | Valeur de développement | Valeur de production |
-| -------------------------- | :---------------: | :--------------: |
-| Logging:LogLevel:System    | Informations       | Informations      |
-| Logging:LogLevel:Microsoft | Informations       | Informations      |
-| Logging:LogLevel:Default   | Débogage             | Erreur            |
-| AllowedHosts               | *                 | *                |
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+* Le premier appel à `AddJsonFile` charge la configuration à partir de *appSettings. JSON*:
+
+  [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.json)]
+
+* Le deuxième appel à `AddJsonFile` charge la configuration à partir de *appSettings. { Environnement}. JSON*. Pour *appSettings. Development. JSON* dans l’exemple d’application, le fichier suivant est chargé :
+
+  [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.Development.json)]
+
+1. Exécutez l’exemple d’application. Ouvrez un navigateur vers l’application avec l’adresse `http://localhost:5000`.
+1. La sortie contient des paires clé-valeur pour la configuration en fonction de l’environnement de l’application. Le niveau de journalisation de la `Logging:LogLevel:Default` de clé est `Debug` lors de l’exécution de l’application dans l’environnement de développement.
+1. Exécutez à nouveau l’exemple d’application dans l’environnement de production :
+   1. Ouvrez le fichier *Properties/launchSettings. JSON* .
+   1. Dans le profil `ConfigurationSample`, remplacez la valeur de la variable d’environnement `ASPNETCORE_ENVIRONMENT` par `Production`.
+   1. Enregistrez le fichier et exécutez l’application avec `dotnet run` dans un interpréteur de commandes.
+1. Paramètres dans *appSettings. Development. JSON* ne remplace plus les paramètres dans *appSettings. JSON*. Le niveau de journalisation de la clé `Logging:LogLevel:Default` est `Warning`.
+
+::: moniker-end
 
 ### <a name="xml-configuration-provider"></a>Fournisseur de configuration XML
 
@@ -773,7 +811,7 @@ Le dictionnaire est utilisé avec un appel à `AddInMemoryCollection` pour fourn
 
 ## <a name="getvalue"></a>GetValue
 
-[ConfigurationBinder. GetValue \<T >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur unique de la configuration avec une clé spécifiée et la convertit en type non collection spécifié. Une surcharge accepte une valeur par défaut.
+[ConfigurationBinder. GetValue\<t >](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur unique de la configuration avec une clé spécifiée et la convertit en type non collection spécifié. Une surcharge accepte une valeur par défaut.
 
 L’exemple suivant :
 
@@ -917,7 +955,7 @@ La section `starship` du fichier *starship.json* crée la configuration lorsque 
 
 Les paires clé-valeur de configuration suivantes sont créées :
 
-| Touche                   | valeur                                             |
+| Clé                   | Value                                             |
 | --------------------- | ------------------------------------------------- |
 | starship:name         | USS Enterprise                                    |
 | starship:registry     | NCC-1701                                          |
@@ -998,7 +1036,7 @@ TvShow = tvShow;
 
 *L’exemple d’application illustre les concepts abordés dans cette section.*
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> prend en charge la liaison de tableaux à des objets à l’aide d’index de tableau dans les clés de configuration. Tout format de tableau qui expose un segment de clé numérique (`:0:`, `:1:`, &hellip; `:{n}:`) est capable d’effectuer la liaison de tableau avec un tableau de classes POCO.
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> prend en charge la liaison de tableaux à des objets à l’aide d’index de tableau dans les clés de configuration. Tout format de tableau qui expose un segment de clé numérique (`:0:`, `:1:`, &hellip; `:{n}:`) est capable d’effectuer une liaison de tableau à un tableau de classes POCO.
 
 > [!NOTE]
 > La liaison est fournie par convention. Les fournisseurs de configuration personnalisés ne sont pas obligés d’implémenter la liaison de tableau.
@@ -1007,7 +1045,7 @@ TvShow = tvShow;
 
 Observez les valeurs et les clés de configuration indiquées dans le tableau suivant.
 
-| Touche             | valeur  |
+| Clé             | Value  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | valeur1 |
@@ -1097,7 +1135,7 @@ config.AddJsonFile(
 
 La paire clé-valeur indiquée dans le tableau est chargée dans la configuration.
 
-| Touche             | valeur  |
+| Clé             | Value  |
 | :-------------: | :----: |
 | array:entries:3 | valeur3 |
 
@@ -1130,7 +1168,7 @@ Si un fichier JSON contient un tableau, les clés de configuration sont créés 
 
 Le Fournisseur de configuration JSON lit les données de configuration dans les paires clé-valeur suivantes :
 
-| Touche                     | valeur  |
+| Clé                     | Value  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

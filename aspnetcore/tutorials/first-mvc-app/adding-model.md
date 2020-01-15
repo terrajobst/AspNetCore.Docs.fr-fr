@@ -3,14 +3,14 @@ title: Ajouter un modèle dans une application ASP.NET Core MVC
 author: rick-anderson
 description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
-ms.date: 8/15/2019
+ms.date: 01/13/2020
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 40f26c8c2bf8d8aaec1da4ca2ff96cb45830914e
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: adf313418e82cc265304262f7a751273fa0e139f
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914176"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952111"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -50,8 +50,8 @@ La classe `Movie` contient un champ `Id`, qui est nécessaire à la base de donn
 
 L’attribut [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) de `ReleaseDate` spécifie le type de données (`Date`). Avec cet attribut :
 
-  * L’utilisateur n’est pas obligé d’entrer les informations de temps dans le champ de date.
-  * Seule la date est affichée, pas les informations de temps.
+* L’utilisateur n’est pas obligé d’entrer les informations de temps dans le champ de date.
+* Seule la date est affichée, pas les informations de temps.
 
 Les [DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) sont traitées dans un prochain didacticiel.
 
@@ -88,9 +88,10 @@ La boîte de dialogue **Sélectionner les projets** s’affiche, avec le projet 
 Une boîte de dialogue d' **acceptation de licence** s’affiche. Passez en revue les licences comme vous le souhaitez, puis cliquez sur le bouton **accepter** .
 
 Répétez les étapes ci-dessus pour installer les packages NuGet suivants :
- * `Microsoft.VisualStudio.Web.CodeGeneration.Design`
- * `Microsoft.EntityFrameworkCore.SqlServer`
- * `Microsoft.EntityFrameworkCore.Design`
+
+* `Microsoft.VisualStudio.Web.CodeGeneration.Design`
+* `Microsoft.EntityFrameworkCore.SqlServer`
+* `Microsoft.EntityFrameworkCore.Design`
 
 ---
 
@@ -192,13 +193,13 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 * Sur Linux, exportez le chemin de l’outil de génération de modèles automatique :
 
   ```console
-    export PATH=$HOME/.dotnet/tools:$PATH
+  export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
 * Exécutez la commande suivante : .
 
   ```dotnetcli
-   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -210,7 +211,7 @@ La création automatique de ces fichiers est appelée *génération de modèles 
 * Exécutez la commande suivante : .
 
   ```dotnetcli
-   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
+  dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
 
   [!INCLUDE [explains scaffold generated params](~/includes/mvc-intro/model4.md)]
@@ -233,7 +234,7 @@ Dans le menu **Outils** , sélectionnez **Gestionnaire de package NuGet** > la *
 
 Dans la console du gestionnaire de package, entrez les commandes suivantes :
 
-```PMC
+```powershell
 Add-Migration InitialCreate
 Update-Database
 ```
@@ -263,7 +264,7 @@ dotnet ef database update
 
 * `ef database update`: met à jour la base de données avec la dernière migration, créée par la commande précédente. La commande exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
-[!INCLUDE [ more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
+[!INCLUDE [more information on the CLI tools for EF Core](~/includes/ef-cli.md)]
 
 ---
 
@@ -273,7 +274,7 @@ Examinez le fichier de migration *Migrations/{horodatage}_InitialCreate.cs* :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Migrations/20190805165915_InitialCreate.cs?name=snippet)]
 
- La méthode `Up` crée la table Movie et configure `Id` comme la clé primaire. La méthode `Down` rétablit les modifications de schéma provoquées par la migration `Up`.
+La méthode `Up` crée la table Movie et configure `Id` comme la clé primaire. La méthode `Down` rétablit les modifications de schéma provoquées par la migration `Up`.
 
 <a name="test"></a>
 
@@ -323,7 +324,11 @@ Le constructeur utilise une [injection de dépendance](xref:fundamentals/depende
 
 Le constructeur utilise une [injection de dépendance](xref:fundamentals/dependency-injection) pour injecter le contexte de base de données (`MvcMovieContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
 
-[!INCLUDE [use SQL Server in production](~/includes/RP/sqlitedev.md)]
+### <a name="use-sqlite-for-development-sql-server-for-production"></a>Utiliser SQLite pour le développement, SQL Server pour la production
+
+Lorsque SQLite est sélectionné, le code généré par le modèle est prêt pour le développement. Le code suivant montre comment injecter des <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment> au démarrage. `IWebHostEnvironment` est injecté de sorte que `ConfigureServices` pouvez utiliser SQLite dans le développement et SQL Server en production.
+
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/StartupDevProd.cs?name=snippet_StartupClass&highlight=5,10,16-28)]
 
 ---
 <!-- end of tabs --->
@@ -364,17 +369,17 @@ Si un film est trouvé, une instance du modèle `Movie` est passée à la vue `D
 
 ```csharp
 return View(movie);
-   ```
+```
 
 Examinez le contenu du fichier *Views/Movies/Details.cshtml*:
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
 L’instruction `@model` située en haut du fichier de la vue spécifie le type d’objet attendu par la vue. Lorsque le contrôleur de film était créé, l’instruction `@model` suivante était incluse :
 
-```HTML
+```cshtml
 @model MvcMovie.Models.Movie
-   ```
+```
 
 Cette directive `@model` autorise l’accès au film que le contrôleur a passé à la vue. L’objet `Model` est fortement typé. Par exemple, dans la vue *Details.cshtml*, le code passe chaque champ du film aux Helpers HTML `DisplayNameFor` et `DisplayFor` avec l’objet `Model` fortement typé. Les méthodes et les vues `Create` et `Edit` passent aussi un objet du modèle `Movie`.
 
@@ -386,11 +391,11 @@ Lors de la création du contrôleur du film, la génération de modèles automat
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
 La directive `@model` vous permet d’accéder à la liste des films que le contrôleur a passé à la vue en utilisant un objet `Model` qui est fortement typé. Par exemple, dans la vue *Index.cshtml*, le code boucle dans les films avec une instruction `foreach` sur l’objet `Model` fortement typé :
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
 Comme l’objet `Model` est fortement typé (en tant qu’objet `IEnumerable<Movie>`), chaque élément de la boucle est typé en tant que `Movie`. Entre autres avantages, cela signifie que votre code est vérifié au moment de la compilation :
 

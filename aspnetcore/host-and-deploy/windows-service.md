@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 014585cd1e170fc94f7f577e11ec19824e54572f
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 37fc0b7862db3280f9ade8d563feba28153ab79b
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73659848"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75951838"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -49,7 +49,7 @@ L’application requiert une référence de package pour [Microsoft. extensions.
 `IHostBuilder.UseWindowsService` est appelée lors de la génération de l’hôte. Si l’application s’exécute comme un service Windows, la méthode :
 
 * définit la durée de vie de l’hôte sur `WindowsServiceLifetime` ;
-* Définit la [racine du contenu](xref:fundamentals/index#content-root).
+* Affecte à la [racine du contenu](xref:fundamentals/index#content-root) la valeur [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory). Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
 * Permet la journalisation dans le journal d’événements en utilisant le nom d’application en tant que nom de source par défaut.
   * Vous pouvez configurer le niveau de journalisation à l’aide de la clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.
   * Seuls les administrateurs peuvent créer des sources d’événement. Si une source d’événement ne peut pas être créée en utilisant le nom de l’application, un avertissement est consigné dans la source *Application* source et les journaux d’événements sont désactivés.
@@ -94,7 +94,7 @@ Dans l’exemple suivant, qui provient de l’exemple d’application, l’élé
 
 Pour des informations et des conseils sur les scénarios de déploiement, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-### <a name="sdk"></a>SDK
+### <a name="sdk"></a>Kit de développement logiciel
 
 Pour un service basé sur une application Web qui utilise le Razor Pages ou les frameworks MVC, spécifiez le kit de développement logiciel (SDK) Web dans le fichier projet :
 
@@ -196,13 +196,13 @@ Pour créer un compte d’utilisateur du service, utilisez la cmdlet [New-LocalU
 Dans la Mise à jour de Windows 10 d’octobre 2018 (version 1809/build 10.0.17763) ou plus :
 
 ```PowerShell
-New-LocalUser -Name {NAME}
+New-LocalUser -Name {SERVICE NAME}
 ```
 
 Dans un système d’exploitation Windows antérieur à la Mise à jour de Windows 10 d’octobre 2018 (version 1809/build 10.0.17763) :
 
 ```console
-powershell -Command "New-LocalUser -Name {NAME}"
+powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 ```
 
 Fournissez un [mot de passe fort](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) à l’invite.
@@ -239,22 +239,22 @@ $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($acl
 $acl.SetAccessRule($accessRule)
 $acl | Set-Acl "{EXE PATH}"
 
-New-Service -Name {NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
+New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}` &ndash; Chemin d’accès au dossier de l’application sur l’hôte (par exemple, `d:\myservice`). N’incluez pas le fichier exécutable de l’application dans le chemin. Aucune barre oblique de fin n’est nécessaire.
-* `{DOMAIN OR COMPUTER NAME\USER}` &ndash; Compte d’utilisateur du service (par exemple, `Contoso\ServiceUser`).
-* `{NAME}` &ndash; Nom du service (par exemple, `MyService`).
-* `{EXE FILE PATH}` &ndash; Chemin du fichier exécutable de l’application (par exemple, `d:\myservice\myservice.exe`). Incluez le nom de fichier de l’exécutable avec l’extension.
+* `{EXE PATH}` &ndash; chemin d’accès au dossier de l’application sur l’hôte (par exemple, `d:\myservice`). N’incluez pas le fichier exécutable de l’application dans le chemin. Aucune barre oblique de fin n’est nécessaire.
+* `{DOMAIN OR COMPUTER NAME\USER}` compte d’utilisateur du service &ndash; (par exemple, `Contoso\ServiceUser`).
+* `{SERVICE NAME}` &ndash; nom du service (par exemple, `MyService`).
+* `{EXE FILE PATH}` &ndash; le chemin d’accès de l’exécutable de l’application (par exemple, `d:\myservice\myservice.exe`). Incluez le nom de fichier de l’exécutable avec l’extension.
 * `{DESCRIPTION}` &ndash; Description du service (par exemple, `My sample service`).
-* `{DISPLAY NAME}` &ndash; Nom d’affichage du service (par exemple, `My Service`).
+* `{DISPLAY NAME}` &ndash; nom complet du service (par exemple, `My Service`).
 
 ### <a name="start-a-service"></a>Démarrer un service
 
 Démarrez un service avec la commande PowerShell 6 suivante :
 
 ```powershell
-Start-Service -Name {NAME}
+Start-Service -Name {SERVICE NAME}
 ```
 
 La commande prend quelques secondes pour démarrer le service.
@@ -264,7 +264,7 @@ La commande prend quelques secondes pour démarrer le service.
 Pour vérifier l’état d’un service, utilisez la commande PowerShell 6 suivante :
 
 ```powershell
-Get-Service -Name {NAME}
+Get-Service -Name {SERVICE NAME}
 ```
 
 L’état est signalé comme étant l’une des valeurs suivantes :
@@ -279,7 +279,7 @@ L’état est signalé comme étant l’une des valeurs suivantes :
 Arrêtez un service avec la commande Powershell 6 suivante :
 
 ```powershell
-Stop-Service -Name {NAME}
+Stop-Service -Name {SERVICE NAME}
 ```
 
 ### <a name="remove-a-service"></a>Supprimer un service
@@ -287,7 +287,7 @@ Stop-Service -Name {NAME}
 Après un court délai pour arrêter un service, supprimez-le avec la commande PowerShell 6 suivante :
 
 ```powershell
-Remove-Service -Name {NAME}
+Remove-Service -Name {SERVICE NAME}
 ```
 
 ::: moniker range="< aspnetcore-3.0"
@@ -318,7 +318,7 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="configure-endpoints"></a>Configurer des points de terminaison
+## <a name="configure-endpoints"></a>Configurer les points de terminaison
 
 Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port en définissant la variable d’environnement `ASPNETCORE_URLS`.
 
@@ -341,6 +341,16 @@ Le répertoire de travail actif retourné par l’appel à <xref:System.IO.Direc
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Utiliser ContentRootPath ou ContentRootFileProvider
 
 Utilisez les éléments [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) ou <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> pour localiser les ressources d’une application.
+
+Lorsque l’application s’exécute en tant que service, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> définit le <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> sur [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory).
+
+Les fichiers de paramètres par défaut de l’application, *appSettings. JSON* et *appSettings. { Environment}. JSON*, sont chargés à partir de la racine de contenu de l’application en appelant [CreateDefaultBuilder lors](xref:fundamentals/host/generic-host#set-up-a-host)de la construction de l’hôte.
+
+Pour les autres fichiers de paramètres chargés par le code du développeur dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>, il n’est pas nécessaire d’appeler <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. Dans l’exemple suivant, le fichier *custom_settings. JSON* existe dans la racine de contenu de l’application et est chargé sans définir explicitement un chemin d’accès de base :
+
+[!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
+
+N’essayez pas d’utiliser <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir un chemin d’accès de ressource, car une application de service Windows retourne le dossier *C :\\Windows\\system32* comme répertoire actif.
 
 ::: moniker-end
 
@@ -367,6 +377,83 @@ CreateWebHostBuilder(args)
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>Stocker les fichiers d’un service dans un emplacement approprié sur le disque
 
 Spécifiez un chemin absolu avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>, si vous utilisez <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, vers le dossier contenant les fichiers.
+
+## <a name="troubleshoot"></a>Dépannage
+
+Pour dépanner une application de service Windows, consultez <xref:test/troubleshoot>.
+
+### <a name="common-errors"></a>Erreurs courantes
+
+* Une version ancienne ou préliminaire de PowerShell est en cours d’utilisation.
+* Le service inscrit n’utilise pas la sortie **publiée** de l’application à partir de la commande [dotnet Publish](/dotnet/core/tools/dotnet-publish) . La sortie de la commande [dotnet Build](/dotnet/core/tools/dotnet-build) n’est pas prise en charge pour le déploiement d’applications. Les ressources publiées se trouvent dans l’un des dossiers suivants, selon le type de déploiement :
+  * *bin/Release/{Target Framework}/Publish* (FDD)
+  * *bin/Release/{Target Framework}/{Runtime identificateur}/Publish* (SCD)
+* Le service n’est pas à l’État en cours d’exécution.
+* Les chemins d’accès aux ressources que l’application utilise (par exemple, les certificats) sont incorrects. Le chemin d’accès de base d’un service Windows est *c :\\Windows\\system32*.
+* L’utilisateur ne dispose pas de droits *d’ouverture de session en tant que service* .
+* Le mot de passe de l’utilisateur a expiré ou a été transmis de manière incorrecte lors de l’exécution de la commande `New-Service` PowerShell.
+* L’application requiert l’authentification ASP.NET Core, mais elle n’est pas configurée pour les connexions sécurisées (HTTPs).
+* Le port de l’URL de requête est incorrect ou n’est pas correctement configuré dans l’application.
+
+### <a name="system-and-application-event-logs"></a>Journaux des événements système et des applications
+
+Accédez aux journaux des événements système et des applications :
+
+1. Ouvrez le menu Démarrer, recherchez *Observateur d’événements*, puis sélectionnez l’application **Observateur d’événements** .
+1. Dans **Observateur d’événements**, ouvrez le nœud **Journaux Windows**.
+1. Sélectionnez **système** pour ouvrir le journal des événements système. Sélectionnez **Application** pour ouvrir le Journal des événements de l’application.
+1. Recherchez les erreurs liées à l’application défectueuse.
+
+### <a name="run-the-app-at-a-command-prompt"></a>Exécuter l’application depuis une invite de commandes
+
+De nombreuses erreurs de démarrage ne produisent pas d’informations utiles dans les journaux des événements. Vous pouvez trouver la cause de certaines erreurs en exécutant l’application depuis une invite de commandes sur le système hôte. Pour consigner des détails supplémentaires à partir de l’application, diminuez le [niveau de journalisation](xref:fundamentals/logging/index#log-level) ou exécutez l’application dans l' [environnement de développement](xref:fundamentals/environments).
+
+### <a name="clear-package-caches"></a>Effacer les caches de package
+
+Une application fonctionnelle peut échouer immédiatement après la mise à niveau de la kit SDK .NET Core sur l’ordinateur de développement ou la modification des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
+
+1. Supprimez les dossiers *bin* et *obj*.
+1. Effacez les caches de package en exécutant [dotnet NuGet LOCALS tout--Clear](/dotnet/core/tools/dotnet-nuget-locals) dans une interface de commande.
+
+   L’effacement des caches de package peut également être effectué à l’aide de l’outil [NuGet. exe](https://www.nuget.org/downloads) et en exécutant la commande `nuget locals all -clear`. *NuGet.exe* n’étant pas une installation fournie avec le système d’exploitation de bureau Windows, il doit être obtenu séparément à partir du [site web de NuGet](https://www.nuget.org/downloads).
+
+1. Restaurez et regénérez le projet.
+1. Supprimez tous les fichiers du dossier de déploiement sur le serveur avant de redéployer l’application.
+
+### <a name="slow-or-hanging-app"></a>Application lente ou bloquée
+
+Un *vidage sur incident* est un instantané de la mémoire du système et peut aider à déterminer la cause d’un incident d’application, d’un échec de démarrage ou d’une application lente.
+
+#### <a name="app-crashes-or-encounters-an-exception"></a>L’application cesse de fonctionner ou rencontre une exception
+
+Obtenez un fichier dump et analysez-le depuis le [Rapport d'erreurs Windows](/windows/desktop/wer/windows-error-reporting) :
+
+1. Créez un dossier pour accueillir les fichiers d’image mémoire dans `c:\dumps`.
+1. Exécutez le [script PowerShell EnableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/EnableDumps.ps1) avec le nom de l’exécutable de l’application :
+
+   ```console
+   .\EnableDumps {APPLICATION EXE} c:\dumps
+   ```
+
+1. Exécutez l’application en reproduisant les conditions ayant entraîné l’incident.
+1. Une fois l’incident survenu, exécutez le [script PowerShell DisableDumps](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/host-and-deploy/windows-service/scripts/DisableDumps.ps1) :
+
+   ```console
+   .\DisableDumps {APPLICATION EXE}
+   ```
+
+Après l’arrêt de l’application et après avoir terminé la collection dump, l’application peut être fermée normalement. Le script PowerShell configure le rapport d’erreurs Windows pour collecter jusqu'à cinq fichiers dump par application.
+
+> [!WARNING]
+> Les fichiers dump d’incident peuvent occuper plus d’espace disque (jusqu’à plusieurs gigaoctets par fichier).
+
+#### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>L’application se bloque, ne démarre pas ou s’exécute normalement
+
+Quand une application *se bloque* (cesse de répondre mais ne se bloque pas), échoue pendant le démarrage ou s’exécute normalement, consultez [fichiers de vidage en mode utilisateur : choix de l’outil le mieux](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool) adapté pour sélectionner un outil approprié pour produire le vidage.
+
+#### <a name="analyze-the-dump"></a>Analyser le fichier dump
+
+Un fichier dump peut être analysé à l’aide de plusieurs approches. Pour plus d’informations, consultez [Analyzing a User-Mode Dump File](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file) (Analyser un fichier dump en mode utilisateur).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

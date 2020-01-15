@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 no-loc:
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 6506430202870ba9de2f8eb6f33d79c7c1fbbbd4
-ms.sourcegitcommit: e7d4fe6727d423f905faaeaa312f6c25ef844047
+ms.openlocfilehash: 8e7b7596fcfe2d6b7150fe1ab09a7ab1dc4a2e47
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608065"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952122"
 ---
 # <a name="aspnet-core-opno-locsignalr-hosting-and-scaling"></a>ASP.NET Core SignalR l’hébergement et la mise à l’échelle
 
@@ -86,7 +86,7 @@ Pour plus d’informations, consultez la [documentation du service Azure SignalR
 
 ![Le fond de panier ReDim, message envoyé d’un serveur à tous les clients](scale/_static/redis-backplane.png)
 
-Le fond de panier ReDim est l’approche recommandée pour la montée en puissance parallèle pour les applications hébergées dans votre propre infrastructure. Azure SignalR service n’est pas une option pratique pour une utilisation en production avec des applications locales en raison de la latence de connexion entre votre centre de données et un centre de données Azure.
+Le fond de panier ReDim est l’approche recommandée pour la montée en puissance parallèle pour les applications hébergées dans votre propre infrastructure. En cas de latence de connexion importante entre votre centre de données et un centre de données Azure, le service Azure SignalR peut ne pas être une option pratique pour les applications locales avec des exigences de faible latence ou de débit élevé.
 
 Les avantages du service Azure SignalR indiqués plus haut sont les inconvénients du fond de panier ReDim :
 

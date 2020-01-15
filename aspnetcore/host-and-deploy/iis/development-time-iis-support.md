@@ -5,14 +5,14 @@ description: Découvrez la prise en charge du débogage des applications ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/26/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 2d2c8d8e4b39d18a3a727e2a2bdef3be566897c1
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 704a8dae9da904e4bbdfae0754a6fcdabee6dc82
+ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034144"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75952034"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -38,7 +38,7 @@ L’installation d’IIS peut nécessiter un redémarrage du système.
 
 IIS doit avoir un site web configuré avec les éléments suivants :
 
-* **Nom d’hôte** &ndash; C’est en règle générale le **Site web par défaut** qui est utilisé avec le **Nom d’hôte** `localhost`. Toutefois, n’importe quel site web IIS valide avec un nom d’hôte unique fonctionnera.
+* **Nom d’hôte** &ndash; en général, le **site Web par défaut** est utilisé avec un **nom d’hôte** `localhost`. Toutefois, n’importe quel site web IIS valide avec un nom d’hôte unique fonctionnera.
 * **Liaison de site**
   * Pour les applications qui exigent le protocole HTTPS, créez une liaison au port 443 avec un certificat. On utilise en général le **certificat de développement IIS Express**, mais tous les certificats valides conviennent.
   * Pour les applications qui utilisent le protocole HTTP, vérifiez l’existence d’une liaison au port 80 ou créez-en une pour un nouveau site.
@@ -80,7 +80,7 @@ Créez un profil de lancement pour ajouter la prise en charge d’IIS pendant le
    Indiquez le nom de l’application à la fin de l’URL.
 
    Par exemple, `https://localhost/WebApplication1` (HTTPS) ou `http://localhost/WebApplication1` (HTTP) sont des URL de point de terminaison valide.
-1. Dans la section **Variables d’environnement**, sélectionnez le bouton **Ajouter**. Indiquez une variable d’environnement ayant pour **Nom** `ASPNETCORE_ENVIRONMENT` et pour **Valeur** `Development`.
+1. Dans la section **Variables d’environnement**, sélectionnez le bouton **Ajouter**. Indiquez une variable d’environnement ayant pour **Nom**`ASPNETCORE_ENVIRONMENT` et pour **Valeur**`Development`.
 1. Dans la zone **Paramètres de serveur web**, donnez à **URL de l’application** la valeur utilisée pour l’URL du point de terminaison **Lancer le navigateur**.
 1. Pour le paramètre **Modèle d’hébergement** dans Visual Studio 2019 (ou version ultérieure), sélectionnez **Par défaut** afin d’utiliser le modèle d’hébergement du projet. C’est la valeur de la propriété `<AspNetCoreHostingModel>` (`InProcess` ou `OutOfProcess`) qui est employée si elle est définie par le projet dans son fichier de projet. En l’absence de cette propriété, le modèle d’hébergement par défaut de l’application est utilisé in-process. Si l’application réclame un paramètre de modèle d’hébergement explicite autre que son modèle normal, définissez le **Modèle d’hébergement** sur `In Process` ou `Out Of Process` en fonction des besoins.
 1. Enregistrez le profil.
@@ -101,7 +101,7 @@ Créez un profil de lancement pour ajouter la prise en charge d’IIS pendant le
    Indiquez le nom de l’application à la fin de l’URL.
 
    Par exemple, `https://localhost/WebApplication1` (HTTPS) ou `http://localhost/WebApplication1` (HTTP) sont des URL de point de terminaison valide.
-1. Dans la section **Variables d’environnement**, sélectionnez le bouton **Ajouter**. Indiquez une variable d’environnement ayant pour **Nom** `ASPNETCORE_ENVIRONMENT` et pour **Valeur** `Development`.
+1. Dans la section **Variables d’environnement**, sélectionnez le bouton **Ajouter**. Indiquez une variable d’environnement ayant pour **Nom**`ASPNETCORE_ENVIRONMENT` et pour **Valeur**`Development`.
 1. Dans la zone **Paramètres de serveur web**, donnez à **URL de l’application** la valeur utilisée pour l’URL du point de terminaison **Lancer le navigateur**.
 1. Pour le paramètre **Modèle d’hébergement** dans Visual Studio 2019 (ou version ultérieure), sélectionnez **Par défaut** afin d’utiliser le modèle d’hébergement du projet. C’est la valeur de la propriété `<AspNetCoreHostingModel>` (`InProcess` ou `OutOfProcess`) qui est employée si elle est définie par le projet dans son fichier de projet. En l’absence de cette propriété, le modèle d’hébergement par défaut de l’application est utilisé hors processus. Si l’application réclame un paramètre de modèle d’hébergement explicite autre que son modèle normal, définissez le **Modèle d’hébergement** sur `In Process` ou `Out Of Process` en fonction des besoins.
 1. Enregistrez le profil.
@@ -152,6 +152,4 @@ Si vous utilisez un certificat de développement non approuvé, le navigateur pe
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Bien démarrer avec le Gestionnaire IIS dans IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* <xref:host-and-deploy/iis/index>
-* <xref:host-and-deploy/aspnet-core-module>
 * <xref:security/enforcing-ssl>
