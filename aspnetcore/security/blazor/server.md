@@ -2,20 +2,20 @@
 title: Sécuriser les applications ASP.NET Core Blazor Server
 author: guardrex
 description: Découvrez comment limiter les menaces de sécurité pour les applications Blazor Server.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: 2d644b84b304a31ad0debc16164ad155c7f7da65
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: d87aac02137681e62cf8f5cbd4dc8b0be6f8431e
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944280"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146301"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>Sécuriser les applications ASP.NET Core Blazor Server
 
@@ -206,7 +206,7 @@ En ajoutant la vérification `if (count < 3) { ... }` à l’intérieur du gesti
 
 ### <a name="guard-against-multiple-dispatches"></a>Protégez-vous contre plusieurs distributions
 
-Si un rappel d’événement appelle une opération de longue durée, telle que l’extraction de données à partir d’un service externe ou d’une base de données, envisagez d’utiliser une protection. La protection peut empêcher l’utilisateur de faire passer plusieurs opérations en file d’attente pendant que l’opération est en cours avec des commentaires visuels. Le code de composant suivant définit `isLoading` à `true` lorsque `GetForecastAsync` obtient des données du serveur. Si `isLoading` est `true`, le bouton est désactivé dans l’interface utilisateur :
+Si un rappel d’événement appelle une opération de longue durée de manière asynchrone, comme l’extraction de données à partir d’un service externe ou d’une base de données, envisagez d’utiliser une protection. La protection peut empêcher l’utilisateur de faire passer plusieurs opérations en file d’attente pendant que l’opération est en cours avec des commentaires visuels. Le code de composant suivant définit `isLoading` à `true` lorsque `GetForecastAsync` obtient des données du serveur. Si `isLoading` est `true`, le bouton est désactivé dans l’interface utilisateur :
 
 ```razor
 @page "/fetchdata"
@@ -230,6 +230,8 @@ Si un rappel d’événement appelle une opération de longue durée, telle que 
     }
 }
 ```
+
+Le modèle de protection illustré dans l’exemple précédent fonctionne si l’opération d’arrière-plan est exécutée de façon asynchrone avec le modèle de `await` -`async`.
 
 ### <a name="cancel-early-and-avoid-use-after-dispose"></a>Annuler tôt et éviter d’utiliser-after-dispose
 
@@ -292,7 +294,7 @@ L’erreur côté client n’inclut pas la pile des appels et ne fournit pas de 
 Activer les erreurs détaillées avec :
 
 * `CircuitOptions.DetailedErrors`.
-* Clé de configuration `DetailedErrors`. Par exemple, affectez à la variable d’environnement `ASPNETCORE_DETAILEDERRORS` la valeur `true`.
+* `DetailedErrors` clé de configuration. Par exemple, affectez à la variable d’environnement `ASPNETCORE_DETAILEDERRORS` la valeur `true`.
 
 > [!WARNING]
 > L’exposition des informations sur les erreurs aux clients sur Internet est un risque de sécurité qui doit toujours être évité.

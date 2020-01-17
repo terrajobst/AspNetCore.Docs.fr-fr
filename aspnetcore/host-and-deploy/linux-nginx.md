@@ -5,14 +5,14 @@ description: Découvrez comment configurer Nginx comme proxy inverse sur Ubuntu 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/02/2019
+ms.date: 01/13/2020
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: f307a1c3e0dc62c5dc03e50d710696fadd9fd487
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: e718592127115e46df3154364957943a457b0b1b
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717388"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146327"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -32,7 +32,7 @@ Ce guide montre comment effectuer les opérations suivantes :
 * S’assurer que l’application web s’exécute au démarrage en tant que démon.
 * Configurer un outil de gestion des processus pour aider à redémarrer l’application web.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Prerequisites
 
 1. Accédez à un serveur Ubuntu 16.04 avec un compte d’utilisateur standard disposant de privilèges sudo.
 1. Installez le runtime .NET Core sur le serveur.
@@ -205,7 +205,7 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 WantedBy=multi-user.target
 ```
 
-Si l’utilisateur *www-data* n’est pas utilisé par la configuration, vous devez d’abord créer l’utilisateur défini ici et l’affecter en tant que propriétaire des fichiers.
+Dans l’exemple précédent, l’utilisateur qui gère le service est spécifié par l’option `User`. L’utilisateur (`www-data`) doit exister et avoir la propriété correcte des fichiers de l’application.
 
 Utilisez `TimeoutStopSec` pour configurer la durée d’attente de l’arrêt de l’application après la réception du signal d’interruption initial. Si l’application ne s’arrête pas pendant cette période, le signal SIGKILL est émis pour mettre fin à l’application. Indiquez la valeur en secondes sans unité (par exemple, `150`), une valeur d’intervalle de temps (par exemple, `2min 30s`) ou `infinity` pour désactiver le délai d’attente. `TimeoutStopSec` prend la valeur par défaut de `DefaultTimeoutStopSec` dans le fichier de configuration du gestionnaire (*systemd-system.conf*, *system.conf.d*, *systemd-user.conf*,  *user.conf.d*). Le délai d’expiration par défaut pour la plupart des distributions est de 90 secondes.
 
@@ -267,7 +267,7 @@ Puisque l’application web utilisant Kestrel est gérée à l’aide de `system
 sudo journalctl -fu kestrel-helloapp.service
 ```
 
-Si vous souhaitez appliquer un filtrage supplémentaire, des options temporelles telles que `--since today`, `--until 1 hour ago` ou une combinaison de ces options peut réduire la quantité d’entrées retournées.
+Si vous voulez appliquer un filtrage supplémentaire, des options chronologiques, comme `--since today`, `--until 1 hour ago` ou une combinaison de ces options, peuvent réduire la quantité d’entrées retournées.
 
 ```bash
 sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"

@@ -5,14 +5,14 @@ description: Découvrez les concepts de base permettant de créer des applicatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/07/2019
+ms.date: 01/15/2020
 uid: fundamentals/index
-ms.openlocfilehash: 7173a732a04bf3e598adef298fa9120c15dd52fb
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: 3fbfc7c4c0d5e568339bc00a7cbe84a3932acf1f
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799374"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146353"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -111,7 +111,7 @@ Pour plus d'informations, consultez <xref:fundamentals/host/web-host>.
 
 ### <a name="non-web-scenarios"></a>Scénarios non basés sur le web
 
-L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
+L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d'informations, consultez les rubriques <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
 
 ## <a name="servers"></a>Serveurs
 
@@ -189,7 +189,7 @@ app.UseWebSockets(options);
 
 Pour plus d'informations, consultez <xref:fundamentals/configuration/options>.
 
-## <a name="environments"></a>Environnements
+## <a name="environments"></a>de développement
 
 Les environnements d’exécution, tels que *Développement*, *Mise en lots* et *Production*, sont une notion de premier plan dans ASP.NET Core. Vous pouvez spécifier l’environnement d’exécution d’une application en définissant la variable d’environnement `ASPNETCORE_ENVIRONMENT`. ASP.NET Core lit la variable d’environnement au démarrage de l’application et stocke la valeur dans une implémentation `IHostingEnvironment`. L’objet d’environnement est disponible partout dans l’application par le biais de l’injection de dépendances.
 
@@ -204,7 +204,7 @@ Pour plus d'informations, consultez <xref:fundamentals/environments>.
 ASP.NET Core prend en charge une API de journalisation qui fonctionne avec différents fournisseurs de journalisation tiers et intégrés. Les fournisseurs disponibles sont les suivants :
 
 * Console
-* Débogage
+* Déboguer
 * Suivi des événements sur Windows
 * Journal des événements Windows
 * TraceSource
@@ -310,6 +310,12 @@ Empêchez la publication de fichiers dans *wwwroot* avec le [contenu\<> élémen
   <Content Update="wwwroot\local\**\*.*" CopyToPublishDirectory="Never" />
 </ItemGroup>
 ```
+
+::: moniker range=">= aspnetcore-3.0"
+
+Pour empêcher la publication de ressources d’identité statiques sur la racine Web, consultez <xref:security/authentication/identity#prevent-publish-of-static-identity-assets>.
+
+::: moniker-end
 
 Dans les fichiers Razor ( *. cshtml*), le tilde-slash (`~/`) pointe vers la racine Web. Un chemin d’accès commençant par `~/` est désigné sous le terme de « *chemin d’accès virtuel*».
 

@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor cycle de vie
 author: guardrex
 description: Découvrez comment utiliser les méthodes de cycle de vie des composants Razor dans ASP.NET Core applications Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: e600e7c7a6a8c646a655520bd5c127f2cd662753
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: df5bb676df59b538179a69978040521c4ee78ed1
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944029"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146366"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET Core Blazor cycle de vie
 
@@ -26,26 +27,23 @@ L’infrastructure Blazor comprend des méthodes de cycle de vie synchrones et a
 
 ### <a name="component-initialization-methods"></a>Méthodes d’initialisation de composant
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> exécuter du code qui initialise un composant. Ces méthodes sont appelées une seule fois lors de la première instanciation du composant.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> sont appelés lorsque le composant est initialisé après avoir reçu ses paramètres initiaux de son composant parent. Utilisez `OnInitializedAsync` lorsque le composant exécute une opération asynchrone et doit être actualisé à la fin de l’opération. Ces méthodes sont appelées une seule fois lors de la première instanciation du composant.
 
-Pour effectuer une opération asynchrone, utilisez `OnInitializedAsync` et le mot clé `await` sur l’opération :
-
-```csharp
-protected override async Task OnInitializedAsync()
-{
-    await ...
-}
-```
-
-> [!NOTE]
-> Un travail asynchrone pendant l’initialisation d’un composant doit se produire pendant l’événement de cycle de vie `OnInitializedAsync`.
-
-Pour une opération synchrone, utilisez `OnInitialized`:
+Pour une opération synchrone, remplacez `OnInitialized`:
 
 ```csharp
 protected override void OnInitialized()
 {
     ...
+}
+```
+
+Pour effectuer une opération asynchrone, substituez `OnInitializedAsync` et utilisez le mot clé `await` sur l’opération :
+
+```csharp
+protected override async Task OnInitializedAsync()
+{
+    await ...
 }
 ```
 
@@ -70,7 +68,12 @@ Si `base.SetParametersAync` n’est pas appelé, le code personnalisé peut inte
 
 ### <a name="after-parameters-are-set"></a>Une fois les paramètres définis
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*> sont appelées lorsqu’un composant a reçu des paramètres de son parent et que les valeurs sont assignées aux propriétés. Ces méthodes sont exécutées après l’initialisation du composant et chaque fois que de nouvelles valeurs de paramètres sont spécifiées :
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*> sont appelées :
+
+* Lorsque le composant est initialisé et a reçu son premier jeu de paramètres de son composant parent.
+* Lorsque le composant parent est à nouveau rendu et fournit :
+  * Seuls les types immuables primitifs connus dont au moins un paramètre a été modifié.
+  * Tous les paramètres de type complexe. L’infrastructure ne peut pas savoir si les valeurs d’un paramètre de type complexe ont muté en interne, donc elle traite le jeu de paramètres comme étant modifié.
 
 ```csharp
 protected override async Task OnParametersSetAsync()
@@ -142,7 +145,7 @@ protected override bool ShouldRender()
 
 Même si `ShouldRender` est substitué, le composant est toujours restitué initialement.
 
-## <a name="state-changes"></a>Modification de l'état
+## <a name="state-changes"></a>Modifications d'état
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*> notifie le composant que son état a changé. Le cas échéant, l’appel de `StateHasChanged` entraîne le rerendu du composant.
 
@@ -160,7 +163,7 @@ Dans le composant `FetchData` des modèles Blazor, `OnInitializedAsync` est remp
 
 Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/dotnet/standard/garbage-collection/implementing-dispose) est appelée lorsque le composant est supprimé de l’interface utilisateur. Le composant suivant utilise `@implements IDisposable` et la méthode `Dispose` :
 
-```csharp
+```razor
 @using System
 @implements IDisposable
 

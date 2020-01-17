@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/03/2019
 uid: security/samesite
-ms.openlocfilehash: 988069a66cc4772583444303948bff2e47ff4310
-ms.sourcegitcommit: 169ea5116de729c803685725d96450a270bc55b7
+ms.openlocfilehash: b344ed8f539979210980b3421659207edd513f32
+ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74733984"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76146431"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet-core"></a>Utiliser des cookies SameSite dans ASP.NET Core
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [SameSite](https://tools.ietf.org/html/draft-west-first-party-cookies-07) est un projet [IETF](https://ietf.org/about/) conçu pour offrir une protection contre les attaques de falsification de requête intersites (CSRF). Le [Brouillon SameSite 2019](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00):
 
@@ -72,7 +72,7 @@ Dans ASP.NET Core 3,0 et versions ultérieures, les valeurs par défaut SameSite
 
 La prise en charge de SameSite a été implémentée pour la première fois dans ASP.NET Core dans 2,0 à l’aide de la [norme 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1). La norme 2016 était opt-in. ASP.NET Core choisi en définissant plusieurs cookies sur `Lax` par défaut. Après avoir rencontré plusieurs [problèmes](https://github.com/aspnet/Announcements/issues/318) avec l’authentification, la plupart des utilisations de SameSite ont été [désactivées](https://github.com/aspnet/Announcements/issues/348).
 
-Les correctifs ont été émis en novembre 2019 pour être mis à jour de la norme 2016 vers la norme 2019. Le [brouillon 2019 de la spécification SameSite](https://github.com/aspnet/Announcements/issues/390):
+Les [correctifs](https://devblogs.microsoft.com/dotnet/net-core-November-2019/) ont été émis en novembre 2019 pour être mis à jour de la norme 2016 vers la norme 2019. Le [brouillon 2019 de la spécification SameSite](https://github.com/aspnet/Announcements/issues/390):
 
 * N’est **pas** à compatibilité descendante avec le brouillon 2016. Pour plus d’informations, consultez [prise en charge des navigateurs plus anciens](#sob) dans ce document.
 * Spécifie que les cookies sont traités comme `SameSite=Lax` par défaut.
@@ -168,3 +168,4 @@ Les versions d’électrons incluent des versions plus anciennes de chrome. Par 
 
 * [Blog du chrome : développeurs : Préparez-vous à la nouvelle SameSite = None ; Sécuriser les paramètres de cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [Explication des cookies SameSite](https://web.dev/samesite-cookies-explained/)
+* [Correctifs de novembre 2019](https://devblogs.microsoft.com/dotnet/net-core-November-2019/)
