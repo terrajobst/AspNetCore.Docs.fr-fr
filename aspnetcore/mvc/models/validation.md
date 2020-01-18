@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: 042a9933e561de4957f6332bdff3c4f09d2e119b
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: b697f02183c76b9a96471a748a86c144fde47bb0
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355262"
+ms.lasthandoff: 01/18/2020
+ms.locfileid: "76268742"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -82,7 +82,9 @@ Pour savoir quels paramètres sont passés à `String.Format` pour le message d�
 
 ## <a name="required-attribute"></a>Attribut [Required]
 
-Par défaut, le système de validation traite les propriétés ou paramètres n’acceptant pas les valeurs Null comme s’ils avaient un attribut `[Required]`. Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) comme `decimal` et `int` n’acceptent pas les valeurs Null.
+Le système de validation dans .NET Core 3,0 et versions ultérieures traite les paramètres non Nullable ou les propriétés liées comme s’ils avaient un attribut `[Required]`. Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) comme `decimal` et `int` n’acceptent pas les valeurs Null. Vous pouvez désactiver ce comportement en configurant <xref:Microsoft.AspNetCore.Mvc.MvcOptions.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes> dans `Startup.ConfigureServices`:
+
+«» services CSharp. AddControllers (options = options de >. SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true); ...
 
 ### <a name="required-validation-on-the-server"></a>Validation de [Required] sur le serveur
 

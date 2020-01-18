@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 12/05/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: fa5be8f3a222a7c186409faa2f48e43347df637a
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 9d9266ae08c7abe747d4497bbcf52778cf2e370e
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829294"
+ms.lasthandoff: 01/18/2020
+ms.locfileid: "76268763"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -112,6 +112,7 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  dotnet tool install --global dotnet-aspnet-codegenerator
   ```
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
