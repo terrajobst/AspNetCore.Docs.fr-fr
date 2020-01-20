@@ -2,28 +2,26 @@
 title: Gérer les erreurs dans les applications de Blazor ASP.NET Core
 author: guardrex
 description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: d73eb9a0dd0ec7a4bec4b7b9aeaaa4a9ee888bce
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: fe4cc13b1efb8c70c9632f032626aa938fb65ea3
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943704"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76159948"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Cet article explique comment Blazor gère les exceptions non gérées et comment développer des applications qui détectent et gèrent les erreurs.
-
-::: moniker range=">= aspnetcore-3.1"
 
 ## <a name="detailed-errors-during-development"></a>Erreurs détaillées pendant le développement
 
@@ -58,8 +56,6 @@ Dans une application Blazor Server, personnalisez l’expérience dans le fichie
 ```
 
 L’élément `blazor-error-ui` est masqué par les styles inclus avec les modèles Blazor, puis indiqué lorsqu’une erreur se produit.
-
-::: moniker-end
 
 ## <a name="how-the-opno-locblazor-framework-reacts-to-unhandled-exceptions"></a>Comment le Blazor Framework réagit aux exceptions non gérées
 
@@ -175,7 +171,7 @@ Si la méthode `Dispose` du composant lève une exception non gérée, l’excep
 
 Pour plus d’informations sur la suppression de composants, consultez <xref:blazor/lifecycle#component-disposal-with-idisposable>.
 
-### <a name="javascript-interop"></a>Interopérabilité de JavaScript
+### <a name="javascript-interop"></a>Interopérabilité JavaScript
 
 `IJSRuntime.InvokeAsync<T>` permet au code .NET d’effectuer des appels asynchrones au runtime JavaScript dans le navigateur de l’utilisateur.
 
@@ -213,8 +209,6 @@ Lorsqu’un circuit se termine parce qu’un utilisateur s’est déconnecté et
 
 ### <a name="prerendering"></a>Préaffichant
 
-::: moniker range=">= aspnetcore-3.1"
-
 Blazor composants peuvent être prérendus à l’aide du tag Helper `Component` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
 
 * Création d’un nouveau circuit pour tous les composants prérendus qui font partie de la même page.
@@ -229,27 +223,6 @@ Si un composant lève une exception non gérée pendant le prérendu, par exempl
 Dans des circonstances normales, lorsque le prérendu échoue, la création et le rendu du composant n’ont pas de sens, car un composant de travail ne peut pas être rendu.
 
 Pour tolérer les erreurs qui peuvent se produire pendant le prérendu, la logique de gestion des erreurs doit être placée à l’intérieur d’un composant qui peut lever des exceptions. Utilisez les instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Au lieu d’encapsuler le tag Helper `Component` dans une instruction `try-catch`, placez la logique de gestion des erreurs dans le composant rendu par le tag Helper `Component`.
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.1"
-
-les composants Blazor peuvent être prérendus à l’aide de `Html.RenderComponentAsync` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
-
-* Création d’un nouveau circuit pour tous les composants prérendus qui font partie de la même page.
-* Génération du code HTML initial.
-* Le traitement du circuit comme `disconnected` jusqu’à ce que le navigateur de l’utilisateur établisse une connexion SignalR au même serveur. Lorsque la connexion est établie, l’interactivité sur le circuit est reprise et le balisage HTML des composants est mis à jour.
-
-Si un composant lève une exception non gérée pendant le prérendu, par exemple, pendant une méthode de cycle de vie ou dans une logique de rendu :
-
-* L’exception est irrécupérable pour le circuit.
-* L’exception est levée dans la pile des appels de l’appel de `Html.RenderComponentAsync`. Par conséquent, la requête HTTP entière échoue, sauf si l’exception est explicitement interceptée par le code du développeur.
-
-Dans des circonstances normales, lorsque le prérendu échoue, la création et le rendu du composant n’ont pas de sens, car un composant de travail ne peut pas être rendu.
-
-Pour tolérer les erreurs qui peuvent se produire pendant le prérendu, la logique de gestion des erreurs doit être placée à l’intérieur d’un composant qui peut lever des exceptions. Utilisez les instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Au lieu d’encapsuler l’appel à `RenderComponentAsync` dans une instruction `try-catch`, placez la logique de gestion des erreurs dans le composant rendu par `RenderComponentAsync`.
-
-::: moniker-end
 
 ## <a name="advanced-scenarios"></a>Scénarios avancés
 

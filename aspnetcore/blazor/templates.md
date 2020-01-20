@@ -2,20 +2,20 @@
 title: ASP.NET Core les modèles de Blazor
 author: guardrex
 description: En savoir plus sur les ASP.NET Core Blazor les modèles d’application et la structure de projet Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/25/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: bc0ea4a777e8684a7b0925377b8a19a45c2b531c
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 2a95b986450471b474d93ead252255f2bd9d4918
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879660"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160117"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>ASP.NET Core les modèles de Blazor
 
@@ -43,20 +43,20 @@ Les fichiers et dossiers suivants composent une Blazor application générée à
   * `ConfigureServices` &ndash; configure les services d' [injection de dépendances](xref:fundamentals/dependency-injection) de l’application. Dans Blazor applications serveur, les services sont ajoutés en appelant <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>, et le `WeatherForecastService` est ajouté au conteneur de service pour une utilisation par l’exemple de composant `FetchData`.
   * `Configure` &ndash; configure le pipeline de traitement des demandes de l’application :
     * Blazor webassembly &ndash; ajoute le composant `App` (spécifié comme élément DOM `app` à la méthode `AddComponent`), qui est le composant racine de l’application.
-    * Serveur Blazor
+    * Serveur de Blazor
       * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> est appelé pour configurer un point de terminaison pour la connexion en temps réel avec le navigateur. La connexion est créée avec [SignalR](xref:signalr/introduction), qui est une infrastructure permettant d’ajouter des fonctionnalités Web en temps réel aux applications.
       * [MapFallbackToPage (« /_Host »)](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) est appelé pour configurer la page racine de l’application (*pages/_Host. cshtml*) et activer la navigation.
 
 * *wwwroot/index.html* (Blazor webassembly) &ndash; la page racine de l’application implémentée en tant que page HTML :
   * Quand une page de l’application est initialement demandée, cette page est rendue et renvoyée dans la réponse.
   * La page spécifie l’emplacement où le composant racine `App` est restitué. Le composant `App` (*app. Razor*) est spécifié en tant qu’élément DOM `app` à la méthode `AddComponent` dans `Startup.Configure`.
-  * Le fichier JavaScript *_framework/blazor.webassembly.js* est chargé, ce qui suit :
+  * Le fichier JavaScript `_framework/blazor.webassembly.js` est chargé, ce qui suit :
     * Télécharge le Runtime .NET, l’application et les dépendances de l’application.
     * Initialise le runtime pour exécuter l’application.
 
 * *Pages/_Host. cshtml* (serveurBlazor) &ndash; la page racine de l’application implémentée en tant que page Razor :
   * Quand une page de l’application est initialement demandée, cette page est rendue et renvoyée dans la réponse.
-  * Le fichier JavaScript *_framework/blazor.Server.js* est chargé, ce qui configure la connexion SignalR en temps réel entre le navigateur et le serveur.
+  * Le `_framework/blazor.server.js` fichier JavaScript est chargé, ce qui configure la connexion SignalR en temps réel entre le navigateur et le serveur.
   * La page hôte spécifie où le composant racine `App` (*app. Razor*) est affiché.
 
 * *App. razor* &ndash; le composant racine de l’application qui configure le routage côté client à l’aide du composant <xref:Microsoft.AspNetCore.Components.Routing.Router>. Le composant `Router` intercepte la navigation dans le navigateur et restitue la page qui correspond à l’adresse demandée.

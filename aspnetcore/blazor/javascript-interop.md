@@ -2,19 +2,20 @@
 title: ASP.NET Core Blazor l’interopérabilité JavaScript
 author: guardrex
 description: Découvrez comment appeler des fonctions JavaScript à partir de méthodes .NET et .NET à partir de JavaScript dans des applications Blazor.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/javascript-interop
-ms.openlocfilehash: 7135e44278632ee53bdf899b95da9ad70d329045
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: e1b9c84dace193768c6f3fbb5636ef675d65a20d
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828124"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76159893"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor l’interopérabilité JavaScript
 
@@ -363,4 +364,4 @@ Pour plus d’informations sur l’épuisement des ressources, consultez <xref:s
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Exemple InteropComponent. Razor (référentiel GitHub dotnet/AspNetCore, branche de version 3,0)](https://github.com/dotnet/AspNetCore/blob/release/3.0/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
+* [Exemple InteropComponent. Razor (référentiel GitHub dotnet/AspNetCore, branche de version 3,1)](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)

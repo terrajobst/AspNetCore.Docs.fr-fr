@@ -2,19 +2,20 @@
 title: Héberger et déployer ASP.NET Core Blazor webassembly
 author: guardrex
 description: Découvrez comment héberger et déployer une application Blazor à l’aide de ASP.NET Core, de réseaux de distribution de contenu (CDN), de serveurs de fichiers et de pages GitHub.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/15/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 0fcefc3f1e51beb7cc29aef6dd4f4b8557e61965
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 8ed95cdb96804e08c3f1273bbea8f64a8e4f173c
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963636"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160247"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>Héberger et déployer ASP.NET Core Blazor webassembly
 
@@ -36,8 +37,8 @@ Les stratégies de déploiement suivantes sont prises en charge :
 
 Les requêtes de routage pour les composants de page dans une application Blazor webassembly ne sont pas aussi simples que les demandes de routage dans un serveur de Blazor, une application hébergée. Prenons l’exemple d’une application Blazor webassembly avec deux composants :
 
-* *Main.razor* &ndash; Se charge à la racine de l’application et contient un lien vers le composant `About` (`href="About"`).
-* Composant *About.Razor* &ndash; `About`.
+* *Main. razor* &ndash; se charge à la racine de l’application et contient un lien vers le composant `About` (`href="About"`).
+* *À propos de* la &ndash; du composant `About`. Razor.
 
 Quand le document par défaut de l’application est demandé à l’aide de la barre d’adresses du navigateur (par exemple, `https://www.contoso.com/`) :
 
@@ -81,11 +82,11 @@ Les ressources publiées sont créées dans le dossier */bin/Release/{FRAMEWORK 
 Quand un projet de Blazor est publié, un fichier *Web. config* est créé avec la configuration IIS suivante :
 
 * Les types MIME sont définis pour les extensions de fichiers suivantes :
-  * *.dll* &ndash; `application/octet-stream`
-  * *.json* &ndash; `application/json`
-  * *.wasm* &ndash; `application/wasm`
-  * *.woff* &ndash; `application/font-woff`
-  * *.woff2* &ndash; `application/font-woff`
+  * *. dll* &ndash; `application/octet-stream`
+  * &ndash; *. json* `application/json`
+  * *wasm* &ndash; `application/wasm`
+  * *woff* &ndash; `application/font-woff`
+  * *woff2* &ndash; `application/font-woff`
 * La compression HTTP est activée pour les types MIME suivants :
   * `application/octet-stream`
   * `application/wasm`
@@ -121,7 +122,7 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
   </handlers>
   ```
 
-* Désactivez l’héritage de la section `<system.webServer>` de l’application racine (parent) à l’aide d’un élément `<location>` avec `inheritInChildApplications` défini sur `false` :
+* Désactivez l’héritage de la section `<system.webServer>` de l’application racine (parent) à l’aide d’un élément `<location>` avec `inheritInChildApplications` défini sur `false`:
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -293,7 +294,7 @@ L’argument `--pathbase` définit le chemin d’accès de base d’application 
   --pathbase=/relative-URL-path
   ```
 
-### <a name="urls"></a>URL
+### <a name="urls"></a>Adresses URL
 
 L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec les ports et protocoles sur lesquels il faut écouter les demandes.
 

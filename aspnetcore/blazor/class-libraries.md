@@ -2,19 +2,20 @@
 title: Bibliothèques de classes des composants Razor ASP.NET Core
 author: guardrex
 description: Découvrez comment les composants peuvent être inclus dans Blazor applications à partir d’une bibliothèque de composants externes.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
+- SignalR
 uid: blazor/class-libraries
-ms.openlocfilehash: 6bac007e3e1d046d6b16a3a0be6dc5976b99b766
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: f8e8688cdb3d1aef0d470e0e2d8c3857140ef65f
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943873"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76160026"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>Bibliothèques de classes des composants Razor ASP.NET Core
 
