@@ -2,20 +2,20 @@
 title: Présentation de ASP.NET Core Blazor
 author: guardrex
 description: Explorez ASP.NET Core Blazor, un moyen de créer une interface utilisateur Web interactive côté client avec .NET dans une application ASP.NET Core.
-monikerRange: '>= aspnetcore-3.0'
+monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 12/05/2019
+ms.date: 12/18/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 4ab6af649afe66d92fb2ea07d3abed057f321bce
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 9f43735fc02ba9f8da4ba27c8b5763d587b5429a
+ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74943717"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76159922"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Présentation de ASP.NET Core Blazor
 
@@ -38,7 +38,7 @@ L’utilisation de .NET dans le développement web côté client offre les avant
 * Restez productif grâce à Visual Studio sur Windows, Linux et macOS.
 * Développez avec un ensemble commun de langages, de frameworks et d’outils stables, riches en fonctionnalités et faciles à utiliser.
 
-## <a name="components"></a>Components
+## <a name="components"></a>Composants
 
 les applications Blazor sont basées sur des *composants*. Un composant de Blazor est un élément de l’interface utilisateur, tel qu’une page, une boîte de dialogue ou un formulaire de saisie de données.
 
@@ -128,7 +128,7 @@ La taille de l’application publiée, sa *taille de charge utile*, est un facte
 * Réponses HTTP compressées.
 * Le runtime .NET et les assemblys sont mis en cache dans le navigateur.
 
-## <a name="opno-locblazor-server"></a>Serveur Blazor
+## <a name="opno-locblazor-server"></a>Serveur de Blazor
 
 Blazor dissocie la logique de rendu des composants de l’application des mises à jour de l’interface utilisateur. Blazor Server prend en charge l’hébergement de composants Razor sur le serveur dans une application ASP.NET Core. Les mises à jour de l’interface utilisateur sont gérées via une connexion [SignalR](xref:signalr/introduction) .
 
@@ -138,7 +138,7 @@ La connexion utilisée par Blazor serveur pour communiquer avec le navigateur es
 
 ![[! Opérationnel. NO-LOC (éblouissant)] le serveur exécute le code .NET sur le serveur et interagit avec le Document Object Model sur le client via un [ ! Opérationnel. Connexion NO-LOC (Signalr)]](index/_static/blazor-server.png)
 
-## <a name="javascript-interop"></a>Interopérabilité de JavaScript
+## <a name="javascript-interop"></a>Interopérabilité JavaScript
 
 Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
 
