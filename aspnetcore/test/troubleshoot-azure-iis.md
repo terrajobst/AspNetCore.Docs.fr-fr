@@ -5,14 +5,14 @@ description: Découvrez comment diagnostiquer les problèmes liés aux déploiem
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/10/2020
+ms.date: 01/18/2020
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 23c90c33d197d26d1c4ad758449e318e20ef3760
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 071dba9e936351e201b7582b3d0667cd6fac54bb
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952150"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294617"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Résoudre les problèmes de ASP.NET Core sur Azure App Service et IIS
 
@@ -117,7 +117,10 @@ Le processus de travail échoue. L’application ne démarre pas.
 
 Le [Module ASP.net Core](xref:host-and-deploy/aspnet-core-module) tente de démarrer le CLR .net Core in-process, mais il ne parvient pas à démarrer. La cause d’un échec de démarrage d’un processus peut généralement être déterminée à partir des entrées dans le journal des événements d’application et le journal stdout du module ASP.NET Core.
 
-Une condition d’échec courante est une application mal configurée qui cible une version du framework partagé ASP.NET Core non présente. Vérifiez les versions du framework partagé ASP.NET Core qui sont installées sur l’ordinateur cible.
+Conditions d’échec courantes :
+
+* L’application n’est pas configurée en raison du ciblage d’une version du Framework partagé ASP.NET Core qui n’est pas présent. Vérifiez les versions du framework partagé ASP.NET Core qui sont installées sur l’ordinateur cible.
+* À l’aide de Azure Key Vault, le manque d’autorisations au Key Vault. Vérifiez les stratégies d’accès dans le Key Vault ciblé pour vous assurer que les autorisations appropriées sont accordées.
 
 ### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 - Échec de la recherche de dépendances natives par ANCM
 

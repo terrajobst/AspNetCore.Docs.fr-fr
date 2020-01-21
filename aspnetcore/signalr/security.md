@@ -5,16 +5,16 @@ description: Découvrez comment utiliser l’authentification et l’autorisatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/16/2020
 no-loc:
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: 1bdb8b10a24c65735f49f04285e4129cb77eb3fb
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 4b27d9abb36938ed8161ff0d3535204e3fa68765
+ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828943"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294706"
 ---
 # <a name="security-considerations-in-aspnet-core-opno-locsignalr"></a>Considérations relatives à la sécurité dans ASP.NET Core SignalR
 
@@ -112,16 +112,20 @@ Dans ASP.NET Core 2,1 et versions ultérieures, la validation d’en-tête peut 
 
 ::: moniker-end
 
+## <a name="connectionid"></a>ConnectionId
+
+L’exposition de `ConnectionId` peut entraîner un emprunt d’identité malveillant si la version du client ou du serveur SignalR est ASP.NET Core 2,2 ou une version antérieure. Si le serveur SignalR et la version du client sont ASP.NET Core 3,0 ou version ultérieure, le `ConnectionToken` plutôt que le `ConnectionId` doit être gardé secret. L' `ConnectionToken` n’est volontairement pas exposée dans une API.  Il peut être difficile de s’assurer que les anciens clients SignalR ne se connectent pas au serveur. par conséquent, même si votre version de SignalR Server est ASP.NET Core 3,0 ou une version ultérieure, le `ConnectionId` ne doit pas être exposé.
+
 ## <a name="access-token-logging"></a>Journalisation des jetons d’accès
 
-Lorsque vous utilisez des WebSockets ou des événements envoyés par le serveur, le client du navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement aussi sécurisée que l’utilisation de l’en-tête `Authorization` standard. Vous devez toujours utiliser le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Par exemple :
+Lorsque vous utilisez des WebSockets ou des événements envoyés par le serveur, le client du navigateur envoie le jeton d’accès dans la chaîne de requête. La réception du jeton d’accès via la chaîne de requête est généralement sécurisée à l’aide de l’en-tête `Authorization` standard. Utilisez toujours le protocole HTTPs pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. De nombreux serveurs Web consignent l’URL pour chaque demande, y compris la chaîne de requête. La journalisation des URL peut enregistrer le jeton d’accès. ASP.NET Core enregistre l’URL pour chaque demande par défaut, qui inclut la chaîne de requête. Par exemple :
 
 ```
 info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
 ```
 
-Si vous avez des doutes quant à la journalisation de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation en configurant l’enregistreur d' `Microsoft.AspNetCore.Hosting` au niveau `Warning` ou au-dessus (ces messages sont écrits au niveau `Info`). Pour plus d’informations, consultez la documentation relative au [filtrage des journaux](xref:fundamentals/logging/index#log-filtering) . Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware](xref:fundamentals/middleware/write) ) pour enregistrer les données dont vous avez besoin et filtrer les `access_token` valeur de chaîne de requête (le cas échéant).
+Si vous avez des doutes quant à la journalisation de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation en configurant l’enregistreur d' `Microsoft.AspNetCore.Hosting` au niveau `Warning` ou au-dessus (ces messages sont écrits au niveau `Info`). Pour plus d’informations, consultez [filtrage des journaux](xref:fundamentals/logging/index#log-filtering) pour plus d’informations. Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware](xref:fundamentals/middleware/write) ) pour enregistrer les données dont vous avez besoin et filtrer les `access_token` valeur de chaîne de requête (le cas échéant).
 
 ## <a name="exceptions"></a>Exceptions
 
