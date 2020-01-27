@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 462f34664540b92ba6758224a722c7ca8f9c8de0
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 5e3ff65420b3c6769d52f8b96c216043cb1fdc1a
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829060"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727009"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -134,7 +134,7 @@ Les méthodes fournies par <xref:Microsoft.AspNetCore.Routing.LinkGenerator> pre
   * [UseRouting](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*) ajoute la correspondance d’itinéraire au pipeline de l’intergiciel (middleware). Il doit précéder tous les intergiciels (middleware) prenant en charge les routes, tels que l’autorisation, l’exécution du point de terminaison, etc.
   * [UseEndpoints](xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*) ajoute l’exécution du point de terminaison au pipeline d’intergiciel (middleware). Il exécute le délégué de requête qui sert la réponse du point de terminaison.
   `UseEndpoints` est également la configuration des points de terminaison de routage qui peuvent être mis en correspondance et exécutés par l’application. Par exemple, <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*>, <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>et <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>.
-* Les applications utilisent les méthodes d’assistance de ASP.NET Core pour configurer leurs itinéraires. Les frameworks ASP.NET Core fournissent des méthodes d’assistance comme <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>,, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> et `MapHub<THub>`. Il existe également des méthodes d’assistance pour configurer vos propres points de terminaison de routage personnalisés : <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>, <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>et [MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions). 
+* Les applications utilisent les méthodes d’assistance de ASP.NET Core pour configurer leurs itinéraires. Les frameworks ASP.NET Core fournissent des méthodes d’assistance comme <xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*>, <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> et `MapHub<THub>`. Il existe également des méthodes d’assistance pour configurer vos propres points de terminaison de routage personnalisés : <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*>, <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>et [MapVerb](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions). 
 * Le routage des points de terminaison prend également en charge les points de terminaison qui changent après le démarrage d’une application. Pour la prendre en charge dans votre application ou ASP.NET Core Framework, vous devez créer et inscrire un <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> personnalisé. Il s’agit d’une fonctionnalité avancée qui n’est généralement pas nécessaire. Les points de terminaison sont généralement configurés au démarrage et sont statiques pendant toute la durée de vie de l’application. Le chargement de la configuration de l’itinéraire à partir d’un fichier ou d’une base de données au démarrage n’est pas dynamique.
 
 Le code suivant illustre un exemple de routage de point de terminaison de base :

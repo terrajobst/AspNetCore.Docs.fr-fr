@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: bf035bc65f0f120f52e55effe4d413bfecdf735d
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 146a204509856186a2696b770cae2249d348fa34
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952083"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726841"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -26,8 +26,19 @@ Pour une expérience de tutoriel sur la publication d'une app ASP.NET Core sur u
 
 Les systèmes d’exploitation suivants sont pris en charge :
 
+::: moniker range=">= aspnetcore-3.0"
+
+* Windows 7 ou version ultérieure
+* Windows Server 2012 R2 ou version ultérieure
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 * Windows 7 ou version ultérieure
 * Windows Server 2008 R2 ou une version ultérieure
+
+::: moniker-end
 
 Le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement WebListener) ne fonctionne pas dans une configuration de proxy inverse avec IIS. Utilisez le [serveur Kestrel](xref:fundamentals/servers/kestrel).
 
@@ -577,7 +588,7 @@ Pour plus d’informations sur le modèle d’hébergement in-process et sur la 
 
 La configuration d’IIS est influencée par la section `<system.webServer>` de *web.config* pour les scénarios IIS qui sont fonctionnels pour les applications ASP.NET Core avec le module ASP.NET Core. Par exemple, la configuration IIS est fonctionnelle pour la compression dynamique. Si IIS est configuré au niveau du serveur pour utiliser la compression dynamique, l’élément `<urlCompression>` dans le fichier *web.config* de l’application peut le désactiver pour une application ASP.NET Core.
 
-Pour plus d’informations, consultez les rubriques suivantes :
+Pour plus d'informations, consultez les rubriques suivantes :
 
 * [Référence de configuration de \<System. webServer >](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>

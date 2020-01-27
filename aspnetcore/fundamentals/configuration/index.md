@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’API de configuration pour configure
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 09ef06f179e34cd7f4f04ac30c3b5dd95d058244
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 141ae5cda7672159032013cbda1ef4bfa7c142dd
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951884"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726984"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -21,7 +21,7 @@ Par [Luke Latham](https://github.com/guardrex)
 La configuration d’application dans ASP.NET Core est basée sur des paires clé-valeur établies par les *fournisseurs de configuration*. Les fournisseurs de configuration lisent les données de configuration dans les paires clé-valeur à partir de diverses sources de configuration :
 
 * Azure Key Vault
-* Azure App Configuration
+* Configuration de Azure App
 * Arguments de ligne de commande
 * Fournisseurs personnalisés (installés ou créés)
 * Fichiers de répertoire
@@ -106,7 +106,7 @@ Adoptez les pratiques suivantes pour sécuriser les données de configuration se
 * N’utilisez aucun secret de production dans les environnements de développement ou de test.
 * Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source.
 
-Pour plus d’informations, consultez les rubriques suivantes :
+Pour plus d'informations, consultez les rubriques suivantes :
 
 * <xref:fundamentals/environments>
 * <xref:security/app-secrets> &ndash; fournit des conseils sur l’utilisation de variables d’environnement pour stocker des données sensibles. Secret Manager utilise le fournisseur de configuration de fichier pour stocker les secrets utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
@@ -205,7 +205,7 @@ Le tableau suivant présente les fournisseurs de configuration disponibles pour 
 | Fournisseur | Fournit la configuration à partir de&hellip; |
 | -------- | ----------------------------------- |
 | [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
-| [Fournisseur Azure App Configuration](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentation Azure) | Azure App Configuration |
+| [Fournisseur Azure App Configuration](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentation Azure) | Configuration de Azure App |
 | [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
 | [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
 | [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d'environnement |
@@ -923,7 +923,7 @@ Compte tenu des données d’exemple, `sectionExists` est `false`, car il n’y 
 
 La configuration peut être liée à des classes qui représentent des groupes de paramètres associés à l’aide du *modèle d’options*. Pour plus d'informations, consultez <xref:fundamentals/configuration/options>.
 
-Les valeurs de configuration sont retournées sous forme de chaînes, mais le fait d’appeler <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> permet la construction d’objets [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object).
+Les valeurs de configuration sont retournées sous forme de chaînes, mais le fait d’appeler <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> permet la construction d’objets [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object). Le Binder lie les valeurs à toutes les propriétés publiques en lecture/écriture du type fourni. Les champs ne sont **pas** liés.
 
 L’exemple d’application contient un modèle `Starship` (*Models/Starship.cs*) :
 
@@ -980,7 +980,7 @@ L’exemple d’application appelle `GetSection` avec la clé `starship`. Les pa
 
 ## <a name="bind-to-an-object-graph"></a>Établir une liaison à un graphe d’objets
 
-<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> est capable de lier l’intégralité d’un graphe d’objets POCO.
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> est capable de lier l’intégralité d’un graphe d’objets POCO. Comme pour la liaison d’un objet simple, seules les propriétés accessibles en lecture/écriture publiques sont liées.
 
 L’exemple contient un modèle `TvShow` dont le graphe d’objets inclut les classes `Metadata` et `Actors` (*Models/TvShow.cs*) :
 

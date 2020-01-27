@@ -4,18 +4,18 @@ author: rick-anderson
 description: Découvrez comment CORS comme norme pour autoriser ou rejeter des demandes Cross-Origin dans une application ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/13/2019
+ms.date: 01/23/2020
 uid: security/cors
-ms.openlocfilehash: 3a51d365626c858ad48298a1108e37eba9050fe7
-ms.sourcegitcommit: 35a86ce48041caaf6396b1e88b0472578ba24483
+ms.openlocfilehash: 57098be73164c71d1b0d1fe2f3aee7ec41a32346
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391293"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76727310"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les requêtes Cross-Origin (CORS) dans ASP.NET Core
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Cet article explique comment activer CORS dans une application ASP.NET Core.
 
@@ -472,7 +472,7 @@ Si la réponse n’inclut pas l’en-tête `Access-Control-Allow-Origin`, la dem
 Pour tester CORS :
 
 1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
-1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Exemple :
+1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Par exemple :
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
@@ -503,6 +503,11 @@ Les points de terminaison compatibles CORS peuvent être testés à l’aide d�
 * Il n’est pas nécessaire d’utiliser un intergiciel (middleware) CORS pour traiter la requête.
 * Les en-têtes CORS ne sont pas retournés dans la réponse.
 
+## <a name="cors-in-iis"></a>CORS dans IIS
+
+Lors du déploiement sur IIS, CORS doit s’exécuter avant l’authentification Windows si le serveur n’est pas configuré pour autoriser l’accès anonyme. Pour prendre en charge ce scénario, le [module cors IIS](https://www.iis.net/downloads/microsoft/iis-cors-module) doit être installé et configuré pour l’application.
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Partage des ressources Cross-Origin (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS)
+* [Prise en main du module IIS CORS](https://blogs.iis.net/iisteam/getting-started-with-the-iis-cors-module)

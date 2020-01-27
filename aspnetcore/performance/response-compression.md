@@ -5,14 +5,14 @@ description: Découvrez ce qu’est la compression des réponses et comment util
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 01/22/2020
 uid: performance/response-compression
-ms.openlocfilehash: 04b2ffd7047e8b127968adb5d40e0141365fb5fe
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: b8a84418a3258e9ac43b4eadd8564c0708590bce
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880912"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726964"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses en ASP.NET Core
 
@@ -80,7 +80,7 @@ Les algorithmes de compression sont soumis à un compromis entre la vitesse de c
 
 Les en-têtes impliqués dans la demande, l'envoi, la mise en cache et la réception de contenu compressé sont décrits dans le tableau ci-dessous.
 
-| Header             | Role |
+| Header             | Rôle |
 | ------------------ | ---- |
 | `Accept-Encoding`  | Envoyée du client au serveur pour indiquer les schémas de codage de contenu acceptables pour le client. |
 | `Content-Encoding` | Envoyé à partir du serveur au client pour indiquer l'encodage du contenu de la charge utile. |
@@ -139,7 +139,7 @@ public class Startup
 
 Remarques :
 
-* `app.UseResponseCompression` doit être appelé avant `app.UseMvc`.
+* `app.UseResponseCompression` doit être appelé avant tout middleware qui compresse les réponses. Pour plus d'informations, consultez <xref:fundamentals/middleware/index#middleware-order>.
 * Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/)ou [postal](https://www.getpostman.com/) pour définir le `Accept-Encoding` en-tête de demande et étudier les en-têtes, la taille et le corps de la réponse.
 
 Envoyez une demande à l’exemple d’application sans l’en-tête `Accept-Encoding` et observez que la réponse n’est pas compressée. Les en-têtes `Content-Encoding` et `Vary` ne sont pas présents dans la réponse.

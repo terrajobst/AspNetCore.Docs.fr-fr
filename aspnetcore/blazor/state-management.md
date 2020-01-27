@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: ffb32a4f274a30f2a5ceed9cbf193285e85bab4c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 990d392b0e1658774256626eb277701e40287b79
+ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160143"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76726908"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
@@ -78,7 +78,7 @@ Trois emplacements communs existent pour la conservation de l’État dans une a
 Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Les options sont :
 
 * Base de données SQL relationnelle
-* stockage clé-valeur
+* Magasin clé-valeur
 * Magasin d’objets BLOB
 * Magasin de tables
 
@@ -172,26 +172,26 @@ Le choix dépend du magasin de stockage que vous souhaitez utiliser. Dans l’ex
 
 L’instruction `@using` peut être placée dans un fichier *_Imports. Razor* plutôt que dans le composant. L’utilisation du fichier *_Imports. Razor* rend l’espace de noms disponible pour les plus grands segments de l’application ou de l’application entière.
 
-Pour conserver la valeur `currentCount` dans le `Counter` composant du modèle de projet, modifiez la méthode `IncrementCount` pour utiliser `ProtectedSessionStore.SetAsync`:
+Pour conserver la valeur `_currentCount` dans le `Counter` composant du modèle de projet, modifiez la méthode `IncrementCount` pour utiliser `ProtectedSessionStore.SetAsync`:
 
 ```csharp
 private async Task IncrementCount()
 {
-    currentCount++;
-    await ProtectedSessionStore.SetAsync("count", currentCount);
+    _currentCount++;
+    await ProtectedSessionStore.SetAsync("count", _currentCount);
 }
 ```
 
 Dans les applications plus volumineuses et plus réalistes, le stockage de champs individuels est un scénario peu probable. Les applications sont plus susceptibles de stocker des objets de modèle entiers qui incluent un État complexe. `ProtectedSessionStore` sérialise et désérialise automatiquement les données JSON.
 
-Dans l’exemple de code précédent, les données de `currentCount` sont stockées en tant que `sessionStorage['count']` dans le navigateur de l’utilisateur. Les données ne sont pas stockées en texte clair mais sont protégées à l’aide de la [protection des données](xref:security/data-protection/introduction)de ASP.net core. Les données chiffrées peuvent être consultées si `sessionStorage['count']` est évaluée dans la console de développement du navigateur.
+Dans l’exemple de code précédent, les données de `_currentCount` sont stockées en tant que `sessionStorage['count']` dans le navigateur de l’utilisateur. Les données ne sont pas stockées en texte clair mais sont protégées à l’aide de la [protection des données](xref:security/data-protection/introduction)de ASP.net core. Les données chiffrées peuvent être consultées si `sessionStorage['count']` est évaluée dans la console de développement du navigateur.
 
-Pour récupérer les données de `currentCount` si l’utilisateur revient ultérieurement au composant `Counter` (y compris s’il s’agit d’un circuit entièrement nouveau), utilisez `ProtectedSessionStore.GetAsync`:
+Pour récupérer les données de `_currentCount` si l’utilisateur revient ultérieurement au composant `Counter` (y compris s’il s’agit d’un circuit entièrement nouveau), utilisez `ProtectedSessionStore.GetAsync`:
 
 ```csharp
 protected override async Task OnInitializedAsync()
 {
-    currentCount = await ProtectedSessionStore.GetAsync<int>("count");
+    _currentCount = await ProtectedSessionStore.GetAsync<int>("count");
 }
 ```
 
@@ -208,18 +208,18 @@ Si les paramètres du composant incluent l’état de navigation, appelez `Prote
 
 Étant donné que le stockage du navigateur est asynchrone (accessible via une connexion réseau), il y a toujours un certain temps avant que les données soient chargées et disponibles pour une utilisation par un composant. Pour obtenir les meilleurs résultats, affichez un message d’état de chargement pendant le chargement en cours au lieu d’afficher les données vides ou par défaut.
 
-Une approche consiste à déterminer si les données sont `null` (toujours en cours de chargement). Dans le composant `Counter` par défaut, le nombre est conservé dans une `int`. Rendez `currentCount` Nullable en ajoutant un point d’interrogation (`?`) au type (`int`) :
+Une approche consiste à déterminer si les données sont `null` (toujours en cours de chargement). Dans le composant `Counter` par défaut, le nombre est conservé dans une `int`. Rendez `_currentCount` Nullable en ajoutant un point d’interrogation (`?`) au type (`int`) :
 
 ```csharp
-private int? currentCount;
+private int? _currentCount;
 ```
 
 Au lieu d’afficher sans condition le bouton nombre et **incrément** , choisissez d’afficher ces éléments uniquement si les données sont chargées :
 
 ```razor
-@if (currentCount.HasValue)
+@if (_currentCount.HasValue)
 {
-    <p>Current count: <strong>@currentCount</strong></p>
+    <p>Current count: <strong>@_currentCount</strong></p>
 
     <button @onclick="IncrementCount">Increment</button>
 }
@@ -253,8 +253,8 @@ Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `local
 ... rendering code goes here ...
 
 @code {
-    private int? currentCount;
-    private bool isConnected = false;
+    private int? _currentCount;
+    private bool _isConnected = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -262,7 +262,7 @@ Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `local
         {
             // When execution reaches this point, the first *interactive* render
             // is complete. The component has an active connection to the browser.
-            isConnected = true;
+            _isConnected = true;
             await LoadStateAsync();
             StateHasChanged();
         }
@@ -270,13 +270,13 @@ Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `local
 
     private async Task LoadStateAsync()
     {
-        currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
+        _currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
     }
 
     private async Task IncrementCount()
     {
-        currentCount++;
-        await ProtectedSessionStore.SetAsync("count", currentCount);
+        _currentCount++;
+        await ProtectedSessionStore.SetAsync("count", _currentCount);
     }
 }
 ```
@@ -291,7 +291,7 @@ Dans l’exemple suivant d’un composant `CounterStateProvider`, les données d
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
-@if (hasLoaded)
+@if (_hasLoaded)
 {
     <CascadingValue Value="@this">
         @ChildContent
@@ -303,7 +303,7 @@ else
 }
 
 @code {
-    private bool hasLoaded;
+    private bool _hasLoaded;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -313,7 +313,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         CurrentCount = await ProtectedSessionStore.GetAsync<int>("count");
-        hasLoaded = true;
+        _hasLoaded = true;
     }
 
     public async Task SaveChangesAsync()
