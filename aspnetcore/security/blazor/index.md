@@ -5,78 +5,78 @@ description: En savoir plus sur les scénarios d’authentification et d’autor
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: 2ce2cff8d3ab77f21181070b6f1e48c50561036c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: e9087c246f4805e5931180fa0869fc8a8d23a6c1
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160286"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885586"
 ---
-# <a name="aspnet-core-opno-locblazor-authentication-and-authorization"></a><span data-ttu-id="5c5a0-103">ASP.NET Core Blazor l’authentification et l’autorisation</span><span class="sxs-lookup"><span data-stu-id="5c5a0-103">ASP.NET Core Blazor authentication and authorization</span></span>
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a><span data-ttu-id="3db6b-103">Authentification et autorisation avec ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="3db6b-103">ASP.NET Core Blazor authentication and authorization</span></span>
 
-<span data-ttu-id="5c5a0-104">Par [Steve Sanderson](https://github.com/SteveSandersonMS)</span><span class="sxs-lookup"><span data-stu-id="5c5a0-104">By [Steve Sanderson](https://github.com/SteveSandersonMS)</span></span>
+<span data-ttu-id="3db6b-104">Par [Steve Sanderson](https://github.com/SteveSandersonMS)</span><span class="sxs-lookup"><span data-stu-id="3db6b-104">By [Steve Sanderson](https://github.com/SteveSandersonMS)</span></span>
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-<span data-ttu-id="5c5a0-105">ASP.NET Core prend en charge la configuration et la gestion de la sécurité dans les applications Blazor.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-105">ASP.NET Core supports the configuration and management of security in Blazor apps.</span></span>
+<span data-ttu-id="3db6b-105">ASP.NET Core prend en charge la configuration et la gestion de la sécurité dans les applications Blazor.</span><span class="sxs-lookup"><span data-stu-id="3db6b-105">ASP.NET Core supports the configuration and management of security in Blazor apps.</span></span>
 
-<span data-ttu-id="5c5a0-106">Les scénarios de sécurité diffèrent entre les applications Blazor Server et Blazor webassembly.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-106">Security scenarios differ between Blazor Server and Blazor WebAssembly apps.</span></span> <span data-ttu-id="5c5a0-107">Étant donné que les applications Blazor Server s’exécutent sur le serveur, les contrôles d’autorisation peuvent déterminer les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-107">Because Blazor Server apps run on the server, authorization checks are able to determine:</span></span>
+<span data-ttu-id="3db6b-106">Les scénarios de sécurité diffèrent entre le serveur éblouissant et les applications webassembly éblouissantes.</span><span class="sxs-lookup"><span data-stu-id="3db6b-106">Security scenarios differ between Blazor Server and Blazor WebAssembly apps.</span></span> <span data-ttu-id="3db6b-107">Étant donné que les applications serveur éblouissantes s’exécutent sur le serveur, les contrôles d’autorisation peuvent déterminer les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="3db6b-107">Because Blazor Server apps run on the server, authorization checks are able to determine:</span></span>
 
-* <span data-ttu-id="5c5a0-108">Les options de l’interface utilisateur présentées à un utilisateur (par exemple, les entrées de menu disponibles pour un utilisateur).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-108">The UI options presented to a user (for example, which menu entries are available to a user).</span></span>
-* <span data-ttu-id="5c5a0-109">Les règles d’accès pour les zones de l’application et les composants.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-109">Access rules for areas of the app and components.</span></span>
+* <span data-ttu-id="3db6b-108">Les options de l’interface utilisateur présentées à un utilisateur (par exemple, les entrées de menu disponibles pour un utilisateur).</span><span class="sxs-lookup"><span data-stu-id="3db6b-108">The UI options presented to a user (for example, which menu entries are available to a user).</span></span>
+* <span data-ttu-id="3db6b-109">Les règles d’accès pour les zones de l’application et les composants.</span><span class="sxs-lookup"><span data-stu-id="3db6b-109">Access rules for areas of the app and components.</span></span>
 
-Blazor<span data-ttu-id="5c5a0-110"> applications webassembly s’exécutent sur le client.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-110"> WebAssembly apps run on the client.</span></span> <span data-ttu-id="5c5a0-111">L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-111">Authorization is *only* used to determine which UI options to show.</span></span> <span data-ttu-id="5c5a0-112">Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application Blazor webassembly ne peut pas appliquer les règles d’accès d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-112">Since client-side checks can be modified or bypassed by a user, a Blazor WebAssembly app can't enforce authorization access rules.</span></span>
+<span data-ttu-id="3db6b-110">Les applications webassembly éblouissant s’exécutent sur le client.</span><span class="sxs-lookup"><span data-stu-id="3db6b-110">Blazor WebAssembly apps run on the client.</span></span> <span data-ttu-id="3db6b-111">L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher.</span><span class="sxs-lookup"><span data-stu-id="3db6b-111">Authorization is *only* used to determine which UI options to show.</span></span> <span data-ttu-id="3db6b-112">Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.</span><span class="sxs-lookup"><span data-stu-id="3db6b-112">Since client-side checks can be modified or bypassed by a user, a Blazor WebAssembly app can't enforce authorization access rules.</span></span>
 
-## <a name="authentication"></a><span data-ttu-id="5c5a0-113">Authentification</span><span class="sxs-lookup"><span data-stu-id="5c5a0-113">Authentication</span></span>
+## <a name="authentication"></a><span data-ttu-id="3db6b-113">Authentification</span><span class="sxs-lookup"><span data-stu-id="3db6b-113">Authentication</span></span>
 
-Blazor<span data-ttu-id="5c5a0-114"> utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-114"> uses the existing ASP.NET Core authentication mechanisms to establish the user's identity.</span></span> <span data-ttu-id="5c5a0-115">Le mécanisme exact dépend de la façon dont l’application Blazor est hébergée, Blazor Server ou Blazor webassembly.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-115">The exact mechanism depends on how the Blazor app is hosted, Blazor Server or Blazor WebAssembly.</span></span>
+<span data-ttu-id="3db6b-114">Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="3db6b-114">Blazor uses the existing ASP.NET Core authentication mechanisms to establish the user's identity.</span></span> <span data-ttu-id="3db6b-115">Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.</span><span class="sxs-lookup"><span data-stu-id="3db6b-115">The exact mechanism depends on how the Blazor app is hosted, Blazor Server or Blazor WebAssembly.</span></span>
 
-### <a name="opno-locblazor-server-authentication"></a><span data-ttu-id="5c5a0-116">authentification du serveur de Blazor</span><span class="sxs-lookup"><span data-stu-id="5c5a0-116">Blazor Server authentication</span></span>
+### <a name="blazor-server-authentication"></a><span data-ttu-id="3db6b-116">Authentification du serveur éblouissant</span><span class="sxs-lookup"><span data-stu-id="3db6b-116">Blazor Server authentication</span></span>
 
-Blazor<span data-ttu-id="5c5a0-117"> applications serveur fonctionnent sur une connexion en temps réel créée à l’aide de SignalR.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-117"> Server apps operate over a real-time connection that's created using SignalR.</span></span> <span data-ttu-id="5c5a0-118">L' [authentification dans les applications basées sur des SignalR](xref:signalr/authn-and-authz) est gérée lorsque la connexion est établie.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-118">[Authentication in SignalR-based apps](xref:signalr/authn-and-authz) is handled when the connection is established.</span></span> <span data-ttu-id="5c5a0-119">L’authentification peut reposer sur un cookie ou un autre jeton du porteur.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-119">Authentication can be based on a cookie or some other bearer token.</span></span>
+<span data-ttu-id="3db6b-117">Les applications serveur éblouissantes fonctionnent sur une connexion en temps réel créée à l’aide de Signalr.</span><span class="sxs-lookup"><span data-stu-id="3db6b-117">Blazor Server apps operate over a real-time connection that's created using SignalR.</span></span> <span data-ttu-id="3db6b-118">[L’authentification dans les applications basées sur SignalR](xref:signalr/authn-and-authz) est gérée lorsque la connexion est établie.</span><span class="sxs-lookup"><span data-stu-id="3db6b-118">[Authentication in SignalR-based apps](xref:signalr/authn-and-authz) is handled when the connection is established.</span></span> <span data-ttu-id="3db6b-119">L’authentification peut reposer sur un cookie ou un autre jeton du porteur.</span><span class="sxs-lookup"><span data-stu-id="3db6b-119">Authentication can be based on a cookie or some other bearer token.</span></span>
 
-<span data-ttu-id="5c5a0-120">Le modèle de projet Blazor Server peut configurer l’authentification à votre place lors de la création du projet.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-120">The Blazor Server project template can set up authentication for you when the project is created.</span></span>
+<span data-ttu-id="3db6b-120">Le modèle de projet de serveur éblouissant peut configurer l’authentification à votre place lors de la création du projet.</span><span class="sxs-lookup"><span data-stu-id="3db6b-120">The Blazor Server project template can set up authentication for you when the project is created.</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="5c5a0-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5c5a0-121">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="3db6b-121">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="3db6b-121">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="5c5a0-122">Suivez les instructions de Visual Studio dans l’article <xref:blazor/get-started> pour créer un nouveau projet Blazor Server avec un mécanisme d’authentification.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-122">Follow the Visual Studio guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism.</span></span>
+<span data-ttu-id="3db6b-122">Suivez les instructions de Visual Studio dans l’article <xref:blazor/get-started> pour créer un projet de serveur éblouissant avec un mécanisme d’authentification.</span><span class="sxs-lookup"><span data-stu-id="3db6b-122">Follow the Visual Studio guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism.</span></span>
 
-<span data-ttu-id="5c5a0-123">Après avoir choisi le modèle d’application **Blazor Server** dans la boîte de dialogue **créer une nouvelle application Web ASP.net Core** , sélectionnez **modifier** sous **authentification**.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-123">After choosing the **Blazor Server App** template in the **Create a new ASP.NET Core Web Application** dialog, select **Change** under **Authentication**.</span></span>
+<span data-ttu-id="3db6b-123">Après avoir choisi le modèle **Application serveur Blazor** dans la boîte de dialogue **Créer une application web ASP.NET Core.** , sélectionnez **Modifier** sous **Authentification**.</span><span class="sxs-lookup"><span data-stu-id="3db6b-123">After choosing the **Blazor Server App** template in the **Create a new ASP.NET Core Web Application** dialog, select **Change** under **Authentication**.</span></span>
 
-<span data-ttu-id="5c5a0-124">Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d’authentification que ceux disponibles pour les autres projets ASP.NET Core :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-124">A dialog opens to offer the same set of authentication mechanisms available for other ASP.NET Core projects:</span></span>
+<span data-ttu-id="3db6b-124">Une boîte de dialogue s’ouvre pour offrir le même ensemble de mécanismes d’authentification que ceux disponibles pour les autres projets ASP.NET Core :</span><span class="sxs-lookup"><span data-stu-id="3db6b-124">A dialog opens to offer the same set of authentication mechanisms available for other ASP.NET Core projects:</span></span>
 
-* <span data-ttu-id="5c5a0-125">**Aucune authentification**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-125">**No Authentication**</span></span>
-* <span data-ttu-id="5c5a0-126">**Les comptes d’utilisateurs individuels &ndash; les** comptes d’utilisateur peuvent être stockés :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-126">**Individual User Accounts** &ndash; User accounts can be stored:</span></span>
-  * <span data-ttu-id="5c5a0-127">Dans l’application à l’aide du système [d’identité](xref:security/authentication/identity) d’ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-127">Within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system.</span></span>
-  * <span data-ttu-id="5c5a0-128">Avec [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-128">With [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span></span>
-* <span data-ttu-id="5c5a0-129">**Comptes professionnels ou scolaires**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-129">**Work or School Accounts**</span></span>
-* <span data-ttu-id="5c5a0-130">**Authentification Windows**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-130">**Windows Authentication**</span></span>
+* <span data-ttu-id="3db6b-125">**Aucune authentification**</span><span class="sxs-lookup"><span data-stu-id="3db6b-125">**No Authentication**</span></span>
+* <span data-ttu-id="3db6b-126">**Les comptes d’utilisateurs individuels &ndash; les** comptes d’utilisateur peuvent être stockés :</span><span class="sxs-lookup"><span data-stu-id="3db6b-126">**Individual User Accounts** &ndash; User accounts can be stored:</span></span>
+  * <span data-ttu-id="3db6b-127">Dans l’application à l’aide du système [d’identité](xref:security/authentication/identity) d’ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="3db6b-127">Within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system.</span></span>
+  * <span data-ttu-id="3db6b-128">Avec [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span><span class="sxs-lookup"><span data-stu-id="3db6b-128">With [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span></span>
+* <span data-ttu-id="3db6b-129">**Comptes professionnels ou scolaires**</span><span class="sxs-lookup"><span data-stu-id="3db6b-129">**Work or School Accounts**</span></span>
+* <span data-ttu-id="3db6b-130">**Authentification Windows**</span><span class="sxs-lookup"><span data-stu-id="3db6b-130">**Windows Authentication**</span></span>
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="5c5a0-131">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="5c5a0-131">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[<span data-ttu-id="3db6b-131">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="3db6b-131">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="5c5a0-132">Pour créer un projet de serveur Blazor avec un mécanisme d’authentification, suivez les instructions de Visual Studio Code dans l’article <xref:blazor/get-started>.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-132">Follow the Visual Studio Code guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism:</span></span>
+<span data-ttu-id="3db6b-132">Suivez les instructions de Visual Studio Code dans l’article <xref:blazor/get-started> pour créer un projet de serveur éblouissant avec un mécanisme d’authentification :</span><span class="sxs-lookup"><span data-stu-id="3db6b-132">Follow the Visual Studio Code guidance in the <xref:blazor/get-started> article to create a new Blazor Server project with an authentication mechanism:</span></span>
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 ```
 
-<span data-ttu-id="5c5a0-133">Les valeurs autorisées d’authentification (`{AUTHENTICATION}`) sont présentées dans le tableau suivant.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-133">Permissible authentication values (`{AUTHENTICATION}`) are shown in the following table.</span></span>
+<span data-ttu-id="3db6b-133">Les valeurs autorisées d’authentification (`{AUTHENTICATION}`) sont présentées dans le tableau suivant.</span><span class="sxs-lookup"><span data-stu-id="3db6b-133">Permissible authentication values (`{AUTHENTICATION}`) are shown in the following table.</span></span>
 
-| <span data-ttu-id="5c5a0-134">Mécanisme d’authentification</span><span class="sxs-lookup"><span data-stu-id="5c5a0-134">Authentication mechanism</span></span>                                                                 | <span data-ttu-id="5c5a0-135">Valeur de `{AUTHENTICATION}`</span><span class="sxs-lookup"><span data-stu-id="5c5a0-135">`{AUTHENTICATION}` value</span></span> |
+| <span data-ttu-id="3db6b-134">Mécanisme d’authentification</span><span class="sxs-lookup"><span data-stu-id="3db6b-134">Authentication mechanism</span></span>                                                                 | <span data-ttu-id="3db6b-135">Valeur de `{AUTHENTICATION}`</span><span class="sxs-lookup"><span data-stu-id="3db6b-135">`{AUTHENTICATION}` value</span></span> |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
-| <span data-ttu-id="5c5a0-136">Aucune authentification</span><span class="sxs-lookup"><span data-stu-id="5c5a0-136">No Authentication</span></span>                                                                        | `None`                   |
-| <span data-ttu-id="5c5a0-137">Individuel</span><span class="sxs-lookup"><span data-stu-id="5c5a0-137">Individual</span></span><br><span data-ttu-id="5c5a0-138">Les utilisateurs stockés dans l’application avec l’identité ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-138">Users stored in the app with ASP.NET Core Identity.</span></span>                        | `Individual`             |
-| <span data-ttu-id="5c5a0-139">Individuel</span><span class="sxs-lookup"><span data-stu-id="5c5a0-139">Individual</span></span><br><span data-ttu-id="5c5a0-140">Les utilisateurs stockés dans [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-140">Users stored in [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span></span> | `IndividualB2C`          |
-| <span data-ttu-id="5c5a0-141">Comptes professionnels ou scolaires</span><span class="sxs-lookup"><span data-stu-id="5c5a0-141">Work or School Accounts</span></span><br><span data-ttu-id="5c5a0-142">Authentification d’organisation pour un seul abonné.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-142">Organizational authentication for a single tenant.</span></span>            | `SingleOrg`              |
-| <span data-ttu-id="5c5a0-143">Comptes professionnels ou scolaires</span><span class="sxs-lookup"><span data-stu-id="5c5a0-143">Work or School Accounts</span></span><br><span data-ttu-id="5c5a0-144">Authentification d’organisation pour plusieurs abonnés.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-144">Organizational authentication for multiple tenants.</span></span>           | `MultiOrg`               |
-| <span data-ttu-id="5c5a0-145">Authentification Windows</span><span class="sxs-lookup"><span data-stu-id="5c5a0-145">Windows Authentication</span></span>                                                                   | `Windows`                |
+| <span data-ttu-id="3db6b-136">Aucune authentification</span><span class="sxs-lookup"><span data-stu-id="3db6b-136">No Authentication</span></span>                                                                        | `None`                   |
+| <span data-ttu-id="3db6b-137">Individuel</span><span class="sxs-lookup"><span data-stu-id="3db6b-137">Individual</span></span><br><span data-ttu-id="3db6b-138">Les utilisateurs stockés dans l’application avec l’identité ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="3db6b-138">Users stored in the app with ASP.NET Core Identity.</span></span>                        | `Individual`             |
+| <span data-ttu-id="3db6b-139">Individuel</span><span class="sxs-lookup"><span data-stu-id="3db6b-139">Individual</span></span><br><span data-ttu-id="3db6b-140">Les utilisateurs stockés dans [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span><span class="sxs-lookup"><span data-stu-id="3db6b-140">Users stored in [Azure AD B2C](xref:security/authentication/azure-ad-b2c).</span></span> | `IndividualB2C`          |
+| <span data-ttu-id="3db6b-141">Comptes professionnels ou scolaires</span><span class="sxs-lookup"><span data-stu-id="3db6b-141">Work or School Accounts</span></span><br><span data-ttu-id="3db6b-142">Authentification d’organisation pour un seul abonné.</span><span class="sxs-lookup"><span data-stu-id="3db6b-142">Organizational authentication for a single tenant.</span></span>            | `SingleOrg`              |
+| <span data-ttu-id="3db6b-143">Comptes professionnels ou scolaires</span><span class="sxs-lookup"><span data-stu-id="3db6b-143">Work or School Accounts</span></span><br><span data-ttu-id="3db6b-144">Authentification d’organisation pour plusieurs abonnés.</span><span class="sxs-lookup"><span data-stu-id="3db6b-144">Organizational authentication for multiple tenants.</span></span>           | `MultiOrg`               |
+| <span data-ttu-id="3db6b-145">Authentification Windows</span><span class="sxs-lookup"><span data-stu-id="3db6b-145">Windows Authentication</span></span>                                                                   | `Windows`                |
 
-<span data-ttu-id="5c5a0-146">La commande crée un dossier nommé avec la valeur fournie pour l’espace réservé `{APP NAME}` et utilise le nom de dossier en tant que nom de l’application.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-146">The command creates a folder named with the value provided for the `{APP NAME}` placeholder and uses the folder name as the app's name.</span></span> <span data-ttu-id="5c5a0-147">Pour plus d’informations, consultez la commande [dotnet new](/dotnet/core/tools/dotnet-new) dans le Guide .NET Core.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-147">For more information, see the [dotnet new](/dotnet/core/tools/dotnet-new) command in the .NET Core Guide.</span></span>
+<span data-ttu-id="3db6b-146">La commande crée un dossier nommé avec la valeur fournie pour l’espace réservé `{APP NAME}` et utilise le nom de dossier en tant que nom de l’application.</span><span class="sxs-lookup"><span data-stu-id="3db6b-146">The command creates a folder named with the value provided for the `{APP NAME}` placeholder and uses the folder name as the app's name.</span></span> <span data-ttu-id="3db6b-147">Pour plus d’informations, consultez la commande [dotnet new](/dotnet/core/tools/dotnet-new) dans le Guide .NET Core.</span><span class="sxs-lookup"><span data-stu-id="3db6b-147">For more information, see the [dotnet new](/dotnet/core/tools/dotnet-new) command in the .NET Core Guide.</span></span>
 
 <!--
 
@@ -116,23 +116,23 @@ The command creates a folder named with the value provided for the `{APP NAME}` 
 
 ---
 
-### <a name="opno-locblazor-webassembly-authentication"></a>Blazor<span data-ttu-id="5c5a0-148"> l’authentification webassembly</span><span class="sxs-lookup"><span data-stu-id="5c5a0-148"> WebAssembly authentication</span></span>
+### <a name="opno-locblazor-webassembly-authentication"></a>Blazor<span data-ttu-id="3db6b-148"> l’authentification webassembly</span><span class="sxs-lookup"><span data-stu-id="3db6b-148"> WebAssembly authentication</span></span>
 
-<span data-ttu-id="5c5a0-149">Dans Blazor applications webassembly, les vérifications d’authentification peuvent être contournées, car le code côté client peut être modifié par les utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-149">In Blazor WebAssembly apps, authentication checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="5c5a0-150">Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-150">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
+<span data-ttu-id="3db6b-149">Dans Blazor applications webassembly, les vérifications d’authentification peuvent être contournées, car le code côté client peut être modifié par les utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="3db6b-149">In Blazor WebAssembly apps, authentication checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="3db6b-150">Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.</span><span class="sxs-lookup"><span data-stu-id="3db6b-150">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
 
-<span data-ttu-id="5c5a0-151">Ajoutez une référence de package pour [Microsoft. AspNetCore. Components. Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) au fichier projet de l’application.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-151">Add a package reference for [Microsoft.AspNetCore.Components.Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) to the app's project file.</span></span>
+<span data-ttu-id="3db6b-151">Ajoutez une référence de package pour [Microsoft. AspNetCore. Components. Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) au fichier projet de l’application.</span><span class="sxs-lookup"><span data-stu-id="3db6b-151">Add a package reference for [Microsoft.AspNetCore.Components.Authorization](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) to the app's project file.</span></span>
 
-<span data-ttu-id="5c5a0-152">L’implémentation d’un service de `AuthenticationStateProvider` personnalisé pour Blazor applications webassembly est traitée dans les sections suivantes.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-152">Implementation of a custom `AuthenticationStateProvider` service for Blazor WebAssembly apps is covered in the following sections.</span></span>
+<span data-ttu-id="3db6b-152">L’implémentation d’un service de `AuthenticationStateProvider` personnalisé pour Blazor applications webassembly est traitée dans les sections suivantes.</span><span class="sxs-lookup"><span data-stu-id="3db6b-152">Implementation of a custom `AuthenticationStateProvider` service for Blazor WebAssembly apps is covered in the following sections.</span></span>
 
-## <a name="authenticationstateprovider-service"></a><span data-ttu-id="5c5a0-153">Service AuthenticationStateProvider</span><span class="sxs-lookup"><span data-stu-id="5c5a0-153">AuthenticationStateProvider service</span></span>
+## <a name="authenticationstateprovider-service"></a><span data-ttu-id="3db6b-153">Service AuthenticationStateProvider</span><span class="sxs-lookup"><span data-stu-id="3db6b-153">AuthenticationStateProvider service</span></span>
 
-Blazor<span data-ttu-id="5c5a0-154"> applications serveur incluent un service `AuthenticationStateProvider` intégré qui obtient des données d’état d’authentification du `HttpContext.User`de ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-154"> Server apps include a built-in `AuthenticationStateProvider` service that obtains authentication state data from ASP.NET Core's `HttpContext.User`.</span></span> <span data-ttu-id="5c5a0-155">Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-155">This is how authentication state integrates with existing ASP.NET Core server-side authentication mechanisms.</span></span>
+Blazor<span data-ttu-id="3db6b-154"> applications serveur incluent un service `AuthenticationStateProvider` intégré qui obtient des données d’état d’authentification du `HttpContext.User`de ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="3db6b-154"> Server apps include a built-in `AuthenticationStateProvider` service that obtains authentication state data from ASP.NET Core's `HttpContext.User`.</span></span> <span data-ttu-id="3db6b-155">Il s’agit de la façon dont l’état d’authentification s’intègre avec les mécanismes d’authentification ASP.NET Core côté serveur existants.</span><span class="sxs-lookup"><span data-stu-id="3db6b-155">This is how authentication state integrates with existing ASP.NET Core server-side authentication mechanisms.</span></span>
 
-<span data-ttu-id="5c5a0-156">`AuthenticationStateProvider` est le service sous-jacent utilisé par le composant `AuthorizeView` et le composant `CascadingAuthenticationState` pour obtenir l’état d’authentification.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-156">`AuthenticationStateProvider` is the underlying service used by the `AuthorizeView` component and `CascadingAuthenticationState` component to get the authentication state.</span></span>
+<span data-ttu-id="3db6b-156">`AuthenticationStateProvider` est le service sous-jacent utilisé par le composant `AuthorizeView` et le composant `CascadingAuthenticationState` pour obtenir l’état d’authentification.</span><span class="sxs-lookup"><span data-stu-id="3db6b-156">`AuthenticationStateProvider` is the underlying service used by the `AuthorizeView` component and `CascadingAuthenticationState` component to get the authentication state.</span></span>
 
-<span data-ttu-id="5c5a0-157">Vous n’utilisez généralement pas `AuthenticationStateProvider` directement.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-157">You don't typically use `AuthenticationStateProvider` directly.</span></span> <span data-ttu-id="5c5a0-158">Utilisez les approches [Composant AuthorizeView](#authorizeview-component) ou [Tâche<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) décrites plus loin dans cet article.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-158">Use the [AuthorizeView component](#authorizeview-component) or [Task<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) approaches described later in this article.</span></span> <span data-ttu-id="5c5a0-159">Le principal inconvénient de l’utilisation directe de `AuthenticationStateProvider` est que le composant n’est pas automatiquement averti en cas de modifications de données d’état de l’authentification sous-jacente.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-159">The main drawback to using `AuthenticationStateProvider` directly is that the component isn't notified automatically if the underlying authentication state data changes.</span></span>
+<span data-ttu-id="3db6b-157">Vous n’utilisez généralement pas `AuthenticationStateProvider` directement.</span><span class="sxs-lookup"><span data-stu-id="3db6b-157">You don't typically use `AuthenticationStateProvider` directly.</span></span> <span data-ttu-id="3db6b-158">Utilisez les approches [Composant AuthorizeView](#authorizeview-component) ou [Tâche<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) décrites plus loin dans cet article.</span><span class="sxs-lookup"><span data-stu-id="3db6b-158">Use the [AuthorizeView component](#authorizeview-component) or [Task<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) approaches described later in this article.</span></span> <span data-ttu-id="3db6b-159">Le principal inconvénient de l’utilisation directe de `AuthenticationStateProvider` est que le composant n’est pas automatiquement averti en cas de modifications de données d’état de l’authentification sous-jacente.</span><span class="sxs-lookup"><span data-stu-id="3db6b-159">The main drawback to using `AuthenticationStateProvider` directly is that the component isn't notified automatically if the underlying authentication state data changes.</span></span>
 
-<span data-ttu-id="5c5a0-160">Le service `AuthenticationStateProvider` peut fournir les données <xref:System.Security.Claims.ClaimsPrincipal> de l’utilisateur actuel, comme indiqué dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-160">The `AuthenticationStateProvider` service can provide the current user's <xref:System.Security.Claims.ClaimsPrincipal> data, as shown in the following example:</span></span>
+<span data-ttu-id="3db6b-160">Le service `AuthenticationStateProvider` peut fournir les données <xref:System.Security.Claims.ClaimsPrincipal> de l’utilisateur actuel, comme indiqué dans l’exemple suivant :</span><span class="sxs-lookup"><span data-stu-id="3db6b-160">The `AuthenticationStateProvider` service can provide the current user's <xref:System.Security.Claims.ClaimsPrincipal> data, as shown in the following example:</span></span>
 
 ```razor
 @page "/"
@@ -159,13 +159,13 @@ Blazor<span data-ttu-id="5c5a0-154"> applications serveur incluent un service `A
 }
 ```
 
-<span data-ttu-id="5c5a0-161">Si `user.Identity.IsAuthenticated` est `true` et parce que l’utilisateur est <xref:System.Security.Claims.ClaimsPrincipal>, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-161">If `user.Identity.IsAuthenticated` is `true` and because the user is a <xref:System.Security.Claims.ClaimsPrincipal>, claims can be enumerated and membership in roles evaluated.</span></span>
+<span data-ttu-id="3db6b-161">Si `user.Identity.IsAuthenticated` est `true` et parce que l’utilisateur est <xref:System.Security.Claims.ClaimsPrincipal>, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.</span><span class="sxs-lookup"><span data-stu-id="3db6b-161">If `user.Identity.IsAuthenticated` is `true` and because the user is a <xref:System.Security.Claims.ClaimsPrincipal>, claims can be enumerated and membership in roles evaluated.</span></span>
 
-<span data-ttu-id="5c5a0-162">Pour plus d’informations sur l’injection de dépendances et les services, consultez <xref:blazor/dependency-injection> et <xref:fundamentals/dependency-injection>.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-162">For more information on dependency injection (DI) and services, see <xref:blazor/dependency-injection> and <xref:fundamentals/dependency-injection>.</span></span>
+<span data-ttu-id="3db6b-162">Pour plus d’informations sur l’injection de dépendances et les services, consultez <xref:blazor/dependency-injection> et <xref:fundamentals/dependency-injection>.</span><span class="sxs-lookup"><span data-stu-id="3db6b-162">For more information on dependency injection (DI) and services, see <xref:blazor/dependency-injection> and <xref:fundamentals/dependency-injection>.</span></span>
 
-## <a name="implement-a-custom-authenticationstateprovider"></a><span data-ttu-id="5c5a0-163">Implémenter un AuthenticationStateProvider personnalisé</span><span class="sxs-lookup"><span data-stu-id="5c5a0-163">Implement a custom AuthenticationStateProvider</span></span>
+## <a name="implement-a-custom-authenticationstateprovider"></a><span data-ttu-id="3db6b-163">Implémenter un AuthenticationStateProvider personnalisé</span><span class="sxs-lookup"><span data-stu-id="3db6b-163">Implement a custom AuthenticationStateProvider</span></span>
 
-<span data-ttu-id="5c5a0-164">Si vous générez une application Blazor webassembly ou si la spécification de votre application requiert absolument un fournisseur personnalisé, implémentez un fournisseur et remplacez `GetAuthenticationStateAsync`:</span><span class="sxs-lookup"><span data-stu-id="5c5a0-164">If you're building a Blazor WebAssembly app or if your app's specification absolutely requires a custom provider, implement a provider and override `GetAuthenticationStateAsync`:</span></span>
+<span data-ttu-id="3db6b-164">Si vous générez une application Blazor webassembly ou si la spécification de votre application requiert absolument un fournisseur personnalisé, implémentez un fournisseur et remplacez `GetAuthenticationStateAsync`:</span><span class="sxs-lookup"><span data-stu-id="3db6b-164">If you're building a Blazor WebAssembly app or if your app's specification absolutely requires a custom provider, implement a provider and override `GetAuthenticationStateAsync`:</span></span>
 
 ```csharp
 using System.Security.Claims;
@@ -191,20 +191,33 @@ namespace BlazorSample.Services
 }
 ```
 
-<span data-ttu-id="5c5a0-165">Le service `CustomAuthStateProvider` est inscrit dans `Startup.ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-165">The `CustomAuthStateProvider` service is registered in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="3db6b-165">Dans une application Blazor webassembly, le service `CustomAuthStateProvider` est inscrit dans `Main` de *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="3db6b-165">In a Blazor WebAssembly app, the `CustomAuthStateProvider` service is registered in `Main` of *Program.cs*:</span></span>
 
 ```csharp
-// using Microsoft.AspNetCore.Components.Authorization;
-// using BlazorSample.Services;
+using Microsoft.AspNetCore.Blazor.Hosting;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using BlazorSample.Services;
 
-services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.Services.AddScoped<AuthenticationStateProvider, 
+            CustomAuthStateProvider>();
+        builder.RootComponents.Add<App>("app");
+
+        await builder.Build().RunAsync();
+    }
+}
 ```
 
-<span data-ttu-id="5c5a0-166">Avec `CustomAuthStateProvider`, tous les utilisateurs sont authentifiés avec le nom d’utilisateur `mrfibuli`.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-166">Using the `CustomAuthStateProvider`, all users are authenticated with the username `mrfibuli`.</span></span>
+<span data-ttu-id="3db6b-166">Avec `CustomAuthStateProvider`, tous les utilisateurs sont authentifiés avec le nom d’utilisateur `mrfibuli`.</span><span class="sxs-lookup"><span data-stu-id="3db6b-166">Using the `CustomAuthStateProvider`, all users are authenticated with the username `mrfibuli`.</span></span>
 
-## <a name="expose-the-authentication-state-as-a-cascading-parameter"></a><span data-ttu-id="5c5a0-167">Exposer l’état d’authentification comme un paramètre en cascade</span><span class="sxs-lookup"><span data-stu-id="5c5a0-167">Expose the authentication state as a cascading parameter</span></span>
+## <a name="expose-the-authentication-state-as-a-cascading-parameter"></a><span data-ttu-id="3db6b-167">Exposer l’état d’authentification comme un paramètre en cascade</span><span class="sxs-lookup"><span data-stu-id="3db6b-167">Expose the authentication state as a cascading parameter</span></span>
 
-<span data-ttu-id="5c5a0-168">Si les données d’état d’authentification sont requises pour la logique procédurale, par exemple lors d’une action déclenchée par l’utilisateur, obtenez les données d’état d’authentification en définissant un paramètre en cascade de type `Task<AuthenticationState>` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-168">If authentication state data is required for procedural logic, such as when performing an action triggered by the user, obtain the authentication state data by defining a cascading parameter of type `Task<AuthenticationState>`:</span></span>
+<span data-ttu-id="3db6b-168">Si les données d’état d’authentification sont requises pour la logique procédurale, par exemple lors d’une action déclenchée par l’utilisateur, obtenez les données d’état d’authentification en définissant un paramètre en cascade de type `Task<AuthenticationState>` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-168">If authentication state data is required for procedural logic, such as when performing an action triggered by the user, obtain the authentication state data by defining a cascading parameter of type `Task<AuthenticationState>`:</span></span>
 
 ```razor
 @page "/"
@@ -233,11 +246,11 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
 > [!NOTE]
-> <span data-ttu-id="5c5a0-169">Dans un composant d’application Blazor webassembly, ajoutez l’espace de noms `Microsoft.AspNetCore.Components.Authorization` (`@using Microsoft.AspNetCore.Components.Authorization`).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-169">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Components.Authorization` namespace (`@using Microsoft.AspNetCore.Components.Authorization`).</span></span>
+> <span data-ttu-id="3db6b-169">Dans un composant d’application Blazor webassembly, ajoutez l’espace de noms `Microsoft.AspNetCore.Components.Authorization` (`@using Microsoft.AspNetCore.Components.Authorization`).</span><span class="sxs-lookup"><span data-stu-id="3db6b-169">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Components.Authorization` namespace (`@using Microsoft.AspNetCore.Components.Authorization`).</span></span>
 
-<span data-ttu-id="5c5a0-170">Si `user.Identity.IsAuthenticated` est `true`, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-170">If `user.Identity.IsAuthenticated` is `true`, claims can be enumerated and membership in roles evaluated.</span></span>
+<span data-ttu-id="3db6b-170">Si `user.Identity.IsAuthenticated` est `true`, les revendications peuvent être énumérées et l’appartenance aux rôles évaluée.</span><span class="sxs-lookup"><span data-stu-id="3db6b-170">If `user.Identity.IsAuthenticated` is `true`, claims can be enumerated and membership in roles evaluated.</span></span>
 
-<span data-ttu-id="5c5a0-171">Configurez le `Task<AuthenticationState>` paramètre en cascade à l’aide des composants `AuthorizeRouteView` et `CascadingAuthenticationState` dans le fichier *app. Razor* :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-171">Set up the `Task<AuthenticationState>` cascading parameter using the `AuthorizeRouteView` and `CascadingAuthenticationState` components in the *App.razor* file:</span></span>
+<span data-ttu-id="3db6b-171">Configurez le `Task<AuthenticationState>` paramètre en cascade à l’aide des composants `AuthorizeRouteView` et `CascadingAuthenticationState` dans le fichier *app. Razor* :</span><span class="sxs-lookup"><span data-stu-id="3db6b-171">Set up the `Task<AuthenticationState>` cascading parameter using the `AuthorizeRouteView` and `CascadingAuthenticationState` components in the *App.razor* file:</span></span>
 
 ```razor
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -254,24 +267,24 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </Router>
 ```
 
-## <a name="authorization"></a><span data-ttu-id="5c5a0-172">Autorisation</span><span class="sxs-lookup"><span data-stu-id="5c5a0-172">Authorization</span></span>
+## <a name="authorization"></a><span data-ttu-id="3db6b-172">Autorisation</span><span class="sxs-lookup"><span data-stu-id="3db6b-172">Authorization</span></span>
 
-<span data-ttu-id="5c5a0-173">Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* sont appliquées pour contrôler ce que l’utilisateur peut faire.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-173">After a user is authenticated, *authorization* rules are applied to control what the user can do.</span></span>
+<span data-ttu-id="3db6b-173">Une fois qu’un utilisateur est authentifié, les règles *d’autorisation* sont appliquées pour contrôler ce que l’utilisateur peut faire.</span><span class="sxs-lookup"><span data-stu-id="3db6b-173">After a user is authenticated, *authorization* rules are applied to control what the user can do.</span></span>
 
-<span data-ttu-id="5c5a0-174">L’accès est généralement accordé ou refusé selon les conditions suivantes :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-174">Access is typically granted or denied based on whether:</span></span>
+<span data-ttu-id="3db6b-174">L’accès est généralement accordé ou refusé selon les conditions suivantes :</span><span class="sxs-lookup"><span data-stu-id="3db6b-174">Access is typically granted or denied based on whether:</span></span>
 
-* <span data-ttu-id="5c5a0-175">Un utilisateur est authentifié (connecté).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-175">A user is authenticated (signed in).</span></span>
-* <span data-ttu-id="5c5a0-176">Un utilisateur appartient à un *rôle*.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-176">A user is in a *role*.</span></span>
-* <span data-ttu-id="5c5a0-177">Un utilisateur a une *revendication*.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-177">A user has a *claim*.</span></span>
-* <span data-ttu-id="5c5a0-178">Une *stratégie* est satisfaite.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-178">A *policy* is satisfied.</span></span>
+* <span data-ttu-id="3db6b-175">Un utilisateur est authentifié (connecté).</span><span class="sxs-lookup"><span data-stu-id="3db6b-175">A user is authenticated (signed in).</span></span>
+* <span data-ttu-id="3db6b-176">Un utilisateur appartient à un *rôle*.</span><span class="sxs-lookup"><span data-stu-id="3db6b-176">A user is in a *role*.</span></span>
+* <span data-ttu-id="3db6b-177">Un utilisateur a une *revendication*.</span><span class="sxs-lookup"><span data-stu-id="3db6b-177">A user has a *claim*.</span></span>
+* <span data-ttu-id="3db6b-178">Une *stratégie* est satisfaite.</span><span class="sxs-lookup"><span data-stu-id="3db6b-178">A *policy* is satisfied.</span></span>
 
-<span data-ttu-id="5c5a0-179">Tous ces concepts sont les mêmes que dans une application ASP.NET Core MVC ou Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-179">Each of these concepts is the same as in an ASP.NET Core MVC or Razor Pages app.</span></span> <span data-ttu-id="5c5a0-180">Pour plus d’informations sur la sécurité d’ASP.NET Core, consultez les articles sous [Sécurité et identité dans ASP.NET Core](xref:security/index).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-180">For more information on ASP.NET Core security, see the articles under [ASP.NET Core Security and Identity](xref:security/index).</span></span>
+<span data-ttu-id="3db6b-179">Tous ces concepts sont les mêmes que dans une application ASP.NET Core MVC ou Razor Pages.</span><span class="sxs-lookup"><span data-stu-id="3db6b-179">Each of these concepts is the same as in an ASP.NET Core MVC or Razor Pages app.</span></span> <span data-ttu-id="3db6b-180">Pour plus d’informations sur la sécurité d’ASP.NET Core, consultez les articles sous [Sécurité et identité dans ASP.NET Core](xref:security/index).</span><span class="sxs-lookup"><span data-stu-id="3db6b-180">For more information on ASP.NET Core security, see the articles under [ASP.NET Core Security and Identity](xref:security/index).</span></span>
 
-## <a name="authorizeview-component"></a><span data-ttu-id="5c5a0-181">Composant AuthorizeView</span><span class="sxs-lookup"><span data-stu-id="5c5a0-181">AuthorizeView component</span></span>
+## <a name="authorizeview-component"></a><span data-ttu-id="3db6b-181">Composant AuthorizeView</span><span class="sxs-lookup"><span data-stu-id="3db6b-181">AuthorizeView component</span></span>
 
-<span data-ttu-id="5c5a0-182">Le composant `AuthorizeView` affiche sélectivement l’interface utilisateur en fonction de l’autorisation que l’utilisateur a pour l’afficher.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-182">The `AuthorizeView` component selectively displays UI depending on whether the user is authorized to see it.</span></span> <span data-ttu-id="5c5a0-183">Cette approche est utile lorsque vous devez uniquement *afficher* les données de l’utilisateur et que vous n’avez pas besoin d’utiliser l’identité de l’utilisateur dans la logique procédurale.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-183">This approach is useful when you only need to *display* data for the user and don't need to use the user's identity in procedural logic.</span></span>
+<span data-ttu-id="3db6b-182">Le composant `AuthorizeView` affiche sélectivement l’interface utilisateur en fonction de l’autorisation que l’utilisateur a pour l’afficher.</span><span class="sxs-lookup"><span data-stu-id="3db6b-182">The `AuthorizeView` component selectively displays UI depending on whether the user is authorized to see it.</span></span> <span data-ttu-id="3db6b-183">Cette approche est utile lorsque vous devez uniquement *afficher* les données de l’utilisateur et que vous n’avez pas besoin d’utiliser l’identité de l’utilisateur dans la logique procédurale.</span><span class="sxs-lookup"><span data-stu-id="3db6b-183">This approach is useful when you only need to *display* data for the user and don't need to use the user's identity in procedural logic.</span></span>
 
-<span data-ttu-id="5c5a0-184">Le composant expose une variable `context` de type `AuthenticationState`, que vous pouvez utiliser pour accéder aux informations relatives à l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-184">The component exposes a `context` variable of type `AuthenticationState`, which you can use to access information about the signed-in user:</span></span>
+<span data-ttu-id="3db6b-184">Le composant expose une variable `context` de type `AuthenticationState`, que vous pouvez utiliser pour accéder aux informations relatives à l’utilisateur connecté :</span><span class="sxs-lookup"><span data-stu-id="3db6b-184">The component exposes a `context` variable of type `AuthenticationState`, which you can use to access information about the signed-in user:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -280,7 +293,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5c5a0-185">Vous pouvez également fournir un contenu différent à afficher si l’utilisateur n’est pas authentifié :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-185">You can also supply different content for display if the user isn't authenticated:</span></span>
+<span data-ttu-id="3db6b-185">Vous pouvez également fournir un contenu différent à afficher si l’utilisateur n’est pas authentifié :</span><span class="sxs-lookup"><span data-stu-id="3db6b-185">You can also supply different content for display if the user isn't authenticated:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -295,20 +308,20 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5c5a0-186">Le contenu des balises `<Authorized>` et `<NotAuthorized>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-186">The content of `<Authorized>` and `<NotAuthorized>` tags can include arbitrary items, such as other interactive components.</span></span>
+<span data-ttu-id="3db6b-186">Le contenu des balises `<Authorized>` et `<NotAuthorized>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.</span><span class="sxs-lookup"><span data-stu-id="3db6b-186">The content of `<Authorized>` and `<NotAuthorized>` tags can include arbitrary items, such as other interactive components.</span></span>
 
-<span data-ttu-id="5c5a0-187">Les conditions d’autorisation, comme les rôles ou les stratégies qui contrôlent les options d’interface utilisateur ou d’accès, sont traitées dans la section [Autorisation](#authorization).</span><span class="sxs-lookup"><span data-stu-id="5c5a0-187">Authorization conditions, such as roles or policies that control UI options or access, are covered in the [Authorization](#authorization) section.</span></span>
+<span data-ttu-id="3db6b-187">Les conditions d’autorisation, comme les rôles ou les stratégies qui contrôlent les options d’interface utilisateur ou d’accès, sont traitées dans la section [Autorisation](#authorization).</span><span class="sxs-lookup"><span data-stu-id="3db6b-187">Authorization conditions, such as roles or policies that control UI options or access, are covered in the [Authorization](#authorization) section.</span></span>
 
-<span data-ttu-id="5c5a0-188">Si les conditions d’autorisation ne sont pas spécifiées, `AuthorizeView` utilise une stratégie par défaut et traite :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-188">If authorization conditions aren't specified, `AuthorizeView` uses a default policy and treats:</span></span>
+<span data-ttu-id="3db6b-188">Si les conditions d’autorisation ne sont pas spécifiées, `AuthorizeView` utilise une stratégie par défaut et traite :</span><span class="sxs-lookup"><span data-stu-id="3db6b-188">If authorization conditions aren't specified, `AuthorizeView` uses a default policy and treats:</span></span>
 
-* <span data-ttu-id="5c5a0-189">Les utilisateurs authentifiés (connectés) comme étant autorisés.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-189">Authenticated (signed-in) users as authorized.</span></span>
-* <span data-ttu-id="5c5a0-190">Les utilisateurs non authentifiés (déconnectés) comme étant non autorisés.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-190">Unauthenticated (signed-out) users as unauthorized.</span></span>
+* <span data-ttu-id="3db6b-189">Les utilisateurs authentifiés (connectés) comme étant autorisés.</span><span class="sxs-lookup"><span data-stu-id="3db6b-189">Authenticated (signed-in) users as authorized.</span></span>
+* <span data-ttu-id="3db6b-190">Les utilisateurs non authentifiés (déconnectés) comme étant non autorisés.</span><span class="sxs-lookup"><span data-stu-id="3db6b-190">Unauthenticated (signed-out) users as unauthorized.</span></span>
 
-### <a name="role-based-and-policy-based-authorization"></a><span data-ttu-id="5c5a0-191">Autorisation en fonction du rôle et de la stratégie</span><span class="sxs-lookup"><span data-stu-id="5c5a0-191">Role-based and policy-based authorization</span></span>
+### <a name="role-based-and-policy-based-authorization"></a><span data-ttu-id="3db6b-191">Autorisation en fonction du rôle et de la stratégie</span><span class="sxs-lookup"><span data-stu-id="3db6b-191">Role-based and policy-based authorization</span></span>
 
-<span data-ttu-id="5c5a0-192">Le composant `AuthorizeView` prend en charge l’autorisation *basée sur le rôle* et *basée sur les stratégies*.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-192">The `AuthorizeView` component supports *role-based* or *policy-based* authorization.</span></span>
+<span data-ttu-id="3db6b-192">Le composant `AuthorizeView` prend en charge l’autorisation *basée sur le rôle* et *basée sur les stratégies*.</span><span class="sxs-lookup"><span data-stu-id="3db6b-192">The `AuthorizeView` component supports *role-based* or *policy-based* authorization.</span></span>
 
-<span data-ttu-id="5c5a0-193">Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-193">For role-based authorization, use the `Roles` parameter:</span></span>
+<span data-ttu-id="3db6b-193">Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-193">For role-based authorization, use the `Roles` parameter:</span></span>
 
 ```razor
 <AuthorizeView Roles="admin, superuser">
@@ -316,9 +329,9 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5c5a0-194">Pour plus d'informations, consultez <xref:security/authorization/roles>.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-194">For more information, see <xref:security/authorization/roles>.</span></span>
+<span data-ttu-id="3db6b-194">Pour plus d'informations, consultez <xref:security/authorization/roles>.</span><span class="sxs-lookup"><span data-stu-id="3db6b-194">For more information, see <xref:security/authorization/roles>.</span></span>
 
-<span data-ttu-id="5c5a0-195">Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Policy` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-195">For policy-based authorization, use the `Policy` parameter:</span></span>
+<span data-ttu-id="3db6b-195">Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Policy` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-195">For policy-based authorization, use the `Policy` parameter:</span></span>
 
 ```razor
 <AuthorizeView Policy="content-editor">
@@ -326,17 +339,17 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5c5a0-196">L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-196">Claims-based authorization is a special case of policy-based authorization.</span></span> <span data-ttu-id="5c5a0-197">Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-197">For example, you can define a policy that requires users to have a certain claim.</span></span> <span data-ttu-id="5c5a0-198">Pour plus d'informations, consultez <xref:security/authorization/policies>.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-198">For more information, see <xref:security/authorization/policies>.</span></span>
+<span data-ttu-id="3db6b-196">L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies.</span><span class="sxs-lookup"><span data-stu-id="3db6b-196">Claims-based authorization is a special case of policy-based authorization.</span></span> <span data-ttu-id="3db6b-197">Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication.</span><span class="sxs-lookup"><span data-stu-id="3db6b-197">For example, you can define a policy that requires users to have a certain claim.</span></span> <span data-ttu-id="3db6b-198">Pour plus d'informations, consultez <xref:security/authorization/policies>.</span><span class="sxs-lookup"><span data-stu-id="3db6b-198">For more information, see <xref:security/authorization/policies>.</span></span>
 
-<span data-ttu-id="5c5a0-199">Ces API peuvent être utilisées dans les applications Blazor Server ou Blazor webassembly.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-199">These APIs can be used in either Blazor Server or Blazor WebAssembly apps.</span></span>
+<span data-ttu-id="3db6b-199">Ces API peuvent être utilisées dans les applications Blazor Server ou Blazor webassembly.</span><span class="sxs-lookup"><span data-stu-id="3db6b-199">These APIs can be used in either Blazor Server or Blazor WebAssembly apps.</span></span>
 
-<span data-ttu-id="5c5a0-200">Si ni `Roles` ni `Policy` n’est spécifié, `AuthorizeView` utilise la stratégie par défaut.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-200">If neither `Roles` nor `Policy` is specified, `AuthorizeView` uses the default policy.</span></span>
+<span data-ttu-id="3db6b-200">Si ni `Roles` ni `Policy` n’est spécifié, `AuthorizeView` utilise la stratégie par défaut.</span><span class="sxs-lookup"><span data-stu-id="3db6b-200">If neither `Roles` nor `Policy` is specified, `AuthorizeView` uses the default policy.</span></span>
 
-### <a name="content-displayed-during-asynchronous-authentication"></a><span data-ttu-id="5c5a0-201">Contenu affiché lors de l’authentification asynchrone</span><span class="sxs-lookup"><span data-stu-id="5c5a0-201">Content displayed during asynchronous authentication</span></span>
+### <a name="content-displayed-during-asynchronous-authentication"></a><span data-ttu-id="3db6b-201">Contenu affiché lors de l’authentification asynchrone</span><span class="sxs-lookup"><span data-stu-id="3db6b-201">Content displayed during asynchronous authentication</span></span>
 
-Blazor<span data-ttu-id="5c5a0-202"> permet de déterminer l’état d’authentification de *manière asynchrone*.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-202"> allows for authentication state to be determined *asynchronously*.</span></span> <span data-ttu-id="5c5a0-203">Le scénario principal de cette approche se trouve dans Blazor applications webassembly qui effectuent une demande à un point de terminaison externe pour l’authentification.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-203">The primary scenario for this approach is in Blazor WebAssembly apps that make a request to an external endpoint for authentication.</span></span>
+Blazor<span data-ttu-id="3db6b-202"> permet de déterminer l’état d’authentification de *manière asynchrone*.</span><span class="sxs-lookup"><span data-stu-id="3db6b-202"> allows for authentication state to be determined *asynchronously*.</span></span> <span data-ttu-id="3db6b-203">Le scénario principal de cette approche se trouve dans Blazor applications webassembly qui effectuent une demande à un point de terminaison externe pour l’authentification.</span><span class="sxs-lookup"><span data-stu-id="3db6b-203">The primary scenario for this approach is in Blazor WebAssembly apps that make a request to an external endpoint for authentication.</span></span>
 
-<span data-ttu-id="5c5a0-204">Lorsque l’authentification est en cours, `AuthorizeView` n’affiche aucun contenu par défaut.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-204">While authentication is in progress, `AuthorizeView` displays no content by default.</span></span> <span data-ttu-id="5c5a0-205">Pour afficher le contenu pendant que l’authentification se produit, utilisez l’élément `<Authorizing>` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-205">To display content while authentication occurs, use the `<Authorizing>` element:</span></span>
+<span data-ttu-id="3db6b-204">Lorsque l’authentification est en cours, `AuthorizeView` n’affiche aucun contenu par défaut.</span><span class="sxs-lookup"><span data-stu-id="3db6b-204">While authentication is in progress, `AuthorizeView` displays no content by default.</span></span> <span data-ttu-id="3db6b-205">Pour afficher le contenu pendant que l’authentification se produit, utilisez l’élément `<Authorizing>` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-205">To display content while authentication occurs, use the `<Authorizing>` element:</span></span>
 
 ```razor
 <AuthorizeView>
@@ -351,11 +364,11 @@ Blazor<span data-ttu-id="5c5a0-202"> permet de déterminer l’état d’authent
 </AuthorizeView>
 ```
 
-<span data-ttu-id="5c5a0-206">Cette approche n’est normalement pas applicable aux applications Blazor Server.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-206">This approach isn't normally applicable to Blazor Server apps.</span></span> Blazor<span data-ttu-id="5c5a0-207"> applications serveur connaissent l’état d’authentification dès que l’État est établi.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-207"> Server apps know the authentication state as soon as the state is established.</span></span> <span data-ttu-id="5c5a0-208">`Authorizing` contenu peut être fourni dans le composant `AuthorizeView` d’une application Blazor Server, mais le contenu n’est jamais affiché.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-208">`Authorizing` content can be provided in a Blazor Server app's `AuthorizeView` component, but the content is never displayed.</span></span>
+<span data-ttu-id="3db6b-206">Cette approche n’est normalement pas applicable aux applications Blazor Server.</span><span class="sxs-lookup"><span data-stu-id="3db6b-206">This approach isn't normally applicable to Blazor Server apps.</span></span> Blazor<span data-ttu-id="3db6b-207"> applications serveur connaissent l’état d’authentification dès que l’État est établi.</span><span class="sxs-lookup"><span data-stu-id="3db6b-207"> Server apps know the authentication state as soon as the state is established.</span></span> <span data-ttu-id="3db6b-208">`Authorizing` contenu peut être fourni dans le composant `AuthorizeView` d’une application Blazor Server, mais le contenu n’est jamais affiché.</span><span class="sxs-lookup"><span data-stu-id="3db6b-208">`Authorizing` content can be provided in a Blazor Server app's `AuthorizeView` component, but the content is never displayed.</span></span>
 
-## <a name="authorize-attribute"></a><span data-ttu-id="5c5a0-209">Attribut [Authorize]</span><span class="sxs-lookup"><span data-stu-id="5c5a0-209">[Authorize] attribute</span></span>
+## <a name="authorize-attribute"></a><span data-ttu-id="3db6b-209">Attribut [Authorize]</span><span class="sxs-lookup"><span data-stu-id="3db6b-209">[Authorize] attribute</span></span>
 
-<span data-ttu-id="5c5a0-210">L’attribut `[Authorize]` peut être utilisé dans les composants Razor :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-210">The `[Authorize]` attribute can be used in Razor components:</span></span>
+<span data-ttu-id="3db6b-210">L’attribut `[Authorize]` peut être utilisé dans les composants Razor :</span><span class="sxs-lookup"><span data-stu-id="3db6b-210">The `[Authorize]` attribute can be used in Razor components:</span></span>
 
 ```razor
 @page "/"
@@ -365,12 +378,12 @@ You can only see this if you're signed in.
 ```
 
 > [!NOTE]
-> <span data-ttu-id="5c5a0-211">Dans un composant d’application Blazor webassembly, ajoutez l’espace de noms `Microsoft.AspNetCore.Authorization` (`@using Microsoft.AspNetCore.Authorization`) aux exemples de cette section.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-211">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Authorization` namespace (`@using Microsoft.AspNetCore.Authorization`) to the examples in this section.</span></span>
+> <span data-ttu-id="3db6b-211">Dans un composant d’application Blazor webassembly, ajoutez l’espace de noms `Microsoft.AspNetCore.Authorization` (`@using Microsoft.AspNetCore.Authorization`) aux exemples de cette section.</span><span class="sxs-lookup"><span data-stu-id="3db6b-211">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Authorization` namespace (`@using Microsoft.AspNetCore.Authorization`) to the examples in this section.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="5c5a0-212">N’utilisez `[Authorize]` sur `@page` composants atteints via le routeur Blazor.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-212">Only use `[Authorize]` on `@page` components reached via the Blazor Router.</span></span> <span data-ttu-id="5c5a0-213">L’autorisation est effectuée uniquement en tant qu’aspect du routage et *pas* pour les composants enfants rendus dans une page.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-213">Authorization is only performed as an aspect of routing and *not* for child components rendered within a page.</span></span> <span data-ttu-id="5c5a0-214">Pour autoriser l’affichage d’éléments spécifiques dans une page, utilisez `AuthorizeView` à la place.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-214">To authorize the display of specific parts within a page, use `AuthorizeView` instead.</span></span>
+> <span data-ttu-id="3db6b-212">N’utilisez `[Authorize]` sur `@page` composants atteints via le routeur Blazor.</span><span class="sxs-lookup"><span data-stu-id="3db6b-212">Only use `[Authorize]` on `@page` components reached via the Blazor Router.</span></span> <span data-ttu-id="3db6b-213">L’autorisation est effectuée uniquement en tant qu’aspect du routage et *pas* pour les composants enfants rendus dans une page.</span><span class="sxs-lookup"><span data-stu-id="3db6b-213">Authorization is only performed as an aspect of routing and *not* for child components rendered within a page.</span></span> <span data-ttu-id="3db6b-214">Pour autoriser l’affichage d’éléments spécifiques dans une page, utilisez `AuthorizeView` à la place.</span><span class="sxs-lookup"><span data-stu-id="3db6b-214">To authorize the display of specific parts within a page, use `AuthorizeView` instead.</span></span>
 
-<span data-ttu-id="5c5a0-215">L’attribut `[Authorize]` prend également en charge l’autorisation en fonction du rôle ou des stratégies.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-215">The `[Authorize]` attribute also supports role-based or policy-based authorization.</span></span> <span data-ttu-id="5c5a0-216">Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-216">For role-based authorization, use the `Roles` parameter:</span></span>
+<span data-ttu-id="3db6b-215">L’attribut `[Authorize]` prend également en charge l’autorisation en fonction du rôle ou des stratégies.</span><span class="sxs-lookup"><span data-stu-id="3db6b-215">The `[Authorize]` attribute also supports role-based or policy-based authorization.</span></span> <span data-ttu-id="3db6b-216">Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-216">For role-based authorization, use the `Roles` parameter:</span></span>
 
 ```razor
 @page "/"
@@ -379,7 +392,7 @@ You can only see this if you're signed in.
 <p>You can only see this if you're in the 'admin' or 'superuser' role.</p>
 ```
 
-<span data-ttu-id="5c5a0-217">Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Policy` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-217">For policy-based authorization, use the `Policy` parameter:</span></span>
+<span data-ttu-id="3db6b-217">Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Policy` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-217">For policy-based authorization, use the `Policy` parameter:</span></span>
 
 ```razor
 @page "/"
@@ -388,20 +401,20 @@ You can only see this if you're signed in.
 <p>You can only see this if you satisfy the 'content-editor' policy.</p>
 ```
 
-<span data-ttu-id="5c5a0-218">Si ni `Roles` ni `Policy` n’est spécifié, `[Authorize]` utilise la stratégie par défaut, qui consiste par défaut à traiter :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-218">If neither `Roles` nor `Policy` is specified, `[Authorize]` uses the default policy, which by default is to treat:</span></span>
+<span data-ttu-id="3db6b-218">Si ni `Roles` ni `Policy` n’est spécifié, `[Authorize]` utilise la stratégie par défaut, qui consiste par défaut à traiter :</span><span class="sxs-lookup"><span data-stu-id="3db6b-218">If neither `Roles` nor `Policy` is specified, `[Authorize]` uses the default policy, which by default is to treat:</span></span>
 
-* <span data-ttu-id="5c5a0-219">Les utilisateurs authentifiés (connectés) comme étant autorisés.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-219">Authenticated (signed-in) users as authorized.</span></span>
-* <span data-ttu-id="5c5a0-220">Les utilisateurs non authentifiés (déconnectés) comme étant non autorisés.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-220">Unauthenticated (signed-out) users as unauthorized.</span></span>
+* <span data-ttu-id="3db6b-219">Les utilisateurs authentifiés (connectés) comme étant autorisés.</span><span class="sxs-lookup"><span data-stu-id="3db6b-219">Authenticated (signed-in) users as authorized.</span></span>
+* <span data-ttu-id="3db6b-220">Les utilisateurs non authentifiés (déconnectés) comme étant non autorisés.</span><span class="sxs-lookup"><span data-stu-id="3db6b-220">Unauthenticated (signed-out) users as unauthorized.</span></span>
 
-## <a name="customize-unauthorized-content-with-the-router-component"></a><span data-ttu-id="5c5a0-221">Personnaliser le contenu non autorisé avec le composant Router</span><span class="sxs-lookup"><span data-stu-id="5c5a0-221">Customize unauthorized content with the Router component</span></span>
+## <a name="customize-unauthorized-content-with-the-router-component"></a><span data-ttu-id="3db6b-221">Personnaliser le contenu non autorisé avec le composant Router</span><span class="sxs-lookup"><span data-stu-id="3db6b-221">Customize unauthorized content with the Router component</span></span>
 
-<span data-ttu-id="5c5a0-222">Le composant `Router`, conjointement au composant `AuthorizeRouteView`, permet à l’application de spécifier du contenu personnalisé dans les cas suivants :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-222">The `Router` component, in conjunction with the `AuthorizeRouteView` component, allows the app to specify custom content if:</span></span>
+<span data-ttu-id="3db6b-222">Le composant `Router`, conjointement au composant `AuthorizeRouteView`, permet à l’application de spécifier du contenu personnalisé dans les cas suivants :</span><span class="sxs-lookup"><span data-stu-id="3db6b-222">The `Router` component, in conjunction with the `AuthorizeRouteView` component, allows the app to specify custom content if:</span></span>
 
-* <span data-ttu-id="5c5a0-223">Le contenu est introuvable.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-223">Content isn't found.</span></span>
-* <span data-ttu-id="5c5a0-224">L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-224">The user fails an `[Authorize]` condition applied to the component.</span></span> <span data-ttu-id="5c5a0-225">L’attribut `[Authorize]` est abordé dans la section [`[Authorize]` attribut](#authorize-attribute) .</span><span class="sxs-lookup"><span data-stu-id="5c5a0-225">The `[Authorize]` attribute is covered in the [`[Authorize]` attribute](#authorize-attribute) section.</span></span>
-* <span data-ttu-id="5c5a0-226">Une authentification asynchrone est en cours.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-226">Asynchronous authentication is in progress.</span></span>
+* <span data-ttu-id="3db6b-223">Le contenu est introuvable.</span><span class="sxs-lookup"><span data-stu-id="3db6b-223">Content isn't found.</span></span>
+* <span data-ttu-id="3db6b-224">L’utilisateur ne répond pas à une condition `[Authorize]` appliquée au composant.</span><span class="sxs-lookup"><span data-stu-id="3db6b-224">The user fails an `[Authorize]` condition applied to the component.</span></span> <span data-ttu-id="3db6b-225">L’attribut `[Authorize]` est abordé dans la section [`[Authorize]` attribut](#authorize-attribute) .</span><span class="sxs-lookup"><span data-stu-id="3db6b-225">The `[Authorize]` attribute is covered in the [`[Authorize]` attribute](#authorize-attribute) section.</span></span>
+* <span data-ttu-id="3db6b-226">Une authentification asynchrone est en cours.</span><span class="sxs-lookup"><span data-stu-id="3db6b-226">Asynchronous authentication is in progress.</span></span>
 
-<span data-ttu-id="5c5a0-227">Dans le modèle de projet Blazor Server par défaut, le fichier *app. Razor* montre comment définir un contenu personnalisé :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-227">In the default Blazor Server project template, the *App.razor* file demonstrates how to set custom content:</span></span>
+<span data-ttu-id="3db6b-227">Dans le modèle de projet Blazor Server par défaut, le fichier *app. Razor* montre comment définir un contenu personnalisé :</span><span class="sxs-lookup"><span data-stu-id="3db6b-227">In the default Blazor Server project template, the *App.razor* file demonstrates how to set custom content:</span></span>
 
 ```razor
 <Router AppAssembly="@typeof(Program).Assembly">
@@ -429,21 +442,21 @@ You can only see this if you're signed in.
 </Router>
 ```
 
-<span data-ttu-id="5c5a0-228">Le contenu des balises `<NotFound>`, `<NotAuthorized>`et `<Authorizing>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-228">The content of `<NotFound>`, `<NotAuthorized>`, and `<Authorizing>` tags can include arbitrary items, such as other interactive components.</span></span>
+<span data-ttu-id="3db6b-228">Le contenu des balises `<NotFound>`, `<NotAuthorized>`et `<Authorizing>` peut inclure des éléments arbitraires, tels que d’autres composants interactifs.</span><span class="sxs-lookup"><span data-stu-id="3db6b-228">The content of `<NotFound>`, `<NotAuthorized>`, and `<Authorizing>` tags can include arbitrary items, such as other interactive components.</span></span>
 
-<span data-ttu-id="5c5a0-229">Si l’élément `<NotAuthorized>` n’est pas spécifié, le `AuthorizeRouteView` utilise le message de secours suivant :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-229">If the `<NotAuthorized>` element isn't specified, the `AuthorizeRouteView` uses the following fallback message:</span></span>
+<span data-ttu-id="3db6b-229">Si l’élément `<NotAuthorized>` n’est pas spécifié, le `AuthorizeRouteView` utilise le message de secours suivant :</span><span class="sxs-lookup"><span data-stu-id="3db6b-229">If the `<NotAuthorized>` element isn't specified, the `AuthorizeRouteView` uses the following fallback message:</span></span>
 
 ```html
 Not authorized.
 ```
 
-## <a name="notification-about-authentication-state-changes"></a><span data-ttu-id="5c5a0-230">Notification sur les changements d’état de l’authentification</span><span class="sxs-lookup"><span data-stu-id="5c5a0-230">Notification about authentication state changes</span></span>
+## <a name="notification-about-authentication-state-changes"></a><span data-ttu-id="3db6b-230">Notification sur les changements d’état de l’authentification</span><span class="sxs-lookup"><span data-stu-id="3db6b-230">Notification about authentication state changes</span></span>
 
-<span data-ttu-id="5c5a0-231">Si l’application détermine que les données d’état d’authentification sous-jacentes ont changé (par exemple, parce que l’utilisateur s’est déconnecté ou qu’un autre utilisateur a modifié ses rôles), un `AuthenticationStateProvider` personnalisé peut éventuellement appeler la méthode `NotifyAuthenticationStateChanged` sur la classe de base `AuthenticationStateProvider`.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-231">If the app determines that the underlying authentication state data has changed (for example, because the user signed out or another user has changed their roles), a custom `AuthenticationStateProvider` can optionally invoke the method `NotifyAuthenticationStateChanged` on the `AuthenticationStateProvider` base class.</span></span> <span data-ttu-id="5c5a0-232">Cela prévient les consommateurs des données d’état d’authentification (par exemple, `AuthorizeView`) qu’elles doivent appliquer un nouveau rendu à l’aide des nouvelles données.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-232">This notifies consumers of the authentication state data (for example, `AuthorizeView`) to rerender using the new data.</span></span>
+<span data-ttu-id="3db6b-231">Si l’application détermine que les données d’état d’authentification sous-jacentes ont changé (par exemple, parce que l’utilisateur s’est déconnecté ou qu’un autre utilisateur a modifié ses rôles), un `AuthenticationStateProvider` personnalisé peut éventuellement appeler la méthode `NotifyAuthenticationStateChanged` sur la classe de base `AuthenticationStateProvider`.</span><span class="sxs-lookup"><span data-stu-id="3db6b-231">If the app determines that the underlying authentication state data has changed (for example, because the user signed out or another user has changed their roles), a custom `AuthenticationStateProvider` can optionally invoke the method `NotifyAuthenticationStateChanged` on the `AuthenticationStateProvider` base class.</span></span> <span data-ttu-id="3db6b-232">Cela prévient les consommateurs des données d’état d’authentification (par exemple, `AuthorizeView`) qu’elles doivent appliquer un nouveau rendu à l’aide des nouvelles données.</span><span class="sxs-lookup"><span data-stu-id="3db6b-232">This notifies consumers of the authentication state data (for example, `AuthorizeView`) to rerender using the new data.</span></span>
 
-## <a name="procedural-logic"></a><span data-ttu-id="5c5a0-233">Logique procédurale</span><span class="sxs-lookup"><span data-stu-id="5c5a0-233">Procedural logic</span></span>
+## <a name="procedural-logic"></a><span data-ttu-id="3db6b-233">Logique procédurale</span><span class="sxs-lookup"><span data-stu-id="3db6b-233">Procedural logic</span></span>
 
-<span data-ttu-id="5c5a0-234">Si l’application est nécessaire pour vérifier les règles d’autorisation dans le cadre de la logique procédurale, utilisez un paramètre en cascade de type `Task<AuthenticationState>` pour obtenir le <xref:System.Security.Claims.ClaimsPrincipal> de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-234">If the app is required to check authorization rules as part of procedural logic, use a cascaded parameter of type `Task<AuthenticationState>` to obtain the user's <xref:System.Security.Claims.ClaimsPrincipal>.</span></span> <span data-ttu-id="5c5a0-235">`Task<AuthenticationState>` peut être combiné avec d’autres services, comme `IAuthorizationService`, pour évaluer les stratégies.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-235">`Task<AuthenticationState>` can be combined with other services, such as `IAuthorizationService`, to evaluate policies.</span></span>
+<span data-ttu-id="3db6b-234">Si l’application est nécessaire pour vérifier les règles d’autorisation dans le cadre de la logique procédurale, utilisez un paramètre en cascade de type `Task<AuthenticationState>` pour obtenir le <xref:System.Security.Claims.ClaimsPrincipal> de l’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="3db6b-234">If the app is required to check authorization rules as part of procedural logic, use a cascaded parameter of type `Task<AuthenticationState>` to obtain the user's <xref:System.Security.Claims.ClaimsPrincipal>.</span></span> <span data-ttu-id="3db6b-235">`Task<AuthenticationState>` peut être combiné avec d’autres services, comme `IAuthorizationService`, pour évaluer les stratégies.</span><span class="sxs-lookup"><span data-stu-id="3db6b-235">`Task<AuthenticationState>` can be combined with other services, such as `IAuthorizationService`, to evaluate policies.</span></span>
 
 ```razor
 @inject IAuthorizationService AuthorizationService
@@ -479,28 +492,28 @@ Not authorized.
 ```
 
 > [!NOTE]
-> <span data-ttu-id="5c5a0-236">Dans un composant d’application Blazor webassembly, ajoutez les espaces de noms `Microsoft.AspNetCore.Authorization` et `Microsoft.AspNetCore.Components.Authorization` :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-236">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Authorization` and `Microsoft.AspNetCore.Components.Authorization` namespaces:</span></span>
+> <span data-ttu-id="3db6b-236">Dans un composant d’application Blazor webassembly, ajoutez les espaces de noms `Microsoft.AspNetCore.Authorization` et `Microsoft.AspNetCore.Components.Authorization` :</span><span class="sxs-lookup"><span data-stu-id="3db6b-236">In a Blazor WebAssembly app component, add the `Microsoft.AspNetCore.Authorization` and `Microsoft.AspNetCore.Components.Authorization` namespaces:</span></span>
 >
 > ```razor
 > @using Microsoft.AspNetCore.Authorization
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
 
-## <a name="authorization-in-opno-locblazor-webassembly-apps"></a><span data-ttu-id="5c5a0-237">Autorisation dans Blazor applications webassembly</span><span class="sxs-lookup"><span data-stu-id="5c5a0-237">Authorization in Blazor WebAssembly apps</span></span>
+## <a name="authorization-in-opno-locblazor-webassembly-apps"></a><span data-ttu-id="3db6b-237">Autorisation dans Blazor applications webassembly</span><span class="sxs-lookup"><span data-stu-id="3db6b-237">Authorization in Blazor WebAssembly apps</span></span>
 
-<span data-ttu-id="5c5a0-238">Dans Blazor applications webassembly, les vérifications d’autorisation peuvent être ignorées, car le code côté client peut être modifié par les utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-238">In Blazor WebAssembly apps, authorization checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="5c5a0-239">Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-239">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
+<span data-ttu-id="3db6b-238">Dans Blazor applications webassembly, les vérifications d’autorisation peuvent être ignorées, car le code côté client peut être modifié par les utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="3db6b-238">In Blazor WebAssembly apps, authorization checks can be bypassed because all client-side code can be modified by users.</span></span> <span data-ttu-id="3db6b-239">Cela vaut également pour toutes les technologies d’application côté client, y compris les infrastructures d’application JavaScript SPA ou les applications natives pour n’importe quel système d’exploitation.</span><span class="sxs-lookup"><span data-stu-id="3db6b-239">The same is true for all client-side app technologies, including JavaScript SPA frameworks or native apps for any operating system.</span></span>
 
-<span data-ttu-id="5c5a0-240">**Effectuez toujours les vérifications d’autorisation sur le serveur au sein des points de terminaison de l’API auxquels votre application côté client accède.**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-240">**Always perform authorization checks on the server within any API endpoints accessed by your client-side app.**</span></span>
+<span data-ttu-id="3db6b-240">**Effectuez toujours les vérifications d’autorisation sur le serveur au sein des points de terminaison de l’API auxquels votre application côté client accède.**</span><span class="sxs-lookup"><span data-stu-id="3db6b-240">**Always perform authorization checks on the server within any API endpoints accessed by your client-side app.**</span></span>
 
-## <a name="troubleshoot-errors"></a><span data-ttu-id="5c5a0-241">Résoudre les erreurs</span><span class="sxs-lookup"><span data-stu-id="5c5a0-241">Troubleshoot errors</span></span>
+## <a name="troubleshoot-errors"></a><span data-ttu-id="3db6b-241">Résoudre les erreurs</span><span class="sxs-lookup"><span data-stu-id="3db6b-241">Troubleshoot errors</span></span>
 
-<span data-ttu-id="5c5a0-242">Erreurs courantes :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-242">Common errors:</span></span>
+<span data-ttu-id="3db6b-242">Erreurs courantes :</span><span class="sxs-lookup"><span data-stu-id="3db6b-242">Common errors:</span></span>
 
-* <span data-ttu-id="5c5a0-243">**L’autorisation nécessite un paramètre en cascade de type Task\<AuthenticationState >. Envisagez d’utiliser CascadingAuthenticationState pour fournir ce.**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-243">**Authorization requires a cascading parameter of type Task\<AuthenticationState>. Consider using CascadingAuthenticationState to supply this.**</span></span>
+* <span data-ttu-id="3db6b-243">**L’autorisation nécessite un paramètre en cascade de type Task\<AuthenticationState >. Envisagez d’utiliser CascadingAuthenticationState pour fournir ce.**</span><span class="sxs-lookup"><span data-stu-id="3db6b-243">**Authorization requires a cascading parameter of type Task\<AuthenticationState>. Consider using CascadingAuthenticationState to supply this.**</span></span>
 
-* <span data-ttu-id="5c5a0-244">**La valeur `null` est reçue pour `authenticationStateTask`**</span><span class="sxs-lookup"><span data-stu-id="5c5a0-244">**`null` value is received for `authenticationStateTask`**</span></span>
+* <span data-ttu-id="3db6b-244">**La valeur `null` est reçue pour `authenticationStateTask`**</span><span class="sxs-lookup"><span data-stu-id="3db6b-244">**`null` value is received for `authenticationStateTask`**</span></span>
 
-<span data-ttu-id="5c5a0-245">Il est probable que le projet n’a pas été créé à l’aide d’un modèle de serveur Blazor avec l’authentification activée.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-245">It's likely that the project wasn't created using a Blazor Server template with authentication enabled.</span></span> <span data-ttu-id="5c5a0-246">Encapsulez un `<CascadingAuthenticationState>` dans certaines parties de l’arborescence de l’interface utilisateur, par exemple dans *App.razor*, comme suit :</span><span class="sxs-lookup"><span data-stu-id="5c5a0-246">Wrap a `<CascadingAuthenticationState>` around some part of the UI tree, for example in *App.razor* as follows:</span></span>
+<span data-ttu-id="3db6b-245">Il est probable que le projet n’a pas été créé à l’aide d’un modèle de serveur Blazor avec l’authentification activée.</span><span class="sxs-lookup"><span data-stu-id="3db6b-245">It's likely that the project wasn't created using a Blazor Server template with authentication enabled.</span></span> <span data-ttu-id="3db6b-246">Encapsulez un `<CascadingAuthenticationState>` dans certaines parties de l’arborescence de l’interface utilisateur, par exemple dans *App.razor*, comme suit :</span><span class="sxs-lookup"><span data-stu-id="3db6b-246">Wrap a `<CascadingAuthenticationState>` around some part of the UI tree, for example in *App.razor* as follows:</span></span>
 
 ```razor
 <CascadingAuthenticationState>
@@ -510,9 +523,9 @@ Not authorized.
 </CascadingAuthenticationState>
 ```
 
-<span data-ttu-id="5c5a0-247">`CascadingAuthenticationState` fournit le paramètre en cascade `Task<AuthenticationState>`, qu’il reçoit à son tour du service d’injection de dépendances `AuthenticationStateProvider` sous-jacent.</span><span class="sxs-lookup"><span data-stu-id="5c5a0-247">The `CascadingAuthenticationState` supplies the `Task<AuthenticationState>` cascading parameter, which in turn it receives from the underlying `AuthenticationStateProvider` DI service.</span></span>
+<span data-ttu-id="3db6b-247">`CascadingAuthenticationState` fournit le paramètre en cascade `Task<AuthenticationState>`, qu’il reçoit à son tour du service d’injection de dépendances `AuthenticationStateProvider` sous-jacent.</span><span class="sxs-lookup"><span data-stu-id="3db6b-247">The `CascadingAuthenticationState` supplies the `Task<AuthenticationState>` cascading parameter, which in turn it receives from the underlying `AuthenticationStateProvider` DI service.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="5c5a0-248">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="5c5a0-248">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="3db6b-248">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="3db6b-248">Additional resources</span></span>
 
 * <xref:security/index>
 * <xref:security/blazor/server>
