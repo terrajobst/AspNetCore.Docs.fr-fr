@@ -5,14 +5,14 @@ description: Découvrez les principes fondamentaux de la création d’une API w
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/22/2019
+ms.date: 01/27/2020
 uid: web-api/index
-ms.openlocfilehash: 5ef8b4d012f4ed90339ffea191612e4dc365d958
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 8609e2095c202643cdc905cc610298195b654215
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880531"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870015"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -46,7 +46,7 @@ La classe `ControllerBase` fournit de nombreuses propriétés et méthodes qui s
 
 Voici d’autres exemples de méthodes fournies par `ControllerBase`.
 
-|Méthode   |Notes    |
+|Méthode   |Remarques    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| Retourne le code d’état 400.|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|Retourne le code d’état 404.|
@@ -64,7 +64,7 @@ L’espace de noms <xref:Microsoft.AspNetCore.Mvc> fournit des attributs qui peu
 
 Voici d’autres exemples d’attributs disponibles.
 
-|Attribut|Notes|
+|Attribute|Remarques|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|
@@ -78,13 +78,28 @@ Pour obtenir la liste des attributs disponibles, consultez l’espace de noms <x
 
 L’attribut [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) peut être appliqué à une classe de contrôleur pour activer les consignes strictes suivants, comportements spécifiques à l’API :
 
+::: moniker range=">= aspnetcore-2.2"
+
 * [Exigence du routage d’attribut](#attribute-routing-requirement)
 * [Réponses HTTP 400 automatiques](#automatic-http-400-responses)
 * [Inférence de paramètre de source de liaison](#binding-source-parameter-inference)
 * [Inférence de demande multipart/form-data](#multipartform-data-request-inference)
 * [Fonctionnalité Détails du problème pour les codes d’état erreur](#problem-details-for-error-status-codes)
 
+La fonctionnalité *Détails du problème pour les codes d’état d’erreur* requiert une [version de compatibilité](xref:mvc/compatibility-version) 2,2 ou ultérieure. Les autres fonctionnalités nécessitent une version de compatibilité 2,1 ou ultérieure.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
+
+* [Exigence du routage d’attribut](#attribute-routing-requirement)
+* [Réponses HTTP 400 automatiques](#automatic-http-400-responses)
+* [Inférence de paramètre de source de liaison](#binding-source-parameter-inference)
+* [Inférence de demande multipart/form-data](#multipartform-data-request-inference)
+
 Ces fonctionnalités nécessitent une [version de compatibilité](xref:mvc/compatibility-version) 2.1 ou ultérieure.
+
+::: moniker-end
 
 ### <a name="attribute-on-specific-controllers"></a>Attribut sur des contrôleurs spécifiques
 
@@ -141,7 +156,7 @@ namespace WebApiSample
 
 ## <a name="attribute-routing-requirement"></a>Exigence du routage d’attribut
 
-L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par exemple :
+L’attribut `[ApiController]` rend nécessaire le routage d’attributs. Par exemple :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -239,9 +254,9 @@ Pour désactiver le comportement 400 automatique, définissez la propriété <x
 
 Un attribut de source de liaison définit l’emplacement auquel se trouve la valeur d’un paramètre d’action. Les attributs de source de liaison suivants existent :
 
-|Attribut|Source de liaison |
+|Attribute|Source de liaison |
 |---------|---------|
-|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la requête |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de demande |
 |[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Données de formulaire dans le corps de la demande |
 |[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de demande |
 |[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Paramètre de la chaîne de requête de la demande |
@@ -354,7 +369,7 @@ Prenons le code suivant dans une action de contrôleur :
 
 [!code-csharp[](index/samples/2.x/2.2/Controllers/PetsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-La méthode `NotFound` produit un code d’état HTTP 404 avec un corps de `ProblemDetails`. Par exemple :
+La méthode `NotFound` produit un code d’état HTTP 404 avec un corps de `ProblemDetails`. Par exemple :
 
 ```json
 {

@@ -5,34 +5,34 @@ description: Commencez avec Blazor en créant une application Blazor avec les ou
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/28/2019
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 642881b5400a70a99f6e7e262d2a2f1038389ce7
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: bd33d874b3d6122f2ab820e9b147b0e62ba03a58
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726843"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869578"
 ---
-# <a name="get-started-with-aspnet-core-opno-locblazor"></a>Prise en main de ASP.NET Core Blazor
+# <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core Blazor
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Prise en main de Blazor:
+Prise en main de éblouissant :
 
 1. Installez le [Kit de développement logiciel (SDK) .net Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
-1. Installez éventuellement le modèle [Blazor Webassembly](xref:blazor/hosting-models#blazor-webassembly) :
+1. Installez éventuellement le modèle de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) :
    * Installez le [Kit de développement logiciel (SDK) .net Core 3,1 ou ultérieur (version préliminaire)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Exécutez la commande suivante dans une interface de commande. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/)Le package de modèles a une version préliminaire alors que Blazor Webassembly est en préversion.
+   * Exécutez la commande suivante dans une interface de commande. Le package [Microsoft. AspNetCore. éblouissant. Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.Templates/) a une préversion alors que l’assembly éblouissant est en version préliminaire.
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.1.0-preview4.19579.2
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview1.20073.1
    ```
 
 1. Suivez les instructions de votre choix d’outils :
@@ -43,16 +43,16 @@ Prise en main de Blazor:
 
    2 \. Créez un nouveau projet.
 
-   3 \. Sélectionnez **Blazor application**. Sélectionnez **Suivant**.
+   3 \. Sélectionnez l' **application Blazor**. Sélectionnez **Suivant**.
 
    4 \. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Créer**.
 
-   5 \. Pour une expérience Blazor webassembly, choisissez le modèle **application WebassemblyBlazor** . Pour une expérience Blazor Server, choisissez le modèle d' **applicationBlazor Server** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, *Blazor Server* et *Blazor webassembly*, consultez <xref:blazor/hosting-models>.
+   5 \. Pour une expérience de webassembly Blazor, choisissez le modèle **application Blazor Webassembly** Pour une expérience de serveur Blazor, choisissez le modèle **application de serveur Blazor** . Sélectionnez **Créer**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>
 
    6 \. Appuyez sur **Ctrl**+**F5** pour exécuter l’application.
 
    > [!NOTE]
-   > Si vous avez installé le Blazor extension Visual Studio pour une version préliminaire antérieure de ASP.NET Core Blazor (version préliminaire 6 ou antérieure), vous pouvez désinstaller l’extension. L’installation des modèles de Blazor dans un interpréteur de commandes est désormais suffisante pour exposer les modèles dans Visual Studio.
+   > Si vous avez installé l’extension Visual Studio Blazor pour une version préliminaire antérieure de ASP.NET Core Blazor (version préliminaire 6 ou antérieure), vous pouvez désinstaller l’extension. L’installation des modèles Blazor dans un interpréteur de commandes est désormais suffisante pour faire apparaître les modèles dans Visual Studio.
 
    # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -60,25 +60,25 @@ Prise en main de Blazor:
 
    2 \. Installez le dernier [ C# Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
-   3 \. Pour une expérience Blazor webassembly, exécutez la commande suivante dans une interface de commande :
+   3 \. Pour une expérience de webassembly Blazor, exécutez la commande suivante dans une interface de commande :
 
       ```dotnetcli
       dotnet new blazorwasm -o WebApplication1
       ```
 
-      Pour une expérience Blazor Server, exécutez la commande suivante dans une interface de commande :
+      Pour une expérience de serveur Blazor, exécutez la commande suivante dans une interface de commande :
 
       ```dotnetcli
       dotnet new blazorserver -o WebApplication1
       ```
 
-      Pour plus d’informations sur les deux modèles d’hébergement Blazor, *Blazor Server* et *Blazor webassembly*, consultez <xref:blazor/hosting-models>.
+      Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>
 
    4 \. Ouvrez le dossier *WebApplication1* dans Visual Studio code.
 
-   5 \. Pour un projet Blazor Server, l’IDE demande que vous ajoutiez des éléments multimédias pour générer et déboguer le projet. Sélectionnez **Oui**.
+   5 \. Pour un projet de serveur Blazor, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
 
-   6 \. Si vous utilisez une application Blazor Server, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application Blazor webassembly, exécutez `dotnet run` à partir du dossier du projet de l’application.
+   6 \. Si vous utilisez une application de serveur Blazor, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly Blazor, exécutez `dotnet run` à partir du dossier du projet de l’application.
 
    7 \. Dans un navigateur, accédez à `https://localhost:5001`.
 
@@ -90,7 +90,7 @@ Prise en main de Blazor:
 
    3 \. Dans la barre latérale, sélectionnez **.net Core** > **application**.
 
-   4 \. Sélectionnez le modèle **application serveurBlazor** . Seul le modèle Blazor Server est disponible dans Visual Studio pour Mac pour l’instant. Pour une expérience Blazor webassembly, suivez les instructions de l’onglet **CLI .net Core** . Après avoir sélectionné le modèle Blazor Server, sélectionnez **suivant**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, *Blazor Server* et *Blazor webassembly*, consultez <xref:blazor/hosting-models>.
+   4 \. Sélectionnez le modèle **application de serveur éblouissant** . Seul le modèle de serveur éblouissant est disponible dans Visual Studio pour Mac pour l’instant. Pour une expérience de webassembly éblouissant, suivez les instructions de l’onglet **CLI .net Core** . Après avoir sélectionné le modèle de serveur éblouissant, sélectionnez **suivant**. Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>
 
    <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
 
@@ -104,7 +104,7 @@ Prise en main de Blazor:
 
    # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 
-   Pour une expérience Blazor webassembly, exécutez les commandes suivantes dans un interpréteur de commandes :
+   Pour une expérience de webassembly Blazor, exécutez les commandes suivantes dans une interface de commande :
 
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1
@@ -112,7 +112,7 @@ Prise en main de Blazor:
    dotnet run
    ```
 
-   Pour une expérience Blazor Server, exécutez les commandes suivantes dans un interpréteur de commandes :
+   Pour une expérience de serveur Blazor, exécutez les commandes suivantes dans une interface de commande :
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
@@ -120,7 +120,7 @@ Prise en main de Blazor:
    dotnet run
    ```
 
-   Pour plus d’informations sur les deux modèles d’hébergement Blazor, *Blazor Server* et *Blazor webassembly*, consultez <xref:blazor/hosting-models>.
+   Pour plus d’informations sur les deux modèles d’hébergement Blazor, le *serveur Blazor* et le *webassembly Blazor*, consultez <xref:blazor/hosting-models>
 
    Dans un navigateur, accédez à `https://localhost:5001`.
 

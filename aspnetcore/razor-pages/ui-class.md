@@ -3,15 +3,15 @@ title: Interface utilisateur Razor réutilisable dans les bibliothèques de clas
 author: Rick-Anderson
 description: Explique comment créer l’interface utilisateur de Razor réutilisables à l’aide de vues partielles dans une bibliothèque de classes dans ASP.NET Core.
 ms.author: riande
-ms.date: 10/26/2019
+ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: b5235f4e31f6edd21fb410824fb215ab2d4a41b6
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 420cc54701394673e2b442b1fdf999e421820fd5
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727290"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809118"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer une interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -86,7 +86,7 @@ Supposons que *RazorUIClassLib/Pages/Shared* contient deux fichiers partielles 
 
 ## <a name="create-an-rcl-with-static-assets"></a>Créer un RCL avec des ressources statiques
 
-Un RCL peut nécessiter des ressources statiques auxiliaires qui peuvent être référencées par l’application consommatrice de RCL. ASP.NET Core permet de créer des RCLs qui incluent des ressources statiques disponibles pour une application consommatrice.
+Un RCL peut nécessiter des ressources statiques auxiliaires qui peuvent être référencées par RCL ou l’application consommateur du RCL. ASP.NET Core permet de créer des RCLs qui incluent des ressources statiques disponibles pour une application consommatrice.
 
 Pour inclure des ressources d’accompagnement dans le cadre d’un RCL, créez un dossier *wwwroot* dans la bibliothèque de classes et incluez tous les fichiers nécessaires dans ce dossier.
 
@@ -127,7 +127,7 @@ Pour inclure des fichiers de machine à écrire dans un RCL :
 
 ### <a name="consume-content-from-a-referenced-rcl"></a>Consommer du contenu à partir d’un RCL référencé
 
-Les fichiers inclus dans le dossier *wwwroot* du RCL sont exposés à l’application consommatrice sous le préfixe `_content/{LIBRARY NAME}/`. Par exemple, une bibliothèque nommée *Razor. class. lib* génère un chemin d’accès au contenu statique sur `_content/Razor.Class.Lib/`. Lorsque vous générez un package NuGet et que le nom de l’assembly n’est pas le même que l’ID du package, utilisez l’ID de package pour `{LIBRARY NAME}`.
+Les fichiers inclus dans le dossier *wwwroot* du RCL sont exposés à RCL ou à l’application consommatrice sous le préfixe `_content/{LIBRARY NAME}/`. Par exemple, une bibliothèque nommée *Razor. class. lib* génère un chemin d’accès au contenu statique sur `_content/Razor.Class.Lib/`. Lorsque vous générez un package NuGet et que le nom de l’assembly n’est pas le même que l’ID du package, utilisez l’ID de package pour `{LIBRARY NAME}`.
 
 L’application consommatrice fait référence aux ressources statiques fournies par la bibliothèque avec `<script>`, `<style>`, `<img>`et d’autres balises HTML. L’application consommatrice doit avoir la [prise en charge des fichiers statiques](xref:fundamentals/static-files) activée dans `Startup.Configure`:
 

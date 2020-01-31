@@ -3,19 +3,19 @@ title: Ajouter, télécharger et supprimer des données utilisateur à l’ident
 author: rick-anderson
 description: Découvrez comment ajouter des données utilisateur personnalisées à l’identité dans un projet ASP.NET Core. Supprimer des données par RGPD.
 ms.author: riande
-ms.date: 12/05/2019
+ms.date: 01/28/2020
 ms.custom: mvc, seodec18
 uid: security/authentication/add-user-data
-ms.openlocfilehash: f54df68834cd3e2493e558aaab9851f036f3f01b
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: e08c02e2e5d4a429aae10c59e7ae3ea48c975067
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880752"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885547"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Cet article explique comment :
 
@@ -26,7 +26,7 @@ L’exemple de projet est créé à partir d’une application web de Pages Razo
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Prerequisites
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -78,15 +78,15 @@ dotnet new webapp -o WebApp1
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.
-* Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.
-* Dans le **identité ADD** boîte de dialogue, les options suivantes :
+* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **identité** > **Ajouter**.
+* Dans la boîte de dialogue **Ajouter une identité** , les options suivantes sont disponibles :
   * Sélectionnez le fichier de disposition existante *~/Pages/Shared/_Layout.cshtml*
   * Sélectionnez les fichiers suivants pour remplacer :
     * **Compte/inscrire**
     * **Compte/gérer/Index**
   * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**. Acceptez le type (**WebApp1.Models.WebApp1Context** si le projet est nommé **application Web 1**).
   * Sélectionnez le **+** bouton pour créer un nouveau **classe utilisateur**. Acceptez le type (**WebApp1User** si le projet est nommé **application Web 1**) > **ajouter**.
-* Sélectionnez **ajouter**.
+* Sélectionnez **Ajouter** .
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 

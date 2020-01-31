@@ -5,16 +5,16 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: de75c3b0651c0cda6629af786d7db9dc83bc4fef
-ms.sourcegitcommit: 020c3760492efed71b19e476f25392dda5dd7388
+ms.openlocfilehash: a25233968f115c6e3a214d97cf2ca5ab81df8d83
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72288819"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870426"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -32,7 +32,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -57,13 +57,13 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
-  * Sélectionnez **Web** dans le volet gauche.
-  * Sélectionnez **Fichier HTML vide** dans le volet central.
-  * Tapez *Index.cshtml* dans la zone **Nom**.
+  * Sélectionnez **ASP .net Core** dans le volet gauche.
+  * Sélectionnez la **page vue MVC** dans le volet central.
+  * Dans la zone **nom** , tapez *index* .
   * Sélectionnez **Nouveau**.
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view_mac.png)
@@ -86,7 +86,7 @@ Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifi
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
-Remplacez le contenu du fichier *Views/Shared/_Layout. cshtml* par le balisage suivant. Les modifications sont mises en surbrillance :
+Remplacez le contenu du fichier *Views/Shared/_Layout. cshtml* par le balisage suivant. Les modifications apparaissent en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -189,7 +189,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -214,9 +214,9 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **Web** dans le volet gauche.
   * Sélectionnez **Fichier HTML vide** dans le volet central.

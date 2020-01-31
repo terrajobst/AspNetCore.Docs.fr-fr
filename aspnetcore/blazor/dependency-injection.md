@@ -10,22 +10,22 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: 6930d721f04fd5f7cad2ba472724497a157fda0f
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
-ms.translationtype: MT
+ms.openlocfilehash: fa6762522c831c7fbe2742dbfe4e25a377988e1e
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159974"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869562"
 ---
-# <a name="aspnet-core-opno-locblazor-dependency-injection"></a>ASP.NET Core Blazor l’injection de dépendances
+# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core l’injection de dépendances éblouissantes
 
 Par [Rainer Stropek](https://www.timecockpit.com)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor prend en charge l' [injection de dépendances (di)](xref:fundamentals/dependency-injection). Les applications peuvent utiliser des services intégrés en les injectant dans des composants. Les applications peuvent également définir et inscrire des services personnalisés et les rendre disponibles dans toute l’application via DI.
+Éblouissant prend en charge l' [injection de dépendances (di)](xref:fundamentals/dependency-injection). Les applications peuvent utiliser des services intégrés en les injectant dans des composants. Les applications peuvent également définir et inscrire des services personnalisés et les rendre disponibles dans toute l’application via DI.
 
-La méthode DI est une technique permettant d’accéder à des services configurés dans un emplacement central. Cela peut être utile dans Blazor applications pour :
+La méthode DI est une technique permettant d’accéder à des services configurés dans un emplacement central. Cela peut être utile dans les applications éblouissantes pour :
 
 * Partager une seule instance d’une classe de service sur de nombreux composants, appelé service *Singleton* .
 * Découplez les composants des classes de service concrètes à l’aide d’abstractions de référence. Par exemple, considérez une interface `IDataAccess` pour accéder aux données de l’application. L’interface est implémentée par une classe `DataAccess` concrète et inscrite en tant que service dans le conteneur de services de l’application. Lorsqu’un composant utilise DI pour recevoir une implémentation `IDataAccess`, le composant n’est pas couplé au type concret. L’implémentation peut être permutée, peut-être pour une implémentation factice dans les tests unitaires.
@@ -36,9 +36,9 @@ Les services par défaut sont automatiquement ajoutés à la collection de servi
 
 | Service | Durée de vie | Description |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | Singleton | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI.<br><br>L’instance de `HttpClient` dans une application Blazor webassembly utilise le navigateur pour gérer le trafic HTTP en arrière-plan.<br><br>Blazor applications serveur n’incluent pas d' `HttpClient` configuré en tant que service par défaut. Fournissez une `HttpClient` à une application Blazor Server.<br><br>Pour plus d'informations, consultez <xref:blazor/call-web-api>. |
-| `IJSRuntime` | Singleton (Blazor webassembly)<br>Étendue (serveurBlazor) | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d'informations, consultez <xref:blazor/javascript-interop>. |
-| `NavigationManager` | Singleton (Blazor webassembly)<br>Étendue (serveurBlazor) | Contient des assistances pour l’utilisation des URI et de l’état de navigation. Pour plus d’informations, consultez [URI et assistance de l’état de navigation](xref:blazor/routing#uri-and-navigation-state-helpers). |
+| <xref:System.Net.Http.HttpClient> | Singleton | Fournit des méthodes pour envoyer des requêtes HTTP et recevoir des réponses HTTP d’une ressource identifiée par un URI.<br><br>L’instance de `HttpClient` dans une application de webassembly éblouissant utilise le navigateur pour gérer le trafic HTTP en arrière-plan.<br><br>Les applications serveur éblouissantes n’incluent pas une `HttpClient` configurée comme un service par défaut. Fournissez une `HttpClient` à une application de serveur éblouissante.<br><br>Pour plus d'informations, consultez <xref:blazor/call-web-api>. |
+| `IJSRuntime` | Singleton (webassembly éblouissant)<br>Étendu (serveur éblouissant) | Représente une instance d’un Runtime JavaScript dans laquelle les appels JavaScript sont distribués. Pour plus d'informations, consultez <xref:blazor/javascript-interop>. |
+| `NavigationManager` | Singleton (webassembly éblouissant)<br>Étendu (serveur éblouissant) | Contient des assistances pour l’utilisation des URI et de l’état de navigation. Pour plus d’informations, consultez [URI et assistance de l’état de navigation](xref:blazor/routing#uri-and-navigation-state-helpers). |
 
 Un fournisseur de services personnalisé ne fournit pas automatiquement les services par défaut indiqués dans le tableau. Si vous utilisez un fournisseur de services personnalisé et que vous avez besoin de l’un des services répertoriés dans le tableau, ajoutez les services requis au nouveau fournisseur de services.
 
@@ -134,7 +134,7 @@ Conditions préalables pour l’injection de constructeur :
 
 Dans ASP.NET Core applications, les services délimités sont généralement étendus à la requête actuelle. Une fois la demande terminée, tous les services délimités ou temporaires sont supprimés par le système DI. Dans les applications Blazor Server, l’étendue de la demande est limitée à la durée de la connexion client, ce qui peut entraîner des services transitoires et de portée de vie bien plus longs que prévu.
 
-Pour étendre les services à la durée de vie d’un composant, peut utiliser les classes de base `OwningComponentBase` et `OwningComponentBase<TService>`. Ces classes de base exposent une propriété `ScopedServices` de type `IServiceProvider` qui résolvent les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez la directive `@inherits`.
+Pour étendre les services à la durée de vie d’un composant, vous pouvez utiliser les classes de base `OwningComponentBase` et `OwningComponentBase<TService>`. Ces classes de base exposent une propriété `ScopedServices` de type `IServiceProvider` qui résolvent les services dont la portée est limitée à la durée de vie du composant. Pour créer un composant qui hérite d’une classe de base dans Razor, utilisez la directive `@inherits`.
 
 ```razor
 @page "/users"

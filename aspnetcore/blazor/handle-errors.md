@@ -5,17 +5,17 @@ description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exc
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: fe4cc13b1efb8c70c9632f032626aa938fb65ea3
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 7b5602d5ae5e58d1678762fe1cd2adec1f31c969
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159948"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809001"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -112,7 +112,7 @@ Les exceptions non gérées précédentes sont décrites dans les sections suiva
 Lorsque Blazor crée une instance d’un composant :
 
 * Le constructeur du composant est appelé.
-* Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés. 
+* Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés.
 
 Un circuit échoue quand un constructeur exécuté ou une méthode setter pour une propriété `[Inject]` lève une exception non gérée. L’exception est irrécupérable, car l’infrastructure ne peut pas instancier le composant. Si la logique du constructeur peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
@@ -165,7 +165,7 @@ Si le code utilisateur n’intercepte pas et ne gère pas l’exception, le Fram
 
 ### <a name="component-disposal"></a>Suppression de composants
 
-Un composant peut être supprimé de l’interface utilisateur, par exemple, parce que l’utilisateur a accédé à une autre page. Quand un composant qui implémente <xref:System.IDisposable?displayProperty=fullName> est supprimé de l’interface utilisateur, le Framework appelle la méthode <xref:System.IDisposable.Dispose*> du composant. 
+Un composant peut être supprimé de l’interface utilisateur, par exemple, parce que l’utilisateur a accédé à une autre page. Quand un composant qui implémente <xref:System.IDisposable?displayProperty=fullName> est supprimé de l’interface utilisateur, le Framework appelle la méthode <xref:System.IDisposable.Dispose*> du composant.
 
 Si la méthode `Dispose` du composant lève une exception non gérée, l’exception est irrécupérable pour le circuit. Si la logique de suppression peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
@@ -192,16 +192,49 @@ Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
 
 ### <a name="circuit-handlers"></a>Gestionnaires de circuits
 
-Blazor permet au code de définir un *Gestionnaire de circuit*, qui reçoit des notifications lorsque l’état du circuit d’un utilisateur change. Les États suivants sont utilisés :
+Blazor Server permet au code de définir un *Gestionnaire de circuit*qui permet d’exécuter du code sur les modifications de l’état du circuit d’un utilisateur. Un gestionnaire de circuit est implémenté en dérivant de `CircuitHandler` et en inscrivant la classe dans le conteneur de services de l’application. L’exemple suivant d’un gestionnaire de circuit effectue le suivi des connexions SignalR ouvertes :
 
-* `initialized`
-* `connected`
-* `disconnected`
-* `disposed`
+```csharp
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Server.Circuits;
 
-Les notifications sont gérées en inscrivant un service d’injection de services qui hérite de la classe de base abstraite `CircuitHandler`.
+public class TrackingCircuitHandler : CircuitHandler
+{
+    private HashSet<Circuit> _circuits = new HashSet<Circuit>();
 
-Si les méthodes d’un gestionnaire de circuit personnalisé lèvent une exception non gérée, l’exception est irrécupérable pour le circuit. Pour tolérer des exceptions dans le code d’un gestionnaire ou les méthodes appelées, encapsulez le code dans une ou plusieurs instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
+    public override Task OnConnectionUpAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Add(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public override Task OnConnectionDownAsync(Circuit circuit, 
+        CancellationToken cancellationToken)
+    {
+        _circuits.Remove(circuit);
+
+        return Task.CompletedTask;
+    }
+
+    public int ConnectedCircuits => _circuits.Count;
+}
+```
+
+Les gestionnaires de circuits sont inscrits à l’aide de DI. Les instances délimitées sont créées par instance d’un circuit. À l’aide de la `TrackingCircuitHandler` dans l’exemple précédent, un service Singleton est créé car l’état de tous les circuits doit être suivi :
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddSingleton<CircuitHandler, TrackingCircuitHandler>();
+}
+```
+
+Si les méthodes d’un gestionnaire de circuit personnalisé lèvent une exception non gérée, l’exception est irrémédiable au circuit du serveur Blazor. Pour tolérer des exceptions dans le code d’un gestionnaire ou les méthodes appelées, encapsulez le code dans une ou plusieurs instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
 ### <a name="circuit-disposal"></a>Élimination de circuit
 

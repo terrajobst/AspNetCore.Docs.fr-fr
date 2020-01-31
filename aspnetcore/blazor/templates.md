@@ -5,17 +5,17 @@ description: En savoir plus sur les ASP.NET Core Blazor les modèles d’applica
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 2a95b986450471b474d93ead252255f2bd9d4918
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: acfa4b8a42cbd310c6fc6dc973573578e94ef999
+ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160117"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76885510"
 ---
 # <a name="aspnet-core-opno-locblazor-templates"></a>ASP.NET Core les modèles de Blazor
 
@@ -36,16 +36,20 @@ Pour obtenir des instructions pas à pas sur la création d’une application Bl
 
 Les fichiers et dossiers suivants composent une Blazor application générée à partir d’un modèle de Blazor :
 
-* *Program.cs* &ndash; le point d’entrée de l’application qui configure l' [hôte](xref:fundamentals/host/generic-host)ASP.net core. Le code de ce fichier est commun à toutes les applications ASP.NET Core générées à partir de modèles ASP.NET Core.
+* *Program.cs* &ndash; le point d’entrée de l’application qui installe les éléments suivants :
 
-* *Startup.cs* &ndash; contient la logique de démarrage de l’application. La classe `Startup` définit deux méthodes :
+  * [Hôte](xref:fundamentals/host/generic-host) ASP.net Core (serveurBlazor)
+  * Hôte webassembly (Blazor webassembly) &ndash; le code de ce fichier est propre aux applications créées à partir du modèle Blazor webassembly (`blazorwasm`).
+    * Le composant `App`, qui est le composant racine de l’application, est spécifié en tant qu’élément DOM `app` à la méthode `Add`.
+    * Les services peuvent être configurés avec la méthode `ConfigureServices` sur le générateur de l’hôte (par exemple, `builder.Services.AddSingleton<IMyDependency, MyDependency>();`).
+    * La configuration peut être fournie par le biais du générateur d’ordinateur hôte (`builder.Configuration`).
+
+* *Startup.cs* (serveurBlazor) &ndash; contient la logique de démarrage de l’application. La classe `Startup` définit deux méthodes :
 
   * `ConfigureServices` &ndash; configure les services d' [injection de dépendances](xref:fundamentals/dependency-injection) de l’application. Dans Blazor applications serveur, les services sont ajoutés en appelant <xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>, et le `WeatherForecastService` est ajouté au conteneur de service pour une utilisation par l’exemple de composant `FetchData`.
   * `Configure` &ndash; configure le pipeline de traitement des demandes de l’application :
-    * Blazor webassembly &ndash; ajoute le composant `App` (spécifié comme élément DOM `app` à la méthode `AddComponent`), qui est le composant racine de l’application.
-    * Serveur de Blazor
-      * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> est appelé pour configurer un point de terminaison pour la connexion en temps réel avec le navigateur. La connexion est créée avec [SignalR](xref:signalr/introduction), qui est une infrastructure permettant d’ajouter des fonctionnalités Web en temps réel aux applications.
-      * [MapFallbackToPage (« /_Host »)](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) est appelé pour configurer la page racine de l’application (*pages/_Host. cshtml*) et activer la navigation.
+    * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*> est appelé pour configurer un point de terminaison pour la connexion en temps réel avec le navigateur. La connexion est créée avec [SignalR](xref:signalr/introduction), qui est une infrastructure permettant d’ajouter des fonctionnalités Web en temps réel aux applications.
+    * [MapFallbackToPage (« /_Host »)](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) est appelé pour configurer la page racine de l’application (*pages/_Host. cshtml*) et activer la navigation.
 
 * *wwwroot/index.html* (Blazor webassembly) &ndash; la page racine de l’application implémentée en tant que page HTML :
   * Quand une page de l’application est initialement demandée, cette page est rendue et renvoyée dans la réponse.

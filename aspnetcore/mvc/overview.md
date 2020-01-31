@@ -3,14 +3,14 @@ title: Vue d’ensemble du modèle MVC d’ASP.NET Core
 author: ardalis
 description: Découvrez ASP.NET Core MVC, un puissant framework qui vous permet de générer des applications web et des API à l’aide du modèle de conception Model-View-Controller.
 ms.author: riande
-ms.date: 11/07/2019
+ms.date: 01/28/2020
 uid: mvc/overview
-ms.openlocfilehash: 4f4ea3da8563cabaaa6183c6835c2f1eb8c387b4
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.openlocfilehash: a147c2aa01f1440f8ac59f73eb7be734193f802a
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799497"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76869969"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble du modèle MVC d’ASP.NET Core
 
@@ -41,7 +41,7 @@ Les vues sont responsables de la présentation du contenu via l’interface util
 
 ### <a name="controller-responsibilities"></a>Responsabilités du contrôleur
 
-Les contrôleurs sont des composants qui gèrent l’interaction avec l’utilisateur, fonctionnent avec le modèle et, au final, sélectionnent une vue à afficher. Dans une application MVC, la vue affiche uniquement des informations ; le contrôleur gère les entrées et interactions des utilisateurs, et y répond. Dans le modèle MVC, le contrôleur est le point d’entrée initial. Il est responsable de la sélection des types de modèle à utiliser et de la vue à afficher (ce qui explique son nom, car il contrôle la manière dont l’application répond à une requête donnée).
+Les contrôleurs sont des composants qui gèrent l’interaction avec l’utilisateur, fonctionnent avec le modèle et, au final, sélectionnent une vue à afficher. Dans une application MVC, la vue sert uniquement à afficher les informations ; le contrôleur gère les entrées et interactions de l'utilisateur, et y répond. Dans le modèle MVC, le contrôleur est le point d’entrée initial. Il est responsable de la sélection des types de modèle à utiliser et de la vue à afficher (ce qui explique son nom, car il contrôle la manière dont l’application répond à une requête donnée).
 
 > [!NOTE]
 > Vous devez éviter les excès de responsabilités pour ne pas rendre les contrôleurs trop complexes. Pour éviter que la logique du contrôleur ne devienne trop complexe, envoyez (push) la logique métier hors du contrôleur vers le modèle de domaine.
@@ -60,9 +60,9 @@ ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des 
 ASP.NET Core MVC inclut les éléments suivants :
 
 * [Le routage](#routing)
-* [La liaison de modèle](#model-binding)
-* [La validation du modèle](#model-validation)
-* [L'injection de dépendances](../fundamentals/dependency-injection.md)
+* [Liaison de modèles](#model-binding)
+* [Validation du modèle](#model-validation)
+* [Injection de dépendances](../fundamentals/dependency-injection.md)
 * [Les filtres](#filters)
 * [Les zones (areas)](#areas)
 * [Les APIs Web](#web-apis)
@@ -70,7 +70,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 * [Le moteur de vue Razor](#razor-view-engine)
 * [Vues fortement typées](#strongly-typed-views)
 * [Les Tag Helpers](#tag-helpers)
-* [Les composants de vues](#view-components)
+* [Composants de vues](#view-components)
 
 ### <a name="routing"></a>Routage
 
@@ -98,7 +98,7 @@ public class ProductsController : Controller
 
 ### <a name="model-binding"></a>Liaison de données
 
-La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les données de requête client (les valeurs de formulaire, les données de routage, les paramètres de chaîne de requête, les en-têtes HTTP) en objets que le contrôleur peut traiter. Par conséquent, votre logique de contrôleur ne doit pas nécessairement faire le travail d’identifier les données de requête entrante; Il a simplement les données en tant que paramètres dans ses méthodes d’action.
+La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les données de requête client (les valeurs de formulaire, les données de routage, les paramètres de chaîne de requête, les en-têtes HTTP) en objets que le contrôleur peut traiter. Ainsi, la logique du contrôleur n’a pas besoin d’identifier les données de requête entrantes ; elle utilise simplement les données en tant que paramètres de ses méthodes d’action.
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
@@ -106,7 +106,7 @@ public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = 
 
 ### <a name="model-validation"></a>Validation de modèle
 
-ASP.NET Core MVC prend en charge la [validation](models/validation.md) en décorant votre objet de modèle avec des attributs de validation de données d’annotation. Les attributs de validation sont vérifiés côté client avant que les valeurs ne soient postées sur le serveur, ainsi que sur le serveur avant l’appel de l’action du contrôleur.
+ASP.NET Core MVC prend en charge la [validation](models/validation.md) en décorant votre objet de modèle avec des attributs de validation d’annotation de données. Les attributs de validation sont vérifiés côté client avant que les valeurs ne soient postées sur le serveur, ainsi que sur le serveur avant l’appel de l’action du contrôleur.
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -161,7 +161,7 @@ Votre application peut également utiliser l’[injection de dépendances dans l
 </html>
 ```
 
-### <a name="filters"></a>Filtres
+### <a name="filters"></a>Filtres.
 
 Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer des problèmes transversaux, par exemple la prise en charge des exceptions ou les autorisations. Les filtres permettent d’exécuter une logique de prétraitement et de posttraitement personnalisée pour les méthodes d’action. Vous pouvez les configurer pour qu’ils se lancent à certaines étapes du pipeline d’exécution d’une requête donnée. Vous pouvez appliquer les filtres aux contrôleurs ou aux actions en tant qu’attributs (ou vous pouvez les exécuter de manière globale). Plusieurs filtres (tels que `Authorize`) sont inclus dans le framework. `[Authorize]` est l’attribut qui est utilisé pour créer des filtres d’autorisation MVC.
 
@@ -170,9 +170,9 @@ Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer
 public class AccountController : Controller
 ```
 
-### <a name="areas"></a>Zones (Areas)
+### <a name="areas"></a>Domaines
 
-Les [zones](controllers/areas.md) permettent de partitionner une grande application web ASP.NET Core MVC en regroupements opérationnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques, comme Modèle, Contrôleur et Vue, sont conservés dans des dossiers différents, et MVC utilise des conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs unités commerciales, telles que l’extraction, la facturation et la recherche, etc. Chacune de ces unités a ses propres affichages de composants logiques, contrôleurs et modèles.
+Les [zones](controllers/areas.md) permettent de partitionner une grande application web ASP.NET Core MVC en regroupements opérationnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques tels que les modèles, les contrôleurs et les vues sont conservés dans des dossiers différents et MVC utilise les conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs unités commerciales, telles que l’extraction, la facturation et la recherche, etc. Chacune de ces unités a ses propres affichages de composants logiques, contrôleurs et modèles.
 
 ### <a name="web-apis"></a>API web
 
@@ -220,7 +220,7 @@ Par exemple, la vue suivante affiche un modèle de type `IEnumerable<Product>` 
 
 Les [Tag helpers](views/tag-helpers/intro.md) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Vous pouvez utiliser des Tag helpers pour définir des balises personnalisées (par exemple, `<environment>`) ou pour modifier le comportement de balises existantes (par exemple, `<label>`). Les Tag helpers associent des éléments spécifiques en fonction du nom de l’élément et des ses attributs. Ils fournissent les avantages de rendu côté serveur tout en conservant la possibilité d'éditer le HTML.
 
-Il existe de nombreux Tag helpers intégrés pour les tâches courantes - telles que la création de formulaires, des liens, de chargement de ressources et plus - et bien d'autres sont disponibles dans les dépôts GitHub publics et sous forme de NuGet packages. Les Tag helpers sont créés en c#, et ils ciblent des éléments HTML en fonction de la balise parente, du nom d’attribut ou du nom de l’élément. Par exemple, le Tag Helper Link intégré permet de créer un lien vers l’action `Login` de `AccountsController` :
+Il existe de nombreux Tag Helpers pour les tâches courantes (par exemple la création de formulaires ou de liens, le chargement de ressources, etc.) et bien d’autres encore, dans les dépôts GitHub publics et sous forme de packages NuGet. Les Tag helpers sont créés en c#, et ils ciblent des éléments HTML en fonction de la balise parente, du nom d’attribut ou du nom de l’élément. Par exemple, le Tag Helper Link intégré permet de créer un lien vers l’action `Login` de `AccountsController` :
 
 ```cshtml
 <p>
@@ -258,4 +258,5 @@ Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [MyTested. AspNetCore. Mvc-bibliothèque de tests Fluent pour ASP.net Core Mvc](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) &ndash; bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. (*Non géré ou pris en charge par Microsoft.* )
+* [Intégrer des composants Razor dans des applications Razor Pages et MVC](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
 

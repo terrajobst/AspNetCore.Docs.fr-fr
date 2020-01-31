@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 482f8e28c23c621cecaf9ce111d89e9166ea6d85
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.openlocfilehash: 9b9da82191a587be0603ee114562e9a964f05250
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722724"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870396"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -353,6 +353,22 @@ Dans l’exemple suivant :
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactoryConsoleSample/Program.cs?highlight=14-15,20,26-27,59-62)]
 
+## <a name="header-propagation-middleware"></a>Intergiciel (middleware) de propagation d’en-tête
+
+La propagation d’en-tête est un intergiciel (middleware) ASP.NET Core pour propager les en-têtes HTTP de la requête entrante vers les demandes du client HTTP sortantes. Pour utiliser la propagation d’en-tête :
+
+* Référencez le package [Microsoft. AspNetCore. HeaderPropagation](https://www.nuget.org/packages/Microsoft.AspNetCore.HeaderPropagation) .
+* Configurez les intergiciels et les `HttpClient` dans `Startup`:
+
+  [!code-csharp[](http-requests/samples/3.x/Startup.cs?highlight=5-9,21&name=snippet)]
+
+* Le client comprend les en-têtes configurés pour les demandes sortantes :
+
+  ```C#
+  var client = clientFactory.CreateClient("MyForwardingClient");
+  var response = client.GetAsync(...);
+  ```
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Utiliser HttpClientFactory pour implémenter des requêtes HTTP résilientes](/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
@@ -676,7 +692,7 @@ Une <xref:System.Net.Http.IHttpClientFactory> peut être inscrite et utilisée p
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Prerequisites
 
 Les projets ciblant .NET Framework nécessitent l’installation du package NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Les projets qui ciblent .NET Core et référencent le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) incluent déjà le package `Microsoft.Extensions.Http`.
 
@@ -962,6 +978,23 @@ Dans l’exemple suivant :
 * `Main` crée une étendue pour exécuter la méthode `GetPage` du service et écrire les 500 premiers caractères du contenu de la page web dans la console.
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactoryConsoleSample/Program.cs?highlight=14-15,20,26-27,59-62)]
+
+## <a name="header-propagation-middleware"></a>Intergiciel (middleware) de propagation d’en-tête
+
+La propagation d’en-tête est un intergiciel (middleware) pris en charge par la communauté pour propager les en-têtes HTTP de la demande entrante aux demandes du client HTTP sortantes. Pour utiliser la propagation d’en-tête :
+
+* Référencez le port de la communauté pris en charge du package [HeaderPropagation](https://www.nuget.org/packages/HeaderPropagation). ASP.NET Core 3,1 et versions ultérieures prennent en charge [Microsoft. AspNetCore. HeaderPropagation](https://www.nuget.org/packages/Microsoft.AspNetCore.HeaderPropagation).
+
+* Configurez les intergiciels et les `HttpClient` dans `Startup`:
+
+  [!code-csharp[](http-requests/samples/2.x/Startup21.cs?highlight=5-9,25&name=snippet)]
+
+* Le client comprend les en-têtes configurés pour les demandes sortantes :
+
+  ```C#
+  var client = clientFactory.CreateClient("MyForwardingClient");
+  var response = client.GetAsync(...);
+  ```
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

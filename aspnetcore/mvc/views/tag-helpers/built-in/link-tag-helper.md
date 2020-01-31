@@ -6,12 +6,12 @@ description: Découvrez les attributs d’assistance de balise de lien ASP.NET C
 ms.custom: mvc
 ms.date: 09/24/2019
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: e1e2e58b4ab9087e1f9de5b5c03b587feb88f1b9
-ms.sourcegitcommit: fae6f0e253f9d62d8f39de5884d2ba2b4b2a6050
+ms.openlocfilehash: d7514433bee8a138cd7d75bfd15c9798d4fd31a3
+ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256518"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76809105"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>Lier tag Helper dans ASP.NET Core
 
@@ -23,7 +23,7 @@ Le [tag Helper Link](xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper) gé
 
 Le tag Helper Link vous permet de spécifier un CDN pour le fichier CSS et une solution de secours lorsque le CDN n’est pas disponible. Le tag Helper Link offre l’avantage en termes de performances d’un CDN avec la robustesse de l’hébergement local.
 
-Le balisage Razor suivant montre `head` l’élément d’un fichier de disposition créé avec le modèle d’application Web ASP.net Core :
+Le balisage Razor suivant montre l’élément `head` d’un fichier de disposition créé avec le modèle d’application Web ASP.NET Core :
 
 [!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 
@@ -31,7 +31,7 @@ Voici un rendu HTML à partir du code précédent (dans un environnement de non-
 
 [!code-csharp[](link-tag-helper/sample/HtmlPage1.html)]
 
-Dans le code précédent, le tag Helper Link a généré l' `<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />` élément et le code JavaScript suivant, qui est utilisé pour vérifier que le fichier *bootstrap. min. CSS* demandé est disponible sur le CDN. Dans ce cas, le fichier CSS était disponible afin que le tag Helper ait généré `<link />` l’élément avec le fichier CSS CDN.
+Dans le code précédent, le tag Helper Link a généré l’élément `<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />` et le code JavaScript suivant, qui est utilisé pour vérifier que le fichier *bootstrap. min. CSS* demandé est disponible sur le CDN. Dans ce cas, le fichier CSS était disponible afin que le tag Helper ait généré l’élément `<link />` avec le fichier CSS CDN.
 
 ## <a name="commonly-used-link-tag-helper-attributes"></a>Attributs d’assistance de balise de lien couramment utilisés
 
@@ -56,10 +56,6 @@ Nom de la propriété CSS à utiliser pour le test de secours. Pour plus d'infor
 ### <a name="asp-fallback-test-value"></a>ASP-Fallback-test-value
 
 Valeur de propriété CSS à utiliser pour le test de secours. Pour plus d'informations, consultez <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>.
-
-### <a name="asp-fallback-test-value"></a>ASP-Fallback-test-value
-
-Valeur de propriété CSS à utiliser pour le test de secours. Pour plus d'informations, consultez <xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper.FallbackTestValue>
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

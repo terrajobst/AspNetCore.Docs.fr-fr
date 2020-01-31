@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Découvrez comment les pages Razor dans ASP.NET Core permettent de développer des scénarios orientés page de façon plus simple et plus productive qu’avec MVC.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 01/18/2020
+ms.date: 01/28/2020
 uid: razor-pages/index
-ms.openlocfilehash: 69c9f09aa0e3dbdbe78720c573b5e1fc63464571
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: da30908b38d553405fd3f959f09a19eff750ed17
+ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294651"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76870503"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -198,7 +198,7 @@ Examen du fichier de vue *pages/Create. cshtml* :
 * Dans le code précédent, le [tag Helper d’entrée](xref:mvc/views/working-with-forms#the-input-tag-helper) `<input asp-for="Customer.Name" />` lie l’élément HTML `<input>` à l’expression de modèle `Customer.Name`.
 * [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#addtaghelper-makes-tag-helpers-available) rend les balises d’aide tag disponibles.
 
-### <a name="the-home-page"></a>La page d’accueil
+### <a name="the-home-page"></a>Page d’hébergement
 
 *Index. cshtml* est la page d’hébergement :
 
@@ -290,7 +290,7 @@ La publication de la valeur créer un formulaire sans nom affiche le message d�
 L’attribut `[StringLength(10)]` génère `data-val-length-max="10"` sur le rendu HTML. `data-val-length-max` empêche les navigateurs d’entrer une valeur supérieure à la longueur maximale spécifiée. Si un outil tel que [Fiddler](https://www.telerik.com/fiddler) est utilisé pour modifier et relire la publication :
 
 * Avec le nom plus long que 10.
-* Le message d’erreur « le nom du champ doit être une chaîne d’une longueur maximale de 10 ». » est renvoyé.
+* Le message d’erreur « le nom du champ doit être une chaîne d’une longueur maximale de 10 ». est retourné.
 
 Considérez le modèle de `Movie` suivant :
 
@@ -603,6 +603,7 @@ Ajoutez <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcCoreBuild
 * <xref:razor-pages/razor-pages-conventions>
 * <xref:test/razor-pages-tests>
 * <xref:mvc/views/partial>
+* [Intégrer des composants Razor dans des applications Razor Pages et MVC](xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps)
 
 ::: moniker-end
 
