@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/16/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 37ba756cc4170c145d2ab1f9f0a465057cc826c1
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: cd31094884f53f34d55c0bceabae41ca2bacba4c
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358706"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928544"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -73,11 +73,11 @@ Les instructions fournies par le Guide de [démarrage rapide : définir et réc
 
 1. Ouvrez Azure Cloud Shell à l’aide de l’une des méthodes suivantes dans la [portail Azure](https://portal.azure.com/):
 
-   * Sélectionnez **Essayer** dans le coin supérieur droit d’un bloc de code. Utilisez la chaîne de recherche « Azure CLI » dans la zone de texte.
+   * Sélectionnez **essayer** dans le coin supérieur droit d’un bloc de code. Utilisez la chaîne de recherche « Azure CLI » dans la zone de texte.
    * Ouvrez Cloud Shell dans votre navigateur à l’aide du bouton **Launch Cloud Shell** .
-   * Sélectionnez le bouton **Cloud Shell** dans le menu en haut à droite du portail Azure.
+   * Sélectionnez le bouton **Cloud Shell** dans le menu situé dans l’angle supérieur droit du portail Azure.
 
-   Pour plus d’informations, consultez [interface de ligne de commande Azure (CLI)](/cli/azure/) et [vue d’ensemble de Azure Cloud Shell](/azure/cloud-shell/overview).
+   Pour plus d’informations, consultez [Azure CLI](/cli/azure/) et [Présentation des Azure Cloud Shell](/azure/cloud-shell/overview).
 
 1. Si vous n’êtes pas déjà authentifié, connectez-vous avec la commande `az login`.
 
@@ -106,7 +106,7 @@ Les instructions fournies par le Guide de [démarrage rapide : définir et réc
 
 ## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Utiliser l’ID d’application et le certificat X. 509 pour les applications non hébergées sur Azure
 
-Configurez Azure AD, Azure Key Vault et l’application pour qu’elle utilise un ID d’application Azure Active Directory et un certificat X. 509 pour s’authentifier auprès d’un coffre de clés **lorsque l’application est hébergée en dehors d’Azure**. Pour plus d’informations, consultez [À propos des clés, des secrets et des certificats](/azure/key-vault/about-keys-secrets-and-certificates).
+Configurez Azure AD, Azure Key Vault et l’application pour qu’elle utilise un ID d’application Azure Active Directory et un certificat X. 509 pour s’authentifier auprès d’un coffre de clés **lorsque l’application est hébergée en dehors d’Azure**. Pour plus d’informations, consultez [à propos des clés, des secrets et des certificats](/azure/key-vault/about-keys-secrets-and-certificates).
 
 > [!NOTE]
 > Bien que l’utilisation d’un ID d’application et d’un certificat X. 509 soit prise en charge pour les applications hébergées dans Azure, nous vous recommandons [d’utiliser des identités gérées pour les ressources Azure](#use-managed-identities-for-azure-resources) lors de l’hébergement d’une application dans Azure. Les identités gérées ne nécessitent pas le stockage d’un certificat dans l’application ou dans l’environnement de développement.
@@ -124,10 +124,10 @@ L’exemple d’application utilise un ID d’application et un certificat X. 50
 1. Stockez le nom du coffre de clés, l’ID de l’application et l’empreinte numérique du certificat dans le fichier *appSettings. JSON* de l’application.
 1. Accédez à **coffres de clés** dans le portail Azure.
 1. Sélectionnez le coffre de clés que vous avez créé dans la section [stockage secret dans l’environnement de production avec Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) .
-1. Sélectionnez **Stratégies d’accès**.
+1. Sélectionnez **stratégies d’accès**.
 1. Sélectionnez **Ajouter une stratégie d’accès**.
 1. Ouvrez les **autorisations secret** et fournissez à l’application les autorisations **obtenir** et **liste** .
-1. Sélectionnez **Sélectionner un principal** et sélectionnez l’application inscrite par son nom. Sélectionnez le bouton **Sélectionner**.
+1. Sélectionnez **Sélectionner un principal** et sélectionnez l’application inscrite par son nom. Sélectionnez le bouton **Sélectionner** .
 1. Sélectionnez **OK**.
 1. Sélectionnez **Enregistrer**.
 1. Déployez l’application.
@@ -153,7 +153,7 @@ Le certificat X. 509 est géré par le système d’exploitation. L’applicatio
 
 ::: moniker-end
 
-Exemples de valeurs
+Exemples de valeurs :
 
 * Nom du coffre de clés : `contosovault`
 * ID de l’application : `627e911e-43cc-61d4-992e-12db9c81b413`

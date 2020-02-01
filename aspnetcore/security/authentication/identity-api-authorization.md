@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/08/2019
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 31a5e47d772e7416646c4d83c3209d7d2b254199
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 623f739b17c0bed3ce929f562c9581ab26ecf5bc
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829164"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928559"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
@@ -42,7 +42,7 @@ La commande précédente crée une application ASP.NET Core avec un répertoire 
 
 Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse :
 
-### <a name="startup-class"></a>Classe de démarrage
+### <a name="startup-class"></a>Classe Startup
 
 La classe `Startup` présente les ajouts suivants :
 
@@ -260,7 +260,7 @@ async populateWeatherData() {
 }
 ```
 
-## <a name="deploy-to-production"></a>Déployer en production
+## <a name="deploy-to-production"></a>Déployer en production
 
 Pour déployer l’application en production, vous devez configurer les ressources suivantes :
 
@@ -285,9 +285,9 @@ Cette section décrit le déploiement de l’application sur des sites Web Azure
 }
 ```
 
-* La propriété Name du certificat correspond au sujet distinctif du certificat.
-* L’emplacement du magasin représente l’emplacement à partir duquel charger le certificat (`CurrentUser` ou `LocalMachine`).
 * Le nom du magasin représente le nom du magasin de certificats dans lequel le certificat est stocké. Dans ce cas, il pointe vers le magasin de l’utilisateur personnel.
+* L’emplacement du magasin représente l’emplacement à partir duquel charger le certificat (`CurrentUser` ou `LocalMachine`).
+* La propriété Name du certificat correspond au sujet distinctif du certificat.
 
 Pour effectuer un déploiement sur des sites Web Azure, déployez l’application en suivant les étapes décrites dans [déployer l’application sur Azure](xref:tutorials/publish-to-azure-webapp-using-vs#deploy-the-app-to-azure) pour créer les ressources Azure nécessaires et déployer l’application en production.
 
@@ -301,7 +301,7 @@ Après cette étape, redémarrez l’application et celle-ci doit être fonction
 
 La prise en charge de l’autorisation de l’API s’appuie sur IdentityServer avec un ensemble de conventions, de valeurs par défaut et d’améliorations pour simplifier l’expérience de la création de la demande. Inutile de préciser que la pleine puissance de IdentityServer est disponible en arrière-plan si les intégrations de ASP.NET Core ne couvrent pas votre scénario. La prise en charge ASP.NET Core est axée sur les applications « internes », où toutes les applications sont créées et déployées par notre organisation. Par conséquent, le support n’est pas proposé pour les éléments tels que le consentement ou la Fédération. Pour ces scénarios, utilisez IdentityServer et suivez leur documentation.
 
-### <a name="application-profiles"></a>Profils de l'application
+### <a name="application-profiles"></a>Profils d’application
 
 Les profils d’application sont des configurations prédéfinies pour les applications qui définissent davantage leurs paramètres. À ce stade, les profils suivants sont pris en charge :
 

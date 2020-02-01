@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 7b5602d5ae5e58d1678762fe1cd2adec1f31c969
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
+ms.openlocfilehash: b987513e5410e95ab632b9935d858b648838d94f
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76809001"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928270"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -30,7 +30,9 @@ Quand une application Blazor ne fonctionne pas correctement pendant le développ
 * Pendant le développement, la barre dorée vous dirige vers la console du navigateur, où vous pouvez voir l’exception.
 * En production, la barre dorée avertit l’utilisateur qu’une erreur s’est produite et recommande l’actualisation du navigateur.
 
-L’interface utilisateur de cette expérience de gestion des erreurs fait partie des modèles de projet Blazor. Dans une application Blazor webassembly, personnalisez l’expérience dans le fichier *wwwroot/index.html* :
+L’interface utilisateur de cette expérience de gestion des erreurs fait partie des modèles de projet Blazor.
+
+Dans une application Blazor webassembly, personnalisez l’expérience dans le fichier *wwwroot/index.html* :
 
 ```html
 <div id="blazor-error-ui">
@@ -57,7 +59,7 @@ Dans une application Blazor Server, personnalisez l’expérience dans le fichie
 
 L’élément `blazor-error-ui` est masqué par les styles inclus avec les modèles Blazor, puis indiqué lorsqu’une erreur se produit.
 
-## <a name="how-the-opno-locblazor-framework-reacts-to-unhandled-exceptions"></a>Comment le Blazor Framework réagit aux exceptions non gérées
+## <a name="how-a-opno-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Comment une application Blazor Server réagit aux exceptions non gérées
 
 Blazor Server est un Framework avec état. Tandis que les utilisateurs interagissent avec une application, ils maintiennent une connexion au serveur appelé « *circuit*». Le circuit contient des instances de composant actives, ainsi que de nombreux autres aspects de l’État, tels que :
 
@@ -101,9 +103,9 @@ Le code d’infrastructure et d’application peut déclencher des exceptions no
 * [Gestionnaires d’événements](#event-handlers)
 * [Suppression de composants](#component-disposal)
 * [Interopérabilité JavaScript](#javascript-interop)
-* [Gestionnaires de circuits](#circuit-handlers)
-* [Élimination de circuit](#circuit-disposal)
-* [Préaffichant](#prerendering)
+* [gestionnaires de circuits Blazor Server](#blazor-server-circuit-handlers)
+* [élimination du circuit Blazor Server](#blazor-server-circuit-disposal)
+* [réaffichage du serveur de Blazor](#blazor-server-prerendering)
 
 Les exceptions non gérées précédentes sont décrites dans les sections suivantes de cet article.
 
@@ -114,7 +116,7 @@ Lorsque Blazor crée une instance d’un composant :
 * Le constructeur du composant est appelé.
 * Les constructeurs de tout service DI non-Singleton fourni au constructeur du composant via la directive [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) ou l’attribut [`[Inject]`](xref:blazor/dependency-injection#request-a-service-in-a-component) sont appelés.
 
-Un circuit échoue quand un constructeur exécuté ou une méthode setter pour une propriété `[Inject]` lève une exception non gérée. L’exception est irrécupérable, car l’infrastructure ne peut pas instancier le composant. Si la logique du constructeur peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
+Un circuit Blazor Server échoue quand un constructeur exécuté ou une méthode setter pour une propriété `[Inject]` lève une exception non gérée. L’exception est irrécupérable, car l’infrastructure ne peut pas instancier le composant. Si la logique du constructeur peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
 ### <a name="lifecycle-methods"></a>Méthodes de cycle de vie
 
@@ -125,7 +127,7 @@ Pendant la durée de vie d’un composant, Blazor appelle les [méthodes de cycl
 * `ShouldRender` / `ShouldRenderAsync`
 * `OnAfterRender` / `OnAfterRenderAsync`
 
-Si une méthode de cycle de vie lève une exception, de manière synchrone ou asynchrone, l’exception est irrémédiable pour le circuit. Pour les composants qui gèrent les erreurs dans les méthodes de cycle de vie, ajoutez une logique de gestion des erreurs.
+Si une méthode de cycle de vie lève une exception, de manière synchrone ou asynchrone, l’exception est irrécupérable pour un circuit Blazor Server. Pour les composants qui gèrent les erreurs dans les méthodes de cycle de vie, ajoutez une logique de gestion des erreurs.
 
 Dans l’exemple suivant, où `OnParametersSetAsync` appelle une méthode pour obtenir un produit :
 
@@ -140,7 +142,7 @@ Dans l’exemple suivant, où `OnParametersSetAsync` appelle une méthode pour o
 
 Le balisage déclaratif dans un fichier de composant `.razor` est compilé dans C# une méthode appelée `BuildRenderTree`. Quand un composant s’affiche, `BuildRenderTree` exécute et génère une structure de données décrivant les éléments, le texte et les composants enfants du composant rendu.
 
-La logique de rendu peut lever une exception. Un exemple de ce scénario se produit lorsque `@someObject.PropertyName` est évaluée, mais que `@someObject` est `null`. Une exception non gérée levée par la logique de rendu est irrécupérable pour le circuit.
+La logique de rendu peut lever une exception. Un exemple de ce scénario se produit lorsque `@someObject.PropertyName` est évaluée, mais que `@someObject` est `null`. Une exception non gérée levée par la logique de rendu est irrécupérable pour un circuit Blazor Server.
 
 Pour éviter une exception de référence null dans la logique de rendu, recherchez un objet `null` avant d’accéder à ses membres. Dans l’exemple suivant, `person.Address` propriétés ne sont pas accessibles si `person.Address` est `null`:
 
@@ -159,7 +161,7 @@ Le code côté client déclenche des appels de code lors C# de la création de g
 
 Le code du gestionnaire d’événements peut lever une exception non gérée dans ces scénarios.
 
-Si un gestionnaire d’événements lève une exception non gérée (par exemple, une requête de base de données échoue), l’exception est irrémédiable au circuit. Si l’application appelle du code qui pourrait échouer pour des raisons externes, interceptez les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec gestion des erreurs et journalisation.
+Si un gestionnaire d’événements lève une exception non gérée (par exemple, une requête de base de données échoue), l’exception est irrécupérable pour un circuit Blazor Server. Si l’application appelle du code qui pourrait échouer pour des raisons externes, interceptez les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec gestion des erreurs et journalisation.
 
 Si le code utilisateur n’intercepte pas et ne gère pas l’exception, le Framework journalise l’exception et met fin au circuit.
 
@@ -167,7 +169,7 @@ Si le code utilisateur n’intercepte pas et ne gère pas l’exception, le Fram
 
 Un composant peut être supprimé de l’interface utilisateur, par exemple, parce que l’utilisateur a accédé à une autre page. Quand un composant qui implémente <xref:System.IDisposable?displayProperty=fullName> est supprimé de l’interface utilisateur, le Framework appelle la méthode <xref:System.IDisposable.Dispose*> du composant.
 
-Si la méthode `Dispose` du composant lève une exception non gérée, l’exception est irrécupérable pour le circuit. Si la logique de suppression peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
+Si la méthode `Dispose` du composant lève une exception non gérée, l’exception est irrécupérable pour un circuit Blazor Server. Si la logique de suppression peut lever des exceptions, l’application doit intercepter les exceptions à l’aide d’une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
 Pour plus d’informations sur la suppression de composants, consultez <xref:blazor/lifecycle#component-disposal-with-idisposable>.
 
@@ -177,20 +179,20 @@ Pour plus d’informations sur la suppression de composants, consultez <xref:bla
 
 Les conditions suivantes s’appliquent à la gestion des erreurs avec `InvokeAsync<T>`:
 
-* Si un appel à `InvokeAsync<T>` échoue de façon synchrone, une exception .NET se produit. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car les arguments fournis ne peuvent pas être sérialisés. Le code du développeur doit intercepter l’exception. Si le code d’application dans une méthode de gestionnaire d’événements ou de cycle de vie de composant ne gère pas une exception, l’exception résultante est irrécupérable pour le circuit.
-* Si un appel à `InvokeAsync<T>` échoue de manière asynchrone, le <xref:System.Threading.Tasks.Task> .NET échoue. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car le code côté JavaScript lève une exception ou retourne un `Promise` qui s’est terminé comme `rejected`. Le code du développeur doit intercepter l’exception. Si vous utilisez l’opérateur [await](/dotnet/csharp/language-reference/keywords/await) , encapsulez l’appel de méthode dans une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Dans le cas contraire, le code défaillant entraîne une exception non gérée qui est irrécupérable pour le circuit.
+* Si un appel à `InvokeAsync<T>` échoue de façon synchrone, une exception .NET se produit. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car les arguments fournis ne peuvent pas être sérialisés. Le code du développeur doit intercepter l’exception. Si le code d’application dans une méthode de gestionnaire d’événements ou de cycle de vie de composant ne gère pas une exception, l’exception résultante est irrécupérable pour un circuit Blazor Server.
+* Si un appel à `InvokeAsync<T>` échoue de manière asynchrone, le <xref:System.Threading.Tasks.Task> .NET échoue. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car le code côté JavaScript lève une exception ou retourne un `Promise` qui s’est terminé comme `rejected`. Le code du développeur doit intercepter l’exception. Si vous utilisez l’opérateur [await](/dotnet/csharp/language-reference/keywords/await) , encapsulez l’appel de méthode dans une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Dans le cas contraire, le code défaillant entraîne une exception non gérée qui est irrécupérable pour un circuit Blazor Server.
 * Par défaut, les appels à `InvokeAsync<T>` doivent se terminer dans un laps de temps donné, sinon l’appel expire. Le délai d’expiration par défaut est d’une minute. Le délai d’attente protège le code contre toute perte de connectivité réseau ou de code JavaScript qui ne renvoie jamais de message d’achèvement. Si l’appel expire, le `Task` résultant échoue avec une <xref:System.OperationCanceledException>. Interceptez et traitez l’exception avec la journalisation.
 
 De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l’attribut [`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions) . Si ces méthodes .NET lèvent une exception non gérée :
 
-* L’exception n’est pas traitée comme étant irrécupérable pour le circuit.
+* L’exception n’est pas considérée comme irrécupérable pour un circuit Blazor Server.
 * Le `Promise` côté JavaScript est rejeté.
 
 Vous avez la possibilité d’utiliser le code de gestion des erreurs côté .NET ou JavaScript de l’appel de méthode.
 
 Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
 
-### <a name="circuit-handlers"></a>Gestionnaires de circuits
+### <a name="opno-locblazor-server-circuit-handlers"></a>gestionnaires de circuits Blazor Server
 
 Blazor Server permet au code de définir un *Gestionnaire de circuit*qui permet d’exécuter du code sur les modifications de l’état du circuit d’un utilisateur. Un gestionnaire de circuit est implémenté en dérivant de `CircuitHandler` et en inscrivant la classe dans le conteneur de services de l’application. L’exemple suivant d’un gestionnaire de circuit effectue le suivi des connexions SignalR ouvertes :
 
@@ -236,11 +238,11 @@ public void ConfigureServices(IServiceCollection services)
 
 Si les méthodes d’un gestionnaire de circuit personnalisé lèvent une exception non gérée, l’exception est irrémédiable au circuit du serveur Blazor. Pour tolérer des exceptions dans le code d’un gestionnaire ou les méthodes appelées, encapsulez le code dans une ou plusieurs instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
 
-### <a name="circuit-disposal"></a>Élimination de circuit
+### <a name="opno-locblazor-server-circuit-disposal"></a>élimination du circuit Blazor Server
 
 Lorsqu’un circuit se termine parce qu’un utilisateur s’est déconnecté et que l’infrastructure nettoie l’état du circuit, le Framework supprime l’étendue de l’injection de port. La suppression de l’étendue supprime tous les services d’étendue de circuit qui implémentent <xref:System.IDisposable?displayProperty=fullName>. Si un service d’injection de services lève une exception non gérée pendant la suppression, le Framework journalise l’exception.
 
-### <a name="prerendering"></a>Préaffichant
+### <a name="opno-locblazor-server-prerendering"></a>prérendu du serveur Blazor
 
 Blazor composants peuvent être prérendus à l’aide du tag Helper `Component` afin que le balisage HTML rendu soit renvoyé dans le cadre de la requête HTTP initiale de l’utilisateur. Cela fonctionne de la façon suivante :
 
@@ -274,7 +276,7 @@ Boucles infinies pendant le rendu :
 * Fait en sorte que le processus de rendu continue de façon permanente.
 * Équivaut à créer une boucle non terminée.
 
-Dans ces scénarios, le circuit affecté se bloque et le thread tente généralement d’effectuer les opérations suivantes :
+Dans ces scénarios, un circuit Blazor Server affecté échoue et le thread tente généralement d’effectuer les opérations suivantes :
 
 * Consommez le plus de temps processeur autorisé par le système d’exploitation, indéfiniment.
 * Consommez une quantité illimitée de mémoire serveur. La consommation de mémoire illimitée est équivalente au scénario dans lequel une boucle non terminée ajoute des entrées à une collection à chaque itération.

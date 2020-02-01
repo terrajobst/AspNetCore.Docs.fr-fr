@@ -1,31 +1,31 @@
 ---
-title: Utiliser l’interface de ligne de commande (CLI) LibMan avec ASP.NET Core
+title: Utiliser l’interface CLI LibMan avec ASP.NET Core
 author: scottaddie
-description: Découvrez comment utiliser l’interface de ligne de commande (CLI) LibMan dans un projet ASP.NET Core.
+description: Découvrez comment utiliser l’interface CLI LibMan dans un projet ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
-ms.openlocfilehash: 8b2b1e45ab4685482554ac439b0276e0cf381609
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
+ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962802"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76928360"
 ---
-# <a name="use-the-libman-command-line-interface-cli-with-aspnet-core"></a>Utiliser l’interface de ligne de commande (CLI) LibMan avec ASP.NET Core
+# <a name="use-the-libman-cli-with-aspnet-core"></a>Utiliser l’interface CLI LibMan avec ASP.NET Core
 
 Par [Scott Addie](https://twitter.com/Scott_Addie)
 
 L’interface CLI [LibMan](xref:client-side/libman/index) est un outil multiplateforme qui est pris en charge partout où .net Core est pris en charge.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
-## <a name="installation"></a>Installation
+## <a name="installation"></a>Installation de
 
 Pour installer l’interface CLI LibMan :
 
@@ -43,7 +43,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 Dans l’exemple précédent, un outil Global .NET Core est installé à partir du fichier *C:\Temp\Microsoft.Web.librarymanager.cli.1.0.94-g606058a278.nupkg* de l’ordinateur Windows local.
 
-## <a name="usage"></a>Utilisation
+## <a name="usage"></a>Contrôle
 
 Une fois l’installation de l’interface CLI réussie, vous pouvez utiliser la commande suivante :
 
@@ -124,7 +124,7 @@ Les options suivantes sont disponibles pour la commande `libman init` :
 Pour créer un fichier *Libman. JSON* dans un projet ASP.net Core :
 
 * Accédez à la racine du projet.
-* Exécutez la commande suivante :
+* Exécutez la commande suivante : .
 
   ```console
   libman init
