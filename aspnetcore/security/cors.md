@@ -15,7 +15,7 @@ ms.locfileid: "76727310"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les requêtes Cross-Origin (CORS) dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Cet article explique comment activer CORS dans une application ASP.NET Core.
 
@@ -193,7 +193,7 @@ Cette section décrit les différentes options qui peuvent être définies dans 
 * [Définir les en-têtes de demande autorisés](#set-the-allowed-request-headers)
 * [Définir les en-têtes de réponse exposés](#set-the-exposed-response-headers)
 * [Informations d’identification dans les demandes Cross-Origin](#credentials-in-cross-origin-requests)
-* [Définir en amont le délai d’expiration](#set-the-preflight-expiration-time)
+* [Définir le délai d’expiration du prévols](#set-the-preflight-expiration-time)
 
 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsOptions.AddPolicy*> est appelé dans `Startup.ConfigureServices`. Pour certaines options, il peut être utile de lire d’abord la section [How cors Works](#how-cors) .
 
@@ -279,8 +279,7 @@ Par exemple, considérez une application configurée comme suit :
 app.UseCors(policy => policy.WithHeaders(HeaderNames.CacheControl));
 ```
 
-L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours ajouté à la liste verte
-:
+L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours la liste blanche :
 
 ```
 Access-Control-Request-Headers: Cache-Control, Content-Language
@@ -467,7 +466,7 @@ Si la réponse n’inclut pas l’en-tête `Access-Control-Allow-Origin`, la dem
 
 <a name="test"></a>
 
-## <a name="test-cors"></a>Test CORS
+## <a name="test-cors"></a>Tester CORS
 
 Pour tester CORS :
 

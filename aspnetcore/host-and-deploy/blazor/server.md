@@ -53,13 +53,13 @@ Chaque circuit utilise environ 250 Ko de mémoire pour une application de type *
 
 les applications Blazor Server utilisent ASP.NET Core SignalR pour communiquer avec le navigateur. [les conditions d’hébergement et de mise à l’échelle deSignalR](xref:signalr/publish-to-azure-web-app) s’appliquent aux applications Blazor Server.
 
-Blazor works best when using WebSockets as the SignalR transport due to lower latency, reliability, and [security](xref:signalr/security). Long Polling is used by SignalR when WebSockets isn't available or when the app is explicitly configured to use Long Polling. When deploying to Azure App Service, configure the app to use WebSockets in the Azure portal settings for the service. For details on configuring the app for Azure App Service, see the [SignalR publishing guidelines](xref:signalr/publish-to-azure-web-app).
+Blazor fonctionne mieux lorsque vous utilisez WebSockets comme transport SignalR en raison d’une latence, d’une fiabilité et d’une [sécurité](xref:signalr/security)moindres. L’interrogation longue est utilisée par les SignalR lorsque WebSocket n’est pas disponible ou lorsque l’application est configurée explicitement pour utiliser l’interrogation longue. Lors du déploiement sur Azure App Service, configurez l’application pour qu’elle utilise WebSockets dans les paramètres Portail Azure pour le service. Pour plus d’informations sur la configuration de l’application pour Azure App Service, consultez les [instructions de publicationSignalR](xref:signalr/publish-to-azure-web-app).
 
-#### <a name="azure-opno-locsignalr-service"></a>Azure SignalR Service
+#### <a name="azure-opno-locsignalr-service"></a>Service SignalR Azure
 
-We recommend using the [Azure SignalR Service](/azure/azure-signalr) for Blazor Server apps. The service allows for scaling up a Blazor Server app to a large number of concurrent SignalR connections. In addition, the SignalR service's global reach and high-performance data centers significantly aid in reducing latency due to geography. To configure an app (and optionally provision) the Azure SignalR Service:
+Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-signalr) pour les applications Blazor Server. Le service permet la mise à l’échelle d’une application Blazor Server vers un grand nombre de connexions SignalR simultanées. En outre, la portée mondiale et les centres de données haute performance du service SignalR contribuent de manière significative à réduire la latence en raison de la géographie. Pour configurer une application (et éventuellement approvisionner) le service Azure SignalR :
 
-1. Enable the service to support *sticky sessions*, where clients are [redirected back to the same server when prerendering](xref:blazor/hosting-models#reconnection-to-the-same-server). Set the `ServerStickyMode` option or configuration value to `Required`. Typically, an app creates the configuration using **one** of the following approaches:
+1. Activez le service pour prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#reconnection-to-the-same-server). Définissez l’option `ServerStickyMode` ou la valeur de configuration sur `Required`. En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
 
    * `Startup.ConfigureServices`:
   
@@ -71,7 +71,7 @@ We recommend using the [Azure SignalR Service](/azure/azure-signalr) for Blazor 
      });
      ```
 
-   * Configuration (use **one** of the following approaches):
+   * Configuration (utilisez l' **une** des approches suivantes) :
   
      * *appsettings.json* :
 
@@ -79,19 +79,19 @@ We recommend using the [Azure SignalR Service](/azure/azure-signalr) for Blazor 
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * The app service's **Configuration** > **Application settings** in the Azure portal (**Name**: `Azure:SignalR:ServerStickyMode`, **Value**: `Required`).
+     * La **configuration** d’app service > **paramètres d’Application** dans le Portail Azure (**nom**: `Azure:SignalR:ServerStickyMode`, **valeur**: `Required`).
 
-1. Create an Azure Apps publish profile in Visual Studio for the Blazor Server app.
-1. Add the **Azure SignalR Service** dependency to the profile. If the Azure subscription doesn't have a pre-existing Azure SignalR Service instance to assign to the app, select **Create a new Azure SignalR Service instance** to provision a new service instance.
-1. Publish the app to Azure.
+1. Créez un profil de publication Azure Apps dans Visual Studio pour l’application Blazor Server.
+1. Ajoutez la dépendance du **service Azure SignalR** au profil. Si l’abonnement Azure n’a pas d’instance de service Azure SignalR existante à attribuer à l’application, sélectionnez **créer une nouvelle instance azure SignalR service** pour approvisionner une nouvelle instance de service.
+1. Publiez l’application dans Azure.
 
 #### <a name="iis"></a>IIS
 
-When using IIS, sticky sessions are enabled with Application Request Routing. For more information, see [HTTP Load Balancing using Application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
+Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec Application Request Routing. Pour plus d’informations, consultez [équilibrage de charge http à l’aide de application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 
 #### <a name="kubernetes"></a>Kubernetes
 
-Create an ingress definition with the following [Kubernetes annotations for sticky sessions](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):
+Créez une définition d’entrée avec les [Annotations Kubernetes suivantes pour les sessions rémanentes](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -107,18 +107,18 @@ metadata:
 
 #### <a name="linux-with-nginx"></a>Linux avec Nginx
 
-For SignalR WebSockets to function properly, set the proxy's `Upgrade` and `Connection` headers to the following:
+Pour que SignalR WebSocket fonctionne correctement, définissez les en-têtes `Upgrade` et `Connection` du proxy comme suit :
 
 ```
 proxy_set_header Upgrade $http_upgrade;
 proxy_set_header Connection $connection_upgrade;
 ```
 
-For more information, see [NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/).
+Pour plus d’informations, consultez [Nginx comme proxy WebSocket](https://www.nginx.com/blog/websocket-nginx/).
 
-### <a name="measure-network-latency"></a>Measure network latency
+### <a name="measure-network-latency"></a>Mesurer la latence du réseau
 
-[JS interop](xref:blazor/javascript-interop) can be used to measure network latency, as the following example demonstrates:
+L' [interopérabilité js](xref:blazor/javascript-interop) peut être utilisée pour mesurer la latence du réseau, comme le montre l’exemple suivant :
 
 ```razor
 @inject IJSRuntime JS
@@ -146,4 +146,4 @@ else
 }
 ```
 
-For a reasonable UI experience, we recommend a sustained UI latency of 250ms or less.
+Pour une expérience d’interface utilisateur raisonnable, nous recommandons une latence d’interface utilisateur soutenue de 250 ms ou moins.

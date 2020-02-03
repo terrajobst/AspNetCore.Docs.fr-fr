@@ -17,13 +17,13 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76726764"
 ---
-# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>Configurez l’éditeur de liens pour ASP.NET Core Blazor
+# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a>Configurez l’éditeur de liens pour ASP.NET Core [!OP.NO-LOC(Blazor)]
 
 Par [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une génération pour supprimer l’il inutile des assemblys de sortie de l’application.
+[!OP.NO-LOC(Blazor)] effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une génération pour supprimer l’il inutile des assemblys de sortie de l’application.
 
 Contrôlez la liaison d’assembly avec l’une des approches suivantes :
 
@@ -55,7 +55,7 @@ Contrôlez la liaison pour chaque assembly en fournissant un fichier de configur
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or Blazor packages must not be
+  This file specifies which parts of the BCL or [!OP.NO-LOC(Blazor)] packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -86,7 +86,7 @@ Pour plus d’informations, consultez l' [éditeur de liens il : syntaxe du des
 
 ### <a name="configure-the-linker-for-internationalization"></a>Configurer l’éditeur de liens pour l’internationalisation
 
-Par défaut, la configuration de l’éditeur de liens de Blazorpour les applications webassembly Blazor supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement. La suppression de ces assemblys réduit la taille de l’application.
+Par défaut, la configuration de l’éditeur de liens de [!OP.NO-LOC(Blazor)]pour les applications webassembly [!OP.NO-LOC(Blazor)] supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement. La suppression de ces assemblys réduit la taille de l’application.
 
 Pour contrôler les assemblys I18N qui sont conservés, définissez la `<MonoLinkerI18NAssemblies>` propriété MSBuild dans le fichier projet :
 
@@ -101,7 +101,7 @@ Pour contrôler les assemblys I18N qui sont conservés, définissez la `<MonoLin
 | `all`            | Tous les assemblys inclus |
 | `cjk`            | *I18n. CJK. dll*          |
 | `mideast`        | *I18n. MidEast. dll*      |
-| `none` (par défaut) | Aucun                    |
+| `none` (par défaut) | None                    |
 | `other`          | *I18n. Other. dll*        |
 | `rare`           | *I18n. Rare. dll*         |
 | `west`           | *I18n. West. dll*         |

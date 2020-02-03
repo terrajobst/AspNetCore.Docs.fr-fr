@@ -75,10 +75,10 @@ Trois emplacements communs existent pour la conservation de l’État dans une a
 
 ### <a name="server-side-in-a-database"></a>Côté serveur dans une base de données
 
-Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Les options sont :
+Pour la persistance des données permanente ou pour toutes les données qui doivent s’étendre sur plusieurs utilisateurs ou périphériques, une base de données indépendante côté serveur est certainement le meilleur choix. Options disponibles :
 
 * Base de données SQL relationnelle
-* Magasin clé-valeur
+* stockage clé-valeur
 * Magasin d’objets BLOB
 * Magasin de tables
 
@@ -139,7 +139,7 @@ Voici un exemple de package NuGet qui fournit une [protection des données](xref
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage` est un package expérimental non pris en charge, inapproprié pour une utilisation en production à l’heure actuelle.
 
-### <a name="installation"></a>Installation de
+### <a name="installation"></a>Installation
 
 Pour installer le package `Microsoft.AspNetCore.ProtectedBrowserStorage` :
 
@@ -195,7 +195,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelée qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d'informations, consultez <xref:blazor/lifecycle>.
+Si les paramètres du composant incluent l’état de navigation, appelez `ProtectedSessionStore.GetAsync` et assignez le résultat dans `OnParametersSetAsync`, et non `OnInitializedAsync`. `OnInitializedAsync` n’est appelée qu’une seule fois lors de la première instanciation du composant. `OnInitializedAsync` n’est pas rappelée ultérieurement si l’utilisateur accède à une autre URL tout en restant sur la même page. Pour plus d’informations, consultez <xref:blazor/lifecycle>.
 
 > [!WARNING]
 > Les exemples de cette section ne fonctionnent que si le prérendu n’est pas activé sur le serveur. Quand le prérendu est activé, une erreur est générée de la façon suivante :
@@ -358,7 +358,7 @@ Les composants encapsulés reçoivent et peuvent modifier l’état du compteur 
 
 Le composant précédent n’est pas requis pour interagir avec `ProtectedBrowserStorage`, pas plus qu’il ne gère pas une phase de « chargement ».
 
-Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering).
+Pour traiter le prérendu comme décrit précédemment, `CounterStateProvider` peut être modifié de sorte que tous les composants qui consomment les données de compteur fonctionnent automatiquement avec le prérendu. Pour plus d’informations, consultez la section relative au [prérendu des handles](#handle-prerendering) .
 
 En général, le modèle de *composant parent du fournisseur d’État* est recommandé :
 

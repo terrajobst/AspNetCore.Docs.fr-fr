@@ -30,11 +30,11 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Créez un nouveau projet.
+* Créez un projet.
 * Sélectionnez **Nouvelle application web ASP.NET Core** et **Suivant**.
-* Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Créer**.
+* Fournissez un **Nom de projet** et confirmez ou changez l’**Emplacement**. Sélectionnez **Create** (Créer).
 * Sélectionnez la dernière version de ASP.NET Core dans la liste déroulante (**ASP.net Core {X. Y}** ), puis sélectionnez **application Web**.
 * Sous **Authentification**, sélectionnez **Changer** et définissez l’authentification sur **Comptes d’utilisateur individuels**. Sélectionnez **OK**.
 * Dans la fenêtre **Créer une application web ASP.NET Core**, sélectionnez **Créer**.
@@ -45,7 +45,7 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
 
-* Pour Windows, exécutez la commande suivante :
+* Pour Windows, exécutez la commande ci-dessous :
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual -uld
@@ -103,15 +103,15 @@ Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous
 
 ![Vue Gérer de l’application web](index/_static/pass1a.png)
 
-* Sélectionnez **Créer**.
+* Sélectionnez **Créer**
 
 ![Page Définir votre mot de passe](index/_static/pass2a.png)
 
 * Définissez un mot de passe valide à utiliser pour vous connecter avec votre e-mail.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
 * Pour plus d’informations sur la personnalisation des boutons de connexion, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/10563) .
 * Cet article a présenté l’authentification externe et expliqué les prérequis nécessaires pour ajouter des connexions externes à votre application ASP.NET Core.
 * Référencez les pages spécifiques au fournisseur pour configurer les connexions pour les fournisseurs nécessaires à votre application.
-* Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.
+* Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d’informations, consultez <xref:security/authentication/social/additional-claims>.

@@ -1,7 +1,7 @@
 ---
-title: Microsoft identity platform and Azure Active Directory with ASP.NET Core
+title: Plateforme d’identité Microsoft et Azure Active Directory avec ASP.NET Core
 author: rick-anderson
-description: Discover topics related to authentication with Microsoft identity platform Azure Active Directory for web apps and APIs in ASP.NET Core.
+description: Découvrez les rubriques relatives à l’authentification avec Microsoft Identity Platform Azure Active Directory pour les applications Web et les API dans ASP.NET Core.
 ms.author: riande
 ms.date: 01/21/2020
 ms.custom: mvc, seodec18
@@ -15,16 +15,16 @@ ms.locfileid: "76726758"
 ---
 # <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory avec ASP.NET Core
 
-These tutorials and samples demonstrate authentication in ASP.NET Core using Microsoft identity platform and Azure Active Directory. For additional tutorials and samples using ASP.NET Core with Azure AD, see [Microsoft identity platform](/azure/active-directory/develop/).
+Ces didacticiels et exemples illustrent l’authentification dans ASP.NET Core à l’aide de la plateforme d’identité Microsoft et Azure Active Directory. Pour obtenir des didacticiels et des exemples supplémentaires sur l’utilisation de ASP.NET Core avec Azure AD, consultez [plateforme d’identité Microsoft](/azure/active-directory/develop/).
 
-## <a name="application-scenarios"></a>Scénarios d'application
+## <a name="application-scenarios"></a>Scénarios d’application
 
-* [Quickstart: Add sign-in with Microsoft to an ASP.NET Core web app](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
-* [Web app that signs in users](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
-* [Web app that calls web APIs](/azure/active-directory/develop/scenario-web-app-call-api-overview)
-* [Protected web API](/azure/active-directory/develop/scenario-protected-web-api-overview)
-* [Web API that calls other web APIs](/azure/active-directory/develop/scenario-web-api-call-api-overview)
-* [Web app that signs in users with Azure AD B2C](xref:security/authentication/azure-ad-b2c)
+* [Démarrage rapide : ajouter une connexion avec Microsoft à une application Web ASP.NET Core](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp)
+* [Application web qui connecte les utilisateurs](/azure/active-directory/develop/scenario-web-app-sign-user-overview?tabs=aspnetcore)
+* [Application web qui appelle des API web](/azure/active-directory/develop/scenario-web-app-call-api-overview)
+* [API web protégée](/azure/active-directory/develop/scenario-protected-web-api-overview)
+* [API Web qui appelle d’autres API Web](/azure/active-directory/develop/scenario-web-api-call-api-overview)
+* [Application Web qui connecte les utilisateurs avec Azure AD B2C](xref:security/authentication/azure-ad-b2c)
 
 ## <a name="samples"></a>Exemples
 

@@ -22,9 +22,9 @@ Pour une expérience de tutoriel sur la publication d'une app ASP.NET Core sur u
 
 [Installer le bundle d’hébergement .NET Core](#install-the-net-core-hosting-bundle)
 
-## <a name="supported-operating-systems"></a>Supported operating systems
+## <a name="supported-operating-systems"></a>Systèmes d’exploitation pris en charge
 
-Les systèmes d’exploitation suivants sont pris en charge :
+Les systèmes d’exploitation pris en charge sont les suivants :
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -36,7 +36,7 @@ Les systèmes d’exploitation suivants sont pris en charge :
 ::: moniker range="< aspnetcore-3.0"
 
 * Windows 7 ou version ultérieure
-* Windows Server 2008 R2 ou une version ultérieure
+* Windows Server 2008 R2 ou version ultérieure
 
 ::: moniker-end
 
@@ -108,7 +108,7 @@ Les requêtes arrivent du web au pilote HTTP.sys en mode noyau. Le pilote route 
 
 Le module spécifie le port via une variable d’environnement au démarrage, et l’extension <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> configure le serveur pour qu’il écoute sur `http://localhost:{PORT}`. Des vérifications supplémentaires sont effectuées, et les requêtes qui ne proviennent pas du module sont rejetées. Le module ne prend pas en charge le transfert HTTPS : les requêtes sont donc transférées via HTTP, même si IIS les reçoit via HTTPS.
 
-Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. L’intergiciel (middleware) ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
+Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. Le middleware ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
 
 ::: moniker-end
 
@@ -128,7 +128,7 @@ Les requêtes arrivent du web au pilote HTTP.sys en mode noyau. Le pilote route 
 
 Le module spécifie le port via une variable d’environnement au démarrage, et le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components) configure le serveur pour qu’il écoute sur `http://localhost:{port}`. Des vérifications supplémentaires sont effectuées, et les requêtes qui ne proviennent pas du module sont rejetées. Le module ne prend pas en charge le transfert HTTPS : les requêtes sont donc transférées via HTTP, même si IIS les reçoit via HTTPS.
 
-Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. L’intergiciel (middleware) ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
+Dès que Kestrel sélectionne la requête dans le module, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. Le middleware ajouté par l’intégration d’IIS met à jour le schéma, l’adresse IP distante et la base du chemin pour prendre en compte le transfert de la requête à Kestrel. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
 
 `CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
@@ -146,7 +146,7 @@ Pour obtenir de l’aide sur la configuration du module ASP.NET Core, consultez 
 
 Pour plus d’informations sur l’hébergement, consultez [Héberger dans ASP.NET Core](xref:fundamentals/index#host).
 
-## <a name="application-configuration"></a>Configuration d’application
+## <a name="application-configuration"></a>Configuration de l’application
 
 ### <a name="enable-the-iisintegration-components"></a>Activer les composants IISIntegration
 
@@ -197,7 +197,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| Option                         | Valeur par défaut | Paramètre |
+| Option                         | Default | Paramètre |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Si `true`, IIS Server définit le `HttpContext.User` authentifié par [Authentification Windows](xref:security/authentication/windowsauth). Si `false`, le serveur fournit uniquement une identité pour `HttpContext.User` et répond aux questions explicitement posées par `AuthenticationScheme`. L’authentification Windows doit être activée dans IIS pour que `AutomaticAuthentication` fonctionne. Pour plus d’informations, consultez [Authentification Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Définit le nom d’affichage montré aux utilisateurs sur les pages de connexion. |
@@ -210,7 +210,7 @@ services.Configure<IISServerOptions>(options =>
 
 ::: moniker range="< aspnetcore-3.0"
 
-| Option                         | Valeur par défaut | Paramètre |
+| Option                         | Default | Paramètre |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Si `true`, IIS Server définit le `HttpContext.User` authentifié par [Authentification Windows](xref:security/authentication/windowsauth). Si `false`, le serveur fournit uniquement une identité pour `HttpContext.User` et répond aux questions explicitement posées par `AuthenticationScheme`. L’authentification Windows doit être activée dans IIS pour que `AutomaticAuthentication` fonctionne. Pour plus d’informations, consultez [Authentification Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Définit le nom d’affichage montré aux utilisateurs sur les pages de connexion. |
@@ -232,7 +232,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| Option                         | Valeur par défaut | Paramètre |
+| Option                         | Default | Paramètre |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | Si la valeur est `true`, le [middleware d’intégration IIS](#enable-the-iisintegration-components) définit l’élément `HttpContext.User` authentifié par [Windows Authentication](xref:security/authentication/windowsauth). Si `false`, l’intergiciel (middleware) fournit uniquement une identité pour `HttpContext.User` et répond aux questions explicitement posées par `AuthenticationScheme`. L’authentification Windows doit être activée dans IIS pour que `AutomaticAuthentication` fonctionne. Pour plus d'informations, consultez la rubrique [Authentification Windows](xref:security/authentication/windowsauth). |
 | `AuthenticationDisplayName`    | `null`  | Définit le nom d’affichage montré aux utilisateurs sur les pages de connexion. |
@@ -240,9 +240,9 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Le [middleware d’intégration IIS](#enable-the-iisintegration-components), qui configure le middleware des en-têtes transférés, et le module ASP.NET Core sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
+Le [middleware d’intégration IIS](#enable-the-iisintegration-components), qui configure le middleware des en-têtes transférés, et le module ASP.NET Core sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez l’article [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
 
-### <a name="webconfig-file"></a>fichier web.config
+### <a name="webconfig-file"></a>Fichier web.config
 
 Le fichier *web.config* configure le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module). La création, la transformation et la publication du fichier *web.config* sont gérées par une cible MSBuild (`_TransformWebConfig`) quand le projet est publié. Cette cible est présente dans les cibles du SDK web (`Microsoft.NET.Sdk.Web`). Le SDK est défini en haut du fichier projet :
 
@@ -264,7 +264,7 @@ Pour empêcher le Kit de développement logiciel (SDK) Web de transformer le fic
 </PropertyGroup>
 ```
 
-Lorsque vous désactivez le Kit de développement logiciel (SDK) Web en transformant le fichier, le *processPath* et les *arguments* doivent être définis manuellement par le développeur. Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module>.
+Lorsque vous désactivez le Kit de développement logiciel (SDK) Web en transformant le fichier, le *processPath* et les *arguments* doivent être définis manuellement par le développeur. Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module>.
 
 ### <a name="webconfig-file-location"></a>emplacement du fichier web.config
 
@@ -304,7 +304,7 @@ Activez le rôle serveur **Serveur Web (IIS)** et établissez des services de r�
 
 Activez la **Console de gestion IIS** et les **Services World Wide Web**.
 
-1. Naviguez jusqu’à **Panneau de configuration** > **Programmes** > **Programmes et fonctionnalités** > **Activer ou désactiver des fonctionnalités Windows** (à gauche de l’écran).
+1. Accédez à **Panneau de configuration** > **Programmes** > **Programmes et fonctionnalités** > **Activer ou désactiver des fonctionnalités Windows** (à gauche de l’écran).
 
 1. Ouvrez le nœud **Internet Information Services**. Ouvrez le nœud **Outils de gestion Web**.
 
@@ -359,7 +359,7 @@ Pour obtenir une version antérieure du programme d’installation :
    * `OPT_NO_RUNTIME=1` &ndash; ignorer l’installation du Runtime .NET Core. Utilisé lorsque le serveur héberge uniquement [des déploiements autonomes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_SHAREDFX=1` &ndash; ignorer l’installation de l’infrastructure partagée ASP.NET (runtime ASP.NET). Utilisé lorsque le serveur héberge uniquement [des déploiements autonomes (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
    * `OPT_NO_X86=1` &ndash; ignorer l’installation des runtimes x86. Utilisez ce paramètre lorsque vous savez que vous n’hébergerez pas d’applications 32 bits. Si vous n’excluez pas d’avoir à héberger des applications 32 bits et 64 bits dans le futur, n'utilisez pas ce paramètre et installez les deux runtimes.
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; désactiver la vérification de l’utilisation d’une configuration partagée IIS lorsque la configuration partagée (*ApplicationHost. config*) se trouve sur le même ordinateur que l’installation d’IIS. *Disponible uniquement pour les programmes d’installation du pack d’hébergement ASP.NET Core 2.2 ou version ultérieure.* Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; désactiver la vérification de l’utilisation d’une configuration partagée IIS lorsque la configuration partagée (*ApplicationHost. config*) se trouve sur le même ordinateur que l’installation d’IIS. *Disponible uniquement pour les programmes d’installation du pack d’hébergement ASP.NET Core 2.2 ou version ultérieure.* Pour plus d’informations, consultez <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
 1. Redémarrez le système ou exécutez les commandes suivantes dans une interface de commande :
 
    ```console
@@ -428,7 +428,7 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/inst
 **Configuration de l’authentification Windows (facultatif)**  
 Pour plus d'informations, consultez la rubrique [Configurer l’authentification Windows](xref:security/authentication/windowsauth).
 
-## <a name="deploy-the-app"></a>Déployer l'application
+## <a name="deploy-the-app"></a>Déployer l’application
 
 Déployez l’application dans le dossier **Chemin d’accès physique** IIS qui a été créé dans la section [Créer le site IIS](#create-the-iis-site). [Web Deploy](/iis/publish/using-web-deploy/introduction-to-web-deploy) est le mécanisme recommandé pour le déploiement, mais il existe plusieurs options pour déplacer l’application à partir du dossier *publier* du projet vers le dossier de déploiement du système d’hébergement.
 
@@ -448,7 +448,7 @@ Utilisez la méthode de votre choix, telle que la copie manuelle, [Xcopy](/windo
 
 Pour plus d’informations sur le déploiement d’ASP.NET Core sur IIS, consultez la section [Déploiement de ressources pour les administrateurs IIS](#deployment-resources-for-iis-administrators).
 
-## <a name="browse-the-website"></a>Parcourir le site web
+## <a name="browse-the-website"></a>Parcourir le site Web
 
 Une fois que l’application est déployée sur le système hôte, envoyez une requête à l’un des points de terminaison publics de l’application.
 
@@ -477,7 +477,7 @@ Les fichiers dans le dossier de déploiement sont verrouillés quand l’applica
 
   ```
 
-## <a name="data-protection"></a>Protection des données
+## <a name="data-protection"></a>Protection de données
 
 La [pile de protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris l’intergiciel utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
 
@@ -499,13 +499,13 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
 * **Configurer le pool d’applications IIS pour charger le profil utilisateur**
 
-  Ce paramètre se trouve dans la section **Modèle de processus** sous les **Paramètres avancés** du pool d’applications. Affectez la valeur `True` à **Charger le profil utilisateur**. Lorsqu’elle est définie sur `True`, les clés sont stockées dans le répertoire du profil utilisateur, protégées à l’aide de DPAPI avec une clé propre au compte d’utilisateur utilisé pour le pool d’applications. Les clés sont persistantes dans le dossier *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
+  Ce paramètre se trouve dans la section **Modèle de processus** sous les **Paramètres avancés** du pool d’applications. Affectez la valeur **à**Charger le profil utilisateur`True`. Lorsqu’elle est définie sur `True`, les clés sont stockées dans le répertoire du profil utilisateur, protégées à l’aide de DPAPI avec une clé propre au compte d’utilisateur utilisé pour le pool d’applications. Les clés sont persistantes dans le dossier *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
 
   L’[attribut setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) du pool d’applications doit également être activé. La valeur par défaut de `setProfileEnvironment` est `true`. Dans certains scénarios (par exemple pour le système d’exploitation Windows), `setProfileEnvironment` est défini sur `false`. Si les clés ne sont pas stockées dans le répertoire de profil utilisateur comme prévu :
 
   1. Accédez au dossier *%windir%/system32/inetsrv/config*.
   1. Ouvrez le fichier *applicationHost.config*.
-  1. Recherchez l’élément `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` .
+  1. Recherchez l’élément `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>`.
   1. Confirmez que l’attribut `setProfileEnvironment` n’est pas présent, ce qui implique que la valeur par défaut est `true`, ou définissez de manière explicite la valeur de l’attribut sur `true`.
 
 * **Utiliser le système de fichiers comme magasin de Key Ring**
@@ -519,7 +519,7 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
 * **Définir une stratégie au niveau de l’ordinateur pour la protection des données**
 
-  Le système de protection des données offre une prise en charge limitée de la définition d’une [stratégie au niveau de l’ordinateur](xref:security/data-protection/configuration/machine-wide-policy) par défaut pour toutes les applications qui utilisent les API de protection des données. Pour plus d'informations, consultez <xref:security/data-protection/introduction>.
+  Le système de protection des données offre une prise en charge limitée de la définition d’une [stratégie au niveau de l’ordinateur](xref:security/data-protection/configuration/machine-wide-policy) par défaut pour toutes les applications qui utilisent les API de protection des données. Pour plus d’informations, consultez <xref:security/data-protection/introduction>.
 
 ## <a name="virtual-directories"></a>Répertoires virtuels
 
@@ -588,7 +588,7 @@ Pour plus d’informations sur le modèle d’hébergement in-process et sur la 
 
 La configuration d’IIS est influencée par la section `<system.webServer>` de *web.config* pour les scénarios IIS qui sont fonctionnels pour les applications ASP.NET Core avec le module ASP.NET Core. Par exemple, la configuration IIS est fonctionnelle pour la compression dynamique. Si IIS est configuré au niveau du serveur pour utiliser la compression dynamique, l’élément `<urlCompression>` dans le fichier *web.config* de l’application peut le désactiver pour une application ASP.NET Core.
 
-Pour plus d'informations, consultez les rubriques suivantes :
+Pour plus d'informations, voir les rubriques suivantes :
 
 * [Référence de configuration de \<System. webServer >](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
@@ -662,7 +662,7 @@ ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool":F
 
 Pour plus d’informations, consultez la rubrique [icacls](/windows-server/administration/windows-commands/icacls).
 
-## <a name="http2-support"></a>Prise en charge de HTTP/2
+## <a name="http2-support"></a>Assistance HTTP/2
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -756,7 +756,7 @@ Utilisez une des approches suivantes pour activer le Module d’initialisation d
   </configuration>
   ```
 
-### <a name="idle-timeout"></a>Délai d'inactivité
+### <a name="idle-timeout"></a>Délai d’inactivité
 
 *S’applique aux applications hébergées in-process.*
 

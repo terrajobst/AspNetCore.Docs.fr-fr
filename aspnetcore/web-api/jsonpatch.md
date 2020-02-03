@@ -102,7 +102,7 @@ Les modifications apportées en appliquant un document JSON Patch à une ressour
 
 ## <a name="path-syntax"></a>Syntaxe du chemin
 
-Les différents niveaux de la propriété [path](https://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple, `"/address/zipCode"`.
+Les différents niveaux de la propriété [path](https://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple : `"/address/zipCode"`.
 
 Les index de base zéro sont utilisés pour spécifier les éléments du tableau. Le premier élément du tableau `addresses` serait à `/addresses/0`. Pour `add` à la fin d’un tableau, utilisez un trait d’union (-) plutôt qu’un numéro d’index : `/addresses/-`.
 
@@ -110,7 +110,7 @@ Les index de base zéro sont utilisés pour spécifier les éléments du tableau
 
 Le tableau suivant mentionne les opérations prises en charge telles qu’elles sont définies dans la [spécification JSON Patch](https://tools.ietf.org/html/rfc6902) :
 
-|Opération  | Remarques |
+|Opération  | Notes |
 |-----------|--------------------------------|
 | `add`     | Ajouter une propriété ou élément de tableau. Pour la propriété existante : définir la valeur.|
 | `remove`  | Supprimer une propriété ou un élément de tableau. |
@@ -131,7 +131,7 @@ Dans un contrôleur d’API, une méthode d’action pour JSON Patch :
 * Accepte un `JsonPatchDocument<T>`, en général avec `[FromBody]`.
 * appelle `ApplyTo` sur le document de correctif pour appliquer les modifications.
 
-Voici un exemple :
+Voici un exemple :
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
@@ -314,7 +314,7 @@ Les modifications apportées en appliquant un document JSON Patch à une ressour
 
 ## <a name="path-syntax"></a>Syntaxe du chemin
 
-Les différents niveaux de la propriété [path](https://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple, `"/address/zipCode"`.
+Les différents niveaux de la propriété [path](https://tools.ietf.org/html/rfc6901) d’un objet de l’opération sont séparés par des barres obliques. Par exemple : `"/address/zipCode"`.
 
 Les index de base zéro sont utilisés pour spécifier les éléments du tableau. Le premier élément du tableau `addresses` serait à `/addresses/0`. Pour `add` à la fin d’un tableau, utilisez un trait d’union (-) plutôt qu’un numéro d’index : `/addresses/-`.
 
@@ -322,7 +322,7 @@ Les index de base zéro sont utilisés pour spécifier les éléments du tableau
 
 Le tableau suivant mentionne les opérations prises en charge telles qu’elles sont définies dans la [spécification JSON Patch](https://tools.ietf.org/html/rfc6902) :
 
-|Opération  | Remarques |
+|Opération  | Notes |
 |-----------|--------------------------------|
 | `add`     | Ajouter une propriété ou élément de tableau. Pour la propriété existante : définir la valeur.|
 | `remove`  | Supprimer une propriété ou un élément de tableau. |
@@ -343,7 +343,7 @@ Dans un contrôleur d’API, une méthode d’action pour JSON Patch :
 * Accepte un `JsonPatchDocument<T>`, en général avec `[FromBody]`.
 * appelle `ApplyTo` sur le document de correctif pour appliquer les modifications.
 
-Voici un exemple :
+Voici un exemple :
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 

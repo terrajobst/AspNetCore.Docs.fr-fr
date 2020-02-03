@@ -32,7 +32,7 @@ La configuration du cache distribué est spécifique à l’implémentation. Cet
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/distributed/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -109,7 +109,7 @@ L’exemple d’application utilise le cache de mémoire distribuée lorsque l�
 
 L’implémentation du cache SQL Server distribué (<xref:Microsoft.Extensions.DependencyInjection.SqlServerCachingServicesExtensions.AddDistributedSqlServerCache*>) permet au cache distribué d’utiliser une base de données SQL Server comme magasin de stockage. Pour créer un SQL Server table d’éléments mis en cache dans une instance de SQL Server, vous pouvez utiliser l’outil `sql-cache`. L’outil crée une table avec le nom et le schéma que vous spécifiez.
 
-Créer une table dans SQL Server en exécutant la commande `sql-cache create` : Indiquez l’instance de SQL Server (`Data Source`), la base de données (`Initial Catalog`), le schéma (par exemple, `dbo`) et le nom de la table (par exemple, `TestCache`) :
+Créez une table dans SQL Server en exécutant la commande `sql-cache create`. Indiquez l’instance de SQL Server (`Data Source`), la base de données (`Initial Catalog`), le schéma (par exemple, `dbo`) et le nom de la table (par exemple, `TestCache`) :
 
 ```dotnetcli
 dotnet sql-cache create "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
@@ -147,7 +147,7 @@ L’exemple d’application implémente <xref:Microsoft.Extensions.Caching.SqlSe
 
 ### <a name="distributed-redis-cache"></a>Cache Redims distribué
 
-[Redis](https://redis.io/) est un magasin de données en mémoire open source, qui est souvent utilisé comme un cache distribué. Vous pouvez utiliser des ReDim localement, et vous pouvez configurer un [cache redims Azure](https://azure.microsoft.com/services/cache/) pour une application ASP.net Core hébergée sur Azure.
+[Redims](https://redis.io/) est un magasin de données en mémoire Open source, qui est souvent utilisé comme un cache distribué. Vous pouvez utiliser des ReDim localement, et vous pouvez configurer un [cache redims Azure](https://azure.microsoft.com/services/cache/) pour une application ASP.net Core hébergée sur Azure.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -244,7 +244,7 @@ Mettez immédiatement à jour l’heure de mise en cache à l’heure actuelle e
 ::: moniker-end
 
 > [!NOTE]
-> Il est inutile d’utiliser un Singleton ou une durée de vie limitée à un périmètre d'utilisation pour gérer des instances de <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> (et ceci au moins pour les implémentations intégrées).
+> Il n’est pas nécessaire d’utiliser un singleton ou une durée de vie limitée pour <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> instances (au moins pour les implémentations intégrées).
 >
 > Vous pouvez également créer une instance de <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> à chaque fois que vous en aurez besoin au lieu d’utiliser l’injection de dépendances, mais la création d’une instance dans du code peut rendre votre code plus difficile à tester et violer le [principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 
@@ -254,7 +254,7 @@ Lorsque vous décidez de l’implémentation de <xref:Microsoft.Extensions.Cachi
 
 * Infrastructure existante
 * Exigences en matière de performances
-* Cost
+* Coût
 * Expérience de l’équipe
 
 Les solutions de mise en cache s’appuient généralement sur le stockage en mémoire pour fournir une récupération rapide des données mises en cache, mais la mémoire est une ressource limitée et coûteuse à développer. Stocke uniquement les données couramment utilisées dans un cache.
