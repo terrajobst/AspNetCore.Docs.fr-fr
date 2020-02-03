@@ -17,22 +17,22 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76726764"
 ---
-# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a><span data-ttu-id="fc4ef-103">Configurez l’éditeur de liens pour ASP.NET Core Blazor</span><span class="sxs-lookup"><span data-stu-id="fc4ef-103">Configure the Linker for ASP.NET Core Blazor</span></span>
+# <a name="configure-the-linker-for-aspnet-core-opno-locblazor"></a><span data-ttu-id="c7c12-103">Configurez l’éditeur de liens pour ASP.NET Core [!OP.NO-LOC(Blazor)]</span><span class="sxs-lookup"><span data-stu-id="c7c12-103">Configure the Linker for ASP.NET Core [!OP.NO-LOC(Blazor)]</span></span>
 
-<span data-ttu-id="fc4ef-104">Par [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="fc4ef-104">By [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="c7c12-104">Par [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="c7c12-104">By [Luke Latham](https://github.com/guardrex)</span></span>
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor<span data-ttu-id="fc4ef-105"> effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une génération pour supprimer l’il inutile des assemblys de sortie de l’application.</span><span class="sxs-lookup"><span data-stu-id="fc4ef-105"> performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) linking during a build to remove unnecessary IL from the app's output assemblies.</span></span>
+[!OP.NO-LOC(Blazor)]<span data-ttu-id="c7c12-105"> effectue une liaison [il (Intermediate Language)](/dotnet/standard/managed-code#intermediate-language--execution) au cours d’une génération pour supprimer l’il inutile des assemblys de sortie de l’application.</span><span class="sxs-lookup"><span data-stu-id="c7c12-105"> performs [Intermediate Language (IL)](/dotnet/standard/managed-code#intermediate-language--execution) linking during a build to remove unnecessary IL from the app's output assemblies.</span></span>
 
-<span data-ttu-id="fc4ef-106">Contrôlez la liaison d’assembly avec l’une des approches suivantes :</span><span class="sxs-lookup"><span data-stu-id="fc4ef-106">Control assembly linking using either of the following approaches:</span></span>
+<span data-ttu-id="c7c12-106">Contrôlez la liaison d’assembly avec l’une des approches suivantes :</span><span class="sxs-lookup"><span data-stu-id="c7c12-106">Control assembly linking using either of the following approaches:</span></span>
 
-* <span data-ttu-id="fc4ef-107">Désactiver la liaison globalement avec une [propriété MSBuild](#disable-linking-with-a-msbuild-property).</span><span class="sxs-lookup"><span data-stu-id="fc4ef-107">Disable linking globally with a [MSBuild property](#disable-linking-with-a-msbuild-property).</span></span>
-* <span data-ttu-id="fc4ef-108">Contrôler la liaison pour chaque assembly avec un [fichier de configuration](#control-linking-with-a-configuration-file).</span><span class="sxs-lookup"><span data-stu-id="fc4ef-108">Control linking on a per-assembly basis with a [configuration file](#control-linking-with-a-configuration-file).</span></span>
+* <span data-ttu-id="c7c12-107">Désactiver la liaison globalement avec une [propriété MSBuild](#disable-linking-with-a-msbuild-property).</span><span class="sxs-lookup"><span data-stu-id="c7c12-107">Disable linking globally with a [MSBuild property](#disable-linking-with-a-msbuild-property).</span></span>
+* <span data-ttu-id="c7c12-108">Contrôler la liaison pour chaque assembly avec un [fichier de configuration](#control-linking-with-a-configuration-file).</span><span class="sxs-lookup"><span data-stu-id="c7c12-108">Control linking on a per-assembly basis with a [configuration file](#control-linking-with-a-configuration-file).</span></span>
 
-## <a name="disable-linking-with-a-msbuild-property"></a><span data-ttu-id="fc4ef-109">Désactiver la liaison avec une propriété MSBuild</span><span class="sxs-lookup"><span data-stu-id="fc4ef-109">Disable linking with a MSBuild property</span></span>
+## <a name="disable-linking-with-a-msbuild-property"></a><span data-ttu-id="c7c12-109">Désactiver la liaison avec une propriété MSBuild</span><span class="sxs-lookup"><span data-stu-id="c7c12-109">Disable linking with a MSBuild property</span></span>
 
-<span data-ttu-id="fc4ef-110">La liaison est activée par défaut lors de la génération d’une application, ce qui comprend la publication.</span><span class="sxs-lookup"><span data-stu-id="fc4ef-110">Linking is enabled by default when an app is built, which includes publishing.</span></span> <span data-ttu-id="fc4ef-111">Pour désactiver la liaison pour tous les assemblys, définissez la propriété MSBuild `BlazorLinkOnBuild` sur `false` dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="fc4ef-111">To disable linking for all assemblies, set the `BlazorLinkOnBuild` MSBuild property to `false` in the project file:</span></span>
+<span data-ttu-id="c7c12-110">La liaison est activée par défaut lors de la génération d’une application, ce qui comprend la publication.</span><span class="sxs-lookup"><span data-stu-id="c7c12-110">Linking is enabled by default when an app is built, which includes publishing.</span></span> <span data-ttu-id="c7c12-111">Pour désactiver la liaison pour tous les assemblys, définissez la propriété MSBuild `BlazorLinkOnBuild` sur `false` dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="c7c12-111">To disable linking for all assemblies, set the `BlazorLinkOnBuild` MSBuild property to `false` in the project file:</span></span>
 
 ```xml
 <PropertyGroup>
@@ -40,9 +40,9 @@ Blazor<span data-ttu-id="fc4ef-105"> effectue une liaison [il (Intermediate Lang
 </PropertyGroup>
 ```
 
-## <a name="control-linking-with-a-configuration-file"></a><span data-ttu-id="fc4ef-112">Contrôler la liaison avec un fichier de configuration</span><span class="sxs-lookup"><span data-stu-id="fc4ef-112">Control linking with a configuration file</span></span>
+## <a name="control-linking-with-a-configuration-file"></a><span data-ttu-id="c7c12-112">Contrôler la liaison avec un fichier de configuration</span><span class="sxs-lookup"><span data-stu-id="c7c12-112">Control linking with a configuration file</span></span>
 
-<span data-ttu-id="fc4ef-113">Contrôlez la liaison pour chaque assembly en fournissant un fichier de configuration XML et en spécifiant le fichier en tant qu’élément MSBuild dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="fc4ef-113">Control linking on a per-assembly basis by providing an XML configuration file and specifying the file as a MSBuild item in the project file:</span></span>
+<span data-ttu-id="c7c12-113">Contrôlez la liaison pour chaque assembly en fournissant un fichier de configuration XML et en spécifiant le fichier en tant qu’élément MSBuild dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="c7c12-113">Control linking on a per-assembly basis by providing an XML configuration file and specifying the file as a MSBuild item in the project file:</span></span>
 
 ```xml
 <ItemGroup>
@@ -50,12 +50,12 @@ Blazor<span data-ttu-id="fc4ef-105"> effectue une liaison [il (Intermediate Lang
 </ItemGroup>
 ```
 
-<span data-ttu-id="fc4ef-114">*Linker.xml* :</span><span class="sxs-lookup"><span data-stu-id="fc4ef-114">*Linker.xml*:</span></span>
+<span data-ttu-id="c7c12-114">*Linker.xml* :</span><span class="sxs-lookup"><span data-stu-id="c7c12-114">*Linker.xml*:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
-  This file specifies which parts of the BCL or Blazor packages must not be
+  This file specifies which parts of the BCL or [!OP.NO-LOC(Blazor)] packages must not be
   stripped by the IL Linker even if they aren't referenced by user code.
 -->
 <linker>
@@ -82,13 +82,13 @@ Blazor<span data-ttu-id="fc4ef-105"> effectue une liaison [il (Intermediate Lang
 </linker>
 ```
 
-<span data-ttu-id="fc4ef-115">Pour plus d’informations, consultez l' [éditeur de liens il : syntaxe du descripteur XML](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).</span><span class="sxs-lookup"><span data-stu-id="fc4ef-115">For more information, see [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).</span></span>
+<span data-ttu-id="c7c12-115">Pour plus d’informations, consultez l' [éditeur de liens il : syntaxe du descripteur XML](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).</span><span class="sxs-lookup"><span data-stu-id="c7c12-115">For more information, see [IL Linker: Syntax of xml descriptor](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).</span></span>
 
-### <a name="configure-the-linker-for-internationalization"></a><span data-ttu-id="fc4ef-116">Configurer l’éditeur de liens pour l’internationalisation</span><span class="sxs-lookup"><span data-stu-id="fc4ef-116">Configure the linker for internationalization</span></span>
+### <a name="configure-the-linker-for-internationalization"></a><span data-ttu-id="c7c12-116">Configurer l’éditeur de liens pour l’internationalisation</span><span class="sxs-lookup"><span data-stu-id="c7c12-116">Configure the linker for internationalization</span></span>
 
-<span data-ttu-id="fc4ef-117">Par défaut, la configuration de l’éditeur de liens de Blazorpour les applications webassembly Blazor supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement.</span><span class="sxs-lookup"><span data-stu-id="fc4ef-117">By default, Blazor's linker configuration for Blazor WebAssembly apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="fc4ef-118">La suppression de ces assemblys réduit la taille de l’application.</span><span class="sxs-lookup"><span data-stu-id="fc4ef-118">Removing these assemblies minimizes the app's size.</span></span>
+<span data-ttu-id="c7c12-117">Par défaut, la configuration de l’éditeur de liens de [!OP.NO-LOC(Blazor)]pour les applications webassembly [!OP.NO-LOC(Blazor)] supprime les informations d’internationalisation, à l’exception des paramètres régionaux demandés explicitement.</span><span class="sxs-lookup"><span data-stu-id="c7c12-117">By default, [!OP.NO-LOC(Blazor)]'s linker configuration for [!OP.NO-LOC(Blazor)] WebAssembly apps strips out internationalization information except for locales explicitly requested.</span></span> <span data-ttu-id="c7c12-118">La suppression de ces assemblys réduit la taille de l’application.</span><span class="sxs-lookup"><span data-stu-id="c7c12-118">Removing these assemblies minimizes the app's size.</span></span>
 
-<span data-ttu-id="fc4ef-119">Pour contrôler les assemblys I18N qui sont conservés, définissez la `<MonoLinkerI18NAssemblies>` propriété MSBuild dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="fc4ef-119">To control which I18N assemblies are retained, set the `<MonoLinkerI18NAssemblies>` MSBuild property in the project file:</span></span>
+<span data-ttu-id="c7c12-119">Pour contrôler les assemblys I18N qui sont conservés, définissez la `<MonoLinkerI18NAssemblies>` propriété MSBuild dans le fichier projet :</span><span class="sxs-lookup"><span data-stu-id="c7c12-119">To control which I18N assemblies are retained, set the `<MonoLinkerI18NAssemblies>` MSBuild property in the project file:</span></span>
 
 ```xml
 <PropertyGroup>
@@ -96,16 +96,16 @@ Blazor<span data-ttu-id="fc4ef-105"> effectue une liaison [il (Intermediate Lang
 </PropertyGroup>
 ```
 
-| <span data-ttu-id="fc4ef-120">Valeur de la région</span><span class="sxs-lookup"><span data-stu-id="fc4ef-120">Region Value</span></span>     | <span data-ttu-id="fc4ef-121">Assembly de région mono</span><span class="sxs-lookup"><span data-stu-id="fc4ef-121">Mono region assembly</span></span>    |
+| <span data-ttu-id="c7c12-120">Valeur de la région</span><span class="sxs-lookup"><span data-stu-id="c7c12-120">Region Value</span></span>     | <span data-ttu-id="c7c12-121">Assembly de région mono</span><span class="sxs-lookup"><span data-stu-id="c7c12-121">Mono region assembly</span></span>    |
 | ---------------- | ----------------------- |
-| `all`            | <span data-ttu-id="fc4ef-122">Tous les assemblys inclus</span><span class="sxs-lookup"><span data-stu-id="fc4ef-122">All assemblies included</span></span> |
-| `cjk`            | <span data-ttu-id="fc4ef-123">*I18n. CJK. dll*</span><span class="sxs-lookup"><span data-stu-id="fc4ef-123">*I18N.CJK.dll*</span></span>          |
-| `mideast`        | <span data-ttu-id="fc4ef-124">*I18n. MidEast. dll*</span><span class="sxs-lookup"><span data-stu-id="fc4ef-124">*I18N.MidEast.dll*</span></span>      |
-| <span data-ttu-id="fc4ef-125">`none` (par défaut)</span><span class="sxs-lookup"><span data-stu-id="fc4ef-125">`none` (default)</span></span> | <span data-ttu-id="fc4ef-126">Aucun</span><span class="sxs-lookup"><span data-stu-id="fc4ef-126">None</span></span>                    |
-| `other`          | <span data-ttu-id="fc4ef-127">*I18n. Other. dll*</span><span class="sxs-lookup"><span data-stu-id="fc4ef-127">*I18N.Other.dll*</span></span>        |
-| `rare`           | <span data-ttu-id="fc4ef-128">*I18n. Rare. dll*</span><span class="sxs-lookup"><span data-stu-id="fc4ef-128">*I18N.Rare.dll*</span></span>         |
-| `west`           | <span data-ttu-id="fc4ef-129">*I18n. West. dll*</span><span class="sxs-lookup"><span data-stu-id="fc4ef-129">*I18N.West.dll*</span></span>         |
+| `all`            | <span data-ttu-id="c7c12-122">Tous les assemblys inclus</span><span class="sxs-lookup"><span data-stu-id="c7c12-122">All assemblies included</span></span> |
+| `cjk`            | <span data-ttu-id="c7c12-123">*I18n. CJK. dll*</span><span class="sxs-lookup"><span data-stu-id="c7c12-123">*I18N.CJK.dll*</span></span>          |
+| `mideast`        | <span data-ttu-id="c7c12-124">*I18n. MidEast. dll*</span><span class="sxs-lookup"><span data-stu-id="c7c12-124">*I18N.MidEast.dll*</span></span>      |
+| <span data-ttu-id="c7c12-125">`none` (par défaut)</span><span class="sxs-lookup"><span data-stu-id="c7c12-125">`none` (default)</span></span> | <span data-ttu-id="c7c12-126">None</span><span class="sxs-lookup"><span data-stu-id="c7c12-126">None</span></span>                    |
+| `other`          | <span data-ttu-id="c7c12-127">*I18n. Other. dll*</span><span class="sxs-lookup"><span data-stu-id="c7c12-127">*I18N.Other.dll*</span></span>        |
+| `rare`           | <span data-ttu-id="c7c12-128">*I18n. Rare. dll*</span><span class="sxs-lookup"><span data-stu-id="c7c12-128">*I18N.Rare.dll*</span></span>         |
+| `west`           | <span data-ttu-id="c7c12-129">*I18n. West. dll*</span><span class="sxs-lookup"><span data-stu-id="c7c12-129">*I18N.West.dll*</span></span>         |
 
-<span data-ttu-id="fc4ef-130">Utilisez une virgule pour séparer plusieurs valeurs (par exemple, `mideast,west`).</span><span class="sxs-lookup"><span data-stu-id="fc4ef-130">Use a comma to separate multiple values (for example, `mideast,west`).</span></span>
+<span data-ttu-id="c7c12-130">Utilisez une virgule pour séparer plusieurs valeurs (par exemple, `mideast,west`).</span><span class="sxs-lookup"><span data-stu-id="c7c12-130">Use a comma to separate multiple values (for example, `mideast,west`).</span></span>
 
-<span data-ttu-id="fc4ef-131">Pour plus d’informations, consultez [i18n : Pnetlib internationalisation Framework Library (référentiel mono/mono GitHub)](https://github.com/mono/mono/tree/master/mcs/class/I18N).</span><span class="sxs-lookup"><span data-stu-id="fc4ef-131">For more information, see [I18N: Pnetlib Internationalization Framework Library (mono/mono GitHub repository)](https://github.com/mono/mono/tree/master/mcs/class/I18N).</span></span>
+<span data-ttu-id="c7c12-131">Pour plus d’informations, consultez [i18n : Pnetlib internationalisation Framework Library (référentiel mono/mono GitHub)](https://github.com/mono/mono/tree/master/mcs/class/I18N).</span><span class="sxs-lookup"><span data-stu-id="c7c12-131">For more information, see [I18N: Pnetlib Internationalization Framework Library (mono/mono GitHub repository)](https://github.com/mono/mono/tree/master/mcs/class/I18N).</span></span>
