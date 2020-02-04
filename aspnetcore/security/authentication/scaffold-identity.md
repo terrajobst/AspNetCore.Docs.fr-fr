@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2020
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: a0e9603cbca8c7f5771b0acf1a60839dffc89d4e
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: b3e077aeac11e62d9e992884100476f7be35b59a
+ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146483"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76972043"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Identité de l’échafaudage dans les projets ASP.NET Core
 
@@ -83,7 +83,7 @@ L’identité est configurée dans *Areas/Identity/IdentityHostingStartup. cs*. 
 
 <a name="useauthentication"></a>
 
-### <a name="enable-authentication"></a>Activez l’authentification
+### <a name="enable-authentication"></a>Activer l’authentification
 
 Mettez à jour la classe `Startup` avec un code similaire à ce qui suit :
 
@@ -325,7 +325,7 @@ L’identité est configurée dans *Areas/Identity/IdentityHostingStartup. cs*. 
 
 <a name="useauthentication"></a>
 
-### <a name="enable-authentication"></a>Activez l’authentification
+### <a name="enable-authentication"></a>Activer l’authentification
 
 Dans la méthode `Configure` de la classe `Startup`, appelez [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_) après `UseStaticFiles`:
 
