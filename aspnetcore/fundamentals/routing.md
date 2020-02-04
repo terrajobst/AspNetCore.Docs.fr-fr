@@ -38,7 +38,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -220,7 +220,7 @@ Il existe quelques différences entre le routage des points de terminaison et le
 
   La syntaxe de paramètre passe-partout avec un seul astérisque dans les versions antérieures d’ASP.NET Core (`{*myparametername}`) reste prise en charge, et les barres obliques sont encodées.
 
-  | Route              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
+  | Routage              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
   | ------------------ | --------------------------------------------------------------------- |
   | `/search/{*page}`  | `/search/admin%2Fproducts` (la barre oblique est encodée)             |
   | `/search/{**page}` | `/search/admin/products`                                              |
@@ -252,7 +252,7 @@ public class ProductsLinkMiddleware
 }
 ```
 
-### <a name="create-routes"></a>Créer des routes
+### <a name="create-routes"></a>Créer des itinéraires
 
 La plupart des applications créent des routes en appelant <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> ou l’une des méthodes d’extension similaires définies sur <xref:Microsoft.AspNetCore.Routing.IRouteBuilder>. Toutes les méthodes d’extension de <xref:Microsoft.AspNetCore.Routing.IRouteBuilder> créent une instance de <xref:Microsoft.AspNetCore.Routing.Route> et l’ajoutent à la collection de routes.
 
@@ -372,7 +372,7 @@ Les routes doivent être configurées dans la méthode `Startup.Configure`. L’
 
 Le tableau suivant montre les réponses avec les URI donnés.
 
-| URI                    | Réponse                                          |
+| URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
 | `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
 | `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
@@ -457,7 +457,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Remarques |
+| contrainte | Exemple | Exemples de correspondances | Notes |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -492,7 +492,7 @@ public User GetUserById(int id) { }
 
 Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez <xref:System.Text.RegularExpressions.RegexOptions>.
 
-Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d{3}-\d{2}-\d{4}$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d`\\`-\d`\`-\d`\`$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
 
 | Expression régulière    | Expression régulière en échappement     |
 | --------------------- | ------------------------------ |
@@ -501,7 +501,7 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Les expressions régulières utilisées dans le routage commencent souvent par un caret (`^`) et correspondent à la position de début de la chaîne. Les expressions se terminent souvent par le signe dollar (`$`) de caractère et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | Chaîne    | Faire correspondre à | Commentaire               |
+| Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -580,13 +580,13 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
+Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 
 Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. Les valeurs ambiantes sont également ignorées quand une valeur explicitement fournie remplace la valeur ambiante. La mise en correspondance se produit de gauche à droite dans l’URL.
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -722,7 +722,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -881,7 +881,7 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 
   La syntaxe de paramètre passe-partout avec un seul astérisque dans les versions antérieures d’ASP.NET Core (`{*myparametername}`) reste prise en charge, et les barres obliques sont encodées.
 
-  | Route              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
+  | Routage              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
   | ------------------ | --------------------------------------------------------------------- |
   | `/search/{*page}`  | `/search/admin%2Fproducts` (la barre oblique est encodée)             |
   | `/search/{**page}` | `/search/admin/products`                                              |
@@ -913,7 +913,7 @@ public class ProductsLinkMiddleware
 }
 ```
 
-### <a name="create-routes"></a>Créer des routes
+### <a name="create-routes"></a>Créer des itinéraires
 
 La plupart des applications créent des routes en appelant <xref:Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute*> ou l’une des méthodes d’extension similaires définies sur <xref:Microsoft.AspNetCore.Routing.IRouteBuilder>. Toutes les méthodes d’extension de <xref:Microsoft.AspNetCore.Routing.IRouteBuilder> créent une instance de <xref:Microsoft.AspNetCore.Routing.Route> et l’ajoutent à la collection de routes.
 
@@ -1033,7 +1033,7 @@ Les routes doivent être configurées dans la méthode `Startup.Configure`. L’
 
 Le tableau suivant montre les réponses avec les URI donnés.
 
-| URI                    | Réponse                                          |
+| URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
 | `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
 | `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
@@ -1118,7 +1118,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Remarques |
+| contrainte | Exemple | Exemples de correspondances | Notes |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -1153,7 +1153,7 @@ public User GetUserById(int id) { }
 
 Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez <xref:System.Text.RegularExpressions.RegexOptions>.
 
-Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d{3}-\d{2}-\d{4}$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d`\\`-\d`\`-\d`\`$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
 
 | Expression régulière    | Expression régulière en échappement     |
 | --------------------- | ------------------------------ |
@@ -1162,7 +1162,7 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Les expressions régulières utilisées dans le routage commencent souvent par un caret (`^`) et correspondent à la position de début de la chaîne. Les expressions se terminent souvent par le signe dollar (`$`) de caractère et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | Chaîne    | Faire correspondre à | Commentaire               |
+| Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -1241,13 +1241,13 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
+Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 
 Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. Les valeurs ambiantes sont également ignorées quand une valeur explicitement fournie remplace la valeur ambiante. La mise en correspondance se produit de gauche à droite dans l’URL.
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -1298,7 +1298,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -1342,7 +1342,7 @@ Une correspondance qui appelle <xref:Microsoft.AspNetCore.Routing.IRouter.RouteA
 
 La génération d’URL est le processus par lequel le routage peut créer un chemin d’URL basé sur un ensemble de valeurs de route. Ceci permet une séparation logique entre les gestionnaires de routes et les URL qui y accèdent.
 
-La génération d’URL suit un processus itératif similaire, mais elle commence par un appel du code utilisateur ou de framework à la méthode <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> de la collection de routes. La méthode <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> de chaque *route* est appelée en séquence jusqu’à ce qu’un <xref:Microsoft.AspNetCore.Routing.VirtualPathData> non null soit retourné.
+La génération d’URL suit un processus itératif similaire, mais elle commence par un appel du code utilisateur ou de framework à la méthode <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> de la collection de routes. La méthode *de chaque*route<xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> est appelée en séquence jusqu’à ce qu’un <xref:Microsoft.AspNetCore.Routing.VirtualPathData> non null soit retourné.
 
 Les entrées principales dans <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> sont les suivantes :
 
@@ -1363,7 +1363,7 @@ La propriété [VirtualPathData.VirtualPath](xref:Microsoft.AspNetCore.Routing.V
 
 La propriété [VirtualPathData.DataTokens](xref:Microsoft.AspNetCore.Routing.VirtualPathData.DataTokens*) est un dictionnaire de données supplémentaires relatives à la route qui a généré l’URL. Il s’agit de l’équivalent de [RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*).
 
-### <a name="create-routes"></a>Créer des routes
+### <a name="create-routes"></a>Créer des itinéraires
 
 Le routage fournit la classe <xref:Microsoft.AspNetCore.Routing.Route> comme implémentation standard d’<xref:Microsoft.AspNetCore.Routing.IRouter>. <xref:Microsoft.AspNetCore.Routing.Route> utilise la syntaxe des *modèles de routage* pour définir des modèles à mettre en correspondance avec le chemin d’URL quand <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> est appelé. <xref:Microsoft.AspNetCore.Routing.Route> utilise le même modèle de routage pour générer une URL quand <xref:Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath*> est appelé.
 
@@ -1485,7 +1485,7 @@ Les routes doivent être configurées dans la méthode `Startup.Configure`. L’
 
 Le tableau suivant montre les réponses avec les URI donnés.
 
-| URI                    | Réponse                                          |
+| URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
 | `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
 | `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
@@ -1572,7 +1572,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Remarques |
+| contrainte | Exemple | Exemples de correspondances | Notes |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -1607,7 +1607,7 @@ public User GetUserById(int id) { }
 
 Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez <xref:System.Text.RegularExpressions.RegexOptions>.
 
-Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d{3}-\d{2}-\d{4}$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que l’expression régulière `^\d`\\`-\d`\`-\d`\`$` puisse être utilisée dans le routage, il faut que les caractères `\` (une seule barre oblique inverse) soit fournis dans la chaîne sous la forme `\\` (double barre oblique inverse) dans le fichier source C#, pour placer en échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string)). Pour placer en échappement les caractères de délimiteur de paramètre de route (`{`, `}`, `[`, `]`), doublez les caractères dans l’expression (`{{`, `}`, `[[`, `]]`). Le tableau suivant montre une expression régulière et la version placée en échappement.
 
 | Expression régulière    | Expression régulière en échappement     |
 | --------------------- | ------------------------------ |
@@ -1616,7 +1616,7 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Les expressions régulières utilisées dans le routage commencent souvent par un caret (`^`) et correspondent à la position de début de la chaîne. Les expressions se terminent souvent par le signe dollar (`$`) de caractère et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | Chaîne    | Faire correspondre à | Commentaire               |
+| Expression   | String    | Correspond | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -1657,13 +1657,13 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
-Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
+Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 
 Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. Les valeurs ambiantes sont également ignorées quand une valeur explicitement fournie remplace la valeur ambiante. La mise en correspondance se produit de gauche à droite dans l’URL.
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |

@@ -17,11 +17,11 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76726883"
 ---
-# <a name="aspnet-core-opno-locblazor-forms-and-validation"></a>ASP.NET Core Blazor Forms et validation
+# <a name="aspnet-core-opno-locblazor-forms-and-validation"></a>ASP.NET Core [!OP.NO-LOC(Blazor)] Forms et validation
 
 Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
 
-Les formulaires et la validation sont pris en charge dans Blazor à l’aide d' [Annotations de données](xref:mvc/models/validation).
+Les formulaires et la validation sont pris en charge dans [!OP.NO-LOC(Blazor)] à l’aide d' [Annotations de données](xref:mvc/models/validation).
 
 Le type de `ExampleModel` suivant définit la logique de validation à l’aide d’annotations de données :
 
@@ -258,7 +258,7 @@ Créez un composant avec le balisage suivant et utilisez le composant tout comme
 
 ## <a name="work-with-radio-buttons"></a>Utiliser des cases d’option
 
-Lorsque vous utilisez des cases d’option dans un formulaire, la liaison de données est gérée différemment des autres éléments, car les cases d’option sont évaluées en tant que groupe. La valeur de chaque case d’option est fixe, mais la valeur du groupe de cases d’option est la valeur de la case d’option sélectionnée. L’exemple suivant montre comment :
+Lorsque vous utilisez des cases d’option dans un formulaire, la liaison de données est gérée différemment des autres éléments, car les cases d’option sont évaluées en tant que groupe. La valeur de chaque case d’option est fixe, mais la valeur du groupe de cases d’option est la valeur de la case d’option sélectionnée. L’exemple suivant montre comment :
 
 * Gérer la liaison de données pour un groupe de cases d’option.
 * Prendre en charge la validation à l’aide d’un composant `InputRadio` personnalisé.
@@ -398,11 +398,11 @@ private class MyCustomValidator : ValidationAttribute
 
 ### <a name="opno-locblazor-data-annotations-validation-package"></a>Blazor package de validation des annotations de données
 
-[Microsoft. AspNetCore.Blazor. DataAnnotations. validation](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation) est un package qui comble les lacunes de l’expérience de validation à l’aide du composant `DataAnnotationsValidator`. Le package est actuellement *expérimental*.
+[Microsoft.AspNetCore.Blazor.DataAnnotations.validation](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation) est un package qui comble les lacunes de l’expérience de validation à l’aide du composant `DataAnnotationsValidator`. Le package est actuellement *expérimental*.
 
 ### <a name="compareproperty-attribute"></a>Attribut [CompareProperty]
 
-Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le composant `DataAnnotationsValidator`, car il n’associe pas le résultat de la validation à un membre spécifique. Cela peut entraîner un comportement incohérent entre la validation au niveau du champ et le moment où la totalité du modèle est validée sur une soumission. [Microsoft. AspNetCore.Blazor. ](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)Le package *expérimental* DataAnnotations. validation introduit un attribut de validation supplémentaire, `ComparePropertyAttribute`, qui contourne ces limitations. Dans une application Blazor, `[CompareProperty]` est un remplacement direct de l’attribut `[Compare]`.
+Le <xref:System.ComponentModel.DataAnnotations.CompareAttribute> ne fonctionne pas correctement avec le composant `DataAnnotationsValidator`, car il n’associe pas le résultat de la validation à un membre spécifique. Cela peut entraîner un comportement incohérent entre la validation au niveau du champ et le moment où la totalité du modèle est validée sur une soumission. [Microsoft.AspNetCore.Blazor.](https://www.nuget.org/packages/Microsoft.AspNetCore.Blazor.DataAnnotations.Validation)Le package *expérimental* DataAnnotations.validation introduit un attribut de validation supplémentaire, `ComparePropertyAttribute`, qui contourne ces limitations. Dans une application Blazor, `[CompareProperty]` est un remplacement direct de l’attribut `[Compare]`.
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>Modèles imbriqués, types de collection et types complexes
 
