@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 02/06/2020
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: d4b540de50f4153f517f871f037521347fb5eb84
-ms.sourcegitcommit: 990a4c2e623c202a27f60bdf3902f250359c13be
+ms.openlocfilehash: 71f7bf3f5dcf8068d0ada03675ef7948267b79f4
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76972003"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044892"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -22,7 +22,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Kit de développement logiciel (SDK) ASP.NET Core 2.1 ou plus](https://dotnet.microsoft.com/download)
 * [PowerShell version 6.2 ou ultérieure](https://github.com/PowerShell/PowerShell)
@@ -40,7 +40,7 @@ Le modèle Service Worker ASP.NET Core fournit un point de départ pour l’écr
 
 ::: moniker-end
 
-## <a name="app-configuration"></a>Configuration de l’application
+## <a name="app-configuration"></a>la configuration d’une application ;
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -50,8 +50,10 @@ L’application requiert une référence de package pour [Microsoft. extensions.
 
 * définit la durée de vie de l’hôte sur `WindowsServiceLifetime` ;
 * Affecte à la [racine du contenu](xref:fundamentals/index#content-root) la valeur [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory). Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
-* Permet la journalisation dans le journal d’événements en utilisant le nom d’application en tant que nom de source par défaut.
-  * Vous pouvez configurer le niveau de journalisation à l’aide de la clé `Logging:LogLevel:Default` dans le fichier *appsettings.Production.json*.
+* Active la journalisation dans le journal des événements :
+  * Le nom de l’application est utilisé comme nom de source par défaut.
+  * Le niveau de journalisation par défaut est *Avertissement* ou supérieur pour une application basée sur un modèle de ASP.net core qui appelle `CreateDefaultBuilder` pour créer l’hôte.
+  * Remplacez le niveau de journalisation par défaut par la clé de `Logging:EventLog:LogLevel:Default` dans *appSettings. json*/*appSettings. { Environment}. JSON* ou un autre fournisseur de configuration.
   * Seuls les administrateurs peuvent créer des sources d’événement. Si une source d’événement ne peut pas être créée en utilisant le nom de l’application, un avertissement est consigné dans la source *Application* source et les journaux d’événements sont désactivés.
 
 Dans `CreateHostBuilder` de *Program.cs*:
@@ -94,7 +96,7 @@ Dans l’exemple suivant, qui provient de l’exemple d’application, l’élé
 
 Pour des informations et des conseils sur les scénarios de déploiement, consultez [Déploiement d’applications .NET Core](/dotnet/core/deploying/).
 
-### <a name="sdk"></a>Kit de développement logiciel
+### <a name="sdk"></a>Kit SDK
 
 Pour un service basé sur une application Web qui utilise le Razor Pages ou les frameworks MVC, spécifiez le kit de développement logiciel (SDK) Web dans le fichier projet :
 
@@ -316,9 +318,9 @@ Pour gérer les événements <xref:Microsoft.AspNetCore.Hosting.WindowsServices.
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Les services qui interagissent avec les requêtes provenant d’Internet ou d’un réseau d’entreprise et qui se trouvent derrière un proxy ou équilibreur de charge peuvent nécessiter une configuration supplémentaire. Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
-## <a name="configure-endpoints"></a>Configurer des points de terminaison
+## <a name="configure-endpoints"></a>Configuration des points de terminaison
 
 Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Configurez l’URL et le port en définissant la variable d’environnement `ASPNETCORE_URLS`.
 
@@ -378,7 +380,7 @@ CreateWebHostBuilder(args)
 
 Spécifiez un chemin absolu avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>, si vous utilisez <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder>, vers le dossier contenant les fichiers.
 
-## <a name="troubleshoot"></a>Dépannage
+## <a name="troubleshoot"></a>Dépanner
 
 Pour dépanner une application de service Windows, consultez <xref:test/troubleshoot>.
 

@@ -5,14 +5,14 @@ description: Découvrez comment configurer Apache comme serveur proxy inverse su
 monikerRange: '>= aspnetcore-2.1'
 ms.author: shboyer
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 02/05/2020
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 028f5112188e2b74f4f01409e25268aecdc761c0
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: f522c54fdc584845f18040bae1b2a2bda36d28fa
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146288"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044837"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -20,7 +20,7 @@ Par [Shayne Boyer](https://github.com/spboyer)
 
 À l’aide de ce guide, découvrez comment configurer [Apache](https://httpd.apache.org/) comme serveur proxy inverse sur [CentOS 7](https://www.centos.org/) pour rediriger le trafic HTTP vers une application web ASP.NET Core s’exécutant sur un serveur [Kestrel](xref:fundamentals/servers/kestrel). [L’extension mod_proxy](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html) et les modules associés créent le proxy inverse du serveur.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * Serveur exécutant CentOS 7 avec un compte d’utilisateur standard disposant du privilège sudo.
 * Installez le runtime .NET Core sur le serveur.
@@ -67,6 +67,8 @@ Tout composant qui dépend du schéma, tel que l’authentification, la généra
 Appelez la méthode <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> dans `Startup.Configure` avant d’appeler <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> ou un intergiciel de schéma d’authentification similaire. Configurez le middleware pour transférer les en-têtes `X-Forwarded-For` et `X-Forwarded-Proto` :
 
 ```csharp
+// using Microsoft.AspNetCore.HttpOverrides;
+
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
@@ -80,13 +82,15 @@ Si aucune option <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> n�
 Les serveurs proxy exécutés sur les adresses de bouclage (127.0.0.0/8, [ :: 1]), notamment l’adresse localhost standard (127.0.0.1), sont approuvés par défaut. Si d’autres proxys ou réseaux approuvés au sein de l’organisation gèrent les requêtes entre Internet et le serveur web, ajoutez-les à la liste des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> ou des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> avec <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. L’exemple suivant ajoute un serveur proxy approuvé avec l’adresse IP 10.0.0.100 au middleware des en-têtes transférés `KnownProxies` dans `Startup.ConfigureServices` :
 
 ```csharp
+// using System.Net;
+
 services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
 });
 ```
 
-Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
+Pour plus d’informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-apache"></a>Installer Apache
 
@@ -250,7 +254,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 ```
 
-### <a name="view-logs"></a>Afficher les journaux
+### <a name="view-logs"></a>Afficher les journaux d’activité
 
 Puisque l’application web utilisant Kestrel est gérée à l’aide de *systemd*, les processus et les événements sont enregistrés dans un journal centralisé. Cependant, ce journal comprend les entrées de tous les services et processus gérés par *systemd*. Pour afficher les éléments propres à `kestrel-helloapp.service`, utilisez la commande suivante :
 
@@ -264,7 +268,7 @@ Pour le filtrage du temps, spécifiez les options appropriées dans la commande.
 sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-10-18 04:00"
 ```
 
-## <a name="data-protection"></a>Protection des données
+## <a name="data-protection"></a>Protection de données
 
 La [pile de protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisée par plusieurs [intergiciels (middleware)](xref:fundamentals/middleware/index) ASP.NET Core, notamment le middleware d’authentification (par exemple, le middleware cookie) et les protections de la falsification de requête intersites (CSRF, Cross Site Request Forgery). Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
 
@@ -388,7 +392,7 @@ sudo systemctl restart httpd
 
 Après la mise à niveau de l’infrastructure partagée sur le serveur, redémarrez le ASP.NET Core les applications hébergées par le serveur.
 
-### <a name="additional-headers"></a>En-têtes facultatifs
+### <a name="additional-headers"></a>En-têtes supplémentaires
 
 Afin d’assurer une protection contre les attaques malveillantes, vous devez modifier ou ajouter quelques en-têtes. Vérifiez que le module `mod_headers` est installé :
 
@@ -409,7 +413,7 @@ Pour atténuer les attaques par détournement de clic :
    ```
 
    Ajoutez la ligne `Header append X-FRAME-OPTIONS "SAMEORIGIN"`.
-1. Enregistrez le fichier.
+1. Enregistrez le fichier .
 1. Redémarrez Apache.
 
 #### <a name="mime-type-sniffing"></a>Détection de type MIME
@@ -422,9 +426,9 @@ Modifiez le fichier *httpd.conf* :
 sudo nano /etc/httpd/conf/httpd.conf
 ```
 
-Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier. Redémarrez Apache.
+Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le fichier . Redémarrez Apache.
 
-### <a name="load-balancing"></a>Équilibrage de charge
+### <a name="load-balancing"></a>Équilibrage de la charge.
 
 Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestrel sur la même machine de l’instance. Afin de multiplier les instances en cas de défaillance, l’utilisation de *mod_proxy_balancer* et la modification du **VirtualHost** permettent de gérer plusieurs instances des applications web derrière le serveur proxy Apache.
 

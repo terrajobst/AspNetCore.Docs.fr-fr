@@ -5,14 +5,14 @@ description: Découvrez comment démarrer avec le modèle de projet d’applicat
 monikerRange: '>= aspnetcore-2.1'
 ms.author: stevesa
 ms.custom: mvc
-ms.date: 03/07/2019
+ms.date: 02/06/2020
 uid: spa/angular
-ms.openlocfilehash: 150b2176eac2e68c1ef9ec6deabb087836ff84ce
-ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
+ms.openlocfilehash: 11ad5d4c7cadcc582b3e288a331569f62f0b98ac
+ms.sourcegitcommit: bd896935e91236e03241f75e6534ad6debcecbbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77004264"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77044854"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Utiliser le modèle de projet Angular avec ASP.NET Core
 
@@ -33,7 +33,7 @@ cd my-new-app
 
 Exécutez l’application à partir de Visual Studio ou de CLI .NET Core :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
 Ouvrez le fichier *.csproj* généré, puis exécutez l’application normalement à partir de là.
 
@@ -61,7 +61,7 @@ Le modèle de projet crée une application ASP.NET Core et une application Angul
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Ajouter des pages, des images, des styles, des modules, etc.
 
-Le répertoire *ClientApp* contient une application CLI Angular standard. Pour plus d’informations, consultez la [documentation Angular](https://https://angular.io) officielle.
+Le répertoire *ClientApp* contient une application CLI Angular standard. Pour plus d’informations, consultez la [documentation Angular](https://angular.io) officielle.
 
 Il existe de légères différences entre l’application Angular créée par ce modèle et celle créée par la CLI Angular (via `ng new`) ; toutefois, les fonctionnalités de l’application sont identiques. L’application créée par le modèle contient une mise en page basée sur [Bootstrap](https://getbootstrap.com/) et un exemple de routage de base.
 
@@ -77,7 +77,7 @@ Si l’outil `ng` est installé de manière globale, vous pouvez exécuter n’i
 
 Si l’outil `ng` n’est pas installé, exécutez `npm run ng` à la place. Par exemple, vous pouvez exécuter `npm run ng lint` ou `npm run ng test`.
 
-## <a name="install-npm-packages"></a>Installer des packages npm
+## <a name="install-npm-packages"></a>Installer les packages npm
 
 Pour installer des packages npm tiers, utilisez une invite de commandes dans le sous-répertoire *ClientApp*. Par exemple :
 
