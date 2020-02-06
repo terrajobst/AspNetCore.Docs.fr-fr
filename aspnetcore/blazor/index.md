@@ -5,17 +5,17 @@ description: Explorez ASP.NET Core Blazor, un moyen de créer une interface util
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc, seoapril2019
-ms.date: 12/18/2019
+ms.date: 01/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 9f43735fc02ba9f8da4ba27c8b5763d587b5429a
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 02c95c19ebfb5ea6ad722f9d49f4cddc7471f8e1
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159922"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034078"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Présentation de ASP.NET Core Blazor
 
@@ -38,7 +38,7 @@ L’utilisation de .NET dans le développement web côté client offre les avant
 * Restez productif grâce à Visual Studio sur Windows, Linux et macOS.
 * Développez avec un ensemble commun de langages, de frameworks et d’outils stables, riches en fonctionnalités et faciles à utiliser.
 
-## <a name="components"></a>Composants
+## <a name="components"></a>Components
 
 les applications Blazor sont basées sur des *composants*. Un composant de Blazor est un élément de l’interface utilisateur, tel qu’une page, une boîte de dialogue ou un formulaire de saisie de données.
 
@@ -138,9 +138,9 @@ La connexion utilisée par Blazor serveur pour communiquer avec le navigateur es
 
 ![[! Opérationnel. NO-LOC (éblouissant)] le serveur exécute le code .NET sur le serveur et interagit avec le Document Object Model sur le client via un [ ! Opérationnel. Connexion NO-LOC (Signalr)]](index/_static/blazor-server.png)
 
-## <a name="javascript-interop"></a>Interopérabilité JavaScript
+## <a name="javascript-interop"></a>Interopérabilité de JavaScript
 
-Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
+Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d’informations, consultez <xref:blazor/javascript-interop>.
 
 ## <a name="code-sharing-and-net-standard"></a>Partage de code et .NET Standard
 
@@ -152,6 +152,7 @@ Les API qui ne sont pas applicables à l’intérieur d’un navigateur web (par
 
 * [WebAssembly](https://webassembly.org/)
 * <xref:blazor/hosting-models>
+* <xref:tutorials/signalr-blazor-webassembly>
 * [Guide C#](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)

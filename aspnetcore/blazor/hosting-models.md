@@ -5,17 +5,17 @@ description: Découvrez les modèles d’hébergement Blazor webassembly et Blaz
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 01/31/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 145f385fd6c5d04510a4ac15a41b879591ab5caa
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.openlocfilehash: 7b4d4aca0bc4650c31bc8e5c4a84ecbad6a49b09
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885530"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034083"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core les modèles d’hébergement éblouissants
 
@@ -35,7 +35,7 @@ Le modèle d’hébergement principal pour éblouissant s’exécute côté clie
 
 Pour créer une application éblouissant à l’aide du modèle d’hébergement côté client, utilisez le modèle d' **application éblouissante Webassembly** ([dotnet New blazorwasm](/dotnet/core/tools/dotnet-new)).
 
-Après avoir sélectionné le modèle **application éblouissant Webassembly** , vous avez la possibilité de configurer l’application pour utiliser un serveur principal ASP.net core en activant la case à cocher **ASP.net Core hébergée** ([dotnet New blazorwasm--Hosted](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core sert l’application éblouissant aux clients. L’application éblouissant webassembly peut interagir avec le serveur sur le réseau à l’aide d’appels d’API Web ou [signalr](xref:signalr/introduction).
+Après avoir sélectionné le modèle **application éblouissant Webassembly** , vous avez la possibilité de configurer l’application pour utiliser un serveur principal ASP.net core en activant la case à cocher **ASP.net Core hébergée** ([dotnet New blazorwasm--Hosted](/dotnet/core/tools/dotnet-new)). L’application ASP.NET Core sert l’application éblouissant aux clients. L’application éblouissant webassembly peut interagir avec le serveur sur le réseau à l’aide d’appels d’API Web ou [signalr](xref:signalr/introduction) (<xref:tutorials/signalr-blazor-webassembly>).
 
 Les modèles incluent le `blazor.webassembly.js` script qui gère :
 
@@ -222,7 +222,7 @@ Pour prendre en charge les composants Razor routables dans les applications Razo
    ...
    ```
 
-   Lorsque vous utilisez un dossier personnalisé pour stocker les composants de l’application, ajoutez l’espace de noms représentant le dossier au fichier *pages/_ViewImports. cshtml* . Pour plus d'informations, consultez <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>.
+   Lorsque vous utilisez un dossier personnalisé pour stocker les composants de l’application, ajoutez l’espace de noms représentant le dossier au fichier *pages/_ViewImports. cshtml* . Pour plus d’informations, consultez <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>.
 
 #### <a name="use-routable-components-in-an-mvc-app"></a>Utiliser des composants routables dans une application MVC
 
@@ -290,9 +290,9 @@ Pour prendre en charge les composants Razor routables dans les applications MVC�
    ...
    ```
 
-   Lorsque vous utilisez un dossier personnalisé pour stocker les composants de l’application, ajoutez l’espace de noms représentant le dossier au fichier *views/_ViewImports. cshtml* . Pour plus d'informations, consultez <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>.
+   Lorsque vous utilisez un dossier personnalisé pour stocker les composants de l’application, ajoutez l’espace de noms représentant le dossier au fichier *views/_ViewImports. cshtml* . Pour plus d’informations, consultez <xref:blazor/components#integrate-components-into-razor-pages-and-mvc-apps>.
 
-### <a name="circuits"></a>Électriques
+### <a name="circuits"></a>Circuits
 
 Une application de serveur éblouissant est basée sur [ASP.net Core signalr](xref:signalr/introduction). Chaque client communique avec le serveur sur une ou plusieurs connexions Signalr nommé *circuit*. Un circuit est l’abstraction de l’éblouissant sur les connexions Signalr qui peuvent tolérer des interruptions réseau temporaires. Lorsqu’un client éblouissant voit que la connexion Signalr est déconnectée, il tente de se reconnecter au serveur à l’aide d’une nouvelle connexion Signalr.
 
@@ -306,7 +306,7 @@ La latence de l’interface utilisateur est le temps qu’il faut après une act
 
 Pour une application métier limitée à un réseau d’entreprise privé, l’effet sur les perceptions des utilisateurs de la latence en raison de la latence du réseau est généralement inperceptible. Pour une application déployée sur Internet, la latence peut devenir perceptible pour les utilisateurs, en particulier si les utilisateurs sont largement répartis géographiquement.
 
-L’utilisation de la mémoire peut également contribuer à la latence de l’application. L’augmentation de l’utilisation de la mémoire permet de garbage collection fréquentes ou la pagination de la mémoire sur le disque, qui dégradent les performances des applications et augmentent la latence de l’interface utilisateur. Pour plus d'informations, consultez <xref:security/blazor/server>.
+L’utilisation de la mémoire peut également contribuer à la latence de l’application. L’augmentation de l’utilisation de la mémoire permet de garbage collection fréquentes ou la pagination de la mémoire sur le disque, qui dégradent les performances des applications et augmentent la latence de l’interface utilisateur. Pour plus d’informations, consultez <xref:security/blazor/server>.
 
 Les applications de serveur éblouissantes doivent être optimisées pour réduire la latence de l’interface utilisateur en réduisant la latence du réseau et l’utilisation de la mémoire. Pour une approche de la mesure de la latence du réseau, consultez <xref:host-and-deploy/blazor/server#measure-network-latency>. Pour plus d’informations sur Signalr et éblouissant, consultez :
 
@@ -321,7 +321,7 @@ Les applications serveur éblouissantes nécessitent une connexion active Signal
 
 Une application serveur éblouissant est prérendue en réponse à la première demande du client, qui configure l’état de l’interface utilisateur sur le serveur. Lorsque le client tente de créer une connexion Signalr, le client doit se reconnecter au même serveur. Les applications de serveur éblouissantes qui utilisent plusieurs serveurs principaux doivent implémenter des *sessions rémanentes* pour les connexions signalr.
 
-Nous vous recommandons d’utiliser le [service Azure signalr](/azure/azure-signalr) pour les applications serveur éblouissantes. Le service permet de mettre à l’échelle une application de serveur éblouissant sur un grand nombre de connexions Signalr simultanées. Les sessions rémanentes sont activées pour le service Signalr Azure en définissant l’option de `ServerStickyMode` ou la valeur de configuration du service sur `Required`. Pour plus d'informations, consultez <xref:host-and-deploy/blazor/server#signalr-configuration>.
+Nous vous recommandons d’utiliser le [service Azure signalr](/azure/azure-signalr) pour les applications serveur éblouissantes. Le service permet de mettre à l’échelle une application de serveur éblouissant sur un grand nombre de connexions Signalr simultanées. Les sessions rémanentes sont activées pour le service Signalr Azure en définissant l’option de `ServerStickyMode` ou la valeur de configuration du service sur `Required`. Pour plus d’informations, consultez <xref:host-and-deploy/blazor/server#signalr-configuration>.
 
 Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec Application Request Routing. Pour plus d’informations, consultez [équilibrage de charge http à l’aide de application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 
@@ -504,3 +504,4 @@ Pour configurer le client SignalR dans le fichier *pages/_Host. cshtml* :
 
 * <xref:blazor/get-started>
 * <xref:signalr/introduction>
+* <xref:tutorials/signalr-blazor-webassembly>
