@@ -5,14 +5,14 @@ description: Découvrez les principes fondamentaux de la création d’une API w
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/27/2020
+ms.date: 02/02/2020
 uid: web-api/index
-ms.openlocfilehash: 8609e2095c202643cdc905cc610298195b654215
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 3dca07db3d6be4ab219a2e05e3adcf1b24ee5c40
+ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870015"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074508"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -46,7 +46,7 @@ La classe `ControllerBase` fournit de nombreuses propriétés et méthodes qui s
 
 Voici d’autres exemples de méthodes fournies par `ControllerBase`.
 
-|Méthode   |Remarques    |
+|Méthode   |Notes    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| Retourne le code d’état 400.|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|Retourne le code d’état 404.|
@@ -64,7 +64,7 @@ L’espace de noms <xref:Microsoft.AspNetCore.Mvc> fournit des attributs qui peu
 
 Voici d’autres exemples d’attributs disponibles.
 
-|Attribute|Remarques|
+|Attribut|Notes|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Spécifie le modèle d’URL pour un contrôleur ou une action.|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Spécifie le préfixe et les propriétés à inclure pour la liaison de modèle.|
@@ -226,7 +226,7 @@ Type de `ValidationProblemDetails` :
 
 ### <a name="log-automatic-400-responses"></a>Consigner automatiquement 400 réponses
 
-Voir [Guide pratique pour consigner automatiquement 400 réponses en cas d’erreurs de validation de modèle (aspnet/AspNetCore.Docs no 12157)](https://github.com/aspnet/AspNetCore.Docs/issues/12157).
+Voir [Guide pratique pour consigner automatiquement 400 réponses en cas d’erreurs de validation de modèle (aspnet/AspNetCore.Docs n](https://github.com/aspnet/AspNetCore.Docs/issues/12157)o{3} 12157){4}.
 
 ### <a name="disable-automatic-400-response"></a>Désactiver la réponse automatique 400
 
@@ -254,11 +254,11 @@ Pour désactiver le comportement 400 automatique, définissez la propriété <x
 
 Un attribut de source de liaison définit l’emplacement auquel se trouve la valeur d’un paramètre d’action. Les attributs de source de liaison suivants existent :
 
-|Attribute|Source de liaison |
+|Attribut|Source de liaison |
 |---------|---------|
-|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de demande |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Corps de la demande |
 |[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | Données de formulaire dans le corps de la demande |
-|[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de demande |
+|[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | En-tête de requête |
 |[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | Paramètre de la chaîne de requête de la demande |
 |[`[FromRoute]`](xref:Microsoft.AspNetCore.Mvc.FromRouteAttribute)   | Données d’itinéraire à partir de la demande actuelle |
 |[`[FromServices]`](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) | Service de demande injecté comme paramètre d’action |
@@ -397,6 +397,30 @@ La création automatique d’une instance de `ProblemDetails` est désactivée l
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=3,8)]
 
 ::: moniker-end
+
+<a name="consumes"></a>
+
+## <a name="define-supported-request-content-types-with-the-consumes-attribute"></a>Définir les types de contenu de demande pris en charge avec l’attribut [consomme]
+
+Par défaut, une action prend en charge tous les types de contenu de demande disponibles. Par exemple, si une application est configurée pour prendre en charge à la fois les [formateurs d’entrée](xref:mvc/models/model-binding#input-formatters)JSON et XML, une action prend en charge plusieurs types de contenu, y compris `application/json` et `application/xml`.
+
+L’attribut [[Consommed]](<xref:Microsoft.AspNetCore.Mvc.ConsumesAttribute>) permet à une action de limiter les types de contenu de demande pris en charge. Appliquez l’attribut `[Consumes]` à une action ou à un contrôleur, en spécifiant un ou plusieurs types de contenu :
+
+```csharp
+[HttpPost]
+[Consumes("application/xml")]
+public IActionResult CreateProduct(Product product)
+```
+
+Dans le code précédent, l’action `CreateProduct` spécifie le type de contenu `application/xml`. Les demandes routées vers cette action doivent spécifier un en-tête `Content-Type` de `application/xml`. Les demandes qui ne spécifient pas d’en-tête `Content-Type` de `application/xml` entraînent une réponse de [type support non prise en charge 415](https://developer.mozilla.org/docs/Web/HTTP/Status/415) .
+
+L’attribut `[Consumes]` permet également à une action d’influencer sa sélection en fonction du type de contenu d’une demande entrante en appliquant une contrainte de type. Prenons l’exemple suivant :
+
+[!code-csharp[](index/samples/3.x/Controllers/ConsumesController.cs?name=snippet_Class)]
+
+Dans le code précédent, `ConsumesController` est configuré pour gérer les demandes envoyées à l’URL de `https://localhost:5001/api/Consumes`. Les actions du contrôleur, `PostJson` et `PostForm`, gèrent les demandes de publication avec la même URL. Sans l’attribut `[Consumes]` appliquant une contrainte de type, une exception de correspondance ambiguë est levée.
+
+L’attribut `[Consumes]` est appliqué aux deux actions. L’action `PostJson` gère les demandes envoyées avec un en-tête `Content-Type` de `application/json`. L’action `PostForm` gère les demandes envoyées avec un en-tête `Content-Type` de `application/x-www-form-urlencoded`. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

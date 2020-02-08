@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Découvrez comment les filtres fonctionnent et comment les utiliser dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/1/2020
+ms.date: 02/04/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: 759c150e7f35f3f6a52947edc5ef41448dc227fe
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: c4bb9d5746e494106ead6ad5bbf972bbcc5a39f1
+ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828969"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77034063"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -28,13 +28,16 @@ Les filtres intégrés gèrent notamment les tâches suivantes :
 
 Il est possible de créer des filtres personnalisés pour gérer les problèmes transversaux. Les exemples de problèmes transversaux incluent la gestion des erreurs, la mise en cache, la configuration, l’autorisation et la journalisation.  Les filtres évitent la duplication de code. Par exemple, un filtre d’exceptions de gestion des erreurs peut servir à consolider la gestion des erreurs.
 
-Ce document s’applique aux Razor Pages, aux contrôleurs d’API et aux contrôleurs avec affichages.
+Ce document s’applique aux Razor Pages, aux contrôleurs d’API et aux contrôleurs avec affichages. Les filtres ne fonctionnent pas directement avec les [composants Razor](xref:blazor/components). Un filtre peut uniquement affecter indirectement un composant lorsque :
+
+* Le composant est incorporé dans une page ou une vue.
+* La page ou le contrôleur/la vue utilise le filtre.
 
 [Afficher ou télécharger l’échantillon](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
-Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*.  Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
+Les filtres s’exécutent dans le *pipeline des appels d’action ASP.NET Core*, parfois appelé *pipeline de filtres*. Le pipeline de filtres s’exécute après la sélection par ASP.NET Core de l’action à exécuter.
 
 ![La demande est traitée par un autre intergiciel, un intergiciel (middleware) de routage, une sélection d’action et le pipeline d’appel d’action. Le traitement de la requête se poursuit via une sélection d’action, un intergiciel de routage et différents autres intergiciels avant de devenir une réponse envoyée au client.](filters/_static/filter-pipeline-1.png)
 
@@ -194,7 +197,7 @@ Chaque contrôleur qui hérite de la classe de base <xref:Microsoft.AspNetCore.M
 
 Par exemple, dans l’échantillon à télécharger, `MySampleActionFilter` est appliqué globalement au démarrage.
 
-Voici le `TestController` :
+`TestController` :
 
 * Applique la `SampleActionFilterAttribute` (`[SampleActionFilter]`) à l’action `FilterTest2`.
 * Remplace `OnActionExecuting` et `OnActionExecuted`.
@@ -264,7 +267,7 @@ Vous pouvez court-circuiter le pipeline de filtres en définissant la propriét�
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?name=snippet)]
 
-Dans le code suivant, les filtres `ShortCircuitingResourceFilter` et `AddHeader` ciblent tous deux la méthode d’action `SomeResource`. Voici le `ShortCircuitingResourceFilter` :
+Dans le code suivant, les filtres `ShortCircuitingResourceFilter` et `AddHeader` ciblent tous deux la méthode d’action `SomeResource`. `ShortCircuitingResourceFilter` :
 
 * S’exécute en premier (puisqu’il s’agit d’un filtre de ressources et que `AddHeader` est un filtre d’action).
 * Court-circuite le reste du pipeline.
@@ -424,7 +427,7 @@ Levée d’une exception dans une méthode d’action :
 Pour un `IAsyncActionFilter`, un appel à <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate> :
 
 * Exécute tous les filtres d’actions suivants et la méthode d’action.
-* Renvoie `ActionExecutedContext`.
+* Retourne `ActionExecutedContext`.
 
 Pour court-circuiter, attribuez <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result?displayProperty=fullName> à une instance de résultat et n’appelez pas le `next` (le `ActionExecutionDelegate`).
 
@@ -740,7 +743,7 @@ Chaque contrôleur qui hérite de la classe de base <xref:Microsoft.AspNetCore.M
 
 Par exemple, dans l’échantillon à télécharger, `MySampleActionFilter` est appliqué globalement au démarrage.
 
-Voici le `TestController` :
+`TestController` :
 
 * Applique la `SampleActionFilterAttribute` (`[SampleActionFilter]`) à l’action `FilterTest2`.
 * Remplace `OnActionExecuting` et `OnActionExecuted`.
@@ -774,7 +777,7 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété`Order` | Filter, méthode |
+| Séquence | Étendue de filtre | Propriété `Order` | Filter, méthode |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
 | 2 | Contrôleur | 1  | `OnActionExecuting` |
@@ -793,7 +796,7 @@ Vous pouvez court-circuiter le pipeline de filtres en définissant la propriét�
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?name=snippet)]
 
-Dans le code suivant, les filtres `ShortCircuitingResourceFilter` et `AddHeader` ciblent tous deux la méthode d’action `SomeResource`. Voici le `ShortCircuitingResourceFilter` :
+Dans le code suivant, les filtres `ShortCircuitingResourceFilter` et `AddHeader` ciblent tous deux la méthode d’action `SomeResource`. `ShortCircuitingResourceFilter` :
 
 * S’exécute en premier (puisqu’il s’agit d’un filtre de ressources et que `AddHeader` est un filtre d’action).
 * Court-circuite le reste du pipeline.
@@ -955,7 +958,7 @@ Levée d’une exception dans une méthode d’action :
 Pour un `IAsyncActionFilter`, un appel à <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate> :
 
 * Exécute tous les filtres d’actions suivants et la méthode d’action.
-* Renvoie `ActionExecutedContext`.
+* Retourne `ActionExecutedContext`.
 
 Pour court-circuiter, attribuez <xref:Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext.Result?displayProperty=fullName> à une instance de résultat et n’appelez pas le `next` (le `ActionExecutionDelegate`).
 

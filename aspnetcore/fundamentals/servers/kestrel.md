@@ -5,14 +5,14 @@ description: Découvrez plus d’informations sur Kestrel, serveur web multiplat
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/26/2019
+ms.date: 02/06/2020
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 9fbf0ec93634100fccef279fc7cad92cb1420e84
-ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
+ms.openlocfilehash: 0c5d16b1901a8a8e5ae1914e5eaa86f71fa3a90b
+ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75492597"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77074534"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -35,14 +35,14 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="http2-support"></a>Prise en charge de HTTP/2
+## <a name="http2-support"></a>Assistance HTTP/2
 
 [HTTP/2](https://httpwg.org/specs/rfc7540.html) est disponible pour les applications ASP.NET Core si les conditions de base suivantes sont remplies :
 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
-  * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
-* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+  * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
+* Framework cible : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -116,7 +116,7 @@ Les exemples suivants utilisent l’espace de noms <xref:Microsoft.AspNetCore.Se
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-Les options Kestrel, qui sont configurées dans C# le code des exemples suivants, peuvent également être définies à l’aide d’un fournisseur de [configuration](xref:fundamentals/configuration/index). Par exemple, le fournisseur de configuration de fichier peut charger la configuration Kestrel à partir d’un fichier *appSettings. JSON* ou *appSettings. { Fichier Environment}. JSON* :
+Dans les exemples présentés plus loin dans cet article, les options Kestrel C# sont configurées dans le code. Les options Kestrel peuvent également être définies à l’aide d’un [fournisseur de configuration](xref:fundamentals/configuration/index). Par exemple, le [fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) peut charger la configuration Kestrel à partir d’un fichier *appSettings. JSON* ou *appSettings. { Fichier Environment}. JSON* :
 
 ```json
 {
@@ -129,6 +129,9 @@ Les options Kestrel, qui sont configurées dans C# le code des exemples suivants
   }
 }
 ```
+
+> [!NOTE]
+> les <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions> et la [configuration de point de terminaison](#endpoint-configuration) sont configurables à partir des fournisseurs de configuration. La configuration Kestrel restante doit C# être configurée dans le code.
 
 Utilisez l' **une** des approches suivantes :
 
@@ -358,7 +361,7 @@ Pour plus d’informations sur les autres options et limites de Kestrel, consult
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits>
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions>
 
-## <a name="endpoint-configuration"></a>Configuration de point de terminaison
+## <a name="endpoint-configuration"></a>Configuration du point de terminaison
 
 Par défaut, ASP.NET Core se lie à :
 
@@ -489,7 +492,6 @@ Dans l’exemple de fichier *appsettings.json* suivant :
       "Http": {
         "Url": "http://localhost:5000"
       },
-
       "HttpsInlineCertFile": {
         "Url": "https://localhost:5001",
         "Certificate": {
@@ -497,7 +499,6 @@ Dans l’exemple de fichier *appsettings.json* suivant :
           "Password": "<certificate password>"
         }
       },
-
       "HttpsInlineCertStore": {
         "Url": "https://localhost:5002",
         "Certificate": {
@@ -507,11 +508,9 @@ Dans l’exemple de fichier *appsettings.json* suivant :
           "AllowInvalid": "<true or false; defaults to false>"
         }
       },
-
       "HttpsDefaultCert": {
         "Url": "https://localhost:5003"
       },
-
       "Https": {
         "Url": "https://*:5004",
         "Certificate": {
@@ -676,14 +675,14 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
 * <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*>
 * Arguments de ligne de commande `--urls`
-* Clé de configuration d’hôte `urls`.
-* Variable d’environnement `ASPNETCORE_URLS`
+* La clé de configuration d’hôte `urls`
+* `ASPNETCORE_URLS` variable d’environnement
 
 Ces méthodes sont utiles si vous voulez que votre code fonctionne avec des serveurs autres que Kestrel. Toutefois, soyez conscient des limitations suivantes :
 
@@ -986,14 +985,14 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="http2-support"></a>Prise en charge de HTTP/2
+## <a name="http2-support"></a>Assistance HTTP/2
 
 [HTTP/2](https://httpwg.org/specs/rfc7540.html) est disponible pour les applications ASP.NET Core si les conditions de base suivantes sont remplies :
 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
-  * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
-* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+  * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
+* Framework cible : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -1340,7 +1339,7 @@ Pour plus d’informations sur les autres options et limites de Kestrel, consult
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits>
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions>
 
-## <a name="endpoint-configuration"></a>Configuration de point de terminaison
+## <a name="endpoint-configuration"></a>Configuration du point de terminaison
 
 Par défaut, ASP.NET Core se lie à :
 
@@ -1674,14 +1673,14 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
 * <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*>
 * Arguments de ligne de commande `--urls`
-* Clé de configuration d’hôte `urls`.
-* Variable d’environnement `ASPNETCORE_URLS`
+* La clé de configuration d’hôte `urls`
+* `ASPNETCORE_URLS` variable d’environnement
 
 Ces méthodes sont utiles si vous voulez que votre code fonctionne avec des serveurs autres que Kestrel. Toutefois, soyez conscient des limitations suivantes :
 
@@ -2202,7 +2201,7 @@ Pour plus d’informations sur les autres options et limites de Kestrel, consult
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerLimits>
 * <xref:Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions>
 
-## <a name="endpoint-configuration"></a>Configuration de point de terminaison
+## <a name="endpoint-configuration"></a>Configuration du point de terminaison
 
 Par défaut, ASP.NET Core se lie à :
 
@@ -2584,14 +2583,14 @@ Quand l’application est exécutée, la sortie de la fenêtre de console indiqu
 Listening on the following addresses: http://127.0.0.1:48508
 ```
 
-### <a name="limitations"></a>Limitations
+### <a name="limitations"></a>Limites
 
 Configurez des points de terminaison avec les approches suivantes :
 
 * <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls*>
 * Arguments de ligne de commande `--urls`
-* Clé de configuration d’hôte `urls`.
-* Variable d’environnement `ASPNETCORE_URLS`
+* La clé de configuration d’hôte `urls`
+* `ASPNETCORE_URLS` variable d’environnement
 
 Ces méthodes sont utiles si vous voulez que votre code fonctionne avec des serveurs autres que Kestrel. Toutefois, soyez conscient des limitations suivantes :
 
