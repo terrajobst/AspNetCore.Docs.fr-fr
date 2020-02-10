@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 47f465c00138acf434c6ec59f757e37361ad97db
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 6698e269e0a6480cd5a03c59f9a19da31e23bf69
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034102"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089147"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -167,7 +167,7 @@ Pour les applications à page unique, l’intergiciel (middleware) SPA <xref:Mic
 * Pour permettre à tous les autres intergiciels de répondre d’abord aux demandes correspondantes.
 * Pour autoriser l’exécution de la fonction de routage de l’application serveur pour tous les itinéraires non reconnus par l’application serveur.
 
-Pour plus d’informations sur les applications à page unique, consultez les guides des modèles de projet [REACT](xref:spa/react) et [angulaire](xref: client-side/spa/angular) .
+Pour plus d’informations sur les applications à page unique, consultez les guides des modèles de projet [REACT](xref:spa/react) et [angulaire](xref:spa/angular) .
 
 ## <a name="branch-the-middleware-pipeline"></a>Créer une branche pour le pipeline de l’intergiciel
 

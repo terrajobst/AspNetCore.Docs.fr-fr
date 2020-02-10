@@ -9,26 +9,26 @@ ms.date: 07/05/2019
 no-loc:
 - Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: 07e2791e5b26975c71323f8cb41a4b0fbe0cdf11
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 2f338e8883ca926c0f9a7ab339f58b088151cc87
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952140"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089199"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hébergement d’images ASP.NET Core avec l’arrimeur sur HTTPs
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core utilise le [protocole HTTPS par défaut](/aspnet/core/security/enforcing-ssl). [Https](https://en.wikipedia.org/wiki/HTTPS) s’appuie sur des [certificats](https://en.wikipedia.org/wiki/Public_key_certificate) pour l’approbation, l’identité et le chiffrement.
 
 Ce document explique comment exécuter des images conteneur prégénérées avec HTTPs.
 
-Consultez [développement d’Applications ASP.net core avec l’arrimeur sur https](https://github.com/dotnet/dotnet-docker/blob/master/samples/aspnetapp/aspnetcore-docker-https-development.md) pour les scénarios de développement.
+Consultez [développement d’Applications ASP.net core avec l’arrimeur sur https](https://github.com/dotnet/dotnet-docker/blob/master/samples/run-aspnetcore-https-development.md) pour les scénarios de développement.
 
 Cet exemple requiert l' [ancrage 17,06](https://docs.docker.com/release-notes/docker-ce) ou une version ultérieure du [client dockr](https://www.docker.com/products/docker).
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Le [Kit de développement logiciel (SDK) .net Core 2,2](https://www.microsoft.com/net/download) ou version ultérieure est requis pour certaines des instructions contenues dans ce document.
 
