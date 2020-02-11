@@ -5,17 +5,17 @@ description: En savoir plus sur les scénarios d’authentification et d’autor
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2020
+ms.date: 02/02/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: e9087c246f4805e5931180fa0869fc8a8d23a6c1
-ms.sourcegitcommit: c81ef12a1b6e6ac838e5e07042717cf492e6635b
+ms.openlocfilehash: c7b3788b5737073100e7fa449fd6bb4a83c0043a
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76885586"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114885"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
@@ -32,7 +32,7 @@ Les scénarios de sécurité diffèrent entre le serveur éblouissant et les app
 
 Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
 
-## <a name="authentication"></a>Authentification
+## <a name="authentication"></a>Authentication
 
 Blazor utilise les mécanismes d’authentification ASP.NET Core existants pour établir l’identité de l’utilisateur. Le mécanisme exact dépend de la façon dont l’application éblouissant est hébergée, éblouissante Server ou éblouissant webassembly.
 
@@ -42,7 +42,7 @@ Les applications serveur éblouissantes fonctionnent sur une connexion en temps 
 
 Le modèle de projet de serveur éblouissant peut configurer l’authentification à votre place lors de la création du projet.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Suivez les instructions de Visual Studio dans l’article <xref:blazor/get-started> pour créer un projet de serveur éblouissant avec un mécanisme d’authentification.
 
@@ -67,7 +67,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 Les valeurs autorisées d’authentification (`{AUTHENTICATION}`) sont présentées dans le tableau suivant.
 
-| Mécanisme d’authentification                                                                 | Valeur de `{AUTHENTICATION}` |
+| Mécanisme d’authentification                                                                 | Valeur `{AUTHENTICATION}` |
 | ---------------------------------------------------------------------------------------- | :----------------------: |
 | Aucune authentification                                                                        | `None`                   |
 | Individuel<br>Les utilisateurs stockés dans l’application avec l’identité ASP.NET Core.                        | `Individual`             |
@@ -329,7 +329,7 @@ Pour l’autorisation en fonction du rôle, utilisez le paramètre `Roles` :
 </AuthorizeView>
 ```
 
-Pour plus d'informations, consultez <xref:security/authorization/roles>.
+Pour plus d’informations, consultez <xref:security/authorization/roles>.
 
 Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Policy` :
 
@@ -339,7 +339,7 @@ Pour l’autorisation en fonction des stratégies, utilisez le paramètre `Polic
 </AuthorizeView>
 ```
 
-L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies. Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication. Pour plus d'informations, consultez <xref:security/authorization/policies>.
+L’autorisation basée sur les revendications est un cas spécial d’autorisation basée sur les stratégies. Par exemple, vous pouvez définir une stratégie qui impose aux utilisateurs d’avoir une certaine revendication. Pour plus d’informations, consultez <xref:security/authorization/policies>.
 
 Ces API peuvent être utilisées dans les applications Blazor Server ou Blazor webassembly.
 
@@ -530,3 +530,4 @@ Il est probable que le projet n’a pas été créé à l’aide d’un modèle 
 * <xref:security/index>
 * <xref:security/blazor/server>
 * <xref:security/authentication/windowsauth>
+* [Isard Blazor:](https://github.com/AdrienTorris/awesome-blazor#authentication) liens vers des exemples de communauté d’authentification

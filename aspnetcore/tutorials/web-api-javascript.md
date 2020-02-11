@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/26/2019
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 5a31aa2974eb41938db89f97c070c352a26290fd
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 2a19a7d16ca8b8f5d6ac8eb99ad919b89f1e368b
+ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681173"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114651"
 ---
 # <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>Didacticiel : appeler une API Web ASP.NET Core avec JavaScript
 
@@ -27,7 +27,7 @@ Pour ASP.NET Core 2.2, consultez la version 2.2 de [Appeler l’API web avec J
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Didacticiel complet : créer une API Web](xref:tutorials/first-web-api)
 * Connaissance de CSS, HTML et JavaScript
@@ -36,7 +36,7 @@ Pour ASP.NET Core 2.2, consultez la version 2.2 de [Appeler l’API web avec J
 
 Dans cette section, vous allez ajouter une page HTML contenant des formulaires permettant de créer et de gérer des éléments de tâche. Des gestionnaires d’événements sont joints aux éléments de la page. Les gestionnaires d’événements génèrent des requêtes HTTP pour les méthodes d’action de l’API web. La fonction `fetch` de l’API Fetch lance chaque requête HTTP.
 
-La fonction `fetch` retourne un objet `Promise` qui contient une réponse HTTP représentée sous la forme d’un objet `Response`. Un modèle courant consiste à extraire le corps de réponse JSON en appelant la fonction `json` sur l'objet `Response`. JavaScript met à jour la page avec les détails de la réponse de l’API Web.
+La fonction `fetch` retourne un objet [promesse](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) , qui contient une réponse http représentée sous la forme d’un objet `Response`. Un modèle courant consiste à extraire le corps de réponse JSON en appelant la fonction `json` sur l'objet `Response`. JavaScript met à jour la page avec les détails de la réponse de l’API Web.
 
 L'appel `fetch` le plus simple accepte un seul paramètre représentant l’itinéraire. Un deuxième paramètre, connu sous le nom d’objet `init`, est facultatif. `init` est utilisé pour configurer la requête HTTP.
 
