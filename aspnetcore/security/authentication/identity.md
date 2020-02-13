@@ -5,18 +5,18 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 01/15/2020
 uid: security/authentication/identity
-ms.openlocfilehash: 98fee261a741a20eed181ca5b9a4ebb693deeb63
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 164ba10c1d1e2a73ebeb8240293a58f158055699
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146509"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172527"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core l’identité :
 
@@ -46,10 +46,10 @@ Dans cette rubrique, vous allez apprendre à utiliser l’identité pour vous in
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Sélectionnez **fichier** > **nouveau** > **projet**.
-* Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
+* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
 * Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
 
@@ -77,7 +77,7 @@ Le projet généré fournit une [identité de ASP.net Core](xref:security/authen
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
@@ -109,7 +109,7 @@ Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut cons
 
 Le code en surbrillance précédent configure l’identité avec les valeurs d’option par défaut. Les services sont mis à la disposition de l’application via l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
-L’identité est activée en appelant <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>. `UseAuthentication`Ajoute l’authentification [intergiciel (middleware)](xref:fundamentals/middleware/index) au pipeline de demande.
+L’identité est activée en appelant <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>. `UseAuthentication` ajoute l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) d’authentification au pipeline de requête.
 
 [!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configure&highlight=19)]
 
@@ -119,7 +119,7 @@ Pour plus d’informations sur les `IdentityOptions` et les `Startup`, consultez
 
 ## <a name="scaffold-register-login-and-logout"></a>Registre de génération de modèles, connexion et déconnexion
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les fichiers Register, login et LogOut. Suivez l' [identité de l’échafaudage dans un projet Razor avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
@@ -148,7 +148,7 @@ Si l’utilisateur a été créé avec succès, l’utilisateur est connecté pa
 
 Consultez [confirmation du compte](xref:security/authentication/accconfirm#prevent-login-at-registration) pour connaître les étapes permettant d’empêcher la connexion immédiate lors de l’inscription.
 
-### <a name="log-in"></a>Log in
+### <a name="log-in"></a>Se connecter
 
 Le formulaire de connexion s’affiche lorsque :
 
@@ -159,9 +159,9 @@ Lorsque le formulaire de la page de connexion est envoyé, l’action `OnPostAsy
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-La classe de `Controller` de base expose une propriété `User` qui est accessible à partir des méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d'informations, consultez <xref:security/authorization/introduction>.
+La classe de `Controller` de base expose une propriété `User` qui est accessible à partir des méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d’informations, consultez <xref:security/authorization/introduction>.
 
-### <a name="log-out"></a>Déconnexion
+### <a name="log-out"></a>Se déconnecter
 
 Le lien **déconnexion** appelle l’action `LogoutModel.OnPost`. 
 
@@ -194,7 +194,7 @@ Pour explorer l’identité plus en détail :
 
 Tous les packages NuGet dépendants de l’identité sont inclus dans le [ASP.net Core Framework partagé](xref:aspnetcore-3.0#use-the-aspnet-core-shared-framework).
 
-Le package principal pour l’identité est [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Ce package contient l’ensemble principal d’interfaces pour ASP.NET Core Identity et est inclus par `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
+Le package principal pour l’identité est [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Ce package contient l’ensemble principal d’interfaces pour ASP.NET Core identité et est inclus par `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
 
 ## <a name="migrating-to-aspnet-core-identity"></a>Migration vers ASP.NET Core Identity
 
@@ -246,7 +246,7 @@ Pour empêcher la publication de ressources d’identité statiques (feuilles de
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core identité est un système d’appartenance qui ajoute des fonctionnalités de connexion aux applications ASP.NET Core. Les utilisateurs peuvent créer un compte avec les informations de connexion stockées dans l’identité, ou ils peuvent utiliser un fournisseur de connexion externe. Les fournisseurs de connexion externes pris en charge incluent [Facebook, Google, Microsoft Account et Twitter](xref:security/authentication/social/index).
 
@@ -272,10 +272,10 @@ Pour plus d’informations, consultez [source AddDefaultIdentity](https://github
 
 Créez un projet d’application Web ASP.NET Core avec des comptes d’utilisateur individuels.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Sélectionnez **fichier** > **nouveau** > **projet**.
-* Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
+* Sélectionnez **Application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms que le projet à télécharger. Cliquez sur **OK**.
 * Sélectionnez une **application Web**ASP.net Core, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** , puis cliquez sur **OK**.
 
@@ -297,11 +297,13 @@ Le projet généré fournit une [identité de ASP.net Core](xref:security/authen
 
 Appliquez les migrations pour initialiser la base de données.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez la commande suivante dans la console du gestionnaire de package (PMC) :
 
-```PM> Update-Database```
+```powershell
+Update-Database
+```
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
@@ -327,7 +329,7 @@ Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut cons
 
 Le code précédent configure l’identité avec les valeurs d’option par défaut. Les services sont mis à la disposition de l’application via l' [injection de dépendances](xref:fundamentals/dependency-injection).
 
-L’identité est activée en appelant [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication`Ajoute l’authentification [intergiciel (middleware)](xref:fundamentals/middleware/index) au pipeline de demande.
+L’identité est activée en appelant [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication` ajoute l' [intergiciel (middleware](xref:fundamentals/middleware/index) ) d’authentification au pipeline de requête.
 
 [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
@@ -337,7 +339,7 @@ Pour plus d’informations, consultez la [classe IdentityOptions](/dotnet/api/mi
 
 Suivez l' [identité de l’échafaudage dans un projet Razor avec des instructions d’autorisation](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization) pour générer le code présenté dans cette section.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez les fichiers Register, login et LogOut.
 
@@ -364,7 +366,7 @@ Si l’utilisateur a été créé avec succès, l’utilisateur est connecté pa
 
 **Remarque :** Consultez [confirmation du compte](xref:security/authentication/accconfirm#prevent-login-at-registration) pour connaître les étapes permettant d’empêcher la connexion immédiate lors de l’inscription.
 
-### <a name="log-in"></a>Log in
+### <a name="log-in"></a>Se connecter
 
 Le formulaire de connexion s’affiche lorsque :
 
@@ -375,9 +377,9 @@ Lorsque le formulaire de la page de connexion est envoyé, l’action `OnPostAsy
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-La classe de `Controller` de base expose une propriété `User` à laquelle vous pouvez accéder à partir de méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d'informations, consultez <xref:security/authorization/introduction>.
+La classe de `Controller` de base expose une propriété `User` à laquelle vous pouvez accéder à partir de méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d’informations, consultez <xref:security/authorization/introduction>.
 
-### <a name="log-out"></a>Déconnexion
+### <a name="log-out"></a>Se déconnecter
 
 Le lien **déconnexion** appelle l’action `LogoutModel.OnPost`. 
 
@@ -408,7 +410,7 @@ Pour explorer l’identité plus en détail :
 
 Tous les packages NuGet dépendants de l’identité sont inclus dans le sous- [package Microsoft. AspNetCore. app](xref:fundamentals/metapackage-app).
 
-Le package principal pour l’identité est [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Ce package contient l’ensemble principal d’interfaces pour ASP.NET Core Identity et est inclus par `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
+Le package principal pour l’identité est [Microsoft. AspNetCore. Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Ce package contient l’ensemble principal d’interfaces pour ASP.NET Core identité et est inclus par `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.
 
 ## <a name="migrating-to-aspnet-core-identity"></a>Migration vers ASP.NET Core Identity
 

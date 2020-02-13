@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/mvc2
-ms.openlocfilehash: e9dffe8bce502e48a09af04ea0be9952a68aa46f
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.openlocfilehash: 11bd3b948afaedc675ac4249099969382683f653
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815455"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172442"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migrer d’ASP.NET vers ASP.NET Core 2.0
 
@@ -19,9 +19,9 @@ De [Isaac Levin](https://isaaclevin.com)
 
 Cet article sert de guide de référence pour la migration d’applications ASP.NET vers ASP.NET Core 2.0.
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
-Installer **un** des opérations suivantes à partir de [téléchargements .NET : Windows](https://www.microsoft.com/net/download/windows):
+Installez l' **un** des éléments suivants à partir de [téléchargements .net : Windows](https://www.microsoft.com/net/download/windows):
 
 * SDK .NET Core
 * Visual Studio pour Windows
@@ -42,7 +42,7 @@ Le ciblage du .NET Core vous permet d’éliminer de nombreuses références de 
 </ItemGroup>
 ```
 
-Quand le métapackage est utilisé, aucun package référencé dans le métapackage n’est déployé avec l’application. Le magasin de runtimes du .NET Core inclut ces composants. Ceux-ci sont précompilés pour améliorer les performances. Consultez <xref:fundamentals/metapackage> pour plus de détails.
+Quand le métapackage est utilisé, aucun package référencé dans le métapackage n’est déployé avec l’application. Le magasin de runtimes du .NET Core inclut ces composants. Ceux-ci sont précompilés pour améliorer les performances. Pour plus d’informations, consultez <xref:fundamentals/metapackage>.
 
 ## <a name="project-structure-differences"></a>Différences de structure de projet
 
@@ -56,7 +56,7 @@ Le format de fichier *.csproj* a été simplifié dans ASP.NET Core. Voici certa
 
 ## <a name="globalasax-file-replacement"></a>Remplacement du fichier Global.asax
 
-ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration de l’itinéraire ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
+ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration du routing ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
@@ -64,9 +64,9 @@ Cette approche couple l’application au serveur sur lequel elle est déployée 
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
-Cela permet de configurer vos itinéraires par défaut, et de privilégier XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
+Cela permet de configurer vos routes par défaut, et de privilégier la XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
 
-ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour prendre en charge l’entrée. À la place, l’opération est effectuée via la méthode `Main` de *Program.cs* (un peu comme pour les applications console) et `Startup` est chargé à partir de là.
+ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour prendre en charge l’entrée. Au lieu de cela, c’est à l’aide de la méthode *Program.cs* `Main` (similaire aux applications console) et `Startup` est chargé à partir de là.
 
 [!code-csharp[](samples/program.cs)]
 
@@ -82,7 +82,7 @@ ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour 
 
 L’hôte et l’application ont été découplés, ce qui permet de passer facilement plus tard à une autre plateforme.
 
-Pour obtenir une référence plus approfondie à ASP.NET et sur les intergiciels (middleware), consultez <xref:fundamentals/startup>.
+Pour obtenir des informations de référence plus approfondies sur le démarrage et l’intergiciel (middleware) ASP.NET Core, consultez <xref:fundamentals/startup>.
 
 ## <a name="storing-configurations"></a>Stockage des configurations
 
@@ -108,20 +108,20 @@ L’application lit `Configuration` pour obtenir les paramètres :
 
 Il existe des extensions à cette approche pour rendre le processus plus robuste, par exemple en utilisant l’[injection de dépendances](xref:fundamentals/dependency-injection) pour charger un service avec ces valeurs. L’approche par injection de dépendances fournit un ensemble d’objets de configuration fortement typés.
 
-````csharp
+```csharp
 // Assume AppConfiguration is a class representing a strongly-typed version of AppConfiguration section
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
-````
+```
 
-**Remarque :** Pour obtenir une référence plus approfondie à la configuration d’ASP.NET Core, consultez <xref:fundamentals/configuration/index>.
+**Remarque :** Pour obtenir des informations de référence plus approfondies sur la configuration de ASP.NET Core, consultez <xref:fundamentals/configuration/index>.
 
 ## <a name="native-dependency-injection"></a>Injection de dépendances native
 
-Quand vous générez des applications majeures et scalables, il est important d’avoir un couplage faible entre les composants et les services. [L’injection de dépendances](xref:fundamentals/dependency-injection) est une technique répandue qui permet d’y parvenir, et il est un composant natif d’ASP.NET Core.
+Quand vous générez des applications majeures et scalables, il est important d’avoir un couplage faible entre les composants et les services. L' [injection de dépendances](xref:fundamentals/dependency-injection) est une technique courante pour y parvenir, et c’est un composant natif de ASP.net core.
 
-Dans les applications ASP.NET, les développeurs s’appuient sur une bibliothèque tierce pour implémenter l’injection de dépendance. L’une de ces bibliothèques, [Unity](https://github.com/unitycontainer/unity), est fournie par Microsoft Patterns & Practices.
+Dans les applications ASP.NET, les développeurs s’appuient sur une bibliothèque tierce pour implémenter l’injection de dépendances. L’une de ces bibliothèques, [Unity](https://github.com/unitycontainer/unity), est fournie par Microsoft Patterns & Practices.
 
-Implémentation d’un exemple de configuration de l’injection de dépendances avec Unity `IDependencyResolver` qui encapsule un `UnityContainer`:
+Un exemple de configuration de l’injection de dépendances avec Unity implémente `IDependencyResolver` qui encapsule un `UnityContainer`:
 
 [!code-csharp[](samples/sample8.cs)]
 
@@ -133,7 +133,7 @@ Injectez `IProductRepository` aux emplacements nécessaires :
 
 [!code-csharp[](samples/sample5.cs)]
 
-Étant donné que l’injection de dépendances fait partie d’ASP.NET Core, vous pouvez ajouter votre service dans le `Startup.ConfigureServices`:
+Étant donné que l’injection de dépendances fait partie de ASP.NET Core, vous pouvez ajouter votre service dans le `Startup.ConfigureServices`:
 
 [!code-csharp[](samples/configure-services.cs)]
 
@@ -155,7 +155,7 @@ Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web »
 
 Par exemple, un composant image dans le dossier *wwwroot/images* est accessible au navigateur à un emplacement tel que `http://<app>/images/<imageFileName>`.
 
-**Remarque :** Pour obtenir une référence plus approfondie sur le traitement des fichiers statiques dans ASP.NET Core, consultez <xref:fundamentals/static-files>.
+**Remarque :** Pour obtenir des informations de référence plus approfondies sur le traitement des fichiers statiques dans ASP.NET Core, consultez <xref:fundamentals/static-files>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

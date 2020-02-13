@@ -5,16 +5,16 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: a25233968f115c6e3a214d97cf2ca5ab81df8d83
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 5510fb6844452571ca764e21640f0bd16444c782
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870426"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171968"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -30,9 +30,9 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -57,9 +57,9 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **ASP .net Core** dans le volet gauche.
   * Sélectionnez la **page vue MVC** dans le volet central.
@@ -86,7 +86,7 @@ Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifi
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
-Remplacez le contenu du fichier *Views/Shared/_Layout. cshtml* par le balisage suivant. Les modifications apparaissent en surbrillance :
+Remplacez le contenu du fichier *Views/Shared/_Layout. cshtml* par le balisage suivant. Les modifications sont mises en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -95,7 +95,7 @@ Le balisage précédent apporte les modifications suivantes :
 * Remplacement de 3 occurrences de `MvcMovie` par `Movie App`.
 * Remplacement de l’élément d’ancrage `<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcMovie</a>` par `<a class="navbar-brand" asp-controller="Movies" asp-action="Index">Movie App</a>`.
 
-Dans le balisage précédent, l’`asp-area=""` [attribut Tag Helper d’ancrage](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur d’attribut ont été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
+Dans le balisage précédent, le `asp-area=""` [attribut d’assistance de balise d’ancrage](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) et la valeur de l’attribut a été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
 **Remarque**: le contrôleur de `Movies` n’a pas été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
@@ -107,7 +107,7 @@ Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage 
 
 Examinez le fichier *Views/_ViewStart.cshtml* :
 
-```HTML
+```cshtml
 @{
     Layout = "_Layout";
 }
@@ -123,9 +123,9 @@ Le titre et l’élément `<h2>` sont légèrement différents afin que vous pui
 
 Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la propriété `Title` du dictionnaire `ViewData` sur « Movie List ». La propriété `Title` est utilisée dans l’élément HTML `<title>` dans la page de disposition :
 
-```HTML
+```cshtml
 <title>@ViewData["Title"] - Movie App</title>
-   ```
+```
 
 Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur CTRL + F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec `ViewData["Title"]` que nous avons définis dans le modèle de vue *index. cshtml* et l’application « -Movie » supplémentaire ajoutée au fichier de disposition.
 
@@ -187,9 +187,9 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouvel élément**.
 
@@ -214,9 +214,9 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
+* Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
-* Dans la boîte de dialogue **Nouveau fichier** :
+* Dans la boîte de dialogue **Nouveau fichier** :
 
   * Sélectionnez **Web** dans le volet gauche.
   * Sélectionnez **Fichier HTML vide** dans le volet central.
@@ -250,7 +250,7 @@ Le balisage suivant illustre les changements en surbrillance :
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
 
-Dans le balisage précédent, l’`asp-area` [attribut Tag Helper Ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) a été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
+Dans le balisage précédent, le `asp-area` [attribut d’assistance de balise d’ancrage](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) a été omis, car cette application n’utilise pas de [zones](xref:mvc/controllers/areas).
 
 <!-- Routing has changed in 2.2, it's going to the last route.
 >[!WARNING]
@@ -267,7 +267,7 @@ Sélectionnez le lien **Accueil** et notez que le titre et le texte d’ancrage 
 
 Examinez le fichier *Views/_ViewStart.cshtml* :
 
-```HTML
+```cshtml
 @{
     Layout = "_Layout";
 }
@@ -283,9 +283,9 @@ Le titre et l’élément `<h2>` sont légèrement différents afin que vous pui
 
 Dans le code ci-dessus, `ViewData["Title"] = "Movie List";` définit la propriété `Title` du dictionnaire `ViewData` sur « Movie List ». La propriété `Title` est utilisée dans l’élément HTML `<title>` dans la page de disposition :
 
-```HTML
+```cshtml
 <title>@ViewData["Title"] - Movie App</title>
-   ```
+```
 
 Enregistrez la modification et accédez à `https://localhost:{PORT}/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur CTRL + F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.) Le titre du navigateur est créé avec `ViewData["Title"]` que nous avons définis dans le modèle de vue *index. cshtml* et l’application « -Movie » supplémentaire ajoutée au fichier de disposition.
 

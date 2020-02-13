@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 8ed95cdb96804e08c3f1273bbea8f64a8e4f173c
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 861935ff31652f923399a8aa5ae52baa6b77fa91
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76160247"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172406"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>Héberger et déployer ASP.NET Core Blazor webassembly
 
@@ -103,7 +103,7 @@ Le [module de réécriture d’URL](https://www.iis.net/downloads/microsoft/url-
 
 #### <a name="configure-the-website"></a>Configurer le site web
 
-Affectez le dossier de l’application comme **chemin physique** du site web. Le dossier contient :
+Affectez le dossier de l’application comme **chemin physique** du site web. Le dossier contient les éléments suivants :
 
 * Le fichier *web.config* utilisé par IIS pour configurer le site web, notamment les règles de redirection nécessaires et les types de contenu de fichiers
 * Le dossier de ressources statiques de l’application
@@ -140,13 +140,13 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
 
 La suppression du gestionnaire ou la désactivation de l’héritage est effectuée en plus de [la configuration du chemin d’accès de base de l’application](xref:host-and-deploy/blazor/index#app-base-path). Dans le fichier *index.html* de l’application, définissez le chemin de base de l’application sur l’alias IIS utilisé lors de la configuration de la sous-application dans IIS.
 
-#### <a name="troubleshooting"></a>Résolution des problèmes
+#### <a name="troubleshooting"></a>Dépannage
 
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Quand le module n’est pas installé, le fichier *web.config* ne peut pas être analysé par IIS. Cela empêche le gestionnaire des services Internet de charger la configuration du site Web et le site Web de servir les fichiers statiques de Blazor.
 
 Pour plus d’informations sur le dépannage des déploiements sur IIS, consultez <xref:test/troubleshoot-azure-iis>.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Stockage Azure
 
 L’hébergement de fichiers statiques [Azure Storage](/azure/storage/) permet l’hébergement d’applications Blazor sans serveur. Les noms de domaine personnalisé, le réseau de distribution de contenu Azure (CDN) et HTTPS sont pris en charge.
 
@@ -155,7 +155,7 @@ Lorsque le service blob est activé pour l’hébergement de site Web statique s
 * Définissez le **nom du document d’index** sur `index.html`.
 * Définissez le **chemin d’accès au document d’erreur** sur `index.html`. Les composants de Razor et autres points de terminaison non-fichier ne se trouvent sur les chemins d’accès physiques dans le contenu statique stocké par le service blob. Lorsqu’une demande pour l’une de ces ressources est reçue que le routeur Blazor doit gérer, l’erreur *404-introuvable* générée par le service BLOB achemine la requête vers le **chemin d’accès du document d’erreur**. L’objet BLOB *index. html* est retourné et le routeur Blazor charge et traite le chemin d’accès.
 
-Pour plus d’informations, consultez [Hébergement de site Web statique dans le stockage Azure](/azure/storage/blobs/storage-blob-static-website).
+Pour plus d’informations, consultez [Hébergement de sites web statiques dans le service Stockage Azure](/azure/storage/blobs/storage-blob-static-website).
 
 ### <a name="nginx"></a>Nginx
 
@@ -183,7 +183,7 @@ Pour héberger des Blazor dans l’Ancreur à l’aide de nginx, configurez le f
 
 Ajoutez une ligne au fichier Dockerfile, comme indiqué dans l’exemple suivant :
 
-```Dockerfile
+```dockerfile
 FROM nginx:alpine
 COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -274,7 +274,7 @@ L’argument `--contentroot` définit le chemin d’accès absolu au répertoire
 L’argument `--pathbase` définit le chemin d’accès de base d’application pour une application exécutée localement avec un chemin d’URL relatif non racine (la balise `<base>` `href` est définie sur un chemin d’accès autre que `/` pour la mise en lots et la production). Dans les exemples suivants, `/relative-URL-path` est la base du chemin de l’application. Pour plus d’informations, consultez chemin de la base de l' [application](xref:host-and-deploy/blazor/index#app-base-path).
 
 > [!IMPORTANT]
-> Contrairement au chemin fourni au `href` de la balise `<base>`, n’incluez pas de barre oblique (`/`) quand vous passez la valeur d’argument `--pathbase`. Si vous spécifiez `<base href="/CoolApp/">` (inclut une barre oblique) comme chemin de base de l’application dans la balise `<base>`, passez `--pathbase=/CoolApp` (aucune barre oblique de fin) comme valeur d’argument de ligne de commande.
+> Contrairement au chemin fourni au `href` de la balise `<base>`, n’incluez pas de barre oblique (`/`) quand vous passez la valeur d’argument `--pathbase`. Si vous spécifiez `<base>` (inclut une barre oblique) comme chemin de base de l’application dans la balise `<base href="/CoolApp/">`, passez `--pathbase=/CoolApp` (aucune barre oblique de fin) comme valeur d’argument de ligne de commande.
 
 * Passez l’argument lors de l’exécution de l’application localement à une invite de commandes. À partir du répertoire de l’application, exécutez :
 
@@ -294,7 +294,7 @@ L’argument `--pathbase` définit le chemin d’accès de base d’application 
   --pathbase=/relative-URL-path
   ```
 
-### <a name="urls"></a>Adresses URL
+### <a name="urls"></a>URLs
 
 L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec les ports et protocoles sur lesquels il faut écouter les demandes.
 
@@ -318,4 +318,4 @@ L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec 
 
 ## <a name="configure-the-linker"></a>Configurer l'éditeur de liens
 
-Blazor effectue une liaison IL (Intermediate Language) sur chaque Build pour supprimer l’IL inutile des assemblys de sortie. La liaison d’assembly peut être contrôlée pendant le processus de build. Pour plus d'informations, consultez <xref:host-and-deploy/blazor/configure-linker>.
+Blazor effectue une liaison IL (Intermediate Language) sur chaque Build pour supprimer l’IL inutile des assemblys de sortie. La liaison d’assembly peut être contrôlée pendant le processus de build. Pour plus d’informations, consultez <xref:host-and-deploy/blazor/configure-linker>.

@@ -5,14 +5,14 @@ description: Découvrez plus d’informations sur l’utilisation de l’interfa
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/16/2019
+ms.date: 02/09/2020
 uid: fundamentals/http-requests
-ms.openlocfilehash: 9b9da82191a587be0603ee114562e9a964f05250
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.openlocfilehash: 93b75525e8a3f10c4e0b655baaff83c0f6e8131b
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76870396"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77171807"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -109,7 +109,12 @@ Le code suivant appelle <xref:Microsoft.Extensions.DependencyInjection.HttpClien
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
-Le client typé est inscrit comme étant transitoire avec injection de dépendances. Le client typé peut être injecté et utilisé directement :
+Le client typé est inscrit comme étant transitoire avec injection de dépendances. Dans le code précédent, `AddHttpClient` inscrit `GitHubService` en tant que service temporaire. Cette inscription utilise une méthode de fabrique pour :
+
+1. Créez une instance de `HttpClient`.
+1. Créez une instance de `GitHubService`, en passant l’instance de `HttpClient` à son constructeur.
+
+Le client typé peut être injecté et utilisé directement :
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
@@ -188,10 +193,10 @@ public class ValuesController : ControllerBase
   * Est semblable au pipeline d’intergiciel (middleware) entrant dans ASP.NET Core.
   * Fournit un mécanisme permettant de gérer les problèmes transversaux autour des requêtes HTTP, par exemple :
 
-    * mettre en cache
+    * caching
     * gestion des erreurs
-    * serialization
-    * enregistrer
+    * sérialisation
+    * journalisation
 
 Pour créer un gestionnaire de délégation :
 
@@ -364,7 +369,7 @@ La propagation d’en-tête est un intergiciel (middleware) ASP.NET Core pour pr
 
 * Le client comprend les en-têtes configurés pour les demandes sortantes :
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```
@@ -692,7 +697,7 @@ Une <xref:System.Net.Http.IHttpClientFactory> peut être inscrite et utilisée p
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Les projets ciblant .NET Framework nécessitent l’installation du package NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Les projets qui ciblent .NET Core et référencent le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) incluent déjà le package `Microsoft.Extensions.Http`.
 
@@ -991,7 +996,7 @@ La propagation d’en-tête est un intergiciel (middleware) pris en charge par l
 
 * Le client comprend les en-têtes configurés pour les demandes sortantes :
 
-  ```C#
+  ```csharp
   var client = clientFactory.CreateClient("MyForwardingClient");
   var response = client.GetAsync(...);
   ```

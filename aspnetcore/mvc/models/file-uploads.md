@@ -5,14 +5,14 @@ description: Comment utiliser la liaison de modèle et le streaming pour charger
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/04/2019
+ms.date: 02/11/2020
 uid: mvc/models/file-uploads
-ms.openlocfilehash: b5433576ff3e997e6d80201236be2d8463a52d07
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 56fd26c1864089558f5cd89f693dc86ea30c3331
+ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829229"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172473"
 ---
 # <a name="upload-files-in-aspnet-core"></a>Charger des fichiers dans ASP.NET Core
 
@@ -83,7 +83,7 @@ Les options de stockage courantes pour les fichiers sont les suivantes :
   * Les services offrent généralement une évolutivité et une résilience améliorées par rapport aux solutions locales qui sont généralement sujettes à des points de défaillance uniques.
   * Les services sont potentiellement moins coûteux dans les scénarios d’infrastructure de stockage volumineux.
 
-  Pour plus d’informations, consultez [démarrage rapide : utiliser .net pour créer un objet BLOB dans le stockage d’objets](/azure/storage/blobs/storage-quickstart-blobs-dotnet). La rubrique montre <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromFileAsync*>, mais <xref:Microsoft.Azure.Storage.File.CloudFile.UploadFromStreamAsync*> peut être utilisée pour enregistrer un <xref:System.IO.FileStream> dans le stockage d’objets BLOB lors de l’utilisation d’un <xref:System.IO.Stream>.
+  Pour plus d’informations, consultez [démarrage rapide : utiliser .net pour créer un objet BLOB dans le stockage d’objets](/azure/storage/blobs/storage-quickstart-blobs-dotnet).
 
 ## <a name="file-upload-scenarios"></a>Scénarios de chargement de fichiers
 
@@ -101,7 +101,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -228,7 +228,7 @@ Les fichiers individuels téléchargés sur le serveur sont accessibles via la [
 >
 > Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Considérations relatives à la sécurité](#security-considerations)
+> * [Sécurité](#security-considerations)
 > * [Validation](#validation)
 
 Lors du chargement de fichiers à l’aide d’une liaison de modèle et <xref:Microsoft.AspNetCore.Http.IFormFile>, la méthode d’action peut accepter :
@@ -399,7 +399,7 @@ L’exemple précédent est semblable à un scénario illustré dans l’exemple
 >
 > Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Considérations relatives à la sécurité](#security-considerations)
+> * [Sécurité](#security-considerations)
 > * [Validation](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Charger des fichiers volumineux avec streaming
@@ -718,7 +718,7 @@ Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se 
 
 Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (dotnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Dépannage
+## <a name="troubleshoot"></a>Dépanner
 
 Voici certains problèmes courants rencontrés avec le chargement de fichiers et leurs solutions possibles.
 
@@ -830,7 +830,7 @@ Les ressources (disque, mémoire) utilisées par les chargements de fichiers dé
 La mise en mémoire tampon de petits fichiers est traitée dans les sections suivantes de cette rubrique :
 
 * [Stockage physique](#upload-small-files-with-buffered-model-binding-to-physical-storage)
-* [Base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
+* [Sauvegarde de la base de données](#upload-small-files-with-buffered-model-binding-to-a-database)
 
 **Streaming**
 
@@ -957,7 +957,7 @@ Les fichiers individuels téléchargés sur le serveur sont accessibles via la [
 >
 > Les exemples fournis jusqu’à présent ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Considérations relatives à la sécurité](#security-considerations)
+> * [Sécurité](#security-considerations)
 > * [Validation](#validation)
 
 Lors du chargement de fichiers à l’aide d’une liaison de modèle et <xref:Microsoft.AspNetCore.Http.IFormFile>, la méthode d’action peut accepter :
@@ -1128,7 +1128,7 @@ L’exemple précédent est semblable à un scénario illustré dans l’exemple
 >
 > Les exemples fournis ne prennent pas en compte les considérations de sécurité. Des informations supplémentaires sont fournies par les sections suivantes et l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/file-uploads/samples/):
 >
-> * [Considérations relatives à la sécurité](#security-considerations)
+> * [Sécurité](#security-considerations)
 > * [Validation](#validation)
 
 ### <a name="upload-large-files-with-streaming"></a>Charger des fichiers volumineux avec streaming
@@ -1440,7 +1440,7 @@ Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se 
 
 Les limitations du module ASP.NET Core ou la présence du module de filtrage des demandes IIS peuvent limiter les chargements à 2 ou 4 Go. Pour plus d’informations, consultez [Impossible de télécharger un fichier d’une taille supérieure à 2 Go (dotnet/AspNetCore #2711)](https://github.com/dotnet/AspNetCore/issues/2711).
 
-## <a name="troubleshoot"></a>Dépannage
+## <a name="troubleshoot"></a>Dépanner
 
 Voici certains problèmes courants rencontrés avec le chargement de fichiers et leurs solutions possibles.
 
