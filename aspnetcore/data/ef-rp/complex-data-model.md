@@ -6,22 +6,22 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 1244b2e23a842538ff2fca01a513317a690afe7c
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: 411c0874d2b2c6ecadd1da9aff7a093f1e8e525a
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034029"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213426"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans les didacticiels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce didacticiel :
+Dans les didacticiels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce tutoriel, vous allez :
 
 * Nous allons ajouter d’autres entités et relations
 * Nous allons personnaliser le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données.
@@ -59,7 +59,7 @@ Le code précédent ajoute une propriété `FullName` et les attributs suivants 
 
 Pour les dates d’inscription des étudiants, toutes les pages affichent actuellement l’heure du jour avec la date, alors que seule la date présente un intérêt. Vous pouvez avoir recours aux attributs d’annotation de données pour apporter une modification au code, permettant de corriger le format d’affichage dans chaque page qui affiche ces données. 
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -99,7 +99,7 @@ L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student**.
 
@@ -132,7 +132,7 @@ Avec l’attribut `[Column]`, dans le modèle de données, `Student.FirstMidName
 [Required]
 ```
 
-L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types qui n’autorisent pas les valeurs Null comme les types valeur (par exemple, `DateTime`, `int` et `double`). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
+L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types qui n’autorisent pas les valeurs Null comme les types valeur (par exemple, `DateTime`, `int` et `double`). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs requis.
 
 L'attribut `Required` doit être utilisé avec `MinimumLength` pour appliquer `MinimumLength`.
 
@@ -157,7 +157,7 @@ L’attribut `Display` indique que la légende des zones de texte doit être «�
 
 Exécutez l’application et accédez à la page des étudiants. une exception soit levée ; En raison de l’attribut `[Column]`, EF s’attend à trouver une colonne nommée `FirstName`, mais le nom de la colonne dans la base de données est toujours `FirstMidName`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Le message d’erreur est semblable à l’exemple suivant :
 
@@ -248,7 +248,7 @@ Plusieurs attributs peuvent être sur une seule ligne. Les attributs `HireDate` 
 
 Les propriétés `CourseAssignments` et `OfficeAssignment` sont des propriétés de navigation.
 
-Un formateur pouvant animer un nombre quelconque de cours, `CourseAssignments` est défini comme une collection.
+Un formateur peut animer un nombre quelconque de cours, de sorte que `CourseAssignments` est défini comme une collection.
 
 ```csharp
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
@@ -283,7 +283,7 @@ public int InstructorID { get; set; }
 
 Par défaut, EF Core traite la clé comme n’étant pas générée par la base de données, car la colonne est utilisée pour une relation d’identification.
 
-### <a name="the-instructor-navigation-property"></a>Propriété de navigation Instructor
+### <a name="the-instructor-navigation-property"></a>Propriété de navigation du formateur
 
 La propriété de navigation `Instructor.OfficeAssignment` peut avoir la valeur null, car il n’est pas certain qu’il existe une ligne `OfficeAssignment` pour un formateur donné. Un formateur peut ne pas avoir d’affectation de bureau.
 
@@ -333,7 +333,7 @@ public int DepartmentID { get; set; }
 public Department Department { get; set; }
 ```
 
-Un cours pouvant avoir un nombre quelconque d’étudiants inscrits, la propriété de navigation `Enrollments` est une collection :
+Un cours peut avoir un nombre quelconque d’étudiants inscrits, si bien que la propriété de navigation `Enrollments` est une collection :
 
 ```csharp
 public ICollection<Enrollment> Enrollments { get; set; }
@@ -349,7 +349,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="the-department-entity"></a>Entité Department
 
-![Entité Department](complex-data-model/_static/department-entity.png)
+![Entité de service](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -382,7 +382,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
+Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -518,7 +518,7 @@ L’illustration suivante montre le diagramme que les outils EF Power créent po
 
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
-Le diagramme précédent montre :
+Le schéma précédent illustre :
 
 * Plusieurs lignes de relations un-à-plusieurs (1 à \*).
 * La ligne de relation un-à-zéro-ou-un (1 à 0..1) entre les entités `Instructor` et `OfficeAssignment`.
@@ -534,9 +534,9 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 ## <a name="add-a-migration"></a>Ajouter une migration
 
-créer le projet ;
+Créez le projet.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans PMC, exécutez la commande suivante.
 
@@ -591,7 +591,7 @@ Les deux options fonctionnent pour SQL Server. Bien que la méthode d’applicat
 
 Pour forcer EF Core à créer une base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -608,9 +608,9 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
+* Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
 
-* Exécutez la commande suivante :
+* Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet ef database drop --force
@@ -625,9 +625,9 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ouvrez la base de données dans SSOX :
 
@@ -691,7 +691,7 @@ La façon de gérer la situation présentée ici est simplifiée pour ce tutorie
 * Comprendrait du code ou des scripts pour ajouter des lignes `Department` et des lignes `Course` associées aux nouvelles lignes `Department`.
 * N’utiliserait pas le département « Temp » ou la valeur par défaut pour `Course.DepartmentID`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -711,9 +711,9 @@ La méthode `DbInitializer.Initialize` étant conçue pour fonctionner uniquemen
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
 Les deux tutoriels suivants montrent comment lire et mettre à jour des données associées.
 
@@ -725,7 +725,7 @@ Les deux tutoriels suivants montrent comment lire et mettre à jour des données
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans les didacticiels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce didacticiel :
+Dans les didacticiels précédents, nous avons travaillé avec un modèle de données de base composé de trois entités. Dans ce tutoriel, vous allez :
 
 * Nous allons ajouter d’autres entités et relations
 * Nous allons personnaliser le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données.
@@ -749,7 +749,7 @@ Mettez à jour *Models/Student.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L' [énumération DataType](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -758,7 +758,7 @@ L’attribut `DataType` émet des attributs HTML 5 `data-` utilisés par les nav
 
 `DataType.Date` ne spécifie pas le format de la date qui s’affiche. Par défaut, le champ de date est affiché conformément aux formats par défaut basés sur l’objet [CultureInfo](xref:fundamentals/localization#provide-localized-resources-for-the-languages-and-cultures-you-support) du serveur.
 
-L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
+L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -773,7 +773,7 @@ L’attribut `DisplayFormat` peut être utilisé seul. Il est généralement pr�
 
 Pour plus d’informations, consultez la [documentation relative au Tag Helper \<input>](xref:mvc/views/working-with-forms#the-input-tag-helper).
 
-Exécutez l’application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
+Exécutez l'application. Accédez à la page d’index des étudiants. Les heures ne sont plus affichées. Tous les affichages qui utilisent le modèle `Student` affichent la date sans heure.
 
 ![Page d’index des étudiants affichant les dates sans les heures](complex-data-model/_static/dates-no-times.png)
 
@@ -821,18 +821,18 @@ Avec la modification précédente, `Student.FirstMidName` dans l’application e
 
 L’ajout de l’attribut `Column` change le modèle sur lequel repose `SchoolContext`. Le modèle sur lequel repose le `SchoolContext` ne correspond plus à la base de données. Si vous exécutez l’application avant d’appliquer les migrations, l’exception suivante est générée :
 
-```SQL
+```
 SqlException: Invalid column name 'FirstName'.
 ```
 
 Pour mettre à jour la base de données
 
-* créer le projet ;
+* Créez le projet.
 * Ouvrez une fenêtre de commande dans le dossier du projet. Entrez les commandes suivantes pour créer une migration et mettre à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-```PMC
+```powershell
 Add-Migration ColumnFirstName
 Update-Database
 ```
@@ -855,7 +855,7 @@ Please review the migration for accuracy.
 
 Cet avertissement est généré, car les champs de nom sont désormais limités à 50 caractères. Si un nom dans la base de données a plus de 50 caractères, tous les caractères au-delà du cinquantième sont perdus.
 
-* Testez l’application.
+* Tester l'application.
 
 Ouvrez la table Student dans SSOX :
 
@@ -876,7 +876,7 @@ Mettez à jour *Models/Student.cs* avec le code suivant :
 
 ### <a name="the-required-attribute"></a>Attribut Required
 
-L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types non nullables tels que les types valeur (`DateTime`, `int`, `double` et ainsi de suite). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
+L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types non nullables tels que les types valeur (`DateTime`, `int`, `double` et ainsi de suite). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs requis.
 
 L’attribut `Required` peut être remplacé par un paramètre de longueur minimale dans l’attribut `StringLength` :
 
@@ -912,7 +912,7 @@ Plusieurs attributs peuvent être sur une seule ligne. Les attributs `HireDate` 
 
 Les propriétés `CourseAssignments` et `OfficeAssignment` sont des propriétés de navigation.
 
-Un formateur pouvant animer un nombre quelconque de cours, `CourseAssignments` est défini comme une collection.
+Un formateur peut animer un nombre quelconque de cours, de sorte que `CourseAssignments` est défini comme une collection.
 
 ```csharp
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
@@ -963,7 +963,7 @@ public int InstructorID { get; set; }
 
 Par défaut, EF Core traite la clé comme n’étant pas générée par la base de données, car la colonne est utilisée pour une relation d’identification.
 
-### <a name="the-instructor-navigation-property"></a>Propriété de navigation Instructor
+### <a name="the-instructor-navigation-property"></a>Propriété de navigation du formateur
 
 La propriété de navigation `OfficeAssignment` pour l’entité `Instructor` est nullable car :
 
@@ -1030,7 +1030,7 @@ public int DepartmentID { get; set; }
 public Department Department { get; set; }
 ```
 
-Un cours pouvant avoir un nombre quelconque d’étudiants inscrits, la propriété de navigation `Enrollments` est une collection :
+Un cours peut avoir un nombre quelconque d’étudiants inscrits, si bien que la propriété de navigation `Enrollments` est une collection :
 
 ```csharp
 public ICollection<Enrollment> Enrollments { get; set; }
@@ -1046,7 +1046,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-the-department-entity"></a>Créer l’entité Department
 
-![Entité Department](complex-data-model/_static/department-entity.png)
+![Entité de service](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -1079,7 +1079,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
+Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -1226,7 +1226,7 @@ L’illustration suivante montre le diagramme que les outils EF Power créent po
 
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
-Le diagramme précédent montre :
+Le schéma précédent illustre :
 
 * Plusieurs lignes de relations un-à-plusieurs (1 à \*).
 * La ligne de relation un-à-zéro-ou-un (1 à 0..1) entre les entités `Instructor` et `OfficeAssignment`.
@@ -1242,9 +1242,9 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 ## <a name="add-a-migration"></a>Ajouter une migration
 
-créer le projet ;
+Créez le projet.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ComplexDataModel
@@ -1286,11 +1286,11 @@ Disposant à présent d’une base de données, vous devez réfléchir à la fa�
 
 Le code dans le `DbInitializer` mis à jour ajoute des données de valeur initiale pour les nouvelles entités. Pour forcer EF Core à créer une autre base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
-```PMC
+```powershell
 Drop-Database
 Update-Database
 ```
@@ -1310,7 +1310,7 @@ dotnet ef database update
 
 ---
 
-Exécutez l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
+Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
 Ouvrez la base de données dans SSOX :
 
@@ -1358,7 +1358,7 @@ Ajoutez le code en surbrillance suivant. Le nouveau code va après le bloc `.Cre
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
-Avec les modifications précédentes, les lignes `Course` existantes seront toutes associées au département « Temp » après l’exécution de la méthode `ComplexDataModel` de `Up`.
+Avec les modifications précédentes, les lignes `Course` existantes sont associées au département « Temp » après l’exécution de la méthode `ComplexDataModel` `Up`.
 
 Une application de production :
 

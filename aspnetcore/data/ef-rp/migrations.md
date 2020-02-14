@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez commencer à utiliser la fonctionna
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 4246d9d8f6e6ba9e9d735b944ed748720bcf3e16
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: f8e78cf7230528a4047eac1d52a12e2ed8392dec
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928374"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213441"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
 
@@ -32,7 +32,7 @@ Au lieu de supprimer et de recréer la base de données quand le modèle de donn
 
 ## <a name="drop-the-database"></a>Supprimer la base de données
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez l’**Explorateur d’objets SQL Server** (SSOX) pour supprimer la base de données ou exécutez la commande suivante dans la **console du Gestionnaire de package** (PMC) :
 
@@ -48,7 +48,7 @@ Drop-Database
   dotnet tool install --global dotnet-ef
   ```
 
-* Dans l’invite de commandes, accédez au dossier du projet. Le dossier du projet contient le fichier *ContosoUniversity.csproj*.
+* Dans l’invite de commandes, accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
 
 * Supprimez le fichier *CU.db* ou exécutez la commande suivante :
 
@@ -60,7 +60,7 @@ Drop-Database
 
 ## <a name="create-an-initial-migration"></a>Créer une migration initiale
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Exécutez les commandes suivantes dans PMC :
 
@@ -128,7 +128,7 @@ La migration de base de données doit être effectuée dans le cadre du déploie
 * L’utilisation de migrations pour créer des scripts SQL et l’utilisation de scripts SQL dans le déploiement
 * L’exécution de `dotnet ef database update` à partir d’un environnement contrôlé
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Si l’application utilise la Base de données locale SQL Server et affiche l’exception suivante :
 
@@ -145,7 +145,7 @@ La solution peut consister à exécuter `dotnet ef database update` à partir d�
 * [CLI EF Core](/ef/core/miscellaneous/cli/dotnet)
 * [Console du Gestionnaire de package (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
 Le tutoriel suivant crée le modèle de données en ajoutant des propriétés d’entité et de nouvelles entités.
 
@@ -176,11 +176,11 @@ Plutôt que de supprimer et de recréer la base de données quand le modèle de 
 
 Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande `database drop` :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
-```PMC
+```powershell
 Drop-Database
 ```
 
@@ -202,9 +202,9 @@ Entrez ce qui suit dans la fenêtre de commande :
 
 Générez le projet et créez la première migration.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-```PMC
+```powershell
 Add-Migration InitialCreate
 Update-Database
 ```
@@ -224,7 +224,7 @@ La commande EF Core `migrations add` a généré du code pour créer la base de 
 
 [!code-csharp[](intro/samples/cu21/Migrations/20180626224812_InitialCreate.cs?range=7-24,77-88)]
 
-La fonctionnalité Migrations appelle la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour restaurer la mise à jour, les migrations appellent la méthode `Down`.
+Les migrations appellent la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour restaurer la mise à jour, les migrations appellent la méthode `Down`.
 
 Le code précédent concerne la migration initiale. Ce code a été créé quand la commande `migrations add InitialCreate` a été exécutée. Le paramètre de nom de migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Nous vous conseillons de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration ajoutant une table de département pourrait se nommer « TableAjoutDépartement ».
 
@@ -243,7 +243,7 @@ Les migrations créent un *instantané* du schéma de base de données actuel da
 
 Pour supprimer une migration, utilisez la commande suivante :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Remove-Migration
 
@@ -293,7 +293,7 @@ La migration de base de données doit être effectuée dans le cadre du déploie
 
 EF Core utilise la table `__MigrationsHistory` pour voir si des migrations doivent s’exécuter. Si la base de données est à jour, aucune migration n’est exécutée.
 
-## <a name="troubleshooting"></a>Résolution des problèmes
+## <a name="troubleshooting"></a>Dépannage
 
 Téléchargez [l’application terminée](
 https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21snapshots/cu-part4-migrations).

@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: df5bb676df59b538179a69978040521c4ee78ed1
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: ecacd0a9728cbefd716e9dc7cd8a8c62f3df6e0d
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146366"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213387"
 ---
 # <a name="aspnet-core-opno-locblazor-lifecycle"></a>ASP.NET Core Blazor cycle de vie
 
@@ -27,7 +27,7 @@ L’infrastructure Blazor comprend des méthodes de cycle de vie synchrones et a
 
 ### <a name="component-initialization-methods"></a>Méthodes d’initialisation de composant
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> sont appelés lorsque le composant est initialisé après avoir reçu ses paramètres initiaux de son composant parent. Utilisez `OnInitializedAsync` lorsque le composant exécute une opération asynchrone et doit être actualisé à la fin de l’opération. Ces méthodes sont appelées une seule fois lors de la première instanciation du composant.
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*> et <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*> sont appelés lorsque le composant est initialisé après avoir reçu ses paramètres initiaux de son composant parent. Utilisez `OnInitializedAsync` lorsque le composant exécute une opération asynchrone et doit être actualisé à la fin de l’opération.
 
 Pour une opération synchrone, remplacez `OnInitialized`:
 
@@ -46,6 +46,15 @@ protected override async Task OnInitializedAsync()
     await ...
 }
 ```
+
+Blazor les applications serveur qui [préaffichent](xref:blazor/hosting-model-configuration#render-mode) l' `OnInitializedAsync` de l’appel de contenu à **_deux reprises_** :
+
+* Une fois lorsque le composant est initialement restitué de manière statique dans le cadre de la page.
+* Une deuxième fois lorsque le navigateur établit une connexion au serveur.
+
+Pour empêcher l’exécution à deux reprises du code du développeur dans `OnInitializedAsync`, consultez la section [reconnexion avec état après le prérendu](#stateful-reconnection-after-prerendering) .
+
+Bien qu’une application Blazor Server soit prérestitué, certaines actions, telles que l’appel en JavaScript, ne sont pas possibles, car une connexion avec le navigateur n’a pas été établie. Les composants peuvent avoir besoin d’être restitués différemment lorsqu’ils sont prérendus. Pour plus d’informations, consultez la section [détecter quand l’application est un prérendu](#detect-when-the-app-is-prerendering) .
 
 ### <a name="before-parameters-are-set"></a>Les paramètres Before sont définis
 
@@ -145,7 +154,7 @@ protected override bool ShouldRender()
 
 Même si `ShouldRender` est substitué, le composant est toujours restitué initialement.
 
-## <a name="state-changes"></a>Modifications d'état
+## <a name="state-changes"></a>Changements d'état
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*> notifie le composant que son état a changé. Le cas échéant, l’appel de `StateHasChanged` entraîne le rerendu du composant.
 
@@ -180,6 +189,70 @@ Si un composant implémente <xref:System.IDisposable>, la [méthode dispose](/do
 > [!NOTE]
 > L’appel de <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*> dans `Dispose` n’est pas pris en charge. `StateHasChanged` peut être appelé dans le cadre de la suppression du convertisseur, il n’est donc pas possible de demander des mises à jour de l’interface utilisateur à ce stade.
 
-## <a name="handle-errors"></a>Gérer les erreurs
+## <a name="handle-errors"></a>des erreurs
 
 Pour plus d’informations sur la gestion des erreurs lors de l’exécution de la méthode de cycle de vie, consultez <xref:blazor/handle-errors#lifecycle-methods>.
+
+## <a name="stateful-reconnection-after-prerendering"></a>Reconnexion avec état après le prérendu
+
+Dans une application Blazor Server lorsque `RenderMode` est `ServerPrerendered`, le composant est initialement restitué de manière statique dans le cadre de la page. Une fois que le navigateur a établi une connexion au serveur, le composant est *à nouveau*rendu et le composant est maintenant interactif. Si la méthode de cycle de vie [OnInitialized {Async}](xref:blazor/lifecycle#component-initialization-methods) pour initialiser le composant est présente, la méthode est exécutée *deux fois*:
+
+* Lorsque le composant est prérendu statiquement.
+* Après l’établissement de la connexion au serveur.
+
+Cela peut entraîner une modification notable des données affichées dans l’interface utilisateur lorsque le composant est finalement restitué.
+
+Pour éviter le double rendu du scénario dans une application Blazor Server :
+
+* Transmettez un identificateur qui peut être utilisé pour mettre en cache l’État pendant le prérendu et pour récupérer l’état après le redémarrage de l’application.
+* Utilisez l’identificateur pendant le prérendu pour enregistrer l’état du composant.
+* Utilisez l’identificateur après le prérendu pour récupérer l’État mis en cache.
+
+Le code suivant illustre une `WeatherForecastService` mise à jour dans une application de serveur Blazor basée sur un modèle qui évite le double rendu :
+
+```csharp
+public class WeatherForecastService
+{
+    private static readonly string[] _summaries = new[]
+    {
+        "Freezing", "Bracing", "Chilly", "Cool", "Mild",
+        "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+    };
+    
+    public WeatherForecastService(IMemoryCache memoryCache)
+    {
+        MemoryCache = memoryCache;
+    }
+    
+    public IMemoryCache MemoryCache { get; }
+
+    public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
+    {
+        return MemoryCache.GetOrCreateAsync(startDate, async e =>
+        {
+            e.SetOptions(new MemoryCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = 
+                    TimeSpan.FromSeconds(30)
+            });
+
+            var rng = new Random();
+
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = startDate.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = _summaries[rng.Next(_summaries.Length)]
+            }).ToArray();
+        });
+    }
+}
+```
+
+Pour plus d’informations sur la `RenderMode`, consultez <xref:blazor/hosting-model-configuration#render-mode>.
+
+## <a name="detect-when-the-app-is-prerendering"></a>Détecter quand l’application est prérendu
+
+[!INCLUDE[](~/includes/blazor-prerendering.md)]

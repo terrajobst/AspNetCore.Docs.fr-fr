@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 51720af8fec5b4427fc66660eb8ac9c54ba2e99e
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.openlocfilehash: 8e7294f6b66d34781473522a71f929ed5f9c33f2
+ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159857"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77213374"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>Dispositions de Blazor ASP.NET Core
 
@@ -68,7 +68,7 @@ Le fichier *_Imports. Razor* suivant importe les éléments suivants :
 
 * `MyCoolLayout`.
 * Tous les composants Razor dans le même dossier et dans tous les sous-dossiers.
-* Espace de noms `BlazorApp1.Data` .
+* Espace de noms `BlazorApp1.Data`.
  
 [!code-razor[](layouts/sample_snapshot/3.x/_Imports.razor)]
 
@@ -94,7 +94,7 @@ Enfin, `MasterLayout` dans *MasterLayout. Razor* contient les éléments de disp
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Partager une disposition de Razor Pages avec des composants intégrés
 
-Lorsque les composants routables sont intégrés dans une application Razor Pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d'informations, consultez <xref:blazor/hosting-models#integrate-razor-components-into-razor-pages-and-mvc-apps>.
+Lorsque les composants routables sont intégrés dans une application Razor Pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
