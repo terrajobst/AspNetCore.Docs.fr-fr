@@ -17,7 +17,7 @@ ms.locfileid: "73034342"
 
 Par [Damien Bowden](https://twitter.com/damien_bod) et [Tom Dykstra](https://github.com/tdykstra)
  
-Cet article présente trois méthodes permettant d’implémenter une liste d’adresses IP (également appelée liste blanche) dans une application ASP.NET Core. Vous pouvez utiliser les éléments suivants :
+Cet article présente trois méthodes permettant d’implémenter une liste d’adresses IP (également appelée liste verte) dans une application ASP.NET Core. Vous pouvez utiliser les éléments suivants :
 
 * Intergiciel pour vérifier l’adresse IP distante de chaque demande.
 * Filtres d’action pour vérifier l’adresse IP distante des demandes pour des contrôleurs ou des méthodes d’action spécifiques.

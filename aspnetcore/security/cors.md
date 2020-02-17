@@ -279,7 +279,7 @@ Par exemple, considérez une application configurée comme suit :
 app.UseCors(policy => policy.WithHeaders(HeaderNames.CacheControl));
 ```
 
-L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours la liste blanche :
+L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours la liste verte :
 
 ```
 Access-Control-Request-Headers: Cache-Control, Content-Language
