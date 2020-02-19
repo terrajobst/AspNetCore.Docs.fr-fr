@@ -261,7 +261,7 @@
               uid: tutorials/first-mvc-app/validation
             - name: Examiner les méthodes Details et Delete
               uid: tutorials/first-mvc-app/details
-        - name: Affichages
+        - name: Vues
           uid: mvc/views/overview
         - name: Vues partielles
           uid: mvc/views/partial
@@ -295,6 +295,16 @@
           uid: blazor/templates
         - name: Composants
           uid: blazor/components
+        - name: Liaison de données
+          uid: blazor/data-binding
+        - name: Gestion des événements
+          uid: blazor/event-handling
+        - name: Composants basés sur un modèle
+          uid: blazor/templated-components
+        - name: Intégrer des composants
+          uid: blazor/integrate-components
+        - name: Globalisation et localisation
+          uid: blazor/globalization-localization
         - name: Cycle de vie
           uid: blazor/lifecycle
         - name: Dispositions
@@ -335,6 +345,8 @@
               uid: host-and-deploy/blazor/server
             - name: Configurer l'éditeur de liens
               uid: host-and-deploy/blazor/configure-linker
+        - name: Scénarios avancés
+          uid: blazor/advanced-scenarios
     - name: Développement côté client
       items:
         - name: Applications monopages
