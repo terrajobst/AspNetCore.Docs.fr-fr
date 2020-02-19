@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor Se
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/15/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: b928296c45ddb11efcd2c8912cc595c799e65037
+ms.openlocfilehash: a051d51e734fec4315da73d3c4df57706df7f363
 ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447254"
+ms.locfileid: "77465821"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Héberger et déployer Blazor serveur
 
@@ -87,10 +87,7 @@ Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-sign
 
 #### <a name="iis"></a>IIS
 
-Lorsque vous utilisez IIS, activez :
-
-* [WebSocket sur IIS](xref:fundamentals/websockets#enabling-websockets-on-iis).
-* [Sessions rémanentes avec application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
+Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec Application Request Routing. Pour plus d’informations, consultez [équilibrage de charge http à l’aide de application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 
 #### <a name="kubernetes"></a>Kubernetes
 
