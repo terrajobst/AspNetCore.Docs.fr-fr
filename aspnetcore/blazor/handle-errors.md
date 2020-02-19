@@ -5,17 +5,17 @@ description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exc
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/22/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: b987513e5410e95ab632b9935d858b648838d94f
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 7191ae50d64ebd6a9b23b391116aedf3a6d01de2
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928270"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447020"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -87,9 +87,9 @@ En production, ne rendez pas les messages d’exception d’infrastructure ou le
 
 ## <a name="log-errors-with-a-persistent-provider"></a>Consigner les erreurs avec un fournisseur persistant
 
-Si une exception non gérée se produit, l’exception est consignée dans <xref:Microsoft.Extensions.Logging.ILogger> instances configurées dans le conteneur de service. Par défaut, les applications Blazor sont consignées dans la sortie de la console avec le fournisseur de journalisation de la console. Envisagez de vous connecter à un emplacement plus permanent avec un fournisseur qui gère la taille du journal et la rotation des journaux. Pour plus d'informations, consultez <xref:fundamentals/logging/index>.
+Si une exception non gérée se produit, l’exception est consignée dans <xref:Microsoft.Extensions.Logging.ILogger> instances configurées dans le conteneur de service. Par défaut, les applications Blazor sont consignées dans la sortie de la console avec le fournisseur de journalisation de la console. Envisagez de vous connecter à un emplacement plus permanent avec un fournisseur qui gère la taille du journal et la rotation des journaux. Pour plus d’informations, consultez <xref:fundamentals/logging/index>.
 
-Pendant le développement, Blazor envoie généralement les détails complets des exceptions à la console du navigateur pour faciliter le débogage. En production, les erreurs détaillées dans la console du navigateur sont désactivées par défaut, ce qui signifie que les erreurs ne sont pas envoyées aux clients, mais que les détails complets de l’exception sont toujours consignés côté serveur. Pour plus d'informations, consultez <xref:fundamentals/error-handling>.
+Pendant le développement, Blazor envoie généralement les détails complets des exceptions à la console du navigateur pour faciliter le débogage. En production, les erreurs détaillées dans la console du navigateur sont désactivées par défaut, ce qui signifie que les erreurs ne sont pas envoyées aux clients, mais que les détails complets de l’exception sont toujours consignés côté serveur. Pour plus d’informations, consultez <xref:fundamentals/error-handling>.
 
 Vous devez choisir les incidents à enregistrer et le niveau de gravité des incidents journalisés. Les utilisateurs hostiles peuvent être en mesure de déclencher délibérément des erreurs. Par exemple, ne consignez pas un incident à partir d’une erreur où un `ProductId` inconnu est fourni dans l’URL d’un composant qui affiche les détails du produit. Toutes les erreurs ne doivent pas être traitées comme des incidents de gravité élevée pour la journalisation.
 
@@ -173,7 +173,7 @@ Si la méthode `Dispose` du composant lève une exception non gérée, l’excep
 
 Pour plus d’informations sur la suppression de composants, consultez <xref:blazor/lifecycle#component-disposal-with-idisposable>.
 
-### <a name="javascript-interop"></a>Interopérabilité JavaScript
+### <a name="javascript-interop"></a>Interopérabilité de JavaScript
 
 `IJSRuntime.InvokeAsync<T>` permet au code .NET d’effectuer des appels asynchrones au runtime JavaScript dans le navigateur de l’utilisateur.
 
@@ -190,7 +190,7 @@ De même, le code JavaScript peut initier des appels à des méthodes .NET indiq
 
 Vous avez la possibilité d’utiliser le code de gestion des erreurs côté .NET ou JavaScript de l’appel de méthode.
 
-Pour plus d'informations, consultez <xref:blazor/javascript-interop>.
+Pour plus d’informations, consultez <xref:blazor/javascript-interop>.
 
 ### <a name="opno-locblazor-server-circuit-handlers"></a>gestionnaires de circuits Blazor Server
 
@@ -285,7 +285,7 @@ Pour éviter les modèles de récurrence infinis, assurez-vous que le code de re
 
 ### <a name="custom-render-tree-logic"></a>Logique d’arborescence de rendu personnalisé
 
-La plupart des composants Blazor sont implémentés en tant que fichiers *. Razor* et sont compilés pour produire une logique qui fonctionne sur un `RenderTreeBuilder` pour restituer leur sortie. Un développeur peut implémenter manuellement `RenderTreeBuilder` logique à C# l’aide du code procédural. Pour plus d'informations, consultez <xref:blazor/components#manual-rendertreebuilder-logic>.
+La plupart des composants Blazor sont implémentés en tant que fichiers *. Razor* et sont compilés pour produire une logique qui fonctionne sur un `RenderTreeBuilder` pour restituer leur sortie. Un développeur peut implémenter manuellement `RenderTreeBuilder` logique à C# l’aide du code procédural. Pour plus d’informations, consultez <xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic>.
 
 > [!WARNING]
 > L’utilisation de la logique du générateur d’arborescence de rendu manuel est considérée comme un scénario avancé et risqué, non recommandé pour le développement de composants généraux.

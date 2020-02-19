@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le modèle d’options pour représente
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 02/12/2020
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 98fe30fbc424dd51ce8f8319b7ce959fd755c480
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.openlocfilehash: 1f3625380d816c7d4df5a7a24b0ac146500330de
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722737"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447203"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -35,7 +35,7 @@ Le package [Microsoft. extensions. options. ConfigurationExtensions](https://www
 
 ## <a name="options-interfaces"></a>Interfaces d’options
 
-<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
+<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
 
 * Notifications de modifications
 * [Options nommées](#named-options-support-with-iconfigurenamedoptions)
@@ -116,7 +116,7 @@ Dans le code suivant, un second service <xref:Microsoft.Extensions.Options.IConf
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
+Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
 
 Chaque appel à <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> ajoute un service <xref:Microsoft.Extensions.Options.IConfigureOptions%601> au conteneur de services. Dans l’exemple précédent, les valeurs de `Option1` et `Option2` sont toutes deux spécifiées dans *appsettings.json*, mais les valeurs de `Option1` et `Option2` sont remplacées par le délégué configuré.
 
@@ -326,10 +326,10 @@ catch (OptionsValidationException e)
 
 L’exemple précédent définit l’instance d’options nommée sur `optionalOptionsName`. L'instance d’options par défaut est `Options.DefaultName`.
 
-La validation s’exécute lorsque l’instance d’options est créée. Votre instance d’options est garantie de réussir la validation lors du premier accès.
+La validation s’exécute lorsque l’instance d’options est créée. La validation d’une instance options est garantie lors de sa première accès.
 
 > [!IMPORTANT]
-> La validation des options ne protège pas contre les modifications des options une fois que les options sont initialement configurées et validées.
+> La validation des options ne protège pas contre les modifications apportées aux options une fois l’instance des options créée. Par exemple, les options de `IOptionsSnapshot` sont créées et validées une fois par demande lorsque les options sont accessibles pour la première fois. Les options de `IOptionsSnapshot` ne sont pas validées à nouveau lors des tentatives d’accès suivantes *pour la même requête*.
 
 La méthode `Validate` accepte un `Func<TOptions, bool>`. Pour personnaliser entièrement la validation, implémentez `IValidateOptions<TOptions>`, ce qui permet :
 
@@ -453,13 +453,13 @@ Ces options fournissent également un mécanisme de validation des données de c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
 
 ## <a name="options-interfaces"></a>Interfaces d’options
 
-<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
+<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
 
 * Notifications de modifications
 * [Options nommées](#named-options-support-with-iconfigurenamedoptions)
@@ -540,7 +540,7 @@ Dans le code suivant, un second service <xref:Microsoft.Extensions.Options.IConf
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
+Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
 
 Chaque appel à <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> ajoute un service <xref:Microsoft.Extensions.Options.IConfigureOptions%601> au conteneur de services. Dans l’exemple précédent, les valeurs de `Option1` et `Option2` sont toutes deux spécifiées dans *appsettings.json*, mais les valeurs de `Option1` et `Option2` sont remplacées par le délégué configuré.
 
@@ -750,10 +750,10 @@ catch (OptionsValidationException e)
 
 L’exemple précédent définit l’instance d’options nommée sur `optionalOptionsName`. L'instance d’options par défaut est `Options.DefaultName`.
 
-La validation s’exécute lorsque l’instance d’options est créée. Votre instance d’options est garantie de réussir la validation lors du premier accès.
+La validation s’exécute lorsque l’instance d’options est créée. La validation d’une instance options est garantie lors de sa première accès.
 
 > [!IMPORTANT]
-> La validation des options ne protège pas contre les modifications des options une fois que les options sont initialement configurées et validées.
+> La validation des options ne protège pas contre les modifications apportées aux options une fois l’instance des options créée. Par exemple, les options de `IOptionsSnapshot` sont créées et validées une fois par demande lorsque les options sont accessibles pour la première fois. Les options de `IOptionsSnapshot` ne sont pas validées à nouveau lors des tentatives d’accès suivantes *pour la même requête*.
 
 La méthode `Validate` accepte un `Func<TOptions, bool>`. Pour personnaliser entièrement la validation, implémentez `IValidateOptions<TOptions>`, ce qui permet :
 
@@ -875,13 +875,13 @@ Ces options fournissent également un mécanisme de validation des données de c
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
 
 ## <a name="options-interfaces"></a>Interfaces d’options
 
-<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
+<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> permet de récupérer des options et de gérer les notifications d’options pour les instances `TOptions`. <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> prend en charge les scénarios suivants :
 
 * Notifications de modifications
 * [Options nommées](#named-options-support-with-iconfigurenamedoptions)
@@ -962,7 +962,7 @@ Dans le code suivant, un second service <xref:Microsoft.Extensions.Options.IConf
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d'informations, consultez <xref:fundamentals/configuration/index>.
+Vous pouvez ajouter plusieurs fournisseurs de configuration. Des fournisseurs de configuration sont disponibles à partir de packages NuGet et sont appliqués dans l’ordre de leur inscription. Pour plus d’informations, consultez <xref:fundamentals/configuration/index>.
 
 Chaque appel à <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> ajoute un service <xref:Microsoft.Extensions.Options.IConfigureOptions%601> au conteneur de services. Dans l’exemple précédent, les valeurs de `Option1` et `Option2` sont toutes deux spécifiées dans *appsettings.json*, mais les valeurs de `Option1` et `Option2` sont remplacées par le délégué configuré.
 

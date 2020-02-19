@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2019
 uid: security/enforcing-ssl
-ms.openlocfilehash: 9efd49bb246a10c4eb49fb1bb0374ae9442d55a1
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 43f3abfa4bc311ed246f6f2585d522661e492039
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172627"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447150"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -259,7 +259,7 @@ ASP.NET Core 2,1 et versions ultérieures implémentent HSTS avec la méthode d�
 
 `UseHsts` n’est pas recommandé dans le développement, car les paramètres HSTS sont très facilement mis en cache par les navigateurs. Par défaut, `UseHsts` exclut l’adresse de bouclage locale.
 
-Pour les environnements de production qui implémentent le protocole HTTPs pour la première fois, définissez [HstsOptions. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) initiale sur une valeur faible à l’aide de l’une des méthodes <xref:System.TimeSpan>. Définissez la valeur des heures sur un seul jour si vous devez rétablir l’infrastructure HTTPs sur HTTP. Une fois que vous êtes certain de la durabilité de la configuration HTTPs, augmentez la valeur HSTS max-age. une valeur couramment utilisée est d’un an.
+Pour les environnements de production qui implémentent le protocole HTTPs pour la première fois, définissez [HstsOptions. MaxAge](xref:Microsoft.AspNetCore.HttpsPolicy.HstsOptions.MaxAge*) initiale sur une valeur faible à l’aide de l’une des méthodes <xref:System.TimeSpan>. Définissez la valeur des heures sur un seul jour si vous devez rétablir l’infrastructure HTTPs sur HTTP. Une fois que vous êtes certain de la durabilité de la configuration HTTPs, augmentez la valeur de `max-age` HSTS ; une valeur couramment utilisée est d’un an.
 
 Le code suivant :
 
@@ -277,9 +277,9 @@ Le code suivant :
 ::: moniker-end
 
 
-* Définit le paramètre de préchargement de l’en-tête strict-transport-Security. Le préchargement ne fait pas partie de la [spécification RFC HSTS](https://tools.ietf.org/html/rfc6797), mais est pris en charge par les navigateurs Web pour précharger des sites HSTS sur une nouvelle installation. Pour plus d’informations, voir [https://hstspreload.org/](https://hstspreload.org/).
+* Définit le paramètre de préchargement de l’en-tête `Strict-Transport-Security`. Le préchargement ne fait pas partie de la [spécification RFC HSTS](https://tools.ietf.org/html/rfc6797), mais est pris en charge par les navigateurs Web pour précharger des sites HSTS sur une nouvelle installation. Pour plus d’informations, consultez [https://hstspreload.org/](https://hstspreload.org/).
 * Active [includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2), qui applique la stratégie HSTS pour héberger des sous-domaines.
-* Définit explicitement le paramètre max-age de l’en-tête strict-transport-Security sur 60 jours. S’il n’est pas défini, la valeur par défaut est 30 jours. Pour plus d’informations, consultez la [directive max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1) .
+* Définit explicitement le paramètre `max-age` de l’en-tête `Strict-Transport-Security` à 60 jours. S’il n’est pas défini, la valeur par défaut est 30 jours. Pour plus d’informations, consultez la [directive max-age](https://tools.ietf.org/html/rfc6797#section-6.1.1).
 * Ajoute `example.com` à la liste des hôtes à exclure.
 
 `UseHsts` exclut les hôtes de bouclage suivants :
@@ -294,7 +294,7 @@ Dans certains scénarios de service backend où la sécurité de connexion est g
 
 Pour désactiver HTTPs/HSTS :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Désactivez la case à cocher **configurer pour HTTPS** .
 
@@ -311,7 +311,7 @@ Désactivez la case à cocher **configurer pour HTTPS** .
 ::: moniker-end
 
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli) 
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli) 
 
 Utilisez l'option `--no-https`. Par exemple
 
@@ -325,7 +325,7 @@ dotnet new webapp --no-https
 
 ## <a name="trust-the-aspnet-core-https-development-certificate-on-windows-and-macos"></a>Approuver le certificat de développement HTTPs ASP.NET Core sur Windows et macOS
 
-Le kit SDK .NET Core comprend un certificat de développement HTTPs. Le certificat est installé dans le cadre de la première exécution. Par exemple, `dotnet --info` produit une sortie similaire à ce qui suit :
+Le kit SDK .NET Core comprend un certificat de développement HTTPs. Le certificat est installé dans le cadre de la première exécution. Par exemple, `dotnet --info` produit une variation de la sortie suivante :
 
 ```
 ASP.NET Core
@@ -336,7 +336,7 @@ For establishing trust on other platforms refer to the platform specific documen
 For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
 ```
 
-L’installation du kit SDK .NET Core installe le certificat de développement ASP.NET Core HTTPS dans le magasin de certificats de l’utilisateur local. Le certificat a été installé, mais il n’est pas approuvé. Pour faire confiance au certificat, effectuez l’étape unique pour exécuter l’outil dotnet `dev-certs` :
+L’installation du kit SDK .NET Core installe le certificat de développement ASP.NET Core HTTPS dans le magasin de certificats de l’utilisateur local. Le certificat a été installé, mais il n’est pas approuvé. Pour approuver le certificat, effectuez l’étape unique pour exécuter l’outil dotnet `dev-certs` :
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -404,7 +404,7 @@ Fermez toutes les instances de navigateur ouvertes. Ouvrez une nouvelle fenêtre
 * Ouvrez le trousseau d’accès.
 * Sélectionnez le trousseau système.
 * Vérifiez la présence d’un certificat localhost.
-* Vérifiez qu’il contient un symbole `+` sur l’icône pour indiquer son approuvé pour tous les utilisateurs.
+* Vérifiez qu’il contient un symbole `+` sur l’icône pour indiquer qu’il est approuvé pour tous les utilisateurs.
 * Supprimez le certificat du trousseau système.
 * Exécutez les commandes suivantes :
 

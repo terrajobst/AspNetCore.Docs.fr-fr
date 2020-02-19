@@ -4,16 +4,16 @@ author: rick-anderson
 description: Explique ASP.NET Core et ASP.NET 4. x et comment choisir entre eux.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/12/2019
+ms.date: 02/12/2020
 no-loc:
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 8b1681476f96e8613f9461c507fbb7696f888cbc
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a7280b59578ee1d96edeeccf9c9df0b0e4eb4eb8
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963626"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447293"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Choisir entre ASP.NET 4.x et ASP.NET Core
 
@@ -46,14 +46,14 @@ Consultez [ASP.NET Core ciblant le .NET Framework](xref:index#target-framework) 
 
 ## <a name="aspnet-core-scenarios"></a>Scénarios ASP.NET Core
 
-* [Sites web](xref:tutorials/first-mvc-app/index)
+* [Sites Web](xref:tutorials/first-mvc-app/index)
 * [API](xref:tutorials/first-web-api)
-* [Temps réel](xref:signalr/index)
+* [Temps réel](xref:signalr/introduction)
 * [Déployer une application ASP.NET Core sur Azure](/azure/app-service/app-service-web-get-started-dotnet)
 
 ## <a name="aspnet-4x-scenarios"></a>Scénarios ASP.NET 4.x
 
-* [Sites web](/aspnet/mvc)
+* [Sites Web](/aspnet/mvc)
 * [API](/aspnet/web-api)
 * [Temps réel](/aspnet/signalr)
 * [Créer une application web ASP.NET 4.x dans Azure](/azure/app-service/app-service-web-get-started-dotnet-framework)

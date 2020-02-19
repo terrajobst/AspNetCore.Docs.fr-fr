@@ -5,17 +5,17 @@ description: Découvrez comment appeler des fonctions JavaScript à partir de m�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/javascript-interop
-ms.openlocfilehash: c4f2444b60fc2d3a8af893df379cf62636a7bdd5
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: d681eea5a5e876912bd614fba8ea45a464844496
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213361"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447163"
 ---
 # <a name="aspnet-core-opno-locblazor-javascript-interop"></a>ASP.NET Core Blazor l’interopérabilité JavaScript
 
@@ -74,7 +74,7 @@ Pour utiliser l’abstraction `IJSRuntime`, adoptez l’une des approches suivan
 
   [!code-html[](javascript-interop/samples_snapshot/index-script-handleTickerChanged2.html)]
 
-* Pour la génération de contenu dynamique avec [BuildRenderTree](xref:blazor/components#manual-rendertreebuilder-logic), utilisez l’attribut `[Inject]` :
+* Pour la génération de contenu dynamique avec [BuildRenderTree](xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic), utilisez l’attribut `[Inject]` :
 
   ```razor
   [Inject]
@@ -512,7 +512,9 @@ returnArrayAsyncJs: function () {
 
 Vous pouvez également appeler des méthodes d’instance .NET à partir de JavaScript. Pour appeler une méthode d’instance .NET à partir de JavaScript :
 
-* Transmettez l’instance .NET à JavaScript en l’encapsulant dans une instance de `DotNetObjectReference`. L’instance .NET est passée par référence à JavaScript.
+* Passer l’instance .NET par référence à JavaScript :
+  * Effectuez un appel statique à `DotNetObjectReference.Create`.
+  * Encapsulez l’instance dans une instance de `DotNetObjectReference` et appelez `Create` sur l’instance de `DotNetObjectReference`. Supprimez les objets `DotNetObjectReference` (un exemple apparaît plus loin dans cette section).
 * Appeler des méthodes d’instance .NET sur l’instance à l’aide des fonctions `invokeMethod` ou `invokeMethodAsync`. L’instance .NET peut également être passée comme argument lors de l’appel d’autres méthodes .NET à partir de JavaScript.
 
 > [!NOTE]
@@ -556,6 +558,68 @@ Sortie de la console dans les outils de développement Web du navigateur :
 
 ```console
 Hello, Blazor!
+```
+
+Pour éviter une fuite de mémoire et autoriser garbage collection sur un composant qui crée un `DotNetObjectReference`, supprimez l’objet dans la classe qui a créé l’instance `DotNetObjectReference` :
+
+```csharp
+public class ExampleJsInterop : IDisposable
+{
+    private readonly IJSRuntime _jsRuntime;
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public ExampleJsInterop(IJSRuntime jsRuntime)
+    {
+        _jsRuntime = jsRuntime;
+    }
+
+    public ValueTask<string> CallHelloHelperSayHello(string name)
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper(name));
+
+        return _jsRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
+```
+  
+Le modèle précédent présenté dans la classe `ExampleJsInterop` peut également être implémenté dans un composant :
+  
+```razor
+@page "/JSInteropComponent"
+@using BlazorSample.JsInteropClasses
+@implements IDisposable
+@inject IJSRuntime JSRuntime
+
+<h1>JavaScript Interop</h1>
+
+<button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
+    Trigger .NET instance method HelloHelper.SayHello
+</button>
+
+@code {
+    private DotNetObjectReference<HelloHelper> _objRef;
+
+    public async Task TriggerNetInstanceMethod()
+    {
+        _objRef = DotNetObjectReference.Create(new HelloHelper("Blazor"));
+
+        await JSRuntime.InvokeAsync<string>(
+            "exampleJsFunctions.sayHello",
+            _objRef);
+    }
+
+    public void Dispose()
+    {
+        _objRef?.Dispose();
+    }
+}
 ```
 
 ## <a name="share-interop-code-in-a-class-library"></a>Partager du code d’interopérabilité dans une bibliothèque de classes

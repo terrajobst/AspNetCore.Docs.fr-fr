@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor Se
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/17/2020
+ms.date: 02/15/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/server
-ms.openlocfilehash: e8b3a7faaf1dc88059a79abbc7e74657ebb2068c
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: b928296c45ddb11efcd2c8912cc595c799e65037
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76726730"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447254"
 ---
 # <a name="host-and-deploy-opno-locblazor-server"></a>Héberger et déployer Blazor serveur
 
@@ -59,7 +59,7 @@ Blazor fonctionne mieux lorsque vous utilisez WebSockets comme transport SignalR
 
 Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-signalr) pour les applications Blazor Server. Le service permet la mise à l’échelle d’une application Blazor Server vers un grand nombre de connexions SignalR simultanées. En outre, la portée mondiale et les centres de données haute performance du service SignalR contribuent de manière significative à réduire la latence en raison de la géographie. Pour configurer une application (et éventuellement approvisionner) le service Azure SignalR :
 
-1. Activez le service pour prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#reconnection-to-the-same-server). Définissez l’option `ServerStickyMode` ou la valeur de configuration sur `Required`. En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
+1. Activez le service pour prendre en charge les *sessions rémanentes*, où les clients sont [redirigés vers le même serveur lors du prérendu](xref:blazor/hosting-models#connection-to-the-server). Définissez l’option `ServerStickyMode` ou la valeur de configuration sur `Required`. En règle générale, une application crée la configuration à l’aide de l' **une** des approches suivantes :
 
    * `Startup.ConfigureServices`:
   
@@ -87,7 +87,10 @@ Nous vous recommandons d’utiliser le [service Azure SignalR](/azure/azure-sign
 
 #### <a name="iis"></a>IIS
 
-Lorsque vous utilisez IIS, les sessions rémanentes sont activées avec Application Request Routing. Pour plus d’informations, consultez [équilibrage de charge http à l’aide de application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
+Lorsque vous utilisez IIS, activez :
+
+* [WebSocket sur IIS](xref:fundamentals/websockets#enabling-websockets-on-iis).
+* [Sessions rémanentes avec application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).
 
 #### <a name="kubernetes"></a>Kubernetes
 

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
 uid: grpc/index
-ms.openlocfilehash: 2f32bf6e8df2c5b3574c337682cdc2845991630c
-ms.sourcegitcommit: 73e255e846e414821b8cc20ffa3aec946735cd4e
+ms.openlocfilehash: d97eea1da28424680a3cfa38102637b1e20ff661
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71925172"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77446955"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>Présentation de gRPC sur .NET Core
 
@@ -33,7 +33,7 @@ Ces avantages font de gRPC la solution idéale pour :
 
 ## <a name="c-tooling-support-for-proto-files"></a>C#Prise en charge des outils pour les fichiers. proto
 
-gRPC utilise une approche contrat d’abord pour le développement d’API. Les services et les messages sont  *\** définis dans les fichiers. proto :
+gRPC utilise une approche contrat d’abord pour le développement d’API. Les services et les messages sont définis dans les fichiers *\*. proto* :
 
 ```protobuf
 syntax = "proto3";
@@ -51,10 +51,10 @@ message HelloReply {
 }
 ```
 
-Les types .net pour les services, les clients et les messages sont  *\** générés automatiquement par l’inclusion de fichiers. proto dans un projet :
+Les types .NET pour les services, les clients et les messages sont générés automatiquement en incluant les fichiers *\*. proto* dans un projet :
 
 * Ajoutez une référence de package au package [GRPC. Tools](https://www.nuget.org/packages/Grpc.Tools/) .
-* *Ajoutez\** des`<Protobuf>` fichiers. proto au groupe d’éléments.
+* Ajoutez *\*fichiers. proto* au groupe d’éléments `<Protobuf>`.
 
 ```xml
 <ItemGroup>
@@ -62,7 +62,7 @@ Les types .net pour les services, les clients et les messages sont  *\** génér
 </ItemGroup>
 ```
 
-Pour plus d’informations sur la prise en charge des <xref:grpc/basics>outils gRPC, consultez.
+Pour plus d’informations sur la prise en charge des outils gRPC, consultez <xref:grpc/basics>.
 
 ## <a name="grpc-services-on-aspnet-core"></a>services gRPC sur ASP.NET Core
 
@@ -92,7 +92,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`hérite du `GreeterBase` type, qui est généré à partir du `Greeter` service dans le  *\*fichier. proto* . Le service est rendu accessible aux clients dans *Startup.cs*:
+`GreeterService` hérite du type de `GreeterBase`, qui est généré à partir du service `Greeter` dans le fichier *\*. proto* . Le service est rendu accessible aux clients dans *Startup.cs*:
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -101,25 +101,25 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Pour en savoir plus sur les services gRPC sur ASP.NET Core <xref:grpc/aspnetcore>, consultez.
+Pour en savoir plus sur les services gRPC sur ASP.NET Core, consultez <xref:grpc/aspnetcore>.
 
 ## <a name="call-grpc-services-with-a-net-client"></a>Appeler gRPC services avec un client .NET
 
-les clients gRPC sont des types de client concrets qui sont [générés à partir de  *\*fichiers. proto* ](xref:grpc/basics#generated-c-assets). Le client gRPC concret possède des méthodes qui traduisent le service gRPC dans le  *\*fichier. proto* .
+les clients gRPC sont des types de client concrets qui sont [générés à partir des fichiers *\*. proto* ](xref:grpc/basics#generated-c-assets). Le client gRPC concret possède des méthodes qui traduisent le service gRPC dans le fichier *\*. proto* .
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greeter.GreeterClient(channel);
 
-var response = await client.SayHello(
+var response = await client.SayHelloAsync(
     new HelloRequest { Name = "World" });
 
 Console.WriteLine(response.Message);
 ```
 
-Un client gRPC est créé à l’aide d’un canal, qui représente une connexion à long terme à un service gRPC. Un canal peut être créé à `GrpcChannel.ForAddress`l’aide de.
+Un client gRPC est créé à l’aide d’un canal, qui représente une connexion à long terme à un service gRPC. Un canal peut être créé à l’aide de `GrpcChannel.ForAddress`.
 
-Pour plus d’informations sur la création de clients et l’appel de différentes <xref:grpc/client>méthodes de service, consultez.
+Pour plus d’informations sur la création de clients et l’appel de différentes méthodes de service, consultez <xref:grpc/client>.
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 

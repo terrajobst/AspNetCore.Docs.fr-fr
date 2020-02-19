@@ -5,17 +5,17 @@ description: Découvrez les modèles d’hébergement Blazor webassembly et Blaz
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2020
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 2314ba39e67fbf734807b96de6c54bc94283a67d
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 54be0e032a60c69880f428e52f9d778032385dc5
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213312"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447046"
 ---
 # <a name="aspnet-core-opno-locblazor-hosting-models"></a>ASP.NET Core Blazor des modèles d’hébergement
 
@@ -121,7 +121,7 @@ Une application Blazor Server s’appuie sur [ASP.NET Core SignalR](xref:signalr
 
 Chaque écran de navigateur (onglet ou IFRAME) qui est connecté à une application Blazor Server utilise une connexion SignalR. Il s’agit encore d’une autre distinction importante par rapport aux applications classiques affichées par le serveur. Dans une application affichée sur un serveur, l’ouverture de la même application dans plusieurs écrans de navigateur n’est généralement pas convertie en demandes de ressources supplémentaires sur le serveur. Dans une application Blazor Server, chaque écran du navigateur requiert un circuit distinct et des instances distinctes de l’état du composant à gérer par le serveur.
 
-Blazor envisage de fermer un onglet de navigateur ou de naviguer vers une URL externe un arrêt *normal* . En cas de résiliation appropriée, le circuit et les ressources associées sont immédiatement libérés. Un client peut également se déconnecter de manière non appropriée, par exemple en raison d’une interruption du réseau. Blazor Server stocke les circuits déconnectés pour un intervalle configurable afin de permettre au client de se reconnecter. Pour plus d’informations, consultez [reconnexion au même serveur](xref:blazor/hosting-model-configuration#reconnection-to-the-same-server).
+Blazor envisage de fermer un onglet de navigateur ou de naviguer vers une URL externe un arrêt *normal* . En cas de résiliation appropriée, le circuit et les ressources associées sont immédiatement libérés. Un client peut également se déconnecter de manière non appropriée, par exemple en raison d’une interruption du réseau. Blazor Server stocke les circuits déconnectés pour un intervalle configurable afin de permettre au client de se reconnecter.
 
 ### <a name="ui-latency"></a>Latence de l’interface utilisateur
 

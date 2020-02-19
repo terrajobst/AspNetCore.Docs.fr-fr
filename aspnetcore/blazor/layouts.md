@@ -5,17 +5,17 @@ description: Découvrez comment créer des composants de disposition réutilisab
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 02/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 8e7294f6b66d34781473522a71f929ed5f9c33f2
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 5b6e1c7ceb4a6e41230e31bbe379bde1bb0a8286
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213374"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447137"
 ---
 # <a name="aspnet-core-opno-locblazor-layouts"></a>Dispositions de Blazor ASP.NET Core
 
@@ -23,7 +23,7 @@ Par [Rainer Stropek](https://www.timecockpit.com) et [Luke Latham](https://githu
 
 Certains éléments de l’application, tels que les menus, les messages de copyright et les logos de l’entreprise, font généralement partie de la mise en page globale de l’application et sont utilisés par chaque composant de l’application. La copie du code de ces éléments dans tous les composants d’une application n’est pas une approche efficace&mdash;chaque fois que l’un des éléments requiert une mise à jour, chaque composant doit être mis à jour. Une telle duplication est difficile à gérer et peut entraîner une incohérence du contenu au fil du temps. Les *dispositions* résolvent ce problème.
 
-Techniquement, une disposition est simplement un autre composant. Une disposition est définie dans un modèle Razor ou dans C# du code et peut utiliser la [liaison de données](xref:blazor/components#data-binding), l' [injection de dépendances](xref:blazor/dependency-injection)et d’autres scénarios de composants.
+Techniquement, une disposition est simplement un autre composant. Une disposition est définie dans un modèle Razor ou dans C# du code et peut utiliser la [liaison de données](xref:blazor/data-binding), l' [injection de dépendances](xref:blazor/dependency-injection)et d’autres scénarios de composants.
 
 Pour transformer un *composant* en une *disposition*, le composant :
 
@@ -94,7 +94,7 @@ Enfin, `MasterLayout` dans *MasterLayout. Razor* contient les éléments de disp
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Partager une disposition de Razor Pages avec des composants intégrés
 
-Lorsque les composants routables sont intégrés dans une application Razor Pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps>.
+Lorsque les composants routables sont intégrés dans une application Razor Pages, la disposition partagée de l’application peut être utilisée avec les composants. Pour plus d’informations, consultez <xref:blazor/integrate-components>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

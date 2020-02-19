@@ -4,20 +4,20 @@ author: Rick-Anderson
 description: Découvrez comment créer des méthodes de filtre pour les pages Razor dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 12/28/2019
+ms.date: 2/18/2020
 uid: razor-pages/filter
-ms.openlocfilehash: 02771219454556b236080c2668243f788693b2c1
-ms.sourcegitcommit: 077b45eceae044475f04c1d7ef2d153d7c0515a8
+ms.openlocfilehash: a60b17685c6f836de7c0afcc5b89a9894fb8b28f
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/29/2019
-ms.locfileid: "75542719"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447229"
 ---
 # <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Méthodes de filtre pour les pages Razor dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Les filtres de page Razor [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) et [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permettent aux pages Razor d’exécuter du code avant et après l’exécution d’un gestionnaire de page Razor. Les filtres de page Razor sont similaires aux [filtres d’action MVC ASP.NET Core](xref:mvc/controllers/filters#action-filters), à la différence près qu’ils ne peuvent pas être appliqués aux méthodes de gestionnaire de pages individuelles.
 
@@ -30,7 +30,7 @@ Les filtres de page Razor :
 * Ne peuvent pas être appliqués à des méthodes de gestionnaire de page spécifiques.
 * Peut avoir des dépendances de constructeur remplies par [injection de dépendance](xref:fundamentals/dependency-injection) (di). Pour plus d’informations, consultez [ServiceFilterAttribute](/aspnet/core/mvc/controllers/filters#servicefilterattribute) et [TypeFilterAttribute](/aspnet/core/mvc/controllers/filters#typefilterattribute).
 
-Le code peut être exécuté avant l’exécution d’une méthode de gestionnaire à l’aide du constructeur de page ou de l’intergiciel (middleware), mais seuls les filtres de page Razor ont accès aux <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext>. Les filtres ont un paramètre <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> dérivé, qui fournit l’accès à `HttpContext`. Par exemple, l’exemple [Implémenter un attribut de filtre](#ifa) ajoute un en-tête à la réponse, ce qu’il est impossible de faire avec des constructeurs ou des middlewares.
+Alors que les constructeurs de page et l’intergiciel (middleware) activent l’exécution de code personnalisé avant l’exécution d’une méthode de gestionnaire, seuls les filtres de page Razor permettent d’accéder à <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.HttpContext> et à la page. L’intergiciel a accès au `HttpContext`, mais pas au « contexte de page ». Les filtres ont un paramètre <xref:Microsoft.AspNetCore.Mvc.Filters.FilterContext> dérivé, qui fournit l’accès à `HttpContext`. Par exemple, l’exemple [Implémenter un attribut de filtre](#ifa) ajoute un en-tête à la réponse, ce qu’il est impossible de faire avec des constructeurs ou des middlewares.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/filter/3.1sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -109,7 +109,7 @@ L’attribut [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authoriz
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Les filtres de page Razor [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) et [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) permettent aux pages Razor d’exécuter du code avant et après l’exécution d’un gestionnaire de page Razor. Les filtres de page Razor sont similaires aux [filtres d’action MVC ASP.NET Core](xref:mvc/controllers/filters#action-filters), à la différence près qu’ils ne peuvent pas être appliqués aux méthodes de gestionnaire de pages individuelles.
 

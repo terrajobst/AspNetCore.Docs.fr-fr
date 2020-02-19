@@ -3,14 +3,14 @@ title: Vue d’ensemble d’ASP.NET Core MVC
 author: ardalis
 description: ASP.NET Core MVC est une infrastructure riche pour la création d’applications web et d'API à l’aide du modèle de conception Model-View-Controller.
 ms.author: riande
-ms.date: 01/28/2020
+ms.date: 02/12/2020
 uid: mvc/overview
-ms.openlocfilehash: a0d1e364bf4cda4ad30c5070c9e61e6972759bb0
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 2911399f6ed4e14345171c908c4306b9c3e33805
+ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171822"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77447410"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
 
@@ -41,7 +41,7 @@ Les vues sont responsables de la présentation du contenu via l’interface util
 
 ### <a name="controller-responsibilities"></a>Responsabilités du contrôleur
 
-Les contrôleurs sont des composants qui gèrent l’interaction avec l’utilisateur, fonctionnent avec le modèle et, au final, sélectionnent une vue à afficher. Dans une application MVC, la vue sert uniquement à afficher les informations ; le contrôleur gère les entrées et interactions de l'utilisateur, et y répond. Dans le modèle MVC, le contrôleur est le point d’entrée initial. Il est responsable de la sélection des types de modèle à utiliser et de la vue à afficher (ce qui explique son nom, car il contrôle la manière dont l’application répond à une requête donnée).
+Les contrôleurs sont des composants qui gèrent l’interaction avec l’utilisateur, fonctionnent avec le modèle et, au final, sélectionnent une vue à afficher. Dans une application MVC, la vue affiche uniquement des informations ; le contrôleur gère les entrées et interactions des utilisateurs, et y répond. Dans le modèle MVC, le contrôleur est le point d’entrée initial. Il est responsable de la sélection des types de modèle à utiliser et de la vue à afficher (ce qui explique son nom, car il contrôle la manière dont l’application répond à une requête donnée).
 
 > [!NOTE]
 > Vous devez éviter les excès de responsabilités pour ne pas rendre les contrôleurs trop complexes. Pour éviter que la logique du contrôleur ne devienne trop complexe, envoyez (push) la logique métier hors du contrôleur vers le modèle de domaine.
@@ -69,7 +69,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 * [La testabilité](#testability)
 * [Le moteur de vue Razor](#razor-view-engine)
 * [Les vues fortement typées](#strongly-typed-views)
-* [Les Tag Helpers](#tag-helpers)
+* [Tag Helpers](#tag-helpers)
 * [Les composants de vues (View components)](#view-components)
 
 ### <a name="routing"></a>Routage
@@ -170,7 +170,7 @@ Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer
 public class AccountController : Controller
 ```
 
-### <a name="areas"></a>Domaines
+### <a name="areas"></a>Zones (Areas)
 
 Les [zones](controllers/areas.md) fournissent un moyen de partitionner une application Web ASP.NET Core MVC volumineuse en regroupements fonctionnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques, comme Modèle, Contrôleur et Vue, sont conservés dans des dossiers différents, et MVC utilise des conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs unités commerciales, telles que l’extraction, la facturation et la recherche, etc. Chacune de ces unités a ses propres affichages de composants logiques, contrôleurs et modèles.
 
@@ -258,5 +258,4 @@ Pour plus d’informations, consultez <xref:mvc/compatibility-version>.
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [MyTested. AspNetCore. Mvc-bibliothèque de tests Fluent pour ASP.net Core Mvc](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc) &ndash; bibliothèque de tests unitaires fortement typés, fournissant une interface Fluent pour tester les applications MVC et API Web. (*Non géré ou pris en charge par Microsoft.* )
-* [Intégrer des composants Razor dans des applications Razor Pages et MVC](xref:blazor/hosting-model-configuration#integrate-razor-components-into-razor-pages-and-mvc-apps)
-
+* <xref:blazor/integrate-components>
