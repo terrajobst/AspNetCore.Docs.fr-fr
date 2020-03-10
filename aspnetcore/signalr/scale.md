@@ -11,7 +11,7 @@ no-loc:
 uid: signalr/scale
 ms.openlocfilehash: 260e2f0c16288fec2e0a694d070f357529782d8d
 ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/19/2020
 ms.locfileid: "77447332"
@@ -52,7 +52,7 @@ Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs d
 
 Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs dans une application Signalr, augmentez la taille des instances pour limiter le nombre de connexions qu’un serveur doit gérer.
 
-## <a name="scale-out"></a>Montée en charge
+## <a name="scale-out"></a>Scale-out
 
 Une application qui utilise Signalr doit assurer le suivi de toutes ses connexions, ce qui crée des problèmes pour une batterie de serveurs. Ajoutez un serveur et il obtient les nouvelles connexions que les autres serveurs ne connaissent pas. Par exemple, Signalr sur chaque serveur dans le diagramme suivant n’a pas connaissance des connexions sur les autres serveurs. Lorsque Signalr sur l’un des serveurs souhaite envoyer un message à tous les clients, le message est envoyé uniquement aux clients connectés à ce serveur.
 
