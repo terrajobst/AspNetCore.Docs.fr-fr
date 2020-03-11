@@ -6,25 +6,25 @@ ms.author: riande
 ms.date: 10/26/2017
 uid: tutorials/first-mvc-app/index
 ms.openlocfilehash: 04ab19644d68428246c29a5dac980e8bb91867d0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882804"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667929"
 ---
-# <a name="create-a-web-app-with-aspnet-core-mvc"></a><span data-ttu-id="bf36c-103">Créer une API web avec ASP.NET Core MVC</span><span class="sxs-lookup"><span data-stu-id="bf36c-103">Create a web app with ASP.NET Core MVC</span></span>
+# <a name="create-a-web-app-with-aspnet-core-mvc"></a><span data-ttu-id="92320-103">Créer une API web avec ASP.NET Core MVC</span><span class="sxs-lookup"><span data-stu-id="92320-103">Create a web app with ASP.NET Core MVC</span></span>
 
 [!INCLUDE [consider RP](~/includes/razor.md)]
 
-<span data-ttu-id="bf36c-104">La série de tutoriels inclut les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="bf36c-104">The tutorial series includes the following:</span></span>
+<span data-ttu-id="92320-104">La série de tutoriels inclut les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="92320-104">The tutorial series includes the following:</span></span>
 
-1. [<span data-ttu-id="bf36c-105">Bien démarrer</span><span class="sxs-lookup"><span data-stu-id="bf36c-105">Get started</span></span>](start-mvc.md)
-1. [<span data-ttu-id="bf36c-106">Ajouter un contrôleur</span><span class="sxs-lookup"><span data-stu-id="bf36c-106">Add a controller</span></span>](adding-controller.md)
-1. [<span data-ttu-id="bf36c-107">Ajouter une vue</span><span class="sxs-lookup"><span data-stu-id="bf36c-107">Add a view</span></span>](adding-view.md)
-1. [<span data-ttu-id="bf36c-108">Ajouter un modèle</span><span class="sxs-lookup"><span data-stu-id="bf36c-108">Add a model</span></span>](adding-model.md)
-1. [<span data-ttu-id="bf36c-109">Utiliser SQL Server LocalDB</span><span class="sxs-lookup"><span data-stu-id="bf36c-109">Work with SQL Server LocalDB</span></span>](working-with-sql.md)
-1. [<span data-ttu-id="bf36c-110">Méthodes et vues de contrôleur</span><span class="sxs-lookup"><span data-stu-id="bf36c-110">Controller methods and views</span></span>](controller-methods-views.md)
-1. [<span data-ttu-id="bf36c-111">Ajouter une recherche</span><span class="sxs-lookup"><span data-stu-id="bf36c-111">Add search</span></span>](search.md)
-1. [<span data-ttu-id="bf36c-112">Ajouter un nouveau champ</span><span class="sxs-lookup"><span data-stu-id="bf36c-112">Add a new field</span></span>](new-field.md)
-1. [<span data-ttu-id="bf36c-113">Ajouter la validation</span><span class="sxs-lookup"><span data-stu-id="bf36c-113">Add validation</span></span>](validation.md)
-1. [<span data-ttu-id="bf36c-114">Examiner les méthodes Details et Delete</span><span class="sxs-lookup"><span data-stu-id="bf36c-114">Examine the Details and Delete methods</span></span>](details.md)
+1. [<span data-ttu-id="92320-105">Prise en main</span><span class="sxs-lookup"><span data-stu-id="92320-105">Get started</span></span>](start-mvc.md)
+1. [<span data-ttu-id="92320-106">Ajouter un contrôleur</span><span class="sxs-lookup"><span data-stu-id="92320-106">Add a controller</span></span>](adding-controller.md)
+1. [<span data-ttu-id="92320-107">Ajouter une vue</span><span class="sxs-lookup"><span data-stu-id="92320-107">Add a view</span></span>](adding-view.md)
+1. [<span data-ttu-id="92320-108">Ajouter un modèle</span><span class="sxs-lookup"><span data-stu-id="92320-108">Add a model</span></span>](adding-model.md)
+1. [<span data-ttu-id="92320-109">Utiliser SQL Server LocalDB</span><span class="sxs-lookup"><span data-stu-id="92320-109">Work with SQL Server LocalDB</span></span>](working-with-sql.md)
+1. [<span data-ttu-id="92320-110">Méthodes et vues de contrôleur</span><span class="sxs-lookup"><span data-stu-id="92320-110">Controller methods and views</span></span>](controller-methods-views.md)
+1. [<span data-ttu-id="92320-111">Ajouter une recherche</span><span class="sxs-lookup"><span data-stu-id="92320-111">Add search</span></span>](search.md)
+1. [<span data-ttu-id="92320-112">Ajouter un nouveau champ</span><span class="sxs-lookup"><span data-stu-id="92320-112">Add a new field</span></span>](new-field.md)
+1. [<span data-ttu-id="92320-113">Ajouter la validation</span><span class="sxs-lookup"><span data-stu-id="92320-113">Add validation</span></span>](validation.md)
+1. [<span data-ttu-id="92320-114">Examiner les méthodes Details et Delete</span><span class="sxs-lookup"><span data-stu-id="92320-114">Examine the Details and Delete methods</span></span>](details.md)

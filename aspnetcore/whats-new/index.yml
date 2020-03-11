@@ -5,34 +5,36 @@ metadata:
   title: Documentation ASP.NET Core-nouveautés
   description: En savoir plus sur le contenu nouveau et mis à jour dans ASP.NET Core docs.
   ms.topic: landing-page
-  ms.date: 01/17/2020
-  ms.openlocfilehash: c7656fc51e8e8724c1505aecb5b583abbd216928
-  ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
+  ms.date: 03/02/2020
+  ms.openlocfilehash: dd10c004215718e372a43afacdef117aab7ef05a
+  ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
   ms.translationtype: MT
   ms.contentlocale: fr-FR
-  ms.lasthandoff: 02/04/2020
-  ms.locfileid: "77004329"
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78663799"
 landingContent:
 - title: Rechercher les mises à jour de ASP.NET Core docs
   linkLists:
   - linkListType: whats-new
     links:
-    - text: 2020 janvier
+    - text: Février 2020
+      url: 2020-02.md
+    - text: Janvier 2020
       url: 2020-01.md
     - text: Décembre 2019
       url: 2019-12.md
-    - text: 2019 novembre
+    - text: Novembre 2019
       url: 2019-11.md
-    - text: Octobre 2019
+    - text: 2 octobre 2019
       url: 2019-10.md
-    - text: 2019 septembre
+    - text: Septembre 2019
       url: 2019-09.md
 - title: Participer-contribuer à ASP.NET Core docs
   linkLists:
   - linkListType: overview
     links:
     - text: Référentiel ASP.NET Core docs
-      url: https://github.com/aspnet/AspNetCore.Docs/blob/master/README.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/README.md
     - text: Structure de projet et étiquettes pour les problèmes et les demandes de tirage
       url: https://github.com/dotnet/docs/blob/master/styleguide/labels-projects.md
   - linkListType: concept
@@ -40,9 +42,9 @@ landingContent:
     - text: Guide du contributeur Microsoft docs
       url: https://docs.microsoft.com/contribute
     - text: Guide du contributeur ASP.NET Core docs
-      url: https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md
     - text: Guide du contributeur de documentation de référence sur les API ASP.NET Core
-      url: https://github.com/aspnet/ApiDocs/blob/master/CONTRIBUTING.md
+      url: https://github.com/dotnet/AspNetApiDocs/blob/master/CONTRIBUTING.md
 - title: Nouvelles pages relatives aux nouveautés
   linkLists:
   - linkListType: whats-new

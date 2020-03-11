@@ -5,32 +5,32 @@ description: Cet article décrit les étapes les plus courantes pour la migratio
 ms.author: scaddie
 ms.date: 06/21/2019
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: f3817fa1808c331f7e167618e3bb00d68ad08571
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: af905f1127d504839f66d9e0e1ca1dfc27e32772
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667607"
 ---
-# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a><span data-ttu-id="58d5f-103">Migrer l’authentification et l’identité vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="58d5f-103">Migrate authentication and Identity to ASP.NET Core 2.0</span></span>
+# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a><span data-ttu-id="a2a22-103">Migrer l’authentification et l’identité vers ASP.NET Core 2,0</span><span class="sxs-lookup"><span data-stu-id="a2a22-103">Migrate authentication and Identity to ASP.NET Core 2.0</span></span>
 
-<span data-ttu-id="58d5f-104">Par [Scott Addie](https://github.com/scottaddie) et [Hao Kung](https://github.com/HaoK)</span><span class="sxs-lookup"><span data-stu-id="58d5f-104">By [Scott Addie](https://github.com/scottaddie) and [Hao Kung](https://github.com/HaoK)</span></span>
+<span data-ttu-id="a2a22-104">Par [Scott Addie](https://github.com/scottaddie) et [Hao Kung](https://github.com/HaoK)</span><span class="sxs-lookup"><span data-stu-id="a2a22-104">By [Scott Addie](https://github.com/scottaddie) and [Hao Kung](https://github.com/HaoK)</span></span>
 
-<span data-ttu-id="58d5f-105">ASP.NET Core 2,0 dispose d’un nouveau modèle d’authentification et d' [identité](xref:security/authentication/identity) qui simplifie la configuration à l’aide de services.</span><span class="sxs-lookup"><span data-stu-id="58d5f-105">ASP.NET Core 2.0 has a new model for authentication and [Identity](xref:security/authentication/identity) that simplifies configuration by using services.</span></span> <span data-ttu-id="58d5f-106">ASP.NET Core les applications 1. x qui utilisent l’authentification ou l’identité peuvent être mises à jour pour utiliser le nouveau modèle comme indiqué ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="58d5f-106">ASP.NET Core 1.x applications that use authentication or Identity can be updated to use the new model as outlined below.</span></span>
+<span data-ttu-id="a2a22-105">ASP.NET Core 2,0 dispose d’un nouveau modèle d’authentification et d' [identité](xref:security/authentication/identity) qui simplifie la configuration à l’aide de services.</span><span class="sxs-lookup"><span data-stu-id="a2a22-105">ASP.NET Core 2.0 has a new model for authentication and [Identity](xref:security/authentication/identity) that simplifies configuration by using services.</span></span> <span data-ttu-id="a2a22-106">ASP.NET Core les applications 1. x qui utilisent l’authentification ou l’identité peuvent être mises à jour pour utiliser le nouveau modèle comme indiqué ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="a2a22-106">ASP.NET Core 1.x applications that use authentication or Identity can be updated to use the new model as outlined below.</span></span>
 
-## <a name="update-namespaces"></a><span data-ttu-id="58d5f-107">Mettre à jour les espaces de noms</span><span class="sxs-lookup"><span data-stu-id="58d5f-107">Update namespaces</span></span>
+## <a name="update-namespaces"></a><span data-ttu-id="a2a22-107">Mettre à jour les espaces de noms</span><span class="sxs-lookup"><span data-stu-id="a2a22-107">Update namespaces</span></span>
 
-<span data-ttu-id="58d5f-108">Dans 1. x, les classes telles que `IdentityRole` et `IdentityUser` ont été trouvées dans l’espace de noms `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-108">In 1.x, classes such `IdentityRole` and `IdentityUser` were found in the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` namespace.</span></span>
+<span data-ttu-id="a2a22-108">Dans 1. x, les classes telles que `IdentityRole` et `IdentityUser` ont été trouvées dans l’espace de noms `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-108">In 1.x, classes such `IdentityRole` and `IdentityUser` were found in the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` namespace.</span></span>
 
-<span data-ttu-id="58d5f-109">Dans 2,0, l’espace de noms <xref:Microsoft.AspNetCore.Identity> est devenu la nouvelle page d’hébergement pour plusieurs de ces classes.</span><span class="sxs-lookup"><span data-stu-id="58d5f-109">In 2.0, the <xref:Microsoft.AspNetCore.Identity> namespace became the new home for several of such classes.</span></span> <span data-ttu-id="58d5f-110">Avec le code d’identité par défaut, les classes affectées incluent `ApplicationUser` et `Startup`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-110">With the default Identity code, affected classes include `ApplicationUser` and `Startup`.</span></span> <span data-ttu-id="58d5f-111">Ajustez vos instructions `using` pour résoudre les références affectées.</span><span class="sxs-lookup"><span data-stu-id="58d5f-111">Adjust your `using` statements to resolve the affected references.</span></span>
+<span data-ttu-id="a2a22-109">Dans 2,0, l’espace de noms <xref:Microsoft.AspNetCore.Identity> est devenu la nouvelle page d’hébergement pour plusieurs de ces classes.</span><span class="sxs-lookup"><span data-stu-id="a2a22-109">In 2.0, the <xref:Microsoft.AspNetCore.Identity> namespace became the new home for several of such classes.</span></span> <span data-ttu-id="a2a22-110">Avec le code d’identité par défaut, les classes affectées incluent `ApplicationUser` et `Startup`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-110">With the default Identity code, affected classes include `ApplicationUser` and `Startup`.</span></span> <span data-ttu-id="a2a22-111">Ajustez vos instructions `using` pour résoudre les références affectées.</span><span class="sxs-lookup"><span data-stu-id="a2a22-111">Adjust your `using` statements to resolve the affected references.</span></span>
 
 <a name="auth-middleware"></a>
 
-## <a name="authentication-middleware-and-services"></a><span data-ttu-id="58d5f-112">Intergiciel et services d’authentification</span><span class="sxs-lookup"><span data-stu-id="58d5f-112">Authentication Middleware and services</span></span>
+## <a name="authentication-middleware-and-services"></a><span data-ttu-id="a2a22-112">Intergiciel et services d’authentification</span><span class="sxs-lookup"><span data-stu-id="a2a22-112">Authentication Middleware and services</span></span>
 
-<span data-ttu-id="58d5f-113">Dans les projets 1. x, l’authentification est configurée à l’aide d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="58d5f-113">In 1.x projects, authentication is configured via middleware.</span></span> <span data-ttu-id="58d5f-114">Une méthode d’intergiciel est appelée pour chaque schéma d’authentification que vous souhaitez prendre en charge.</span><span class="sxs-lookup"><span data-stu-id="58d5f-114">A middleware method is invoked for each authentication scheme you want to support.</span></span>
+<span data-ttu-id="a2a22-113">Dans les projets 1. x, l’authentification est configurée à l’aide d’un intergiciel (middleware).</span><span class="sxs-lookup"><span data-stu-id="a2a22-113">In 1.x projects, authentication is configured via middleware.</span></span> <span data-ttu-id="a2a22-114">Une méthode d’intergiciel est appelée pour chaque schéma d’authentification que vous souhaitez prendre en charge.</span><span class="sxs-lookup"><span data-stu-id="a2a22-114">A middleware method is invoked for each authentication scheme you want to support.</span></span>
 
-<span data-ttu-id="58d5f-115">L’exemple 1. x suivant configure l’authentification Facebook avec l’identité dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-115">The following 1.x example configures Facebook authentication with Identity in *Startup.cs*:</span></span>
+<span data-ttu-id="a2a22-115">L’exemple 1. x suivant configure l’authentification Facebook avec l’identité dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-115">The following 1.x example configures Facebook authentication with Identity in *Startup.cs*:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -49,9 +49,9 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
 }
 ```
 
-<span data-ttu-id="58d5f-116">Dans les projets 2,0, l’authentification est configurée via les services.</span><span class="sxs-lookup"><span data-stu-id="58d5f-116">In 2.0 projects, authentication is configured via services.</span></span> <span data-ttu-id="58d5f-117">Chaque schéma d’authentification est enregistré dans la méthode `ConfigureServices` de *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="58d5f-117">Each authentication scheme is registered in the `ConfigureServices` method of *Startup.cs*.</span></span> <span data-ttu-id="58d5f-118">La méthode `UseIdentity` est remplacée par `UseAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-118">The `UseIdentity` method is replaced with `UseAuthentication`.</span></span>
+<span data-ttu-id="a2a22-116">Dans les projets 2,0, l’authentification est configurée via les services.</span><span class="sxs-lookup"><span data-stu-id="a2a22-116">In 2.0 projects, authentication is configured via services.</span></span> <span data-ttu-id="a2a22-117">Chaque schéma d’authentification est enregistré dans la méthode `ConfigureServices` de *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="a2a22-117">Each authentication scheme is registered in the `ConfigureServices` method of *Startup.cs*.</span></span> <span data-ttu-id="a2a22-118">La méthode `UseIdentity` est remplacée par `UseAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-118">The `UseIdentity` method is replaced with `UseAuthentication`.</span></span>
 
-<span data-ttu-id="58d5f-119">L’exemple 2,0 suivant configure l’authentification Facebook avec l’identité dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-119">The following 2.0 example configures Facebook authentication with Identity in *Startup.cs*:</span></span>
+<span data-ttu-id="a2a22-119">L’exemple 2,0 suivant configure l’authentification Facebook avec l’identité dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-119">The following 2.0 example configures Facebook authentication with Identity in *Startup.cs*:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -74,23 +74,23 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
 }
 ```
 
-<span data-ttu-id="58d5f-120">La méthode `UseAuthentication` ajoute un seul composant d’intergiciel d’authentification, qui est responsable de l’authentification automatique et de la gestion des demandes d’authentification à distance.</span><span class="sxs-lookup"><span data-stu-id="58d5f-120">The `UseAuthentication` method adds a single authentication middleware component, which is responsible for automatic authentication and the handling of remote authentication requests.</span></span> <span data-ttu-id="58d5f-121">Il remplace tous les composants de l’intergiciel (middleware) individuels par un seul composant de middleware commun.</span><span class="sxs-lookup"><span data-stu-id="58d5f-121">It replaces all of the individual middleware components with a single, common middleware component.</span></span>
+<span data-ttu-id="a2a22-120">La méthode `UseAuthentication` ajoute un seul composant d’intergiciel d’authentification, qui est responsable de l’authentification automatique et de la gestion des demandes d’authentification à distance.</span><span class="sxs-lookup"><span data-stu-id="a2a22-120">The `UseAuthentication` method adds a single authentication middleware component, which is responsible for automatic authentication and the handling of remote authentication requests.</span></span> <span data-ttu-id="a2a22-121">Il remplace tous les composants de l’intergiciel (middleware) individuels par un seul composant de middleware commun.</span><span class="sxs-lookup"><span data-stu-id="a2a22-121">It replaces all of the individual middleware components with a single, common middleware component.</span></span>
 
-<span data-ttu-id="58d5f-122">Vous trouverez ci-dessous des instructions de migration de 2,0 pour chaque schéma d’authentification principal.</span><span class="sxs-lookup"><span data-stu-id="58d5f-122">Below are 2.0 migration instructions for each major authentication scheme.</span></span>
+<span data-ttu-id="a2a22-122">Vous trouverez ci-dessous des instructions de migration de 2,0 pour chaque schéma d’authentification principal.</span><span class="sxs-lookup"><span data-stu-id="a2a22-122">Below are 2.0 migration instructions for each major authentication scheme.</span></span>
 
-### <a name="cookie-based-authentication"></a><span data-ttu-id="58d5f-123">Authentification basée sur les cookies</span><span class="sxs-lookup"><span data-stu-id="58d5f-123">Cookie-based authentication</span></span>
+### <a name="cookie-based-authentication"></a><span data-ttu-id="a2a22-123">Authentification basée sur les cookies</span><span class="sxs-lookup"><span data-stu-id="a2a22-123">Cookie-based authentication</span></span>
 
-<span data-ttu-id="58d5f-124">Sélectionnez l’une des deux options ci-dessous et apportez les modifications nécessaires dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-124">Select one of the two options below, and make the necessary changes in *Startup.cs*:</span></span>
+<span data-ttu-id="a2a22-124">Sélectionnez l’une des deux options ci-dessous et apportez les modifications nécessaires dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-124">Select one of the two options below, and make the necessary changes in *Startup.cs*:</span></span>
 
-1. <span data-ttu-id="58d5f-125">Utiliser des cookies avec une identité</span><span class="sxs-lookup"><span data-stu-id="58d5f-125">Use cookies with Identity</span></span>
-    - <span data-ttu-id="58d5f-126">Remplacez `UseIdentity` par `UseAuthentication` dans la méthode `Configure` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-126">Replace `UseIdentity` with `UseAuthentication` in the `Configure` method:</span></span>
+1. <span data-ttu-id="a2a22-125">Utiliser des cookies avec une identité</span><span class="sxs-lookup"><span data-stu-id="a2a22-125">Use cookies with Identity</span></span>
+    - <span data-ttu-id="a2a22-126">Remplacez `UseIdentity` par `UseAuthentication` dans la méthode `Configure` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-126">Replace `UseIdentity` with `UseAuthentication` in the `Configure` method:</span></span>
 
         ```csharp
         app.UseAuthentication();
         ```
 
-    - <span data-ttu-id="58d5f-127">Appelez la méthode `AddIdentity` dans la méthode `ConfigureServices` pour ajouter les services d’authentification de cookie.</span><span class="sxs-lookup"><span data-stu-id="58d5f-127">Invoke the `AddIdentity` method in the `ConfigureServices` method to add the cookie authentication services.</span></span>
-    - <span data-ttu-id="58d5f-128">Vous pouvez également appeler la méthode `ConfigureApplicationCookie` ou `ConfigureExternalCookie` dans la méthode `ConfigureServices` pour affiner les paramètres de cookie d’identité.</span><span class="sxs-lookup"><span data-stu-id="58d5f-128">Optionally, invoke the `ConfigureApplicationCookie` or `ConfigureExternalCookie` method in the `ConfigureServices` method to tweak the Identity cookie settings.</span></span>
+    - <span data-ttu-id="a2a22-127">Appelez la méthode `AddIdentity` dans la méthode `ConfigureServices` pour ajouter les services d’authentification de cookie.</span><span class="sxs-lookup"><span data-stu-id="a2a22-127">Invoke the `AddIdentity` method in the `ConfigureServices` method to add the cookie authentication services.</span></span>
+    - <span data-ttu-id="a2a22-128">Vous pouvez également appeler la méthode `ConfigureApplicationCookie` ou `ConfigureExternalCookie` dans la méthode `ConfigureServices` pour affiner les paramètres de cookie d’identité.</span><span class="sxs-lookup"><span data-stu-id="a2a22-128">Optionally, invoke the `ConfigureApplicationCookie` or `ConfigureExternalCookie` method in the `ConfigureServices` method to tweak the Identity cookie settings.</span></span>
 
         ```csharp
         services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -100,14 +100,14 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
         services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/LogIn");
         ```
 
-2. <span data-ttu-id="58d5f-129">Utiliser des cookies sans identité</span><span class="sxs-lookup"><span data-stu-id="58d5f-129">Use cookies without Identity</span></span>
-    - <span data-ttu-id="58d5f-130">Remplacez l’appel de méthode `UseCookieAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-130">Replace the `UseCookieAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+2. <span data-ttu-id="a2a22-129">Utiliser des cookies sans identité</span><span class="sxs-lookup"><span data-stu-id="a2a22-129">Use cookies without Identity</span></span>
+    - <span data-ttu-id="a2a22-130">Remplacez l’appel de méthode `UseCookieAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-130">Replace the `UseCookieAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
         ```csharp
         app.UseAuthentication();
         ```
 
-    - <span data-ttu-id="58d5f-131">Appelez les méthodes `AddAuthentication` et `AddCookie` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-131">Invoke the `AddAuthentication` and `AddCookie` methods in the `ConfigureServices` method:</span></span>
+    - <span data-ttu-id="a2a22-131">Appelez les méthodes `AddAuthentication` et `AddCookie` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-131">Invoke the `AddAuthentication` and `AddCookie` methods in the `ConfigureServices` method:</span></span>
 
         ```csharp
         // If you don't want the cookie to be automatically authenticated and assigned to HttpContext.User,
@@ -120,16 +120,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
                 });
         ```
 
-### <a name="jwt-bearer-authentication"></a><span data-ttu-id="58d5f-132">Authentification du porteur JWT</span><span class="sxs-lookup"><span data-stu-id="58d5f-132">JWT Bearer Authentication</span></span>
+### <a name="jwt-bearer-authentication"></a><span data-ttu-id="a2a22-132">Authentification du porteur JWT</span><span class="sxs-lookup"><span data-stu-id="a2a22-132">JWT Bearer Authentication</span></span>
 
-<span data-ttu-id="58d5f-133">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-133">Make the following changes in *Startup.cs*:</span></span>
-- <span data-ttu-id="58d5f-134">Remplacez l’appel de méthode `UseJwtBearerAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-134">Replace the `UseJwtBearerAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+<span data-ttu-id="a2a22-133">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-133">Make the following changes in *Startup.cs*:</span></span>
+- <span data-ttu-id="a2a22-134">Remplacez l’appel de méthode `UseJwtBearerAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-134">Replace the `UseJwtBearerAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-135">Appelez la méthode `AddJwtBearer` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-135">Invoke the `AddJwtBearer` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-135">Appelez la méthode `AddJwtBearer` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-135">Invoke the `AddJwtBearer` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -140,19 +140,19 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-    <span data-ttu-id="58d5f-136">Cet extrait de code n’utilise pas d’identité. par conséquent, le schéma par défaut doit être défini en passant `JwtBearerDefaults.AuthenticationScheme` à la méthode `AddAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-136">This code snippet doesn't use Identity, so the default scheme should be set by passing `JwtBearerDefaults.AuthenticationScheme` to the `AddAuthentication` method.</span></span>
+    <span data-ttu-id="a2a22-136">Cet extrait de code n’utilise pas d’identité. par conséquent, le schéma par défaut doit être défini en passant `JwtBearerDefaults.AuthenticationScheme` à la méthode `AddAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-136">This code snippet doesn't use Identity, so the default scheme should be set by passing `JwtBearerDefaults.AuthenticationScheme` to the `AddAuthentication` method.</span></span>
 
-### <a name="openid-connect-oidc-authentication"></a><span data-ttu-id="58d5f-137">Authentification OpenID Connect (OIDC)</span><span class="sxs-lookup"><span data-stu-id="58d5f-137">OpenID Connect (OIDC) authentication</span></span>
+### <a name="openid-connect-oidc-authentication"></a><span data-ttu-id="a2a22-137">Authentification OpenID Connect (OIDC)</span><span class="sxs-lookup"><span data-stu-id="a2a22-137">OpenID Connect (OIDC) authentication</span></span>
 
-<span data-ttu-id="58d5f-138">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-138">Make the following changes in *Startup.cs*:</span></span>
+<span data-ttu-id="a2a22-138">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-138">Make the following changes in *Startup.cs*:</span></span>
 
-- <span data-ttu-id="58d5f-139">Remplacez l’appel de méthode `UseOpenIdConnectAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-139">Replace the `UseOpenIdConnectAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+- <span data-ttu-id="a2a22-139">Remplacez l’appel de méthode `UseOpenIdConnectAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-139">Replace the `UseOpenIdConnectAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-140">Appelez la méthode `AddOpenIdConnect` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-140">Invoke the `AddOpenIdConnect` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-140">Appelez la méthode `AddOpenIdConnect` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-140">Invoke the `AddOpenIdConnect` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication(options =>
@@ -168,7 +168,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
 
-- <span data-ttu-id="58d5f-141">Remplacez la propriété `PostLogoutRedirectUri` dans l’action `OpenIdConnectOptions` par `SignedOutRedirectUri`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-141">Replace the `PostLogoutRedirectUri` property in the `OpenIdConnectOptions` action with `SignedOutRedirectUri`:</span></span>
+- <span data-ttu-id="a2a22-141">Remplacez la propriété `PostLogoutRedirectUri` dans l’action `OpenIdConnectOptions` par `SignedOutRedirectUri`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-141">Replace the `PostLogoutRedirectUri` property in the `OpenIdConnectOptions` action with `SignedOutRedirectUri`:</span></span>
 
     ```csharp
     .AddOpenIdConnect(options =>
@@ -177,16 +177,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
     });
     ```
     
-### <a name="facebook-authentication"></a><span data-ttu-id="58d5f-142">Authentification Facebook</span><span class="sxs-lookup"><span data-stu-id="58d5f-142">Facebook authentication</span></span>
+### <a name="facebook-authentication"></a><span data-ttu-id="a2a22-142">Authentification Facebook</span><span class="sxs-lookup"><span data-stu-id="a2a22-142">Facebook authentication</span></span>
 
-<span data-ttu-id="58d5f-143">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-143">Make the following changes in *Startup.cs*:</span></span>
-- <span data-ttu-id="58d5f-144">Remplacez l’appel de méthode `UseFacebookAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-144">Replace the `UseFacebookAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+<span data-ttu-id="a2a22-143">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-143">Make the following changes in *Startup.cs*:</span></span>
+- <span data-ttu-id="a2a22-144">Remplacez l’appel de méthode `UseFacebookAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-144">Replace the `UseFacebookAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-145">Appelez la méthode `AddFacebook` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-145">Invoke the `AddFacebook` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-145">Appelez la méthode `AddFacebook` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-145">Invoke the `AddFacebook` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication()
@@ -197,16 +197,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="google-authentication"></a><span data-ttu-id="58d5f-146">Authentification Google</span><span class="sxs-lookup"><span data-stu-id="58d5f-146">Google authentication</span></span>
+### <a name="google-authentication"></a><span data-ttu-id="a2a22-146">Authentification Google</span><span class="sxs-lookup"><span data-stu-id="a2a22-146">Google authentication</span></span>
 
-<span data-ttu-id="58d5f-147">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-147">Make the following changes in *Startup.cs*:</span></span>
-- <span data-ttu-id="58d5f-148">Remplacez l’appel de méthode `UseGoogleAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-148">Replace the `UseGoogleAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+<span data-ttu-id="a2a22-147">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-147">Make the following changes in *Startup.cs*:</span></span>
+- <span data-ttu-id="a2a22-148">Remplacez l’appel de méthode `UseGoogleAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-148">Replace the `UseGoogleAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-149">Appelez la méthode `AddGoogle` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-149">Invoke the `AddGoogle` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-149">Appelez la méthode `AddGoogle` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-149">Invoke the `AddGoogle` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication()
@@ -217,18 +217,18 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="microsoft-account-authentication"></a><span data-ttu-id="58d5f-150">Authentification Microsoft</span><span class="sxs-lookup"><span data-stu-id="58d5f-150">Microsoft Account authentication</span></span>
+### <a name="microsoft-account-authentication"></a><span data-ttu-id="a2a22-150">Authentification du compte Microsoft</span><span class="sxs-lookup"><span data-stu-id="a2a22-150">Microsoft Account authentication</span></span>
 
-<span data-ttu-id="58d5f-151">Pour plus d’informations sur l’authentification compte Microsoft, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/14455).</span><span class="sxs-lookup"><span data-stu-id="58d5f-151">For more information on Microsoft account authentication, see [this GitHub issue](https://github.com/aspnet/AspNetCore.Docs/issues/14455).</span></span>
+<span data-ttu-id="a2a22-151">Pour plus d’informations sur l’authentification compte Microsoft, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/14455).</span><span class="sxs-lookup"><span data-stu-id="a2a22-151">For more information on Microsoft account authentication, see [this GitHub issue](https://github.com/dotnet/AspNetCore.Docs/issues/14455).</span></span>
 
-<span data-ttu-id="58d5f-152">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-152">Make the following changes in *Startup.cs*:</span></span>
-- <span data-ttu-id="58d5f-153">Remplacez l’appel de méthode `UseMicrosoftAccountAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-153">Replace the `UseMicrosoftAccountAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+<span data-ttu-id="a2a22-152">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-152">Make the following changes in *Startup.cs*:</span></span>
+- <span data-ttu-id="a2a22-153">Remplacez l’appel de méthode `UseMicrosoftAccountAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-153">Replace the `UseMicrosoftAccountAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-154">Appelez la méthode `AddMicrosoftAccount` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-154">Invoke the `AddMicrosoftAccount` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-154">Appelez la méthode `AddMicrosoftAccount` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-154">Invoke the `AddMicrosoftAccount` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication()
@@ -239,16 +239,16 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="twitter-authentication"></a><span data-ttu-id="58d5f-155">Authentification Twitter</span><span class="sxs-lookup"><span data-stu-id="58d5f-155">Twitter authentication</span></span>
+### <a name="twitter-authentication"></a><span data-ttu-id="a2a22-155">Authentification Twitter</span><span class="sxs-lookup"><span data-stu-id="a2a22-155">Twitter authentication</span></span>
 
-<span data-ttu-id="58d5f-156">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-156">Make the following changes in *Startup.cs*:</span></span>
-- <span data-ttu-id="58d5f-157">Remplacez l’appel de méthode `UseTwitterAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-157">Replace the `UseTwitterAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
+<span data-ttu-id="a2a22-156">Apportez les modifications suivantes dans *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-156">Make the following changes in *Startup.cs*:</span></span>
+- <span data-ttu-id="a2a22-157">Remplacez l’appel de méthode `UseTwitterAuthentication` dans la méthode `Configure` par `UseAuthentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-157">Replace the `UseTwitterAuthentication` method call in the `Configure` method with `UseAuthentication`:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-- <span data-ttu-id="58d5f-158">Appelez la méthode `AddTwitter` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-158">Invoke the `AddTwitter` method in the `ConfigureServices` method:</span></span>
+- <span data-ttu-id="a2a22-158">Appelez la méthode `AddTwitter` dans la méthode `ConfigureServices` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-158">Invoke the `AddTwitter` method in the `ConfigureServices` method:</span></span>
 
     ```csharp
     services.AddAuthentication()
@@ -259,19 +259,19 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory) {
             });
     ```
 
-### <a name="setting-default-authentication-schemes"></a><span data-ttu-id="58d5f-159">Définition des schémas d’authentification par défaut</span><span class="sxs-lookup"><span data-stu-id="58d5f-159">Setting default authentication schemes</span></span>
+### <a name="setting-default-authentication-schemes"></a><span data-ttu-id="a2a22-159">Définition des schémas d’authentification par défaut</span><span class="sxs-lookup"><span data-stu-id="a2a22-159">Setting default authentication schemes</span></span>
 
-<span data-ttu-id="58d5f-160">Dans 1. x, les propriétés `AutomaticAuthenticate` et `AutomaticChallenge` de la classe de base [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) étaient destinées à être définies sur un seul schéma d’authentification.</span><span class="sxs-lookup"><span data-stu-id="58d5f-160">In 1.x, the `AutomaticAuthenticate` and `AutomaticChallenge` properties of the [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) base class were intended to be set on a single authentication scheme.</span></span> <span data-ttu-id="58d5f-161">Il n’existait pas de bonne méthode pour l’appliquer.</span><span class="sxs-lookup"><span data-stu-id="58d5f-161">There was no good way to enforce this.</span></span>
+<span data-ttu-id="a2a22-160">Dans 1. x, les propriétés `AutomaticAuthenticate` et `AutomaticChallenge` de la classe de base [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) étaient destinées à être définies sur un seul schéma d’authentification.</span><span class="sxs-lookup"><span data-stu-id="a2a22-160">In 1.x, the `AutomaticAuthenticate` and `AutomaticChallenge` properties of the [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) base class were intended to be set on a single authentication scheme.</span></span> <span data-ttu-id="a2a22-161">Il n’existait pas de bonne méthode pour l’appliquer.</span><span class="sxs-lookup"><span data-stu-id="a2a22-161">There was no good way to enforce this.</span></span>
 
-<span data-ttu-id="58d5f-162">Dans 2,0, ces deux propriétés ont été supprimées en tant que propriétés sur l’instance de `AuthenticationOptions` individuelle.</span><span class="sxs-lookup"><span data-stu-id="58d5f-162">In 2.0, these two properties have been removed as properties on the individual `AuthenticationOptions` instance.</span></span> <span data-ttu-id="58d5f-163">Ils peuvent être configurés dans l’appel de méthode `AddAuthentication` au sein de la méthode `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-163">They can be configured in the `AddAuthentication` method call within the `ConfigureServices` method of *Startup.cs*:</span></span>
+<span data-ttu-id="a2a22-162">Dans 2,0, ces deux propriétés ont été supprimées en tant que propriétés sur l’instance de `AuthenticationOptions` individuelle.</span><span class="sxs-lookup"><span data-stu-id="a2a22-162">In 2.0, these two properties have been removed as properties on the individual `AuthenticationOptions` instance.</span></span> <span data-ttu-id="a2a22-163">Ils peuvent être configurés dans l’appel de méthode `AddAuthentication` au sein de la méthode `ConfigureServices` de *Startup.cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-163">They can be configured in the `AddAuthentication` method call within the `ConfigureServices` method of *Startup.cs*:</span></span>
 
 ```csharp
 services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme);
 ```
 
-<span data-ttu-id="58d5f-164">Dans l’extrait de code précédent, le schéma par défaut est défini sur `CookieAuthenticationDefaults.AuthenticationScheme` (« cookies »).</span><span class="sxs-lookup"><span data-stu-id="58d5f-164">In the preceding code snippet, the default scheme is set to `CookieAuthenticationDefaults.AuthenticationScheme` ("Cookies").</span></span>
+<span data-ttu-id="a2a22-164">Dans l’extrait de code précédent, le schéma par défaut est défini sur `CookieAuthenticationDefaults.AuthenticationScheme` (« cookies »).</span><span class="sxs-lookup"><span data-stu-id="a2a22-164">In the preceding code snippet, the default scheme is set to `CookieAuthenticationDefaults.AuthenticationScheme` ("Cookies").</span></span>
 
-<span data-ttu-id="58d5f-165">Vous pouvez également utiliser une version surchargée de la méthode `AddAuthentication` pour définir plusieurs propriétés.</span><span class="sxs-lookup"><span data-stu-id="58d5f-165">Alternatively, use an overloaded version of the `AddAuthentication` method to set more than one property.</span></span> <span data-ttu-id="58d5f-166">Dans l’exemple de méthode surchargée suivant, le schéma par défaut est défini sur `CookieAuthenticationDefaults.AuthenticationScheme`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-166">In the following overloaded method example, the default scheme is set to `CookieAuthenticationDefaults.AuthenticationScheme`.</span></span> <span data-ttu-id="58d5f-167">Le schéma d’authentification peut également être spécifié au sein de vos propres `[Authorize]` attributs ou stratégies d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="58d5f-167">The authentication scheme may alternatively be specified within your individual `[Authorize]` attributes or authorization policies.</span></span>
+<span data-ttu-id="a2a22-165">Vous pouvez également utiliser une version surchargée de la méthode `AddAuthentication` pour définir plusieurs propriétés.</span><span class="sxs-lookup"><span data-stu-id="a2a22-165">Alternatively, use an overloaded version of the `AddAuthentication` method to set more than one property.</span></span> <span data-ttu-id="a2a22-166">Dans l’exemple de méthode surchargée suivant, le schéma par défaut est défini sur `CookieAuthenticationDefaults.AuthenticationScheme`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-166">In the following overloaded method example, the default scheme is set to `CookieAuthenticationDefaults.AuthenticationScheme`.</span></span> <span data-ttu-id="a2a22-167">Le schéma d’authentification peut également être spécifié au sein de vos propres `[Authorize]` attributs ou stratégies d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="a2a22-167">The authentication scheme may alternatively be specified within your individual `[Authorize]` attributes or authorization policies.</span></span>
 
 ```csharp
 services.AddAuthentication(options =>
@@ -281,36 +281,36 @@ services.AddAuthentication(options =>
 });
 ```
 
-<span data-ttu-id="58d5f-168">Définissez un schéma par défaut dans 2,0 si l’une des conditions suivantes est remplie :</span><span class="sxs-lookup"><span data-stu-id="58d5f-168">Define a default scheme in 2.0 if one of the following conditions is true:</span></span>
-- <span data-ttu-id="58d5f-169">Vous souhaitez que l’utilisateur soit automatiquement connecté</span><span class="sxs-lookup"><span data-stu-id="58d5f-169">You want the user to be automatically signed in</span></span>
-- <span data-ttu-id="58d5f-170">Vous utilisez l’attribut `[Authorize]` ou les stratégies d’autorisation sans spécifier de schémas</span><span class="sxs-lookup"><span data-stu-id="58d5f-170">You use the `[Authorize]` attribute or authorization policies without specifying schemes</span></span>
+<span data-ttu-id="a2a22-168">Définissez un schéma par défaut dans 2,0 si l’une des conditions suivantes est remplie :</span><span class="sxs-lookup"><span data-stu-id="a2a22-168">Define a default scheme in 2.0 if one of the following conditions is true:</span></span>
+- <span data-ttu-id="a2a22-169">Vous souhaitez que l’utilisateur soit automatiquement connecté</span><span class="sxs-lookup"><span data-stu-id="a2a22-169">You want the user to be automatically signed in</span></span>
+- <span data-ttu-id="a2a22-170">Vous utilisez l’attribut `[Authorize]` ou les stratégies d’autorisation sans spécifier de schémas</span><span class="sxs-lookup"><span data-stu-id="a2a22-170">You use the `[Authorize]` attribute or authorization policies without specifying schemes</span></span>
 
-<span data-ttu-id="58d5f-171">La méthode `AddIdentity` est une exception à cette règle.</span><span class="sxs-lookup"><span data-stu-id="58d5f-171">An exception to this rule is the `AddIdentity` method.</span></span> <span data-ttu-id="58d5f-172">Cette méthode ajoute des cookies pour vous et définit les schémas d’authentification et de stimulation par défaut sur le cookie d’application `IdentityConstants.ApplicationScheme`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-172">This method adds cookies for you and sets the default authenticate and challenge schemes to the application cookie `IdentityConstants.ApplicationScheme`.</span></span> <span data-ttu-id="58d5f-173">En outre, il définit le schéma de connexion par défaut sur le cookie externe `IdentityConstants.ExternalScheme`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-173">Additionally, it sets the default sign-in scheme to the external cookie `IdentityConstants.ExternalScheme`.</span></span>
+<span data-ttu-id="a2a22-171">La méthode `AddIdentity` est une exception à cette règle.</span><span class="sxs-lookup"><span data-stu-id="a2a22-171">An exception to this rule is the `AddIdentity` method.</span></span> <span data-ttu-id="a2a22-172">Cette méthode ajoute des cookies pour vous et définit les schémas d’authentification et de stimulation par défaut sur le cookie d’application `IdentityConstants.ApplicationScheme`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-172">This method adds cookies for you and sets the default authenticate and challenge schemes to the application cookie `IdentityConstants.ApplicationScheme`.</span></span> <span data-ttu-id="a2a22-173">En outre, il définit le schéma de connexion par défaut sur le cookie externe `IdentityConstants.ExternalScheme`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-173">Additionally, it sets the default sign-in scheme to the external cookie `IdentityConstants.ExternalScheme`.</span></span>
 
 <a name="obsolete-interface"></a>
 
-## <a name="use-httpcontext-authentication-extensions"></a><span data-ttu-id="58d5f-174">Utiliser les extensions d’authentification HttpContext</span><span class="sxs-lookup"><span data-stu-id="58d5f-174">Use HttpContext authentication extensions</span></span>
+## <a name="use-httpcontext-authentication-extensions"></a><span data-ttu-id="a2a22-174">Utiliser les extensions d’authentification HttpContext</span><span class="sxs-lookup"><span data-stu-id="a2a22-174">Use HttpContext authentication extensions</span></span>
 
-<span data-ttu-id="58d5f-175">L’interface `IAuthenticationManager` est le point d’entrée principal dans le système d’authentification 1. x.</span><span class="sxs-lookup"><span data-stu-id="58d5f-175">The `IAuthenticationManager` interface is the main entry point into the 1.x authentication system.</span></span> <span data-ttu-id="58d5f-176">Il a été remplacé par un nouvel ensemble de méthodes d’extension `HttpContext` dans l’espace de noms `Microsoft.AspNetCore.Authentication`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-176">It has been replaced with a new set of `HttpContext` extension methods in the `Microsoft.AspNetCore.Authentication` namespace.</span></span>
+<span data-ttu-id="a2a22-175">L’interface `IAuthenticationManager` est le point d’entrée principal dans le système d’authentification 1. x.</span><span class="sxs-lookup"><span data-stu-id="a2a22-175">The `IAuthenticationManager` interface is the main entry point into the 1.x authentication system.</span></span> <span data-ttu-id="a2a22-176">Il a été remplacé par un nouvel ensemble de méthodes d’extension `HttpContext` dans l’espace de noms `Microsoft.AspNetCore.Authentication`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-176">It has been replaced with a new set of `HttpContext` extension methods in the `Microsoft.AspNetCore.Authentication` namespace.</span></span>
 
-<span data-ttu-id="58d5f-177">Par exemple, les projets 1. x font référence à une propriété de `Authentication` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-177">For example, 1.x projects reference an `Authentication` property:</span></span>
+<span data-ttu-id="a2a22-177">Par exemple, les projets 1. x font référence à une propriété de `Authentication` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-177">For example, 1.x projects reference an `Authentication` property:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-<span data-ttu-id="58d5f-178">Dans les projets 2,0, importez l’espace de noms `Microsoft.AspNetCore.Authentication` et supprimez les références de propriété `Authentication` :</span><span class="sxs-lookup"><span data-stu-id="58d5f-178">In 2.0 projects, import the `Microsoft.AspNetCore.Authentication` namespace, and delete the `Authentication` property references:</span></span>
+<span data-ttu-id="a2a22-178">Dans les projets 2,0, importez l’espace de noms `Microsoft.AspNetCore.Authentication` et supprimez les références de propriété `Authentication` :</span><span class="sxs-lookup"><span data-stu-id="a2a22-178">In 2.0 projects, import the `Microsoft.AspNetCore.Authentication` namespace, and delete the `Authentication` property references:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
 <a name="windows-auth-changes"></a>
 
-## <a name="windows-authentication-httpsys--iisintegration"></a><span data-ttu-id="58d5f-179">Authentification Windows (HTTP. sys/IISIntegration)</span><span class="sxs-lookup"><span data-stu-id="58d5f-179">Windows Authentication (HTTP.sys / IISIntegration)</span></span>
+## <a name="windows-authentication-httpsys--iisintegration"></a><span data-ttu-id="a2a22-179">Authentification Windows (HTTP. sys/IISIntegration)</span><span class="sxs-lookup"><span data-stu-id="a2a22-179">Windows Authentication (HTTP.sys / IISIntegration)</span></span>
 
-<span data-ttu-id="58d5f-180">Il existe deux variantes de l’authentification Windows :</span><span class="sxs-lookup"><span data-stu-id="58d5f-180">There are two variations of Windows authentication:</span></span>
+<span data-ttu-id="a2a22-180">Il existe deux variantes de l’authentification Windows :</span><span class="sxs-lookup"><span data-stu-id="a2a22-180">There are two variations of Windows authentication:</span></span>
 
-* <span data-ttu-id="58d5f-181">L’hôte autorise uniquement les utilisateurs authentifiés.</span><span class="sxs-lookup"><span data-stu-id="58d5f-181">The host only allows authenticated users.</span></span> <span data-ttu-id="58d5f-182">Cette variation n’est pas affectée par les modifications apportées à 2,0.</span><span class="sxs-lookup"><span data-stu-id="58d5f-182">This variation isn't affected by the 2.0 changes.</span></span>
-* <span data-ttu-id="58d5f-183">L’hôte autorise les utilisateurs anonymes et authentifiés.</span><span class="sxs-lookup"><span data-stu-id="58d5f-183">The host allows both anonymous and authenticated users.</span></span> <span data-ttu-id="58d5f-184">Cette variation est affectée par les modifications apportées à 2,0.</span><span class="sxs-lookup"><span data-stu-id="58d5f-184">This variation is affected by the 2.0 changes.</span></span> <span data-ttu-id="58d5f-185">Par exemple, l’application doit autoriser les utilisateurs anonymes au niveau de la couche [IIS](xref:host-and-deploy/iis/index) ou [http. sys](xref:fundamentals/servers/httpsys) , mais autoriser les utilisateurs au niveau du contrôleur.</span><span class="sxs-lookup"><span data-stu-id="58d5f-185">For example, the app should allow anonymous users at the [IIS](xref:host-and-deploy/iis/index) or [HTTP.sys](xref:fundamentals/servers/httpsys) layer but authorize users at the controller level.</span></span> <span data-ttu-id="58d5f-186">Dans ce scénario, définissez le schéma par défaut dans la méthode `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-186">In this scenario, set the default scheme in the `Startup.ConfigureServices` method.</span></span>
+* <span data-ttu-id="a2a22-181">L’hôte autorise uniquement les utilisateurs authentifiés.</span><span class="sxs-lookup"><span data-stu-id="a2a22-181">The host only allows authenticated users.</span></span> <span data-ttu-id="a2a22-182">Cette variation n’est pas affectée par les modifications apportées à 2,0.</span><span class="sxs-lookup"><span data-stu-id="a2a22-182">This variation isn't affected by the 2.0 changes.</span></span>
+* <span data-ttu-id="a2a22-183">L’hôte autorise les utilisateurs anonymes et authentifiés.</span><span class="sxs-lookup"><span data-stu-id="a2a22-183">The host allows both anonymous and authenticated users.</span></span> <span data-ttu-id="a2a22-184">Cette variation est affectée par les modifications apportées à 2,0.</span><span class="sxs-lookup"><span data-stu-id="a2a22-184">This variation is affected by the 2.0 changes.</span></span> <span data-ttu-id="a2a22-185">Par exemple, l’application doit autoriser les utilisateurs anonymes au niveau de la couche [IIS](xref:host-and-deploy/iis/index) ou [http. sys](xref:fundamentals/servers/httpsys) , mais autoriser les utilisateurs au niveau du contrôleur.</span><span class="sxs-lookup"><span data-stu-id="a2a22-185">For example, the app should allow anonymous users at the [IIS](xref:host-and-deploy/iis/index) or [HTTP.sys](xref:fundamentals/servers/httpsys) layer but authorize users at the controller level.</span></span> <span data-ttu-id="a2a22-186">Dans ce scénario, définissez le schéma par défaut dans la méthode `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-186">In this scenario, set the default scheme in the `Startup.ConfigureServices` method.</span></span>
 
-  <span data-ttu-id="58d5f-187">Pour [Microsoft. AspNetCore. Server. IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), définissez le schéma par défaut sur `IISDefaults.AuthenticationScheme`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-187">For [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), set the default scheme to `IISDefaults.AuthenticationScheme`:</span></span>
+  <span data-ttu-id="a2a22-187">Pour [Microsoft. AspNetCore. Server. IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), définissez le schéma par défaut sur `IISDefaults.AuthenticationScheme`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-187">For [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/), set the default scheme to `IISDefaults.AuthenticationScheme`:</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.Server.IISIntegration;
@@ -318,7 +318,7 @@ services.AddAuthentication(options =>
   services.AddAuthentication(IISDefaults.AuthenticationScheme);
   ```
 
-  <span data-ttu-id="58d5f-188">Pour [Microsoft. AspNetCore. Server. HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), définissez le schéma par défaut sur `HttpSysDefaults.AuthenticationScheme`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-188">For [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), set the default scheme to `HttpSysDefaults.AuthenticationScheme`:</span></span>
+  <span data-ttu-id="a2a22-188">Pour [Microsoft. AspNetCore. Server. HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), définissez le schéma par défaut sur `HttpSysDefaults.AuthenticationScheme`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-188">For [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/), set the default scheme to `HttpSysDefaults.AuthenticationScheme`:</span></span>
 
   ```csharp
   using Microsoft.AspNetCore.Server.HttpSys;
@@ -326,43 +326,43 @@ services.AddAuthentication(options =>
   services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
   ```
 
-  <span data-ttu-id="58d5f-189">Si vous ne définissez pas le schéma par défaut, la demande Authorize (Challenge) ne pourra pas fonctionner avec l’exception suivante :</span><span class="sxs-lookup"><span data-stu-id="58d5f-189">Failure to set the default scheme prevents the authorize (challenge) request from working with the following exception:</span></span>
+  <span data-ttu-id="a2a22-189">Si vous ne définissez pas le schéma par défaut, la demande Authorize (Challenge) ne pourra pas fonctionner avec l’exception suivante :</span><span class="sxs-lookup"><span data-stu-id="a2a22-189">Failure to set the default scheme prevents the authorize (challenge) request from working with the following exception:</span></span>
 
-  > <span data-ttu-id="58d5f-190">`System.InvalidOperationException`: aucun authenticationScheme n’a été spécifié et aucun DefaultChallengeScheme n’a été trouvé.</span><span class="sxs-lookup"><span data-stu-id="58d5f-190">`System.InvalidOperationException`: No authenticationScheme was specified, and there was no DefaultChallengeScheme found.</span></span>
+  > <span data-ttu-id="a2a22-190">`System.InvalidOperationException`: aucun authenticationScheme n’a été spécifié et aucun DefaultChallengeScheme n’a été trouvé.</span><span class="sxs-lookup"><span data-stu-id="a2a22-190">`System.InvalidOperationException`: No authenticationScheme was specified, and there was no DefaultChallengeScheme found.</span></span>
 
-<span data-ttu-id="58d5f-191">Pour plus d'informations, consultez <xref:security/authentication/windowsauth>.</span><span class="sxs-lookup"><span data-stu-id="58d5f-191">For more information, see <xref:security/authentication/windowsauth>.</span></span>
+<span data-ttu-id="a2a22-191">Pour plus d’informations, consultez <xref:security/authentication/windowsauth>.</span><span class="sxs-lookup"><span data-stu-id="a2a22-191">For more information, see <xref:security/authentication/windowsauth>.</span></span>
 
 <a name="identity-cookie-options"></a>
 
-## <a name="identitycookieoptions-instances"></a><span data-ttu-id="58d5f-192">Instances IdentityCookieOptions</span><span class="sxs-lookup"><span data-stu-id="58d5f-192">IdentityCookieOptions instances</span></span>
+## <a name="identitycookieoptions-instances"></a><span data-ttu-id="a2a22-192">Instances IdentityCookieOptions</span><span class="sxs-lookup"><span data-stu-id="a2a22-192">IdentityCookieOptions instances</span></span>
 
-<span data-ttu-id="58d5f-193">Un effet secondaire des modifications 2,0 est le passage à l’utilisation des options nommées à la place des instances d’options de cookie.</span><span class="sxs-lookup"><span data-stu-id="58d5f-193">A side effect of the 2.0 changes is the switch to using named options instead of cookie options instances.</span></span> <span data-ttu-id="58d5f-194">La possibilité de personnaliser les noms de schéma de cookie d’identité est supprimée.</span><span class="sxs-lookup"><span data-stu-id="58d5f-194">The ability to customize the Identity cookie scheme names is removed.</span></span>
+<span data-ttu-id="a2a22-193">Un effet secondaire des modifications 2,0 est le passage à l’utilisation des options nommées à la place des instances d’options de cookie.</span><span class="sxs-lookup"><span data-stu-id="a2a22-193">A side effect of the 2.0 changes is the switch to using named options instead of cookie options instances.</span></span> <span data-ttu-id="a2a22-194">La possibilité de personnaliser les noms de schéma de cookie d’identité est supprimée.</span><span class="sxs-lookup"><span data-stu-id="a2a22-194">The ability to customize the Identity cookie scheme names is removed.</span></span>
 
-<span data-ttu-id="58d5f-195">Par exemple, les projets 1. x utilisent l' [injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour passer un paramètre `IdentityCookieOptions` dans *AccountController.cs* et *ManageController.cs*.</span><span class="sxs-lookup"><span data-stu-id="58d5f-195">For example, 1.x projects use [constructor injection](xref:mvc/controllers/dependency-injection#constructor-injection) to pass an `IdentityCookieOptions` parameter into *AccountController.cs* and *ManageController.cs*.</span></span> <span data-ttu-id="58d5f-196">Le schéma d’authentification de cookie externe est accessible à partir de l’instance fournie :</span><span class="sxs-lookup"><span data-stu-id="58d5f-196">The external cookie authentication scheme is accessed from the provided instance:</span></span>
+<span data-ttu-id="a2a22-195">Par exemple, les projets 1. x utilisent l' [injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour passer un paramètre `IdentityCookieOptions` dans *AccountController.cs* et *ManageController.cs*.</span><span class="sxs-lookup"><span data-stu-id="a2a22-195">For example, 1.x projects use [constructor injection](xref:mvc/controllers/dependency-injection#constructor-injection) to pass an `IdentityCookieOptions` parameter into *AccountController.cs* and *ManageController.cs*.</span></span> <span data-ttu-id="a2a22-196">Le schéma d’authentification de cookie externe est accessible à partir de l’instance fournie :</span><span class="sxs-lookup"><span data-stu-id="a2a22-196">The external cookie authentication scheme is accessed from the provided instance:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
-<span data-ttu-id="58d5f-197">L’injection de constructeur ci-dessus devient inutile dans les projets 2,0 et le champ `_externalCookieScheme` peut être supprimé :</span><span class="sxs-lookup"><span data-stu-id="58d5f-197">The aforementioned constructor injection becomes unnecessary in 2.0 projects, and the `_externalCookieScheme` field can be deleted:</span></span>
+<span data-ttu-id="a2a22-197">L’injection de constructeur ci-dessus devient inutile dans les projets 2,0 et le champ `_externalCookieScheme` peut être supprimé :</span><span class="sxs-lookup"><span data-stu-id="a2a22-197">The aforementioned constructor injection becomes unnecessary in 2.0 projects, and the `_externalCookieScheme` field can be deleted:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
 
-<span data-ttu-id="58d5f-198">les projets 1. x utilisaient le champ `_externalCookieScheme` comme suit :</span><span class="sxs-lookup"><span data-stu-id="58d5f-198">1.x projects used the `_externalCookieScheme` field as follows:</span></span>
+<span data-ttu-id="a2a22-198">les projets 1. x utilisaient le champ `_externalCookieScheme` comme suit :</span><span class="sxs-lookup"><span data-stu-id="a2a22-198">1.x projects used the `_externalCookieScheme` field as follows:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-<span data-ttu-id="58d5f-199">Dans les projets 2,0, remplacez le code précédent par ce qui suit.</span><span class="sxs-lookup"><span data-stu-id="58d5f-199">In 2.0 projects, replace the preceding code with the following.</span></span> <span data-ttu-id="58d5f-200">La constante `IdentityConstants.ExternalScheme` peut être utilisée directement.</span><span class="sxs-lookup"><span data-stu-id="58d5f-200">The `IdentityConstants.ExternalScheme` constant can be used directly.</span></span>
+<span data-ttu-id="a2a22-199">Dans les projets 2,0, remplacez le code précédent par ce qui suit.</span><span class="sxs-lookup"><span data-stu-id="a2a22-199">In 2.0 projects, replace the preceding code with the following.</span></span> <span data-ttu-id="a2a22-200">La constante `IdentityConstants.ExternalScheme` peut être utilisée directement.</span><span class="sxs-lookup"><span data-stu-id="a2a22-200">The `IdentityConstants.ExternalScheme` constant can be used directly.</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
-<span data-ttu-id="58d5f-201">Résolvez l’appel de `SignOutAsync` récemment ajouté en important l’espace de noms suivant :</span><span class="sxs-lookup"><span data-stu-id="58d5f-201">Resolve the newly added `SignOutAsync` call by importing the following namespace:</span></span>
+<span data-ttu-id="a2a22-201">Résolvez l’appel de `SignOutAsync` récemment ajouté en important l’espace de noms suivant :</span><span class="sxs-lookup"><span data-stu-id="a2a22-201">Resolve the newly added `SignOutAsync` call by importing the following namespace:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationImport)]
 
 <a name="navigation-properties"></a>
 
-## <a name="add-identityuser-poco-navigation-properties"></a><span data-ttu-id="58d5f-202">Ajouter des propriétés de navigation IdentityUser POCO</span><span class="sxs-lookup"><span data-stu-id="58d5f-202">Add IdentityUser POCO navigation properties</span></span>
+## <a name="add-identityuser-poco-navigation-properties"></a><span data-ttu-id="a2a22-202">Ajouter des propriétés de navigation IdentityUser POCO</span><span class="sxs-lookup"><span data-stu-id="a2a22-202">Add IdentityUser POCO navigation properties</span></span>
 
-<span data-ttu-id="58d5f-203">Les propriétés de navigation principales du Entity Framework (EF) de l' `IdentityUser` de base POCO (Plain Old CLR Object) ont été supprimées.</span><span class="sxs-lookup"><span data-stu-id="58d5f-203">The Entity Framework (EF) Core navigation properties of the base `IdentityUser` POCO (Plain Old CLR Object) have been removed.</span></span> <span data-ttu-id="58d5f-204">Si votre projet 1. x a utilisé ces propriétés, rajoutez-les manuellement au projet 2,0 :</span><span class="sxs-lookup"><span data-stu-id="58d5f-204">If your 1.x project used these properties, manually add them back to the 2.0 project:</span></span>
+<span data-ttu-id="a2a22-203">Les propriétés de navigation principales du Entity Framework (EF) de l' `IdentityUser` de base POCO (Plain Old CLR Object) ont été supprimées.</span><span class="sxs-lookup"><span data-stu-id="a2a22-203">The Entity Framework (EF) Core navigation properties of the base `IdentityUser` POCO (Plain Old CLR Object) have been removed.</span></span> <span data-ttu-id="a2a22-204">Si votre projet 1. x a utilisé ces propriétés, rajoutez-les manuellement au projet 2,0 :</span><span class="sxs-lookup"><span data-stu-id="a2a22-204">If your 1.x project used these properties, manually add them back to the 2.0 project:</span></span>
 
 ```csharp
 /// <summary>
@@ -381,7 +381,7 @@ public virtual ICollection<IdentityUserClaim<int>> Claims { get; } = new List<Id
 public virtual ICollection<IdentityUserLogin<int>> Logins { get; } = new List<IdentityUserLogin<int>>();
 ```
 
-<span data-ttu-id="58d5f-205">Pour éviter les doublons de clés étrangères lors de l’exécution de EF Core migrations, ajoutez le code suivant à la méthode `OnModelCreating` de `IdentityDbContext` de la classe (après l’appel `base.OnModelCreating();`) :</span><span class="sxs-lookup"><span data-stu-id="58d5f-205">To prevent duplicate foreign keys when running EF Core Migrations, add the following to your `IdentityDbContext` class' `OnModelCreating` method (after the `base.OnModelCreating();` call):</span></span>
+<span data-ttu-id="a2a22-205">Pour éviter les doublons de clés étrangères lors de l’exécution de EF Core migrations, ajoutez le code suivant à la méthode `OnModelCreating` de `IdentityDbContext` de la classe (après l’appel `base.OnModelCreating();`) :</span><span class="sxs-lookup"><span data-stu-id="a2a22-205">To prevent duplicate foreign keys when running EF Core Migrations, add the following to your `IdentityDbContext` class' `OnModelCreating` method (after the `base.OnModelCreating();` call):</span></span>
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder builder)
@@ -416,38 +416,38 @@ protected override void OnModelCreating(ModelBuilder builder)
 
 <a name="synchronous-method-removal"></a>
 
-## <a name="replace-getexternalauthenticationschemes"></a><span data-ttu-id="58d5f-206">Remplacer GetExternalAuthenticationSchemes</span><span class="sxs-lookup"><span data-stu-id="58d5f-206">Replace GetExternalAuthenticationSchemes</span></span>
+## <a name="replace-getexternalauthenticationschemes"></a><span data-ttu-id="a2a22-206">Remplacer GetExternalAuthenticationSchemes</span><span class="sxs-lookup"><span data-stu-id="a2a22-206">Replace GetExternalAuthenticationSchemes</span></span>
 
-<span data-ttu-id="58d5f-207">La méthode synchrone `GetExternalAuthenticationSchemes` a été supprimée en faveur d’une version asynchrone.</span><span class="sxs-lookup"><span data-stu-id="58d5f-207">The synchronous method `GetExternalAuthenticationSchemes` was removed in favor of an asynchronous version.</span></span> <span data-ttu-id="58d5f-208">les projets 1. x ont le code suivant dans *Controllers/ManageController. cs*:</span><span class="sxs-lookup"><span data-stu-id="58d5f-208">1.x projects have the following code in *Controllers/ManageController.cs*:</span></span>
+<span data-ttu-id="a2a22-207">La méthode synchrone `GetExternalAuthenticationSchemes` a été supprimée en faveur d’une version asynchrone.</span><span class="sxs-lookup"><span data-stu-id="a2a22-207">The synchronous method `GetExternalAuthenticationSchemes` was removed in favor of an asynchronous version.</span></span> <span data-ttu-id="a2a22-208">les projets 1. x ont le code suivant dans *Controllers/ManageController. cs*:</span><span class="sxs-lookup"><span data-stu-id="a2a22-208">1.x projects have the following code in *Controllers/ManageController.cs*:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
-<span data-ttu-id="58d5f-209">Cette méthode apparaît également dans *views/Account/login. cshtml* :</span><span class="sxs-lookup"><span data-stu-id="58d5f-209">This method appears in *Views/Account/Login.cshtml* too:</span></span>
+<span data-ttu-id="a2a22-209">Cette méthode apparaît également dans *views/Account/login. cshtml* :</span><span class="sxs-lookup"><span data-stu-id="a2a22-209">This method appears in *Views/Account/Login.cshtml* too:</span></span>
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemes&highlight=2)]
 
-<span data-ttu-id="58d5f-210">Dans les projets 2,0, utilisez la méthode <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*>.</span><span class="sxs-lookup"><span data-stu-id="58d5f-210">In 2.0 projects, use the <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*> method.</span></span> <span data-ttu-id="58d5f-211">La modification dans *ManageController.cs* ressemble au code suivant :</span><span class="sxs-lookup"><span data-stu-id="58d5f-211">The change in *ManageController.cs* resembles the following code:</span></span>
+<span data-ttu-id="a2a22-210">Dans les projets 2,0, utilisez la méthode <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*>.</span><span class="sxs-lookup"><span data-stu-id="a2a22-210">In 2.0 projects, use the <xref:Microsoft.AspNetCore.Identity.SignInManager`1.GetExternalAuthenticationSchemesAsync*> method.</span></span> <span data-ttu-id="a2a22-211">La modification dans *ManageController.cs* ressemble au code suivant :</span><span class="sxs-lookup"><span data-stu-id="a2a22-211">The change in *ManageController.cs* resembles the following code:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
-<span data-ttu-id="58d5f-212">Dans *login. cshtml*, la propriété `AuthenticationScheme` accessible dans la boucle `foreach` passe à `Name`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-212">In *Login.cshtml*, the `AuthenticationScheme` property accessed in the `foreach` loop changes to `Name`:</span></span>
+<span data-ttu-id="a2a22-212">Dans *login. cshtml*, la propriété `AuthenticationScheme` accessible dans la boucle `foreach` passe à `Name`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-212">In *Login.cshtml*, the `AuthenticationScheme` property accessed in the `foreach` loop changes to `Name`:</span></span>
 
 [!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?name=snippet_GetExtAuthNSchemesAsync&highlight=2,19)]
 
 <a name="property-change"></a>
 
-## <a name="manageloginsviewmodel-property-change"></a><span data-ttu-id="58d5f-213">Modification de la propriété ManageLoginsViewModel</span><span class="sxs-lookup"><span data-stu-id="58d5f-213">ManageLoginsViewModel property change</span></span>
+## <a name="manageloginsviewmodel-property-change"></a><span data-ttu-id="a2a22-213">Modification de la propriété ManageLoginsViewModel</span><span class="sxs-lookup"><span data-stu-id="a2a22-213">ManageLoginsViewModel property change</span></span>
 
-<span data-ttu-id="58d5f-214">Un objet `ManageLoginsViewModel` est utilisé dans l’action `ManageLogins` de *ManageController.cs*.</span><span class="sxs-lookup"><span data-stu-id="58d5f-214">A `ManageLoginsViewModel` object is used in the `ManageLogins` action of *ManageController.cs*.</span></span> <span data-ttu-id="58d5f-215">Dans les projets 1. x, le type de retour de la propriété `OtherLogins` de l’objet est `IList<AuthenticationDescription>`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-215">In 1.x projects, the object's `OtherLogins` property return type is `IList<AuthenticationDescription>`.</span></span> <span data-ttu-id="58d5f-216">Ce type de retour nécessite une importation de `Microsoft.AspNetCore.Http.Authentication`:</span><span class="sxs-lookup"><span data-stu-id="58d5f-216">This return type requires an import of `Microsoft.AspNetCore.Http.Authentication`:</span></span>
+<span data-ttu-id="a2a22-214">Un objet `ManageLoginsViewModel` est utilisé dans l’action `ManageLogins` de *ManageController.cs*.</span><span class="sxs-lookup"><span data-stu-id="a2a22-214">A `ManageLoginsViewModel` object is used in the `ManageLogins` action of *ManageController.cs*.</span></span> <span data-ttu-id="a2a22-215">Dans les projets 1. x, le type de retour de la propriété `OtherLogins` de l’objet est `IList<AuthenticationDescription>`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-215">In 1.x projects, the object's `OtherLogins` property return type is `IList<AuthenticationDescription>`.</span></span> <span data-ttu-id="a2a22-216">Ce type de retour nécessite une importation de `Microsoft.AspNetCore.Http.Authentication`:</span><span class="sxs-lookup"><span data-stu-id="a2a22-216">This return type requires an import of `Microsoft.AspNetCore.Http.Authentication`:</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
-<span data-ttu-id="58d5f-217">Dans les projets 2,0, le type de retour devient `IList<AuthenticationScheme>`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-217">In 2.0 projects, the return type changes to `IList<AuthenticationScheme>`.</span></span> <span data-ttu-id="58d5f-218">Ce nouveau type de retour nécessite le remplacement de l’importation `Microsoft.AspNetCore.Http.Authentication` par une importation `Microsoft.AspNetCore.Authentication`.</span><span class="sxs-lookup"><span data-stu-id="58d5f-218">This new return type requires replacing the `Microsoft.AspNetCore.Http.Authentication` import with a `Microsoft.AspNetCore.Authentication` import.</span></span>
+<span data-ttu-id="a2a22-217">Dans les projets 2,0, le type de retour devient `IList<AuthenticationScheme>`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-217">In 2.0 projects, the return type changes to `IList<AuthenticationScheme>`.</span></span> <span data-ttu-id="a2a22-218">Ce nouveau type de retour nécessite le remplacement de l’importation `Microsoft.AspNetCore.Http.Authentication` par une importation `Microsoft.AspNetCore.Authentication`.</span><span class="sxs-lookup"><span data-stu-id="a2a22-218">This new return type requires replacing the `Microsoft.AspNetCore.Http.Authentication` import with a `Microsoft.AspNetCore.Authentication` import.</span></span>
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
 <a name="additional-resources"></a>
 
-## <a name="additional-resources"></a><span data-ttu-id="58d5f-219">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="58d5f-219">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="a2a22-219">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="a2a22-219">Additional resources</span></span>
 
-<span data-ttu-id="58d5f-220">Pour plus d’informations, consultez la discussion sur le problème [Auth 2,0](https://github.com/aspnet/Security/issues/1338) sur GitHub.</span><span class="sxs-lookup"><span data-stu-id="58d5f-220">For more information, see the [Discussion for Auth 2.0](https://github.com/aspnet/Security/issues/1338) issue on GitHub.</span></span>
+<span data-ttu-id="a2a22-220">Pour plus d’informations, consultez la discussion sur le problème [Auth 2,0](https://github.com/aspnet/Security/issues/1338) sur GitHub.</span><span class="sxs-lookup"><span data-stu-id="a2a22-220">For more information, see the [Discussion for Auth 2.0](https://github.com/aspnet/Security/issues/1338) issue on GitHub.</span></span>
