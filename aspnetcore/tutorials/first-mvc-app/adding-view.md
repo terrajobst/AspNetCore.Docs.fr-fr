@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 8/04/2019
 uid: tutorials/first-mvc-app/adding-view
 ms.openlocfilehash: 5510fb6844452571ca764e21640f0bd16444c782
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171968"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660208"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -30,7 +30,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
@@ -48,14 +48,14 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ajoutez une vue `Index` pour `HelloWorldController`.
 
 * Ajoutez un nouveau dossier nommé *Views/HelloWorld*.
 * Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml*.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.
@@ -187,7 +187,7 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 
@@ -205,14 +205,14 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ajoutez une vue `Index` pour `HelloWorldController`.
 
 * Ajoutez un nouveau dossier nommé *Views/HelloWorld*.
 * Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml*.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Vues* puis cliquez sur **Ajouter > Nouveau dossier**, et nommez le dossier *HelloWorld*.
 * Cliquez avec le bouton droit sur le dossier *Vues/HelloWorld*, puis cliquez sur **Ajouter > Nouveau fichier**.

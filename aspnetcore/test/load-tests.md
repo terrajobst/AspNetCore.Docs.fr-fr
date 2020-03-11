@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 4/05/2019
 uid: test/loadtests
 ms.openlocfilehash: 1fd77a767fb53b9276081dd712e13108094a0382
-ms.sourcegitcommit: cb6015f737b6a93127016ab0f21b58e34b624ff3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77004290"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664688"
 ---
 # <a name="aspnet-core-loadstress-testing"></a>ASP.NET Core le test de charge/stress
 
@@ -25,7 +25,7 @@ Les tests de contrainte déterminent si une application en contrainte peut récu
 
 Visual Studio 2019 est la dernière version de Visual Studio avec des fonctionnalités de test de charge. Pour les clients nécessitant des outils de test de charge à l’avenir, nous vous recommandons d’autres outils, tels que Apache JMeter, Akamai CloudTest et BlazeMeter. Pour plus d’informations, consultez les [notes de publication de Visual Studio 2019](/visualstudio/releases/2019/release-notes-v16.0#test-tools).
 
-## <a name="visual-studio-tools"></a>Visual Studio Tools
+## <a name="visual-studio-tools"></a>Outils Visual Studio
 
 Visual Studio permet aux utilisateurs de créer, développer et déboguer des tests de charge et de performances Web. Une option est disponible pour créer des tests en enregistrant des actions dans un navigateur Web.
 
@@ -38,7 +38,7 @@ Les tests de charge peuvent être configurés pour s’exécuter sur site ou dan
 La liste suivante contient des outils de performances Web tiers avec différents ensembles de fonctionnalités :
 
 * [Apache JMeter](https://jmeter.apache.org/)
-* [ApacheBench (ab)](https://httpd.apache.org/docs/2.4/programs/ab.html)
+* [ApacheBench (AB)](https://httpd.apache.org/docs/2.4/programs/ab.html)
 * [Gatling](https://gatling.io/)
 * [K6](https://k6.io)
 * [Caroubes](https://locust.io/)

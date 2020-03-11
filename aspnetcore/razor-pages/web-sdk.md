@@ -8,15 +8,15 @@ no-loc:
 - Blazor
 uid: razor-pages/web-sdk
 ms.openlocfilehash: 6a9d531efd2188aed525c949bb124914c31119db
-ms.sourcegitcommit: fe41cff0b99f3920b727286944e5b652ca301640
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76869764"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661055"
 ---
 # <a name="aspnet-core-web-sdk"></a>Kit de développement logiciel (SDK) Web ASP.NET Core
 
-### <a name="overview"></a>Vue d'ensemble de
+### <a name="overview"></a>Vue d’ensemble
 
 `Microsoft.NET.Sdk.Web` est un [Kit de développement logiciel (SDK) de projet MSBuild](https://docs.microsoft.com/visualstudio/msbuild/how-to-use-project-sdk) pour la génération d’applications ASP.net core. Il est possible de créer une application ASP.NET Core sans ce kit de développement logiciel (SDK), mais le kit de développement logiciel (SDK) Web est le suivant :
 
@@ -41,7 +41,7 @@ Fonctionnalités activées à l’aide du kit de développement logiciel (SDK) W
 
 ### <a name="properties"></a>Propriétés
 
-| Les | Description |
+| Propriété | Description |
 | -------- | ----------- |
 | `DisableImplicitFrameworkReferences` | Désactive la référence implicite au `Microsoft.AspNetCore.App` Framework partagé. |
 | `DisableImplicitAspNetCoreAnalyzers` | Désactive la référence implicite aux analyseurs de ASP.NET Core. |

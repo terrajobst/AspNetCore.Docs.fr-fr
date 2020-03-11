@@ -1,8 +1,8 @@
-# <a name="aspnet-core-razor-pages-unit-tests-sample"></a>Exemple de tests unitaires ASP.NET Core Razor Pages
+# <a name="aspnet-core-razor-pages-unit-tests-sample"></a>Exemple de tests unitaires de Razor Pages ASP.NET Core
 
-Cet exemple illustre les tests unitaires d’un [Pages Razor](https://docs.microsoft.com/aspnet/core/mvc/razor-pages) application. Cet exemple illustre les fonctionnalités décrites dans le [tests unitaires de Pages Razor](https://docs.microsoft.com/aspnet/core/test/razor-pages-tests) rubrique.
+Cet exemple illustre les tests unitaires d’une application [Razor pages](https://docs.microsoft.com/aspnet/core/mvc/razor-pages) . Cet exemple illustre les fonctionnalités décrites dans la rubrique [Razor pages les tests unitaires](https://docs.microsoft.com/aspnet/core/test/razor-pages-tests) .
 
-Si vous n’utilisez pas un IDE avec les fonctionnalités de test intégré, exécutez la commande suivante à une invite de commandes dans le *tests/RazorPagesTestSample.Tests* dossier :
+Si vous n’utilisez pas un IDE avec des fonctionnalités de test intégrées, exécutez la commande suivante à partir d’une invite de commandes dans le dossier *tests/RazorPagesTestSample. tests* :
 
 ```console
 dotnet test

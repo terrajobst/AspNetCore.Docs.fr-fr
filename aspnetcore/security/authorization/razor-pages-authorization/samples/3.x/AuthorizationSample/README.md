@@ -4,7 +4,7 @@ Cet exemple illustre l’utilisation de Razor Pages autorisation par les convent
 
 L’autorisation utilisateur dans cet exemple utilise les fonctionnalités d’authentification par cookie décrites dans la rubrique [utiliser l’authentification par cookie sans ASP.net Core identité](https://docs.microsoft.com/aspnet/core/security/authentication/cookie) . Les concepts et les exemples présentés dans cette rubrique s’appliquent également aux applications qui utilisent ASP.NET Core identité. Pour plus d’informations sur l’utilisation de ASP.NET Core identité, consultez [Présentation de l’identité sur ASP.net Core](https://docs.microsoft.com/aspnet/core/security/authentication/identity).
 
-Utilisez l’adresse **maria.rodriguez@contoso.com** de messagerie pour authentifier l’utilisateur avec n’importe quel mot de passe. L’utilisateur est authentifié dans la `AuthenticateUser` méthode dans le fichier *pages/Account/login. cshtml. cs* . Dans un exemple réel, l’utilisateur est authentifié par rapport à une base de données.
+Utilisez l’adresse de messagerie **maria.rodriguez@contoso.com** pour authentifier l’utilisateur avec n’importe quel mot de passe. L’utilisateur est authentifié dans la méthode `AuthenticateUser` dans le fichier *pages/Account/login. cshtml. cs* . Dans un exemple réel, l’utilisateur est authentifié par rapport à une base de données.
 
 ## <a name="examples-in-this-sample"></a>Extraits de cet exemple
 

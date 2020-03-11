@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/07/2019
 uid: fundamentals/static-files
-ms.openlocfilehash: 00bab51cb411552c884f85fa63d42d0691b401b1
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: 95a77defc7e98328e1f4e3615648b1d14485e51e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717271"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660124"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -19,7 +19,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Addie](https://tw
 
 Les fichiers statiques, comme les fichiers HTML, CSS, images et JavaScript, sont des ressources qu’une application ASP.NET Core délivre directement aux clients. Une configuration est nécessaire pour pouvoir délivrer ces fichiers.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="serve-static-files"></a>Délivrer des fichiers statiques
 
@@ -50,7 +50,7 @@ Les fichiers statiques sont accessibles via un chemin d’accès relatif à la [
   * **images**
   * **js**
 
-Le format d’URI pour accéder à un fichier dans le sous-dossier *images* est *http://\<adresse_serveur>/images/\<nom_fichier_image>* . Par exemple, *http://localhost:9189/images/banner3.svg* .
+Le format d’URI pour accéder à un fichier dans le sous-dossier *images* est *http://\<adresse_serveur>/images/\<nom_fichier_image>* . Par exemple : *http://localhost:9189/images/banner3.svg* .
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -111,6 +111,7 @@ Le balisage suivant référence *MyStaticFiles/images/banner1.svg* :
 Un objet [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) peut être utilisé pour définir des en-têtes de réponse HTTP. En plus de configurer le service de fichiers statiques à partir de la [racine Web](xref:fundamentals/index#web-root), le code suivant définit l’en-tête `Cache-Control` :
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 La méthode [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) se trouve dans le package [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
@@ -206,7 +207,7 @@ Le code suivant active les fichiers statiques, les fichiers par défaut et l’e
 
 En utilisant la hiérarchie de fichiers et le code précédent, les URL sont résolues comme suit :
 
-| URI            |                             Réponse  |
+| URI            |                             response  |
 | ------- | ------|
 | *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
 | *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
@@ -241,9 +242,9 @@ Avec le code précédent, une requête pour un fichier avec un type de contenu i
 
 ## <a name="serve-files-from-multiple-locations"></a>Servir des fichiers à partir de plusieurs emplacements
 
-`UseStaticFiles` et `UseFileServer` par défaut le fournisseur de fichiers pointant sur *wwwroot*. Vous pouvez fournir des instances supplémentaires de `UseStaticFiles` et `UseFileServer` avec d’autres fournisseurs de fichiers pour servir des fichiers à partir d’autres emplacements. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/15578).
+`UseStaticFiles` et `UseFileServer` par défaut le fournisseur de fichiers pointant sur *wwwroot*. Vous pouvez fournir des instances supplémentaires de `UseStaticFiles` et `UseFileServer` avec d’autres fournisseurs de fichiers pour servir des fichiers à partir d’autres emplacements. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/15578).
 
-### <a name="considerations"></a>Points importants relatifs à
+### <a name="considerations"></a>Considérations
 
 > [!WARNING]
 > `UseDirectoryBrowser` et `UseStaticFiles` peuvent entraîner une fuite de secrets. La désactivation de l’exploration de répertoires est fortement recommandée en production. Examinez attentivement les répertoires qui sont activés via `UseStaticFiles` ou `UseDirectoryBrowser`. L’ensemble du répertoire et de ses sous-répertoires deviennent accessibles publiquement. Stockez les fichiers qui peuvent être délivrés au public dans un dossier dédié, comme *\<racine-contenu>/wwwroot*. Séparez ces fichiers des vues MVC, des Pages Razor (2.x uniquement), des fichiers de configuration, etc.
@@ -264,5 +265,5 @@ Avec le code précédent, une requête pour un fichier avec un type de contenu i
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
+* [Middleware](xref:fundamentals/middleware/index)
 * [Présentation d’ASP.NET Core](xref:index)

@@ -1,22 +1,22 @@
 ---
 title: Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez la réécriture et la redirection d’URL avec l’intergiciel (middleware) de réécriture d’URL dans les applications ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/16/2019
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e284d2172af723bb80a7be9f6e6f1a87ebe5208e
-ms.sourcegitcommit: 41f2c1a6b316e6e368a4fd27a8b18d157cef91e1
-ms.translationtype: HT
+ms.openlocfilehash: 7d63cf381f1d8a19ed4fb789348e36f94304ad63
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886506"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666466"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
-Par [Luke Latham](https://github.com/guardrex) et [Mikael Mengistu](https://github.com/mikaelm12)
+Par [Mikael Mengistu](https://github.com/mikaelm12)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -35,7 +35,7 @@ La réécriture d’URL consiste à modifier des URL de requête en fonction d�
 > [!NOTE]
 > La réécriture d’URL peut réduire les performances d’une application. Quand c’est possible, limitez le nombre et la complexité des règles.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redirection d’URL et réécriture d’URL
 
@@ -53,7 +53,7 @@ Lors de la redirection des requêtes vers une URL différente, indiquez si la re
 
 * Le code d’état *302 - Trouvé* est utilisé quand la redirection est temporaire ou généralement susceptible d’être modifiée. Le code d’état 302 indique au client de ne pas stocker l’URL et de ne plus l’utiliser.
 
-Pour plus d’informations sur les codes d’état, consultez [RFC 2616 : Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+Pour plus d’informations sur les codes d’état, consultez [RFC 2616: Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 Une *réécriture d’URL* est une opération côté serveur qui fournit une ressource à partir d’une adresse de ressource différente de celle demandée par le client. La réécriture d’URL ne nécessite pas d’aller-retour avec le serveur. L’URL réécrite n’est pas retournée au client et n’apparaît pas dans la barre d’adresse du navigateur.
 
@@ -65,7 +65,7 @@ Même si le client peut récupérer la ressource à l’URL réécrite, il n’e
 
 ## <a name="url-rewriting-sample-app"></a>Exemple d’application de réécriture d’URL
 
-Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
+Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser l’intergiciel (middleware) de réécriture d’URL
 
@@ -100,9 +100,9 @@ L’intergiciel (middleware) de réécriture d’URL est fourni par le package [
 
 Trois options permettent à l’application de rediriger des demandes non-`www` en demandes `www` :
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*> &ndash; Redirige de façon permanente la requête vers le sous-domaine `www` si la requête n’est pas de type `www`. Redirige avec un code d’état [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect).
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*> &ndash; rediriger définitivement la demande vers le sous-domaine `www` si la demande n’est pas`www`. Redirige avec un code d’état [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect).
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*> &ndash; Redirige la requête vers le sous-domaine `www` si la requête entrante n’est pas de type `www`. Redirige avec un code d’état [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect). Une surcharge vous permet de fournir le code d’état pour la réponse. Utilisez un champ de la classe <xref:Microsoft.AspNetCore.Http.StatusCodes> pour une affectation de code d’état.
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*> &ndash; rediriger la demande vers le sous-domaine `www` si la demande entrante n’est pas`www`. Redirige avec un code d’état [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect). Une surcharge vous permet de fournir le code d’état pour la réponse. Utilisez un champ de la classe <xref:Microsoft.AspNetCore.Http.StatusCodes> pour une affectation de code d’état.
 
 ### <a name="url-redirect"></a>Redirection d’URL
 
@@ -172,7 +172,7 @@ Requête d’origine utilisant `AddRedirectToHttpsPermanent` : `http://localhost
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
-### <a name="url-rewrite"></a>Réécriture d’URL
+### <a name="url-rewrite"></a>Réécrire URL
 
 Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRewrite*> pour créer une règle pour la réécriture d’URL. Le premier paramètre contient l’expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, `skipRemainingRules: {true|false}`, indique à l’intergiciel d’ignorer, ou non, les règles de réécriture supplémentaires si la règle actuelle est appliquée.
 
@@ -186,7 +186,7 @@ Le caret (`^`) au début de l’expression signifie que la correspondance commen
 
 Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`, il n’existe pas de caret (`^`) au début de l’expression régulière. Ainsi, n’importe quel caractère peut précéder `redirect-rule/` dans le chemin pour qu’une correspondance soit établie.
 
-| Chemin d’accès                               | Faire correspondre à |
+| Path                               | Correspond |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Oui   |
 | `/my-cool-redirect-rule/1234/5678` | Oui   |
@@ -194,7 +194,7 @@ Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`
 
 La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une correspondance uniquement avec des chemins d’accès s’ils commencent par `rewrite-rule/`. Dans le tableau suivant, notez la différence de correspondance.
 
-| Chemin d’accès                              | Faire correspondre à |
+| Path                              | Correspond |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Oui   |
 | `/my-cool-rewrite-rule/1234/5678` | Non    |
@@ -249,7 +249,7 @@ L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suiv
 * SERVER_ADDR
 * SERVER_PORT
 * SERVER_PROTOCOL
-* TIME
+* TEMPS
 * TIME_DAY
 * TIME_HOUR
 * TIME_MIN
@@ -285,7 +285,7 @@ L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctio
 * Caractères génériques
 * LogRewrittenUrl
 
-#### <a name="supported-server-variables"></a>Variables serveur prises en charge
+#### <a name="supported-server-variables"></a>Variables de serveur prises en charge
 
 L’intergiciel prend en charge les variables serveur du module de réécriture d’URL IIS suivantes :
 
@@ -319,7 +319,7 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 | `RewriteContext.Result`              | Action                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (valeur par défaut) | Continuer à appliquer les règles.                                         |
+| `RuleResult.ContinueRules` (par défaut) | Continuer à appliquer les règles.                                         |
 | `RuleResult.EndResponse`             | Cesser d’appliquer les règles et envoyer la réponse.                       |
 | `RuleResult.SkipRemainingRules`      | Cesser d’appliquer les règles et envoyer le contexte au middleware suivant. |
 
@@ -359,7 +359,7 @@ Requête d’origine : `/image.jpg`
 
 ## <a name="regex-examples"></a>Exemples d’expressions régulières
 
-| Goal | Chaîne d’expression régulière et<br>exemple de correspondance | Chaîne de remplacement et<br>exemple de sortie |
+| Objectif | Chaîne d’expression régulière et<br>exemple de correspondance | Chaîne de remplacement et<br>exemple de sortie |
 | ---- | ------------------------------- | -------------------------------------- |
 | Réécrire le chemin dans la chaîne de requête | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
 | Supprimer la barre oblique finale | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |
@@ -387,7 +387,7 @@ La réécriture d’URL consiste à modifier des URL de requête en fonction d�
 > [!NOTE]
 > La réécriture d’URL peut réduire les performances d’une application. Quand c’est possible, limitez le nombre et la complexité des règles.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redirection d’URL et réécriture d’URL
 
@@ -405,7 +405,7 @@ Lors de la redirection des requêtes vers une URL différente, indiquez si la re
 
 * Le code d’état *302 - Trouvé* est utilisé quand la redirection est temporaire ou généralement susceptible d’être modifiée. Le code d’état 302 indique au client de ne pas stocker l’URL et de ne plus l’utiliser.
 
-Pour plus d’informations sur les codes d’état, consultez [RFC 2616 : Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+Pour plus d’informations sur les codes d’état, consultez [RFC 2616: Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 Une *réécriture d’URL* est une opération côté serveur qui fournit une ressource à partir d’une adresse de ressource différente de celle demandée par le client. La réécriture d’URL ne nécessite pas d’aller-retour avec le serveur. L’URL réécrite n’est pas retournée au client et n’apparaît pas dans la barre d’adresse du navigateur.
 
@@ -417,7 +417,7 @@ Même si le client peut récupérer la ressource à l’URL réécrite, il n’e
 
 ## <a name="url-rewriting-sample-app"></a>Exemple d’application de réécriture d’URL
 
-Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
+Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
 
 ## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser l’intergiciel (middleware) de réécriture d’URL
 
@@ -454,9 +454,9 @@ Quand vous n’utilisez pas le métapackage `Microsoft.AspNetCore.App`, ajoutez 
 
 Trois options permettent à l’application de rediriger des demandes non-`www` en demandes `www` :
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*> &ndash; Redirige de façon permanente la requête vers le sous-domaine `www` si la requête n’est pas de type `www`. Redirige avec un code d’état [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect).
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*> &ndash; rediriger définitivement la demande vers le sous-domaine `www` si la demande n’est pas`www`. Redirige avec un code d’état [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect).
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*> &ndash; Redirige la requête vers le sous-domaine `www` si la requête entrante n’est pas de type `www`. Redirige avec un code d’état [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect). Une surcharge vous permet de fournir le code d’état pour la réponse. Utilisez un champ de la classe <xref:Microsoft.AspNetCore.Http.StatusCodes> pour une affectation de code d’état.
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*> &ndash; rediriger la demande vers le sous-domaine `www` si la demande entrante n’est pas`www`. Redirige avec un code d’état [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect). Une surcharge vous permet de fournir le code d’état pour la réponse. Utilisez un champ de la classe <xref:Microsoft.AspNetCore.Http.StatusCodes> pour une affectation de code d’état.
 
 ### <a name="url-redirect"></a>Redirection d’URL
 
@@ -526,7 +526,7 @@ Requête d’origine utilisant `AddRedirectToHttpsPermanent` : `http://localhost
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
-### <a name="url-rewrite"></a>Réécriture d’URL
+### <a name="url-rewrite"></a>Réécrire URL
 
 Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRewrite*> pour créer une règle pour la réécriture d’URL. Le premier paramètre contient l’expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, `skipRemainingRules: {true|false}`, indique à l’intergiciel d’ignorer, ou non, les règles de réécriture supplémentaires si la règle actuelle est appliquée.
 
@@ -540,7 +540,7 @@ Le caret (`^`) au début de l’expression signifie que la correspondance commen
 
 Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`, il n’existe pas de caret (`^`) au début de l’expression régulière. Ainsi, n’importe quel caractère peut précéder `redirect-rule/` dans le chemin pour qu’une correspondance soit établie.
 
-| Chemin d’accès                               | Faire correspondre à |
+| Path                               | Correspond |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | Oui   |
 | `/my-cool-redirect-rule/1234/5678` | Oui   |
@@ -548,7 +548,7 @@ Dans l’exemple précédent avec la règle de redirection, `redirect-rule/(.*)`
 
 La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une correspondance uniquement avec des chemins d’accès s’ils commencent par `rewrite-rule/`. Dans le tableau suivant, notez la différence de correspondance.
 
-| Chemin d’accès                              | Faire correspondre à |
+| Path                              | Correspond |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | Oui   |
 | `/my-cool-rewrite-rule/1234/5678` | Non    |
@@ -603,7 +603,7 @@ L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suiv
 * SERVER_ADDR
 * SERVER_PORT
 * SERVER_PROTOCOL
-* TIME
+* TEMPS
 * TIME_DAY
 * TIME_HOUR
 * TIME_MIN
@@ -639,7 +639,7 @@ L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctio
 * Caractères génériques
 * LogRewrittenUrl
 
-#### <a name="supported-server-variables"></a>Variables serveur prises en charge
+#### <a name="supported-server-variables"></a>Variables de serveur prises en charge
 
 L’intergiciel prend en charge les variables serveur du module de réécriture d’URL IIS suivantes :
 
@@ -673,7 +673,7 @@ Utilisez <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> pour 
 
 | `RewriteContext.Result`              | Action                                                           |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (valeur par défaut) | Continuer à appliquer les règles.                                         |
+| `RuleResult.ContinueRules` (par défaut) | Continuer à appliquer les règles.                                         |
 | `RuleResult.EndResponse`             | Cesser d’appliquer les règles et envoyer la réponse.                       |
 | `RuleResult.SkipRemainingRules`      | Cesser d’appliquer les règles et envoyer le contexte au middleware suivant. |
 
@@ -713,7 +713,7 @@ Requête d’origine : `/image.jpg`
 
 ## <a name="regex-examples"></a>Exemples d’expressions régulières
 
-| Goal | Chaîne d’expression régulière et<br>exemple de correspondance | Chaîne de remplacement et<br>exemple de sortie |
+| Objectif | Chaîne d’expression régulière et<br>exemple de correspondance | Chaîne de remplacement et<br>exemple de sortie |
 | ---- | ------------------------------- | -------------------------------------- |
 | Réécrire le chemin dans la chaîne de requête | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
 | Supprimer la barre oblique finale | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |

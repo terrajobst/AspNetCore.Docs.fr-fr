@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 11/30/2019
 uid: fundamentals/localization
-ms.openlocfilehash: 645f680436336acbe1d5c2854a242527c9b4b9cb
-ms.sourcegitcommit: 3b6b0a54b20dc99b0c8c5978400c60adf431072f
+ms.openlocfilehash: b175354220a8a71c029e005f27443d5a72749a11
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74717401"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662119"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -30,7 +30,7 @@ La localisation d’une application implique les étapes suivantes :
 
 3. Implémenter une stratégie de sélection de la langue/culture pour chaque requête
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="make-the-apps-content-localizable"></a>Rendre le contenu de l’application localisable
 
@@ -74,7 +74,7 @@ L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ress
 
 Un fichier de ressources en français peut contenir ce qui suit :
 
-| Clé | Value |
+| Clé | Valeur |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -154,7 +154,7 @@ Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `Resource
 | Resources/Controllers/HomeController.fr.resx  | Path |
 |    |     |
 
-Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les vues Razor suivent un modèle similaire. Le fichier de ressources d’une vue peut être nommé selon la convention avec des points ou un chemin. Les fichiers de ressources d’une vue Razor imitent le chemin de son fichier de vue associé. Si nous affectons à `ResourcesPath` la valeur « Resources », le fichier de ressources en français associé à l’affichage *Views/Home/About.cshtml* peut porter l’un des noms suivants :
+Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les vues Razor suivent un modèle similaire. Le fichier de ressources d’une vue peut être nommé selon la convention avec des points ou un chemin. Les fichiers de ressources d’une vue Razor imitent le chemin de son fichier de vue associé. Si nous affectons à `ResourcesPath` la valeur « Resources », le fichier de ressources en français associé à la vue *Views/Home/About.cshtml* peut porter l’un des noms suivants :
 
 * Resources/Views/Home/About.fr.resx
 
@@ -225,6 +225,7 @@ La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 La culture actuelle sur une requête est définie dans l’[intergiciel (middleware)](xref:fundamentals/middleware/index) de localisation. L’intergiciel de localisation est activé dans la méthode `Startup.Configure`. L’intergiciel de localisation doit être configuré avant tout intergiciel susceptible de vérifier la culture de la requête (par exemple, `app.UseMvcWithDefaultRoute()`).
 
 [!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` initialise un objet `RequestLocalizationOptions`. Sur chaque requête, la liste de `RequestCultureProvider` dans `RequestLocalizationOptions` est énumérée et le premier fournisseur capable de déterminer correctement la culture de la requête est utilisé. Les fournisseurs par défaut proviennent de la classe `RequestLocalizationOptions` :
 
@@ -248,7 +249,7 @@ Si vous passez uniquement l’une des deux (`culture` ou `ui-culture`), le fourn
 
 Les applications de production fournissent souvent un mécanisme permettant de définir la culture à l’aide du cookie de culture ASP.NET Core. Utilisez la méthode `MakeCookieValue` pour créer un cookie.
 
-`CookieRequestCultureProvider` `DefaultCookieName` retourne le nom de cookie par défaut utilisé pour effectuer le suivi des informations de culture préférée de l’utilisateur. Le nom du cookie par défaut est `.AspNetCore.Culture`.
+L' `CookieRequestCultureProvider` `DefaultCookieName` retourne le nom de cookie par défaut utilisé pour suivre les informations de culture préférées de l’utilisateur. Le nom du cookie par défaut est `.AspNetCore.Culture`.
 
 Le format du cookie est `c=%LANGCODE%|uic=%LANGCODE%`, où `c` correspond à `Culture` et `uic` correspond à `UICulture`, par exemple :
 
@@ -276,7 +277,7 @@ L’[en-tête Accept-Language](https://www.w3.org/International/questions/qa-acc
 
 6. Tapez sur la langue, puis sur **Monter**.
 
-::: moniker range=">= aspnetcore-3.1"
+::: moniker range="> aspnetcore-3.1"
 ### <a name="the-content-language-http-header"></a>En-tête HTTP Content-Language
 
 En-tête d’entité [Content-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language) :

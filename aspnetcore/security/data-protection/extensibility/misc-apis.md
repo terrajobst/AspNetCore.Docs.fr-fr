@@ -1,18 +1,18 @@
 ---
-title: API de Protection des données divers ASP.NET Core
+title: API de protection des données diverses ASP.NET Core
 author: rick-anderson
-description: En savoir plus sur l’interface ISecret de Protection des données ASP.NET Core.
+description: En savoir plus sur l’interface ISecret de protection des données ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/extensibility/misc-apis
 ms.openlocfilehash: 114cdd6209970e46b827e403fbe79b95692d0242
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896616"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666081"
 ---
-# <a name="miscellaneous-aspnet-core-data-protection-apis"></a>API de Protection des données divers ASP.NET Core
+# <a name="miscellaneous-aspnet-core-data-protection-apis"></a>API de protection des données diverses ASP.NET Core
 
 <a name="data-protection-extensibility-mics-apis"></a>
 
@@ -21,7 +21,7 @@ ms.locfileid: "64896616"
 
 ## <a name="isecret"></a>ISecret
 
-Le `ISecret` interface représente une valeur secrète, comme clé de chiffrement. Il contient la surface d’API suivante :
+L’interface `ISecret` représente une valeur secrète, telle que le matériel de clé de chiffrement. Il contient la surface de l’API suivante :
 
 * `Length`: `int`
 
@@ -29,6 +29,6 @@ Le `ISecret` interface représente une valeur secrète, comme clé de chiffremen
 
 * `WriteSecretIntoBuffer(ArraySegment<byte> buffer)`: `void`
 
-Le `WriteSecretIntoBuffer` méthode remplit la mémoire tampon fournie avec la valeur du secret brutes. La raison pour laquelle cette API prend la mémoire tampon en tant que paramètre au lieu de retourner un `byte[]` directement est que cela donne à l’appelant la possibilité d’épingler l’objet de mémoire tampon, en limitant l’exposition de secret pour le RÉCUPÉRATEUR de mémoire géré.
+La méthode `WriteSecretIntoBuffer` remplit la mémoire tampon fournie avec la valeur de secret brut. La raison pour laquelle cette API prend la mémoire tampon comme paramètre plutôt que de retourner directement une `byte[]` est que cela donne à l’appelant la possibilité d’épingler l’objet de mémoire tampon, ce qui limite l’exposition secrète au garbage collector géré.
 
-Le `Secret` type est une implémentation concrète de `ISecret` où la valeur du secret est stockée dans la mémoire de dans le processus. Sur les plateformes Windows, la valeur du secret est chiffrée [CryptProtectMemory](https://msdn.microsoft.com/library/windows/desktop/aa380262(v=vs.85).aspx).
+Le type de `Secret` est une implémentation concrète de `ISecret` où la valeur secrète est stockée dans la mémoire in-process. Sur les plateformes Windows, la valeur de la clé secrète est chiffrée via [CryptProtectMemory](https://msdn.microsoft.com/library/windows/desktop/aa380262(v=vs.85).aspx).

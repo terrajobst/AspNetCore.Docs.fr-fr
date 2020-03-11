@@ -10,11 +10,11 @@ no-loc:
 - Blazor
 uid: tutorials/first-blazor-app
 ms.openlocfilehash: 8830dcf26b58b5f5fdd36b60298e7b365f99bdd9
-ms.sourcegitcommit: 925cdbd94613243f33bc7613a62ea34006219931
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921288"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655308"
 ---
 # <a name="build-your-first-opno-locblazor-app"></a>Créer votre première Blazor application
 
@@ -44,7 +44,7 @@ Suivez les instructions de l’article <xref:blazor/get-started> pour créer un 
 
    Lorsque le bouton **Click me** est sélectionné :
 
-   * Le gestionnaire `onclick` enregistré du composant `Counter` est appelé (méthode `IncrementCount`).
+   * Le gestionnaire `Counter` enregistré du composant `onclick` est appelé (méthode `IncrementCount`).
    * Le composant `Counter` regénère son arborescence de rendu.
    * La nouvelle arborescence de rendu est comparée à la précédente.
    * Seules les modifications apportées à Document Object Model (DOM) sont appliquées. Le compte affiché est mis à jour.
@@ -67,7 +67,7 @@ Incluez un composant dans un autre composant utilisant une syntaxe HTML.
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
-1. Régénérez et exécutez l’application. Le composant `Index` a son propre compteur.
+1. Régénérez et exécutez l'application. Le composant `Index` a son propre compteur.
 
 ## <a name="component-parameters"></a>Paramètres de composant
 
@@ -87,7 +87,7 @@ Les composants peuvent également avoir des paramètres. Les paramètres de comp
        > From Visual Studio, you can quickly add a component parameter by using the `para` snippet. Type `para` and press the `Tab` key twice.
    -->
 
-1. Spécifiez un paramètre `IncrementAmount` dans l’élément `<Counter>` du composant `Index` à l’aide d’un attribut. Définissez la valeur pour incrémenter le compteur par 10.
+1. Spécifiez un paramètre `IncrementAmount` dans l’élément `Index` du composant `<Counter>` à l’aide d’un attribut. Définissez la valeur pour incrémenter le compteur par 10.
 
    *Pages/Index.razor* :
 
@@ -157,7 +157,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
    </li>
    ```
 
-1. Régénérez et exécutez l’application. Consultez la nouvelle page Todo pour vérifier que le lien vers le composant `Todo` fonctionne.
+1. Régénérez et exécutez l'application. Consultez la nouvelle page Todo pour vérifier que le lien vers le composant `Todo` fonctionne.
 
 1. Ajoutez un fichier *TodoItem.cs* à la racine du projet pour contenir une classe qui représente un élément Todo. Utilisez le code C# suivant pour la classe `TodoItem` :
 
@@ -174,7 +174,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo5.razor?highlight=12-13)]
 
-1. Régénérez et exécutez l’application. Lorsque le bouton **Add todo** est sélectionné, rien ne se produit car aucun gestionnaire d’événements n’est lié au bouton.
+1. Régénérez et exécutez l'application. Lorsque le bouton **Add todo** est sélectionné, rien ne se produit car aucun gestionnaire d’événements n’est lié au bouton.
 
 1. Ajoutez une méthode `AddTodo` au composant `Todo` et enregistrez-la pour les sélections du bouton à l’aide de l’attribut `@onclick`. La méthode C# `AddTodo` est appelée lorsque le bouton est sélectionné :
 
@@ -192,7 +192,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/ToDo8.razor?highlight=19-26)]
 
-1. Régénérez et exécutez l’application. Ajoutez quelques éléments todo à la liste Todo pour tester le nouveau code.
+1. Régénérez et exécutez l'application. Ajoutez quelques éléments todo à la liste Todo pour tester le nouveau code.
 
 1. Le texte du titre pour chaque élément todo peut être rendu modifiable et une case à cocher peut aider l’utilisateur à effectuer le suivi des éléments terminés. Ajoutez une entrée de case à cocher pour chaque élément todo et liez sa valeur à la propriété `IsDone`. Remplacez `@todo.Title` par un élément `<input>` lié à `@todo.Title` :
 
@@ -208,7 +208,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Todo.razor)]
 
-1. Régénérez et exécutez l’application. Ajoutez des éléments todo pour tester le nouveau code.
+1. Régénérez et exécutez l'application. Ajoutez des éléments todo pour tester le nouveau code.
 
 > [!div class="nextstepaction"]
 > <xref:blazor/components>

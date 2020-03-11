@@ -26,7 +26,7 @@ Ajoutez une chaîne de connexion au fichier *appsettings.JSON* comme indiqué da
 
 ### <a name="register-the-database-context"></a>Inscrire le contexte de base de données
 
-En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
+En tête du fichier `using`Startup.cs *, ajoutez les instructions*  suivantes :
 
 ```csharp
 using RazorPagesMovie.Data;
@@ -43,7 +43,7 @@ Inscrivez le contexte de base de données auprès du conteneur d’[injection de
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-9)]
 
-### <a name="add-required-nuget-packages"></a>Ajouter les packages NuGet nécessaires
+### <a name="add-required-nuget-packages"></a>Ajouter les packages NuGet exigés
 
 Exécutez la commande CLI .NET Core suivante pour ajouter SQLite et CodeGeneration. Design au projet :
 
@@ -59,7 +59,7 @@ Le package `Microsoft.VisualStudio.Web.CodeGeneration.Design` est nécessaire à
 
 ### <a name="register-the-database-context"></a>Inscrire le contexte de base de données
 
-En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :
+En tête du fichier `using`Startup.cs *, ajoutez les instructions*  suivantes :
 
 ```csharp
 using RazorPagesMovie.Models;

@@ -1,27 +1,25 @@
 ---
 title: Détecter les modifications avec des jetons de modification dans ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez comment utiliser des jetons de modification pour effectuer le suivi des modifications.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 10/07/2019
 uid: fundamentals/change-tokens
-ms.openlocfilehash: bb30d7a4c7dc82200821c60a49c314b246562111
-ms.sourcegitcommit: 3d082bd46e9e00a3297ea0314582b1ed2abfa830
+ms.openlocfilehash: 70451e219f1295b854e2f84aac55f0cfd1786b19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72007210"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656344"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
-
-Par [Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
 Un *jeton de modification* est un module à usage général de bas niveau, utilisé pour effectuer le suivi des modifications de l’état.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
@@ -59,7 +57,7 @@ Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET
 
 Par défaut, les modèles ASP.NET Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*, *appsettings.Development.json* et *appsettings.Production.json*) pour charger les paramètres de configuration des applications.
 
-Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.Extensions.Hosting.Host> <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> :
+Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.Extensions.Hosting.Host><xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> :
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -83,7 +81,7 @@ Le `FileSystemWatcher` d’un fichier de configuration peut déclencher plusieur
 
 Inscrivez un rappel `Action` de consommateur de jeton pour les notifications de modification au jeton de rechargement de configuration.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -115,8 +113,8 @@ Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un r
 
 `config.GetReloadToken()` fournit le jeton. `InvokeChanged` est la méthode de rappel. Le `state` dans cette instance est une référence à l’instance `IConfigurationMonitor` qui est utilisée pour accéder à l’état du monitoring. Deux propriétés sont utilisées :
 
-* `MonitoringEnabled` &ndash; Indique si le rappel doit exécuter son code personnalisé.
-* `CurrentState` &ndash; Décrit l’état actuel de la surveillance pour une utilisation dans l’interface utilisateur.
+* `MonitoringEnabled` &ndash; indique si le rappel doit exécuter son code personnalisé.
+* `CurrentState` &ndash; décrit l’état actuel de l’analyse à utiliser dans l’interface utilisateur.
 
 La méthode `InvokeChanged` est similaire à l’approche précédente, excepté que :
 
@@ -178,7 +176,7 @@ Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu]
 
 `FileService` est inscrit dans le conteneur de service, ainsi que le service de mise en cache en mémoire.
 
-Dans `Startup.ConfigureServices`:
+Dans `Startup.ConfigureServices` :
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Startup.cs?name=snippet4)]
 
@@ -219,7 +217,7 @@ var compositeChangeToken =
 
 Un *jeton de modification* est un module à usage général de bas niveau, utilisé pour effectuer le suivi des modifications de l’état.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
@@ -257,7 +255,7 @@ Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET
 
 Par défaut, les modèles ASP.NET Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration-provider) (*appsettings.json*, *appsettings.Development.json* et *appsettings.Production.json*) pour charger les paramètres de configuration des applications.
 
-Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.AspNetCore.WebHost> <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> :
+Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) sur <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> qui accepte un paramètre `reloadOnChange`. `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Ce paramètre s’affiche dans la méthode pratique <xref:Microsoft.AspNetCore.WebHost><xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> :
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -281,7 +279,7 @@ Le `FileSystemWatcher` d’un fichier de configuration peut déclencher plusieur
 
 Inscrivez un rappel `Action` de consommateur de jeton pour les notifications de modification au jeton de rechargement de configuration.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Startup.cs?name=snippet2)]
 
@@ -313,8 +311,8 @@ Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un r
 
 `config.GetReloadToken()` fournit le jeton. `InvokeChanged` est la méthode de rappel. Le `state` dans cette instance est une référence à l’instance `IConfigurationMonitor` qui est utilisée pour accéder à l’état du monitoring. Deux propriétés sont utilisées :
 
-* `MonitoringEnabled` &ndash; Indique si le rappel doit exécuter son code personnalisé.
-* `CurrentState` &ndash; Décrit l’état actuel de la surveillance pour une utilisation dans l’interface utilisateur.
+* `MonitoringEnabled` &ndash; indique si le rappel doit exécuter son code personnalisé.
+* `CurrentState` &ndash; décrit l’état actuel de l’analyse à utiliser dans l’interface utilisateur.
 
 La méthode `InvokeChanged` est similaire à l’approche précédente, excepté que :
 
@@ -376,7 +374,7 @@ Dans l’exemple suivant, les fichiers sont stockés dans la [racine de contenu]
 
 `FileService` est inscrit dans le conteneur de service, ainsi que le service de mise en cache en mémoire.
 
-Dans `Startup.ConfigureServices`:
+Dans `Startup.ConfigureServices` :
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Startup.cs?name=snippet4)]
 

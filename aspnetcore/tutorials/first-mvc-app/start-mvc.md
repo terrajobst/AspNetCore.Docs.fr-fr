@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 10/16/2019
 uid: tutorials/first-mvc-app/start-mvc
 ms.openlocfilehash: 901257efdfbc7b36249233745175f5ed253da2c7
-ms.sourcegitcommit: da2fb2d78ce70accdba903ccbfdcfffdd0112123
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722862"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662476"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Bien démarrer avec ASP.NET Core MVC
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -22,10 +22,10 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous apprenez à :
+L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
-> * Créer une application web.
+> * Créez une application web.
 > * Ajouter et structurer un modèle.
 > * Utiliser une base de données.
 > * Ajouter une fonctionnalité de recherche et de validation.
@@ -34,17 +34,17 @@ L’application gère une base de données de titres de films. Vous apprenez à�
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
@@ -52,7 +52,7 @@ L’application gère une base de données de titres de films. Vous apprenez à�
 
 ## <a name="create-a-web-app"></a>Créer une application web
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, sélectionnez **Créer un projet**.
 
@@ -70,13 +70,13 @@ L’application gère une base de données de titres de films. Vous apprenez à�
 
 Visual Studio a utilisé le modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Il part du principe que vous connaissez déjà VS Code. Pour plus d’informations, consultez [Bien démarrer avec VS Code](https://code.visualstudio.com/docs) et [Aide de Visual Studio Code](#visual-studio-code-help).
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez la commande suivante : .
+* Exécutez la commande suivante :
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -88,7 +88,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
   * `code -r MvcMovie`: charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Sélectionnez **fichier** > **nouvelle solution**.
 
@@ -106,16 +106,16 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécuter l'application
+### <a name="run-the-app"></a>Exécuter l’application
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
 [!INCLUDE[](~/includes/trustCertVS.md)]
 
-* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute l’application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. En effet, `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web.
-* Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode non-débogage pour lancer rapidement l’application et voir les modifications.
+* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute l’application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web.
+* Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour lancer rapidement l’application et afficher les changements.
 * Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
 
   ![Déboguer (menu)](start-mvc/_static/debug_menu.png)
@@ -126,9 +126,9 @@ Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
   L’image suivante montre l’application :
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
@@ -138,20 +138,20 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
   Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour actualiser les modifications des pages et des vues.
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’application. Visual Studio pour Mac démarre le serveur [Kestrel](xref:fundamentals/servers/index#kestrel), lance un navigateur et accède à `http://localhost:port`, où *port* est un numéro de port choisi de façon aléatoire.
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. En effet, `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Quand vous exécutez l’application, vous voyez un autre numéro de port.
+* La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Quand vous exécutez l’application, vous voyez un autre numéro de port.
 * Vous pouvez lancer l’application en mode débogage ou non-débogage à partir du menu **Exécuter**.
 
   L’image suivante montre l’application :
 
-  ![Page d’accueil ou d’index](./start-mvc/_static/output_macos.png)
+  ![Page d’accueil ou page d’index](./start-mvc/_static/output_macos.png)
 
 ---
 
@@ -160,7 +160,7 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commencer à écrire du code.
 
 > [!div class="step-by-step"]
-> [Suivant](adding-controller.md)
+> [Next](adding-controller.md)
 
 ::: moniker-end
 
@@ -170,10 +170,10 @@ Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commenc
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web dans ASP.NET Core MVC.
 
-L’application gère une base de données de titres de films. Vous apprenez à :
+L’application gère une base de données de titres de films. Vous allez apprendre à effectuer les actions suivantes :
 
 > [!div class="checklist"]
-> * Créer une application web.
+> * Créez une application web.
 > * Ajouter et structurer un modèle.
 > * Utiliser une base de données.
 > * Ajouter une fonctionnalité de recherche et de validation.
@@ -182,24 +182,24 @@ L’application gère une base de données de titres de films. Vous apprenez à�
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
 ---
 ## <a name="create-a-web-app"></a>Créer une application web
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans Visual Studio, sélectionnez **Créer un projet**.
 
@@ -218,13 +218,13 @@ L’application gère une base de données de titres de films. Vous apprenez à�
 
 Visual Studio a utilisé le modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base qui constitue un bon point de départ.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Il part du principe que vous connaissez déjà VS Code. Pour plus d’informations, consultez [Bien démarrer avec VS Code](https://code.visualstudio.com/docs) et [Aide de Visual Studio Code](#visual-studio-code-help).
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Accédez à un répertoire (`cd`) destiné à contenir le projet.
-* Exécutez la commande suivante : .
+* Exécutez la commande suivante :
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -236,7 +236,7 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
   * `dotnet new mvc -o MvcMovie` : crée un nouveau projet ASP.NET Core MVC dans le dossier *MvcMovie*.
   * `code -r MvcMovie`: charge le fichier projet *MvcMovie. csproj* dans Visual Studio code.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Sélectionnez **fichier** > **nouvelle solution**.
 
@@ -254,16 +254,16 @@ Il part du principe que vous connaissez déjà VS Code. Pour plus d’informatio
 
 ---
 
-### <a name="run-the-app"></a>Exécuter l'application
+### <a name="run-the-app"></a>Exécuter l’application
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
 [!INCLUDE[](~/includes/trustCertVS.md)]
 
-* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute l’application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. En effet, `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web.
-* Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode non-débogage pour lancer rapidement l’application et voir les modifications.
+* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute l’application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web.
+* Si vous lancez l’application avec Ctrl+F5 (mode sans débogage), vous pouvez apporter des modifications au code, enregistrer le fichier, actualiser le navigateur et examiner les modifications apportées au code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour lancer rapidement l’application et afficher les changements.
 * Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
 
   ![Déboguer (menu)](start-mvc/_static/debug_menu.png)
@@ -274,13 +274,13 @@ Sélectionnez **Ctrl-F5** pour exécuter l'application en mode non-débogage.
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou d’index](start-mvc/_static/privacy.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/privacy.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
@@ -292,28 +292,28 @@ Appuyez sur Ctrl+F5 pour exécuter sans le débogueur.
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou d’index](start-mvc/_static/privacy.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/privacy.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou d’index](start-mvc/_static/home2.2.png)
+  ![Page d’accueil ou page d’index](start-mvc/_static/home2.2.png)
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’application. Visual Studio pour Mac démarre le serveur [Kestrel](xref:fundamentals/servers/index#kestrel), lance un navigateur et accède à `http://localhost:port`, où *port* est un numéro de port choisi de façon aléatoire.
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. En effet, `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Quand vous exécutez l’application, vous voyez un autre numéro de port.
+* La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Quand vous exécutez l’application, vous voyez un autre numéro de port.
 * Vous pouvez lancer l’application en mode débogage ou non-débogage à partir du menu **Exécuter**.
 
 * Sélectionnez **Accepter** pour accepter le suivi. Cette application n’effectue pas le suivi d’informations personnelles. Le code généré par le modèle inclut des ressources qui aident à satisfaire au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr).
 
-  ![Page d’accueil ou d’index](./start-mvc/_static/output_privacy_macos.png)
+  ![Page d’accueil ou page d’index](./start-mvc/_static/output_privacy_macos.png)
 
   L’illustration suivante montre l’application une fois le suivi accepté :
 
-  ![Page d’accueil ou d’index](./start-mvc/_static/output_macos.png)
+  ![Page d’accueil ou page d’index](./start-mvc/_static/output_macos.png)
 
 ---
 
@@ -322,6 +322,6 @@ Sélectionnez **Exécuter** > **Exécuter sans débogage** pour lancer l’appli
 Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commencer à écrire du code.
 
 > [!div class="step-by-step"]
-> [Suivant](adding-controller.md)
+> [Next](adding-controller.md)
 
 ::: moniker-end

@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 06/17/2019
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: a7a5c40d6c31c4416212c02c1b491dd794f2a1d3
-ms.sourcegitcommit: b3e1e31e5d8bdd94096cf27444594d4a7b065525
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803277"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658269"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et réduire les ressources statiques dans ASP.NET Core
 
@@ -43,7 +43,7 @@ La minimisation réduit la fonction à ce qui suit :
 
 En plus de supprimer les commentaires et les espaces superflus, les noms de paramètres et de variables suivants ont été renommés comme suit :
 
-D'origine | Affectation d'un nouveau nom
+Original | Affectation d'un nouveau nom
 --- | :---:
 `imageTagAndImageID` | `t`
 `imageContext` | `a`
@@ -53,10 +53,10 @@ D'origine | Affectation d'un nouveau nom
 
 Le tableau suivant présente les différences entre le chargement individuel des ressources et l’utilisation du regroupement et de la minimisation :
 
-Action | Avec B/M | Sans B/M | Modification
+Action | Avec B/M | Sans B/M | Modifier
 --- | :---: | :---: | :---:
 Demandes de fichier  | 7   | 18     | 157%
-Ko transférés | 156 | 264.68 | 70%
+Ko transférés | 156 | 264.68 | 70 %
 Temps de chargement (MS) | 885 | 2360   | 167%
 
 Les navigateurs sont relativement détaillés en ce qui concerne les en-têtes de requête HTTP. La mesure Total octets envoyés a vu une réduction significative lors du regroupement. Le temps de chargement montre une amélioration significative, mais cet exemple s’est exécuté localement. Des gains de performances plus élevés sont réalisés lorsque vous utilisez le regroupement et la minimisation avec les ressources transférées sur un réseau.
@@ -103,11 +103,11 @@ Le package NuGet [BuildBundlerMinifier](https://www.nuget.org/packages/BuildBund
 > [!NOTE]
 > BuildBundlerMinifier appartient à un projet basé sur la communauté sur GitHub pour lequel Microsoft n’offre aucune prise en charge. Les problèmes doivent être classés [ici](https://github.com/madskristensen/BundlerMinifier/issues).
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ajoutez le package *BuildBundlerMinifier* à votre projet.
 
-créer le projet ; Les éléments suivants s’affichent dans la fenêtre Sortie :
+Créez le projet. Les éléments suivants s’affichent dans la fenêtre Sortie :
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------
@@ -130,7 +130,7 @@ Nettoyez le projet. Les éléments suivants s’affichent dans la fenêtre Sorti
 ========== Clean: 1 succeeded, 0 failed, 0 skipped ==========
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Ajoutez le package *BuildBundlerMinifier* à votre projet :
 
@@ -168,7 +168,7 @@ Nettoyez le projet :
 dotnet clean
 ```
 
-La sortie suivante apparaît :
+Vous obtenez la sortie suivante :
 
 ```console
 Microsoft (R) Build Engine version 15.4.8.50001 for .NET Core
@@ -218,7 +218,7 @@ Pour réduire *Custom. CSS* et le regrouper avec *site. CSS* dans un fichier *si
 >
 > Ce modèle globbing correspond à tous les fichiers CSS et exclut le modèle de fichier minimisés.
 
-Générez l'application. Ouvrez *site. min. CSS* et notez que le contenu du fichier *Custom. CSS* est ajouté à la fin du fichier.
+Générez l’application. Ouvrez *site. min. CSS* et notez que le contenu du fichier *Custom. CSS* est ajouté à la fin du fichier.
 
 ## <a name="environment-based-bundling-and-minification"></a>Regroupement et minimisation basés sur l’environnement
 
@@ -332,4 +332,4 @@ Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cibl
 
 * [Utiliser Grunt](xref:client-side/using-grunt)
 * [Utiliser plusieurs environnements](xref:fundamentals/environments)
-* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Tag Helpers](xref:mvc/views/tag-helpers/intro)

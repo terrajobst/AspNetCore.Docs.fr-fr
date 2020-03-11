@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: performance/performance-best-practices
 ms.openlocfilehash: c74adf7479d176c41dc26c7e77acfc3dc9cdcb88
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693958"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666396"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>Meilleures pratiques en matière de performances de ASP.NET Core
 
@@ -23,7 +23,7 @@ Cet article fournit des instructions pour les meilleures pratiques en matière d
 
 ## <a name="cache-aggressively"></a>Mettre en cache de façon agressive
 
-La mise en cache est présentée dans plusieurs sections de ce document. Pour plus d'informations, consultez <xref:performance/caching/response>.
+La mise en cache est présentée dans plusieurs sections de ce document. Pour plus d’informations, consultez <xref:performance/caching/response>.
 
 ## <a name="understand-hot-code-paths"></a>Comprendre les chemins de code à chaud
 
@@ -75,7 +75,7 @@ Recommandations :
 
 * **Appelez toutes** les API d’accès aux données de manière asynchrone.
 * **Ne** récupérez pas plus de données que nécessaire. Écrivez des requêtes pour retourner uniquement les données nécessaires pour la requête HTTP actuelle.
-* **Envisagez** de mettre en cache les données fréquemment sollicitées récupérées à partir d’une base de données ou d’un service distant, si les données obsolètes sont légèrement obsolètes. Selon le scénario, utilisez un [MemoryCache](xref:performance/caching/memory) ou un [DistributedCache](xref:performance/caching/distributed). Pour plus d'informations, consultez <xref:performance/caching/response>.
+* **Envisagez** de mettre en cache les données fréquemment sollicitées récupérées à partir d’une base de données ou d’un service distant, si les données obsolètes sont légèrement obsolètes. Selon le scénario, utilisez un [MemoryCache](xref:performance/caching/memory) ou un [DistributedCache](xref:performance/caching/distributed). Pour plus d’informations, consultez <xref:performance/caching/response>.
 * Réduisez les allers **-** retours réseau. L’objectif est de récupérer les données requises dans un appel unique plutôt que plusieurs appels.
 * **Utilisez** des [requêtes sans suivi](/ef/core/querying/tracking#no-tracking-queries) dans Entity Framework Core lors de l’accès à des données en lecture seule. EF Core pouvez retourner les résultats des requêtes sans suivi plus efficacement.
 * **Filtrez** et regroupez les requêtes LINQ (avec `.Where`instructions, `.Select`ou `.Sum`, par exemple) afin que le filtrage soit effectué par la base de données.

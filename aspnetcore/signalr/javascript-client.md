@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: eaf737642cdbd7ab2b1b5c16538b47a70cddd332
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 3086b4aa532dfe992e19c193ef76f216f7835164
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354697"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657856"
 ---
 # <a name="aspnet-core-opno-locsignalr-javascript-client"></a>ASP.NET Core SignalR client JavaScript
 
@@ -22,7 +22,7 @@ Par [Rachel Appel](https://twitter.com/rachelappel)
 
 La bibliothèque cliente ASP.NET Core SignalR JavaScript permet aux développeurs d’appeler du code de concentrateur côté serveur.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/javascript-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/javascript-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="install-the-opno-locsignalr-client-package"></a>Installer le package client SignalR
 
@@ -35,7 +35,7 @@ La bibliothèque cliente JavaScript SignalR est fournie sous la forme d’un pac
   npm install @microsoft/signalr
   ```
 
-npm installe le contenu du package dans le *node_modules\\@microsoft\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
+NPM installe le contenu du package dans le dossier *node_modules\\@microsoft\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier *wwwroot\\lib* . Copiez le fichier *signalr. js* dans le dossier *wwwroot\lib\signalr* .
 
 ::: moniker-end
 
@@ -46,7 +46,7 @@ npm installe le contenu du package dans le *node_modules\\@microsoft\signalr\dis
   npm install @aspnet/signalr
   ```
 
-npm installe le contenu du package dans le *node_modules\\@aspnet\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
+NPM installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser* . Créez un nouveau dossier nommé *signalr* sous le dossier *wwwroot\\lib* . Copiez le fichier *signalr. js* dans le dossier *wwwroot\lib\signalr* .
 
 ::: moniker-end
 
@@ -74,9 +74,9 @@ Pour empêcher un site malveillant de lire des données sensibles à partir d’
 
 ## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
-Les clients JavaScript appellent les méthodes publiques sur les hubs via la méthode [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
+Les clients JavaScript appellent des méthodes publiques sur des hubs à l’aide de la méthode [Invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
 
-* Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode sur le hub est `SendMessage`.
+* Le nom de la méthode de hub. Dans l’exemple suivant, le nom de la méthode sur le Hub est `SendMessage`.
 * Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`. L’exemple de code utilise la syntaxe de fonction Arrow qui est prise en charge dans les versions actuelles de tous les principaux navigateurs, à l’exception d’Internet Explorer.
 
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
@@ -93,7 +93,7 @@ La méthode `send` retourne un `Promise`JavaScript. La `Promise` est résolue lo
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes clientes à partir du Hub
 
-Pour recevoir des messages à partir du hub, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de la `HubConnection`.
+Pour recevoir des messages à partir du concentrateur, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de l' `HubConnection`.
 
 * Nom de la méthode du client JavaScript. Dans l’exemple suivant, le nom de la méthode est `ReceiveMessage`.
 * Les arguments que le hub passe à la méthode. Dans l’exemple suivant, la valeur de l’argument est `message`.
@@ -107,11 +107,11 @@ Le code précédent dans `connection.on` s’exécute lorsque le code côté ser
 SignalR détermine la méthode cliente à appeler en faisant correspondre le nom de la méthode et les arguments définis dans `SendAsync` et `connection.on`.
 
 > [!NOTE]
-> Comme meilleure pratique, appelez la méthode [start](/javascript/api/%40aspnet/signalr/hubconnection#start) sur le `HubConnection` après `on`. En procédant comme ceci, vos gestionnaires sont enregistrés avant que tous les messages soient reçus.
+> Il est recommandé d’appeler la méthode [Start](/javascript/api/%40aspnet/signalr/hubconnection#start) sur le `HubConnection` après `on`. En procédant comme ceci, vos gestionnaires sont enregistrés avant que tous les messages soient reçus.
 
 ## <a name="error-handling-and-logging"></a>Gestion et journalisation des erreurs
 
-Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les erreurs côté client. Utilisez `console.error` pour envoyer les erreurs vers la console du navigateur.
+Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les erreurs côté client. Utilisez `console.error` pour générer des erreurs dans la console du navigateur.
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=49-51)]
 
@@ -273,7 +273,7 @@ Une implémentation réelle utilise une interruption exponentielle ou une nouvel
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Référence API JavaScript](/javascript/api/?view=signalr-js-latest)
+* [Référence de l’API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Didacticiel JavaScript](xref:tutorials/signalr)
 * [Didacticiel WebPack et machine à écrire](xref:tutorials/signalr-typescript-webpack)
 * [Hubs](xref:signalr/hubs)

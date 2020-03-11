@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: ca5b0f8088773027f7403120247cbeca8900bcf5
-ms.sourcegitcommit: 16cf016035f0c9acf3ff0ad874c56f82e013d415
+ms.openlocfilehash: d25c375f7e659168ab8cc9d8e11753cb7dfde831
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034342"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659774"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Client IP safelier pour ASP.NET Core
 
 Par [Damien Bowden](https://twitter.com/damien_bod) et [Tom Dykstra](https://github.com/tdykstra)
  
-Cet article présente trois méthodes permettant d’implémenter une liste d’adresses IP (également appelée liste verte) dans une application ASP.NET Core. Vous pouvez utiliser les éléments suivants :
+Cet article montre trois façons d’implémenter un safelist IP (également appelé liste verte) dans une application ASP.NET Core. Vous pouvez utiliser :
 
 * Intergiciel pour vérifier l’adresse IP distante de chaque demande.
 * Filtres d’action pour vérifier l’adresse IP distante des demandes pour des contrôleurs ou des méthodes d’action spécifiques.
@@ -25,7 +25,7 @@ Cet article présente trois méthodes permettant d’implémenter une liste d’
 
 Dans chaque cas, une chaîne contenant des adresses IP clientes approuvées est stockée dans un paramètre d’application. L’intergiciel (middleware) ou le filtre analyse la chaîne dans une liste et vérifie si l’adresse IP distante figure dans la liste. Si ce n’est pas le cas, un code d’état HTTP 403 interdit est retourné.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/ip-safelist/samples/2.x/ClientIpAspNetCore) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="the-safelist"></a>Safelit
 
@@ -33,7 +33,7 @@ La liste est configurée dans le fichier *appSettings. JSON* . Il s’agit d’u
 
 [!code-json[](ip-safelist/samples/2.x/ClientIpAspNetCore/appsettings.json?highlight=2)]
 
-## <a name="middleware"></a>Intergiciel (middleware)
+## <a name="middleware"></a>Middlewares
 
 La méthode `Configure` ajoute l’intergiciel (middleware) et lui transmet la chaîne safeli dans un paramètre de constructeur.
 
@@ -45,7 +45,7 @@ L’intergiciel analyse la chaîne dans un tableau et recherche l’adresse IP d
 
 ## <a name="action-filter"></a>Filtre d’action
 
-Si vous souhaitez un safelir uniquement pour des contrôleurs ou des méthodes d’action spécifiques, utilisez un filtre d’action. Voici un exemple : 
+Si vous souhaitez un safelir uniquement pour des contrôleurs ou des méthodes d’action spécifiques, utilisez un filtre d’action. Voici un exemple : 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckFilter.cs)]
 
@@ -61,7 +61,7 @@ Dans l’exemple d’application, le filtre est appliqué à la méthode `Get`. 
 
 ## <a name="razor-pages-filter"></a>Filtre de Razor Pages 
 
-Si vous souhaitez obtenir une application Razor Pages, utilisez un filtre Razor Pages. Voici un exemple : 
+Si vous souhaitez obtenir une application Razor Pages, utilisez un filtre Razor Pages. Voici un exemple : 
 
 [!code-csharp[](ip-safelist/samples/2.x/ClientIpAspNetCore/Filters/ClientIpCheckPageFilter.cs)]
 

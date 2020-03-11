@@ -6,12 +6,12 @@ ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: riande
 ms.date: 12/18/2019
 uid: mvc/models/model-binding
-ms.openlocfilehash: a389afe46636155e4703677d362d879a18ea5864
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 19580768679f30131683717792252c03aade68f9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829203"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666277"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "75829203"
 
 Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Description de la liaison de modèle
 
@@ -87,8 +87,8 @@ Par défaut, la liaison de modèle obtient des données sous la forme de paires 
 
 1. Champs de formulaire
 1. Corps de la requête (pour les [contrôleurs ayant l’attribut [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
-1. Données de route
-1. Paramètre de chaîne de requête
+1. Données de routage
+1. Paramètres de chaîne de requête
 1. Fichiers chargés
 
 Pour chaque paramètre ou propriété cible, les sources sont analysées dans l’ordre indiqué dans la liste précédente. Il existe quelques exceptions :
@@ -153,7 +153,7 @@ Les données sources sont fournies au système de liaison de modèle par les *fo
 * Créez une classe qui implémente `IValueProviderFactory`.
 * Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.
 
-L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) et de [fabrique](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies. Voici le code d’inscription dans `Startup.ConfigureServices` :
+L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProvider.cs) et de [fabrique](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/3.x/ModelBindingSample/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies. Voici le code d’inscription dans `Startup.ConfigureServices` :
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=4)]
 
@@ -192,7 +192,7 @@ La même stratégie est recommandée si vous ne souhaitez pas que les erreurs de
 
 Les types simples que le lieur de modèle peut convertir en chaînes sources sont les suivants :
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Booléen](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -202,7 +202,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [Enum](xref:System.ComponentModel.EnumConverter)
 * [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
-* [Single](xref:System.ComponentModel.SingleConverter)
+* [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
@@ -274,13 +274,13 @@ Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de mo
 
 ### <a name="bindrequired-attribute"></a>Attribut [BindRequired]
 
-Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Attribut [BindNever]
 
-Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il empêche la liaison de modèle de définir la propriété d’un modèle. Voici un exemple :
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il empêche la liaison de modèle de définir la propriété d’un modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -480,7 +480,7 @@ Vous pouvez étendre la liaison de modèle en écrivant un lieur de modèle pers
 
 ## <a name="manual-model-binding"></a>Liaison de modèle manuelle 
 
-Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. La méthode est définie sur les classes `ControllerBase` et `PageModel`. Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser. La méthode retourne `false` en cas d’échec de la liaison de modèle. Voici un exemple :
+Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. La méthode est définie sur les classes `ControllerBase` et `PageModel`. Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser. La méthode retourne `false` en cas d’échec de la liaison de modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/3.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 
@@ -505,7 +505,7 @@ Le nom de cet attribut suit le modèle des attributs de liaison de modèle qui s
 
 Cet article explique ce qu’est la liaison de modèle, comment elle fonctionne et comment personnaliser son comportement.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/model-binding/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="what-is-model-binding"></a>Description de la liaison de modèle
 
@@ -573,8 +573,8 @@ Par défaut, la liaison de modèle obtient des données sous la forme de paires 
 
 1. Champs de formulaire
 1. Corps de la requête (pour les [contrôleurs ayant l’attribut [ApiController]](xref:web-api/index#binding-source-parameter-inference).)
-1. Données de route
-1. Paramètre de chaîne de requête
+1. Données de routage
+1. Paramètres de chaîne de requête
 1. Fichiers chargés
 
 Pour chaque paramètre ou propriété cible, les sources sont analysées dans l’ordre indiqué dans la liste précédente. Il existe quelques exceptions :
@@ -639,7 +639,7 @@ Les données sources sont fournies au système de liaison de modèle par les *fo
 * Créez une classe qui implémente `IValueProviderFactory`.
 * Inscrivez la classe de fabrique dans `Startup.ConfigureServices`.
 
-L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) et de [fabrique](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies. Voici le code d’inscription dans `Startup.ConfigureServices` :
+L’exemple d’application comprend un exemple de [fournisseur de valeurs](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProvider.cs) et de [fabrique](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/models/model-binding/samples/2.x/ModelBindingSample/CookieValueProviderFactory.cs), qui permet de récupérer les valeurs provenant des cookies. Voici le code d’inscription dans `Startup.ConfigureServices` :
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Startup.cs?name=snippet_ValueProvider&highlight=3)]
 
@@ -678,7 +678,7 @@ La même stratégie est recommandée si vous ne souhaitez pas que les erreurs de
 
 Les types simples que le lieur de modèle peut convertir en chaînes sources sont les suivants :
 
-* [Boolean](xref:System.ComponentModel.BooleanConverter)
+* [Booléen](xref:System.ComponentModel.BooleanConverter)
 * [Byte](xref:System.ComponentModel.ByteConverter), [SByte](xref:System.ComponentModel.SByteConverter)
 * [Char](xref:System.ComponentModel.CharConverter)
 * [DateTime](xref:System.ComponentModel.DateTimeConverter)
@@ -688,7 +688,7 @@ Les types simples que le lieur de modèle peut convertir en chaînes sources son
 * [Enum](xref:System.ComponentModel.EnumConverter)
 * [Guid](xref:System.ComponentModel.GuidConverter)
 * [Int16](xref:System.ComponentModel.Int16Converter), [Int32](xref:System.ComponentModel.Int32Converter), [Int64](xref:System.ComponentModel.Int64Converter)
-* [Single](xref:System.ComponentModel.SingleConverter)
+* [Unique](xref:System.ComponentModel.SingleConverter)
 * [TimeSpan](xref:System.ComponentModel.TimeSpanConverter)
 * [UInt16](xref:System.ComponentModel.UInt16Converter), [UInt32](xref:System.ComponentModel.UInt32Converter), [UInt64](xref:System.ComponentModel.UInt64Converter)
 * [Uri](xref:System.UriTypeConverter)
@@ -760,13 +760,13 @@ Plusieurs attributs intégrés sont disponibles pour contrôler la liaison de mo
 
 ### <a name="bindrequired-attribute"></a>Attribut [BindRequired]
 
-Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il oblige la liaison de modèle à ajouter une erreur d’état de modèle si la liaison est impossible pour la propriété d’un modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithCollection.cs?name=snippet_BindRequired&highlight=8-9)]
 
 ### <a name="bindnever-attribute"></a>Attribut [BindNever]
 
-Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il empêche la liaison de modèle de définir la propriété d’un modèle. Voici un exemple :
+Il s’applique uniquement aux propriétés de modèle, pas aux paramètres de méthode. Il empêche la liaison de modèle de définir la propriété d’un modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Models/InstructorWithDictionary.cs?name=snippet_BindNever&highlight=3-4)]
 
@@ -948,7 +948,7 @@ Vous pouvez étendre la liaison de modèle en écrivant un lieur de modèle pers
 
 ## <a name="manual-model-binding"></a>Liaison de modèle manuelle
 
-Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. La méthode est définie sur les classes `ControllerBase` et `PageModel`. Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser. La méthode retourne `false` en cas d’échec de la liaison de modèle. Voici un exemple :
+Vous pouvez appeler la liaison de modèle manuellement à l’aide de la méthode <xref:Microsoft.AspNetCore.Mvc.ControllerBase.TryUpdateModelAsync*>. La méthode est définie sur les classes `ControllerBase` et `PageModel`. Les surcharges de méthode vous permettent de spécifier le préfixe et le fournisseur de valeurs à utiliser. La méthode retourne `false` en cas d’échec de la liaison de modèle. Voici un exemple :
 
 [!code-csharp[](model-binding/samples/2.x/ModelBindingSample/Pages/InstructorsWithCollection/Create.cshtml.cs?name=snippet_TryUpdate&highlight=1-4)]
 

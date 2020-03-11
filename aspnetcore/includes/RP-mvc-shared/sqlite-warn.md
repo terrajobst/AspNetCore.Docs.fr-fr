@@ -9,7 +9,7 @@
 >* La suppression de l’ancien tableau.
 >* Renommer la nouvelle table.
 >
->Pour plus d'informations, reportez-vous aux ressources suivantes :
+>Pour plus d’informations, consultez les ressources suivantes :
 >
 > * [Limites d’un fournisseur de base de données EF Core SQLite](/ef/core/providers/sqlite/limitations)
 > * [Personnaliser le code de migration](/ef/core/managing-schemas/migrations/#customize-migration-code)

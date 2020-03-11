@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : mettre à jour les données associées-ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
 author: rick-anderson
 ms.author: riande
@@ -7,14 +7,14 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 98f9f780c5814c0bd6e33052ee812b01a2bce306
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 83d662659fb4bc7a2867be563e4e36927d2adafe
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259362"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657142"
 ---
-# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core
+# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Didacticiel : mettre à jour les données associées-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez affiché des données associées ; dans ce didacticiel, vous mettez à jour des données associées en mettant à jour des champs de clé étrangère et des propriétés de navigation.
 
@@ -24,7 +24,7 @@ Les illustrations suivantes montrent quelques-unes des pages que vous allez util
 
 ![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-courses.png)
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnaliser les pages de cours
@@ -33,7 +33,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Mettre à jour la page Delete
 > * Ajouter des emplacements de bureau et des cours à la page Create
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Lire les données associées](read-related-data.md)
 
@@ -129,7 +129,7 @@ Remplacez la méthode HttpPost `Edit` par le code suivant pour gérer les mises 
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
 
-Le code effectue les actions suivantes :
+Le code effectue les actions suivantes :
 
 * Il change le nom de la méthode `EditPost`, car la signature est maintenant la même que celle de la méthode HttpGet `Edit` (l’attribut `ActionName` spécifie que l’URL `/Edit/` est encore utilisée).
 
@@ -171,13 +171,13 @@ Exécutez l’application, sélectionnez l’onglet **Instructors**, puis clique
 
 ## <a name="add-courses-to-edit-page"></a>Ajouter des cours à la page de modification
 
-Les instructeurs peuvent enseigner dans n’importe quel nombre de cours. Maintenant, vous allez améliorer la page de modification des formateurs en ajoutant la possibilité de modifier les affectations de cours avec un groupe de cases à cocher, comme le montre la capture d’écran suivante :
+Les formateurs peuvent donner un nombre quelconque de cours. Maintenant, vous allez améliorer la page de modification des formateurs en ajoutant la possibilité de modifier les affectations de cours avec un groupe de cases à cocher, comme le montre la capture d’écran suivante :
 
 ![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
 La relation entre les entités Course et Instructor est plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et vous supprimez des entités dans le jeu d’entités de la jointure CourseAssignments.
 
-L’interface utilisateur qui vous permet de changer les cours auxquels un formateur est affecté est un groupe de cases à cocher. Une case à cocher est affichée pour chaque cours de la base de données, et ceux auxquels le formateur est actuellement affecté sont sélectionnés. L’utilisateur peut cocher ou décocher les cases pour changer les affectations de cours. Si le nombre de cours était beaucoup plus important, vous pourriez utiliser une autre méthode de présentation des données dans la vue, mais vous utiliseriez la même méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations.
+L’interface utilisateur qui vous permet de changer les cours auxquels un formateur est affecté est un groupe de cases à cocher. Une case à cocher est affichée pour chaque cours de la base de données, et ceux auxquels le formateur est actuellement affecté sont sélectionnés. L’utilisateur peut cocher ou décocher les cases pour modifier les affectations de cours. Si le nombre de cours était beaucoup plus important, vous pourriez utiliser une autre méthode de présentation des données dans la vue, mais vous utiliseriez la même méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations.
 
 ### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur Instructors
 
@@ -252,7 +252,7 @@ Ce code apporte les modifications suivantes :
 
 * Il effectue un chargement hâtif pour la propriété de navigation `CourseAssignments`. Vous devez inclure ceci car sinon, EF ne dispose pas d’informations sur les entités `CourseAssignment` associées et ne les supprime pas. Pour éviter de devoir les lire ici, vous pouvez configurer une suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
+* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, il supprime l’affectation du formateur de ces départements.
 
 ## <a name="add-office-location-and-courses-to-create-page"></a>Ajouter des emplacements de bureau et des cours à la page Create
 
@@ -301,11 +301,11 @@ Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implément
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnalisez les pages de cours

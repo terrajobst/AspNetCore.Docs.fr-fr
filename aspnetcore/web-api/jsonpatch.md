@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/01/2019
 uid: web-api/jsonpatch
-ms.openlocfilehash: e57556e4b3fba55c6c187092593ffab4e31ee2d9
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: cf1a00c1928652bf5210b2442087209e23b8868e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727027"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661783"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>JsonPatch dans l’API web ASP.NET Core
 
@@ -239,7 +239,7 @@ L’exemple de document de correctif suivant n’a aucun effet si la valeur init
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample)).
 
 Pour tester l’exemple, exécutez l’application et envoyez des demandes HTTP avec les paramètres suivants :
 
@@ -451,7 +451,7 @@ L’exemple de document de correctif suivant n’a aucun effet si la valeur init
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample)).
 
 Pour tester l’exemple, exécutez l’application et envoyez des demandes HTTP avec les paramètres suivants :
 

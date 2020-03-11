@@ -1,40 +1,40 @@
 ---
 title: Détails du chiffrement authentifié dans ASP.NET Core
 author: rick-anderson
-description: Découvrez les détails d’implémentation de chiffrement de la Protection des données ASP.NET Core authentifié.
+description: Découvrez les détails de l’implémentation du chiffrement authentifié de la protection des données ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/authenticated-encryption-details
 ms.openlocfilehash: 9def03e6b27e19fc34a839e923d6152e086889db
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64896626"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667761"
 ---
 # <a name="authenticated-encryption-details-in-aspnet-core"></a>Détails du chiffrement authentifié dans ASP.NET Core
 
 <a name="data-protection-implementation-authenticated-encryption-details"></a>
 
-Les appels à IDataProtector.Protect sont des opérations de chiffrement authentifié. La méthode Protect offre la confidentialité et authenticité, et elle est liée à la chaîne d’usage ayant servie à dériver cette instance IDataProtector particulier de sa racine IDataProtectionProvider.
+Les appels à IDataProtector. Protect sont des opérations de chiffrement authentifiées. La méthode Protect offre à la fois la confidentialité et l’authenticité et est liée à la chaîne d’utilisation utilisée pour dériver cette instance IDataProtector particulière à partir de son IDataProtectionProvider racine.
 
-IDataProtector.Protect prend un paramètre byte [] en texte brut et produit une charge byte [] protégé, dont le format est décrit ci-dessous. (Il existe également une surcharge de méthode d’extension qui prend un paramètre de chaîne de texte en clair et renvoie une charge utile protégée de chaîne. Si cette API est utilisée le format de charge utile protégée auront toujours le ci-dessous structure, mais il sera [base64url encodé](https://tools.ietf.org/html/rfc4648#section-5).)
+IDataProtector. Protect prend un paramètre de texte en clair Byte [] et produit une charge utile protégée Byte [], dont le format est décrit ci-dessous. (Il existe également une surcharge de méthode d’extension qui prend un paramètre de chaîne en texte clair et retourne une charge utile protégée par une chaîne. Si cette API est utilisée, le format de la charge utile protégée aura toujours la structure ci-dessous, mais il sera [encodé base64url](https://tools.ietf.org/html/rfc4648#section-5).)
 
 ## <a name="protected-payload-format"></a>Format de charge utile protégée
 
-Le format de charge utile protégée se compose de trois composants principaux :
+Le format de charge utile protégée est constitué de trois composants principaux :
 
-* Un en-tête magique de 32 bits qui identifie la version du système de protection des données.
+* En-tête magique 32 bits qui identifie la version du système de protection des données.
 
-* Id de clé de 128 bits qui identifie la clé utilisée pour protéger cette charge utile particulier.
+* ID de clé 128 bits qui identifie la clé utilisée pour protéger cette charge utile particulière.
 
-* Le reste de la charge utile protégée est [spécifique pour le chiffreur encapsulé par cette clé](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation). Dans l’exemple ci-dessous, la clé représente un AES-256-CBC + le chiffreur de HMACSHA256, et la charge utile est en outre subdivisée comme suit :
-  * Un modificateur de clé de 128 bits.
-  * Un vecteur d’initialisation de 128 bits.
-  * 48 octets de sortie d’AES-256-CBC.
+* Le reste de la charge utile protégée est [spécifique au chiffreur encapsulé par cette clé](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation). Dans l’exemple ci-dessous, la clé représente un chiffreur AES-256-CBC + HMACSHA256, et la charge utile est sous-divisée comme suit :
+  * Modificateur de clé 128 bits.
+  * Vecteur d’initialisation 128 bits.
+  * 48 octets de sortie AES-256-CBC.
   * Une balise d’authentification HMACSHA256.
 
-Une exemple protégé de charge utile est illustrée ci-dessous.
+Un exemple de charge utile protégée est illustré ci-dessous.
 
 ```
 09 F0 C9 F0 80 9C 81 0C 19 66 19 40 95 36 53 F8
@@ -48,11 +48,11 @@ AA FF EE 57 57 2F 40 4C 3F 7F CC 9D CC D9 32 3E
 52 C9 74 A0
 ```
 
-À partir du format de charge utile ci-dessus les 32 premiers bits, ou 4 octets sont l’en-tête magique identifiant la version (09 F0 C9 F0)
+À partir du format de charge utile au-dessus du premier 32 bits, ou 4 octets sont l’en-tête magique identifiant la version (09 F0 C9 F0)
 
-La prochaine 128 bits, ou 16 octets est l’identificateur de clé (AA de F8 des 0C 19 66 19 40 95 36 53 de 80 9C 81 FF EE 57)
+Les 128 bits suivants, ou 16 octets sont l’identificateur de clé (80 9C 81 0C 19 66 19 40 95 36 53 F8 AA FF EE 57)
 
 Le reste contient la charge utile et est spécifique au format utilisé.
 
 > [!WARNING]
-> Toutes les charges utiles protégées à une clé donnée commence par le même en-tête de 20 octets (valeur magique, id de clé). Les administrateurs peuvent utiliser cela pour faciliter le diagnostic pour estimer lorsqu’une charge utile a été générée. Par exemple, la charge utile ci-dessus correspond à la clé {0c819c80-6619-4019-9536-53f8aaffee57}. Si après avoir vérifié le dépôt de clé, vous trouvez que la date d’activation de cette clé spécifique a été 2015-01-01 et sa date d’expiration a été 2015-03-01, puis il est raisonnable de supposer que la charge utile (si ne pas falsifié) a été générée dans cette fenêtre, donnent ou prendre un petit facteur arbitraire de chaque côté.
+> Toutes les charges utiles protégées à une clé donnée commencent par le même en-tête de 20 octets (valeur magique, ID de clé). Les administrateurs peuvent utiliser ce fait à des fins de diagnostic approximatifs lorsqu’une charge utile a été générée. Par exemple, la charge utile ci-dessus correspond à la clé {0c819c80-6619-4019-9536-53f8aaffee57}. Si, après avoir vérifié le référentiel de clés, vous constatez que la date d’activation de cette clé spécifique était 2015-01-01 et que sa date d’expiration était 2015-03-01, il est raisonnable de supposer que la charge utile (si elle n’a pas été falsifiée) a été générée dans cette fenêtre, d’attribuer ou de prendre une petite manœuvre facteur de part et d’autre.

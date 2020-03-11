@@ -1,22 +1,20 @@
 ---
 title: Héberger ASP.NET Core sur Windows avec IIS
-author: guardrex
+author: rick-anderson
 description: Découvrez comment héberger des applications ASP.NET Core sur Windows Server Internet Information Services (IIS).
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: ee7918783c0189a63d17678cda02f54dc40bdc24
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: c2ca867e3eebdc3fcf512cc5d457ff3c1967f9b1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172479"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657982"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
-
-Par [Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -466,7 +464,7 @@ Les sections de configuration des applications ASP.NET 4.x dans *web.config* ne 
 
 Les applications ASP.NET Core sont configurées à l’aide d’autres fournisseurs de configuration. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-## <a name="application-pools"></a>Pools d’applications
+## <a name="application-pools"></a>Pools d'applications
 
 L’isolation des pools d’applications est déterminée par le modèle d’hébergement :
 
@@ -1070,7 +1068,7 @@ Les sections de configuration des applications ASP.NET 4.x dans *web.config* ne 
 
 Les applications ASP.NET Core sont configurées à l’aide d’autres fournisseurs de configuration. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-## <a name="application-pools"></a>Pools d’applications
+## <a name="application-pools"></a>Pools d'applications
 
 L’isolation des pools d’applications est déterminée par le modèle d’hébergement :
 
@@ -1679,7 +1677,7 @@ Les sections de configuration des applications ASP.NET 4.x dans *web.config* ne 
 
 Les applications ASP.NET Core sont configurées à l’aide d’autres fournisseurs de configuration. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
-## <a name="application-pools"></a>Pools d’applications
+## <a name="application-pools"></a>Pools d'applications
 
 Quand vous hébergez plusieurs sites Web sur un même serveur, nous vous recommandons d’isoler les applications les unes des autres en exécutant chaque application dans son propre pool d’applications. La boîte de dialogue **Ajouter un site Web** d’IIS applique cette configuration par défaut. Quand un **Nom du site** est fourni, le texte est automatiquement transféré vers la zone de texte **Pool d’applications**. Un nouveau pool d’applications est créé avec le nom du site une fois qu’il est ajouté.
 

@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 8df070b580b6125db6616b33a81f3ffebad69f3a
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 910fffbf360ed0f62f7fe20bc8bfdf5be8198876
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828917"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660649"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="view-components"></a>Composants de vue
 
@@ -42,7 +42,7 @@ Les composants de vue sont conçus pour être utilisés là où vous avez une lo
 
 Un composant de vue a deux éléments : sa classe (généralement dérivée de [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) et le résultat qu’il retourne (en général, une vue). Comme les contrôleurs, un composant de vue peut être un OCT, mais la plupart des développeurs préfèrent utiliser les méthodes et propriétés dérivées de `ViewComponent`.
 
-Lorsque vous vérifiez si des composants de vue répondent aux spécifications d’une application, utilisez plutôt des composants Razor. Les composants Razor combinent également un balisage avec un code C# pour produire des unités d’interface utilisateur réutilisables. Les composants Razor sont conçus pour la productivité des développeurs lorsque vous fournissez une logique d’interface utilisateur et une composition côté client. Pour plus d'informations, consultez <xref:blazor/components>.
+Lorsque vous vérifiez si des composants de vue répondent aux spécifications d’une application, utilisez plutôt des composants Razor. Les composants Razor combinent également un balisage avec un code C# pour produire des unités d’interface utilisateur réutilisables. Les composants Razor sont conçus pour la productivité des développeurs lorsque vous fournissez une logique d’interface utilisateur et une composition côté client. Pour plus d’informations, consultez <xref:blazor/components>.
 
 ## <a name="creating-a-view-component"></a>Création d’un composant de vue
 
@@ -155,7 +155,7 @@ Dans cet exemple, le composant de vue est appelé directement du contrôleur :
 
 ## <a name="walkthrough-creating-a-simple-view-component"></a>Procédure pas à pas : Création d’un composant de vue simple
 
-[Téléchargez](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo*.
+[Téléchargez](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `ToDo` qui affiche une liste de tâches *ToDo*.
 
 ![Liste des tâches Todo](view-components/_static/2dos.png)
 
@@ -202,7 +202,7 @@ Remarques sur le code :
 
 Le balisage `@await Component.InvokeAsync` montre la syntaxe utilisée pour appeler un composant de vue. Le premier argument est le nom du composant à appeler. Les paramètres suivants sont passés au composant. `InvokeAsync` peut prendre un nombre arbitraire d’arguments.
 
-Testez l’application. L’image suivante montre la liste des tâches ToDo et les tâches prioritaires :
+Tester l'application. L’image suivante montre la liste des tâches ToDo et les tâches prioritaires :
 
 ![liste des tâches ToDo et tâches prioritaires](view-components/_static/pi.png)
 

@@ -2,7 +2,7 @@
 
 | Paramètre               | Description|
 | ----------------- | ------------ |
-| -m  | Nom du modèle. |
+| -M  | Nom du modèle. |
 | -dc  | Classe `DbContext` à utiliser. |
 | -udl | Utiliser la disposition par défaut. |
 | -outDir | Chemin du dossier de sortie relatif pour créer les vues. |

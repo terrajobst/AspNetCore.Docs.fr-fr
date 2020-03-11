@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/redis-backplane
 ms.openlocfilehash: 0461fc6a212ba78111bc2054cca74951721c5820
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74289040"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661370"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-opno-locsignalr-scale-out"></a>Configurer un backplane ReDim pour ASP.NET Core SignalR montée en puissance parallèle
 
@@ -29,11 +29,11 @@ Cet article explique SignalRaspects spécifiques de la configuration d’un serv
   > [!IMPORTANT] 
   > Pour une utilisation en production, un backplane ReDim est recommandé uniquement lorsqu’il s’exécute dans le même centre de données que l’application SignalR. Dans le cas contraire, la latence du réseau dégrade les performances. Si votre application SignalR s’exécute dans le Cloud Azure, nous vous recommandons Azure SignalR service au lieu d’un backplane ReDim. Vous pouvez utiliser le Cache Service Azure Redims pour les environnements de développement et de test.
 
-  Pour plus d'informations, voir les ressources suivantes :
+  Pour plus d’informations, consultez les ressources suivantes :
 
   * <xref:signalr/scale>
-  * [Documentation redims](https://redis.io/)
-  * [Documentation du cache Redims Azure](https://docs.microsoft.com/azure/redis-cache/)
+  * [Documentation Redis](https://redis.io/)
+  * [Documentation du Cache Redis Azure](https://docs.microsoft.com/azure/redis-cache/)
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -224,11 +224,11 @@ services.AddSignalR()
 
 Le [clustering redims](https://redis.io/topics/cluster-spec) est une méthode permettant d’obtenir une haute disponibilité à l’aide de plusieurs serveurs ReDim. Le clustering n’est pas officiellement pris en charge, mais il peut fonctionner.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
-Pour plus d'informations, voir les ressources suivantes :
+Pour plus d’informations, consultez les ressources suivantes :
 
 * <xref:signalr/scale>
-* [Documentation redims](https://redis.io/documentation)
+* [Documentation Redis](https://redis.io/documentation)
 * [Documentation sur StackExchange ReDim](https://stackexchange.github.io/StackExchange.Redis/)
-* [Documentation du cache Redims Azure](https://docs.microsoft.com/azure/redis-cache/)
+* [Documentation du Cache Redis Azure](https://docs.microsoft.com/azure/redis-cache/)

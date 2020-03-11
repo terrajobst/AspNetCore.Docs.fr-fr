@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
 ms.openlocfilehash: 28aa3df6aa661d0b762df78fe611cd827af43f75
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73660052"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658395"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorisation basée sur les rôles dans ASP.NET Core
 
@@ -31,7 +31,7 @@ public class AdministrationController : Controller
 }
 ```
 
-Vous pouvez spécifier plusieurs rôles sous la forme d’une liste séparée par des virgules :
+Vous pouvez spécifier plusieurs rôles à l'aide d'une liste séparée par des virgules :
 
 ```csharp
 [Authorize(Roles = "HRManager,Finance")]
@@ -113,7 +113,7 @@ public class UpdateModel : PageModel
 
 ## <a name="policy-based-role-checks"></a>Vérifications des rôles basés sur des stratégies
 
-Les exigences de rôle peuvent également être exprimées à l’aide de la nouvelle syntaxe de stratégie, où un développeur inscrit une stratégie au démarrage dans le cadre de la configuration du service d’autorisation. Cela se produit normalement dans `ConfigureServices()` dans votre fichier *Startup.cs* .
+Les exigences pour les rôles peuvent également être exprimés en utilisant la syntaxe de la nouvelle stratégie, où un développeur inscrit une stratégie au démarrage dans la configuration du service d’autorisation. Cela se produit normalement dans `ConfigureServices()` dans votre fichier *Startup.cs* .
 
 ::: moniker range=">= aspnetcore-3.0"
 ```csharp

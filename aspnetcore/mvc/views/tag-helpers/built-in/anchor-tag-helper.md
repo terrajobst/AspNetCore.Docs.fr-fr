@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/13/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 3ff8a52361b4911a5bb3163a8ea6ae90e504e4ef
-ms.sourcegitcommit: 07d98ada57f2a5f6d809d44bdad7a15013109549
+ms.openlocfilehash: 6bfbad39115c7823b5677d3c52ca64cfb0683037
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333941"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664002"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
@@ -19,9 +19,9 @@ Par [Peter Kellner](https://peterkellner.net) et [Scott Addie](https://github.co
 
 Le [Tag Helper Ancre](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) améliore la balise d’ancrage HTML standard (`<a ... ></a>`) en ajoutant de nouveaux attributs. Par convention, les noms d’attribut commencent par `asp-`. La valeur d’attribut de l’élément d’ancrage rendu `href` est déterminée par les valeurs des attributs `asp-`.
 
-Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 *SpeakerController* est utilisé dans les exemples dans ce document :
 
@@ -181,7 +181,7 @@ Considérez la hiérarchie de répertoires suivante :
 
 * **{Nom du projet}**
   * **wwwroot**
-  * **Les zones (areas)**
+  * **Zones**
     * **Sessions**
       * **Pages**
         * *\_ViewStart.cshtml*
@@ -213,11 +213,11 @@ Considérez la hiérarchie de répertoires suivante :
 
 * **{Nom du projet}**
   * **wwwroot**
-  * **Les zones (areas)**
+  * **Zones**
     * **Blogs**
       * **Contrôleurs**
         * *HomeController.cs*
-      * **Vues**
+      * **Views**
         * **Accueil**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
@@ -241,7 +241,7 @@ Code HTML généré :
 
 ### <a name="asp-protocol"></a>asp-protocol
 
-L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Exemple :
+L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Par exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
@@ -255,7 +255,7 @@ Le nom d’hôte dans l’exemple est localhost. Le Tag Helper Ancre utilise le 
 
 ### <a name="asp-host"></a>asp-host
 
-L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Exemple :
+L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Par exemple :
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 

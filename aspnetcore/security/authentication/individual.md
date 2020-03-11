@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/11/2019
 uid: security/authentication/individual
 ms.openlocfilehash: 7ef0d5eabded61d04fb9fe7be384a663ad7ea5f4
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828709"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659620"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>Articles basés sur des projets de ASP.NET Core créés avec des comptes d’utilisateur individuels
 
@@ -61,27 +61,27 @@ Si l’authentification Windows est sélectionnée, l’application est configur
 
 Le tableau suivant présente les options d’authentification disponibles pour les nouvelles applications Web :
 
-| Option | Type d'authentification | Lien vers plus d’informations |
+| Option | Type d'authentification | Lien pour plus d’informations |
  | ----------------- | ------------ | ---------- |
-| Aucun            |  Aucune authentification | | 
+| None            |  Aucune authentification | | 
 | Individuel      |  Authentification individuelle | <xref:security/authentication/identity>
 | IndividualB2C   |  Authentification individuelle hébergée dans le Cloud avec Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | SingleOrg       |  Authentification d’organisation pour un seul locataire | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
 | MultiOrg        |  Authentification d’organisation pour plusieurs locataires | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
-| Portail         |  Authentification Windows | [Authentification Windows](xref:security/authentication/windowsauth)
+| Windows         |  Authentification Windows | [Authentification Windows](xref:security/authentication/windowsauth)
 
 ## <a name="visual-studio-new-webapp-authentication-options"></a>Nouvelles options d’authentification webapp de Visual Studio
 
 Le tableau suivant présente les options d’authentification disponibles lors de la création d’une nouvelle application Web avec Visual Studio :
 
-| Option | Type d'authentification | Lien vers plus d’informations |
+| Option | Type d'authentification | Lien pour plus d’informations |
  | ----------------- | ------------ | ---------- |
-| Aucun            |  Aucune authentification | | 
+| None            |  Aucune authentification | | 
 | Comptes d’utilisateur individuels/stocker les comptes d’utilisateur dans l’application |  Authentification individuelle | <xref:security/authentication/identity> |
 | Comptes d’utilisateur individuels/se connecter à un magasin d’utilisateurs existant dans le Cloud |  Authentification individuelle hébergée dans le Cloud avec Azure AD B2C | [Azure AD B2C](/azure/active-directory-b2c/) |
 | Cloud professionnel ou scolaire/organisation unique  |  Authentification d’organisation pour un seul locataire | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
 | Cloud professionnel ou scolaire/organisation multiple |  Authentification d’organisation pour plusieurs locataires | [Azure AD](/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp) |
-| Portail         |  Authentification Windows | [Authentification Windows](xref:security/authentication/windowsauth)
+| Windows         |  Authentification Windows | [Authentification Windows](xref:security/authentication/windowsauth)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

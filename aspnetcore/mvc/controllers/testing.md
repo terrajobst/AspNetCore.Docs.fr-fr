@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
 uid: mvc/controllers/testing
-ms.openlocfilehash: 449d8791962e4233d599f364b2e8c922f0975d2f
-ms.sourcegitcommit: 0dd224b2b7efca1fda0041b5c3f45080327033f6
+ms.openlocfilehash: 597f1472bb30ae3b34fa98659c8c8bb464223e84
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74681095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666284"
 ---
 # <a name="unit-test-controller-logic-in-aspnet-core"></a>Logique du contrôleur de test unitaire dans ASP.NET Core
 
@@ -30,7 +30,7 @@ Si vous écrivez des routes et des filtres personnalisés, testez-les de manièr
 
 Pour illustrer les tests unitaires de contrôleur, examinez de plus près le contrôleur suivant dans l’exemple d’application. 
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Le contrôleur Home affiche une liste de sessions de brainstorming et permet la création de nouvelles sessions avec une requête POST :
 
@@ -57,7 +57,7 @@ La méthode `HTTP GET Index` n’a pas de boucle ni de branchement, et elle appe
 
 Le test de la méthode `HTTP POST Index` du contrôleur Home vérifie que :
 
-* Lorsque [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) est `false`, la méthode d’action retourne un <xref:Microsoft.AspNetCore.Mvc.ViewResult> de *Requête incorrecte 400* avec les données appropriées.
+* Quand [ModelState. IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) est `false`, la méthode d’action retourne une <xref:Microsoft.AspNetCore.Mvc.ViewResult> de *requête incorrecte 400* avec les données appropriées.
 * Lorsque `ModelState.IsValid` est `true` :
   * La méthode `Add` sur le dépôt est appelée.
   * Un <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult> est retourné avec les arguments corrects.
@@ -78,7 +78,7 @@ Les appels fictifs qui ne sont pas appelés sont normalement ignorés, mais l’
 > [!NOTE]
 > La bibliothèque Moq utilisée dans cet exemple permet la combinaison d’éléments fictifs vérifiables (ou « stricts ») avec des éléments fictifs non vérifiables (également appelés stubs ou éléments « lâches »). Découvrez plus d’informations sur la [personnalisation des éléments fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Dans l’exemple d’application, [SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
+Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -113,7 +113,7 @@ La deuxième test `ForSession` détermine si `ForSession` retourne une liste d�
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests5&highlight=5,7-8,15-18)]
 
-Pour tester le comportement de la méthode `Create` quand le `ModelState` n’est pas valide, l’exemple d’application ajoute une erreur de modèle au contrôleur dans le cadre de ce test. N’essayez pas de tester la validation de modèle ou la liaison de modèle dans des tests unitaires, testez simplement le comportement de votre méthode d’action quand elle est confrontée à un `ModelState` non valide :
+Pour tester le comportement de la méthode `Create` quand le `ModelState` n’est pas valide, l’exemple d’application ajoute une erreur de modèle au contrôleur dans le cadre de ce test. N’essayez pas de tester la validation de modèle ou la liaison de modèle dans des tests unitaires, testez simplement le comportement de votre méthode d’action quand elle est confrontée à un &mdash; non valide :
 
 [!code-csharp[](testing/samples/3.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests1&highlight=7,13)]
 
@@ -185,7 +185,7 @@ Pour un `id` de session valide, le dernier test confirme que :
 
 Les [contrôleurs](xref:mvc/controllers/actions) jouent un rôle essentiel dans une application ASP.NET Core MVC. En tant que tel, vous devez être sûr qu’ils se comportent comme prévu. Les tests automatisés peuvent détecter des erreurs avant le déploiement de l’application dans un environnement de production.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/testing/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="unit-tests-of-controller-logic"></a>Tests unitaires de la logique de contrôleur
 
@@ -220,7 +220,7 @@ La méthode `HTTP GET Index` n’a pas de boucle ni de branchement, et elle appe
 
 Le test de la méthode `HTTP POST Index` du contrôleur Home vérifie que :
 
-* Lorsque [ModelState.IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) est `false`, la méthode d’action retourne un <xref:Microsoft.AspNetCore.Mvc.ViewResult> de *Requête incorrecte 400* avec les données appropriées.
+* Quand [ModelState. IsValid](xref:Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary.IsValid*) est `false`, la méthode d’action retourne une <xref:Microsoft.AspNetCore.Mvc.ViewResult> de *requête incorrecte 400* avec les données appropriées.
 * Lorsque `ModelState.IsValid` est `true` :
   * La méthode `Add` sur le dépôt est appelée.
   * Un <xref:Microsoft.AspNetCore.Mvc.RedirectToActionResult> est retourné avec les arguments corrects.
@@ -241,7 +241,7 @@ Les appels fictifs qui ne sont pas appelés sont normalement ignorés, mais l’
 > [!NOTE]
 > La bibliothèque Moq utilisée dans cet exemple permet la combinaison d’éléments fictifs vérifiables (ou « stricts ») avec des éléments fictifs non vérifiables (également appelés stubs ou éléments « lâches »). Découvrez plus d’informations sur la [personnalisation des éléments fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Dans l’exemple d’application, [SessionController](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
+Dans l’exemple d’application, [SessionController](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/controllers/testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs) affiche des informations relatives à une session de brainstorming. Le contrôleur inclut la logique pour traiter des valeurs `id` non valides (il existe deux scénarios `return` dans l’exemple suivant pour couvrir ces scénarios). La dernière instruction `return` retourne un nouveau `StormSessionViewModel` à la vue (*Controllers/SessionController.cs*) :
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?name=snippet_SessionController&highlight=12-16,18-22,31)]
 
@@ -276,7 +276,7 @@ La deuxième test `ForSession` détermine si `ForSession` retourne une liste d�
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests5&highlight=5,7-8,15-18)]
 
-Pour tester le comportement de la méthode `Create` quand le `ModelState` n’est pas valide, l’exemple d’application ajoute une erreur de modèle au contrôleur dans le cadre de ce test. N’essayez pas de tester la validation de modèle ou la liaison de modèle dans des tests unitaires, testez simplement le comportement de votre méthode d’action quand elle est confrontée à un `ModelState` non valide :
+Pour tester le comportement de la méthode `Create` quand le `ModelState` n’est pas valide, l’exemple d’application ajoute une erreur de modèle au contrôleur dans le cadre de ce test. N’essayez pas de tester la validation de modèle ou la liaison de modèle dans des tests unitaires, testez simplement le comportement de votre méthode d’action quand elle est confrontée à un &mdash; non valide :
 
 [!code-csharp[](testing/samples/2.x/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?name=snippet_ApiIdeasControllerTests1&highlight=7,13)]
 

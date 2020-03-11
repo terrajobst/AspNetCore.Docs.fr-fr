@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: b31711eb6f797de2de1559a3303e14b32a88f1ff
-ms.sourcegitcommit: b3ebf96560b75b752d0e71161d788da800ad0999
+ms.openlocfilehash: d34b938dbd1b512ddb167cac0c035837889cd38f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72822388"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657814"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
@@ -50,7 +50,7 @@ Modifiez *Pages/Movies/Index.cshtml*et ajoutez un champ `Rating` :
 Mettez à jour les pages suivantes :
 
 * Ajoutez le champ `Rating` aux pages Delete et Details.
-* Mettez à jour [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un champ `Rating`.
+* Mettez à jour [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) avec un champ `Rating`.
 * Ajoutez le champ `Rating` à la Page Edit.
 
 L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. L’exécution de l’application sans mettre à jour la base de données lève une `SqlException`:
@@ -63,9 +63,9 @@ Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -73,18 +73,18 @@ Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la 
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-Consultez le [fichier SeedData.cs complet](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).
+Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/SeedDataRating.cs).
 
 Générez la solution.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
-Dans la console du gestionnaire de package, entrez les commandes suivantes :
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration Rating
@@ -96,7 +96,7 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 La commande `Update-Database` indique à l’infrastructure d’appliquer les modifications de schéma à la base de données et de conserver les données existantes.
 
@@ -116,7 +116,7 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
   Update-Database
   ```
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 ### <a name="drop-and-re-create-the-database"></a>Supprimer et recréer la base de données
 
@@ -175,7 +175,7 @@ Modifiez *Pages/Movies/Index.cshtml*et ajoutez un champ `Rating` :
 Mettez à jour les pages suivantes :
 
 * Ajoutez le champ `Rating` aux pages Delete et Details.
-* Mettez à jour [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) avec un champ `Rating`.
+* Mettez à jour [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) avec un champ `Rating`.
 * Ajoutez le champ `Rating` à la Page Edit.
 
 L’application ne fonctionne pas tant que la base de données n’est pas mise à jour pour inclure le nouveau champ. Si vous l’exécutez à présent, l’application lève une `SqlException` :
@@ -188,9 +188,9 @@ Plusieurs approches sont possibles pour résoudre l’erreur :
 
 1. Laisser Entity Framework supprimer et recréer automatiquement la base de données avec le nouveau schéma de classes du modèle. Cette approche est très utile au début du cycle de développement. Elle permet de faire évoluer rapidement le modèle et le schéma de base de données ensemble. L’inconvénient est que vous perdez les données existantes dans la base de données. N’utilisez pas cette approche sur une base de données de production ! La suppression de la base de données lors des changements de schéma et l’utilisation d’un initialiseur pour amorcer automatiquement la base de données avec des données de test est souvent un moyen efficace pour développer une application.
 
-2. Modifier explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
+2. Modifiez explicitement le schéma de la base de données existante pour le faire correspondre aux classes du modèle. L’avantage de cette approche est que vous conservez vos données. Vous pouvez apporter cette modification manuellement ou en créant un script de modification de la base de données.
 
-3. Utilisez les migrations Code First pour mettre à jour le schéma de base de données.
+3. Utilisez Migrations Code First pour mettre à jour le schéma de base de données.
 
 Pour ce didacticiel, nous allons utiliser les migrations Code First.
 
@@ -198,18 +198,18 @@ Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la 
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
-Consultez le [fichier SeedData.cs complet](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).
+Consultez le [fichier SeedData.cs complet](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/SeedDataRating.cs).
 
 Générez la solution.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 <a name="pmc"></a>
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Ajouter une migration pour le champ d’évaluation
 
-Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
-Dans la console du gestionnaire de package, entrez les commandes suivantes :
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
+Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
 Add-Migration Rating
@@ -221,7 +221,7 @@ La commande `Add-Migration` indique au framework qu’il doit :
 * Comparer le modèle `Movie` au schéma de base de données `Movie`
 * Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
 La commande `Update-Database` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
 
@@ -241,13 +241,13 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
   Update-Database
   ```
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 ### <a name="drop-and-re-create-the-database"></a>Supprimer et recréer la base de données
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Exécutez ensuite la commande `ef database update` :
+Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Ensuite, exécutez la commande `ef database update` :
 
 ```dotnetcli
 dotnet ef database update

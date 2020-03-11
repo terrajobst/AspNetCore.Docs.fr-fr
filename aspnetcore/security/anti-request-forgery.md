@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: security/anti-request-forgery
-ms.openlocfilehash: 54e153af55f28d9a89bbf16bce1c17f876567b59
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 3da73b8fe3e3d73d5d7754e0642e55feeb785de3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880804"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659158"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Empêcher les attaques de falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core
 
@@ -79,7 +79,7 @@ Lorsqu’un utilisateur s’authentifie à l’aide de son nom d’utilisateur e
 
 ### <a name="token-based-authentication"></a>Authentification basée sur les jetons
 
-Lorsqu’un utilisateur est authentifié, il reçoit un jeton (et non un jeton anti-contrefaçon). Le jeton contient des informations utilisateur sous la forme de [revendications](/dotnet/framework/security/claims-based-identity-model) ou d’un jeton de référence qui fait pointer l’application vers l’état utilisateur géré dans l’application. Lorsqu’un utilisateur tente d’accéder à une ressource nécessitant une authentification, le jeton est envoyé à l’application avec un en-tête d’autorisation supplémentaire sous forme de jeton du porteur. Cela rend l’application sans État. Dans chaque requête suivante, le jeton est transmis dans la demande de validation côté serveur. Ce jeton n’est pas *chiffré*. elle est *encodée*. Sur le serveur, le jeton est décodé pour accéder à ses informations. Pour envoyer le jeton sur les demandes suivantes, stockez le jeton dans le stockage local du navigateur. Ne vous inquiétez pas de la vulnérabilité CSRF si le jeton est stocké dans le stockage local du navigateur. CSRF est un problème lorsque le jeton est stocké dans un cookie. Pour plus d’informations, consultez l’exemple de code GitHub problème [Spa ajoute deux cookies](https://github.com/aspnet/AspNetCore.Docs/issues/13369).
+Lorsqu’un utilisateur est authentifié, il reçoit un jeton (et non un jeton anti-contrefaçon). Le jeton contient des informations utilisateur sous la forme de [revendications](/dotnet/framework/security/claims-based-identity-model) ou d’un jeton de référence qui fait pointer l’application vers l’état utilisateur géré dans l’application. Lorsqu’un utilisateur tente d’accéder à une ressource nécessitant une authentification, le jeton est envoyé à l’application avec un en-tête d’autorisation supplémentaire sous forme de jeton du porteur. Cela rend l’application sans État. Dans chaque requête suivante, le jeton est transmis dans la demande de validation côté serveur. Ce jeton n’est pas *chiffré*. elle est *encodée*. Sur le serveur, le jeton est décodé pour accéder à ses informations. Pour envoyer le jeton sur les demandes suivantes, stockez le jeton dans le stockage local du navigateur. Ne vous inquiétez pas de la vulnérabilité CSRF si le jeton est stocké dans le stockage local du navigateur. CSRF est un problème lorsque le jeton est stocké dans un cookie. Pour plus d’informations, consultez l’exemple de code GitHub problème [Spa ajoute deux cookies](https://github.com/dotnet/AspNetCore.Docs/issues/13369).
 
 ### <a name="multiple-apps-hosted-at-one-domain"></a>Plusieurs applications hébergées sur un domaine
 
@@ -334,10 +334,20 @@ public class ManageController : Controller
 
 Exemple global :
 
+::: moniker range="< aspnetcore-3.0"
+
+services. AddMvc (options = options de >. Filters. Add (New AutoValidateAntiforgeryTokenAttribute ()));
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 ```csharp
-services.AddMvc(options => 
+services.AddControllersWithViews(options =>
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 ```
+
+::: moniker-end
 
 ### <a name="override-global-or-controller-antiforgery-attributes"></a>Remplacer les attributs globaux ou anti-contrefaçon de contrôleur
 
@@ -465,7 +475,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/anti-request-forgery/sample/AngularSample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="extend-antiforgery"></a>Étendre l’anti-contrefaçon
 

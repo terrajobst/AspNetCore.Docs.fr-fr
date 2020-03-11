@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/11/2019
 uid: web-api/http-repl
-ms.openlocfilehash: 15899917826fb6559244998766d99d00f56e0521
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: d9beae68cc869b665ff5d2b6cf34f120406098dc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661888"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>Tester des API web avec la boucle REPL HTTP
 
@@ -34,13 +34,13 @@ Les [verbes HTTP](https://github.com/microsoft/api-guidelines/blob/vNext/Guideli
 * [POST](#test-http-post-requests)
 * [PUT](#test-http-put-requests)
 
-Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
+Pour continuer, [consultez ou téléchargez l’exemple d’API web ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
-## <a name="installation"></a>Installation de
+## <a name="installation"></a>Installation
 
 Pour installer la boucle REPL HTTP, exécutez la commande suivante :
 
@@ -50,7 +50,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 Un [outil global .NET Core](/dotnet/core/tools/global-tools#install-a-global-tool) est installé à partir du package NuGet [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl).
 
-## <a name="usage"></a>Contrôle
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’outil réussie, exécutez la commande suivante pour démarrer la boucle REPL HTTP :
 
@@ -68,7 +68,7 @@ httprepl -h
 httprepl --help
 ```
 
-La sortie suivante s’affiche :
+Vous obtenez la sortie suivante :
 
 ```console
 Usage:
@@ -225,15 +225,15 @@ https://localhost:5001/people~
 
 Les [couleurs](#set-color-preferences) de la boucle REPL HTTP peuvent être personnalisées. Vous pouvez aussi définir un [éditeur de texte par défaut](#set-the-default-text-editor). Les préférences de la boucle REPL HTTP sont conservées dans la session active et dans les sessions ultérieures. Une fois modifiées, les préférences sont stockées dans le fichier suivant :
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 *%HOME%/.httpreplprefs*
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 *%USERPROFILE%\\.httpreplprefs*
 
@@ -335,19 +335,19 @@ pref set editor.command.default "<EXECUTABLE>"
 
 Dans la commande précédente, `<EXECUTABLE>` est le chemin complet du fichier exécutable de l’éditeur de texte. Par exemple, exécutez la commande suivante pour définir Visual Studio Code comme éditeur de texte par défaut :
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```console
 pref set editor.command.default "/usr/bin/code"
 ```
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```console
 pref set editor.command.default "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 ```
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
@@ -355,7 +355,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous voulez que la boucle REPL HTTP ouvre toujours Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante : .
+Pour lancer l’éditeur de texte par défaut avec des arguments CLI spécifiques, définissez la clé `editor.command.default.arguments`. Par exemple, supposons que Visual Studio Code est l’éditeur de texte par défaut et que vous voulez que la boucle REPL HTTP ouvre toujours Visual Studio Code dans une nouvelle session avec les extensions désactivées. Exécutez la commande suivante :
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -378,7 +378,7 @@ pref set swagger.searchPaths "swagger/v2/swagger.json|swagger/v3/swagger.json"
 
 ## <a name="test-http-get-requests"></a>Tester des requêtes HTTP GET
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -462,7 +462,7 @@ Pour émettre une requête HTTP GET :
 
 ## <a name="test-http-post-requests"></a>Tester des requêtes HTTP POST
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -532,7 +532,7 @@ Pour émettre une requête HTTP POST :
 
 ## <a name="test-http-put-requests"></a>Tester des requêtes HTTP PUT
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -647,7 +647,7 @@ Pour émettre une requête HTTP PUT :
 
 ## <a name="test-http-delete-requests"></a>Tester des requêtes HTTP DELETE
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -734,7 +734,7 @@ Pour émettre une requête HTTP DELETE :
 
 ## <a name="test-http-patch-requests"></a>Tester des requêtes HTTP PATCH
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-formatting] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -754,7 +754,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 ## <a name="test-http-head-requests"></a>Tester des requêtes HTTP HEAD
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -772,7 +772,7 @@ Paramètre de route, le cas échéant, attendu par la méthode d’action du con
 
 ## <a name="test-http-options-requests"></a>Tester des requêtes HTTP OPTIONS
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body] [--response:headers] [-s|--streaming]
@@ -972,7 +972,7 @@ Si vous exécutez fréquemment le même jeu de commandes REPL HTTP, envisagez de
     https://localhost:5001/~ run C:\http-repl-scripts\people-script.txt
     ```
 
-    La sortie suivante apparaît :
+    Vous obtenez la sortie suivante :
 
     ```console
     https://localhost:5001/~ set base https://localhost:5001

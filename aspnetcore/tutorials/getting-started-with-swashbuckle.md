@@ -1,23 +1,23 @@
 ---
 title: Bien démarrer avec Swashbuckle et ASP.NET Core
 author: zuckerthoben
-description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’IU Swagger.
+description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’interface utilisateur Swagger.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/17/2020
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 16583cde2f4a6deaabc2fc965a5b9484ca94c2fd
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: da848ef9c5fa85f5186d1b6f0a6111d8c8d069c4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/18/2020
-ms.locfileid: "76268719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661300"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
 De [Shayne Boyer](https://twitter.com/spboyer) et [Scott Addie](https://twitter.com/Scott_Addie)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Swashbuckle compte trois composants principaux :
 
@@ -25,13 +25,13 @@ Swashbuckle compte trois composants principaux :
 
 * [Swashbuckle.AspNetCore.SwaggerGen](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerGen/) : générateur Swagger qui crée des objets `SwaggerDocument` directement à partir de vos routes, contrôleurs et modèles. Il est généralement associé à l’intergiciel de point de terminaison Swagger pour exposer automatiquement Swagger JSON.
 
-* [Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): version incorporée de l’outil IU Swagger. Elle interprète Swagger JSON afin de générer une expérience complète et personnalisable pour décrire la fonctionnalité de l’API web. Il inclut des ateliers de test intégrés pour les méthodes publiques.
+* [Swashbuckle.AspNetCore.SwaggerUI](https://www.nuget.org/packages/Swashbuckle.AspNetCore.SwaggerUI/): version incorporée de l’outil d'interface utilisateur Swagger. Elle interprète Swagger JSON afin de générer une expérience complète et personnalisable pour décrire la fonctionnalité de l’API web. Elle inclut des ateliers de test intégrés pour les méthodes publiques.
 
 ## <a name="package-installation"></a>Installation de package
 
 Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 
-### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de la fenêtre **Console du Gestionnaire de package** :
   * Accédez à **Affichage** > **Autres fenêtres** > **Console du Gestionnaire de package**.
@@ -49,7 +49,7 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
   * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
   * Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent sous l’onglet **Parcourir** et cliquez sur **Installer**.
 
-### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+### <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages**.
 * Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
@@ -57,7 +57,7 @@ Vous pouvez ajouter Swashbuckle en adoptant l’une des approches suivantes :
 * Entrez « Swashbuckle.AspNetCore » dans la zone de recherche.
 * Sélectionnez le package « Swashbuckle.AspNetCore » le plus récent dans le volet de résultats, puis cliquez sur **Ajouter un package**.
 
-### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Exécutez la commande suivante à partir du **Terminal intégré** :
 
@@ -65,9 +65,9 @@ Exécutez la commande suivante à partir du **Terminal intégré** :
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
 ```
 
-### <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+### <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Exécutez la commande suivante : .
+Exécutez la commande suivante :
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
@@ -101,7 +101,7 @@ Ajoutez le générateur Swagger à la collection de services dans la méthode `S
 
 ::: moniker-end
 
-Dans la méthode `Startup.Configure`, activez l’intergiciel pour traiter le document JSON généré et l’IU Swagger :
+Dans la méthode `Startup.Configure`, activez l’intergiciel pour traiter le document JSON généré et l’interface utilisateur Swagger :
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
@@ -122,11 +122,11 @@ Lancez l’application et accédez à `http://localhost:<port>/swagger/v1/swagge
 L’interface utilisateur Swagger se trouve à l’adresse `http://localhost:<port>/swagger`. Explorez l’API via l’interface utilisateur Swagger et incorporez-la dans d’autres programmes.
 
 > [!TIP]
-> Pour utiliser l’IU Swagger à la racine de l’application (`http://localhost:<port>/`), définissez la propriété `RoutePrefix` sur une chaîne vide :
+> Pour utiliser l’interface utilisateur Swagger à la racine de l’application (`http://localhost:<port>/`), définissez la propriété `RoutePrefix` sur une chaîne vide :
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
 
-Si vous utilisez des répertoires avec IIS ou un proxy inverse, définissez le point de terminaison Swagger sur un chemin relatif avec le préfixe `./`. Par exemple, `./swagger/v1/swagger.json`. L’utilisation de `/swagger/v1/swagger.json` indique à l’application de rechercher le fichier JSON à la racine réelle de l’URL (plus le préfixe de la route s’il est utilisé). Par exemple, utilisez `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` à la place de `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`.
+Si vous utilisez des répertoires avec IIS ou un proxy inverse, définissez le point de terminaison Swagger sur un chemin relatif avec le préfixe `./`. Par exemple : `./swagger/v1/swagger.json`. L’utilisation de `/swagger/v1/swagger.json` indique à l’application de rechercher le fichier JSON à la racine réelle de l’URL (plus le préfixe de la route s’il est utilisé). Par exemple, utilisez `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` au lieu de `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`.
 
 ## <a name="customize-and-extend"></a>Personnaliser et étendre
 
@@ -154,7 +154,7 @@ L’IU Swagger affiche les informations de la version :
 
 Vous pouvez activer les commentaires XML en adoptant l’une des approches suivantes :
 
-#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+#### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -172,7 +172,7 @@ Vous pouvez activer les commentaires XML en adoptant l’une des approches suiva
 
 ::: moniker-end
 
-#### <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+#### <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -190,7 +190,7 @@ Vous pouvez activer les commentaires XML en adoptant l’une des approches suiva
 
 ::: moniker-end
 
-#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+#### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
@@ -206,7 +206,7 @@ Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
 ::: moniker-end
 
-#### <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+#### <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
@@ -296,11 +296,11 @@ Quand vous ajoutez des commentaires avec trois barres obliques à une action, la
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Delete&highlight=1-3)]
 
-L’IU Swagger affiche le texte interne de l’élément `<summary>` du code précédent :
+L’interface utilisateur Swagger affiche le texte interne de l’élément `<summary>` du code précédent :
 
 ![Interface utilisateur de Swagger affichant le commentaire XML « Deletes a specific TodoItem. » pour la méthode DELETE.](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
 
-L’IU est définie par le schéma JSON généré :
+L’interface utilisateur est définie par le schéma JSON généré :
 
 ```json
 "delete": {
@@ -349,7 +349,7 @@ Ajoutez un élément [\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remark
 
 ::: moniker-end
 
-Notez les améliorations de l’IU avec ces commentaires supplémentaires :
+Notez les améliorations de l’interface utilisateur avec ces commentaires supplémentaires :
 
 ![Interface utilisateur de Swagger avec des commentaires supplémentaires affichés](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
 
@@ -443,11 +443,11 @@ L’interface utilisateur de Swagger documente maintenant clairement les codes d
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Dans ASP.NET Core 2.2 ou une version ultérieure, les conventions peuvent être utilisées comme alternatives à la décoration explicites des actions individuelles avec `[ProducesResponseType]`. Pour plus d'informations, consultez <xref:web-api/advanced/conventions>.
+Dans ASP.NET Core 2.2 ou une version ultérieure, les conventions peuvent être utilisées comme alternatives à la décoration explicites des actions individuelles avec `[ProducesResponseType]`. Pour plus d’informations, consultez <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 
-### <a name="customize-the-ui"></a>Personnaliser l’IU
+### <a name="customize-the-ui"></a>Personnaliser l’interface utilisateur
 
 L’interface utilisateur est fonctionnelle et conviviale. Toutefois, les pages de documentation d’API doivent représenter votre marque ou thème. La personnalisation des composants Swashbuckle nécessite d’ajouter les ressources qui traitent les fichiers statiques et de générer la structure de dossiers pour héberger ces fichiers.
 
@@ -473,7 +473,7 @@ Activez le middleware de fichiers statiques :
 
 ::: moniker-end
 
-Faites l’acquisition du contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/master/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
+Récupérez le contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/master/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
 
 Créez un dossier *wwwroot/swagger/ui* et copiez dedans le contenu du dossier *dist*.
 

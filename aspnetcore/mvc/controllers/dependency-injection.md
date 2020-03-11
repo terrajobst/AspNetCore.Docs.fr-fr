@@ -5,12 +5,12 @@ description: Découvrez comment les contrôleurs ASP.NET Core MVC demandent expl
 ms.author: riande
 ms.date: 02/24/2019
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 6b08c321f4cae1f4efd8ea40300eaf4dfc2f63a1
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 202b62d4b30c5c61c407abdc8509a2a75e181cb6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890934"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660082"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Injection de dépendances dans les contrôleurs dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Shadi Namrouti](https://github.com/shadinamrouti), [Rick Anderson](https://
 
 Les contrôleurs ASP.NET Core MVC demandent les dépendances explicitement via des constructeurs. ASP.NET Core offre une prise en charge intégrée de l’[injection de dépendances](xref:fundamentals/dependency-injection). L’injection de dépendances facilite le test et la maintenance des applications.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="constructor-injection"></a>Injection de constructeurs
 
@@ -54,7 +54,7 @@ Exécutez l’application et un message s’affiche en fonction de l’heure.
 
 L’accès aux paramètres de configuration ou d’application à partir d’un contrôleur est un modèle commun. Le *modèle options* décrit dans <xref:fundamentals/configuration/options> est l’approche à privilégier pour gérer les paramètres. En règle générale, n’injectez pas directement <xref:Microsoft.Extensions.Configuration.IConfiguration> dans un contrôleur.
 
-Créez une classe qui représente les options. Par exemple :
+Créez une classe qui représente les options. Par exemple :
 
 [!code-csharp[](dependency-injection/sample/ControllerDI/Models/SampleWebSettings.cs?name=snippet)]
 

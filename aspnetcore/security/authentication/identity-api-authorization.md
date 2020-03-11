@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/08/2019
 uid: security/authentication/identity/spa
 ms.openlocfilehash: 623f739b17c0bed3ce929f562c9581ab26ecf5bc
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928559"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661412"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Authentification et autorisation pour SPAs
 
@@ -42,7 +42,7 @@ La commande précédente crée une application ASP.NET Core avec un répertoire 
 
 Les sections suivantes décrivent les ajouts au projet lorsque la prise en charge de l’authentification est incluse :
 
-### <a name="startup-class"></a>Classe Startup
+### <a name="startup-class"></a>Classe de démarrage
 
 La classe `Startup` présente les ajouts suivants :
 

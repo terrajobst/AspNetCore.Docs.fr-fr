@@ -5,12 +5,12 @@ description: Découvrez comment créer des services backend en utilisant ASP.NET
 ms.author: riande
 ms.date: 12/05/2019
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 38ac69bfe9d99d6d61f96fde92d86fd752ebbb6b
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: dcd0a29af197ff0ca210c17bdff62b802219fb2d
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881160"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664583"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Créer des services backend pour les applications mobiles natives avec ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 Les applications mobiles peuvent communiquer avec les services back-end ASP.NET Core. Pour obtenir des instructions sur la connexion de services web locaux à partir de simulateurs iOS et d’émulateurs Android, consultez [Se connecter à des services web locaux à partir de simulateurs iOS et d’émulateurs Android](/xamarin/cross-platform/deploy-test/connect-to-local-web-services).
 
-[Afficher ou télécharger l’exemple de code de services backend](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
+[Afficher ou télécharger l’exemple de code de services backend](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mobile/native-mobile-backend/sample)
 
 ## <a name="the-sample-native-mobile-app"></a>Exemple d’application mobile native
 
@@ -28,7 +28,7 @@ Ce didacticiel montre comment créer des services backend en utilisant ASP.NET C
 
 ### <a name="features"></a>Fonctionnalités
 
-L’application TodoREST prend en charge l’affichage, l’ajout, la suppression et la mise à jour d’éléments de tâche à effectuer. Chaque élément a un ID, un nom, des notes et une propriété qui indique si elle est déjà effectuée.
+L’application TodoREST prend en charge l’affichage, l’ajout, la suppression et la mise à jour d’éléments de tâche à effectuer. Chaque élément a un ID, un nom, des remarques et une propriété qui indique si la tâche a été effectuée.
 
 La vue principale des éléments, reproduite ci-dessus, montre le nom de chaque élément et indique si la tâche est effectuée avec une marque.
 

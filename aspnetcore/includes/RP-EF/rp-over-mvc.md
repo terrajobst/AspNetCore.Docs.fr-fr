@@ -1,4 +1,4 @@
-Ce tutoriel décrit ASP.NET Core MVC et Entity Framework Core avec des contrôleurs et des vues. [Razor Pages](xref:razor-pages/index) est un autre modèle de programmation qui a été introduit dans ASP.NET Core 2.0. Pour le nouveau développement, nous recommandons Razor Pages plutôt que MVC avec des contrôleurs et des vues. Il existe une version [Razor Pages](xref:data/ef-rp/intro) de ce tutoriel. Chaque tutoriel couvre des sujets que l’autre ne couvre pas :
+Ce didacticiel décrit ASP.NET Core MVC et Entity Framework Core avec des contrôleurs et des vues. [Razor Pages](xref:razor-pages/index) est un autre modèle de programmation qui a été introduit dans ASP.NET Core 2.0. Pour le nouveau développement, nous recommandons Razor Pages plutôt que MVC avec des contrôleurs et des vues. Il existe une version [Razor Pages](xref:data/ef-rp/intro) de ce tutoriel. Chaque tutoriel couvre des sujets que l’autre ne couvre pas :
 
 Ce tutoriel MVC présente certains éléments que le tutoriel Razor Pages ne présente pas :
 

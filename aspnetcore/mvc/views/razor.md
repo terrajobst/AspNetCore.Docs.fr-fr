@@ -5,16 +5,16 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 02/12/2020
 uid: mvc/views/razor
-ms.openlocfilehash: 0b1eed2816329d62fca4bdb5719825a4197af353
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: e9d2e42ba3c36bc1661739f3b105ec8efe03de48
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658717"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), [Taylor Mullen](https://twitter.com/ntaylormullen) et [Dan Vicarel](https://github.com/Rabadash8820)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)et [Dan Vicarel](https://github.com/Rabadash8820)
 
 Razor est une syntaxe de balisage qui permet d’incorporer du code serveur dans des pages web. La syntaxe Razor est constituée de balises Razor, ainsi que de code C# et HTML. Les fichiers contenant de la syntaxe Razor ont généralement l’extension de fichier *.cshtml*. Razor est également disponible dans les fichiers de [Composants Razor](xref:blazor/components) ( *.razor*).
 

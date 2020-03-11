@@ -1,22 +1,20 @@
 ---
 title: Modules IIS avec ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez les modules IIS actifs et inactifs pour les applications ASP.NET Core et comment gérer les modules IIS.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: ca6cf349aa05db97e145f1cd0cae97a107761fd8
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 0f13ef3eb1da03960ef1fa54d33532b6ebbdc128
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951814"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657905"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
-
-Par [Luke Latham](https://github.com/guardrex)
 
 Certains des modules IIS natifs et tous les modules managés IIS ne peuvent pas traiter les requêtes liées aux applications ASP.NET Core. Dans de nombreux cas, ASP.NET Core offre une alternative aux scénarios traités par les modules natifs et managés IIS.
 
@@ -24,7 +22,7 @@ Certains des modules IIS natifs et tous les modules managés IIS ne peuvent pas 
 
 Le tableau indique les modules IIS natifs qui fonctionnent avec les applications ASP.NET Core et le module ASP.NET Core.
 
-| Module, mot clé | Opérationnel avec les applications ASP.NET Core | Option ASP.NET Core |
+| Module | Opérationnel avec les applications ASP.NET Core | Option ASP.NET Core |
 | --- | :---: | --- |
 | **Authentification anonyme**<br>`AnonymousAuthenticationModule`                                  | Oui | |
 | **Authentification de base**<br>`BasicAuthenticationModule`                                          | Oui | |
@@ -38,19 +36,19 @@ Le tableau indique les modules IIS natifs qui fonctionnent avec les application
 | **Exploration des répertoires**<br>`DirectoryListingModule`                                               | Non  | [Middleware d’exploration des répertoires](xref:fundamentals/static-files#enable-directory-browsing) |
 | **Compression dynamique**<br>`DynamicCompressionModule`                                            | Oui | [Intergiciel (middleware) de compression des réponses](xref:performance/response-compression) |
 | **Suivi des demandes ayant échoué**<br>`FailedRequestsTracingModule`                                     | Oui | [Journalisation ASP.NET Core](xref:fundamentals/logging/index#tracesource-provider) |
-| **Mise en cache des fichiers**<br>`FileCacheModule`                                                            | Non  | [Intergiciel (middleware) de mise en cache des réponses](xref:performance/caching/middleware) |
-| **Mise en cache HTTP**<br>`HttpCacheModule`                                                            | Non  | [Intergiciel (middleware) de mise en cache des réponses](xref:performance/caching/middleware) |
+| **Mise en cache des fichiers**<br>`FileCacheModule`                                                            | Non  | [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware) |
+| **Mise en cache HTTP**<br>`HttpCacheModule`                                                            | Non  | [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware) |
 | **Journalisation HTTP**<br>`HttpLoggingModule`                                                          | Oui | [Journalisation ASP.NET Core](xref:fundamentals/logging/index) |
-| **Redirection HTTP**<br>`HttpRedirectionModule`                                                  | Oui | [Intergiciel (middleware) de réécriture d’URL](xref:fundamentals/url-rewriting) |
+| **Redirection HTTP**<br>`HttpRedirectionModule`                                                  | Oui | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
 | **Suivi HTTP**<br>`TracingModule`                                                              | Oui | |
 | **Authentification par mappage de certificat client IIS**<br>`IISCertificateMappingAuthenticationModule` | Oui | |
 | **Restrictions IP et de domaine**<br>`IpRestrictionModule`                                          | Oui | |
-| **Filtres ISAPI**<br>`IsapiFilterModule`                                                         | Oui | [Intergiciel (middleware)](xref:fundamentals/middleware/index) |
-| **ISAPI**<br>`IsapiModule`                                                                       | Oui | [Intergiciel (middleware)](xref:fundamentals/middleware/index) |
+| **Filtres ISAPI**<br>`IsapiFilterModule`                                                         | Oui | [Middleware](xref:fundamentals/middleware/index) |
+| **ISAPI**<br>`IsapiModule`                                                                       | Oui | [Middleware](xref:fundamentals/middleware/index) |
 | **Prise en charge des protocoles**<br>`ProtocolSupportModule`                                                  | Oui | |
 | **Filtrage des demandes**<br>`RequestFilteringModule`                                                | Oui | [Middleware de réécriture d’URL`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Observateur de demandes**<br>`RequestMonitorModule`                                                    | Oui | |
-| **Réécriture d’URL**&#8224;<br>`RewriteModule`                                                      | Oui | [Intergiciel (middleware) de réécriture d’URL](xref:fundamentals/url-rewriting) |
+| **Réécriture d’URL**&#8224;<br>`RewriteModule`                                                      | Oui | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
 | **Textes insérés par le serveur**<br>`ServerSideIncludeModule`                                            | Non  | |
 | **Compression statique**<br>`StaticCompressionModule`                                              | Non  | [Intergiciel (middleware) de compression des réponses](xref:performance/response-compression) |
 | **Contenu statique**<br>`StaticFileModule`                                                         | Non  | [Middleware de fichiers statiques](xref:fundamentals/static-files) |
@@ -65,21 +63,21 @@ Le tableau indique les modules IIS natifs qui fonctionnent avec les application
 
 Les modules managés *ne sont pas opérationnels* avec les applications ASP.NET Core hébergées quand la version CLR .NET du pool d’applications est définie sur **Aucun code managé**. ASP.NET Core offre des alternatives de middleware dans plusieurs cas.
 
-| Module, mot clé                  | Option ASP.NET Core |
+| Module                  | Option ASP.NET Core |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
 | FileAuthorization       | |
 | FormsAuthentication     | [Middleware d’authentification par cookie](xref:security/authentication/cookie) |
-| OutputCache             | [Intergiciel (middleware) de mise en cache des réponses](xref:performance/caching/middleware) |
+| OutputCache             | [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware) |
 | Profil                 | |
 | RoleManager             | |
 | ScriptModule-4.0        | |
-| Session                 | [Middleware de session](xref:fundamentals/app-state) |
+| session                 | [Middleware de session](xref:fundamentals/app-state) |
 | UrlAuthorization        | |
-| UrlMappingsModule       | [Intergiciel (middleware) de réécriture d’URL](xref:fundamentals/url-rewriting) |
+| UrlMappingsModule       | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
 | UrlRoutingModule-4.0    | [Identité ASP.NET Core](xref:security/authentication/identity) |
-| Authentification Windows   | |
+| WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>Modification de l’application avec le Gestionnaire IIS
 

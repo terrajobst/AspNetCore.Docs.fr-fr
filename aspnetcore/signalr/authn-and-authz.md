@@ -9,18 +9,18 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 091cc9b2adc1f6a8fac79519884695d1c1725d2a
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 3b7216bb064ba06a4c909016e1efd4242a64a7ad
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659732"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-opno-locsignalr"></a>Authentification et autorisation dans ASP.NET Core SignalR
 
 Par [Andrew Stanton-infirmière](https://twitter.com/anurse)
 
-[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/authn-and-authz/sample/) [(procédure de téléchargement)](xref:index#how-to-download-a-sample)
 
 ## <a name="authenticate-users-connecting-to-a-opno-locsignalr-hub"></a>Authentifier les utilisateurs se connectant à un hub SignalR
 
@@ -90,9 +90,9 @@ Les cookies sont un moyen spécifique au navigateur d’envoyer des jetons d’a
 
 Le client peut fournir un jeton d’accès au lieu d’utiliser un cookie. Le serveur valide le jeton et l’utilise pour identifier l’utilisateur. Cette validation est effectuée uniquement lorsque la connexion est établie. Pendant la durée de vie de la connexion, le serveur n’est pas automatiquement revalidé pour vérifier la révocation des jetons.
 
-Sur le serveur, l’authentification du jeton du porteur est configurée à l’aide de l'[intergiciel (middleware) du porteur JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
+Sur le serveur, l’authentification du jeton du porteur est configurée à l’aide de l’intergiciel (middleware) du [porteur JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
 
-Dans le client JavaScript, le jeton peut être fourni à l’aide de l'option [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication).
+Dans le client JavaScript, le jeton peut être fourni à l’aide de l’option [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication) .
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=52-55)]
 
@@ -125,7 +125,7 @@ Les cookies sont spécifiques aux navigateurs. Leur envoi à partir d’autres t
 
 Si [l’authentification Windows](xref:security/authentication/windowsauth) est configurée dans votre application, SignalR pouvez utiliser cette identité pour sécuriser les hubs. Toutefois, pour envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. Le système d’authentification Windows ne fournit pas la revendication « identificateur de nom ». SignalR utilise la revendication pour déterminer le nom d’utilisateur.
 
-Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérez une des demandes à partir de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser la demande « Name » (le nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
+Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérez l’une des revendications de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser la revendication « Name » (nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
 
 [!code-csharp[Name based provider](authn-and-authz/sample/nameuseridprovider.cs?name=NameUserIdProvider)]
 
@@ -146,7 +146,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Dans le Client .NET, l’authentification Windows doit être activée en définissant la propriété [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) :
+Dans le client .NET, l’authentification Windows doit être activée en définissant la propriété [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) :
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -195,7 +195,7 @@ public class ChatHub : Hub
 }
 ```
 
-Les méthodes de hub individuel peuvent avoir l'attribut `[Authorize]` également appliqué. Si l’utilisateur actuel ne correspond pas à la stratégie appliquée à la méthode, une erreur est retournée à l’appelant :
+L’attribut `[Authorize]` peut également être appliqué à chaque méthode de concentrateur. Si l’utilisateur actuel ne correspond pas à la stratégie appliquée à la méthode, une erreur est retournée à l’appelant :
 
 ```csharp
 [Authorize]

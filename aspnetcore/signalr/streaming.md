@@ -9,12 +9,12 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: signalr/streaming
-ms.openlocfilehash: 7825beba55cefb6236fd8d8e332d030a7e4fc6df
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: 21dd8180fe168f81ed68b01f02b81a6264d6e5a6
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963887"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667726"
 ---
 # <a name="use-streaming-in-aspnet-core-opno-locsignalr"></a>Utiliser la diffusion en continu dans ASP.NET Core SignalR
 
@@ -28,11 +28,11 @@ ASP.NET Core SignalR prend en charge la diffusion en continu du client vers le s
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de retour des méthodes de serveur. Cela est utile pour les scénarios où les fragments de données arrivent dans le temps. Lorsqu’une valeur de retour est diffusée sur le client, chaque fragment est envoyé au client dès qu’il est disponible, au lieu d’attendre que toutes les données soient disponibles.
+ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de retour des méthodes de serveur. Cela est utile pour les scénarios où les fragments de données arrivent dans le temps. Lorsqu’une valeur de retour est diffusée sur le client, chaque fragment est envoyé au client dès qu’il est disponible, et non en attente que toutes les données soient disponibles.
 
 ::: moniker-end
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="set-up-a-hub-for-streaming"></a>Configurer un Hub pour la diffusion en continu
 
@@ -258,8 +258,8 @@ channel.Writer.Complete();
 
 Les clients JavaScript appellent des méthodes de streaming de serveur à client sur des hubs avec `connection.stream`. La méthode `stream` accepte deux arguments :
 
-* Nom de la méthode de concentrateur. Dans l’exemple suivant, le nom de la méthode de concentrateur est `Counter`.
-* Arguments définis dans la méthode de concentrateur. Dans l’exemple suivant, les arguments représentent le nombre d’éléments de flux à recevoir et le délai entre les éléments de flux.
+* Le nom de la méthode de hub. Dans l’exemple suivant, le nom de la méthode de concentrateur est `Counter`.
+* Les arguments définis dans la méthode de hub. Dans l’exemple suivant, les arguments représentent le nombre d’éléments de flux à recevoir et le délai entre les éléments de flux.
 
 `connection.stream` retourne un `IStreamResult`, qui contient une méthode `subscribe`. Transmettez un `IStreamSubscriber` à `subscribe` et définissez les rappels `next`, `error`et `complete` pour recevoir des notifications de l’appel de `stream`.
 
@@ -298,8 +298,8 @@ Pour terminer le flux, appelez `subject.complete()`.
 Le client Java SignalR utilise la méthode `stream` pour appeler des méthodes de diffusion en continu. `stream` accepte au moins trois arguments :
 
 * Type attendu des éléments de flux.
-* Nom de la méthode de concentrateur.
-* Arguments définis dans la méthode de concentrateur.
+* Le nom de la méthode de hub.
+* Les arguments définis dans la méthode de hub.
 
 ```java
 hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")

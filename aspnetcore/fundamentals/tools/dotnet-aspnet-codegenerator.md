@@ -7,15 +7,15 @@ ms.author: riande
 ms.date: 07/04/2019
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
 ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
-ms.sourcegitcommit: 215954a638d24124f791024c66fd4fb9109fd380
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71081507"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665185"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 `dotnet aspnet-codegenerator` - Exécute le moteur de génération de modèles automatique ASP.NET Core. `dotnet aspnet-codegenerator` étant uniquement requis pour générer automatiquement des modèles à partir de la ligne de commande, il n’est pas nécessaire d’utiliser la génération de modèles automatique avec Visual Studio.
 
@@ -35,7 +35,7 @@ La commande suivante met à jour `dotnet-aspnet-codegenerator` vers la dernière
 dotnet tool update -g dotnet-aspnet-codegenerator
 ```
 
-## <a name="synopsis"></a>Résumé
+## <a name="synopsis"></a>Synopsis
 
 ```
 dotnet aspnet-codegenerator [arguments] [-p|--project] [-n|--nuget-package-dir] [-c|--configuration] [-tfm|--target-framework] [-b|--build-base-path] [--no-build] 
@@ -54,7 +54,7 @@ Le générateur de code à effectuer. Les générateurs suivants sont disponible
 
 | Générateur | Opération |
 | ----------------- | ------------ | 
-| Partie      | [Génération de modèles automatique pour une zone](/aspnet/core/mvc/controllers/areas) |
+| superficie      | [Génération de modèles automatique pour une zone](/aspnet/core/mvc/controllers/areas) |
   contrôleur| [Génération de modèles automatique pour un contrôleur](/aspnet/core/tutorials/first-mvc-app/adding-model) |
   identité  | [Génération de modèles automatique pour une identité](/aspnet/core/security/authentication/scaffold-identity) |
   razorpage | [Génération de modèles automatique pour Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
@@ -72,7 +72,7 @@ Définit la configuration de build. La valeur par défaut est `Debug`.
 
 `-tfm|--target-framework`
 
-[Framework](/dotnet/standard/frameworks) cible à utiliser. Par exemple, `net46`.
+[Framework](/dotnet/standard/frameworks) cible à utiliser. Par exemple : `net46`.
 
 `-b|--build-base-path`
 
@@ -95,10 +95,10 @@ Spécifie le chemin du fichier projet à exécuter (nom de dossier ou chemin com
 Les sections suivantes décrivent en détail les options disponibles pour les générateurs pris en charge :
 
 * Domaine
-* Controller
+* Contrôleur
 * Identité  
 * Razorpage
-* Vue
+* Affichage
 
 <a name="area"></a>
 
@@ -110,18 +110,18 @@ Utilisation : `dotnet aspnet-codegenerator area AreaNameToGenerate`
 
 La commande précédente génère les dossiers suivants :
 
-* *Les zones (areas)*
+* *Zones*
   * *AreaNameToGenerate*
     * *Contrôleurs*
     * *Données*
     * *Modèles*
-    * *Vues*
+    * *Views*
 
 <a name="ctl"></a>
 
 ### <a name="controller-options"></a>Options de contrôleur
 
-Le tableau ci-dessous répertorie les options pour `aspnet-codegenerator` `controller` et `razorpage` :
+Le tableau suivant répertorie les options de `aspnet-codegenerator` `controller` et `razorpage`:
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
@@ -170,7 +170,7 @@ En règle générale, le modèle et le nom de fichier générés ne sont pas sp�
 * `Details`
 * `List`
 
-Le tableau ci-dessous répertorie les options pour `aspnet-codegenerator` `razorpage` et `controller` :
+Le tableau suivant répertorie les options de `aspnet-codegenerator` `razorpage` et `controller`:
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 

@@ -7,15 +7,15 @@ ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vs
 ms.openlocfilehash: 7fc3644df3dcb957f2537538aaa9506c6b38a480
-ms.sourcegitcommit: 79850db9e79b1705b89f466c6f2c961ff15485de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75693971"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662203"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 ::: moniker range=">= aspnetcore-3.0"
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
@@ -27,7 +27,7 @@ Consultez [publier une application Web sur Azure App service à l’aide de Visu
 
 Pour résoudre un problème de déploiement App Service, consultez <xref:test/troubleshoot-azure-iis>.
 
-## <a name="set-up"></a>Installer
+## <a name="set-up"></a>Configurer
 
 * Ouvrez un [compte Azure gratuit](https://azure.microsoft.com/free/dotnet/) si vous n’en avez pas. 
 
@@ -35,7 +35,7 @@ Pour résoudre un problème de déploiement App Service, consultez <xref:test/tr
 
 Dans la page de démarrage de Visual Studio, sélectionnez **Fichier > Nouveau > Projet...**
 
-![menu Fichier](publish-to-azure-webapp-using-vs/_static/file_new_project.png)
+![Menu Fichier](publish-to-azure-webapp-using-vs/_static/file_new_project.png)
 
 Renseignez la boîte de dialogue **Nouveau projet** :
 
@@ -61,7 +61,7 @@ La boîte de dialogue **Modifier l’authentification** s’affiche.
 
 Visual Studio crée la solution.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécuter l’application
 
 * Appuyez sur CTRL+F5 pour exécuter le projet.
 * Testez les liens **À propos de** et **Contact**.
@@ -81,7 +81,7 @@ L’application affiche l’adresse e-mail utilisée pour inscrire le nouvel uti
 
 ![Application web ouverte dans Microsoft Edge. Le lien S’inscrire est remplacé par le texte Hello email@domain.com!](publish-to-azure-webapp-using-vs/_static/hello.png)
 
-## <a name="deploy-the-app-to-azure"></a>Déployer l’application sur Azure
+## <a name="deploy-the-app-to-azure"></a>Déploiement de l’application dans Azure
 
 Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions, puis sélectionnez **Publier...**
 
@@ -89,7 +89,7 @@ Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions, pu
 
 Dans la boîte de dialogue **Publier** :
 
-* Sélectionnez **Microsoft Azure App Service**.
+* Cliquez sur **Microsoft Azure App Service**.
 * Sélectionnez l’icône d’engrenage, puis **Créer un profil**.
 * Sélectionnez **Créer un profil**.
 
@@ -108,7 +108,7 @@ La boîte de dialogue **Créer App Service** s’affiche :
 
 * Sélectionnez l’icône **+** verte pour créer une base de données SQL.
 
-![Nouvelle base de données SQL](publish-to-azure-webapp-using-vs/_static/sql.png)
+![New SQL Database](publish-to-azure-webapp-using-vs/_static/sql.png)
 
 * Sélectionnez **Nouveau...** dans la boîte de dialogue **Configurer la base de données SQL** pour créer une base de données.
 
@@ -152,7 +152,7 @@ Cliquez sur **Publier**. Visual Studio publie votre application sur Azure. Quand
 
 * Testez les liens **À propos de** et **Contact**
 
-* Inscrivez un nouvel utilisateur
+* Enregistre un nouvel utilisateur
 
 ![Application web ouverte dans Microsoft Edge sur Azure App Service](publish-to-azure-webapp-using-vs/_static/register.png)
 
@@ -184,7 +184,7 @@ Après avoir testé l’application, accédez au [portail Azure](https://portal.
 
 * Entrez le nom du groupe de ressources, puis sélectionnez **Supprimer**. Votre application et toutes les autres ressources créées dans ce didacticiel sont désormais supprimées d’Azure.
 
-### <a name="next-steps"></a>Étapes suivantes :
+### <a name="next-steps"></a>Étapes suivantes
 
 * <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 

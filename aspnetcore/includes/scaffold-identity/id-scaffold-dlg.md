@@ -1,15 +1,15 @@
 Exécutez l’échafaudage d’identité :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.
-* Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.
+* Dans **Explorateur de solutions**, cliquez avec le bouton droit sur le projet > **Ajouter** > **nouvel élément de génération de modèles**automatique.
+* Dans le volet gauche de la boîte de dialogue **Ajouter une structure** , sélectionnez **identité** > **Ajouter**.
 * Dans la boîte de dialogue **Ajouter une identité** , sélectionnez les options souhaitées.
   * Sélectionnez votre page de disposition existante, ou votre fichier de disposition sera remplacé par un balisage incorrect. Par exemple `~/Pages/Shared/_Layout.cshtml` pour Razor Pages `~/Views/Shared/_Layout.cshtml` pour les projets MVC
-  * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**.
-* Sélectionnez **ajouter**.
+  * Sélectionnez le bouton **+** pour créer une **classe de contexte de données**.
+* Sélectionnez **Ajouter**.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET Core, vous pouvez l’installer maintenant :
 

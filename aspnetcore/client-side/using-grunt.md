@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: client-side/using-grunt
 ms.openlocfilehash: e516b85da7e94d0c93be642086fede0a11fea3c2
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74879792"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657590"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Utiliser grunt dans ASP.NET Core
 
@@ -94,7 +94,7 @@ Ensuite, configurez NPM pour télécharger grunt et grunt-Tasks.
     ![grunt IntelliSense](using-grunt/_static/devdependencies-grunt.png)
 
     > [!NOTE]
-    > NPM utilise le contrôle de [version sémantique](https://semver.org/) pour organiser les dépendances. Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en n’apparaissant que quelques choix courants. L’élément supérieur dans la liste IntelliSense (0.4.5 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole du signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente. Consultez la [référence de l’analyseur de version NPM semver](https://www.npmjs.com/package/semver) en tant que guide de l’expression complète fournie par semver.
+    > NPM utilise le contrôle de [version sémantique](https://semver.org/) pour organiser les dépendances. Le contrôle de version sémantique, également connu sous le nom de SemVer, identifie les packages avec le schéma de numérotation \<> principales.\<> mineure.\<> de correctif. IntelliSense simplifie le contrôle de version sémantique en n’apparaissant que quelques choix courants. L’élément supérieur dans la liste IntelliSense (0.4.5 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole du signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente. Consultez la [référence de l’analyseur de version NPM semver](https://www.npmjs.com/package/semver) en tant que guide de l’expression complète fournie par semver.
 
 3. Ajoutez d’autres dépendances pour charger les packages grunt-contrib-\* pour *Clean*, *jshint*, *concat*, *uglify*et *Watch* comme indiqué dans l’exemple ci-dessous. Les versions n’ont pas besoin de correspondre à l’exemple.
 
@@ -238,7 +238,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile. js* qui dé
     > [!NOTE]
     > Pour plus d’informations sur les options de chaque package, consultez [https://www.npmjs.com/](https://www.npmjs.com/) et recherchez le nom du package dans la zone de recherche de la page principale. Par exemple, vous pouvez consulter le grunt-pretrib-Clean package pour obtenir un lien vers la documentation qui décrit tous ses paramètres.
 
-### <a name="all-together-now"></a>Vue globale
+### <a name="all-together-now"></a>Ensemble maintenant
 
 Utilisez la méthode grunt `registerTask()` pour exécuter une série de tâches dans une séquence particulière. Par exemple, pour exécuter les étapes de l’exemple ci-dessus dans l’ordre de nettoyage-> Concat-> jshint-> uglify, ajoutez le code ci-dessous au module. Le code doit être ajouté au même niveau que les appels loadNpmTasks (), en dehors de initConfig.
 
@@ -281,6 +281,6 @@ Liez `watch` pour qu’il s’exécute chaque fois que Visual Studio s’ouvre. 
 
 Déchargez et rechargez le projet. Lorsque le projet se recharge, la tâche espion commence automatiquement.
 
-## <a name="summary"></a>Récapitulatif
+## <a name="summary"></a>Résumé
 
 Grunt est un testeur de tâches puissant qui peut être utilisé pour automatiser la plupart des tâches de génération de clients. Grunt tire parti de NPM pour fournir ses packages et propose des fonctionnalités d’intégration avec Visual Studio. L’Explorateur de tâche Runner de Visual Studio détecte les modifications apportées aux fichiers de configuration et fournit une interface pratique pour exécuter des tâches, afficher des tâches en cours d’exécution et lier des tâches à des événements Visual Studio.

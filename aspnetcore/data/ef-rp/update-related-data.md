@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
-author: tdykstra
+author: rick-anderson
 description: Dans ce tutoriel, vous allez mettre à jour des données associées en mettant à jour les propriétés de navigation et les champs de clé étrangère.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: bc237cf928d852b92c5c1984527129404f88018d
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: fdfdb14ff8414b8bf30f9b95be7ba0a6bcbd2995
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583497"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656421"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
@@ -49,6 +49,8 @@ Mettez à jour *Pages/Courses/Create.cshtml.cs* à l’aide du code suivant :
 
 [!code-csharp[](intro/samples/cu30/Pages/Courses/Create.cshtml.cs?highlight=7,18,27-41)]
 
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
+
 Le code précédent :
 
 * Dérive de `DepartmentNamePageModel`.
@@ -64,7 +66,7 @@ Mettez à jour *Pages/Courses/Create.cshtml* à l’aide du code suivant :
 Le code précédent apporte les modifications suivantes :
 
 * Modifie la légende de **DepartmentID** en **Department**.
-* Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
+* Remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Si vous n’avez pas encore sélectionné de département, ce changement affiche l’option « Select Department » dans la liste déroulante, plutôt que le premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
 
@@ -92,7 +94,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
 * Change la légende de la liste déroulante en remplaçant **DepartmentID** par **Department**.
-* Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
+* Remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 
 La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save**.
 
@@ -126,7 +128,7 @@ Testez les pages de création, de modification, de détails et de suppression.
 
 ## <a name="update-the-instructor-create-and-edit-pages"></a>Mettre à jour les pages de création et de modification du formateur
 
-Les instructeurs peuvent enseigner dans n’importe quel nombre de cours. L’illustration suivante montre la page de modification du formateur avec un tableau comportant les cases à cocher qui correspondent aux cours.
+Les formateurs peuvent donner un nombre quelconque de cours. L’illustration suivante montre la page de modification du formateur avec un tableau comportant les cases à cocher qui correspondent aux cours.
 
 ![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses30.png)
 
@@ -197,7 +199,7 @@ Le code précédent crée une table HTML avec trois colonnes. Chaque colonne a u
 
 Lors de l’affichage initial des cases à cocher, les cours affectés au formateur sont cochés.
 
-Remarque : L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
+Remarque : L’approche adoptée ici pour modifier les données de cours des formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
 
 Exécutez l’application et testez la page de modification du formateur qui vient d’être mise à jour. Changez certaines affectations de cours. Les modifications sont répercutées dans la page Index.
 
@@ -221,7 +223,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Utilise un chargement hâtif pour la propriété de navigation `CourseAssignments`. Les `CourseAssignments` doivent être inclus ou ils ne seront pas supprimés lorsque l'instructeur est supprimé. Pour éviter d’avoir à les lire, configurez la suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
+* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, il supprime l’affectation du formateur de ces départements.
 
 Exécutez l’application et testez la page de suppression.
 
@@ -235,7 +237,7 @@ Exécutez l’application et testez la page de suppression.
 
 ::: moniker range="< aspnetcore-3.0"
 
-Ce didacticiel illustre la mise à jour de données associées. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
+Ce didacticiel illustre la mise à jour de données associées. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 Les illustrations suivantes montrent certaines des pages terminées.
 
@@ -256,7 +258,7 @@ Les classes de modèle de page Create et Edit doivent dériver de `DepartmentNam
 
 ## <a name="customize-the-courses-pages"></a>Personnaliser les pages de cours
 
-Quand une entité de cours est créée, elle doit avoir une relation à un département existant. Pour ajouter un département lors de la création d’un cours, la classe de base pour Create et Edit contient une liste déroulante de sélection du département. La liste déroulante définit la propriété de clé étrangère `Course.DepartmentID`. EF Core utilise la clé étrangère `Course.DepartmentID` pour charger la propriété de navigation `Department`.
+Quand une entité Course est créée, elle doit avoir une relation avec un département existant. Pour ajouter un département lors de la création d’un cours, la classe de base pour Create et Edit contient une liste déroulante de sélection du département. La liste déroulante définit la propriété de clé étrangère `Course.DepartmentID`. EF Core utilise la clé étrangère `Course.DepartmentID` pour charger la propriété de navigation `Department`.
 
 ![Créer le cours](update-related-data/_static/ddl.png)
 
@@ -281,7 +283,7 @@ Mettez à jour *Pages/Courses/Create.cshtml* à l’aide du code suivant :
 Le balisage précédent apporte les modifications suivantes :
 
 * Modifie la légende de **DepartmentID** en **Department**.
-* Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
+* Remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Cette modification entraîne l’affichage de « Select Department » plutôt que du premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
 
@@ -307,7 +309,7 @@ Le balisage précédent apporte les modifications suivantes :
 
 * Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
 * Modifie la légende de **DepartmentID** en **Department**.
-* Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
+* Remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 
 La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save**.
 
@@ -331,7 +333,7 @@ Mettez à jour la page Razor Delete avec le balisage suivant :
 
 Apportez les mêmes modifications à la page Details.
 
-### <a name="test-the-course-pages"></a>Tester les pages de cours
+### <a name="test-the-course-pages"></a>Tester les pages des cours
 
 Testez les fonctionnalités de création, de modification, de détails et de suppression.
 
@@ -367,9 +369,9 @@ Vérifiez que vous pouvez modifier l'emplacement de bureau d'un instructeur.
 
 ## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page Edit de l'instructeur
 
-Les instructeurs peuvent enseigner dans n’importe quel nombre de cours. Dans cette section, vous ajoutez la possibilité de modifier les affectations de cours. L’illustration suivante montre la page de modification de l'instructeur mise à jour :
+Les formateurs peuvent donner un nombre quelconque de cours. Dans cette section, vous ajoutez la possibilité de modifier les affectations de cours. L’illustration suivante montre la page de modification de l'instructeur mise à jour :
 
-![Page de modification de formateur avec des cours](update-related-data/_static/instructor-edit-courses.png)
+![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
 `Course` et `Instructor` entretiennent une relation plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et supprimez des entités à partir du jeu d’entités de jointures `CourseAssignments`.
 
@@ -406,7 +408,7 @@ Mettez à jour la vue Razor Instructeur :
 
 <a id="notepad"></a>
 > [!NOTE]
-> Quand vous collez le code dans Visual Studio, les sauts de ligne sont modifiés de telle manière que le code est rompu. Appuyez une fois sur Ctrl + Z pour annuler la mise en forme automatique. Ctrl + Z corrige les sauts de ligne afin qu’ils aient l’aspect visible ici. La mise en retrait ne doit pas nécessairement être parfaite, mais les lignes `@:</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune être sur une seule distincte comme indiqué. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur Tab pour aligner le nouveau code avec le code existant. Votez ou vérifiez l’état de ce bogue [avec ce lien](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
+> Quand vous collez le code dans Visual Studio, les sauts de ligne sont modifiés de telle manière que le code est rompu. Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique. Ctrl + Z corrige les sauts de ligne afin qu’ils aient l’aspect visible ici. La mise en retrait ne doit pas nécessairement être parfaite, mais les lignes `@:</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune être sur une seule distincte comme indiqué. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Votez ou vérifiez l’état de ce bogue [avec ce lien](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 Le code précédent crée une table HTML avec trois colonnes. Chaque colonne a une case à cocher et une légende contenant le numéro et le titre du cours. Les cases à cocher ont toutes le même nom (« selectedCourses »). L’utilisation du même nom signale au classeur de modèles qu’il doit les traiter en tant que groupe. L’attribut de valeur de chaque case à cocher est défini sur `CourseID`. Quand la page est publiée, le classeur de modèles transmet un tableau composé des valeurs `CourseID` correspondant uniquement aux cases à cocher sélectionnées.
 
@@ -414,7 +416,7 @@ Lors de l’affichage initial des cases à cocher, les cours affectés au format
 
 Exécutez l’application et testez la page Edit des formateurs mise à jour. Changez certaines affectations de cours. Les modifications sont répercutées dans la page Index.
 
-Remarque : L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
+Remarque : L’approche adoptée ici pour modifier les données de cours des formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
 
 ### <a name="update-the-instructors-create-page"></a>Mise à jour de la page de création des instructeurs
 
@@ -440,7 +442,7 @@ Le code précédent apporte les modifications suivantes :
 
 * Utilise un chargement hâtif pour la propriété de navigation `CourseAssignments`. Les `CourseAssignments` doivent être inclus ou ils ne seront pas supprimés lorsque l'instructeur est supprimé. Pour éviter d’avoir à les lire, configurez la suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
+* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, il supprime l’affectation du formateur de ces départements.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

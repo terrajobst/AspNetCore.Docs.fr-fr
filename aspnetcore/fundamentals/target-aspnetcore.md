@@ -9,11 +9,11 @@ no-loc:
 - Blazor
 uid: fundamentals/target-aspnetcore
 ms.openlocfilehash: 72096fc2f03033dfe8325b5129e074913a2fbd1f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463887"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658066"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>Utiliser des API ASP.NET Core dans une bibliothèque de classes
 
@@ -42,19 +42,19 @@ Pour référencer ASP.NET Core, ajoutez l’élément `<FrameworkReference>` sui
 
 Le fait de référencer ASP.NET Core de cette manière est pris en charge uniquement pour les projets ciblant .NET Core 3. x.
 
-## <a name="include-opno-locblazor-extensibility"></a>Inclure Blazor extensibilité
+## <a name="include-blazor-extensibility"></a>Inclure l’extensibilité éblouissant
 
-Blazor prend en charge webassembly (WASM) et les [modèles d’hébergement](xref:blazor/hosting-models)de serveur. À moins qu’il y ait une raison spécifique de ne pas le faire, une bibliothèque de [composants Razor](xref:blazor/components) doit prendre en charge les deux modèles d’hébergement. Une bibliothèque de composants Razor doit utiliser le [Kit de développement logiciel (SDK) Microsoft. net. Sdk. Razor](xref:razor-pages/sdk).
+Éblouissant prend en charge webassembly (WASM) et les [modèles d’hébergement](xref:blazor/hosting-models)de serveur. À moins qu’il y ait une raison spécifique de ne pas le faire, une bibliothèque de [composants Razor](xref:blazor/components) doit prendre en charge les deux modèles d’hébergement. Une bibliothèque de composants Razor doit utiliser le [Kit de développement logiciel (SDK) Microsoft. net. Sdk. Razor](xref:razor-pages/sdk).
 
 ### <a name="support-both-hosting-models"></a>Prendre en charge les modèles d’hébergement
 
-Pour prendre en charge la consommation de composants Razor des projets [Blazor Server](xref:blazor/hosting-models#blazor-server) et [Blazor WASM](xref:blazor/hosting-models#blazor-webassembly) , utilisez les instructions suivantes pour votre éditeur.
+Pour prendre en charge la consommation de composants Razor à la fois pour les projets de [serveur éblouissant](xref:blazor/hosting-models#blazor-server) et [WASM éblouissant](xref:blazor/hosting-models#blazor-webassembly) , utilisez les instructions suivantes pour votre éditeur.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez le modèle de projet **bibliothèque de classes Razor** . La case à cocher **pages de prise en charge et vues** du modèle doit être désélectionnée.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Exécutez la commande suivante dans le terminal intégré :
 
@@ -62,7 +62,7 @@ Exécutez la commande suivante dans le terminal intégré :
 dotnet new razorclasslib
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Utilisez le modèle de projet **bibliothèque de classes Razor** .
 
@@ -82,7 +82,7 @@ Par exemple :
 
 ### <a name="support-a-specific-hosting-model"></a>Prendre en charge un modèle d’hébergement spécifique
 
-La prise en charge d’un modèle d’hébergement Blazor unique est beaucoup moins courante. Par exemple, pour prendre en charge la consommation de composants Razor à partir de projets [Blazor Server](xref:blazor/hosting-models#blazor-server) uniquement :
+La prise en charge d’un seul modèle d’hébergement éblouissant est beaucoup moins courante. Par exemple, pour prendre en charge la consommation de composants Razor à partir de projets [serveur éblouissants](xref:blazor/hosting-models#blazor-server) uniquement :
 
 * Ciblez .NET Core 3. x.
 * Ajoutez un élément `<FrameworkReference>` pour le Framework partagé.
@@ -98,7 +98,7 @@ Pour plus d’informations sur les bibliothèques contenant des composants Razor
 Cette section décrit les recommandations pour les bibliothèques qui incluent :
 
 * [Vues Razor ou Razor Pages](#razor-views-or-razor-pages)
-* [Les Tag Helpers](#tag-helpers)
+* [Tag Helpers](#tag-helpers)
 * [Composants de vues](#view-components)
 
 Cette section n’aborde pas le multi-ciblage pour prendre en charge plusieurs versions de MVC. Pour obtenir des conseils sur la prise en charge de plusieurs versions de ASP.NET Core, consultez [prise en charge de plusieurs versions de ASP.net Core](#support-multiple-aspnet-core-versions).
@@ -114,11 +114,11 @@ Si le projet cible .NET Core 3. x, il requiert :
 
 Le modèle de projet de **bibliothèque de classes Razor** remplit les conditions précédentes pour les projets ciblant .net Core 3. x. Utilisez les instructions suivantes pour votre éditeur.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Utilisez le modèle de projet **bibliothèque de classes Razor** . La case à cocher **pages de prise en charge et vues** du modèle doit être activée.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Exécutez la commande suivante dans le terminal intégré :
 
@@ -126,7 +126,7 @@ Exécutez la commande suivante dans le terminal intégré :
 dotnet new razorclasslib -s
 ```
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Aucun modèle de projet n’est pris en charge pour le moment.
 

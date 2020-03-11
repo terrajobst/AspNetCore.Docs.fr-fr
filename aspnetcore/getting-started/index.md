@@ -6,34 +6,34 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
 uid: getting-started
-ms.openlocfilehash: 4f7e67e1e422afe3f7e2970e0c40380f065390ac
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 047fd7a74d3d53f68a730d67b63c65fe6bda529f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928318"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658465"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
-Ce didacticiel montre comment utiliser l’CLI .NET Core pour créer et exécuter une application Web ASP.NET Core.
+Ce didacticiel montre comment créer et exécuter une application Web ASP.NET Core à l’aide de l’CLI .NET Core.
 
-Vous allez apprendre à :
+Vous découvrirez comment effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Approuver le certificat de développement.
-> * Exécutez l’application.
+> * Exécutez l'application.
 > * Modifier une page Razor.
 
 À la fin du tutoriel, vous disposerez d’une application web qui fonctionne et s’exécute sur votre machine locale.
 
 ![Page d’accueil d’application web](_static/home-page.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
-## <a name="create-a-web-app-project"></a>Créer un projet application web
+## <a name="create-a-web-app-project"></a>Créer un projet d’application web
 
 Ouvrez un interpréteur de commandes, puis entrez la commande suivante :
 
@@ -50,7 +50,7 @@ La commande précédente :
 
 Approuvez le certificat de développement HTTPS :
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -62,7 +62,7 @@ La commande précédente affiche la boîte de dialogue suivante :
 
 Sélectionnez **Oui** si vous acceptez d’approuver le certificat de développement.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 ```dotnetcli
 dotnet dev-certs https --trust
@@ -74,7 +74,7 @@ La commande précédente affiche le message suivant :
 
 Cette commande risque de vous demander votre mot de passe afin d’installer le certificat sur le trousseau système. Entrez votre mot de passe si vous acceptez d’approuver le certificat de développement.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Consultez la documentation de votre distribution Linux pour savoir comment approuver le certificat de développement HTTPS.
 
@@ -82,9 +82,9 @@ Consultez la documentation de votre distribution Linux pour savoir comment appro
 
 Pour plus d’informations, consultez [Approuver le certificat de développement ASP.NET Core HTTPS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécuter l’application
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 cd aspnetcoreapp
@@ -101,15 +101,15 @@ Ouvrez *pages/index. cshtml* et modifiez et enregistrez la page avec le balisage
 
 Accédez à [https://localhost:5001](https://localhost:5001), actualisez la page et vérifiez que les modifications sont affichées.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris à :
+Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Approuver le certificat de développement.
-> * Exécuter le projet.
-> * Apportez la modification souhaitée.
+> * Exécutez le projet.
+> * Effectuer une modification.
 
 Pour en savoir plus sur ASP.NET Core, consultez le parcours d’apprentissage recommandé dans la présentation :
 

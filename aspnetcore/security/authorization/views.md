@@ -7,15 +7,15 @@ ms.author: riande
 ms.date: 11/08/2019
 uid: security/authorization/views
 ms.openlocfilehash: fc03da9eb98d36ffdda932ee5b16f327c2be9f83
-ms.sourcegitcommit: 4818385c3cfe0805e15138a2c1785b62deeaab90
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896977"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663596"
 ---
 # <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorisation basée sur les vues dans ASP.NET Core MVC
 
-Un développeur souhaite souvent afficher, masquer ou modifier une interface utilisateur en fonction de l’identité de l’utilisateur actuel. Vous pouvez accéder au service d’autorisation dans les vues MVC via l' [injection de dépendances](xref:fundamentals/dependency-injection). Pour injecter le service d’autorisation dans une vue Razor, utilisez la directive `@inject` :
+Un développeur souhaite souvent afficher, masquer ou modifier une interface utilisateur basée sur l’identité de l’utilisateur actuel. Vous pouvez accéder au service d’autorisation dans les vues MVC via l' [injection de dépendances](xref:fundamentals/dependency-injection). Pour injecter le service d’autorisation dans une vue Razor, utilisez la directive `@inject` :
 
 ```cshtml
 @using Microsoft.AspNetCore.Authorization
@@ -33,7 +33,7 @@ Utilisez le service d’autorisation injecté pour appeler `AuthorizeAsync` exac
 }
 ```
 
-Dans certains cas, la ressource sera votre modèle de vue. Appelez `AuthorizeAsync` exactement de la même façon que lors de la vérification de l' [autorisation basée sur les ressources](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
+Dans certains cas, la ressource sera votre modèle de Vue. Appelez `AuthorizeAsync` exactement de la même façon que lors de la vérification de l' [autorisation basée sur les ressources](xref:security/authorization/resourcebased#security-authorization-resource-based-imperative):
 
 ```cshtml
 @if ((await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit)).Succeeded)

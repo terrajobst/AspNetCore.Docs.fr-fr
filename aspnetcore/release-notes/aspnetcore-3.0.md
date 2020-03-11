@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 1dee9a7e1cc381547e7ece71f302f407223dc838
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 35accdd2f65ac5430525be88cc621094e37d3e40
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829112"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667250"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -36,9 +36,9 @@ scénarios pris en charge par Blazor Framework :
 * Prise en charge de l’injection de dépendances
 * Formulaires et validation
 * Créer des bibliothèques de composants avec des bibliothèques de classes Razor
-* Interopérabilité JavaScript
+* Interopérabilité de JavaScript
 
-Pour plus d'informations, consultez <xref:blazor/index>.
+Pour plus d’informations, consultez <xref:blazor/index>.
 
 ### <a name="opno-locblazor-server"></a>Serveur de Blazor
 
@@ -67,7 +67,7 @@ Les composants de Blazor sont généralement créés à l’aide d’syntaxe Raz
   * Format de sérialisation binaire.
 * Fournit des fonctionnalités telles que :
 
-  * Authentification
+  * Authentication
   * Streaming bidirectionnel et contrôle de flux.
   * Annulation et délais d’attente.
 
@@ -77,7 +77,7 @@ la fonctionnalité gRPC dans ASP.NET Core 3,0 comprend les éléments suivants 
 * [GRPC .net. client](https://www.nuget.org/packages/Grpc.Net.Client) &ndash; un client GRPC pour .net core qui s’appuie sur le `HttpClient`familier.
 * [GRPC .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) &ndash; l’intégration du client Grpc à `HttpClientFactory`.
 
-Pour plus d'informations, consultez <xref:grpc/index>.
+Pour plus d’informations, consultez <xref:grpc/index>.
 
 ## SignalR
 
@@ -319,8 +319,8 @@ Pour ajouter Json.NET à ASP.NET Core 3,0, consultez [Ajouter la prise en charge
 
 La liste suivante contient les nouvelles directives Razor :
 
-* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; la directive `@attribute` applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple, `@attribute [Authorize]`.
-* [`@implements`](xref:mvc/views/razor#implements) &ndash; la directive `@implements` implémente une interface pour la classe générée. Par exemple, `@implements IDisposable`.
+* [`@attribute`](xref:mvc/views/razor#attribute) &ndash; la directive `@attribute` applique l’attribut donné à la classe de la page ou de la vue générée. Par exemple : `@attribute [Authorize]`.
+* [`@implements`](xref:mvc/views/razor#implements) &ndash; la directive `@implements` implémente une interface pour la classe générée. Par exemple : `@implements IDisposable`.
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 prend en charge l’authentification et l’autorisation pour les API Web et SPAs
 
@@ -365,7 +365,7 @@ Les options d’authentification par certificat incluent la possibilité d’eff
 * Vérifiez la révocation des certificats.
 * Vérifiez que le certificat offerts contient les indicateurs d’utilisation appropriés.
 
-Un principal d’utilisateur par défaut est construit à partir des propriétés du certificat. Le principal d’utilisateur contient un événement qui permet d’ajouter ou de remplacer le principal. Pour plus d'informations, consultez <xref:security/authentication/certauth>.
+Un principal d’utilisateur par défaut est construit à partir des propriétés du certificat. Le principal d’utilisateur contient un événement qui permet d’ajouter ou de remplacer le principal. Pour plus d’informations, consultez <xref:security/authentication/certauth>.
 
 [L’authentification Windows](/windows-server/security/windows-authentication/windows-authentication-overview) a été étendue sur Linux et MacOS. Dans les versions précédentes, l’authentification Windows était limitée à [IIS](xref:host-and-deploy/iis/index) et [HttpSys](xref:fundamentals/servers/httpsys). Dans ASP.NET Core 3,0, [Kestrel](xref:fundamentals/servers/kestrel) a la possibilité d’utiliser Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)et [NTLM sur Windows](/windows-server/security/kerberos/ntlm-overview), Linux et MacOS pour les hôtes joints à un domaine Windows. La prise en charge Kestrel de ces schémas d’authentification est assurée par le package [NuGet Microsoft. AspNetCore. Authentication. Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) . Comme pour les autres services d’authentification, configurez l’authentification pour l’ensemble de l’application, puis configurez le service :
 
@@ -391,14 +391,14 @@ Configuration requise pour l’ordinateur hôte :
   * Les noms de principal du service doivent être créés pour le processus Web.
   * Les [fichiers keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/) doivent être générés et configurés sur l’ordinateur hôte.
 
-Pour plus d'informations, consultez <xref:security/authentication/windowsauth>.
+Pour plus d’informations, consultez <xref:security/authentication/windowsauth>.
 
 ## <a name="template-changes"></a>Modifications du modèle
 
 Les modèles d’interface utilisateur Web (Razor Pages, MVC avec contrôleur et vues) ont les éléments suivants supprimés :
 
 * L’interface utilisateur de consentement du cookie n’est plus incluse. Pour activer la fonctionnalité de consentement de cookie dans une application ASP.NET Core générée par un modèle 3,0, consultez <xref:security/gdpr>.
-* Les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN. Pour plus d’informations, consultez [les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN en fonction de l’environnement actuel (ASPNET/AspNetCore. Docs #14350)](https://github.com/aspnet/AspNetCore.Docs/issues/14350).
+* Les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN. Pour plus d’informations, consultez [les scripts et les ressources statiques associées sont désormais référencés en tant que fichiers locaux au lieu d’utiliser CDN en fonction de l’environnement actuel (ASPNET/AspNetCore. Docs #14350)](https://github.com/dotnet/AspNetCore.Docs/issues/14350).
 
 Modèle angulaire mis à jour pour utiliser le 8 angulaire.
 
@@ -430,7 +430,7 @@ Tous les services peuvent toujours être injectés directement comme arguments d
 * L’ambiguïté entre les en-têtes et les codes de fin a été résolue en déplaçant les en-têtes de fin vers une nouvelle collection.
 * Les API d’e/s synchrones, telles que `HttpRequest.Body.Read`, sont une source commune de privation de thread conduisant à des blocages d’application. Dans 3,0, `AllowSynchronousIO` est désactivée par défaut.
 
-Pour plus d'informations, consultez <xref:migration/22-to-30#kestrel>.
+Pour plus d’informations, consultez <xref:migration/22-to-30#kestrel>.
 
 ## <a name="http2-enabled-by-default"></a>HTTP/2 activé par défaut
 
@@ -454,7 +454,7 @@ Le routage des points de terminaison, qui permet aux frameworks (par exemple, MV
 * Les points de terminaison peuvent implémenter une stratégie, telle que CORS ou Authorization, dans l’intergiciel et le MVC.
 * Les filtres et les attributs peuvent être placés sur les méthodes dans les contrôleurs.
 
-Pour plus d'informations, consultez <xref:fundamentals/routing#routing-basics>.
+Pour plus d’informations, consultez <xref:fundamentals/routing#routing-basics>.
 
 ## <a name="health-checks"></a>Contrôles d’intégrité
 
@@ -473,14 +473,14 @@ Les points de terminaison de contrôle d’intégrité peuvent :
 * Exiger une autorisation.
 * Exiger CORS.
 
-Pour plus d’informations, consultez les articles suivants :
+Pour plus d’informations, consultez les articles suivants :
 
 * <xref:migration/22-to-30#health-checks>
 * <xref:host-and-deploy/health-checks>
 
 ## <a name="pipes-on-httpcontext"></a>Canaux sur HttpContext
 
-Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l’API <xref:System.IO.Pipelines>. Le paramètre <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` propriété fournit une <xref:System.IO.Pipelines.PipeReader> qui peut être utilisée pour lire le corps de la requête. Le paramètre <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` propriété fournit une <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisée pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du flux de `HttpRequest.Body`. `HttpResponse.BodyWriter` est un analogue du flux de `HttpResponse.Body`.
+Il est maintenant possible de lire le corps de la demande et d’écrire le corps de la réponse à l’aide de l’API <xref:System.IO.Pipelines>. Les <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader` propriété fournit une <xref:System.IO.Pipelines.PipeReader> qui peut être utilisée pour lire le corps de la requête. Les <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter` propriété fournit une <xref:System.IO.Pipelines.PipeWriter> qui peut être utilisée pour écrire le corps de la réponse. `HttpRequest.BodyReader` est un analogue du flux de `HttpRequest.Body`. `HttpResponse.BodyWriter` est un analogue du flux de `HttpResponse.Body`.
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -492,7 +492,7 @@ Les erreurs de démarrage lors de l’hébergement d’applications ASP.NET Core
 
 .NET Core 3,0 introduit le nouveau modèle d’application de service Worker. Ce modèle fournit un point de départ pour l’écriture de services à long terme dans .NET Core.
 
-Pour plus d'informations, consultez .
+Pour plus d'informations, consultez les pages suivantes :
 
 * [Les Workers .NET Core en tant que services Windows](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>
@@ -504,7 +504,7 @@ Dans les versions précédentes de ASP.NET Core, l’appel de <xref:Microsoft.As
 
 Ce scénario est résolu dans ASP.NET Core 3,0. L’hôte active l' [intergiciel d’en-tête transféré](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) lorsque la variable d’environnement `ASPNETCORE_FORWARDEDHEADERS_ENABLED` est définie sur `true`. `ASPNETCORE_FORWARDEDHEADERS_ENABLED` est défini sur `true` dans les images de conteneur.
 
-## <a name="performance-improvements"></a>Amélioration des performances
+## <a name="performance-improvements"></a>Optimisation des performances
 
 ASP.NET Core 3,0 comprend de nombreuses améliorations qui réduisent l’utilisation de la mémoire et améliorent le débit :
 

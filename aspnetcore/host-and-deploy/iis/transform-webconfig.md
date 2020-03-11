@@ -1,29 +1,29 @@
 ---
 title: Transformer web.config
-author: guardrex
+author: rick-anderson
 description: Découvrez comment transformer le fichier web.config lors de la publication d’une application ASP.NET Core.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: ef627de70c6aea44962d2187c4d401baab6557ae
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 069b9bb516644a1a722235b33d4916460488ebf2
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75952045"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657933"
 ---
 # <a name="transform-webconfig"></a>Transformer web.config
 
-Par [Vijay Ramakrishnan](https://github.com/vijayrkn) et [Luke Latham](https://github.com/guardrex)
+Par [Vijay Ramakrishnan](https://github.com/vijayrkn)
 
 Les transformations du fichier *web.config* peuvent être appliquées automatiquement lorsqu’une application est publiée en fonction de :
 
 * [Configuration de build](#build-configuration)
-* [Profile](#profile)
-* [Environnement](#environment)
-* [Custom](#custom)
+* [Profil](#profile)
+* [Environment](#environment)
+* [Personnalisée](#custom)
 
 Ces transformations se produisent pour l’un des scénarios de génération *web.config* suivants :
 
@@ -138,7 +138,7 @@ Lors de la publication à partir de Visual Studio et à l’aide d’un profil d
 
 La variable d’environnement `ASPNETCORE_ENVIRONMENT` est automatiquement ajoutée au fichier *web.config* lorsque le nom de l’environnement est spécifié.
 
-## <a name="custom"></a>Personnalisé
+## <a name="custom"></a>Custom
 
 Les transformations personnalisées sont exécutées en dernier, après les transformations de la [configuration de build](#build-configuration), du [profil](#profile) et de [l’environnement](#environment).
 

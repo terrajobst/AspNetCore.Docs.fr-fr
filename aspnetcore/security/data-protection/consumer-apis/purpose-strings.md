@@ -1,58 +1,58 @@
 ---
-title: Chaînes d’objectifs dans ASP.NET Core
+title: Chaînes d’objectif dans ASP.NET Core
 author: rick-anderson
-description: Découvrez comment les chaînes d’objectifs sont utilisées dans l’API de Protection des données ASP.NET Core.
+description: Découvrez comment les chaînes sont utilisées dans les API de protection des données ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/consumer-apis/purpose-strings
 ms.openlocfilehash: 4c85423f8de7e4b784ae1bb304a884541df251b6
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087548"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664723"
 ---
-# <a name="purpose-strings-in-aspnet-core"></a>Chaînes d’objectifs dans ASP.NET Core
+# <a name="purpose-strings-in-aspnet-core"></a>Chaînes d’objectif dans ASP.NET Core
 
 <a name="data-protection-consumer-apis-purposes"></a>
 
-Les composants qui consomment `IDataProtectionProvider` doit passer une valeur unique *à des fins* paramètre à la `CreateProtector` (méthode). Les besoins *paramètre* est inhérent à la sécurité du système de protection de données, car elle fournit une isolation entre les consommateurs de services de chiffrement, même si les clés de chiffrement racine sont les mêmes.
+Les composants qui consomment `IDataProtectionProvider` doivent passer un paramètre d' *usage* unique à la méthode `CreateProtector`. Le *paramètre* usage est inhérent à la sécurité du système de protection des données, car il permet l’isolation entre les consommateurs de chiffrement, même si les clés de chiffrement racine sont identiques.
 
-Quand un consommateur spécifie un objectif, la chaîne de l’objectif est utilisée, ainsi que les clés de chiffrement de racine pour dériver des sous-clés de chiffrement uniques pour ce consommateur. Cela permet d’isoler le consommateur à partir de tous les autres consommateurs de services de chiffrement dans l’application : aucun autre composant ne peut lire ses charges utiles, et il ne peut pas lire des charges utiles de n’importe quel autre composant. Cette isolation restitue également irréalisable différentes catégories d’attaque contre le composant.
+Lorsqu’un consommateur spécifie un objet, la chaîne d’objectif est utilisée avec les clés de chiffrement racines pour dériver les sous-clés de chiffrement uniques à ce consommateur. Cela isole le consommateur de tous les autres consommateurs de chiffrement dans l’application : aucun autre composant ne peut lire ses charges utiles, et il ne peut pas lire les charges utiles d’un autre composant. Cette isolation rend également possibles des catégories entières d’attaques contre le composant.
 
-![Exemple de diagramme d’objectif](purpose-strings/_static/purposes.png)
+![Exemple de diagramme d’objet](purpose-strings/_static/purposes.png)
 
-Dans le diagramme ci-dessus, `IDataProtector` instances A et B **ne peut pas** lire d’autres charges utiles, uniquement leurs propres.
+Dans le diagramme ci-dessus, `IDataProtector` instances A et B **ne peuvent pas** lire les charges utiles les unes des autres, mais uniquement les siennes.
 
-La chaîne de fin ne doit pas être secret. Il doit simplement être unique en ce sens qu’aucun autre composant se comportant bien ne fournira jamais la même chaîne de fin.
+La chaîne d’objectif n’a pas besoin d’être secrète. Il doit tout simplement être unique dans le sens où aucun autre composant correct ne fournira jamais la même chaîne d’objectif.
 
 >[!TIP]
-> À l’aide de l’espace de noms et nom de type du composant consomme l’API de protection des données est une règle empirique, comme dans les pratiques de que ces informations ne seront jamais entrent en conflit.
+> L’utilisation de l’espace de noms et du nom de type du composant consommant les API de protection des données est une bonne règle empirique, comme dans la pratique, ces informations ne seront jamais en conflit.
 >
->Un composant créé par Contoso, qui est responsable de minting jetons du porteur peut utiliser Contoso.Security.BearerToken comme sa chaîne d’objectif. Ou - plus - il peut utiliser Contoso.Security.BearerToken.v1 en tant que chaîne de son objectif. Ajoutant le numéro de version permet à une future version à utiliser Contoso.Security.BearerToken.v2 comme son objectif, et les différentes versions serait complètement isolées les uns des autres aussi loin que charges utiles.
+>Un composant créé par Contoso qui est responsable de la frappe des jetons du porteur peut utiliser contoso. Security. BearerToken comme chaîne d’objet. Ou bien mieux, il peut utiliser contoso. Security. BearerToken. v1 comme chaîne d’objet. Le fait d’ajouter le numéro de version permet à une version ultérieure d’utiliser contoso. Security. BearerToken. v2 comme objectif, et les différentes versions sont complètement isolées les unes des autres en ce qui concerne les charges utiles.
 
-Depuis le paramètre à des fins de `CreateProtector` est un tableau de chaînes, la méthode ci-dessus pourrait avoir été au lieu de cela spécifiée comme `[ "Contoso.Security.BearerToken", "v1" ]`. Cela permet l’établissement d’une hiérarchie des objectifs et ouvre la possibilité de scénarios d’une architecture mutualisées avec le système de protection des données.
+Étant donné que le paramètre usage pour `CreateProtector` est un tableau de chaînes, la valeur ci-dessus aurait été spécifiée à la place comme `[ "Contoso.Security.BearerToken", "v1" ]`. Cela permet d’établir une hiérarchie d’objectifs et de faire en sorte que les scénarios d’architecture mutualisée soient possibles avec le système de protection des données.
 
 <a name="data-protection-contoso-purpose"></a>
 
 >[!WARNING]
-> Composants ne doit pas autoriser l’entrée utilisateur non fiable être la seule source d’entrée de la chaîne à des fins.
+> Les composants ne doivent pas autoriser une entrée utilisateur non fiable comme seule source d’entrée pour la chaîne de rôles.
 >
->Par exemple, considérez un composant Contoso.Messaging.SecureMessage qui est responsable du stockage des messages sécurisés. Si le composant de messagerie sécurisé devait appeler `CreateProtector([ username ])`, puis un utilisateur malveillant peut créer un compte avec le nom d’utilisateur « Contoso.Security.BearerToken » dans une tentative d’obtention du composant à appeler `CreateProtector([ "Contoso.Security.BearerToken" ])`, par inadvertance entraînant la messagerie sécurisée système de charges utiles mint qui pourraient être perçus comme des jetons d’authentification.
+>Par exemple, considérez un composant contoso. Messaging. SecureMessage qui est responsable du stockage des messages sécurisés. Si le composant de messagerie sécurisée appelle `CreateProtector([ username ])`, un utilisateur malveillant peut créer un compte avec le nom d’utilisateur « contoso. Security. BearerToken » pour tenter de faire en sorte que le composant appelle `CreateProtector([ "Contoso.Security.BearerToken" ])`, provoquant par inadvertance au système de messagerie sécurisée les charges utiles qui pourraient être perçues comme des jetons d’authentification.
 >
->Une chaîne à des fins de mieux pour le composant de messagerie serait `CreateProtector([ "Contoso.Messaging.SecureMessage", "User: username" ])`, qui fournit une isolation appropriée.
+>Une chaîne plus efficace pour le composant de messagerie serait `CreateProtector([ "Contoso.Messaging.SecureMessage", "User: username" ])`, ce qui fournit une isolation appropriée.
 
-L’isolation assurée par et les comportements de `IDataProtectionProvider`, `IDataProtector`, et à des fins sont les suivantes :
+L’isolation fournie par et les comportements des `IDataProtectionProvider`, `IDataProtector`et les objectifs sont les suivants :
 
-* Pour une donnée `IDataProtectionProvider` objet, le `CreateProtector` méthode crée un `IDataProtector` objet exclusivement liés à la fois à la `IDataProtectionProvider` objet qui a créé et le paramètre à des fins qui a été passé dans la méthode.
+* Pour un objet `IDataProtectionProvider` donné, la méthode `CreateProtector` crée un objet `IDataProtector` lié de manière unique à l’objet `IDataProtectionProvider` qui l’a créé et au paramètre usage qui a été passé dans la méthode.
 
-* Le paramètre de fin ne doit pas être null. (Si à des fins est spécifié sous forme de tableau, cela signifie que le tableau ne doit pas être de longueur nulle et que tous les éléments du tableau doivent être non null.) Un objectif de la chaîne vide est autorisée techniquement mais est déconseillé.
+* Le paramètre Purpose ne doit pas avoir la valeur null. (Si l’objectif est spécifié sous la forme d’un tableau, cela signifie que le tableau ne doit pas avoir une longueur de zéro et que tous les éléments du tableau doivent être non null.) Une fonction de chaîne vide est techniquement autorisée, mais elle est déconseillée.
 
-* Arguments de deux objectifs sont équivalentes si et seulement si elles contiennent les mêmes chaînes (à l’aide d’un comparateur ordinal) dans le même ordre. Un argument unique objectif équivaut au tableau correspondant à des fins de l’élément.
+* Les arguments à deux objectifs sont équivalents si et seulement s’ils contiennent les mêmes chaînes (à l’aide d’un comparateur ordinal) dans le même ordre. Un argument à rôle unique est équivalent au tableau d’objectifs à un seul élément correspondant.
 
-* Deux `IDataProtector` objets sont équivalents si et seulement si elles sont créées à partir de l’équivalent `IDataProtectionProvider` objets avec des paramètres équivalents à des fins.
+* Deux objets `IDataProtector` sont équivalents si et seulement s’ils sont créés à partir d’objets `IDataProtectionProvider` équivalents avec des paramètres équivalents.
 
-* Pour une donnée `IDataProtector` objet, un appel à `Unprotect(protectedData)` retournera l’original `unprotectedData` si et seulement si `protectedData := Protect(unprotectedData)` pour l’équivalent `IDataProtector` objet.
+* Pour un objet `IDataProtector` donné, un appel à `Unprotect(protectedData)` retourne le `unprotectedData` d’origine si et seulement si `protectedData := Protect(unprotectedData)` pour un objet `IDataProtector` équivalent.
 
 > [!NOTE]
-> Nous n’envisageons pas le cas où un composant choisit intentionnellement une chaîne d’usage qui est connue pour entrer en conflit avec un autre composant. Un tel composant est essentiellement considéré comme nuisible, et ce système n’est pas destiné à fournir des garanties de sécurité dans le cas où un code malveillant est déjà en cours d’exécution à l’intérieur du processus de travail.
+> Nous n’envisageons pas le cas où un composant choisit intentionnellement une chaîne d’objectif connue pour être en conflit avec un autre composant. Ce type de composant serait essentiellement considéré comme malveillant et ce système n’est pas destiné à fournir des garanties de sécurité dans le cas où du code malveillant est déjà en cours d’exécution au sein du processus de travail.

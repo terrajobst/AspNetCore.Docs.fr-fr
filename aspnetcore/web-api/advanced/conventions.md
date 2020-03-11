@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 2c7e33da24322504fc5e1be83c0b814710186687
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: d49b51d11d3f14d0c3edbe1765d74fd63e3ac061
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881317"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657751"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
@@ -29,13 +29,13 @@ ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conven
 
 À l’exécution, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> comprend les conventions. `ApiExplorer` est l’abstraction de MVC pour communiquer avec des générateurs de documents [OpenAPI](https://www.openapis.org/) (également nommé Swagger). Les attributs provenant de la convention appliquée sont associés à une action et sont inclus dans la documentation OpenAPI de l’action. Les [analyseurs d’API](xref:web-api/advanced/analyzers) comprennent aussi les conventions. Si votre action n’est pas conventionnelle (par exemple, elle retourne un code d’état qui n’est pas documenté par la convention appliquée), un avertissement vous encourage à documenter le code d’état.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="apply-web-api-conventions"></a>Appliquer des conventions d’API web
 
 Les conventions ne se combinent pas : chaque action peut être associée à une seule convention. Les conventions plus spécifiques sont prioritaires par rapport à celles qui sont moins spécifiques. La sélection est non déterministe quand plusieurs conventions de même priorité s’appliquent à une action. Les options suivantes sont disponibles pour appliquer une convention à une action, de la plus spécifique à la moins spécifique :
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; s’applique à des actions individuelles, et spécifie le type de convention et la méthode de convention qui s’applique.
+1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; s’applique à des actions individuelles et spécifie le type de Convention et la méthode de Convention qui s’appliquent.
 
     Dans l’exemple suivant, la méthode de convention `Microsoft.AspNetCore.Mvc.DefaultApiConventions.Put` du type de convention par défaut est appliquée à l’action `Update` :
 
@@ -91,7 +91,7 @@ Si des attributs de métadonnées plus spécifiques sont absents, l’applicatio
 * La méthode de convention s’applique à toute action nommée `Find`.
 * Un paramètre nommé `id` est présent sur l’action `Find`.
 
-### <a name="naming-requirements"></a>Exigences concernant l'affectation des noms
+### <a name="naming-requirements"></a>Exigences concernant l’affectation des noms
 
 Les attributs `[ApiConventionNameMatch]` et `[ApiConventionTypeMatch]` peuvent être appliqués à la méthode de convention qui détermine les actions auxquelles ils s’appliquent. Par exemple :
 

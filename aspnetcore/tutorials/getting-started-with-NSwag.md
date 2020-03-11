@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: bd68e134fb71fd396a30ec9c674111bc8536860d
-ms.sourcegitcommit: 851b921080fe8d719f54871770ccf6f78052584e
+ms.openlocfilehash: 3eae5d3c66204a10806a8036c8f114af6c501b2c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74944172"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666053"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
@@ -19,13 +19,13 @@ Par [Christoph Nienaber](https://twitter.com/zuckerthoben), [Rico Suter](https:/
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-2.0"
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ::: moniker-end
 
@@ -47,7 +47,7 @@ Pour utiliser le middleware [NSwag](https://github.com/RicoSuter/NSwag) avec ASP
 
 Vous pouvez installer le package NuGet NSwag avec l’une des méthodes suivantes :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de la fenêtre **Console du Gestionnaire de package** :
   * Accédez à **Affichage** > **Autres fenêtres** > **Console du Gestionnaire de package**.
@@ -64,16 +64,16 @@ Vous pouvez installer le package NuGet NSwag avec l’une des méthodes suivante
   * Entrez « NSwag.AspNetCore » dans la zone de recherche.
   * Sélectionnez le package « NSwag.AspNetCore » sous l’onglet **Parcourir** et cliquez sur **Installer**.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Packages* dans **Panneau Solutions** > **Ajouter des packages**.
 * Dans la fenêtre **Ajouter des packages**, sélectionnez « nuget.org » dans la liste déroulante **Source**.
 * Entrez « NSwag.AspNetCore » dans la zone de recherche.
 * Sélectionnez le package « NSwag.AspNetCore » dans le volet de résultats, puis cliquez sur **Ajouter un package**.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Exécutez la commande suivante : .
+Exécutez la commande suivante :
 
 ```dotnetcli
 dotnet add TodoApi.csproj package NSwag.AspNetCore
@@ -93,7 +93,7 @@ Ajoutez et configurez Swagger dans votre application ASP.NET Core en exécutant 
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup.cs?name=snippet_Configure&highlight=6-7)]
 
-* Lancez l’application. Accédez à
+* Lancez l’application. Accédez à :
   * `http://localhost:<port>/swagger` pour voir l’IU de Swagger.
   * `http://localhost:<port>/swagger/v1/swagger.json` pour voir la spécification Swagger.
 
@@ -101,16 +101,16 @@ Ajoutez et configurez Swagger dans votre application ASP.NET Core en exécutant 
 
 Vous pouvez tirer parti des fonctionnalités de génération de code de NSwag en choisissant l’une des options suivantes :
 
-* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; une application de bureau Windows pour générer du code client en C# ou TypeScript pour une API.
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; une application de bureau Windows pour générer du code client C# API dans ou une machine à écrire.
 * Les packages NuGet [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) ou [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) pour générer du code dans votre projet.
 * NSwag à partir de la [ligne de commande](https://github.com/RicoSuter/NSwag/wiki/CommandLine).
 * Le package NuGet [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/NSwag.MSBuild).
-* [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; est un service connecté Visual Studio qui permet de générer du code client d’API en C# ou TypeScript. Génère également des contrôleurs C# pour les services OpenAPI avec NSwag.
+* Le [service connecté unchase openapi (Swagger)](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; un service connecté de Visual Studio pour générer le code client C# de l’API dans ou la machine à écrire. Génère également des contrôleurs C# pour les services OpenAPI avec NSwag.
 
 ### <a name="generate-code-with-nswagstudio"></a>Générer du code avec NSwagStudio
 
 * Installez NSwagStudio en suivant les instructions fournies dans le [référentiel GitHub de NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio). Dans la page de publication de NSwag, vous pouvez télécharger une version xcopy qui peut être démarrée sans les privilèges d’installation et d’administration.
-* Lancez NSwagStudio et entrez l’URL du fichier *swagger.json* dans la zone de texte **Swagger Specification URL** (URL de spécification Swagger). Par exemple, *http://localhost:44354/swagger/v1/swagger.json* .
+* Lancez NSwagStudio et entrez l’URL du fichier *swagger.json* dans la zone de texte **Swagger Specification URL** (URL de spécification Swagger). Par exemple : *http://localhost:44354/swagger/v1/swagger.json* .
 * Cliquez sur le bouton **Créer une copie locale** pour générer la représentation JSON de votre spécification Swagger.
 
   ![Créer une copie locale de la spécification Swagger](web-api-help-pages-using-swagger/_static/CreateLocalCopy-NSwagStudio.PNG)
@@ -193,7 +193,7 @@ L’IU Swagger affiche les informations de la version :
 
 Pour activer les commentaires XML, procédez comme suit :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -211,7 +211,7 @@ Pour activer les commentaires XML, procédez comme suit :
 
 ::: moniker-end
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -224,12 +224,12 @@ Pour activer les commentaires XML, procédez comme suit :
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* Ouvrez la boîte de dialogue **Options du projet** > **Générer**>**Compilateur**
+* Ouvrir la boîte de dialogue **Options du projet** > **générer** > **compiler**
 * Cochez la case **Générer la documentation XML** dans la section **Options générales**.
 
 ::: moniker-end
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
@@ -253,7 +253,7 @@ Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
 Étant donné que NSwag utilise la [réflexion](/dotnet/csharp/programming-guide/concepts/reflection), et le type de retour recommandé pour les actions d’API web est [IActionResult](xref:Microsoft.AspNetCore.Mvc.IActionResult), il ne peut pas déduire ce que fait votre action, ni ce qu’elle retourne.
 
-Prenons l'exemple suivant :
+Prenons l’exemple suivant :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
@@ -267,7 +267,7 @@ L’action précédente retourne `IActionResult`, mais à l’intérieur de l’
 
 Étant donné que NSwag utilise la [réflexion](/dotnet/csharp/programming-guide/concepts/reflection), et que le type de retour recommandé pour les actions d’API web est [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601), il ne peut que déduire le type de retour défini par `T`. Vous ne pouvez pas déduire automatiquement d’autres types de retour possibles.
 
-Prenons l'exemple suivant :
+Prenons l’exemple suivant :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
@@ -275,7 +275,7 @@ L’action précédente retourne `ActionResult<T>`. À l’intérieur de l’act
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-Dans ASP.NET Core 2.2 ou une version ultérieure, vous pouvez utiliser les conventions comme alternatives à la décoration explicite des actions individuelles avec `[ProducesResponseType]`. Pour plus d'informations, consultez <xref:web-api/advanced/conventions>.
+Dans ASP.NET Core 2.2 ou une version ultérieure, vous pouvez utiliser les conventions comme alternatives à la décoration explicite des actions individuelles avec `[ProducesResponseType]`. Pour plus d’informations, consultez <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 

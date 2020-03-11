@@ -4,24 +4,24 @@ author: rick-anderson
 description: Apprendre à créer une API web avec ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/05/2019
+ms.date: 2/25/2020
 uid: tutorials/first-web-api
-ms.openlocfilehash: 73e547b014d78dcbcbf1c887ebec16e0743d10b9
-ms.sourcegitcommit: f259889044d1fc0f0c7e3882df0008157ced4915
+ms.openlocfilehash: 55dfc05b5c96f7fa060d537745bac969e92daa9b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294747"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655588"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Didacticiel : créer une API Web avec ASP.NET Core
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5)et [Mike Wasson](https://github.com/mikewasson)
 
 Ce tutoriel décrit les principes fondamentaux liés à la génération d’une API web avec ASP.NET Core.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans ce didacticiel, vous apprendrez à :
+Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un projet d’API web.
@@ -32,33 +32,33 @@ Dans ce didacticiel, vous apprendrez à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données.
 
-## <a name="overview"></a>Vue d'ensemble de
+## <a name="overview"></a>Vue d’ensemble
 
 Ce didacticiel crée l’API suivante :
 
-|API | Description | Corps de demande | Corps de réponse |
+|API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
-|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
 
 ![Le client est représenté par une zone située à gauche. Il envoie une demande et reçoit une réponse de l’application, représentée par une zone dessinée à droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
@@ -66,7 +66,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
@@ -75,11 +75,11 @@ Le diagramme suivant illustre la conception de l’application.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs3.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Définissez les répertoires (`cd`) sur le dossier destiné à contenir le dossier du projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -96,7 +96,7 @@ Le diagramme suivant illustre la conception de l’application.
   * Créent un projet API Web et l’ouvrent dans Visual Studio Code.
   * Ajoutent les packages NuGet qui sont requis dans la section suivante.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Sélectionnez **fichier** > **nouvelle solution**.
 
@@ -127,17 +127,17 @@ Ouvrez un terminal de commande dans le dossier de projet, puis exécutez les com
 
 Le modèle de projet crée une API `WeatherForecast`. Appelez la méthode `Get` à partir d’un navigateur pour tester l’application.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Visual Studio lance un navigateur et accède à `https://localhost:<port>/WeatherForecast`, où `<port>` est un numéro de port choisi de manière aléatoire.
 
 Si une boîte de dialogue apparaît vous demandant si vous devez approuver le certificat IIS Express, sélectionnez **Oui**. Dans la boîte de dialogue **Avertissement de sécurité** qui s’affiche ensuite, sélectionnez **Oui**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Dans un navigateur, accédez à l’URL suivante : [https://localhost:5001/WeatherForecast](https://localhost:5001/WeatherForecast).
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Sélectionnez **Exécuter** > **Démarrer le débogage** pour lancer l’application. Visual Studio pour Mac lance un navigateur et accède à `https://localhost:<port>`, où `<port>` est un numéro de port choisi de manière aléatoire. Une erreur HTTP 404 (introuvable) est retournée. Ajoutez `/WeatherForecast` à l’URL (définissez-la sur `https://localhost:<port>/WeatherForecast`).
 
@@ -184,7 +184,7 @@ Un code JSON similaire au suivant est retourné :
 
 Un *modèle* est un ensemble de classes qui représentent les données gérées par l’application. Le modèle pour cette application est une classe `TodoItem` unique.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
@@ -192,13 +192,13 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 * Remplacez le code du modèle par le code suivant :
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ajoutez un dossier nommé *Models*.
 
 * Ajoutez une classe `TodoItem` au dossier *Models* avec le code suivant :
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
@@ -212,7 +212,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 ---
 
-  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs)]
+  [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs?name=snippet)]
 
 La propriété `Id` fonctionne comme la clé unique dans une base de données relationnelle.
 
@@ -222,7 +222,7 @@ Vous pouvez placer des classes de modèle n’importe où dans le projet, mais l
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données. Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="add-microsoftentityframeworkcoresqlserver"></a>Ajouter Microsoft.EntityFrameworkCore.SqlServer
 
@@ -232,19 +232,19 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 * Cochez la case **Projet** dans le volet droit, puis sélectionnez **Installer**.
 * Utilisez les instructions précédentes pour ajouter le package NuGet `Microsoft.EntityFrameworkCore.InMemory`.
 
-![NuGet Package Manager](first-web-api/_static/vs3NuGet.png)
+![Gestionnaire de package NuGet](first-web-api/_static/vs3NuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>Ajouter le contexte de base de données TodoContext
 
 * Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe *TodoContext* et cliquez sur **Ajouter**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Ajoutez une classe `TodoContext` au dossier *Models*.
 
 ---
 
-* Entrez le code suivant :
+* Entrez le code suivant :
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoContext.cs)]
 
@@ -264,7 +264,7 @@ Le code précédent :
 
 ## <a name="scaffold-a-controller"></a>Générer automatiquement des modèles pour un contrôleur
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
 * Sélectionnez **ajouter** > **nouvel élément de génération de modèles**automatique.
@@ -273,11 +273,11 @@ Le code précédent :
 
   * Sélectionnez **TodoItem (TodoApi. Models)** dans la **classe de modèle**.
   * Sélectionnez **TodoContext (TodoApi. Models)** dans la **classe de contexte de données**.
-  * Sélectionnez **Ajouter** .
+  * Sélectionnez **Ajouter**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Exécutez les commandes suivantes :
+Exécutez les commandes suivantes :
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -298,6 +298,13 @@ Le code généré :
 
 * Marque la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) . Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
 * Utilise l’injection de dépendances pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
+
+Les modèles de ASP.NET Core pour :
+
+* Les contrôleurs avec des vues incluent `[action]` dans le modèle de routage.
+* Les contrôleurs d’API n’incluent pas `[action]` dans le modèle de routage.
+
+Lorsque le jeton d' `[action]` n’est pas dans le modèle de routage, le nom de l' [action](xref:mvc/controllers/routing#action) est exclu de l’itinéraire. Autrement dit, le nom de la méthode associée à l’action n’est pas utilisé dans l’itinéraire correspondant.
 
 ## <a name="examine-the-posttodoitem-create-method"></a>Examiner la méthode de création de PostTodoItem
 
@@ -331,7 +338,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Créez une requête.
 * Affectez `POST` à la méthode HTTP.
-* Sélectionnez l’onglet **Body** (Corps).
+* Sélectionnez l’onglet **Corps** .
 * Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur **JSON (application/json)** .
 * Dans le corps de la demande, entrez la syntaxe JSON d’une tâche :
@@ -343,7 +350,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
     }
     ```
 
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
   ![Postman avec requête de création](first-web-api/_static/3/create.png)
 
@@ -356,7 +363,7 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Définissez la méthode sur GET.
 * Collez l’URI (par exemple, `https://localhost:5001/api/TodoItems/1`).
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
 ## <a name="examine-the-get-methods"></a>Examiner les méthodes GET
 
@@ -386,9 +393,9 @@ Une réponse semblable à la suivante est produite par l’appel à `GetTodoItem
 
 * Créez une requête.
 * Définissez la méthode HTTP sur **GET**.
-* Définissez l’URL de la requête sur `https://localhost:<port>/api/TodoItems`. Par exemple, `https://localhost:5001/api/TodoItems`.
+* Définissez l’URL de la requête sur `https://localhost:<port>/api/TodoItems`. Par exemple : `https://localhost:5001/api/TodoItems`.
 * Définissez l’**affichage à deux volets** dans Postman.
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
 Cette application utilise une base de données en mémoire. Si l’application est arrêtée et démarrée, la requête GET précédente ne retourne aucune donnée. Si aucune donnée n’est retournée, publiez ([POST](#post)) les données dans l’application.
 
@@ -407,7 +414,7 @@ Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace r�
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a>Valeurs de retour
+## <a name="return-values"></a>Valeurs retournées
 
 Le type de retour des méthodes `GetTodoItems` et `GetTodoItem` est [type ActionResult\<T>](xref:web-api/action-return-types#actionresultt-type). ASP.NET Core sérialise automatiquement l’objet en [JSON](https://www.json.org/) et écrit le JSON dans le corps du message de réponse. Le code de réponse pour ce type de retour est 200, en supposant qu’il n’existe pas d’exception non gérée. Les exceptions non gérées sont converties en erreurs 5xx.
 
@@ -456,7 +463,38 @@ Utilisez Postman pour supprimer une tâche :
 
 * Définissez la méthode sur `DELETE`.
 * Définissez l’URI de l’objet à supprimer (par exemple `https://localhost:5001/api/TodoItems/1`).
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
+
+<a name="over-post"></a>
+
+## <a name="prevent-over-posting"></a>Empêcher la post-validation
+
+Actuellement, l’exemple d’application expose la totalité de l’objet `TodoItem`. En général, les applications de production limitent les données entrées et retournées à l’aide d’un sous-ensemble du modèle. Il existe plusieurs raisons à cela, et la sécurité est essentielle. Le sous-ensemble d’un modèle est généralement appelé un objet Transfert de données (DTO), un modèle d’entrée ou un modèle de vue. Le **DTO** est utilisé dans cet article.
+
+Un DTO peut être utilisé pour :
+
+* Empêcher la survalidation.
+* Masquer les propriétés que les clients ne sont pas censés afficher.
+* Omettez certaines propriétés afin de réduire la taille de la charge utile.
+* Aplatir les graphiques d’objets qui contiennent des objets imbriqués. Les graphiques d’objets aplatis peuvent être plus pratiques pour les clients.
+
+Pour illustrer l’approche DTO, mettez à jour la classe `TodoItem` pour inclure un champ secret :
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
+
+Le champ secret doit être masqué à partir de cette application, mais une application administrative peut choisir de l’exposer.
+
+Vérifiez que vous pouvez poster et recevoir le champ secret.
+
+Créer un modèle DTO :
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
+
+Mettez à jour le `TodoItemsController` pour utiliser `TodoItemDTO`:
+
+[!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Controllers/TodoItemsController.cs?name=snippet)]
+
+Vérifiez que vous ne pouvez pas poster ou recevoir le champ secret.
 
 ## <a name="call-the-web-api-with-javascript"></a>Appelez l’API web avec JavaScript
 
@@ -466,7 +504,7 @@ Consultez [Didacticiel : appeler une API web ASP.net core avec JavaScript](xref
 
 ::: moniker range="< aspnetcore-3.0"
 
-Dans ce didacticiel, vous apprendrez à :
+Dans ce tutoriel, vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un projet d’API web.
@@ -480,33 +518,33 @@ Dans ce didacticiel, vous apprendrez à :
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données relationnelle.
 
-## <a name="overview"></a>Vue d'ensemble de
+## <a name="overview"></a>Vue d’ensemble
 
 Ce didacticiel crée l’API suivante :
 
-|API | Description | Corps de demande | Corps de réponse |
+|API | Description | Corps de la demande | Response body |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obtenir toutes les tâches | Aucun | Tableau de tâches|
-|GET /api/TodoItems/{id} | Obtenir un élément par ID | Aucun | Tâche|
+|GET /api/TodoItems | Obtenir toutes les tâches | None | Tableau de tâches|
+|GET /api/TodoItems/{id} | Obtenir un élément par ID | None | Tâche|
 |POST /api/TodoItems | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun |
-|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun | Aucun|
+|PUT /api/TodoItems/{id} | Mettre à jour un élément existant &nbsp; | Tâche | None |
+|SUPPRIMER le &nbsp;/api/TodoItems/{id} &nbsp; | Supprimer un élément &nbsp; &nbsp; | None | None|
 
 Le diagramme suivant illustre la conception de l’application.
 
 ![Le client est représenté par une zone située à gauche. Il envoie une demande et reçoit une réponse de l’application, représentée par une zone dessinée à droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
@@ -514,7 +552,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 ## <a name="create-a-web-project"></a>Créer un projet web
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans le menu **fichier** , sélectionnez **nouveau** > **projet**.
 * Sélectionnez le modèle **Application web ASP.NET Core** et cliquez sur **Suivant**.
@@ -523,11 +561,11 @@ Le diagramme suivant illustre la conception de l’application.
 
 ![Boîte de dialogue de nouveau projet dans VS](first-web-api/_static/vs.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Définissez les répertoires (`cd`) sur le dossier destiné à contenir le dossier du projet.
-* Exécutez les commandes suivantes :
+* Exécutez les commandes suivantes :
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -538,7 +576,7 @@ Le diagramme suivant illustre la conception de l’application.
 
 * Quand une boîte de dialogue vous demande si vous souhaitez ajouter les composants nécessaires au projet, sélectionnez **Oui**.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Sélectionnez **fichier** > **nouvelle solution**.
 
@@ -548,7 +586,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   ![macOS - Boîte de dialogue Nouveau projet](first-web-api-mac/_static/1.png)
   
-* Dans la boîte de dialogue **Configurer votre nouvelle API web ASP.NET Core**, acceptez la valeur par défaut * *.NET Core 2.2* pour **Framework cible**.
+* Dans la boîte de dialogue **Configurer votre nouvelle API web ASP.NET Core**, acceptez la valeur par défaut * **.NET Core 2.2** pour *Framework cible*.
 
 * Entrez *TodoApi* comme **Nom du projet**, puis sélectionnez **Créer**.
 
@@ -560,17 +598,17 @@ Le diagramme suivant illustre la conception de l’application.
 
 Le modèle de projet crée une API `values`. Appelez la méthode `Get` à partir d’un navigateur pour tester l’application.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Visual Studio lance un navigateur et accède à `https://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.
 
 Si une boîte de dialogue apparaît vous demandant si vous devez approuver le certificat IIS Express, sélectionnez **Oui**. Dans la boîte de dialogue **Avertissement de sécurité** qui s’affiche ensuite, sélectionnez **Oui**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Appuyez sur Ctrl+F5 pour exécuter l’application. Dans un navigateur, accédez à l’URL suivante : [https://localhost:5001/api/values](https://localhost:5001/api/values).
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Sélectionnez **Exécuter** > **Démarrer le débogage** pour lancer l’application. Visual Studio pour Mac lance un navigateur et accède à `https://localhost:<port>`, où `<port>` est un numéro de port choisi de manière aléatoire. Une erreur HTTP 404 (introuvable) est retournée. Ajoutez `/api/values` à l’URL (définissez-la sur `https://localhost:<port>/api/values`).
 
@@ -586,7 +624,7 @@ Le code JSON suivant est retourné :
 
 Un *modèle* est un ensemble de classes qui représentent les données gérées par l’application. Le modèle pour cette application est une classe `TodoItem` unique.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
@@ -594,13 +632,13 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 * Remplacez le code du modèle par le code suivant :
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ajoutez un dossier nommé *Models*.
 
 * Ajoutez une classe `TodoItem` au dossier *Models* avec le code suivant :
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
@@ -624,11 +662,11 @@ Vous pouvez placer des classes de modèle n’importe où dans le projet, mais l
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données. Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe *TodoContext* et cliquez sur **Ajouter**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Ajoutez une classe `TodoContext` au dossier *Models*.
 
@@ -652,9 +690,9 @@ Le code précédent :
 * Ajoute le contexte de base de données au conteneur d’injection de dépendances.
 * Spécifie que le contexte de base de données utilise une base de données en mémoire.
 
-## <a name="add-a-controller"></a>Ajouter un contrôleur
+## <a name="add-a-controller"></a>Ajout d'un contrôleur
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Contrôleurs*.
 * Sélectionnez **ajouter** > **nouvel élément**.
@@ -663,9 +701,9 @@ Le code précédent :
 
   ![Boîte de dialogue Ajouter un nouvel élément avec contrôleur dans la zone de recherche et le contrôleur des API web sélectionné](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans le dossier *Contrôleurs*, créez une classe nommée `TodoController`.
+* Dans le dossier *Controllers*, créez une classe nommée `TodoController`.
 
 ---
 
@@ -725,7 +763,7 @@ Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace r�
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a>Valeurs de retour
+## <a name="return-values"></a>Valeurs retournées
 
 Le type de retour des méthodes `GetTodoItems` et `GetTodoItem` est [type ActionResult\<T>](xref:web-api/action-return-types#actionresultt-type). ASP.NET Core sérialise automatiquement l’objet en [JSON](https://www.json.org/) et écrit le JSON dans le corps du message de réponse. Le code de réponse pour ce type de retour est 200, en supposant qu’il n’existe pas d’exception non gérée. Les exceptions non gérées sont converties en erreurs 5xx.
 
@@ -743,11 +781,11 @@ Ce tutoriel utilise Postman pour tester l’API web.
 * Démarrez Postman.
 * Désactivez la **vérification du certificat SSL**.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * À partir de **paramètres** de > de **fichier** (onglet**général** ), désactivez la **vérification de certificat SSL**.
 
-# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * À partir de **Postman** > **Préférences** (onglet **Général**), désactivez **Vérification du certificat SSL**. Vous pouvez également sélectionner la clé et sélectionner **Paramètres**, puis désactiver la vérification du certificat SSL.
 
@@ -758,9 +796,9 @@ Ce tutoriel utilise Postman pour tester l’API web.
 
 * Créez une requête.
   * Définissez la méthode HTTP sur **GET**.
-  * Définissez l’URL de la requête sur `https://localhost:<port>/api/todo`. Par exemple, `https://localhost:5001/api/todo`.
+  * Définissez l’URL de la requête sur `https://localhost:<port>/api/todo`. Par exemple : `https://localhost:5001/api/todo`.
 * Définissez l’**affichage à deux volets** dans Postman.
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
 ![Postman avec requête Get](first-web-api/_static/2pv.png)
 
@@ -782,9 +820,9 @@ La méthode `CreatedAtAction` :
 
 ### <a name="test-the-posttodoitem-method"></a>Tester la méthode PostTodoItem
 
-* créer le projet ;
+* Créez le projet.
 * Dans Postman, définissez la méthode HTTP sur `POST`.
-* Sélectionnez l’onglet **Body** (Corps).
+* Sélectionnez l’onglet **Corps** .
 * Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur **JSON (application/json)** .
 * Dans le corps de la demande, entrez la syntaxe JSON d’une tâche :
@@ -796,7 +834,7 @@ La méthode `CreatedAtAction` :
     }
     ```
 
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
   ![Postman avec requête de création](first-web-api/_static/create.png)
 
@@ -811,11 +849,11 @@ La méthode `CreatedAtAction` :
 
 * Définissez la méthode sur GET.
 * Collez l’URI (par exemple, `https://localhost:5001/api/Todo/2`).
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
 ## <a name="add-a-puttodoitem-method"></a>Ajouter une méthode PutTodoItem
 
-Ajoutez la méthode `PutTodoItem` suivante :
+Ajoutez la méthode `PutTodoItem` suivante :
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
@@ -827,7 +865,7 @@ Si vous obtenez une erreur en appelant `PutTodoItem`, appelez `GET` pour vérifi
 
 Cet exemple utilise une base de données en mémoire qui doit être initialisée chaque fois que l’application est démarrée. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET pour vérifier qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
-Mettez à jour la tâche dont l’id est 1 en définissant son nom sur « feed fish » :
+Mettez à jour la tâche dont l’ID = 1 et nommez-la « feed fish » :
 
 ```json
   {
@@ -843,7 +881,7 @@ L’image suivante montre la mise à jour Postman :
 
 ## <a name="add-a-deletetodoitem-method"></a>Ajouter une méthode DeleteTodoItem
 
-Ajoutez la méthode `DeleteTodoItem` suivante :
+Ajoutez la méthode `DeleteTodoItem` suivante :
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
@@ -855,7 +893,7 @@ Utilisez Postman pour supprimer une tâche :
 
 * Définissez la méthode sur `DELETE`.
 * Définissez l’URI de l’objet à supprimer (par exemple `https://localhost:5001/api/todo/1`).
-* Sélectionnez **Send** (Envoyer).
+* Sélectionnez **Envoyer**.
 
 L’exemple d’application vous permet de supprimer tous les éléments. Toutefois, quand le dernier élément est supprimé, un autre est créé par le constructeur de classe de modèle au prochain appel de l’API.
 
@@ -873,7 +911,7 @@ Ajoutez un fichier HTML nommé *index.html* au répertoire *wwwroot*. Remplacez 
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez son contenu par le code suivant :
+Ajoutez un fichier JavaScript nommé *site.js* au répertoire *wwwroot*. Remplacez son contenu par le code ci-dessous :
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
@@ -918,9 +956,9 @@ Pour supprimer une tâche, vous devez définir le `type` sur l’appel AJAX avec
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
+[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
 
-Pour plus d'informations, voir les ressources suivantes :
+Pour plus d’informations, consultez les ressources suivantes :
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>

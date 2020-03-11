@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : implémenter l’héritage-ASP.NET MVC avec EF Core'
 description: Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données en utilisant Entity Framework Core dans une application ASP.NET Core.
 author: rick-anderson
 ms.author: riande
@@ -7,20 +7,20 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: c10df60a43f5d59f3ce13afd38aad42b88c80516
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: dab3d2b057162f6d986db10e74e3681acc0ada3b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259403"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657240"
 ---
-# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Didacticiel : implémenter l’héritage-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez géré les exceptions d’accès concurrentiel. Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données.
 
 En programmation orientée objet, vous pouvez utiliser l’héritage pour faciliter la réutilisation du code. Dans ce didacticiel, vous allez modifier les classes `Instructor` et `Student` afin qu’elles dérivent d’une classe de base `Person` qui contient des propriétés telles que `LastName`, communes aux formateurs et aux étudiants. Vous n’ajouterez ni ne modifierez aucune page web, mais vous modifierez une partie du code et ces modifications seront automatiquement répercutées dans la base de données.
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Mapper l’héritage à la base de données
@@ -30,7 +30,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créer et mettre à jour des migrations
 > * Tester l’implémentation
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Gérer l’accès concurrentiel](concurrency.md)
 
@@ -150,7 +150,7 @@ Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher le
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -158,7 +158,7 @@ Pour plus d’informations sur l’héritage dans Entity Framework Core, consult
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Mappez l’héritage à la base de données
@@ -171,4 +171,4 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 Passez au tutoriel suivant pour découvrir comment gérer divers scénarios Entity Framework relativement avancés.
 
 > [!div class="nextstepaction"]
-> [Suivant : Rubriques avancées](advanced.md)
+> [Rubrique suivante : Rubriques avancées](advanced.md)

@@ -4,14 +4,14 @@ author: mjrousos
 description: En savoir plus sur l’authentification dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2019
+ms.date: 03/03/2020
 uid: security/authentication/index
-ms.openlocfilehash: 40b2fb59b96486435a2ec0a7d69bee5ab4a814d2
-ms.sourcegitcommit: 76d7fff62014c3db02564191ab768acea00f1b26
+ms.openlocfilehash: 24113fd4f090cf76746a7b077212fdab012f82c1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852712"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659627"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -78,16 +78,16 @@ En fonction de la configuration du schéma d’authentification et du contexte d
   * Ils ne sont pas autorisés à accéder (interdire).
   * Lorsqu’ils ne sont pas authentifiés (Challenge).
 
-### <a name="authenticate"></a>Authentifier
+### <a name="authenticate"></a>Authenticate
 
-L’action d’authentification d’un schéma d’authentification est responsable de la construction de l’identité de l’utilisateur en fonction du contexte de la requête. Elle retourne une <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indiquant si l’authentification a réussi et, le cas échéant, l’identité de l’utilisateur dans un ticket d’authentification. Consultez `HttpContext.AuthenticateAsync`. Les exemples d’authentification sont les suivants :
+L’action d’authentification d’un schéma d’authentification est responsable de la construction de l’identité de l’utilisateur en fonction du contexte de la requête. Elle retourne une <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indiquant si l’authentification a réussi et, le cas échéant, l’identité de l’utilisateur dans un ticket d’authentification. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>. Les exemples d’authentification sont les suivants :
 
 * Schéma d’authentification de cookie qui construit l’identité de l’utilisateur à partir des cookies.
 * Un modèle de porteur JWT qui désérialise et valide un jeton de porteur JWT pour construire l’identité de l’utilisateur.
 
 ### <a name="challenge"></a>Test
 
-Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez `HttpContext.ChallengeAsync`. Les exemples de demande d’authentification sont les suivants :
+Une demande d’authentification est appelée par l’autorisation lorsqu’un utilisateur non authentifié demande un point de terminaison qui requiert une authentification. Une demande d’authentification est émise, par exemple, lorsqu’un utilisateur anonyme demande une ressource restreinte ou clique sur un lien de connexion. L’autorisation appelle un défi à l’aide du ou des schémas d’authentification spécifiés, ou la valeur par défaut si aucun n’est spécifié. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ChallengeAsync%2A>. Les exemples de demande d’authentification sont les suivants :
 
 * Schéma d’authentification de cookie redirigeant l’utilisateur vers une page de connexion.
 * Un modèle de porteur JWT renvoyant un résultat 401 avec un en-tête `www-authenticate: bearer`.
@@ -96,7 +96,7 @@ Une action de stimulation doit permettre à l’utilisateur de connaître le mé
 
 ### <a name="forbid"></a>Disant
 
-L’action interdire d’un schéma d’authentification est appelée par l’autorisation lorsqu’un utilisateur authentifié tente d’accéder à une ressource à laquelle il n’est pas autorisé à accéder. Consultez `HttpContext.ForbidAsync`. Les exemples d’authentifications interdits sont les suivants :
+L’action interdire d’un schéma d’authentification est appelée par l’autorisation lorsqu’un utilisateur authentifié tente d’accéder à une ressource à laquelle il n’est pas autorisé à accéder. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.ForbidAsync%2A>. Les exemples d’authentifications interdits sont les suivants :
 * Schéma d’authentification de cookie redirigeant l’utilisateur vers une page indiquant que l’accès a été interdit.
 * Un schéma de porteur JWT renvoyant un résultat 403.
 * Schéma d’authentification personnalisé redirigeant vers une page dans laquelle l’utilisateur peut demander l’accès à la ressource.

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: migration/webapi
-ms.openlocfilehash: c68cf83f427f53b110075168c6d5e4d021808782
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 7f61b78c589fc9d01061b50554e5a639e372c3d8
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881145"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661846"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>Migrer de API Web ASP.NET vers ASP.NET Core
 
@@ -19,9 +19,9 @@ Par [Scott Addie](https://twitter.com/scott_addie) et [Steve Smith](https://arda
 
 Une API Web ASP.NET 4. x est un service HTTP qui atteint un large éventail de clients, y compris des navigateurs et des appareils mobiles. ASP.NET Core unifie les modèles d’application MVC et API Web de ASP.NET 4. x en un modèle de programmation plus simple, connu sous le nom de ASP.NET Core MVC. Cet article décrit les étapes nécessaires à la migration de l’API Web ASP.NET 4. x vers ASP.NET Core MVC.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/migration/webapi/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 [!INCLUDE [prerequisites](../includes/net-core-prereqs-vs2019-2.2.md)]
 
@@ -61,7 +61,7 @@ La solution contient maintenant deux projets. Les sections suivantes expliquent 
 
 ## <a name="migrate-configuration"></a>Migrer la configuration
 
-ASP.NET Core n’utilise pas le dossier *App_Start* ou le fichier *global. asax* , et le fichier *Web. config* est ajouté au moment de la publication. *Startup.cs* est le remplacement de *global. asax* et se trouve à la racine du projet. La classe `Startup` gère toutes les tâches de démarrage de l’application. Pour plus d'informations, consultez <xref:fundamentals/startup>.
+ASP.NET Core n’utilise pas le dossier *App_Start* ou le fichier *global. asax* , et le fichier *Web. config* est ajouté au moment de la publication. *Startup.cs* est le remplacement de *global. asax* et se trouve à la racine du projet. La classe `Startup` gère toutes les tâches de démarrage de l’application. Pour plus d’informations, consultez <xref:fundamentals/startup>.
 
 Dans ASP.NET Core MVC, le routage des attributs est inclus par défaut lors de l’appel de <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> dans `Startup.Configure`. L’appel App_Start de `UseMvc` suivant remplace le fichier */webapiconfig.cs* du projet *ProductsApp* :
 
@@ -69,7 +69,7 @@ Dans ASP.NET Core MVC, le routage des attributs est inclus par défaut lors de l
 
 ## <a name="migrate-models-and-controllers"></a>Migrer les modèles et les contrôleurs
 
-Copiez sur le contrôleur du projet *ProductApp* et le modèle qu’il utilise. Suivez les étapes ci-dessous :
+Copiez sur le contrôleur du projet *ProductApp* et le modèle qu’il utilise. Procédez comme suit :
 
 1. Copiez les *contrôleurs/ProductsController. cs* du projet d’origine vers le nouveau.
 1. Copiez le dossier *Models* entier du projet d’origine vers le nouveau.
@@ -79,11 +79,11 @@ Copiez sur le contrôleur du projet *ProductApp* et le modèle qu’il utilise. 
 
 * Classe `ApiController`
 * Espace de noms `System.Web.Http`
-* Interface `IHttpActionResult`
+* interface `IHttpActionResult`
 
 Corrigez les erreurs comme suit :
 
-1. Modification `ApiController` à <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. Ajoutez `using Microsoft.AspNetCore.Mvc;` pour résoudre la référence `ControllerBase`.
+1. Remplacez `ApiController` par <xref:Microsoft.AspNetCore.Mvc.ControllerBase>. Ajoutez `using Microsoft.AspNetCore.Mvc;` pour résoudre la référence `ControllerBase`.
 1. Supprimez `using System.Web.Http;`.
 1. Remplacez le type de retour de l’action `GetProduct` `IHttpActionResult` par `ActionResult<Product>`.
 

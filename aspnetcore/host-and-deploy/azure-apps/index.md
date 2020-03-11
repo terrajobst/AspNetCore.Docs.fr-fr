@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 12/16/2019
 uid: host-and-deploy/azure-apps/index
 ms.openlocfilehash: ba9671f68a0faf99ff5232a6d5dd132d0a1d5ac5
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928427"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665143"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -49,9 +49,9 @@ Découvrez les limitations d’exécution du runtime Azure App Service appliqué
 <xref:test/troubleshoot>  
 Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NET Core.
 
-## <a name="application-configuration"></a>Configuration d’application
+## <a name="application-configuration"></a>Configuration de l’application
 
-### <a name="platform"></a>Platform
+### <a name="platform"></a>Plateforme
 
 L’architecture de la plateforme (x86/x64) d’une application App Services est définie dans les paramètres de l’application dans le portail Azure pour les applications hébergées sur un niveau d’hébergement de calcul (de base) de série A. Vérifiez que les paramètres de publication de l’application (par exemple, dans le [profil de publication Visual Studio (. pubxml)](xref:host-and-deploy/visual-studio-publish-profiles)) correspondent au paramètre dans la configuration de service de l’application dans le portail Azure.
 
@@ -69,7 +69,7 @@ Concernant les applications avec des dépendances natives, des runtimes pour les
 
 Pour plus d’informations sur les composants .NET Core Framework et les méthodes de distribution, telles que les informations sur le Runtime .NET Core et le kit SDK .NET Core, consultez [à propos de .net Core : composition](/dotnet/core/about#composition).
 
-### <a name="packages"></a>Packages
+### <a name="packages"></a>.
 
 Ajoutez les packages NuGet suivants pour fournir des fonctionnalités de journalisation automatique aux applications déployées sur Azure App Service :
 
@@ -99,7 +99,7 @@ Quand une application utilise l' [hôte Web](xref:fundamentals/host/web-host), l
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Scénarios avec un serveur proxy et un équilibreur de charge
 
-Le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components), qui configure le middleware des en-têtes transférés lors de l’hébergement [out-of-process](xref:host-and-deploy/iis/index#out-of-process-hosting-model), et le module ASP.NET Core sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
+Le [middleware d’intégration IIS](xref:host-and-deploy/iis/index#enable-the-iisintegration-components), qui configure le middleware des en-têtes transférés lors de l’hébergement [out-of-process](xref:host-and-deploy/iis/index#out-of-process-hosting-model), et le module ASP.NET Core sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez l’article [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
 
 ## <a name="monitoring-and-logging"></a>Surveillance et journalisation
 
@@ -117,7 +117,7 @@ Les applications ASP.NET Core déployées sur App Service reçoivent automatique
 
 Pour des informations de surveillance, de journalisation et de dépannage, consultez les articles suivants :
 
-[Superviser des applications dans Azure App Service](/azure/app-service/web-sites-monitor)  
+[Surveiller les applications dans Azure App Service](/azure/app-service/web-sites-monitor)  
 Découvrez comment consulter les quotas et les métriques des applications et des plans App Service.
 
 [Activer la journalisation des diagnostics pour les applications dans Azure App Service](/azure/app-service/web-sites-enable-diagnostic-log)  
@@ -139,11 +139,11 @@ Les [clés de Protection des données](xref:security/data-protection/implementat
 Lors d’une permutation entre les emplacements de déploiement, aucun système utilisant la protection des données ne peut déchiffrer les données stockées à l’aide du porte-clés au sein de l’emplacement précédent. L’intergiciel (middleware) ASP.NET Cookie utilise la protection des données pour protéger ses cookies. Cela entraîne la déconnexion des utilisateurs des applications qui utilisent l’intergiciel ASP.NET Cookie standard. Pour une solution de porte-clés indépendante de l’emplacement, utilisez un fournisseur de porte-clés externe, tel que :
 
 * Stockage Blob Azure
-* Azure Key Vault
+* Azure Key Vault
 * Magasin SQL
-* Cache Redis
+* Le cache Redis
 
-Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
+Pour plus d’informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
 ## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>Déployer une application ASP.NET Core qui utilise une version préliminaire de .NET Core
@@ -197,8 +197,8 @@ Si un problème se produit à l’aide de l’extension de site en version prél
 1. Dans le portail Azure, accédez à App Service.
 1. Sélectionnez l’application web.
 1. Tapez « ex » dans la zone de recherche pour filtrer sur les « Extensions » ou faites défiler la liste outils de gestion.
-1. Sélectionner **Extensions**.
-1. Sélectionnez **Ajouter** .
+1. Sélectionnez **Extensions**.
+1. Sélectionnez **Ajouter**.
 1. Sélectionnez l’extension **ASP.NET Core {X.Y} ({x64|x86}) Runtime** dans la liste, où `{X.Y}` correspond à la préversion d’ASP.NET Core et `{x64|x86}` spécifie la plateforme.
 1. Sélectionnez **OK** pour accepter les conditions légales.
 1. Sélectionnez **OK** pour installer l’extension.
@@ -251,7 +251,7 @@ Pour un déploiement de 64 bits :
 
 ### <a name="deploy-the-app-framework-dependent"></a>Déployer l’application en fonction du framework
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Sélectionnez **Générer** > **Publier {nom de l’application}** dans la barre d’outils de Visual Studio, ou cliquez avec le bouton droit sur le projet dans l’**Explorateur de solutions**, puis sélectionnez **Publier**.
 1. Dans la boîte de dialogue **Choisir une cible de publication**, confirmez qu’**App Service** est sélectionné.
@@ -264,7 +264,7 @@ Pour un déploiement de 64 bits :
    * Sélectionnez **Enregistrer**.
 1. Créez un nouveau site ou mettez à jour un site existant en suivant les autres invites de l'Assistant de publication.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 
 1. Dans le fichier projet, ne spécifiez pas d’[Identificateur d’exécution (RID)](/dotnet/core/rid-catalog).
 
@@ -282,7 +282,7 @@ Pour un déploiement de 64 bits :
 
 Utilisez Visual Studio ou le CLI .NET Core pour un [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd).
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Sélectionnez **Générer** > **Publier {nom de l’application}** dans la barre d’outils de Visual Studio, ou cliquez avec le bouton droit sur le projet dans l’**Explorateur de solutions**, puis sélectionnez **Publier**.
 1. Dans la boîte de dialogue **Choisir une cible de publication**, confirmez qu’**App Service** est sélectionné.
@@ -290,12 +290,12 @@ Utilisez Visual Studio ou le CLI .NET Core pour un [Déploiement autonome (SCD)]
 1. Dans la boîte de dialogue **Publier** :
    * Confirmez que la configuration **Mise en production** est sélectionnée.
    * Ouvrez la liste déroulante **Mode de déploiement** et sélectionnez **Autonome**.
-   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. La valeur par défaut est `win-x86`,
+   * Sélectionnez le runtime cible à partir de la liste déroulante **Runtime cible**. Par défaut, il s’agit de `win-x86`.
    * Si vous devez supprimer des fichiers supplémentaires lors du déploiement, ouvrez **Options de publication de fichiers** et sélectionnez la case à cocher pour supprimer des fichiers supplémentaires à la destination.
    * Sélectionnez **Enregistrer**.
 1. Créez un nouveau site ou mettez à jour un site existant en suivant les autres invites de l'Assistant de publication.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 
 1. Dans le fichier projet, spécifiez un ou plusieurs [identificateurs de runtime (RID)](/dotnet/core/rid-catalog). Utilisez `<RuntimeIdentifier>` (singulier) pour un seul RID, ou `<RuntimeIdentifiers>` (pluriel) pour fournir une liste de RID délimitée par des points-virgules. Dans l’exemple suivant, le RID `win-x86` est spécifié :
 
@@ -326,7 +326,7 @@ Si vous devez transformer *web.config* lors de la publication (par exemple, déf
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Vue d’ensemble d’App Service](/azure/app-service/app-service-web-overview)
+* [Vue d'ensemble d'App Service](/azure/app-service/app-service-web-overview)
 * [Azure App Service: The Best Place to Host your .NET Apps (55-minute overview video)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (12-minute video)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics)

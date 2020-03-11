@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/07/2016
 uid: migration/http-modules
 ms.openlocfilehash: bdf27ccb742d4bc05bac71e6c96d71c38dcb4b62
-ms.sourcegitcommit: 8835b6777682da6fb3becf9f9121c03f89dc7614
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69975489"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659683"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des gestionnaires et des modules HTTP vers ASP.NET Core intergiciel
 
@@ -18,11 +18,11 @@ Cet article explique comment migrer [des modules et des gestionnaires HTTP ASP.N
 
 ## <a name="modules-and-handlers-revisited"></a>Modules et gestionnaires revisités
 
-Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapituler le fonctionnement des modules et gestionnaires HTTP:
+Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapituler le fonctionnement des modules et gestionnaires HTTP :
 
 ![Gestionnaire de modules](http-modules/_static/moduleshandlers.png)
 
-**Les gestionnaires sont les suivants:**
+**Les gestionnaires sont les suivants :**
 
 * Classes qui implémentent [IHttpHandler](/dotnet/api/system.web.ihttphandler)
 
@@ -30,7 +30,7 @@ Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapit
 
 * [Configuré](/iis/configuration/system.webserver/handlers/) dans *Web. config*
 
-**Les modules sont les suivants:**
+**Les modules sont les suivants :**
 
 * Classes qui implémentent [IHttpModule](/dotnet/api/system.web.ihttpmodule)
 
@@ -42,9 +42,9 @@ Avant de passer à ASP.NET Core intergiciel, nous allons tout d’abord récapit
 
 * [Configuré](/iis/configuration/system.webserver/modules/) dans *Web. config*
 
-**L’ordre dans lequel les modules traitent les demandes entrantes est déterminé par:**
+**L’ordre dans lequel les modules traitent les demandes entrantes est déterminé par :**
 
-1. Le [cycle de vie](https://msdn.microsoft.com/library/ms227673.aspx)de l’application, qui est un événement de série déclenché par ASP.net: [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
+1. Le [cycle de vie](https://msdn.microsoft.com/library/ms227673.aspx)de l’application, qui est un événement de série déclenché par ASP.net : [beginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
 
 2. Pour le même événement, ordre dans lequel ils sont configurés dans *Web. config*.
 
@@ -52,7 +52,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 ## <a name="from-handlers-and-modules-to-middleware"></a>Des gestionnaires et des modules à l’intergiciel (middleware)
 
-**Les intergiciels (middleware) sont plus simples que les gestionnaires et les modules HTTP:**
+**Les intergiciels (middleware) sont plus simples que les gestionnaires et les modules HTTP :**
 
 * Les modules, les gestionnaires, *global.asax.cs*, *Web. config* (à l’exception de la configuration IIS) et le cycle de vie de l’application ont disparu
 
@@ -60,9 +60,9 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 * Les intergiciels (middleware) sont configurés à l’aide du code plutôt que dans *Web. config*
 
-* La [branche](xref:fundamentals/middleware/index#use-run-and-map) de pipeline vous permet d’envoyer des demandes à un intergiciel (middleware) spécifique, en fonction de l’URL, mais également des en-têtes de demande, des chaînes de requête, etc.
+* La [branche de pipeline](xref:fundamentals/middleware/index#use-run-and-map) vous permet d’envoyer des demandes à un intergiciel (middleware) spécifique, en fonction de l’URL, mais également des en-têtes de demande, des chaînes de requête, etc.
 
-**Les intergiciels sont très similaires aux modules:**
+**Les intergiciels sont très similaires aux modules :**
 
 * Appelé en principe pour chaque requête
 
@@ -70,7 +70,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 * Possibilité de créer leur propre réponse HTTP
 
-**Les intergiciels et les modules sont traités dans un ordre différent:**
+**Les intergiciels et les modules sont traités dans un ordre différent :**
 
 * L’ordre des intergiciels est basé sur l’ordre dans lequel ils sont insérés dans le pipeline de demande, tandis que l’ordre des modules est principalement basé sur les événements du [cycle de vie](https://msdn.microsoft.com/library/ms227673.aspx) de l’application.
 
@@ -78,17 +78,17 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 * Consultez [création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
-![Intergiciel (middleware)](http-modules/_static/middleware.png)
+![Middlewares](http-modules/_static/middleware.png)
 
 Notez comment dans l’image ci-dessus, l’intergiciel (middleware) d’authentification a court-circuité la demande.
 
 ## <a name="migrating-module-code-to-middleware"></a>Migration du code du module vers l’intergiciel (middleware)
 
-Un module HTTP existant doit ressembler à ceci:
+Un module HTTP existant doit ressembler à ceci :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
-Comme indiqué dans la page [intergiciel (middleware](xref:fundamentals/middleware/index) ), un intergiciel (middleware) ASP.net Core est une classe `Invoke` qui expose une méthode qui `Task`prend un `HttpContext` et retourne un. Votre nouvel intergiciel ressemble à ce qui suit:
+Comme indiqué dans la page [intergiciel (middleware](xref:fundamentals/middleware/index) ), un intergiciel (middleware) ASP.net Core est une classe qui expose une méthode `Invoke` qui prend un `HttpContext` et retourne un `Task`. Votre nouvel intergiciel ressemble à ce qui suit :
 
 <a name="http-modules-usemiddleware"></a>
 
@@ -96,19 +96,19 @@ Comme indiqué dans la page [intergiciel (middleware](xref:fundamentals/middlewa
 
 Le modèle d’intergiciel (middleware) précédent a été extrait de la section sur l’écriture d’un [intergiciel (middleware](xref:fundamentals/middleware/write)).
 
-La classe d’assistance *MyMiddlewareExtensions* facilite la configuration de votre intergiciel dans votre `Startup` classe. La `UseMyMiddleware` méthode ajoute votre classe middleware au pipeline de requête. Les services requis par l’intergiciel (middleware) sont injectés dans le constructeur de l’intergiciel (middleware).
+La classe d’assistance *MyMiddlewareExtensions* facilite la configuration de votre intergiciel dans votre classe `Startup`. La méthode `UseMyMiddleware` ajoute votre classe middleware au pipeline de requête. Les services requis par l’intergiciel (middleware) sont injectés dans le constructeur de l’intergiciel (middleware).
 
 <a name="http-modules-shortcircuiting-middleware"></a>
 
-Votre module peut mettre fin à une demande, par exemple si l’utilisateur n’est pas autorisé:
+Votre module peut mettre fin à une demande, par exemple si l’utilisateur n’est pas autorisé :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&name=snippet_Terminate)]
 
-Un intergiciel gère cela en n’appelant `Invoke` pas sur l’intergiciel (middleware) suivant dans le pipeline. N’oubliez pas que cela ne termine pas complètement la requête, car les intergiciels précédents sont toujours appelés quand la réponse fait remonter le pipeline.
+Un intergiciel gère cela en n’appelant pas `Invoke` sur l’intergiciel suivant dans le pipeline. N’oubliez pas que cela ne termine pas complètement la requête, car les intergiciels précédents sont toujours appelés quand la réponse fait remonter le pipeline.
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&name=snippet_Terminate)]
 
-Lorsque vous migrez les fonctionnalités de votre module vers votre nouvel intergiciel, vous constaterez peut-être que votre code `HttpContext` n’est pas compilé, car la classe a été considérablement modifiée dans ASP.net core. [Plus tard](#migrating-to-the-new-httpcontext), vous verrez comment migrer vers le nouveau ASP.net Core HttpContext.
+Lorsque vous migrez les fonctionnalités de votre module vers votre nouvel intergiciel, vous constaterez peut-être que votre code n’est pas compilé, car la classe `HttpContext` a été considérablement modifiée dans ASP.NET Core. [Plus tard](#migrating-to-the-new-httpcontext), vous verrez comment migrer vers le nouveau ASP.net Core HttpContext.
 
 ## <a name="migrating-module-insertion-into-the-request-pipeline"></a>Migration de l’insertion du module dans le pipeline de requête
 
@@ -116,11 +116,11 @@ Les modules HTTP sont généralement ajoutés au pipeline de requêtes à l’ai
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
-Convertissez ceci en [ajoutant votre nouvel intergiciel](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) au pipeline de requête dans `Startup` votre classe:
+Convertissez ceci en [ajoutant votre nouvel intergiciel](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) au pipeline de requêtes dans votre classe `Startup` :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que`BeginRequest`module `EndRequest`(,, etc.) et de son ordre dans votre liste de modules dans *Web. config*.
+L’emplacement exact dans le pipeline où vous insérez votre nouvel intergiciel dépend de l’événement qu’il a traité en tant que module (`BeginRequest`, `EndRequest`, etc.) et de son ordre dans votre liste de modules dans *Web. config*.
 
 Comme indiqué précédemment, il n’existe aucun cycle de vie d’application dans ASP.NET Core et l’ordre dans lequel les réponses sont traitées par l’intergiciel diffère de l’ordre utilisé par les modules. Cela pourrait rendre votre décision de classement plus complexe.
 
@@ -128,53 +128,53 @@ Si le classement devient un problème, vous pouvez fractionner votre module en p
 
 ## <a name="migrating-handler-code-to-middleware"></a>Migration du code du gestionnaire vers l’intergiciel (middleware)
 
-Un gestionnaire HTTP ressemble à ceci:
+Un gestionnaire HTTP ressemble à ceci :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16)]
 
-Dans votre projet ASP.NET Core, vous pouvez traduire cela en un intergiciel (middleware) semblable à ce qui suit:
+Dans votre projet ASP.NET Core, vous pouvez traduire cela en un intergiciel (middleware) semblable à ce qui suit :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,40,42,44)]
 
-Cet intergiciel est très similaire à l’intergiciel (middleware) correspondant aux modules. La seule différence réelle est qu’il n’y a pas d' `_next.Invoke(context)`appel à. Cela est logique, étant donné que le gestionnaire se trouve à la fin du pipeline de requête, il n’y aura donc aucun middleware suivant à appeler.
+Cet intergiciel est très similaire à l’intergiciel (middleware) correspondant aux modules. La seule différence réelle est qu’il n’y a pas d’appel à `_next.Invoke(context)`. Cela est logique, étant donné que le gestionnaire se trouve à la fin du pipeline de requête, il n’y aura donc aucun middleware suivant à appeler.
 
 ## <a name="migrating-handler-insertion-into-the-request-pipeline"></a>Migration de l’insertion du gestionnaire dans le pipeline de requête
 
-La configuration d’un gestionnaire HTTP s’effectue dans le *fichier Web. config* et ressemble à ce qui suit:
+La configuration d’un gestionnaire HTTP s’effectue dans le *fichier Web. config* et ressemble à ce qui suit :
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32,46-48,50,101)]
 
-Vous pouvez convertir cela en ajoutant votre nouvel intergiciel de gestionnaire au pipeline de requête de `Startup` votre classe, similaire aux middlewares convertis à partir de modules. Le problème avec cette approche est qu’elle envoie toutes les demandes à votre intergiciel de gestionnaire. Toutefois, vous souhaitez que les demandes avec une extension donnée atteignent votre intergiciel (middleware). Cela vous donnera les mêmes fonctionnalités que celles que vous aviez avec votre gestionnaire HTTP.
+Vous pouvez convertir cela en ajoutant votre nouvel intergiciel de gestionnaire au pipeline de requêtes dans votre classe `Startup`, de la même façon que les intergiciels (middleware) convertis à partir de modules. Le problème avec cette approche est qu’elle envoie toutes les demandes à votre intergiciel de gestionnaire. Toutefois, vous souhaitez que les demandes avec une extension donnée atteignent votre intergiciel (middleware). Cela vous donnera les mêmes fonctionnalités que celles que vous aviez avec votre gestionnaire HTTP.
 
-Une solution consiste à créer une branche du pipeline pour les requêtes avec une extension `MapWhen` donnée, à l’aide de la méthode d’extension. Pour ce faire, utilisez la `Configure` même méthode que celle où vous ajoutez l’autre intergiciel:
+Une solution consiste à créer une branche du pipeline pour les requêtes avec une extension donnée, à l’aide de la méthode d’extension `MapWhen`. Pour ce faire, vous devez utiliser la même `Configure` méthode où vous ajoutez l’autre intergiciel :
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=27-34)]
 
-`MapWhen`prend les paramètres suivants:
+`MapWhen` prend les paramètres suivants :
 
-1. Une expression lambda qui prend `HttpContext` le et `true` retourne la valeur si la demande doit descendre dans la branche. Cela signifie que vous pouvez créer des branches de requêtes non seulement en fonction de leur extension, mais également sur des en-têtes de demande, des paramètres de chaîne de requête, etc.
+1. Lambda qui prend le `HttpContext` et retourne `true` si la requête doit descendre dans la branche. Cela signifie que vous pouvez créer des branches de requêtes non seulement en fonction de leur extension, mais également sur des en-têtes de demande, des paramètres de chaîne de requête, etc.
 
-2. Lambda qui prend un `IApplicationBuilder` et ajoute tous les intergiciels (middleware) pour la branche. Cela signifie que vous pouvez ajouter un intergiciel (middleware) supplémentaire à la branche devant l’intergiciel (middleware) de votre gestionnaire.
+2. Lambda qui prend une `IApplicationBuilder` et ajoute tous les intergiciels (middleware) de la branche. Cela signifie que vous pouvez ajouter un intergiciel (middleware) supplémentaire à la branche devant l’intergiciel (middleware) de votre gestionnaire.
 
-Intergiciel ajouté au pipeline avant que la branche ne soit appelée sur toutes les demandes; la branche n’aura aucun impact sur ces dernières.
+Intergiciel ajouté au pipeline avant que la branche ne soit appelée sur toutes les demandes ; la branche n’aura aucun impact sur ces dernières.
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>Chargement des options de l’intergiciel (middleware) à l’aide du modèle options
 
 Certains modules et gestionnaires possèdent des options de configuration qui sont stockées dans *Web. config*. Toutefois, dans ASP.NET Core un nouveau modèle de configuration est utilisé à la place de *Web. config*.
 
-Le nouveau [système de configuration](xref:fundamentals/configuration/index) vous offre les options suivantes pour résoudre ce qui suit:
+Le nouveau [système de configuration](xref:fundamentals/configuration/index) vous offre les options suivantes pour résoudre ce qui suit :
 
 * Injectez directement les options dans l’intergiciel (middleware), comme indiqué dans la [section suivante](#loading-middleware-options-through-direct-injection).
 
 * Utilisez le [modèle d’options](xref:fundamentals/configuration/options):
 
-1. Créez une classe pour contenir vos options d’intergiciel, par exemple:
+1. Créez une classe pour contenir vos options d’intergiciel, par exemple :
 
    [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
 
 2. Stocker les valeurs d’option
 
-   Le système de configuration vous permet de stocker les valeurs d’option où vous le souhaitez. Toutefois, la plupart des sites utilisent *appSettings. JSON.* nous allons donc adopter cette approche:
+   Le système de configuration vous permet de stocker les valeurs d’option où vous le souhaitez. Toutefois, la plupart des sites utilisent *appSettings. JSON.* nous allons donc adopter cette approche :
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
@@ -182,19 +182,19 @@ Le nouveau [système de configuration](xref:fundamentals/configuration/index) vo
 
 3. Associer les valeurs d’option à la classe options
 
-    Le modèle d’options utilise l’infrastructure d’injection de dépendances de ASP.net Core pour associer le `MyMiddlewareOptions`type d’options `MyMiddlewareOptions` (tel que) à un objet qui a les options réelles.
+    Le modèle d’options utilise l’infrastructure d’injection de dépendances de ASP.NET Core pour associer le type d’options (tel que `MyMiddlewareOptions`) à un objet `MyMiddlewareOptions` qui a les options réelles.
 
-    Mettez à `Startup` jour votre classe:
+    Mettez à jour votre classe `Startup` :
 
-   1. Si vous utilisez *appSettings. JSON*, ajoutez-le au générateur de configuration dans le `Startup` constructeur:
+   1. Si vous utilisez *appSettings. JSON*, ajoutez-le au générateur de configuration dans le constructeur `Startup` :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
-   2. Configurer le service d’options:
+   2. Configurer le service d’options :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
 
-   3. Associez vos options à votre classe d’options:
+   3. Associez vos options à votre classe d’options :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=6-8)]
 
@@ -202,9 +202,9 @@ Le nouveau [système de configuration](xref:fundamentals/configuration/index) vo
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
 
-   La méthode d’extension [UseMiddleware](#http-modules-usemiddleware) qui ajoute votre intergiciel à l `IApplicationBuilder` 'prend en charge l’injection de dépendances.
+   La méthode d’extension [UseMiddleware](#http-modules-usemiddleware) qui ajoute votre intergiciel au `IApplicationBuilder` prend en charge l’injection de dépendances.
 
-   Cela n’est pas `IOptions` limité aux objets. Tout autre objet requis par votre intergiciel peut être injecté de cette façon.
+   Cela n’est pas limité aux objets `IOptions`. Tout autre objet requis par votre intergiciel peut être injecté de cette façon.
 
 ## <a name="loading-middleware-options-through-direct-injection"></a>Chargement des options d’intergiciel par injection directe
 
@@ -212,37 +212,37 @@ Le modèle d’options présente l’avantage de créer un couplage faible entre
 
 Cela s’arrête si vous souhaitez utiliser le même intergiciel deux fois, avec des options différentes. Par exemple, un intergiciel d’autorisation utilisé dans différentes branches autorisant des rôles différents. Vous ne pouvez pas associer deux objets d’options différents à la classe d’options.
 
-La solution consiste à récupérer les objets d’options avec les valeurs d’options réelles `Startup` dans votre classe et à les transmettre directement à chaque instance de votre intergiciel.
+La solution consiste à récupérer les objets d’options avec les valeurs d’options réelles dans votre classe `Startup` et à les transmettre directement à chaque instance de votre intergiciel.
 
 1. Ajouter une deuxième clé à *appSettings. JSON*
 
-   Pour ajouter un deuxième ensemble d’options au fichier *appSettings. JSON* , utilisez une nouvelle clé pour l’identifier de manière unique:
+   Pour ajouter un deuxième ensemble d’options au fichier *appSettings. JSON* , utilisez une nouvelle clé pour l’identifier de manière unique :
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
-2. Récupérez les valeurs des options et transmettez-les à l’intergiciel (middleware). La `Use...` méthode d’extension (qui ajoute votre intergiciel au pipeline) est un emplacement logique à passer dans les valeurs des options: 
+2. Récupérez les valeurs des options et transmettez-les à l’intergiciel (middleware). La méthode d’extension `Use...` (qui ajoute votre intergiciel au pipeline) est un emplacement logique à passer dans les valeurs d’option : 
 
    [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
 
-3. Activez l’intergiciel (middleware) pour accepter un paramètre d’options. Fournissez une surcharge de `Use...` la méthode d’extension (qui accepte le paramètre options et le `UseMiddleware`passe à). Lorsque `UseMiddleware` est appelé avec des paramètres, il passe les paramètres à votre constructeur middleware lorsqu’il instancie l’objet intergiciel.
+3. Activez l’intergiciel (middleware) pour accepter un paramètre d’options. Fournissez une surcharge de la méthode d’extension `Use...` (qui accepte le paramètre options et le passe à `UseMiddleware`). Lorsque `UseMiddleware` est appelée avec des paramètres, il transmet les paramètres à votre constructeur d’intergiciel (middleware) lorsqu’il instancie l’objet intergiciel (middleware).
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
 
-   Notez comment cela encapsule l’objet d’options dans `OptionsWrapper` un objet. Cela implémente `IOptions`, comme attendu par le constructeur d’intergiciel.
+   Notez comment cela encapsule l’objet d’options dans un objet `OptionsWrapper`. Cela implémente `IOptions`, comme attendu par le constructeur d’intergiciel.
 
 ## <a name="migrating-to-the-new-httpcontext"></a>Migration vers le nouveau HttpContext
 
-Vous avez vu précédemment que `Invoke` la méthode de votre intergiciel prend un paramètre de type `HttpContext`:
+Vous avez vu précédemment que la méthode `Invoke` de votre intergiciel prend un paramètre de type `HttpContext`:
 
 ```csharp
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext`a été considérablement modifié dans ASP.NET Core. Cette section montre comment convertir les propriétés les plus couramment utilisées de [System. Web. HttpContext](/dotnet/api/system.web.httpcontext) vers la nouvelle `Microsoft.AspNetCore.Http.HttpContext`.
+`HttpContext` a été considérablement modifié dans ASP.NET Core. Cette section montre comment convertir les propriétés les plus couramment utilisées de [System. Web. HttpContext](/dotnet/api/system.web.httpcontext) vers la nouvelle `Microsoft.AspNetCore.Http.HttpContext`.
 
 ### <a name="httpcontext"></a>HttpContext
 
-**HttpContext. Items** se traduit par:
+**HttpContext. Items** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Items)]
 
@@ -254,58 +254,58 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 
 ### <a name="httpcontextrequest"></a>HttpContext.Request
 
-**HttpContext. Request. HttpMethod** se traduit par:
+**HttpContext. Request. HttpMethod** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Method)]
 
-**HttpContext. Request. QueryString** se traduit par:
+**HttpContext. Request. QueryString** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Query)]
 
-**HttpContext. Request. URL** et **HttpContext. Request. RawUrl** se traduisent par:
+**HttpContext. Request. URL** et **HttpContext. Request. RawUrl** se traduisent par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Url)]
 
-**HttpContext. Request. IsSecureConnection** se traduit par:
+**HttpContext. Request. IsSecureConnection** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Secure)]
 
-**HttpContext. Request. UserHostAddress** se traduit par:
+**HttpContext. Request. UserHostAddress** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Host)]
 
-**HttpContext. Request. Cookies** se traduit par:
+**HttpContext. Request. Cookies** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Cookies)]
 
-**HttpContext. Request. RequestContext. RouteData** se traduit par:
+**HttpContext. Request. RequestContext. RouteData** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Route)]
 
-**Les en-têtes HttpContext. Request.** sont traduits par:
+**Les en-têtes HttpContext. Request.** sont traduits par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Headers)]
 
-**HttpContext. Request. UserAgent** se traduit par:
+**HttpContext. Request. UserAgent** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Agent)]
 
-**HttpContext. Request. UrlReferrer** se traduit par:
+**HttpContext. Request. UrlReferrer** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Referrer)]
 
-**HttpContext. Request. ContentType** se traduit par:
+**HttpContext. Request. ContentType** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Type)]
 
-**HttpContext. Request. Form** se traduit par:
+**HttpContext. Request. Form** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Form)]
 
 > [!WARNING]
 > Lire les valeurs de formulaire uniquement si le sous-type de contenu est *x-www-form-urlencoded* ou *Form-Data*.
 
-**HttpContext. Request. InputStream** se traduit par:
+**HttpContext. Request. InputStream** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Input)]
 
@@ -318,33 +318,33 @@ Donne un ID unique pour chaque demande. Très utile pour inclure dans vos journa
 
 ### <a name="httpcontextresponse"></a>HttpContext. Response
 
-**HttpContext. Response. Status** et **HttpContext. Response. StatusDescription** se traduisent par:
+**HttpContext. Response. Status** et **HttpContext. Response. StatusDescription** se traduisent par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Status)]
 
-**HttpContext. Response. ContentEncoding** et **HttpContext. Response. ContentType** se traduisent par:
+**HttpContext. Response. ContentEncoding** et **HttpContext. Response. ContentType** se traduisent par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_RespType)]
 
-**HttpContext. Response. ContentType** se traduit également par:
+**HttpContext. Response. ContentType** se traduit également par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_RespTypeOnly)]
 
-**HttpContext. Response. Output** se traduit par:
+**HttpContext. Response. Output** se traduit par :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_Output)]
 
-**HttpContext.Response.TransmitFile**
+**HttpContext. Response. TransmitFile**
 
 Le traitement d’un fichier est abordé [ici](../fundamentals/request-features.md#middleware-and-request-features).
 
-**HttpContext.Response.Headers**
+**HttpContext. Response. en-têtes**
 
 L’envoi d’en-têtes de réponse est compliqué par le fait que si vous les définissez après quoi tout a été écrit dans le corps de la réponse, ils ne sont pas envoyés.
 
-La solution consiste à définir une méthode de rappel qui sera appelée juste avant le début de l’écriture dans la réponse. Cette opération est effectuée au début de la `Invoke` méthode dans votre intergiciel. C’est cette méthode de rappel qui définit vos en-têtes de réponse.
+La solution consiste à définir une méthode de rappel qui sera appelée juste avant le début de l’écriture dans la réponse. Cette opération est effectuée au début de la méthode `Invoke` dans votre intergiciel. C’est cette méthode de rappel qui définit vos en-têtes de réponse.
 
-Le code suivant définit une méthode de rappel `SetHeaders`appelée:
+Le code suivant définit une méthode de rappel appelée `SetHeaders`:
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)
@@ -353,13 +353,13 @@ public async Task Invoke(HttpContext httpContext)
     httpContext.Response.OnStarting(SetHeaders, state: httpContext);
 ```
 
-La `SetHeaders` méthode de rappel ressemble à ceci:
+La méthode de rappel `SetHeaders` ressemble à ceci :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetHeaders)]
 
-**HttpContext.Response.Cookies**
+**HttpContext. Response. Cookies**
 
-Les cookies passent au navigateur dans un en-tête de réponse *Set-Cookie* . Par conséquent, l’envoi de cookies requiert le même rappel que celui utilisé pour l’envoi des en-têtes de réponse:
+Les cookies passent au navigateur dans un en-tête de réponse *Set-Cookie* . Par conséquent, l’envoi de cookies requiert le même rappel que celui utilisé pour l’envoi des en-têtes de réponse :
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)
@@ -369,7 +369,7 @@ public async Task Invoke(HttpContext httpContext)
     httpContext.Response.OnStarting(SetHeaders, state: httpContext);
 ```
 
-La `SetCookies` méthode de rappel ressemble à ce qui suit:
+La méthode de rappel `SetCookies` ressemble à ce qui suit :
 
 [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/HttpContextDemoMiddleware.cs?name=snippet_SetCookies)]
 
@@ -378,4 +378,4 @@ La `SetCookies` méthode de rappel ressemble à ce qui suit:
 * [Vue d’ensemble des gestionnaires HTTP et des modules HTTP](/iis/configuration/system.webserver/)
 * [Configuration](xref:fundamentals/configuration/index)
 * [Démarrage d’une application](xref:fundamentals/startup)
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
+* [Middleware](xref:fundamentals/middleware/index)

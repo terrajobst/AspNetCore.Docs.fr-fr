@@ -6,15 +6,15 @@ ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: 2c442060872ab1d2d79a2e355ae257fdf1005914
-ms.sourcegitcommit: 991442dfb16ef08a0aae05bc79f9e9a2d819c587
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75492644"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663505"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Méthodes et vues de contrôleur dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Nous avons une bonne ébauche de l’application de films, mais sa présentation n’est pas idéale, par exemple, **ReleaseDate** devrait être écrit en deux mots.
 

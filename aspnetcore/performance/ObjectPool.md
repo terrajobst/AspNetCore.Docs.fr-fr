@@ -1,68 +1,68 @@
 ---
-title: Réutilisation d’un objet avec le pool de threads dans ASP.NET Core
+title: Réutilisation d’objets avec ObjectPool dans ASP.NET Core
 author: rick-anderson
-description: Conseils pour augmenter les performances dans les applications ASP.NET Core à l’aide du pool de threads.
+description: Conseils pour améliorer les performances dans les applications de ASP.NET Core à l’aide de ObjectPool.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 04/11/2019
 uid: performance/ObjectPool
 ms.openlocfilehash: 771f19e54a908b8b2cd85ff72f368f16e94a2310
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67815521"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666109"
 ---
-# <a name="object-reuse-with-objectpool-in-aspnet-core"></a>Réutilisation d’un objet avec le pool de threads dans ASP.NET Core
+# <a name="object-reuse-with-objectpool-in-aspnet-core"></a>Réutilisation d’objets avec ObjectPool dans ASP.NET Core
 
-Par [Steve Gordon](https://twitter.com/stevejgordon), [Ryan Nowak](https://github.com/rynowak), et [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Steve Gordon](https://twitter.com/stevejgordon), [Ryan Nowak](https://github.com/rynowak)et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-<xref:Microsoft.Extensions.ObjectPool> fait partie de l’infrastructure ASP.NET Core qui prend en charge en conservant un groupe d’objets en mémoire pour une réutilisation au lieu d’objets garbage collectées.
+<xref:Microsoft.Extensions.ObjectPool> fait partie de l’infrastructure ASP.NET Core qui prend en charge la conservation d’un groupe d’objets en mémoire à des fins de réutilisation, au lieu d’autoriser les objets à être récupérés par le garbage collector.
 
-Vous souhaiterez peut-être utiliser le pool d’objets si les objets qui sont gérés sont :
+Vous souhaiterez peut-être utiliser le pool d’objets si les objets gérés sont :
 
-- Cher / d’initialiser allouer.
+- Coûteuse à allouer/initialiser.
 - Représentent une ressource limitée.
-- Utilisé de manière prévisible et fréquemment.
+- Utilisé de manière prévisible et fréquente.
 
-Par exemple, le framework ASP.NET Core utilise le pool d’objets à certains endroits à réutiliser <xref:System.Text.StringBuilder> instances. `StringBuilder` alloue et gère son propre mémoires tampons pour conserver les données de caractère. ASP.NET Core utilise régulièrement `StringBuilder` pour implémenter les fonctionnalités, et réutilisez permet un gain de performances.
+Par exemple, l’infrastructure ASP.NET Core utilise le pool d’objets à certains endroits pour réutiliser des instances <xref:System.Text.StringBuilder>. `StringBuilder` alloue et gère ses propres mémoires tampons pour contenir les données de caractères. ASP.NET Core utilise régulièrement `StringBuilder` pour implémenter des fonctionnalités, et les réutiliser améliorent les performances.
 
-Le pool d’objets ne toujours améliore les performances :
+La mise en pool d’objets n’améliore pas toujours les performances :
 
-- À moins que le coût de l’initialisation d’un objet est élevé, il est généralement plus lent obtenir l’objet à partir du pool.
-- Objets gérés par le pool ne sont pas désalloués jusqu'à ce que le pool est désallouée.
+- À moins que le coût d’initialisation d’un objet ne soit élevé, il est généralement plus lent de récupérer l’objet à partir du pool.
+- Les objets gérés par le pool ne sont pas désalloués tant que le pool n’est pas libéré.
 
-Utiliser le pool d’objets uniquement après la collecte de données de performances à l’aide de scénarios réalistes pour votre application ou une bibliothèque.
+Utilisez le mise en pool d’objets uniquement après avoir collecté les données de performances à l’aide de scénarios réalistes pour votre application ou bibliothèque.
 
-**AVERTISSEMENT : Le `ObjectPool` n’implémente pas `IDisposable`. Nous ne recommandons pas l’utiliser avec les types qui ont besoin de disposition.**
+**AVERTISSEMENT : le `ObjectPool` n’implémente pas `IDisposable`. Nous vous déconseillons de l’utiliser avec des types nécessitant une suppression.**
 
-**REMARQUE : Le pool de threads ne place pas une limite sur le nombre d’objets il alloue, elle place une limite sur le nombre d’objets, qu'il conserve.**
+**Remarque : le ObjectPool n’impose aucune limite quant au nombre d’objets qu’il va allouer, il limite le nombre d’objets qu’il va conserver.**
 
 ## <a name="concepts"></a>Concepts
 
-<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> -l’abstraction de pool d’objet de base. Utilisé pour obtenir et retourner des objets.
+<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> : abstraction du pool d’objets de base. Permet d’obtenir et de retourner des objets.
 
-<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601> -implémenter cela pour personnaliser la façon dont un objet est créé et comment il est *réinitialiser* lorsque retournée au pool. Cela peut être passé dans un pool d’objets que vous construisez directement... Ou
+<xref:Microsoft.Extensions.ObjectPool.PooledObjectPolicy%601> : implémentez cette méthode pour personnaliser la façon dont un objet est créé et la façon dont il est *réinitialisé* lorsqu’il est retourné au pool. Cela peut être passé dans un pool d’objets que vous créez directement... NI
 
-<xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider.Create*> sert de fabrique pour la création de pools d’objet.
+<xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider.Create*> agit comme une fabrique pour la création de pools d’objets.
 <!-- REview, there is no ObjectPoolProvider<T> -->
 
-Le pool de threads peut être utilisé dans une application de plusieurs façons :
+Le ObjectPool peut être utilisé dans une application de plusieurs façons :
 
 * Instanciation d’un pool.
-* L’inscription d’un pool dans [l’injection de dépendances](xref:fundamentals/dependency-injection) (DI) en tant qu’instance.
-* L’inscription du `ObjectPoolProvider<>` dans l’injection de dépendances et l’utiliser comme une fabrique.
+* Inscription d’un pool dans une [injection de dépendance](xref:fundamentals/dependency-injection) (di) en tant qu’instance.
+* L’inscription de la `ObjectPoolProvider<>` dans DI et son utilisation comme fabrique.
 
-## <a name="how-to-use-objectpool"></a>Comment utiliser le pool de threads
+## <a name="how-to-use-objectpool"></a>Utilisation de ObjectPool
 
-Appelez <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> pour obtenir un objet et <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*> pour retourner l’objet.  N’est pas obligatoire que renvoie chaque objet. Si vous ne retournez un objet, il sera par le garbage collecté.
+Appelez <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> pour obtenir un objet et <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*> pour retourner l’objet.  Vous n’avez pas besoin de retourner chaque objet. Si vous ne renvoyez pas d’objet, il sera récupéré par le garbage collector.
 
-## <a name="objectpool-sample"></a>Exemple de pool de threads
+## <a name="objectpool-sample"></a>Exemple ObjectPool
 
-L'exemple de code suivant :
+Le code suivant :
 
-* Ajoute `ObjectPoolProvider` à la [l’injection de dépendances](xref:fundamentals/dependency-injection) (DI) conteneur.
-* Ajoute et configure `ObjectPool<StringBuilder>` vers le conteneur d’injection de dépendances.
+* Ajoute `ObjectPoolProvider` au conteneur d' [injection de dépendances](xref:fundamentals/dependency-injection) (di).
+* Ajoute et configure `ObjectPool<StringBuilder>` vers le conteneur DI.
 * Ajoute le `BirthdayMiddleware`.
 
 [!code-csharp[](ObjectPool/ObjectPoolSample/Startup.cs?name=snippet)]

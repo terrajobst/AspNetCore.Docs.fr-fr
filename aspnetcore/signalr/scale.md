@@ -10,11 +10,11 @@ no-loc:
 - SignalR
 uid: signalr/scale
 ms.openlocfilehash: 260e2f0c16288fec2e0a694d070f357529782d8d
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447332"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668153"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core de l’hébergement et de la mise à l’échelle Signalr
 
@@ -52,7 +52,7 @@ Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs d
 
 Pour empêcher l’utilisation des ressources Signalr de provoquer des erreurs dans une application Signalr, augmentez la taille des instances pour limiter le nombre de connexions qu’un serveur doit gérer.
 
-## <a name="scale-out"></a>Scale-out
+## <a name="scale-out"></a>Montée en charge
 
 Une application qui utilise Signalr doit assurer le suivi de toutes ses connexions, ce qui crée des problèmes pour une batterie de serveurs. Ajoutez un serveur et il obtient les nouvelles connexions que les autres serveurs ne connaissent pas. Par exemple, Signalr sur chaque serveur dans le diagramme suivant n’a pas connaissance des connexions sur les autres serveurs. Lorsque Signalr sur l’un des serveurs souhaite envoyer un message à tous les clients, le message est envoyé uniquement aux clients connectés à ce serveur.
 

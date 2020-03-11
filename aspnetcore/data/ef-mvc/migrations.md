@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 9f3e3b29d155f1024aef530bf9c55efa57d4546a
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.openlocfilehash: 8b3417205457a5ce5fa16994701a06e2a4d7d350
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928398"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665724"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Didacticiel : utilisation de la fonctionnalité migrations-ASP.NET MVC avec EF Core
 
 Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données. Dans les didacticiels suivants, vous allez ajouter d’autres migrations au fil de la modification du modèle de données.
 
-Dans ce didacticiel, vous allez effectuer les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * En savoir plus sur les migrations
@@ -28,7 +28,7 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 > * En savoir plus sur la capture instantanée du modèle de données
 > * Appliquer la migration
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Tri, filtrage et pagination](sort-filter-page.md)
 
@@ -49,7 +49,7 @@ Dans le fichier *appsettings.json*, remplacez le nom de la base de données dans
 Cette modification configure le projet de façon à ce que la première migration crée une nouvelle base de données. Ce n’est pas obligatoire pour commencer à utiliser les migrations, mais vous verrez plus tard pourquoi c’est judicieux.
 
 > [!NOTE]
-> Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **SQL Server Object Explorer** (SSOX) ou la commande CLI `database drop` :
+> Au lieu de changer le nom de la base de données, vous pouvez la supprimer. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
 >
 > ```dotnetcli
 > dotnet ef database drop
@@ -94,7 +94,7 @@ Quand vous avez exécuté la commande `migrations add`, EF a généré le code q
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
-La fonctionnalité Migrations appelle la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour annuler la mise à jour, Migrations appelle la méthode `Down`.
+Les migrations appellent la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour annuler la mise à jour, Migrations appelle la méthode `Down`.
 
 Ce code est celui de la migration initiale qui a été créé quand vous avez entré la commande `migrations add InitialCreate`. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier ; vous pouvez le choisir librement. Nous vous conseillons de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure « AjouterTableDépartement ».
 
@@ -116,7 +116,7 @@ Dans la fenêtre Commande, entrez la commande suivante pour créer la base de do
 dotnet ef database update
 ```
 
-La sortie de la commande est similaire à la commande `migrations add`, à ceci près que vous voyez des journaux pour les commandes SQL qui configurent la base de données. La plupart des journaux sont omis dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages des journaux, vous pouvez changer le niveau de journalisation dans le fichier *appsettings.Development.json*. Pour plus d'informations, consultez <xref:fundamentals/logging/index>.
+La sortie de la commande est similaire à la commande `migrations add`, à ceci près que vous voyez des journaux pour les commandes SQL qui configurent la base de données. La plupart des journaux sont omis dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages des journaux, vous pouvez changer le niveau de journalisation dans le fichier *appsettings.Development.json*. Pour plus d’informations, consultez <xref:fundamentals/logging/index>.
 
 ```text
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
@@ -151,7 +151,7 @@ Utilisez **l’Explorateur d’objets SQL Server** pour inspecter la base de don
 
 Exécutez l’application pour vérifier que tout fonctionne toujours comme avant.
 
-![Page d’index des étudiants](migrations/_static/students-index.png)
+![Page Index des étudiants](migrations/_static/students-index.png)
 
 <a id="pmc"></a>
 
@@ -169,11 +169,11 @@ Pour plus d’informations sur les commandes de la console du Gestionnaire de pa
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-step"></a>Étape suivante
 
-Dans ce didacticiel, vous allez effectuer les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Découvert des informations sur les migrations"
@@ -182,9 +182,9 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 > * Créer une migration initiale
 > * Examiner les méthodes Up et Down
 > * Découvrir des informations sur la capture instantanée du modèle de données
-> * Migration appliquée
+> * Appliquer la migration
 
-Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cour de ce processus, vous allez créer et appliquer d’autres migrations.
+Passez au tutoriel suivant pour aborder des sujets plus avancés sur le développement du modèle de données. Au cours de ce processus, vous allez créer et appliquer d’autres migrations.
 
 > [!div class="nextstepaction"]
 > [Créer et appliquer d’autres migrations](complex-data-model.md)

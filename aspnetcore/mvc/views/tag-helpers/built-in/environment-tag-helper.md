@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: e2e038fe69da696b67f7aef61795e23dc8512fdf
-ms.sourcegitcommit: 7a40c56bf6a6aaa63a7ee83a2cac9b3a1d77555e
-ms.translationtype: HT
+ms.openlocfilehash: 308e7db47104ebd4d6bb8d08c64f14bbd118898b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67856132"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663988"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a>Tag Helper Environnement dans ASP.NET Core
 
-Article rédigé par [Peter Kellner](https://peterkellner.net), [Hisham Bin Ateya](https://twitter.com/hishambinateya) et [Luke Latham](https://github.com/guardrex)
+Par [Peter Kellner](https://peterkellner.net) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
 Le Tag Helper Environnement affiche de façon conditionnelle son contenu joint en fonction de [l’environnement d’hébergement](xref:fundamentals/environments) actuel. L’attribut unique du Tag Helper Environnement, `names`, est une liste séparée par des virgules de noms d’environnement. Si l’un des noms d’environnement fournis correspond à l’environnement actuel, le contenu joint est affiché.
 
@@ -41,7 +41,7 @@ L’exemple suivant utilise un Tag Helper Environnement. Le contenu est affiché
 
 ## <a name="include-and-exclude-attributes"></a>Attributs include et exclude
 
-Les attributs `include` & `exclude` contrôlent l’affichage du contenu joint en fonction des noms d’environnement d’hébergement inclus ou exclus.
+`include` & `exclude` attributs contrôlent le rendu du contenu délimité en fonction des noms d’environnement d’hébergement inclus ou exclus.
 
 ### <a name="include"></a>include
 

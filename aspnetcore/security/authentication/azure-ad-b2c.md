@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 01/21/2019
 uid: security/authentication/azure-ad-b2c
 ms.openlocfilehash: 136fa47788456492a9a7fe6d9d9e5996c13e8c20
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727275"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663659"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification Cloud avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -84,7 +84,7 @@ Dans Visual Studio :
     | Paramètre                       | Valeur                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **Nom de domaine**               | *&lt;le nom de domaine de votre locataire B2C&gt;*          |
-    | **ID de l'application**            | *&lt;coller l’ID d’application à partir du presse-papiers&gt;* |
+    | **ID d’application**            | *&lt;coller l’ID d’application à partir du presse-papiers&gt;* |
     | **Chemin de rappel**             | *&lt;utiliser la valeur par défaut&gt;*                       |
     | **Stratégie d’inscription ou de connexion** | `B2C_1_SiUpIn`                                        |
     | **Réinitialiser la stratégie de mot de passe**     | `B2C_1_SSPR`                                          |

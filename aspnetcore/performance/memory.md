@@ -7,17 +7,17 @@ ms.custom: mvc
 ms.date: 12/05/2019
 uid: performance/memory
 ms.openlocfilehash: 0ae367e954e21e2f696a3b292fa64f1d2dba98ec
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829021"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667026"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>Gestion de la mémoire et garbage collection (GC) dans ASP.NET Core
 
 Par [Sébastien Ros](https://github.com/sebastienros) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-La gestion de la mémoire est complexe, même dans une infrastructure gérée telle que .NET. L’analyse et la compréhension des problèmes de mémoire peuvent être difficiles. Cet article :
+La gestion de la mémoire est complexe, même dans une infrastructure gérée telle que .NET. L’analyse et la compréhension des problèmes de mémoire peuvent être difficiles. Cet article :
 
 * A été motivée par de nombreuses *fuites de mémoire* et les problèmes de *GC ne fonctionnaient pas* . La plupart de ces problèmes ont été provoqués par le fait de ne pas comprendre comment fonctionne la consommation de mémoire dans .NET Core, ou de ne pas comprendre comment elle est mesurée.
 * Illustre l’utilisation de la mémoire problématique et suggère d’autres approches.
@@ -139,7 +139,7 @@ Le mode GC peut être défini explicitement dans le fichier projet ou dans le fi
 
 La modification de `ServerGarbageCollection` dans le fichier projet nécessite que l’application soit reconstruite.
 
-**Remarque :** Le garbage collection serveur n’est **pas** disponible sur les machines avec un seul cœur. Pour plus d'informations, consultez <xref:System.Runtime.GCSettings.IsServerGC>.
+**Remarque :** Le garbage collection serveur n’est **pas** disponible sur les machines avec un seul cœur. Pour plus d’informations, consultez <xref:System.Runtime.GCSettings.IsServerGC>.
 
 L’illustration suivante montre le profil de mémoire sous un RPS de 5 Ko à l’aide du GC de station de travail.
 
@@ -275,7 +275,7 @@ Les liens suivants présentent l’approche ASP.NET Core pour la conservation de
 * [ResponseCaching/Streams/StreamUtilities. cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 * [ResponseCaching/MemoryResponseCache. cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-Pour plus d'informations, consultez .
+Pour plus d'informations, consultez les pages suivantes :
 
 * [Segment de mémoire Large Object non couvert](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Tas d’objets volumineux](/dotnet/standard/garbage-collection/large-object-heap)
@@ -428,7 +428,7 @@ La principale différence est le nombre d’octets alloués et, par conséquent,
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Nettoyage de la mémoire](/dotnet/standard/garbage-collection/)
+* [Garbage collection](/dotnet/standard/garbage-collection/)
 * [Fonctionnement de différents modes GC avec le visualiseur concurrentiel](https://blogs.msdn.microsoft.com/seteplia/2017/01/05/understanding-different-gc-modes-with-concurrency-visualizer/)
 * [Segment de mémoire Large Object non couvert](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [Tas d’objets volumineux](/dotnet/standard/garbage-collection/large-object-heap)

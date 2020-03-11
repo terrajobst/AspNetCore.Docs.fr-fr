@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 07/07/2019
 uid: grpc/security
 ms.openlocfilehash: f84bec0ef485b701b2be36384a2e49b9b28e473d
-ms.sourcegitcommit: 8b36f75b8931ae3f656e2a8e63572080adc78513
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310375"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667320"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>Considérations sur la sécurité dans gRPC pour ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [James Newton-King](https://twitter.com/jamesnk)
 
 Cet article fournit des informations sur la sécurisation de gRPC avec .NET Core.
 
-## <a name="transport-security"></a>Sécurité de transport
+## <a name="transport-security"></a>Sécurité du transport
 
 les messages gRPC sont envoyés et reçus à l’aide de HTTP/2. Nous vous recommandons d’utiliser les éléments suivants :
 
@@ -39,7 +39,7 @@ Les messages entrants aux clients et services gRPC sont chargés en mémoire. Le
 
 gRPC utilise des limites de taille par message pour gérer les messages entrants et sortants. Par défaut, gRPC limite les messages entrants à 4 Mo. Il n’existe aucune limite pour les messages sortants.
 
-Sur le serveur, les limites de messages gRPC peuvent être configurées pour tous les services `AddGrpc`d’une application avec :
+Sur le serveur, les limites de messages gRPC peuvent être configurées pour tous les services d’une application avec `AddGrpc`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -52,7 +52,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Les limites peuvent également être configurées pour un service `AddServiceOptions<TService>`individuel à l’aide de. Pour plus d’informations sur la configuration des limites de taille des messages, consultez [configuration de gRPC](xref:grpc/configuration).
+Les limites peuvent également être configurées pour un service individuel à l’aide de `AddServiceOptions<TService>`. Pour plus d’informations sur la configuration des limites de taille des messages, consultez [configuration de gRPC](xref:grpc/configuration).
 
 ## <a name="client-certificate-validation"></a>Validation du certificat client
 

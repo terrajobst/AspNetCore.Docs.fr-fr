@@ -1,19 +1,19 @@
 ---
-title: 'Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : lire les données associées-ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 author: rick-anderson
 ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 1a16f905669d0192d713cbba9bfc6e3e75008b5d
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: a6e63723101ab09219db81ee9796c3938a612226
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259426"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657107"
 ---
-# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
+# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Didacticiel : lire les données associées-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez élaboré le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 
@@ -23,7 +23,7 @@ Les illustrations suivantes montrent les pages que vous allez utiliser.
 
 ![Page d’index des formateurs](read-related-data/_static/instructors-index.png)
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Découvrir comment charger les données associées
@@ -31,7 +31,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créer une page Instructors
 > * En savoir plus sur le chargement explicite
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Créer un modèle de données complexe](complex-data-model.md)
 
@@ -47,7 +47,7 @@ Il existe plusieurs façons de permettre à un logiciel de mappage relationnel o
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
-* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -73,13 +73,13 @@ Remplacez la méthode `Index` par le code suivant qui utilise un nom plus approp
 
 [!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
-Ouvrez *Views/Courses/Index.cshtml* et remplacez le code de modèle par le code suivant. Les modifications apparaissent en surbrillance :
+Ouvrez *Views/Courses/Index.cshtml* et remplacez le code de modèle par le code suivant. Les modifications sont mises en surbrillance :
 
 [!code-html[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 Vous avez apporté les modifications suivantes au code généré automatiquement :
 
-* Changement de l’en-tête : Index a été remplacé par Courses.
+* Changement de l’en-tête : Index a été remplacé par Course.
 
 * Ajout d’une colonne **Number** qui affiche la valeur de la propriété `CourseID`. Par défaut, les clés primaires ne sont pas générées automatiquement, car elles ne sont normalement pas significatives pour les utilisateurs finaux. Toutefois, dans le cas présent, la clé primaire est significative et vous voulez l’afficher.
 
@@ -145,19 +145,19 @@ Le code répète `CourseAssignments` et `Course`, car vous avez besoin de deux p
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
 
-Le code suivant s’exécute quand un formateur a été sélectionné. Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle de vue. La propriété `Courses` du modèle de vue est alors chargée avec les entités Course de la propriété de navigation `CourseAssignments` de ce formateur.
+Le code suivant s’exécute quand un formateur a été sélectionné. Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle d’affichage. La propriété `Courses` du modèle de vue est alors chargée avec les entités Course de la propriété de navigation `CourseAssignments` de ce formateur.
 
 [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
 
 La méthode `Where` renvoie une collection, mais dans ce cas, les critères transmis à cette méthode entraînent le renvoi d’une seule entité Instructor. La méthode `Single` convertit la collection en une seule entité Instructor, ce qui vous permet d’accéder à la propriété `CourseAssignments` de cette entité. La propriété `CourseAssignments` contient des entités `CourseAssignment`, à partir desquelles vous souhaitez uniquement les entités `Course` associées.
 
-Vous utilisez la méthode `Single` sur une collection lorsque vous savez que la collection aura un seul élément. La méthode Single lève une exception si la collection transmise est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui renvoie une valeur par défaut (Null dans ce cas) si la collection est vide. Toutefois, dans ce cas, cela entraînerait encore une exception (en tentant de trouver une propriété `Courses` sur une référence null) et le message d’exception indiquerait moins clairement la cause du problème. Lorsque vous appelez la méthode `Single`, vous pouvez également transmettre la condition Where au lieu d’appeler séparément la méthode `Where` :
+Vous utilisez la méthode `Single` sur une collection lorsque vous savez que la collection aura un seul élément. La méthode Single lève une exception si la collection transmise est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui retourne une valeur par défaut (Null dans le cas présent) si la collection est vide. Toutefois, dans ce cas, cela entraînerait encore une exception (en tentant de trouver une propriété `Courses` sur une référence null) et le message d’exception indiquerait moins clairement la cause du problème. Lorsque vous appelez la méthode `Single`, vous pouvez également transmettre la condition Where au lieu d’appeler séparément la méthode `Where` :
 
 ```csharp
 .Single(i => i.ID == id.Value)
 ```
 
-À la place de :
+À la place de :
 
 ```csharp
 .Where(i => i.ID == id.Value).Single()
@@ -179,7 +179,7 @@ Vous avez apporté les modifications suivantes au code existant :
 
 * Vous avez changé le titre de la page en remplaçant **Index** par **Instructors**.
 
-* Vous avez ajouté une colonne **Office** qui affiche `item.OfficeAssignment.Location` seulement si `item.OfficeAssignment` n’est pas Null. (Comme il s’agit d’une relation un-à-zéro-ou-un, il se peut qu’il n’y ait pas d’entité OfficeAssignment associée.)
+* Il ajoute une colonne **Office** qui affiche `item.OfficeAssignment.Location` uniquement si `item.OfficeAssignment` n’est pas Null. (Comme il s’agit d’une relation un-à-zéro-ou-un, il se peut qu’il n’y ait pas d’entité OfficeAssignment associée.)
 
   ```html
   @if (item.OfficeAssignment != null)
@@ -188,7 +188,7 @@ Vous avez apporté les modifications suivantes au code existant :
   }
   ```
 
-* Vous avez ajouté une colonne **Courses** qui affiche les cours animés par chaque formateur. Pour plus d’informations, consultez la section relative à la [transition de ligne explicite](xref:mvc/views/razor#explicit-line-transition) de l’article syntaxe Razor.
+* Ajout d’une colonne **Courses** qui affiche les cours dispensés par chaque formateur. Pour plus d’informations, consultez la section relative à la [transition de ligne explicite](xref:mvc/views/razor#explicit-line-transition) de l’article syntaxe Razor.
 
 * Vous avez ajouté un code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
 
@@ -207,7 +207,7 @@ Vous avez apporté les modifications suivantes au code existant :
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-Exécutez l’application et sélectionnez l’onglet **Instructors**. La page affiche la propriété Location des entités OfficeAssignment associées et une cellule de table vide lorsqu’il n’existe aucune entité OfficeAssignment associée.
+Exécutez l’application et sélectionnez l’onglet **Instructors** . La page affiche la propriété d’emplacement des entités OfficeAssignment associées et une cellule de table vide lorsqu’il n’y a pas d’entité OfficeAssignment associée.
 
 ![Page d’index des formateurs sans aucun élément sélectionné](read-related-data/_static/instructors-index-no-selection.png)
 
@@ -245,11 +245,11 @@ Exécutez l’application, accédez à la page d’index des formateurs et vous 
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Chargement des données associées découvert

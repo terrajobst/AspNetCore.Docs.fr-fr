@@ -6,17 +6,17 @@ ms.author: riande
 ms.date: 03/11/2019
 uid: security/authentication/accconfirm
 ms.openlocfilehash: 49d3d214fd64edc5b17df2df929ddc3c2af47ede
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829268"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665388"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et récupération de mot de passe dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Ponant](https://github.com/Ponant)et [Joe Audette](https://twitter.com/joeaudette)
 
-Ce didacticiel montre comment créer une application ASP.NET Core avec une confirmation par e-mail et une réinitialisation du mot de passe. Ce didacticiel n'est **pas** un sujet pour débuter. Vous devez être familiarisé avec :
+Ce didacticiel montre comment créer une application ASP.NET Core avec une confirmation par e-mail et une réinitialisation du mot de passe. Ce didacticiel n’est **pas** une rubrique de départ. Vous devez être familiarisé avec :
 
 * [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
 * [Authentification](xref:security/authentication/identity)
@@ -32,7 +32,7 @@ Consultez [ce fichier PDF](https://webpifeed.blob.core.windows.net/webpifeed/Par
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 [.NET Core 3,0 SDK ou version ultérieure](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -46,7 +46,7 @@ cd WebPWrecover
 dotnet run
 ```
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Une fois inscrit, vous êtes redirigé vers la page à `/Identity/Account/RegisterConfirmation` qui contient un lien pour simuler la confirmation de l’e-mail :
+Exécutez l’application, sélectionnez le lien **Register** et inscrivez un utilisateur. Une fois inscrit, vous êtes redirigé vers la page à `/Identity/Account/RegisterConfirmation` qui contient un lien pour simuler la confirmation de l’e-mail :
 
 * Sélectionnez le lien `Click here to confirm your account`.
 * Sélectionnez le lien de **connexion** et connectez-vous avec les mêmes informations d’identification.
@@ -63,7 +63,7 @@ Créez une classe pour extraire la clé de messagerie électronique sécurisée.
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
+Définissez les `SendGridUser` et `SendGridKey` à l’aide de l' [outil de gestion de secret](xref:security/app-secrets). Par exemple :
 
 ```dotnetcli
 dotnet user-secrets set SendGridUser RickAndMSFT
@@ -72,9 +72,9 @@ dotnet user-secrets set SendGridKey <key>
 Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-Sur Windows, le gestionnaire de secret stocke des paires de clés/valeur dans un fichier *secrets.json* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
+Sur Windows, le gestionnaire de secret stocke les paires clé/valeur dans un fichier *secrets. JSON* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
 
-Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
+Le contenu du fichier *secrets. JSON* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
 
 ```json
 {
@@ -87,11 +87,11 @@ Pour plus d’informations, consultez le [modèle d’options](xref:fundamentals
 
 ### <a name="install-sendgrid"></a>Installer SendGrid
 
-Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des e-mails en utilisant SMTP et d'autres mécanismes.
+Ce didacticiel montre comment ajouter des notifications par courrier électronique par le biais de [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des courriers électroniques à l’aide de SMTP et d’autres mécanismes.
 
-Installer le package NuGet `SendGrid` :
+Installez le package NuGet `SendGrid` :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 À partir de la console du gestionnaire de package, entrez la commande suivante :
 
@@ -99,7 +99,7 @@ Installer le package NuGet `SendGrid` :
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 À partir de la console, entrez la commande suivante :
 
@@ -109,7 +109,7 @@ dotnet add package SendGrid
 
 ---
 
-Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour vous inscrire pour un compte SendGrid gratuit.
+Pour vous inscrire à un compte SendGrid gratuit, consultez [prise en main de SendGrid](https://sendgrid.com/free/) gratuitement.
 
 ### <a name="implement-iemailsender"></a>Implémenter IEmailSender
 
@@ -131,7 +131,7 @@ Ajoutez le code suivant à la méthode `ConfigureServices` dans le fichier *Star
 Exécuter l’application web, et testez le flux de confirmation du compte et de récupération du mot de passe.
 
 * Exécutez l’application et inscrire un nouvel utilisateur
-* Recherchez le lien de confirmation du compte dans votre messagerie. Consultez [Déboguer la messagerie](#debug) si vous ne recevez pas l’e-mail.
+* Recherchez le lien de confirmation du compte dans votre messagerie. Consultez le [message de débogage](#debug) si vous n’obtenez pas l’e-mail.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.
 * Connectez-vous avec votre adresse de messagerie et votre mot de passe.
 * Déconnectez-vous.
@@ -139,7 +139,7 @@ Exécuter l’application web, et testez le flux de confirmation du compte et de
 ### <a name="test-password-reset"></a>Tester la réinitialisation du mot de passe
 
 * Si vous êtes connecté, sélectionnez **déconnexion**.
-* Sélectionnez le lien **Connexion** et sélectionnez le lien **Vous avez oublié votre mot de passe ?** .
+* Sélectionnez le lien **se connecter** , puis sélectionnez le lien vous **avez oublié votre mot de passe ?** .
 * Entrez l’adresse de messagerie que vous avez utilisée pour inscrire le compte.
 * Un e-mail contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie, puis cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse de messagerie et votre nouveau mot de passe.
 
@@ -181,22 +181,22 @@ Si vous ne parvenez à faire fonctionner l'email :
 
 * Définissez un point d’arrêt dans `EmailSender.Execute` pour vérifier que `SendGridClient.SendEmailAsync` est appelé.
 * Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l’aide d’un code similaire à `EmailSender.Execute`.
-* Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
+* Passez en revue la page [activité de messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) .
 * Vérifiez votre dossier de courrier indésirable.
 * Essayez un autre alias de messagerie sur un autre fournisseur de messagerie (Microsoft, Yahoo, Gmail, etc.)
 * Essayez d’envoyer à différents comptes de messagerie.
 
-Une **bonne pratique de sécurité** consiste à **ne pas** utiliser des secrets de production en développement et en test. Si vous publiez l’application sur Azure, définissez les secrets SendGrid en tant que paramètres d’application dans le portail d’application Web Azure. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
+**Une meilleure pratique de sécurité** consiste à **ne pas** utiliser les secrets de production dans le test et le développement. Si vous publiez l’application sur Azure, définissez les secrets SendGrid en tant que paramètres d’application dans le portail d’application Web Azure. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
 
 ## <a name="combine-social-and-local-login-accounts"></a>Combiner les comptes de connexion sociale et locale
 
 Pour compléter cette section, vous devez d’abord activer un fournisseur d’authentification externe. Consultez [l’authentification Facebook, Google et fournisseur externe](xref:security/authentication/social/index).
 
-Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre e-mail. Dans la séquence suivante, "RickAndMSFT@gmail.com" est d’abord créé en tant que connexion locale ; cependant, vous pouvez d’abord créer le compte en tant que connexion de réseau social, puis ajouter une connexion locale.
+Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre e-mail. Dans l’ordre suivant, «RickAndMSFT@gmail.com» est d’abord créé comme connexion locale ; Toutefois, vous pouvez d’abord créer le compte en tant que connexion sociale, puis ajouter une connexion locale.
 
 ![Application Web : RickAndMSFT@gmail.com utilisateur authentifié](accconfirm/_static/rick.png)
 
-Cliquez sur le lien **Gérer**. Notez la valeur 0 externe (connexions sociales) associée à ce compte.
+Cliquez sur le lien **gérer** . Notez la valeur 0 externe (connexions sociales) associée à ce compte.
 
 ![Gérer l’affichage](accconfirm/_static/manage.png)
 
@@ -217,7 +217,7 @@ Activer la confirmation du compte sur un site avec des utilisateurs bloque tous 
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 [.NET Core 2,2 SDK ou version ultérieure](https://www.microsoft.com/net/download/all)
 
@@ -239,19 +239,19 @@ dotnet run
 
 ## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. À ce stade, la seule validation sur l’e-mail est avec l’attribut [`[EmailAddress]`](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) . Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour afin que les nouveaux utilisateurs ne puissent pas se connecter tant que leur adresse de messagerie n’a pas été validée.
+Exécutez l’application, sélectionnez le lien **Register** et inscrivez un utilisateur. À ce stade, la seule validation sur l’e-mail est avec l’attribut [`[EmailAddress]`](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) . Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour afin que les nouveaux utilisateurs ne puissent pas se connecter tant que leur adresse de messagerie n’a pas été validée.
 
 [!INCLUDE[](~/includes/view-identity-db.md)]
 
-Notez que le champ `EmailConfirmed` de la table est à `False`.
+Notez que le champ `EmailConfirmed` de la table est `False`.
 
-Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne, puis sélectionnez **Supprimer**. La suppression de l’alias d’e-mail facilite les étapes suivantes.
+Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne et sélectionnez **supprimer**. La suppression de l’alias d’e-mail facilite les étapes suivantes.
 
 <a name="prevent-login-at-registration"></a>
 
 ## <a name="require-email-confirmation"></a>Demander une confirmation par courrier électronique
 
-Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. La confirmation par e-mail fournit une protection limitée des robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
+Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous disposiez d’un forum de discussion et que vous souhaitiez empêcher «yli@example.com» de s’inscrire en tant que «nolivetto@contoso.com». Sans confirmation par courrier électronique, «nolivetto@contoso.com» peut recevoir des messages électroniques indésirables de votre application. Supposons que l’utilisateur soit inscrit par erreur en tant que «ylo@example.com» et n’avait pas remarqué la mauvaise orthographe de « Yli ». Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. La confirmation par e-mail fournit une protection limitée des robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
 En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
 
@@ -259,11 +259,11 @@ Mettre à jour `Startup.ConfigureServices` pour exiger un e-mail confirmé :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover22/Startup.cs?name=snippet1&highlight=8-11)]
 
-`config.SignIn.RequireConfirmedEmail = true;` empêche les utilisateurs enregistrés de se connecter jusqu'à ce que leur adresse de messagerie soit confirmée.
+`config.SignIn.RequireConfirmedEmail = true;` empêche les utilisateurs inscrits de se connecter jusqu’à ce que leur adresse de messagerie soit confirmée.
 
 ### <a name="configure-email-provider"></a>Configurer le fournisseur de messagerie
 
-Dans ce didacticiel, [SendGrid](https://sendgrid.com) est utilisé pour envoyer des messages électroniques. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
+Dans ce didacticiel, [SendGrid](https://sendgrid.com) est utilisé pour envoyer des messages électroniques. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2. x comprend `System.Net.Mail`, ce qui vous permet d’envoyer des e-mails à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
 
 Créez une classe pour extraire la clé de messagerie électronique sécurisée. Pour cet exemple, créez *services/AuthMessageSenderOptions. cs*:
 
@@ -271,16 +271,16 @@ Créez une classe pour extraire la clé de messagerie électronique sécurisée.
 
 #### <a name="configure-sendgrid-user-secrets"></a>Configurer des secrets d’utilisateur SendGrid
 
-Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
+Définissez les `SendGridUser` et `SendGridKey` à l’aide de l' [outil de gestion de secret](xref:security/app-secrets). Par exemple :
 
 ```console
 C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-Sur Windows, le gestionnaire de secret stocke des paires de clés/valeur dans un fichier *secrets.json* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
+Sur Windows, le gestionnaire de secret stocke les paires clé/valeur dans un fichier *secrets. JSON* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
 
-Le contenu du fichier *secrets.json* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
+Le contenu du fichier *secrets. JSON* n’est pas chiffré. Le balisage suivant montre le fichier *secrets. JSON* . La valeur de `SendGridKey` a été supprimée.
 
 ```json
 {
@@ -293,11 +293,11 @@ Pour plus d’informations, consultez le [modèle d’options](xref:fundamentals
 
 ### <a name="install-sendgrid"></a>Installer SendGrid
 
-Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des e-mails en utilisant SMTP et d'autres mécanismes.
+Ce didacticiel montre comment ajouter des notifications par courrier électronique par le biais de [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des courriers électroniques à l’aide de SMTP et d’autres mécanismes.
 
-Installer le package NuGet `SendGrid` :
+Installez le package NuGet `SendGrid` :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 À partir de la console du gestionnaire de package, entrez la commande suivante :
 
@@ -305,7 +305,7 @@ Installer le package NuGet `SendGrid` :
 Install-Package SendGrid
 ```
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 À partir de la console, entrez la commande suivante :
 
@@ -315,7 +315,7 @@ dotnet add package SendGrid
 
 ---
 
-Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour vous inscrire pour un compte SendGrid gratuit.
+Pour vous inscrire à un compte SendGrid gratuit, consultez [prise en main de SendGrid](https://sendgrid.com/free/) gratuitement.
 
 ### <a name="implement-iemailsender"></a>Implémenter IEmailSender
 
@@ -351,7 +351,7 @@ La méthode complète est montrée avec la ligne modifiée mise en surbrillance 
 Exécuter l’application web, et testez le flux de confirmation du compte et de récupération du mot de passe.
 
 * Exécutez l’application et inscrire un nouvel utilisateur
-* Recherchez le lien de confirmation du compte dans votre messagerie. Consultez [Déboguer la messagerie](#debug) si vous ne recevez pas l’e-mail.
+* Recherchez le lien de confirmation du compte dans votre messagerie. Consultez le [message de débogage](#debug) si vous n’obtenez pas l’e-mail.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.
 * Connectez-vous avec votre adresse de messagerie et votre mot de passe.
 * Déconnectez-vous.
@@ -360,12 +360,12 @@ Exécuter l’application web, et testez le flux de confirmation du compte et de
 
 Sélectionnez votre nom d’utilisateur dans le navigateur : ![fenêtre du navigateur avec le nom d’utilisateur](accconfirm/_static/un.png)
 
-La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email** affiche une case à cocher indiquant que l’adresse de messagerie a été confirmée.
+La page gérer s’affiche avec l’onglet **Profil** sélectionné. L' **e-mail** affiche une case à cocher indiquant que le message électronique a été confirmé.
 
 ### <a name="test-password-reset"></a>Tester la réinitialisation du mot de passe
 
 * Si vous êtes connecté, sélectionnez **déconnexion**.
-* Sélectionnez le lien **Connexion** et sélectionnez le lien **Vous avez oublié votre mot de passe ?** .
+* Sélectionnez le lien **se connecter** , puis sélectionnez le lien vous **avez oublié votre mot de passe ?** .
 * Entrez l’adresse de messagerie que vous avez utilisée pour inscrire le compte.
 * Un e-mail contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie, puis cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse de messagerie et votre nouveau mot de passe.
 
@@ -407,22 +407,22 @@ Si vous ne parvenez à faire fonctionner l'email :
 
 * Définissez un point d’arrêt dans `EmailSender.Execute` pour vérifier que `SendGridClient.SendEmailAsync` est appelé.
 * Créez une [application console pour envoyer du courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l’aide d’un code similaire à `EmailSender.Execute`.
-* Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
+* Passez en revue la page [activité de messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) .
 * Vérifiez votre dossier de courrier indésirable.
 * Essayez un autre alias de messagerie sur un autre fournisseur de messagerie (Microsoft, Yahoo, Gmail, etc.)
 * Essayez d’envoyer à différents comptes de messagerie.
 
-Une **bonne pratique de sécurité** consiste à **ne pas** utiliser des secrets de production en développement et en test. Si vous publiez l’application sur Azure, vous pouvez définir les secrets SendGrid en tant que paramètres d’application dans le portail Azure Web App. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
+**Une meilleure pratique de sécurité** consiste à **ne pas** utiliser les secrets de production dans le test et le développement. Si vous publiez l’application sur Azure, vous pouvez définir les secrets SendGrid en tant que paramètres d’application dans le portail Azure Web App. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
 
 ## <a name="combine-social-and-local-login-accounts"></a>Combiner les comptes de connexion sociale et locale
 
 Pour compléter cette section, vous devez d’abord activer un fournisseur d’authentification externe. Consultez [l’authentification Facebook, Google et fournisseur externe](xref:security/authentication/social/index).
 
-Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre e-mail. Dans la séquence suivante, "RickAndMSFT@gmail.com" est d’abord créé en tant que connexion locale ; cependant, vous pouvez d’abord créer le compte en tant que connexion de réseau social, puis ajouter une connexion locale.
+Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre e-mail. Dans l’ordre suivant, «RickAndMSFT@gmail.com» est d’abord créé comme connexion locale ; Toutefois, vous pouvez d’abord créer le compte en tant que connexion sociale, puis ajouter une connexion locale.
 
 ![Application Web : RickAndMSFT@gmail.com utilisateur authentifié](accconfirm/_static/rick.png)
 
-Cliquez sur le lien **Gérer**. Notez la valeur 0 externe (connexions sociales) associée à ce compte.
+Cliquez sur le lien **gérer** . Notez la valeur 0 externe (connexions sociales) associée à ce compte.
 
 ![Gérer l’affichage](accconfirm/_static/manage.png)
 

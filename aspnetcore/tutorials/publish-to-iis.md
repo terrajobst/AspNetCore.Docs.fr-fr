@@ -1,22 +1,20 @@
 ---
 title: Publier une application ASP.NET Core sur IIS
-author: guardrex
+author: rick-anderson
 description: Découvrez comment héberger une application ASP.NET Core sur un serveur IIS.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 820527cc15f883c906d2fdf1c073d443a5b3b40e
-ms.sourcegitcommit: d8b12cc1716ee329d7bd2300e201b61e15d506ac
+ms.openlocfilehash: f3860ba6ca7b99e63000ba0066749751f80cdc23
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71942884"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657835"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publier une application ASP.NET Core sur IIS
-
-Par [Luke Latham](https://github.com/guardrex)
 
 Ce tutoriel explique comment héberger une application ASP.NET Core sur un serveur IIS.
 
@@ -27,7 +25,7 @@ Ce tutoriel couvre les étapes suivantes :
 > * Créer un site IIS dans le gestionnaire IIS
 > * Déployer une application ASP.NET Core
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * Installation du [SDK .NET Core](/dotnet/core/sdk) sur l’ordinateur de développement
 * Configuration de Windows Server avec le rôle serveur **Serveur Web (IIS)** . Si votre serveur n’est pas configuré pour héberger des sites web avec IIS, suivez les instructions qui se trouvent dans la section *Configuration IIS* de l’article <xref:host-and-deploy/iis/index#iis-configuration>, puis revenez à ce tutoriel.
@@ -72,7 +70,7 @@ Suivez le tutoriel <xref:getting-started> pour créer une application Razor Page
 * L’application est publiée dans un dossier.
 * Le contenu du dossier est déplacé vers le dossier du site IIS (le **chemin physique** du site dans le gestionnaire IIS).
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Publier**.
 1. Dans la boîte de dialogue **Choisir une cible de publication**, sélectionnez l’option de publication **Dossier**.
@@ -80,7 +78,7 @@ Suivez le tutoriel <xref:getting-started> pour créer une application Razor Page
    * Si vous avez créé un dossier pour le site IIS qui est disponible sur l’ordinateur de développement en tant que partage réseau, indiquez le chemin de ce partage. L’utilisateur actuel doit disposer d’un accès en écriture pour publier des données sur le partage.
    * Si vous ne parvenez pas à effectuer le déploiement directement dans le dossier du site IIS sur le serveur IIS, publiez l’application dans un dossier situé sur un support amovible et déplacez physiquement l’application publiée vers le dossier du site IIS sur le serveur, qui correspond au **chemin physique** du site dans le gestionnaire IIS. Déplacez le contenu du dossier *bin/Release/{FRAMEWORK CIBLE}/publish* vers le dossier du site IIS qui se trouve sur le serveur et qui correspond au **chemin physique** du site dans le gestionnaire IIS.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 1. Dans une invite de commande, publiez l’application en configuration Release avec la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) :
 
@@ -90,7 +88,7 @@ Suivez le tutoriel <xref:getting-started> pour créer une application Razor Page
 
 1. Déplacez le contenu du dossier *bin/Release/{FRAMEWORK CIBLE}/publish* vers le dossier du site IIS qui se trouve sur le serveur et qui correspond au **chemin physique** du site dans le gestionnaire IIS.
 
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 1. Cliquez avec le bouton droit sur le projet dans **Solution**, puis sélectionnez **Publier** > **Publier sur un dossier**.
 1. Configurez le chemin **Choisir un dossier**.
@@ -99,13 +97,13 @@ Suivez le tutoriel <xref:getting-started> pour créer une application Razor Page
 
 ---
 
-## <a name="browse-the-website"></a>Parcourir le site web
+## <a name="browse-the-website"></a>Parcourir le site Web
 
 L’application est accessible dans un navigateur après avoir reçu la première requête. Envoyez une requête à l’application au niveau de la liaison de point de terminaison que vous avez établie dans le gestionnaire IIS pour le site.
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris à :
+Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Installer le bundle d’hébergement .NET Core sur Windows Server

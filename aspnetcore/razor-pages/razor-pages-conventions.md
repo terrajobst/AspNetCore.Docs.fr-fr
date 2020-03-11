@@ -1,22 +1,20 @@
 ---
 title: Conventions de routes et d’applications pour les pages Razor dans ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez comment les conventions du fournisseur de modèles de routes et d’applications vous permettent de gérer le routage, la découverte et le traitement des pages.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: d8377c0a0b8a29fe4b6a7fa67beeff84927c8b74
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: f45e327051aba54d1cab67148eb540fb1a5cc149
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114768"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667859"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Conventions de routes et d’applications pour les pages Razor dans ASP.NET Core
-
-Par [Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,7 +26,7 @@ Pour spécifier un itinéraire de page, ajouter des segments de routage ou ajout
 
 Il existe des mots réservés qui ne peuvent pas être utilisés en tant que segments de routage ou noms de paramètres. Pour plus d’informations, consultez [routage : noms de routage réservés](xref:fundamentals/routing#reserved-routing-names).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 | Scénario | L’exemple montre... |
 | -------- | --------------------------- |
@@ -101,7 +99,7 @@ La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMo
 
 Dans la mesure du possible, ne définissez pas le `Order`, ce qui donne `Order = 0`. Utilisez le routage pour sélectionner l’itinéraire correct.
 
-Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -318,7 +316,7 @@ Pour spécifier un itinéraire de page, ajouter des segments de routage ou ajout
 
 Il existe des mots réservés qui ne peuvent pas être utilisés en tant que segments de routage ou noms de paramètres. Pour plus d’informations, consultez [routage : noms de routage réservés](xref:fundamentals/routing#reserved-routing-names).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 | Scénario | L’exemple montre... |
 | -------- | --------------------------- |
@@ -391,7 +389,7 @@ La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMo
 
 Dans la mesure du possible, ne définissez pas le `Order`, ce qui donne `Order = 0`. Utilisez le routage pour sélectionner l’itinéraire correct.
 
-Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -608,7 +606,7 @@ Pour spécifier un itinéraire de page, ajouter des segments de routage ou ajout
 
 Il existe des mots réservés qui ne peuvent pas être utilisés en tant que segments de routage ou noms de paramètres. Pour plus d’informations, consultez [routage : noms de routage réservés](xref:fundamentals/routing#reserved-routing-names).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 | Scénario | L’exemple montre... |
 | -------- | --------------------------- |
@@ -681,7 +679,7 @@ La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteMo
 
 Dans la mesure du possible, ne définissez pas le `Order`, ce qui donne `Order = 0`. Utilisez le routage pour sélectionner l’itinéraire correct.
 
-Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
+Razor Pages options, telles que l’ajout de <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>, sont ajoutées lorsque MVC est ajouté à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/).
 
 [!code-csharp[](razor-pages-conventions/samples/2.x/SampleApp/Startup.cs?name=snippet1)]
 

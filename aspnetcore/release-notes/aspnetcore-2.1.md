@@ -8,12 +8,12 @@ ms.date: 12/05/2019
 no-loc:
 - SignalR
 uid: aspnetcore-2.1
-ms.openlocfilehash: 57fe6c4e32ad666987c782fac75ddb19e3d3b5c7
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: af5807b782d4acec8c7d40111dc508dfa6127057
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667544"
 ---
 # <a name="whats-new-in-aspnet-core-21"></a>Nouveautés d’ASP.NET Core 2.1
 
@@ -51,7 +51,7 @@ Pour plus d’informations, consultez [Identité de vue de structure dans les pr
 
 ## <a name="https"></a>HTTPS
 
-L’importance croissante accordée à la sécurité et à la confidentialité justifie l’activation du protocole HTTPS pour les applications web. La mise en œuvre du protocole HTTPS devient de plus en plus stricte sur le web. Les sites qui n’utilisent pas le protocole HTTPs sont considérés comme non sécurisés. Les navigateurs (Chrome, Mozilla) commencent à imposer l’utilisation des fonctionnalités web dans un contexte sécurisé. Le [RGPD](xref:security/gdpr) exige l’utilisation du protocole HTTPS pour protéger la confidentialité des utilisateurs. L’utilisation du protocole HTTPS en production est critique et son utilisation en développement peut aider à éviter les problèmes liés au déploiement (tels que les liens non sécurisés). ASP.NET Core 2.1 inclut un certain nombre d’améliorations qui facilitent l’utilisation du protocole HTTPS pendant le développement et sa configuration en production. Pour plus d’informations, consultez [Appliquer HTTPS](xref:security/enforcing-ssl).
+L’importance croissante accordée à la sécurité et à la confidentialité justifie l’activation du protocole HTTPS pour les applications web. La mise en œuvre du protocole HTTPS devient de plus en plus stricte sur le web. Les sites qui n’utilisent pas le protocole HTTPs sont considérés comme non sécurisés. Les navigateurs (Chrome, Mozilla) commencent à imposer l’utilisation des fonctionnalités web dans un contexte sécurisé. Le [RGPD](xref:security/gdpr) exige l’utilisation du protocole HTTPS pour protéger la confidentialité des utilisateurs. L’utilisation du protocole HTTPS en production est critique et son utilisation en développement peut aider à éviter les problèmes liés au déploiement (tels que les liens non sécurisés). ASP.NET Core 2.1 inclut un certain nombre d’améliorations qui facilitent l’utilisation du protocole HTTPS pendant le développement et sa configuration en production. Pour plus d’informations, consultez [Appliquer le protocole HTTPS](xref:security/enforcing-ssl).
 
 ### <a name="on-by-default"></a>Activé par défaut
 
@@ -77,7 +77,7 @@ En production, HTTPS doit être explicitement configuré. Dans la version 2.1, l
 
 ## <a name="gdpr"></a>RGPD
 
-ASP.NET Core fournit des API et des modèles qui aident à satisfaire à certaines des exigences du [Règlement général sur la protection des données (RGPD)](https://www.eugdpr.org/). Pour plus d’informations, consultez [Prise en charge du RGPD dans ASP.NET Core](xref:security/gdpr). Un [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) montre comment utiliser et tester la plupart des API et points d’extension RGPD ajoutés aux modèles ASP.NET Core 2.1.
+ASP.NET Core fournit des API et des modèles qui aident à satisfaire à certaines des exigences du [Règlement général sur la protection des données (RGPD)](https://www.eugdpr.org/). Pour plus d’informations, consultez [Prise en charge du RGPD dans ASP.NET Core](xref:security/gdpr). Un [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) montre comment utiliser et tester la plupart des API et points d’extension RGPD ajoutés aux modèles ASP.NET Core 2.1.
 
 ## <a name="integration-tests"></a>Tests d’intégration
 
@@ -147,7 +147,7 @@ Les modèles d’applications monopages pour Angular, React et React avec Redux 
 
 Le modèle Angular est basé sur l’interface CLI Angular, tandis que les modèles React sont basés sur create-react-app.
 
-Pour plus d'informations, consultez .
+Pour plus d'informations, consultez les pages suivantes :
 
 * <xref:spa/angular>
 * <xref:spa/react>
@@ -167,9 +167,9 @@ Razor Pages prend désormais en charge les [zones](xref:mvc/controllers/areas). 
 
 ## <a name="mvc-compatibility-version"></a>Version de compatibilité MVC
 
-La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
+La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants été introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
 
-Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
+Pour plus d’informations, consultez <xref:mvc/compatibility-version>.
 
 ## <a name="migrate-from-20-to-21"></a>Migrer depuis la version 2.0 vers la version 2.1
 

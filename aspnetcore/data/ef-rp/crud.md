@@ -1,16 +1,16 @@
 ---
 title: Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
-author: tdykstra
+author: rick-anderson
 description: Montre comment créer, lire, mettre à jour et supprimer avec EF Core.
 ms.author: riande
 ms.date: 07/22/2019
 uid: data/ef-rp/crud
-ms.openlocfilehash: 57c4a1789d54c29a28ba7e67a1d15815415a461c
-ms.sourcegitcommit: 257cc3fe8c1d61341aa3b07e5bc0fa3d1c1c1d1c
-ms.translationtype: HT
+ms.openlocfilehash: 05519852fab22bd3ad5b77e3494b49191448286f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69583115"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665647"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -36,7 +36,7 @@ Pour afficher les données d’inscription d’un étudiant dans la page, vous d
 
 [!code-csharp[Main](intro/samples/cu30snapshots/2-crud/Pages/Students/Details1.cshtml.cs?name=snippet_OnGetAsync&highlight=8)]
 
-Remplacez la méthode `OnGetAsync` par le code suivant pour lire les données d’inscription de l’étudiant sélectionné. Les modifications sont mises en surbrillance.
+Remplacez la méthode `OnGetAsync` par le code suivant pour lire les données d’inscription de l’étudiant sélectionné. Les modifications apparaissent en surbrillance.
 
 [!code-csharp[Main](intro/samples/cu30/Pages/Students/Details.cshtml.cs?name=snippet_OnGetAsync&highlight=8-12)]
 
@@ -46,11 +46,11 @@ La méthode [AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframe
 
 ### <a name="display-enrollments"></a>Afficher les inscriptions
 
-Remplacez le code dans *Pages/Students/Details.cshtml* par le code suivant pour afficher une liste d’inscriptions. Les modifications sont mises en surbrillance.
+Remplacez le code dans *Pages/Students/Details.cshtml* par le code suivant pour afficher une liste d’inscriptions. Les modifications apparaissent en surbrillance.
 
 [!code-cshtml[Main](intro/samples/cu30/Pages/Students/Details.cshtml?highlight=32-53)]
 
-Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
+Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
 Exécutez l’application, sélectionnez l'onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
@@ -79,7 +79,7 @@ Le code précédent crée un objet Student, puis utilise des champs de formulair
 
 * Utilise les valeurs de formulaire publiées de la propriété [PageContext](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel.pagecontext#Microsoft_AspNetCore_Mvc_RazorPages_PageModel_PageContext) de [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel).
 * Met à jour uniquement les propriétés listées (`s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate`).
-* Recherche les champs de formulaire dotés d’un préfixe « Student ». Par exemple, `Student.FirstMidName`. Il ne respecte pas la casse.
+* Recherche les champs de formulaire dotés d’un préfixe « Student ». Par exemple : `Student.FirstMidName`. Il ne respecte pas la casse.
 * Utilise le système de [liaison de modèles](xref:mvc/models/model-binding) pour convertir les valeurs de formulaire de chaînes en types dans le modèle `Student`. Par exemple, `EnrollmentDate` doit être converti en DateTime.
 
 Exécutez l’application, puis créez une entité Student pour tester la page Create.
@@ -92,9 +92,9 @@ L’utilisation de `TryUpdateModel` pour mettre à jour des champs avec des vale
 
 Même si l’application n’a pas de champ `Secret` dans la page Razor de création ou de mise à jour, un pirate pourrait définir la valeur `Secret` par sur-publication. Un pirate pourrait utiliser un outil tel que Fiddler, ou écrire du JavaScript, pour publier une valeur de formulaire `Secret`. Le code d’origine ne limite pas les champs que le classeur de modèles utilise quand il crée une instance de Student.
 
-La valeur spécifiée par le pirate pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs du formulaire envoyé.
+La valeur spécifiée par le pirate pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs de formulaire publiées.
 
-![Fiddler ajoutant un champ Secret](../ef-mvc/crud/_static/fiddler.png)
+![Fiddler ajoutant le champ Secret](../ef-mvc/crud/_static/fiddler.png)
 
 La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de la ligne insérée. Cela se produit même si le concepteur de l’application n’avait jamais prévu que la propriété `Secret` serait définie avec la page Create.
 
@@ -116,7 +116,7 @@ Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étu
 
 La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
-L’utilisation de `StudentVM` exige que [Create.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
+L’utilisation de `StudentVM` exige que [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/2-crud/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
 ## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
@@ -138,15 +138,15 @@ Le contexte de base de données effectue un suivi pour déterminer si les entit�
 
 Une entité peut être dans l’un des [états suivants](/dotnet/api/microsoft.entityframeworkcore.entitystate) :
 
-* `Added`: L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+* `Added`: l’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
 
-* `Unchanged`: Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
+* `Unchanged` : Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
 
-* `Modified`: Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+* `Modified` : Tout ou une partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
 
-* `Deleted`: L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+* `Deleted` : L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
 
-* `Detached`: L’entité n’est pas suivie par le contexte de base de données.
+* `Detached`: l’entité n’est pas suivie par le contexte de base de données.
 
 Dans une application de bureau, les changements d’état sont généralement définis automatiquement. Une entité est lue, des modifications sont apportées et l’état d’entité passe automatiquement à `Modified`. L’appel de `SaveChanges` génère une instruction SQL UPDATE qui met à jour uniquement les propriétés modifiées.
 
@@ -162,7 +162,7 @@ Remplacez le code dans *Pages/Students/Delete.cshtml.cs* par le code suivant. Le
 
 Le code précédent ajoute le paramètre facultatif `saveChangesError` à la signature de méthode `OnGetAsync`. `saveChangesError` indique si la méthode a été appelée après un échec de suppression de l’objet Student. L’opération de suppression peut échouer en raison de problèmes réseau temporaires. Vous avez plus de chances de rencontrer des erreurs réseau temporaires quand la base de données est dans le cloud. Le paramètre `saveChangesError` a la valeur false quand la méthode `OnGetAsync` de la page Delete est appelée à partir de l’interface utilisateur. Quand `OnGetAsync` est appelée par `OnPostAsync` (car l’opération de suppression a échoué), le paramètre `saveChangesError` a la valeur true.
 
-La méthode `OnPostAsync` récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Lorsque `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
+La méthode `OnPostAsync` récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Quand `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
 
 * L’exception de la base de données est interceptée.
 * La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
@@ -196,7 +196,7 @@ Le code généré automatiquement utilise le modèle suivant pour les pages Crea
 
 Les pages Index et Details obtiennent et affichent les données demandées avec la méthode HTTP GET `OnGetAsync`.
 
-## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync vs. FirstOrDefaultAsync
+## <a name="singleordefaultasync-vs-firstordefaultasync"></a>SingleOrDefaultAsync et FirstOrDefaultAsync
 
 Le code généré utilise [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Threading_CancellationToken_), qui est généralement préféré à [SingleOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_).
 
@@ -239,7 +239,7 @@ Une demande à la page avec le modèle de route «{id:int}» qui n'inclut **pas*
 @page "{id:int?}"
 ```
 
-Exécutez l’application, cliquez sur un lien Détails et vérifiez que l’URL passe l’ID en tant que données de route (`http://localhost:5000/Students/Details/2`).
+Exécutez l’application, cliquez sur un lien Details et vérifiez que l’URL transmet l’ID en tant que données de route (`http://localhost:5000/Students/Details/2`).
 
 Ne changez pas `@page` en `@page "{id:int}"` globalement, cela casserait les liens vers les pages Home et Create.
 
@@ -265,7 +265,7 @@ Ouvrez *Pages/Students/Details.cshtml*. Ajoutez le code en surbrillance suivant 
 
 Si la mise en retrait du code est incorrecte, une fois que le code est collé, appuyez sur CTRL + K + D pour résoudre ce problème.
 
-Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
+Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
 Exécutez l’application, sélectionnez l'onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
@@ -302,7 +302,7 @@ Même si l’application n’a pas de champ `Secret` dans la page Razor de créa
 
 La valeur spécifiée par le pirate pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs de formulaire publiées.
 
-![Fiddler ajoutant un champ Secret](../ef-mvc/crud/_static/fiddler.png)
+![Fiddler ajoutant le champ Secret](../ef-mvc/crud/_static/fiddler.png)
 
 La valeur « OverPost » est ajoutée avec succès à la propriété `Secret` de la ligne insérée. Le concepteur de l’application n’a jamais prévu que la propriété `Secret` soit définie avec la page Create.
 
@@ -322,7 +322,7 @@ Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étu
 
 La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
-L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
+L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
 Dans les pages Razor, la classe dérivée `PageModel` est le modèle d’affichage.
 
@@ -348,15 +348,15 @@ Le contexte de base de données effectue un suivi afin de savoir si les entités
 
 Une entité peut être dans l’un des [états suivants](/dotnet/api/microsoft.entityframeworkcore.entitystate) :
 
-* `Added`: L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+* `Added` : L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
 
-* `Unchanged`: Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
+* `Unchanged` : Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
 
-* `Modified`: Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+* `Modified` : Tout ou une partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
 
-* `Deleted`: L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+* `Deleted` : L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
 
-* `Detached`: L’entité n’est pas suivie par le contexte de base de données.
+* `Detached` : L’entité n’est pas suivie par le contexte de base de données.
 
 Dans une application de bureau, les changements d’état sont généralement définis automatiquement. Une entité est lue, des modifications sont apportées et l’état d’entité passe automatiquement à `Modified`. L’appel de `SaveChanges` génère une instruction SQL UPDATE qui met à jour uniquement les propriétés modifiées.
 
@@ -380,7 +380,7 @@ Remplacez `OnPostAsync` par le code suivant :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Delete.cshtml.cs?name=snippet_OnPostAsync)]
 
-Le code précédent récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Lorsque `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
+Le code précédent récupère l’entité sélectionnée, puis appelle la méthode [Remove](/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#Microsoft_EntityFrameworkCore_DbContext_Remove_System_Object_) pour définir l’état de l’entité sur `Deleted`. Quand `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
 
 * L’exception de la base de données est interceptée.
 * La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.

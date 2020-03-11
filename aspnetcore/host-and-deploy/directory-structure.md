@@ -1,22 +1,20 @@
 ---
 title: Structure de répertoires ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez la structure de répertoires des applications ASP.NET Core publiées.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: c3c05e6bc461ea4a3bfefa2c7a49d524562f7e5b
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: f7d6feec9961b7f6720d30d457fae5dcb6b34d6c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172259"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664107"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
-
-Par [Luke Latham](https://github.com/guardrex)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -30,8 +28,8 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 | Type d'application | Structure de répertoires |
 | -------- | ------------------- |
-| [Exécutable dépendant du Framework (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC ; Si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>*fichiers. dll</li><li>{nom de l’assembly}. DEPS. json</li><li>{nom de l’assembly}. dll</li><li>{nom de l’assembly} {. Extension} *. exe* extension sur Windows, aucune extension sur MacOS ou Linux</li><li>{nom de l’assembly}. pdb</li><li>{nom de l’assembly}. Views. dll</li><li>{nom de l’ASSEMBLy}. Views. pdb</li><li>{nom de l’ASSEMBLy}. runtimeconfig. JSON</li><li>Web. config (déploiements IIS)</li><li>createdump ([utilitaire Createdump Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))* </li><li>. so (bibliothèque d’objets partagés Linux)</li><li>*. a (Archive MacOS)</li><li>* . dylib (bibliothèque dynamique MacOS)</li></ul></li></ul> |
-| [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC, si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>fichiers *. dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM de l’ASSEMBLY}.exe</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
+| [Exécutable dépendant du Framework (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC ; Si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM DE L’ASSEMBLY} {. Extension} *. exe* extension sur Windows, aucune extension sur MacOS ou Linux</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li><li>createdump ([utilitaire Linux createdump](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*. so (bibliothèque d’objets partagés Linux)</li><li>\*. a (Archive macOS)</li><li>\*. dylib (bibliothèque dynamique macOS)</li></ul></li></ul> |
+| [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC, si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM de l’ASSEMBLY}.exe</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
 
 &dagger;Indique un répertoire
 

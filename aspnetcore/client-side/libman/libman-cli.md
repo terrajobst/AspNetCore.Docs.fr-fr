@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: client-side/libman/libman-cli
 ms.openlocfilehash: 02d88d09805bd23a86ef924766373245fec7ff52
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928360"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664632"
 ---
 # <a name="use-the-libman-cli-with-aspnet-core"></a>Utiliser l’interface CLI LibMan avec ASP.NET Core
 
@@ -21,11 +21,11 @@ Par [Scott Addie](https://twitter.com/Scott_Addie)
 
 L’interface CLI [LibMan](xref:client-side/libman/index) est un outil multiplateforme qui est pris en charge partout où .net Core est pris en charge.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
-## <a name="installation"></a>Installation de
+## <a name="installation"></a>Installation
 
 Pour installer l’interface CLI LibMan :
 
@@ -43,7 +43,7 @@ dotnet tool install -g Microsoft.Web.LibraryManager.Cli --version 1.0.94-g606058
 
 Dans l’exemple précédent, un outil Global .NET Core est installé à partir du fichier *C:\Temp\Microsoft.Web.librarymanager.cli.1.0.94-g606058a278.nupkg* de l’ordinateur Windows local.
 
-## <a name="usage"></a>Contrôle
+## <a name="usage"></a>Usage
 
 Une fois l’installation de l’interface CLI réussie, vous pouvez utiliser la commande suivante :
 
@@ -96,7 +96,7 @@ Les sections suivantes décrivent les commandes CLI disponibles.
 
 La commande `libman init` crée un fichier *Libman. JSON* s’il n’en existe pas. Le fichier est créé avec le contenu du modèle d’élément par défaut.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman init [-d|--default-destination] [-p|--default-provider] [--verbosity]
@@ -124,7 +124,7 @@ Les options suivantes sont disponibles pour la commande `libman init` :
 Pour créer un fichier *Libman. JSON* dans un projet ASP.net Core :
 
 * Accédez à la racine du projet.
-* Exécutez la commande suivante : .
+* Exécutez la commande suivante :
 
   ```console
   libman init
@@ -150,7 +150,7 @@ Un fichier *Libman. JSON* est ajouté à la racine du projet avec le contenu sui
 
 La commande `libman install` télécharge et installe les fichiers de bibliothèque dans le projet. Un fichier *Libman. JSON* est ajouté s’il n’en existe pas. Le fichier *Libman. JSON* est modifié pour stocker les détails de configuration des fichiers de la bibliothèque.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman install <LIBRARY> [-d|--destination] [--files] [-p|--provider] [--verbosity]
@@ -173,7 +173,7 @@ Les options suivantes sont disponibles pour la commande `libman install` :
 
 * `--files <FILE>`
 
-  Spécifiez le nom du fichier à installer à partir de la bibliothèque. S’il n’est pas spécifié, tous les fichiers de la bibliothèque sont installés. Fournissez une option de `--files` par fichier à installer. Les chemins d’accès relatifs sont également pris en charge. Par exemple : `--files dist/browser/signalr.js`.
+  Spécifiez le nom du fichier à installer à partir de la bibliothèque. S’il n’est pas spécifié, tous les fichiers de la bibliothèque sont installés. Fournissez une option de `--files` par fichier à installer. Les chemins d’accès relatifs sont également pris en charge. Par exemple : `--files dist/browser/signalr.js`.
 
 * `-p|--provider <PROVIDER>`
 
@@ -263,13 +263,13 @@ Après avoir accepté la destination par défaut, le fichier *Libman. JSON* ress
 
 ## <a name="restore-library-files"></a>Restaurer les fichiers de bibliothèque
 
-La commande `libman restore` installe les fichiers de bibliothèque définis dans *Libman. JSON*. Les règles suivantes s'appliquent :
+La commande `libman restore` installe les fichiers de bibliothèque définis dans *Libman. JSON*. Les règles suivantes s’appliquent :
 
 * S’il n’existe aucun fichier *Libman. JSON* dans la racine du projet, une erreur est retournée.
 * Si une bibliothèque spécifie un fournisseur, la propriété `defaultProvider` dans *Libman. JSON* est ignorée.
 * Si une bibliothèque spécifie une destination, la propriété `defaultDestination` dans *Libman. JSON* est ignorée.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman restore [--verbosity]
@@ -294,7 +294,7 @@ libman restore
 
 La commande `libman clean` supprime les fichiers de bibliothèque précédemment restaurés via LibMan. Dossiers qui deviennent vides après la suppression de cette opération. Les configurations associées aux fichiers de bibliothèque dans la propriété `libraries` de *Libman. JSON* ne sont pas supprimées.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman clean [--verbosity]
@@ -329,7 +329,7 @@ Une erreur se produit dans les cas suivants :
 
 Si plusieurs bibliothèques portant le même nom sont installées, vous êtes invité à en choisir une.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman uninstall <LIBRARY> [--verbosity]
@@ -381,7 +381,7 @@ Une erreur se produit dans les cas suivants :
 
 Si plusieurs bibliothèques portant le même nom sont installées, vous êtes invité à en choisir une.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman update <LIBRARY> [-pre] [--to] [--verbosity]
@@ -432,7 +432,7 @@ Les options suivantes sont disponibles pour la commande `libman update` :
 
 La commande `libman cache` gère le cache de la bibliothèque LibMan. Le fournisseur `filesystem` n’utilise pas le cache de bibliothèque.
 
-### <a name="synopsis"></a>Résumé
+### <a name="synopsis"></a>Synopsis
 
 ```console
 libman cache clean [<PROVIDER>] [--verbosity]

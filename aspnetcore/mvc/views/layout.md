@@ -5,18 +5,18 @@ description: Apprenez à utiliser des dispositions communes, à partager des dir
 ms.author: riande
 ms.date: 07/30/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 3ba2f459ca2b04a3001e261acab26880b6582500
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: db8c6c30397593c1a8375ebc800c1c0e34d241cb
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288994"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667901"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
 Article rédigé par [Steve Smith](https://ardalis.com/) et [Dave Brock](https://twitter.com/daveabrock)
 
-Les pages et les vues ont souvent des éléments visuels et programmatiques en commun. Cet article explique comment :
+Les pages et les vues ont souvent des éléments visuels et programmatiques en commun. Cet article montre comment :
 
 * Utiliser des dispositions communes.
 * Partager des directives.
@@ -109,7 +109,7 @@ Le corps et toutes les sections dans une page Razor doivent être soit affichés
 
 ## <a name="importing-shared-directives"></a>Importation de directives partagées
 
-Les vues et les pages peuvent utiliser des directives Razor pour importer des espaces de noms et utiliser [l’injection de dépendances](dependency-injection.md). Les directives partagées par plusieurs vues peuvent être spécifiées dans un fichier *_ViewImports.cshtml* commun. Le fichier `_ViewImports` prend en charge les directives suivantes :
+Les vues et les pages peuvent utiliser des directives Razor pour importer des espaces de noms et utiliser l' [injection de dépendances](dependency-injection.md). Les directives partagées par plusieurs vues peuvent être spécifiées dans un fichier *_ViewImports.cshtml* commun. Le fichier `_ViewImports` prend en charge les directives suivantes :
 
 * `@addTagHelper`
 * `@removeTagHelper`
@@ -155,4 +155,4 @@ Exemple de fichier *_ViewStart.cshtml* :
 
 Le fichier ci-dessus spécifie que toutes les vues doivent utiliser la disposition *_Layout.cshtml*.
 
-*_ViewStart.cshtml* et *_ViewImports.cshtml* **ne sont pas** généralement placés dans le dossier */Pages/Shared* (ou */Views/Shared*). Les versions de ces fichiers qui sont au niveau de l’application doivent être placées directement dans le dossier */Pages* (ou */Views*).
+*_ViewStart.cshtml* et *_ViewImports.cshtml***ne sont pas** généralement placés dans le dossier */Pages/Shared* (ou */Views/Shared*). Les versions de ces fichiers qui sont au niveau de l’application doivent être placées directement dans le dossier */Pages* (ou */Views*).

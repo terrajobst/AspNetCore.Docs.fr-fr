@@ -11,19 +11,19 @@ no-loc:
 - SignalR
 uid: blazor/debug
 ms.openlocfilehash: 1b0035af48b82807a6ae14835a41a1ecbef06bb6
-ms.sourcegitcommit: 9ee99300a48c810ca6fd4f7700cd95c3ccb85972
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76159987"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661706"
 ---
-# <a name="debug-aspnet-core-opno-locblazor"></a>ASP.NET Core de débogage Blazor
+# <a name="debug-aspnet-core-blazor"></a>ASP.NET Core éblouissant de débogage
 
 [Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Il existe une prise en charge *précoce* du débogage Blazor webassembly à l’aide des outils de développement de navigateur dans les navigateurs basés sur le chrome (chrome/Edge). Le travail est en cours pour :
+Il existe une prise en charge *précoce* pour le débogage de l’assembly Web éblouissant à l’aide des outils de développement de navigateur dans les navigateurs basés sur le chrome (chrome/Edge). Le travail est en cours pour :
 
 * Activez complètement le débogage dans Visual Studio.
 * Activez le débogage dans Visual Studio Code.
@@ -46,7 +46,7 @@ Vous *ne pouvez pas*:
 
 Le développement d’autres scénarios de débogage est l’un des objectifs de l’équipe d’ingénierie.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Le débogage requiert l’un des navigateurs suivants :
 
@@ -55,15 +55,15 @@ Le débogage requiert l’un des navigateurs suivants :
 
 ## <a name="procedure"></a>Procédure
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 > [!WARNING]
 > La prise en charge du débogage dans Visual Studio est une étape précoce du développement. Le débogage **F5** n’est pas pris en charge actuellement.
 
-1. Exécutez une application Blazor webassembly dans `Debug` configuration sans débogage (**Ctrl**+**F5** au lieu de **F5**).
+1. Exécutez une application webassembly éblouissante dans `Debug` configuration sans débogage (**Ctrl**+**F5** au lieu de **F5**).
 1. Ouvrez les propriétés de débogage de l’application (dernière entrée dans le menu **Déboguer** ) et copiez l’URL de l' **application**http. Accédez à l’adresse HTTP (et non à l’adresse HTTPs) de l’application à l’aide d’un navigateur basé sur le chrome (Edge Beta ou chrome).
 1. Placez le focus clavier sur l’application dans la fenêtre du navigateur, et non dans le panneau Outils de développement. Il est préférable de garder le panneau Outils de développement fermé pour cette procédure. Une fois le débogage démarré, vous pouvez rouvrir le panneau Outils de développement.
-1. Sélectionnez le raccourci clavier spécifique à Blazorsuivant :
+1. Sélectionnez le raccourci clavier de éblouissant spécifique suivant :
 
    * `Shift+Alt+D` sur Windows
    * `Shift+Cmd+D` sur macOS
@@ -72,22 +72,22 @@ Le débogage requiert l’un des navigateurs suivants :
    
    Après l’activation du débogage distant :
    
-   1 \. Une nouvelle fenêtre de navigateur s'ouvre. Fermez la fenêtre précédente.
+   1 \. Une nouvelle fenêtre de navigateur s’ouvre. Fermez la fenêtre précédente.
 
    2 \. Placez le focus clavier sur l’application dans la fenêtre du navigateur.
 
-   3 \. Sélectionnez le raccourci clavier spécifique au Blazordans la nouvelle fenêtre de navigateur : `Shift+Alt+D` sur Windows ou `Shift+Cmd+D` sur macOS.
+   3 \. Sélectionnez le raccourci clavier de la nouvelle fenêtre de navigateur : `Shift+Alt+D` sur Windows ou sur `Shift+Cmd+D` sur macOS.
 
    4 \. L’onglet **devtools** s’ouvre dans le navigateur. **Resélectionnez l’onglet de l’application dans la fenêtre du navigateur.**
 
    Pour attacher l’application à Visual Studio, consultez la section [attacher au processus dans Visual Studio](#attach-to-process-in-visual-studio) .
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 
-1. Exécutez une application Blazor webassembly dans la configuration de `Debug` en passant l’option `--configuration Debug` à la commande [dotnet Run](/dotnet/core/tools/dotnet-run) : `dotnet run --configuration Debug`.
+1. Exécutez une application webassembly éblouissante dans `Debug` configuration en passant l’option `--configuration Debug` à la commande [dotnet Run](/dotnet/core/tools/dotnet-run) : `dotnet run --configuration Debug`.
 1. Accédez à l’application à l’URL HTTP indiquée dans la fenêtre de l’interpréteur de commandes.
 1. Placez le focus clavier sur l’application, et non sur le panneau Outils de développement. Il est préférable de garder le panneau Outils de développement fermé pour cette procédure. Une fois le débogage démarré, vous pouvez rouvrir le panneau Outils de développement.
-1. Sélectionnez le raccourci clavier spécifique à Blazorsuivant :
+1. Sélectionnez le raccourci clavier de éblouissant spécifique suivant :
 
    * `Shift+Alt+D` sur Windows
    * `Shift+Cmd+D` sur macOS
@@ -96,11 +96,11 @@ Le débogage requiert l’un des navigateurs suivants :
    
    Après l’activation du débogage distant :
    
-   1 \. Une nouvelle fenêtre de navigateur s'ouvre. Fermez la fenêtre précédente.
+   1 \. Une nouvelle fenêtre de navigateur s’ouvre. Fermez la fenêtre précédente.
 
    2 \. Placez le focus clavier sur l’application dans la fenêtre du navigateur, et non dans le panneau Outils de développement.
 
-   3 \. Sélectionnez le raccourci clavier spécifique au Blazordans la nouvelle fenêtre de navigateur : `Shift+Alt+D` sur Windows ou `Shift+Cmd+D` sur macOS.
+   3 \. Sélectionnez le raccourci clavier de la nouvelle fenêtre de navigateur : `Shift+Alt+D` sur Windows ou sur `Shift+Cmd+D` sur macOS.
 
 ---
 
@@ -131,7 +131,7 @@ Pour attacher le processus de l’application en cours d’exécution à Visual 
 
 Les mappages de source de navigateur permettent au navigateur de mapper les fichiers compilés à leurs fichiers sources d’origine et sont couramment utilisés pour le débogage côté client. Toutefois, Blazor n’est pas C# actuellement mappé directement à JavaScript/WASM. Au lieu de cela, Blazor effectue une interprétation IL dans le navigateur, de sorte que les mappages de source ne sont pas pertinents.
 
-## <a name="troubleshoot"></a>Dépannage
+## <a name="troubleshoot"></a>Dépanner
 
 Si vous rencontrez des erreurs, le Conseil suivant peut vous aider :
 

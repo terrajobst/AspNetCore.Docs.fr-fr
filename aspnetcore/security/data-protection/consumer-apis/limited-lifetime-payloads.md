@@ -1,58 +1,58 @@
 ---
-title: Limite la durée de vie des charges utiles protégées dans ASP.NET Core
+title: Limiter la durée de vie des charges utiles protégées dans ASP.NET Core
 author: rick-anderson
-description: Découvrez comment limiter la durée de vie d’une charge protégée à l’aide de l’API de Protection des données ASP.NET Core.
+description: Découvrez comment limiter la durée de vie d’une charge utile protégée à l’aide des API de protection des données ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/consumer-apis/limited-lifetime-payloads
 ms.openlocfilehash: 8dc3b856ec67477ec8ae777749c9bf3107eb4eda
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897116"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656057"
 ---
-# <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Limite la durée de vie des charges utiles protégées dans ASP.NET Core
+# <a name="limit-the-lifetime-of-protected-payloads-in-aspnet-core"></a>Limiter la durée de vie des charges utiles protégées dans ASP.NET Core
 
-Il existe des scénarios où le développeur souhaite créer une charge utile protégée qui expire après un laps de temps défini. Par exemple, la charge utile protégée peut représenter un jeton de réinitialisation de mot de passe qui ne doit être valid pendant une heure. Il est tout à fait possible pour les développeurs à créer leur propre format de charge utile qui contient une date d’expiration incorporé, et les développeurs expérimentés souhaiterez peut-être le faire quand même, mais pour la majorité des développeurs la gestion de ces délais d’expiration peut devenir fastidieuse.
+Il existe des scénarios dans lesquels le développeur d’applications souhaite créer une charge utile protégée qui expire après un laps de temps défini. Par exemple, la charge utile protégée peut représenter un jeton de réinitialisation de mot de passe qui ne doit être valide que pendant une heure. Il est certes possible pour le développeur de créer son propre format de charge utile qui contient une date d’expiration incorporée, et les développeurs avancés peuvent souhaiter le faire tout de même, mais pour la plupart des développeurs qui gèrent ces expirations peuvent devenir fastidieux.
 
-Pour faciliter cette opération pour notre public de développeur, le package [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) contient les API de l’utilitaire pour la création de charges utiles qui expirent automatiquement après un laps de temps défini. Ces API de blocage issu de la `ITimeLimitedDataProtector` type.
+Pour faciliter cette tâche pour les développeurs, le package [Microsoft. AspNetCore. dataprotection. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) contient des API d’utilitaire pour créer des charges utiles qui expirent automatiquement après un laps de temps défini. Ces API se bloquent du type de `ITimeLimitedDataProtector`.
 
-## <a name="api-usage"></a>Utilisation de l’API
+## <a name="api-usage"></a>Utilisation des API
 
-Le `ITimeLimitedDataProtector` interface est l’interface principale pour protéger et déprotéger les charges utiles à expiration automatique / de durée limitée. Pour créer une instance d’un `ITimeLimitedDataProtector`, vous devez tout d’abord une instance d’une expression régulière [IDataProtector](xref:security/data-protection/consumer-apis/overview) construit avec un objectif spécifique. Une fois le `IDataProtector` instance n’est disponible, appelez le `IDataProtector.ToTimeLimitedDataProtector` méthode d’extension se remettre un protecteur avec les fonctionnalités intégrées d’expiration.
+L’interface `ITimeLimitedDataProtector` est l’interface principale pour la protection et la déprotection des charges utiles limitées dans le temps ou à l’expiration automatique. Pour créer une instance d’un `ITimeLimitedDataProtector`, vous avez d’abord besoin d’une instance d’un [IDataProtector](xref:security/data-protection/consumer-apis/overview) standard construit avec un objectif spécifique. Une fois l’instance `IDataProtector` disponible, appelez la méthode d’extension `IDataProtector.ToTimeLimitedDataProtector` pour obtenir un protecteur avec des fonctionnalités d’expiration intégrées.
 
-`ITimeLimitedDataProtector` expose les méthodes de surface et l’extension d’API suivantes :
+`ITimeLimitedDataProtector` expose les méthodes d’extension et la surface d’API suivantes :
 
-* CreateProtector (objectif de chaîne) : ITimeLimitedDataProtector - cette API est similaire à l’objet de `IDataProtectionProvider.CreateProtector` car il peut être utilisé pour créer [usage chaînes](xref:security/data-protection/consumer-apis/purpose-strings) à partir d’un protecteur de durée limitée de racine.
+* CreateProtector (String Purpose) : ITimeLimitedDataProtector : cette API est similaire à la `IDataProtectionProvider.CreateProtector` existante en ce sens qu’elle peut être utilisée pour créer des [chaînes d’objectif](xref:security/data-protection/consumer-apis/purpose-strings) à partir d’un protecteur à durée limitée.
 
-* Protéger (byte [] en texte brut, d’expiration DateTimeOffset) : byte]
+* Protect (Byte [] texte en clair, expiration DateTimeOffset) : Byte []
 
-* Protéger (texte en clair de byte [], durée de vie TimeSpan) : byte]
+* Protect (Byte [] texte en clair, durée de vie TimeSpan) : Byte []
 
-* Protéger (texte en clair de byte []) : byte]
+* Protect (Byte [] texte en clair) : Byte []
 
-* Protéger (texte en clair chaîne, d’expiration DateTimeOffset) : chaîne
+* Protect (chaîne en texte clair, expiration DateTimeOffset) : chaîne
 
-* Protéger (texte en clair de la chaîne, durée de vie TimeSpan) : chaîne
+* Protect (chaîne en clair, durée de vie de la période) : chaîne
 
-* Protéger (texte en clair de la chaîne) : chaîne
+* Protect (chaîne de texte en clair) : chaîne
 
-Outre la base `Protect` méthodes qui prennent uniquement le texte en clair, il existe de nouvelles surcharges qui permettent de spécifier la date d’expiration de la charge utile. La date d’expiration peut être spécifiée comme une date absolue (via un `DateTimeOffset`) ou comme une heure relative (à partir du système actuel temps, via un `TimeSpan`). Si une surcharge qui ne prend pas d’un délai d’expiration est appelée, la charge utile est censée ne jamais pour expirer.
+Outre les méthodes de `Protect` principales qui prennent uniquement le texte en clair, il existe de nouvelles surcharges qui permettent de spécifier la date d’expiration de la charge utile. La date d’expiration peut être spécifiée sous la forme d’une date absolue (par le biais d’un `DateTimeOffset`) ou sous la forme d’un temps relatif (à partir de l’heure système actuelle, via un `TimeSpan`). Si une surcharge qui ne prend pas d’expiration est appelée, la charge utile est censée ne jamais expirer.
 
-* Ôter la protection (protectedData [] octets, à l’expiration de DateTimeOffset) : byte]
+* UnProtection (Byte [] protectedData, out DateTimeOffset expiration) : Byte []
 
-* Unprotect(byte[] protectedData) : byte[]
+* Unprotect (Byte [] protectedData) : Byte []
 
-* Ôter la protection (chaîne protectedData out d’expiration DateTimeOffset) : chaîne
+* UnProtection (String protectedData, out DateTimeOffset expiration) : chaîne
 
-* Ôter la protection (chaîne protectedData) : chaîne
+* Unprotect (chaîne protectedData) : chaîne
 
-Le `Unprotect` méthodes retournent les données non protégées d’origine. Si la charge utile n’a pas encore expiré, l’expiration absolue est retournée en tant que paramètre, ainsi que les données non protégées d’origine de sortie facultatif. Si la charge utile a expiré, toutes les surcharges de la méthode Unprotect lèvera CryptographicException.
+Les méthodes `Unprotect` retournent les données non protégées d’origine. Si la charge utile n’a pas encore expiré, l’expiration absolue est retournée en tant que paramètre de sortie facultatif avec les données non protégées d’origine. Si la charge utile est expirée, toutes les surcharges de la méthode Unprotect lèvent CryptographicException.
 
 >[!WARNING]
-> Il n’est pas conseillé d’utiliser ces API pour protéger les charges utiles qui nécessitent la persistance à long terme ou indéterminée. « Puis-je me permettre d’utiliser pour les charges utiles protégées à être définitivement irrécupérable après un mois ? » peut servir à une règle empirique ; Si la réponse est Aucun développeur puis ne doit prendre en compte les autres API.
+> Il n’est pas recommandé d’utiliser ces API pour protéger les charges utiles qui nécessitent une persistance à long terme ou indéfinie. « Puis-je me permettre que les charges utiles protégées soient irrémédiablement irrémédiables après un mois ? » peut servir de bonne règle de pouce ; Si la réponse n’est pas, les développeurs doivent envisager d’autres API.
 
-L’exemple ci-dessous utilise la [chemins de code de l’injection de dépendance non](xref:security/data-protection/configuration/non-di-scenarios) pour instancier le système de protection des données. Pour exécuter cet exemple, assurez-vous que vous avez tout d’abord ajouté une référence au package Microsoft.AspNetCore.DataProtection.Extensions.
+L’exemple ci-dessous utilise les [chemins d’accès de code non-di](xref:security/data-protection/configuration/non-di-scenarios) pour instancier le système de protection des données. Pour exécuter cet exemple, assurez-vous d’avoir d’abord ajouté une référence au package Microsoft. AspNetCore. DataProtection. extensions.
 
 [!code-csharp[](limited-lifetime-payloads/samples/limitedlifetimepayloads.cs)]

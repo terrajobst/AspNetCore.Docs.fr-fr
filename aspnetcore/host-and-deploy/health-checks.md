@@ -1,22 +1,22 @@
 ---
 title: Contrôles d’intégrité dans ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez comment configurer des contrôles d’intégrité pour l’infrastructure ASP.NET Core, comme des applications ou des bases de données.
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 33e5e71983a55b4ee30436d8e9e1e04186259a5d
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 314e55c818cddf1dad2e3ec74d4d1e041ce7366f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829216"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664884"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
-Par [Luke Latham](https://github.com/guardrex) et [Glenn Condron](https://github.com/glennc)
+Par [Glenn Condron](https://github.com/glennc)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -28,11 +28,11 @@ Les contrôles d’intégrité sont exposés par une application comme des point
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application comprend des exemples pour les scénarios décrits dans cette rubrique. Pour exécuter l’exemple d’application selon un scénario donné, utilisez la commande [dotnet run](/dotnet/core/tools/dotnet-run) dans un interpréteur de commandes, à partir du dossier du projet. Pour plus d’informations sur l’utilisation de l’exemple d’application, consultez le fichier *README.md* de l’exemple d’application ainsi que les descriptions de scénarios de cette rubrique.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Les contrôles d’intégrité sont généralement utilisés avec un service de supervision externe ou un orchestrateur de conteneurs pour vérifier l’état d’une application. Avant d’ajouter des contrôles d’intégrité à une application, vous devez décider du système de supervision à utiliser. Le système de supervision détermine les types de contrôles d’intégrité qui doivent être créés ainsi que la configuration de leurs points de terminaison.
 
@@ -221,7 +221,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="enable-cross-origin-requests-cors"></a>Activer les requêtes d’origines différentes
 
-Bien que l’exécution manuelle de contrôles d’intégrité à partir d’un navigateur ne soit pas un scénario d’utilisation courant, l’intergiciel (middleware) CORS peut être activé en appelant `RequireCors` sur les points de terminaison de contrôle d’intégrité. Une surcharge de `RequireCors` accepte un délégué de générateur de stratégie CORS (`CorsPolicyBuilder`) ou un nom de stratégie. Si aucune stratégie n’est fournie, la stratégie CORS par défaut est utilisée. Pour plus d'informations, consultez <xref:security/cors>.
+Bien que l’exécution manuelle de contrôles d’intégrité à partir d’un navigateur ne soit pas un scénario d’utilisation courant, l’intergiciel (middleware) CORS peut être activé en appelant `RequireCors` sur les points de terminaison de contrôle d’intégrité. Une surcharge de `RequireCors` accepte un délégué de générateur de stratégie CORS (`CorsPolicyBuilder`) ou un nom de stratégie. Si aucune stratégie n’est fournie, la stratégie CORS par défaut est utilisée. Pour plus d’informations, consultez <xref:security/cors>.
 
 ## <a name="health-check-options"></a>Options de contrôle d’intégrité
 
@@ -236,7 +236,7 @@ Bien que l’exécution manuelle de contrôles d’intégrité à partir d’un 
 
 Par défaut, l’intergiciel (middleware) des contrôles d’intégrité exécute toutes les vérifications d’intégrité inscrites. Pour exécuter un sous-ensemble de contrôles d’intégrité, fournissez une fonction qui retourne une valeur booléenne à l’option <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.Predicate>. Dans l’exemple suivant, le contrôle d’intégrité `Bar` est filtré en fonction de son étiquette (`bar_tag`) dans l’instruction conditionnelle de la fonction, où `true` est retourné uniquement si la propriété <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckRegistration.Tags> du contrôle d’intégrité correspond à `foo_tag` ou à `baz_tag` :
 
-Dans `Startup.ConfigureServices`:
+Dans `Startup.ConfigureServices` :
 
 ```csharp
 services.AddHealthChecks()
@@ -265,7 +265,7 @@ app.UseEndpoints(endpoints =>
 
 Utilisez <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.ResultStatusCodes> pour personnaliser le mappage de l’état d’intégrité aux codes d’état HTTP. Les affectations <xref:Microsoft.AspNetCore.Http.StatusCodes> suivantes sont les valeurs par défaut utilisées par le middleware. Vous pouvez modifier les valeurs de code d’état selon vos besoins.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -286,7 +286,7 @@ app.UseEndpoints(endpoints =>
 
 <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses> contrôle si l’intergiciel (middleware) des contrôles d’intégrité ajoute des en-têtes HTTP à une réponse de sondage pour empêcher la mise en cache des réponses. Si la valeur est `false` (par défaut), le middleware définit ou substitue les en-têtes `Cache-Control`, `Expires` et `Pragma` afin d’empêcher la mise en cache de la réponse. Si la valeur est `true`, le middleware ne modifie pas les en-têtes de cache de la réponse.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -372,7 +372,7 @@ La vérification `DbContext` vérifie que l’application peut communiquer avec 
 
 `AddDbContextCheck<TContext>` inscrit un contrôle d’intégrité pour un `DbContext`. Le `DbContext` est fourni en tant que `TContext` à la méthode. Une surcharge est disponible pour configurer l’état d’échec, les étiquettes et une requête de test personnalisée.
 
-Par défaut :
+Par défaut :
 
 * `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
 * Le nom du contrôle d’intégrité correspond à celui du type `TContext`.
@@ -704,7 +704,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`, Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -783,7 +783,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-Pour plus d'informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
+Pour plus d’informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
 
 ::: moniker-end
 
@@ -797,11 +797,11 @@ Les contrôles d’intégrité sont exposés par une application comme des point
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application comprend des exemples pour les scénarios décrits dans cette rubrique. Pour exécuter l’exemple d’application selon un scénario donné, utilisez la commande [dotnet run](/dotnet/core/tools/dotnet-run) dans un interpréteur de commandes, à partir du dossier du projet. Pour plus d’informations sur l’utilisation de l’exemple d’application, consultez le fichier *README.md* de l’exemple d’application ainsi que les descriptions de scénarios de cette rubrique.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Les contrôles d’intégrité sont généralement utilisés avec un service de supervision externe ou un orchestrateur de conteneurs pour vérifier l’état d’une application. Avant d’ajouter des contrôles d’intégrité à une application, vous devez décider du système de supervision à utiliser. Le système de supervision détermine les types de contrôles d’intégrité qui doivent être créés ainsi que la configuration de leurs points de terminaison.
 
@@ -974,7 +974,7 @@ public void Configure(IApplicationBuilder app)
 
 Utilisez <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.ResultStatusCodes> pour personnaliser le mappage de l’état d’intégrité aux codes d’état HTTP. Les affectations <xref:Microsoft.AspNetCore.Http.StatusCodes> suivantes sont les valeurs par défaut utilisées par le middleware. Vous pouvez modifier les valeurs de code d’état selon vos besoins.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 ```csharp
 //using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -995,7 +995,7 @@ app.UseHealthChecks("/health", new HealthCheckOptions()
 
 <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.AllowCachingResponses> contrôle si l’intergiciel (middleware) des contrôles d’intégrité ajoute des en-têtes HTTP à une réponse de sondage pour empêcher la mise en cache des réponses. Si la valeur est `false` (par défaut), le middleware définit ou substitue les en-têtes `Cache-Control`, `Expires` et `Pragma` afin d’empêcher la mise en cache de la réponse. Si la valeur est `true`, le middleware ne modifie pas les en-têtes de cache de la réponse.
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 ```csharp
 //using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -1011,7 +1011,7 @@ app.UseHealthChecks("/health", new HealthCheckOptions()
 
 L’option <xref:Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions.ResponseWriter> obtient ou définit un délégué utilisé pour écrire la réponse. Le délégué par défaut écrit une réponse minimale constituée de texte en clair, avec la valeur de chaîne [HealthReport.Status](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthReport.Status).
 
-Dans `Startup.Configure`:
+Dans `Startup.Configure` :
 
 ```csharp
 // using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -1088,7 +1088,7 @@ La vérification `DbContext` vérifie que l’application peut communiquer avec 
 
 `AddDbContextCheck<TContext>` inscrit un contrôle d’intégrité pour un `DbContext`. Le `DbContext` est fourni en tant que `TContext` à la méthode. Une surcharge est disponible pour configurer l’état d’échec, les étiquettes et une requête de test personnalisée.
 
-Par défaut :
+Par défaut :
 
 * `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
 * Le nom du contrôle d’intégrité correspond à celui du type `TContext`.
@@ -1379,7 +1379,7 @@ Pour distribuer une bibliothèque comme un contrôle d’intégrité :
    * Nom du contrôle d’intégrité (`name`). Si `null`, `example_health_check` est utilisé.
    * Point de données de chaîne du contrôle d’intégrité (`data1`).
    * Point de données Integer du contrôle d’intégrité (`data2`). Si `null`, `1` est utilisé.
-   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). La valeur par défaut est `null`, Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
+   * État d’échec (<xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus>). Par défaut, il s’agit de `null`. Si `null`, [HealthStatus.Unhealthy](xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus) est signalé pour un état d’échec.
    * Étiquettes (`IEnumerable<string>`).
 
    ```csharp
@@ -1471,6 +1471,6 @@ app.MapWhen(
 app.UseMvc();
 ```
 
-Pour plus d'informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
+Pour plus d’informations, consultez <xref:fundamentals/middleware/index#use-run-and-map>.
 
 ::: moniker-end

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: b8b1ade4c8c29d34200bf8c0944cff6adec0bb95
-ms.sourcegitcommit: f40c9311058c9b1add4ec043ddc5629384af6c56
+ms.openlocfilehash: 91fd09874ecab8bfdb6a38a404faba04aeb73edc
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288957"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657429"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Didacticiel : créer un modèle de données complexe-ASP.NET MVC avec EF Core
 
@@ -22,7 +22,7 @@ Lorsque vous aurez terminé, les classes d’entité composeront le modèle de d
 
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnaliser le modèle de données
@@ -38,7 +38,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Changer la chaîne de connexion
 > * Mettre à jour la base de données
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [À l’aide de migrations d’EF Core](migrations.md)
 
@@ -58,7 +58,7 @@ L’attribut `DataType` sert à spécifier un type de données qui est plus spé
 
 `DataType.Date` ne spécifie pas le format de la date qui s’affiche. Par défaut, le champ de données est affiché conformément aux formats par défaut basés sur l’objet CultureInfo du serveur.
 
-L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
+L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -192,7 +192,7 @@ Vous pouvez placer plusieurs attributs sur une seule ligne et écrire les attrib
 
 Les propriétés `CourseAssignments` et `OfficeAssignment` sont des propriétés de navigation.
 
-Un formateur pouvant animer un nombre quelconque de cours, `CourseAssignments` est défini comme une collection.
+Un formateur peut animer un nombre quelconque de cours, de sorte que `CourseAssignments` est défini comme une collection.
 
 ```csharp
 public ICollection<CourseAssignment> CourseAssignments { get; set; }
@@ -286,7 +286,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ## <a name="create-department-entity"></a>Créer l’entité Department
 
-![Entité Department](complex-data-model/_static/department-entity.png)
+![Entité de service](complex-data-model/_static/department-entity.png)
 
 Créez *Models/Department.cs* avec le code suivant :
 
@@ -510,11 +510,11 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnaliser le modèle de données
@@ -528,7 +528,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Remplir la base de données avec des données de test
 > * Ajouter une migration
 > * Changer la chaîne de connexion
-> * Base de données mise à jour
+> * Mettre à jour la base de données
 
 Passez au tutoriel suivant pour en savoir plus sur l’accès aux données associées.
 

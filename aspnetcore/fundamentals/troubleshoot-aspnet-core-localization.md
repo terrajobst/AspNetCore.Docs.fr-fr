@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 01/24/2019
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 229e274a22e170d984a16d3b1ee64ebc38c4ef77
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963333"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660376"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Résoudre les problèmes liés à la localisation ASP.NET Core
 
@@ -71,7 +71,7 @@ La classe `RequestLocalizationOptions` possède trois fournisseurs par défaut 
 
 [CustomRequestCultureProvider](/dotnet/api/microsoft.aspnetcore.localization.customrequestcultureprovider?view=aspnetcore-2.1) vous permet de personnaliser la façon dont la culture de localisation est fournie dans votre application. `CustomRequestCultureProvider` est utilisé quand les fournisseurs par défaut ne répondent pas à vos besoins.
 
-- Une raison courante pour laquelle un fournisseur personnalisé ne fonctionne pas correctement est qu’il n’est pas le premier fournisseur dans la liste `RequestCultureProviders`. Pour résoudre ce problème :
+- Une raison courante pour laquelle un fournisseur personnalisé ne fonctionne pas correctement est qu’il n’est pas le premier fournisseur dans la liste `RequestCultureProviders`. Pour résoudre ce problème :
 
 - Insérez le fournisseur personnalisé à la position 0 dans la liste `RequestCultureProviders`, comme suit :
 

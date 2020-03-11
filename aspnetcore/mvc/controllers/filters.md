@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2020
 uid: mvc/controllers/filters
-ms.openlocfilehash: c4bb9d5746e494106ead6ad5bbf972bbcc5a39f1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 03335811766ea3a1455901199863c6da0e35f7e4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034063"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662784"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -33,7 +33,7 @@ Ce document s’applique aux Razor Pages, aux contrôleurs d’API et aux contr�
 * Le composant est incorporé dans une page ou une vue.
 * La page ou le contrôleur/la vue utilise le filtre.
 
-[Afficher ou télécharger l’échantillon](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([comment télécharger](xref:index#how-to-download-a-sample)).
+[Afficher ou télécharger l’échantillon](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
@@ -176,7 +176,7 @@ En raison de l’imbrication de filtres, le code *après* des filtres s’exécu
   
 Voici un exemple qui illustre l’ordre dans lequel les méthodes de filtre sont appelées pour les filtres d’actions synchrones.
 
-| Séquence | Étendue de filtre | Filter, méthode |
+| Séquence | Étendue de filtre | Méthode de filtre |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
 | 2 | Page de contrôleur ou Razor| `OnActionExecuting` |
@@ -352,7 +352,7 @@ VS debug window shows
 FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 -->
 
-## <a name="authorization-filters"></a>Filtres d'autorisation
+## <a name="authorization-filters"></a>Filtres d’autorisations
 
 Filtres d’autorisations :
 
@@ -392,7 +392,7 @@ Exemples de filtre de ressources :
   * Il empêche la liaison de données d’accéder aux données de formulaire.
   * Il est utilisé pour les chargements de fichiers volumineux et pour empêcher que le formulaire de données ne soit lu en mémoire.
 
-## <a name="action-filters"></a>Filtres d'action
+## <a name="action-filters"></a>Filtres d’actions
 
 Les filtres d’action ne s’appliquent **pas** aux Razor Pages. Razor Pages prennent en charge <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> et <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter).
 
@@ -544,7 +544,7 @@ Le filtre est appliqué dans le code suivant :
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Controllers/SampleController.cs?name=snippet3&highlight=21)]
 
-Testez le code précédent en exécutant l' [exemple Download](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
+Testez le code précédent en exécutant l' [exemple Download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample):
 
 * Appeler les outils de développement F12.
 * Accédez à `https://localhost:5001/Sample/HeaderWithFactory`.
@@ -596,7 +596,7 @@ Les filtres d’intergiciels s’exécutent à la même étape du pipeline de fi
 ## <a name="next-actions"></a>Actions suivantes
 
 * Consultez [les méthodes de filtre pour Razor pages](xref:razor-pages/filter).
-* Pour expérimenter les filtres, [téléchargez, testez et modifiez l’échantillon Github](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
+* Pour expérimenter les filtres, [téléchargez, testez et modifiez l’échantillon Github](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/3.1sample).
 
 ::: moniker-end
 
@@ -615,7 +615,7 @@ Il est possible de créer des filtres personnalisés pour gérer les problèmes 
 
 Ce document s’applique aux Razor Pages, aux contrôleurs d’API et aux contrôleurs avec affichages.
 
-[Afficher ou télécharger l’échantillon](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([comment télécharger](xref:index#how-to-download-a-sample)).
+[Afficher ou télécharger l’échantillon](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) ([comment télécharger](xref:index#how-to-download-a-sample)).
 
 ## <a name="how-filters-work"></a>Fonctionnement des filtres
 
@@ -717,7 +717,7 @@ En raison de l’imbrication de filtres, le code *après* des filtres s’exécu
   
 Voici un exemple qui illustre l’ordre dans lequel les méthodes de filtre sont appelées pour les filtres d’actions synchrones.
 
-| Séquence | Étendue de filtre | Filter, méthode |
+| Séquence | Étendue de filtre | Méthode de filtre |
 |:--------:|:------------:|:-------------:|
 | 1 | Global | `OnActionExecuting` |
 | 2 | Contrôleur | `OnActionExecuting` |
@@ -777,7 +777,7 @@ La propriété `Order` peut être définie avec un paramètre de constructeur :
 
 Prenez en compte les mêmes 3 filtres d’actions indiqués dans l’exemple précédent. Si la propriété `Order` du contrôleur et les filtres globaux sont définis sur 1 et 2 respectivement, l’ordre d’exécution est inversé.
 
-| Séquence | Étendue de filtre | Propriété `Order` | Filter, méthode |
+| Séquence | Étendue de filtre | Propriété `Order` | Méthode de filtre |
 |:--------:|:------------:|:-----------------:|:-------------:|
 | 1 | Méthode | 0 | `OnActionExecuting` |
 | 2 | Contrôleur | 1  | `OnActionExecuting` |
@@ -882,7 +882,7 @@ VS debug window shows
 FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 -->
 
-## <a name="authorization-filters"></a>Filtres d'autorisation
+## <a name="authorization-filters"></a>Filtres d’autorisations
 
 Filtres d’autorisations :
 
@@ -922,7 +922,7 @@ Exemples de filtre de ressources :
   * Il empêche la liaison de données d’accéder aux données de formulaire.
   * Il est utilisé pour les chargements de fichiers volumineux et pour empêcher que le formulaire de données ne soit lu en mémoire.
 
-## <a name="action-filters"></a>Filtres d'action
+## <a name="action-filters"></a>Filtres d’actions
 
 > [!IMPORTANT]
 > Les filtres d’action ne s’appliquent **pas** aux Razor Pages. Razor Pages prennent en charge <xref:Microsoft.AspNetCore.Mvc.Filters.IPageFilter> et <xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter> . Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter).
@@ -1067,7 +1067,7 @@ Une autre approche pour la création de filtres est d’implémenter `IFilterFac
 
 [!code-csharp[](./filters/sample/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?name=snippet_IFilterFactory&highlight=1,4,5,6,7)]
 
-Le code précédent peut être testé en exécutant l’[échantillon de téléchargement](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) :
+Le code précédent peut être testé en exécutant l’[échantillon de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample) :
 
 * Appeler les outils de développement F12.
 * Accédez à `https://localhost:5001/Sample/HeaderWithFactory`.
@@ -1119,6 +1119,6 @@ Les filtres d’intergiciels s’exécutent à la même étape du pipeline de fi
 ## <a name="next-actions"></a>Actions suivantes
 
 * Consultez [les méthodes de filtre pour Razor pages](xref:razor-pages/filter).
-* Pour expérimenter les filtres, [téléchargez, testez et modifiez l’échantillon Github](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
+* Pour expérimenter les filtres, [téléchargez, testez et modifiez l’échantillon Github](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/filters/sample).
 
 ::: moniker-end

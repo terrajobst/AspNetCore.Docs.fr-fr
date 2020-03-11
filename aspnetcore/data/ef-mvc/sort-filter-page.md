@@ -1,27 +1,27 @@
 ---
-title: 'Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core'
-description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de pagination à la page d’Index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
+title: 'Didacticiel : ajouter le tri, le filtrage et l’échange de ASP.NET MVC avec EF Core'
+description: Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 author: rick-anderson
 ms.author: riande
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: c4d50b72c5508d52b17c6754b6d8e77c1a3903b6
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 99bf9ed59b47e8fbba838b97c3e032b9808f6a94
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259346"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657135"
 ---
-# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core
+# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Didacticiel : ajouter le tri, le filtrage et l’échange de ASP.NET MVC avec EF Core
 
-Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour les entités Student. Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de pagination à la page d’Index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
+Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour les entités Student. Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 
 L’illustration suivante montre à quoi ressemblera la page quand vous aurez terminé. Les en-têtes des colonnes sont des liens sur lesquels l’utilisateur peut cliquer pour trier selon les colonnes. Cliquer de façon répétée sur un en-tête de colonne permet de changer l’ordre de tri (croissant ou décroissant).
 
 ![Page d’index des étudiants](sort-filter-page/_static/paging.png)
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Ajouter des liens de tri de colonne
@@ -31,7 +31,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Ajouter des liens de pagination
 > * Créer une page À propos
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Implémenter la fonctionnalité CRUD](crud.md)
 
@@ -45,28 +45,28 @@ Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant 
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
-Ce code reçoit un paramètre `sortOrder` de la chaîne de requête dans l’URL. La valeur de chaîne de requête est fournie par ASP.NET Core MVC en tant que paramètre à la méthode d’action. Le paramètre sera une chaîne qui est « Name » ou « Date », éventuellement suivie d’un trait de soulignement et de la chaîne « desc » pour spécifier l’ordre décroissant. L'ordre de tri par défaut est le tri croissant.
+Ce code reçoit un paramètre `sortOrder` à partir de la chaîne de requête dans l’URL. La valeur de chaîne de requête est fournie par ASP.NET Core MVC en tant que paramètre à la méthode d’action. Le paramètre sera la chaîne « Name » ou « Date », éventuellement suivie d’un trait de soulignement et de la chaîne « desc » pour spécifier l’ordre décroissant. L’ordre de tri par défaut est croissant.
 
-La première fois que la page d’Index est demandée, il n’existe aucune chaîne de requête. Les étudiants sont affichés dans l’ordre croissant par nom, qui est le classement par défaut établi dans ce cas dans l'instruction `switch`. Quand l’utilisateur clique sur un lien hypertexte d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la chaîne de requête.
+La première fois que la page d’index est demandée, il n’y a pas de chaîne de requête. Les étudiants sont affichés dans l’ordre croissant par leur nom, ce qui correspond au paramétrage par défaut de l’instruction `switch`. Quand l’utilisateur clique sur un lien hypertexte d’en-tête de colonne, la valeur `sortOrder` appropriée est fournie dans la chaîne de requête.
 
 Les deux éléments `ViewData` (NameSortParm et DateSortParm) sont utilisés par la vue pour configurer les liens hypertexte d’en-tête de colonne avec les valeurs de chaîne de requête appropriées.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly&highlight=3-4)]
 
-Il s’agit d’instructions ternaires. La première condition spécifie que si le paramètre `sortOrder` est null ou vide, NameSortParm doit être défini sur « name_desc » ; sinon, il doit être défini sur une chaîne vide. Ces deux instructions permettent à la vue de définir les liens hypertexte de titre de colonne comme suit :
+Il s’agit d’instructions ternaires. La première spécifie que si le paramètre `sortOrder` est null ou vide, NameSortParm doit être défini sur « name_desc » ; sinon, il doit être défini sur une chaîne vide. Ces deux instructions permettent à l’affichage de définir les liens hypertexte d’en-tête de colonne comme suit :
 
-|  Ordre de tri en cours  | Lien hypertexte du nom | Lien hypertexte Date |
+|  Ordre de tri actuel  | Lien hypertexte Nom de famille | Lien hypertexte Date |
 |:--------------------:|:-------------------:|:--------------:|
-| Nom de famille croissant  | décroissant          | croissant      |
-| Nom en ordre décroissant | croissant           | croissant      |
-| Date par ordre croissant       | croissant           | décroissant     |
-| Date par ordre décroissant      | croissant           | croissant      |
+| Nom de famille croissant  | descending          | ascending      |
+| Nom de famille décroissant | ascending           | ascending      |
+| Date croissante       | ascending           | descending     |
+| Date décroissante      | ascending           | ascending      |
 
 La méthode utilise LINQ to Entities pour spécifier la colonne d’après laquelle effectuer le tri. Le code crée une variable `IQueryable` avant l’instruction switch, la modifie dans l’instruction switch et appelle la méthode `ToListAsync` après l’instruction `switch`. Lorsque vous créez et modifiez des variables `IQueryable`, aucune requête n’est envoyée à la base de données. La requête n’est pas exécutée tant que vous ne convertissez pas l’objet `IQueryable` en collection en appelant une méthode telle que `ToListAsync`. Par conséquent, ce code génère une requête unique qui n’est pas exécutée avant l’instruction `return View`.
 
 Ce code peut devenir très détaillé avec un grand nombre de colonnes. [Le dernier didacticiel de cette série](advanced.md#dynamic-linq) montre comment écrire du code qui vous permet de transmettre le nom de la colonne `OrderBy` dans une variable chaîne.
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>Ajouter des liens hypertexte d’en-tête de colonne dans la vue de l’index des étudiants
+### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>Ajouter des liens hypertexte d’en-tête de colonne à l’affichage d’index des étudiants
 
 Remplacez le code dans *Views/Students/Index.cshtml* par le code suivant pour ajouter des liens hypertexte d’en-tête de colonne. Les lignes modifiées apparaissent en surbrillance.
 
@@ -91,17 +91,17 @@ Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant 
 Vous avez ajouté un paramètre `searchString` à la méthode `Index`. La valeur de chaîne de recherche est reçue à partir d’une zone de texte que vous ajouterez à la vue Index. Vous avez également ajouté à l’instruction LINQ une clause where qui sélectionne uniquement les étudiants dont le prénom ou le nom contient la chaîne de recherche. L’instruction qui ajoute la clause where est exécutée uniquement s’il existe une valeur à rechercher.
 
 > [!NOTE]
-> Ici, vous appelez la méthode `Where` sur un objet `IQueryable`, et le filtre sera traité sur le serveur. Dans certains scénarios, vous pouvez appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. (Par exemple, supposons que vous changez la référence à `_context.Students` de sorte qu’à la place d’un `DbSet` EF, elle fasse référence à une méthode de référentiel qui renvoie une collection `IEnumerable`.) Le résultat serait normalement le même, mais pourrait être différent dans certains cas.
+> Ici, vous appelez la méthode `Where` sur un objet `IQueryable`, et le filtre sera traité sur le serveur. Dans certains scénarios, vous pouvez appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. (Par exemple, supposons que vous modifiez la référence en `_context.Students` de sorte qu’à la place d’un EF `DbSet` elle fasse référence à une méthode de référentiel qui retourne une collection `IEnumerable`.) Le résultat serait normalement le même, mais dans certains cas peut être différent.
 >
->Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour que le test ne respecte pas la casse de manière explicite :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* . Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous obtenez l’implémentation du .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous obtenez l’implémentation du fournisseur de base de données.) Toutefois, cette solution présente un coût en matière de performances. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
+>Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour rendre explicitement le test sensible à la casse :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())* . Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous bénéficiez de l’implémentation .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous bénéficiez de l’implémentation du fournisseur de base de données.) Toutefois, il y a une baisse des performances pour cette solution. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
 
-### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à la vue de l’index des étudiants
+### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à l’affichage d’index des étudiants
 
 Dans *Views/Student/Index.cshtml*, ajoutez le code en surbrillance immédiatement avant la balise d’ouverture de table afin de créer une légende, une zone de texte et un bouton de **recherche**.
 
 [!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
-Ce code utilise le [Tag Helper](xref:mvc/views/tag-helpers/intro) `<form>` pour ajouter le bouton et la zone de texte de recherche. Par défaut, le Tag Helper `<form>` envoie les données de formulaire avec un POST, ce qui signifie que les paramètres sont transmis dans le corps du message HTTP et non pas dans l’URL sous forme de chaînes de requête. Lorsque vous spécifiez HTTP GET, les données de formulaire sont transmises dans l’URL sous forme de chaînes de requête, ce qui permet aux utilisateurs d’ajouter l’URL aux favoris. Les recommandations du W3C stipulent que vous devez utiliser GET quand l’action ne produit pas de mise à jour.
+Ce code utilise le [tag helper](xref:mvc/views/tag-helpers/intro) `<form>` pour ajouter le bouton et la zone de texte de recherche. Par défaut, le Tag Helper `<form>` envoie les données de formulaire avec un POST, ce qui signifie que les paramètres sont transmis dans le corps du message HTTP et non pas dans l’URL sous forme de chaînes de requête. Lorsque vous spécifiez HTTP GET, les données de formulaire sont transmises dans l’URL sous forme de chaînes de requête, ce qui permet aux utilisateurs d’ajouter l’URL aux favoris. Les recommandations du W3C stipulent que vous devez utiliser GET quand l’action ne produit pas de mise à jour.
 
 Exécutez l’application, sélectionnez l’onglet **Students**, entrez une chaîne de recherche, puis cliquez sur Rechercher pour vérifier que le filtrage fonctionne.
 
@@ -119,21 +119,21 @@ Si vous marquez cette page d’un signet, vous obtenez la liste filtrée lorsque
 
 ## <a name="add-paging-to-students-index"></a>Ajouter la pagination à l'index des étudiants
 
-Pour ajouter la pagination à la page d’Index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous allez apporter des modifications supplémentaires dans la méthode `Index` et ajouter des boutons de pagination à la vue `Index`. L’illustration suivante montre les boutons de changement de page.
+Pour ajouter le changement de page à la page d’index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous apporterez des modifications supplémentaires dans la méthode `Index` et ajouterez des boutons de changement de page dans la vue `Index`. L’illustration suivante montre les boutons de pagination.
 
-![Page d’index des étudiants avec liens de changement de page](sort-filter-page/_static/paging.png)
+![Page d’index des étudiants avec liens de pagination](sort-filter-page/_static/paging.png)
 
 Dans le dossier du projet, créez `PaginatedList.cs`, puis remplacez le code du modèle par le code suivant.
 
 [!code-csharp[](intro/samples/cu/PaginatedList.cs)]
 
-La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Lorsque `ToListAsync` est appelée sur le `IQueryable`, il retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant**.
+La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées à `IQueryable`. Quand la méthode `ToListAsync` est appelée sur `IQueryable`, elle renvoie une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` peuvent être utilisées pour activer ou désactiver les boutons de changement de page **Précédent** et **Suivant**.
 
 Une méthode `CreateAsync` est utilisée à la place d’un constructeur pour créer l’objet `PaginatedList<T>`, car les constructeurs ne peuvent pas exécuter de code asynchrone.
 
 ## <a name="add-paging-to-index-method"></a>Ajouter la pagination à la méthode Index
 
-Dans *StudentsController.cs*, remplacez la méthode `Index` ar le code suivant.
+Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant.
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortFilterPage&highlight=1-5,7,11-18,45-46)]
 
@@ -147,11 +147,11 @@ public async Task<IActionResult> Index(
     int? pageNumber)
 ```
 
-La première fois que la page s’affiche, ou si l’utilisateur n’a pas cliqué sur un lien de changement de page ni de tri, tous les paramètres sont Null.  Si un lien de la pagination est activé, la variable de page contient le numéro de page à afficher.
+La première fois que la page s’affiche, ou si l’utilisateur n’a pas cliqué sur un lien de changement de page ni de tri, tous les paramètres sont Null.  Si l’utilisateur clique sur un lien de changement de page, la variable de page contient le numéro de page à afficher.
 
-L'élément `ViewData` nommé CurrentSort fournit l’ordre de tri actuel à la vue, car il doit être inclus dans les liens de la pagination afin de conserver l’ordre de tri lors de la pagination.
+L’élément `ViewData` nommé CurrentSort fournit à l’affichage l’ordre de tri actuel, car il doit être inclus dans les liens de changement de page pour que l’ordre de tri soit conservé lors du changement de page.
 
-L'élément `ViewData` nommé CurrentFilter fournit la chaîne de filtre actuel à la vue. Cette valeur doit être incluse dans les liens de changement de page pour que les paramètres de filtre soient conservés lors du changement de page, et elle doit être restaurée dans la zone de texte lorsque la page est réaffichée.
+L’élément `ViewData` nommé CurrentFilter fournit à la vue la chaîne de filtre actuelle. Cette valeur doit être incluse dans les liens de changement de page pour que les paramètres de filtre soient conservés lors du changement de page, et elle doit être restaurée dans la zone de texte lorsque la page est réaffichée.
 
 Si la chaîne de recherche est modifiée au cours du changement de page, la page doit être réinitialisée à 1, car le nouveau filtre peut entraîner l’affichage de données différentes. La chaîne de recherche est modifiée quand une valeur est entrée dans la zone de texte et que le bouton d’envoi est enfoncé. Dans ce cas, le paramètre `searchString` n’est pas Null.
 
@@ -188,7 +188,7 @@ Les liens d’en-tête de colonne utilisent la chaîne de requête pour transmet
 <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter ="@ViewData["CurrentFilter"]">Enrollment Date</a>
 ```
 
-Les boutons de changement de page sont affichés par des Tag Helpers :
+Les boutons de pagination sont affichés par des Tag Helpers :
 
 ```html
 <a asp-action="Index"
@@ -202,7 +202,7 @@ Les boutons de changement de page sont affichés par des Tag Helpers :
 
 Exécutez l’application et accédez à la page des étudiants.
 
-![Page d’index des étudiants avec liens de changement de page](sort-filter-page/_static/paging.png)
+![Page d’index des étudiants avec liens de pagination](sort-filter-page/_static/paging.png)
 
 Cliquez sur les liens de changement de page dans différents ordres de tri pour vérifier que le changement de page fonctionne. Ensuite, entrez une chaîne de recherche et essayez de changer de page à nouveau pour vérifier que le changement de page fonctionne correctement avec le tri et le filtrage.
 
@@ -236,7 +236,7 @@ Ajoutez une méthode `About` avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
-L’instruction LINQ regroupe les entités Student par date d’inscription, calcule le nombre d’entités dans chaque groupe et stocke les résultats dans une collection d’objets de modèle de vue `EnrollmentDateGroup`.
+L’instruction LINQ regroupe les entités student par date d’inscription, calcule le nombre d’entités dans chaque groupe, et stocke les résultats dans une collection d’objets de modèle d’affichage `EnrollmentDateGroup`.
 
 ### <a name="create-the-about-view"></a>Créer la vue About
 
@@ -248,11 +248,11 @@ Exécutez l’application et accédez à la page About. Le nombre d’étudiants
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Ajouter des liens de tri de colonne
@@ -265,4 +265,4 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 Passez au tutoriel suivant pour découvrir comment gérer les modifications du modèle de données à l’aide de migrations.
 
 > [!div class="nextstepaction"]
-> [Suivant : Gérer les modifications du modèle de données](migrations.md)
+> [Suivant : gérer les modifications du modèle de données](migrations.md)

@@ -5,17 +5,17 @@ description: Découvrez comment ASP.NET Core Blazor comment Blazor gère les exc
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 02/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 7191ae50d64ebd6a9b23b391116aedf3a6d01de2
-ms.sourcegitcommit: 6645435fc8f5092fc7e923742e85592b56e37ada
+ms.openlocfilehash: d8098db3977b7515f2665e4230c2d6d3e415dc58
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77447020"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661699"
 ---
 # <a name="handle-errors-in-aspnet-core-opno-locblazor-apps"></a>Gérer les erreurs dans les applications de Blazor ASP.NET Core
 
@@ -103,8 +103,6 @@ Le code d’infrastructure et d’application peut déclencher des exceptions no
 * [Gestionnaires d’événements](#event-handlers)
 * [Suppression de composants](#component-disposal)
 * [Interopérabilité JavaScript](#javascript-interop)
-* [gestionnaires de circuits Blazor Server](#blazor-server-circuit-handlers)
-* [élimination du circuit Blazor Server](#blazor-server-circuit-disposal)
 * [réaffichage du serveur de Blazor](#blazor-server-prerendering)
 
 Les exceptions non gérées précédentes sont décrites dans les sections suivantes de cet article.
@@ -183,64 +181,17 @@ Les conditions suivantes s’appliquent à la gestion des erreurs avec `InvokeAs
 * Si un appel à `InvokeAsync<T>` échoue de manière asynchrone, le <xref:System.Threading.Tasks.Task> .NET échoue. Un appel à `InvokeAsync<T>` peut échouer, par exemple, car le code côté JavaScript lève une exception ou retourne un `Promise` qui s’est terminé comme `rejected`. Le code du développeur doit intercepter l’exception. Si vous utilisez l’opérateur [await](/dotnet/csharp/language-reference/keywords/await) , encapsulez l’appel de méthode dans une instruction [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation. Dans le cas contraire, le code défaillant entraîne une exception non gérée qui est irrécupérable pour un circuit Blazor Server.
 * Par défaut, les appels à `InvokeAsync<T>` doivent se terminer dans un laps de temps donné, sinon l’appel expire. Le délai d’expiration par défaut est d’une minute. Le délai d’attente protège le code contre toute perte de connectivité réseau ou de code JavaScript qui ne renvoie jamais de message d’achèvement. Si l’appel expire, le `Task` résultant échoue avec une <xref:System.OperationCanceledException>. Interceptez et traitez l’exception avec la journalisation.
 
-De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l’attribut [`[JSInvokable]`](xref:blazor/javascript-interop#invoke-net-methods-from-javascript-functions) . Si ces méthodes .NET lèvent une exception non gérée :
+De même, le code JavaScript peut initier des appels à des méthodes .NET indiquées par l’attribut [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript) . Si ces méthodes .NET lèvent une exception non gérée :
 
 * L’exception n’est pas considérée comme irrécupérable pour un circuit Blazor Server.
 * Le `Promise` côté JavaScript est rejeté.
 
 Vous avez la possibilité d’utiliser le code de gestion des erreurs côté .NET ou JavaScript de l’appel de méthode.
 
-Pour plus d’informations, consultez <xref:blazor/javascript-interop>.
+Pour plus d’informations, consultez les articles suivants :
 
-### <a name="opno-locblazor-server-circuit-handlers"></a>gestionnaires de circuits Blazor Server
-
-Blazor Server permet au code de définir un *Gestionnaire de circuit*qui permet d’exécuter du code sur les modifications de l’état du circuit d’un utilisateur. Un gestionnaire de circuit est implémenté en dérivant de `CircuitHandler` et en inscrivant la classe dans le conteneur de services de l’application. L’exemple suivant d’un gestionnaire de circuit effectue le suivi des connexions SignalR ouvertes :
-
-```csharp
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.Server.Circuits;
-
-public class TrackingCircuitHandler : CircuitHandler
-{
-    private HashSet<Circuit> _circuits = new HashSet<Circuit>();
-
-    public override Task OnConnectionUpAsync(Circuit circuit, 
-        CancellationToken cancellationToken)
-    {
-        _circuits.Add(circuit);
-
-        return Task.CompletedTask;
-    }
-
-    public override Task OnConnectionDownAsync(Circuit circuit, 
-        CancellationToken cancellationToken)
-    {
-        _circuits.Remove(circuit);
-
-        return Task.CompletedTask;
-    }
-
-    public int ConnectedCircuits => _circuits.Count;
-}
-```
-
-Les gestionnaires de circuits sont inscrits à l’aide de DI. Les instances délimitées sont créées par instance d’un circuit. À l’aide de la `TrackingCircuitHandler` dans l’exemple précédent, un service Singleton est créé car l’état de tous les circuits doit être suivi :
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    services.AddSingleton<CircuitHandler, TrackingCircuitHandler>();
-}
-```
-
-Si les méthodes d’un gestionnaire de circuit personnalisé lèvent une exception non gérée, l’exception est irrémédiable au circuit du serveur Blazor. Pour tolérer des exceptions dans le code d’un gestionnaire ou les méthodes appelées, encapsulez le code dans une ou plusieurs instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) avec la gestion des erreurs et la journalisation.
-
-### <a name="opno-locblazor-server-circuit-disposal"></a>élimination du circuit Blazor Server
-
-Lorsqu’un circuit se termine parce qu’un utilisateur s’est déconnecté et que l’infrastructure nettoie l’état du circuit, le Framework supprime l’étendue de l’injection de port. La suppression de l’étendue supprime tous les services d’étendue de circuit qui implémentent <xref:System.IDisposable?displayProperty=fullName>. Si un service d’injection de services lève une exception non gérée pendant la suppression, le Framework journalise l’exception.
+* <xref:blazor/call-javascript-from-dotnet>
+* <xref:blazor/call-dotnet-from-javascript>
 
 ### <a name="opno-locblazor-server-prerendering"></a>prérendu du serveur Blazor
 

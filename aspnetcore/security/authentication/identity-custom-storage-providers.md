@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/23/2019
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 70951085474d88fd57f1b1496a41adcda520b91f
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 574e66e4dedaf0bfd01d600c3ded4bfb5d1865cd
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829151"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664478"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour l’identité ASP.NET Core
 
@@ -19,7 +19,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 ASP.NET Core identité est un système extensible qui vous permet de créer un fournisseur de stockage personnalisé et de le connecter à votre application. Cette rubrique explique comment créer un fournisseur de stockage personnalisé pour ASP.NET Core identité. Il couvre les concepts importants pour la création de votre propre fournisseur de stockage, mais n’est pas une procédure pas à pas.
 
-[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample).
 
 ## <a name="introduction"></a>Introduction
 
@@ -57,7 +57,7 @@ Lors de la création d’une nouvelle instance de `UserManager` ou `RoleManager`
 
 [ASP.net Core](https://github.com/aspnet/identity) types de données d’identité sont détaillés dans les sections suivantes :
 
-### <a name="users"></a>Utilisateurs du
+### <a name="users"></a>Utilisateurs
 
 Utilisateurs inscrits de votre site Web. Le type [IdentityUser](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser) peut être étendu ou utilisé comme exemple pour votre propre type personnalisé. Vous n’avez pas besoin d’hériter d’un type particulier pour implémenter votre propre solution de stockage d’identité personnalisée.
 
@@ -138,7 +138,7 @@ Créez une classe `UserStore` qui fournit les méthodes pour toutes les opérati
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
 * [IUserLockoutStore](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1)
 
-Les interfaces facultatives héritent de `IUserStore<TUser>`. Vous pouvez voir un exemple de magasin d’utilisateurs partiellement implémenté dans l' [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
+Les interfaces facultatives héritent de `IUserStore<TUser>`. Vous pouvez voir un exemple de magasin d’utilisateurs partiellement implémenté dans l' [exemple d’application](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs).
 
 Dans la classe `UserStore`, vous utilisez les classes d’accès aux données que vous avez créées pour effectuer des opérations. Ils sont passés à l’aide de l’injection de dépendances. Par exemple, dans le SQL Server avec l’implémentation de dapper, la classe `UserStore` a la méthode `CreateAsync` qui utilise une instance de `DapperUsersTable` pour insérer un nouvel enregistrement :
 
@@ -201,7 +201,7 @@ Vous pouvez créer une classe `RoleStore` qui fournit les méthodes pour toutes 
 
 * **IRoleStore&lt;TRole&gt;**  
  L’interface [IRoleStore&lt;TRole&gt;](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1) définit les méthodes à implémenter dans la classe du magasin de rôles. Elle contient des méthodes pour la création, la mise à jour, la suppression et la récupération de rôles.
-* **RoleStore&lt;TRole&gt;**  
+* **Au rolestore&lt;TRole&gt;**  
  Pour personnaliser `RoleStore`, créez une classe qui implémente l’interface `IRoleStore<TRole>`. 
 
 ## <a name="reconfigure-app-to-use-a-new-storage-provider"></a>Reconfigurer l’application pour utiliser un nouveau fournisseur de stockage
@@ -215,7 +215,7 @@ Une fois que vous avez implémenté un fournisseur de stockage, vous configurez 
 1. Si vous utilisez des rôles, mettez à jour le `RoleManager` pour utiliser votre classe `RoleStore`.
 1. Mettez à jour la chaîne de connexion et les informations d’identification dans la configuration de votre application.
 
-Exemple :
+Exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -235,7 +235,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="references"></a>Références
+## <a name="references"></a>References
 
 * [Fournisseurs de stockage personnalisés pour l’identité ASP.NET 4. x](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
 * [ASP.net Core identité](https://github.com/dotnet/AspNetCore/tree/master/src/Identity) &ndash; ce référentiel comprend des liens vers des fournisseurs de magasins gérés par la communauté.

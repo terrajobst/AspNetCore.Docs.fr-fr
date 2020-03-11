@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/05/2019
 uid: mvc/controllers/actions
 ms.openlocfilehash: 715a73863513870d1cbd522e75013d41830da1e7
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881103"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662791"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
@@ -77,7 +77,7 @@ La plupart des méthodes helper de cette catégorie incluent une propriété `Co
 
 Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/overview) et [Réponse mise en forme](xref:web-api/advanced/formatting).
 
-* **Affichage**
+* **Afficher**
 
     Ce type retourne une vue qui utilise un modèle pour rendre le HTML. Par exemple, `return View(customer);` passe un modèle à la vue pour la liaison de données.
 

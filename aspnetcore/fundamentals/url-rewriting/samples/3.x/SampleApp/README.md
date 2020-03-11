@@ -19,13 +19,13 @@ Quand vous exécutez l’exemple, des réponses autres que des réponses de fich
   - Code d’état de réussite : 200 (OK)
   - Exemple (réécriture) : **/iis-rules-rewrite/{capture_group}** en **/rewritten?id={capture_group}**
 * `Add(RedirectXmlFileRequests)`
-  - Code d’état de réussite : 301 (Déplacé de façon permanente)
+  - Code d’état de réussite : 301 (déplacé de façon permanente)
   - Exemple (redirection) : **/file.xml** en **/xmlfiles/file.xml**
 * `Add(RewriteTextFileRequests)`
   - Code d’état de réussite : 200 (OK)
   - Exemple (réécriture) : **/some_file.txt** en **/file.txt**
 * `Add(new RedirectImageRequests(".png", "/png-images")))`<br>`Add(new RedirectImageRequests(".jpg", "/jpg-images")))`
-  - Code d’état de réussite : 301 (Déplacé de façon permanente)
+  - Code d’état de réussite : 301 (déplacé de façon permanente)
   - Exemple (redirection) : **/image.png** en **/png-images/image.png**
   - Exemple (redirection) : **/image.jpg** en **/jpg-images/image.jpg**
 

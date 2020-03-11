@@ -7,24 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/17/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 30e2771c0a24fcbf6490d08c7028566314b6c011
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: b0218b2c77c283c0849dca9491046534b88c5a77
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656218"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core configure le comportement de l’application en fonction de l’environnement d’exécution à l’aide d’une variable d’environnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="environments"></a>de développement
+## <a name="environments"></a>Environnements
 
 ASP.NET Core lit la variable d’environnement `ASPNETCORE_ENVIRONMENT` au démarrage de l’application et stocke la valeur dans [IWebHostEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName). `ASPNETCORE_ENVIRONMENT` peut être définie sur n’importe quelle valeur, mais trois valeurs sont fournies par l’infrastructure :
 
@@ -169,7 +169,7 @@ Un fichier *.vscode/launch.json* dans le projet n’est pas lu au démarrage de 
 
 Vous devez configurer l’environnement de production pour optimiser la sécurité, les performances et la robustesse de l’application. Voici quelques paramètres courants qui diffèrent du développement :
 
-* La mise en cache.
+* Mise en cache.
 * Les ressources côté client sont groupées, réduites et éventuellement servies à partir d’un CDN.
 * Les Pages d’erreur de diagnostic sont désactivées.
 * Les pages d’erreur conviviales sont activées.
@@ -197,7 +197,7 @@ Pour définir l’environnement dans [Azure App Service](https://azure.microsoft
 
 Azure App Service redémarre automatiquement l’application après qu’un paramètre d’application (variable d’environnement) est ajouté, changé ou supprimé dans le portail Azure.
 
-#### <a name="windows"></a>Portail
+#### <a name="windows"></a>Windows
 
 Pour définir `ASPNETCORE_ENVIRONMENT` pour la session actuelle quand l’application est démarrée avec [dotnet run](/dotnet/core/tools/dotnet-run), les commandes suivantes sont utilisées :
 
@@ -301,7 +301,7 @@ Appelez <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseEnvir
 Pour charger la configuration par environnement, nous vous recommandons de disposer des éléments suivants :
 
 * fichiers *appSettings* (*appSettings. { Environment}. JSON*). Consultez <xref:fundamentals/configuration/index#json-configuration-provider>.
-* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Consultez <xref:fundamentals/host/generic-host#environmentname> et <xref:security/app-secrets#environment-variables>.
+* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Localisez <xref:fundamentals/host/generic-host#environmentname> et <xref:security/app-secrets#environment-variables>.
 * Secret Manager (dans l’environnement de développement uniquement). Consultez <xref:security/app-secrets>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Classe et méthodes Startup en fonction de l’environnement
@@ -417,6 +417,8 @@ public class Startup
 }
 ```
 
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
+
 Utilisez la surcharge [UseStartup (IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup) qui accepte un nom d’assembly :
 
 ```csharp
@@ -448,13 +450,13 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args)
 
 ::: moniker range="< aspnetcore-3.0"
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core configure le comportement de l’application en fonction de l’environnement d’exécution à l’aide d’une variable d’environnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="environments"></a>de développement
+## <a name="environments"></a>Environnements
 
 ASP.NET Core lit la variable d’environnement `ASPNETCORE_ENVIRONMENT` au démarrage de l’application et stocke la valeur dans [IHostingEnvironment.EnvironmentName](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName). `ASPNETCORE_ENVIRONMENT` peut être définie sur n’importe quelle valeur, mais trois valeurs sont fournies par l’infrastructure :
 
@@ -599,7 +601,7 @@ Un fichier *.vscode/launch.json* dans le projet n’est pas lu au démarrage de 
 
 Vous devez configurer l’environnement de production pour optimiser la sécurité, les performances et la robustesse de l’application. Voici quelques paramètres courants qui diffèrent du développement :
 
-* La mise en cache.
+* Mise en cache.
 * Les ressources côté client sont groupées, réduites et éventuellement servies à partir d’un CDN.
 * Les Pages d’erreur de diagnostic sont désactivées.
 * Les pages d’erreur conviviales sont activées.
@@ -627,7 +629,7 @@ Pour définir l’environnement dans [Azure App Service](https://azure.microsoft
 
 Azure App Service redémarre automatiquement l’application après qu’un paramètre d’application (variable d’environnement) est ajouté, changé ou supprimé dans le portail Azure.
 
-#### <a name="windows"></a>Portail
+#### <a name="windows"></a>Windows
 
 Pour définir `ASPNETCORE_ENVIRONMENT` pour la session actuelle quand l’application est démarrée avec [dotnet run](/dotnet/core/tools/dotnet-run), les commandes suivantes sont utilisées :
 
@@ -730,7 +732,7 @@ Appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExte
 Pour charger la configuration par environnement, nous vous recommandons de disposer des éléments suivants :
 
 * fichiers *appSettings* (*appSettings. { Environment}. JSON*). Consultez <xref:fundamentals/configuration/index#json-configuration-provider>.
-* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Consultez <xref:fundamentals/host/web-host#environment> et <xref:security/app-secrets#environment-variables>.
+* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Localisez <xref:fundamentals/host/web-host#environment> et <xref:security/app-secrets#environment-variables>.
 * Secret Manager (dans l’environnement de développement uniquement). Consultez <xref:security/app-secrets>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Classe et méthodes Startup en fonction de l’environnement

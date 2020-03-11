@@ -1,22 +1,22 @@
 ---
 title: Héberger ASP.NET Core dans une batterie de serveurs web
-author: guardrex
+author: rick-anderson
 description: Découvrez comment héberger plusieurs instances d’une application ASP.NET Core avec des ressources partagées dans un environnement de batterie de serveurs web.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 5c13e9bc4c514f9b42871d55a430265c8ec2da23
-ms.sourcegitcommit: 2388c2a7334ce66b6be3ffbab06dd7923df18f60
+ms.openlocfilehash: 316c87e5f49593c05991a94cbe5e55d175a49bb3
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75951821"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659368"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Héberger ASP.NET Core dans une batterie de serveurs web
 
-Par [Luke Latham](https://github.com/guardrex) et [Chris Ross](https://github.com/Tratcher)
+Par [Chris Ross](https://github.com/Tratcher)
 
 Une *batterie de serveurs Web* est un groupe d’au moins deux serveurs web (ou *nœuds*) qui héberge plusieurs instances d’une application. Lorsque les requêtes des utilisateurs arrivent à une batterie de serveurs web, un *équilibreur de charge* les répartit sur les nœuds de la batterie de serveurs web. Les batteries de serveurs web apportent les améliorations suivantes :
 
@@ -42,17 +42,17 @@ Découvrez la configuration des applications hébergées derrière des serveurs 
 
 Quand une application est à mise l’échelle pour plusieurs instances, l’état de l’application peut nécessiter le partage entre les nœuds. Si l’état est transitoire, envisagez le partage d’un [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache). Si l’état partagé nécessite une persistance, envisagez de stocker l’état partagé dans une base de données.
 
-## <a name="required-configuration"></a>Configuration requise
+## <a name="required-configuration"></a>Configuration nécessaire
 
 La protection des données et la mise en cache nécessitent une configuration des applications déployées sur une batterie de serveurs web.
 
-### <a name="data-protection"></a>Data Protection
+### <a name="data-protection"></a>Protection des données
 
 Le [système de Protection des données ASP.NET Core](xref:security/data-protection/introduction) est utilisé par les applications pour protéger les données. La protection des données repose sur un ensemble de clés de chiffrement stockées dans un fichier *Key Ring*. Lorsque le système de Protection des données est initialisé, il applique des [paramètres par défaut](xref:security/data-protection/configuration/default-settings) qui stockent le fichier Key Ring localement. Dans la configuration par défaut, un Key Ring unique est stocké sur chaque nœud de la batterie de serveurs web. Par conséquent, chaque nœud de la batterie de serveurs web ne peut pas déchiffrer des données chiffrées par une application sur un autre nœud. La configuration par défaut ne convient généralement pas à l’hébergement des applications dans une batterie de serveurs web. Une alternative à l’implémentation d’un fichier Key Ring partagé consiste à toujours acheminer les requêtes de l’utilisateur vers le même nœud. Pour plus d’informations sur la configuration du système de protection des données pour les déploiements sur des batteries de serveurs web, consultez <xref:security/data-protection/configuration/overview>.
 
 ### <a name="caching"></a>Mise en cache
 
-Dans un environnement de batterie de serveurs web, le mécanisme de mise en cache doit partager des éléments mis en cache sur les nœuds de la batterie de serveurs web. La mise en cache doit reposer sur un cache Redis commun, sur une base de données SQL Server partagée, ou sur une implémentation de mise en cache personnalisée qui partage les éléments mis en cache sur la batterie de serveurs web. Pour plus d'informations, consultez <xref:performance/caching/distributed>.
+Dans un environnement de batterie de serveurs web, le mécanisme de mise en cache doit partager des éléments mis en cache sur les nœuds de la batterie de serveurs web. La mise en cache doit reposer sur un cache Redis commun, sur une base de données SQL Server partagée, ou sur une implémentation de mise en cache personnalisée qui partage les éléments mis en cache sur la batterie de serveurs web. Pour plus d’informations, consultez <xref:performance/caching/distributed>.
 
 ## <a name="dependent-components"></a>Composants dépendants
 
@@ -60,13 +60,13 @@ Les scénarios suivants ne nécessitent pas une configuration supplémentaire, m
 
 | Scénario | Dépend de &hellip; |
 | -------- | ------------------- |
-| Authentification | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d'informations, consultez les rubriques <xref:security/authentication/cookie> et <xref:security/cookie-sharing>. |
-| Identity | Authentification et configuration de la base de données.<br><br>Pour plus d'informations, consultez <xref:security/authentication/identity>. |
-| Session | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) et Mise en cache (voir <xref:performance/caching/distributed>).<br><br>Pour plus d’informations, consultez [État de session et d’application : état de session](xref:fundamentals/app-state#session-state). |
-| TempData | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) ou Session (voir [État de session et d’application : état de session](xref:fundamentals/app-state#session-state)).<br><br>Pour plus d’informations, consultez [État de session et d’application : TempData](xref:fundamentals/app-state#tempdata). |
-| Anti-contrefaçon | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d'informations, consultez <xref:security/anti-request-forgery>. |
+| Authentication | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d’informations, consultez <xref:security/authentication/cookie> et <xref:security/cookie-sharing>. |
+| Identité | Authentification et configuration de la base de données.<br><br>Pour plus d’informations, consultez <xref:security/authentication/identity>. |
+| session | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) et Mise en cache (voir <xref:performance/caching/distributed>).<br><br>Pour plus d’informations, consultez [session and State Management : état de session](xref:fundamentals/app-state#session-state). |
+| TempData | Protection des données (cookies chiffrés) (voir <xref:security/data-protection/configuration/overview>) ou session (voir la rubrique [gestion de session et d’État : état de session](xref:fundamentals/app-state#session-state)).<br><br>Pour plus d’informations, consultez [session and State Management : TempData](xref:fundamentals/app-state#tempdata). |
+| Anti-contrefaçon | Protection des données (voir <xref:security/data-protection/configuration/overview>).<br><br>Pour plus d’informations, consultez <xref:security/anti-request-forgery>. |
 
-## <a name="troubleshoot"></a>Dépannage
+## <a name="troubleshoot"></a>Dépanner
 
 ### <a name="data-protection-and-caching"></a>Protection et mise en cache des données
 
@@ -93,3 +93,4 @@ Si les applications de la batterie de serveurs web sont capables de répondre au
 
 * L' [extension de script personnalisé pour Windows](/azure/virtual-machines/extensions/custom-script-windows) &ndash; télécharge et exécute des scripts sur des machines virtuelles Azure, ce qui est utile pour la configuration et l’installation de logiciels après le déploiement.
 * <xref:host-and-deploy/proxy-load-balancer>
+ 

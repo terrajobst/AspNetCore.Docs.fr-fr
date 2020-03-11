@@ -6,29 +6,29 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/15/2018
 uid: security/authorization/resourcebased
-ms.openlocfilehash: acc931da1be0940fac72b0aabe07ab17ca7e63bd
-ms.sourcegitcommit: 6628cd23793b66e4ce88788db641a5bbf470c3c1
+ms.openlocfilehash: 2be611c754583d996db7107f341b1be03cef73cf
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73660001"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664800"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a>Autorisation basée sur les ressources dans ASP.NET Core
 
 La stratégie d’autorisation dépend de la ressource faisant l’objet d’un accès. Prenons l’exemple d’un document qui a une propriété auteur. Seul l’auteur est autorisé à mettre à jour le document. Par conséquent, le document doit être récupéré à partir du magasin de données avant que l’évaluation de l’autorisation puisse se produire.
 
-L’évaluation d’attribut se produit avant la liaison de données et avant l’exécution du gestionnaire de page ou de l’action qui charge le document. Pour ces raisons, l’autorisation déclarative avec un attribut `[Authorize]` n’est pas suffisante. Au lieu de cela, vous pouvez appeler une méthode d’autorisation personnalisée &mdash;a style appelé *autorisation impérative*.
+L’évaluation d’attribut se produit avant la liaison de données et avant l’exécution du gestionnaire de page ou de l’action qui charge le document. Pour ces raisons, l’autorisation déclarative avec un attribut `[Authorize]` n’est pas suffisante. Au lieu de cela, vous pouvez appeler une méthode d’autorisation personnalisée&mdash;un style appelé *autorisation impérative*.
 
 ::: moniker range=">= aspnetcore-3.0"
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/3_0) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
  ::: moniker range=">= aspnetcore-2.0 < aspnetcore-3.0"
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/2_2) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples/1_1) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 ::: moniker-end
 
 [Créer une application ASP.net core avec des données utilisateur protégées par autorisation](xref:security/authorization/secure-data) contient un exemple d’application qui utilise l’autorisation basée sur les ressources.
@@ -106,7 +106,7 @@ La classe de gestionnaire spécifie la spécification et le type de ressource. P
 
 Dans l’exemple précédent, imaginez que `SameAuthorRequirement` est un cas spécial d’une classe `SpecificAuthorRequirement` plus générique. La classe `SpecificAuthorRequirement` (non affichée) contient une propriété `Name` représentant le nom de l’auteur. La propriété `Name` peut avoir la valeur de l’utilisateur actuel.
 
-Inscrire la spécification et le gestionnaire dans `Startup.ConfigureServices` :
+Inscrire la spécification et le gestionnaire dans `Startup.ConfigureServices`:
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](resourcebased/samples/3_0/ResourceBasedAuthApp2/Startup.cs?name=snippet_ConfigureServicesSample&highlight=4-8,10)]

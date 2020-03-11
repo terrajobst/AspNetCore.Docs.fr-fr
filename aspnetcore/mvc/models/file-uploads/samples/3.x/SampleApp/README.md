@@ -44,6 +44,6 @@ Dans le fichier *appSettings. JSON* :
    * L’exemple d’application définit la valeur sur `c:\\files`, ce qui suppose qu’un dossier nommé *Files* existe à la racine du lecteur C : du système.
    * Le chemin doit exister. Créez un dossier de *fichiers* sur le lecteur C : du système ou définissez le chemin d’accès à un emplacement approprié.
    * Le processus de l’application nécessite des autorisations de lecture/écriture sur le chemin d’accès.
-   * **PRÉCIEUSE!** Désactivez les autorisations d’exécution pour tous les utilisateurs dans le chemin.
+   * **IMPORTANT !** Désactivez les autorisations d’exécution pour tous les utilisateurs dans le chemin.
 
 1. Définissez la limite de taille de fichier (`FileSizeLimit`) en octets. La valeur par défaut de `2097152` (2 097 152 octets) de l’exemple d’application autorise les chargements de fichiers jusqu’à 2 Mo.

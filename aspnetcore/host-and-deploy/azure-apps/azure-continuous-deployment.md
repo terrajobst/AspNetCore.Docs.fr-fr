@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
 ms.openlocfilehash: 3b344505739bb4292ed1683c73ff314b6e4e01e9
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64890094"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660852"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Déploiement continu sur Azure avec Visual Studio et Git avec ASP.NET Core
 
@@ -26,21 +26,21 @@ Voir aussi [Créer votre premier pipeline avec Azure Pipelines](/azure/devops/pi
 > [!NOTE]
 > Pour la réalisation de ce tutoriel, un compte Microsoft Azure est nécessaire. Pour obtenir un compte, [activez les avantages d’abonné MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) ou [inscrivez-vous pour un essai gratuit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce tutoriel suppose que les logiciels suivants sont installés :
 
-* [Visual Studio](https://visualstudio.microsoft.com)
+* [Visual Studio](https://visualstudio.microsoft.com)
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Git](https://git-scm.com/downloads) pour Windows
 
-## <a name="create-an-aspnet-core-web-app"></a>Créer une application web ASP.NET Core
+## <a name="create-an-aspnet-core-web-app"></a>Créez une application web ASP.NET Core
 
 1. Démarrez Visual Studio.
 
 1. Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 
-1. Sélectionnez le modèle de projet **Application web ASP.NET Core**. Il apparaît sous **Installé** > **Modèles** > **Visual C#** > **.NET Core**. Attribuez un nom au projet `SampleWebAppDemo`. Sélectionnez l’option **Créer un dépôt Git**, puis cliquez sur **OK**.
+1. Sélectionnez le modèle de projet **Application web ASP.NET Core**. Il apparaît sous **Installé** > **Modèles** > **Visual C#**  >  **.NET Core**. Nommez le projet `SampleWebAppDemo`. Sélectionnez l’option **Créer un dépôt Git**, puis cliquez sur **OK**.
 
    ![Boîte de dialogue Nouveau projet](azure-continuous-deployment/_static/01-new-project.png)
 
@@ -71,7 +71,7 @@ Les étapes suivantes permettent de créer une application web dans le portail A
 
 1. Sélectionnez **Web + Mobile** > **Application Web**.
 
-   ![Portail Microsoft Azure : Nouveau bouton : Web + Mobile sous Place de marché : Bouton Application Web sous Applications proposées](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+   ![Portail Microsoft Azure : Nouveau bouton Web + Mobile sous Place de marché - Bouton Application Web sous Applications à la une](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
 1. Dans le panneau **Application web**, entrez une valeur unique pour le **Nom App Service**.
 
@@ -82,11 +82,11 @@ Les étapes suivantes permettent de créer une application web dans le portail A
 
    Dans le panneau **Application web**, sélectionnez un **Plan/emplacement App Service** existant ou créez-en un. Si vous créez un plan, sélectionnez le niveau tarifaire, l’emplacement et les autres options. Pour plus d’informations sur les plans App Service, consultez [Présentation détaillée des plans Azure App Service](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
-1. Sélectionnez **Créer**. Azure provisionne et démarre l’application web.
+1. Sélectionnez **Create** (Créer). Azure provisionne et démarre l’application web.
 
    ![Portail Azure : Panneau Exemple d’application web Demo 01 Essentials](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
-## <a name="enable-git-publishing-for-the-new-web-app"></a>Activer la publication Git pour la nouvelle application web
+## <a name="enable-git-publishing-for-the-new-web-app"></a>Activer la publication Git pour la nouvelle application Web
 
 GIT est un système de gestion de versions distribué qui permet de déployer une application web Azure App Service. Le code de l’application web est stocké dans un dépôt Git local, et est déployé sur Azure par le biais d’un envoi (push) vers un dépôt distant.
 
@@ -98,23 +98,23 @@ GIT est un système de gestion de versions distribué qui permet de déployer un
 
 1. Dans le panneau **Déploiement**, sélectionnez **Options de déploiement** > **Choisir une source** > **Référentiel Git local**.
 
-   ![Panneau Paramètres : Panneau Source de déploiement : Choisir le panneau source](azure-continuous-deployment/_static/deployment-options.png)
+   ![Panneau Paramètres : Panneau Source de déploiement : Panneau Choisir une source](azure-continuous-deployment/_static/deployment-options.png)
 
 1. Sélectionnez **OK**.
 
 1. Si les informations d’identification de déploiement pour la publication d’une application web ou d’une autre application App Service n’ont pas été configurées, configurez-les maintenant :
 
    * Sélectionnez **Paramètres** > **Informations d’identification de déploiement**. Le panneau **Définir les informations d’identification de déploiement** s’affiche.
-   * Créez un nom d’utilisateur et un mot de passe. Enregistrez le mot de passe en vue de l’utiliser au moment de la configuration de Git.
+   * Créez un nom d'utilisateur et un mot de passe. Enregistrez le mot de passe en vue de l’utiliser au moment de la configuration de Git.
    * Sélectionnez **Enregistrer**.
 
 1. Dans le panneau **Application web**, sélectionnez **Paramètres** > **Propriétés**. L’URL du dépôt Git distant destinataire du déploiement est affiché sous **URL Git**.
 
-1. Copiez la valeur de **URL Git** pour l’utiliser plus tard dans le didacticiel.
+1. Copiez la valeur **URL GIT** pour pouvoir l’utiliser plus tard dans le didacticiel.
 
    ![Portail Azure : Panneau Propriétés de l’application](azure-continuous-deployment/_static/09-azure-giturl.png)
 
-## <a name="publish-the-web-app-to-azure-app-service"></a>Publier l’application web sur Azure App Service
+## <a name="publish-the-web-app-to-azure-app-service"></a>Publication de l’application web dans Azure App Service
 
 Dans cette section, créez un dépôt Git local à l’aide de Visual Studio, et envoyez (push) de ce dépôt vers Azure pour déployer l’application web. Les étapes impliquées sont les suivantes :
 
@@ -128,7 +128,7 @@ Dans cette section, créez un dépôt Git local à l’aide de Visual Studio, et
 
 1. Dans **Team Explorer**, sélectionnez **Accueil** (icône de maison) > **Paramètres** > **Paramètres du dépôt**.
 
-1. Dans la section **Distants** des **Paramètres du dépôt**, sélectionnez **Ajouter**. La boîte de dialogue **Ajouter un élément distant** s’affiche.
+1. Dans la section **Distants** des **Paramètres du référentiel**, sélectionnez **Ajouter**. La boîte de dialogue **Ajouter un élément distant** s’affiche.
 
 1. Définissez le **Nom** de l’élément distant sur **Azure-SampleApp**.
 
@@ -184,16 +184,16 @@ Vérifiez que le transfert de l’application web à partir de l’environnement
 
 Dans le [portail Azure](https://portal.azure.com), sélectionnez l’application web. Sélectionnez **Déploiement** > **Options de déploiement**.
 
-![Portail Azure : Panneau Paramètres : Panneau Déploiements montrant la réussite du déploiement](azure-continuous-deployment/_static/13-verify-deployment.png)
+![Portail Azure : Panneau Paramètres : Panneau Déploiements montrant la réussite du déploiement](azure-continuous-deployment/_static/13-verify-deployment.png)
 
-## <a name="run-the-app-in-azure"></a>Exécuter l’application dans Azure
+## <a name="run-the-app-in-azure"></a>Exécuter l’application dans Microsoft Azure
 
 L’application web étant déployée sur Azure, exécutez l’application.
 
 Cette opération peut se faire de deux façons :
 
 * Dans le portail Azure, recherchez le panneau lié à l’application web. Sélectionnez **Parcourir** pour afficher l’application dans le navigateur par défaut.
-* Ouvrez un navigateur et entrez l’URL de l’application web. Exemple : `http://SampleWebAppDemo.azurewebsites.net`
+* Ouvrez un navigateur et entrez l’URL de l’application web. Exemple : `http://SampleWebAppDemo.azurewebsites.net`
 
 ## <a name="update-the-web-app-and-republish"></a>Mettre à jour l’application web et la republier
 
@@ -215,7 +215,7 @@ Après avoir apporté des modifications au code local, effectuez une republicati
 
 1. Appuyez sur le bouton **Valider** pour valider les modifications du projet.
 
-1. Sélectionnez **Accueil** > **Synchroniser** > **Actions** > **Envoyer (push)**.
+1. Sélectionnez **Accueil** > **Synchroniser** > **Actions** > **Envoyer (push)** .
 
 > [!NOTE]
 > Vous pouvez aussi envoyer (push) les modifications à partir de la **Fenêtre Commande** en ouvrant la **Fenêtre Commande**, en accédant au répertoire du projet et en entrant une commande Git. Exemple :
@@ -224,10 +224,10 @@ Après avoir apporté des modifications au code local, effectuez une republicati
 
 ## <a name="view-the-updated-web-app-in-azure"></a>Afficher l’application web mise à jour dans Azure
 
-Affichez l’application web mise à jour en sélectionnant **Parcourir** dans le panneau Application web du portail Azure, ou en ouvrant un navigateur et en entrant l’URL de l’application web. Exemple : `http://SampleWebAppDemo.azurewebsites.net`
+Affichez l’application web mise à jour en sélectionnant **Parcourir** dans le panneau Application web du portail Azure, ou en ouvrant un navigateur et en entrant l’URL de l’application web. Exemple : `http://SampleWebAppDemo.azurewebsites.net`
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Créer son premier pipeline avec Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
-* [Projet Kudu](https://github.com/projectkudu/kudu/wiki)
+* [Project Kudu](https://github.com/projectkudu/kudu/wiki)
 * <xref:host-and-deploy/visual-studio-publish-profiles>

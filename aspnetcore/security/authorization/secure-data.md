@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: mvc, seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 65c72d4dd457f85451796c5713bedebafec7a7de
-ms.sourcegitcommit: 8157e5a351f49aeef3769f7d38b787b4386aad5f
+ms.openlocfilehash: 7710a8965771db02e601dafb7da752906bcd43e5
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74239835"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659578"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -19,7 +19,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://tw
 
 ::: moniker range="<= aspnetcore-1.1"
 
-Consultez [ce fichier PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) pour la version ASP.net Core Mvc. Le ASP.NET Core version 1,1 de ce didacticiel se trouve dans [ce](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) dossier. L’exemple 1,1 ASP.NET Core se trouve dans les [exemples](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
+Consultez [ce fichier PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) pour la version ASP.net Core Mvc. Le ASP.NET Core version 1,1 de ce didacticiel se trouve dans [ce](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data) dossier. L’exemple 1,1 ASP.NET Core se trouve dans les [exemples](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
 
 ::: moniker-end
 
@@ -69,7 +69,7 @@ L’exemple contient les gestionnaires d’autorisation suivants :
 * `ContactManagerAuthorizationHandler`: permet aux gestionnaires d’approuver ou de rejeter les contacts.
 * `ContactAdministratorsAuthorizationHandler`: permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
@@ -81,11 +81,11 @@ Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
 ## <a name="the-starter-and-completed-app"></a>Le démarrage et l’application terminée
 
-[Téléchargez](xref:index#how-to-download-a-sample) l’application [terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Testez](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
+[Téléchargez](xref:index#how-to-download-a-sample) l’application [terminée](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Testez](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
 
 ### <a name="the-starter-app"></a>L’application de démarrage
 
-[Téléchargez](xref:index#how-to-download-a-sample) l’application de [démarrage](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
+[Téléchargez](xref:index#how-to-download-a-sample) l’application de [démarrage](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
 
 Exécutez l’application, appuyez sur le lien **ContactManager** et vérifiez que vous pouvez créer, modifier et supprimer un contact.
 
@@ -267,7 +267,7 @@ Mettre à jour le modèle de page de détails :
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>Ajouter ou supprimer un utilisateur à un rôle
 
-Consultez [ce numéro](https://github.com/aspnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
+Consultez [ce numéro](https://github.com/dotnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
 
 * Suppression de privilèges à partir d’un utilisateur. Par exemple, la désactivation d’un utilisateur dans une application de conversation.
 * Ajout des privilèges à un utilisateur.
@@ -355,7 +355,7 @@ Si vous rencontrez un bogue avec la commande `dotnet aspnet-codegenerator razorp
 
 ### <a name="seed-the-database"></a>Amorcer la base de données
 
-Ajoutez la classe [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) au dossier *Data* :
+Ajoutez la classe [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter3/Data/SeedData.cs) au dossier *Data* :
 
 [!code-csharp[](secure-data/samples/starter3/Data/SeedData.cs)]
 
@@ -405,7 +405,7 @@ L’exemple contient les gestionnaires d’autorisation suivants :
 * `ContactManagerAuthorizationHandler`: permet aux gestionnaires d’approuver ou de rejeter les contacts.
 * `ContactAdministratorsAuthorizationHandler`: permet aux administrateurs d’approuver ou de refuser des contacts, ainsi que de modifier/supprimer des contacts.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
@@ -417,11 +417,11 @@ Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
 ## <a name="the-starter-and-completed-app"></a>Le démarrage et l’application terminée
 
-[Téléchargez](xref:index#how-to-download-a-sample) l’application [terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Testez](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
+[Téléchargez](xref:index#how-to-download-a-sample) l’application [terminée](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) . [Testez](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
 
 ### <a name="the-starter-app"></a>L’application de démarrage
 
-[Téléchargez](xref:index#how-to-download-a-sample) l’application de [démarrage](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
+[Téléchargez](xref:index#how-to-download-a-sample) l’application de [démarrage](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
 
 Exécutez l’application, appuyez sur le lien **ContactManager** et vérifiez que vous pouvez créer, modifier et supprimer un contact.
 
@@ -603,7 +603,7 @@ Mettre à jour le modèle de page de détails :
 
 ## <a name="add-or-remove-a-user-to-a-role"></a>Ajouter ou supprimer un utilisateur à un rôle
 
-Consultez [ce numéro](https://github.com/aspnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
+Consultez [ce numéro](https://github.com/dotnet/AspNetCore.Docs/issues/8502) pour plus d’informations sur :
 
 * Suppression de privilèges à partir d’un utilisateur. Par exemple, la désactivation d’un utilisateur dans une application de conversation.
 * Ajout des privilèges à un utilisateur.
@@ -678,7 +678,7 @@ Créer un contact dans le navigateur de l’administrateur. Copiez l’URL pour 
 
 ### <a name="seed-the-database"></a>Amorcer la base de données
 
-Ajoutez la classe [SeedData](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) au dossier de *données* .
+Ajoutez la classe [SeedData](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2.1/Data/SeedData.cs) au dossier de *données* .
 
 Appelez `SeedData.Initialize` à partir de `Main`:
 

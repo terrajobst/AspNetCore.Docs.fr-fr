@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/24/2020
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: e5100d7244600358186b653073990985f48434a7
-ms.sourcegitcommit: b5ceb0a46d0254cc3425578116e2290142eec0f0
+ms.openlocfilehash: f5957adf3cef8966812a1bf0cbc6b2627d19d026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76809053"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664016"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>Tag Helper Cache distribué dans ASP.NET Core
 
-Par [Peter Kellner](https://peterkellner.net) et [Luke Latham](https://github.com/guardrex)
+Par [Peter Kellner](https://peterkellner.net)
 
 Le Tag Helper Cache distribué permet d’améliorer considérablement les performances de votre application ASP.NET Core en mettant en cache son contenu dans une source de cache distribué.
 
-Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 Le Tag Helper Cache distribué hérite de la même classe de base que le Tag Helper Cache. Tous les attributs [Tag Helper Cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper) sont disponibles pour Tag Helper distribué.
 
@@ -42,15 +42,15 @@ Le Tag Helper Cache distribué utilise [l’injection de constructeurs](xref:fun
 
 Le Tag Helper Cache distribué hérite de la même classe que le Tag Helper Cache. Pour obtenir une description de ces attributs, consultez le [Tag Helper Cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
 
-### <a name="name"></a>nom
+### <a name="name"></a>name
 
-| Type d'attribut | Exemple                               |
+| Type d’attribut | Exemple                               |
 | -------------- | ------------------------------------- |
-| Chaîne         | `my-distributed-cache-unique-key-101` |
+| String         | `my-distributed-cache-unique-key-101` |
 
 `name` est obligatoire. L’attribut `name` est utilisé en tant que clé pour chaque instance de cache stockée. Contrairement au Tag Helper Cache qui affecte une clé de cache à chaque instance selon le nom de la page Razor et l’emplacement dans la page Razor, le Tag Helper Cache distribué base uniquement sa clé sur l’attribut `name`.
 
-Exemple :
+Exemple :
 
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">

@@ -1,81 +1,81 @@
 ---
 title: Protection des données ASP.NET Core
 author: rick-anderson
-description: Découvrez le concept de protection des données et les principes de conception de l’API de Protection des données ASP.NET Core.
+description: En savoir plus sur le concept de protection des données et les principes de conception des API de protection des données ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/data-protection/introduction
 ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64897986"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664443"
 ---
 # <a name="aspnet-core-data-protection"></a>Protection des données ASP.NET Core
 
-Les applications Web doivent souvent stocker les données de sécurité sensibles. Windows fournit DPAPI pour les applications de bureau, mais cela ne convient pas pour les applications web. La pile de protection des données ASP.NET Core fournissent une API de chiffrement simple et facile à utiliser un développeur peut utiliser pour protéger les données, y compris la rotation et gestion de clés.
+Les applications Web doivent souvent stocker des données sensibles à la sécurité. Windows fournit DPAPI pour les applications de bureau, mais cela ne convient pas aux applications Web. La pile de protection des données ASP.NET Core fournit une API de chiffrement simple et facile à utiliser qu’un développeur peut utiliser pour protéger des données, notamment la gestion et la rotation des clés.
 
-La pile de protection des données ASP.NET Core est conçue pour servir le remplacement à long terme pour le &lt;machineKey&gt; élément dans ASP.NET 1.x - 4.x. Il a été conçu pour résoudre bon nombre des lacunes de l’ancienne pile de chiffrement tout en fournissant une solution complète pour la majorité des cas d’utilisation des applications modernes sont susceptibles de rencontrer.
+La pile de protection des données ASP.NET Core est conçue pour servir de remplacement à long terme de l’élément de&gt; &lt;machineKey dans ASP.NET 1. x-4. x. Il a été conçu pour résoudre bon nombre des lacunes de l’ancienne pile de chiffrement, tout en fournissant une solution prête à l’emploi pour la majorité des cas d’utilisation que les applications modernes sont susceptibles de rencontrer.
 
-## <a name="problem-statement"></a>Énoncé du problème
+## <a name="problem-statement"></a>Définition du problème
 
-L’énoncé du problème global peut se résumer brièvement dans une phrase unique : J’ai besoin de conserver des informations fiables pour une récupération ultérieure, mais je n’approuve le mécanisme de persistance. Cela peut être écrit en termes de web, comme « J’ai besoin pour effectuer un aller-retour état approuvé via un client non fiable. »
+La déclaration globale du problème peut être exposée succinctement en une seule phrase : je dois conserver des informations approuvées pour une récupération ultérieure, mais je n’approuve pas le mécanisme de persistance. En termes Web, cela peut être écrit comme « j’ai besoin d’aller-retour dans un État approuvé via un client non approuvé ».
 
-L’exemple canonique de ceci est un cookie d’authentification ou au porteur jeton. Le serveur génère un « Je suis Groot et disposer des autorisations de xyz » du jeton et le remet au client. À une date ultérieure, le client présentera ce jeton sur le serveur, mais le serveur a besoin d’une sorte de garantie que le client n’a pas falsifié le jeton. Par conséquent, la première exigence : authenticité (également appelé) l’intégrité, falsification de la vérification).
+L’exemple canonique est un cookie d’authentification ou un jeton de porteur. Le serveur génère un jeton « je suis Groot et dispose des autorisations XYZ » et le transmet au client. À une date ultérieure, le client présente ce jeton au serveur, mais le serveur a besoin d’un certain type d’assurance que le client n’a pas falsifié le jeton. Par conséquent, la première exigence : authenticité (également appelée intégrité, vérification de la falsification).
 
-Étant donné que l’état persistant est approuvé par le serveur, nous pensons que cet état peut contenir des informations spécifiques à l’environnement d’exploitation. Il peut s’agir de la forme d’un chemin d’accès de fichier, une autorisation, un handle ou autres référence indirecte ou certains autres éléments de données de serveur spécifiques. Ces informations doivent généralement pas être divulguées à un client non fiable. Par conséquent, la deuxième exigence : la confidentialité.
+Étant donné que l’état persistant est approuvé par le serveur, nous pensons que cet État peut contenir des informations spécifiques à l’environnement d’exploitation. Cela peut se présenter sous la forme d’un chemin d’accès de fichier, d’une autorisation, d’un handle ou d’une autre référence indirecte, ou d’un autre élément de données spécifiques au serveur. Ces informations ne doivent généralement pas être divulguées à un client non approuvé. Par conséquent, la deuxième exigence : la confidentialité.
 
-Enfin, étant donné que les applications modernes sont basées sur des composants que nous avons appris sont que les composants individuels souhaitez tirer parti de ce système sans tenir compte des autres composants dans le système. Par exemple, si un composant de jeton du porteur à l’aide de cette pile, il doit fonctionner sans interférence provenant d’un mécanisme d’anti-CSRF qui peut également être à l’aide de la même pile. Par conséquent, l’exigence finale : isolation.
+Enfin, étant donné que les applications modernes sont composant, ce que nous avons vu est que les composants individuels souhaitent tirer parti de ce système sans tenir compte des autres composants du système. Par exemple, si un composant de jeton du porteur utilise cette pile, il doit fonctionner sans interférence d’un mécanisme anti-CSRF qui peut également utiliser la même pile. Par conséquent, l’exigence finale : isolation.
 
-Nous pouvons fournir des contraintes supplémentaires afin de limiter la portée de la configuration requise. Nous partons du principe que tous les services fonctionnant dans les systèmes de chiffrement sont fiables et que les données n’a pas besoin d’être généré ou consommé en dehors des services sous notre contrôle direct. En outre, nous avons besoin que les opérations sont plus vite possible étant donné que chaque demande au service web peut passer par le système de cryptage par une ou plusieurs fois. Cela rend le chiffrement symétrique idéale pour notre scénario, et nous pouvons discount cryptographie asymétrique jusqu'à par exemple une heure dont il a besoin.
+Nous pouvons fournir des contraintes supplémentaires afin de limiter l’étendue de nos exigences. Nous partons du principe que tous les services opérant dans le chiffrement sont de confiance égale et que les données ne doivent pas être générées ou consommées en dehors des services sous notre contrôle direct. En outre, nous avons besoin que les opérations soient aussi rapides que possible, car chaque requête adressée au service Web peut traverser le chiffrement une ou plusieurs fois. Cela rend le chiffrement symétrique idéal pour notre scénario et nous pouvons escompter le chiffrement asymétrique jusqu’à ce qu’il soit nécessaire.
 
 ## <a name="design-philosophy"></a>Philosophie de conception
 
-Nous avons commencé en identifiant les problèmes liés à la pile existante. Une fois que nous avions qui, nous interrogées le paysage des solutions existantes et conclu qu’aucune solution existante n’était tout à fait les fonctionnalités que nous avons recherché. Ensuite, nous avons conçu une solution basée sur plusieurs principes généraux.
+Nous avons commencé par identifier les problèmes avec la pile existante. Après cela, nous avons interrogé le paysage des solutions existantes et conclu qu’aucune solution existante n’avait les fonctionnalités que nous avons recherchées. Nous avons ensuite conçu une solution basée sur plusieurs principes directeurs.
 
-* Le système doit offrir simplicité de configuration. Dans l’idéal, le système serait sans aucune configuration et les développeurs Impossible d’avance. Les situations où les développeurs ont besoin pour configurer un aspect spécifique (par exemple, le dépôt de clé), doit être envisagé pour rendre ces configurations spécifiques simple.
+* Le système doit offrir une simplicité de configuration. Dans l’idéal, le système serait sans configuration et les développeurs pouvaient s’appuyer sur le sol. Dans les situations où les développeurs doivent configurer un aspect spécifique (par exemple, le référentiel de clé), il est important de tenir compte de la simplicité de ces configurations spécifiques.
 
-* Offrent une simple API destinées aux consommateurs. L’API doivent être facile à utiliser correctement et difficile à utiliser de manière incorrecte.
+* Offre une API simple destinée aux consommateurs. Les API doivent être faciles à utiliser correctement et difficiles à utiliser de manière incorrecte.
 
-* Les développeurs ne doivent pas Découvrez les principes de gestion de clés. Le système doit gérer la sélection de l’algorithme et la durée de vie des clés sur la place du développeur. Dans l’idéal, le développeur ne doit jamais même avoir accès pour le matériel de clé brutes.
+* Les développeurs ne doivent pas apprendre les principes de gestion clés. Le système doit gérer la sélection de l’algorithme et la durée de vie de la clé au nom du développeur. Dans l’idéal, le développeur ne doit jamais avoir accès au matériel de clé brut.
 
-* Les clés doivent être protégées au repos lorsque cela est possible. Le système doit déterminer un mécanisme de protection par défaut approprié et appliquer automatiquement.
+* Lorsque cela est possible, les clés doivent être protégées au repos. Le système doit déterminer un mécanisme de protection par défaut approprié et l’appliquer automatiquement.
 
-Avec ces principes à l’esprit, nous avons développé une simple, [facile à utiliser](xref:security/data-protection/using-data-protection) pile de protection des données.
+Avec ces principes à l’esprit, nous avons développé une pile de protection des données simple et [facile à utiliser](xref:security/data-protection/using-data-protection) .
 
-L’API de protection des données ASP.NET Core s’appliquent pas principalement pour la persistance indéfini de charges utiles confidentielles. Autres technologies telles que [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) et [Azure Rights Management](/rights-management/) sont plus adaptés pour le scénario de stockage indéterminée, et ils ont des fonctionnalités de gestion de clé forte en conséquence. Ceci dit, il n’y a rien interdire à un développeur à l’aide de l’API de protection des données ASP.NET Core pour la protection à long terme des données confidentielles.
+Les API de protection des données ASP.NET Core ne sont pas principalement destinées à la persistance illimitée des charges utiles confidentielles. D’autres technologies telles que [DPAPI Windows CNG](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) et [Azure Rights Management](/rights-management/) sont plus adaptées au scénario de stockage indéfini, et elles ont des fonctionnalités de gestion de clés fortes. Cela dit, rien n’empêche un développeur d’utiliser les API de protection des données ASP.NET Core pour la protection à long terme des données confidentielles.
 
-## <a name="audience"></a>Public
+## <a name="audience"></a>Public visé
 
-Le système de protection des données est divisé en cinq packages principaux. Différents aspects de ces API ciblent les trois principaux types de publics ;
+Le système de protection des données est divisé en cinq packages principaux. Divers aspects de ces API ciblent trois audiences principales.
 
-1. Le [vue d’ensemble des API de consommateur](xref:security/data-protection/consumer-apis/overview) cibler les développeurs d’application et d’infrastructure.
+1. La [vue d’ensemble des API de consommateur](xref:security/data-protection/consumer-apis/overview) cible les développeurs d’applications et d’infrastructures.
 
-   « Je ne souhaite en savoir plus sur le fonctionnement de la pile ou sur la façon dont elle est configurée. J’ai simplement souhaitez effectuer une opération aussi simple d’une manière que possible avec une probabilité élevée de l’aide des API avec succès. »
+   «Je ne veux pas en savoir plus sur le fonctionnement de la pile ou sur la façon dont elle est configurée. Je souhaite simplement effectuer une opération aussi simple que possible, avec une probabilité élevée d’utilisation des API.»
 
-2. Le [configuration API](xref:security/data-protection/configuration/overview) cibler les développeurs d’applications et les administrateurs système.
+2. Les [API de configuration](xref:security/data-protection/configuration/overview) ciblent les développeurs d’applications et les administrateurs système.
 
-   « J’ai besoin indiquer le système de protection des données que mon environnement requiert des paramètres ou des chemins d’accès par défaut ».
+   « Je dois dire au système de protection des données que mon environnement nécessite des chemins ou des paramètres autres que ceux par défaut. »
 
-3. Les développeurs d’extensibilité API cible, responsable de l’implémentation d’une stratégie personnalisée. L’utilisation de ces API est limitée à rares situations et expérimentée, les développeurs prenant en charge de sécurité.
+3. Les API d’extensibilité ciblent les développeurs chargés de l’implémentation d’une stratégie personnalisée. L’utilisation de ces API est limitée aux rares situations et aux développeurs expérimentés en matière de sécurité.
 
-   « Je dois remplacer un composant au sein du système dans son intégralité, car j’ai réellement uniques liées au comportement. Je souhaite en savoir plus rarement utilisé des parties de la surface d’API pour créer un plug-in qui répond à mes exigences. »
+   «J’ai besoin de remplacer un composant entier dans le système, car j’ai véritablement des exigences comportementales uniques. Je souhaite apprendre les parties utilisées de manière inhabituelle de la surface de l’API afin de créer un plug-in qui répond à mes exigences.»
 
 ## <a name="package-layout"></a>Disposition du package
 
-La pile de protection des données se compose de cinq packages.
+La pile de protection des données est constituée de cinq packages.
 
-* [Microsoft.AspNetCore.DataProtection.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) contient le <xref:Microsoft.AspNetCore.DataProtection.IDataProtectionProvider> et <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> interfaces pour créer des services de protection des données. Il contient également des méthodes d’extension utiles pour travailler avec ces types (par exemple, [IDataProtector.Protect](xref:Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Protect*)). Si le système de protection des données est instancié ailleurs et que vous consommez l’API, référence `Microsoft.AspNetCore.DataProtection.Abstractions`.
+* [Microsoft. AspNetCore. dataprotection. Abstracts](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) contient les interfaces <xref:Microsoft.AspNetCore.DataProtection.IDataProtectionProvider> et <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> pour créer des services de protection des données. Il contient également des méthodes d’extension utiles pour utiliser ces types (par exemple, [IDataProtector. Protect](xref:Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Protect*)). Si le système de protection des données est instancié ailleurs et que vous consommez l’API, référencez `Microsoft.AspNetCore.DataProtection.Abstractions`.
 
-* [Microsoft.AspNetCore.DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/) contient l’implémentation de base du système de protection de données, y compris les opérations de chiffrement principales, la gestion de clés, la configuration et extensibilité. Pour instancier le système de protection des données (par exemple, l’ajout à un <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>) ou de la modification ou l’extension de son comportement, référencer `Microsoft.AspNetCore.DataProtection`.
+* [Microsoft. AspNetCore. dataprotection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/) contient l’implémentation de base du système de protection des données, notamment les opérations de chiffrement de base, la gestion des clés, la configuration et l’extensibilité. Pour instancier le système de protection des données (par exemple, en l’ajoutant à un <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>) ou en modifiant ou en étendant son comportement, référencez des `Microsoft.AspNetCore.DataProtection`.
 
-* [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) contient des API supplémentaires que les développeurs peut se révéler utiles, mais qui n’appartiennent pas dans le package principal. Par exemple, ce package contient des méthodes de fabrique pour instancier le système de protection des données pour stocker les clés à un emplacement sur le système de fichiers sans l’injection de dépendances (voir <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>). Il contient également des méthodes d’extension pour limiter la durée de vie des charges utiles protégées (voir <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector>).
+* [Microsoft. AspNetCore. dataprotection. extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) contient des API supplémentaires que les développeurs peuvent trouver utiles, mais qui n’appartiennent pas au package de base. Par exemple, ce package contient des méthodes de fabrique pour instancier le système de protection des données afin de stocker les clés à un emplacement sur le système de fichiers sans injection de dépendances (voir <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>). Il contient également des méthodes d’extension pour limiter la durée de vie des charges utiles protégées (voir <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector>).
 
-* [Microsoft.AspNetCore.DataProtection.SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/) peuvent être installés dans une application de 4.x ASP.NET existante pour rediriger ses `<machineKey>` opérations utilisent la nouvelle pile de protection de données ASP.NET Core. Pour plus d'informations, consultez <xref:security/data-protection/compatibility/replacing-machinekey>.
+* [Microsoft. AspNetCore. dataprotection. SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/) peut être installé dans une application ASP.net 4. x existante pour rediriger ses opérations de `<machineKey>` afin d’utiliser la nouvelle pile de protection des données ASP.net core. Pour plus d’informations, consultez <xref:security/data-protection/compatibility/replacing-machinekey>.
 
-* [Microsoft.AspNetCore.Cryptography.KeyDerivation](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/) fournit une implémentation du mot de passe PBKDF2 routine de hachage et peut être utilisé par les systèmes qui doivent gérer les mots de passe utilisateur en toute sécurité. Pour plus d'informations, consultez <xref:security/data-protection/consumer-apis/password-hashing>.
+* [Microsoft. AspNetCore. Cryptography. Keydérivation](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/) fournit une implémentation de la routine de hachage de mot de passe PBKDF2 et peut être utilisé par les systèmes qui doivent gérer les mots de passe utilisateur en toute sécurité. Pour plus d’informations, consultez <xref:security/data-protection/consumer-apis/password-hashing>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -7,11 +7,11 @@ ms.author: johluo
 ms.date: 09/25/2019
 uid: grpc/migration
 ms.openlocfilehash: 451171a041f7bbb3711babd73d2fa2e245aadd28
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355137"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664135"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migration des services gRPC à partir de C-Core vers ASP.NET Core
 
@@ -98,7 +98,7 @@ différences entre l’intercepteur gRPC et l’intergiciel (middleware) ASP.NET
     * Message désérialisé envoyé à un appel.
     * Message retourné par l’appel avant qu’il ne soit sérialisé.
   * Peut intercepter et gérer les exceptions levées à partir des services gRPC.
-* Middleware :
+* Intergiciel
   * S’exécute avant les intercepteurs gRPC.
   * Opère sur les messages HTTP/2 sous-jacents.
   * Peut uniquement accéder aux octets des flux de requête et de réponse.

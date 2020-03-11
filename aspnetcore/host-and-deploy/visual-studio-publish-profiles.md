@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/07/2019
 uid: host-and-deploy/visual-studio-publish-profiles
 ms.openlocfilehash: 274dd2cd528d3766aa07f69aac3470a131c79ffe
-ms.sourcegitcommit: 67116718dc33a7a01696d41af38590fdbb58e014
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799349"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659375"
 ---
 # <a name="visual-studio-publish-profiles-pubxml-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio (. pubxml) pour le déploiement d’applications ASP.NET Core
 
@@ -28,7 +28,7 @@ La commande `dotnet new mvc` produit un fichier projet contenant l’[élément 
 </Project>
 ```
 
-L’attribut `Sdk` de l’élément `<Project>` précédent importe les [propriétés](/visualstudio/msbuild/msbuild-properties) et [cibles](/visualstudio/msbuild/msbuild-targets) de MSBuild à partir de *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* et *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets*, respectivement. L’emplacement par défaut de `$(MSBuildSDKsPath)` (avec Visual Studio 2019 Enterprise) est le dossier *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks*.
+L’attribut `<Project>` de l’élément `Sdk` précédent importe les [propriétés](/visualstudio/msbuild/msbuild-properties) et [cibles](/visualstudio/msbuild/msbuild-targets) de MSBuild à partir de *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.props* et *$(MSBuildSDKsPath)\Microsoft.NET.Sdk.Web\Sdk\Sdk.targets*, respectivement. L’emplacement par défaut de `$(MSBuildSDKsPath)` (avec Visual Studio 2019 Enterprise) est le dossier *%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\MSBuild\Sdks*.
 
 `Microsoft.NET.Sdk.Web` (kit de développement web) dépend d’autres kits de développement logiciel, dont `Microsoft.NET.Sdk` (SDK .NET Core) et `Microsoft.NET.Sdk.Razor` ([SDK Razor](xref:razor-pages/sdk)). Les propriétés et cibles MSBuild associées à chaque kit de développement logiciel sont importées. Les cibles de publication importent le bon ensemble de cibles en fonction de la méthode de publication utilisée.
 
@@ -42,7 +42,7 @@ Quand MSBuild ou Visual Studio charge un projet, les actions principales suivant
 
 Quand le projet est chargé, les [éléments du projet MSBuild](/visualstudio/msbuild/common-msbuild-project-items) (fichiers) sont calculés. Le type d’élément détermine la façon dont le fichier est traité. Par défaut, les fichiers *.cs* sont inclus dans la liste d’éléments `Compile`. Les fichiers dans la liste d’éléments `Compile` sont compilés.
 
-La liste d’éléments `Content` contient des fichiers qui sont publiés en plus des sorties de génération. Par défaut, les fichiers qui correspondent aux modèles `wwwroot\**`, `**\*.config` et `**\*.json` sont inclus dans l’élément `Content`. Par exemple, le [modèle d’utilisation des caractères génériques](https://gruntjs.com/configuring-tasks#globbing-patterns) `wwwroot\**` correspond à tous les fichiers dans le dossier *wwwroot* et ses sous-dossiers.
+La liste d’éléments `Content` contient des fichiers qui sont publiés en plus des sorties de génération. Par défaut, les fichiers qui correspondent aux modèles `wwwroot\**`, `**\*.config` et `**\*.json` sont inclus dans l’élément `Content`. Par exemple, le [modèle `wwwroot\**` globbing](https://gruntjs.com/configuring-tasks#globbing-patterns) correspond à tous les fichiers du dossier *wwwroot* et à ses sous-dossiers.
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -70,7 +70,7 @@ Quand un projet ASP.NET Core référence `Microsoft.NET.Sdk.Web` dans le fichier
 
 ## <a name="basic-command-line-publishing"></a>Publication de base à partir d’une ligne de commande
 
-La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples suivants, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) de l’interface CLI .NET Core est exécutée à partir du répertoire de projet (qui contient le fichier *.csproj*). Si le dossier du projet n’est pas le répertoire de travail actuel, passez explicitement le chemin du fichier projet. Exemple :
+La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples suivants, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) de l’interface CLI .NET Core est exécutée à partir du répertoire de projet (qui contient le fichier *.csproj*). Si le dossier du projet n’est pas le répertoire de travail actuel, passez explicitement le chemin du fichier projet. Par exemple :
 
 ```dotnetcli
 dotnet publish C:\Webs\Web1
@@ -125,7 +125,7 @@ Cette section utilise Visual Studio 2019 ou supérieur pour créer un profil de
 
 Créez un profil de publication dans Visual Studio en choisissant l’une des méthodes suivantes :
 
-* Dans **Explorateur de solutions** , cliquez avec le bouton droit sur le projet, puis sélectionnez **publier**.
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le projet, puis sélectionnez **Publier**.
 * Sélectionner **Publier {NOM DU PROJET}** dans le menu **Générer**.
 
 L’onglet **Publier** de la page de fonctionnalités de l’application s’affiche. Si le projet n’a pas de profil de publication, la page **Choisir une cible de publication** s’affiche. Vous êtes invité à sélectionner une des cibles de publication suivantes :
@@ -307,7 +307,7 @@ msbuild {PATH}
 * {PROFILE} &ndash; Nom du profil de publication.
 * {USERNAME} &ndash; Nom d’utilisateur MSDeploy. {USERNAME} figure dans le profil de publication.
 * {PASSWORD} &ndash; Mot de passe MSDeploy. Obtenez le {PASSWORD} à partir du fichier *{PROFILE}. PublishSettings*. Téléchargez le fichier *.PublishSettings* à partir d’un des emplacements suivants :
-  * **Explorateur de solutions**: sélectionnez **Afficher** > **Cloud Explorer**. Connectez-vous avec votre abonnement Azure. Ouvrez **App Services**. Faites un clic droit sur l’application. Sélectionnez **Télecharger un profil de publication**.
+  * **Explorateur de solutions**: sélectionnez **Afficher** les **Cloud Explorer**de > . Connectez-vous avec votre abonnement Azure. Ouvrez **App Services**. Faites un clic droit sur l’application. Sélectionnez **Télecharger un profil de publication**.
   * Portail Azure : sélectionnez **accéder au profil de publication** dans le panneau **vue d’ensemble** de l’application Web.
 
 L’exemple suivant utilise un profil de publication nommé *AzureWebApp - Web Deploy*:
@@ -465,7 +465,7 @@ Dans l’exemple suivant, le balisage en surbrillance illustre ce qui suit :
 
 [!code-xml[](visual-studio-publish-profiles/samples/Web1.pubxml?highlight=18-23)]
 
-L’exemple précédent utilise l’élément `ResolvedFileToPublish`, dont le comportement par défaut consiste à toujours copier les fichiers fournis dans l’attribut `Include` sur le site publié. Remplacez le comportement par défaut en incluant un élément enfant `<CopyToPublishDirectory>` avec le texte interne `Never` ou `PreserveNewest`. Exemple :
+L’exemple précédent utilise l’élément `ResolvedFileToPublish`, dont le comportement par défaut consiste à toujours copier les fichiers fournis dans l’attribut `Include` sur le site publié. Remplacez le comportement par défaut en incluant un élément enfant `<CopyToPublishDirectory>` avec le texte interne `Never` ou `PreserveNewest`. Par exemple :
 
 ```xml
 <ResolvedFileToPublish Include="..\ReadMe2.md">
@@ -501,9 +501,9 @@ Ajoutez la propriété `<AllowUntrustedCertificate>` avec la valeur `True` au pr
 
 ## <a name="the-kudu-service"></a>Le service Kudu
 
-Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Exemple :
+Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Par exemple :
 
-| URL                                    | Résultat       |
+| URL                                    | Résultats       |
 | -------------------------------------- | ------------ |
 | `http://mysite.azurewebsites.net/`     | Application web      |
 | `http://mysite.scm.azurewebsites.net/` | Service Kudu |

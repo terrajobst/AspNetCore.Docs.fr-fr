@@ -1,22 +1,22 @@
 ---
 title: Implémentation du serveur web Kestrel dans ASP.NET Core
-author: guardrex
+author: rick-anderson
 description: Découvrez plus d’informations sur Kestrel, serveur web multiplateforme pour ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: d026e1b6fc1a9ecc66014eacb8eb0b46dd9353ec
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: 8d96118800c47b2c551726342bf4cfba9671a09e
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171729"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667369"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
-Par [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher), [Stephen Halter](https://twitter.com/halter73)et [Luke Latham](https://github.com/guardrex)
+Par [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) et [Stephen Halter](https://twitter.com/halter73)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -33,7 +33,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Assistance HTTP/2
 
@@ -42,7 +42,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
-* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+* Framework cible : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -986,7 +986,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Assistance HTTP/2
 
@@ -995,7 +995,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
-* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
+* Framework cible : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -1934,7 +1934,7 @@ Kestrel prend en charge les scénarios suivants :
 
 Kestrel est pris en charge sur toutes les plateformes et les versions prises en charge par .NET Core.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quand utiliser Kestrel avec un proxy inverse ?
 
@@ -2714,6 +2714,7 @@ Le middleware de filtrage d’hôtes est désactivé par défaut. Pour activer l
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* Lorsque vous utilisez des sockets UNIX sur Linux, le socket n’est pas supprimé automatiquement lors de l’arrêt de l’application. Pour plus d’informations, consultez [ce problème GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
 * <xref:test/troubleshoot>
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>

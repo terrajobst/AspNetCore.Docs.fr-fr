@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/12/2019
 uid: mvc/views/partial
-ms.openlocfilehash: 50c4f41d5d3099184aa3992ed7e176b74c488d2a
-ms.sourcegitcommit: 805f625d16d74e77f02f5f37326e5aceafcb78e3
+ms.openlocfilehash: 04b6d6e620f34ac7154728b1b3048195e87c5860
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985571"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663050"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
-Par [Steve Smith](https://ardalis.com/), [Luke Latham](https://github.com/guardrex), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
+Par [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
 
 Une vue partielle est un fichier de balisage [Razor](xref:mvc/views/razor) ( *.cshtml*) qui effectue le rendu d’une sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
 
@@ -25,7 +25,7 @@ Le terme *vue partielle* s’emploie dans le cadre du développement d’une app
 
 ::: moniker-end
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>Quand utiliser des vues partielles ?
 
@@ -157,7 +157,7 @@ L’exemple suivant référence une vue partielle avec un chemin relatif :
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
+Pour plus d’informations, consultez <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
 ::: moniker-end
 
@@ -266,7 +266,7 @@ Les conventions suivantes s’appliquent à la détection des vues partielles :
 * Les vues partielles peuvent être *chaînées*, c’est-à-dire qu’une vue partielle peut appeler une autre vue partielle si une référence circulaire n’est pas formée par les appels. Les chemins relatifs sont toujours relatifs au fichier actuel, et non au fichier racine ou parent associé.
 
 > [!NOTE]
-> Une `section` [Razor](xref:mvc/views/razor) définie dans une vue partielle n’est pas visible par les fichiers de balisage parents. La `section` est visible uniquement par la vue partielle dans laquelle elle est définie.
+> Un `section` [Razor](xref:mvc/views/razor) défini dans une vue partielle est invisible aux fichiers de balisage parents. La `section` est visible uniquement par la vue partielle dans laquelle elle est définie.
 
 ## <a name="access-data-from-partial-views"></a>Accéder à des données à partir de vues partielles
 

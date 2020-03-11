@@ -1,6 +1,6 @@
-# <a name="gdpr-sample"></a>Exemple de RGPD
+# <a name="gdpr-sample"></a>Exemple RGPD
 
-* Dans *appsettings.json*, affectez la valeur `CheckNotConsentNeeded` à `false` pour demander le consentement ; sinon la valeur est true, ou omettre. Testez l’application avec `CheckNotConsentNeeded` définie sur `false` et la valeur `true`.
-* Créer des cookies essentielles et les utilisations non vitales avec chaque variation de `CheckConsentNeeded` et consentement accordé.
+* Dans *appSettings. JSON*, définissez `CheckNotConsentNeeded` sur `false` pour demander le consentement ; Sinon, a la valeur true ou omettez. Testez l’application avec `CheckNotConsentNeeded` défini sur `false` et défini sur `true`.
+* Créez des cookies essentiels et non essentiels avec chaque variation de `CheckConsentNeeded` et le consentement accordés.
 * Inscrire un utilisateur.
 * Supprimer les cookies.

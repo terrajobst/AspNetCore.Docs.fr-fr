@@ -10,31 +10,31 @@ no-loc:
 - SignalR
 uid: signalr/diagnostics
 ms.openlocfilehash: c5bd2ac27f8ca486b0d75aed8439747f72448625
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963856"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78660971"
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-opno-locsignalr"></a>Journalisation et diagnostics dans ASP.NET Core SignalR
+# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>Journalisation et diagnostics dans ASP.NET Core Signalr
 
 Par [Andrew Stanton-infirmière](https://twitter.com/anurse)
 
-Cet article fournit des conseils pour la collecte de diagnostics à partir de votre application ASP.NET Core SignalR afin de vous aider à résoudre les problèmes.
+Cet article fournit des conseils sur la collecte de diagnostics à partir de votre application ASP.NET Core Signalr pour vous aider à résoudre les problèmes.
 
 ## <a name="server-side-logging"></a>Journalisation côté serveur
 
 > [!WARNING]
 > Les journaux côté serveur peuvent contenir des informations sensibles de votre application. **Ne jamais** poster des journaux bruts à partir d’applications de production vers des forums publics tels que github.
 
-Étant donné que SignalR fait partie de ASP.NET Core, il utilise le système de journalisation ASP.NET Core. Dans la configuration par défaut, SignalR enregistre très peu d’informations, mais cela peut être configuré. Pour plus d’informations sur la configuration de la journalisation des ASP.NET Core, consultez la documentation sur [ASP.net Core Logging](xref:fundamentals/logging/index#configuration) .
+Étant donné que Signalr fait partie de ASP.NET Core, il utilise le système de journalisation ASP.NET Core. Dans la configuration par défaut, Signalr enregistre très peu d’informations, mais cela peut être configuré. Pour plus d’informations sur la configuration de la journalisation des ASP.NET Core, consultez la documentation sur [ASP.net Core Logging](xref:fundamentals/logging/index#configuration) .
 
-SignalR utilise deux catégories d’enregistreur d’événements :
+Signalr utilise deux catégories d’enregistreur d’événements :
 
 * `Microsoft.AspNetCore.SignalR` &ndash; pour les journaux liés aux protocoles de concentrateur, l’activation de hubs, l’appel de méthodes et d’autres activités liées au Hub.
-* `Microsoft.AspNetCore.Http.Connections` &ndash; pour les journaux liés aux transports, tels que WebSockets, l’interrogation longue et les événements envoyés par le serveur et l’infrastructure de SignalR de bas niveau.
+* `Microsoft.AspNetCore.Http.Connections` &ndash; pour les journaux liés aux transports, tels que WebSockets, l’interrogation longue et les événements envoyés par le serveur et l’infrastructure Signalr de bas niveau.
 
-Pour activer les journaux détaillés à partir de SignalR, configurez les deux préfixes précédents au niveau de `Debug` dans votre fichier *appSettings. JSON* en ajoutant les éléments suivants à la sous-section `LogLevel` dans `Logging`:
+Pour activer les journaux détaillés à partir de Signalr, configurez les deux préfixes précédents au niveau `Debug` dans votre fichier *appSettings. JSON* en ajoutant les éléments suivants à la sous-section `LogLevel` dans `Logging`:
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -57,7 +57,7 @@ La façon dont vous accédez aux journaux côté serveur dépend de l’environn
 
 ### <a name="as-a-console-app-outside-iis"></a>En tant qu’application console en dehors d’IIS
 
-Si vous exécutez dans une application console, l’enregistreur d’événements de [console](xref:fundamentals/logging/index#console-provider) doit être activé par défaut. les journaux de SignalR s’affichent dans la console.
+Si vous exécutez dans une application console, l’enregistreur d’événements de [console](xref:fundamentals/logging/index#console-provider) doit être activé par défaut. Les journaux signalr s’affichent dans la console.
 
 ### <a name="within-iis-express-from-visual-studio"></a>Dans IIS Express à partir de Visual Studio
 
@@ -96,7 +96,7 @@ Le tableau suivant montre les niveaux de journal disponibles pour le client Java
 
 Une fois que vous avez configuré le niveau de détail, les journaux sont écrits dans la console du navigateur (ou la sortie standard dans une application NodeJS).
 
-Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l’interface `ILogger`. La seule méthode qui doit être implémentée est `log`, qui prend le niveau de l’événement et le message associé à l’événement. Exemple :
+Si vous souhaitez envoyer des journaux à un système de journalisation personnalisé, vous pouvez fournir un objet JavaScript qui implémente l’interface `ILogger`. La seule méthode qui doit être implémentée est `log`, qui prend le niveau de l’événement et le message associé à l’événement. Par exemple :
 
 [!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
 
@@ -107,7 +107,7 @@ Si vous souhaitez envoyer des journaux à un système de journalisation personna
 
 Pour récupérer des journaux à partir du client .NET, vous pouvez utiliser la méthode `ConfigureLogging` sur `HubConnectionBuilder`. Cela fonctionne de la même façon que la méthode `ConfigureLogging` sur `WebHostBuilder` et `HostBuilder`. Vous pouvez configurer les mêmes fournisseurs de journalisation que ceux que vous utilisez dans ASP.NET Core. Toutefois, vous devez installer et activer manuellement les packages NuGet pour les différents fournisseurs de journalisation.
 
-### <a name="console-logging"></a>Journalisation de la console
+### <a name="console-logging"></a>Écriture dans le journal de la console
 
 Pour activer la journalisation de la console, ajoutez le package [Microsoft. extensions. Logging. console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console) . Ensuite, utilisez la méthode `AddConsole` pour configurer le journal de la console :
 
@@ -188,7 +188,7 @@ La plupart des Outils de développement de navigateur possèdent un onglet « r
 
 ![Option « Enregistrer en tant que fichier... avec du contenu » dans l’onglet Réseau des outils de développement Google Chrome](diagnostics/chrome-har-export.png)
 
-### <a name="mozilla-firefox"></a>Mozilla Firefox
+### <a name="mozilla-firefox"></a>Mozilla Firefox
 
 1. Appuyez sur F12 pour ouvrir les outils de développement
 2. Cliquez sur l’onglet réseau.

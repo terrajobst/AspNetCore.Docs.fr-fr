@@ -9,11 +9,11 @@ no-loc:
 - SignalR
 uid: aspnetcore-2.2
 ms.openlocfilehash: 97deafd520926476f7653fc3de40d577b394734b
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661048"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Nouveautés d’ASP.NET Core 2.2
 
@@ -23,7 +23,7 @@ Cet article met en évidence les modifications les plus importantes dans ASP.NET
 
 OpenAPI (anciennement appelé Swagger) est une spécification indépendante du langage pour décrire des API REST. L’écosystème OpenAPI a des outils qui permettent de découvrir, de tester et de produire du code client avec la spécification. La prise en charge de la génération et de la visualisation de documents OpenAPI dans ASP.NET Core MVC est fournie par le biais de projets portés par la communauté, comme [NSwag](https://github.com/RicoSuter/NSwag) et [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). ASP.NET Core 2.2 fournit des outils et des expériences de runtime améliorés pour la création de documents OpenAPI.
 
-Pour plus d'informations, voir les ressources suivantes :
+Pour plus d’informations, consultez les ressources suivantes :
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
@@ -37,13 +37,13 @@ ASP.NET Core 2.1 a introduit `ProblemDetails`, basé sur la spécification [RFC 
 
 ASP.NET Core 2.2 utilise un nouveau système de *routage de point de terminaison* pour améliorer la distribution des requêtes. Les changements sont notamment de nouveaux membres d’API de génération de liens et les transformateurs de paramètres de route.
 
-Pour plus d'informations, voir les ressources suivantes :
+Pour plus d’informations, consultez les ressources suivantes :
 
 * [Routage de point de terminaison dans la version 2.2](https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/)
 * [Transformateurs de paramètres de route](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (consultez la section **Routage**)
 * [Différences entre le routage IRouter et le routage de point de terminaison](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
-## <a name="health-checks"></a>Contrôles d’intégrité
+## <a name="health-checks"></a>Contrôles d'intégrité
 
 Un nouveau service de contrôles d’intégrité facilite l’utilisation d’ASP.NET Core dans les environnements qui nécessitent des contrôles d’intégrité, comme Kubernetes. Les contrôles d’intégrité incluent un middleware (intergiciel), et un ensemble de bibliothèques qui définissent une abstraction et un service `IHealthCheck`.
 
@@ -70,7 +70,7 @@ Pour plus d’informations, consultez [Prise en charge de HTTP/2](xref:fundament
 
 ## <a name="kestrel-configuration"></a>Configuration de Kestrel
 
-Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont configurées en appelant `UseKestrel`. Dans la version 2.2, les options de Kestrel sont configurées en appelant `ConfigureKestrel` sur le générateur de l’hôte. Cette modification résout un problème quant à l’ordre des inscriptions `IServer` pour l’hébergement in-process. Pour plus d'informations, voir les ressources suivantes :
+Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont configurées en appelant `UseKestrel`. Dans la version 2.2, les options de Kestrel sont configurées en appelant `ConfigureKestrel` sur le générateur de l’hôte. Cette modification résout un problème quant à l’ordre des inscriptions `IServer` pour l’hébergement in-process. Pour plus d’informations, consultez les ressources suivantes :
 
 * [Réduire les conflits liés à UseIIS](https://github.com/aspnet/KestrelHttpServer/issues/2760)
 * [Configurer les options du serveur Kestrel avec ConfigureKestrel](xref:fundamentals/servers/kestrel?view=aspnetcore-2.2#how-to-use-kestrel-in-aspnet-core-apps)
@@ -103,7 +103,7 @@ Pour plus d’informations, consultez [Prise en charge de la compression Brotli 
 
 Les modèles de projet web ASP.NET Core ont été mis à jour vers [Bootstrap 4](https://getbootstrap.com/docs/4.1/migration/) et [Angular 6](https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4). La nouvelle apparence est visuellement plus simple et facilite la visualisation des structures importantes de l’application.
 
-![Page d’accueil ou d’index](~/tutorials/razor-pages/razor-pages-start/_static/home2.2.png)
+![Page d’accueil ou page d’index](~/tutorials/razor-pages/razor-pages-start/_static/home2.2.png)
 
 ## <a name="validation-performance"></a>Performances de la validation
 

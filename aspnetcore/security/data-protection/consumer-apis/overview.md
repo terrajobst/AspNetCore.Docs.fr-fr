@@ -1,55 +1,55 @@
 ---
 title: Vue d’ensemble des API de consommateur pour ASP.NET Core
 author: rick-anderson
-description: Recevoir une vue d’ensemble du consommateur diverses API disponibles dans la bibliothèque de protection de données ASP.NET Core.
+description: Recevez une brève présentation des différentes API de consommateur disponibles dans la bibliothèque de protection des données ASP.NET Core.
 ms.author: riande
 ms.date: 06/11/2019
 uid: security/data-protection/consumer-apis/overview
 ms.openlocfilehash: ff9badb55813cae0aa72d3a95dc53792332f109b
-ms.sourcegitcommit: 1bb3f3f1905b4e7d4ca1b314f2ce6ee5dd8be75f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66837378"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666585"
 ---
 # <a name="consumer-apis-overview-for-aspnet-core"></a>Vue d’ensemble des API de consommateur pour ASP.NET Core
 
-Le `IDataProtectionProvider` et `IDataProtector` interfaces sont les interfaces de base par le biais duquel les consommateurs utilisent le système de protection des données. Ils se trouvent dans le [Microsoft.AspNetCore.DataProtection.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) package.
+Les interfaces `IDataProtectionProvider` et `IDataProtector` sont les interfaces de base via lesquelles les consommateurs utilisent le système de protection des données. Ils se trouvent dans le package [Microsoft. AspNetCore. dataprotection. Abstracts](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) .
 
 ## <a name="idataprotectionprovider"></a>IDataProtectionProvider
 
-L’interface du fournisseur représente la racine du système de protection des données. Il ne peut pas être directement utilisé pour protéger ou déprotéger les données. Au lieu de cela, le consommateur doit obtenir une référence à un `IDataProtector` en appelant `IDataProtectionProvider.CreateProtector(purpose)`, où le but est une chaîne qui décrit le cas d’usage prévu de consommateur. Consultez [chaînes d’objectifs](xref:security/data-protection/consumer-apis/purpose-strings) pour beaucoup plus d’informations sur l’intention de ce paramètre et comment choisir une valeur appropriée.
+L’interface du fournisseur représente la racine du système de protection des données. Il ne peut pas être utilisé directement pour protéger ou ôter la protection des données. Au lieu de cela, le consommateur doit obtenir une référence à un `IDataProtector` en appelant `IDataProtectionProvider.CreateProtector(purpose)`, où objet est une chaîne qui décrit le cas d’usage consommateur prévu. Pour plus d’informations sur l’intention de ce paramètre et sur la manière de choisir une valeur appropriée, consultez [chaînes d’objectif](xref:security/data-protection/consumer-apis/purpose-strings) .
 
 ## <a name="idataprotector"></a>IDataProtector
 
-L’interface de protecteur est retournée par un appel à `CreateProtector`et il cette interface à laquelle les clients peuvent utiliser pour effectuer protéger et déprotéger les opérations.
+L’interface de protecteur est retournée par un appel à `CreateProtector`, et c’est cette interface que les consommateurs peuvent utiliser pour effectuer des opérations de protection et d’ôter la protection.
 
-Pour protéger un élément de données, passer les données à le `Protect` (méthode). L’interface de base définit une méthode qui convertit byte [-] -> byte [], mais il existe également une surcharge (fournie comme méthode d’extension) qui convertit la chaîne -> chaîne. La sécurité offerte par les deux méthodes est identique. le développeur doit choisir quelle que soit la surcharge est plus pratique pour leurs cas d’usage. Quelle que soit la surcharge choisie, la valeur retournée par la protéger (méthode) est désormais protégée (des et répondre à tous les falsifications), et l’application peut envoyer à un client non fiable.
+Pour protéger un élément de données, transmettez les données à la méthode `Protect`. L’interface de base définit une méthode qui convertit Byte []-> Byte [], mais il existe également une surcharge (fournie en tant que méthode d’extension) qui convertit la chaîne > chaîne. La sécurité offerte par les deux méthodes est identique ; le développeur doit choisir la surcharge la plus pratique pour le cas d’usage. Quelle que soit la surcharge choisie, la valeur retournée par la méthode Protect est désormais protégée (chiffrée et inviolable) et l’application peut l’envoyer à un client non approuvé.
 
-Pour ôter la protection d’une donnée précédemment protégé, passer les données protégées sur le `Unprotect` (méthode). (Il existe byte []-basé sur chaîne et en fonction des surcharges pour simplifier le développement.) Si la charge utile protégée a été générée par un appel antérieur à `Protect` sur cette même `IDataProtector`, le `Unprotect` méthode retournera la charge non protégée d’origine. Si la charge utile protégée a été falsifiée ou qu’il a été générée par un autre `IDataProtector`, le `Unprotect` méthode lèvera CryptographicException.
+Pour ôter la protection d’un élément de données précédemment protégé, transmettez les données protégées à la méthode `Unprotect`. (Il existe des surcharges basées sur un octet [] et une chaîne pour faciliter le développement.) Si la charge utile protégée a été générée par un appel antérieur à `Protect` sur ce même `IDataProtector`, la méthode `Unprotect` retourne la charge utile non protégée d’origine. Si la charge utile protégée a été falsifiée ou a été produite par un autre `IDataProtector`, la méthode `Unprotect` lèvera CryptographicException.
 
-Le concept de même et différents `IDataProtector` ties sauvegarder sur le concept d’objectif. Si deux `IDataProtector` instances ont été générés à partir de la même racine `IDataProtectionProvider` mais via des chaînes d’objectifs différents dans l’appel à `IDataProtectionProvider.CreateProtector`, puis être considérées comme [protecteurs différents](xref:security/data-protection/consumer-apis/purpose-strings), et un ne pourrez pas ôter la protection charges utiles générées par l’autre.
+Le concept des mêmes différences et des `IDataProtector` différents est lié au concept de finalité. Si deux instances de `IDataProtector` ont été générées à partir du même `IDataProtectionProvider` racine mais par le biais de chaînes d’objectif différentes dans l’appel à `IDataProtectionProvider.CreateProtector`, elles sont considérées comme des [protecteurs différents](xref:security/data-protection/consumer-apis/purpose-strings)et l’autre ne peut pas ôter la protection des charges utiles générées par l’autre.
 
-## <a name="consuming-these-interfaces"></a>Utilisation de ces interfaces.
+## <a name="consuming-these-interfaces"></a>Utilisation de ces interfaces
 
-Pour un composant prenant en charge l’injection de dépendances, l’utilisation prévue est que le composant utilise un `IDataProtectionProvider` paramètre dans son constructeur et que le système d’injection de dépendance fournit automatiquement ce service lorsque le composant est instancié.
+Pour un composant de DI-Aware, l’utilisation prévue est que le composant prend un paramètre `IDataProtectionProvider` dans son constructeur et que le système DI fournit automatiquement ce service lorsque le composant est instancié.
 
 > [!NOTE]
-> Certaines applications (telles que les applications de console ou les applications ASP.NET 4.x) ne peuvent pas être conscients de l’injection de dépendances ne pouvez pas utiliser le mécanisme décrit ici. Pour ces scénarios, consultez le [des scénarios compatibles avec l’injection de dépendances Non](xref:security/data-protection/configuration/non-di-scenarios) document pour plus d’informations sur l’obtention d’une instance d’un `IDataProtection` fournisseur sans passer par l’injection de dépendances.
+> Certaines applications (telles que les applications console ou les applications ASP.NET 4. x) peuvent ne pas être compatibles avec la transprise en charge. par conséquent, il n’est pas possible d’utiliser le mécanisme décrit ici. Pour ces scénarios, consultez le document relatif aux [scénarios sans di-Aware](xref:security/data-protection/configuration/non-di-scenarios) pour plus d’informations sur l’obtention d’une instance d’un fournisseur de `IDataProtection` sans passer par di.
 
-L’exemple suivant montre trois concepts :
+L’exemple suivant illustre trois concepts :
 
-1. [Ajouter le système de protection des données](xref:security/data-protection/configuration/overview) au conteneur de service,
+1. [Ajoutez le système de protection des données](xref:security/data-protection/configuration/overview) au conteneur de service,
 
-2. À l’aide de l’injection de dépendances pour recevoir une instance d’un `IDataProtectionProvider`, et
+2. Utilisation de DI pour recevoir une instance d’un `IDataProtectionProvider`, et
 
-3. Création d’un `IDataProtector` à partir d’un `IDataProtectionProvider` et son utilisation pour protéger et déprotéger les données.
+3. Création d’un `IDataProtector` à partir d’un `IDataProtectionProvider` et utilisation de celui-ci pour protéger et ôter la protection des données.
 
 [!code-csharp[](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-Le package Microsoft.AspNetCore.DataProtection.Abstractions contient une méthode d’extension `IServiceProvider.GetDataProtector` en tant que développeur pour des raisons pratiques. Comme une seule opération, il encapsule à la fois récupérer un `IDataProtectionProvider` à partir du fournisseur de services et l’appel `IDataProtectionProvider.CreateProtector`. L’exemple suivant illustre son utilisation.
+Le package Microsoft. AspNetCore. DataProtection. Abstracts contient une méthode d’extension `IServiceProvider.GetDataProtector` en tant que commodité du développeur. Il encapsule comme une opération unique en extrayant un `IDataProtectionProvider` du fournisseur de services et en appelant `IDataProtectionProvider.CreateProtector`. L’exemple suivant illustre son utilisation.
 
 [!code-csharp[](./overview/samples/getdataprotector.cs?highlight=15)]
 
 >[!TIP]
-> Instances de `IDataProtectionProvider` et `IDataProtector` soient thread-safe pour les appelants plusieurs. Elles sont censées qui une fois qu’un composant obtient une référence à un `IDataProtector` via un appel à `CreateProtector`, il utilisera cette référence pour plusieurs appels à `Protect` et `Unprotect`. Un appel à `Unprotect` lèvera CryptographicException si la charge utile protégée ne peut pas être vérifiée ou déchiffrée. Certains composants souhaiterez peut-être ignorer les erreurs pendant les opérations ; ôter la protection un composant qui lit des cookies d’authentification peut gérer cette erreur et traiter la demande comme s’il n’avait aucun cookie tout plutôt qu’échouer la requête directement ce dernier. Les composants que ce comportement doivent spécifiquement intercepter CryptographicException au lieu d’absorber toutes les exceptions.
+> Les instances de `IDataProtectionProvider` et `IDataProtector` sont thread-safe pour plusieurs appelants. Il est prévu qu’une fois qu’un composant obtient une référence à un `IDataProtector` via un appel à `CreateProtector`, il utilise cette référence pour plusieurs appels à `Protect` et `Unprotect`. Un appel à `Unprotect` lèvera CryptographicException si la charge utile protégée ne peut pas être vérifiée ou déchiffrée. Certains composants peuvent souhaiter ignorer des erreurs lors de l’opération de non-protection. un composant qui lit les cookies d’authentification peut gérer cette erreur et traiter la demande comme s’il n’avait aucun cookie au lieu de faire échouer la demande. Les composants qui veulent ce comportement doivent intercepter spécifiquement CryptographicException au lieu d’absorber toutes les exceptions.

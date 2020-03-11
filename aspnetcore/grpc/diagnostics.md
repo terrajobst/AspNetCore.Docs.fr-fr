@@ -7,11 +7,11 @@ ms.author: jamesnk
 ms.date: 09/23/2019
 uid: grpc/diagnostics
 ms.openlocfilehash: 17607b734e6d777de9516aa14e81c97f87b61023
-ms.sourcegitcommit: 80286715afb93c4d13c931b008016d6086c0312b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074521"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667341"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Journalisation et diagnostics dans gRPC sur .NET
 

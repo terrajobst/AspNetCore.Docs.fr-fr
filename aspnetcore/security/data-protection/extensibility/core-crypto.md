@@ -1,18 +1,18 @@
 ---
-title: Extensibilité de chiffrement de base dans ASP.NET Core
+title: Extensibilité du chiffrement de base dans ASP.NET Core
 author: rick-anderson
-description: Découvrez IAuthenticatedEncryptor, IAuthenticatedEncryptorDescriptor, IAuthenticatedEncryptorDescriptorDeserializer et la fabrique de niveau supérieur.
+description: En savoir plus sur IAuthenticatedEncryptor, IAuthenticatedEncryptorDescriptor, IAuthenticatedEncryptorDescriptorDeserializer et la fabrique de niveau supérieur.
 ms.author: riande
 ms.date: 08/11/2017
 uid: security/data-protection/extensibility/core-crypto
 ms.openlocfilehash: a5f651e3313cc579b995b45905826a5bffcc241c
-ms.sourcegitcommit: 8516b586541e6ba402e57228e356639b85dfb2b9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67814705"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663568"
 ---
-# <a name="core-cryptography-extensibility-in-aspnet-core"></a>Extensibilité de chiffrement de base dans ASP.NET Core
+# <a name="core-cryptography-extensibility-in-aspnet-core"></a>Extensibilité du chiffrement de base dans ASP.NET Core
 
 <a name="data-protection-extensibility-core-crypto"></a>
 
@@ -23,31 +23,31 @@ ms.locfileid: "67814705"
 
 ## <a name="iauthenticatedencryptor"></a>IAuthenticatedEncryptor
 
-Le **IAuthenticatedEncryptor** interface est le bloc de construction de base du sous-système de chiffrement. Il est généralement une IAuthenticatedEncryptor par clé, et l’instance IAuthenticatedEncryptor encapsule tous les clé de chiffrement et les informations algorithmiques nécessaires pour effectuer des opérations de chiffrement.
+L’interface **IAuthenticatedEncryptor** est le bloc de construction de base du sous-système de chiffrement. Il y a généralement un IAuthenticatedEncryptor par clé, et l’instance IAuthenticatedEncryptor encapsule tout le matériel de clé de chiffrement et les informations algorithmiques nécessaires pour effectuer des opérations de chiffrement.
 
-Comme son nom l’indique, le type est chargé de fournir des services de chiffrement et déchiffrement authentifiés. Il expose les API de deux suivantes.
+Comme son nom le suggère, le type est chargé de fournir des services de chiffrement et de déchiffrement authentifiés. Il expose les deux API suivantes.
 
 * `Decrypt(ArraySegment<byte> ciphertext, ArraySegment<byte> additionalAuthenticatedData) : byte[]`
 
 * `Encrypt(ArraySegment<byte> plaintext, ArraySegment<byte> additionalAuthenticatedData) : byte[]`
 
-La méthode Encrypt retourne un objet blob qui inclut le texte en clair des et une balise d’authentification. La balise d’authentification doit englober les données authentifiées supplémentaires (AAD), bien que AAD lui-même ne sont pas nécessairement récupérable à partir de la charge utile finale. La méthode Decrypt valide de la balise d’authentification et retourne la charge utile à déchiffrer. Tous les échecs (à l’exception ArgumentNullException et similaire) doivent être homogénéisés à CryptographicException.
+La méthode Encrypt retourne un objet BLOB qui comprend le texte en clair chiffré et une balise d’authentification. La balise d’authentification doit englober les données authentifiées supplémentaires (AAD), bien que le AAD lui-même ne doive pas être récupérable à partir de la charge utile finale. La méthode Decrypt valide la balise d’authentification et retourne la charge utile déchiffrée. Toutes les défaillances (sauf ArgumentNullException et similaires) doivent être homogénéisées en CryptographicException.
 
 > [!NOTE]
-> L’instance IAuthenticatedEncryptor lui-même n’a pas réellement besoin contenir le matériel de clé. Par exemple, l’implémentation pouvait déléguer à un module HSM pour toutes les opérations.
+> L’instance IAuthenticatedEncryptor elle-même ne doit pas nécessairement contenir le matériel de clé. Par exemple, l’implémentation peut déléguer à un HSM pour toutes les opérations.
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptorfactory"></a>
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
-## <a name="how-to-create-an-iauthenticatedencryptor"></a>Comment créer un IAuthenticatedEncryptor
+## <a name="how-to-create-an-iauthenticatedencryptor"></a>Création d’un IAuthenticatedEncryptor
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Le **IAuthenticatedEncryptorFactory** interface représente un type qui sait comment créer un [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance. Voici son API.
+L’interface **IAuthenticatedEncryptorFactory** représente un type qui sait comment créer une instance [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) . Son API se présente comme suit.
 
-* CreateEncryptorInstance (clé IKey) : IAuthenticatedEncryptor
+* CreateEncryptorInstance (la clé IKey) : IAuthenticatedEncryptor
 
-Pour n’importe quelle instance IKey donné, n’importe quel chiffreurs authentifiés créés par sa méthode CreateEncryptorInstance doivent être considérées comme équivalentes, comme dans l’exemple de code ci-dessous.
+Pour toute instance de IKey donnée, tous les chiffreurs authentifiés créés par sa méthode CreateEncryptorInstance doivent être considérés comme équivalents, comme dans l’exemple de code ci-dessous.
 
 ```csharp
 // we have an IAuthenticatedEncryptorFactory instance and an IKey instance
@@ -68,15 +68,15 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 // the 'roundTripped' and 'plaintext' buffers should be equivalent
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Le **IAuthenticatedEncryptorDescriptor** interface représente un type qui sait comment créer un [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance. Voici son API.
+L’interface **IAuthenticatedEncryptorDescriptor** représente un type qui sait comment créer une instance [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) . Son API se présente comme suit.
 
-* CreateEncryptorInstance() : IAuthenticatedEncryptor
+* CreateEncryptorInstance() : IAuthenticatedEncryptor
 
-* ExportToXml() : XmlSerializedDescriptorInfo
+* ExportToXml() : XmlSerializedDescriptorInfo
 
-Comme IAuthenticatedEncryptor, une instance de IAuthenticatedEncryptorDescriptor est supposée pour encapsuler une clé spécifique. Cela signifie que pour n’importe quelle instance IAuthenticatedEncryptorDescriptor donné, n’importe quel chiffreurs authentifiés créés par sa méthode CreateEncryptorInstance doivent être considérés comme équivalents, comme dans l’exemple de code ci-dessous.
+Comme IAuthenticatedEncryptor, une instance de IAuthenticatedEncryptorDescriptor est supposée encapsuler une clé spécifique. Cela signifie que pour toute instance IAuthenticatedEncryptorDescriptor donnée, tous les chiffreurs authentifiés créés par sa méthode CreateEncryptorInstance doivent être considérés comme équivalents, comme dans l’exemple de code ci-dessous.
 
 ```csharp
 // we have an IAuthenticatedEncryptorDescriptor instance
@@ -100,76 +100,76 @@ byte[] roundTripped = encryptor2.Decrypt(new ArraySegment<byte>(ciphertext), aad
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor"></a>
 
-## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET Core 2.x uniquement)
+## <a name="iauthenticatedencryptordescriptor-aspnet-core-2x-only"></a>IAuthenticatedEncryptorDescriptor (ASP.NET Core 2. x uniquement)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Le **IAuthenticatedEncryptorDescriptor** interface représente un type qui sait comment lui-même exporter au format XML. Voici son API.
+L’interface **IAuthenticatedEncryptorDescriptor** représente un type qui sait comment s’exporter au format XML. Son API se présente comme suit.
 
-* ExportToXml() : XmlSerializedDescriptorInfo
+* ExportToXml() : XmlSerializedDescriptorInfo
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 ---
 
-## <a name="xml-serialization"></a>Sérialisation XML
+## <a name="xml-serialization"></a>Sérialisation XML
 
-La principale différence entre IAuthenticatedEncryptor et IAuthenticatedEncryptorDescriptor est que le descripteur sait créer le chiffreur et lui fournir les arguments valides. Envisagez un IAuthenticatedEncryptor dont l’implémentation s’appuie sur SymmetricAlgorithm et élément KeyedHashAlgorithm impossible. Les travaux du chiffreur sont d’utiliser ces types, mais il ne sache pas nécessairement ces types de provenant, donc il ne peut pas vraiment écrire une description appropriée du comment recréer elle-même si l’application redémarre. Le descripteur agit comme un niveau plus élevé en plus de cela. Dans la mesure où le descripteur sait comment créer l’instance de chiffreur (par exemple, il sait comment créer les algorithmes requis), il peut sérialiser ces connaissances au format XML afin que l’instance de chiffreur peut être recréé après la réinitialisation d’une application.
+La principale différence entre IAuthenticatedEncryptor et IAuthenticatedEncryptorDescriptor est que le descripteur sait comment créer le chiffreur et lui fournir des arguments valides. Prenons l’exemple d’un IAuthenticatedEncryptor dont l’implémentation s’appuie sur SymmetricAlgorithm et KeyedHashAlgorithm. Le travail du chiffreur consiste à consommer ces types, mais il n’est pas nécessairement conscient de l’origine de ces types, donc il ne peut pas véritablement écrire une description appropriée de la manière de se recréer si l’application redémarre. Le descripteur agit comme un niveau supérieur. Dans la mesure où le descripteur sait comment créer l’instance de chiffreur (par exemple, il sait comment créer les algorithmes requis), il peut sérialiser cette connaissance au format XML pour que l’instance de chiffreur puisse être recréée après la réinitialisation d’une application.
 
 <a name="data-protection-extensibility-core-crypto-exporttoxml"></a>
 
-Le descripteur peut être sérialisé par le biais de sa routine ExportToXml. Cette routine retourne un XmlSerializedDescriptorInfo qui contient deux propriétés : la représentation sous forme de XElement de descripteur et le Type qui représente un [IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) qui peut être utilisé pour ressusciter ce descripteur étant donné la XElement correspondant.
+Le descripteur peut être sérialisé par le biais de sa routine ExportToXml. Cette routine retourne un XmlSerializedDescriptorInfo qui contient deux propriétés : la représentation XElement du descripteur et le type qui représente un [IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer) qui peut être utilisé pour ressusciter ce descripteur en fonction du XElement correspondant.
 
-Le descripteur sérialisé peut contenir des informations sensibles telles que de la clé de chiffrement. Le système de protection de données a une prise en charge intégrée pour le chiffrement des informations avant qu’il a rendu persistant dans le stockage. Pour tirer parti de cela, le descripteur doit marquer l’élément qui contient des informations sensibles avec l’attribut nom « RequiresEncryption, » (xmlns «<http://schemas.asp.net/2015/03/dataProtection>»), valeur « true ».
+Le descripteur sérialisé peut contenir des informations sensibles telles que le matériel de clé de chiffrement. Le système de protection des données offre une prise en charge intégrée du chiffrement des informations avant qu’elles ne soient rendues persistantes dans le stockage. Pour tirer parti de cela, le descripteur doit marquer l’élément qui contient des informations sensibles avec le nom d’attribut « requiresEncryption » (xmlns «<http://schemas.asp.net/2015/03/dataProtection>»), valeur « true ».
 
 >[!TIP]
-> Il est une API d’assistance permettant de définir cet attribut. Appelez la méthode d’extension que XElement.markasrequiresencryption() situé dans l’espace de noms Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.
+> Il existe une API d’assistance pour définir cet attribut. Appelez la méthode d’extension XElement. MarkAsRequiresEncryption () située dans l’espace de noms Microsoft. AspNetCore. DataProtection. AuthenticatedEncryption. distribuée.
 
-Il peut également arriver où le descripteur sérialisé ne contient pas d’informations sensibles. Reprenons le cas d’une clé de chiffrement stockée dans un HSM. Le matériel de clé ne peut pas écrire le descripteur lors de la sérialisation lui-même dans la mesure où le module HSM ne sont pas exposer le matériel sous forme de texte en clair. Au lieu de cela, le descripteur de peut écrire la version encapsulé à la clé de la clé (si le module HSM autorise l’exportation de cette manière) ou l’identificateur unique du HSM pour la clé.
+Il peut également y avoir des cas où le descripteur sérialisé ne contient pas d’informations sensibles. Reprenons le cas d’une clé de chiffrement stockée dans un HSM. Le descripteur ne peut pas écrire le matériel de clé lors de la sérialisation, car le HSM n’expose pas les éléments sous forme de texte en clair. Au lieu de cela, le descripteur peut écrire la version encapsulée de la clé (si le HSM autorise l’exportation de cette manière) ou l’identificateur unique du HSM pour la clé.
 
 <a name="data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer"></a>
 
 ## <a name="iauthenticatedencryptordescriptordeserializer"></a>IAuthenticatedEncryptorDescriptorDeserializer
 
-Le **IAuthenticatedEncryptorDescriptorDeserializer** interface représente un type qui sait comment désérialiser une instance de IAuthenticatedEncryptorDescriptor à partir d’un XElement. Elle expose une méthode unique :
+L’interface **IAuthenticatedEncryptorDescriptorDeserializer** représente un type qui sait comment désérialiser une instance IAuthenticatedEncryptorDescriptor à partir d’un XElement. Il expose une méthode unique :
 
 * ImportFromXml (élément XElement) : IAuthenticatedEncryptorDescriptor
 
-La méthode ImportFromXml prend XElement qui a été retourné par [IAuthenticatedEncryptorDescriptor.ExportToXml](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-exporttoxml) et crée un équivalent de la IAuthenticatedEncryptorDescriptor d’origine.
+La méthode ImportFromXml prend le XElement qui a été retourné par [IAuthenticatedEncryptorDescriptor. ExportToXml](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-exporttoxml) et crée un équivalent du IAuthenticatedEncryptorDescriptor d’origine.
 
-Les types qui implémentent IAuthenticatedEncryptorDescriptorDeserializer doivent avoir une des deux constructeurs publics :
+Les types qui implémentent IAuthenticatedEncryptorDescriptorDeserializer doivent avoir l’un des deux constructeurs publics suivants :
 
 * .ctor(IServiceProvider)
 
 * .ctor()
 
 > [!NOTE]
-> Le IServiceProvider passé au constructeur peut être null.
+> Le IServiceProvider passé au constructeur peut avoir la valeur null.
 
 ## <a name="the-top-level-factory"></a>La fabrique de niveau supérieur
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Le **AlgorithmConfiguration** classe représente un type qui sait comment créer [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) instances. Il expose une API unique.
+La classe **AlgorithmConfiguration** représente un type qui sait comment créer des instances [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) . Il expose une seule API.
 
-* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
+* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
 
-Considérez AlgorithmConfiguration comme la fabrique de niveau supérieur. La configuration sert de modèle. Elle encapsule les informations algorithmiques (par exemple, cette configuration donne des descripteurs avec une clé principale de AES-128-GCM), mais elle n’est pas encore associée avec une clé spécifique.
+Imaginez AlgorithmConfiguration comme fabrique de niveau supérieur. La configuration sert de modèle. Elle encapsule les informations algorithmiques (par exemple, cette configuration génère des descripteurs avec une clé principale AES-128-GCM), mais elle n’est pas encore associée à une clé spécifique.
 
-Lorsque CreateNewDescriptor est appelée, nouveau matériel de clé est créée uniquement pour cet appel, et un nouveau IAuthenticatedEncryptorDescriptor est généré qui encapsule ce matériel de clé et les informations algorithmiques nécessaire pour utiliser le matériel. Le matériel de clé peut être créé dans le logiciel (et conservé en mémoire), il peut être créé et maintenu dans un HSM et ainsi de suite. Le point essentiel est que tous les deux appels à CreateNewDescriptor ne devraient jamais créer des instances IAuthenticatedEncryptorDescriptor équivalentes.
+Quand CreateNewDescriptor est appelé, le matériel de clé actualisé est créé uniquement pour cet appel, et un nouveau IAuthenticatedEncryptorDescriptor est généré, ce qui encapsule ce matériel de clé et les informations algorithmiques requises pour consommer le matériel. Le matériel de clé peut être créé dans le logiciel (et conservé en mémoire), il peut être créé et conservé dans un HSM, et ainsi de suite. Le point essentiel est que les deux appels à CreateNewDescriptor ne doivent jamais créer des instances IAuthenticatedEncryptorDescriptor équivalentes.
 
-Le type AlgorithmConfiguration sert tels que le point d’entrée pour les routines de création de la clé [clé automatique propagée](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Pour modifier l’implémentation pour toutes les clés de futures, définissez la propriété de AuthenticatedEncryptorConfiguration dans KeyManagementOptions.
+Le type AlgorithmConfiguration sert de point d’entrée pour les routines de création de clés telles que le [déroulement automatique de clés](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Pour modifier l’implémentation pour toutes les futures clés, définissez la propriété AuthenticatedEncryptorConfiguration dans KeyManagementOptions.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Le **IAuthenticatedEncryptorConfiguration** interface représente un type qui sait comment créer [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) instances. Il expose une API unique.
+L’interface **IAuthenticatedEncryptorConfiguration** représente un type qui sait comment créer des instances [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) . Il expose une seule API.
 
-* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
+* CreateNewDescriptor() : IAuthenticatedEncryptorDescriptor
 
-Considérez IAuthenticatedEncryptorConfiguration comme la fabrique de niveau supérieur. La configuration sert de modèle. Elle encapsule les informations algorithmiques (par exemple, cette configuration donne des descripteurs avec une clé principale de AES-128-GCM), mais elle n’est pas encore associée avec une clé spécifique.
+Imaginez IAuthenticatedEncryptorConfiguration comme fabrique de niveau supérieur. La configuration sert de modèle. Elle encapsule les informations algorithmiques (par exemple, cette configuration génère des descripteurs avec une clé principale AES-128-GCM), mais elle n’est pas encore associée à une clé spécifique.
 
-Lorsque CreateNewDescriptor est appelée, nouveau matériel de clé est créée uniquement pour cet appel, et un nouveau IAuthenticatedEncryptorDescriptor est généré qui encapsule ce matériel de clé et les informations algorithmiques nécessaire pour utiliser le matériel. Le matériel de clé peut être créé dans le logiciel (et conservé en mémoire), il peut être créé et maintenu dans un HSM et ainsi de suite. Le point essentiel est que tous les deux appels à CreateNewDescriptor ne devraient jamais créer des instances IAuthenticatedEncryptorDescriptor équivalentes.
+Quand CreateNewDescriptor est appelé, le matériel de clé actualisé est créé uniquement pour cet appel, et un nouveau IAuthenticatedEncryptorDescriptor est généré, ce qui encapsule ce matériel de clé et les informations algorithmiques requises pour consommer le matériel. Le matériel de clé peut être créé dans le logiciel (et conservé en mémoire), il peut être créé et conservé dans un HSM, et ainsi de suite. Le point essentiel est que les deux appels à CreateNewDescriptor ne doivent jamais créer des instances IAuthenticatedEncryptorDescriptor équivalentes.
 
-Le type IAuthenticatedEncryptorConfiguration sert tels que le point d’entrée pour les routines de création de la clé [clé automatique propagée](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Pour modifier l’implémentation pour toutes les clés de futures, inscrire un singleton IAuthenticatedEncryptorConfiguration dans le conteneur de service.
+Le type IAuthenticatedEncryptorConfiguration sert de point d’entrée pour les routines de création de clés telles que le [déroulement automatique de clés](xref:security/data-protection/implementation/key-management#key-expiration-and-rolling). Pour modifier l’implémentation pour toutes les futures clés, inscrivez un IAuthenticatedEncryptorConfiguration Singleton dans le conteneur de service.
 
 ---

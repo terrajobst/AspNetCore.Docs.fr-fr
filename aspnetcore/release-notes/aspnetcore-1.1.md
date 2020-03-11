@@ -6,18 +6,18 @@ ms.author: riande
 ms.date: 12/18/2018
 uid: aspnetcore-1.1
 ms.openlocfilehash: df9fd6bda00ac5f5516f40507001463fd7d0b92e
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828501"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668090"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Nouveautés d’ASP.NET Core 1.1
 
 ASP.NET Core 1.1 inclut les nouvelles fonctionnalités suivantes :
 
-- [Intergiciel (middleware) de réécriture d’URL](xref:fundamentals/url-rewriting)
-- [Intergiciel (middleware) de mise en cache des réponses](xref:performance/caching/middleware)
+- [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting)
+- [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 - [Afficher les composants sous forme de Tag Helpers](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [Intergiciel en tant que filtres MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
 - [Fournisseur de TempData basé sur les cookies](xref:fundamentals/app-state#tempdata)

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
 uid: mvc/models/validation
-ms.openlocfilehash: a39eeead10849d11349688c42fe814ede9e8a847
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: cf6b77de78f2c5dda48ffcd8ac1f9ed2f8d28bd7
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172492"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78661125"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -21,7 +21,7 @@ Par [Kirk Larkin](https://github.com/serpent5)
 
 Cet article explique comment valider l’entrée d’utilisateur dans une application ASP.NET Core MVC ou Razor Pages.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>État du modèle
 
@@ -265,7 +265,7 @@ La validation du type de données est basée sur le type .NET d’une propriét�
 
 ## <a name="unobtrusive-validation"></a>Validation discrète
 
-Pour plus d’informations sur la validation discrète, consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/1111).
+Pour plus d’informations sur la validation discrète, consultez [ce problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/1111).
 
 ### <a name="add-validation-to-dynamic-forms"></a>Ajouter une validation à des formulaires dynamiques
 
@@ -389,7 +389,7 @@ L’approche précédente n’empêchera pas la validation côté client de ASP.
 
 Cet article explique comment valider l’entrée d’utilisateur dans une application ASP.NET Core MVC ou Razor Pages.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="model-state"></a>État du modèle
 
@@ -409,7 +409,7 @@ La validation est automatique, mais vous souhaiterez peut-être la répéter man
 
 ## <a name="validation-attributes"></a>Attributs de validation
 
-Les attributs de validation vous permettent de spécifier des règles de validation pour des propriétés de modèle. L’exemple suivant tiré de l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) montre une classe de modèle qui est annotée avec des attributs de validation. L’attribut `[ClassicMovie]` est un attribut de validation personnalisé, et les autres sont prédéfinis. Non affiché est `[ClassicMovie2]`, qui illustre une autre façon d’implémenter un attribut personnalisé.
+Les attributs de validation vous permettent de spécifier des règles de validation pour des propriétés de modèle. L’exemple suivant tiré de l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) montre une classe de modèle qui est annotée avec des attributs de validation. L’attribut `[ClassicMovie]` est un attribut de validation personnalisé, et les autres sont prédéfinis. Non affiché est `[ClassicMovie2]`, qui illustre une autre façon d’implémenter un attribut personnalisé.
 
 [!code-csharp[](validation/samples/2.x/ValidationSample/Models/Movie.cs?name=snippet_ModelClass)]
 

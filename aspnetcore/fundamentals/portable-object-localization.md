@@ -5,12 +5,12 @@ description: Cet article présente les fichiers d’objets portables et décrit 
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 6ec7afc59d6dfd2629a3d6d83ae619575397a9df
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
-ms.translationtype: HT
+ms.openlocfilehash: 08002564eb68bc04eebaeafed560202d0d69958a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64884374"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656190"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurer la localisation d’objets portables dans ASP.NET Core
 
@@ -18,9 +18,9 @@ Par [Sébastien Ros](https://github.com/sebastienros) et [Scott Addie](https://t
 
 Cet article présente les étapes d’utilisation d’objets portables (PO, Portable Object) dans une application ASP.NET Core avec le framework [Orchard Core](https://github.com/OrchardCMS/OrchardCore).
 
-**Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
+**Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 
@@ -49,15 +49,15 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 Cet exemple utilise la syntaxe suivante :
 
-- `#:`: commentaire indiquant le contexte de la chaîne à traduire. La même chaîne peut être traduite différemment selon l’endroit où elle est utilisée.
-- `msgid`: la chaîne non traduite.
-- `msgstr`: la chaîne traduite.
+- `#:` : commentaire indiquant le contexte de la chaîne à traduire. La même chaîne peut être traduite différemment selon l’endroit où elle est utilisée.
+- `msgid` : la chaîne non traduite.
+- `msgstr` : la chaîne traduite.
 
 Dans le cas de la prise en charge de la pluralisation, des entrées supplémentaires peuvent être définies.
 
-- `msgid_plural`: la chaîne au pluriel non traduite.
-- `msgstr[0]`: la chaîne traduite pour le cas 0.
-- `msgstr[N]`: la chaîne traduite pour le cas N.
+- `msgid_plural` : la chaîne au pluriel non traduite.
+- `msgstr[0]` : la chaîne traduite pour le cas 0.
+- `msgstr[N]` : la chaîne traduite pour le cas N.
 
 La spécification du fichier PO se trouve [ici](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).
 
@@ -97,13 +97,13 @@ Créez un fichier nommé *\<code de culture>.po* dans le dossier racine de votre
 
 Ce fichier stocke à la fois la chaîne à traduire et la chaîne traduite en français. La culture parente des traductions peut être rétablie, si nécessaire. Dans cet exemple, le fichier *fr.po* est utilisé si la culture demandée est `fr-FR` ou `fr-CA`.
 
-### <a name="testing-the-application"></a>Test de l'application
+### <a name="testing-the-application"></a>Test de l’application
 
-Exécutez votre application, puis accédez à l’URL `/Home/About`. Le texte **Hello world!** s’affiche.
+Exécutez votre application, puis accédez à l’URL `/Home/About`. Le texte **Hello world!** ne s'affiche.
 
-Accédez à l’URL `/Home/About?culture=fr-FR`. Le texte **Bonjour le monde !** s’affiche.
+Accédez à l’URL `/Home/About?culture=fr-FR`. Le texte **Bonjour le monde !** ne s'affiche.
 
-## <a name="pluralization"></a>Pluralisation
+## <a name="pluralization"></a>Forme plurielle
 
 Les fichiers PO prennent en charge les formes de pluralisation, ce qui est utile quand la même chaîne doit être traduite différemment en fonction d’une cardinalité. Cette tâche est rendue compliquée par le fait que chaque langue définit des règles personnalisées pour sélectionner la chaîne à utiliser en fonction de la cardinalité.
 
@@ -153,11 +153,11 @@ Modifiez le fichier *Views/Home/About.cshtml* pour restituer des chaînes locali
 <p>@Localizer.Plural(5, "There is one item.", "There are {0} items.")</p>
 ```
 
-**Remarque :** dans un scénario réel, une variable serait utilisée pour représenter le nombre. Ici, nous répétons le même code avec trois valeurs différentes pour exposer un cas très spécifique.
+**Remarque :** Dans un scénario réel, une variable serait utilisée pour représenter le nombre. Ici, nous répétons le même code avec trois valeurs différentes pour exposer un cas très spécifique.
 
 Quand vous passez d’une culture à l’autre, vous voyez ceci :
 
-Pour `/Home/About`:
+Pour `/Home/About` :
 
 ```html
 There is one item.
@@ -165,7 +165,7 @@ There are 2 items.
 There are 5 items.
 ```
 
-Pour `/Home/About?culture=fr`:
+Pour `/Home/About?culture=fr` :
 
 ```html
 Il y a un élément.
@@ -173,7 +173,7 @@ Il y a 2 éléments.
 Il y a 5 éléments.
 ```
 
-Pour `/Home/About?culture=cs`:
+Pour `/Home/About?culture=cs` :
 
 ```html
 Existuje jedna položka.

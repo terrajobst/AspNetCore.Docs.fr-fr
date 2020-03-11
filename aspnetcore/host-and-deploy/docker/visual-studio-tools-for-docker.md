@@ -6,20 +6,20 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: cecec09d3d58a84a7c15630e41d23facdb9b236e
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: 0e6747a3de220b97cc7a84f9cd42b0da54b57ee9
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356153"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664065"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Outils de conteneur Visual Studio avec ASP.NET Core
 
 Visual Studio 2017 et versions ultérieures prennent en charge la génération, le débogage et l’exécution d’applications ASP.NET Core conteneurisées ciblant .NET Core. Les conteneurs Windows et Linux sont pris en charge.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Docker pour Windows](https://docs.docker.com/docker-for-windows/install/)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **Développement multiplateforme .NET Core**
@@ -109,7 +109,7 @@ Si vous souhaitez un autre comportement basé sur la configuration de build (par
 
 Par Docker Compose pour afficher une option à exécuter dans Visual Studio, le projet d’ancrage doit être le projet de démarrage.
 
-### <a name="service-fabric"></a>Service Fabric
+### <a name="service-fabric"></a>Service Fabric
 
 En plus des [prérequis](#prerequisites) de base, la solution d’orchestration [Service Fabric](/azure/service-fabric/) impose les prérequis suivants :
 
@@ -133,7 +133,7 @@ Les outils de conteneur Visual Studio effectuent les tâches suivantes :
 
 Pour plus d’informations, consultez [Déployer une application .NET dans un conteneur Windows vers Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container).
 
-## <a name="debug"></a>Déboguer
+## <a name="debug"></a>Débogage
 
 Sélectionnez **Docker** dans la liste déroulante de débogage dans la barre d’outils et démarrez le débogage de l’application. La vue **Docker** de la fenêtre **Sortie** affiche les actions suivantes qui se déroulent :
 

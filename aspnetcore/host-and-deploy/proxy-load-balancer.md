@@ -1,22 +1,22 @@
 ---
 title: Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
-author: guardrex
+author: rick-anderson
 description: Découvrez la configuration des applications hébergées derrière des serveurs proxy et des équilibreurs de charge, qui masquent souvent des informations de requête importantes.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 9db9ef386b84907f10e0393aca125edc9f32424a
-ms.sourcegitcommit: 85564ee396c74c7651ac47dd45082f3f1803f7a2
+ms.openlocfilehash: b5c81e0cfa29cddeb1aeed1119a711fca4d91ae4
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172460"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659382"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
-Par [Luke Latham](https://github.com/guardrex) et [Chris Ross](https://github.com/Tratcher)
+Par [Chris Ross](https://github.com/Tratcher)
 
 ::: moniker range=">= aspnetcore-3.0"
 

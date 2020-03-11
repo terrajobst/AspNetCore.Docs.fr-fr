@@ -5,12 +5,12 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 053c98ba032c85b61776d5b5644c5575cd4f890c
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: bedb3e6a65839db915ca7bc821a267a14d34bf30
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828995"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667411"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -20,9 +20,9 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Victor Hurdugaci](https
 
 Ce tutoriel utilise une API web existante avec deux points de terminaison : un qui retourne une somme et un qui retourne un produit. La méthode du produit comporte un bogue, qui est résolu dans ce tutoriel.
 
-Téléchargez l’[application exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
+Téléchargez l’[application exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
-Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante : .
+Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
 
 ```dotnetcli
 dotnet run
@@ -71,7 +71,7 @@ L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.
 
 Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Par exemple :
 
-| Command | Commande avec watch |
+| Commande | Commande avec watch |
 | ---- | ----- |
 | dotnet run | dotnet watch run |
 | dotnet run -f netcoreapp2.0 | dotnet watch run -f netcoreapp2.0 |
@@ -96,13 +96,13 @@ public static int Product(int a, int b)
 }
 ```
 
-Enregistrez le fichier. La sortie de la console indique que `dotnet watch` a détecté un changement de fichier et a redémarré l’application.
+Enregistrez le fichier . La sortie de la console indique que `dotnet watch` a détecté un changement de fichier et a redémarré l’application.
 
 Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne le résultat correct.
 
 ## <a name="run-tests-using-dotnet-watch"></a>Exécuter les tests à l’aide de `dotnet watch`
 
-1. Changez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme. Enregistrez le fichier.
+1. Changez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme. Enregistrez le fichier .
 1. Dans une interface de commande, accédez au dossier *WebAppTests*.
 1. Exécutez [dotnet restore](/dotnet/core/tools/dotnet-restore).
 1. Exécutez `dotnet watch test`. Sa sortie indique qu’un test a échoué et que l’observateur est en attente de changement de fichier :
@@ -112,7 +112,7 @@ Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne
      Test Run Failed.
      ```
 
-1. Corrigez le code de la méthode `Product` afin qu’elle retourne le produit. Enregistrez le fichier.
+1. Corrigez le code de la méthode `Product` afin qu’elle retourne le produit. Enregistrez le fichier .
 
 `dotnet watch` détecte le changement de fichier et réexécute les tests. La sortie de la console indique que les tests ont réussi.
 

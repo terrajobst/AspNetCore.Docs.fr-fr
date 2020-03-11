@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 5feed175999bf021cadc7e18f14e00066b50db5b
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: d244ce1527486466bcbc6557ec35869aa206bc4f
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259682"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656575"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -48,7 +48,7 @@ EF Core peut charger des données associées dans les propriétés de navigation
 
   Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
-* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -69,7 +69,7 @@ Pour afficher le nom du service (« department ») affecté pour un cours («�
 
 ### <a name="scaffold-course-pages"></a>Générer automatiquement des modèles de pages Course
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Suivez les instructions dans [Générer automatiquement des modèles de pages Student](xref:data/ef-rp/intro#scaffold-student-pages) avec les exceptions suivantes :
 
@@ -77,7 +77,7 @@ Pour afficher le nom du service (« department ») affecté pour un cours («�
   * Utilisez `Course` pour la classe de modèle.
   * Utilisez la classe de contexte existante au lieu d’en créer une nouvelle.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Créez un dossier *Pages/Courses*.
 
@@ -137,11 +137,11 @@ Le code suivant charge les données associées avec la méthode `Select` :
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=6)]
 
-Voici le `CourseViewModel` :
+`CourseViewModel` :
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs).
+Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs).
 
 ## <a name="create-instructor-pages"></a>Créer des pages Instructor
 
@@ -150,13 +150,13 @@ Cette section génère automatiquement des modèles de pages Instructor et ajout
 <a name="IP"></a>
 ![Page d’index des formateurs](read-related-data/_static/instructors-index30.png)
 
-Cette page lit et affiche les données associées comme suit :
+Cette page lit et affiche les données associées comme suit :
 
 * La liste des formateurs affiche des données associées de l’entité `OfficeAssignment` (Office dans l’image précédente). Il existe une relation un-à-zéro-ou-un entre les entités `Instructor` et `OfficeAssignment`. Le chargement hâtif est utilisé pour les entités `OfficeAssignment`. Le chargement hâtif est généralement plus efficace quand les données associées doivent être affichées. Ici, les affectations de bureau pour les formateurs sont affichées.
 * Quand l’utilisateur sélectionne un formateur, les entités `Course` associées sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Le chargement hâtif est utilisé pour les entités `Course` et leurs entités `Department` associées. Dans le cas présent, des requêtes distinctes peuvent être plus efficaces, car seuls les cours du formateur sélectionné sont nécessaires. Cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent dans des propriétés de navigation.
 * Quand l’utilisateur sélectionne un cours, les données associées de l’entité `Enrollments` s’affichent. Dans l’image précédente, le nom et la note de l’étudiant sont affichés. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`.
 
-### <a name="create-a-view-model"></a>Créer un modèle de vue
+### <a name="create-a-view-model"></a>Création d'un modèle de vue
 
 La page sur les formateurs affiche les données de trois tables différentes. Un modèle de vue comprenant trois propriétés représentant les trois tables est nécessaire.
 
@@ -166,7 +166,7 @@ Créez *SchoolViewModels/InstructorIndexData.cs* avec le code suivant :
 
 ### <a name="scaffold-instructor-pages"></a>Générer automatiquement des modèles de pages Instructor
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Suivez les instructions dans [Générer automatiquement des modèles de pages Student](xref:data/ef-rp/intro#scaffold-student-pages) avec les exceptions suivantes :
 
@@ -174,7 +174,7 @@ Créez *SchoolViewModels/InstructorIndexData.cs* avec le code suivant :
   * Utilisez `Instructor` pour la classe de modèle.
   * Utilisez la classe de contexte existante au lieu d’en créer une nouvelle.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Créez un dossier *Pages/Instructors*.
 
@@ -241,7 +241,7 @@ Mettez à jour *Pages/Instructors/Index.cshtml* avec le code suivant.
 
 Le code précédent apporte les modifications suivantes :
 
-* Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
+* Met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
 
   `https://localhost:5001/Instructors?id=2`
 
@@ -316,9 +316,9 @@ Le code précédent supprime les appels de méthode *ThenInclude* pour les donn�
 
 Notez que le code précédent commente `.AsNoTracking()`. Les propriétés de navigation peuvent être chargées explicitement uniquement pour les entités suivies.
 
-Testez l’application. Du point de vue d’un utilisateur, l’application se comporte de façon identique à la version précédente.
+Tester l'application. Du point de vue d’un utilisateur, l’application se comporte de façon identique à la version précédente.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
 Le didacticiel suivant montre comment mettre à jour les données associées.
 
@@ -332,7 +332,7 @@ Le didacticiel suivant montre comment mettre à jour les données associées.
 
 Dans ce didacticiel, nous allons lire et afficher des données associées. Les données associées sont des données qu’EF Core charge dans des propriétés de navigation.
 
-Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
+Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 Les illustrations suivantes montrent les pages terminées pour ce didacticiel :
 
@@ -359,7 +359,7 @@ EF Core peut charger des données associées dans les propriétés de navigation
 
   Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
-* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -382,13 +382,13 @@ Pour afficher le nom du département affecté dans une liste de cours
 
 ### <a name="scaffold-the-course-model"></a>Génération automatique du modèle Course
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Course` pour la classe de modèle.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Exécutez la commande suivante :
+ Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
@@ -396,7 +396,7 @@ Suivez les instructions fournies dans [Générer automatiquement le modèle d’
 
 ---
 
-La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
+La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
 
 Ouvrez *Pages/Courses/Index.cshtml.cs* et examinez la méthode `OnGetAsync`. Le moteur de génération de modèles automatique a spécifié le chargement hâtif pour la propriété de navigation `Department`. La méthode `Include` spécifie le chargement hâtif.
 
@@ -440,11 +440,11 @@ Le code suivant charge les données associées avec la méthode `Select` :
 
 [!code-csharp[](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
-Voici le `CourseViewModel` :
+`CourseViewModel` :
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
+Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
 
 ## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Créer une page Instructors qui affiche les cours et les inscriptions
 
@@ -453,13 +453,13 @@ Dans cette section, nous allons créer la page Instructors.
 <a name="IP"></a>
 ![Page d’index des formateurs](read-related-data/_static/instructors-index.png)
 
-Cette page lit et affiche les données associées comme suit :
+Cette page lit et affiche les données associées comme suit :
 
 * La liste des formateurs affiche des données associées de l’entité `OfficeAssignment` (Office dans l’image précédente). Il existe une relation un-à-zéro-ou-un entre les entités `Instructor` et `OfficeAssignment`. Le chargement hâtif est utilisé pour les entités `OfficeAssignment`. Le chargement hâtif est généralement plus efficace quand les données associées doivent être affichées. Ici, les affectations de bureau pour les formateurs sont affichées.
 * Quand l’utilisateur sélectionne un formateur (Harui dans l’image précédente), les entités `Course` associées sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Le chargement hâtif est utilisé pour les entités `Course` et leurs entités `Department` associées. Dans le cas présent, des requêtes distinctes peuvent être plus efficaces, car seuls les cours du formateur sélectionné sont nécessaires. Cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent dans des propriétés de navigation.
 * Quand l’utilisateur sélectionne un cours (Chemistry dans l’image précédente), les données associées de l’entité `Enrollments` sont affichées. Dans l’image précédente, le nom et la note de l’étudiant sont affichés. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`.
 
-### <a name="create-a-view-model-for-the-instructor-index-view"></a>Créer un modèle d’affichage pour l’affichage d’index des formateurs
+### <a name="create-a-view-model-for-the-instructor-index-view"></a>Créer un modèle de vue pour la vue d’index des formateurs
 
 La page sur les formateurs affiche les données de trois tables différentes. Nous allons créer un modèle d’affichage qui comprend les trois entités représentant les trois tables.
 
@@ -469,13 +469,13 @@ Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* avec le code
 
 ### <a name="scaffold-the-instructor-model"></a>Générer automatiquement le modèle Instructor
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Instructor` pour la classe de modèle.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Exécutez la commande suivante :
+ Exécutez la commande suivante :
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
@@ -509,7 +509,7 @@ Mettez à jour *Pages/Instructors/Index.cshtml* avec le balisage suivant :
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
+* Met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
 
   `http://localhost:1234/Instructors?id=2`
 
@@ -589,7 +589,7 @@ Ajoutez le balisage suivant à la fin de la page Razor *Pages/Instructors/Index.
 
 Le balisage précédent affiche une liste de cours associés à un formateur quand un formateur est sélectionné.
 
-Testez l’application. Cliquez sur un lien **Select** dans la page des formateurs.
+Tester l'application. Cliquez sur un lien **Select** dans la page des formateurs.
 
 ### <a name="show-student-data"></a>Afficher les données sur les étudiants
 
@@ -636,7 +636,7 @@ Le code précédent supprime les appels de méthode *ThenInclude* pour les donn�
 
 Notez que le code précédent commente `.AsNoTracking()`. Les propriétés de navigation peuvent être chargées explicitement uniquement pour les entités suivies.
 
-Testez l’application. Du point de vue des utilisateurs, l’application se comporte comme la version précédente.
+Tester l'application. Du point de vue des utilisateurs, l’application se comporte comme la version précédente.
 
 Le didacticiel suivant montre comment mettre à jour les données associées.
 

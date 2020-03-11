@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 10/16/2019
 uid: grpc/troubleshoot
 ms.openlocfilehash: c501cda14f3bac9297695ece59cbc4634e4b7895
-ms.sourcegitcommit: e71b6a85b0e94a600af607107e298f932924c849
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519057"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664128"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Résoudre les problèmes de gRPC sur .NET Core
 
@@ -53,7 +53,7 @@ Toutes les implémentations du client gRPC prennent en charge TLS. les clients g
 Le client .NET gRPC nécessite que le service dispose d’un certificat approuvé. Le message d’erreur suivant est retourné lors de l’appel d’un service gRPC sans certificat approuvé :
 
 > Exception non gérée. System .net. http. HttpRequestException : la connexion SSL n’a pas pu être établie, consultez l’exception interne.
-> ---> System. Security. Authentication. AuthenticationException : le certificat distant n’est pas valide selon la procédure de validation.
+> ---> System.Security.Authentication.AuthenticationException : Le certificat distant n’est pas valide selon la procédure de validation.
 
 Vous pouvez voir cette erreur si vous testez votre application localement et que le certificat de développement ASP.NET Core HTTPs n’est pas approuvé. Pour obtenir des instructions afin de résoudre ce problème, consultez [Faire confiance au certificat de développement ASP.NET Core HTTPS sur Windows et macOS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).
 

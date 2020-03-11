@@ -1,51 +1,51 @@
 ---
-title: Migrer à partir de l’authentification de l’appartenance ASP.NET vers ASP.NET Core Identity 2.0
+title: Migrer de l’authentification d’appartenance ASP.NET vers l’identité ASP.NET Core 2,0
 author: isaac2004
-description: Découvrez comment migrer des applications ASP.NET existantes à l’aide de l’authentification de l’appartenance à ASP.NET Core 2.0 Identity.
+description: Découvrez comment migrer des applications ASP.NET existantes à l’aide de l’authentification d’appartenance vers ASP.NET Core identité 2,0.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2019
 uid: migration/proper-to-2x/membership-to-core-identity
 ms.openlocfilehash: 3b708da13ff9f2887eee87ea17844312a4fe1b8d
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65084878"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659242"
 ---
-# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Migrer à partir de l’authentification de l’appartenance ASP.NET vers ASP.NET Core Identity 2.0
+# <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>Migrer de l’authentification d’appartenance ASP.NET vers l’identité ASP.NET Core 2,0
 
 De [Isaac Levin](https://isaaclevin.com)
 
-Cet article illustre la migration du schéma de base de données pour les applications ASP.NET à l’aide de l’authentification de l’appartenance à ASP.NET Core 2.0 Identity.
+Cet article explique comment migrer le schéma de base de données pour les applications ASP.NET à l’aide de l’authentification d’appartenance vers ASP.NET Core identité 2,0.
 
 > [!NOTE]
-> Ce document fournit les étapes nécessaires pour migrer le schéma de base de données pour les applications basées sur l’appartenance ASP.NET vers le schéma de base de données utilisé pour ASP.NET Core Identity. Pour plus d’informations sur la migration à partir de l’authentification basée sur l’appartenance ASP.NET vers ASP.NET Identity, consultez [migrer une application existante à partir de l’appartenance SQL vers ASP.NET Identity](/aspnet/identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity). Pour plus d’informations sur ASP.NET Core Identity, consultez [présentation d’Identity dans ASP.NET Core](xref:security/authentication/identity).
+> Ce document décrit les étapes nécessaires à la migration du schéma de base de données pour les applications basées sur l’appartenance ASP.NET vers le schéma de base de données utilisé pour ASP.NET Core identité. Pour plus d’informations sur la migration de l’authentification basée sur l’appartenance ASP.NET vers ASP.NET Identity, consultez [migrer une application existante de l’appartenance SQL vers ASP.net Identity](/aspnet/identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity). Pour plus d’informations sur ASP.NET Core identité, consultez [Présentation de l’identité sur ASP.net Core](xref:security/authentication/identity).
 
-## <a name="review-of-membership-schema"></a>Révision de schéma d’appartenance
+## <a name="review-of-membership-schema"></a>Examen du schéma d’appartenance
 
-Avant ASP.NET 2.0, les développeurs ont été chargés de créer l’ensemble du processus d’authentification et d’autorisation pour leurs applications. Avec ASP.NET 2.0, l’appartenance a été introduite, fournissant une solution réutilisable pour la gestion de la sécurité dans les applications ASP.NET. Les développeurs ont désormais en mesure d’amorçage d’un schéma dans une base de données SQL Server avec le [aspnet_regsql.exe](https://msdn.microsoft.com/library/ms229862.aspx) commande. Après avoir exécuté cette commande, les tables suivantes ont été créées dans la base de données.
+Avant ASP.NET 2,0, les développeurs devaient créer l’intégralité du processus d’authentification et d’autorisation pour leurs applications. Avec ASP.NET 2,0, l’appartenance a été introduite et fournit une solution réutilisable pour gérer la sécurité dans les applications ASP.NET. Les développeurs pouvaient désormais démarrer un schéma dans une base de données SQL Server à l’aide de la commande [aspnet_regsql. exe](https://msdn.microsoft.com/library/ms229862.aspx) . Après l’exécution de cette commande, les tables suivantes ont été créées dans la base de données.
 
-  ![Tables d’appartenances](identity/_static/membership-tables.png)
+  ![Tables d’appartenance](identity/_static/membership-tables.png)
 
-Pour migrer des applications existantes vers ASP.NET Core 2.0 Identity, les données dans ces tables doivent être migrés vers les tables utilisées par le nouveau schéma d’identité.
+Pour migrer des applications existantes vers ASP.NET Core identité 2,0, les données de ces tables doivent être migrées vers les tables utilisées par le nouveau schéma d’identité.
 
-## <a name="aspnet-core-identity-20-schema"></a>ASP.NET Core Identity 2.0 schéma
+## <a name="aspnet-core-identity-20-schema"></a>Schéma d’identité ASP.NET Core 2,0
 
-ASP.NET Core 2.0 suit le [identité](/aspnet/identity/index) principe introduit dans ASP.NET 4.5. Bien que le principe est partagé, l’implémentation entre les infrastructures est différente, même entre les versions d’ASP.NET Core (consultez [migrer d’authentification et identité vers ASP.NET Core 2.0](xref:migration/1x-to-2x/index)).
+ASP.NET Core 2,0 suit le principe d' [identité](/aspnet/identity/index) introduit dans ASP.net 4,5. Bien que le principe soit partagé, l’implémentation entre les frameworks est différente, même entre les versions de ASP.NET Core (consultez [migrer l’authentification et l’identité vers ASP.NET Core 2,0](xref:migration/1x-to-2x/index)).
 
-Le moyen le plus rapide pour afficher le schéma pour ASP.NET Core 2.0 Identity consiste à créer une application ASP.NET Core 2.0. Suivez ces étapes dans Visual Studio 2017 :
+La façon la plus rapide d’afficher le schéma pour ASP.NET Core l’identité 2,0 est de créer une nouvelle application ASP.NET Core 2,0. Procédez comme suit dans Visual Studio 2017 :
 
 1. Sélectionnez **Fichier** > **Nouveau** > **Projet**.
-1. Créer un nouveau **Application Web ASP.NET Core** projet nommé *CoreIdentitySample*.
-1. Sélectionnez **ASP.NET Core 2.0** dans la liste déroulante, puis sélectionnez **Web Application**. Ce modèle génère un [Pages Razor](xref:razor-pages/index) application. Avant de cliquer sur **OK**, cliquez sur **modifier l’authentification**.
-1. Choisissez **comptes d’utilisateur individuels** pour les modèles d’identité. Enfin, cliquez sur **OK**, puis **OK**. Visual Studio crée un projet à l’aide du modèle ASP.NET Core Identity.
-1. Sélectionnez **outils** > **Gestionnaire de Package NuGet** > **Console du Gestionnaire de Package** pour ouvrir le **Console du Gestionnaire de Package** Fenêtre (PMC).
-1. Accédez à la racine du projet dans PMC et exécutez le [Entity Framework (EF) Core](/ef/core) `Update-Database` commande.
+1. Créez un projet d' **application Web ASP.net Core** nommé *CoreIdentitySample*.
+1. Sélectionnez **ASP.NET Core 2,0** dans la liste déroulante, puis sélectionnez **application Web**. Ce modèle produit une application [Razor pages](xref:razor-pages/index) . Avant de cliquer sur **OK**, cliquez sur **modifier l’authentification**.
+1. Choisissez des **comptes d’utilisateur individuels** pour les modèles d’identité. Enfin, cliquez sur **OK**, puis sur **OK**. Visual Studio crée un projet à l’aide du modèle d’identité ASP.NET Core.
+1. Sélectionnez **outils** > **Gestionnaire de package NuGet** > **console du gestionnaire** de package pour ouvrir la fenêtre **console du gestionnaire de package** (PMC).
+1. Accédez à la racine du projet dans PMC, puis exécutez la commande [Entity Framework (EF) Core](/ef/core) `Update-Database`.
 
-    Identité ASP.NET Core 2.0 utilise EF Core pour interagir avec la base de données stockant les données d’authentification. Afin que l’application nouvellement créée fonctionne, il doit être une base de données pour stocker ces données. Après avoir créé une nouvelle application, le moyen le plus rapide pour inspecter le schéma dans un environnement de base de données consiste à créer la base de données à l’aide [Migrations d’EF Core](/ef/core/managing-schemas/migrations/). Ce processus crée une base de données, en local ou un autre emplacement, qui reproduit ce schéma. Passez en revue la documentation précédente pour plus d’informations.
+    ASP.NET Core identité 2,0 utilise EF Core pour interagir avec la base de données qui stocke les données d’authentification. Pour que l’application nouvellement créée fonctionne, vous devez disposer d’une base de données pour stocker ces données. Après la création d’une nouvelle application, la méthode la plus rapide pour inspecter le schéma dans un environnement de base de données consiste à créer la base de données à l’aide de [EF Core migrations](/ef/core/managing-schemas/migrations/). Ce processus crée une base de données, localement ou ailleurs, qui imite ce schéma. Pour plus d’informations, consultez la documentation précédente.
 
-    Commandes EF Core utilisent la chaîne de connexion pour la base de données spécifiée dans *appsettings.json*. La chaîne de connexion cible d’une base de données sur *localhost* nommé *asp-net-core-identity*. Dans ce paramètre, EF Core est configuré pour utiliser le `DefaultConnection` chaîne de connexion.
+    Les commandes EF Core utilisent la chaîne de connexion pour la base de données spécifiée dans *appSettings. JSON*. La chaîne de connexion suivante cible une base de données sur *localhost* nommée *asp-net-Core-Identity*. Dans ce paramètre, EF Core est configurée pour utiliser la chaîne de connexion `DefaultConnection`.
 
     ```json
     {
@@ -55,21 +55,21 @@ Le moyen le plus rapide pour afficher le schéma pour ASP.NET Core 2.0 Identity 
     }
     ```
 
-1. Sélectionnez **vue** > **Explorateur d’objets SQL Server**. Développez le nœud correspondant au nom de la base de données spécifié dans le `ConnectionStrings:DefaultConnection` propriété du *appsettings.json*.
+1. Sélectionnez **afficher** > **Explorateur d’objets SQL Server**. Développez le nœud correspondant au nom de la base de données spécifié dans la propriété `ConnectionStrings:DefaultConnection` de *appSettings. JSON*.
 
-    Le `Update-Database` commande a créé la base de données spécifié avec le schéma et toutes les données requises pour l’initialisation d’application. L’image suivante illustre la structure de table est créée avec les étapes précédentes.
+    La commande `Update-Database` a créé la base de données spécifiée avec le schéma et toutes les données nécessaires à l’initialisation de l’application. L’image suivante représente la structure de table créée à l’aide des étapes précédentes.
 
     ![Tables d’identité](identity/_static/identity-tables.png)
 
 ## <a name="migrate-the-schema"></a>Migrer le schéma
 
-Il existe des différences subtiles dans les structures de table et les champs pour l’appartenance et ASP.NET Core Identity. Le modèle a des modifications substantielles pour l’authentification/autorisation avec les applications ASP.NET et ASP.NET Core. Les objets clés sont toujours utilisés avec l’identité sont *utilisateurs* et *rôles*. Voici les tables de mappage pour *utilisateurs*, *rôles*, et *UserRoles*.
+Il existe des différences subtiles entre les structures et les champs de table pour l’appartenance et l’identité ASP.NET Core. Le modèle a changé de manière substantielle pour l’authentification/l’autorisation avec les applications ASP.NET et ASP.NET Core. Les objets clés qui sont toujours utilisés avec l’identité sont des *utilisateurs* et des *rôles*. Voici les tables de mappage pour *les utilisateurs, les* *rôles*et les *UserRoles*.
 
 ### <a name="users"></a>Utilisateurs
 
-|*Identity<br>(dbo.AspNetUsers)*        ||*Membership<br>(dbo.aspnet_Users / dbo.aspnet_Membership)*||
+|*<br>d’identité (dbo. AspNetUsers*        ||*<br>d’appartenance (dbo. aspnet_Users/dbo. aspnet_Membership)*||
 |----------------------------------------|-----------------------------------------------------------|
-|**Nom de champ**                 |**Type**|**Nom de champ**                                    |**Type**|
+|**Nom du champ**                 |**Type**|**Nom du champ**                                    |**Type**|
 |`Id`                           |string  |`aspnet_Users.UserId`                             |string  |
 |`UserName`                     |string  |`aspnet_Users.UserName`                           |string  |
 |`Email`                        |string  |`aspnet_Membership.Email`                         |string  |
@@ -79,26 +79,26 @@ Il existe des différences subtiles dans les structures de table et les champs p
 |`LockoutEnabled`               |bit     |`aspnet_Membership.IsLockedOut`                   |bit     |
 
 > [!NOTE]
-> Pas tous les mappages de champs ressemblent à des relations un à un à partir de l’appartenance à ASP.NET Core Identity. Le tableau précédent prend le schéma utilisateur d’appartenance par défaut et le mappe au schéma ASP.NET Core Identity. Tous les autres champs personnalisés qui ont été utilisés pour l’appartenance doivent être mappées manuellement. Dans ce mappage, il n’existe aucun mappage pour les mots de passe, comme critères de mot de passe et le mot de passe sels ne migrent entre les deux. **Il est recommandé de laisser le mot de passe avec la valeur null et demander aux utilisateurs de réinitialiser leurs mots de passe.** Dans ASP.NET Core Identity, `LockoutEnd` doit être définie par une date à l’avenir, si l’utilisateur est verrouillé. Ceci est illustré dans le script de migration.
+> Tous les mappages de champs ne ressemblent pas aux relations un-à-un de l’appartenance à ASP.NET Core identité. Le tableau précédent prend le schéma de l’utilisateur d’appartenance par défaut et le mappe au schéma d’identité ASP.NET Core. Tous les autres champs personnalisés qui ont été utilisés pour l’appartenance doivent être mappés manuellement. Dans ce mappage, il n’existe pas de mappage pour les mots de passe, car les critères de mot de passe et les sels de mot de passe ne migrent pas entre les deux. **Il est recommandé de conserver la valeur null pour le mot de passe et de demander aux utilisateurs de réinitialiser leur mot de passe.** Dans ASP.NET Core identité, `LockoutEnd` doit être défini à une date ultérieure si l’utilisateur est verrouillé. Cela est illustré dans le script de migration.
 
 ### <a name="roles"></a>Rôles
 
-|*Identity<br>(dbo.AspNetRoles)*        ||*Membership<br>(dbo.aspnet_Roles)*||
+|*<br>d’identité (dbo. AspNetRoles)*        ||*<br>d’appartenance (dbo. aspnet_Roles)*||
 |----------------------------------------|-----------------------------------|
-|**Nom de champ**                 |**Type**|**Nom de champ**   |**Type**         |
+|**Nom du champ**                 |**Type**|**Nom du champ**   |**Type**         |
 |`Id`                           |string  |`RoleId`         | string          |
 |`Name`                         |string  |`RoleName`       | string          |
 |`NormalizedName`               |string  |`LoweredRoleName`| string          |
 
-### <a name="user-roles"></a>Rôles d’utilisateur
+### <a name="user-roles"></a>Rôles d'utilisateur
 
-|*Identity<br>(dbo.AspNetUserRoles)*||*Membership<br>(dbo.aspnet_UsersInRoles)*||
+|*<br>d’identité (dbo. AspNetUserRoles*||*<br>d’appartenance (dbo. aspnet_UsersInRoles)*||
 |------------------------------------|------------------------------------------|
-|**Nom de champ**           |**Type**  |**Nom de champ**|**Type**                   |
+|**Nom du champ**           |**Type**  |**Nom du champ**|**Type**                   |
 |`RoleId`                 |string    |`RoleId`      |string                     |
 |`UserId`                 |string    |`UserId`      |string                     |
 
-Référencez les tables de mappage précédent lors de la création d’un script de migration pour *utilisateurs* et *rôles*. L’exemple suivant suppose que vous avez deux bases de données sur un serveur de base de données. Une base de données contient les données et le schéma de l’appartenance ASP.NET existant. L’autre *CoreIdentitySample* base de données a été créée à l’aide des étapes décrites précédemment. Les commentaires sont incluses inline pour plus d’informations.
+Référencez les tables de mappage précédentes lors de la création d’un script de migration pour *les utilisateurs et les* *rôles*. L’exemple suivant suppose que vous disposez de deux bases de données sur un serveur de base de données. Une base de données contient le schéma et les données d’appartenance ASP.NET existants. L’autre base de données *CoreIdentitySample* a été créée à l’aide des étapes décrites précédemment. Les commentaires sont inclus dans Inline pour plus d’informations.
 
 ```sql
 -- THIS SCRIPT NEEDS TO RUN FROM THE CONTEXT OF THE MEMBERSHIP DB
@@ -187,15 +187,15 @@ IF @@ERROR <> 0
 COMMIT TRANSACTION MigrateUsersAndRoles
 ```
 
-Après l’achèvement du script précédent, l’application ASP.NET Core Identity créée précédemment est renseignée avec les utilisateurs d’appartenance. Les utilisateurs doivent modifier leurs mots de passe avant de vous connecter.
+Une fois le script précédent terminé, l’application d’identité ASP.NET Core créée précédemment est remplie avec les utilisateurs d’appartenance. Les utilisateurs doivent modifier leur mot de passe avant de se connecter.
 
 > [!NOTE]
-> Si le système d’appartenance avait des utilisateurs avec des noms d’utilisateur qui ne correspond pas à leur adresse de messagerie, les modifications sont requises pour l’application créée précédemment pour tenir compte de cela. Le modèle par défaut attend `UserName` et `Email` soient les mêmes. Dans les situations dans lesquelles ils sont différents, le processus de connexion doit être modifiée pour utiliser `UserName` au lieu de `Email`.
+> Si le système d’appartenance avait des utilisateurs dont les noms d’utilisateur ne correspondaient pas à leur adresse de messagerie, les modifications sont requises pour l’application créée précédemment pour s’adapter à cette opération. Le modèle par défaut s’attend à ce que `UserName` et `Email` soient identiques. Dans les situations où elles sont différentes, le processus de connexion doit être modifié pour utiliser `UserName` au lieu de `Email`.
 
-Dans le `PageModel` de la Page de connexion, situé dans *Pages\Account\Login.cshtml.cs*, supprimer le `[EmailAddress]` attribut à partir de la *E-mail* propriété. Renommez-le *nom d’utilisateur*. Cela nécessite une modification dans la mesure `EmailAddress` est mentionné dans le *vue* et *PageModel*. Le résultat ressemble à ceci :
+Dans la `PageModel` de la page de connexion, située dans *Pages\Account\Login.cshtml.cs*, supprimez l’attribut `[EmailAddress]` de la propriété *email* . Renommez-le nom d' *utilisateur*. Cela nécessite une modification chaque fois que `EmailAddress` est mentionné, dans la *vue* et *PageModel*. Le résultat se présente comme suit :
 
  ![Connexion fixe](identity/_static/fixed-login.png)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez appris comment porter des utilisateurs de l’appartenance SQL vers ASP.NET Core 2.0 Identity. Pour plus d’informations sur ASP.NET Core Identity, consultez [présentation d’Identity](xref:security/authentication/identity).
+Dans ce didacticiel, vous avez appris comment porter les utilisateurs de l’appartenance SQL vers ASP.NET Core identité 2,0. Pour plus d’informations sur ASP.NET Core identité, consultez [Présentation de l’identité](xref:security/authentication/identity).

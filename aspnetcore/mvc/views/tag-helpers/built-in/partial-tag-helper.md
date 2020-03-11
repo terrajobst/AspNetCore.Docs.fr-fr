@@ -7,22 +7,22 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 508f91cdcd93c149602223250520eecb73625b24
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 269be9ece674b39d03cb50720f4fb182c565a639
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74880991"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659648"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Tag Helper Partial dans ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie)
 
-Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="overview"></a>Vue d'ensemble de
+## <a name="overview"></a>Vue d’ensemble
 
 Le Tag Helper Partial est utilisé dans le cadre du rendu d’une [vue partielle](xref:mvc/views/partial) dans les pages Razor et les applications MVC. Tenez compte des points suivants :
 
@@ -43,7 +43,7 @@ Le modèle *Product* est utilisé dans les exemples tout au long de ce document 
 
 Voici l’inventaire des attributs du Tag Helper Partial.
 
-## <a name="name"></a>nom
+## <a name="name"></a>name
 
 L'attribut `name` est obligatoire. Il indique le nom ou le chemin de la vue partielle à afficher. Quand un nom de vue partielle est fourni, le processus de [découverte de vue](xref:mvc/views/overview#view-discovery) est lancé. Ce processus est ignoré quand un chemin explicite est fourni. Pour connaître toutes les valeurs `name` acceptables, consultez [Découverte des vues partielles](xref:mvc/views/partial#partial-view-discovery).
 
@@ -51,7 +51,7 @@ Le balisage suivant utilise un chemin explicite indiquant que le fichier *_Produ
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
-## <a name="for"></a>pour
+## <a name="for"></a>for
 
 L’attribut `for` affecte un [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression) à évaluer par rapport au modèle actif. `ModelExpression` déduit la syntaxe `@Model.`. Par exemple, `for="Product"` peut être utilisé à la place de `for="@Model.Product"`. Pour substituer ce comportement d’inférence par défaut, utilisez le symbole `@` pour définir une expression inline.
 
@@ -89,7 +89,7 @@ Prenons l’exemple d’assistance HTML asynchrone suivante. Une collection de p
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_HtmlHelper&highlight=3)]
 
-Le Tag Helper Partial suivant permet d’obtenir le même comportement de rendu asynchrone que l’assistance HTML `PartialAsync`. Une instance de modèle `Product` est assignée à l’attribut `model` pour la liaison à la vue partielle.
+Le Tag Helper Partial suivant permet d’obtenir le même comportement de rendu asynchrone que l’assistance HTML `PartialAsync`. Une instance de modèle `model` est assignée à l’attribut `Product` pour la liaison à la vue partielle.
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Products.cshtml?name=snippet_TagHelper&highlight=3)]
 

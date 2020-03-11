@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: e8b62d795f6444e6dd79e27ace687d5db4db86de
-ms.sourcegitcommit: c0b72b344dadea835b0e7943c52463f13ab98dd1
+ms.openlocfilehash: 43bd4eccfc06d27ade5de0e3387247a753609336
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74881001"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78662371"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>Bien démarrer avec les Tag Helpers
 
@@ -157,7 +157,7 @@ Dans cette section, nous allons écrire un Tag Helper e-mail asynchrone.
 
    [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
-1. Exécuter l’application. Vous pouvez utiliser votre navigateur favori pour inspecter la source et vérifier le balisage.
+1. Exécutez l'application. Vous pouvez utiliser votre navigateur favori pour inspecter la source et vérifier le balisage.
 
    L’attribut `[HtmlTargetElement]` ci-dessus cible uniquement le balisage HTML qui fournit le nom d’attribut « bold ». L’élément `<bold>` n’a pas été modifié par le Tag Helper.
 
@@ -281,7 +281,7 @@ Comme ces deux Tag Helpers sont étroitement liés et que vous pouvez les refact
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15-34&range=7-34)]
 
-1. Exécuter l’application. Notez que le texte www est affiché sous forme de lien, contrairement au texte HTTP. Si vous placez un point d’arrêt dans les deux classes, vous pouvez voir que la classe du Tag Helper HTTP s’exécute en premier. Le problème est que la sortie du Tag Helper est mise en cache et, quand le Tag Helper WWW est exécuté, il remplace la sortie mise en cache du Tag Helper HTTP. Plus loin dans ce didacticiel, nous verrons comment contrôler l’ordre d’exécution des Tag Helpers. Nous allons corriger le code avec les éléments suivants :
+1. Exécutez l'application. Notez que le texte www est affiché sous forme de lien, contrairement au texte HTTP. Si vous placez un point d’arrêt dans les deux classes, vous pouvez voir que la classe du Tag Helper HTTP s’exécute en premier. Le problème est que la sortie du Tag Helper est mise en cache et, quand le Tag Helper WWW est exécuté, il remplace la sortie mise en cache du Tag Helper HTTP. Plus loin dans ce didacticiel, nous verrons comment contrôler l’ordre d’exécution des Tag Helpers. Nous allons corriger le code avec les éléments suivants :
 
    [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26&range=8-37)]
 

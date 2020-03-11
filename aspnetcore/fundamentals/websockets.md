@@ -9,28 +9,28 @@ ms.date: 11/12/2019
 no-loc:
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: fc07d572116f8eea2b30ea6cf80324e5c66f994c
-ms.sourcegitcommit: 3fc3020961e1289ee5bf5f3c365ce8304d8ebf19
+ms.openlocfilehash: a8040003374906fd93e12c9fde44c4a5ccc2cf37
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73963171"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78655784"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Andrew Stanton-Nurse](https://github.com/anurse)
 
-Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [WebSocket](https://wikipedia.org/wiki/WebSocket) ([RFC 6455](https://tools.ietf.org/html/rfc6455)) est un protocole qui autorise des canaux de communication persistants bidirectionnels sur les connexions TCP. Il est utilisé dans les applications qui bénéficient de communications rapides et en temps réel, comme les applications de conversation, de tableau de bord et de jeu.
+Cet article explique comment commencer avec les WebSockets dans ASP.NET Core. [WebSocket](https://wikipedia.org/wiki/WebSocket) ([RFC 6455](https://tools.ietf.org/html/rfc6455)) est un protocole qui autorise des canaux de communication persistants bidirectionnels sur les connexions TCP. Son utilisation profite aux applications qui tirent parti d’une communication rapide et en temps réel, par exemple les applications de conversation, de tableau de bord et de jeu.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). [Comment exécuter](#sample-app).
+[Affichez ou téléchargez un exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). [Comment exécuter](#sample-app).
 
-## SignalR
+## <a name="signalr"></a>SignalR
 
-[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités Web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
+[ASP.NET Core SignalR](xref:signalr/introduction) est une bibliothèque qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Elle utilise des WebSockets dans la mesure du possible.
 
-Pour la plupart des applications, nous vous recommandons d' SignalR sur des WebSockets bruts. SignalR fournit le secours de transport pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. Et dans la plupart des scénarios, SignalR n’a pas d’inconvénient majeur en matière de performances par rapport à l’utilisation de WebSockets bruts.
+Pour la plupart des applications, nous recommandons SignalR sur des WebSockets bruts. SignalR fournit un transport de secours pour les environnements où WebSockets n’est pas disponible. Il fournit également un modèle d’application d’appel de procédure distante simple. De plus, dans la plupart des scénarios, SignalR ne présente aucun inconvénient majeur concernant le niveau de performance par rapport à l’utilisation de WebSockets bruts.
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * ASP.NET Core 1.1 ou ultérieur
 * Tout système d’exploitation prenant en charge ASP.NET Core :
@@ -53,13 +53,13 @@ Pour la plupart des applications, nous vous recommandons d' SignalR sur des WebS
 
 ::: moniker range="< aspnetcore-2.1"
 
-## <a name="nuget-package"></a>Package NuGet
+## <a name="nuget-package"></a>Package NuGet
 
 Installez le package [Microsoft.AspNetCore.WebSockets](https://www.nuget.org/packages/Microsoft.AspNetCore.WebSockets/).
 
 ::: moniker-end
 
-## <a name="configure-the-middleware"></a>Configurer l’intergiciel (middleware)
+## <a name="configure-the-middleware"></a>Configurer les middlewares
 
 
 Ajoutez le middleware WebSocket dans la méthode `Configure` de la classe `Startup` :
@@ -68,7 +68,7 @@ Ajoutez le middleware WebSocket dans la méthode `Configure` de la classe `Start
 
 ::: moniker range="< aspnetcore-2.2"
 
-Les paramètres suivants peuvent être configurés :
+Les paramètres suivants peuvent être configurés :
 
 * `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte. La valeur par défaut est deux minutes.
 * `ReceiveBufferSize` : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
@@ -77,7 +77,7 @@ Les paramètres suivants peuvent être configurés :
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Les paramètres suivants peuvent être configurés :
+Les paramètres suivants peuvent être configurés :
 
 * `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte. La valeur par défaut est deux minutes.
 * <xref:Microsoft.AspNetCore.Builder.WebSocketOptions.ReceiveBufferSize> : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
@@ -147,7 +147,7 @@ Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Les navi
 
 Toutefois, les navigateurs envoient l’en-tête `Origin` au moment de l’émission des requêtes WebSocket. Les applications doivent être configurées de manière à valider ces en-têtes, le but étant de vérifier que seuls les WebSockets provenant des origines attendues sont autorisés.
 
-Si vous hébergez votre serveur sur « https://server.com » et votre client sur « https://client.com », ajoutez « https://client.com » à la liste `AllowedOrigins` pour autoriser les WebSockets.
+Si vous hébergez votre serveur sur « https://server.com» et votre client sur « https://client.com», ajoutez « https://client.com» à la liste `AllowedOrigins` pour autoriser les WebSockets.
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
@@ -176,7 +176,7 @@ Pour activer la prise en charge du protocole WebSocket sur Windows Server 2012 o
 1. Développez **Serveur web (IIS)** dans l’arborescence **Rôles**, développez **Serveur Web**, puis développez **Développement d’applications**.
 1. Sélectionnez **Protocole WebSocket**. Sélectionnez **Suivant**.
 1. Si vous n’avez pas besoin d’autres fonctionnalités, sélectionnez **Suivant**.
-1. Cliquez sur **Installer**.
+1. Sélectionnez **Installer**.
 1. Une fois l’installation terminée, sélectionnez **Fermer** pour quitter l’Assistant.
 
 Pour activer la prise en charge du protocole WebSocket sur Windows 8 ou ultérieur :
@@ -198,9 +198,9 @@ Si vous utilisez la prise en charge de WebSocket dans [Socket.IO](https://socket
 </system.webServer>
 ```
 
-## <a name="sample-app"></a>Exemple d’application
+## <a name="sample-app"></a>Exemple d'application
 
-[L’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) qui accompagne cet article est une application d’écho. Elle comporte une page web qui établit des connexions WebSocket, et le serveur renvoie au client les messages qu’il reçoit. Exécutez l’application à partir d’une invite de commandes (elle n’est pas configurée pour s’exécuter à partir de Visual Studio avec IIS Express) et accédez à http://localhost:5000. La page web affiche l’état de la connexion en haut à gauche :
+[L’exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/websockets/samples) qui accompagne cet article est une application d’écho. Elle comporte une page web qui établit des connexions WebSocket, et le serveur renvoie au client les messages qu’il reçoit. Exécutez l’application à partir d’une invite de commandes (elle n’est pas configurée pour s’exécuter à partir de Visual Studio avec IIS Express) et accédez à http://localhost:5000. La page web affiche l’état de la connexion en haut à gauche :
 
 ![État initial de la page web](websockets/_static/start.png)
 

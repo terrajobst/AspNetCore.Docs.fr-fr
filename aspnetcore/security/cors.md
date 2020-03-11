@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
 uid: security/cors
-ms.openlocfilehash: 57098be73164c71d1b0d1fe2f3aee7ec41a32346
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: e0e0e1abf1ecaa12038b3ee1bdaa384d979be254
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727310"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78666249"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les requêtes Cross-Origin (CORS) dans ASP.NET Core
 
@@ -28,7 +28,7 @@ La sécurité du navigateur empêche une page Web d’effectuer des demandes ver
 * Permet à un serveur d’autoriser explicitement certaines demandes Cross-Origin tout en rejetant d’autres.
 * Est plus sûr et plus flexible que les techniques antérieures, telles que [JSONP](/dotnet/framework/wcf/samples/jsonp).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>Même origine
 
@@ -279,7 +279,7 @@ Par exemple, considérez une application configurée comme suit :
 app.UseCors(policy => policy.WithHeaders(HeaderNames.CacheControl));
 ```
 
-L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours la liste verte :
+L’intergiciel (middleware) CORS répond correctement à une demande préliminaire avec l’en-tête de demande suivant, car `Content-Language` est toujours la liste blanche :
 
 ```
 Access-Control-Request-Headers: Cache-Control, Content-Language
@@ -470,13 +470,13 @@ Si la réponse n’inclut pas l’en-tête `Access-Control-Allow-Origin`, la dem
 
 Pour tester CORS :
 
-1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
+1. [Créez un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [Télécharger l’exemple](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
 1. Activez CORS à l’aide de l’une des approches décrites dans ce document. Par exemple :
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");` ne doit être utilisé que pour tester un exemple d’application semblable à l' [exemple de code de téléchargement](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
+  > `WithOrigins("https://localhost:<port>");` ne doit être utilisé que pour tester un exemple d’application semblable à l' [exemple de code de téléchargement](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
 
 1. Créez un projet d’application Web (Razor Pages ou MVC). L’exemple utilise Razor Pages. Vous pouvez créer l’application Web dans la même solution que le projet d’API.
 1. Ajoutez le code en surbrillance suivant au fichier *index. cshtml* :

@@ -10,12 +10,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 02c95c19ebfb5ea6ad722f9d49f4cddc7471f8e1
-ms.sourcegitcommit: 0e21d4f8111743bcb205a2ae0f8e57910c3e8c25
+ms.openlocfilehash: 038799564078c4d3e8a7aa3a9841c6303edf9d12
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77034078"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78658276"
 ---
 # <a name="introduction-to-aspnet-core-opno-locblazor"></a>Présentation de ASP.NET Core Blazor
 
@@ -114,7 +114,7 @@ L’exécution de code .NET à l’intérieur des navigateurs web est rendue pos
 
 Le code WebAssembly peut accéder à toutes les fonctionnalités du navigateur via JavaScript, appelé *interopérabilité JavaScript* (ou *interop JavaScript*). Le code .NET exécuté via WebAssembly dans le navigateur s’exécute dans le bac à sable JavaScript du navigateur avec les protections offertes par le bac à sable contre les actions malveillantes sur l’ordinateur client.
 
-![[! Opérationnel. NO-LOC (éblouissant)] webassembly exécute du code .NET dans le navigateur avec webassembly.](index/_static/blazor-webassembly.png)
+![Blazor webassembly exécute du code .NET dans le navigateur avec webassembly.](index/_static/blazor-webassembly.png)
 
 Quand une application Blazor webassembly est générée et exécutée dans un navigateur :
 
@@ -136,11 +136,14 @@ Le runtime gère l’envoi des événements d’interface utilisateur du navigat
 
 La connexion utilisée par Blazor serveur pour communiquer avec le navigateur est également utilisée pour gérer les appels Interop JavaScript.
 
-![[! Opérationnel. NO-LOC (éblouissant)] le serveur exécute le code .NET sur le serveur et interagit avec le Document Object Model sur le client via un [ ! Opérationnel. Connexion NO-LOC (Signalr)]](index/_static/blazor-server.png)
+![Blazor Server exécute du code .NET sur le serveur et interagit avec l’Document Object Model sur le client via une connexion SignalR](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>Interopérabilité de JavaScript
 
-Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d’informations, consultez <xref:blazor/javascript-interop>.
+Pour les applications qui nécessitent des bibliothèques JavaScript tierces et l’accès à des API de navigateur, les composants interagissent avec JavaScript. Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript. Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#. Pour plus d’informations, consultez les articles suivants :
+
+* <xref:blazor/call-javascript-from-dotnet>
+* <xref:blazor/call-dotnet-from-javascript>
 
 ## <a name="code-sharing-and-net-standard"></a>Partage de code et .NET Standard
 

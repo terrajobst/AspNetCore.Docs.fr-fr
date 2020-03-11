@@ -11,11 +11,11 @@ no-loc:
 - SignalR
 uid: blazor/routing
 ms.openlocfilehash: 32459f9f42220b01ce04e6444a9bb4a9592ee2da
-ms.sourcegitcommit: 0b0e485a8a6dfcc65a7a58b365622b3839f4d624
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76928282"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663806"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core du routage éblouissant
 
@@ -67,7 +67,7 @@ Plusieurs modèles de routage peuvent être appliqués à un composant. Le compo
 ```
 
 > [!IMPORTANT]
-> Pour que les URL soient correctement résolues, l’application doit inclure une balise `<base>` dans son fichier *wwwroot/index.html* (éblouissant webassembly) ou le fichier *pages/_Host. cshtml* (serveur éblouissant) avec le chemin d’accès de base de l’application spécifié dans l’attribut `href` (`<base href="/">`). Pour plus d'informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
+> Pour que les URL soient correctement résolues, l’application doit inclure une balise `<base>` dans son fichier *wwwroot/index.html* (éblouissant webassembly) ou le fichier *pages/_Host. cshtml* (serveur éblouissant) avec le chemin d’accès de base de l’application spécifié dans l’attribut `href` (`<base href="/">`). Pour plus d’informations, consultez <xref:host-and-deploy/blazor/index#app-base-path>.
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>Fournir du contenu personnalisé lorsque le contenu est introuvable
 
@@ -167,7 +167,7 @@ Le modèle `"/{**path}"` comprend les éléments suivants :
 > [!NOTE]
 > La syntaxe de paramètre *catch-all* (`*`/`**`) n’est **pas** prise en charge dans les composants Razor ( *. Razor*).
 
-Pour plus d'informations, consultez <xref:fundamentals/routing>.
+Pour plus d’informations, consultez <xref:fundamentals/routing>.
 
 ## <a name="navlink-component"></a>Composant NavLink
 
@@ -200,7 +200,7 @@ Le balisage HTML suivant est rendu :
 
 Utilisez `Microsoft.AspNetCore.Components.NavigationManager` pour travailler avec les URI et la C# navigation dans le code. `NavigationManager` fournit l’événement et les méthodes répertoriés dans le tableau suivant.
 
-| Member | Description |
+| Membre | Description |
 | ------ | ----------- |
 | `Uri` | Obtient l’URI absolu actuel. |
 | `BaseUri` | Obtient l’URI de base (avec une barre oblique finale) qui peut être ajouté aux chemins d’accès URI relatifs pour produire un URI absolu. En général, `BaseUri` correspond à l’attribut `href` sur l’élément `<base>` du document dans *wwwroot/index.html* (Blazor webassembly) ou *pages/_Host. cshtml* (serveurBlazor). |

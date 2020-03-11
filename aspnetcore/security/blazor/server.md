@@ -10,22 +10,22 @@ no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server
-ms.openlocfilehash: d87aac02137681e62cf8f5cbd4dc8b0be6f8431e
-ms.sourcegitcommit: cbd30479f42cbb3385000ef834d9c7d021fd218d
+ms.openlocfilehash: 61030f9b5beb849a7cf03571da425e49b144994c
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76146301"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78663351"
 ---
-# <a name="secure-aspnet-core-opno-locblazor-server-apps"></a>Sécuriser les applications ASP.NET Core Blazor Server
+# <a name="secure-aspnet-core-blazor-server-apps"></a>Sécuriser les applications de serveur ASP.NET Core éblouissantes
 
 Par [Javier Calvarro Nelson](https://github.com/javiercn)
 
-les applications serveur Blazor adoptent un modèle de traitement des données *avec état* , où le serveur et le client maintiennent une relation à long terme. L’état persistant est géré par un [circuit](xref:blazor/state-management)qui peut s’étendre sur des connexions qui sont également potentiellement durables.
+Les applications serveur éblouissantes adoptent un modèle de traitement des données *avec état* , où le serveur et le client maintiennent une relation à long terme. L’état persistant est géré par un [circuit](xref:blazor/state-management)qui peut s’étendre sur des connexions qui sont également potentiellement durables.
 
-Lorsqu’un utilisateur visite un site Blazor Server, le serveur crée un circuit dans la mémoire du serveur. Le circuit indique au navigateur le contenu à afficher et répond aux événements, par exemple lorsque l’utilisateur sélectionne un bouton dans l’interface utilisateur. Pour effectuer ces actions, un circuit appelle des fonctions JavaScript dans le navigateur de l’utilisateur et les méthodes .NET sur le serveur. Cette interaction JavaScript bidirectionnelle est connue sous le terme d’interopérabilité [JavaScript (JS Interop)](xref:blazor/javascript-interop).
+Lorsqu’un utilisateur visite un site de serveur éblouissant, le serveur crée un circuit dans la mémoire du serveur. Le circuit indique au navigateur le contenu à afficher et répond aux événements, par exemple lorsque l’utilisateur sélectionne un bouton dans l’interface utilisateur. Pour effectuer ces actions, un circuit appelle des fonctions JavaScript dans le navigateur de l’utilisateur et les méthodes .NET sur le serveur. Cette interaction JavaScript bidirectionnelle est connue sous le terme d’interopérabilité [JavaScript (JS Interop)](xref:blazor/call-javascript-from-dotnet).
 
-Étant donné que l’interopérabilité de JS a lieu sur Internet et que le client utilise un navigateur distant, Blazor applications serveur partagent la plupart des problèmes de sécurité des applications Web. Cette rubrique décrit les menaces courantes pour Blazor applications serveur et fournit des conseils sur l’atténuation des menaces axées sur les applications accessibles sur Internet.
+Étant donné que l’interopérabilité de JS a lieu sur Internet et que le client utilise un navigateur distant, les applications de serveur éblouissantes partagent la plupart des problèmes de sécurité des applications Web. Cette rubrique décrit les menaces courantes pour les applications serveur éblouissantes et fournit des conseils sur l’atténuation des menaces axées sur les applications accessibles sur Internet.
 
 Dans les environnements restreints, tels que les réseaux d’entreprise ou les intranets, quelques conseils d’atténuation :
 
@@ -36,27 +36,27 @@ Dans les environnements restreints, tels que les réseaux d’entreprise ou les 
 
 L’épuisement des ressources peut se produire lorsqu’un client interagit avec le serveur et oblige le serveur à consommer trop de ressources. Une consommation excessive des ressources affecte principalement :
 
-* [Processeur](#cpu)
+* [UC](#cpu)
 * [Mémoire](#memory)
 * [Connexions client](#client-connections)
 
 Les attaques par déni de service (DoS) cherchent généralement à épuiser les ressources d’une application ou d’un serveur. Toutefois, l’épuisement des ressources n’est pas nécessairement le résultat d’une attaque sur le système. Par exemple, les ressources limitées peuvent être épuisées en raison d’une demande élevée de l’utilisateur. DoS est abordé plus en détail dans la section [attaques par déni de service (dos)](#denial-of-service-dos-attacks) .
 
-Les ressources externes à l’infrastructure Blazor, telles que les bases de données et les handles de fichiers (utilisées pour lire et écrire des fichiers), peuvent également rencontrer une insuffisance de ressources. Pour plus d'informations, consultez <xref:performance/performance-best-practices>.
+Les ressources externes à l’infrastructure éblouissant, telles que les bases de données et les descripteurs de fichiers (utilisées pour lire et écrire des fichiers), peuvent également rencontrer une insuffisance des ressources. Pour plus d’informations, consultez <xref:performance/performance-best-practices>.
 
-### <a name="cpu"></a>Processeur
+### <a name="cpu"></a>UC
 
 L’épuisement du processeur peut se produire lorsqu’un ou plusieurs clients forcent le serveur à effectuer des tâches intensives du processeur.
 
-Prenons l’exemple d’une application Blazor Server qui calcule un *numéro Fibonnacci*. Un numéro Fibonnacci est généré à partir d’une séquence Fibonnacci, où chaque nombre de la séquence est la somme des deux nombres précédents. La quantité de travail nécessaire pour atteindre la réponse dépend de la longueur de la séquence et de la taille de la valeur initiale. Si l’application ne place pas de limites sur la demande d’un client, les calculs gourmands en ressources processeur peuvent dominer le temps de l’UC et réduire les performances des autres tâches. Une consommation excessive des ressources est un problème de sécurité qui a un impact sur la disponibilité.
+Par exemple, Imaginez une application de serveur éblouissant qui calcule un *numéro Fibonnacci*. Un numéro Fibonnacci est généré à partir d’une séquence Fibonnacci, où chaque nombre de la séquence est la somme des deux nombres précédents. La quantité de travail nécessaire pour atteindre la réponse dépend de la longueur de la séquence et de la taille de la valeur initiale. Si l’application ne place pas de limites sur la demande d’un client, les calculs gourmands en ressources processeur peuvent dominer le temps de l’UC et réduire les performances des autres tâches. Une consommation excessive des ressources est un problème de sécurité qui a un impact sur la disponibilité.
 
-L’épuisement de l’UC est un problème pour toutes les applications accessibles au public. Dans les applications Web standard, les demandes et les connexions expirent comme protection, mais les applications Blazor Server ne fournissent pas les mêmes protections. Blazor applications serveur doivent inclure des vérifications et des limites appropriées avant d’effectuer des tâches potentiellement gourmandes en ressources processeur.
+L’épuisement de l’UC est un problème pour toutes les applications accessibles au public. Dans les applications Web standard, les demandes et les connexions expirent comme protection, mais les applications serveur éblouissantes ne fournissent pas les mêmes protections. Les applications serveur éblouissantes doivent inclure des vérifications et des limites appropriées avant d’effectuer des tâches potentiellement gourmandes en ressources processeur.
 
 ### <a name="memory"></a>Mémoire
 
 L’épuisement de la mémoire peut se produire lorsqu’un ou plusieurs clients forcent le serveur à consommer une grande quantité de mémoire.
 
-Par exemple, Imaginez une application côté serveur Blazoravec un composant qui accepte et affiche une liste d’éléments. Si l’application Blazor ne place pas de limites sur le nombre d’éléments autorisés ou le nombre d’éléments rendus au client, le traitement et le rendu gourmands en mémoire peuvent dominer la mémoire du serveur jusqu’au point où les performances du serveur sont affectées. Le serveur peut se bloquer ou ralentir le point d’arrêt.
+Par exemple, considérez une application éblouissante côté serveur avec un composant qui accepte et affiche une liste d’éléments. Si l’application éblouissant ne place pas de limites sur le nombre d’éléments autorisés ou le nombre d’éléments rendus au client, le traitement et le rendu gourmands en mémoire peuvent dominer la mémoire du serveur jusqu’au point où les performances du serveur sont affectées. Le serveur peut se bloquer ou ralentir le point d’arrêt.
 
 Tenez compte du scénario suivant pour gérer et afficher une liste d’éléments qui se rapportent à un scénario potentiel d’épuisement de mémoire sur le serveur :
 
@@ -66,20 +66,20 @@ Tenez compte du scénario suivant pour gérer et afficher une liste d’élémen
   * Affiche uniquement les premiers 100 à 1 000 éléments et oblige l’utilisateur à entrer des critères de recherche pour rechercher des éléments au-delà des éléments affichés.
   * Pour un scénario de rendu plus avancé, implémentez des listes ou des grilles qui prennent en charge *la virtualisation*. À l’aide de la virtualisation, les listes affichent uniquement un sous-ensemble d’éléments actuellement visibles par l’utilisateur. Lorsque l’utilisateur interagit avec la barre de défilement dans l’interface utilisateur, le composant affiche uniquement les éléments requis pour l’affichage. Les éléments qui ne sont pas actuellement requis pour l’affichage peuvent être stockés dans le stockage secondaire, qui est l’approche idéale. Les éléments non affichés peuvent également être conservés en mémoire, ce qui est moins idéal.
 
-les applications serveur Blazor offrent un modèle de programmation similaire à d’autres infrastructures d’interface utilisateur pour les applications avec état, telles que WPF, Windows Forms ou Blazor webassembly. La principale différence réside dans le fait que dans plusieurs infrastructures d’interface utilisateur, la mémoire consommée par l’application appartient au client et affecte uniquement ce client individuel. Par exemple, une application Blazor webassembly s’exécute entièrement sur le client et utilise uniquement les ressources de mémoire du client. Dans le scénario de serveur Blazor, la mémoire consommée par l’application appartient au serveur et est partagée entre les clients sur l’instance de serveur.
+Les applications de serveur éblouissant offrent un modèle de programmation similaire à d’autres infrastructures d’interface utilisateur pour les applications avec état, telles que WPF, Windows Forms ou éblouissant webassembly. La principale différence réside dans le fait que dans plusieurs infrastructures d’interface utilisateur, la mémoire consommée par l’application appartient au client et affecte uniquement ce client individuel. Par exemple, une application de webassembly éblouissant s’exécute entièrement sur le client et utilise uniquement les ressources de mémoire du client. Dans le scénario de serveur éblouissant, la mémoire consommée par l’application appartient au serveur et est partagée entre les clients sur l’instance de serveur.
 
-Les demandes de mémoire côté serveur sont à prendre en compte pour toutes les applications Blazor Server. Toutefois, la plupart des applications Web sont sans État et la mémoire utilisée lors du traitement d’une demande est libérée lorsque la réponse est retournée. Comme recommandation générale, n’autorisez pas les clients à allouer une quantité de mémoire non liée comme dans toute autre application côté serveur qui conserve les connexions clientes. La mémoire consommée par une application Blazor Server persiste pendant une durée plus longue qu’une seule requête.
+Les demandes de mémoire côté serveur sont prises en compte pour toutes les applications de serveur éblouissantes. Toutefois, la plupart des applications Web sont sans État et la mémoire utilisée lors du traitement d’une demande est libérée lorsque la réponse est retournée. Comme recommandation générale, n’autorisez pas les clients à allouer une quantité de mémoire non liée comme dans toute autre application côté serveur qui conserve les connexions clientes. La mémoire consommée par une application de serveur éblouissante persiste pendant une durée plus longue qu’une seule requête.
 
 > [!NOTE]
 > Pendant le développement, un profileur peut être utilisé ou une trace capturée pour évaluer les demandes de mémoire des clients. Un profileur ou une trace ne capture pas la mémoire allouée à un client spécifique. Pour capturer l’utilisation de la mémoire d’un client spécifique lors du développement, capturez un vidage et examinez la demande de mémoire de tous les objets enracinés sur le circuit d’un utilisateur.
 
-### <a name="client-connections"></a>Connexions client
+### <a name="client-connections"></a>Connexions clientes
 
 L’épuisement de la connexion peut se produire lorsqu’un ou plusieurs clients ouvrent un nombre trop important de connexions simultanées au serveur, empêchant ainsi d’autres clients d’établir de nouvelles connexions.
 
-les clients Blazor établissent une connexion unique par session et maintiennent la connexion ouverte tant que la fenêtre du navigateur est ouverte. Les demandes sur le serveur de gestion de toutes les connexions ne sont pas spécifiques aux applications Blazor. Étant donné la nature persistante des connexions et la nature avec état des applications serveur Blazor, l’épuisement des connexions est un risque plus élevé pour la disponibilité de l’application.
+Les clients éblouissant établissent une seule connexion par session et maintiennent la connexion ouverte tant que la fenêtre du navigateur est ouverte. Les demandes sur le serveur de gestion de toutes les connexions ne sont pas spécifiques aux applications éblouissantes. Étant donné la nature persistante des connexions et la nature avec état des applications serveur éblouissantes, l’épuisement des connexions est un risque plus élevé pour la disponibilité de l’application.
 
-Par défaut, le nombre de connexions par utilisateur n’est pas limité pour une application Blazor Server. Si l’application requiert une limite de connexion, effectuez une ou plusieurs des approches suivantes :
+Par défaut, le nombre de connexions par utilisateur n’est pas limité pour une application de serveur éblouissante. Si l’application requiert une limite de connexion, effectuez une ou plusieurs des approches suivantes :
 
 * Exiger une authentification, ce qui limite naturellement la capacité des utilisateurs non autorisés à se connecter à l’application. Pour que ce scénario soit efficace, les utilisateurs doivent être empêchés d’approvisionner de nouveaux utilisateurs.
 * Limitez le nombre de connexions par utilisateur. La limitation des connexions peut être accomplie à l’aide des approches suivantes. Veillez à autoriser les utilisateurs légitimes à accéder à l’application (par exemple, lorsqu’une limite de connexion est établie en fonction de l’adresse IP du client).
@@ -87,14 +87,14 @@ Par défaut, le nombre de connexions par utilisateur n’est pas limité pour un
     * Extensibilité du routage du point de terminaison.
     * Exiger une authentification pour se connecter à l’application et suivre les sessions actives par utilisateur.
     * Rejeter les nouvelles sessions après avoir atteint une limite.
-    * Connexions proxy WebSocket à une application via l’utilisation d’un proxy, tel que le [service Azure SignalR](/azure/azure-signalr/signalr-overview) qui multiplexe les connexions entre les clients et une application. Cela permet à une application avec une capacité de connexion supérieure à celle qu’un client unique peut établir, ce qui empêche un client d’épuiser les connexions au serveur.
+    * Connexions proxy WebSocket à une application via l’utilisation d’un proxy, tel que le [service Azure signalr](/azure/azure-signalr/signalr-overview) , qui multiplexe les connexions entre les clients et une application. Cela permet à une application avec une capacité de connexion supérieure à celle qu’un client unique peut établir, ce qui empêche un client d’épuiser les connexions au serveur.
   * Au niveau du serveur : utilisez un proxy/une passerelle devant l’application. Par exemple, la [porte frontale Azure](/azure/frontdoor/front-door-overview) vous permet de définir, gérer et surveiller le routage global du trafic Web vers une application.
 
 ## <a name="denial-of-service-dos-attacks"></a>Attaques par déni de service (DoS)
 
-Les attaques par déni de service (DoS) impliquent un client qui oblige le serveur à épuiser une ou plusieurs de ses ressources, ce qui rend l’application indisponible. Blazor applications serveur incluent certaines limites par défaut et s’appuient sur d’autres limites de ASP.NET Core et de SignalR pour la protection contre les attaques par déni de session :
+Les attaques par déni de service (DoS) impliquent un client qui oblige le serveur à épuiser une ou plusieurs de ses ressources, ce qui rend l’application indisponible. Les applications de serveur éblouissantes incluent certaines limites par défaut et s’appuient sur d’autres ASP.NET Core et les limites Signalr pour se protéger contre les attaques par déni de session :
 
-| limite de l’application Blazor Server                            | Description | Valeur par défaut |
+| Limite de l’application du serveur éblouissant                            | Description | Default |
 | ------------------------------------------------------- | ----------- | ------- |
 | `CircuitOptions.DisconnectedCircuitMaxRetained`         | Nombre maximal de circuits déconnectés qu’un serveur donné détient en mémoire à la fois. | 100 |
 | `CircuitOptions.DisconnectedCircuitRetentionPeriod`     | Durée maximale pendant laquelle un circuit déconnecté est maintenu en mémoire avant d’être détruit. | 3 minutes |
@@ -102,7 +102,7 @@ Les attaques par déni de service (DoS) impliquent un client qui oblige le serve
 | `CircuitOptions.MaxBufferedUnacknowledgedRenderBatches` | Nombre maximal de lots de rendu sans accusé de réception le serveur conserve en mémoire par circuit à un moment donné pour prendre en charge une reconnexion fiable. Après avoir atteint la limite, le serveur cesse de produire de nouveaux lots de rendu jusqu’à ce qu’un ou plusieurs lots aient été reconnus par le client. | 10 |
 
 
-| limite de SignalR et de ASP.NET Core             | Description | Valeur par défaut |
+| Signalr et limite de ASP.NET Core             | Description | Default |
 | ------------------------------------------ | ----------- | ------- |
 | `CircuitOptions.MaximumReceiveMessageSize` | Taille de message pour un message individuel. | 32 Ko |
 
@@ -118,7 +118,7 @@ Un client interagit avec le serveur par le biais de la distribution d’événem
 Pour les appels de méthodes .NET à JavaScript :
 
 * Tous les appels ont un délai d’expiration configurable après lequel ils échouent, en retournant un <xref:System.OperationCanceledException> à l’appelant.
-  * Il y a un délai d’attente par défaut pour les appels (`CircuitOptions.JSInteropDefaultCallTimeout`) d’une minute. Pour configurer cette limite, consultez <xref:blazor/javascript-interop#harden-js-interop-calls>.
+  * Il y a un délai d’attente par défaut pour les appels (`CircuitOptions.JSInteropDefaultCallTimeout`) d’une minute. Pour configurer cette limite, consultez <xref:blazor/call-javascript-from-dotnet#harden-js-interop-calls>.
   * Un jeton d’annulation peut être fourni pour contrôler l’annulation pour chaque appel. S’appuyer sur le délai d’attente de l’appel par défaut lorsque cela est possible et lié au temps à un appel au client si un jeton d’annulation est fourni.
 * Le résultat d’un appel JavaScript ne peut pas être approuvé. Le Blazor client d’application s’exécutant dans le navigateur recherche la fonction JavaScript à appeler. La fonction est appelée, et le résultat ou une erreur est généré. Un client malveillant peut tenter d’effectuer les opérations suivantes :
   * Entraîner un problème dans l’application en renvoyant une erreur à partir de la fonction JavaScript.
@@ -126,7 +126,7 @@ Pour les appels de méthodes .NET à JavaScript :
 
 Prenez les précautions suivantes pour vous protéger contre les scénarios précédents :
 
-* Encapsulez les appels d’interopérabilité JS dans des instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour tenir compte des erreurs qui peuvent se produire pendant les appels. Pour plus d'informations, consultez <xref:blazor/handle-errors#javascript-interop>.
+* Encapsulez les appels d’interopérabilité JS dans des instructions [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) pour tenir compte des erreurs qui peuvent se produire pendant les appels. Pour plus d’informations, consultez <xref:blazor/handle-errors#javascript-interop>.
 * Validez les données retournées par les appels d’interopérabilité JS, y compris les messages d’erreur, avant d’entreprendre une action.
 
 ### <a name="net-methods-invoked-from-the-browser"></a>Méthodes .NET appelées à partir du navigateur
@@ -144,7 +144,7 @@ N’approuvez pas les appels de JavaScript aux méthodes .NET. Quand une méthod
   * Évitez de passer des données fournies par l’utilisateur dans des paramètres à des appels JavaScript. Si le passage de données dans des paramètres est absolument requis, assurez-vous que le code JavaScript gère le passage des données sans introduire de vulnérabilités [de script entre sites (XSS)](#cross-site-scripting-xss) . Par exemple, n’écrivez pas les données fournies par l’utilisateur dans le Document Object Model (DOM) en définissant la propriété `innerHTML` d’un élément. Envisagez d’utiliser la [stratégie de sécurité de contenu (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) pour désactiver les `eval` et d’autres primitives JavaScript non sûres.
 * Évitez d’implémenter la distribution personnalisée des appels .NET en plus de l’implémentation de la distribution du Framework. L’exposition de méthodes .NET au navigateur est un scénario avancé, qui n’est pas recommandé pour le développement Blazor général.
 
-### <a name="events"></a>Events
+### <a name="events"></a>Événements
 
 Les événements fournissent un point d’entrée à une application Blazor Server. Les mêmes règles de protection des points de terminaison dans les applications Web s’appliquent à la gestion des événements dans les applications Blazor Server. Un client malveillant peut envoyer toutes les données qu’il souhaite envoyer en tant que charge utile d’un événement.
 
@@ -348,7 +348,7 @@ Pour qu’une vulnérabilité XSS existe, l’application doit incorporer une en
 
 Dans le cadre de la protection contre les attaques XSS, envisagez d’implémenter des atténuations XSS, telles que la [stratégie de sécurité du contenu (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP).
 
-Pour plus d'informations, consultez <xref:security/cross-site-scripting>.
+Pour plus d’informations, consultez <xref:security/cross-site-scripting>.
 
 ### <a name="cross-origin-protection"></a>Protection Cross-Origin
 
@@ -357,7 +357,7 @@ Les attaques Cross-Origin impliquent un client à partir d’une origine différ
 * Il est possible d’accéder à des applications Blazor Server entre origines, sauf si des mesures supplémentaires sont prises pour l’empêcher. Pour désactiver l’accès Cross-Origin, désactivez CORS dans le point de terminaison en ajoutant l’intergiciel (middleware) CORS au pipeline et en ajoutant le `DisableCorsAttribute` aux métadonnées du point de terminaison Blazor ou limitez le jeu d’origines autorisées en [configurant SignalR pour le partage des ressources Cross-Origin](xref:signalr/security#cross-origin-resource-sharing).
 * Si CORS est activé, des étapes supplémentaires peuvent être nécessaires pour protéger l’application en fonction de la configuration CORS. Si CORS est activé globalement, CORS peut être désactivé pour le Hub Blazor Server en ajoutant les métadonnées `DisableCorsAttribute` aux métadonnées du point de terminaison après avoir appelé `hub.MapBlazorHub()`.
 
-Pour plus d'informations, consultez <xref:security/anti-request-forgery>.
+Pour plus d’informations, consultez <xref:security/anti-request-forgery>.
 
 ### <a name="click-jacking"></a>Prise de la clic
 
@@ -385,7 +385,7 @@ Ce Conseil s’applique également lors du rendu des liens dans le cadre de l’
 * Si possible, utilisez des liens relatifs.
 * Vérifiez que les destinations des liens absolus sont valides avant de les inclure dans une page.
 
-Pour plus d'informations, consultez <xref:security/preventing-open-redirects>.
+Pour plus d’informations, consultez <xref:security/preventing-open-redirects>.
 
 ## <a name="authentication-and-authorization"></a>Authentification et autorisation
 

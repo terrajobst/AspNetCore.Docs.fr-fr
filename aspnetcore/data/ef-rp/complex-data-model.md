@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/22/2019
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 411c0874d2b2c6ecadd1da9aff7a093f1e8e525a
-ms.sourcegitcommit: d2ba66023884f0dca115ff010bd98d5ed6459283
+ms.openlocfilehash: 1d81a0444487c6396bb32381ed2cb26d44312c3a
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77213426"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78665717"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -99,7 +99,7 @@ L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace
 [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
 ```
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de tables Student en double-cliquant sur la table **Student**.
 
@@ -107,7 +107,7 @@ Dans **l’Explorateur d’objets SQL Server** (SSOX), ouvrez le concepteur de t
 
 L’image précédente montre le schéma pour la table `Student`. Les champs de nom sont de type `nvarchar(MAX)`. Quand une migration est créée et appliquée plus loin dans ce tutoriel, les champs de nom deviennent `nvarchar(50)` en raison des attributs de longueur de chaîne.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Dans votre outil SQLite, examinez les définitions de colonne pour la table `Student`. Les champs de nom sont de type `Text`. Notez que le champ de prénom (« first name ») est appelé `FirstMidName`. Dans la section suivante, vous allez remplacer le nom de cette colonne par `FirstName`.
 
@@ -132,7 +132,7 @@ Avec l’attribut `[Column]`, dans le modèle de données, `Student.FirstMidName
 [Required]
 ```
 
-L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types qui n’autorisent pas les valeurs Null comme les types valeur (par exemple, `DateTime`, `int` et `double`). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs requis.
+L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types qui n’autorisent pas les valeurs Null comme les types valeur (par exemple, `DateTime`, `int` et `double`). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
 
 L'attribut `Required` doit être utilisé avec `MinimumLength` pour appliquer `MinimumLength`.
 
@@ -157,7 +157,7 @@ L’attribut `Display` indique que la légende des zones de texte doit être «�
 
 Exécutez l’application et accédez à la page des étudiants. une exception soit levée ; En raison de l’attribut `[Column]`, EF s’attend à trouver une colonne nommée `FirstName`, mais le nom de la colonne dans la base de données est toujours `FirstMidName`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Le message d’erreur est semblable à l’exemple suivant :
 
@@ -187,7 +187,7 @@ SqlException: Invalid column name 'FirstName'.
 
   Avant l’application de la migration, les colonnes de noms étaient de type [nvarchar(MAX)](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql). Les colonnes de nom sont maintenant `nvarchar(50)`. Le nom de la colonne est passé de `FirstMidName` à `FirstName`.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Le message d’erreur est semblable à l’exemple suivant :
 
@@ -283,7 +283,7 @@ public int InstructorID { get; set; }
 
 Par défaut, EF Core traite la clé comme n’étant pas générée par la base de données, car la colonne est utilisée pour une relation d’identification.
 
-### <a name="the-instructor-navigation-property"></a>Propriété de navigation du formateur
+### <a name="the-instructor-navigation-property"></a>Propriété de navigation Instructor
 
 La propriété de navigation `Instructor.OfficeAssignment` peut avoir la valeur null, car il n’est pas certain qu’il existe une ligne `OfficeAssignment` pour un formateur donné. Un formateur peut ne pas avoir d’affectation de bureau.
 
@@ -333,7 +333,7 @@ public int DepartmentID { get; set; }
 public Department Department { get; set; }
 ```
 
-Un cours peut avoir un nombre quelconque d’étudiants inscrits, si bien que la propriété de navigation `Enrollments` est une collection :
+Un cours pouvant avoir un nombre quelconque d’étudiants inscrits, la propriété de navigation `Enrollments` est une collection :
 
 ```csharp
 public ICollection<Enrollment> Enrollments { get; set; }
@@ -382,7 +382,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
+Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -536,7 +536,7 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 Créez le projet.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans PMC, exécutez la commande suivante.
 
@@ -561,7 +561,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 
 Dans la section suivante, vous allez voir comment traiter cette erreur.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Si vous ajoutez une migration et exécutez la commande `database update`, l’erreur suivante se produit :
 
@@ -591,7 +591,7 @@ Les deux options fonctionnent pour SQL Server. Bien que la méthode d’applicat
 
 Pour forcer EF Core à créer une base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -606,7 +606,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
   Update-Database
   ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier de projet contient le fichier *ContosoUniversity.csproj*.
 
@@ -627,7 +627,7 @@ Pour forcer EF Core à créer une base de données, supprimez et mettez à jour 
 
 Exécutez l'application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Ouvrez la base de données dans SSOX :
 
@@ -643,7 +643,7 @@ Ouvrez la base de données dans SSOX :
 
   ![Données CourseAssignment dans SSOX](complex-data-model/_static/ssox-ci-data.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Utilisez votre outil SQLite pour examiner la base de données :
 
@@ -691,7 +691,7 @@ La façon de gérer la situation présentée ici est simplifiée pour ce tutorie
 * Comprendrait du code ou des scripts pour ajouter des lignes `Department` et des lignes `Course` associées aux nouvelles lignes `Department`.
 * N’utiliserait pas le département « Temp » ou la valeur par défaut pour `Course.DepartmentID`.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -701,7 +701,7 @@ La façon de gérer la situation présentée ici est simplifiée pour ce tutorie
 
 La méthode `DbInitializer.Initialize` étant conçue pour fonctionner uniquement avec une base de données vide, utilisez SSOX pour supprimer toutes les lignes des tables Student et Course. (La suppression en cascade s’occupe de la table Enrollment)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * Si vous utilisez la Base de données locale SQL Server base avec Visual Studio Code, exécutez la commande suivante :
 
@@ -735,7 +735,7 @@ Les classes d’entité pour le modèle de données final sont présentées dans
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
 Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](
-https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="customize-the-data-model-with-attributes"></a>Personnaliser le modèle de données avec des attributs
 
@@ -830,14 +830,14 @@ Pour mettre à jour la base de données
 * Créez le projet.
 * Ouvrez une fenêtre de commande dans le dossier du projet. Entrez les commandes suivantes pour créer une migration et mettre à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ColumnFirstName
 Update-Database
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ColumnFirstName
@@ -876,7 +876,7 @@ Mettez à jour *Models/Student.cs* avec le code suivant :
 
 ### <a name="the-required-attribute"></a>Attribut Required
 
-L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types non nullables tels que les types valeur (`DateTime`, `int`, `double` et ainsi de suite). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs requis.
+L’attribut `Required` fait des propriétés de nom des champs obligatoires. L’attribut `Required` n’est pas nécessaire pour les types non nullables tels que les types valeur (`DateTime`, `int`, `double` et ainsi de suite). Les types qui n’acceptent pas les valeurs Null sont traités automatiquement comme des champs obligatoires.
 
 L’attribut `Required` peut être remplacé par un paramètre de longueur minimale dans l’attribut `StringLength` :
 
@@ -963,7 +963,7 @@ public int InstructorID { get; set; }
 
 Par défaut, EF Core traite la clé comme n’étant pas générée par la base de données, car la colonne est utilisée pour une relation d’identification.
 
-### <a name="the-instructor-navigation-property"></a>Propriété de navigation du formateur
+### <a name="the-instructor-navigation-property"></a>Propriété de navigation Instructor
 
 La propriété de navigation `OfficeAssignment` pour l’entité `Instructor` est nullable car :
 
@@ -1030,7 +1030,7 @@ public int DepartmentID { get; set; }
 public Department Department { get; set; }
 ```
 
-Un cours peut avoir un nombre quelconque d’étudiants inscrits, si bien que la propriété de navigation `Enrollments` est une collection :
+Un cours pouvant avoir un nombre quelconque d’étudiants inscrits, la propriété de navigation `Enrollments` est une collection :
 
 ```csharp
 public ICollection<Enrollment> Enrollments { get; set; }
@@ -1079,7 +1079,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
+Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -1244,13 +1244,13 @@ Le code précédent fournit des données de valeur initiale pour les nouvelles e
 
 Créez le projet.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ```powershell
 Add-Migration ComplexDataModel
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```dotnetcli
 dotnet ef migrations add ComplexDataModel
@@ -1286,7 +1286,7 @@ Disposant à présent d’une base de données, vous devez réfléchir à la fa�
 
 Le code dans le `DbInitializer` mis à jour ajoute des données de valeur initiale pour les nouvelles entités. Pour forcer EF Core à créer une autre base de données, supprimez et mettez à jour la base de données :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Dans la **console du Gestionnaire de package**, exécutez la commande suivante :
 
@@ -1297,7 +1297,7 @@ Update-Database
 
 Exécutez `Get-Help about_EntityFrameworkCore` à partir de la console du Gestionnaire de package pour obtenir des informations d’aide.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ouvrez une fenêtre de commande et accédez au dossier du projet. Le dossier du projet contient le fichier *Startup.cs*.
 

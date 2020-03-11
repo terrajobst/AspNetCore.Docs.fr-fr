@@ -7,24 +7,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 8d878d692f0488f99385b0bd6944fc6cd276c306
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: e3249df4b7388beeff13fe4b4e0ff481c35725c5
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355681"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667656"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), [Luke Latham](https://github.com/guardrex) et [Steve Smith](https://ardalis.com)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) et [Steve Smith](https://ardalis.com)
 
-La classe `Startup` configure des services et le pipeline de requête de l’application.
+La classe `Startup` configure les services et le pipeline de demande de l’application.
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="the-startup-class"></a>Classe Startup
 
-Les applications ASP.NET Core utilisent une classe `Startup`, appelée `Startup` par convention. Classe `Startup` :
+Les applications ASP.NET Core utilisent une classe de `Startup`, qui est nommée `Startup` par convention. La classe `Startup` :
 
 * Inclut éventuellement une méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> pour configurer les *services* de l’application. Un service est un composant réutilisable qui fournit une fonctionnalité d’application. Les services sont *inscrits* dans `ConfigureServices` et utilisés dans toute l’application via l' [injection de dépendances (DI)](xref:fundamentals/dependency-injection) ou <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 * Inclut une méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> pour créer le pipeline de traitement des requêtes de l’application.
@@ -54,7 +54,7 @@ La plupart des services ne sont pas disponibles tant que la méthode `Configure`
 
 ### <a name="multiple-startup"></a>Démarrage multiple
 
-Quand l’application définit différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et qu’elle inclut à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+Quand l’application définit différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
 Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamentals/index#host). Pour plus d’informations sur la gestion des erreurs lors du démarrage, consultez [Gestion des exceptions de démarrage](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -62,7 +62,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* Option facultative.
+* facultatif.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
@@ -72,7 +72,7 @@ Pour les fonctionnalités qui nécessitent une configuration importante, il exis
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/StartupIdentity.cs?name=snippet)]
 
-L’ajout de services au conteneur de service les rend disponibles dans l’application et dans la méthode `Configure`. Les services sont résolus via l’[injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
+L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services sont résolus via l’[injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 
 ## <a name="the-configure-method"></a>Méthode Configure
 
@@ -143,7 +143,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Ajouter la configuration au démarrage à partir d’un assembly externe
 
-Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
+Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -159,7 +159,7 @@ Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> perme
 
 ## <a name="the-startup-class"></a>Classe Startup
 
-Les applications ASP.NET Core utilisent une classe `Startup`, appelée `Startup` par convention. Classe `Startup` :
+Les applications ASP.NET Core utilisent une classe de `Startup`, qui est nommée `Startup` par convention. La classe `Startup` :
 
 * Inclut éventuellement une méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> pour configurer les *services* de l’application. Un service est un composant réutilisable qui fournit une fonctionnalité d’application. Les services sont *inscrits* dans `ConfigureServices` et utilisés dans toute l’application via l' [injection de dépendances (DI)](xref:fundamentals/dependency-injection) ou <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 * Inclut une méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> pour créer le pipeline de traitement des requêtes de l’application.
@@ -186,7 +186,7 @@ La plupart des services ne sont pas disponibles tant que la méthode `Configure`
 
 ### <a name="multiple-startup"></a>Démarrage multiple
 
-Quand l’application définit différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et qu’elle inclut à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+Quand l’application définit différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
 Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamentals/index#host). Pour plus d’informations sur la gestion des erreurs lors du démarrage, consultez [Gestion des exceptions de démarrage](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -194,7 +194,7 @@ Pour plus d’informations sur l’hôte, consultez [L’hôte](xref:fundamental
 
 La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> est :
 
-* Option facultative.
+* facultatif.
 * Appelée par l’hôte avant la méthode `Configure` pour configurer les services de l’application
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
@@ -204,9 +204,9 @@ Pour les fonctionnalités qui nécessitent une configuration importante, il exis
 
 [!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
-L’ajout de services au conteneur de service les rend disponibles dans l’application et dans la méthode `Configure`. Les services sont résolus via l’[injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
+L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services sont résolus via l’[injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
 
-Pour plus d’informations sur `SetCompatibilityVersion`, voir [SetCompatibilityVersion](xref:mvc/compatibility-version).
+Pour plus d’informations sur [, voir ](xref:mvc/compatibility-version)SetCompatibilityVersion`SetCompatibilityVersion`.
 
 ## <a name="the-configure-method"></a>Méthode Configure
 
@@ -220,7 +220,7 @@ Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeli
 * [Redirection HTTPS](xref:security/enforcing-ssl)
 * [Fichiers statiques](xref:fundamentals/static-files)
 * ASP.NET Core [MVC](xref:mvc/overview) et [Razor Pages](xref:razor-pages/index)
-* [RGPD (règlement général sur la protection des données)](xref:security/gdpr)
+* [Règlement Général sur la Protection des Données (RGPD)](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]
 
@@ -275,7 +275,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Ajouter la configuration au démarrage à partir d’un assembly externe
 
-Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
+Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

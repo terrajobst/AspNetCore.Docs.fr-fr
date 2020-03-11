@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 uid: aspnetcore-2.0
-ms.openlocfilehash: 9d1e1b1154113b8825f4d0faf0f4552b8bd22287
-ms.sourcegitcommit: 7dfe6cc8408ac6a4549c29ca57b0c67ec4baa8de
+ms.openlocfilehash: 5ca43bab1496aa9fda65282cbb0b1177ad8689eb
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75828423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78667257"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -48,7 +48,7 @@ Le métapackage `Microsoft.AspNetCore.All` cible .NET Core 2.0 uniquement, car i
 
 Une instance de `IConfiguration` est ajoutée au conteneur de services par défaut dans ASP.NET Core 2.0. Quand `IConfiguration` est dans le conteneur de services, il est plus facile pour les applications de récupérer des valeurs de configuration à partir du conteneur.
 
-Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/3387).
+Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/3387).
 
 ## <a name="logging-update"></a>Mise à jour de la journalisation
 
@@ -62,7 +62,7 @@ Un nouveau modèle d’authentification simplifie la configuration de l’authen
 
 De nouveaux modèles sont disponibles pour configurer l’authentification pour les applications web et les API web à l’aide de [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/).
 
-Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/3054).
+Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/3054).
 
 ## <a name="identity-update"></a>Mise à jour d’Identity
 
@@ -80,7 +80,7 @@ Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knoc
 
 ## <a name="kestrel-improvements"></a>Améliorations apportées à Kestrel
 
-Le serveur web Kestrel offre de nouvelles fonctionnalités qui le rendent plus adapté en tant que serveur connecté à Internet. Plusieurs options de configuration de contrainte de serveur ont été ajoutées à la nouvelle propriété `Limits` de la classe `KestrelServerOptions`. Ajoutez des limites pour les éléments suivants :
+Le serveur web Kestrel offre de nouvelles fonctionnalités qui le rendent plus adapté en tant que serveur connecté à Internet. Plusieurs options de configuration de contrainte de serveur ont été ajoutées à la nouvelle propriété `KestrelServerOptions` de la classe `Limits`. Ajoutez des limites pour les éléments suivants :
 
 * Nombre maximale de connexions client
 * Taille maximale du corps de la requête
@@ -114,7 +114,7 @@ Les environnements d’hébergement peuvent désormais injecter des dépendances
 
 Dans ASP.NET Core 2.0, cette fonctionnalité est utilisée pour activer automatiquement les diagnostics Application Insights lors du débogage dans Visual Studio et (après vous être inscrit) lors de l’exécution dans Azure App Services. Par conséquent, les modèles de projet n’ajoutent plus de code et de packages Application Insights par défaut.
 
-Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/3389).
+Pour plus d’informations sur l’état de la documentation planifiée, consultez le [problème GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/3389).
 
 ## <a name="automatic-use-of-anti-forgery-tokens"></a>Utilisation automatique des jetons anti-contrefaçon
 
@@ -142,12 +142,12 @@ Pour plus d’informations sur l’état des fonctionnalités de C# 7.1, consult
 
 * [Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core](xref:host-and-deploy/visual-studio-publish-profiles)
 * [Gestion des clés](xref:security/data-protection/implementation/key-management)
-* [Configurer l’authentification Facebook](xref:security/authentication/facebook-logins)
-* [Configurer l’authentification Twitter](xref:security/authentication/twitter-logins)
-* [Configurer l’authentification Google](xref:security/authentication/google-logins)
+* [Comment configurer votre application App Service de manière à utiliser la connexion via Facebook](xref:security/authentication/facebook-logins)
+* [Comment configurer votre application App Service de manière à utiliser la connexion via Twitter](xref:security/authentication/twitter-logins)
+* [Comment configurer votre application App Service de manière à utiliser la connexion via Google](xref:security/authentication/google-logins)
 * [Configurer l’authentification de compte Microsoft](xref:security/authentication/microsoft-logins)
 
-## <a name="migration-guidance"></a>Conseils de migration
+## <a name="migration-guidance"></a>Recommandations en matière de migration
 
 Pour obtenir des conseils sur la migration d’applications ASP.NET Core 1.x vers ASP.NET Core 2.0, consultez les ressources suivantes :
 
