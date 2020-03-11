@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 10/14/2016
 uid: fundamentals/request-features
 ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
-ms.translationtype: HT
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78659676"
 ---
 # <a name="request-features-in-aspnet-core"></a>Fonctionnalités de requête dans ASP.NET Core
 
@@ -63,12 +63,12 @@ De plus, l’intergiciel peut effectuer des ajouts à la collection de fonctionn
 
 La combinaison d’implémentations de serveurs personnalisées et d’améliorations spécifiques de l’intergiciel permet de construire l’ensemble précis de fonctionnalités qu’exige une application. Cela permet d’ajouter les fonctionnalités manquantes sans nécessiter un changement de serveur, et de s’assurer que seule la quantité minimale de fonctionnalités sont exposées, ce qui limite la zone de surface d’attaque et améliore les performances.
 
-## <a name="summary"></a>Récapitulatif
+## <a name="summary"></a>Résumé
 
 Les interfaces de fonctionnalités définissent des fonctionnalités HTTP spécifiques qu’une requête donnée peut prendre en charge. Les serveurs définissent des collections de fonctionnalités et l’ensemble initial de fonctionnalités prises en charge par ce serveur, mais il est possible d’utiliser un intergiciel pour améliorer ces fonctionnalités.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Serveurs](xref:fundamentals/servers/index)
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
+* [Middleware](xref:fundamentals/middleware/index)
 * [OWIN (Open Web Interface pour .NET)](xref:fundamentals/owin)

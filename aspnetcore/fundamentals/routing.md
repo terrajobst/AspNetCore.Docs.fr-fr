@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 5e3ff65420b3c6769d52f8b96c216043cb1fdc1a
-ms.sourcegitcommit: eca76bd065eb94386165a0269f1e95092f23fa58
+ms.openlocfilehash: 113bb79318283e814c0e64ad4dc9d193282f0c52
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76727009"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78664926"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -25,7 +25,7 @@ Le routage est chargé de mapper les URI de requête aux points de terminaison e
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans Razor Pages, consultez <xref:razor-pages/razor-pages-conventions>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -374,9 +374,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -578,7 +578,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 
@@ -709,7 +709,7 @@ Pour plus d’informations sur le routage basé sur <xref:Microsoft.AspNetCore.R
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans Razor Pages, consultez <xref:razor-pages/razor-pages-conventions>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -1035,9 +1035,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -1239,7 +1239,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 
@@ -1285,7 +1285,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans Razor Pages, consultez <xref:razor-pages/razor-pages-conventions>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -1487,9 +1487,9 @@ Le tableau suivant montre les réponses avec les URI donnés.
 
 | URI                    | response                                          |
 | ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
-| `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
-| `/package/track/-3/`   | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
+| `/package/create/3`    | Hello! Valeurs de route : [operation, create], [id, 3] |
+| `/package/track/-3`    | Hello! Valeurs de route : [operation, track], [id, -3] |
+| `/package/track/-3/`   | Hello! Valeurs de route : [operation, track], [id, -3] |
 | `/package/track/`      | La requête passe à travers ceci, aucune correspondance.              |
 | `GET /hello/Joe`       | Hi, Joe!                                          |
 | `POST /hello/Joe`      | La requête passe à travers ceci, correspondance seulement avec HTTP GET. |
@@ -1655,7 +1655,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de &mdash; est utilisée.
 

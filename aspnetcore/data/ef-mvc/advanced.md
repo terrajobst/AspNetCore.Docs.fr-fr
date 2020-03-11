@@ -7,18 +7,18 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: abea9b189861954533b24cb73650af41952d1a86
-ms.sourcegitcommit: 57b85708f4cded99b8f008a69830cb104cd8e879
+ms.openlocfilehash: fc6f8d8c4ab09848cf316be2e522bf5ce3b9ac76
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75914114"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78657037"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>Didacticiel : en savoir plus sur les scénarios avancés-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez implémenté l’héritage TPH (table par hiérarchie). Ce didacticiel présente plusieurs rubriques qu’il est utile de connaître lorsque vous allez au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 
-Dans ce didacticiel, vous allez effectuer les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Exécuter des requêtes SQL brutes
@@ -31,7 +31,7 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 > * En savoir plus sur le code source et les plans de développement EF Core
 > * Apprendre à utiliser du code dynamique LINQ pour simplifier le code
 
-## <a name="prerequisites"></a>Configuration requise
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Implémenter l’héritage](inheritance.md)
 
@@ -103,7 +103,7 @@ Exécutez la méthode `UpdateCourseCredits` en sélectionnant l’onglet **Cours
 
 ![Page de mise à jour des crédits de cours](advanced/_static/update-credits.png)
 
-Cliquez sur **Mettre à jour**. Vous voyez le nombre de lignes affectées :
+Cliquez sur **Update**. Vous voyez le nombre de lignes affectées :
 
 ![Page de mise à jour des crédits de cours – lignes affectées](advanced/_static/update-credits-rows-affected.png)
 
@@ -142,7 +142,7 @@ INNER JOIN (
 ORDER BY [t].[ID]
 ```
 
-Vous pouvez remarquer ici quelque chose susceptible de vous surprendre : l’instruction SQL sélectionne jusqu’à 2 lignes (`TOP(2)`) à partir de la table Person. La méthode `SingleOrDefaultAsync` ne se résout pas à 1 ligne sur le serveur. En voici les raisons :
+Vous pouvez remarquer ici quelque chose susceptible de vous surprendre : l’instruction SQL sélectionne jusqu’à 2 lignes (`TOP(2)`) à partir de la table Person. La méthode `SingleOrDefaultAsync` ne se résout pas à 1 ligne sur le serveur. Voici pourquoi :
 
 * Si la requête retourne plusieurs lignes, la méthode retourne la valeur Null.
 * Pour déterminer si la requête retourne plusieurs lignes, EF doit vérifier s’il retourne au moins 2.
@@ -203,7 +203,7 @@ Tom Dykstra et Rick Anderson (twitter @RickAndMSFT) ont rédigé ce didacticiel.
 
 <a id="common-errors"></a>
 
-## <a name="troubleshoot-common-errors"></a>Résoudre les erreurs courantes
+## <a name="troubleshoot-common-errors"></a>Résolution des erreurs courantes
 
 ### <a name="contosouniversitydll-used-by-another-process"></a>ContosoUniversity.dll est utilisé par un autre processus
 
@@ -217,7 +217,7 @@ Arrêtez le site dans IIS Express. Accédez à la barre d’état système de Wi
 
 ### <a name="migration-scaffolded-with-no-code-in-up-and-down-methods"></a>Migration structurée sans code dans les méthodes Up et Down
 
-Cause possible :
+Cause probable :
 
 Les commandes CLI d’EF ne ferment et n’enregistrent pas automatiquement des fichiers de code. Si vous avez des modifications non enregistrées lorsque vous exécutez la commande `migrations add`, EF ne trouve pas vos modifications.
 
@@ -241,9 +241,9 @@ dotnet ef database drop
 
 ### <a name="error-locating-sql-server-instance"></a>Erreur lors de la localisation de l’instance SQL Server
 
-Message d'erreur :
+Message d’erreur :
 
-> Une erreur liée au réseau ou spécifique à l’instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou n’est pas accessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. (fournisseur : interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
+> Une erreur liée au réseau ou propre à une instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou inaccessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions à distance. (fournisseur : interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
 
 Solution :
 
@@ -251,7 +251,7 @@ Vérifiez la chaîne de connexion. Si vous avez supprimé manuellement le fichie
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -261,9 +261,9 @@ Pour plus d’informations sur le déploiement d’une application web, consulte
 
 Pour plus d’informations sur les autres rubriques associées à ASP.NET Core MVC, par exemple l’authentification et l’autorisation, consultez <xref:index>.
 
-## <a name="next-steps"></a>Étapes suivantes :
+## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous allez effectuer les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Exécuter des requêtes SQL brutes

@@ -1,5 +1,5 @@
 ---
-title: 'Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core'
+title: 'Didacticiel : implémenter la fonctionnalité CRUD-ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 author: rick-anderson
 ms.author: riande
@@ -7,21 +7,21 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: f0c5bcff4c4b0808f9b4703e1429c3a6d1a7a2d7
-ms.sourcegitcommit: 7d3c6565dda6241eb13f9a8e1e1fd89b1cfe4d18
+ms.openlocfilehash: 2aa4ef48509b9a34f3b25eb657b1ecac51c1374b
+ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72259720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78656862"
 ---
-# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Didacticiel : implémenter la fonctionnalité CRUD-ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez créé une application MVC qui stocke et affiche les données en utilisant Entity Framework et SQL Server LocalDB. Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 
 > [!NOTE]
 > Il est courant d’implémenter le modèle de référentiel pour créer une couche d’abstraction entre votre contrôleur et la couche d’accès aux données. Pour conserver ces didacticiels simples et orientés vers l’apprentissage de l’utilisation d’Entity Framework proprement dit, ils n’utilisent pas de référentiels. Pour plus d’informations sur les référentiels avec EF, consultez [le dernier didacticiel de cette série](advanced.md).
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnaliser la page Details
@@ -30,7 +30,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Mettre à jour la page Delete
 > * Fermer les connexions de base de données
 
-## <a name="prerequisites"></a>Prérequis
+## <a name="prerequisites"></a>Conditions préalables requises
 
 * [Bien démarrer avec EF Core et ASP.NET Core MVC](intro.md)
 
@@ -42,11 +42,11 @@ Dans *Controllers/StudentsController.cs*, la méthode d’action pour la vue Det
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
-Les méthodes `Include` et `ThenInclude` font que le contexte charge la propriété de navigation `Student.Enrollments` et dans chaque inscription, la propriété de navigation `Enrollment.Course`.  Vous découvrirez plus d’informations sur ces méthodes dans le tutoriel sur [la lecture des données associées](read-related-data.md).
+Les méthodes `Include` et `ThenInclude` provoquent le chargement par le contexte de la propriété de navigation `Student.Enrollments` et, dans chaque inscription, le chargement de la propriété de navigation `Enrollment.Course`.  Vous découvrirez plus d’informations sur ces méthodes dans le tutoriel sur [la lecture des données associées](read-related-data.md).
 
 La méthode `AsNoTracking` améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour pendant la durée de vie du contexte actif. Vous pouvez découvrir plus d’informations sur `AsNoTracking` à la fin de ce didacticiel.
 
-### <a name="route-data"></a>Données de route
+### <a name="route-data"></a>Données de routage
 
 La valeur de clé qui est passée à la méthode `Details` provient des *données de route*. Les données de route sont des données que le classeur de modèles a trouvées dans un segment de l’URL. Par exemple, la route par défaut spécifie les segments contrôleur, action et ID :
 
@@ -58,7 +58,7 @@ Dans l’URL suivante, la route par défaut mappe Instructor en tant que contrô
 http://localhost:1230/Instructor/Index/1?courseID=2021
 ```
 
-La dernière partie de l’URL (« ?courseID=2021 ») est une valeur de chaîne de requête. Le classeur de modèles passe aussi la valeur d’ID au paramètre `id` de la méthode `Index` si vous le passez en tant que valeur de chaîne de requête :
+La dernière partie de l’URL (« ?courseID=2021 ») est une valeur de chaîne de requête. Le classeur de modèles passe aussi la valeur d’ID au paramètre `Index` de la méthode `id` si vous le passez en tant que valeur de chaîne de requête :
 
 ```
 http://localhost:1230/Instructor/Index?id=1&CourseID=2021
@@ -104,7 +104,7 @@ Si l’indentation du code est incorrecte une fois le code collé, appuyez sur C
 
 Ce code parcourt en boucle les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. Vous voyez la liste des cours et des notes de l’étudiant sélectionné :
+Exécutez l’application, sélectionnez l'onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. Vous voyez la liste des cours et des notes de l’étudiant sélectionné :
 
 ![Page Details pour les étudiants](crud/_static/student-details.png)
 
@@ -139,7 +139,7 @@ public class Student
 }
 ```
 
-Même si vous n’avez pas de champ `Secret` dans la page web, un hacker pourrait utiliser un outil comme Fiddler, ou écrire du JavaScript, pour envoyer une valeur de formulaire pour `Secret`. Sans l’attribut `Bind` limitant les champs utilisés par le classeur de modèles quand il crée une instance de Student, le classeur de modèles choisit la valeur de formulaire pour `Secret` et l’utilise pour créer l’instance de l’entité Student. Ensuite, la valeur spécifiée par le hacker pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs du formulaire envoyé.
+Même si vous n’avez pas de champ `Secret` dans la page web, un hacker pourrait utiliser un outil comme Fiddler, ou écrire du JavaScript, pour envoyer une valeur de formulaire pour `Secret`. Sans l’attribut `Bind` limitant les champs utilisés par le classeur de modèles quand il crée une instance de Student, le classeur de modèles choisit la valeur de formulaire pour `Secret` et l’utilise pour créer l’instance de l’entité Student. Ensuite, la valeur spécifiée par le hacker pour le champ de formulaire `Secret`, quelle qu’elle soit, est mise à jour dans la base de données. L’illustration suivante montre l’outil Fiddler en train d’ajouter le champ `Secret` (avec la valeur « OverPost ») aux valeurs de formulaire publiées.
 
 ![Fiddler ajoutant le champ Secret](crud/_static/fiddler.png)
 
@@ -155,7 +155,7 @@ Le code dans *Views/Students/Create.cshtml* utilise les tag helpers `label`, `in
 
 Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur **Create New**.
 
-Entrez des noms et une date. Si votre navigateur vous le permet, essayez d’entrer une date non valide. (Certains navigateurs vous obligent à utiliser un sélecteur de dates.) Cliquez ensuite sur **Create** pour voir le message d’erreur.
+Entrez des noms et une date. Si votre navigateur vous le permet, essayez d’entrer une date non valide. (Certains navigateurs vous obligent à utiliser un sélecteur de dates.) Cliquez ensuite sur **créer** pour afficher le message d’erreur.
 
 ![Erreur de validation de date](crud/_static/date-error.png)
 
@@ -169,7 +169,7 @@ Changez la date en une valeur valide, puis cliquez sur **Create** pour voir appa
 
 Dans *StudentController.cs*, la méthode HttpGet `Edit` (celle sans l’attribut `HttpPost`) utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans la méthode `Details`. Vous n’avez pas besoin de modifier cette méthode.
 
-### <a name="recommended-httppost-edit-code-read-and-update"></a>Code HttpPost Edit recommandé : Lire et mettre à jour
+### <a name="recommended-httppost-edit-code-read-and-update"></a>Code HttpPost Edit recommandé : lire et mettre à jour
 
 Remplacez la méthode d’action HttpPost Edit par le code suivant.
 
@@ -179,7 +179,7 @@ Ces modifications implémentent une bonne pratique de sécurité pour empêcher 
 
 Le nouveau code lit l’entité existante et appelle `TryUpdateModel` pour mettre à jour les champs dans l’entité récupérée [en fonction de l’entrée d’utilisateur dans les données du formulaire envoyé](xref:mvc/models/model-binding). Le suivi automatique des modifications d’Entity Framework définit l’indicateur `Modified` sur les champs qui sont modifiés via une entrée dans le formulaire. Quand la méthode `SaveChanges` est appelée, Entity Framework crée des instructions SQL pour mettre à jour la ligne de la base de données. Les conflits d’accès concurrentiel sont ignorés, et seules les colonnes de table qui ont été mises à jour par l’utilisateur sont mises à jour dans la base de données. (Un didacticiel suivant montre comment gérer les conflits d’accès concurrentiel.)
 
-Au titre de bonne pratique pour empêcher la survalidation, les champs dont vous voulez qu’ils puissent être mis à jour par la page **Edit** sont placés en liste verte dans les paramètres de `TryUpdateModel`. (La chaîne vide précédant la liste de champs dans la liste de paramètres est pour un préfixe à utiliser avec les noms des champs du formulaire.) Actuellement, vous ne protégez aucun champ supplémentaire, mais le fait de répertorier les champs que vous voulez que le classeur de modèles lie garantit que si vous ajoutez ultérieurement des champs au modèle de données, ils seront automatiquement protégés jusqu’à ce que vous les ajoutiez explicitement ici.
+Au titre de bonne pratique pour empêcher la survalidation, les champs dont vous voulez qu’ils puissent être mis à jour par la page **Edit** sont placés en liste verte dans les paramètres de `TryUpdateModel`. (La chaîne vide qui précède la liste de champs dans la liste de paramètres correspond à un préfixe à utiliser avec les noms de champs de formulaire.) Actuellement, il n’y a aucun champ supplémentaire que vous protégez, mais la liste des champs que vous souhaitez lier au classeur de modèles garantit que si vous ajoutez des champs au modèle de données à l’avenir, ils sont automatiquement protégés jusqu’à ce que vous les ajoutiez explicitement ici.
 
 À la suite de ces modifications, la signature de méthode de la méthode HttpPost `Edit` est la même que celle de la méthode HttpGet `Edit` ; par conséquent, vous avez renommé la méthode `EditPost`.
 
@@ -199,15 +199,15 @@ Le contexte de base de données effectue le suivi de la synchronisation ou non d
 
 Une entité peut être dans un des états suivants :
 
-* `Added` . L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+* `Added`. L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
 
-* `Unchanged` . La méthode `SaveChanges` ne doit rien faire avec cette entité. Quand vous lisez une entité dans la base de données, l’entité a d’abord cet état.
+* `Unchanged`. La méthode `SaveChanges` ne doit rien faire avec cette entité. Quand vous lisez une entité dans la base de données, l’entité a d’abord cet état.
 
-* `Modified` . Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+* `Modified`. Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
 
-* `Deleted` . L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+* `Deleted`. L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
 
-* `Detached` . L’entité n’est pas suivie par le contexte de base de données.
+* `Detached`. L’entité n’est pas suivie par le contexte de base de données.
 
 Dans une application de poste de travail, les changements d’état sont généralement définis automatiquement. Vous lisez une entité et vous apportez des modifications à certaines de ses valeurs de propriété. Son état passe alors automatiquement à `Modified`. Quand vous appelez `SaveChanges`, Entity Framework génère une instruction SQL UPDATE qui met à jour seulement les propriétés que vous avez modifiées.
 
@@ -265,7 +265,7 @@ Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez s
 
 ![Page de confirmation de la suppression](crud/_static/student-delete.png)
 
-Cliquez sur **Delete**. La page Index s’affiche sans l’étudiant supprimé. (Vous verrez un exemple du code de gestion des erreurs en action dans le didacticiel sur l’accès concurrentiel.)
+Cliquez sur **Supprimer**. La page Index s’affiche sans l’étudiant supprimé. (Vous verrez un exemple du code de gestion des erreurs en action dans le didacticiel sur l’accès concurrentiel.)
 
 ## <a name="close-database-connections"></a>Fermer les connexions de base de données
 
@@ -289,24 +289,24 @@ Vous pouvez désactiver le suivi des objets entité en mémoire en appelant la m
 
 * Vous voulez attacher une entité pour pouvoir la mettre à jour, mais vous avez auparavant récupéré la même entité à d’autre fins. Comme l’entité est déjà suivie par le contexte de base de données, vous ne pouvez pas attacher l’entité que vous voulez modifier. Une façon de gérer cette situation est d’appeler `AsNoTracking` sur la requête précédente.
 
-Pour plus d’informations, consultez [Suivi ou pas de suivi](/ef/core/querying/tracking).
+Pour plus d’informations, consultez [suivi et non-suivi](/ef/core/querying/tracking).
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous avez effectué les actions suivantes :
+Dans ce tutoriel, vous allez :
 
 > [!div class="checklist"]
 > * Personnaliser la page Details
 > * Mettre à jour la page Create
 > * Mettre à jour la page Edit
-> * Mettre à jour la page Delete
+> * Page Delete mise à jour
 > * Fermer les connexions de base de données
 
 Passez au tutoriel suivant pour découvrir comment développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
 
 > [!div class="nextstepaction"]
-> [Suivant : Tri, filtrage et pagination](sort-filter-page.md)
+> [Suivant : tri, filtrage et pagination](sort-filter-page.md)
