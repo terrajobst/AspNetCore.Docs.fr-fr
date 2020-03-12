@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 6698e269e0a6480cd5a03c59f9a19da31e23bf69
-ms.sourcegitcommit: 235623b6e5a5d1841139c82a11ac2b4b3f31a7a9
+ms.openlocfilehash: afa71b2c2b75be2c000fadd9545ac3fb4587825a
+ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089147"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964466"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -60,6 +60,7 @@ Quand un délégué ne passe pas une requête au délégué suivant, on parle al
 <xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*> délégués ne reçoivent pas de paramètre `next`. Le premier délégué `Run` est toujours terminal et met fin au pipeline. `Run` est une convention. Certains composants de l’intergiciel (middleware) peuvent exposer `Run[Middleware]` méthodes qui s’exécutent à la fin du pipeline :
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs?highlight=12-15)]
+[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 Dans l’exemple précédent, le délégué `Run` écrit `"Hello from 2nd delegate."` dans la réponse, puis termine le pipeline. Si un autre `Use` ou `Run` délégué est ajouté après le délégué `Run`, il n’est pas appelé.
 
@@ -214,9 +215,9 @@ Le tableau suivant présente les requêtes et les réponses de `http://localhost
 | localhost:1234                | Hello from non-Map delegate. |
 | localhost:1234/?branch=master | Branch used = master         |
 
-<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> branche également le pipeline de requêtes en fonction du résultat du prédicat donné. Contrairement à `MapWhen`, cette branche est rejointe au pipeline principal s’il s’agit d’un court-circuit ou qu’il contient un intergiciel (middleware) de terminal :
+<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*> branche également le pipeline de requêtes en fonction du résultat du prédicat donné. Contrairement à `MapWhen`, cette branche est rejointe au pipeline principal s’il n’y a pas de court-circuit ou qu’il contient un intergiciel (middleware) de terminal :
 
-[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=23-24)]
+[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
 
 Dans l’exemple précédent, une réponse « hello from principal pipeline ». est écrit pour toutes les demandes. Si la requête comprend une variable de chaîne de requête `branch`, sa valeur est consignée avant que le pipeline principal soit rejoint.
 

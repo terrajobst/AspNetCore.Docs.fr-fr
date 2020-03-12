@@ -6,12 +6,12 @@ ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: 90ba130f13903cd45eca062c0eca8945eff2e0fa
-ms.sourcegitcommit: 7a2c820692f04bfba04398641b70f27fa15391f5
+ms.openlocfilehash: eaf9cca61b21d04d127ff15a579f3d8da794f7d9
+ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72290645"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78935425"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio Code
 
@@ -25,12 +25,12 @@ Pour résoudre un problème de déploiement App Service, consultez <xref:test/tr
 
 Dans ce tutoriel, vous allez apprendre à créer une application ASP.Net Core MVC et à la déployer dans Visual Studio Code.
 
-## <a name="set-up"></a>Installer
+## <a name="set-up"></a>Configurer
 
 - Ouvrez un [compte Azure gratuit](https://azure.microsoft.com/free/dotnet/) si vous n’en avez pas.
 - Installez le [SDK .NET Core](https://dotnet.microsoft.com/download).
-- Installez [Visual Studio Code](https://code.visualstudio.com/Download)
-  - Installez l’[extension C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) dans Visual Studio Code.
+- Installer [Visual Studio Code](https://code.visualstudio.com/Download)
+  - Installez l’[extension C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) dans Visual Studio Code.
   - Installer l' [extension de Azure App service](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) pour la Visual Studio code et la configurer avant de continuer
 
 ## <a name="create-an-aspnet-core-mvc-project"></a>Créer un projet ASP.NET Core MVC
@@ -90,11 +90,11 @@ tasks.json
 
 Il s’agit des fichiers d’utilitaire qui vous aident à générer et à déboguer votre application web .NET Core.
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécuter l’application
 
 Avant de déployer l’application sur Azure, vérifiez qu’elle s’exécute correctement sur votre ordinateur local.
 
-- Appuyez sur F5 pour exécuter le projet.
+- Appuyez sur F5 pour exécuter le projet
 
 Votre application web commence à s’exécuter sous un nouvel onglet de votre navigateur par défaut. Dès le démarrage de l’application, un avertissement lié à la confidentialité peut s’afficher. Cela est dû au fait que votre application démarre soit avec HTTP, soit avec HTTPS, et qu’elle navigue vers le point de terminaison HTTPS par défaut.
 
@@ -117,9 +117,9 @@ Grâce à l’extension Azure App Service pour Visual Studio Code, suivez les é
 
 ### <a name="if-youre-creating-a-new-web-app"></a>Si vous créez une nouvelle application web
 
-- Cliquez avec le bouton droit de la souris sur le dossier `publish`, puis sélectionnez `Deploy to Web App...`.
+- Cliquez avec le bouton droit sur le dossier `publish` et sélectionnez `Deploy to Web App...`.
 - Sélectionnez l’abonnement dans lequel vous souhaitez créer l’application web.
-- Sélectionnez `Create New Web App`.
+- Sélectionnez `Create New Web App`
 - Entrez un nom pour l’application web.
 
 L’extension crée la nouvelle application web et démarre automatiquement le déploiement du package dans l’application. Une fois le déploiement terminé, cliquez sur `Browse Website` pour valider le déploiement.
@@ -132,7 +132,7 @@ Une fois que vous cliquez sur `Browse Website`, vous y reviendrez à l’aide de
 
 ### <a name="if-youre-deploying-to-an-existing-web-app"></a>Si vous effectuez un déploiement dans une application web existante
 
-- Cliquez avec le bouton droit de la souris sur le dossier `publish`, puis sélectionnez `Deploy to Web App...`.
+- Cliquez avec le bouton droit sur le dossier `publish` et sélectionnez `Deploy to Web App...`.
 - Sélectionnez l’abonnement où se trouve l’application web existante.
 - Sélectionnez l’application web dans la liste.
 - Visual Studio Code vous demande si vous souhaitez remplacer le contenu existant. Cliquez sur `Deploy` pour confirmer.

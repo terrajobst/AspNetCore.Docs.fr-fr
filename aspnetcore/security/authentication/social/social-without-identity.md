@@ -5,14 +5,16 @@ description: Explication de l’utilisation de l’authentification utilisateur 
 ms.author: riande
 ms.date: 12/10/2019
 uid: security/authentication/social/social-without-identity
-ms.openlocfilehash: 612964ec9ed4975cdc81780dda3bac6cce96037f
-ms.sourcegitcommit: 2cb857f0de774df421e35289662ba92cfe56ffd1
+ms.openlocfilehash: b30ce7055b35b721c7fb83b61a328200d6a136b1
+ms.sourcegitcommit: 3ca4a2235a8129def9e480d0a6ad54cc856920ec
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359056"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79025392"
 ---
 # <a name="use-social-sign-in-provider-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification du fournisseur de connexion sociale sans ASP.NET Core d’identité
+
+Par [Kirk Larkin](https://twitter.com/serpent5) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -55,7 +57,7 @@ Testez la configuration d’authentification de l’application en appliquant l�
 
 [!code-csharp[](social-without-identity/samples_snapshot/3.x/Pages/Privacy.cshtml.cs?name=snippet&highlight=1)]
 
-## <a name="sign-out"></a>Déconnexion
+## <a name="sign-out"></a>Se déconnecter
 
 Pour déconnecter l’utilisateur actuel et supprimer son cookie, appelez [SignOutAsync](xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignOutAsync*). Le code suivant ajoute une `Logout` gestionnaire de page à la page d' *index* :
 
@@ -110,7 +112,7 @@ Testez la configuration d’authentification de l’application en appliquant l�
 
 [!code-csharp[](social-without-identity/samples_snapshot/2.x/Pages/Privacy.cshtml.cs?name=snippet&highlight=1)]
 
-## <a name="sign-out"></a>Déconnexion
+## <a name="sign-out"></a>Se déconnecter
 
 Pour déconnecter l’utilisateur actuel et supprimer son cookie, appelez [SignOutAsync](xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignOutAsync*). Le code suivant ajoute une `Logout` gestionnaire de page à la page d' *index* :
 
