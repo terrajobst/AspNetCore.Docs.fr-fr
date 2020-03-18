@@ -5,12 +5,12 @@ description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
 ms.date: 01/13/2020
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: d044ae4416c4528791755506314fc81275474f79
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e7fc0496438734e13cfafcecf432da4a94737897
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660236"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434510"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -48,7 +48,7 @@ Mettez le fichier *Movie.cs* à jour avec le contenu suivant :
 
 La classe `Movie` contient un champ `Id`, qui est nécessaire à la base de données pour la clé primaire.
 
-L’attribut [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) de `ReleaseDate` spécifie le type de données (`Date`). Avec cet attribut :
+L’attribut <xref:System.ComponentModel.DataAnnotations.DataType> sur `ReleaseDate` spécifie le type des données (`Date`). Avec cet attribut :
 
 * L’utilisateur n’est pas obligé d’entrer les informations de temps dans le champ de date.
 * Seule la date est affichée, pas les informations de temps.

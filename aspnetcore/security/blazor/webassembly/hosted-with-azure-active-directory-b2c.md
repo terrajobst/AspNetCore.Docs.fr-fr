@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 232a4247f8bea23eec3dc35cba4659c88887124d
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 12e09cf7e27f85473d84f42564d13e1c0ed5dff1
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083880"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434445"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Sécuriser une application hébergée ASP.NET Core Blazor webassembly avec Azure Active Directory B2C
 
@@ -95,6 +95,8 @@ Dans **autorisations d’API**:
 Dans > d' **hébergement** **Azure ad B2C** > **flux d’utilisateurs**:
 
 [Créer un workflow utilisateur d’inscription et de connexion](/azure/active-directory-b2c/tutorial-create-user-flows)
+
+Au minimum, sélectionnez l’attribut d’utilisateur **revendications d’Application** > **nom complet** pour remplir le `context.User.Identity.Name` dans le composant `LoginDisplay` (*Shared/LoginDisplay. Razor*).
 
 Notez les informations suivantes :
 
@@ -260,6 +262,10 @@ builder.Services.AddMsalAuthentication(options =>
 ### <a name="fetchdata-component"></a>Composant FetchData
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
+
+## <a name="run-the-app"></a>Exécuter l'application
+
+Exécutez l’application à partir du projet serveur. Quand vous utilisez Visual Studio, sélectionnez le projet serveur dans **Explorateur de solutions** , puis cliquez sur le bouton **exécuter** dans la barre d’outils ou démarrez l’application à partir du menu **Déboguer** .
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 

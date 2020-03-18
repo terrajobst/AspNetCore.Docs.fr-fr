@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor à
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 03/11/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: eae12b266e91a30a47daf63ac77ba082c25225aa
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 748ac9969134f4c89cc8c1235958dcc7ac1d1080
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664100"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434276"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>Héberger et déployer ASP.NET Core Blazor webassembly
 
@@ -59,7 +59,7 @@ Lors du déploiement sur un serveur IIS, vous pouvez utiliser le module de réé
 
 Un *déploiement hébergé* sert l’application Blazor webassembly aux navigateurs à partir d’une [application ASP.net Core](xref:index) qui s’exécute sur un serveur Web.
 
-L’application Blazor est incluse avec l’application ASP.NET Core dans la sortie publiée afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio comprend le modèle de projet d' **applicationBlazor Webassembly** (`blazorwasm` modèle lors de l’utilisation de la commande [dotnet New](/dotnet/core/tools/dotnet-new) ) avec l’option **hébergée** sélectionnée.
+L’application cliente Blazor webassembly est publiée dans le dossier */bin/Release/{Target Framework}/Publish/wwwroot* de l’application serveur, ainsi que les autres ressources Web statiques de l’application serveur. Les deux applications sont déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement hébergé, Visual Studio comprend le modèle de projet d' **applicationBlazor Webassembly** (`blazorwasm` modèle lors de l’utilisation de la commande [dotnet New](/dotnet/core/tools/dotnet-new) ) avec l’option **hébergée** sélectionnée (`-ho|--hosted` lors de l’utilisation de la commande `dotnet new`).
 
 Pour plus d’informations sur l’hébergement et le déploiement d’applications ASP.NET Core, consultez <xref:host-and-deploy/index>.
 
@@ -69,7 +69,7 @@ Pour plus d’informations concernant le déploiement sur Azure App Service, con
 
 Un *Déploiement autonome* sert l’application Blazor webassembly sous la forme d’un ensemble de fichiers statiques demandés directement par les clients. Tout serveur de fichiers statique peut traiter l’application Blazor.
 
-Les ressources d’un déploiement autonome sont publiées dans le dossier *bin/Release/{TARGET FRAMEWORK}/publish/{ASSEMBLY NAME}/dist*.
+Les ressources de déploiement autonomes sont publiées dans le dossier */bin/Release/{Target Framework}/Publish/wwwroot* .
 
 ### <a name="iis"></a>IIS
 
@@ -140,7 +140,7 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
 
 La suppression du gestionnaire ou la désactivation de l’héritage est effectuée en plus de [la configuration du chemin d’accès de base de l’application](xref:host-and-deploy/blazor/index#app-base-path). Dans le fichier *index.html* de l’application, définissez le chemin de base de l’application sur l’alias IIS utilisé lors de la configuration de la sous-application dans IIS.
 
-#### <a name="troubleshooting"></a>Dépannage
+#### <a name="troubleshooting"></a>Résolution des problèmes
 
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Quand le module n’est pas installé, le fichier *web.config* ne peut pas être analysé par IIS. Cela empêche le gestionnaire des services Internet de charger la configuration du site Web et le site Web de servir les fichiers statiques de Blazor.
 
@@ -294,7 +294,7 @@ L’argument `--pathbase` définit le chemin d’accès de base d’application 
   --pathbase=/relative-URL-path
   ```
 
-### <a name="urls"></a>URLs
+### <a name="urls"></a>Adresses URL
 
 L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec les ports et protocoles sur lesquels il faut écouter les demandes.
 
@@ -318,4 +318,4 @@ L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec 
 
 ## <a name="configure-the-linker"></a>Configurer l'éditeur de liens
 
-Blazor effectue une liaison IL (Intermediate Language) sur chaque Build pour supprimer l’IL inutile des assemblys de sortie. La liaison d’assembly peut être contrôlée pendant le processus de build. Pour plus d’informations, consultez <xref:host-and-deploy/blazor/configure-linker>.
+Blazor effectue une liaison IL (Intermediate Language) sur chaque version de mise en production pour supprimer l’IL inutile des assemblys de sortie. Pour plus d’informations, consultez <xref:host-and-deploy/blazor/configure-linker>.

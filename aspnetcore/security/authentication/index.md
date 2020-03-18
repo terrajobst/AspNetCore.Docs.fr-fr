@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 uid: security/authentication/index
-ms.openlocfilehash: 24113fd4f090cf76746a7b077212fdab012f82c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 404904ecfa30d1fe7e47f0daaa423ddd6f1b06e8
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659627"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434328"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Vue d’ensemble de l’authentification ASP.NET Core
 
@@ -78,7 +78,7 @@ En fonction de la configuration du schéma d’authentification et du contexte d
   * Ils ne sont pas autorisés à accéder (interdire).
   * Lorsqu’ils ne sont pas authentifiés (Challenge).
 
-### <a name="authenticate"></a>Authenticate
+### <a name="authenticate"></a>Authentifier
 
 L’action d’authentification d’un schéma d’authentification est responsable de la construction de l’identité de l’utilisateur en fonction du contexte de la requête. Elle retourne une <xref:Microsoft.AspNetCore.Authentication.AuthenticateResult> indiquant si l’authentification a réussi et, le cas échéant, l’identité de l’utilisateur dans un ticket d’authentification. Consultez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.AuthenticateAsync%2A>. Les exemples d’authentification sont les suivants :
 
@@ -110,6 +110,18 @@ Consultez les liens suivants pour connaître les différences entre la stimulati
 
 * [Défier et interdire l’utilisation d’un gestionnaire de ressources opérationnelles](xref:security/authorization/resourcebased#challenge-and-forbid-with-an-operational-resource-handler).
 * [Différences entre la stimulation et](xref:security/authorization/secure-data#challenge)l’interdiction.
+
+## <a name="authentication-providers-per-tenant"></a>Fournisseurs d’authentification par locataire
+
+ASP.NET Core Framework n’a pas de solution intégrée pour l’authentification mutualisée.
+Bien qu’il soit possible pour les clients d’en écrire un, à l’aide des fonctionnalités intégrées, nous recommandons aux clients d’examiner le [noyau du verger](https://www.orchardcore.net/) à cet effet.
+
+Noyau du verger :
+
+* Une infrastructure d’application modulaire et mutualisée Open source générée avec ASP.NET Core.
+* Un système de gestion de contenu (CMS) basé sur ce Framework d’application.
+
+Consultez la source [principale du verger](https://github.com/OrchardCMS/OrchardCore) pour obtenir un exemple de fournisseurs d’authentification par client.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

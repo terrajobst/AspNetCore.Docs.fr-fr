@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer des applications Blazor.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/index
-ms.openlocfilehash: 238e7fc8f8d64c7847dc8847fb66e22442a3c8e0
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ddf70da29a82d462422c1bdf74ff45b92bb10b56
+ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667152"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79434263"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor"></a>Héberger et déployer ASP.NET Core Blazor
 
@@ -45,7 +45,12 @@ dotnet publish -c Release
 
 La publication de l’application déclenche une [restauration](/dotnet/core/tools/dotnet-restore) des dépendances du projet et [crée](/dotnet/core/tools/dotnet-build) le projet avant de créer les ressources pour le déploiement. Dans le cadre du processus de génération, les assemblys et méthodes inutilisés sont supprimés pour réduire la durée du chargement et la taille du téléchargement de l’application.
 
-Une application Blazor webassembly est publiée dans le dossier */bin/Release/{Target Framework}/Publish/{assembly/dist* . Une application Blazor Server est publiée dans le dossier */bin/Release/{Target Framework}/Publish* .
+Emplacements de publication :
+
+* Blazor webassembly
+  * Autonome &ndash; l’application est publiée dans le dossier */bin/Release/{Target Framework}/Publish/wwwroot* . Pour déployer l’application en tant que site statique, copiez le contenu du dossier *wwwroot* sur l’hôte de site statique.
+  * Hébergé &ndash; l’application webassembly Blazor client est publiée dans le dossier */bin/Release/{Target Framework}/Publish/wwwroot* de l’application serveur, ainsi que les autres ressources Web statiques de l’application serveur. Déployez le contenu du dossier de *publication* sur l’hôte.
+* Blazor Server &ndash; l’application est publiée dans le dossier */bin/Release/{Target Framework}/Publish* . Déployez le contenu du dossier de *publication* sur l’hôte.
 
 Les ressources du dossier sont déployées sur le serveur web. Le déploiement peut être un processus manuel ou automatisé, en fonction des outils de développement utilisés.
 
