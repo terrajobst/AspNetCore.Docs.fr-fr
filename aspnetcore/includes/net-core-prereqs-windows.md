@@ -5,6 +5,6 @@
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[Kit de développement logiciel (SDK) .NET Core 2.1 ou version ultérieure](https://www.microsoft.com/net/download/windows)
+[Kit de développement logiciel (SDK) .NET Core 2.1 ou version ultérieure](https://dotnet.microsoft.com/download)
 
 ::: moniker-end
