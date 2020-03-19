@@ -1,1 +1,4 @@
-Quand vous utilisez des clés hiérarchiques dans des variables d’environnement, le séparateur deux-points (`:`) risque de ne pas fonctionner sur toutes les plateformes (par exemple, Bash). Un trait de soulignement double (`__`) est pris en charge par toutes les plateformes et automatiquement remplacé par un signe deux-points.
+Le séparateur de `:` ne fonctionne pas avec les clés hiérarchiques de variable d’environnement sur toutes les plateformes. `__`, le double trait de soulignement, est :
+
+* Pris en charge par toutes les plateformes. Par exemple, le séparateur d' `:` n’est pas pris en charge par [bash](https://linuxhint.com/bash-environment-variables/), mais `__` est.
+* Automatiquement remplacé par un `:`
