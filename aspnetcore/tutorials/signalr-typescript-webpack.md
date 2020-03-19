@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 no-loc:
 - SignalR
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: e6dd200367278b1697ef232f5d79dfbd138bb82b
-ms.sourcegitcommit: 40dc9b00131985abcd99bd567647420d798e798a
+ms.openlocfilehash: ce5752743912a979a95fb5d504e4bcbb2b69ce1e
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78935495"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511338"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -39,13 +39,13 @@ Dans ce tutoriel, vous allez apprendre à :
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **Développement ASP.NET et web**
-* [SDK .NET Core 3.0 ou ultérieur](https://www.microsoft.com/net/download/all)
+* [SDK .NET Core 3.0 ou ultérieur](https://dotnet.microsoft.com/download/dotnet-core)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [SDK .NET Core 3.0 ou ultérieur](https://www.microsoft.com/net/download/all)
+* [SDK .NET Core 3.0 ou ultérieur](https://dotnet.microsoft.com/download/dotnet-core)
 * [C# pour Visual Studio Code version 1.17.1 ou ultérieure](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
@@ -296,13 +296,13 @@ Vérifiez que l’application fonctionne avec les étapes suivantes.
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) avec la charge de travail **Développement ASP.NET et web**
-* [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
+* [Kit SDK .NET Core 2.2 ou version ultérieure](https://dotnet.microsoft.com/download/dotnet-core)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
-* [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
+* [Kit SDK .NET Core 2.2 ou version ultérieure](https://dotnet.microsoft.com/download/dotnet-core)
 * [C# pour Visual Studio Code version 1.17.1 ou ultérieure](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
 

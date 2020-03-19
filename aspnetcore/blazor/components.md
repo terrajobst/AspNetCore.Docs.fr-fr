@@ -5,17 +5,17 @@ description: Découvrez comment créer et utiliser des composants Razor, notamme
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: e444ebfef5143a6c33ed2d122933903ad3a4f4a7
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 7afc9250cdfb4b791ef939ead0f41b503d83fad8
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660698"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511273"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>Créer et utiliser des composants ASP.NET Core Razor
 
@@ -87,8 +87,6 @@ Les [tag helpers](xref:mvc/views/tag-helpers/intro) ne sont pas pris en charge d
 ## <a name="use-components"></a>Utiliser des composants
 
 Les composants peuvent inclure d’autres composants en les déclarant à l’aide de la syntaxe d’élément HTML. Le balisage pour l’utilisation d’un composant ressemble à une balise HTML où le nom de la balise est le type du composant.
-
-La liaison d’attribut respecte la casse. Par exemple, `@bind` est valide et `@Bind` n’est pas valide.
 
 Le balisage suivant dans *index. Razor* rend une instance de `HeadingComponent` :
 
@@ -389,7 +387,7 @@ Prenons l’exemple suivant :
 ```csharp
 @foreach (var person in People)
 {
-    <DetailsEditor Details="person.Details" />
+    <DetailsEditor Details="@person.Details" />
 }
 
 @code {
@@ -405,7 +403,7 @@ Le processus de mappage peut être contrôlé à l’aide de l’attribut de dir
 ```csharp
 @foreach (var person in People)
 {
-    <DetailsEditor @key="person" Details="person.Details" />
+    <DetailsEditor @key="person" Details="@person.Details" />
 }
 
 @code {

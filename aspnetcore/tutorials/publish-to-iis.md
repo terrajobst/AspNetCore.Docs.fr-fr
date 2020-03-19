@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: f3860ba6ca7b99e63000ba0066749751f80cdc23
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 47f78ba78741a8e0175ce801c0c0e51f091273a8
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78657835"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511390"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>Publier une application ASP.NET Core sur IIS
 
@@ -45,7 +45,7 @@ Installez le *bundle d’hébergement .NET Core* sur le serveur IIS. Le bundle 
 
 Téléchargez le programme d’installation à l’aide du lien suivant :
 
-[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 1. Exécutez le programme d’installation sur le serveur IIS.
 

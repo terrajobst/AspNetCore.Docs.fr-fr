@@ -9,12 +9,12 @@ ms.date: 07/05/2019
 no-loc:
 - Let's Encrypt
 uid: security/docker-https
-ms.openlocfilehash: 2f338e8883ca926c0f9a7ab339f58b088151cc87
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: f2a615093e7b1190962bd1c6ecbcc63f65bfbe7e
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664422"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511585"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-over-https"></a>Hébergement d’images ASP.NET Core avec l’arrimeur sur HTTPs
 
@@ -30,7 +30,7 @@ Cet exemple requiert l' [ancrage 17,06](https://docs.docker.com/release-notes/do
 
 ## <a name="prerequisites"></a>Conditions préalables requises
 
-Le [Kit de développement logiciel (SDK) .net Core 2,2](https://www.microsoft.com/net/download) ou version ultérieure est requis pour certaines des instructions contenues dans ce document.
+Le [Kit de développement logiciel (SDK) .net Core 2,2](https://dotnet.microsoft.com/download) ou version ultérieure est requis pour certaines des instructions contenues dans ce document.
 
 ## <a name="certificates"></a>Certificats
 

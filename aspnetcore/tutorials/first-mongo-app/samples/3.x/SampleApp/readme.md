@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: aspnetcore-webapi-mongodb
-ms.openlocfilehash: 01f9cf237dcf2a9b95c181c2cb87ef9f59102244
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 09d73e25667822b8748a00cc76ad6d4f0e5fe290
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663498"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511403"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
 
@@ -29,7 +29,7 @@ Dans ce tutoriel, vous allez apprendre à :
 
 ## <a name="prerequisites"></a>Conditions préalables requises
 
-* [SDK .NET Core 3.0 ou ultérieur](https://www.microsoft.com/net/download/all)
+* [SDK .NET Core 3.0 ou ultérieur](https://dotnet.microsoft.com/download/dotnet-core)
 * [Préversion de Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=16&utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019preview) avec la charge de travail **ASP.NET et développement web**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 

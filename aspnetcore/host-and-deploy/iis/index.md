@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: c2ca867e3eebdc3fcf512cc5d457ff3c1967f9b1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e4da57001ad369a8df87c7e0887772e3d75c032d
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78657982"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511221"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -243,14 +243,14 @@ Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundl
 
 Téléchargez le programme d’installation à l’aide du lien suivant :
 
-[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Versions antérieures du programme d’installation
 
 Pour obtenir une version antérieure du programme d’installation :
 
-1. Accédez aux [archives des téléchargements .NET](https://www.microsoft.com/net/download/archives).
-1. Sous **.NET Core**, sélectionnez la version de .NET Core.
+1. Accédez à la page [Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core) .
+1. Cliquez sur la version de .NET Core de votre choix.
 1. Dans la colonne **Run apps - Runtime**, recherchez la ligne de la version du runtime .NET Core souhaitée.
 1. Téléchargez le programme d’installation à l’aide du lien **Runtime & Hosting Bundle**.
 
@@ -473,7 +473,7 @@ L’isolation des pools d’applications est déterminée par le modèle d’hé
 
 La boîte de dialogue **Ajouter un site web** d’IIS applique un seul pool d’applications par application par défaut. Quand un **Nom du site** est fourni, le texte est automatiquement transféré vers la zone de texte **Pool d’applications**. Un nouveau pool d’applications est créé avec le nom du site une fois qu’il est ajouté.
 
-## <a name="application-pool-identity"></a>Identité du pool d'applications
+## <a name="application-pool-identity"></a>Identité du pool d’applications
 
 Un compte d’identité du pool d’applications permet à une application de s’exécuter sous un compte unique sans qu’il soit nécessaire de créer et de gérer des domaines ou des comptes locaux. Sur IIS 8.0 ou version ultérieure, le processus Worker d’administration IIS (WAS) crée un compte virtuel avec le nom du nouveau pool d’applications et exécute les processus Worker du pool d’applications sous ce compte par défaut. Dans la console de gestion IIS, sous **Paramètres avancés** pour le pool d’applications, vérifiez que **l’Identité** est configurée pour utiliser **ApplicationPoolIdentity** :
 
@@ -850,14 +850,14 @@ Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundl
 
 Téléchargez le programme d’installation à l’aide du lien suivant :
 
-[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Versions antérieures du programme d’installation
 
 Pour obtenir une version antérieure du programme d’installation :
 
-1. Accédez aux [archives des téléchargements .NET](https://www.microsoft.com/net/download/archives).
-1. Sous **.NET Core**, sélectionnez la version de .NET Core.
+1. Accédez à la page [Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core) .
+1. Cliquez sur la version de .NET Core de votre choix.
 1. Dans la colonne **Run apps - Runtime**, recherchez la ligne de la version du runtime .NET Core souhaitée.
 1. Téléchargez le programme d’installation à l’aide du lien **Runtime & Hosting Bundle**.
 
@@ -1077,7 +1077,7 @@ L’isolation des pools d’applications est déterminée par le modèle d’hé
 
 La boîte de dialogue **Ajouter un site web** d’IIS applique un seul pool d’applications par application par défaut. Quand un **Nom du site** est fourni, le texte est automatiquement transféré vers la zone de texte **Pool d’applications**. Un nouveau pool d’applications est créé avec le nom du site une fois qu’il est ajouté.
 
-## <a name="application-pool-identity"></a>Identité du pool d'applications
+## <a name="application-pool-identity"></a>Identité du pool d’applications
 
 Un compte d’identité du pool d’applications permet à une application de s’exécuter sous un compte unique sans qu’il soit nécessaire de créer et de gérer des domaines ou des comptes locaux. Sur IIS 8.0 ou version ultérieure, le processus Worker d’administration IIS (WAS) crée un compte virtuel avec le nom du nouveau pool d’applications et exécute les processus Worker du pool d’applications sous ce compte par défaut. Dans la console de gestion IIS, sous **Paramètres avancés** pour le pool d’applications, vérifiez que **l’Identité** est configurée pour utiliser **ApplicationPoolIdentity** :
 
@@ -1426,14 +1426,14 @@ Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundl
 
 Téléchargez le programme d’installation à l’aide du lien suivant :
 
-[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://www.microsoft.com/net/permalink/dotnetcore-current-windows-runtime-bundle-installer)
+[Programme d’installation du bundle d’hébergement .NET Core actuel (téléchargement direct)](https://dotnet.microsoft.com/permalink/dotnetcore-current-windows-runtime-bundle-installer)
 
 ### <a name="earlier-versions-of-the-installer"></a>Versions antérieures du programme d’installation
 
 Pour obtenir une version antérieure du programme d’installation :
 
-1. Accédez aux [archives des téléchargements .NET](https://www.microsoft.com/net/download/archives).
-1. Sous **.NET Core**, sélectionnez la version de .NET Core.
+1. Accédez à la page [Télécharger .net Core](https://dotnet.microsoft.com/download/dotnet-core) .
+1. Cliquez sur la version de .NET Core de votre choix.
 1. Dans la colonne **Run apps - Runtime**, recherchez la ligne de la version du runtime .NET Core souhaitée.
 1. Téléchargez le programme d’installation à l’aide du lien **Runtime & Hosting Bundle**.
 
@@ -1681,7 +1681,7 @@ Les applications ASP.NET Core sont configurées à l’aide d’autres fournisse
 
 Quand vous hébergez plusieurs sites Web sur un même serveur, nous vous recommandons d’isoler les applications les unes des autres en exécutant chaque application dans son propre pool d’applications. La boîte de dialogue **Ajouter un site Web** d’IIS applique cette configuration par défaut. Quand un **Nom du site** est fourni, le texte est automatiquement transféré vers la zone de texte **Pool d’applications**. Un nouveau pool d’applications est créé avec le nom du site une fois qu’il est ajouté.
 
-## <a name="application-pool-identity"></a>Identité du pool d'applications
+## <a name="application-pool-identity"></a>Identité du pool d’applications
 
 Un compte d’identité du pool d’applications permet à une application de s’exécuter sous un compte unique sans qu’il soit nécessaire de créer et de gérer des domaines ou des comptes locaux. Sur IIS 8.0 ou version ultérieure, le processus Worker d’administration IIS (WAS) crée un compte virtuel avec le nom du nouveau pool d’applications et exécute les processus Worker du pool d’applications sous ce compte par défaut. Dans la console de gestion IIS, sous **Paramètres avancés** pour le pool d’applications, vérifiez que **l’Identité** est configurée pour utiliser **ApplicationPoolIdentity** :
 

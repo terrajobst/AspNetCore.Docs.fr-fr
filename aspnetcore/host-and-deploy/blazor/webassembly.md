@@ -5,17 +5,17 @@ description: Découvrez comment héberger et déployer une application Blazor à
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/11/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 748ac9969134f4c89cc8c1235958dcc7ac1d1080
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: ea2c625f424447209a362cdc58bdb18be061e47f
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434276"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511351"
 ---
 # <a name="host-and-deploy-aspnet-core-opno-locblazor-webassembly"></a>Héberger et déployer ASP.NET Core Blazor webassembly
 
@@ -91,8 +91,8 @@ Quand un projet de Blazor est publié, un fichier *Web. config* est créé avec 
   * `application/octet-stream`
   * `application/wasm`
 * Des règles du module de réécriture d’URL sont établies :
-  * Servir le sous-répertoire où résident les ressources statiques de l’application ( *{NOM ASSEMBLY}/dist/{CHEMIN DEMANDÉ}* ).
-  * Créer un routage de secours SPA afin que les demandes de ressources autres que des fichiers soient redirigées vers le document par défaut de l’application dans son dossier de ressources statiques ( *{NOM ASSEMBLY}/dist/index.html*).
+  * Servez-vous du sous-répertoire dans lequel résident les ressources statiques de l’application (*wwwroot/{chemin demandé}* ).
+  * Créez le routage de secours SPA afin que les demandes pour les ressources non-fichier soient redirigées vers le document par défaut de l’application dans son dossier des ressources statiques (*wwwroot/index.html*).
 
 #### <a name="install-the-url-rewrite-module"></a>Installer le module de réécriture d’URL
 
@@ -140,7 +140,7 @@ Si une application autonome est hébergée en tant que sous-application IIS, eff
 
 La suppression du gestionnaire ou la désactivation de l’héritage est effectuée en plus de [la configuration du chemin d’accès de base de l’application](xref:host-and-deploy/blazor/index#app-base-path). Dans le fichier *index.html* de l’application, définissez le chemin de base de l’application sur l’alias IIS utilisé lors de la configuration de la sous-application dans IIS.
 
-#### <a name="troubleshooting"></a>Résolution des problèmes
+#### <a name="troubleshooting"></a>Dépannage
 
 Si vous recevez un message *500 – Erreur interne du serveur* et que le Gestionnaire IIS lève des erreurs quand vous tentez d’accéder à la configuration du site web, vérifiez que le module de réécriture d’URL est installé. Quand le module n’est pas installé, le fichier *web.config* ne peut pas être analysé par IIS. Cela empêche le gestionnaire des services Internet de charger la configuration du site Web et le site Web de servir les fichiers statiques de Blazor.
 
@@ -294,7 +294,7 @@ L’argument `--pathbase` définit le chemin d’accès de base d’application 
   --pathbase=/relative-URL-path
   ```
 
-### <a name="urls"></a>Adresses URL
+### <a name="urls"></a>URLs
 
 L’argument `--urls` définit les adresses IP ou les adresses d’hôtes avec les ports et protocoles sur lesquels il faut écouter les demandes.
 

@@ -1,27 +1,29 @@
 ---
 title: Liaison de données ASP.NET Core Blazor
 author: guardrex
-description: En savoir plus sur les scénarios de liaison de données pour les composants et les éléments DOM dans Blazor applications.
+description: En savoir plus sur les fonctionnalités de liaison de données pour les composants et les éléments DOM dans Blazor applications.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/24/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/data-binding
-ms.openlocfilehash: 92377730b9d353a507ffd384710fb979affe7265
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 5b49d2598a451ee607e034913bd1aeaa03f941c6
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661286"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511195"
 ---
 # <a name="aspnet-core-opno-locblazor-data-binding"></a>Liaison de données ASP.NET Core Blazor
 
 Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
 
-La liaison de données aux composants et aux éléments DOM s’effectue à l’aide de l’attribut [`@bind`](xref:mvc/views/razor#bind) . L’exemple suivant lie une propriété `CurrentValue` à la valeur de la zone de texte :
+Les composants Razor fournissent des fonctionnalités de liaison de données via un attribut d’élément HTML nommé [`@bind`](xref:mvc/views/razor#bind) avec un champ, une propriété ou une valeur d’expression Razor.
+
+L’exemple suivant lie la propriété `CurrentValue` à la valeur de la zone de texte :
 
 ```razor
 <input @bind="CurrentValue" />
@@ -78,6 +80,8 @@ Utilisez `@bind-{ATTRIBUTE}` avec la syntaxe `@bind-{ATTRIBUTE}:event` pour lier
     private string _paragraphStyle = "color:red";
 }
 ```
+
+La liaison d’attribut respecte la casse. Par exemple, `@bind` est valide et `@Bind` n’est pas valide.
 
 ## <a name="unparsable-values"></a>Valeurs inanalysables
 

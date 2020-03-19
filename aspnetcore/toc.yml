@@ -26,7 +26,7 @@
       uid: aspnetcore-2.0
     - name: "Nouveautés de la version\_1.1"
       uid: aspnetcore-1.1
-- name: Tutoriels
+- name: Didacticiels
   items:
     - name: Applications web
       items:
@@ -969,6 +969,8 @@
           uid: security/authentication/individual
         - name: Configurer l’authentification par certificat
           uid: security/authentication/certauth
+        - name: Authentification multifacteur
+          uid: security/authentication/mfa
     - name: Autorisation
       items:
         - name: Vue d'ensemble

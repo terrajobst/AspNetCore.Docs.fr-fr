@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/25/2018
 uid: fundamentals/metapackage
-ms.openlocfilehash: e47f583d0fa75bdeb26b669303747a70619117c1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cc00c075909da5c17a4aa2fd252c9e662e5a0fc9
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663148"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511065"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.0
 
@@ -94,6 +94,6 @@ Toutes les dépendances des packages précédents qui ne sont pas des dépendanc
 
 Nous vous recommandons de migrer vers le métapackage `Microsoft.AspNetCore.App` pour 2.1 et versions ultérieures. Pour continuer à utiliser le métapackage `Microsoft.AspNetCore.All` et vérifier que la dernière version corrective est déployée :
 
-* Sur les machines de développement et les serveurs de builds, installez le [kit SDK .NET Core](https://www.microsoft.com/net/download) le plus récent.
-* Sur les serveurs de déploiement, installez le [Runtime .NET Core](https://www.microsoft.com/net/download) le plus récent.
+* Sur les machines de développement et les serveurs de builds, installez le [kit SDK .NET Core](https://dotnet.microsoft.com/download) le plus récent.
+* Sur les serveurs de déploiement, installez le [Runtime .NET Core](https://dotnet.microsoft.com/download) le plus récent.
  Votre application est restaurée par progression jusqu’à la version installée la plus récente au moment de son redémarrage.

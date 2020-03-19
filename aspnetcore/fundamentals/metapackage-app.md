@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/24/2019
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 3ce74bc7329a88ffc6f77baf6b8a311c02951318
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b30c90116f5a53ba487f88544514f36e388233d3
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663141"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511377"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>Microsoft. AspNetCore. app pour ASP.NET Core
 
@@ -107,8 +107,8 @@ Le `Microsoft.AspNetCore.App` [repackage](/dotnet/core/packages#metapackages) n�
 
 Pour mettre à jour ASP.NET Core :
 
-* Sur les machines de développement et les serveurs de builds, téléchargez et installez le [SDK .NET Core](https://www.microsoft.com/net/download).
-* Sur les serveurs de déploiement, téléchargez et installez le [Runtime .NET Core](https://www.microsoft.com/net/download).
+* Sur les machines de développement et les serveurs de builds, téléchargez et installez le [SDK .NET Core](https://dotnet.microsoft.com/download).
+* Sur les serveurs de déploiement, téléchargez et installez le [Runtime .NET Core](https://dotnet.microsoft.com/download).
 
  Les applications seront restaurées par progression jusqu’à la version installée la plus récente au moment de leur redémarrage. Vous n’avez pas besoin de mettre à jour le numéro de version `Microsoft.AspNetCore.App` dans le fichier projet. Pour plus d’informations, consultez [Restaurer par progression des applications dépendantes du framework](/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
 

@@ -1,27 +1,27 @@
 ---
 title: Gestion des événements ASP.NET Core Blazor
 author: guardrex
-description: En savoir plus sur les scénarios de gestion des événements de Blazor, notamment les types d’arguments d’événement, les rappels d’événements et la gestion des événements de navigateur par défaut.
+description: En savoir plus sur les fonctionnalités de gestion des événements de Blazor, notamment les types d’arguments d’événement, les rappels d’événements et la gestion des événements de navigateur par défaut.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/16/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/event-handling
-ms.openlocfilehash: 25844ef39aee849072d16f3d73eda0a1c20ee788
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c144841805e07a136f153c25a78c7f9af7c5801b
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661874"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511364"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core la gestion des événements éblouissants
 
 Par [Luke Latham](https://github.com/guardrex) et [Daniel Roth](https://github.com/danroth27)
 
-Les composants Razor fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML nommé `on{EVENT}` (par exemple, `onclick` et `onsubmit`) avec une valeur de type délégué, les composants Razor traitent la valeur de l’attribut en tant que gestionnaire d’événements. Le nom de l’attribut est toujours mis en forme [`@on{EVENT}`](xref:mvc/views/razor#onevent).
+Les composants Razor fournissent des fonctionnalités de gestion des événements. Pour un attribut d’élément HTML nommé [`@on{EVENT}`](xref:mvc/views/razor#onevent) (par exemple, `@onclick`) avec une valeur de type délégué, un composant Razor traite la valeur de l’attribut en tant que gestionnaire d’événements.
 
 Le code suivant appelle la méthode `UpdateHeading` lorsque le bouton est sélectionné dans l’interface utilisateur :
 

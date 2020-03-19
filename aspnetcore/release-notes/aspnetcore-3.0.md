@@ -9,12 +9,12 @@ no-loc:
 - Blazor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 35accdd2f65ac5430525be88cc621094e37d3e40
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1a4efcd4e9e3296e9c208f1419bc86734951b0c1
+ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667250"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79511520"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>Nouveautés de ASP.NET Core 3,0
 
@@ -517,7 +517,7 @@ ASP.NET Core 3,0 comprend de nombreuses améliorations qui réduisent l’utilis
 
 ## <a name="aspnet-core-30-only-runs-on-net-core-30"></a>ASP.NET Core 3,0 s’exécute uniquement sur .NET Core 3,0
 
-À partir de ASP.NET Core 3,0, .NET Framework n’est plus une version cible de .NET Framework prise en charge. Les projets ciblant .NET Framework peuvent continuer de façon entièrement prise en charge à l’aide de la [version .net Core 2,1 LTS](https://www.microsoft.com/net/download/dotnet-core/2.1). La plupart des packages associés à ASP.NET Core 2.1. x seront pris en charge indéfiniment au-delà de la période LTS de trois ans pour .NET Core 2,1.
+À partir de ASP.NET Core 3,0, .NET Framework n’est plus une version cible de .NET Framework prise en charge. Les projets ciblant .NET Framework peuvent continuer de façon entièrement prise en charge à l’aide de la [version .net Core 2,1 LTS](https://dotnet.microsoft.com/download/dotnet-core/2.1). La plupart des packages associés à ASP.NET Core 2.1. x seront pris en charge indéfiniment au-delà de la période LTS de trois ans pour .NET Core 2,1.
 
 Pour plus d’informations sur la migration, consultez [porter votre code d' .NET Framework vers .net Core](/dotnet/core/porting/).
 
@@ -542,3 +542,4 @@ Pour obtenir la liste complète des assemblys supprimés de l’infrastructure p
 ## Additional information
 For the complete list of changes, see the [ASP.NET Core 3.0 Release Notes](WHERE IS THIS????).
 -->
+ 
