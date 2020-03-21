@@ -4,15 +4,15 @@ author: rick-anderson
 description: Cet exemple illustre l’intégration de compte Microsoft l’authentification utilisateur dans une application ASP.NET Core existante.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/4/2019
+ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: ddaae1a25a1dcf167ffae0f24b480e2cde6aca5b
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: bd75efb1d7ce08538d1a67be74d2f40f3964614f
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659795"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989762"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Configuration de la connexion externe à un compte Microsoft avec ASP.NET Core
 
@@ -46,16 +46,17 @@ Si vous n’avez pas de compte Microsoft, sélectionnez en **créer un**. Une fo
 > [!NOTE]
 > Le segment d’URI `/signin-microsoft` est défini comme rappel par défaut du fournisseur d’authentification Microsoft. Vous pouvez modifier l’URI de rappel par défaut lors de la configuration de l’intergiciel (middleware) d’authentification Microsoft via la propriété héritée [RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) de la classe [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) .
 
-## <a name="store-the-microsoft-client-id-and-client-secret"></a>Stocker l’ID client et la clé secrète client Microsoft
+## <a name="store-the-microsoft-client-id-and-secret"></a>Stocker l’ID client et le secret Microsoft
 
-Exécutez les commandes suivantes pour stocker `ClientId` et `ClientSecret` en toute sécurité à l’aide du [Gestionnaire de secret](xref:security/app-secrets):
+Stockez les paramètres sensibles tels que l’ID client Microsoft et les valeurs secrètes avec le [Gestionnaire de secret](xref:security/app-secrets). Pour cet exemple, procédez comme suit :
 
-```dotnetcli
-dotnet user-secrets set Authentication:Microsoft:ClientId <Client-Id>
-dotnet user-secrets set Authentication:Microsoft:ClientSecret <Client-Secret>
-```
+1. Initialisez le projet pour le stockage secret conformément aux instructions de la procédure [activer le stockage secret](xref:security/app-secrets#enable-secret-storage).
+1. Stockez les paramètres sensibles dans le magasin de secret local avec les clés secrètes `Authentication:Microsoft:ClientId` et `Authentication:Microsoft:ClientSecret`:
 
-Liez des paramètres sensibles tels que Microsoft `ClientId` et `ClientSecret` à la configuration de votre application à l’aide du [Gestionnaire de secret](xref:security/app-secrets). Dans le cadre de cet exemple, nommez les jetons `Authentication:Microsoft:ClientId` et `Authentication:Microsoft:ClientSecret`.
+    ```dotnetcli
+    dotnet user-secrets set "Authentication:Microsoft:ClientId" "<client-id>"
+    dotnet user-secrets set "Authentication:Microsoft:ClientSecret" "<client-secret>"
+    ```
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 

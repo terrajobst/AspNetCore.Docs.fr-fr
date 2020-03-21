@@ -1,23 +1,23 @@
 ---
 title: Créez des applications Web progressifs avec ASP.NET Core Blazor webassembly
 author: guardrex
-description: Découvrez comment créer des applications Web progressifs basées sur des Blazor(PWA), des applications Web qui utilisent des fonctionnalités de navigateur modernes pour se comporter comme des applications de bureau.
+description: Découvrez comment créer une application Web progressive (PWA) basée sur Blazorqui utilise des fonctionnalités de navigateur modernes pour se comporter comme une application de bureau.
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: f1c1ce50f20bf579e67e1d4eb02cc7d9d681e354
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 53e1c4d043c0e8faf13668989cda1f1245c7157a
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083719"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989598"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-opno-locblazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core Blazor webassembly
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Créez des applications Web progressifs avec ASP.NET Core webassembly éblouissant
 
 Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -25,119 +25,145 @@ Par [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
-Une application Web progressive (PWA) est une application Web qui utilise des API et des fonctionnalités de navigateur modernes pour se comporter comme une application de bureau. Ces fonctionnalités peuvent inclure :
+Une application Web progressive (PWA) est une application à page unique (SPA) qui utilise des API et des fonctionnalités de navigateur modernes pour se comporter comme une application de bureau. Le webassembly éblouissant est une plate-forme d’application Web côté client basée sur des normes. il peut donc utiliser n’importe quelle API de navigateur, y compris les API PWA requises pour les fonctionnalités suivantes :
 
-* Travailler en mode hors connexion et toujours charger instantanément, indépendamment de la vitesse du réseau
-* Pouvoir s’exécuter dans sa propre fenêtre d’application, et pas seulement dans une fenêtre de navigateur
-* Lancé à partir du menu Démarrer du système d’exploitation hôte (se), de l’ancre ou de l’écran d’accueil
-* Réception de notifications push à partir d’un serveur principal, même si l’utilisateur n’utilise pas l’application
-* Mise à jour automatique en arrière-plan
+* Travailler en mode hors connexion et se charger instantanément, indépendamment de la vitesse du réseau.
+* S’exécutant dans sa propre fenêtre d’application, et pas seulement dans une fenêtre de navigateur.
+* Lancé à partir du menu Démarrer, de l’ancrage ou de l’écran d’accueil du système d’exploitation de l’hôte.
+* Réception de notifications push à partir d’un serveur principal, même si l’utilisateur n’utilise pas l’application.
+* Mise à jour automatique en arrière-plan.
 
-Un utilisateur peut tout d’abord découvrir et utiliser l’application dans son navigateur Web comme n’importe quelle autre application à page unique (SPA), puis progresser ultérieurement pour l’installer dans son système d’exploitation et activer les notifications push. C’est la raison pour laquelle nous utilisons le terme *progressif*.
+Le mot *progressif* est utilisé pour décrire de telles applications, car :
 
-Blazor webassembly est une véritable plate-forme d’application Web côté client basée sur des normes, il peut utiliser n’importe quelle API de navigateur, y compris les API PWA nécessaires pour les fonctionnalités mentionnées ci-dessus. Il peut travailler hors connexion comme n’importe quelle autre technologie Web côté client.
+* Un utilisateur peut tout d’abord découvrir et utiliser l’application dans son navigateur Web comme n’importe quel autre SPA.
+* Plus tard, l’utilisateur est en mesure de l’installer dans son système d’exploitation et d’activer les notifications push.
 
-## <a name="pwa-template"></a>Modèle PWA
+## <a name="create-a-project-from-the-pwa-template"></a>Créer un projet à partir du modèle PWA
 
-Lorsque vous créez une application Blazor webassembly, vous avez la possibilité d’ajouter des fonctionnalités de PWA. Dans Visual Studio, l’option est fournie sous la forme d’une case à cocher dans la boîte de dialogue de création du projet :
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-![image](https://user-images.githubusercontent.com/1101362/76207411-a6b54200-61f5-11ea-9dfc-6acd87a91428.png)
+Quand vous créez une **application de Webassembly éblouissante** dans la boîte de dialogue **créer un nouveau projet** , activez la case à cocher progression de l' **application Web** :
 
-Si vous créez le projet sur la ligne de commande, vous pouvez utiliser l’indicateur `--pwa`. Par exemple,
+![La case à cocher « application Web progressive » est activée dans la boîte de dialogue Nouveau projet de Visual Studio.](progressive-web-app/_static/image1.png)
+
+<!--
+
+# [Visual Studio for Mac](#tab/visual-studio-mac)
+
+-->
+
+# <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code/.NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+Créez un projet PWA dans une interface de commande avec le commutateur `--pwa` :
 
 ```dotnetcli
-dotnet new blazorwasm --pwa -o MyNewProject
+dotnet new blazorwasm -o MyNewProject --pwa
 ```
 
-Dans les deux cas, vous êtes libre de combiner cela avec l’option « ASP.NET Core hébergée » si vous le souhaitez, mais vous n’avez pas à le faire. Les fonctionnalités de PWA sont indépendantes du modèle d’hébergement.
+---
+
+Éventuellement, PWA peut être configuré pour une application créée à partir du modèle ASP.NET Core hébergé. Le scénario PWA est indépendant du modèle d’hébergement.
 
 ## <a name="installation-and-app-manifest"></a>Manifeste d’installation et d’application
 
-Quand vous visitez une application créée à l’aide de l’option de modèle PWA, les utilisateurs ont la possibilité d’installer l’application dans le menu Démarrer, l’ancre ou l’écran d’accueil de son système d’exploitation.
+Quand vous visitez une application créée à l’aide du modèle PWA, les utilisateurs ont la possibilité d’installer l’application dans le menu Démarrer, l’ancre ou l’écran d’accueil de son système d’exploitation. La façon dont cette option est présentée dépend du navigateur de l’utilisateur. Quand vous utilisez des navigateurs basés sur Desktop chrome, tels que Edge ou chrome, un bouton **Ajouter** apparaît dans la barre d’URL. Une fois que l’utilisateur a sélectionné le bouton **Ajouter** , une boîte de dialogue de confirmation s’affiche :
 
-La façon dont cette option est présentée dépend du navigateur de l’utilisateur. Par exemple, lorsque vous utilisez des navigateurs basés sur Desktop chrome, tels que Edge ou chrome, un bouton *Ajouter* apparaît dans la barre d’URL :
+![Le diaglog de confirmation de Google Chrome présente un bouton installer pour l’utilisateur de l’application « MyBlazorPwa ».](progressive-web-app/_static/image2.png)
 
-![image](https://user-images.githubusercontent.com/1101362/76208127-f7796a80-61f6-11ea-8aea-7fba704be787.png)
+Sur iOS, les visiteurs peuvent installer le PWA à l’aide du bouton de **partage** de Safari et de l’option **Ajouter à homescreen** . Sur chrome pour Android, les utilisateurs doivent sélectionner le bouton de **menu** dans l’angle supérieur droit, puis **Ajouter à l’écran d’accueil**.
 
-Sur iOS, les visiteurs peuvent installer le PWA à l’aide du bouton de *partage* de Safari et de l’option *Ajouter à homescreen* . Sur chrome pour Android, les utilisateurs doivent appuyer sur le bouton de *menu* dans l’angle supérieur droit, puis choisir *Ajouter à l’écran d’accueil*.
+Une fois installé, l’application s’affiche dans sa propre fenêtre sans barre d’adresses :
 
-Une fois installé, l’application s’affiche dans sa propre fenêtre, sans barre d’adresses.
+![L’application « MyBlazorPwa » s’exécute dans Google Chrome sans barre d’adresses.](progressive-web-app/_static/image3.png)
 
-![image](https://user-images.githubusercontent.com/1101362/76208588-e2e9a200-61f7-11ea-85e1-8c3fc849b252.png)
-
-Pour personnaliser le titre, le modèle de couleurs, l’icône ou d’autres détails de la fenêtre, consultez le fichier `manifest.json` dans le répertoire *wwwroot* de votre projet. Le schéma de ce fichier est défini par les normes Web. Pour obtenir une documentation détaillée, consultez https://developer.mozilla.org/docs/Web/Manifest.
+Pour personnaliser le titre, le modèle de couleurs, l’icône ou d’autres détails de la fenêtre, consultez le fichier *Manifest. JSON* dans le répertoire *wwwroot* du projet. Le schéma de ce fichier est défini par les normes Web. Pour plus d’informations, consultez [MDN Web docs : Web App manifest](https://developer.mozilla.org/docs/Web/Manifest).
 
 ## <a name="offline-support"></a>Prise en charge hors connexion
 
-Par défaut, les applications créées à l’aide de l’option de modèle PWA prennent en charge l’exécution hors connexion. Un utilisateur doit d’abord accéder à l’application pendant qu’il est en ligne, puis le navigateur télécharge et met en cache automatiquement toutes les ressources nécessaires pour travailler hors connexion.
+Par défaut, les applications créées à l’aide de l’option de modèle PWA prennent en charge l’exécution hors connexion. Un utilisateur doit d’abord accéder à l’application pendant qu’elle est en ligne. Le navigateur télécharge et met en cache automatiquement toutes les ressources nécessaires pour travailler hors connexion.
 
 > [!IMPORTANT]
-> La prise en charge hors connexion est activée uniquement pour les applications *publiées* . Elle n’est pas activée pendant le développement. Cela est dû au fait que cela interfère avec le cycle de développement habituel qui consiste à apporter des modifications et à les tester.
+> Le support de développement interfère avec le cycle de développement habituel qui consiste à apporter des modifications et à les tester. Par conséquent, la prise en charge hors connexion est activée uniquement pour les applications *publiées* . 
 
 > [!WARNING]
-> Si vous envisagez de livrer un PWA en mode hors connexion, vous devez comprendre [plusieurs avertissements importants et avertissements](#caveats-for-offline-pwas) . Celles-ci sont inhérentes aux PWA hors connexion et ne sont pas spécifiques à Blazor. Veillez à lire et à comprendre ces avertissements avant de faire des hypothèses sur le fonctionnement de votre application en mode hors connexion.
+> Si vous envisagez de distribuer un PWA avec accès hors connexion, il y a [plusieurs avertissements et avertissements importants](#caveats-for-offline-pwas). Ces scénarios sont inhérents aux PWA hors connexion et ne sont pas spécifiques à Blazor. Veillez à lire et à comprendre ces avertissements avant de faire des hypothèses sur le fonctionnement de votre application en mode hors connexion.
 
-Pour voir comment fonctionne la prise en charge hors connexion, [publiez d’abord votre application](https://docs.microsoft.com/aspnet/core/host-and-deploy/blazor/?view=aspnetcore-3.1&tabs=visual-studio#publish-the-app)et hébergez-la sur un serveur prenant en charge le protocole HTTPS. Lorsque vous accédez à l’application, vous devez être en mesure d’ouvrir les outils de développement du navigateur et de vérifier qu’un processus de *travail de service* est inscrit pour votre hôte :
+Pour voir comment fonctionne la prise en charge hors connexion :
 
-![image](https://user-images.githubusercontent.com/1101362/76210294-bd5e9780-61fb-11ea-9869-65c55c62803d.png)
+1. Publiez l’application. Pour plus d’informations, consultez <xref:host-and-deploy/blazor/index#publish-the-app>.
+1. Déployez l’application sur un serveur qui prend en charge le protocole HTTPs, et accédez à l’application dans un navigateur à son adresse HTTPs sécurisée.
+1. Ouvrez les outils de développement du navigateur, puis vérifiez qu’un *Worker service* est inscrit pour l’ordinateur hôte sous l’onglet **application** :
 
-En outre, si vous rechargez la page, dans l’onglet *réseau* , vous devez voir que toutes les ressources nécessaires pour charger votre page sont récupérées à partir du *Service Worker* ou du *cache de mémoire*:
+   ![L’onglet « application » des outils de développement Google Chrome montre un Worker service activé et en cours d’exécution.](progressive-web-app/_static/image4.png)
 
-![image](https://user-images.githubusercontent.com/1101362/76210472-1d553e00-61fc-11ea-84c6-291644df709e.png)
+1. Rechargez la page et examinez l’onglet **réseau** . le **Service Worker** ou **cache mémoire** est répertorié comme source pour toutes les ressources de la page :
 
-Cela indique que le navigateur n’est pas dépendant de l’accès réseau pour charger votre application. Pour vérifier cela, vous pouvez soit arrêter votre serveur Web, soit demander au navigateur de simuler le mode hors connexion :
+   ![L’onglet « Réseau » des outils de développement Google Chrome présente des sources pour toutes les ressources de la page.](progressive-web-app/_static/image5.png)
 
-![image](https://user-images.githubusercontent.com/1101362/76210556-47a6fb80-61fc-11ea-9d12-20a8f6528744.png)
+1. Pour vérifier que le navigateur n’est pas dépendant de l’accès réseau pour charger l’application, vous pouvez :
 
-Désormais, même sans accès à votre serveur Web, vous devez être en mesure de recharger la page et de voir que votre application se charge et s’exécute toujours. De même, même si vous simulez une connexion réseau très lente, votre page sera toujours chargée immédiatement puisqu’elle est chargée indépendamment du réseau.
+   * Arrêtez le serveur Web et observez comment l’application continue de fonctionner normalement, ce qui comprend les rechargements de pages. De même, l’application continue de fonctionner normalement lorsqu’il y a une connexion réseau lente.
+   * Demandez au navigateur de simuler le mode hors connexion dans l’onglet **réseau** :
 
-### <a name="service-worker"></a>Service Worker
+   ![L’onglet « Réseau » des outils de développement Google Chrome avec la liste déroulante mode navigateur passe de « en ligne » à « hors connexion ».](progressive-web-app/_static/image6.png)
 
-La prise en charge hors connexion est obtenue à l’aide d’un service Worker. Il s’agit d’une norme Web, non spécifique à Blazor. Pour obtenir de la documentation sur les Workers de service, consultez https://developer.mozilla.org/docs/Web/API/Service_Worker_API. Pour en savoir plus sur les modèles d’utilisation courants pour les Workers, consultez l’article excellent sur [le cycle de vie des services](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle).
+La prise en charge hors connexion à l’aide d’un Worker service est une norme Web, non spécifique à Blazor. Pour plus d’informations sur les Workers de service, consultez [MDN Web docs : Service Worker API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API). Pour en savoir plus sur les modèles d’utilisation courants pour les Workers de service, consultez [Google Web : the Service Worker Lifecycle](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle).
 
 le modèle PWA de Blazorproduit deux fichiers de travail de service :
 
-* *wwwroot/Service-Worker. js*, qui est utilisé pendant le développement
-* *wwwroot/Service-Worker. published. js*, qui est utilisé une fois votre application publiée
+* *wwwroot/Service-Worker. js*, qui est utilisé pendant le développement.
+* *wwwroot/Service-Worker. published. js*, qui est utilisé après la publication de l’application.
 
-Si vous souhaitez partager la logique entre ces deux fichiers, envisagez d’ajouter un troisième fichier JavaScript pour contenir la logique commune et utilisez [`self.importScripts`](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts) pour charger cette logique dans les deux fichiers.
+Pour partager la logique entre les deux fichiers de travail de service, envisagez l’approche suivante :
 
-#### <a name="cache-first-fetch-strategy"></a>Stratégie d’extraction du cache en premier
+* Ajoutez un troisième fichier JavaScript pour contenir la logique commune.
+* Utilisez [self. importScripts](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts) pour charger la logique commune dans les deux fichiers de travail de service.
 
-Le service Worker *Service-Worker. published. js* intégré résout les demandes à l’aide d’une stratégie de *cache-première* . Cela signifie qu’il est toujours préférable de retourner le contenu mis en cache s’il est disponible, que l’utilisateur dispose d’un accès réseau ou qu’un contenu plus récent soit disponible sur le serveur.
+### <a name="cache-first-fetch-strategy"></a>Stratégie d’extraction du cache en premier
 
-Cela peut être utile pour deux raisons :
+Le service Worker *Service-Worker. published. js* intégré résout les demandes à l’aide d’une stratégie de *cache-première* . Cela signifie que le processus de travail préfère retourner le contenu mis en cache, que l’utilisateur dispose d’un accès réseau ou que du contenu plus récent soit disponible sur le serveur.
 
-* **Cela garantit la fiabilité.** L’accès réseau n’est pas un état booléen. Un utilisateur n’est pas simplement « en ligne » ou « hors connexion ». En réalité, l’appareil de l’utilisateur peut croire qu’il est en ligne, mais il est possible que le réseau soit si lent qu’il soit difficile à attendre. Il se peut également que le réseau renvoie des résultats non valides pour certaines URL, par exemple lorsqu’il existe un portail WIFI captif qui bloque ou redirige actuellement certaines requêtes. C’est la raison pour laquelle l’API `navigator.onLine` du navigateur n’est pas fiable et ne doit pas dépendre de.
-* **Cela garantit l’exactitude.** Lors de la création d’un cache de ressources hors connexion, le service worker utilise le hachage de contenu pour garantir qu’il a extrait un instantané complet et cohérent des ressources en un seul instant. Ce cache est ensuite utilisé comme une unité atomique. À partir de cela, il n’y a aucun point à demander au réseau des ressources plus récentes, puisque les seules versions que vous souhaitez sont celles que vous avez déjà mises en cache. Tout autre risque d’incohérence et d’incompatibilité (par exemple, essayer d’utiliser des versions d’assemblys .NET qui n’ont pas été compilés ensemble).
+La stratégie du cache en premier est utile pour les raisons suivantes :
 
-#### <a name="background-updates"></a>Mises à jour en arrière-plan
+* **Cela garantit la fiabilité.** &ndash; accès réseau n’est pas un état booléen. Un utilisateur n’est pas simplement en ligne ou hors connexion :
 
-En tant que modèle mental, vous pouvez considérer qu’un PWA en mode hors connexion se comporte comme une application mobile qui peut être installée. Il démarre toujours immédiatement, quelle que soit la connectivité réseau, mais la logique d’application installée provient d’un instantané à un moment donné qui peut ne pas être la dernière version.
+  * L’appareil de l’utilisateur peut supposer qu’il est en ligne, mais il est possible que le réseau soit si lent, car il est difficile à attendre.
+  * le réseau peut renvoyer des résultats non valides pour certaines URL, par exemple lorsqu’il existe un portail WIFI captif qui bloque ou redirige actuellement certaines demandes.
+  
+  C’est la raison pour laquelle l’API `navigator.onLine` du navigateur n’est pas fiable et ne doit pas être dépendante.
+
+* **Cela garantit l’exactitude.** &ndash; lors de la création d’un cache de ressources hors connexion, le service worker utilise le hachage de contenu pour garantir qu’il a extrait un instantané complet et auto-cohérent des ressources en un seul instant. Ce cache est ensuite utilisé comme une unité atomique. Il n’y a aucun point à demander au réseau des ressources plus récentes, puisque les seules versions requises sont celles déjà mises en cache. Tout autre risque d’incohérence et d’incompatibilité (par exemple, essayer d’utiliser des versions d’assemblys .NET qui n’ont pas été compilées ensemble).
+
+### <a name="background-updates"></a>Mises à jour en arrière-plan
+
+En tant que modèle mental, vous pouvez considérer qu’un PWA en mode hors connexion se comporte comme une application mobile qui peut être installée. L’application démarre immédiatement, quelle que soit la connectivité réseau, mais la logique de l’application installée provient d’un instantané à un moment donné qui peut ne pas être la dernière version.
 
 Le modèle Blazor PWA produit des applications qui essaient automatiquement de se mettre à jour en arrière-plan chaque fois que l’utilisateur accède à une connexion réseau opérationnelle. Ce fonctionnement est le suivant :
 
-* Au cours de la compilation, votre projet génère un *manifeste des ressources du service Worker*. Par défaut, ce nom est appelé *Service-Worker-Assets. js*. Cette liste répertorie toutes les ressources statiques dont votre application a besoin pour fonctionner hors connexion, telles que les assemblys .NET, les fichiers JavaScript, les CSS, etc., y compris leurs hachages de contenu. Cette liste est chargée par votre service Worker afin qu’il sache quelles ressources mettre en cache.
-* Chaque fois que l’utilisateur visite votre application, le navigateur redemande *Service-Worker. js* et *Service-Worker-Assets. js* en arrière-plan. Si le serveur retourne le contenu modifié pour l’un de ces fichiers (par rapport à l’octet d’octet avec le Worker de service installé existant), le processus de travail de service tente d’installer une nouvelle version de lui-même.
-* Lors de l’installation d’une nouvelle version de lui-même, le processus de travail crée un cache distinct pour les ressources hors connexion et commence à le remplir avec les ressources listées dans *Service-Worker-Assets. js*. Cette logique est implémentée dans la fonction `onInstall` à l’intérieur de *Service-Worker. published. js*.
-* Si le processus se termine correctement (par exemple, si toutes les ressources sont chargées sans erreur et que tous les hachages de contenu correspondent), le nouveau service Worker passe à l’État « en attente d’activation ». Dès que l’utilisateur ferme votre application (c’est-à-dire qu’il n’y a pas d’onglets ou de fenêtres restantes qui affichent votre application), le nouveau service Worker devient « actif » et sera utilisé pour les visites ultérieures à votre application. L’ancien service Worker et son cache sont supprimés.
-* Si le processus ne se termine pas correctement, la nouvelle instance du Worker service est ignorée. Le processus de mise à jour sera tenté à nouveau à la prochaine visite de l’utilisateur, alors qu’il devrait avoir une meilleure connexion réseau capable d’effectuer les requêtes.
+* Au cours de la compilation, le projet génère un *manifeste des ressources de traitement de service*. Par défaut, il s’agit de *Service-Worker-Assets. js*. Le manifeste répertorie toutes les ressources statiques dont l’application a besoin pour fonctionner hors connexion, telles que les assemblys .NET, les fichiers JavaScript et CSS, y compris leurs hachages de contenu. La liste des ressources est chargée par le processus de travail du service afin qu’il sache quelles ressources mettre en cache.
+* Chaque fois que l’utilisateur visite l’application, le navigateur redemande *Service-Worker. js* et *Service-Worker-Assets. js* en arrière-plan. Les fichiers sont comparés octet par octet avec le processus de travail de service installé existant. Si le serveur retourne le contenu modifié de l’un de ces fichiers, le processus de travail de service tente d’installer une nouvelle version de lui-même.
+* Lors de l’installation d’une nouvelle version de lui-même, le processus de travail crée un cache distinct pour les ressources hors connexion et démarre le remplissage du cache avec les ressources listées dans *Service-Worker-Assets. js*. Cette logique est implémentée dans la fonction `onInstall` à l’intérieur de *Service-Worker. published. js*.
+* Le processus se termine correctement lorsque toutes les ressources sont chargées sans erreur et que tous les hachages de contenu correspondent. En cas de réussite, le nouveau service Worker entre dans un état *d’activation en attente* . Dès que l’utilisateur ferme l’application (pas d’onglets ou de fenêtres d’application restants), le nouveau Worker service devient *actif* et est utilisé pour les visites de l’application suivante. L’ancien service Worker et son cache sont supprimés.
+* Si le processus ne se termine pas correctement, la nouvelle instance de service worker est ignorée. Le processus de mise à jour est tenté à nouveau à la prochaine visite de l’utilisateur, lorsque j’espère que le client dispose d’une meilleure connexion réseau capable d’effectuer les requêtes.
 
-Vous pouvez personnaliser n’importe quel aspect de ce processus en modifiant la logique du service Worker. Aucune des options ci-dessus n’est spécifique à Blazor, mais il s’agit simplement d’une suggestion fournie par l’option de modèle PWA. Pour plus d’informations, consultez [la documentation sur le service Worker](https://developer.mozilla.org/docs/Web/API/Service_Worker_API.) .
+Personnalisez ce processus en modifiant la logique du service Worker. Aucun des comportements précédents n’est propre à Blazor, mais il s’agit simplement de l’expérience par défaut fournie par l’option de modèle PWA. Pour plus d’informations, consultez [MDN Web docs : Service Worker API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API).
 
-#### <a name="how-requests-are-resolved"></a>Résolution des demandes
+### <a name="how-requests-are-resolved"></a>Résolution des demandes
 
-Comme décrit ci-dessus, le service Worker par défaut utilise une stratégie de *cache en premier* , ce qui signifie qu’il tente de traiter le contenu mis en cache lorsqu’il est disponible. S’il n’existe aucun contenu mis en cache pour une certaine URL, par exemple lors de la demande de données à partir d’une API de serveur principal, le processus de travail de service revient sur une demande réseau normale qui peut uniquement aboutir si le serveur est accessible. Cette logique est implémentée dans `onFetch` dans *Service-Worker. published. js*.
+Comme décrit dans la section [stratégie de récupération du cache en premier](#cache-first-fetch-strategy) , le Worker de service par défaut utilise une stratégie de cache en *premier* , ce qui signifie qu’il tente de traiter le contenu mis en cache quand il est disponible. S’il n’existe aucun contenu mis en cache pour une certaine URL, par exemple lors de la demande de données à partir d’une API de serveur principal, le processus de travail de service revient sur une demande réseau normale. La demande réseau a abouti si le serveur est accessible. Cette logique est implémentée dans `onFetch` fonction dans *Service-Worker. published. js*.
 
-Si vos composants de Blazor s’appuient sur la demande de données à partir des API principales et que vous souhaitez fournir une expérience utilisateur conviviale dans le cas où de telles requêtes échouent en raison d’une indisponibilité du réseau, vous devez implémenter une logique dans vos composants. Par exemple, utilisez `try/catch` autour des demandes `HttpClient`.
+Si les composants Razor de l’application reposent sur la demande de données à partir des API backend et que vous souhaitez fournir une expérience utilisateur conviviale pour les demandes ayant échoué en raison de l’indisponibilité du réseau, implémentez la logique dans les composants de l’application. Par exemple, utilisez `try/catch` autour des demandes `HttpClient`.
 
-#### <a name="support-server-rendered-pages"></a>Prendre en charge les pages rendues par le serveur
+### <a name="support-server-rendered-pages"></a>Prendre en charge les pages rendues par le serveur
 
-Réfléchissez à ce qui se passe quand l’utilisateur accède pour la première fois à une URL telle que `/counter` ou tout autre lien profond dans votre application. Dans ce cas, vous ne souhaitez pas renvoyer le contenu mis en cache en tant que `/counter`, mais vous avez besoin du navigateur pour charger le contenu mis en cache en tant que `/index.html` pour démarrer votre application Blazor webassembly. Ces demandes initiales sont appelées demandes de *navigation* (par opposition aux demandes de sous- *ressources* pour les images/CSS/etc, ou requêtes *Fetch/XHR* pour les données d’API).
+Réfléchissez à ce qui se passe quand l’utilisateur accède pour la première fois à une URL telle que `/counter` ou tout autre lien profond dans l’application. Dans ce cas, vous ne souhaitez pas renvoyer le contenu mis en cache en tant que `/counter`, mais vous avez besoin du navigateur pour charger le contenu mis en cache en tant que `/index.html` pour démarrer votre application Blazor webassembly. Ces demandes initiales sont appelées demandes de *navigation* , par opposition à :
 
-Le service Worker par défaut contient une logique de cas spéciale pour les demandes de navigation. Elle les résout en retournant le contenu mis en cache pour `/index.html`, quelle que soit l’URL demandée. Cette logique est implémentée dans la fonction `onFetch` à l’intérieur de *Service-Worker. published. js*.
+* demandes de sous- *ressources* pour les images, les feuilles de style ou d’autres fichiers.
+* requêtes *Fetch/XHR* pour les données d’API.
 
-Si votre application comporte certaines URL qui doivent retourner du code HTML rendu serveur (et ne servent pas `/index.html` du cache), vous devez modifier la logique dans votre service Worker. Par exemple, si toutes les URL contenant des `/Identity/` doivent être gérées en tant que demandes standard en ligne uniquement au serveur, modifiez la logique de `onFetch` de *Service-Worker. published. js* . Recherchez le code suivant :
+Le service Worker par défaut contient une logique de cas spéciale pour les demandes de navigation. Le Worker de service résout les demandes en retournant le contenu mis en cache pour `/index.html`, quelle que soit l’URL demandée. Cette logique est implémentée dans la fonction `onFetch` à l’intérieur de *Service-Worker. published. js*.
+
+Si votre application comporte certaines URL qui doivent retourner du code HTML rendu serveur et ne servent pas `/index.html` du cache, vous devez modifier la logique de votre service Worker. Si toutes les URL contenant des `/Identity/` doivent être gérées en tant que demandes standard en ligne uniquement au serveur, modifiez la logique de `onFetch` de *Service-Worker. published. js* . Recherchez le code suivant :
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';
@@ -150,109 +176,105 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
     && !event.request.url.includes('/Identity/');
 ```
 
-Si vous n’effectuez pas cette opération, quelle que soit la connectivité réseau, le service Workers intercepte les demandes de ces URL et les résout à l’aide de `/index.html`.
+Si vous n’effectuez pas cette opération, quelle que soit la connectivité réseau, le service Worker intercepte les demandes de ces URL et les résout à l’aide de `/index.html`.
 
-#### <a name="control-asset-caching"></a>Contrôler la mise en cache des ressources
+### <a name="control-asset-caching"></a>Contrôler la mise en cache des ressources
 
-Si votre projet définit une propriété MSBuild appelée `ServiceWorkerAssetsManifest`, les outils de génération de Blazorgénèrent un manifeste des ressources de travail de service avec le nom spécifié. Le modèle PWA par défaut produit un fichier projet contenant les éléments suivants :
+Si votre projet définit le `ServiceWorkerAssetsManifest` propriété MSBuild, les outils de génération de Blazorgénèrent un manifeste des ressources de traitement de service avec le nom spécifié. Le modèle PWA par défaut produit un fichier projet contenant la propriété suivante :
 
 ```xml
 <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 ```
 
-Le fichier est placé dans le répertoire de sortie *wwwroot* , de sorte que le navigateur peut récupérer ce fichier en demandant `/service-worker-assets.js`. Pour afficher le contenu, ouvrez *YourProject\bin\Debug\netstandard2.1\wwwroot\service-Worker-Assets.js* dans un éditeur de texte. Toutefois, ne modifiez pas le fichier, car il sera régénéré à chaque Build.
+Le fichier est placé dans le répertoire de sortie *wwwroot* , de sorte que le navigateur peut récupérer ce fichier en demandant `/service-worker-assets.js`. Pour afficher le contenu de ce fichier, ouvrez */bin/debug/{Target Framework}/wwwroot/Service-Worker-Assets.js* dans un éditeur de texte. Toutefois, ne modifiez pas le fichier, car il est régénéré à chaque Build.
 
 Par défaut, ce manifeste répertorie les éléments suivants :
 
-* Toutes les ressources gérées par Blazor, telles que les assemblys .NET et les fichiers d’exécution webassembly .NET nécessaires pour fonctionner hors connexion
-* Toutes les ressources qui seront publiées dans votre répertoire *wwwroot* , telles que des images, des fichiers CSS et des fichiers JavaScript. Cela comprend les ressources Web statiques fournies par les projets externes et les packages NuGet.
+* Toutes les ressources gérées par Blazor, telles que les assemblys .NET et les fichiers d’exécution webassembly .NET nécessaires pour fonctionner hors connexion.
+* Toutes les ressources pour la publication dans le répertoire *wwwroot* de l’application, telles que les images, les feuilles de style et les fichiers JavaScript, y compris les ressources Web statiques fournies par les projets externes et les packages NuGet.
 
-Vous pouvez contrôler les ressources qui seront extraites et mises en cache par le service Worker en modifiant la logique dans `onInstall` dans *Service-Worker. published. js*. Par défaut, il récupère et met en cache les fichiers qui correspondent aux extensions de nom de fichier Web typiques, telles que *. html*, *. CSS*, *. js*, *. WASM*, etc., ainsi que les types de fichiers spécifiques à Blazor webassembly ( *. dll*, *. pdb*).
+Vous pouvez contrôler les ressources qui sont extraites et mises en cache par le service Worker en modifiant la logique dans `onInstall` dans *Service-Worker. published. js*. Par défaut, le processus de travail récupère et met en cache les fichiers correspondant à des extensions de nom de fichier Web typiques, telles que *. html*, *. CSS*, *. js*et *. WASM*, ainsi que des types de fichiers spécifiques à Blazor webassembly ( *. dll*, *. pdb*).
 
-Si vous souhaitez inclure des ressources supplémentaires qui ne sont pas présentes dans votre répertoire *wwwroot* , vous pouvez le faire en définissant des entrées ItemGroup de MSBuild supplémentaires. Par exemple, dans votre fichier projet, ajoutez :
+Pour inclure des ressources supplémentaires qui ne sont pas présentes dans le répertoire *wwwroot* de l’application, définissez des entrées `ItemGroup` MSBuild supplémentaires, comme indiqué dans l’exemple suivant :
 
 ```xml
 <ItemGroup>
-    <ServiceWorkerAssetsManifestItem
-        Include="MyDirectory\AnotherFile.json"
-        RelativePath="MyDirectory\AnotherFile.json"
-        AssetUrl="files/AnotherFile.json" />
+  <ServiceWorkerAssetsManifestItem Include="MyDirectory\AnotherFile.json"
+    RelativePath="MyDirectory\AnotherFile.json" AssetUrl="files/AnotherFile.json" />
 </ItemGroup>
 ```
 
 Les métadonnées de `AssetUrl` spécifient l’URL relative de base que le navigateur doit utiliser lors de la récupération de la ressource à mettre en cache. Cela peut être indépendant du nom du fichier source d’origine sur le disque.
 
 > [!IMPORTANT]
-> L’ajout d’un `ServiceWorkerAssetsManifestItem` n’entraîne pas la publication du fichier dans votre répertoire *wwwroot* . Il vous permet de contrôler votre sortie de publication séparément. Le `ServiceWorkerAssetsManifestItem` entraîne uniquement l’apparition d’une entrée supplémentaire dans le manifeste des ressources du Worker.
+> L’ajout d’un `ServiceWorkerAssetsManifestItem` n’entraîne pas la publication du fichier dans le répertoire *wwwroot* de l’application. La sortie de publication doit être contrôlée séparément. Le `ServiceWorkerAssetsManifestItem` entraîne uniquement l’apparition d’une entrée supplémentaire dans le manifeste des ressources du Worker.
 
 ## <a name="push-notifications"></a>Notifications Push
 
-Comme tout autre PWA, un Blazor webassembly PWA peut recevoir des notifications push à partir d’un serveur principal. Votre serveur peut les envoyer à tout moment, même lorsque l’utilisateur n’utilise pas activement votre application (par exemple, lorsqu’un autre utilisateur effectue une action qui peut être pertinente).
+Comme tout autre PWA, un Blazor webassembly PWA peut recevoir des notifications push à partir d’un serveur principal. Le serveur peut envoyer des notifications push à tout moment, même lorsque l’utilisateur n’utilise pas activement l’application. Par exemple, les notifications push peuvent être envoyées lorsqu’un autre utilisateur effectue une action appropriée.
 
-Le mécanisme d’envoi d’une notification push est entièrement indépendant de Blazor webassembly, car il est implémenté par le serveur principal qui peut utiliser n’importe quelle technologie. Si vous souhaitez envoyer des notifications push à partir d’un serveur de ASP.NET Core, envisagez d' [utiliser une technique similaire à celle de l’atelier de pizzas éblouissantes](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications).
+Le mécanisme d’envoi d’une notification push est entièrement indépendant de Blazor webassembly, car il est implémenté par le serveur principal qui peut utiliser n’importe quelle technologie. Si vous souhaitez envoyer des notifications push à partir d’un serveur de ASP.NET Core, envisagez d' [utiliser une technique similaire à l’approche adoptée dans l’atelier de pizzas éblouissant](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications).
 
-Le mécanisme de réception et d’affichage d’une notification push sur le client est également indépendant de Blazor webassembly, puisqu’il est implémenté dans le Worker service, qui est un fichier JavaScript. À titre d’exemple, vous pouvez à nouveau voir [l’approche utilisée dans l’atelier de pizzas éblouissant](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications).
+Le mécanisme de réception et d’affichage d’une notification push sur le client est également indépendant de Blazor webassembly, puisqu’il est implémenté dans le fichier JavaScript Service Worker. Pour obtenir un exemple, consultez [l’approche utilisée dans l’atelier de pizzas éblouissant](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications).
 
 ## <a name="caveats-for-offline-pwas"></a>Avertissements pour les PWA hors connexion
 
-Toutes les applications ne doivent pas essayer de prendre en charge l’utilisation hors connexion. Elle ajoute une complexité significative, tout en n’étant pas toujours pertinente.
+Toutes les applications ne doivent pas essayer de prendre en charge l’utilisation hors connexion. La prise en charge hors connexion ajoute une complexité significative, mais n’est pas toujours pertinente pour les cas d’usage requis.
 
 La prise en charge hors connexion est généralement pertinente uniquement :
 
-* Si votre magasin de données principal est local dans le navigateur. Par exemple, lors de la création d’une interface utilisateur pour un appareil [IOT](https://en.wikipedia.org/wiki/Internet_of_things) qui stocke des données dans `localStorage` ou [IndexedDB](https://developer.mozilla.org/docs/Web/API/IndexedDB_API).
+* Si la Banque de données principale est locale pour le navigateur. Par exemple, l’approche est pertinente dans une application avec une interface utilisateur pour un appareil [IOT](https://en.wikipedia.org/wiki/Internet_of_things) qui stocke des données dans `localStorage` ou [IndexedDB](https://developer.mozilla.org/docs/Web/API/IndexedDB_API).
+* Si l’application effectue une quantité importante de travail pour extraire et mettre en cache les données de l’API backend pertinentes pour chaque utilisateur afin qu’elles puissent parcourir les données hors connexion. Si l’application doit prendre en charge la modification, un système de suivi des modifications et de synchronisation des données avec le serveur principal doit être généré.
+* Si l’objectif est de garantir que l’application se charge immédiatement, indépendamment des conditions du réseau. Implémentez une expérience utilisateur appropriée autour des demandes d’API backend pour montrer la progression des requêtes et se comporter correctement lorsque les requêtes échouent en raison d’une indisponibilité du réseau.
 
-* Si vous effectuez un travail important pour extraire et mettre en cache les données d’API principales pertinentes pour chaque utilisateur, ils peuvent naviguer hors connexion. Si vous prenez en charge la modification, vous devrez également créer un système pour le suivi des modifications et leur synchronisation avec le serveur principal.
-
-* Si votre objectif est de garantir le chargement immédiat de l’application indépendamment des conditions du réseau. Vous devez ensuite implémenter une expérience utilisateur appropriée autour des demandes de l’API backend pour afficher la progression des requêtes et se comporter correctement lorsqu’elles échouent en raison d’une indisponibilité du réseau.
-
-En outre, les PWAS en mode hors connexion doivent gérer un éventail de complications supplémentaires. Les développeurs doivent se familiariser avec les avertissements suivants.
+En outre, les PWAS en mode hors connexion doivent gérer un éventail de complications supplémentaires. Les développeurs doivent se familiariser avec les limitations des sections suivantes.
 
 ### <a name="offline-support-only-when-published"></a>Prise en charge hors connexion uniquement lors de la publication
 
-le modèle PWA de Blazoractive la prise en charge hors connexion uniquement lorsqu’il est publié. En effet, lors du développement, vous souhaitez généralement voir chaque modification reflétée immédiatement dans le navigateur, sans passer par un processus de mise à jour en arrière-plan.
+Pendant le développement, vous souhaitez généralement voir chaque modification reflétée immédiatement dans le navigateur sans passer par un processus de mise à jour en arrière-plan. Par conséquent, le modèle PWA de Blazorn’autorise la prise en charge hors connexion que lorsqu’il est publié.
 
-Par conséquent, lors de la création d’une application de compatibilité hors connexion, il n’est pas suffisant de tester votre application en mode de développement. Vous devez tester votre application dans son état publié pour comprendre comment elle doit répondre à des conditions de réseau différentes.
+Lors de la création d’une application de compatibilité hors connexion, il n’est pas suffisant de tester l’application dans l’environnement de développement. Vous devez tester l’application dans son état publié pour comprendre comment elle répond à différentes conditions réseau.
 
 ### <a name="update-completion-after-user-navigation-away-from-app"></a>Mettre à jour l’achèvement après la navigation de l’utilisateur hors de l’application
 
-Les mises à jour ne se terminent pas tant que l’utilisateur n’a pas quitté votre application dans tous les onglets. Comme expliqué dans les mises à jour en [arrière-plan](#background-updates), après le déploiement d’une mise à jour de votre application, le navigateur récupère les fichiers de travail de service mis à jour et entame un processus de mise à jour.
+Les mises à jour ne se terminent pas tant que l’utilisateur n’a pas quitté l’application dans tous les onglets. Comme expliqué dans la section [mises à jour en arrière-plan](#background-updates) , après le déploiement d’une mise à jour de l’application, le navigateur récupère les fichiers de travail de service mis à jour pour commencer le processus de mise à jour.
 
-Ce que de nombreux développeurs peuvent faire, même lorsque cette mise à jour est terminée, elle n’entre pas en vigueur tant que l’utilisateur n’a **pas** quitté tous les onglets. Il n’est **pas** suffisant d’actualiser l’onglet qui affiche votre application, même s’il s’agit du seul onglet qui affiche votre application. Tant que votre application n’est pas complètement fermée, le nouveau service Worker reste dans un État « en attente d’activation ». **Cela n’est pas spécifique à Blazor, mais plutôt à un comportement de plateforme Web standard.**
+Ce que de nombreux développeurs peuvent faire, même lorsque cette mise à jour est terminée, elle n’entre pas en vigueur tant que l’utilisateur n’a **pas** quitté tous les onglets. Il n’est **pas** suffisant d’actualiser l’onglet qui affiche l’application, même s’il s’agit du seul onglet qui affiche l’application. Tant que votre application n’est pas complètement fermée, le nouveau service Worker reste dans l’État en *attente d’activation* . **Cela n’est pas spécifique à Blazor, mais plutôt à un comportement de plateforme Web standard.**
 
-Cela ne pose généralement pas de ennuis aux développeurs qui essaient de tester les mises à jour de leur service Worker ou des ressources mises en cache hors connexion. Si vous archivez les outils de développement du navigateur, vous pouvez voir un exemple semblable au suivant :
+Cela ne pose généralement pas de ennuis aux développeurs qui essaient de tester les mises à jour de leur service Worker ou des ressources mises en cache hors connexion. Si vous archivez dans les outils de développement du navigateur, vous pouvez voir un résultat semblable à ce qui suit :
 
-![image](https://user-images.githubusercontent.com/1101362/76226394-b93f7380-6215-11ea-8572-7d52afee2dd8.png)
+![L’onglet « application » de Google Chrome indique que le service Worker de l’application est en attente d’activation.](progressive-web-app/_static/image7.png)
 
-Tant que la liste des « clients » (c’est-à-dire les onglets ou les fenêtres affichant votre application) n’est pas vide, le thread de travail continue à attendre. La raison pour laquelle les travailleurs du service effectue cette tâche est de garantir la cohérence, c’est-à-dire que toutes les ressources sont extraites du même cache atomique.
+Tant que la liste des « clients », qui sont des onglets ou des fenêtres affichant votre application, n’est pas vide, le processus de travail continue à attendre. La raison pour laquelle le service Workers effectue cette tâche est de garantir la cohérence. La cohérence signifie que toutes les ressources sont extraites du même cache atomique.
 
-Lorsque vous testez des modifications, il peut s’avérer utile de cliquer sur le lien « skipWaiting », comme indiqué dans la capture d’écran ci-dessus, puis de recharger la page. Si vous le souhaitez, vous pouvez automatiser ce processus pour tous les utilisateurs en codant votre travail de service afin d' [ignorer la phase « en attente » et de l’activer immédiatement lors de la mise à jour](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#skip_the_waiting_phase). Toutefois, si vous procédez ainsi, vous vous assurez que les ressources sont toujours extraites de façon cohérente à partir de la même instance de cache.
+Lorsque vous testez des modifications, il peut s’avérer utile de cliquer sur le lien « skipWaiting » comme indiqué dans la capture d’écran précédente, puis de recharger la page. Vous pouvez automatiser cette automatisation pour tous les utilisateurs en codant votre service Workers pour [ignorer la phase « en attente » et activer immédiatement la mise à jour](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#skip_the_waiting_phase). Si vous ignorez la phase d’attente, vous vous soumettez à la garantie que les ressources sont toujours extraites de façon cohérente à partir de la même instance de cache.
 
 ### <a name="users-may-run-any-historical-version-of-the-app"></a>Les utilisateurs peuvent exécuter n’importe quelle version historique de l’application
 
-Les développeurs Web s’attendent habituellement à ce que les utilisateurs n’exécutent que la dernière version déployée de leur application Web, car cela est normal dans le modèle de distribution Web traditionnel. Toutefois, un PWA en mode hors connexion est plus similaire à une application mobile native, où les utilisateurs n’exécutent pas nécessairement la dernière version.
+Les développeurs Web s’attendent habituellement à ce que les utilisateurs exécutent uniquement la dernière version déployée de leur application Web, car cela est normal dans le modèle de distribution Web traditionnel. Toutefois, un PWA en mode hors connexion est plus similaire à une application mobile native, où les utilisateurs n’exécutent pas nécessairement la dernière version.
 
-Comme expliqué dans les [mises à jour en arrière-plan](#background-updates), après le déploiement d’une mise à jour de votre application, **chaque utilisateur existant continue d’utiliser une version antérieure pour au moins une visite** (car la mise à jour se produit en arrière-plan et n’est pas activée tant que l’utilisateur n’a pas quitté l’utilisateur). En outre, la version précédente utilisée n’est pas nécessairement la version précédente que vous avez déployée. il peut s’agir de *n’importe quelle* version historique, selon la date à laquelle l’utilisateur a effectué la dernière mise à jour.
+Comme expliqué dans la section [mises à jour en arrière-plan](#background-updates) , après le déploiement d’une mise à jour de votre application, **chaque utilisateur existant continue d’utiliser une version précédente pendant au moins une autre visite** , car la mise à jour se produit en arrière-plan et n’est pas activée tant que l’utilisateur ne l’a pas quitté par la suite. En outre, la version précédente utilisée n’est pas nécessairement la version précédente que vous avez déployée. La version précédente peut être *n’importe quelle* version historique, selon la date de la dernière exécution d’une mise à jour par l’utilisateur.
 
-Cela peut être un problème si les composants frontend et backend de votre application requièrent un accord sur le schéma pour les demandes d’API. Vous ne devez pas déployer des modifications de schéma d’API à compatibilité descendante tant que vous ne pouvez pas vous assurer que tous les utilisateurs ont été mis à niveau, ou au moins empêcher les utilisateurs d’utiliser des versions antérieures incompatibles de l’application. C’est comme une application mobile native. Si vous déployez une modification avec rupture dans les API de serveur, l’application cliente est interrompue pour les personnes qui n’ont pas encore été mises à jour.
+Cela peut être un problème si les composants frontend et backend de votre application requièrent un accord sur le schéma pour les demandes d’API. Vous ne devez pas déployer des modifications de schéma d’API à compatibilité descendante tant que vous n’êtes pas certain que tous les utilisateurs ont été mis à niveau. Vous pouvez également empêcher les utilisateurs d’utiliser des versions antérieures incompatibles de l’application. Cette exigence de scénario est la même que pour les applications mobiles natives. Si vous déployez une modification avec rupture dans les API de serveur, l’application cliente est interrompue pour les utilisateurs qui n’ont pas encore mis à jour.
 
-Si possible, ne déployez pas les modifications importantes apportées à vos API backend. Toutefois, si vous devez le faire, envisagez d’utiliser des [API de travail de service standard, telles que `ServiceWorkerRegistration`](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration) pour déterminer si l’application est à jour et, si ce n’est pas le cas, pour empêcher l’utilisation.
+Si possible, ne déployez pas les modifications importantes apportées à vos API backend. Si vous devez le faire, envisagez d’utiliser des [API de travail de service standard, telles que ServiceWorkerRegistration](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration) , pour déterminer si l’application est à jour et, si ce n’est pas le cas, pour empêcher l’utilisation.
 
 ### <a name="interference-with-server-rendered-pages"></a>Interférence avec les pages rendues par le serveur
 
-[Comme décrit ci-dessus](#support-server-rendered-pages), si vous souhaitez contourner le comportement du processus de travail de retour de `/index.html` contenu pour toutes les demandes de navigation, vous devez modifier la logique de votre service Worker.
+Comme décrit dans la section [prise en charge des pages rendues](#support-server-rendered-pages) par le serveur, si vous souhaitez contourner le comportement du processus de travail de retour de `/index.html` contenu pour toutes les demandes de navigation, modifiez la logique de votre service Worker.
 
 ### <a name="all-service-worker-asset-manifest-contents-are-cached-by-default"></a>Tous les contenus du manifeste de la ressource Service Worker sont mis en cache par défaut
 
-[Comme décrit ci-dessus](#control-asset-caching), le fichier *Service-Worker-Assets. js* est généré pendant la génération et répertorie toutes les ressources que le processus de travail de service doit extraire et mettre en cache.
+Comme décrit dans la section [mise en cache des ressources de contrôle](#control-asset-caching) , le fichier *Service-Worker-Assets. js* est généré pendant la génération et répertorie toutes les ressources que le processus de travail de service doit extraire et mettre en cache.
 
-Étant donné que cette liste inclut par défaut tout ce qui est émis vers *wwwroot* (y compris le contenu fourni par des packages et des projets externes), vous devez veiller à ne pas y placer trop de contenu. Si, par exemple, votre répertoire *wwwroot* contient des millions d’images, le service Worker essaiera de les extraire et de les mettre en cache, en consommant une bande passante excessive et probablement pas correctement.
+Étant donné que cette liste inclut par défaut tout ce qui est émis vers *wwwroot*, y compris le contenu fourni par des packages et des projets externes, vous devez veiller à ne pas y placer trop de contenu. Si le répertoire *wwwroot* contient des millions d’images, le processus de travail de service tente de les extraire et de les mettre en cache, ce qui consomme une bande passante excessive et risque de ne pas se terminer correctement.
 
-Vous pouvez implémenter une logique arbitraire pour contrôler le sous-ensemble du contenu du manifeste qui doit être extrait et mis en cache en modifiant la fonction `onInstall` dans *Service-Worker. published. js*.
+Implémentez une logique arbitraire pour contrôler le sous-ensemble du contenu du manifeste qui doit être extrait et mis en cache en modifiant la fonction `onInstall` dans *Service-Worker. published. js*.
 
 ### <a name="interaction-with-authentication"></a>Interaction avec l’authentification
 
 Il est possible d’utiliser l’option de modèle PWA conjointement avec les options d’authentification. Un PWA compatible hors connexion peut également prendre en charge l’authentification lorsque l’utilisateur dispose d’une connectivité réseau.
 
-Toutefois, lorsqu’un utilisateur n’a pas de connectivité réseau, il ne peut pas s’authentifier ou obtenir des jetons d’accès. Si vous tentez d’accéder à la page « connexion », un message indiquant « erreur réseau » s’affiche par défaut.
+Lorsqu’un utilisateur n’a pas de connectivité réseau, il ne peut pas s’authentifier ou obtenir des jetons d’accès. Par défaut, si vous tentez d’accéder à la page de connexion sans accès réseau, le message « erreur réseau » s’affiche.
 
-Par conséquent, il s’agit de votre travail de conception d’un workflow d’interface utilisateur qui permet à l’utilisateur d’effectuer des opérations utiles en mode hors connexion sans tenter de s’authentifier ou d’obtenir des jetons d’accès, ou au moins échouer dans ces cas. Si ce n’est pas possible dans votre application, il se peut que vous ne souhaitiez pas activer la prise en charge hors connexion.
+Vous devez concevoir un workflow d’interface utilisateur qui permet à l’utilisateur d’effectuer des opérations utiles en mode hors connexion sans tenter de s’authentifier ou d’obtenir des jetons d’accès. Vous pouvez également concevoir l’application pour qu’elle échoue de manière appropriée lorsque le réseau n’est pas disponible. Si ce n’est pas possible dans votre application, il se peut que vous ne souhaitiez pas activer la prise en charge hors connexion.

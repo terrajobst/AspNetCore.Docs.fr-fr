@@ -5,14 +5,14 @@ description: Découvrez la structure de répertoires des applications ASP.NET Co
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/07/2020
+ms.date: 03/20/2020
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: f7d6feec9961b7f6720d30d457fae5dcb6b34d6c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 0e7bf40520385b7719cb37120709e0a3fd2442e3
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664107"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989728"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
 
@@ -58,9 +58,9 @@ Le répertoire *publier* contient les ressources de l’application qui peuvent 
 
 | Type d'application | Structure de répertoires |
 | -------- | ------------------- |
-| [Exécutable dépendant du Framework (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC ; Si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>*fichiers. dll</li><li>{nom de l’assembly}. DEPS. json</li><li>{nom de l’assembly}. dll</li><li>{nom de l’assembly} {. Extension} *. exe* extension sur Windows, aucune extension sur MacOS ou Linux</li><li>{nom de l’assembly}. pdb</li><li>{nom de l’assembly}. Views. dll</li><li>{nom de l’ASSEMBLy}. Views. pdb</li><li>{nom de l’ASSEMBLy}. runtimeconfig. JSON</li><li>Web. config (déploiements IIS)</li><li>createdump ([utilitaire Createdump Linux](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))* </li><li>. so (bibliothèque d’objets partagés Linux)</li><li>*. a (Archive MacOS)</li><li>* . dylib (bibliothèque dynamique MacOS)</li></ul></li></ul> |
-| [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC, si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>fichiers *. dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM de l’ASSEMBLY}.exe</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
-
+| [Exécutable dépendant du Framework (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC ; Si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM DE L’ASSEMBLY} {. Extension} *. exe* extension sur Windows, aucune extension sur MacOS ou Linux</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li><li>createdump ([utilitaire Linux createdump](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*. so (bibliothèque d’objets partagés Linux)</li><li>\*. a (Archive macOS)</li><li>\*. dylib (bibliothèque dynamique macOS)</li></ul></li></ul> |
+| [Déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Vues&dagger; les applications MVC, si les vues ne sont pas précompilées</li><li>Pages&dagger; les applications MVC ou Razor Pages, si les pages ne sont pas précompilées</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>{NOM de l’ASSEMBLY}.deps.json</li><li>{NOM de l’ASSEMBLY}.dll</li><li>{NOM de l’ASSEMBLY}.exe</li><li>{NOM de l’ASSEMBLY}.pdb</li><li>{NOM de l’ASSEMBLY}.Views.dll</li><li>{NOM de l’ASSEMBLY}.Views.pdb</li><li>{NOM de l’ASSEMBLY}.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
+-
 &dagger;Indique un répertoire
 
 Le répertoire *publish* représente le *chemin racine du contenu*, également appelé *chemin de base de l’application*, du déploiement. Quel que soit le nom donné au répertoire *publish* de l’application déployée sur le serveur, son emplacement sert de chemin physique, sur le serveur, de l’application hébergée.

@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/19/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: fe87ce76d8e181de788188b021616f2a09833585
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: ccb512392341e3eea33f4ab45740b7900f7b63f9
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083887"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989454"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>Scénarios de sécurité supplémentaires ASP.NET Core éblouissant webassembly
 
@@ -27,7 +27,7 @@ Par [Javier Calvarro Nelson](https://github.com/javiercn)
 
 ## <a name="handle-token-request-errors"></a>Gérer les erreurs de demande de jeton
 
-Lorsqu’une application à page unique (SPA) authentifie un utilisateur à l’aide d’Open ID Connect (OIDC), l’état d’authentification est conservé localement au sein du SPA et dans le fournisseur d’identité (IP) sous la forme d’un cookie de session défini à la suite de l’utilisateur qui fournit ses informations d’identification.
+Lorsqu’une application à page unique (SPA) authentifie un utilisateur à l’aide d’Open ID Connect (OIDC), l’état d’authentification est conservé localement au sein du SPA et dans le fournisseur d’identité (IP) sous la forme d’un cookie de session défini à la suite de l’utilisateur qui fournit son informations d’identification.
 
 Les jetons que l’adresse IP émet pour l’utilisateur sont généralement valides pendant de courtes périodes, environ une heure normalement, de sorte que l’application cliente doit régulièrement extraire les nouveaux jetons. Dans le cas contraire, l’utilisateur est déconnecté après l’expiration des jetons accordés. Dans la plupart des cas, les clients OIDC sont en mesure de configurer de nouveaux jetons sans que l’utilisateur soit obligé de s’authentifier à nouveau grâce à l’état d’authentification ou à la « session » qui est conservée au sein de l’adresse IP.
 
@@ -260,14 +260,14 @@ composant `Authentication` (*pages/Authentication. Razor*) :
 
 Le `RemoteAuthenticatorView` possède un fragment qui peut être utilisé par itinéraire d’authentification, comme indiqué dans le tableau suivant.
 
-| Routage                            | Fragment             |
-| -------------------------------- | -------------------- |
-| `authentication/login`           | `<LoggingIn>`        |
-| `authentication/login-callback`  | `<CompletingLogIn>`  |
-| `authentication/login-failed`    | `<LogInFailed>`      |
-| `authentication/logout`          | `<LoggingOut>`       |
-| `authentication/logout-callback` | `<CompletingLogOut>` |
-| `authentication/logout-failed`   | `<LogOutFailed>`     |
-| `authentication/logged-out`      | `<LogOutSucceeded>`  |
-| `authentication/profile`         | `<UserProfile>`      |
-| `authentication/register`        | `<Registering>`      |
+| Routage                            | Fragment                |
+| -------------------------------- | ----------------------- |
+| `authentication/login`           | `<LoggingIn>`           |
+| `authentication/login-callback`  | `<CompletingLoggingIn>` |
+| `authentication/login-failed`    | `<LogInFailed>`         |
+| `authentication/logout`          | `<LogOut>`              |
+| `authentication/logout-callback` | `<CompletingLogOut>`    |
+| `authentication/logout-failed`   | `<LogOutFailed>`        |
+| `authentication/logged-out`      | `<LogOutSucceeded>`     |
+| `authentication/profile`         | `<UserProfile>`         |
+| `authentication/register`        | `<Registering>`         |

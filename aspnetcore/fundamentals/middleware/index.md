@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/02/2020
 uid: fundamentals/middleware/index
-ms.openlocfilehash: afa71b2c2b75be2c000fadd9545ac3fb4587825a
-ms.sourcegitcommit: 51c86c003ab5436598dbc42f26ea4a83a795fd6e
+ms.openlocfilehash: 9dcd061d2807fb90884327916d0348af4593df9d
+ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78964466"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "79989717"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -163,12 +163,12 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-Pour les applications à page unique, l’intergiciel (middleware) SPA <xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*> généralement en dernier dans le pipeline de l’intergiciel (middleware). L’intergiciel (middleware) SPA est le dernier :
+Pour les applications à page unique (SPAs), l’intergiciel (middleware) SPA <xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*> est généralement le dernier dans le pipeline de l’intergiciel (middleware). L’intergiciel (middleware) SPA est le dernier :
 
 * Pour permettre à tous les autres intergiciels de répondre d’abord aux demandes correspondantes.
 * Pour autoriser l’exécution de la fonction de routage de l’application serveur pour tous les itinéraires non reconnus par l’application serveur.
 
-Pour plus d’informations sur les applications à page unique, consultez les guides des modèles de projet [REACT](xref:spa/react) et [angulaire](xref:spa/angular) .
+Pour plus d’informations sur les modèles de projet [rereact](xref:spa/react) et [angulaire](xref:spa/angular) , consultez les guides.
 
 ## <a name="branch-the-middleware-pipeline"></a>Créer une branche pour le pipeline de l’intergiciel
 
