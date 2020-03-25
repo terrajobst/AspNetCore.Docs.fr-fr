@@ -5,12 +5,12 @@ description: Comment ajouter une validation à une application ASP.NET Core
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 2bb4ed173d154e3b7457ce3f8009f0f9406e36c4
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ecf3d011b38347eb32020df00e44d93ca789443a
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661965"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242534"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Ajouter une validation à une application ASP.NET Core MVC
 
@@ -55,7 +55,7 @@ La première méthode d’action (HTTP GET) `Create` affiche le formulaire de cr
 
 Vous pouvez définir un point d’arrêt dans la méthode `[HttpPost] Create` et vérifier que la méthode n’est jamais appelée. La validation côté client n’enverra pas les données du formulaire quand des erreurs de validation seront détectées. Si vous désactivez JavaScript dans votre navigateur et que vous envoyez ensuite le formulaire avec des erreurs, le point d’arrêt sera atteint. Vous bénéficiez toujours d’une validation complète sans JavaScript. 
 
-L’illustration suivante montre comment désactiver JavaScript dans le navigateur FireFox.
+L’illustration suivante montre comment désactiver JavaScript dans le navigateur Firefox.
 
 ![Firefox : dans Options, sous l’onglet Contenu, décochez la case Activer JavaScript.](~/tutorials/first-mvc-app/validation/_static/ff.png)
 

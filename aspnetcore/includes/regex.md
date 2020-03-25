@@ -1,0 +1,2 @@
+> [!WARNING]
+> Lorsque vous utilisez <xref:System.Text.RegularExpressions> pour traiter une entrée non fiable, transmettez un délai d’attente. Un utilisateur malveillant peut fournir une entrée à `RegularExpressions` provoquant une [attaque par déni de service](https://www.us-cert.gov/ncas/tips/ST04-015). ASP.NET Core API d’infrastructure qui utilisent `RegularExpressions` passer un délai d’attente.

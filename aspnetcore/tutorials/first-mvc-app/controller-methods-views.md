@@ -5,12 +5,12 @@ description: Découvrez comment utiliser des méthodes et des vues de contrôleu
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 2c442060872ab1d2d79a2e355ae257fdf1005914
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 87b3cb2f4429157123d30274d1f12cd589c1cc99
+ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663505"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80242508"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Méthodes et vues de contrôleur dans ASP.NET Core
 
@@ -53,6 +53,8 @@ Rappelez-vous le format du [routage](xref:mvc/controllers/routing) défini dans 
 ASP.NET Core traduit `https://localhost:5001/Movies/Edit/4` en une requête à la méthode d’action `Edit` du contrôleur `Movies` avec un paramètre `Id` de 4. (Les méthodes de contrôleur sont également appelées méthodes d’action.)
 
 Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) sont l’une des nouvelles fonctionnalités les plus populaires dans ASP.NET Core. Pour plus d'informations, consultez [Ressources supplémentaires](#additional-resources).
+
+<a name="get-post"></a>
 
 Ouvrez le contrôleur `Movies` et examinez les deux méthodes d’action `Edit`. Le code suivant montre la méthode `HTTP GET Edit`, qui extrait le film et renseigne le formulaire de modification généré par le fichier Razor *Edit.cshtml*.
 
