@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 02/11/2020
 uid: security/authentication/cookie
-ms.openlocfilehash: 64f881441a7a7f9a5529cb6ee5ce81142ccd69e6
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: b7c8b2cccb27dd6818330b17439675e41bfef013
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663001"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219205"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification par cookie sans ASP.NET Core identité
 
@@ -89,6 +89,8 @@ Pour créer un cookie contenant des informations sur l’utilisateur, construise
 Créez un <xref:System.Security.Claims.ClaimsIdentity> avec les <xref:System.Security.Claims.Claim>s requis et appelez <xref:Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignInAsync*> pour vous connecter à l’utilisateur :
 
 [!code-csharp[](cookie/samples/3.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
+
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 `SignInAsync` crée un cookie chiffré et l’ajoute à la réponse actuelle. Si `AuthenticationScheme` n’est pas spécifié, le schéma par défaut est utilisé.
 

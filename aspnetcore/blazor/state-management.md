@@ -5,17 +5,17 @@ description: Découvrez comment rendre l’état persistant dans les application
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2019
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 990d392b0e1658774256626eb277701e40287b79
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e8a1959a8fc05ea59362bb5824181a9d2e418811
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78657709"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218867"
 ---
 # <a name="aspnet-core-opno-locblazor-state-management"></a>Gestion de l’état de la ASP.NET Core Blazor
 
@@ -242,7 +242,7 @@ Lors du prérendu :
 
 L’une des méthodes permettant de résoudre l’erreur consiste à désactiver le prérendu. C’est généralement le meilleur choix si l’application utilise beaucoup le stockage basé sur le navigateur. Le prérendu ajoute de la complexité et ne tire pas parti de l’application, car l’application ne peut pas prérestituer de contenu utile tant que `localStorage` ou `sessionStorage` n’est pas disponible.
 
-Pour désactiver le prérendu, ouvrez le fichier *pages/_Host. cshtml* et remplacez l’appel de `render-mode` du Tag Helper `Component` par `Server`.
+Pour désactiver le prérendu, ouvrez le fichier *pages/_Host. cshtml* et remplacez le `render-mode` du [tag Helper du composant](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) par <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server>.
 
 Le prérendu peut être utile pour d’autres pages qui n’utilisent pas `localStorage` ou `sessionStorage`. Pour conserver le prérendu activé, différez l’opération de chargement jusqu’à ce que le navigateur soit connecté au circuit. Voici un exemple de stockage d’une valeur de compteur :
 

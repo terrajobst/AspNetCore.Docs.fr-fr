@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2020
 uid: fundamentals/index
-ms.openlocfilehash: a16a2fbb4ad2a79f96b6646ffdc359619d361a25
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: 7533242140c31a937f32cc9082d760103347ce25
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434315"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219179"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -91,7 +91,7 @@ Pour plus d’informations, consultez <xref:fundamentals/host/generic-host>.
 
 ### <a name="non-web-scenarios"></a>Scénarios non basés sur le web
 
-L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d'informations, consultez les rubriques <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
+L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
 
 ## <a name="servers"></a>Serveurs
 
@@ -102,7 +102,7 @@ Une application ASP.NET Core utilise une implémentation de serveur HTTP pour é
 ASP.NET Core fournit les implémentations de serveur suivantes :
 
 * *Kestrel* est un serveur web multiplateforme. Kestrel est souvent exécuté dans une configuration de proxy inverse à l’aide d’[IIS](https://www.iis.net/). Dans ASP.NET Core 2.0 ou versions ultérieures, Kestrel peut être exécuté en tant que serveur de périphérie public exposé directement à Internet.
-* *Le serveur HTTP IIS* est un serveur pour Windows qui utilise IIS. Avec ce serveur, l’application ASP.NET Core et IIS s’exécutent dans le même processus.
+* Le *serveur http IIS* est un serveur pour Windows qui utilise IIS. Avec ce serveur, l’application ASP.NET Core et IIS s’exécutent dans le même processus.
 * *HTTP.sys* est un serveur Windows qui n’est pas utilisé avec IIS.
 
 # <a name="macos"></a>[macOS](#tab/macos)
@@ -144,7 +144,7 @@ app.UseWebSockets(options);
 
 Pour plus d’informations, consultez <xref:fundamentals/configuration/options>.
 
-## <a name="environments"></a>de développement
+## <a name="environments"></a>Environnements
 
 Les environnements d’exécution, tels que *Développement*, *Mise en lots* et *Production*, sont une notion de premier plan dans ASP.NET Core. Vous pouvez spécifier l’environnement d’exécution d’une application en définissant la variable d’environnement `ASPNETCORE_ENVIRONMENT`. ASP.NET Core lit la variable d’environnement au démarrage de l’application et stocke la valeur dans une implémentation `IHostingEnvironment`. L’objet d’environnement est disponible partout dans l’application par le biais de l’injection de dépendances.
 
@@ -329,7 +329,7 @@ Pour plus d’informations, consultez <xref:fundamentals/host/web-host>.
 
 ### <a name="non-web-scenarios"></a>Scénarios non basés sur le web
 
-L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d'informations, consultez les rubriques <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
+L’hôte générique permet à d’autres types d’application d’utiliser des extensions de framework composites, par exemple la journalisation, l’injection de dépendance, la configuration et la gestion de la durée de vie de l’application. Pour plus d’informations, consultez <xref:fundamentals/host/generic-host> et <xref:fundamentals/host/hosted-services>.
 
 ## <a name="servers"></a>Serveurs
 
@@ -411,7 +411,7 @@ app.UseWebSockets(options);
 
 Pour plus d’informations, consultez <xref:fundamentals/configuration/options>.
 
-## <a name="environments"></a>de développement
+## <a name="environments"></a>Environnements
 
 Les environnements d’exécution, tels que *Développement*, *Mise en lots* et *Production*, sont une notion de premier plan dans ASP.NET Core. Vous pouvez spécifier l’environnement d’exécution d’une application en définissant la variable d’environnement `ASPNETCORE_ENVIRONMENT`. ASP.NET Core lit la variable d’environnement au démarrage de l’application et stocke la valeur dans une implémentation `IHostingEnvironment`. L’objet d’environnement est disponible partout dans l’application par le biais de l’injection de dépendances.
 

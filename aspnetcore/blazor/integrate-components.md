@@ -5,17 +5,17 @@ description: En savoir plus sur les scénarios de liaison de données pour les c
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/17/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: de1a37ffd9456c956e3d84fcc69431ecb794513c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: cf6056e0985d5433bddecac8dd183ca3f4c2af5b
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663316"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218932"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>Intégrer des composants ASP.NET Core Razor dans des applications Razor Pages et MVC
 
@@ -60,13 +60,13 @@ Une Razor Pages ou une application MVC existante peut intégrer des composants R
    @using MyAppNamespace
    ```
 
-1. Dans `Startup.ConfigureServices`, inscrivez le service du serveur éblouissant :
+1. Dans `Startup.ConfigureServices`, inscrivez le service Blazor Server :
 
    ```csharp
    services.AddServerSideBlazor();
    ```
 
-1. Dans `Startup.Configure`, ajoutez le point de terminaison du Hub éblouissant à `app.UseEndpoints`:
+1. Dans `Startup.Configure`, ajoutez le point de terminaison Blazor Hub à `app.UseEndpoints`:
 
    ```csharp
    endpoints.MapBlazorHub();
@@ -225,31 +225,10 @@ Pour plus d’informations, consultez <xref:blazor/components#import-components>
 
 *Cette section se rapporte à l’ajout de composants à des pages ou à des vues, où les composants ne sont pas directement routés à partir des demandes de l’utilisateur.*
 
-Pour afficher un composant à partir d’une page ou d’une vue, utilisez le tag Helper `Component` :
-
-```cshtml
-<component type="typeof(Counter)" render-mode="ServerPrerendered" 
-    param-IncrementAmount="10" />
-```
-
-Le type de paramètre doit être sérialisable JSON, ce qui signifie généralement que le type doit avoir un constructeur par défaut et des propriétés définissables. Par exemple, vous pouvez spécifier une valeur pour `IncrementAmount`, car le type de `IncrementAmount` est un `int`, qui est un type primitif pris en charge par le sérialiseur JSON.
-
-`RenderMode` configure si le composant :
-
-* Est prérendu dans la page.
-* Est rendu en HTML statique sur la page ou s’il contient les informations nécessaires pour démarrer une application éblouissant à partir de l’agent utilisateur.
-
-| `RenderMode`        | Description |
-| ------------------- | ----------- |
-| `ServerPrerendered` | Génère le rendu du composant en HTML statique et comprend un marqueur pour une application Blazor Server. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. |
-| `Server`            | Restitue un marqueur pour une application Blazor Server. La sortie du composant n’est pas incluse. Au démarrage de l’agent utilisateur, ce marqueur est utilisé pour démarrer une application Blazor. |
-| `Static`            | Génère le rendu du composant en HTML statique. |
-
-Alors que les pages et les vues peuvent utiliser des composants, la réciproque n’est pas vraie. Les composants ne peuvent pas utiliser les scénarios spécifiques aux vues et aux pages, tels que les vues partielles et les sections. Pour utiliser la logique de la vue partielle dans un composant, factorisez la logique de la vue partielle dans un composant.
-
-Le rendu des composants serveur à partir d’une page HTML statique n’est pas pris en charge.
+Pour afficher un composant à partir d’une page ou d’une vue, utilisez le [tag Helper Component](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper).
 
 Pour plus d’informations sur la façon dont les composants sont rendus, l’état des composants et le tag Helper `Component`, consultez les articles suivants :
 
 * <xref:blazor/hosting-models>
 * <xref:blazor/hosting-model-configuration>
+* <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>

@@ -5,17 +5,17 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/16/2020
+ms.date: 03/22/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 12e09cf7e27f85473d84f42564d13e1c0ed5dff1
-ms.sourcegitcommit: 5bdc54162d7dea8d9fa54ac3055678db23586af1
+ms.openlocfilehash: 0083f179f85371d4751fb179194417681fc1a01d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79434445"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219062"
 ---
 # <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Sécuriser une application hébergée ASP.NET Core Blazor webassembly avec Azure Active Directory B2C
 
@@ -152,7 +152,7 @@ Le fichier *appSettings. JSON* contient les options permettant de configurer le 
 ```json
 {
   "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
+    "Instance": "https://{ORGANIZATION}.b2clogin.com/",
     "ClientId": "{API CLIENT ID}",
     "Domain": "{DOMAIN}",
     "SignUpSignInPolicyId": "{SIGN UP OR SIGN IN POLICY}"
@@ -241,7 +241,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 ### <a name="index-page"></a>Page d'index
 
-[!INCLUDE[](~/includes/blazor-security/index-page.md)]
+[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
 
 ### <a name="app-component"></a>Composant d’application
 
@@ -263,7 +263,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
 
-## <a name="run-the-app"></a>Exécuter l'application
+## <a name="run-the-app"></a>Exécuter l’application
 
 Exécutez l’application à partir du projet serveur. Quand vous utilisez Visual Studio, sélectionnez le projet serveur dans **Explorateur de solutions** , puis cliquez sur le bouton **exécuter** dans la barre d’outils ou démarrez l’application à partir du menu **Déboguer** .
 

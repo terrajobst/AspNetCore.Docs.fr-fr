@@ -5,17 +5,17 @@ description: Apprenez à sécuriser Blazor applications WebAssemlby en tant qu�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/09/2020
+ms.date: 03/12/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/webassembly/index
-ms.openlocfilehash: a65d47e55960d6e7bfeb672c0a1e6a7a305ad7ee
-ms.sourcegitcommit: 9b6e7f421c243963d5e419bdcfc5c4bde71499aa
+ms.openlocfilehash: 652d4c61110f786396d9d5af4f131b817c40e333
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "79989483"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219244"
 ---
 # <a name="secure-aspnet-core-opno-locblazor-webassembly"></a>ASP.NET Core sécurisé Blazor webassembly
 
@@ -54,3 +54,47 @@ La bibliothèque `Microsoft.AspNetCore.Components.WebAssembly.Authentication` of
 * Lorsque l' Blazor application webassembly charge le point de terminaison de rappel de connexion (`/authentication/login-callback`), la réponse d’authentification est traitée.
   * Si le processus d’authentification se termine correctement, l’utilisateur est authentifié et éventuellement renvoyé à l’URL protégée d’origine que l’utilisateur a demandée.
   * Si le processus d’authentification échoue pour une raison quelconque, l’utilisateur est envoyé à la page Échec de la connexion (`/authentication/login-failed`) et une erreur s’affiche.
+  
+## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>Options pour les applications hébergées et les fournisseurs de connexion tiers
+
+Lors de l’authentification et de l’autorisation d’une application Blazor webassembly hébergée auprès d’un fournisseur tiers, plusieurs options sont disponibles pour l’authentification de l’utilisateur. Celui que vous choisissez dépend de votre scénario.
+
+Pour plus d’informations, consultez <xref:security/authentication/social/additional-claims>.
+
+### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>Authentifier les utilisateurs pour appeler uniquement des API tierces protégées
+
+Authentifiez l’utilisateur avec un fluide oAuth côté client par rapport au fournisseur d’API tiers :
+
+ ```csharp
+ builder.services.AddOidcAuthentication(options => { ... });
+ ```
+ 
+ Dans ce scénario :
+
+* Le serveur hébergeant l’application ne joue aucun rôle.
+* Les API sur le serveur ne peuvent pas être protégées.
+* L’application ne peut appeler que des API tierces protégées.
+
+### <a name="authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party"></a>Authentifier les utilisateurs auprès d’un fournisseur tiers et appeler des API protégées sur le serveur hôte et le tiers
+
+Configurez l’identité avec un fournisseur de connexion tiers. Obtenez les jetons requis pour l’accès de l’API tierce et stockez-les.
+
+Lorsqu’un utilisateur se connecte, l’identité collecte les jetons d’accès et d’actualisation dans le cadre du processus d’authentification. À ce stade, il existe deux approches disponibles pour effectuer des appels d’API à des API tierces.
+
+#### <a name="use-a-server-access-token-to-retrieve-the-third-party-access-token"></a>Utiliser un jeton d’accès au serveur pour récupérer le jeton d’accès tiers
+
+Utilisez le jeton d’accès généré sur le serveur pour récupérer le jeton d’accès tiers à partir d’un point de terminaison d’API serveur. À partir de là, utilisez le jeton d’accès tiers pour appeler des ressources d’API tierces directement à partir de l’identité sur le client.
+
+Nous ne recommandons pas cette approche. Cette approche nécessite le traitement du jeton d’accès tiers comme s’il avait été généré pour un client public. Dans les termes oAuth, l’application publique n’a pas de clé secrète client, car elle ne peut pas être approuvée pour stocker des secrets en toute sécurité, et le jeton d’accès est généré pour un client confidentiel. Un client confidentiel est un client qui a une clé secrète client et est supposé être en mesure de stocker des secrets en toute sécurité.
+
+* Le jeton d’accès tiers peut recevoir des étendues supplémentaires pour effectuer des opérations sensibles en fonction du fait que le tiers a émis le jeton pour un client plus fiable.
+* De même, les jetons d’actualisation ne doivent pas être émis pour un client qui n’est pas approuvé, car cela donne au client un accès illimité, sauf si d’autres restrictions sont mises en place.
+
+#### <a name="make-api-calls-from-the-client-to-the-server-api-in-order-to-call-third-party-apis"></a>Effectuer des appels d’API à partir du client vers l’API du serveur afin d’appeler des API tierces
+
+Effectuez un appel d’API à partir du client vers l’API serveur. À partir du serveur, récupérez le jeton d’accès pour la ressource d’API tierce et émettez l’appel nécessaire.
+
+Bien que cette approche nécessite un saut de réseau supplémentaire par le biais du serveur pour appeler une API tierce, elle a finalement pour résultat une expérience plus sûre :
+
+* Le serveur peut stocker des jetons d’actualisation et s’assurer que l’application ne perd pas l’accès aux ressources tierces.
+* L’application ne peut pas perdre les jetons d’accès du serveur qui peuvent contenir des autorisations plus sensibles.

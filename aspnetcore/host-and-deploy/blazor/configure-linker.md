@@ -5,17 +5,17 @@ description: Découvrez comment contrôler l’éditeur de liens en langage inte
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/10/2020
+ms.date: 03/23/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: b08ec26fb8d139223c57774600bc3cb19a56ac49
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: 109da5ef400c3b9d64ccf3ceb33a5387ea6b5618
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083290"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218659"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>Configurer l’éditeur de liens pour ASP.NET Core Blazor
 
@@ -36,7 +36,7 @@ La liaison des applications éblouissants peut être configurée à l’aide de 
 
 ## <a name="control-linking-with-an-msbuild-property"></a>Liaison de contrôle avec une propriété MSBuild
 
-La liaison est activée lorsqu’une application est générée dans `Release` la connexion. Pour modifier cela, configurez la propriété `BlazorWebAssemblyEnableLinking` MSBuild dans le fichier projet :
+La liaison est activée lorsqu’une application est générée dans `Release` configuration. Pour modifier cela, configurez la propriété `BlazorWebAssemblyEnableLinking` MSBuild dans le fichier projet :
 
 ```xml
 <PropertyGroup>
@@ -50,11 +50,11 @@ Contrôlez la liaison pour chaque assembly en fournissant un fichier de configur
 
 ```xml
 <ItemGroup>
-  <BlazorLinkerDescriptor Include="Linker.xml" />
+  <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
 </ItemGroup>
 ```
 
-*Linker.xml* :
+*LinkerConfig. xml*:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -86,7 +86,21 @@ Contrôlez la liaison pour chaque assembly en fournissant un fichier de configur
 </linker>
 ```
 
-Pour plus d’informations, consultez l' [éditeur de liens il : syntaxe du descripteur XML](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).
+Pour plus d’informations, consultez [exemples de fichiers XML de liaison (référentiel GitHub mono/éditeur de liens)](https://github.com/mono/linker#link-xml-file-examples).
+
+## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>Ajouter un fichier de configuration de l’éditeur de liens XML à une bibliothèque
+
+Pour configurer l’éditeur de liens pour une bibliothèque spécifique, ajoutez un fichier de configuration de l’éditeur de liens XML dans la bibliothèque en tant que ressource incorporée. La ressource incorporée doit avoir le même nom que l’assembly.
+
+Dans l’exemple suivant, le fichier *LinkerConfig. xml* est spécifié en tant que ressource incorporée qui porte le même nom que l’assembly de la bibliothèque :
+
+```xml
+<ItemGroup>
+  <EmbeddedResource Include="LinkerConfig.xml">
+    <LogicalName>$(MSBuildProjectName).xml</LogicalName>
+  </EmbeddedResource>
+</ItemGroup>
+```
 
 ### <a name="configure-the-linker-for-internationalization"></a>Configurer l’éditeur de liens pour l’internationalisation
 

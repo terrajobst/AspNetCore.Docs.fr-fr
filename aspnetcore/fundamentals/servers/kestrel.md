@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/10/2020
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 8d96118800c47b2c551726342bf4cfba9671a09e
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e9b4b57ee70e4050f9399b90a6e34e8cc9cca78d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667369"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80218828"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
@@ -42,7 +42,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
-* Framework cible : .NET Core 2.2 ou version ultérieure
+* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 
@@ -663,7 +663,7 @@ L’exemple configure HTTPS pour un point de terminaison avec <xref:Microsoft.As
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
 
-* Dans le fichier Nginx confiuguration, définissez le `server` > `location` > `proxy_pass` entrée sur `http://unix:/tmp/{KESTREL SOCKET}:/;`. `{KESTREL SOCKET}` est le nom du Socket fourni à <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> (par exemple, `kestrel-test.sock` dans l’exemple précédent).
+* Dans le fichier de configuration nginx, définissez le `server` > `location` > entrée `proxy_pass` sur `http://unix:/tmp/{KESTREL SOCKET}:/;`. `{KESTREL SOCKET}` est le nom du Socket fourni à <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> (par exemple, `kestrel-test.sock` dans l’exemple précédent).
 * Assurez-vous que le socket est accessible en écriture par Nginx (par exemple, `chmod go+w /tmp/kestrel-test.sock`).
 
 ### <a name="port-0"></a>Port 0
@@ -995,7 +995,7 @@ Kestrel est pris en charge sur toutes les plateformes et les versions prises en 
 * Système d’exploitation&dagger;
   * Windows Server 2016/Windows 10 ou version ultérieure&Dagger;
   * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
-* Framework cible : .NET Core 2.2 ou version ultérieure
+* Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * Connexion [ALPN (Application-Layer Protocol Negotiation)](https://tools.ietf.org/html/rfc7301#section-3)
 * TLS 1.2 ou connexion ultérieure
 

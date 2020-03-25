@@ -5,17 +5,17 @@ description: En savoir plus sur les scénarios d’authentification et d’autor
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2020
+ms.date: 02/21/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: ba00c0370094df4e0ae0479aeb23eceea6ef04f0
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: f7ffb4c3d5a05cb916b4f00cdfaf5898634a1a6d
+ms.sourcegitcommit: 91dc1dd3d055b4c7d7298420927b3fd161067c64
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083350"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80219023"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>Authentification et autorisation avec ASP.NET Core Blazor
 
@@ -31,6 +31,8 @@ Les scénarios de sécurité diffèrent entre le serveur éblouissant et les app
 * Les règles d’accès pour les zones de l’application et les composants.
 
 Les applications webassembly éblouissant s’exécutent sur le client. L’autorisation est *uniquement* utilisée pour déterminer les options de l’interface utilisateur à afficher. Étant donné que les contrôles côté client peuvent être modifiés ou ignorés par un utilisateur, une application de webassembly éblouissante ne peut pas appliquer les règles d’accès aux autorisations.
+
+[Razor pages conventions d’autorisation](xref:security/authorization/razor-pages-authorization) ne s’appliquent pas aux composants Razor routables. Si un composant Razor non routable est [incorporé dans une page](xref:blazor/integrate-components#render-components-from-a-page-or-view), les conventions d’autorisation de la page affectent indirectement le composant Razor avec le reste du contenu de la page.
 
 ## <a name="authentication"></a>Authentication
 
