@@ -424,6 +424,8 @@
               uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
             - name: d'instance/de clé
               uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
+            - name: Composant
+              uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
             - name: Cache distribué
               uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
             - name: Environnement
