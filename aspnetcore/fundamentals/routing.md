@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 3/25/2020
 uid: fundamentals/routing
-ms.openlocfilehash: 69d8aa65084d4d2ee13a8ca0e8e275f4344d08c5
-ms.sourcegitcommit: 99e71ae03319ab386baf2ebde956fc2d511df8b8
+ms.openlocfilehash: 2ebba716de90f142a66cf7619b5a4b0c77684bd4
+ms.sourcegitcommit: 0c62042d7d030ec5296c73bccd9f9b961d84496a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/25/2020
-ms.locfileid: "80242655"
+ms.locfileid: "80270444"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Le routage est responsable de la mise en correspondance des demandes HTTP entran
 
 Les applications peuvent configurer le routage à l’aide de :
 
-- Controllers
+- Contrôleurs
 - Pages Razor
 - SignalR
 - Services gRPC
@@ -101,7 +101,7 @@ L’exemple suivant illustre le routage avec des [contrôles d’intégrité](xr
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/AuthorizationStartup.cs?name=snippet)]
 
-[!INCLUDE[](~/includes/MTcomments.md)]
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 L’exemple précédent montre comment :
 
@@ -425,7 +425,7 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Les paramètres de route peuvent avoir des **valeurs par défaut**, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre. Par exemple : `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
+Les paramètres de route peuvent avoir des **valeurs par défaut**, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparée par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. Les paramètres de routage sont rendus facultatifs en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre. Par exemple, `id?`. La différence entre les valeurs facultatives et les paramètres d’itinéraire par défaut est la suivante :
 
 * Un paramètre d’itinéraire avec une valeur par défaut produit toujours une valeur.
 * Un paramètre facultatif a une valeur uniquement lorsqu’une valeur est fournie par l’URL de la requête.
@@ -490,7 +490,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contraintes de routage et leur comportement attendu :
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou `false`. Non-respect de la casse |
@@ -553,7 +553,7 @@ Pour échapper les caractères de délimiteur de paramètre de routage `{`, `}`,
 
 Les expressions régulières utilisées dans le routage commencent souvent par le caractère `^` et correspondent à la position de départ de la chaîne. Les expressions se terminent souvent par le caractère `$` et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière correspond à l’intégralité de la valeur du paramètre d’itinéraire. Sans les caractères `^` et `$`, l’expression régulière correspond à toute sous-chaîne de la chaîne, ce qui est souvent indésirable. Le tableau suivant fournit des exemples et explique pourquoi ils correspondent ou ne parviennent pas à faire correspondre :
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre à | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -655,7 +655,7 @@ La première étape de la résolution des problèmes de génération d’URL con
 
 Pour plus d’informations sur la génération d’URL, consultez [référence de génération d’URL](#ugr) .
 
-### <a name="addresses"></a>Adresses
+### <a name="addresses"></a>adresses
 
 Les adresses sont le concept dans la génération d’URL utilisé pour lier un appel dans le générateur de liens à un jeu de points de terminaison candidats.
 
@@ -792,7 +792,7 @@ Ensuite, les **valeurs acceptées** peuvent être utilisées pour développer le
 
 Les valeurs fournies explicitement qui ne correspondent pas à un segment de l’itinéraire sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -1024,7 +1024,7 @@ Les développeurs ajoutent généralement des itinéraires succincts supplément
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que de nombreuses opérations, par exemple, obtenir et poster, sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -1183,7 +1183,7 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 
   La syntaxe de paramètre passe-partout avec un seul astérisque dans les versions antérieures d’ASP.NET Core (`{*myparametername}`) reste prise en charge, et les barres obliques sont encodées.
 
-  | Routage              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
+  | Route              | Lien généré avec<br>`Url.Action(new { category = "admin/products" })`&hellip; |
   | ------------------ | --------------------------------------------------------------------- |
   | `/search/{*page}`  | `/search/admin%2Fproducts` (la barre oblique est encodée)             |
   | `/search/{**page}` | `/search/admin/products`                                              |
@@ -1335,7 +1335,7 @@ Les routes doivent être configurées dans la méthode `Startup.Configure`. L’
 
 Le tableau suivant montre les réponses avec les URI donnés.
 
-| URI                    | response                                          |
+| URI                    | Réponse                                          |
 | ---------------------- | ------------------------------------------------- |
 | `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
 | `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
@@ -1420,7 +1420,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier. |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou’false. Non-respect de la casse. |
@@ -1470,7 +1470,7 @@ Pour échapper les caractères de délimiteur de paramètre de routage `{`, `}``
 
 Les expressions régulières utilisées dans le routage commencent souvent par le signe insertion `^` caractère et correspondent à la position de départ de la chaîne. Les expressions se terminent souvent par le signe dollar `$` caractère et la fin de la correspondance de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre à | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -1555,7 +1555,7 @@ Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. 
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
@@ -1606,7 +1606,7 @@ Les développeurs ajoutent fréquemment des routes laconiques supplémentaires a
 
 Les API web doivent utiliser le routage d’attributs pour modéliser les fonctionnalités de l’application sous la forme d’un ensemble de ressources dans lequel les opérations sont représentées par des verbes HTTP. Cela signifie que plusieurs opérations (comme GET et POST) sur la même ressource logique utilisent la même URL. Le routage d’attributs fournit le niveau de contrôle nécessaire pour concevoir avec soin la disposition des points de terminaison publics d’une API.
 
-Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d’informations, consultez <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
+Les applications Razor Pages utilisent le routage conventionnel par défaut pour délivrer des ressources nommées dans le dossier *Pages* d’une application. Des conventions supplémentaires sont disponibles : elles vous permettent de personnaliser le comportement de routage de Razor Pages. Pour plus d'informations, consultez les rubriques <xref:razor-pages/index> et <xref:razor-pages/razor-pages-conventions>.
 
 La prise en charge de la génération d’URL permet de développer l’application sans coder en dur les URL pour lier l’application. Cette prise en charge permet de commencer avec une configuration de routage de base, puis de modifier les routes une fois que la disposition des ressources de l’application est déterminée.
 
@@ -1793,7 +1793,7 @@ Les routes doivent être configurées dans la méthode `Startup.Configure`. L’
 
 Le tableau suivant montre les réponses avec les URI donnés.
 
-| URI                    | response                                          |
+| URI                    | Réponse                                          |
 | ---------------------- | ------------------------------------------------- |
 | `/package/create/3`    | Bonjour ! Valeurs de route : [operation, create], [id, 3] |
 | `/package/track/-3`    | Bonjour ! Valeurs de route : [operation, track], [id, -3] |
@@ -1870,7 +1870,7 @@ Les contraintes de route s’exécutent quand une correspondance s’est produit
 
 Le tableau suivant montre des exemples de contrainte de route et leur comportement attendu.
 
-| contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Remarques |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | Correspond à n’importe quel entier |
 | `bool` | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -1914,7 +1914,7 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Les expressions régulières utilisées dans le routage commencent souvent par un caret (`^`) et correspondent à la position de début de la chaîne. Les expressions se terminent souvent par le signe dollar (`$`) de caractère et correspondent à la fin de la chaîne. Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui est souvent indésirable. Le tableau suivant contient des exemples et explique pourquoi ils établissent ou non une correspondance.
 
-| Expression   | String    | Correspond | Commentaire               |
+| Expression   | String    | Faire correspondre à | Commentaire               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Oui   | Correspondances de sous-chaînes     |
 | `[a-z]{2}`   | 123abc456 | Oui   | Correspondances de sous-chaînes     |
@@ -1961,7 +1961,7 @@ Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. 
 
 Les valeurs fournies explicitement mais qui n’ont pas de correspondance avec un segment de la route sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
-| Valeurs ambiantes                     | Valeurs explicites                        | Résultats                  |
+| Valeurs ambiantes                     | Valeurs explicites                        | Résultat                  |
 | ---------------------------------- | -------------------------------------- | ----------------------- |
 | controller = "Home"                | action = "About"                       | `/Home/About`           |
 | controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
