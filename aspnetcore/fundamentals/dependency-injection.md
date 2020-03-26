@@ -5,18 +5,20 @@ description: Découvrez comment ASP.NET Core implémente l’injection de dépen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/05/2020
+ms.date: 03/26/2020
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3080d1a19bb48996e2bc7a3ce824f48bfc1bcbce
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: d24807d1ea675448536ab865d41ae46f80043666
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663764"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306524"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendance dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/) et [Scott Addie](https://scottaddie.com)
+
+::: moniker range=">= aspnetcore-3.0"
 
 ASP.NET Core prend en charge le modèle de conception de logiciel avec injection de dépendances (DI), une technique permettant d’obtenir une [inversion de contrôle (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) entre les classes et leurs dépendances.
 
@@ -74,31 +76,11 @@ L’injection de dépendances résout ces problèmes via :
 
 Dans l’[exemple d’application](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples), l’interface `IMyDependency` définit une méthode que le service fournit à l’application :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
-
-::: moniker-end
 
 Cette interface est implémentée par un type concret, `MyDependency` :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
-
-::: moniker-end
 
 `MyDependency` exige un <xref:Microsoft.Extensions.Logging.ILogger`1> dans son constructeur. Il n’est pas rare que l’injection de dépendances soit utilisée de manière chaînée. Dans ce cas, chaque dépendance demandée demande à son tour ses propres dépendances. Le conteneur résout les dépendances dans le graphique et retourne le service entièrement résolu. L’ensemble collectif de dépendances qui doivent être résolues est généralement appelé *arborescence des dépendances*, *graphique de dépendance* ou *graphique d’objet*.
 
@@ -112,17 +94,7 @@ services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
 Dans l’exemple d’application, le service `IMyDependency` est inscrit avec le type concret `MyDependency`. L’inscription ajuste la durée de vie du service à la durée de vie d’une requête unique. Les [durées de vie du service](#service-lifetimes) sont décrites plus loin dans cette rubrique.
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
-
-::: moniker-end
 
 > [!NOTE]
 > Chaque méthode d’extension `services.Add{SERVICE_NAME}` ajoute (et éventuellement configure) des services. Par exemple, `services.AddMvc()` ajoute les services dont Razor Pages et MVC ont besoin. Il est recommandé que les applications suivent cette convention. Placez les méthodes d’extension dans l’espace de noms [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) pour encapsuler des groupes d’inscriptions de service.
@@ -147,17 +119,7 @@ Une instance du service est demandée via le constructeur d’une classe dans la
 
 Dans l’exemple d’application, l’instance `IMyDependency` est demandée et utilisée pour appeler la méthode `WriteMessage` du service :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
-
-::: moniker-end
 
 ## <a name="services-injected-into-startup"></a>Services injectés au démarrage
 
@@ -182,8 +144,6 @@ Pour plus d’informations, consultez <xref:fundamentals/startup>.
 
 La méthode `Startup.ConfigureServices` est chargée de définir les services utilisés par l’application, y compris les fonctionnalités de plateforme, telles que Entity Framework Core et ASP.NET Core MVC. Initialement, le `IServiceCollection` fourni à `ConfigureServices` a des services définis par l’infrastructure en fonction de la [configuration de l’hôte](xref:fundamentals/index#host). Il n’est pas rare qu’une application basée sur un modèle de ASP.NET Core dispose de centaines de services enregistrés par l’infrastructure. Un petit exemple de services inscrits au Framework est répertorié dans le tableau suivant.
 
-::: moniker range=">= aspnetcore-3.0"
-
 | Type de service | Durée de vie |
 | ------------ | -------- |
 | <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> | Temporaire |
@@ -200,29 +160,6 @@ La méthode `Startup.ConfigureServices` est chargée de définir les services ut
 | <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> | Singleton |
 | <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | Singleton |
 | <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | Singleton |
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-| Type de service | Durée de vie |
-| ------------ | -------- |
-| <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> | Temporaire |
-| <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> | Temporaire |
-| <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> | Temporaire |
-| <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> | Singleton |
-| <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> | Temporaire |
-| <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> | Singleton |
-| <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | Singleton |
-| <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | Singleton |
-
-::: moniker-end
 
 ## <a name="register-additional-services-with-extension-methods"></a>Inscrire des services supplémentaires avec les méthodes d’extension
 
@@ -336,31 +273,11 @@ Les contextes Entity Framework sont généralement ajoutés au conteneur de serv
 
 Pour illustrer la différence entre les options de durée de vie et d’inscription, considérez les interfaces suivantes qui représentent des tâches en tant qu’opération avec un identificateur unique, `OperationId`. Selon la façon dont la durée de vie d’un service d’opérations est configurée pour les interfaces suivantes, le conteneur fournit la même instance ou une instance différente du service lorsqu’une classe le demande :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
-
-::: moniker-end
 
 Les interfaces sont implémentées dans la classe `Operation`. Le constructeur `Operation` génère un GUID s’il n’est pas fourni :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
-
-::: moniker-end
 
 Un `OperationService` est inscrit, dépendant de chacun des autres types `Operation`. Lorsque `OperationService` est demandé via l’injection de dépendances, il reçoit une nouvelle instance de chaque service ou une instance existante en fonction de la durée de vie du service dépendant.
 
@@ -368,47 +285,17 @@ Un `OperationService` est inscrit, dépendant de chacun des autres types `Operat
 * Quand des services délimités sont créés pour chaque requête de client, le `OperationId` du `IOperationScoped` service est identique à celui de `OperationService` au sein d’une requête de client. Entre les requêtes de client, les deux services partagent une valeur `OperationId` différente.
 * Quand des services singleton et d’instances singleton sont créés une fois et utilisés sur toutes les requêtes de client et tous les services, le `OperationId` est constant entre toutes les requêtes de service.
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
-
-::: moniker-end
 
 Dans `Startup.ConfigureServices`, chaque type est ajouté au conteneur en fonction de sa durée de vie nommée :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
-
-::: moniker-end
 
 Le service `IOperationSingletonInstance` utilise une instance spécifique avec un ID connu `Guid.Empty`. L’utilisation de ce type est facilement identifiable (son GUID n’affiche que des zéros).
 
 L’exemple d’application montre les durées de vie des objets au sein et entre des requêtes individuelles. L’exemple d’application `IndexModel` demande chaque type `IOperation` et `OperationService`. La page affiche ensuite l’ensemble de la classe du modèle de page et des valeurs `OperationId` du service via des assignations de propriété :
 
-::: moniker range=">= aspnetcore-3.0"
-
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=7-11,14-18,21-25)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=7-11,14-18,21-25)]
-
-::: moniker-end
 
 Les deux sorties suivantes montrent les résultats de deux requêtes :
 
@@ -454,8 +341,6 @@ Observez les valeurs `OperationId` qui varient au sein d’une requête et entre
 
 Créez un <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> avec [IServiceScopeFactory.CreateScope](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*) pour résoudre un service délimité dans l’étendue de l’application. Cette approche est pratique pour accéder à un service Scoped au démarrage pour exécuter des tâches d’initialisation. L’exemple suivant montre comment obtenir un contexte pour `MyScopedService` dans `Program.Main` :
 
-::: moniker range=">= aspnetcore-3.0"
-
 ```csharp
 using System;
 using System.Threading.Tasks;
@@ -497,64 +382,9 @@ public class Program
 }
 ```
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-```csharp
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-public class Program
-{
-    public static async Task Main(string[] args)
-    {
-        var host = CreateWebHostBuilder(args).Build();
-
-        using (var serviceScope = host.Services.CreateScope())
-        {
-            var services = serviceScope.ServiceProvider;
-
-            try
-            {
-                var serviceContext = services.GetRequiredService<MyScopedService>();
-                // Use the context here
-            }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred.");
-            }
-        }
-    
-        await host.RunAsync();
-    }
-
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>();
-}
-```
-
-::: moniker-end
-
 ## <a name="scope-validation"></a>Validation de l’étendue
 
-::: moniker range=">= aspnetcore-3.0"
-
 Lorsque l’application s’exécute dans l’environnement de développement et appelle [CreateDefaultBuilder](xref:fundamentals/host/generic-host#default-builder-settings) pour générer l’hôte, le fournisseur de services par défaut effectue des vérifications pour vérifier que :
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-Lorsque l’application s’exécute dans l’environnement de développement et appelle [CreateDefaultBuilder](xref:fundamentals/host/web-host#set-up-a-host) pour générer l’hôte, le fournisseur de services par défaut effectue des vérifications pour vérifier que :
-
-::: moniker-end
 
 * Les services délimités ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.
 * Les services Scoped ne sont pas directement ou indirectement injectés dans des singletons.
@@ -591,28 +421,42 @@ Si une classe semble avoir trop de dépendances injectées, cela signifie géné
 
 Le conteneur appelle <xref:System.IDisposable.Dispose*> pour les types <xref:System.IDisposable> qu’il crée. Si une instance est ajoutée au conteneur par le code utilisateur, elle n’est pas supprimée automatiquement.
 
+Dans l’exemple suivant, les services sont créés par le conteneur de service et supprimés automatiquement :
+
 ```csharp
-// Services that implement IDisposable:
 public class Service1 : IDisposable {}
 public class Service2 : IDisposable {}
-public class Service3 : IDisposable {}
 
-public interface ISomeService {}
-public class SomeServiceImplementation : ISomeService, IDisposable {}
+public interface IService3 {}
+public class Service3 : IService3, IDisposable {}
 
 public void ConfigureServices(IServiceCollection services)
 {
-    // The container creates the following instances and disposes them automatically:
     services.AddScoped<Service1>();
     services.AddSingleton<Service2>();
-    services.AddSingleton<ISomeService>(sp => new SomeServiceImplementation());
-
-    // The container doesn't create the following instances, so it doesn't dispose of
-    // the instances automatically:
-    services.AddSingleton<Service3>(new Service3());
-    services.AddSingleton(new Service3());
+    services.AddSingleton<IService3>(sp => new Service3());
 }
 ```
+
+Dans l’exemple suivant :
+
+* Les instances de service ne sont pas créées par le conteneur de service.
+* Les durées de vie de service prévues ne sont pas connues de l’infrastructure.
+* L’infrastructure ne supprime pas automatiquement les services.
+* Si les services ne sont pas explicitement supprimés dans le code du développeur, ils persistent jusqu’à ce que l’application s’arrête.
+
+```csharp
+public class Service1 : IDisposable {}
+public class Service2 : IDisposable {}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<Service1>(new Service1());
+    services.AddSingleton(new Service2());
+}
+```
+
+Pour une description des options de suppression de service, consultez [quatre façons de supprimer des IDisposable dans ASP.net Core](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/).
 
 ## <a name="default-service-container-replacement"></a>Remplacement de conteneur de services par défaut
 
@@ -708,3 +552,540 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * [Principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [Conteneurs d’inversion de contrôle et modèle d’injection de dépendances (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
 * [Comment inscrire un service avec plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+ASP.NET Core prend en charge le modèle de conception de logiciel avec injection de dépendances (DI), une technique permettant d’obtenir une [inversion de contrôle (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) entre les classes et leurs dépendances.
+
+Pour plus d’informations spécifiques à l’injection de dépendances au sein des contrôleurs MVC, consultez <xref:mvc/controllers/dependency-injection>.
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+
+## <a name="overview-of-dependency-injection"></a>Vue d’ensemble de l’injection de dépendances
+
+Une *dépendance* est un objet qui nécessite un autre objet. Examinez la classe `MyDependency` suivante avec une méthode `WriteMessage` dont dépendent d’autres classes dans une application :
+
+```csharp
+public class MyDependency
+{
+    public MyDependency()
+    {
+    }
+
+    public Task WriteMessage(string message)
+    {
+        Console.WriteLine(
+            $"MyDependency.WriteMessage called. Message: {message}");
+
+        return Task.FromResult(0);
+    }
+}
+```
+
+Une instance de la classe `MyDependency` peut être créée pour rendre la méthode `WriteMessage` disponible pour une classe. La classe `MyDependency` est une dépendance de la classe `IndexModel` :
+
+```csharp
+public class IndexModel : PageModel
+{
+    MyDependency _dependency = new MyDependency();
+
+    public async Task OnGetAsync()
+    {
+        await _dependency.WriteMessage(
+            "IndexModel.OnGetAsync created this message.");
+    }
+}
+```
+
+La classe est créee et dépend directement de l’instance `MyDependency`. Les dépendances de code (comme l’exemple précédent) posent problème et doivent être évitées pour les raisons suivantes :
+
+* Pour remplacer `MyDependency` par une autre implémentation, la classe doit être modifiée.
+* Si `MyDependency` possède des dépendances, elles doivent être configurées par la classe. Dans un grand projet comportant plusieurs classes dépendant de `MyDependency`, le code de configuration est disséminé dans l’application.
+* Cette implémentation complique le test unitaire. L’application doit utiliser une classe `MyDependency` fictive ou stub, ce qui est impossible avec cette approche.
+
+L’injection de dépendances résout ces problèmes via :
+
+* L’utilisation d’une interface ou classe de base pour extraire l’implémentation des dépendances.
+* L’inscription de la dépendance dans un conteneur de service. ASP.NET Core fournit un conteneur de service intégré, <xref:System.IServiceProvider>. Les services sont inscrits dans la méthode `Startup.ConfigureServices` de l’application.
+* *Injection* du service dans le constructeur de la classe où il est utilisé. Le framework prend la responsabilité de la création d’une instance de la dépendance et de sa suppression lorsqu’elle n’est plus nécessaire.
+
+Dans l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/dependency-injection/samples), l’interface `IMyDependency` définit une méthode que le service fournit à l’application :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IMyDependency.cs?name=snippet1)]
+
+Cette interface est implémentée par un type concret, `MyDependency` :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
+
+`MyDependency` exige un <xref:Microsoft.Extensions.Logging.ILogger`1> dans son constructeur. Il n’est pas rare que l’injection de dépendances soit utilisée de manière chaînée. Dans ce cas, chaque dépendance demandée demande à son tour ses propres dépendances. Le conteneur résout les dépendances dans le graphique et retourne le service entièrement résolu. L’ensemble collectif de dépendances qui doivent être résolues est généralement appelé *arborescence des dépendances*, *graphique de dépendance* ou *graphique d’objet*.
+
+`IMyDependency` et `ILogger<TCategoryName>` doivent être inscrits dans le conteneur de service. `IMyDependency` est inscrit dans `Startup.ConfigureServices`. `ILogger<TCategoryName>` est inscrit par l’infrastructure d’abstractions de journalisation. Il s’agit donc d’un [service fourni par le framework](#framework-provided-services) et inscrit par défaut par l’infrastructure.
+
+Le conteneur résout `ILogger<TCategoryName>` en tirant parti de [types ouverts (génériques)](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types), ce qui élimine la nécessité d’inscrire chaque [type construit (générique)](/dotnet/csharp/language-reference/language-specification/types#constructed-types) :
+
+```csharp
+services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+```
+
+Dans l’exemple d’application, le service `IMyDependency` est inscrit avec le type concret `MyDependency`. L’inscription ajuste la durée de vie du service à la durée de vie d’une requête unique. Les [durées de vie du service](#service-lifetimes) sont décrites plus loin dans cette rubrique.
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
+
+> [!NOTE]
+> Chaque méthode d’extension `services.Add{SERVICE_NAME}` ajoute (et éventuellement configure) des services. Par exemple, `services.AddMvc()` ajoute les services dont Razor Pages et MVC ont besoin. Il est recommandé que les applications suivent cette convention. Placez les méthodes d’extension dans l’espace de noms [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) pour encapsuler des groupes d’inscriptions de service.
+
+Si le constructeur du service exige un [type intégré](/dotnet/csharp/language-reference/keywords/built-in-types-table), comme un `string`, le type peut être injecté à l’aide de la [configuration](xref:fundamentals/configuration/index) ou du [modèle d’options](xref:fundamentals/configuration/options) :
+
+```csharp
+public class MyDependency : IMyDependency
+{
+    public MyDependency(IConfiguration config)
+    {
+        var myStringValue = config["MyStringKey"];
+
+        // Use myStringValue
+    }
+
+    ...
+}
+```
+
+Une instance du service est demandée via le constructeur d’une classe dans laquelle le service est utilisé et assigné à un champ privé. Le champ est utilisé pour accéder au service en fonction des besoins tout au long de la classe.
+
+Dans l’exemple d’application, l’instance `IMyDependency` est demandée et utilisée pour appeler la méthode `WriteMessage` du service :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3,6,13,29-30)]
+
+## <a name="services-injected-into-startup"></a>Services injectés au démarrage
+
+Seuls les types de service suivants peuvent être injectés dans le constructeur `Startup` lors de l’utilisation de l’hôte générique (<xref:Microsoft.Extensions.Hosting.IHostBuilder>) :
+
+* `IWebHostEnvironment`
+* <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
+* <xref:Microsoft.Extensions.Configuration.IConfiguration>
+
+Les services peuvent être injectés dans `Startup.Configure`:
+
+```csharp
+public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
+{
+    ...
+}
+```
+
+Pour plus d’informations, consultez <xref:fundamentals/startup>.
+
+## <a name="framework-provided-services"></a>Services fournis par le framework
+
+La méthode `Startup.ConfigureServices` est chargée de définir les services utilisés par l’application, y compris les fonctionnalités de plateforme, telles que Entity Framework Core et ASP.NET Core MVC. Initialement, le `IServiceCollection` fourni à `ConfigureServices` a des services définis par l’infrastructure en fonction de la [configuration de l’hôte](xref:fundamentals/index#host). Il n’est pas rare qu’une application basée sur un modèle de ASP.NET Core dispose de centaines de services enregistrés par l’infrastructure. Un petit exemple de services inscrits au Framework est répertorié dans le tableau suivant.
+
+| Type de service | Durée de vie |
+| ------------ | -------- |
+| <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> | Temporaire |
+| <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> | Temporaire |
+| <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> | Temporaire |
+| <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> | Singleton |
+| <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> | Temporaire |
+| <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> | Singleton |
+| <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | Singleton |
+| <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | Singleton |
+
+## <a name="register-additional-services-with-extension-methods"></a>Inscrire des services supplémentaires avec les méthodes d’extension
+
+Lorsqu’une méthode d’extension de collection de services est disponible pour inscrire un service (et ses services dépendants, si nécessaire), la convention consiste à utiliser une seule méthode d’extension `Add{SERVICE_NAME}` pour inscrire tous les services requis par ce service. Le code suivant est un exemple de la façon d’ajouter des services supplémentaires au conteneur à l’aide des méthodes d’extension [AddDbContext\<TContext >](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) et <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
+    ...
+}
+```
+
+Pour plus d’informations, consultez la classe <xref:Microsoft.Extensions.DependencyInjection.ServiceCollection> dans la documentation de l’API.
+
+## <a name="service-lifetimes"></a>Durées de service
+
+Choisissez une durée de vie appropriée pour chaque service inscrit. Vous pouvez configurer les services ASP.NET Core avec les durées de vie suivantes :
+
+### <a name="transient"></a>Temporaire
+
+Des services à durée de vie temporaire (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient*>) sont créés chaque fois qu’ils sont demandés à partir du conteneur de service. Cette durée de vie convient parfaitement aux services légers et sans état.
+
+### <a name="scoped"></a>Délimité
+
+Les services à durée de vie délimitée (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped*>) sont créés une seule fois par requête de client (connexion).
+
+> [!WARNING]
+> Si vous utilisez un service Scoped dans un middleware, injectez le service dans la méthode `Invoke` ou `InvokeAsync`. Ne faites pas l’injection via l’injection du constructeur, car elle force le service à se comporter comme un singleton. Pour plus d’informations, consultez <xref:fundamentals/middleware/write#per-request-middleware-dependencies>.
+
+### <a name="singleton"></a>Singleton
+
+Les services avec une durée de vie singleton (<xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*>) sont créés la première fois qu’ils sont demandés (ou quand `Startup.ConfigureServices` est exécuté et qu’une instance est spécifiée avec l’inscription du service). Chaque requête ultérieure utilise la même instance. Si l’application exige un comportement singleton, il est recommandé d’autoriser le conteneur de service à gérer la durée de vie du service. N’implémentez pas le modèle de conception singleton et fournissez le code utilisateur pour gérer la durée de vie de l’objet dans la classe.
+
+> [!WARNING]
+> Il est dangereux de résoudre un service délimité depuis un singleton. L’état du service risque de ne pas être correct lors du traitement des requêtes suivantes.
+
+## <a name="service-registration-methods"></a>Méthodes d’inscription du service
+
+Les méthodes d’extension d’inscription de service offrent des surcharges qui sont utiles dans des scénarios spécifiques.
+
+| Méthode | Automatique<br>object<br>suppression | Multiple<br>implémentations | Passage d’args |
+| ------ | :-----------------------------: | :-------------------------: | :-------: |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddSingleton<IMyDep, MyDep>();` | Oui | Oui | Non |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Oui | Oui | Oui |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>Exemple :<br>`services.AddSingleton<MyDep>();` | Oui | Non | Non |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | Non | Oui | Oui |
+| `AddSingleton(new {IMPLEMENTATION})`<br>Exemples :<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | Non | Non | Oui |
+
+Pour plus d’informations sur la suppression de type, consultez la section [Suppression des services](#disposal-of-services). Un scénario courant d’implémentations multiples est la [simulation de types à des fins de test](xref:test/integration-tests#inject-mock-services).
+
+Les méthodes `TryAdd{LIFETIME}` inscrivent uniquement le service si aucune implémentation n’est inscrite.
+
+Dans l’exemple suivant, la première ligne inscrit `MyDependency` pour `IMyDependency`. La deuxième ligne n’a aucun effet car `IMyDependency` a déjà une implémentation inscrite :
+
+```csharp
+services.AddSingleton<IMyDependency, MyDependency>();
+// The following line has no effect:
+services.TryAddSingleton<IMyDependency, DifferentDependency>();
+```
+
+Pour plus d'informations, consultez les pages suivantes :
+
+* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
+* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
+* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddScoped*>
+* <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddSingleton*>
+
+Les méthodes [TryAddEnumerable(ServiceDescriptor)](xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddEnumerable*) inscrivent uniquement le service en l’absence d’une implémentation *du même type*. Plusieurs services sont résolus par le biais de `IEnumerable<{SERVICE}>`. Lors de l’inscription de services, le développeur ne souhaite ajouter une instance que si une instance du même type n’a pas déjà été ajoutée. En général, cette méthode est utilisée par les créateurs de bibliothèque pour éviter d’inscrire deux copies d’une instance dans le conteneur.
+
+Dans l’exemple suivant, la première ligne inscrit `MyDep` pour `IMyDep1`. La deuxième ligne inscrit `MyDep` pour `IMyDep2`. La troisième ligne n’a aucun effet car `IMyDep1` a déjà une implémentation inscrite de `MyDep` :
+
+```csharp
+public interface IMyDep1 {}
+public interface IMyDep2 {}
+
+public class MyDep : IMyDep1, IMyDep2 {}
+
+services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
+services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep2, MyDep>());
+// Two registrations of MyDep for IMyDep1 is avoided by the following line:
+services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
+```
+
+### <a name="constructor-injection-behavior"></a>Comportement d’injection de constructeurs
+
+Les services peuvent être résolus par deux mécanismes :
+
+* <xref:System.IServiceProvider>
+* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities> &ndash; permet la création d’objets sans inscription du service dans le conteneur d’injection de dépendances. `ActivatorUtilities` est utilisé avec les abstractions orientées utilisateur, telles que les Tag Helpers, les contrôleurs MVC et les classeurs de modèles.
+
+Les constructeurs peuvent accepter des arguments qui ne sont pas fournis par l’injection de dépendances, mais les arguments doivent affecter des valeurs par défaut.
+
+Lorsque des services sont résolus par `IServiceProvider` ou `ActivatorUtilities`, l’injection de constructeurs exige un constructeur *public*.
+
+Lorsque des services sont résolus par `ActivatorUtilities`, l’injection de constructeurs exige qu’un seul constructeur applicable existe. Les surcharges de constructeurs sont prises en charge, mais une seule peut exister dont les arguments peuvent tous être satisfaits par l’injection de dépendances.
+
+## <a name="entity-framework-contexts"></a>Contextes Entity Framework
+
+Les contextes Entity Framework sont généralement ajoutés au conteneur de service en utilisant la [durée de vie limitée](#service-lifetimes), car la portée des opérations de base de données d’application web est normalement limitée à la requête du client. La durée de vie par défaut est limitée si aucune durée de vie n’est spécifiée par une surcharge [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) lors de l’inscription du contexte de base de données. Un service d’une durée de vie donnée ne doit pas utiliser un contexte de base de données dont la durée de vie est plus courte que celle du service.
+
+## <a name="lifetime-and-registration-options"></a>Options de durée de vie et d’inscription
+
+Pour illustrer la différence entre les options de durée de vie et d’inscription, considérez les interfaces suivantes qui représentent des tâches en tant qu’opération avec un identificateur unique, `OperationId`. Selon la façon dont la durée de vie d’un service d’opérations est configurée pour les interfaces suivantes, le conteneur fournit la même instance ou une instance différente du service lorsqu’une classe le demande :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Interfaces/IOperation.cs?name=snippet1)]
+
+Les interfaces sont implémentées dans la classe `Operation`. Le constructeur `Operation` génère un GUID s’il n’est pas fourni :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Models/Operation.cs?name=snippet1)]
+
+Un `OperationService` est inscrit, dépendant de chacun des autres types `Operation`. Lorsque `OperationService` est demandé via l’injection de dépendances, il reçoit une nouvelle instance de chaque service ou une instance existante en fonction de la durée de vie du service dépendant.
+
+* Quand des services temporaires sont créés à la demande à partir du conteneur, le `OperationId` du service `IOperationTransient` est différent du `OperationId` de `OperationService`. `OperationService` reçoit une nouvelle instance de la classe `IOperationTransient`. La nouvelle instance génère un autre `OperationId`.
+* Quand des services délimités sont créés pour chaque requête de client, le `OperationId` du `IOperationScoped` service est identique à celui de `OperationService` au sein d’une requête de client. Entre les requêtes de client, les deux services partagent une valeur `OperationId` différente.
+* Quand des services singleton et d’instances singleton sont créés une fois et utilisés sur toutes les requêtes de client et tous les services, le `OperationId` est constant entre toutes les requêtes de service.
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/OperationService.cs?name=snippet1)]
+
+Dans `Startup.ConfigureServices`, chaque type est ajouté au conteneur en fonction de sa durée de vie nommée :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=6-9,12)]
+
+Le service `IOperationSingletonInstance` utilise une instance spécifique avec un ID connu `Guid.Empty`. L’utilisation de ce type est facilement identifiable (son GUID n’affiche que des zéros).
+
+L’exemple d’application montre les durées de vie des objets au sein et entre des requêtes individuelles. L’exemple d’application `IndexModel` demande chaque type `IOperation` et `OperationService`. La page affiche ensuite l’ensemble de la classe du modèle de page et des valeurs `OperationId` du service via des assignations de propriété :
+
+[!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=7-11,14-18,21-25)]
+
+Les deux sorties suivantes montrent les résultats de deux requêtes :
+
+**Première requête :**
+
+Opérations du contrôleur :
+
+Transient: d233e165-f417-469b-a866-1cf1935d2518  
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Opérations `OperationService` :
+
+Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
+Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+**Deuxième requête :**
+
+Opérations du contrôleur :
+
+Transient: b63bd538-0a37-4ff1-90ba-081c5138dda0  
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Opérations `OperationService` :
+
+Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
+Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance: 00000000-0000-0000-0000-000000000000
+
+Observez les valeurs `OperationId` qui varient au sein d’une requête et entre les requêtes :
+
+* Les objets *Transient* sont toujours différents. Les valeurs `OperationId` transitoires pour la première et la deuxième requêtes de client sont différentes pour les deux opérations `OperationService` et entre les requêtes de client. Une nouvelle instance est fournie à chaque requête de service et requête de client.
+* Les objets *Scoped* sont les mêmes au sein d’une requête de client, mais ils diffèrent entre les requêtes de client.
+* Les objets *Singleton* sont les mêmes pour chaque objet et chaque requête, qu’une instance `Operation` soit fournie dans `Startup.ConfigureServices` ou non.
+
+## <a name="call-services-from-main"></a>Appeler des services à partir de Main
+
+Créez un <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> avec [IServiceScopeFactory.CreateScope](xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope*) pour résoudre un service délimité dans l’étendue de l’application. Cette approche est pratique pour accéder à un service Scoped au démarrage pour exécuter des tâches d’initialisation. L’exemple suivant montre comment obtenir un contexte pour `MyScopedService` dans `Program.Main` :
+
+```csharp
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+public class Program
+{
+    public static async Task Main(string[] args)
+    {
+        var host = CreateWebHostBuilder(args).Build();
+
+        using (var serviceScope = host.Services.CreateScope())
+        {
+            var services = serviceScope.ServiceProvider;
+
+            try
+            {
+                var serviceContext = services.GetRequiredService<MyScopedService>();
+                // Use the context here
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred.");
+            }
+        }
+    
+        await host.RunAsync();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseStartup<Startup>();
+}
+```
+
+## <a name="scope-validation"></a>Validation de l’étendue
+
+Quand l’application s’exécute dans l’environnement de développement, le fournisseur de services par défaut effectue des contrôles pour vérifier que :
+
+* Les services délimités ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.
+* Les services Scoped ne sont pas directement ou indirectement injectés dans des singletons.
+
+Le fournisseur de services racine est créé quand <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider*> est appelé. La durée de vie du fournisseur de services racine correspond à la durée de vie de l’application/du serveur quand le fournisseur démarre avec l’application et qu’il est supprimé quand l’application s’arrête.
+
+Les services Scoped sont supprimés par le conteneur qui les a créés. Si un service Scoped est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté. La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.
+
+Pour plus d’informations, consultez <xref:fundamentals/host/web-host#scope-validation>.
+
+## <a name="request-services"></a>Services de requête
+
+Les services disponibles au sein d’une requête ASP.NET Core à partir de `HttpContext` sont exposés par le biais de la collection [HttpContext.RequestServices](xref:Microsoft.AspNetCore.Http.HttpContext.RequestServices).
+
+Les services de requête représentent les services configurés et demandés dans le cadre de l’application. Lorsque les objets spécifient des dépendances, ceux-ci sont satisfaits par les types trouvés dans `RequestServices`, pas dans `ApplicationServices`.
+
+En règle générale, l’application ne doit pas utiliser directement ces propriétés. Demandez plutôt les types nécessaires à la classe via des constructeurs de classe et autorisez le framework à injecter les dépendances. Cela génère des classes qui sont plus faciles à tester.
+
+> [!NOTE]
+> Préférez demander des dépendances en tant que paramètres de constructeur plutôt qu’accéder à la collection `RequestServices`.
+
+## <a name="design-services-for-dependency-injection"></a>Conception de services pour l’injection de dépendances
+
+Les bonnes pratiques permettent de :
+
+* Concevoir des services afin d’utiliser l’injection de dépendances pour obtenir leurs dépendances.
+* Évitez les classes et les membres avec état, static. Concevez des applications pour utiliser des services Singleton à la place, ce qui évite de créer un état global.
+* Éviter une instanciation directe de classes dépendantes au sein de services. L’instanciation directe associe le code à une implémentation particulière.
+* Limiter la taille des classes d’application, faire en sorte qu’elles soient bien factorisées et facilement testées.
+
+Si une classe semble avoir trop de dépendances injectées, cela signifie généralement que la classe a trop de responsabilités et viole le [principe de responsabilité unique](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility). Essayez de refactoriser la classe en déplaçant certaines de ses responsabilités dans une nouvelle classe. N’oubliez pas que les classes du modèle de page Razor Pages et les classes du contrôleur MVC doivent se concentrer sur les problèmes d’interface utilisateur. Les règles d’entreprise et les détails d’implémentation de l’accès aux données doivent être conservés dans les classes appropriées à ces [préoccupations distinctes](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns).
+
+### <a name="disposal-of-services"></a>Suppression des services
+
+Le conteneur appelle <xref:System.IDisposable.Dispose*> pour les types <xref:System.IDisposable> qu’il crée. Si une instance est ajoutée au conteneur par le code utilisateur, elle n’est pas supprimée automatiquement.
+
+Dans l’exemple suivant, les services sont créés par le conteneur de service et supprimés automatiquement :
+
+```csharp
+public class Service1 : IDisposable {}
+public class Service2 : IDisposable {}
+
+public interface IService3 {}
+public class Service3 : IService3, IDisposable {}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddScoped<Service1>();
+    services.AddSingleton<Service2>();
+    services.AddSingleton<IService3>(sp => new Service3());
+}
+```
+
+Dans l’exemple suivant :
+
+* Les instances de service ne sont pas créées par le conteneur de service.
+* Les durées de vie de service prévues ne sont pas connues de l’infrastructure.
+* L’infrastructure ne supprime pas automatiquement les services.
+* Si les services ne sont pas explicitement supprimés dans le code du développeur, ils persistent jusqu’à ce que l’application s’arrête.
+
+```csharp
+public class Service1 : IDisposable {}
+public class Service2 : IDisposable {}
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<Service1>(new Service1());
+    services.AddSingleton(new Service2());
+}
+```
+
+## <a name="default-service-container-replacement"></a>Remplacement de conteneur de services par défaut
+
+Le conteneur de service intégré est conçu pour répondre aux besoins de l’infrastructure et de la plupart des applications grand public. Nous vous recommandons d’utiliser le conteneur intégré, sauf si vous avez besoin d’une fonctionnalité spécifique que le conteneur intégré ne prend pas en charge, par exemple :
+
+* Injection de propriétés
+* Injection en fonction du nom
+* Conteneurs enfants
+* Gestion personnalisée de la durée de vie
+* `Func<T>` prend en charge l’initialisation tardive
+* Inscription basée sur une convention
+
+Les conteneurs tiers suivants peuvent être utilisés avec les applications ASP.NET Core :
+
+* [Autofac](https://autofac.readthedocs.io/en/latest/integration/aspnetcore.html)
+* [DryIoc](https://www.nuget.org/packages/DryIoc.Microsoft.DependencyInjection)
+* [Gracieuse](https://www.nuget.org/packages/Grace.DependencyInjection.Extensions)
+* [LightInject](https://github.com/seesharper/LightInject.Microsoft.DependencyInjection)
+* [Lamar](https://jasperfx.github.io/lamar/)
+* [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
+* [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
+
+### <a name="thread-safety"></a>Sécurité des threads
+
+Créez des services singleton thread-safe. Si un service singleton a une dépendance vis-à-vis d’un service Transient, ce dernier peut également nécessiter la cohérence de thread, en fonction de la manière dont il est utilisé par le singleton.
+
+La méthode de fabrique d’un service individuel, comme le deuxième argument de [AddSingleton\<TService>(IServiceCollection, Func\<IServiceProvider,TService>)](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*), n’a pas besoin d’être thread-safe. Comme un constructeur de type (`static`), elle est forcément appelée une fois par un seul thread.
+
+## <a name="recommendations"></a>Recommandations
+
+* La résolution de service basée sur `async/await` et `Task` n’est pas prise en charge. C# ne prend pas en charge les constructeurs asynchrones ; par conséquent, le modèle recommandé consiste à utiliser des méthodes asynchrones après avoir résolu le service de façon synchrone.
+
+* Évitez de stocker des données et des configurations directement dans le conteneur de services. Par exemple, le panier d’achat d’un utilisateur ne doit en général pas être ajouté au conteneur de services. La configuration doit utiliser le [modèle d’options](xref:fundamentals/configuration/options). De même, évitez les objets « conteneurs de données » qui n’existent que pour autoriser l’accès à un autre objet. Il est préférable de demander l’élément réel par le biais de l’injection de dépendance.
+
+* Évitez l’accès statique aux services (par exemple avec [IApplicationBuilder.ApplicationServices](xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices) à utiliser ailleurs).
+
+* Évitez d’utiliser le *modèle de localisation de service*, qui combine les stratégies [d’inversion de contrôle](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) .
+
+  * N’appelez pas <xref:System.IServiceProvider.GetService*> pour obtenir une instance de service lorsque vous pouvez utiliser l’injection de code à la place :
+
+    **Incorrect :**
+
+    ```csharp
+    public class MyClass()
+    {
+        public void MyMethod()
+        {
+            var optionsMonitor = 
+                _services.GetService<IOptionsMonitor<MyOptions>>();
+            var option = optionsMonitor.CurrentValue.Option;
+
+            ...
+        }
+    }
+    ```
+
+    **Correct** :
+
+    ```csharp
+    public class MyClass
+    {
+        private readonly IOptionsMonitor<MyOptions> _optionsMonitor;
+
+        public MyClass(IOptionsMonitor<MyOptions> optionsMonitor)
+        {
+            _optionsMonitor = optionsMonitor;
+        }
+
+        public void MyMethod()
+        {
+            var option = _optionsMonitor.CurrentValue.Option;
+
+            ...
+        }
+    }
+    ```
+
+  * Évitez d’injecter une fabrique qui résout les dépendances au moment de l’exécution à l’aide de <xref:System.IServiceProvider.GetService*>.
+
+* Évitez l’accès statique à `HttpContext` (par exemple, [IHttpContextAccessor.HttpContext](xref:Microsoft.AspNetCore.Http.IHttpContextAccessor.HttpContext)).
+
+Comme pour toutes les recommandations, vous pouvez vous trouver dans des situations où il est nécessaire d’ignorer une recommandation. Les exceptions sont rares et représentent principalement des cas spéciaux dans le framework lui-même.
+
+L’injection de dépendance constitue une *alternative* aux modèles d’accès aux objets statiques/globaux. Il est possible que vous ne bénéficiez pas des avantages de l’injection de dépendances si vous la combinez avec l’accès aux objets statiques.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* <xref:mvc/views/dependency-injection>
+* <xref:mvc/controllers/dependency-injection>
+* <xref:security/authorization/dependencyinjection>
+* <xref:blazor/dependency-injection>
+* <xref:fundamentals/startup>
+* <xref:fundamentals/middleware/extensibility>
+* [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
+* [Principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
+* [Conteneurs d’inversion de contrôle et modèle d’injection de dépendances (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
+* [Comment inscrire un service avec plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)
+
+::: moniker-end

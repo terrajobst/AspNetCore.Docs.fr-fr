@@ -5,17 +5,17 @@ description: Créez une application de conversation qui utilise ASP.NET Core Sig
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 605cf8ebd3e85586f3e479c815f0b9902ce5a91a
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: c4843dc282e1978b39738e206ecc79ded87fcff9
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083379"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306574"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>Utiliser ASP.NET Core Signalr avec le webassembly éblouissant
 
@@ -58,10 +58,10 @@ Ce didacticiel enseigne les bases de la création d’une application en temps r
 
 ## <a name="create-a-hosted-blazor-webassembly-app-project"></a>Créer un projet d’application webassembly éblouissant hébergé
 
-Installez le modèle de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) . Le package [Microsoft. AspNetCore. Components. Webassembly. Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/) a une préversion alors que le composant webassembly éblouissant est en version préliminaire. Dans une interface de commande, exécutez la commande suivante :
+Si vous n’utilisez pas Visual Studio version 16,6 Preview 2 ou une version ultérieure, installez le modèle de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) . Le package [Microsoft. AspNetCore. Components. Webassembly. Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/) a une préversion alors que le composant webassembly éblouissant est en version préliminaire. Dans une interface de commande, exécutez la commande suivante :
 
 ```dotnetcli
-dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
+dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
 ```
 
 Suivez les instructions de votre choix d’outils :

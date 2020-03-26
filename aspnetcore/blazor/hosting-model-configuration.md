@@ -5,17 +5,17 @@ description: En savoir plus sur la configuration du modèle d’hébergement Bla
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: bd44643877e45c5b48b0972bcc2f637fbc5d98f2
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1f71ac63bbe9dc9d56cfca2ded19a5b863be828f
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658304"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306434"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>Configuration du modèle d’hébergement ASP.NET Core éblouissant
 
@@ -25,11 +25,26 @@ Par [Daniel Roth](https://github.com/danroth27)
 
 Cet article traite de l’hébergement de la configuration du modèle.
 
-<!-- For future use:
+## <a name="blazor-webassembly"></a>WebAssembly Blazor
 
-## Blazor WebAssembly
+À partir de la version ASP.NET Core 3,2 Preview 3, le webassembly éblouissant prend en charge la configuration à partir de :
 
--->
+* *wwwroot/appSettings. JSON*
+* *wwwroot/appSettings. {ENVIRONMENT}. JSON*
+
+Dans une application hébergée sur éblouissant, l' [environnement d’exécution](xref:fundamentals/environments) est identique à la valeur de l’application serveur.
+
+Lors de l’exécution locale de l’application, l’environnement est par défaut développement. Lorsque l’application est publiée, l’environnement prend par défaut la valeur production. Pour plus d’informations, notamment sur la configuration de l’environnement, consultez <xref:fundamentals/environments>.
+
+> [!WARNING]
+> La configuration dans une application de webassembly éblouissante est visible pour les utilisateurs. **Ne stockez pas les secrets ou les informations d’identification de l’application dans la configuration.**
+
+Les fichiers de configuration sont mis en cache pour une utilisation hors connexion. Avec les [applications Web progressives (PWA)](xref:blazor/progressive-web-app), vous pouvez uniquement mettre à jour les fichiers de configuration lors de la création d’un déploiement. La modification des fichiers de configuration entre les déploiements n’a aucun effet, car :
+
+* Les utilisateurs ont des versions mises en cache des fichiers qu’ils continuent d’utiliser.
+* Les fichiers *Service-Worker. js* et *Service-Worker-Assets. js* de PWA doivent être reconstruits lors de la compilation, qui signalent à l’application à la prochaine visite en ligne de l’utilisateur que l’application a été redéployée.
+
+Pour plus d’informations sur la façon dont les mises à jour en arrière-plan sont gérées par PWA, consultez <xref:blazor/progressive-web-app#background-updates>.
 
 ## <a name="blazor-server"></a>Serveur Blazor
 

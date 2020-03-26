@@ -5,17 +5,17 @@ description: Commencez avec Blazor en créant une application Blazor avec les ou
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/10/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 89c7529d2b8ec97db731f7c7268e19937c398115
-ms.sourcegitcommit: 98bcf5fe210931e3eb70f82fd675d8679b33f5d6
+ms.openlocfilehash: abecb640930c1e5770c0fad45a1e9a6df31a20f4
+ms.sourcegitcommit: 6ffb583991d6689326605a24565130083a28ef85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79083237"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80306454"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>Prise en main d’ASP.NET Core Blazor
 
@@ -23,89 +23,107 @@ Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Prise en main de éblouissant :
+Pour vous familiariser avec éblouissant, suivez les instructions de votre choix d’outils :
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+1. Pour créer des applications de serveur éblouissantes, installez [Visual Studio 2019 version 16,4 ou ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** .
+
+   Pour créer des applications de serveur éblouissant et de webassembly éblouissant, installez Visual Studio 2019 16,6 Preview 2 ou version ultérieure avec la charge de travail **développement Web et ASP.net** .
+
+   Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *Webassembly éblouissant* et le *serveur éblouissant*, consultez <xref:blazor/hosting-models>.
+
+1. Créez un projet.
+
+1. Sélectionnez l' **application éblouissant**. Sélectionnez **Suivant**.
+
+1. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Create** (Créer).
+
+1. Pour une expérience webassembly éblouissant (Visual Studio 16,6 Preview 2 ou version ultérieure), choisissez le modèle **application éblouissant Webassembly** . Pour une expérience de serveur éblouissant (Visual Studio 16,4 ou version ultérieure), choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Create** (Créer).
+
+1. Appuyez sur <kbd>Ctrl</kbd>+<kbd>F5</kbd> pour exécuter l’application.
+
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. Installez le [Kit de développement logiciel (SDK) .net Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
-1. Installez éventuellement le modèle de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) :
-   * Installez le [Kit de développement logiciel (SDK) .net Core 3.1.102 ou version ultérieure (version préliminaire)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-   * Exécutez la commande suivante dans une interface de commande. Le package [Microsoft. AspNetCore. Components. Webassembly. Templates](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Templates/) a une préversion alors que le composant webassembly éblouissant est en version préliminaire.
+1. Si vous le souhaitez, vous pouvez installer le modèle d’aperçu de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) en exécutant la commande suivante :
 
    ```dotnetcli
-   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview2.20160.5
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
    ```
 
    > [!NOTE]
-   > Kit SDK .NET Core version 3.1.102 ou ultérieure est **nécessaire** pour utiliser le modèle webassembly 3,2 Preview 2. Confirmez la version de kit SDK .NET Core installée en exécutant `dotnet --version` dans un interpréteur de commandes.
+   > La [version de kit SDK .net Core 3.1.201 ou ultérieure](https://dotnet.microsoft.com/download/dotnet-core/3.1) est **requise** pour utiliser le modèle webassembly 3,2 Preview 3 éblouissant. Confirmez la version de kit SDK .NET Core installée en exécutant `dotnet --version` dans un interpréteur de commandes.
 
-1. Suivez les instructions de votre choix d’outils :
+1. Installez [Visual Studio Code](https://code.visualstudio.com/).
 
-   # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+1. Installez la dernière [ C# extension pour Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) et l’extension de [débogueur JavaScript (nocturne)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) avec `debug.javascript.usePreview` définie sur `true`.
 
-   1 \. Installez [Visual Studio 2019 version 16,4 ou ultérieure](https://visualstudio.microsoft.com/vs/preview/) avec la charge de travail **développement Web et ASP.net** .
+1. Pour une expérience de serveur Blazor, exécutez la commande suivante dans une interface de commande :
 
-   2 \. Créez un projet.
+   ```dotnetcli
+   dotnet new blazorserver -o WebApplication1
+   ```
 
-   3 \. Sélectionnez l' **application éblouissant**. Sélectionnez **Suivant**.
+   Pour une expérience de webassembly Blazor, exécutez la commande suivante dans une interface de commande :
 
-   4 \. Indiquez un nom de projet dans le champ **Nom du projet**, ou acceptez le nom de projet par défaut. Confirmez que l’entrée d' **emplacement** est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Create** (Créer).
+   ```dotnetcli
+   dotnet new blazorwasm -o WebApplication1
+   ```
 
-   5 \. Pour une expérience de webassembly éblouissant, choisissez le modèle **application éblouissant Webassembly** . Pour une expérience de serveur éblouissant, choisissez le modèle **application de serveur éblouissant** . Sélectionnez **Create** (Créer). Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *serveur éblouissant* et le *webassembly éblouissant*, consultez <xref:blazor/hosting-models>. Si le modèle de webassembly éblouissant n’est pas présent, revenez à l’étape précédente et réinstallez le modèle.
+   Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *serveur éblouissant* et le *webassembly éblouissant*, consultez <xref:blazor/hosting-models>.
 
-   6 \. Appuyez sur **Ctrl**+**F5** pour exécuter l’application.
+1. Ouvrez le dossier *WebApplication1* dans Visual Studio code.
+
+1. L’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
+
+1. Exécutez l’application à l’aide du débogueur Visual Studio Code.
+
+1. Dans un navigateur, accédez à `https://localhost:5001`.
+
+# <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+Le serveur éblouissant est pris en charge dans Visual Studio pour Mac. Le webassembly éblouissant n’est pas pris en charge pour le moment. Pour générer des applications webassembly éblouissantes sur macOS, suivez les instructions de l’onglet **CLI .net Core** .
+
+1. Installez [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/).
+
+1. Sélectionnez **fichier** > **nouvelle solution** ou créer un **nouveau projet**.
+
+1. Dans la barre latérale, sélectionnez **.net Core** > **application**.
+
+1. Sélectionnez le modèle **application de serveur éblouissant** . Sélectionnez **Create** (Créer).
+
+   Pour plus d’informations sur le modèle d’hébergement de serveur éblouissant, consultez <xref:blazor/hosting-models>.
+
+1. Définissez la version **cible** de **.NET Framework sur .net Core 3,1** , puis sélectionnez **suivant**.
+
+1. Dans le champ **nom du projet** , nommez l’application `WebApplication1`. Sélectionnez **Create** (Créer).
+
+1. Sélectionnez **exécuter** > **exécuter sans débogage** pour exécuter l’application *sans le débogueur*. Exécutez l’application avec **Démarrer le débogage** pour exécuter l’application *avec le débogueur*.
+
+Si une invite s’affiche pour faire confiance au certificat de développement, approuvez le certificat et continuez.
+
+# <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
+
+1. Installez le [Kit de développement logiciel (SDK) .net Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+
+1. Si vous le souhaitez, vous pouvez installer le modèle d’aperçu de [Webassembly éblouissant](xref:blazor/hosting-models#blazor-webassembly) en exécutant la commande suivante :
+
+   ```dotnetcli
+   dotnet new -i Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview3.20168.3
+   ```
 
    > [!NOTE]
-   > Si vous avez installé l’extension Visual Studio Blazor pour une version préliminaire antérieure de ASP.NET Core Blazor (version préliminaire 6 ou antérieure), vous pouvez désinstaller l’extension. L’installation des modèles Blazor dans un interpréteur de commandes est désormais suffisante pour faire apparaître les modèles dans Visual Studio.
+   > La [version de kit SDK .net Core 3.1.201 ou ultérieure](https://dotnet.microsoft.com/download/dotnet-core/3.1) est **requise** pour utiliser le modèle webassembly 3,2 Preview 3 éblouissant. Confirmez la version de kit SDK .NET Core installée en exécutant `dotnet --version` dans un interpréteur de commandes.
 
-   # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+1. Pour une expérience de serveur Blazor, exécutez les commandes suivantes dans une interface de commande :
 
-   1 \. Installez [Visual Studio Code](https://code.visualstudio.com/).
-
-   2 \. Installez le dernier [ C# Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-
-   3 \. Pour une expérience de webassembly Blazor, exécutez la commande suivante dans une interface de commande :
-
-      ```dotnetcli
-      dotnet new blazorwasm -o WebApplication1
-      ```
-
-      Pour une expérience de serveur Blazor, exécutez la commande suivante dans une interface de commande :
-
-      ```dotnetcli
-      dotnet new blazorserver -o WebApplication1
-      ```
-
-      Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *serveur éblouissant* et le *webassembly éblouissant*, consultez <xref:blazor/hosting-models>.
-
-   4 \. Ouvrez le dossier *WebApplication1* dans Visual Studio code.
-
-   5 \. Pour un projet de serveur Blazor, l’IDE demande que vous ajoutiez des ressources pour générer et déboguer le projet. Sélectionnez **Oui**.
-
-   6 \. Si vous utilisez une application de serveur Blazor, exécutez l’application à l’aide du débogueur Visual Studio Code. Si vous utilisez une application de webassembly éblouissante, exécutez `dotnet run` à partir du dossier du projet de l’application.
-
-   7 \. Dans un navigateur, accédez à `https://localhost:5001`.
-
-   # <a name="visual-studio-for-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-   1 \. Installez [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/).
-
-   2 \. Sélectionnez **fichier** > **nouvelle solution** ou créer un **nouveau projet**.
-
-   3 \. Dans la barre latérale, sélectionnez **.net Core** > **application**.
-
-   4 \. Sélectionnez le modèle **application de serveur éblouissant** . Seul le modèle de serveur éblouissant est disponible dans Visual Studio pour Mac pour l’instant. Pour une expérience de webassembly éblouissant, suivez les instructions de l’onglet **CLI .net Core** . Après avoir sélectionné le modèle de serveur éblouissant, sélectionnez **suivant**. Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *serveur éblouissant* et le *webassembly éblouissant*, consultez <xref:blazor/hosting-models>.
-
-   <!-- For a Blazor WebAssembly experience, select the **Blazor WebAssembly App** template. Select **Next**. -->
-
-   5 \. Définissez la version **cible** de **.NET Framework sur .net Core 3,1** , puis sélectionnez **suivant**.
-
-   6 \. Dans le champ **nom du projet** , nommez l’application `WebApplication1`. Sélectionnez **Create** (Créer).
-
-   7 \. Sélectionnez **exécuter** > **exécuter sans débogage** pour exécuter l’application *sans le débogueur*. Exécutez l’application avec **Démarrer le débogage** pour exécuter l’application *avec le débogueur*.
-
-   Si une invite s’affiche pour faire confiance au certificat de développement, approuvez le certificat et continuez.
-
-   # <a name="net-core-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
+   ```dotnetcli
+   dotnet new blazorserver -o WebApplication1
+   cd WebApplication1
+   dotnet run
+   ```
 
    Pour une expérience de webassembly Blazor, exécutez les commandes suivantes dans une interface de commande :
 
@@ -115,19 +133,11 @@ Prise en main de éblouissant :
    dotnet run
    ```
 
-   Pour une expérience de serveur Blazor, exécutez les commandes suivantes dans une interface de commande :
-
-   ```dotnetcli
-   dotnet new blazorserver -o WebApplication1
-   cd WebApplication1
-   dotnet run
-   ```
-
    Pour plus d’informations sur les deux modèles d’hébergement éblouissants, le *serveur éblouissant* et le *webassembly éblouissant*, consultez <xref:blazor/hosting-models>.
 
-   Dans un navigateur, accédez à `https://localhost:5001`.
+1. Dans un navigateur, accédez à `https://localhost:5001`.
 
-   ---
+---
 
 Plusieurs pages sont disponibles à partir des onglets de la barre latérale :
 
