@@ -1,5 +1,5 @@
 - name: "Documentation ASP.NET\_Core"
-  href: '/aspnet/#pivot=core'
+  href: index.yml
 - name: Nouveautés de la documentation ASP.NET Core
   href: whats-new/index.yml
 - name: Vue d'ensemble
