@@ -5,17 +5,17 @@ description: En savoir plus sur les fonctionnalités de liaison de données pour
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/16/2020
+ms.date: 03/26/2020
 no-loc:
 - Blazor
 - SignalR
 uid: blazor/data-binding
-ms.openlocfilehash: 5b49d2598a451ee607e034913bd1aeaa03f941c6
-ms.sourcegitcommit: d64ef143c64ee4fdade8f9ea0b753b16752c5998
+ms.openlocfilehash: a7b3730dad48b5bbb6134dab181051da4e3651b4
+ms.sourcegitcommit: f3b1bcfd108e5d53f73abc0bf2555890869d953b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79511195"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80320954"
 ---
 # <a name="aspnet-core-opno-locblazor-data-binding"></a>Liaison de données ASP.NET Core Blazor
 
@@ -241,7 +241,7 @@ Le composant `PasswordField` suivant (*passwordField. Razor*) :
 * Utilise l’événement `onclick` est utilisé pour déclencher la méthode `ToggleShowPassword`. Pour plus d’informations, consultez <xref:blazor/event-handling>.
 
 ```razor
-<h1>Child Component</h2>
+<h1>Child Component</h1>
 
 Password: 
 
@@ -299,9 +299,7 @@ Pour effectuer des vérifications ou des erreurs d’interruption sur le mot de 
 L’exemple suivant fournit un retour immédiat à l’utilisateur si un espace est utilisé dans la valeur du mot de passe :
 
 ```razor
-@page "/ParentComponent"
-
-<h1>Parent Component</h1>
+<h1>Child Component</h1>
 
 Password: 
 
